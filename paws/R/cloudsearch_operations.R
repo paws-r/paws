@@ -35,6 +35,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudsearch_build_suggesters
+#'
+#' @aliases cloudsearch_build_suggesters
 cloudsearch_build_suggesters <- function(DomainName) {
   op <- new_operation(
     name = "BuildSuggesters",
@@ -107,6 +109,8 @@ cloudsearch_build_suggesters <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_create_domain
+#'
+#' @aliases cloudsearch_create_domain
 cloudsearch_create_domain <- function(DomainName) {
   op <- new_operation(
     name = "CreateDomain",
@@ -193,6 +197,8 @@ cloudsearch_create_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_define_analysis_scheme
+#'
+#' @aliases cloudsearch_define_analysis_scheme
 cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
   op <- new_operation(
     name = "DefineAnalysisScheme",
@@ -264,6 +270,8 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_define_expression
+#'
+#' @aliases cloudsearch_define_expression
 cloudsearch_define_expression <- function(DomainName, Expression) {
   op <- new_operation(
     name = "DefineExpression",
@@ -505,6 +513,8 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_define_index_field
+#'
+#' @aliases cloudsearch_define_index_field
 cloudsearch_define_index_field <- function(DomainName, IndexField) {
   op <- new_operation(
     name = "DefineIndexField",
@@ -586,6 +596,8 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_define_suggester
+#'
+#' @aliases cloudsearch_define_suggester
 cloudsearch_define_suggester <- function(DomainName, Suggester) {
   op <- new_operation(
     name = "DefineSuggester",
@@ -659,6 +671,8 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_delete_analysis_scheme
+#'
+#' @aliases cloudsearch_delete_analysis_scheme
 cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
   op <- new_operation(
     name = "DeleteAnalysisScheme",
@@ -729,6 +743,8 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_delete_domain
+#'
+#' @aliases cloudsearch_delete_domain
 cloudsearch_delete_domain <- function(DomainName) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -796,6 +812,8 @@ cloudsearch_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_delete_expression
+#'
+#' @aliases cloudsearch_delete_expression
 cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
   op <- new_operation(
     name = "DeleteExpression",
@@ -947,6 +965,8 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_delete_index_field
+#'
+#' @aliases cloudsearch_delete_index_field
 cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
   op <- new_operation(
     name = "DeleteIndexField",
@@ -1017,6 +1037,8 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_delete_suggester
+#'
+#' @aliases cloudsearch_delete_suggester
 cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
   op <- new_operation(
     name = "DeleteSuggester",
@@ -1103,6 +1125,8 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_analysis_schemes
+#'
+#' @aliases cloudsearch_describe_analysis_schemes
 cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeNames = NULL, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeAnalysisSchemes",
@@ -1170,6 +1194,8 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_availability_options
+#'
+#' @aliases cloudsearch_describe_availability_options
 cloudsearch_describe_availability_options <- function(DomainName, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeAvailabilityOptions",
@@ -1240,6 +1266,8 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_domain_endpoint_options
+#'
+#' @aliases cloudsearch_describe_domain_endpoint_options
 cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeDomainEndpointOptions",
@@ -1318,6 +1346,8 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_domains
+#'
+#' @aliases cloudsearch_describe_domains
 cloudsearch_describe_domains <- function(DomainNames = NULL) {
   op <- new_operation(
     name = "DescribeDomains",
@@ -1397,6 +1427,8 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_expressions
+#'
+#' @aliases cloudsearch_describe_expressions
 cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeExpressions",
@@ -1558,6 +1590,8 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_index_fields
+#'
+#' @aliases cloudsearch_describe_index_fields
 cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeIndexFields",
@@ -1625,6 +1659,8 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_scaling_parameters
+#'
+#' @aliases cloudsearch_describe_scaling_parameters
 cloudsearch_describe_scaling_parameters <- function(DomainName) {
   op <- new_operation(
     name = "DescribeScalingParameters",
@@ -1694,6 +1730,8 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_service_access_policies
+#'
+#' @aliases cloudsearch_describe_service_access_policies
 cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeServiceAccessPolicies",
@@ -1776,6 +1814,8 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 #' @keywords internal
 #'
 #' @rdname cloudsearch_describe_suggesters
+#'
+#' @aliases cloudsearch_describe_suggesters
 cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, Deployed = NULL) {
   op <- new_operation(
     name = "DescribeSuggesters",
@@ -1826,6 +1866,8 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
 #' @keywords internal
 #'
 #' @rdname cloudsearch_index_documents
+#'
+#' @aliases cloudsearch_index_documents
 cloudsearch_index_documents <- function(DomainName) {
   op <- new_operation(
     name = "IndexDocuments",
@@ -1868,6 +1910,8 @@ cloudsearch_index_documents <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_list_domain_names
+#'
+#' @aliases cloudsearch_list_domain_names
 cloudsearch_list_domain_names <- function() {
   op <- new_operation(
     name = "ListDomainNames",
@@ -1938,6 +1982,8 @@ cloudsearch_list_domain_names <- function() {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_update_availability_options
+#'
+#' @aliases cloudsearch_update_availability_options
 cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
   op <- new_operation(
     name = "UpdateAvailabilityOptions",
@@ -2013,6 +2059,8 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #' @keywords internal
 #'
 #' @rdname cloudsearch_update_domain_endpoint_options
+#'
+#' @aliases cloudsearch_update_domain_endpoint_options
 cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpointOptions) {
   op <- new_operation(
     name = "UpdateDomainEndpointOptions",
@@ -2090,6 +2138,8 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' @keywords internal
 #'
 #' @rdname cloudsearch_update_scaling_parameters
+#'
+#' @aliases cloudsearch_update_scaling_parameters
 cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters) {
   op <- new_operation(
     name = "UpdateScalingParameters",
@@ -2155,6 +2205,8 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #' @keywords internal
 #'
 #' @rdname cloudsearch_update_service_access_policies
+#'
+#' @aliases cloudsearch_update_service_access_policies
 cloudsearch_update_service_access_policies <- function(DomainName, AccessPolicies) {
   op <- new_operation(
     name = "UpdateServiceAccessPolicies",

@@ -58,14 +58,14 @@ environments.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.management.p1:finspace_create_environment]{create_environment} \tab Create a new FinSpace environment\cr
-\link[paws.management.p1:finspace_delete_environment]{delete_environment} \tab Delete an FinSpace environment\cr
-\link[paws.management.p1:finspace_get_environment]{get_environment} \tab Returns the FinSpace environment object\cr
-\link[paws.management.p1:finspace_list_environments]{list_environments} \tab A list of all of your FinSpace environments\cr
-\link[paws.management.p1:finspace_list_tags_for_resource]{list_tags_for_resource} \tab A list of all tags for a resource\cr
-\link[paws.management.p1:finspace_tag_resource]{tag_resource} \tab Adds metadata tags to a FinSpace resource\cr
-\link[paws.management.p1:finspace_untag_resource]{untag_resource} \tab Removes metadata tags from a FinSpace resource\cr
-\link[paws.management.p1:finspace_update_environment]{update_environment} \tab Update your FinSpace environment
+\link[paws.management:finspace_create_environment]{create_environment} \tab Create a new FinSpace environment\cr
+\link[paws.management:finspace_delete_environment]{delete_environment} \tab Delete an FinSpace environment\cr
+\link[paws.management:finspace_get_environment]{get_environment} \tab Returns the FinSpace environment object\cr
+\link[paws.management:finspace_list_environments]{list_environments} \tab A list of all of your FinSpace environments\cr
+\link[paws.management:finspace_list_tags_for_resource]{list_tags_for_resource} \tab A list of all tags for a resource\cr
+\link[paws.management:finspace_tag_resource]{tag_resource} \tab Adds metadata tags to a FinSpace resource\cr
+\link[paws.management:finspace_untag_resource]{untag_resource} \tab Removes metadata tags from a FinSpace resource\cr
+\link[paws.management:finspace_update_environment]{update_environment} \tab Update your FinSpace environment
 }
 }
 

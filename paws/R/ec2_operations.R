@@ -52,6 +52,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ec2_accept_reserved_instances_exchange_quote
+#'
+#' @aliases ec2_accept_reserved_instances_exchange_quote
 ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedInstanceIds, TargetConfigurations = NULL) {
   op <- new_operation(
     name = "AcceptReservedInstancesExchangeQuote",
@@ -125,6 +127,8 @@ ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, Reserved
 #' @keywords internal
 #'
 #' @rdname ec2_accept_transit_gateway_multicast_domain_associations
+#'
+#' @aliases ec2_accept_transit_gateway_multicast_domain_associations
 ec2_accept_transit_gateway_multicast_domain_associations <- function(TransitGatewayMulticastDomainId = NULL, TransitGatewayAttachmentId = NULL, SubnetIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "AcceptTransitGatewayMulticastDomainAssociations",
@@ -209,6 +213,8 @@ ec2_accept_transit_gateway_multicast_domain_associations <- function(TransitGate
 #' @keywords internal
 #'
 #' @rdname ec2_accept_transit_gateway_peering_attachment
+#'
+#' @aliases ec2_accept_transit_gateway_peering_attachment
 ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "AcceptTransitGatewayPeeringAttachment",
@@ -289,6 +295,8 @@ ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' @keywords internal
 #'
 #' @rdname ec2_accept_transit_gateway_vpc_attachment
+#'
+#' @aliases ec2_accept_transit_gateway_vpc_attachment
 ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "AcceptTransitGatewayVpcAttachment",
@@ -353,6 +361,8 @@ ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' @keywords internal
 #'
 #' @rdname ec2_accept_vpc_endpoint_connections
+#'
+#' @aliases ec2_accept_vpc_endpoint_connections
 ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEndpointIds) {
   op <- new_operation(
     name = "AcceptVpcEndpointConnections",
@@ -468,6 +478,8 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #' @keywords internal
 #'
 #' @rdname ec2_accept_vpc_peering_connection
+#'
+#' @aliases ec2_accept_vpc_peering_connection
 ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectionId = NULL) {
   op <- new_operation(
     name = "AcceptVpcPeeringConnection",
@@ -545,6 +557,8 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' @keywords internal
 #'
 #' @rdname ec2_advertise_byoip_cidr
+#'
+#' @aliases ec2_advertise_byoip_cidr
 ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
   op <- new_operation(
     name = "AdvertiseByoipCidr",
@@ -692,6 +706,8 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_address
+#'
+#' @aliases ec2_allocate_address
 ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool = NULL, NetworkBorderGroup = NULL, CustomerOwnedIpv4Pool = NULL, DryRun = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "AllocateAddress",
@@ -800,6 +816,8 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_hosts
+#'
+#' @aliases ec2_allocate_hosts
 ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientToken = NULL, InstanceType = NULL, InstanceFamily = NULL, Quantity, TagSpecifications = NULL, HostRecovery = NULL, OutpostArn = NULL) {
   op <- new_operation(
     name = "AllocateHosts",
@@ -900,6 +918,8 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
 #' @keywords internal
 #'
 #' @rdname ec2_allocate_ipam_pool_cidr
+#'
+#' @aliases ec2_allocate_ipam_pool_cidr
 ec2_allocate_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, NetmaskLength = NULL, ClientToken = NULL, Description = NULL, PreviewNextCidr = NULL, DisallowedCidrs = NULL) {
   op <- new_operation(
     name = "AllocateIpamPoolCidr",
@@ -964,6 +984,8 @@ ec2_allocate_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_apply_security_groups_to_client_vpn_target_network
+#'
+#' @aliases ec2_apply_security_groups_to_client_vpn_target_network
 ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndpointId, VpcId, SecurityGroupIds, DryRun = NULL) {
   op <- new_operation(
     name = "ApplySecurityGroupsToClientVpnTargetNetwork",
@@ -1056,6 +1078,8 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
 #' @keywords internal
 #'
 #' @rdname ec2_assign_ipv_6_addresses
+#'
+#' @aliases ec2_assign_ipv_6_addresses
 ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = NULL, Ipv6PrefixCount = NULL, Ipv6Prefixes = NULL, NetworkInterfaceId) {
   op <- new_operation(
     name = "AssignIpv6Addresses",
@@ -1192,6 +1216,8 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #' @keywords internal
 #'
 #' @rdname ec2_assign_private_ip_addresses
+#'
+#' @aliases ec2_assign_private_ip_addresses
 ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInterfaceId, PrivateIpAddresses = NULL, SecondaryPrivateIpAddressCount = NULL, Ipv4Prefixes = NULL, Ipv4PrefixCount = NULL) {
   op <- new_operation(
     name = "AssignPrivateIpAddresses",
@@ -1335,6 +1361,8 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #' @keywords internal
 #'
 #' @rdname ec2_associate_address
+#'
+#' @aliases ec2_associate_address
 ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, PublicIp = NULL, AllowReassociation = NULL, DryRun = NULL, NetworkInterfaceId = NULL, PrivateIpAddress = NULL) {
   op <- new_operation(
     name = "AssociateAddress",
@@ -1407,6 +1435,8 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
 #' @keywords internal
 #'
 #' @rdname ec2_associate_client_vpn_target_network
+#'
+#' @aliases ec2_associate_client_vpn_target_network
 ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetId, ClientToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateClientVpnTargetNetwork",
@@ -1485,6 +1515,8 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
 #' @keywords internal
 #'
 #' @rdname ec2_associate_dhcp_options
+#'
+#' @aliases ec2_associate_dhcp_options
 ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateDhcpOptions",
@@ -1562,6 +1594,8 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_associate_enclave_certificate_iam_role
+#'
+#' @aliases ec2_associate_enclave_certificate_iam_role
 ec2_associate_enclave_certificate_iam_role <- function(CertificateArn = NULL, RoleArn = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateEnclaveCertificateIamRole",
@@ -1637,6 +1671,8 @@ ec2_associate_enclave_certificate_iam_role <- function(CertificateArn = NULL, Ro
 #' @keywords internal
 #'
 #' @rdname ec2_associate_iam_instance_profile
+#'
+#' @aliases ec2_associate_iam_instance_profile
 ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
   op <- new_operation(
     name = "AssociateIamInstanceProfile",
@@ -1742,6 +1778,8 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname ec2_associate_instance_event_window
+#'
+#' @aliases ec2_associate_instance_event_window
 ec2_associate_instance_event_window <- function(DryRun = NULL, InstanceEventWindowId, AssociationTarget) {
   op <- new_operation(
     name = "AssociateInstanceEventWindow",
@@ -1820,6 +1858,8 @@ ec2_associate_instance_event_window <- function(DryRun = NULL, InstanceEventWind
 #' @keywords internal
 #'
 #' @rdname ec2_associate_route_table
+#'
+#' @aliases ec2_associate_route_table
 ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId = NULL, GatewayId = NULL) {
   op <- new_operation(
     name = "AssociateRouteTable",
@@ -1878,6 +1918,8 @@ ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId = NU
 #' @keywords internal
 #'
 #' @rdname ec2_associate_subnet_cidr_block
+#'
+#' @aliases ec2_associate_subnet_cidr_block
 ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock, SubnetId) {
   op <- new_operation(
     name = "AssociateSubnetCidrBlock",
@@ -1957,6 +1999,8 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock, SubnetId) {
 #' @keywords internal
 #'
 #' @rdname ec2_associate_transit_gateway_multicast_domain
+#'
+#' @aliases ec2_associate_transit_gateway_multicast_domain
 ec2_associate_transit_gateway_multicast_domain <- function(TransitGatewayMulticastDomainId = NULL, TransitGatewayAttachmentId = NULL, SubnetIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateTransitGatewayMulticastDomain",
@@ -2020,6 +2064,8 @@ ec2_associate_transit_gateway_multicast_domain <- function(TransitGatewayMultica
 #' @keywords internal
 #'
 #' @rdname ec2_associate_transit_gateway_policy_table
+#'
+#' @aliases ec2_associate_transit_gateway_policy_table
 ec2_associate_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId, TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateTransitGatewayPolicyTable",
@@ -2081,6 +2127,8 @@ ec2_associate_transit_gateway_policy_table <- function(TransitGatewayPolicyTable
 #' @keywords internal
 #'
 #' @rdname ec2_associate_transit_gateway_route_table
+#'
+#' @aliases ec2_associate_transit_gateway_route_table
 ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId, TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateTransitGatewayRouteTable",
@@ -2165,6 +2213,8 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
 #' @keywords internal
 #'
 #' @rdname ec2_associate_trunk_interface
+#'
+#' @aliases ec2_associate_trunk_interface
 ec2_associate_trunk_interface <- function(BranchInterfaceId, TrunkInterfaceId, VlanId = NULL, GreKey = NULL, ClientToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "AssociateTrunkInterface",
@@ -2285,6 +2335,8 @@ ec2_associate_trunk_interface <- function(BranchInterfaceId, TrunkInterfaceId, V
 #' @keywords internal
 #'
 #' @rdname ec2_associate_vpc_cidr_block
+#'
+#' @aliases ec2_associate_vpc_cidr_block
 ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, CidrBlock = NULL, VpcId, Ipv6CidrBlockNetworkBorderGroup = NULL, Ipv6Pool = NULL, Ipv6CidrBlock = NULL, Ipv4IpamPoolId = NULL, Ipv4NetmaskLength = NULL, Ipv6IpamPoolId = NULL, Ipv6NetmaskLength = NULL) {
   op <- new_operation(
     name = "AssociateVpcCidrBlock",
@@ -2361,6 +2413,8 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
 #' @keywords internal
 #'
 #' @rdname ec2_attach_classic_link_vpc
+#'
+#' @aliases ec2_attach_classic_link_vpc
 ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId) {
   op <- new_operation(
     name = "AttachClassicLinkVpc",
@@ -2423,6 +2477,8 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #' @keywords internal
 #'
 #' @rdname ec2_attach_internet_gateway
+#'
+#' @aliases ec2_attach_internet_gateway
 ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId) {
   op <- new_operation(
     name = "AttachInternetGateway",
@@ -2494,6 +2550,8 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' @keywords internal
 #'
 #' @rdname ec2_attach_network_interface
+#'
+#' @aliases ec2_attach_network_interface
 ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId, NetworkInterfaceId, NetworkCardIndex = NULL) {
   op <- new_operation(
     name = "AttachNetworkInterface",
@@ -2595,6 +2653,8 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
 #' @keywords internal
 #'
 #' @rdname ec2_attach_volume
+#'
+#' @aliases ec2_attach_volume
 ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
   op <- new_operation(
     name = "AttachVolume",
@@ -2655,6 +2715,8 @@ ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_attach_vpn_gateway
+#'
+#' @aliases ec2_attach_vpn_gateway
 ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
   op <- new_operation(
     name = "AttachVpnGateway",
@@ -2729,6 +2791,8 @@ ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_authorize_client_vpn_ingress
+#'
+#' @aliases ec2_authorize_client_vpn_ingress
 ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr, AccessGroupId = NULL, AuthorizeAllGroups = NULL, Description = NULL, ClientToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "AuthorizeClientVpnIngress",
@@ -2932,6 +2996,8 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #' @keywords internal
 #'
 #' @rdname ec2_authorize_security_group_egress
+#'
+#' @aliases ec2_authorize_security_group_egress
 ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissions = NULL, TagSpecifications = NULL, CidrIp = NULL, FromPort = NULL, IpProtocol = NULL, ToPort = NULL, SourceSecurityGroupName = NULL, SourceSecurityGroupOwnerId = NULL) {
   op <- new_operation(
     name = "AuthorizeSecurityGroupEgress",
@@ -3201,6 +3267,8 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 #' @keywords internal
 #'
 #' @rdname ec2_authorize_security_group_ingress
+#'
+#' @aliases ec2_authorize_security_group_ingress
 ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, GroupId = NULL, GroupName = NULL, IpPermissions = NULL, IpProtocol = NULL, SourceSecurityGroupName = NULL, SourceSecurityGroupOwnerId = NULL, ToPort = NULL, DryRun = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "AuthorizeSecurityGroupIngress",
@@ -3300,6 +3368,8 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_bundle_instance
+#'
+#' @aliases ec2_bundle_instance
 ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
   op <- new_operation(
     name = "BundleInstance",
@@ -3376,6 +3446,8 @@ ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_bundle_task
+#'
+#' @aliases ec2_cancel_bundle_task
 ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
   op <- new_operation(
     name = "CancelBundleTask",
@@ -3435,6 +3507,8 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_capacity_reservation
+#'
+#' @aliases ec2_cancel_capacity_reservation
 ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL) {
   op <- new_operation(
     name = "CancelCapacityReservation",
@@ -3512,6 +3586,8 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_capacity_reservation_fleets
+#'
+#' @aliases ec2_cancel_capacity_reservation_fleets
 ec2_cancel_capacity_reservation_fleets <- function(DryRun = NULL, CapacityReservationFleetIds) {
   op <- new_operation(
     name = "CancelCapacityReservationFleets",
@@ -3566,6 +3642,8 @@ ec2_cancel_capacity_reservation_fleets <- function(DryRun = NULL, CapacityReserv
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_conversion_task
+#'
+#' @aliases ec2_cancel_conversion_task
 ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMessage = NULL) {
   op <- new_operation(
     name = "CancelConversionTask",
@@ -3610,6 +3688,8 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_export_task
+#'
+#' @aliases ec2_cancel_export_task
 ec2_cancel_export_task <- function(ExportTaskId) {
   op <- new_operation(
     name = "CancelExportTask",
@@ -3664,6 +3744,8 @@ ec2_cancel_export_task <- function(ExportTaskId) {
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_import_task
+#'
+#' @aliases ec2_cancel_import_task
 ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTaskId = NULL) {
   op <- new_operation(
     name = "CancelImportTask",
@@ -3749,6 +3831,8 @@ ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTas
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_reserved_instances_listing
+#'
+#' @aliases ec2_cancel_reserved_instances_listing
 ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
   op <- new_operation(
     name = "CancelReservedInstancesListing",
@@ -3849,6 +3933,8 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_spot_fleet_requests
+#'
+#' @aliases ec2_cancel_spot_fleet_requests
 ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, TerminateInstances) {
   op <- new_operation(
     name = "CancelSpotFleetRequests",
@@ -3919,6 +4005,8 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
 #' @keywords internal
 #'
 #' @rdname ec2_cancel_spot_instance_requests
+#'
+#' @aliases ec2_cancel_spot_instance_requests
 ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequestIds) {
   op <- new_operation(
     name = "CancelSpotInstanceRequests",
@@ -3985,6 +4073,8 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
 #' @keywords internal
 #'
 #' @rdname ec2_confirm_product_instance
+#'
+#' @aliases ec2_confirm_product_instance
 ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL) {
   op <- new_operation(
     name = "ConfirmProductInstance",
@@ -4046,6 +4136,8 @@ ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL)
 #' @keywords internal
 #'
 #' @rdname ec2_copy_fpga_image
+#'
+#' @aliases ec2_copy_fpga_image
 ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = NULL, Name = NULL, SourceRegion, ClientToken = NULL) {
   op <- new_operation(
     name = "CopyFpgaImage",
@@ -4191,6 +4283,8 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' @keywords internal
 #'
 #' @rdname ec2_copy_image
+#'
+#' @aliases ec2_copy_image
 ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = NULL, KmsKeyId = NULL, Name, SourceImageId, SourceRegion, DestinationOutpostArn = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CopyImage",
@@ -4378,6 +4472,8 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' @keywords internal
 #'
 #' @rdname ec2_copy_snapshot
+#'
+#' @aliases ec2_copy_snapshot
 ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, DestinationRegion = NULL, Encrypted = NULL, KmsKeyId = NULL, PresignedUrl = NULL, SourceRegion, SourceSnapshotId, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CopySnapshot",
@@ -4590,6 +4686,8 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_create_capacity_reservation
+#'
+#' @aliases ec2_create_capacity_reservation
 ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, InstancePlatform, AvailabilityZone = NULL, AvailabilityZoneId = NULL, Tenancy = NULL, InstanceCount, EbsOptimized = NULL, EphemeralStorage = NULL, EndDate = NULL, EndDateType = NULL, InstanceMatchCriteria = NULL, TagSpecifications = NULL, DryRun = NULL, OutpostArn = NULL, PlacementGroupArn = NULL) {
   op <- new_operation(
     name = "CreateCapacityReservation",
@@ -4756,6 +4854,8 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 #' @keywords internal
 #'
 #' @rdname ec2_create_capacity_reservation_fleet
+#'
+#' @aliases ec2_create_capacity_reservation_fleet
 ec2_create_capacity_reservation_fleet <- function(AllocationStrategy = NULL, ClientToken = NULL, InstanceTypeSpecifications, Tenancy = NULL, TotalTargetCapacity, EndDate = NULL, InstanceMatchCriteria = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateCapacityReservationFleet",
@@ -4837,6 +4937,8 @@ ec2_create_capacity_reservation_fleet <- function(AllocationStrategy = NULL, Cli
 #' @keywords internal
 #'
 #' @rdname ec2_create_carrier_gateway
+#'
+#' @aliases ec2_create_carrier_gateway
 ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateCarrierGateway",
@@ -5021,6 +5123,8 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
 #' @keywords internal
 #'
 #' @rdname ec2_create_client_vpn_endpoint
+#'
+#' @aliases ec2_create_client_vpn_endpoint
 ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn, AuthenticationOptions, ConnectionLogOptions, DnsServers = NULL, TransportProtocol = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, ClientToken = NULL, TagSpecifications = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL) {
   op <- new_operation(
     name = "CreateClientVpnEndpoint",
@@ -5104,6 +5208,8 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 #' @keywords internal
 #'
 #' @rdname ec2_create_client_vpn_route
+#'
+#' @aliases ec2_create_client_vpn_route
 ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBlock, TargetVpcSubnetId, Description = NULL, ClientToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateClientVpnRoute",
@@ -5227,6 +5333,8 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
 #' @keywords internal
 #'
 #' @rdname ec2_create_customer_gateway
+#'
+#' @aliases ec2_create_customer_gateway
 ec2_create_customer_gateway <- function(BgpAsn, PublicIp = NULL, CertificateArn = NULL, Type, TagSpecifications = NULL, DeviceName = NULL, IpAddress = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateCustomerGateway",
@@ -5327,6 +5435,8 @@ ec2_create_customer_gateway <- function(BgpAsn, PublicIp = NULL, CertificateArn 
 #' @keywords internal
 #'
 #' @rdname ec2_create_default_subnet
+#'
+#' @aliases ec2_create_default_subnet
 ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL, Ipv6Native = NULL) {
   op <- new_operation(
     name = "CreateDefaultSubnet",
@@ -5432,6 +5542,8 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL, Ipv6Nativ
 #' @keywords internal
 #'
 #' @rdname ec2_create_default_vpc
+#'
+#' @aliases ec2_create_default_vpc
 ec2_create_default_vpc <- function(DryRun = NULL) {
   op <- new_operation(
     name = "CreateDefaultVpc",
@@ -5581,6 +5693,8 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_create_dhcp_options
+#'
+#' @aliases ec2_create_dhcp_options
 ec2_create_dhcp_options <- function(DhcpConfigurations, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateDhcpOptions",
@@ -5667,6 +5781,8 @@ ec2_create_dhcp_options <- function(DhcpConfigurations, TagSpecifications = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_create_egress_only_internet_gateway
+#'
+#' @aliases ec2_create_egress_only_internet_gateway
 ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun = NULL, VpcId, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateEgressOnlyInternetGateway",
@@ -6101,6 +6217,8 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' @keywords internal
 #'
 #' @rdname ec2_create_fleet
+#'
+#' @aliases ec2_create_fleet
 ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NULL, OnDemandOptions = NULL, ExcessCapacityTerminationPolicy = NULL, LaunchTemplateConfigs, TargetCapacitySpecification, TerminateInstancesWithExpiration = NULL, Type = NULL, ValidFrom = NULL, ValidUntil = NULL, ReplaceUnhealthyInstances = NULL, TagSpecifications = NULL, Context = NULL) {
   op <- new_operation(
     name = "CreateFleet",
@@ -6281,6 +6399,8 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' @keywords internal
 #'
 #' @rdname ec2_create_flow_logs
+#'
+#' @aliases ec2_create_flow_logs
 ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsPermissionArn = NULL, LogGroupName = NULL, ResourceIds, ResourceType, TrafficType = NULL, LogDestinationType = NULL, LogDestination = NULL, LogFormat = NULL, TagSpecifications = NULL, MaxAggregationInterval = NULL, DestinationOptions = NULL) {
   op <- new_operation(
     name = "CreateFlowLogs",
@@ -6372,6 +6492,8 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
 #' @keywords internal
 #'
 #' @rdname ec2_create_fpga_image
+#'
+#' @aliases ec2_create_fpga_image
 ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStorageLocation = NULL, Description = NULL, Name = NULL, ClientToken = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateFpgaImage",
@@ -6540,6 +6662,8 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' @keywords internal
 #'
 #' @rdname ec2_create_image
+#'
+#' @aliases ec2_create_image
 ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, DryRun = NULL, InstanceId, Name, NoReboot = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateImage",
@@ -6698,6 +6822,8 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
 #' @keywords internal
 #'
 #' @rdname ec2_create_instance_event_window
+#'
+#' @aliases ec2_create_instance_event_window
 ec2_create_instance_event_window <- function(DryRun = NULL, Name = NULL, TimeRanges = NULL, CronExpression = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateInstanceEventWindow",
@@ -6795,6 +6921,8 @@ ec2_create_instance_event_window <- function(DryRun = NULL, Name = NULL, TimeRan
 #' @keywords internal
 #'
 #' @rdname ec2_create_instance_export_task
+#'
+#' @aliases ec2_create_instance_export_task
 ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, InstanceId, TargetEnvironment, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateInstanceExportTask",
@@ -6882,6 +7010,8 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, 
 #' @keywords internal
 #'
 #' @rdname ec2_create_internet_gateway
+#'
+#' @aliases ec2_create_internet_gateway
 ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateInternetGateway",
@@ -6995,6 +7125,8 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 #' @keywords internal
 #'
 #' @rdname ec2_create_ipam
+#'
+#' @aliases ec2_create_ipam
 ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions = NULL, TagSpecifications = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateIpam",
@@ -7176,6 +7308,8 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
 #' @keywords internal
 #'
 #' @rdname ec2_create_ipam_pool
+#'
+#' @aliases ec2_create_ipam_pool
 ec2_create_ipam_pool <- function(DryRun = NULL, IpamScopeId, Locale = NULL, SourceIpamPoolId = NULL, Description = NULL, AddressFamily, AutoImport = NULL, PubliclyAdvertisable = NULL, AllocationMinNetmaskLength = NULL, AllocationMaxNetmaskLength = NULL, AllocationDefaultNetmaskLength = NULL, AllocationResourceTags = NULL, TagSpecifications = NULL, ClientToken = NULL, AwsService = NULL) {
   op <- new_operation(
     name = "CreateIpamPool",
@@ -7275,6 +7409,8 @@ ec2_create_ipam_pool <- function(DryRun = NULL, IpamScopeId, Locale = NULL, Sour
 #' @keywords internal
 #'
 #' @rdname ec2_create_ipam_scope
+#'
+#' @aliases ec2_create_ipam_scope
 ec2_create_ipam_scope <- function(DryRun = NULL, IpamId, Description = NULL, TagSpecifications = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateIpamScope",
@@ -7383,6 +7519,8 @@ ec2_create_ipam_scope <- function(DryRun = NULL, IpamId, Description = NULL, Tag
 #' @keywords internal
 #'
 #' @rdname ec2_create_key_pair
+#'
+#' @aliases ec2_create_key_pair
 ec2_create_key_pair <- function(KeyName, DryRun = NULL, KeyType = NULL, TagSpecifications = NULL, KeyFormat = NULL) {
   op <- new_operation(
     name = "CreateKeyPair",
@@ -7763,6 +7901,8 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, KeyType = NULL, TagSpeci
 #' @keywords internal
 #'
 #' @rdname ec2_create_launch_template
+#'
+#' @aliases ec2_create_launch_template
 ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, LaunchTemplateName, VersionDescription = NULL, LaunchTemplateData, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateLaunchTemplate",
@@ -8343,6 +8483,8 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @keywords internal
 #'
 #' @rdname ec2_create_launch_template_version
+#'
+#' @aliases ec2_create_launch_template_version
 ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL, LaunchTemplateId = NULL, LaunchTemplateName = NULL, SourceVersion = NULL, VersionDescription = NULL, LaunchTemplateData) {
   op <- new_operation(
     name = "CreateLaunchTemplateVersion",
@@ -8407,6 +8549,8 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_create_local_gateway_route
+#'
+#' @aliases ec2_create_local_gateway_route
 ec2_create_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId, DryRun = NULL) {
   op <- new_operation(
     name = "CreateLocalGatewayRoute",
@@ -8488,6 +8632,8 @@ ec2_create_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRou
 #' @keywords internal
 #'
 #' @rdname ec2_create_local_gateway_route_table_vpc_association
+#'
+#' @aliases ec2_create_local_gateway_route_table_vpc_association
 ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRouteTableId, VpcId, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateLocalGatewayRouteTableVpcAssociation",
@@ -8591,6 +8737,8 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' @keywords internal
 #'
 #' @rdname ec2_create_managed_prefix_list
+#'
+#' @aliases ec2_create_managed_prefix_list
 ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entries = NULL, MaxEntries, TagSpecifications = NULL, AddressFamily, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateManagedPrefixList",
@@ -8736,6 +8884,8 @@ ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entrie
 #' @keywords internal
 #'
 #' @rdname ec2_create_nat_gateway
+#'
+#' @aliases ec2_create_nat_gateway
 ec2_create_nat_gateway <- function(AllocationId = NULL, ClientToken = NULL, DryRun = NULL, SubnetId, TagSpecifications = NULL, ConnectivityType = NULL) {
   op <- new_operation(
     name = "CreateNatGateway",
@@ -8848,6 +8998,8 @@ ec2_create_nat_gateway <- function(AllocationId = NULL, ClientToken = NULL, DryR
 #' @keywords internal
 #'
 #' @rdname ec2_create_network_acl
+#'
+#' @aliases ec2_create_network_acl
 ec2_create_network_acl <- function(DryRun = NULL, VpcId, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateNetworkAcl",
@@ -8973,6 +9125,8 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_create_network_acl_entry
+#'
+#' @aliases ec2_create_network_acl_entry
 ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress, IcmpTypeCode = NULL, Ipv6CidrBlock = NULL, NetworkAclId, PortRange = NULL, Protocol, RuleAction, RuleNumber) {
   op <- new_operation(
     name = "CreateNetworkAclEntry",
@@ -9393,6 +9547,8 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
 #' @keywords internal
 #'
 #' @rdname ec2_create_network_insights_access_scope
+#'
+#' @aliases ec2_create_network_insights_access_scope
 ec2_create_network_insights_access_scope <- function(MatchPaths = NULL, ExcludePaths = NULL, ClientToken, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateNetworkInsightsAccessScope",
@@ -9496,6 +9652,8 @@ ec2_create_network_insights_access_scope <- function(MatchPaths = NULL, ExcludeP
 #' @keywords internal
 #'
 #' @rdname ec2_create_network_insights_path
+#'
+#' @aliases ec2_create_network_insights_path
 ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NULL, Source, Destination, Protocol, DestinationPort = NULL, TagSpecifications = NULL, DryRun = NULL, ClientToken) {
   op <- new_operation(
     name = "CreateNetworkInsightsPath",
@@ -9738,6 +9896,8 @@ ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NU
 #' @keywords internal
 #'
 #' @rdname ec2_create_network_interface
+#'
+#' @aliases ec2_create_network_interface
 ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Groups = NULL, Ipv6AddressCount = NULL, Ipv6Addresses = NULL, PrivateIpAddress = NULL, PrivateIpAddresses = NULL, SecondaryPrivateIpAddressCount = NULL, Ipv4Prefixes = NULL, Ipv4PrefixCount = NULL, Ipv6Prefixes = NULL, Ipv6PrefixCount = NULL, InterfaceType = NULL, SubnetId, TagSpecifications = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateNetworkInterface",
@@ -9810,6 +9970,8 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
 #' @keywords internal
 #'
 #' @rdname ec2_create_network_interface_permission
+#'
+#' @aliases ec2_create_network_interface_permission
 ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccountId = NULL, AwsService = NULL, Permission, DryRun = NULL) {
   op <- new_operation(
     name = "CreateNetworkInterfacePermission",
@@ -9923,6 +10085,8 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #' @keywords internal
 #'
 #' @rdname ec2_create_placement_group
+#'
+#' @aliases ec2_create_placement_group
 ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy = NULL, PartitionCount = NULL, TagSpecifications = NULL, SpreadLevel = NULL) {
   op <- new_operation(
     name = "CreatePlacementGroup",
@@ -9992,6 +10156,8 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
 #' @keywords internal
 #'
 #' @rdname ec2_create_public_ipv_4_pool
+#'
+#' @aliases ec2_create_public_ipv_4_pool
 ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreatePublicIpv4Pool",
@@ -10083,6 +10249,8 @@ ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_create_replace_root_volume_task
+#'
+#' @aliases ec2_create_replace_root_volume_task
 ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, ClientToken = NULL, DryRun = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateReplaceRootVolumeTask",
@@ -10211,6 +10379,8 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
 #' @keywords internal
 #'
 #' @rdname ec2_create_reserved_instances_listing
+#'
+#' @aliases ec2_create_reserved_instances_listing
 ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, PriceSchedules, ReservedInstancesId) {
   op <- new_operation(
     name = "CreateReservedInstancesListing",
@@ -10300,6 +10470,8 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 #' @keywords internal
 #'
 #' @rdname ec2_create_restore_image_task
+#'
+#' @aliases ec2_create_restore_image_task
 ec2_create_restore_image_task <- function(Bucket, ObjectKey, Name = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateRestoreImageTask",
@@ -10425,6 +10597,8 @@ ec2_create_restore_image_task <- function(Bucket, ObjectKey, Name = NULL, TagSpe
 #' @keywords internal
 #'
 #' @rdname ec2_create_route
+#'
+#' @aliases ec2_create_route
 ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlock = NULL, DestinationPrefixListId = NULL, DryRun = NULL, VpcEndpointId = NULL, EgressOnlyInternetGatewayId = NULL, GatewayId = NULL, InstanceId = NULL, NatGatewayId = NULL, TransitGatewayId = NULL, LocalGatewayId = NULL, CarrierGatewayId = NULL, NetworkInterfaceId = NULL, RouteTableId, VpcPeeringConnectionId = NULL, CoreNetworkArn = NULL) {
   op <- new_operation(
     name = "CreateRoute",
@@ -10548,6 +10722,8 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #' @keywords internal
 #'
 #' @rdname ec2_create_route_table
+#'
+#' @aliases ec2_create_route_table
 ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateRouteTable",
@@ -10682,6 +10858,8 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_create_security_group
+#'
+#' @aliases ec2_create_security_group
 ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateSecurityGroup",
@@ -10843,6 +11021,8 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 #' @keywords internal
 #'
 #' @rdname ec2_create_snapshot
+#'
+#' @aliases ec2_create_snapshot
 ec2_create_snapshot <- function(Description = NULL, OutpostArn = NULL, VolumeId, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -10970,6 +11150,8 @@ ec2_create_snapshot <- function(Description = NULL, OutpostArn = NULL, VolumeId,
 #' @keywords internal
 #'
 #' @rdname ec2_create_snapshots
+#'
+#' @aliases ec2_create_snapshots
 ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, OutpostArn = NULL, TagSpecifications = NULL, DryRun = NULL, CopyTagsFromSource = NULL) {
   op <- new_operation(
     name = "CreateSnapshots",
@@ -11049,6 +11231,8 @@ ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, Outp
 #' @keywords internal
 #'
 #' @rdname ec2_create_spot_datafeed_subscription
+#'
+#' @aliases ec2_create_spot_datafeed_subscription
 ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix = NULL) {
   op <- new_operation(
     name = "CreateSpotDatafeedSubscription",
@@ -11122,6 +11306,8 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 #' @keywords internal
 #'
 #' @rdname ec2_create_store_image_task
+#'
+#' @aliases ec2_create_store_image_task
 ec2_create_store_image_task <- function(ImageId, Bucket, S3ObjectTags = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateStoreImageTask",
@@ -11295,6 +11481,8 @@ ec2_create_store_image_task <- function(ImageId, Bucket, S3ObjectTags = NULL, Dr
 #' @keywords internal
 #'
 #' @rdname ec2_create_subnet
+#'
+#' @aliases ec2_create_subnet
 ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL, AvailabilityZoneId = NULL, CidrBlock = NULL, Ipv6CidrBlock = NULL, OutpostArn = NULL, VpcId, DryRun = NULL, Ipv6Native = NULL) {
   op <- new_operation(
     name = "CreateSubnet",
@@ -11392,6 +11580,8 @@ ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_create_subnet_cidr_reservation
+#'
+#' @aliases ec2_create_subnet_cidr_reservation
 ec2_create_subnet_cidr_reservation <- function(SubnetId, Cidr, ReservationType, Description = NULL, DryRun = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateSubnetCidrReservation",
@@ -11482,6 +11672,8 @@ ec2_create_subnet_cidr_reservation <- function(SubnetId, Cidr, ReservationType, 
 #' @keywords internal
 #'
 #' @rdname ec2_create_tags
+#'
+#' @aliases ec2_create_tags
 ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
   op <- new_operation(
     name = "CreateTags",
@@ -11614,6 +11806,8 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
 #' @keywords internal
 #'
 #' @rdname ec2_create_traffic_mirror_filter
+#'
+#' @aliases ec2_create_traffic_mirror_filter
 ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecifications = NULL, DryRun = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTrafficMirrorFilter",
@@ -11725,6 +11919,8 @@ ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecificatio
 #' @keywords internal
 #'
 #' @rdname ec2_create_traffic_mirror_filter_rule
+#'
+#' @aliases ec2_create_traffic_mirror_filter_rule
 ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, TrafficDirection, RuleNumber, RuleAction, DestinationPortRange = NULL, SourcePortRange = NULL, Protocol = NULL, DestinationCidrBlock, SourceCidrBlock, Description = NULL, DryRun = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTrafficMirrorFilterRule",
@@ -11851,6 +12047,8 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 #' @keywords internal
 #'
 #' @rdname ec2_create_traffic_mirror_session
+#'
+#' @aliases ec2_create_traffic_mirror_session
 ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorTargetId, TrafficMirrorFilterId, PacketLength = NULL, SessionNumber, VirtualNetworkId = NULL, Description = NULL, TagSpecifications = NULL, DryRun = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTrafficMirrorSession",
@@ -11952,6 +12150,8 @@ ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorT
 #' @keywords internal
 #'
 #' @rdname ec2_create_traffic_mirror_target
+#'
+#' @aliases ec2_create_traffic_mirror_target
 ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkLoadBalancerArn = NULL, Description = NULL, TagSpecifications = NULL, DryRun = NULL, ClientToken = NULL, GatewayLoadBalancerEndpointId = NULL) {
   op <- new_operation(
     name = "CreateTrafficMirrorTarget",
@@ -12084,6 +12284,8 @@ ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkL
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway
+#'
+#' @aliases ec2_create_transit_gateway
 ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGateway",
@@ -12175,6 +12377,8 @@ ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSp
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_connect
+#'
+#' @aliases ec2_create_transit_gateway_connect
 ec2_create_transit_gateway_connect <- function(TransportTransitGatewayAttachmentId, Options, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayConnect",
@@ -12298,6 +12502,8 @@ ec2_create_transit_gateway_connect <- function(TransportTransitGatewayAttachment
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_connect_peer
+#'
+#' @aliases ec2_create_transit_gateway_connect_peer
 ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, TransitGatewayAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayConnectPeer",
@@ -12391,6 +12597,8 @@ ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, 
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_multicast_domain
+#'
+#' @aliases ec2_create_transit_gateway_multicast_domain
 ec2_create_transit_gateway_multicast_domain <- function(TransitGatewayId, Options = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayMulticastDomain",
@@ -12506,6 +12714,8 @@ ec2_create_transit_gateway_multicast_domain <- function(TransitGatewayId, Option
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_peering_attachment
+#'
+#' @aliases ec2_create_transit_gateway_peering_attachment
 ec2_create_transit_gateway_peering_attachment <- function(TransitGatewayId, PeerTransitGatewayId, PeerAccountId, PeerRegion, Options = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayPeeringAttachment",
@@ -12583,6 +12793,8 @@ ec2_create_transit_gateway_peering_attachment <- function(TransitGatewayId, Peer
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_policy_table
+#'
+#' @aliases ec2_create_transit_gateway_policy_table
 ec2_create_transit_gateway_policy_table <- function(TransitGatewayId, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayPolicyTable",
@@ -12654,6 +12866,8 @@ ec2_create_transit_gateway_policy_table <- function(TransitGatewayId, TagSpecifi
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_prefix_list_reference
+#'
+#' @aliases ec2_create_transit_gateway_prefix_list_reference
 ec2_create_transit_gateway_prefix_list_reference <- function(TransitGatewayRouteTableId, PrefixListId, TransitGatewayAttachmentId = NULL, Blackhole = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayPrefixListReference",
@@ -12726,6 +12940,8 @@ ec2_create_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_route
+#'
+#' @aliases ec2_create_transit_gateway_route
 ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL, Blackhole = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayRoute",
@@ -12804,6 +13020,8 @@ ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewa
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_route_table
+#'
+#' @aliases ec2_create_transit_gateway_route_table
 ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayRouteTable",
@@ -12890,6 +13108,8 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_route_table_announcement
+#'
+#' @aliases ec2_create_transit_gateway_route_table_announcement
 ec2_create_transit_gateway_route_table_announcement <- function(TransitGatewayRouteTableId, PeeringAttachmentId, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayRouteTableAnnouncement",
@@ -12998,6 +13218,8 @@ ec2_create_transit_gateway_route_table_announcement <- function(TransitGatewayRo
 #' @keywords internal
 #'
 #' @rdname ec2_create_transit_gateway_vpc_attachment
+#'
+#' @aliases ec2_create_transit_gateway_vpc_attachment
 ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, SubnetIds, Options = NULL, TagSpecifications = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayVpcAttachment",
@@ -13251,6 +13473,8 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #' @keywords internal
 #'
 #' @rdname ec2_create_volume
+#'
+#' @aliases ec2_create_volume
 ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, KmsKeyId = NULL, OutpostArn = NULL, Size = NULL, SnapshotId = NULL, VolumeType = NULL, DryRun = NULL, TagSpecifications = NULL, MultiAttachEnabled = NULL, Throughput = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateVolume",
@@ -13442,6 +13666,8 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpc
+#'
+#' @aliases ec2_create_vpc
 ec2_create_vpc <- function(CidrBlock = NULL, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Pool = NULL, Ipv6CidrBlock = NULL, Ipv4IpamPoolId = NULL, Ipv4NetmaskLength = NULL, Ipv6IpamPoolId = NULL, Ipv6NetmaskLength = NULL, DryRun = NULL, InstanceTenancy = NULL, Ipv6CidrBlockNetworkBorderGroup = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateVpc",
@@ -13615,6 +13841,8 @@ ec2_create_vpc <- function(CidrBlock = NULL, AmazonProvidedIpv6CidrBlock = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpc_endpoint
+#'
+#' @aliases ec2_create_vpc_endpoint
 ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId, ServiceName, PolicyDocument = NULL, RouteTableIds = NULL, SubnetIds = NULL, SecurityGroupIds = NULL, IpAddressType = NULL, DnsOptions = NULL, ClientToken = NULL, PrivateDnsEnabled = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateVpcEndpoint",
@@ -13698,6 +13926,8 @@ ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpc_endpoint_connection_notification
+#'
+#' @aliases ec2_create_vpc_endpoint_connection_notification
 ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, ServiceId = NULL, VpcEndpointId = NULL, ConnectionNotificationArn, ConnectionEvents, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateVpcEndpointConnectionNotification",
@@ -13847,6 +14077,8 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpc_endpoint_service_configuration
+#'
+#' @aliases ec2_create_vpc_endpoint_service_configuration
 ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, AcceptanceRequired = NULL, PrivateDnsName = NULL, NetworkLoadBalancerArns = NULL, GatewayLoadBalancerArns = NULL, SupportedIpAddressTypes = NULL, ClientToken = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateVpcEndpointServiceConfiguration",
@@ -13998,6 +14230,8 @@ ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, Accepta
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpc_peering_connection
+#'
+#' @aliases ec2_create_vpc_peering_connection
 ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL, PeerVpcId = NULL, VpcId = NULL, PeerRegion = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateVpcPeeringConnection",
@@ -14251,6 +14485,8 @@ ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpn_connection
+#'
+#' @aliases ec2_create_vpn_connection
 ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NULL, TransitGatewayId = NULL, DryRun = NULL, Options = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "CreateVpnConnection",
@@ -14301,6 +14537,8 @@ ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NU
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpn_connection_route
+#'
+#' @aliases ec2_create_vpn_connection_route
 ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionId) {
   op <- new_operation(
     name = "CreateVpnConnectionRoute",
@@ -14397,6 +14635,8 @@ ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 #' @keywords internal
 #'
 #' @rdname ec2_create_vpn_gateway
+#'
+#' @aliases ec2_create_vpn_gateway
 ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecifications = NULL, AmazonSideAsn = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateVpnGateway",
@@ -14462,6 +14702,8 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
 #' @keywords internal
 #'
 #' @rdname ec2_delete_carrier_gateway
+#'
+#' @aliases ec2_delete_carrier_gateway
 ec2_delete_carrier_gateway <- function(CarrierGatewayId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteCarrierGateway",
@@ -14516,6 +14758,8 @@ ec2_delete_carrier_gateway <- function(CarrierGatewayId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_client_vpn_endpoint
+#'
+#' @aliases ec2_delete_client_vpn_endpoint
 ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteClientVpnEndpoint",
@@ -14578,6 +14822,8 @@ ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_client_vpn_route
+#'
+#' @aliases ec2_delete_client_vpn_route
 ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId = NULL, DestinationCidrBlock, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteClientVpnRoute",
@@ -14632,6 +14878,8 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
 #' @keywords internal
 #'
 #' @rdname ec2_delete_customer_gateway
+#'
+#' @aliases ec2_delete_customer_gateway
 ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteCustomerGateway",
@@ -14688,6 +14936,8 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_dhcp_options
+#'
+#' @aliases ec2_delete_dhcp_options
 ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteDhcpOptions",
@@ -14739,6 +14989,8 @@ ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_egress_only_internet_gateway
+#'
+#' @aliases ec2_delete_egress_only_internet_gateway
 ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInternetGatewayId) {
   op <- new_operation(
     name = "DeleteEgressOnlyInternetGateway",
@@ -14842,6 +15094,8 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
 #' @keywords internal
 #'
 #' @rdname ec2_delete_fleets
+#'
+#' @aliases ec2_delete_fleets
 ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
   op <- new_operation(
     name = "DeleteFleets",
@@ -14904,6 +15158,8 @@ ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_flow_logs
+#'
+#' @aliases ec2_delete_flow_logs
 ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
   op <- new_operation(
     name = "DeleteFlowLogs",
@@ -14954,6 +15210,8 @@ ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_fpga_image
+#'
+#' @aliases ec2_delete_fpga_image
 ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
   op <- new_operation(
     name = "DeleteFpgaImage",
@@ -15015,6 +15273,8 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_instance_event_window
+#'
+#' @aliases ec2_delete_instance_event_window
 ec2_delete_instance_event_window <- function(DryRun = NULL, ForceDelete = NULL, InstanceEventWindowId) {
   op <- new_operation(
     name = "DeleteInstanceEventWindow",
@@ -15069,6 +15329,8 @@ ec2_delete_instance_event_window <- function(DryRun = NULL, ForceDelete = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_delete_internet_gateway
+#'
+#' @aliases ec2_delete_internet_gateway
 ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
   op <- new_operation(
     name = "DeleteInternetGateway",
@@ -15166,6 +15428,8 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_ipam
+#'
+#' @aliases ec2_delete_ipam
 ec2_delete_ipam <- function(DryRun = NULL, IpamId, Cascade = NULL) {
   op <- new_operation(
     name = "DeleteIpam",
@@ -15259,6 +15523,8 @@ ec2_delete_ipam <- function(DryRun = NULL, IpamId, Cascade = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_ipam_pool
+#'
+#' @aliases ec2_delete_ipam_pool
 ec2_delete_ipam_pool <- function(DryRun = NULL, IpamPoolId) {
   op <- new_operation(
     name = "DeleteIpamPool",
@@ -15330,6 +15596,8 @@ ec2_delete_ipam_pool <- function(DryRun = NULL, IpamPoolId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_ipam_scope
+#'
+#' @aliases ec2_delete_ipam_scope
 ec2_delete_ipam_scope <- function(DryRun = NULL, IpamScopeId) {
   op <- new_operation(
     name = "DeleteIpamScope",
@@ -15387,6 +15655,8 @@ ec2_delete_ipam_scope <- function(DryRun = NULL, IpamScopeId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_key_pair
+#'
+#' @aliases ec2_delete_key_pair
 ec2_delete_key_pair <- function(KeyName = NULL, KeyPairId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteKeyPair",
@@ -15469,6 +15739,8 @@ ec2_delete_key_pair <- function(KeyName = NULL, KeyPairId = NULL, DryRun = NULL)
 #' @keywords internal
 #'
 #' @rdname ec2_delete_launch_template
+#'
+#' @aliases ec2_delete_launch_template
 ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, LaunchTemplateName = NULL) {
   op <- new_operation(
     name = "DeleteLaunchTemplate",
@@ -15564,6 +15836,8 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 #' @keywords internal
 #'
 #' @rdname ec2_delete_launch_template_versions
+#'
+#' @aliases ec2_delete_launch_template_versions
 ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId = NULL, LaunchTemplateName = NULL, Versions) {
   op <- new_operation(
     name = "DeleteLaunchTemplateVersions",
@@ -15627,6 +15901,8 @@ ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId 
 #' @keywords internal
 #'
 #' @rdname ec2_delete_local_gateway_route
+#'
+#' @aliases ec2_delete_local_gateway_route
 ec2_delete_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRouteTableId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteLocalGatewayRoute",
@@ -15694,6 +15970,8 @@ ec2_delete_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRou
 #' @keywords internal
 #'
 #' @rdname ec2_delete_local_gateway_route_table_vpc_association
+#'
+#' @aliases ec2_delete_local_gateway_route_table_vpc_association
 ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRouteTableVpcAssociationId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteLocalGatewayRouteTableVpcAssociation",
@@ -15761,6 +16039,8 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 #' @keywords internal
 #'
 #' @rdname ec2_delete_managed_prefix_list
+#'
+#' @aliases ec2_delete_managed_prefix_list
 ec2_delete_managed_prefix_list <- function(DryRun = NULL, PrefixListId) {
   op <- new_operation(
     name = "DeleteManagedPrefixList",
@@ -15822,6 +16102,8 @@ ec2_delete_managed_prefix_list <- function(DryRun = NULL, PrefixListId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_nat_gateway
+#'
+#' @aliases ec2_delete_nat_gateway
 ec2_delete_nat_gateway <- function(DryRun = NULL, NatGatewayId) {
   op <- new_operation(
     name = "DeleteNatGateway",
@@ -15876,6 +16158,8 @@ ec2_delete_nat_gateway <- function(DryRun = NULL, NatGatewayId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_acl
+#'
+#' @aliases ec2_delete_network_acl
 ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
   op <- new_operation(
     name = "DeleteNetworkAcl",
@@ -15938,6 +16222,8 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_acl_entry
+#'
+#' @aliases ec2_delete_network_acl_entry
 ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, RuleNumber) {
   op <- new_operation(
     name = "DeleteNetworkAclEntry",
@@ -15989,6 +16275,8 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_insights_access_scope
+#'
+#' @aliases ec2_delete_network_insights_access_scope
 ec2_delete_network_insights_access_scope <- function(DryRun = NULL, NetworkInsightsAccessScopeId) {
   op <- new_operation(
     name = "DeleteNetworkInsightsAccessScope",
@@ -16040,6 +16328,8 @@ ec2_delete_network_insights_access_scope <- function(DryRun = NULL, NetworkInsig
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_insights_access_scope_analysis
+#'
+#' @aliases ec2_delete_network_insights_access_scope_analysis
 ec2_delete_network_insights_access_scope_analysis <- function(NetworkInsightsAccessScopeAnalysisId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteNetworkInsightsAccessScopeAnalysis",
@@ -16090,6 +16380,8 @@ ec2_delete_network_insights_access_scope_analysis <- function(NetworkInsightsAcc
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_insights_analysis
+#'
+#' @aliases ec2_delete_network_insights_analysis
 ec2_delete_network_insights_analysis <- function(DryRun = NULL, NetworkInsightsAnalysisId) {
   op <- new_operation(
     name = "DeleteNetworkInsightsAnalysis",
@@ -16140,6 +16432,8 @@ ec2_delete_network_insights_analysis <- function(DryRun = NULL, NetworkInsightsA
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_insights_path
+#'
+#' @aliases ec2_delete_network_insights_path
 ec2_delete_network_insights_path <- function(DryRun = NULL, NetworkInsightsPathId) {
   op <- new_operation(
     name = "DeleteNetworkInsightsPath",
@@ -16194,6 +16488,8 @@ ec2_delete_network_insights_path <- function(DryRun = NULL, NetworkInsightsPathI
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_interface
+#'
+#' @aliases ec2_delete_network_interface
 ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
   op <- new_operation(
     name = "DeleteNetworkInterface",
@@ -16251,6 +16547,8 @@ ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_network_interface_permission
+#'
+#' @aliases ec2_delete_network_interface_permission
 ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId, Force = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteNetworkInterfacePermission",
@@ -16309,6 +16607,8 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 #' @keywords internal
 #'
 #' @rdname ec2_delete_placement_group
+#'
+#' @aliases ec2_delete_placement_group
 ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
   op <- new_operation(
     name = "DeletePlacementGroup",
@@ -16362,6 +16662,8 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_public_ipv_4_pool
+#'
+#' @aliases ec2_delete_public_ipv_4_pool
 ec2_delete_public_ipv_4_pool <- function(DryRun = NULL, PoolId) {
   op <- new_operation(
     name = "DeletePublicIpv4Pool",
@@ -16427,6 +16729,8 @@ ec2_delete_public_ipv_4_pool <- function(DryRun = NULL, PoolId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_queued_reserved_instances
+#'
+#' @aliases ec2_delete_queued_reserved_instances
 ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstancesIds) {
   op <- new_operation(
     name = "DeleteQueuedReservedInstances",
@@ -16490,6 +16794,8 @@ ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstance
 #' @keywords internal
 #'
 #' @rdname ec2_delete_route
+#'
+#' @aliases ec2_delete_route
 ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlock = NULL, DestinationPrefixListId = NULL, DryRun = NULL, RouteTableId) {
   op <- new_operation(
     name = "DeleteRoute",
@@ -16545,6 +16851,8 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 #' @keywords internal
 #'
 #' @rdname ec2_delete_route_table
+#'
+#' @aliases ec2_delete_route_table
 ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
   op <- new_operation(
     name = "DeleteRouteTable",
@@ -16612,6 +16920,8 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_security_group
+#'
+#' @aliases ec2_delete_security_group
 ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteSecurityGroup",
@@ -16683,6 +16993,8 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 #' @keywords internal
 #'
 #' @rdname ec2_delete_snapshot
+#'
+#' @aliases ec2_delete_snapshot
 ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteSnapshot",
@@ -16732,6 +17044,8 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_spot_datafeed_subscription
+#'
+#' @aliases ec2_delete_spot_datafeed_subscription
 ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
   op <- new_operation(
     name = "DeleteSpotDatafeedSubscription",
@@ -16786,6 +17100,8 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_subnet
+#'
+#' @aliases ec2_delete_subnet
 ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteSubnet",
@@ -16849,6 +17165,8 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_subnet_cidr_reservation
+#'
+#' @aliases ec2_delete_subnet_cidr_reservation
 ec2_delete_subnet_cidr_reservation <- function(SubnetCidrReservationId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteSubnetCidrReservation",
@@ -16937,6 +17255,8 @@ ec2_delete_subnet_cidr_reservation <- function(SubnetCidrReservationId, DryRun =
 #' @keywords internal
 #'
 #' @rdname ec2_delete_tags
+#'
+#' @aliases ec2_delete_tags
 ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
   op <- new_operation(
     name = "DeleteTags",
@@ -16990,6 +17310,8 @@ ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_traffic_mirror_filter
+#'
+#' @aliases ec2_delete_traffic_mirror_filter
 ec2_delete_traffic_mirror_filter <- function(TrafficMirrorFilterId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTrafficMirrorFilter",
@@ -17040,6 +17362,8 @@ ec2_delete_traffic_mirror_filter <- function(TrafficMirrorFilterId, DryRun = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_delete_traffic_mirror_filter_rule
+#'
+#' @aliases ec2_delete_traffic_mirror_filter_rule
 ec2_delete_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTrafficMirrorFilterRule",
@@ -17090,6 +17414,8 @@ ec2_delete_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Dry
 #' @keywords internal
 #'
 #' @rdname ec2_delete_traffic_mirror_session
+#'
+#' @aliases ec2_delete_traffic_mirror_session
 ec2_delete_traffic_mirror_session <- function(TrafficMirrorSessionId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTrafficMirrorSession",
@@ -17143,6 +17469,8 @@ ec2_delete_traffic_mirror_session <- function(TrafficMirrorSessionId, DryRun = N
 #' @keywords internal
 #'
 #' @rdname ec2_delete_traffic_mirror_target
+#'
+#' @aliases ec2_delete_traffic_mirror_target
 ec2_delete_traffic_mirror_target <- function(TrafficMirrorTargetId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTrafficMirrorTarget",
@@ -17222,6 +17550,8 @@ ec2_delete_traffic_mirror_target <- function(TrafficMirrorTargetId, DryRun = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway
+#'
+#' @aliases ec2_delete_transit_gateway
 ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGateway",
@@ -17290,6 +17620,8 @@ ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_connect
+#'
+#' @aliases ec2_delete_transit_gateway_connect
 ec2_delete_transit_gateway_connect <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayConnect",
@@ -17371,6 +17703,8 @@ ec2_delete_transit_gateway_connect <- function(TransitGatewayAttachmentId, DryRu
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_connect_peer
+#'
+#' @aliases ec2_delete_transit_gateway_connect_peer
 ec2_delete_transit_gateway_connect_peer <- function(TransitGatewayConnectPeerId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayConnectPeer",
@@ -17442,6 +17776,8 @@ ec2_delete_transit_gateway_connect_peer <- function(TransitGatewayConnectPeerId,
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_multicast_domain
+#'
+#' @aliases ec2_delete_transit_gateway_multicast_domain
 ec2_delete_transit_gateway_multicast_domain <- function(TransitGatewayMulticastDomainId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayMulticastDomain",
@@ -17525,6 +17861,8 @@ ec2_delete_transit_gateway_multicast_domain <- function(TransitGatewayMulticastD
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_peering_attachment
+#'
+#' @aliases ec2_delete_transit_gateway_peering_attachment
 ec2_delete_transit_gateway_peering_attachment <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayPeeringAttachment",
@@ -17589,6 +17927,8 @@ ec2_delete_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_policy_table
+#'
+#' @aliases ec2_delete_transit_gateway_policy_table
 ec2_delete_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayPolicyTable",
@@ -17655,6 +17995,8 @@ ec2_delete_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId,
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_prefix_list_reference
+#'
+#' @aliases ec2_delete_transit_gateway_prefix_list_reference
 ec2_delete_transit_gateway_prefix_list_reference <- function(TransitGatewayRouteTableId, PrefixListId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayPrefixListReference",
@@ -17724,6 +18066,8 @@ ec2_delete_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_route
+#'
+#' @aliases ec2_delete_transit_gateway_route
 ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, DestinationCidrBlock, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayRoute",
@@ -17792,6 +18136,8 @@ ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, Destina
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_route_table
+#'
+#' @aliases ec2_delete_transit_gateway_route_table
 ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayRouteTable",
@@ -17864,6 +18210,8 @@ ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, D
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_route_table_announcement
+#'
+#' @aliases ec2_delete_transit_gateway_route_table_announcement
 ec2_delete_transit_gateway_route_table_announcement <- function(TransitGatewayRouteTableAnnouncementId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayRouteTableAnnouncement",
@@ -17938,6 +18286,8 @@ ec2_delete_transit_gateway_route_table_announcement <- function(TransitGatewayRo
 #' @keywords internal
 #'
 #' @rdname ec2_delete_transit_gateway_vpc_attachment
+#'
+#' @aliases ec2_delete_transit_gateway_vpc_attachment
 ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteTransitGatewayVpcAttachment",
@@ -18000,6 +18350,8 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' @keywords internal
 #'
 #' @rdname ec2_delete_volume
+#'
+#' @aliases ec2_delete_volume
 ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteVolume",
@@ -18058,6 +18410,8 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpc
+#'
+#' @aliases ec2_delete_vpc
 ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteVpc",
@@ -18119,6 +18473,8 @@ ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpc_endpoint_connection_notifications
+#'
+#' @aliases ec2_delete_vpc_endpoint_connection_notifications
 ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, ConnectionNotificationIds) {
   op <- new_operation(
     name = "DeleteVpcEndpointConnectionNotifications",
@@ -18182,6 +18538,8 @@ ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Conn
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpc_endpoint_service_configurations
+#'
+#' @aliases ec2_delete_vpc_endpoint_service_configurations
 ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, ServiceIds) {
   op <- new_operation(
     name = "DeleteVpcEndpointServiceConfigurations",
@@ -18263,6 +18621,8 @@ ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, Servic
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpc_endpoints
+#'
+#' @aliases ec2_delete_vpc_endpoints
 ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
   op <- new_operation(
     name = "DeleteVpcEndpoints",
@@ -18317,6 +18677,8 @@ ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpc_peering_connection
+#'
+#' @aliases ec2_delete_vpc_peering_connection
 ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectionId) {
   op <- new_operation(
     name = "DeleteVpcPeeringConnection",
@@ -18376,6 +18738,8 @@ ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpn_connection
+#'
+#' @aliases ec2_delete_vpn_connection
 ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteVpnConnection",
@@ -18422,6 +18786,8 @@ ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpn_connection_route
+#'
+#' @aliases ec2_delete_vpn_connection_route
 ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionId) {
   op <- new_operation(
     name = "DeleteVpnConnectionRoute",
@@ -18470,6 +18836,8 @@ ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 #' @keywords internal
 #'
 #' @rdname ec2_delete_vpn_gateway
+#'
+#' @aliases ec2_delete_vpn_gateway
 ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
   op <- new_operation(
     name = "DeleteVpnGateway",
@@ -18534,6 +18902,8 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_deprovision_byoip_cidr
+#'
+#' @aliases ec2_deprovision_byoip_cidr
 ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
   op <- new_operation(
     name = "DeprovisionByoipCidr",
@@ -18597,6 +18967,8 @@ ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_deprovision_ipam_pool_cidr
+#'
+#' @aliases ec2_deprovision_ipam_pool_cidr
 ec2_deprovision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL) {
   op <- new_operation(
     name = "DeprovisionIpamPoolCidr",
@@ -18652,6 +19024,8 @@ ec2_deprovision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_deprovision_public_ipv_4_pool_cidr
+#'
+#' @aliases ec2_deprovision_public_ipv_4_pool_cidr
 ec2_deprovision_public_ipv_4_pool_cidr <- function(DryRun = NULL, PoolId, Cidr) {
   op <- new_operation(
     name = "DeprovisionPublicIpv4PoolCidr",
@@ -18714,6 +19088,8 @@ ec2_deprovision_public_ipv_4_pool_cidr <- function(DryRun = NULL, PoolId, Cidr) 
 #' @keywords internal
 #'
 #' @rdname ec2_deregister_image
+#'
+#' @aliases ec2_deregister_image
 ec2_deregister_image <- function(ImageId, DryRun = NULL) {
   op <- new_operation(
     name = "DeregisterImage",
@@ -18779,6 +19155,8 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_deregister_instance_event_notification_attributes
+#'
+#' @aliases ec2_deregister_instance_event_notification_attributes
 ec2_deregister_instance_event_notification_attributes <- function(DryRun = NULL, InstanceTagAttribute = NULL) {
   op <- new_operation(
     name = "DeregisterInstanceEventNotificationAttributes",
@@ -18845,6 +19223,8 @@ ec2_deregister_instance_event_notification_attributes <- function(DryRun = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_deregister_transit_gateway_multicast_group_members
+#'
+#' @aliases ec2_deregister_transit_gateway_multicast_group_members
 ec2_deregister_transit_gateway_multicast_group_members <- function(TransitGatewayMulticastDomainId = NULL, GroupIpAddress = NULL, NetworkInterfaceIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DeregisterTransitGatewayMulticastGroupMembers",
@@ -18911,6 +19291,8 @@ ec2_deregister_transit_gateway_multicast_group_members <- function(TransitGatewa
 #' @keywords internal
 #'
 #' @rdname ec2_deregister_transit_gateway_multicast_group_sources
+#'
+#' @aliases ec2_deregister_transit_gateway_multicast_group_sources
 ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewayMulticastDomainId = NULL, GroupIpAddress = NULL, NetworkInterfaceIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DeregisterTransitGatewayMulticastGroupSources",
@@ -19014,6 +19396,8 @@ ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewa
 #' @keywords internal
 #'
 #' @rdname ec2_describe_account_attributes
+#'
+#' @aliases ec2_describe_account_attributes
 ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeAccountAttributes",
@@ -19183,6 +19567,8 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_addresses
+#'
+#' @aliases ec2_describe_addresses
 ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeAddresses",
@@ -19258,6 +19644,8 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
 #' @keywords internal
 #'
 #' @rdname ec2_describe_addresses_attribute
+#'
+#' @aliases ec2_describe_addresses_attribute
 ec2_describe_addresses_attribute <- function(AllocationIds = NULL, Attribute = NULL, NextToken = NULL, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeAddressesAttribute",
@@ -19333,6 +19721,8 @@ ec2_describe_addresses_attribute <- function(AllocationIds = NULL, Attribute = N
 #' @keywords internal
 #'
 #' @rdname ec2_describe_aggregate_id_format
+#'
+#' @aliases ec2_describe_aggregate_id_format
 ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
   op <- new_operation(
     name = "DescribeAggregateIdFormat",
@@ -19475,6 +19865,8 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_availability_zones
+#'
+#' @aliases ec2_describe_availability_zones
 ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, ZoneIds = NULL, AllAvailabilityZones = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeAvailabilityZones",
@@ -19592,6 +19984,8 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #' @keywords internal
 #'
 #' @rdname ec2_describe_bundle_tasks
+#'
+#' @aliases ec2_describe_bundle_tasks
 ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeBundleTasks",
@@ -19661,6 +20055,8 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_byoip_cidrs
+#'
+#' @aliases ec2_describe_byoip_cidrs
 ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeByoipCidrs",
@@ -19783,6 +20179,8 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_capacity_reservation_fleets
+#'
+#' @aliases ec2_describe_capacity_reservation_fleets
 ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeCapacityReservationFleets",
@@ -19974,6 +20372,8 @@ ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds
 #' @keywords internal
 #'
 #' @rdname ec2_describe_capacity_reservations
+#'
+#' @aliases ec2_describe_capacity_reservations
 ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeCapacityReservations",
@@ -20076,6 +20476,8 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname ec2_describe_carrier_gateways
+#'
+#' @aliases ec2_describe_carrier_gateways
 ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeCarrierGateways",
@@ -20194,6 +20596,8 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 #' @keywords internal
 #'
 #' @rdname ec2_describe_classic_link_instances
+#'
+#' @aliases ec2_describe_classic_link_instances
 ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, InstanceIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeClassicLinkInstances",
@@ -20281,6 +20685,8 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
 #' @keywords internal
 #'
 #' @rdname ec2_describe_client_vpn_authorization_rules
+#'
+#' @aliases ec2_describe_client_vpn_authorization_rules
 ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, DryRun = NULL, NextToken = NULL, Filters = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeClientVpnAuthorizationRules",
@@ -20379,6 +20785,8 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
 #' @keywords internal
 #'
 #' @rdname ec2_describe_client_vpn_connections
+#'
+#' @aliases ec2_describe_client_vpn_connections
 ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = NULL, NextToken = NULL, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeClientVpnConnections",
@@ -20523,6 +20931,8 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
 #' @keywords internal
 #'
 #' @rdname ec2_describe_client_vpn_endpoints
+#'
+#' @aliases ec2_describe_client_vpn_endpoints
 ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeClientVpnEndpoints",
@@ -20611,6 +21021,8 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname ec2_describe_client_vpn_routes
+#'
+#' @aliases ec2_describe_client_vpn_routes
 ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeClientVpnRoutes",
@@ -20705,6 +21117,8 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_client_vpn_target_networks
+#'
+#' @aliases ec2_describe_client_vpn_target_networks
 ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, AssociationIds = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeClientVpnTargetNetworks",
@@ -20795,6 +21209,8 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
 #' @keywords internal
 #'
 #' @rdname ec2_describe_coip_pools
+#'
+#' @aliases ec2_describe_coip_pools
 ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeCoipPools",
@@ -20905,6 +21321,8 @@ ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_conversion_tasks
+#'
+#' @aliases ec2_describe_conversion_tasks
 ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeConversionTasks",
@@ -21022,6 +21440,8 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_customer_gateways
+#'
+#' @aliases ec2_describe_customer_gateways
 ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeCustomerGateways",
@@ -21147,6 +21567,8 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_dhcp_options
+#'
+#' @aliases ec2_describe_dhcp_options
 ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeDhcpOptions",
@@ -21242,6 +21664,8 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 #' @keywords internal
 #'
 #' @rdname ec2_describe_egress_only_internet_gateways
+#'
+#' @aliases ec2_describe_egress_only_internet_gateways
 ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnlyInternetGatewayIds = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeEgressOnlyInternetGateways",
@@ -21348,6 +21772,8 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
 #' @keywords internal
 #'
 #' @rdname ec2_describe_elastic_gpus
+#'
+#' @aliases ec2_describe_elastic_gpus
 ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeElasticGpus",
@@ -21437,6 +21863,8 @@ ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filte
 #' @keywords internal
 #'
 #' @rdname ec2_describe_export_image_tasks
+#'
+#' @aliases ec2_describe_export_image_tasks
 ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, ExportImageTaskIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeExportImageTasks",
@@ -21518,6 +21946,8 @@ ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, Expor
 #' @keywords internal
 #'
 #' @rdname ec2_describe_export_tasks
+#'
+#' @aliases ec2_describe_export_tasks
 ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeExportTasks",
@@ -21619,6 +22049,8 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fast_launch_images
+#'
+#' @aliases ec2_describe_fast_launch_images
 ec2_describe_fast_launch_images <- function(ImageIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeFastLaunchImages",
@@ -21718,6 +22150,8 @@ ec2_describe_fast_launch_images <- function(ImageIds = NULL, Filters = NULL, Max
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fast_snapshot_restores
+#'
+#' @aliases ec2_describe_fast_snapshot_restores
 ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeFastSnapshotRestores",
@@ -21814,6 +22248,8 @@ ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fleet_history
+#'
+#' @aliases ec2_describe_fleet_history
 ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResults = NULL, NextToken = NULL, FleetId, StartTime) {
   op <- new_operation(
     name = "DescribeFleetHistory",
@@ -21896,6 +22332,8 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fleet_instances
+#'
+#' @aliases ec2_describe_fleet_instances
 ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextToken = NULL, FleetId, Filters = NULL) {
   op <- new_operation(
     name = "DescribeFleetInstances",
@@ -22307,6 +22745,8 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fleets
+#'
+#' @aliases ec2_describe_fleets
 ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NULL, FleetIds = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeFleets",
@@ -22434,6 +22874,8 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname ec2_describe_flow_logs
+#'
+#' @aliases ec2_describe_flow_logs
 ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFlowLogs",
@@ -22504,6 +22946,8 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fpga_image_attribute
+#'
+#' @aliases ec2_describe_fpga_image_attribute
 ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute) {
   op <- new_operation(
     name = "DescribeFpgaImageAttribute",
@@ -22649,6 +23093,8 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
 #' @keywords internal
 #'
 #' @rdname ec2_describe_fpga_images
+#'
+#' @aliases ec2_describe_fpga_images
 ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeFpgaImages",
@@ -22750,6 +23196,8 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_host_reservation_offerings
+#'
+#' @aliases ec2_describe_host_reservation_offerings
 ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration = NULL, MaxResults = NULL, MinDuration = NULL, NextToken = NULL, OfferingId = NULL) {
   op <- new_operation(
     name = "DescribeHostReservationOfferings",
@@ -22863,6 +23311,8 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_host_reservations
+#'
+#' @aliases ec2_describe_host_reservations
 ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeHostReservations",
@@ -23009,6 +23459,8 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_hosts
+#'
+#' @aliases ec2_describe_hosts
 ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeHosts",
@@ -23101,6 +23553,8 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_describe_iam_instance_profile_associations
+#'
+#' @aliases ec2_describe_iam_instance_profile_associations
 ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeIamInstanceProfileAssociations",
@@ -23189,6 +23643,8 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_id_format
+#'
+#' @aliases ec2_describe_id_format
 ec2_describe_id_format <- function(Resource = NULL) {
   op <- new_operation(
     name = "DescribeIdFormat",
@@ -23276,6 +23732,8 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_identity_id_format
+#'
+#' @aliases ec2_describe_identity_id_format
 ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
   op <- new_operation(
     name = "DescribeIdentityIdFormat",
@@ -23399,6 +23857,8 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_image_attribute
+#'
+#' @aliases ec2_describe_image_attribute
 ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeImageAttribute",
@@ -23676,6 +24136,8 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_images
+#'
+#' @aliases ec2_describe_images
 ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds = NULL, Owners = NULL, IncludeDeprecated = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeImages",
@@ -23791,6 +24253,8 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
 #' @keywords internal
 #'
 #' @rdname ec2_describe_import_image_tasks
+#'
+#' @aliases ec2_describe_import_image_tasks
 ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, ImportTaskIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeImportImageTasks",
@@ -23887,6 +24351,8 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
 #' @keywords internal
 #'
 #' @rdname ec2_describe_import_snapshot_tasks
+#'
+#' @aliases ec2_describe_import_snapshot_tasks
 ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, ImportTaskIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeImportSnapshotTasks",
@@ -24036,6 +24502,8 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_attribute
+#'
+#' @aliases ec2_describe_instance_attribute
 ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
   op <- new_operation(
     name = "DescribeInstanceAttribute",
@@ -24144,6 +24612,8 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_credit_specifications
+#'
+#' @aliases ec2_describe_instance_credit_specifications
 ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters = NULL, InstanceIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstanceCreditSpecifications",
@@ -24199,6 +24669,8 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_event_notification_attributes
+#'
+#' @aliases ec2_describe_instance_event_notification_attributes
 ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
   op <- new_operation(
     name = "DescribeInstanceEventNotificationAttributes",
@@ -24348,6 +24820,8 @@ ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_event_windows
+#'
+#' @aliases ec2_describe_instance_event_windows
 ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWindowIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstanceEventWindows",
@@ -24558,6 +25032,8 @@ ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWind
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_status
+#'
+#' @aliases ec2_describe_instance_status
 ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL, IncludeAllInstances = NULL) {
   op <- new_operation(
     name = "DescribeInstanceStatus",
@@ -24640,6 +25116,8 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_type_offerings
+#'
+#' @aliases ec2_describe_instance_type_offerings
 ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstanceTypeOfferings",
@@ -24991,6 +25469,8 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instance_types
+#'
+#' @aliases ec2_describe_instance_types
 ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstanceTypes",
@@ -25640,6 +26120,8 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname ec2_describe_instances
+#'
+#' @aliases ec2_describe_instances
 ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstances",
@@ -25764,6 +26246,8 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_internet_gateways
+#'
+#' @aliases ec2_describe_internet_gateways
 ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, InternetGatewayIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeInternetGateways",
@@ -25868,6 +26352,8 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 #' @keywords internal
 #'
 #' @rdname ec2_describe_ipam_pools
+#'
+#' @aliases ec2_describe_ipam_pools
 ec2_describe_ipam_pools <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IpamPoolIds = NULL) {
   op <- new_operation(
     name = "DescribeIpamPools",
@@ -25956,6 +26442,8 @@ ec2_describe_ipam_pools <- function(DryRun = NULL, Filters = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_ipam_scopes
+#'
+#' @aliases ec2_describe_ipam_scopes
 ec2_describe_ipam_scopes <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IpamScopeIds = NULL) {
   op <- new_operation(
     name = "DescribeIpamScopes",
@@ -26051,6 +26539,8 @@ ec2_describe_ipam_scopes <- function(DryRun = NULL, Filters = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_ipams
+#'
+#' @aliases ec2_describe_ipams
 ec2_describe_ipams <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IpamIds = NULL) {
   op <- new_operation(
     name = "DescribeIpams",
@@ -26146,6 +26636,8 @@ ec2_describe_ipams <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_describe_ipv_6_pools
+#'
+#' @aliases ec2_describe_ipv_6_pools
 ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResults = NULL, DryRun = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeIpv6Pools",
@@ -26265,6 +26757,8 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname ec2_describe_key_pairs
+#'
+#' @aliases ec2_describe_key_pairs
 ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds = NULL, DryRun = NULL, IncludePublicKey = NULL) {
   op <- new_operation(
     name = "DescribeKeyPairs",
@@ -26655,6 +27149,8 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_launch_template_versions
+#'
+#' @aliases ec2_describe_launch_template_versions
 ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId = NULL, LaunchTemplateName = NULL, Versions = NULL, MinVersion = NULL, MaxVersion = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeLaunchTemplateVersions",
@@ -26769,6 +27265,8 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #' @keywords internal
 #'
 #' @rdname ec2_describe_launch_templates
+#'
+#' @aliases ec2_describe_launch_templates
 ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NULL, LaunchTemplateNames = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeLaunchTemplates",
@@ -26875,7 +27373,9 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
 #'
 #' @keywords internal
 #'
-#' @rdname ec2_describe_local_gateway_route_table_virtual_interface_group_associations
+#' @rdname ec2_descr_local_gatew_route_table_virtu_inter_group_assoc
+#'
+#' @aliases ec2_describe_local_gateway_route_table_virtual_interface_group_associations
 ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- function(LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
@@ -26982,6 +27482,8 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
 #' @keywords internal
 #'
 #' @rdname ec2_describe_local_gateway_route_table_vpc_associations
+#'
+#' @aliases ec2_describe_local_gateway_route_table_vpc_associations
 ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGatewayRouteTableVpcAssociationIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeLocalGatewayRouteTableVpcAssociations",
@@ -27083,6 +27585,8 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
 #' @keywords internal
 #'
 #' @rdname ec2_describe_local_gateway_route_tables
+#'
+#' @aliases ec2_describe_local_gateway_route_tables
 ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeLocalGatewayRouteTables",
@@ -27179,6 +27683,8 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_local_gateway_virtual_interface_groups
+#'
+#' @aliases ec2_describe_local_gateway_virtual_interface_groups
 ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirtualInterfaceGroupIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeLocalGatewayVirtualInterfaceGroups",
@@ -27284,6 +27790,8 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
 #' @keywords internal
 #'
 #' @rdname ec2_describe_local_gateway_virtual_interfaces
+#'
+#' @aliases ec2_describe_local_gateway_virtual_interfaces
 ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInterfaceIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeLocalGatewayVirtualInterfaces",
@@ -27376,6 +27884,8 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
 #' @keywords internal
 #'
 #' @rdname ec2_describe_local_gateways
+#'
+#' @aliases ec2_describe_local_gateways
 ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeLocalGateways",
@@ -27474,6 +27984,8 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_managed_prefix_lists
+#'
+#' @aliases ec2_describe_managed_prefix_lists
 ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, PrefixListIds = NULL) {
   op <- new_operation(
     name = "DescribeManagedPrefixLists",
@@ -27565,6 +28077,8 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
 #' @keywords internal
 #'
 #' @rdname ec2_describe_moving_addresses
+#'
+#' @aliases ec2_describe_moving_addresses
 ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResults = NULL, NextToken = NULL, PublicIps = NULL) {
   op <- new_operation(
     name = "DescribeMovingAddresses",
@@ -27709,6 +28223,8 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname ec2_describe_nat_gateways
+#'
+#' @aliases ec2_describe_nat_gateways
 ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults = NULL, NatGatewayIds = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeNatGateways",
@@ -27887,6 +28403,8 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_acls
+#'
+#' @aliases ec2_describe_network_acls
 ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeNetworkAcls",
@@ -27993,6 +28511,8 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_insights_access_scope_analyses
+#'
+#' @aliases ec2_describe_network_insights_access_scope_analyses
 ec2_describe_network_insights_access_scope_analyses <- function(NetworkInsightsAccessScopeAnalysisIds = NULL, NetworkInsightsAccessScopeId = NULL, AnalysisStartTimeBegin = NULL, AnalysisStartTimeEnd = NULL, Filters = NULL, MaxResults = NULL, DryRun = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeNetworkInsightsAccessScopeAnalyses",
@@ -28079,6 +28599,8 @@ ec2_describe_network_insights_access_scope_analyses <- function(NetworkInsightsA
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_insights_access_scopes
+#'
+#' @aliases ec2_describe_network_insights_access_scopes
 ec2_describe_network_insights_access_scopes <- function(NetworkInsightsAccessScopeIds = NULL, Filters = NULL, MaxResults = NULL, DryRun = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeNetworkInsightsAccessScopes",
@@ -28696,6 +29218,8 @@ ec2_describe_network_insights_access_scopes <- function(NetworkInsightsAccessSco
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_insights_analyses
+#'
+#' @aliases ec2_describe_network_insights_analyses
 ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = NULL, NetworkInsightsPathId = NULL, AnalysisStartTime = NULL, AnalysisEndTime = NULL, Filters = NULL, MaxResults = NULL, DryRun = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeNetworkInsightsAnalyses",
@@ -28795,6 +29319,8 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_insights_paths
+#'
+#' @aliases ec2_describe_network_insights_paths
 ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, Filters = NULL, MaxResults = NULL, DryRun = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeNetworkInsightsPaths",
@@ -28904,6 +29430,8 @@ ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, F
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_interface_attribute
+#'
+#' @aliases ec2_describe_network_interface_attribute
 ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = NULL, NetworkInterfaceId) {
   op <- new_operation(
     name = "DescribeNetworkInterfaceAttribute",
@@ -28995,6 +29523,8 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_interface_permissions
+#'
+#' @aliases ec2_describe_network_interface_permissions
 ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissionIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeNetworkInterfacePermissions",
@@ -29277,6 +29807,8 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #' @keywords internal
 #'
 #' @rdname ec2_describe_network_interfaces
+#'
+#' @aliases ec2_describe_network_interfaces
 ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, NetworkInterfaceIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeNetworkInterfaces",
@@ -29387,6 +29919,8 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #' @keywords internal
 #'
 #' @rdname ec2_describe_placement_groups
+#'
+#' @aliases ec2_describe_placement_groups
 ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNames = NULL, GroupIds = NULL) {
   op <- new_operation(
     name = "DescribePlacementGroups",
@@ -29476,6 +30010,8 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
 #' @keywords internal
 #'
 #' @rdname ec2_describe_prefix_lists
+#'
+#' @aliases ec2_describe_prefix_lists
 ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, PrefixListIds = NULL) {
   op <- new_operation(
     name = "DescribePrefixLists",
@@ -29578,6 +30114,8 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_principal_id_format
+#'
+#' @aliases ec2_describe_principal_id_format
 ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePrincipalIdFormat",
@@ -29673,6 +30211,8 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ec2_describe_public_ipv_4_pools
+#'
+#' @aliases ec2_describe_public_ipv_4_pools
 ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribePublicIpv4Pools",
@@ -29767,6 +30307,8 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ec2_describe_regions
+#'
+#' @aliases ec2_describe_regions
 ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NULL, AllRegions = NULL) {
   op <- new_operation(
     name = "DescribeRegions",
@@ -29856,6 +30398,8 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
 #' @keywords internal
 #'
 #' @rdname ec2_describe_replace_root_volume_tasks
+#'
+#' @aliases ec2_describe_replace_root_volume_tasks
 ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeReplaceRootVolumeTasks",
@@ -30026,6 +30570,8 @@ ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NU
 #' @keywords internal
 #'
 #' @rdname ec2_describe_reserved_instances
+#'
+#' @aliases ec2_describe_reserved_instances
 ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL, ReservedInstancesIds = NULL, DryRun = NULL, OfferingType = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstances",
@@ -30151,6 +30697,8 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_reserved_instances_listings
+#'
+#' @aliases ec2_describe_reserved_instances_listings
 ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedInstancesId = NULL, ReservedInstancesListingId = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstancesListings",
@@ -30293,6 +30841,8 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
 #' @keywords internal
 #'
 #' @rdname ec2_describe_reserved_instances_modifications
+#'
+#' @aliases ec2_describe_reserved_instances_modifications
 ec2_describe_reserved_instances_modifications <- function(Filters = NULL, ReservedInstancesModificationIds = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstancesModifications",
@@ -30497,6 +31047,8 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
 #' @keywords internal
 #'
 #' @rdname ec2_describe_reserved_instances_offerings
+#'
+#' @aliases ec2_describe_reserved_instances_offerings
 ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, Filters = NULL, IncludeMarketplace = NULL, InstanceType = NULL, MaxDuration = NULL, MaxInstanceCount = NULL, MinDuration = NULL, OfferingClass = NULL, ProductDescription = NULL, ReservedInstancesOfferingIds = NULL, DryRun = NULL, InstanceTenancy = NULL, MaxResults = NULL, NextToken = NULL, OfferingType = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstancesOfferings",
@@ -30706,6 +31258,8 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #' @keywords internal
 #'
 #' @rdname ec2_describe_route_tables
+#'
+#' @aliases ec2_describe_route_tables
 ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeRouteTables",
@@ -30872,6 +31426,8 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #' @keywords internal
 #'
 #' @rdname ec2_describe_scheduled_instance_availability
+#'
+#' @aliases ec2_describe_scheduled_instance_availability
 ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters = NULL, FirstSlotStartTimeRange, MaxResults = NULL, MaxSlotDurationInHours = NULL, MinSlotDurationInHours = NULL, NextToken = NULL, Recurrence) {
   op <- new_operation(
     name = "DescribeScheduledInstanceAvailability",
@@ -31015,6 +31571,8 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_scheduled_instances
+#'
+#' @aliases ec2_describe_scheduled_instances
 ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, ScheduledInstanceIds = NULL, SlotStartTimeRange = NULL) {
   op <- new_operation(
     name = "DescribeScheduledInstances",
@@ -31088,6 +31646,8 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname ec2_describe_security_group_references
+#'
+#' @aliases ec2_describe_security_group_references
 ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
   op <- new_operation(
     name = "DescribeSecurityGroupReferences",
@@ -31195,6 +31755,8 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_security_group_rules
+#'
+#' @aliases ec2_describe_security_group_rules
 ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleIds = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSecurityGroupRules",
@@ -31481,6 +32043,8 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
 #' @keywords internal
 #'
 #' @rdname ec2_describe_security_groups
+#'
+#' @aliases ec2_describe_security_groups
 ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupNames = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSecurityGroups",
@@ -31560,6 +32124,8 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
 #' @keywords internal
 #'
 #' @rdname ec2_describe_snapshot_attribute
+#'
+#' @aliases ec2_describe_snapshot_attribute
 ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeSnapshotAttribute",
@@ -31662,6 +32228,8 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_snapshot_tier_status
+#'
+#' @aliases ec2_describe_snapshot_tier_status
 ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSnapshotTierStatus",
@@ -31912,6 +32480,8 @@ ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname ec2_describe_snapshots
+#'
+#' @aliases ec2_describe_snapshots
 ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL, OwnerIds = NULL, RestorableByUserIds = NULL, SnapshotIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
@@ -31979,6 +32549,8 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_spot_datafeed_subscription
+#'
+#' @aliases ec2_describe_spot_datafeed_subscription
 ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
   op <- new_operation(
     name = "DescribeSpotDatafeedSubscription",
@@ -32055,6 +32627,8 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_spot_fleet_instances
+#'
+#' @aliases ec2_describe_spot_fleet_instances
 ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextToken = NULL, SpotFleetRequestId) {
   op <- new_operation(
     name = "DescribeSpotFleetInstances",
@@ -32161,6 +32735,8 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_spot_fleet_request_history
+#'
+#' @aliases ec2_describe_spot_fleet_request_history
 ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = NULL, MaxResults = NULL, NextToken = NULL, SpotFleetRequestId, StartTime) {
   op <- new_operation(
     name = "DescribeSpotFleetRequestHistory",
@@ -32555,6 +33131,8 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
 #' @keywords internal
 #'
 #' @rdname ec2_describe_spot_fleet_requests
+#'
+#' @aliases ec2_describe_spot_fleet_requests
 ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, NextToken = NULL, SpotFleetRequestIds = NULL) {
   op <- new_operation(
     name = "DescribeSpotFleetRequests",
@@ -32901,6 +33479,8 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname ec2_describe_spot_instance_requests
+#'
+#' @aliases ec2_describe_spot_instance_requests
 ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, SpotInstanceRequestIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSpotInstanceRequests",
@@ -33043,6 +33623,8 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #' @keywords internal
 #'
 #' @rdname ec2_describe_spot_price_history
+#'
+#' @aliases ec2_describe_spot_price_history
 ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = NULL, DryRun = NULL, EndTime = NULL, InstanceTypes = NULL, MaxResults = NULL, NextToken = NULL, ProductDescriptions = NULL, StartTime = NULL) {
   op <- new_operation(
     name = "DescribeSpotPriceHistory",
@@ -33161,6 +33743,8 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
 #' @keywords internal
 #'
 #' @rdname ec2_describe_stale_security_groups
+#'
+#' @aliases ec2_describe_stale_security_groups
 ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL, NextToken = NULL, VpcId) {
   op <- new_operation(
     name = "DescribeStaleSecurityGroups",
@@ -33269,6 +33853,8 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_describe_store_image_tasks
+#'
+#' @aliases ec2_describe_store_image_tasks
 ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeStoreImageTasks",
@@ -33453,6 +34039,8 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
 #' @keywords internal
 #'
 #' @rdname ec2_describe_subnets
+#'
+#' @aliases ec2_describe_subnets
 ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSubnets",
@@ -33563,6 +34151,8 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_tags
+#'
+#' @aliases ec2_describe_tags
 ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeTags",
@@ -33692,6 +34282,8 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_traffic_mirror_filters
+#'
+#' @aliases ec2_describe_traffic_mirror_filters
 ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeTrafficMirrorFilters",
@@ -33802,6 +34394,8 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
 #' @keywords internal
 #'
 #' @rdname ec2_describe_traffic_mirror_sessions
+#'
+#' @aliases ec2_describe_traffic_mirror_sessions
 ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL, DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeTrafficMirrorSessions",
@@ -33900,6 +34494,8 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_describe_traffic_mirror_targets
+#'
+#' @aliases ec2_describe_traffic_mirror_targets
 ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeTrafficMirrorTargets",
@@ -34021,6 +34617,8 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_attachments
+#'
+#' @aliases ec2_describe_transit_gateway_attachments
 ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayAttachments",
@@ -34129,6 +34727,8 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_connect_peers
+#'
+#' @aliases ec2_describe_transit_gateway_connect_peers
 ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeerIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayConnectPeers",
@@ -34231,6 +34831,8 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_connects
+#'
+#' @aliases ec2_describe_transit_gateway_connects
 ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayConnects",
@@ -34331,6 +34933,8 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_multicast_domains
+#'
+#' @aliases ec2_describe_transit_gateway_multicast_domains
 ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMulticastDomainIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayMulticastDomains",
@@ -34459,6 +35063,8 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_peering_attachments
+#'
+#' @aliases ec2_describe_transit_gateway_peering_attachments
 ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttachmentIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayPeeringAttachments",
@@ -34543,6 +35149,8 @@ ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttac
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_policy_tables
+#'
+#' @aliases ec2_describe_transit_gateway_policy_tables
 ec2_describe_transit_gateway_policy_tables <- function(TransitGatewayPolicyTableIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayPolicyTables",
@@ -34634,6 +35242,8 @@ ec2_describe_transit_gateway_policy_tables <- function(TransitGatewayPolicyTable
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_route_table_announcements
+#'
+#' @aliases ec2_describe_transit_gateway_route_table_announcements
 ec2_describe_transit_gateway_route_table_announcements <- function(TransitGatewayRouteTableAnnouncementIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayRouteTableAnnouncements",
@@ -34738,6 +35348,8 @@ ec2_describe_transit_gateway_route_table_announcements <- function(TransitGatewa
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_route_tables
+#'
+#' @aliases ec2_describe_transit_gateway_route_tables
 ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayRouteTables",
@@ -34844,6 +35456,8 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateway_vpc_attachments
+#'
+#' @aliases ec2_describe_transit_gateway_vpc_attachments
 ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmentIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGatewayVpcAttachments",
@@ -34980,6 +35594,8 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
 #' @keywords internal
 #'
 #' @rdname ec2_describe_transit_gateways
+#'
+#' @aliases ec2_describe_transit_gateways
 ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeTransitGateways",
@@ -35072,6 +35688,8 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' @keywords internal
 #'
 #' @rdname ec2_describe_trunk_interface_associations
+#'
+#' @aliases ec2_describe_trunk_interface_associations
 ec2_describe_trunk_interface_associations <- function(AssociationIds = NULL, DryRun = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeTrunkInterfaceAssociations",
@@ -35148,6 +35766,8 @@ ec2_describe_trunk_interface_associations <- function(AssociationIds = NULL, Dry
 #' @keywords internal
 #'
 #' @rdname ec2_describe_volume_attribute
+#'
+#' @aliases ec2_describe_volume_attribute
 ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeVolumeAttribute",
@@ -35370,6 +35990,8 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_volume_status
+#'
+#' @aliases ec2_describe_volume_status
 ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL, VolumeIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeVolumeStatus",
@@ -35579,6 +36201,8 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname ec2_describe_volumes
+#'
+#' @aliases ec2_describe_volumes
 ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVolumes",
@@ -35711,6 +36335,8 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_volumes_modifications
+#'
+#' @aliases ec2_describe_volumes_modifications
 ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeVolumesModifications",
@@ -35791,6 +36417,8 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_attribute
+#'
+#' @aliases ec2_describe_vpc_attribute
 ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeVpcAttribute",
@@ -35882,6 +36510,8 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_classic_link
+#'
+#' @aliases ec2_describe_vpc_classic_link
 ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds = NULL) {
   op <- new_operation(
     name = "DescribeVpcClassicLink",
@@ -35954,6 +36584,8 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_classic_link_dns_support
+#'
+#' @aliases ec2_describe_vpc_classic_link_dns_support
 ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextToken = NULL, VpcIds = NULL) {
   op <- new_operation(
     name = "DescribeVpcClassicLinkDnsSupport",
@@ -36049,6 +36681,8 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_endpoint_connection_notifications
+#'
+#' @aliases ec2_describe_vpc_endpoint_connection_notifications
 ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, ConnectionNotificationId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVpcEndpointConnectionNotifications",
@@ -36154,6 +36788,8 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_endpoint_connections
+#'
+#' @aliases ec2_describe_vpc_endpoint_connections
 ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVpcEndpointConnections",
@@ -36289,6 +36925,8 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_endpoint_service_configurations
+#'
+#' @aliases ec2_describe_vpc_endpoint_service_configurations
 ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, ServiceIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVpcEndpointServiceConfigurations",
@@ -36370,6 +37008,8 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_endpoint_service_permissions
+#'
+#' @aliases ec2_describe_vpc_endpoint_service_permissions
 ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVpcEndpointServicePermissions",
@@ -36508,6 +37148,8 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_endpoint_services
+#'
+#' @aliases ec2_describe_vpc_endpoint_services
 ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVpcEndpointServices",
@@ -36656,6 +37298,8 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_endpoints
+#'
+#' @aliases ec2_describe_vpc_endpoints
 ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVpcEndpoints",
@@ -36824,6 +37468,8 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpc_peering_connections
+#'
+#' @aliases ec2_describe_vpc_peering_connections
 ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, VpcPeeringConnectionIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeVpcPeeringConnections",
@@ -36989,6 +37635,8 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpcs
+#'
+#' @aliases ec2_describe_vpcs
 ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeVpcs",
@@ -37197,6 +37845,8 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpn_connections
+#'
+#' @aliases ec2_describe_vpn_connections
 ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeVpnConnections",
@@ -37314,6 +37964,8 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_describe_vpn_gateways
+#'
+#' @aliases ec2_describe_vpn_gateways
 ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DescribeVpnGateways",
@@ -37375,6 +38027,8 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
 #' @keywords internal
 #'
 #' @rdname ec2_detach_classic_link_vpc
+#'
+#' @aliases ec2_detach_classic_link_vpc
 ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
   op <- new_operation(
     name = "DetachClassicLinkVpc",
@@ -37435,6 +38089,8 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 #' @keywords internal
 #'
 #' @rdname ec2_detach_internet_gateway
+#'
+#' @aliases ec2_detach_internet_gateway
 ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId) {
   op <- new_operation(
     name = "DetachInternetGateway",
@@ -37506,6 +38162,8 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' @keywords internal
 #'
 #' @rdname ec2_detach_network_interface
+#'
+#' @aliases ec2_detach_network_interface
 ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NULL) {
   op <- new_operation(
     name = "DetachNetworkInterface",
@@ -37600,6 +38258,8 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
 #' @keywords internal
 #'
 #' @rdname ec2_detach_volume
+#'
+#' @aliases ec2_detach_volume
 ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, VolumeId, DryRun = NULL) {
   op <- new_operation(
     name = "DetachVolume",
@@ -37655,6 +38315,8 @@ ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, Vo
 #' @keywords internal
 #'
 #' @rdname ec2_detach_vpn_gateway
+#'
+#' @aliases ec2_detach_vpn_gateway
 ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
   op <- new_operation(
     name = "DetachVpnGateway",
@@ -37715,6 +38377,8 @@ ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disable_ebs_encryption_by_default
+#'
+#' @aliases ec2_disable_ebs_encryption_by_default
 ec2_disable_ebs_encryption_by_default <- function(DryRun = NULL) {
   op <- new_operation(
     name = "DisableEbsEncryptionByDefault",
@@ -37792,6 +38456,8 @@ ec2_disable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disable_fast_launch
+#'
+#' @aliases ec2_disable_fast_launch
 ec2_disable_fast_launch <- function(ImageId, Force = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DisableFastLaunch",
@@ -37889,6 +38555,8 @@ ec2_disable_fast_launch <- function(ImageId, Force = NULL, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disable_fast_snapshot_restores
+#'
+#' @aliases ec2_disable_fast_snapshot_restores
 ec2_disable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotIds, DryRun = NULL) {
   op <- new_operation(
     name = "DisableFastSnapshotRestores",
@@ -37943,6 +38611,8 @@ ec2_disable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshot
 #' @keywords internal
 #'
 #' @rdname ec2_disable_image_deprecation
+#'
+#' @aliases ec2_disable_image_deprecation
 ec2_disable_image_deprecation <- function(ImageId, DryRun = NULL) {
   op <- new_operation(
     name = "DisableImageDeprecation",
@@ -37998,6 +38668,8 @@ ec2_disable_image_deprecation <- function(ImageId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disable_ipam_organization_admin_account
+#'
+#' @aliases ec2_disable_ipam_organization_admin_account
 ec2_disable_ipam_organization_admin_account <- function(DryRun = NULL, DelegatedAdminAccountId) {
   op <- new_operation(
     name = "DisableIpamOrganizationAdminAccount",
@@ -38052,6 +38724,8 @@ ec2_disable_ipam_organization_admin_account <- function(DryRun = NULL, Delegated
 #' @keywords internal
 #'
 #' @rdname ec2_disable_serial_console_access
+#'
+#' @aliases ec2_disable_serial_console_access
 ec2_disable_serial_console_access <- function(DryRun = NULL) {
   op <- new_operation(
     name = "DisableSerialConsoleAccess",
@@ -38117,6 +38791,8 @@ ec2_disable_serial_console_access <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disable_transit_gateway_route_table_propagation
+#'
+#' @aliases ec2_disable_transit_gateway_route_table_propagation
 ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL, DryRun = NULL, TransitGatewayRouteTableAnnouncementId = NULL) {
   op <- new_operation(
     name = "DisableTransitGatewayRouteTablePropagation",
@@ -38176,6 +38852,8 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
 #' @keywords internal
 #'
 #' @rdname ec2_disable_vgw_route_propagation
+#'
+#' @aliases ec2_disable_vgw_route_propagation
 ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = NULL) {
   op <- new_operation(
     name = "DisableVgwRoutePropagation",
@@ -38233,6 +38911,8 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_disable_vpc_classic_link
+#'
+#' @aliases ec2_disable_vpc_classic_link
 ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
   op <- new_operation(
     name = "DisableVpcClassicLink",
@@ -38291,6 +38971,8 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 #' @keywords internal
 #'
 #' @rdname ec2_disable_vpc_classic_link_dns_support
+#'
+#' @aliases ec2_disable_vpc_classic_link_dns_support
 ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
   op <- new_operation(
     name = "DisableVpcClassicLinkDnsSupport",
@@ -38369,6 +39051,8 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_address
+#'
+#' @aliases ec2_disassociate_address
 ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateAddress",
@@ -38437,6 +39121,8 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_client_vpn_target_network
+#'
+#' @aliases ec2_disassociate_client_vpn_target_network
 ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, AssociationId, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateClientVpnTargetNetwork",
@@ -38495,6 +39181,8 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_enclave_certificate_iam_role
+#'
+#' @aliases ec2_disassociate_enclave_certificate_iam_role
 ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn = NULL, RoleArn = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateEnclaveCertificateIamRole",
@@ -38565,6 +39253,8 @@ ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_iam_instance_profile
+#'
+#' @aliases ec2_disassociate_iam_instance_profile
 ec2_disassociate_iam_instance_profile <- function(AssociationId) {
   op <- new_operation(
     name = "DisassociateIamInstanceProfile",
@@ -38668,6 +39358,8 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_instance_event_window
+#'
+#' @aliases ec2_disassociate_instance_event_window
 ec2_disassociate_instance_event_window <- function(DryRun = NULL, InstanceEventWindowId, AssociationTarget) {
   op <- new_operation(
     name = "DisassociateInstanceEventWindow",
@@ -38729,6 +39421,8 @@ ec2_disassociate_instance_event_window <- function(DryRun = NULL, InstanceEventW
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_route_table
+#'
+#' @aliases ec2_disassociate_route_table
 ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateRouteTable",
@@ -38785,6 +39479,8 @@ ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_subnet_cidr_block
+#'
+#' @aliases ec2_disassociate_subnet_cidr_block
 ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
   op <- new_operation(
     name = "DisassociateSubnetCidrBlock",
@@ -38857,6 +39553,8 @@ ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_transit_gateway_multicast_domain
+#'
+#' @aliases ec2_disassociate_transit_gateway_multicast_domain
 ec2_disassociate_transit_gateway_multicast_domain <- function(TransitGatewayMulticastDomainId = NULL, TransitGatewayAttachmentId = NULL, SubnetIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateTransitGatewayMulticastDomain",
@@ -38917,6 +39615,8 @@ ec2_disassociate_transit_gateway_multicast_domain <- function(TransitGatewayMult
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_transit_gateway_policy_table
+#'
+#' @aliases ec2_disassociate_transit_gateway_policy_table
 ec2_disassociate_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId, TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateTransitGatewayPolicyTable",
@@ -38976,6 +39676,8 @@ ec2_disassociate_transit_gateway_policy_table <- function(TransitGatewayPolicyTa
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_transit_gateway_route_table
+#'
+#' @aliases ec2_disassociate_transit_gateway_route_table
 ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTableId, TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateTransitGatewayRouteTable",
@@ -39035,6 +39737,8 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_trunk_interface
+#'
+#' @aliases ec2_disassociate_trunk_interface
 ec2_disassociate_trunk_interface <- function(AssociationId, ClientToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "DisassociateTrunkInterface",
@@ -39105,6 +39809,8 @@ ec2_disassociate_trunk_interface <- function(AssociationId, ClientToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_disassociate_vpc_cidr_block
+#'
+#' @aliases ec2_disassociate_vpc_cidr_block
 ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
   op <- new_operation(
     name = "DisassociateVpcCidrBlock",
@@ -39173,6 +39879,8 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
 #' @keywords internal
 #'
 #' @rdname ec2_enable_ebs_encryption_by_default
+#'
+#' @aliases ec2_enable_ebs_encryption_by_default
 ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
   op <- new_operation(
     name = "EnableEbsEncryptionByDefault",
@@ -39270,6 +39978,8 @@ ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_enable_fast_launch
+#'
+#' @aliases ec2_enable_fast_launch
 ec2_enable_fast_launch <- function(ImageId, ResourceType = NULL, SnapshotConfiguration = NULL, LaunchTemplate = NULL, MaxParallelLaunches = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "EnableFastLaunch",
@@ -39379,6 +40089,8 @@ ec2_enable_fast_launch <- function(ImageId, ResourceType = NULL, SnapshotConfigu
 #' @keywords internal
 #'
 #' @rdname ec2_enable_fast_snapshot_restores
+#'
+#' @aliases ec2_enable_fast_snapshot_restores
 ec2_enable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotIds, DryRun = NULL) {
   op <- new_operation(
     name = "EnableFastSnapshotRestores",
@@ -39442,6 +40154,8 @@ ec2_enable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotI
 #' @keywords internal
 #'
 #' @rdname ec2_enable_image_deprecation
+#'
+#' @aliases ec2_enable_image_deprecation
 ec2_enable_image_deprecation <- function(ImageId, DeprecateAt, DryRun = NULL) {
   op <- new_operation(
     name = "EnableImageDeprecation",
@@ -39498,6 +40212,8 @@ ec2_enable_image_deprecation <- function(ImageId, DeprecateAt, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_enable_ipam_organization_admin_account
+#'
+#' @aliases ec2_enable_ipam_organization_admin_account
 ec2_enable_ipam_organization_admin_account <- function(DryRun = NULL, DelegatedAdminAccountId) {
   op <- new_operation(
     name = "EnableIpamOrganizationAdminAccount",
@@ -39552,6 +40268,8 @@ ec2_enable_ipam_organization_admin_account <- function(DryRun = NULL, DelegatedA
 #' @keywords internal
 #'
 #' @rdname ec2_enable_serial_console_access
+#'
+#' @aliases ec2_enable_serial_console_access
 ec2_enable_serial_console_access <- function(DryRun = NULL) {
   op <- new_operation(
     name = "EnableSerialConsoleAccess",
@@ -39617,6 +40335,8 @@ ec2_enable_serial_console_access <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_enable_transit_gateway_route_table_propagation
+#'
+#' @aliases ec2_enable_transit_gateway_route_table_propagation
 ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL, DryRun = NULL, TransitGatewayRouteTableAnnouncementId = NULL) {
   op <- new_operation(
     name = "EnableTransitGatewayRouteTablePropagation",
@@ -39679,6 +40399,8 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
 #' @keywords internal
 #'
 #' @rdname ec2_enable_vgw_route_propagation
+#'
+#' @aliases ec2_enable_vgw_route_propagation
 ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = NULL) {
   op <- new_operation(
     name = "EnableVgwRoutePropagation",
@@ -39734,6 +40456,8 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = N
 #' @keywords internal
 #'
 #' @rdname ec2_enable_volume_io
+#'
+#' @aliases ec2_enable_volume_io
 ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
   op <- new_operation(
     name = "EnableVolumeIO",
@@ -39798,6 +40522,8 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
 #' @keywords internal
 #'
 #' @rdname ec2_enable_vpc_classic_link
+#'
+#' @aliases ec2_enable_vpc_classic_link
 ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
   op <- new_operation(
     name = "EnableVpcClassicLink",
@@ -39858,6 +40584,8 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 #' @keywords internal
 #'
 #' @rdname ec2_enable_vpc_classic_link_dns_support
+#'
+#' @aliases ec2_enable_vpc_classic_link_dns_support
 ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
   op <- new_operation(
     name = "EnableVpcClassicLinkDnsSupport",
@@ -39915,6 +40643,8 @@ ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_export_client_vpn_client_certificate_revocation_list
+#'
+#' @aliases ec2_export_client_vpn_client_certificate_revocation_list
 ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEndpointId, DryRun = NULL) {
   op <- new_operation(
     name = "ExportClientVpnClientCertificateRevocationList",
@@ -39969,6 +40699,8 @@ ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' @keywords internal
 #'
 #' @rdname ec2_export_client_vpn_client_configuration
+#'
+#' @aliases ec2_export_client_vpn_client_configuration
 ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryRun = NULL) {
   op <- new_operation(
     name = "ExportClientVpnClientConfiguration",
@@ -40069,6 +40801,8 @@ ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryR
 #' @keywords internal
 #'
 #' @rdname ec2_export_image
+#'
+#' @aliases ec2_export_image
 ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFormat, DryRun = NULL, ImageId, S3ExportLocation, RoleName = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "ExportImage",
@@ -40166,6 +40900,8 @@ ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFo
 #' @keywords internal
 #'
 #' @rdname ec2_export_transit_gateway_routes
+#'
+#' @aliases ec2_export_transit_gateway_routes
 ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filters = NULL, S3Bucket, DryRun = NULL) {
   op <- new_operation(
     name = "ExportTransitGatewayRoutes",
@@ -40229,6 +40965,8 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #' @keywords internal
 #'
 #' @rdname ec2_get_associated_enclave_certificate_iam_roles
+#'
+#' @aliases ec2_get_associated_enclave_certificate_iam_roles
 ec2_get_associated_enclave_certificate_iam_roles <- function(CertificateArn = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetAssociatedEnclaveCertificateIamRoles",
@@ -40294,6 +41032,8 @@ ec2_get_associated_enclave_certificate_iam_roles <- function(CertificateArn = NU
 #' @keywords internal
 #'
 #' @rdname ec2_get_associated_ipv_6_pool_cidrs
+#'
+#' @aliases ec2_get_associated_ipv_6_pool_cidrs
 ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetAssociatedIpv6PoolCidrs",
@@ -40369,6 +41109,8 @@ ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname ec2_get_capacity_reservation_usage
+#'
+#' @aliases ec2_get_capacity_reservation_usage
 ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken = NULL, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetCapacityReservationUsage",
@@ -40455,6 +41197,8 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
 #' @keywords internal
 #'
 #' @rdname ec2_get_coip_pool_usage
+#'
+#' @aliases ec2_get_coip_pool_usage
 ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetCoipPoolUsage",
@@ -40539,6 +41283,8 @@ ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname ec2_get_console_output
+#'
+#' @aliases ec2_get_console_output
 ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
   op <- new_operation(
     name = "GetConsoleOutput",
@@ -40597,6 +41343,8 @@ ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_console_screenshot
+#'
+#' @aliases ec2_get_console_screenshot
 ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL) {
   op <- new_operation(
     name = "GetConsoleScreenshot",
@@ -40656,6 +41404,8 @@ ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL)
 #' @keywords internal
 #'
 #' @rdname ec2_get_default_credit_specification
+#'
+#' @aliases ec2_get_default_credit_specification
 ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) {
   op <- new_operation(
     name = "GetDefaultCreditSpecification",
@@ -40713,6 +41463,8 @@ ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) 
 #' @keywords internal
 #'
 #' @rdname ec2_get_ebs_default_kms_key_id
+#'
+#' @aliases ec2_get_ebs_default_kms_key_id
 ec2_get_ebs_default_kms_key_id <- function(DryRun = NULL) {
   op <- new_operation(
     name = "GetEbsDefaultKmsKeyId",
@@ -40767,6 +41519,8 @@ ec2_get_ebs_default_kms_key_id <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_ebs_encryption_by_default
+#'
+#' @aliases ec2_get_ebs_encryption_by_default
 ec2_get_ebs_encryption_by_default <- function(DryRun = NULL) {
   op <- new_operation(
     name = "GetEbsEncryptionByDefault",
@@ -40851,6 +41605,8 @@ ec2_get_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_flow_logs_integration_template
+#'
+#' @aliases ec2_get_flow_logs_integration_template
 ec2_get_flow_logs_integration_template <- function(DryRun = NULL, FlowLogId, ConfigDeliveryS3DestinationArn, IntegrateServices) {
   op <- new_operation(
     name = "GetFlowLogsIntegrationTemplate",
@@ -40916,6 +41672,8 @@ ec2_get_flow_logs_integration_template <- function(DryRun = NULL, FlowLogId, Con
 #' @keywords internal
 #'
 #' @rdname ec2_get_groups_for_capacity_reservation
+#'
+#' @aliases ec2_get_groups_for_capacity_reservation
 ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextToken = NULL, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetGroupsForCapacityReservation",
@@ -40988,6 +41746,8 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
 #' @keywords internal
 #'
 #' @rdname ec2_get_host_reservation_purchase_preview
+#'
+#' @aliases ec2_get_host_reservation_purchase_preview
 ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
   op <- new_operation(
     name = "GetHostReservationPurchasePreview",
@@ -41140,6 +41900,8 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_instance_types_from_instance_requirements
+#'
+#' @aliases ec2_get_instance_types_from_instance_requirements
 ec2_get_instance_types_from_instance_requirements <- function(DryRun = NULL, ArchitectureTypes, VirtualizationTypes, InstanceRequirements, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetInstanceTypesFromInstanceRequirements",
@@ -41207,6 +41969,8 @@ ec2_get_instance_types_from_instance_requirements <- function(DryRun = NULL, Arc
 #' @keywords internal
 #'
 #' @rdname ec2_get_instance_uefi_data
+#'
+#' @aliases ec2_get_instance_uefi_data
 ec2_get_instance_uefi_data <- function(InstanceId, DryRun = NULL) {
   op <- new_operation(
     name = "GetInstanceUefiData",
@@ -41302,6 +42066,8 @@ ec2_get_instance_uefi_data <- function(InstanceId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_ipam_address_history
+#'
+#' @aliases ec2_get_ipam_address_history
 ec2_get_ipam_address_history <- function(DryRun = NULL, Cidr, IpamScopeId, VpcId = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetIpamAddressHistory",
@@ -41381,6 +42147,8 @@ ec2_get_ipam_address_history <- function(DryRun = NULL, Cidr, IpamScopeId, VpcId
 #' @keywords internal
 #'
 #' @rdname ec2_get_ipam_pool_allocations
+#'
+#' @aliases ec2_get_ipam_pool_allocations
 ec2_get_ipam_pool_allocations <- function(DryRun = NULL, IpamPoolId, IpamPoolAllocationId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetIpamPoolAllocations",
@@ -41457,6 +42225,8 @@ ec2_get_ipam_pool_allocations <- function(DryRun = NULL, IpamPoolId, IpamPoolAll
 #' @keywords internal
 #'
 #' @rdname ec2_get_ipam_pool_cidrs
+#'
+#' @aliases ec2_get_ipam_pool_cidrs
 ec2_get_ipam_pool_cidrs <- function(DryRun = NULL, IpamPoolId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetIpamPoolCidrs",
@@ -41561,6 +42331,8 @@ ec2_get_ipam_pool_cidrs <- function(DryRun = NULL, IpamPoolId, Filters = NULL, M
 #' @keywords internal
 #'
 #' @rdname ec2_get_ipam_resource_cidrs
+#'
+#' @aliases ec2_get_ipam_resource_cidrs
 ec2_get_ipam_resource_cidrs <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, IpamScopeId, IpamPoolId = NULL, ResourceId = NULL, ResourceType = NULL, ResourceTag = NULL, ResourceOwner = NULL) {
   op <- new_operation(
     name = "GetIpamResourceCidrs",
@@ -41859,6 +42631,8 @@ ec2_get_ipam_resource_cidrs <- function(DryRun = NULL, Filters = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname ec2_get_launch_template_data
+#'
+#' @aliases ec2_get_launch_template_data
 ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
   op <- new_operation(
     name = "GetLaunchTemplateData",
@@ -41924,6 +42698,8 @@ ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_managed_prefix_list_associations
+#'
+#' @aliases ec2_get_managed_prefix_list_associations
 ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetManagedPrefixListAssociations",
@@ -41990,6 +42766,8 @@ ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId
 #' @keywords internal
 #'
 #' @rdname ec2_get_managed_prefix_list_entries
+#'
+#' @aliases ec2_get_managed_prefix_list_entries
 ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, TargetVersion = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetManagedPrefixListEntries",
@@ -42191,6 +42969,8 @@ ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, Tar
 #' @keywords internal
 #'
 #' @rdname ec2_get_network_insights_access_scope_analysis_findings
+#'
+#' @aliases ec2_get_network_insights_access_scope_analysis_findings
 ec2_get_network_insights_access_scope_analysis_findings <- function(NetworkInsightsAccessScopeAnalysisId, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetNetworkInsightsAccessScopeAnalysisFindings",
@@ -42408,6 +43188,8 @@ ec2_get_network_insights_access_scope_analysis_findings <- function(NetworkInsig
 #' @keywords internal
 #'
 #' @rdname ec2_get_network_insights_access_scope_content
+#'
+#' @aliases ec2_get_network_insights_access_scope_content
 ec2_get_network_insights_access_scope_content <- function(NetworkInsightsAccessScopeId, DryRun = NULL) {
   op <- new_operation(
     name = "GetNetworkInsightsAccessScopeContent",
@@ -42485,6 +43267,8 @@ ec2_get_network_insights_access_scope_content <- function(NetworkInsightsAccessS
 #' @keywords internal
 #'
 #' @rdname ec2_get_password_data
+#'
+#' @aliases ec2_get_password_data
 ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
   op <- new_operation(
     name = "GetPasswordData",
@@ -42592,6 +43376,8 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_reserved_instances_exchange_quote
+#'
+#' @aliases ec2_get_reserved_instances_exchange_quote
 ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedInstanceIds, TargetConfigurations = NULL) {
   op <- new_operation(
     name = "GetReservedInstancesExchangeQuote",
@@ -42646,6 +43432,8 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
 #' @keywords internal
 #'
 #' @rdname ec2_get_serial_console_access_status
+#'
+#' @aliases ec2_get_serial_console_access_status
 ec2_get_serial_console_access_status <- function(DryRun = NULL) {
   op <- new_operation(
     name = "GetSerialConsoleAccessStatus",
@@ -42825,6 +43613,8 @@ ec2_get_serial_console_access_status <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_get_spot_placement_scores
+#'
+#' @aliases ec2_get_spot_placement_scores
 ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, TargetCapacityUnitType = NULL, SingleAvailabilityZone = NULL, RegionNames = NULL, InstanceRequirementsWithMetadata = NULL, DryRun = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetSpotPlacementScores",
@@ -42937,6 +43727,8 @@ ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, 
 #' @keywords internal
 #'
 #' @rdname ec2_get_subnet_cidr_reservations
+#'
+#' @aliases ec2_get_subnet_cidr_reservations
 ec2_get_subnet_cidr_reservations <- function(Filters = NULL, SubnetId, DryRun = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetSubnetCidrReservations",
@@ -43014,6 +43806,8 @@ ec2_get_subnet_cidr_reservations <- function(Filters = NULL, SubnetId, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_attachment_propagations
+#'
+#' @aliases ec2_get_transit_gateway_attachment_propagations
 ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttachmentId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayAttachmentPropagations",
@@ -43106,6 +43900,8 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_multicast_domain_associations
+#'
+#' @aliases ec2_get_transit_gateway_multicast_domain_associations
 ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGatewayMulticastDomainId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayMulticastDomainAssociations",
@@ -43181,6 +43977,8 @@ ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGateway
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_policy_table_associations
+#'
+#' @aliases ec2_get_transit_gateway_policy_table_associations
 ec2_get_transit_gateway_policy_table_associations <- function(TransitGatewayPolicyTableId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayPolicyTableAssociations",
@@ -43263,6 +44061,8 @@ ec2_get_transit_gateway_policy_table_associations <- function(TransitGatewayPoli
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_policy_table_entries
+#'
+#' @aliases ec2_get_transit_gateway_policy_table_entries
 ec2_get_transit_gateway_policy_table_entries <- function(TransitGatewayPolicyTableId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayPolicyTableEntries",
@@ -43365,6 +44165,8 @@ ec2_get_transit_gateway_policy_table_entries <- function(TransitGatewayPolicyTab
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_prefix_list_references
+#'
+#' @aliases ec2_get_transit_gateway_prefix_list_references
 ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTableId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayPrefixListReferences",
@@ -43448,6 +44250,8 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_route_table_associations
+#'
+#' @aliases ec2_get_transit_gateway_route_table_associations
 ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRouteTableId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayRouteTableAssociations",
@@ -43532,6 +44336,8 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
 #' @keywords internal
 #'
 #' @rdname ec2_get_transit_gateway_route_table_propagations
+#'
+#' @aliases ec2_get_transit_gateway_route_table_propagations
 ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRouteTableId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayRouteTablePropagations",
@@ -43596,6 +44402,8 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
 #' @keywords internal
 #'
 #' @rdname ec2_get_vpn_connection_device_sample_configuration
+#'
+#' @aliases ec2_get_vpn_connection_device_sample_configuration
 ec2_get_vpn_connection_device_sample_configuration <- function(VpnConnectionId, VpnConnectionDeviceTypeId, InternetKeyExchangeVersion = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetVpnConnectionDeviceSampleConfiguration",
@@ -43678,6 +44486,8 @@ ec2_get_vpn_connection_device_sample_configuration <- function(VpnConnectionId, 
 #' @keywords internal
 #'
 #' @rdname ec2_get_vpn_connection_device_types
+#'
+#' @aliases ec2_get_vpn_connection_device_types
 ec2_get_vpn_connection_device_types <- function(MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GetVpnConnectionDeviceTypes",
@@ -43741,6 +44551,8 @@ ec2_get_vpn_connection_device_types <- function(MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname ec2_import_client_vpn_client_certificate_revocation_list
+#'
+#' @aliases ec2_import_client_vpn_client_certificate_revocation_list
 ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEndpointId, CertificateRevocationList, DryRun = NULL) {
   op <- new_operation(
     name = "ImportClientVpnClientCertificateRevocationList",
@@ -43963,6 +44775,8 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' @keywords internal
 #'
 #' @rdname ec2_import_image
+#'
+#' @aliases ec2_import_image
 ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken = NULL, Description = NULL, DiskContainers = NULL, DryRun = NULL, Encrypted = NULL, Hypervisor = NULL, KmsKeyId = NULL, LicenseType = NULL, Platform = NULL, RoleName = NULL, LicenseSpecifications = NULL, TagSpecifications = NULL, UsageOperation = NULL, BootMode = NULL) {
   op <- new_operation(
     name = "ImportImage",
@@ -44124,6 +44938,8 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
 #' @keywords internal
 #'
 #' @rdname ec2_import_instance
+#'
+#' @aliases ec2_import_instance
 ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = NULL, LaunchSpecification = NULL, Platform) {
   op <- new_operation(
     name = "ImportInstance",
@@ -44209,6 +45025,8 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_import_key_pair
+#'
+#' @aliases ec2_import_key_pair
 ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSpecifications = NULL) {
   op <- new_operation(
     name = "ImportKeyPair",
@@ -44368,6 +45186,8 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 #' @keywords internal
 #'
 #' @rdname ec2_import_snapshot
+#'
+#' @aliases ec2_import_snapshot
 ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Description = NULL, DiskContainer = NULL, DryRun = NULL, Encrypted = NULL, KmsKeyId = NULL, RoleName = NULL, TagSpecifications = NULL) {
   op <- new_operation(
     name = "ImportSnapshot",
@@ -44496,6 +45316,8 @@ ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Descripti
 #' @keywords internal
 #'
 #' @rdname ec2_import_volume
+#'
+#' @aliases ec2_import_volume
 ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NULL, Image, Volume) {
   op <- new_operation(
     name = "ImportVolume",
@@ -44576,6 +45398,8 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_list_images_in_recycle_bin
+#'
+#' @aliases ec2_list_images_in_recycle_bin
 ec2_list_images_in_recycle_bin <- function(ImageIds = NULL, NextToken = NULL, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ListImagesInRecycleBin",
@@ -44649,6 +45473,8 @@ ec2_list_images_in_recycle_bin <- function(ImageIds = NULL, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ec2_list_snapshots_in_recycle_bin
+#'
+#' @aliases ec2_list_snapshots_in_recycle_bin
 ec2_list_snapshots_in_recycle_bin <- function(MaxResults = NULL, NextToken = NULL, SnapshotIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ListSnapshotsInRecycleBin",
@@ -44712,6 +45538,8 @@ ec2_list_snapshots_in_recycle_bin <- function(MaxResults = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_modify_address_attribute
+#'
+#' @aliases ec2_modify_address_attribute
 ec2_modify_address_attribute <- function(AllocationId, DomainName = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyAddressAttribute",
@@ -44774,6 +45602,8 @@ ec2_modify_address_attribute <- function(AllocationId, DomainName = NULL, DryRun
 #' @keywords internal
 #'
 #' @rdname ec2_modify_availability_zone_group
+#'
+#' @aliases ec2_modify_availability_zone_group
 ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyAvailabilityZoneGroup",
@@ -44866,6 +45696,8 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_capacity_reservation
+#'
+#' @aliases ec2_modify_capacity_reservation
 ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount = NULL, EndDate = NULL, EndDateType = NULL, Accept = NULL, DryRun = NULL, AdditionalInfo = NULL) {
   op <- new_operation(
     name = "ModifyCapacityReservation",
@@ -44953,6 +45785,8 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
 #' @keywords internal
 #'
 #' @rdname ec2_modify_capacity_reservation_fleet
+#'
+#' @aliases ec2_modify_capacity_reservation_fleet
 ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, TotalTargetCapacity = NULL, EndDate = NULL, DryRun = NULL, RemoveEndDate = NULL) {
   op <- new_operation(
     name = "ModifyCapacityReservationFleet",
@@ -45081,6 +45915,8 @@ ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, To
 #' @keywords internal
 #'
 #' @rdname ec2_modify_client_vpn_endpoint
+#'
+#' @aliases ec2_modify_client_vpn_endpoint
 ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificateArn = NULL, ConnectionLogOptions = NULL, DnsServers = NULL, VpnPort = NULL, Description = NULL, SplitTunnel = NULL, DryRun = NULL, SecurityGroupIds = NULL, VpcId = NULL, SelfServicePortal = NULL, ClientConnectOptions = NULL, SessionTimeoutHours = NULL, ClientLoginBannerOptions = NULL) {
   op <- new_operation(
     name = "ModifyClientVpnEndpoint",
@@ -45158,6 +45994,8 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
 #' @keywords internal
 #'
 #' @rdname ec2_modify_default_credit_specification
+#'
+#' @aliases ec2_modify_default_credit_specification
 ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamily, CpuCredits) {
   op <- new_operation(
     name = "ModifyDefaultCreditSpecification",
@@ -45246,6 +46084,8 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ebs_default_kms_key_id
+#'
+#' @aliases ec2_modify_ebs_default_kms_key_id
 ec2_modify_ebs_default_kms_key_id <- function(KmsKeyId, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyEbsDefaultKmsKeyId",
@@ -45432,6 +46272,8 @@ ec2_modify_ebs_default_kms_key_id <- function(KmsKeyId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_modify_fleet
+#'
+#' @aliases ec2_modify_fleet
 ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NULL, LaunchTemplateConfigs = NULL, FleetId, TargetCapacitySpecification = NULL, Context = NULL) {
   op <- new_operation(
     name = "ModifyFleet",
@@ -45541,6 +46383,8 @@ ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NU
 #' @keywords internal
 #'
 #' @rdname ec2_modify_fpga_image_attribute
+#'
+#' @aliases ec2_modify_fpga_image_attribute
 ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute = NULL, OperationType = NULL, UserIds = NULL, UserGroups = NULL, ProductCodes = NULL, LoadPermission = NULL, Description = NULL, Name = NULL) {
   op <- new_operation(
     name = "ModifyFpgaImageAttribute",
@@ -45635,6 +46479,8 @@ ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribut
 #' @keywords internal
 #'
 #' @rdname ec2_modify_hosts
+#'
+#' @aliases ec2_modify_hosts
 ec2_modify_hosts <- function(AutoPlacement = NULL, HostIds, HostRecovery = NULL, InstanceType = NULL, InstanceFamily = NULL) {
   op <- new_operation(
     name = "ModifyHosts",
@@ -45715,6 +46561,8 @@ ec2_modify_hosts <- function(AutoPlacement = NULL, HostIds, HostRecovery = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_modify_id_format
+#'
+#' @aliases ec2_modify_id_format
 ec2_modify_id_format <- function(Resource, UseLongIds) {
   op <- new_operation(
     name = "ModifyIdFormat",
@@ -45800,6 +46648,8 @@ ec2_modify_id_format <- function(Resource, UseLongIds) {
 #' @keywords internal
 #'
 #' @rdname ec2_modify_identity_id_format
+#'
+#' @aliases ec2_modify_identity_id_format
 ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
   op <- new_operation(
     name = "ModifyIdentityIdFormat",
@@ -45943,6 +46793,8 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 #' @keywords internal
 #'
 #' @rdname ec2_modify_image_attribute
+#'
+#' @aliases ec2_modify_image_attribute
 ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, ImageId, LaunchPermission = NULL, OperationType = NULL, ProductCodes = NULL, UserGroups = NULL, UserIds = NULL, Value = NULL, DryRun = NULL, OrganizationArns = NULL, OrganizationalUnitArns = NULL) {
   op <- new_operation(
     name = "ModifyImageAttribute",
@@ -46143,6 +46995,8 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_attribute
+#'
+#' @aliases ec2_modify_instance_attribute
 ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NULL, BlockDeviceMappings = NULL, DisableApiTermination = NULL, DryRun = NULL, EbsOptimized = NULL, EnaSupport = NULL, Groups = NULL, InstanceId, InstanceInitiatedShutdownBehavior = NULL, InstanceType = NULL, Kernel = NULL, Ramdisk = NULL, SriovNetSupport = NULL, UserData = NULL, Value = NULL, DisableApiStop = NULL) {
   op <- new_operation(
     name = "ModifyInstanceAttribute",
@@ -46205,6 +47059,8 @@ ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NU
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_capacity_reservation_attributes
+#'
+#' @aliases ec2_modify_instance_capacity_reservation_attributes
 ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, CapacityReservationSpecification, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyInstanceCapacityReservationAttributes",
@@ -46285,6 +47141,8 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_credit_specification
+#'
+#' @aliases ec2_modify_instance_credit_specification
 ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken = NULL, InstanceCreditSpecifications) {
   op <- new_operation(
     name = "ModifyInstanceCreditSpecification",
@@ -46355,6 +47213,8 @@ ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_event_start_time
+#'
+#' @aliases ec2_modify_instance_event_start_time
 ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, InstanceEventId, NotBefore) {
   op <- new_operation(
     name = "ModifyInstanceEventStartTime",
@@ -46489,6 +47349,8 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_event_window
+#'
+#' @aliases ec2_modify_instance_event_window
 ec2_modify_instance_event_window <- function(DryRun = NULL, Name = NULL, InstanceEventWindowId, TimeRanges = NULL, CronExpression = NULL) {
   op <- new_operation(
     name = "ModifyInstanceEventWindow",
@@ -46550,6 +47412,8 @@ ec2_modify_instance_event_window <- function(DryRun = NULL, Name = NULL, Instanc
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_maintenance_options
+#'
+#' @aliases ec2_modify_instance_maintenance_options
 ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyInstanceMaintenanceOptions",
@@ -46658,6 +47522,8 @@ ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = N
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_metadata_options
+#'
+#' @aliases ec2_modify_instance_metadata_options
 ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, HttpPutResponseHopLimit = NULL, HttpEndpoint = NULL, DryRun = NULL, HttpProtocolIpv6 = NULL, InstanceMetadataTags = NULL) {
   op <- new_operation(
     name = "ModifyInstanceMetadataOptions",
@@ -46750,6 +47616,8 @@ ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_instance_placement
+#'
+#' @aliases ec2_modify_instance_placement
 ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, HostId = NULL, InstanceId, Tenancy = NULL, PartitionNumber = NULL, HostResourceGroupArn = NULL) {
   op <- new_operation(
     name = "ModifyInstancePlacement",
@@ -46843,6 +47711,8 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ipam
+#'
+#' @aliases ec2_modify_ipam
 ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperatingRegions = NULL, RemoveOperatingRegions = NULL) {
   op <- new_operation(
     name = "ModifyIpam",
@@ -46981,6 +47851,8 @@ ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperat
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ipam_pool
+#'
+#' @aliases ec2_modify_ipam_pool
 ec2_modify_ipam_pool <- function(DryRun = NULL, IpamPoolId, Description = NULL, AutoImport = NULL, AllocationMinNetmaskLength = NULL, AllocationMaxNetmaskLength = NULL, AllocationDefaultNetmaskLength = NULL, ClearAllocationDefaultNetmaskLength = NULL, AddAllocationResourceTags = NULL, RemoveAllocationResourceTags = NULL) {
   op <- new_operation(
     name = "ModifyIpamPool",
@@ -47075,6 +47947,8 @@ ec2_modify_ipam_pool <- function(DryRun = NULL, IpamPoolId, Description = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ipam_resource_cidr
+#'
+#' @aliases ec2_modify_ipam_resource_cidr
 ec2_modify_ipam_resource_cidr <- function(DryRun = NULL, ResourceId, ResourceCidr, ResourceRegion, CurrentIpamScopeId, DestinationIpamScopeId = NULL, Monitored) {
   op <- new_operation(
     name = "ModifyIpamResourceCidr",
@@ -47144,6 +48018,8 @@ ec2_modify_ipam_resource_cidr <- function(DryRun = NULL, ResourceId, ResourceCid
 #' @keywords internal
 #'
 #' @rdname ec2_modify_ipam_scope
+#'
+#' @aliases ec2_modify_ipam_scope
 ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL) {
   op <- new_operation(
     name = "ModifyIpamScope",
@@ -47238,6 +48114,8 @@ ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_modify_launch_template
+#'
+#' @aliases ec2_modify_launch_template
 ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, LaunchTemplateId = NULL, LaunchTemplateName = NULL, DefaultVersion = NULL) {
   op <- new_operation(
     name = "ModifyLaunchTemplate",
@@ -47338,6 +48216,8 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' @keywords internal
 #'
 #' @rdname ec2_modify_managed_prefix_list
+#'
+#' @aliases ec2_modify_managed_prefix_list
 ec2_modify_managed_prefix_list <- function(DryRun = NULL, PrefixListId, CurrentVersion = NULL, PrefixListName = NULL, AddEntries = NULL, RemoveEntries = NULL, MaxEntries = NULL) {
   op <- new_operation(
     name = "ModifyManagedPrefixList",
@@ -47454,6 +48334,8 @@ ec2_modify_managed_prefix_list <- function(DryRun = NULL, PrefixListId, CurrentV
 #' @keywords internal
 #'
 #' @rdname ec2_modify_network_interface_attribute
+#'
+#' @aliases ec2_modify_network_interface_attribute
 ec2_modify_network_interface_attribute <- function(Attachment = NULL, Description = NULL, DryRun = NULL, Groups = NULL, NetworkInterfaceId, SourceDestCheck = NULL) {
   op <- new_operation(
     name = "ModifyNetworkInterfaceAttribute",
@@ -47518,6 +48400,8 @@ ec2_modify_network_interface_attribute <- function(Attachment = NULL, Descriptio
 #' @keywords internal
 #'
 #' @rdname ec2_modify_private_dns_name_options
+#'
+#' @aliases ec2_modify_private_dns_name_options
 ec2_modify_private_dns_name_options <- function(DryRun = NULL, InstanceId = NULL, PrivateDnsHostnameType = NULL, EnableResourceNameDnsARecord = NULL, EnableResourceNameDnsAAAARecord = NULL) {
   op <- new_operation(
     name = "ModifyPrivateDnsNameOptions",
@@ -47594,6 +48478,8 @@ ec2_modify_private_dns_name_options <- function(DryRun = NULL, InstanceId = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_modify_reserved_instances
+#'
+#' @aliases ec2_modify_reserved_instances
 ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NULL, TargetConfigurations) {
   op <- new_operation(
     name = "ModifyReservedInstances",
@@ -47660,6 +48546,8 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 #' @keywords internal
 #'
 #' @rdname ec2_modify_security_group_rules
+#'
+#' @aliases ec2_modify_security_group_rules
 ec2_modify_security_group_rules <- function(GroupId, SecurityGroupRules, DryRun = NULL) {
   op <- new_operation(
     name = "ModifySecurityGroupRules",
@@ -47772,6 +48660,8 @@ ec2_modify_security_group_rules <- function(GroupId, SecurityGroupRules, DryRun 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_snapshot_attribute
+#'
+#' @aliases ec2_modify_snapshot_attribute
 ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermission = NULL, GroupNames = NULL, OperationType = NULL, SnapshotId, UserIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifySnapshotAttribute",
@@ -47833,6 +48723,8 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
 #' @keywords internal
 #'
 #' @rdname ec2_modify_snapshot_tier
+#'
+#' @aliases ec2_modify_snapshot_tier
 ec2_modify_snapshot_tier <- function(SnapshotId, StorageTier = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifySnapshotTier",
@@ -48024,6 +48916,8 @@ ec2_modify_snapshot_tier <- function(SnapshotId, StorageTier = NULL, DryRun = NU
 #' @keywords internal
 #'
 #' @rdname ec2_modify_spot_fleet_request
+#'
+#' @aliases ec2_modify_spot_fleet_request
 ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL, LaunchTemplateConfigs = NULL, SpotFleetRequestId, TargetCapacity = NULL, OnDemandTargetCapacity = NULL, Context = NULL) {
   op <- new_operation(
     name = "ModifySpotFleetRequest",
@@ -48163,6 +49057,8 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 #' @keywords internal
 #'
 #' @rdname ec2_modify_subnet_attribute
+#'
+#' @aliases ec2_modify_subnet_attribute
 ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapPublicIpOnLaunch = NULL, SubnetId, MapCustomerOwnedIpOnLaunch = NULL, CustomerOwnedIpv4Pool = NULL, EnableDns64 = NULL, PrivateDnsHostnameTypeOnLaunch = NULL, EnableResourceNameDnsARecordOnLaunch = NULL, EnableResourceNameDnsAAAARecordOnLaunch = NULL, EnableLniAtDeviceIndex = NULL, DisableLniAtDeviceIndex = NULL) {
   op <- new_operation(
     name = "ModifySubnetAttribute",
@@ -48285,6 +49181,8 @@ ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapP
 #' @keywords internal
 #'
 #' @rdname ec2_modify_traffic_mirror_filter_network_services
+#'
+#' @aliases ec2_modify_traffic_mirror_filter_network_services
 ec2_modify_traffic_mirror_filter_network_services <- function(TrafficMirrorFilterId, AddNetworkServices = NULL, RemoveNetworkServices = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyTrafficMirrorFilterNetworkServices",
@@ -48393,6 +49291,8 @@ ec2_modify_traffic_mirror_filter_network_services <- function(TrafficMirrorFilte
 #' @keywords internal
 #'
 #' @rdname ec2_modify_traffic_mirror_filter_rule
+#'
+#' @aliases ec2_modify_traffic_mirror_filter_rule
 ec2_modify_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, TrafficDirection = NULL, RuleNumber = NULL, RuleAction = NULL, DestinationPortRange = NULL, SourcePortRange = NULL, Protocol = NULL, DestinationCidrBlock = NULL, SourceCidrBlock = NULL, Description = NULL, RemoveFields = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyTrafficMirrorFilterRule",
@@ -48489,6 +49389,8 @@ ec2_modify_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Tra
 #' @keywords internal
 #'
 #' @rdname ec2_modify_traffic_mirror_session
+#'
+#' @aliases ec2_modify_traffic_mirror_session
 ec2_modify_traffic_mirror_session <- function(TrafficMirrorSessionId, TrafficMirrorTargetId = NULL, TrafficMirrorFilterId = NULL, PacketLength = NULL, SessionNumber = NULL, VirtualNetworkId = NULL, Description = NULL, RemoveFields = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyTrafficMirrorSession",
@@ -48591,6 +49493,8 @@ ec2_modify_traffic_mirror_session <- function(TrafficMirrorSessionId, TrafficMir
 #' @keywords internal
 #'
 #' @rdname ec2_modify_transit_gateway
+#'
+#' @aliases ec2_modify_transit_gateway
 ec2_modify_transit_gateway <- function(TransitGatewayId, Description = NULL, Options = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyTransitGateway",
@@ -48662,6 +49566,8 @@ ec2_modify_transit_gateway <- function(TransitGatewayId, Description = NULL, Opt
 #' @keywords internal
 #'
 #' @rdname ec2_modify_transit_gateway_prefix_list_reference
+#'
+#' @aliases ec2_modify_transit_gateway_prefix_list_reference
 ec2_modify_transit_gateway_prefix_list_reference <- function(TransitGatewayRouteTableId, PrefixListId, TransitGatewayAttachmentId = NULL, Blackhole = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyTransitGatewayPrefixListReference",
@@ -48751,6 +49657,8 @@ ec2_modify_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' @keywords internal
 #'
 #' @rdname ec2_modify_transit_gateway_vpc_attachment
+#'
+#' @aliases ec2_modify_transit_gateway_vpc_attachment
 ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId, AddSubnetIds = NULL, RemoveSubnetIds = NULL, Options = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyTransitGatewayVpcAttachment",
@@ -48912,6 +49820,8 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' @keywords internal
 #'
 #' @rdname ec2_modify_volume
+#'
+#' @aliases ec2_modify_volume
 ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType = NULL, Iops = NULL, Throughput = NULL, MultiAttachEnabled = NULL) {
   op <- new_operation(
     name = "ModifyVolume",
@@ -48985,6 +49895,8 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
 #' @keywords internal
 #'
 #' @rdname ec2_modify_volume_attribute
+#'
+#' @aliases ec2_modify_volume_attribute
 ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyVolumeAttribute",
@@ -49073,6 +49985,8 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_attribute
+#'
+#' @aliases ec2_modify_vpc_attribute
 ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport = NULL, VpcId) {
   op <- new_operation(
     name = "ModifyVpcAttribute",
@@ -49177,6 +50091,8 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_endpoint
+#'
+#' @aliases ec2_modify_vpc_endpoint
 ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = NULL, PolicyDocument = NULL, AddRouteTableIds = NULL, RemoveRouteTableIds = NULL, AddSubnetIds = NULL, RemoveSubnetIds = NULL, AddSecurityGroupIds = NULL, RemoveSecurityGroupIds = NULL, IpAddressType = NULL, DnsOptions = NULL, PrivateDnsEnabled = NULL) {
   op <- new_operation(
     name = "ModifyVpcEndpoint",
@@ -49238,6 +50154,8 @@ ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_endpoint_connection_notification
+#'
+#' @aliases ec2_modify_vpc_endpoint_connection_notification
 ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, ConnectionNotificationId, ConnectionNotificationArn = NULL, ConnectionEvents = NULL) {
   op <- new_operation(
     name = "ModifyVpcEndpointConnectionNotification",
@@ -49335,6 +50253,8 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_endpoint_service_configuration
+#'
+#' @aliases ec2_modify_vpc_endpoint_service_configuration
 ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, ServiceId, PrivateDnsName = NULL, RemovePrivateDnsName = NULL, AcceptanceRequired = NULL, AddNetworkLoadBalancerArns = NULL, RemoveNetworkLoadBalancerArns = NULL, AddGatewayLoadBalancerArns = NULL, RemoveGatewayLoadBalancerArns = NULL, AddSupportedIpAddressTypes = NULL, RemoveSupportedIpAddressTypes = NULL) {
   op <- new_operation(
     name = "ModifyVpcEndpointServiceConfiguration",
@@ -49390,6 +50310,8 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_endpoint_service_payer_responsibility
+#'
+#' @aliases ec2_modify_vpc_endpoint_service_payer_responsibility
 ec2_modify_vpc_endpoint_service_payer_responsibility <- function(DryRun = NULL, ServiceId, PayerResponsibility) {
   op <- new_operation(
     name = "ModifyVpcEndpointServicePayerResponsibility",
@@ -49459,6 +50381,8 @@ ec2_modify_vpc_endpoint_service_payer_responsibility <- function(DryRun = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_endpoint_service_permissions
+#'
+#' @aliases ec2_modify_vpc_endpoint_service_permissions
 ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId, AddAllowedPrincipals = NULL, RemoveAllowedPrincipals = NULL) {
   op <- new_operation(
     name = "ModifyVpcEndpointServicePermissions",
@@ -49565,6 +50489,8 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_peering_connection_options
+#'
+#' @aliases ec2_modify_vpc_peering_connection_options
 ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionOptions = NULL, DryRun = NULL, RequesterPeeringConnectionOptions = NULL, VpcPeeringConnectionId) {
   op <- new_operation(
     name = "ModifyVpcPeeringConnectionOptions",
@@ -49628,6 +50554,8 @@ ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionO
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpc_tenancy
+#'
+#' @aliases ec2_modify_vpc_tenancy
 ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyVpcTenancy",
@@ -49832,6 +50760,8 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpn_connection
+#'
+#' @aliases ec2_modify_vpn_connection
 ec2_modify_vpn_connection <- function(VpnConnectionId, TransitGatewayId = NULL, CustomerGatewayId = NULL, VpnGatewayId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyVpnConnection",
@@ -50006,6 +50936,8 @@ ec2_modify_vpn_connection <- function(VpnConnectionId, TransitGatewayId = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpn_connection_options
+#'
+#' @aliases ec2_modify_vpn_connection_options
 ec2_modify_vpn_connection_options <- function(VpnConnectionId, LocalIpv4NetworkCidr = NULL, RemoteIpv4NetworkCidr = NULL, LocalIpv6NetworkCidr = NULL, RemoteIpv6NetworkCidr = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyVpnConnectionOptions",
@@ -50158,6 +51090,8 @@ ec2_modify_vpn_connection_options <- function(VpnConnectionId, LocalIpv4NetworkC
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpn_tunnel_certificate
+#'
+#' @aliases ec2_modify_vpn_tunnel_certificate
 ec2_modify_vpn_tunnel_certificate <- function(VpnConnectionId, VpnTunnelOutsideIpAddress, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyVpnTunnelCertificate",
@@ -50366,6 +51300,8 @@ ec2_modify_vpn_tunnel_certificate <- function(VpnConnectionId, VpnTunnelOutsideI
 #' @keywords internal
 #'
 #' @rdname ec2_modify_vpn_tunnel_options
+#'
+#' @aliases ec2_modify_vpn_tunnel_options
 ec2_modify_vpn_tunnel_options <- function(VpnConnectionId, VpnTunnelOutsideIpAddress, TunnelOptions, DryRun = NULL) {
   op <- new_operation(
     name = "ModifyVpnTunnelOptions",
@@ -50432,6 +51368,8 @@ ec2_modify_vpn_tunnel_options <- function(VpnConnectionId, VpnTunnelOutsideIpAdd
 #' @keywords internal
 #'
 #' @rdname ec2_monitor_instances
+#'
+#' @aliases ec2_monitor_instances
 ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
   op <- new_operation(
     name = "MonitorInstances",
@@ -50506,6 +51444,8 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_move_address_to_vpc
+#'
+#' @aliases ec2_move_address_to_vpc
 ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
   op <- new_operation(
     name = "MoveAddressToVpc",
@@ -50572,6 +51512,8 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
 #' @keywords internal
 #'
 #' @rdname ec2_move_byoip_cidr_to_ipam
+#'
+#' @aliases ec2_move_byoip_cidr_to_ipam
 ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoolOwner) {
   op <- new_operation(
     name = "MoveByoipCidrToIpam",
@@ -50682,6 +51624,8 @@ ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoo
 #' @keywords internal
 #'
 #' @rdname ec2_provision_byoip_cidr
+#'
+#' @aliases ec2_provision_byoip_cidr
 ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, PubliclyAdvertisable = NULL, Description = NULL, DryRun = NULL, PoolTagSpecifications = NULL, MultiRegion = NULL) {
   op <- new_operation(
     name = "ProvisionByoipCidr",
@@ -50755,6 +51699,8 @@ ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, Publ
 #' @keywords internal
 #'
 #' @rdname ec2_provision_ipam_pool_cidr
+#'
+#' @aliases ec2_provision_ipam_pool_cidr
 ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, CidrAuthorizationContext = NULL) {
   op <- new_operation(
     name = "ProvisionIpamPoolCidr",
@@ -50821,6 +51767,8 @@ ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL,
 #' @keywords internal
 #'
 #' @rdname ec2_provision_public_ipv_4_pool_cidr
+#'
+#' @aliases ec2_provision_public_ipv_4_pool_cidr
 ec2_provision_public_ipv_4_pool_cidr <- function(DryRun = NULL, IpamPoolId, PoolId, NetmaskLength) {
   op <- new_operation(
     name = "ProvisionPublicIpv4PoolCidr",
@@ -50921,6 +51869,8 @@ ec2_provision_public_ipv_4_pool_cidr <- function(DryRun = NULL, IpamPoolId, Pool
 #' @keywords internal
 #'
 #' @rdname ec2_purchase_host_reservation
+#'
+#' @aliases ec2_purchase_host_reservation
 ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NULL, HostIdSet, LimitPrice = NULL, OfferingId, TagSpecifications = NULL) {
   op <- new_operation(
     name = "PurchaseHostReservation",
@@ -51004,6 +51954,8 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_purchase_reserved_instances_offering
+#'
+#' @aliases ec2_purchase_reserved_instances_offering
 ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInstancesOfferingId, DryRun = NULL, LimitPrice = NULL, PurchaseTime = NULL) {
   op <- new_operation(
     name = "PurchaseReservedInstancesOffering",
@@ -51124,6 +52076,8 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #' @keywords internal
 #'
 #' @rdname ec2_purchase_scheduled_instances
+#'
+#' @aliases ec2_purchase_scheduled_instances
 ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, PurchaseRequests) {
   op <- new_operation(
     name = "PurchaseScheduledInstances",
@@ -51192,6 +52146,8 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
 #' @keywords internal
 #'
 #' @rdname ec2_reboot_instances
+#'
+#' @aliases ec2_reboot_instances
 ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
   op <- new_operation(
     name = "RebootInstances",
@@ -51401,6 +52357,8 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_register_image
+#'
+#' @aliases ec2_register_image
 ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockDeviceMappings = NULL, Description = NULL, DryRun = NULL, EnaSupport = NULL, KernelId = NULL, Name, BillingProducts = NULL, RamdiskId = NULL, RootDeviceName = NULL, SriovNetSupport = NULL, VirtualizationType = NULL, BootMode = NULL, TpmSupport = NULL, UefiData = NULL) {
   op <- new_operation(
     name = "RegisterImage",
@@ -51467,6 +52425,8 @@ ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockD
 #' @keywords internal
 #'
 #' @rdname ec2_register_instance_event_notification_attributes
+#'
+#' @aliases ec2_register_instance_event_notification_attributes
 ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, InstanceTagAttribute = NULL) {
   op <- new_operation(
     name = "RegisterInstanceEventNotificationAttributes",
@@ -51543,6 +52503,8 @@ ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, I
 #' @keywords internal
 #'
 #' @rdname ec2_register_transit_gateway_multicast_group_members
+#'
+#' @aliases ec2_register_transit_gateway_multicast_group_members
 ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayMulticastDomainId = NULL, GroupIpAddress = NULL, NetworkInterfaceIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RegisterTransitGatewayMulticastGroupMembers",
@@ -51620,6 +52582,8 @@ ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayM
 #' @keywords internal
 #'
 #' @rdname ec2_register_transit_gateway_multicast_group_sources
+#'
+#' @aliases ec2_register_transit_gateway_multicast_group_sources
 ec2_register_transit_gateway_multicast_group_sources <- function(TransitGatewayMulticastDomainId = NULL, GroupIpAddress = NULL, NetworkInterfaceIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RegisterTransitGatewayMulticastGroupSources",
@@ -51693,6 +52657,8 @@ ec2_register_transit_gateway_multicast_group_sources <- function(TransitGatewayM
 #' @keywords internal
 #'
 #' @rdname ec2_reject_transit_gateway_multicast_domain_associations
+#'
+#' @aliases ec2_reject_transit_gateway_multicast_domain_associations
 ec2_reject_transit_gateway_multicast_domain_associations <- function(TransitGatewayMulticastDomainId = NULL, TransitGatewayAttachmentId = NULL, SubnetIds = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RejectTransitGatewayMulticastDomainAssociations",
@@ -51776,6 +52742,8 @@ ec2_reject_transit_gateway_multicast_domain_associations <- function(TransitGate
 #' @keywords internal
 #'
 #' @rdname ec2_reject_transit_gateway_peering_attachment
+#'
+#' @aliases ec2_reject_transit_gateway_peering_attachment
 ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "RejectTransitGatewayPeeringAttachment",
@@ -51856,6 +52824,8 @@ ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' @keywords internal
 #'
 #' @rdname ec2_reject_transit_gateway_vpc_attachment
+#'
+#' @aliases ec2_reject_transit_gateway_vpc_attachment
 ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId, DryRun = NULL) {
   op <- new_operation(
     name = "RejectTransitGatewayVpcAttachment",
@@ -51920,6 +52890,8 @@ ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' @keywords internal
 #'
 #' @rdname ec2_reject_vpc_endpoint_connections
+#'
+#' @aliases ec2_reject_vpc_endpoint_connections
 ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEndpointIds) {
   op <- new_operation(
     name = "RejectVpcEndpointConnections",
@@ -51976,6 +52948,8 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 #' @keywords internal
 #'
 #' @rdname ec2_reject_vpc_peering_connection
+#'
+#' @aliases ec2_reject_vpc_peering_connection
 ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectionId) {
   op <- new_operation(
     name = "RejectVpcPeeringConnection",
@@ -52078,6 +53052,8 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' @keywords internal
 #'
 #' @rdname ec2_release_address
+#'
+#' @aliases ec2_release_address
 ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBorderGroup = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ReleaseAddress",
@@ -52150,6 +53126,8 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBor
 #' @keywords internal
 #'
 #' @rdname ec2_release_hosts
+#'
+#' @aliases ec2_release_hosts
 ec2_release_hosts <- function(HostIds) {
   op <- new_operation(
     name = "ReleaseHosts",
@@ -52212,6 +53190,8 @@ ec2_release_hosts <- function(HostIds) {
 #' @keywords internal
 #'
 #' @rdname ec2_release_ipam_pool_allocation
+#'
+#' @aliases ec2_release_ipam_pool_allocation
 ec2_release_ipam_pool_allocation <- function(DryRun = NULL, IpamPoolId, Cidr, IpamPoolAllocationId) {
   op <- new_operation(
     name = "ReleaseIpamPoolAllocation",
@@ -52281,6 +53261,8 @@ ec2_release_ipam_pool_allocation <- function(DryRun = NULL, IpamPoolId, Cidr, Ip
 #' @keywords internal
 #'
 #' @rdname ec2_replace_iam_instance_profile_association
+#'
+#' @aliases ec2_replace_iam_instance_profile_association
 ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, AssociationId) {
   op <- new_operation(
     name = "ReplaceIamInstanceProfileAssociation",
@@ -52350,6 +53332,8 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 #' @keywords internal
 #'
 #' @rdname ec2_replace_network_acl_association
+#'
+#' @aliases ec2_replace_network_acl_association
 ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, NetworkAclId) {
   op <- new_operation(
     name = "ReplaceNetworkAclAssociation",
@@ -52453,6 +53437,8 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname ec2_replace_network_acl_entry
+#'
+#' @aliases ec2_replace_network_acl_entry
 ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress, IcmpTypeCode = NULL, Ipv6CidrBlock = NULL, NetworkAclId, PortRange = NULL, Protocol, RuleAction, RuleNumber) {
   op <- new_operation(
     name = "ReplaceNetworkAclEntry",
@@ -52557,6 +53543,8 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
 #' @keywords internal
 #'
 #' @rdname ec2_replace_route
+#'
+#' @aliases ec2_replace_route
 ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlock = NULL, DestinationPrefixListId = NULL, DryRun = NULL, VpcEndpointId = NULL, EgressOnlyInternetGatewayId = NULL, GatewayId = NULL, InstanceId = NULL, LocalTarget = NULL, NatGatewayId = NULL, TransitGatewayId = NULL, LocalGatewayId = NULL, CarrierGatewayId = NULL, NetworkInterfaceId = NULL, RouteTableId, VpcPeeringConnectionId = NULL, CoreNetworkArn = NULL) {
   op <- new_operation(
     name = "ReplaceRoute",
@@ -52633,6 +53621,8 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #' @keywords internal
 #'
 #' @rdname ec2_replace_route_table_association
+#'
+#' @aliases ec2_replace_route_table_association
 ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, RouteTableId) {
   op <- new_operation(
     name = "ReplaceRouteTableAssociation",
@@ -52707,6 +53697,8 @@ ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, Ro
 #' @keywords internal
 #'
 #' @rdname ec2_replace_transit_gateway_route
+#'
+#' @aliases ec2_replace_transit_gateway_route
 ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewayRouteTableId, TransitGatewayAttachmentId = NULL, Blackhole = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ReplaceTransitGatewayRoute",
@@ -52805,6 +53797,8 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
 #' @keywords internal
 #'
 #' @rdname ec2_report_instance_status
+#'
+#' @aliases ec2_report_instance_status
 ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTime = NULL, Instances, ReasonCodes, StartTime = NULL, Status) {
   op <- new_operation(
     name = "ReportInstanceStatus",
@@ -53321,6 +54315,8 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 #' @keywords internal
 #'
 #' @rdname ec2_request_spot_fleet
+#'
+#' @aliases ec2_request_spot_fleet
 ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
   op <- new_operation(
     name = "RequestSpotFleet",
@@ -53752,6 +54748,8 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' @keywords internal
 #'
 #' @rdname ec2_request_spot_instances
+#'
+#' @aliases ec2_request_spot_instances
 ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurationMinutes = NULL, ClientToken = NULL, DryRun = NULL, InstanceCount = NULL, LaunchGroup = NULL, LaunchSpecification = NULL, SpotPrice = NULL, Type = NULL, ValidFrom = NULL, ValidUntil = NULL, TagSpecifications = NULL, InstanceInterruptionBehavior = NULL) {
   op <- new_operation(
     name = "RequestSpotInstances",
@@ -53815,6 +54813,8 @@ ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurati
 #' @keywords internal
 #'
 #' @rdname ec2_reset_address_attribute
+#'
+#' @aliases ec2_reset_address_attribute
 ec2_reset_address_attribute <- function(AllocationId, Attribute, DryRun = NULL) {
   op <- new_operation(
     name = "ResetAddressAttribute",
@@ -53872,6 +54872,8 @@ ec2_reset_address_attribute <- function(AllocationId, Attribute, DryRun = NULL) 
 #' @keywords internal
 #'
 #' @rdname ec2_reset_ebs_default_kms_key_id
+#'
+#' @aliases ec2_reset_ebs_default_kms_key_id
 ec2_reset_ebs_default_kms_key_id <- function(DryRun = NULL) {
   op <- new_operation(
     name = "ResetEbsDefaultKmsKeyId",
@@ -53926,6 +54928,8 @@ ec2_reset_ebs_default_kms_key_id <- function(DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_reset_fpga_image_attribute
+#'
+#' @aliases ec2_reset_fpga_image_attribute
 ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute = NULL) {
   op <- new_operation(
     name = "ResetFpgaImageAttribute",
@@ -53984,6 +54988,8 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
 #' @keywords internal
 #'
 #' @rdname ec2_reset_image_attribute
+#'
+#' @aliases ec2_reset_image_attribute
 ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
   op <- new_operation(
     name = "ResetImageAttribute",
@@ -54053,6 +55059,8 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_reset_instance_attribute
+#'
+#' @aliases ec2_reset_instance_attribute
 ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
   op <- new_operation(
     name = "ResetInstanceAttribute",
@@ -54102,6 +55110,8 @@ ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname ec2_reset_network_interface_attribute
+#'
+#' @aliases ec2_reset_network_interface_attribute
 ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfaceId, SourceDestCheck = NULL) {
   op <- new_operation(
     name = "ResetNetworkInterfaceAttribute",
@@ -54165,6 +55175,8 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
 #' @keywords internal
 #'
 #' @rdname ec2_reset_snapshot_attribute
+#'
+#' @aliases ec2_reset_snapshot_attribute
 ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
   op <- new_operation(
     name = "ResetSnapshotAttribute",
@@ -54235,6 +55247,8 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_restore_address_to_classic
+#'
+#' @aliases ec2_restore_address_to_classic
 ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
   op <- new_operation(
     name = "RestoreAddressToClassic",
@@ -54287,6 +55301,8 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #' @keywords internal
 #'
 #' @rdname ec2_restore_image_from_recycle_bin
+#'
+#' @aliases ec2_restore_image_from_recycle_bin
 ec2_restore_image_from_recycle_bin <- function(ImageId, DryRun = NULL) {
   op <- new_operation(
     name = "RestoreImageFromRecycleBin",
@@ -54360,6 +55376,8 @@ ec2_restore_image_from_recycle_bin <- function(ImageId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_restore_managed_prefix_list_version
+#'
+#' @aliases ec2_restore_managed_prefix_list_version
 ec2_restore_managed_prefix_list_version <- function(DryRun = NULL, PrefixListId, PreviousVersion, CurrentVersion) {
   op <- new_operation(
     name = "RestoreManagedPrefixListVersion",
@@ -54424,6 +55442,8 @@ ec2_restore_managed_prefix_list_version <- function(DryRun = NULL, PrefixListId,
 #' @keywords internal
 #'
 #' @rdname ec2_restore_snapshot_from_recycle_bin
+#'
+#' @aliases ec2_restore_snapshot_from_recycle_bin
 ec2_restore_snapshot_from_recycle_bin <- function(SnapshotId, DryRun = NULL) {
   op <- new_operation(
     name = "RestoreSnapshotFromRecycleBin",
@@ -54502,6 +55522,8 @@ ec2_restore_snapshot_from_recycle_bin <- function(SnapshotId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_restore_snapshot_tier
+#'
+#' @aliases ec2_restore_snapshot_tier
 ec2_restore_snapshot_tier <- function(SnapshotId, TemporaryRestoreDays = NULL, PermanentRestore = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RestoreSnapshotTier",
@@ -54564,6 +55586,8 @@ ec2_restore_snapshot_tier <- function(SnapshotId, TemporaryRestoreDays = NULL, P
 #' @keywords internal
 #'
 #' @rdname ec2_revoke_client_vpn_ingress
+#'
+#' @aliases ec2_revoke_client_vpn_ingress
 ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr, AccessGroupId = NULL, RevokeAllGroups = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RevokeClientVpnIngress",
@@ -54732,6 +55756,8 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
 #' @keywords internal
 #'
 #' @rdname ec2_revoke_security_group_egress
+#'
+#' @aliases ec2_revoke_security_group_egress
 ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissions = NULL, SecurityGroupRuleIds = NULL, CidrIp = NULL, FromPort = NULL, IpProtocol = NULL, ToPort = NULL, SourceSecurityGroupName = NULL, SourceSecurityGroupOwnerId = NULL) {
   op <- new_operation(
     name = "RevokeSecurityGroupEgress",
@@ -54922,6 +55948,8 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
 #' @keywords internal
 #'
 #' @rdname ec2_revoke_security_group_ingress
+#'
+#' @aliases ec2_revoke_security_group_ingress
 ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, GroupId = NULL, GroupName = NULL, IpPermissions = NULL, IpProtocol = NULL, SourceSecurityGroupName = NULL, SourceSecurityGroupOwnerId = NULL, ToPort = NULL, DryRun = NULL, SecurityGroupRuleIds = NULL) {
   op <- new_operation(
     name = "RevokeSecurityGroupIngress",
@@ -55723,6 +56751,8 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' @keywords internal
 #'
 #' @rdname ec2_run_instances
+#'
+#' @aliases ec2_run_instances
 ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, InstanceType = NULL, Ipv6AddressCount = NULL, Ipv6Addresses = NULL, KernelId = NULL, KeyName = NULL, MaxCount, MinCount, Monitoring = NULL, Placement = NULL, RamdiskId = NULL, SecurityGroupIds = NULL, SecurityGroups = NULL, SubnetId = NULL, UserData = NULL, AdditionalInfo = NULL, ClientToken = NULL, DisableApiTermination = NULL, DryRun = NULL, EbsOptimized = NULL, IamInstanceProfile = NULL, InstanceInitiatedShutdownBehavior = NULL, NetworkInterfaces = NULL, PrivateIpAddress = NULL, ElasticGpuSpecification = NULL, ElasticInferenceAccelerators = NULL, TagSpecifications = NULL, LaunchTemplate = NULL, InstanceMarketOptions = NULL, CreditSpecification = NULL, CpuOptions = NULL, CapacityReservationSpecification = NULL, HibernationOptions = NULL, LicenseSpecifications = NULL, MetadataOptions = NULL, EnclaveOptions = NULL, PrivateDnsNameOptions = NULL, MaintenanceOptions = NULL, DisableApiStop = NULL) {
   op <- new_operation(
     name = "RunInstances",
@@ -55911,6 +56941,8 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #' @keywords internal
 #'
 #' @rdname ec2_run_scheduled_instances
+#'
+#' @aliases ec2_run_scheduled_instances
 ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, InstanceCount = NULL, LaunchSpecification, ScheduledInstanceId) {
   op <- new_operation(
     name = "RunScheduledInstances",
@@ -56007,6 +57039,8 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
 #' @keywords internal
 #'
 #' @rdname ec2_search_local_gateway_routes
+#'
+#' @aliases ec2_search_local_gateway_routes
 ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "SearchLocalGatewayRoutes",
@@ -56113,6 +57147,8 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters = 
 #' @keywords internal
 #'
 #' @rdname ec2_search_transit_gateway_multicast_groups
+#'
+#' @aliases ec2_search_transit_gateway_multicast_groups
 ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastDomainId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "SearchTransitGatewayMulticastGroups",
@@ -56222,6 +57258,8 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
 #' @keywords internal
 #'
 #' @rdname ec2_search_transit_gateway_routes
+#'
+#' @aliases ec2_search_transit_gateway_routes
 ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filters, MaxResults = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "SearchTransitGatewayRoutes",
@@ -56289,6 +57327,8 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #' @keywords internal
 #'
 #' @rdname ec2_send_diagnostic_interrupt
+#'
+#' @aliases ec2_send_diagnostic_interrupt
 ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
   op <- new_operation(
     name = "SendDiagnosticInterrupt",
@@ -56391,6 +57431,8 @@ ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_start_instances
+#'
+#' @aliases ec2_start_instances
 ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "StartInstances",
@@ -56479,6 +57521,8 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_start_network_insights_access_scope_analysis
+#'
+#' @aliases ec2_start_network_insights_access_scope_analysis
 ec2_start_network_insights_access_scope_analysis <- function(NetworkInsightsAccessScopeId, DryRun = NULL, TagSpecifications = NULL, ClientToken) {
   op <- new_operation(
     name = "StartNetworkInsightsAccessScopeAnalysis",
@@ -57081,6 +58125,8 @@ ec2_start_network_insights_access_scope_analysis <- function(NetworkInsightsAcce
 #' @keywords internal
 #'
 #' @rdname ec2_start_network_insights_analysis
+#'
+#' @aliases ec2_start_network_insights_analysis
 ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, FilterInArns = NULL, DryRun = NULL, TagSpecifications = NULL, ClientToken) {
   op <- new_operation(
     name = "StartNetworkInsightsAnalysis",
@@ -57140,6 +58186,8 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, FilterInA
 #' @keywords internal
 #'
 #' @rdname ec2_start_vpc_endpoint_service_private_dns_verification
+#'
+#' @aliases ec2_start_vpc_endpoint_service_private_dns_verification
 ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NULL, ServiceId) {
   op <- new_operation(
     name = "StartVpcEndpointServicePrivateDnsVerification",
@@ -57279,6 +58327,8 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
 #' @keywords internal
 #'
 #' @rdname ec2_stop_instances
+#'
+#' @aliases ec2_stop_instances
 ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, Force = NULL) {
   op <- new_operation(
     name = "StopInstances",
@@ -57352,6 +58402,8 @@ ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, For
 #' @keywords internal
 #'
 #' @rdname ec2_terminate_client_vpn_connections
+#'
+#' @aliases ec2_terminate_client_vpn_connections
 ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, ConnectionId = NULL, Username = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "TerminateClientVpnConnections",
@@ -57489,6 +58541,8 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 #' @keywords internal
 #'
 #' @rdname ec2_terminate_instances
+#'
+#' @aliases ec2_terminate_instances
 ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
   op <- new_operation(
     name = "TerminateInstances",
@@ -57551,6 +58605,8 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_unassign_ipv_6_addresses
+#'
+#' @aliases ec2_unassign_ipv_6_addresses
 ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses = NULL, Ipv6Prefixes = NULL, NetworkInterfaceId) {
   op <- new_operation(
     name = "UnassignIpv6Addresses",
@@ -57616,6 +58672,8 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses = NULL, Ipv6Prefixes = NU
 #' @keywords internal
 #'
 #' @rdname ec2_unassign_private_ip_addresses
+#'
+#' @aliases ec2_unassign_private_ip_addresses
 ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddresses = NULL, Ipv4Prefixes = NULL) {
   op <- new_operation(
     name = "UnassignPrivateIpAddresses",
@@ -57678,6 +58736,8 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
 #' @keywords internal
 #'
 #' @rdname ec2_unmonitor_instances
+#'
+#' @aliases ec2_unmonitor_instances
 ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
   op <- new_operation(
     name = "UnmonitorInstances",
@@ -57807,6 +58867,8 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' @keywords internal
 #'
 #' @rdname ec2_update_security_group_rule_descriptions_egress
+#'
+#' @aliases ec2_update_security_group_rule_descriptions_egress
 ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, GroupId = NULL, GroupName = NULL, IpPermissions = NULL, SecurityGroupRuleDescriptions = NULL) {
   op <- new_operation(
     name = "UpdateSecurityGroupRuleDescriptionsEgress",
@@ -57935,6 +58997,8 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 #' @keywords internal
 #'
 #' @rdname ec2_update_security_group_rule_descriptions_ingress
+#'
+#' @aliases ec2_update_security_group_rule_descriptions_ingress
 ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, GroupId = NULL, GroupName = NULL, IpPermissions = NULL, SecurityGroupRuleDescriptions = NULL) {
   op <- new_operation(
     name = "UpdateSecurityGroupRuleDescriptionsIngress",
@@ -57998,6 +59062,8 @@ ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, G
 #' @keywords internal
 #'
 #' @rdname ec2_withdraw_byoip_cidr
+#'
+#' @aliases ec2_withdraw_byoip_cidr
 ec2_withdraw_byoip_cidr <- function(Cidr, DryRun = NULL) {
   op <- new_operation(
     name = "WithdrawByoipCidr",

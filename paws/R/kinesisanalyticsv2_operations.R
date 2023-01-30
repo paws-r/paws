@@ -60,7 +60,9 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_add_application_cloud_watch_logging_option
+#' @rdname kinesisanalyticsv2_add_appli_cloud_watch_loggi_optio
+#'
+#' @aliases kinesisanalyticsv2_add_application_cloud_watch_logging_option
 kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId = NULL, CloudWatchLoggingOption, ConditionalToken = NULL) {
   op <- new_operation(
     name = "AddApplicationCloudWatchLoggingOption",
@@ -217,6 +219,8 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_add_application_input
+#'
+#' @aliases kinesisanalyticsv2_add_application_input
 kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApplicationVersionId, Input) {
   op <- new_operation(
     name = "AddApplicationInput",
@@ -296,7 +300,9 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_add_application_input_processing_configuration
+#' @rdname kinesisanalyticsv2_add_applic_input_proces_config
+#'
+#' @aliases kinesisanalyticsv2_add_application_input_processing_configuration
 kinesisanalyticsv2_add_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId, InputProcessingConfiguration) {
   op <- new_operation(
     name = "AddApplicationInputProcessingConfiguration",
@@ -412,6 +418,8 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_add_application_output
+#'
+#' @aliases kinesisanalyticsv2_add_application_output
 kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentApplicationVersionId, Output) {
   op <- new_operation(
     name = "AddApplicationOutput",
@@ -541,6 +549,8 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_add_application_reference_data_source
+#'
+#' @aliases kinesisanalyticsv2_add_application_reference_data_source
 kinesisanalyticsv2_add_application_reference_data_source <- function(ApplicationName, CurrentApplicationVersionId, ReferenceDataSource) {
   op <- new_operation(
     name = "AddApplicationReferenceDataSource",
@@ -635,6 +645,8 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_add_application_vpc_configuration
+#'
+#' @aliases kinesisanalyticsv2_add_application_vpc_configuration
 kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId = NULL, VpcConfiguration, ConditionalToken = NULL) {
   op <- new_operation(
     name = "AddApplicationVpcConfiguration",
@@ -1133,6 +1145,8 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_create_application
+#'
+#' @aliases kinesisanalyticsv2_create_application
 kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDescription = NULL, RuntimeEnvironment, ServiceExecutionRole, ApplicationConfiguration = NULL, CloudWatchLoggingOptions = NULL, Tags = NULL, ApplicationMode = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -1202,6 +1216,8 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_create_application_presigned_url
+#'
+#' @aliases kinesisanalyticsv2_create_application_presigned_url
 kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName, UrlType, SessionExpirationDurationInSeconds = NULL) {
   op <- new_operation(
     name = "CreateApplicationPresignedUrl",
@@ -1245,6 +1261,8 @@ kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName,
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_create_application_snapshot
+#'
+#' @aliases kinesisanalyticsv2_create_application_snapshot
 kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, SnapshotName) {
   op <- new_operation(
     name = "CreateApplicationSnapshot",
@@ -1292,6 +1310,8 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application
+#'
+#' @aliases kinesisanalyticsv2_delete_application
 kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimestamp) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -1367,7 +1387,9 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_delete_application_cloud_watch_logging_option
+#' @rdname kinesisanalyticsv2_delet_appli_cloud_watch_loggi_optio
+#'
+#' @aliases kinesisanalyticsv2_delete_application_cloud_watch_logging_option
 kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId = NULL, CloudWatchLoggingOptionId, ConditionalToken = NULL) {
   op <- new_operation(
     name = "DeleteApplicationCloudWatchLoggingOption",
@@ -1426,7 +1448,9 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_delete_application_input_processing_configuration
+#' @rdname kinesisanalyticsv2_delete_applic_input_proces_config
+#'
+#' @aliases kinesisanalyticsv2_delete_application_input_processing_configuration
 kinesisanalyticsv2_delete_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId) {
   op <- new_operation(
     name = "DeleteApplicationInputProcessingConfiguration",
@@ -1494,6 +1518,8 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application_output
+#'
+#' @aliases kinesisanalyticsv2_delete_application_output
 kinesisanalyticsv2_delete_application_output <- function(ApplicationName, CurrentApplicationVersionId, OutputId) {
   op <- new_operation(
     name = "DeleteApplicationOutput",
@@ -1561,6 +1587,8 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application_reference_data_source
+#'
+#' @aliases kinesisanalyticsv2_delete_application_reference_data_source
 kinesisanalyticsv2_delete_application_reference_data_source <- function(ApplicationName, CurrentApplicationVersionId, ReferenceId) {
   op <- new_operation(
     name = "DeleteApplicationReferenceDataSource",
@@ -1609,6 +1637,8 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application_snapshot
+#'
+#' @aliases kinesisanalyticsv2_delete_application_snapshot
 kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, SnapshotName, SnapshotCreationTimestamp) {
   op <- new_operation(
     name = "DeleteApplicationSnapshot",
@@ -1672,6 +1702,8 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_delete_application_vpc_configuration
+#'
+#' @aliases kinesisanalyticsv2_delete_application_vpc_configuration
 kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationName, CurrentApplicationVersionId = NULL, VpcConfigurationId, ConditionalToken = NULL) {
   op <- new_operation(
     name = "DeleteApplicationVpcConfiguration",
@@ -1963,6 +1995,8 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_describe_application
+#'
+#' @aliases kinesisanalyticsv2_describe_application
 kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAdditionalDetails = NULL) {
   op <- new_operation(
     name = "DescribeApplication",
@@ -2019,6 +2053,8 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_describe_application_snapshot
+#'
+#' @aliases kinesisanalyticsv2_describe_application_snapshot
 kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, SnapshotName) {
   op <- new_operation(
     name = "DescribeApplicationSnapshot",
@@ -2315,6 +2351,8 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_describe_application_version
+#'
+#' @aliases kinesisanalyticsv2_describe_application_version
 kinesisanalyticsv2_describe_application_version <- function(ApplicationName, ApplicationVersionId) {
   op <- new_operation(
     name = "DescribeApplicationVersion",
@@ -2426,6 +2464,8 @@ kinesisanalyticsv2_describe_application_version <- function(ApplicationName, App
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_discover_input_schema
+#'
+#' @aliases kinesisanalyticsv2_discover_input_schema
 kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, ServiceExecutionRole, InputStartingPositionConfiguration = NULL, S3Configuration = NULL, InputProcessingConfiguration = NULL) {
   op <- new_operation(
     name = "DiscoverInputSchema",
@@ -2489,6 +2529,8 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_list_application_snapshots
+#'
+#' @aliases kinesisanalyticsv2_list_application_snapshots
 kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplicationSnapshots",
@@ -2561,6 +2603,8 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_list_application_versions
+#'
+#' @aliases kinesisanalyticsv2_list_application_versions
 kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplicationVersions",
@@ -2626,6 +2670,8 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_list_applications
+#'
+#' @aliases kinesisanalyticsv2_list_applications
 kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -2678,6 +2724,8 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_list_tags_for_resource
+#'
+#' @aliases kinesisanalyticsv2_list_tags_for_resource
 kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2977,6 +3025,8 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_rollback_application
+#'
+#' @aliases kinesisanalyticsv2_rollback_application
 kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentApplicationVersionId) {
   op <- new_operation(
     name = "RollbackApplication",
@@ -3038,6 +3088,8 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_start_application
+#'
+#' @aliases kinesisanalyticsv2_start_application
 kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfiguration = NULL) {
   op <- new_operation(
     name = "StartApplication",
@@ -3103,6 +3155,8 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_stop_application
+#'
+#' @aliases kinesisanalyticsv2_stop_application
 kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
   op <- new_operation(
     name = "StopApplication",
@@ -3154,6 +3208,8 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_tag_resource
+#'
+#' @aliases kinesisanalyticsv2_tag_resource
 kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3201,6 +3257,8 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_untag_resource
+#'
+#' @aliases kinesisanalyticsv2_untag_resource
 kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3715,6 +3773,8 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalyticsv2_update_application
+#'
+#' @aliases kinesisanalyticsv2_update_application
 kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplicationVersionId = NULL, ApplicationConfigurationUpdate = NULL, ServiceExecutionRoleUpdate = NULL, RunConfigurationUpdate = NULL, CloudWatchLoggingOptionUpdates = NULL, ConditionalToken = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
@@ -3794,7 +3854,9 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_update_application_maintenance_configuration
+#' @rdname kinesisanalyticsv2_update_applic_mainte_config
+#'
+#' @aliases kinesisanalyticsv2_update_application_maintenance_configuration
 kinesisanalyticsv2_update_application_maintenance_configuration <- function(ApplicationName, ApplicationMaintenanceConfigurationUpdate) {
   op <- new_operation(
     name = "UpdateApplicationMaintenanceConfiguration",

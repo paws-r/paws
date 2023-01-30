@@ -50,6 +50,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_copy_backup_to_region
+#'
+#' @aliases cloudhsmv2_copy_backup_to_region
 cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagList = NULL) {
   op <- new_operation(
     name = "CopyBackupToRegion",
@@ -169,6 +171,8 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_create_cluster
+#'
+#' @aliases cloudhsmv2_create_cluster
 cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, SourceBackupId = NULL, SubnetIds, TagList = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -235,6 +239,8 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_create_hsm
+#'
+#' @aliases cloudhsmv2_create_hsm
 cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL) {
   op <- new_operation(
     name = "CreateHsm",
@@ -306,6 +312,8 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_delete_backup
+#'
+#' @aliases cloudhsmv2_delete_backup
 cloudhsmv2_delete_backup <- function(BackupId) {
   op <- new_operation(
     name = "DeleteBackup",
@@ -401,6 +409,8 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_delete_cluster
+#'
+#' @aliases cloudhsmv2_delete_cluster
 cloudhsmv2_delete_cluster <- function(ClusterId) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -459,6 +469,8 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_delete_hsm
+#'
+#' @aliases cloudhsmv2_delete_hsm
 cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp = NULL) {
   op <- new_operation(
     name = "DeleteHsm",
@@ -572,6 +584,8 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_describe_backups
+#'
+#' @aliases cloudhsmv2_describe_backups
 cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL, SortAscending = NULL) {
   op <- new_operation(
     name = "DescribeBackups",
@@ -694,6 +708,8 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_describe_clusters
+#'
+#' @aliases cloudhsmv2_describe_clusters
 cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeClusters",
@@ -757,6 +773,8 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_initialize_cluster
+#'
+#' @aliases cloudhsmv2_initialize_cluster
 cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
   op <- new_operation(
     name = "InitializeCluster",
@@ -824,6 +842,8 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_list_tags
+#'
+#' @aliases cloudhsmv2_list_tags
 cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -898,6 +918,8 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_modify_backup_attributes
+#'
+#' @aliases cloudhsmv2_modify_backup_attributes
 cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
   op <- new_operation(
     name = "ModifyBackupAttributes",
@@ -994,6 +1016,8 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_modify_cluster
+#'
+#' @aliases cloudhsmv2_modify_cluster
 cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
   op <- new_operation(
     name = "ModifyCluster",
@@ -1066,6 +1090,8 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_restore_backup
+#'
+#' @aliases cloudhsmv2_restore_backup
 cloudhsmv2_restore_backup <- function(BackupId) {
   op <- new_operation(
     name = "RestoreBackup",
@@ -1117,6 +1143,8 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_tag_resource
+#'
+#' @aliases cloudhsmv2_tag_resource
 cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
   op <- new_operation(
     name = "TagResource",
@@ -1166,6 +1194,8 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_untag_resource
+#'
+#' @aliases cloudhsmv2_untag_resource
 cloudhsmv2_untag_resource <- function(ResourceId, TagKeyList) {
   op <- new_operation(
     name = "UntagResource",

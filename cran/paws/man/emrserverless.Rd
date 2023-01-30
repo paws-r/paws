@@ -74,20 +74,20 @@ For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.compute.p2:emrserverless_cancel_job_run]{cancel_job_run} \tab Cancels a job run\cr
-\link[paws.compute.p2:emrserverless_create_application]{create_application} \tab Creates an application\cr
-\link[paws.compute.p2:emrserverless_delete_application]{delete_application} \tab Deletes an application\cr
-\link[paws.compute.p2:emrserverless_get_application]{get_application} \tab Displays detailed information about a specified application\cr
-\link[paws.compute.p2:emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
-\link[paws.compute.p2:emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
-\link[paws.compute.p2:emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
-\link[paws.compute.p2:emrserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
-\link[paws.compute.p2:emrserverless_start_application]{start_application} \tab Starts a specified application and initializes initial capacity if configured\cr
-\link[paws.compute.p2:emrserverless_start_job_run]{start_job_run} \tab Starts a job run\cr
-\link[paws.compute.p2:emrserverless_stop_application]{stop_application} \tab Stops a specified application and releases initial capacity if configured\cr
-\link[paws.compute.p2:emrserverless_tag_resource]{tag_resource} \tab Assigns tags to resources\cr
-\link[paws.compute.p2:emrserverless_untag_resource]{untag_resource} \tab Removes tags from resources\cr
-\link[paws.compute.p2:emrserverless_update_application]{update_application} \tab Updates a specified application
+\link[paws.compute:emrserverless_cancel_job_run]{cancel_job_run} \tab Cancels a job run\cr
+\link[paws.compute:emrserverless_create_application]{create_application} \tab Creates an application\cr
+\link[paws.compute:emrserverless_delete_application]{delete_application} \tab Deletes an application\cr
+\link[paws.compute:emrserverless_get_application]{get_application} \tab Displays detailed information about a specified application\cr
+\link[paws.compute:emrserverless_get_job_run]{get_job_run} \tab Displays detailed information about a job run\cr
+\link[paws.compute:emrserverless_list_applications]{list_applications} \tab Lists applications based on a set of parameters\cr
+\link[paws.compute:emrserverless_list_job_runs]{list_job_runs} \tab Lists job runs based on a set of parameters\cr
+\link[paws.compute:emrserverless_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to the resources\cr
+\link[paws.compute:emrserverless_start_application]{start_application} \tab Starts a specified application and initializes initial capacity if configured\cr
+\link[paws.compute:emrserverless_start_job_run]{start_job_run} \tab Starts a job run\cr
+\link[paws.compute:emrserverless_stop_application]{stop_application} \tab Stops a specified application and releases initial capacity if configured\cr
+\link[paws.compute:emrserverless_tag_resource]{tag_resource} \tab Assigns tags to resources\cr
+\link[paws.compute:emrserverless_untag_resource]{untag_resource} \tab Removes tags from resources\cr
+\link[paws.compute:emrserverless_update_application]{update_application} \tab Updates a specified application
 }
 }
 

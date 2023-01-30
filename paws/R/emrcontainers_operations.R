@@ -35,6 +35,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname emrcontainers_cancel_job_run
+#'
+#' @aliases emrcontainers_cancel_job_run
 emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
   op <- new_operation(
     name = "CancelJobRun",
@@ -127,6 +129,8 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_create_managed_endpoint
+#'
+#' @aliases emrcontainers_create_managed_endpoint
 emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, releaseLabel, executionRoleArn, certificateArn = NULL, configurationOverrides = NULL, clientToken, tags = NULL) {
   op <- new_operation(
     name = "CreateManagedEndpoint",
@@ -196,6 +200,8 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #' @keywords internal
 #'
 #' @rdname emrcontainers_create_virtual_cluster
+#'
+#' @aliases emrcontainers_create_virtual_cluster
 emrcontainers_create_virtual_cluster <- function(name, containerProvider, clientToken, tags = NULL) {
   op <- new_operation(
     name = "CreateVirtualCluster",
@@ -246,6 +252,8 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
 #' @keywords internal
 #'
 #' @rdname emrcontainers_delete_managed_endpoint
+#'
+#' @aliases emrcontainers_delete_managed_endpoint
 emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
   op <- new_operation(
     name = "DeleteManagedEndpoint",
@@ -296,6 +304,8 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_delete_virtual_cluster
+#'
+#' @aliases emrcontainers_delete_virtual_cluster
 emrcontainers_delete_virtual_cluster <- function(id) {
   op <- new_operation(
     name = "DeleteVirtualCluster",
@@ -396,6 +406,8 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_describe_job_run
+#'
+#' @aliases emrcontainers_describe_job_run
 emrcontainers_describe_job_run <- function(id, virtualClusterId) {
   op <- new_operation(
     name = "DescribeJobRun",
@@ -493,6 +505,8 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_describe_managed_endpoint
+#'
+#' @aliases emrcontainers_describe_managed_endpoint
 emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
   op <- new_operation(
     name = "DescribeManagedEndpoint",
@@ -564,6 +578,8 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_describe_virtual_cluster
+#'
+#' @aliases emrcontainers_describe_virtual_cluster
 emrcontainers_describe_virtual_cluster <- function(id) {
   op <- new_operation(
     name = "DescribeVirtualCluster",
@@ -684,6 +700,8 @@ emrcontainers_describe_virtual_cluster <- function(id) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_list_job_runs
+#'
+#' @aliases emrcontainers_list_job_runs
 emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, createdAfter = NULL, name = NULL, states = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListJobRuns",
@@ -803,6 +821,8 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 #' @keywords internal
 #'
 #' @rdname emrcontainers_list_managed_endpoints
+#'
+#' @aliases emrcontainers_list_managed_endpoints
 emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore = NULL, createdAfter = NULL, types = NULL, states = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListManagedEndpoints",
@@ -850,6 +870,8 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
 #' @keywords internal
 #'
 #' @rdname emrcontainers_list_tags_for_resource
+#'
+#' @aliases emrcontainers_list_tags_for_resource
 emrcontainers_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -944,6 +966,8 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_list_virtual_clusters
+#'
+#' @aliases emrcontainers_list_virtual_clusters
 emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, containerProviderType = NULL, createdAfter = NULL, createdBefore = NULL, states = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualClusters",
@@ -1038,6 +1062,8 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #' @keywords internal
 #'
 #' @rdname emrcontainers_start_job_run
+#'
+#' @aliases emrcontainers_start_job_run
 emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientToken, executionRoleArn, releaseLabel, jobDriver, configurationOverrides = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartJobRun",
@@ -1091,6 +1117,8 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
 #' @keywords internal
 #'
 #' @rdname emrcontainers_tag_resource
+#'
+#' @aliases emrcontainers_tag_resource
 emrcontainers_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1135,6 +1163,8 @@ emrcontainers_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname emrcontainers_untag_resource
+#'
+#' @aliases emrcontainers_untag_resource
 emrcontainers_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",

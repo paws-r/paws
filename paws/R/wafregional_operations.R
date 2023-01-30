@@ -49,6 +49,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname wafregional_associate_web_acl
+#'
+#' @aliases wafregional_associate_web_acl
 wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
   op <- new_operation(
     name = "AssociateWebACL",
@@ -156,6 +158,8 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_byte_match_set
+#'
+#' @aliases wafregional_create_byte_match_set
 wafregional_create_byte_match_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateByteMatchSet",
@@ -251,6 +255,8 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_geo_match_set
+#'
+#' @aliases wafregional_create_geo_match_set
 wafregional_create_geo_match_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateGeoMatchSet",
@@ -355,6 +361,8 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_ip_set
+#'
+#' @aliases wafregional_create_ip_set
 wafregional_create_ip_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateIPSet",
@@ -533,6 +541,8 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_rate_based_rule
+#'
+#' @aliases wafregional_create_rate_based_rule
 wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateRateBasedRule",
@@ -640,6 +650,8 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
 #' @keywords internal
 #'
 #' @rdname wafregional_create_regex_match_set
+#'
+#' @aliases wafregional_create_regex_match_set
 wafregional_create_regex_match_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateRegexMatchSet",
@@ -736,6 +748,8 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_regex_pattern_set
+#'
+#' @aliases wafregional_create_regex_pattern_set
 wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateRegexPatternSet",
@@ -872,6 +886,8 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_rule
+#'
+#' @aliases wafregional_create_rule
 wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
@@ -967,6 +983,8 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
 #' @keywords internal
 #'
 #' @rdname wafregional_create_rule_group
+#'
+#' @aliases wafregional_create_rule_group
 wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
@@ -1085,6 +1103,8 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
 #' @keywords internal
 #'
 #' @rdname wafregional_create_size_constraint_set
+#'
+#' @aliases wafregional_create_size_constraint_set
 wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateSizeConstraintSet",
@@ -1198,6 +1218,8 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_sql_injection_match_set
+#'
+#' @aliases wafregional_create_sql_injection_match_set
 wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateSqlInjectionMatchSet",
@@ -1362,6 +1384,8 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_create_web_acl
+#'
+#' @aliases wafregional_create_web_acl
 wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
@@ -1441,6 +1465,8 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' @keywords internal
 #'
 #' @rdname wafregional_create_web_acl_migration_stack
+#'
+#' @aliases wafregional_create_web_acl_migration_stack
 wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUnsupportedType) {
   op <- new_operation(
     name = "CreateWebACLMigrationStack",
@@ -1548,6 +1574,8 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
 #' @keywords internal
 #'
 #' @rdname wafregional_create_xss_match_set
+#'
+#' @aliases wafregional_create_xss_match_set
 wafregional_create_xss_match_set <- function(Name, ChangeToken) {
   op <- new_operation(
     name = "CreateXssMatchSet",
@@ -1640,6 +1668,8 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_byte_match_set
+#'
+#' @aliases wafregional_delete_byte_match_set
 wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteByteMatchSet",
@@ -1720,6 +1750,8 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_geo_match_set
+#'
+#' @aliases wafregional_delete_geo_match_set
 wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteGeoMatchSet",
@@ -1807,6 +1839,8 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_ip_set
+#'
+#' @aliases wafregional_delete_ip_set
 wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteIPSet",
@@ -1859,6 +1893,8 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_logging_configuration
+#'
+#' @aliases wafregional_delete_logging_configuration
 wafregional_delete_logging_configuration <- function(ResourceArn) {
   op <- new_operation(
     name = "DeleteLoggingConfiguration",
@@ -1915,6 +1951,8 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_permission_policy
+#'
+#' @aliases wafregional_delete_permission_policy
 wafregional_delete_permission_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DeletePermissionPolicy",
@@ -1998,6 +2036,8 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_rate_based_rule
+#'
+#' @aliases wafregional_delete_rate_based_rule
 wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
   op <- new_operation(
     name = "DeleteRateBasedRule",
@@ -2080,6 +2120,8 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_regex_match_set
+#'
+#' @aliases wafregional_delete_regex_match_set
 wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteRegexMatchSet",
@@ -2144,6 +2186,8 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_regex_pattern_set
+#'
+#' @aliases wafregional_delete_regex_pattern_set
 wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteRegexPatternSet",
@@ -2231,6 +2275,8 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_rule
+#'
+#' @aliases wafregional_delete_rule
 wafregional_delete_rule <- function(RuleId, ChangeToken) {
   op <- new_operation(
     name = "DeleteRule",
@@ -2311,6 +2357,8 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_rule_group
+#'
+#' @aliases wafregional_delete_rule_group
 wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
   op <- new_operation(
     name = "DeleteRuleGroup",
@@ -2405,6 +2453,8 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_size_constraint_set
+#'
+#' @aliases wafregional_delete_size_constraint_set
 wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteSizeConstraintSet",
@@ -2500,6 +2550,8 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_sql_injection_match_set
+#'
+#' @aliases wafregional_delete_sql_injection_match_set
 wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteSqlInjectionMatchSet",
@@ -2583,6 +2635,8 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_web_acl
+#'
+#' @aliases wafregional_delete_web_acl
 wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
   op <- new_operation(
     name = "DeleteWebACL",
@@ -2674,6 +2728,8 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_delete_xss_match_set
+#'
+#' @aliases wafregional_delete_xss_match_set
 wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
   op <- new_operation(
     name = "DeleteXssMatchSet",
@@ -2736,6 +2792,8 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_disassociate_web_acl
+#'
+#' @aliases wafregional_disassociate_web_acl
 wafregional_disassociate_web_acl <- function(ResourceArn) {
   op <- new_operation(
     name = "DisassociateWebACL",
@@ -2818,6 +2876,8 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_byte_match_set
+#'
+#' @aliases wafregional_get_byte_match_set
 wafregional_get_byte_match_set <- function(ByteMatchSetId) {
   op <- new_operation(
     name = "GetByteMatchSet",
@@ -2895,6 +2955,8 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_change_token
+#'
+#' @aliases wafregional_get_change_token
 wafregional_get_change_token <- function() {
   op <- new_operation(
     name = "GetChangeToken",
@@ -2974,6 +3036,8 @@ wafregional_get_change_token <- function() {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_change_token_status
+#'
+#' @aliases wafregional_get_change_token_status
 wafregional_get_change_token_status <- function(ChangeToken) {
   op <- new_operation(
     name = "GetChangeTokenStatus",
@@ -3042,6 +3106,8 @@ wafregional_get_change_token_status <- function(ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_geo_match_set
+#'
+#' @aliases wafregional_get_geo_match_set
 wafregional_get_geo_match_set <- function(GeoMatchSetId) {
   op <- new_operation(
     name = "GetGeoMatchSet",
@@ -3118,6 +3184,8 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_ip_set
+#'
+#' @aliases wafregional_get_ip_set
 wafregional_get_ip_set <- function(IPSetId) {
   op <- new_operation(
     name = "GetIPSet",
@@ -3186,6 +3254,8 @@ wafregional_get_ip_set <- function(IPSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_logging_configuration
+#'
+#' @aliases wafregional_get_logging_configuration
 wafregional_get_logging_configuration <- function(ResourceArn) {
   op <- new_operation(
     name = "GetLoggingConfiguration",
@@ -3243,6 +3313,8 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_permission_policy
+#'
+#' @aliases wafregional_get_permission_policy
 wafregional_get_permission_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "GetPermissionPolicy",
@@ -3317,6 +3389,8 @@ wafregional_get_permission_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_rate_based_rule
+#'
+#' @aliases wafregional_get_rate_based_rule
 wafregional_get_rate_based_rule <- function(RuleId) {
   op <- new_operation(
     name = "GetRateBasedRule",
@@ -3386,6 +3460,8 @@ wafregional_get_rate_based_rule <- function(RuleId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_rate_based_rule_managed_keys
+#'
+#' @aliases wafregional_get_rate_based_rule_managed_keys
 wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
   op <- new_operation(
     name = "GetRateBasedRuleManagedKeys",
@@ -3458,6 +3534,8 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
 #' @keywords internal
 #'
 #' @rdname wafregional_get_regex_match_set
+#'
+#' @aliases wafregional_get_regex_match_set
 wafregional_get_regex_match_set <- function(RegexMatchSetId) {
   op <- new_operation(
     name = "GetRegexMatchSet",
@@ -3523,6 +3601,8 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_regex_pattern_set
+#'
+#' @aliases wafregional_get_regex_pattern_set
 wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
   op <- new_operation(
     name = "GetRegexPatternSet",
@@ -3602,6 +3682,8 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_rule
+#'
+#' @aliases wafregional_get_rule
 wafregional_get_rule <- function(RuleId) {
   op <- new_operation(
     name = "GetRule",
@@ -3668,6 +3750,8 @@ wafregional_get_rule <- function(RuleId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_rule_group
+#'
+#' @aliases wafregional_get_rule_group
 wafregional_get_rule_group <- function(RuleGroupId) {
   op <- new_operation(
     name = "GetRuleGroup",
@@ -3818,6 +3902,8 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_sampled_requests
+#'
+#' @aliases wafregional_get_sampled_requests
 wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
   op <- new_operation(
     name = "GetSampledRequests",
@@ -3901,6 +3987,8 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
 #' @keywords internal
 #'
 #' @rdname wafregional_get_size_constraint_set
+#'
+#' @aliases wafregional_get_size_constraint_set
 wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
   op <- new_operation(
     name = "GetSizeConstraintSet",
@@ -3983,6 +4071,8 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_sql_injection_match_set
+#'
+#' @aliases wafregional_get_sql_injection_match_set
 wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
   op <- new_operation(
     name = "GetSqlInjectionMatchSet",
@@ -4076,6 +4166,8 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_web_acl
+#'
+#' @aliases wafregional_get_web_acl
 wafregional_get_web_acl <- function(WebACLId) {
   op <- new_operation(
     name = "GetWebACL",
@@ -4145,6 +4237,8 @@ wafregional_get_web_acl <- function(WebACLId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_web_acl_for_resource
+#'
+#' @aliases wafregional_get_web_acl_for_resource
 wafregional_get_web_acl_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "GetWebACLForResource",
@@ -4225,6 +4319,8 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafregional_get_xss_match_set
+#'
+#' @aliases wafregional_get_xss_match_set
 wafregional_get_xss_match_set <- function(XssMatchSetId) {
   op <- new_operation(
     name = "GetXssMatchSet",
@@ -4314,6 +4410,8 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_activated_rules_in_rule_group
+#'
+#' @aliases wafregional_list_activated_rules_in_rule_group
 wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListActivatedRulesInRuleGroup",
@@ -4387,6 +4485,8 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
 #' @keywords internal
 #'
 #' @rdname wafregional_list_byte_match_sets
+#'
+#' @aliases wafregional_list_byte_match_sets
 wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListByteMatchSets",
@@ -4460,6 +4560,8 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_geo_match_sets
+#'
+#' @aliases wafregional_list_geo_match_sets
 wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListGeoMatchSets",
@@ -4539,6 +4641,8 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_ip_sets
+#'
+#' @aliases wafregional_list_ip_sets
 wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListIPSets",
@@ -4622,6 +4726,8 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_logging_configurations
+#'
+#' @aliases wafregional_list_logging_configurations
 wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListLoggingConfigurations",
@@ -4694,6 +4800,8 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
 #' @keywords internal
 #'
 #' @rdname wafregional_list_rate_based_rules
+#'
+#' @aliases wafregional_list_rate_based_rules
 wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRateBasedRules",
@@ -4767,6 +4875,8 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_regex_match_sets
+#'
+#' @aliases wafregional_list_regex_match_sets
 wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRegexMatchSets",
@@ -4841,6 +4951,8 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_regex_pattern_sets
+#'
+#' @aliases wafregional_list_regex_pattern_sets
 wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRegexPatternSets",
@@ -4903,6 +5015,8 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
 #' @keywords internal
 #'
 #' @rdname wafregional_list_resources_for_web_acl
+#'
+#' @aliases wafregional_list_resources_for_web_acl
 wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL) {
   op <- new_operation(
     name = "ListResourcesForWebACL",
@@ -4975,6 +5089,8 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
 #' @keywords internal
 #'
 #' @rdname wafregional_list_rule_groups
+#'
+#' @aliases wafregional_list_rule_groups
 wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRuleGroups",
@@ -5055,6 +5171,8 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_rules
+#'
+#' @aliases wafregional_list_rules
 wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRules",
@@ -5138,6 +5256,8 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_size_constraint_sets
+#'
+#' @aliases wafregional_list_size_constraint_sets
 wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListSizeConstraintSets",
@@ -5220,6 +5340,8 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
 #' @keywords internal
 #'
 #' @rdname wafregional_list_sql_injection_match_sets
+#'
+#' @aliases wafregional_list_sql_injection_match_sets
 wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListSqlInjectionMatchSets",
@@ -5294,6 +5416,8 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
 #' @keywords internal
 #'
 #' @rdname wafregional_list_subscribed_rule_groups
+#'
+#' @aliases wafregional_list_subscribed_rule_groups
 wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListSubscribedRuleGroups",
@@ -5373,6 +5497,8 @@ wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = N
 #' @keywords internal
 #'
 #' @rdname wafregional_list_tags_for_resource
+#'
+#' @aliases wafregional_list_tags_for_resource
 wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -5454,6 +5580,8 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
 #' @keywords internal
 #'
 #' @rdname wafregional_list_web_ac_ls
+#'
+#' @aliases wafregional_list_web_ac_ls
 wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListWebACLs",
@@ -5535,6 +5663,8 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_list_xss_match_sets
+#'
+#' @aliases wafregional_list_xss_match_sets
 wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListXssMatchSets",
@@ -5642,6 +5772,8 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafregional_put_logging_configuration
+#'
+#' @aliases wafregional_put_logging_configuration
 wafregional_put_logging_configuration <- function(LoggingConfiguration) {
   op <- new_operation(
     name = "PutLoggingConfiguration",
@@ -5728,6 +5860,8 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
 #' @keywords internal
 #'
 #' @rdname wafregional_put_permission_policy
+#'
+#' @aliases wafregional_put_permission_policy
 wafregional_put_permission_policy <- function(ResourceArn, Policy) {
   op <- new_operation(
     name = "PutPermissionPolicy",
@@ -5795,6 +5929,8 @@ wafregional_put_permission_policy <- function(ResourceArn, Policy) {
 #' @keywords internal
 #'
 #' @rdname wafregional_tag_resource
+#'
+#' @aliases wafregional_tag_resource
 wafregional_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5848,6 +5984,8 @@ wafregional_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname wafregional_untag_resource
+#'
+#' @aliases wafregional_untag_resource
 wafregional_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -6002,6 +6140,8 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname wafregional_update_byte_match_set
+#'
+#' @aliases wafregional_update_byte_match_set
 wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateByteMatchSet",
@@ -6115,6 +6255,8 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 #' @keywords internal
 #'
 #' @rdname wafregional_update_geo_match_set
+#'
+#' @aliases wafregional_update_geo_match_set
 wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateGeoMatchSet",
@@ -6268,6 +6410,8 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' @keywords internal
 #'
 #' @rdname wafregional_update_ip_set
+#'
+#' @aliases wafregional_update_ip_set
 wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateIPSet",
@@ -6389,6 +6533,8 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' @keywords internal
 #'
 #' @rdname wafregional_update_rate_based_rule
+#'
+#' @aliases wafregional_update_rate_based_rule
 wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) {
   op <- new_operation(
     name = "UpdateRateBasedRule",
@@ -6508,6 +6654,8 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
 #' @keywords internal
 #'
 #' @rdname wafregional_update_regex_match_set
+#'
+#' @aliases wafregional_update_regex_match_set
 wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
   op <- new_operation(
     name = "UpdateRegexMatchSet",
@@ -6616,6 +6764,8 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
 #' @keywords internal
 #'
 #' @rdname wafregional_update_regex_pattern_set
+#'
+#' @aliases wafregional_update_regex_pattern_set
 wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken) {
   op <- new_operation(
     name = "UpdateRegexPatternSet",
@@ -6754,6 +6904,8 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #' @keywords internal
 #'
 #' @rdname wafregional_update_rule
+#'
+#' @aliases wafregional_update_rule
 wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateRule",
@@ -6873,6 +7025,8 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' @keywords internal
 #'
 #' @rdname wafregional_update_rule_group
+#'
+#' @aliases wafregional_update_rule_group
 wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
   op <- new_operation(
     name = "UpdateRuleGroup",
@@ -7036,6 +7190,8 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' @keywords internal
 #'
 #' @rdname wafregional_update_size_constraint_set
+#'
+#' @aliases wafregional_update_size_constraint_set
 wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateSizeConstraintSet",
@@ -7188,6 +7344,8 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' @keywords internal
 #'
 #' @rdname wafregional_update_sql_injection_match_set
+#'
+#' @aliases wafregional_update_sql_injection_match_set
 wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateSqlInjectionMatchSet",
@@ -7390,6 +7548,8 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' @keywords internal
 #'
 #' @rdname wafregional_update_web_acl
+#'
+#' @aliases wafregional_update_web_acl
 wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAction = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
@@ -7533,6 +7693,8 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #' @keywords internal
 #'
 #' @rdname wafregional_update_xss_match_set
+#'
+#' @aliases wafregional_update_xss_match_set
 wafregional_update_xss_match_set <- function(XssMatchSetId, ChangeToken, Updates) {
   op <- new_operation(
     name = "UpdateXssMatchSet",

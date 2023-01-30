@@ -48,6 +48,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname schemas_create_discoverer
+#'
+#' @aliases schemas_create_discoverer
 schemas_create_discoverer <- function(Description = NULL, SourceArn, CrossAccount = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDiscoverer",
@@ -104,6 +106,8 @@ schemas_create_discoverer <- function(Description = NULL, SourceArn, CrossAccoun
 #' @keywords internal
 #'
 #' @rdname schemas_create_registry
+#'
+#' @aliases schemas_create_registry
 schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NULL) {
   op <- new_operation(
     name = "CreateRegistry",
@@ -177,6 +181,8 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
 #' @keywords internal
 #'
 #' @rdname schemas_create_schema
+#'
+#' @aliases schemas_create_schema
 schemas_create_schema <- function(Content, Description = NULL, RegistryName, SchemaName, Tags = NULL, Type) {
   op <- new_operation(
     name = "CreateSchema",
@@ -217,6 +223,8 @@ schemas_create_schema <- function(Content, Description = NULL, RegistryName, Sch
 #' @keywords internal
 #'
 #' @rdname schemas_delete_discoverer
+#'
+#' @aliases schemas_delete_discoverer
 schemas_delete_discoverer <- function(DiscovererId) {
   op <- new_operation(
     name = "DeleteDiscoverer",
@@ -257,6 +265,8 @@ schemas_delete_discoverer <- function(DiscovererId) {
 #' @keywords internal
 #'
 #' @rdname schemas_delete_registry
+#'
+#' @aliases schemas_delete_registry
 schemas_delete_registry <- function(RegistryName) {
   op <- new_operation(
     name = "DeleteRegistry",
@@ -297,6 +307,8 @@ schemas_delete_registry <- function(RegistryName) {
 #' @keywords internal
 #'
 #' @rdname schemas_delete_resource_policy
+#'
+#' @aliases schemas_delete_resource_policy
 schemas_delete_resource_policy <- function(RegistryName = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -339,6 +351,8 @@ schemas_delete_resource_policy <- function(RegistryName = NULL) {
 #' @keywords internal
 #'
 #' @rdname schemas_delete_schema
+#'
+#' @aliases schemas_delete_schema
 schemas_delete_schema <- function(RegistryName, SchemaName) {
   op <- new_operation(
     name = "DeleteSchema",
@@ -383,6 +397,8 @@ schemas_delete_schema <- function(RegistryName, SchemaName) {
 #' @keywords internal
 #'
 #' @rdname schemas_delete_schema_version
+#'
+#' @aliases schemas_delete_schema_version
 schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersion) {
   op <- new_operation(
     name = "DeleteSchemaVersion",
@@ -442,6 +458,8 @@ schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersio
 #' @keywords internal
 #'
 #' @rdname schemas_describe_code_binding
+#'
+#' @aliases schemas_describe_code_binding
 schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, SchemaVersion = NULL) {
   op <- new_operation(
     name = "DescribeCodeBinding",
@@ -495,6 +513,8 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
 #' @keywords internal
 #'
 #' @rdname schemas_describe_discoverer
+#'
+#' @aliases schemas_describe_discoverer
 schemas_describe_discoverer <- function(DiscovererId) {
   op <- new_operation(
     name = "DescribeDiscoverer",
@@ -545,6 +565,8 @@ schemas_describe_discoverer <- function(DiscovererId) {
 #' @keywords internal
 #'
 #' @rdname schemas_describe_registry
+#'
+#' @aliases schemas_describe_registry
 schemas_describe_registry <- function(RegistryName) {
   op <- new_operation(
     name = "DescribeRegistry",
@@ -608,6 +630,8 @@ schemas_describe_registry <- function(RegistryName) {
 #' @keywords internal
 #'
 #' @rdname schemas_describe_schema
+#'
+#' @aliases schemas_describe_schema
 schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL) {
   op <- new_operation(
     name = "DescribeSchema",
@@ -663,6 +687,8 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 #' @keywords internal
 #'
 #' @rdname schemas_export_schema
+#'
+#' @aliases schemas_export_schema
 schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL, Type) {
   op <- new_operation(
     name = "ExportSchema",
@@ -715,6 +741,8 @@ schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL
 #' @keywords internal
 #'
 #' @rdname schemas_get_code_binding_source
+#'
+#' @aliases schemas_get_code_binding_source
 schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, SchemaVersion = NULL) {
   op <- new_operation(
     name = "GetCodeBindingSource",
@@ -766,6 +794,8 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
 #' @keywords internal
 #'
 #' @rdname schemas_get_discovered_schema
+#'
+#' @aliases schemas_get_discovered_schema
 schemas_get_discovered_schema <- function(Events, Type) {
   op <- new_operation(
     name = "GetDiscoveredSchema",
@@ -812,6 +842,8 @@ schemas_get_discovered_schema <- function(Events, Type) {
 #' @keywords internal
 #'
 #' @rdname schemas_get_resource_policy
+#'
+#' @aliases schemas_get_resource_policy
 schemas_get_resource_policy <- function(RegistryName = NULL) {
   op <- new_operation(
     name = "GetResourcePolicy",
@@ -880,6 +912,8 @@ schemas_get_resource_policy <- function(RegistryName = NULL) {
 #' @keywords internal
 #'
 #' @rdname schemas_list_discoverers
+#'
+#' @aliases schemas_list_discoverers
 schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, NextToken = NULL, SourceArnPrefix = NULL) {
   op <- new_operation(
     name = "ListDiscoverers",
@@ -944,6 +978,8 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname schemas_list_registries
+#'
+#' @aliases schemas_list_registries
 schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryNamePrefix = NULL, Scope = NULL) {
   op <- new_operation(
     name = "ListRegistries",
@@ -1005,6 +1041,8 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
 #' @keywords internal
 #'
 #' @rdname schemas_list_schema_versions
+#'
+#' @aliases schemas_list_schema_versions
 schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, RegistryName, SchemaName) {
   op <- new_operation(
     name = "ListSchemaVersions",
@@ -1072,6 +1110,8 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
 #' @keywords internal
 #'
 #' @rdname schemas_list_schemas
+#'
+#' @aliases schemas_list_schemas
 schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, SchemaNamePrefix = NULL) {
   op <- new_operation(
     name = "ListSchemas",
@@ -1119,6 +1159,8 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
 #' @keywords internal
 #'
 #' @rdname schemas_list_tags_for_resource
+#'
+#' @aliases schemas_list_tags_for_resource
 schemas_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1178,6 +1220,8 @@ schemas_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname schemas_put_code_binding
+#'
+#' @aliases schemas_put_code_binding
 schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaVersion = NULL) {
   op <- new_operation(
     name = "PutCodeBinding",
@@ -1228,6 +1272,8 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
 #' @keywords internal
 #'
 #' @rdname schemas_put_resource_policy
+#'
+#' @aliases schemas_put_resource_policy
 schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -1298,6 +1344,8 @@ schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId 
 #' @keywords internal
 #'
 #' @rdname schemas_search_schemas
+#'
+#' @aliases schemas_search_schemas
 schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, RegistryName) {
   op <- new_operation(
     name = "SearchSchemas",
@@ -1344,6 +1392,8 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
 #' @keywords internal
 #'
 #' @rdname schemas_start_discoverer
+#'
+#' @aliases schemas_start_discoverer
 schemas_start_discoverer <- function(DiscovererId) {
   op <- new_operation(
     name = "StartDiscoverer",
@@ -1390,6 +1440,8 @@ schemas_start_discoverer <- function(DiscovererId) {
 #' @keywords internal
 #'
 #' @rdname schemas_stop_discoverer
+#'
+#' @aliases schemas_stop_discoverer
 schemas_stop_discoverer <- function(DiscovererId) {
   op <- new_operation(
     name = "StopDiscoverer",
@@ -1434,6 +1486,8 @@ schemas_stop_discoverer <- function(DiscovererId) {
 #' @keywords internal
 #'
 #' @rdname schemas_tag_resource
+#'
+#' @aliases schemas_tag_resource
 schemas_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1478,6 +1532,8 @@ schemas_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname schemas_untag_resource
+#'
+#' @aliases schemas_untag_resource
 schemas_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1536,6 +1592,8 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname schemas_update_discoverer
+#'
+#' @aliases schemas_update_discoverer
 schemas_update_discoverer <- function(Description = NULL, DiscovererId, CrossAccount = NULL) {
   op <- new_operation(
     name = "UpdateDiscoverer",
@@ -1588,6 +1646,8 @@ schemas_update_discoverer <- function(Description = NULL, DiscovererId, CrossAcc
 #' @keywords internal
 #'
 #' @rdname schemas_update_registry
+#'
+#' @aliases schemas_update_registry
 schemas_update_registry <- function(Description = NULL, RegistryName) {
   op <- new_operation(
     name = "UpdateRegistry",
@@ -1659,6 +1719,8 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 #' @keywords internal
 #'
 #' @rdname schemas_update_schema
+#'
+#' @aliases schemas_update_schema
 schemas_update_schema <- function(ClientTokenId = NULL, Content = NULL, Description = NULL, RegistryName, SchemaName, Type = NULL) {
   op <- new_operation(
     name = "UpdateSchema",

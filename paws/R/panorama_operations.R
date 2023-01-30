@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname panorama_create_application_instance
+#'
+#' @aliases panorama_create_application_instance
 panorama_create_application_instance <- function(ApplicationInstanceIdToReplace = NULL, DefaultRuntimeContextDevice, Description = NULL, ManifestOverridesPayload = NULL, ManifestPayload, Name = NULL, RuntimeRoleArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplicationInstance",
@@ -113,6 +115,8 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
 #' @keywords internal
 #'
 #' @rdname panorama_create_job_for_devices
+#'
+#' @aliases panorama_create_job_for_devices
 panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig, JobType) {
   op <- new_operation(
     name = "CreateJobForDevices",
@@ -181,6 +185,8 @@ panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig, JobType)
 #' @keywords internal
 #'
 #' @rdname panorama_create_node_from_template_job
+#'
+#' @aliases panorama_create_node_from_template_job
 panorama_create_node_from_template_job <- function(JobTags = NULL, NodeDescription = NULL, NodeName, OutputPackageName, OutputPackageVersion, TemplateParameters, TemplateType) {
   op <- new_operation(
     name = "CreateNodeFromTemplateJob",
@@ -238,6 +244,8 @@ panorama_create_node_from_template_job <- function(JobTags = NULL, NodeDescripti
 #' @keywords internal
 #'
 #' @rdname panorama_create_package
+#'
+#' @aliases panorama_create_package
 panorama_create_package <- function(PackageName, Tags = NULL) {
   op <- new_operation(
     name = "CreatePackage",
@@ -313,6 +321,8 @@ panorama_create_package <- function(PackageName, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname panorama_create_package_import_job
+#'
+#' @aliases panorama_create_package_import_job
 panorama_create_package_import_job <- function(ClientToken, InputConfig, JobTags = NULL, JobType, OutputConfig) {
   op <- new_operation(
     name = "CreatePackageImportJob",
@@ -358,6 +368,8 @@ panorama_create_package_import_job <- function(ClientToken, InputConfig, JobTags
 #' @keywords internal
 #'
 #' @rdname panorama_delete_device
+#'
+#' @aliases panorama_delete_device
 panorama_delete_device <- function(DeviceId) {
   op <- new_operation(
     name = "DeleteDevice",
@@ -404,6 +416,8 @@ panorama_delete_device <- function(DeviceId) {
 #' @keywords internal
 #'
 #' @rdname panorama_delete_package
+#'
+#' @aliases panorama_delete_package
 panorama_delete_package <- function(ForceDelete = NULL, PackageId) {
   op <- new_operation(
     name = "DeletePackage",
@@ -453,6 +467,8 @@ panorama_delete_package <- function(ForceDelete = NULL, PackageId) {
 #' @keywords internal
 #'
 #' @rdname panorama_deregister_package_version
+#'
+#' @aliases panorama_deregister_package_version
 panorama_deregister_package_version <- function(OwnerAccount = NULL, PackageId, PackageVersion, PatchVersion, UpdatedLatestPatchVersion = NULL) {
   op <- new_operation(
     name = "DeregisterPackageVersion",
@@ -517,6 +533,8 @@ panorama_deregister_package_version <- function(OwnerAccount = NULL, PackageId, 
 #' @keywords internal
 #'
 #' @rdname panorama_describe_application_instance
+#'
+#' @aliases panorama_describe_application_instance
 panorama_describe_application_instance <- function(ApplicationInstanceId) {
   op <- new_operation(
     name = "DescribeApplicationInstance",
@@ -577,6 +595,8 @@ panorama_describe_application_instance <- function(ApplicationInstanceId) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_application_instance_details
+#'
+#' @aliases panorama_describe_application_instance_details
 panorama_describe_application_instance_details <- function(ApplicationInstanceId) {
   op <- new_operation(
     name = "DescribeApplicationInstanceDetails",
@@ -696,6 +716,8 @@ panorama_describe_application_instance_details <- function(ApplicationInstanceId
 #' @keywords internal
 #'
 #' @rdname panorama_describe_device
+#'
+#' @aliases panorama_describe_device
 panorama_describe_device <- function(DeviceId) {
   op <- new_operation(
     name = "DescribeDevice",
@@ -750,6 +772,8 @@ panorama_describe_device <- function(DeviceId) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_device_job
+#'
+#' @aliases panorama_describe_device_job
 panorama_describe_device_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeDeviceJob",
@@ -831,6 +855,8 @@ panorama_describe_device_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_node
+#'
+#' @aliases panorama_describe_node
 panorama_describe_node <- function(NodeId, OwnerAccount = NULL) {
   op <- new_operation(
     name = "DescribeNode",
@@ -900,6 +926,8 @@ panorama_describe_node <- function(NodeId, OwnerAccount = NULL) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_node_from_template_job
+#'
+#' @aliases panorama_describe_node_from_template_job
 panorama_describe_node_from_template_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeNodeFromTemplateJob",
@@ -966,6 +994,8 @@ panorama_describe_node_from_template_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_package
+#'
+#' @aliases panorama_describe_package
 panorama_describe_package <- function(PackageId) {
   op <- new_operation(
     name = "DescribePackage",
@@ -1054,6 +1084,8 @@ panorama_describe_package <- function(PackageId) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_package_import_job
+#'
+#' @aliases panorama_describe_package_import_job
 panorama_describe_package_import_job <- function(JobId) {
   op <- new_operation(
     name = "DescribePackageImportJob",
@@ -1117,6 +1149,8 @@ panorama_describe_package_import_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname panorama_describe_package_version
+#'
+#' @aliases panorama_describe_package_version
 panorama_describe_package_version <- function(OwnerAccount = NULL, PackageId, PackageVersion, PatchVersion = NULL) {
   op <- new_operation(
     name = "DescribePackageVersion",
@@ -1176,6 +1210,8 @@ panorama_describe_package_version <- function(OwnerAccount = NULL, PackageId, Pa
 #' @keywords internal
 #'
 #' @rdname panorama_list_application_instance_dependencies
+#'
+#' @aliases panorama_list_application_instance_dependencies
 panorama_list_application_instance_dependencies <- function(ApplicationInstanceId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplicationInstanceDependencies",
@@ -1238,6 +1274,8 @@ panorama_list_application_instance_dependencies <- function(ApplicationInstanceI
 #' @keywords internal
 #'
 #' @rdname panorama_list_application_instance_node_instances
+#'
+#' @aliases panorama_list_application_instance_node_instances
 panorama_list_application_instance_node_instances <- function(ApplicationInstanceId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplicationInstanceNodeInstances",
@@ -1311,6 +1349,8 @@ panorama_list_application_instance_node_instances <- function(ApplicationInstanc
 #' @keywords internal
 #'
 #' @rdname panorama_list_application_instances
+#'
+#' @aliases panorama_list_application_instances
 panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NULL, NextToken = NULL, StatusFilter = NULL) {
   op <- new_operation(
     name = "ListApplicationInstances",
@@ -1376,6 +1416,8 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname panorama_list_devices
+#'
+#' @aliases panorama_list_devices
 panorama_list_devices <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDevices",
@@ -1436,6 +1478,8 @@ panorama_list_devices <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname panorama_list_devices_jobs
+#'
+#' @aliases panorama_list_devices_jobs
 panorama_list_devices_jobs <- function(DeviceId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDevicesJobs",
@@ -1497,6 +1541,8 @@ panorama_list_devices_jobs <- function(DeviceId = NULL, MaxResults = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname panorama_list_node_from_template_jobs
+#'
+#' @aliases panorama_list_node_from_template_jobs
 panorama_list_node_from_template_jobs <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListNodeFromTemplateJobs",
@@ -1573,6 +1619,8 @@ panorama_list_node_from_template_jobs <- function(MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname panorama_list_nodes
+#'
+#' @aliases panorama_list_nodes
 panorama_list_nodes <- function(Category = NULL, MaxResults = NULL, NextToken = NULL, OwnerAccount = NULL, PackageName = NULL, PackageVersion = NULL, PatchVersion = NULL) {
   op <- new_operation(
     name = "ListNodes",
@@ -1636,6 +1684,8 @@ panorama_list_nodes <- function(Category = NULL, MaxResults = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname panorama_list_package_import_jobs
+#'
+#' @aliases panorama_list_package_import_jobs
 panorama_list_package_import_jobs <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPackageImportJobs",
@@ -1697,6 +1747,8 @@ panorama_list_package_import_jobs <- function(MaxResults = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname panorama_list_packages
+#'
+#' @aliases panorama_list_packages
 panorama_list_packages <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPackages",
@@ -1744,6 +1796,8 @@ panorama_list_packages <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname panorama_list_tags_for_resource
+#'
+#' @aliases panorama_list_tags_for_resource
 panorama_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1835,6 +1889,8 @@ panorama_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname panorama_provision_device
+#'
+#' @aliases panorama_provision_device
 panorama_provision_device <- function(Description = NULL, Name, NetworkingConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ProvisionDevice",
@@ -1884,6 +1940,8 @@ panorama_provision_device <- function(Description = NULL, Name, NetworkingConfig
 #' @keywords internal
 #'
 #' @rdname panorama_register_package_version
+#'
+#' @aliases panorama_register_package_version
 panorama_register_package_version <- function(MarkLatest = NULL, OwnerAccount = NULL, PackageId, PackageVersion, PatchVersion) {
   op <- new_operation(
     name = "RegisterPackageVersion",
@@ -1924,6 +1982,8 @@ panorama_register_package_version <- function(MarkLatest = NULL, OwnerAccount = 
 #' @keywords internal
 #'
 #' @rdname panorama_remove_application_instance
+#'
+#' @aliases panorama_remove_application_instance
 panorama_remove_application_instance <- function(ApplicationInstanceId) {
   op <- new_operation(
     name = "RemoveApplicationInstance",
@@ -1968,6 +2028,8 @@ panorama_remove_application_instance <- function(ApplicationInstanceId) {
 #' @keywords internal
 #'
 #' @rdname panorama_tag_resource
+#'
+#' @aliases panorama_tag_resource
 panorama_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2012,6 +2074,8 @@ panorama_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname panorama_untag_resource
+#'
+#' @aliases panorama_untag_resource
 panorama_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2059,6 +2123,8 @@ panorama_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname panorama_update_device_metadata
+#'
+#' @aliases panorama_update_device_metadata
 panorama_update_device_metadata <- function(Description = NULL, DeviceId) {
   op <- new_operation(
     name = "UpdateDeviceMetadata",

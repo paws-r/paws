@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_cancel_resource_request
+#'
+#' @aliases cloudcontrolapi_cancel_resource_request
 cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
   op <- new_operation(
     name = "CancelResourceRequest",
@@ -163,6 +165,8 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_create_resource
+#'
+#' @aliases cloudcontrolapi_create_resource
 cloudcontrolapi_create_resource <- function(TypeName, TypeVersionId = NULL, RoleArn = NULL, ClientToken = NULL, DesiredState) {
   op <- new_operation(
     name = "CreateResource",
@@ -282,6 +286,8 @@ cloudcontrolapi_create_resource <- function(TypeName, TypeVersionId = NULL, Role
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_delete_resource
+#'
+#' @aliases cloudcontrolapi_delete_resource
 cloudcontrolapi_delete_resource <- function(TypeName, TypeVersionId = NULL, RoleArn = NULL, ClientToken = NULL, Identifier) {
   op <- new_operation(
     name = "DeleteResource",
@@ -372,6 +378,8 @@ cloudcontrolapi_delete_resource <- function(TypeName, TypeVersionId = NULL, Role
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_get_resource
+#'
+#' @aliases cloudcontrolapi_get_resource
 cloudcontrolapi_get_resource <- function(TypeName, TypeVersionId = NULL, RoleArn = NULL, Identifier) {
   op <- new_operation(
     name = "GetResource",
@@ -439,6 +447,8 @@ cloudcontrolapi_get_resource <- function(TypeName, TypeVersionId = NULL, RoleArn
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_get_resource_request_status
+#'
+#' @aliases cloudcontrolapi_get_resource_request_status
 cloudcontrolapi_get_resource_request_status <- function(RequestToken) {
   op <- new_operation(
     name = "GetResourceRequestStatus",
@@ -530,6 +540,8 @@ cloudcontrolapi_get_resource_request_status <- function(RequestToken) {
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_list_resource_requests
+#'
+#' @aliases cloudcontrolapi_list_resource_requests
 cloudcontrolapi_list_resource_requests <- function(MaxResults = NULL, NextToken = NULL, ResourceRequestStatusFilter = NULL) {
   op <- new_operation(
     name = "ListResourceRequests",
@@ -619,6 +631,8 @@ cloudcontrolapi_list_resource_requests <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_list_resources
+#'
+#' @aliases cloudcontrolapi_list_resources
 cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleArn = NULL, NextToken = NULL, MaxResults = NULL, ResourceModel = NULL) {
   op <- new_operation(
     name = "ListResources",
@@ -758,6 +772,8 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
 #' @keywords internal
 #'
 #' @rdname cloudcontrolapi_update_resource
+#'
+#' @aliases cloudcontrolapi_update_resource
 cloudcontrolapi_update_resource <- function(TypeName, TypeVersionId = NULL, RoleArn = NULL, ClientToken = NULL, Identifier, PatchDocument) {
   op <- new_operation(
     name = "UpdateResource",

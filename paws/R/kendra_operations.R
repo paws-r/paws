@@ -51,6 +51,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kendra_associate_entities_to_experience
+#'
+#' @aliases kendra_associate_entities_to_experience
 kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
   op <- new_operation(
     name = "AssociateEntitiesToExperience",
@@ -121,6 +123,8 @@ kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
 #' @keywords internal
 #'
 #' @rdname kendra_associate_personas_to_entities
+#'
+#' @aliases kendra_associate_personas_to_entities
 kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
   op <- new_operation(
     name = "AssociatePersonasToEntities",
@@ -188,6 +192,8 @@ kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
 #' @keywords internal
 #'
 #' @rdname kendra_batch_delete_document
+#'
+#' @aliases kendra_batch_delete_document
 kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSyncJobMetricTarget = NULL) {
   op <- new_operation(
     name = "BatchDeleteDocument",
@@ -289,6 +295,8 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' @keywords internal
 #'
 #' @rdname kendra_batch_get_document_status
+#'
+#' @aliases kendra_batch_get_document_status
 kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
   op <- new_operation(
     name = "BatchGetDocumentStatus",
@@ -503,6 +511,8 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
 #' @keywords internal
 #'
 #' @rdname kendra_batch_put_document
+#'
+#' @aliases kendra_batch_put_document
 kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "BatchPutDocument",
@@ -552,6 +562,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents, Custom
 #' @keywords internal
 #'
 #' @rdname kendra_clear_query_suggestions
+#'
+#' @aliases kendra_clear_query_suggestions
 kendra_clear_query_suggestions <- function(IndexId) {
   op <- new_operation(
     name = "ClearQuerySuggestions",
@@ -663,6 +675,8 @@ kendra_clear_query_suggestions <- function(IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_create_access_control_configuration
+#'
+#' @aliases kendra_create_access_control_configuration
 kendra_create_access_control_configuration <- function(IndexId, Name, Description = NULL, AccessControlList = NULL, HierarchicalAccessControlList = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateAccessControlConfiguration",
@@ -1642,6 +1656,8 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
 #' @keywords internal
 #'
 #' @rdname kendra_create_data_source
+#'
+#' @aliases kendra_create_data_source
 kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, Tags = NULL, ClientToken = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
@@ -1727,6 +1743,8 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' @keywords internal
 #'
 #' @rdname kendra_create_experience
+#'
+#' @aliases kendra_create_experience
 kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuration = NULL, Description = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateExperience",
@@ -1823,6 +1841,8 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 #' @keywords internal
 #'
 #' @rdname kendra_create_faq
+#'
+#' @aliases kendra_create_faq
 kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn, Tags = NULL, FileFormat = NULL, ClientToken = NULL, LanguageCode = NULL) {
   op <- new_operation(
     name = "CreateFaq",
@@ -1963,6 +1983,8 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @keywords internal
 #'
 #' @rdname kendra_create_index
+#'
+#' @aliases kendra_create_index
 kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncryptionConfiguration = NULL, Description = NULL, ClientToken = NULL, Tags = NULL, UserTokenConfigurations = NULL, UserContextPolicy = NULL, UserGroupResolutionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateIndex",
@@ -2070,6 +2092,8 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 #' @keywords internal
 #'
 #' @rdname kendra_create_query_suggestions_block_list
+#'
+#' @aliases kendra_create_query_suggestions_block_list
 kendra_create_query_suggestions_block_list <- function(IndexId, Name, Description = NULL, SourceS3Path, ClientToken = NULL, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateQuerySuggestionsBlockList",
@@ -2146,6 +2170,8 @@ kendra_create_query_suggestions_block_list <- function(IndexId, Name, Descriptio
 #' @keywords internal
 #'
 #' @rdname kendra_create_thesaurus
+#'
+#' @aliases kendra_create_thesaurus
 kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, Tags = NULL, SourceS3Path, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateThesaurus",
@@ -2193,6 +2219,8 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
 #' @keywords internal
 #'
 #' @rdname kendra_delete_access_control_configuration
+#'
+#' @aliases kendra_delete_access_control_configuration
 kendra_delete_access_control_configuration <- function(IndexId, Id) {
   op <- new_operation(
     name = "DeleteAccessControlConfiguration",
@@ -2240,6 +2268,8 @@ kendra_delete_access_control_configuration <- function(IndexId, Id) {
 #' @keywords internal
 #'
 #' @rdname kendra_delete_data_source
+#'
+#' @aliases kendra_delete_data_source
 kendra_delete_data_source <- function(Id, IndexId) {
   op <- new_operation(
     name = "DeleteDataSource",
@@ -2285,6 +2315,8 @@ kendra_delete_data_source <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_delete_experience
+#'
+#' @aliases kendra_delete_experience
 kendra_delete_experience <- function(Id, IndexId) {
   op <- new_operation(
     name = "DeleteExperience",
@@ -2327,6 +2359,8 @@ kendra_delete_experience <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_delete_faq
+#'
+#' @aliases kendra_delete_faq
 kendra_delete_faq <- function(Id, IndexId) {
   op <- new_operation(
     name = "DeleteFaq",
@@ -2370,6 +2404,8 @@ kendra_delete_faq <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_delete_index
+#'
+#' @aliases kendra_delete_index
 kendra_delete_index <- function(Id) {
   op <- new_operation(
     name = "DeleteIndex",
@@ -2461,6 +2497,8 @@ kendra_delete_index <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname kendra_delete_principal_mapping
+#'
+#' @aliases kendra_delete_principal_mapping
 kendra_delete_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, OrderingId = NULL) {
   op <- new_operation(
     name = "DeletePrincipalMapping",
@@ -2511,6 +2549,8 @@ kendra_delete_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupI
 #' @keywords internal
 #'
 #' @rdname kendra_delete_query_suggestions_block_list
+#'
+#' @aliases kendra_delete_query_suggestions_block_list
 kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
   op <- new_operation(
     name = "DeleteQuerySuggestionsBlockList",
@@ -2553,6 +2593,8 @@ kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
 #' @keywords internal
 #'
 #' @rdname kendra_delete_thesaurus
+#'
+#' @aliases kendra_delete_thesaurus
 kendra_delete_thesaurus <- function(Id, IndexId) {
   op <- new_operation(
     name = "DeleteThesaurus",
@@ -2628,6 +2670,8 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_access_control_configuration
+#'
+#' @aliases kendra_describe_access_control_configuration
 kendra_describe_access_control_configuration <- function(IndexId, Id) {
   op <- new_operation(
     name = "DescribeAccessControlConfiguration",
@@ -3539,6 +3583,8 @@ kendra_describe_access_control_configuration <- function(IndexId, Id) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_data_source
+#'
+#' @aliases kendra_describe_data_source
 kendra_describe_data_source <- function(Id, IndexId) {
   op <- new_operation(
     name = "DescribeDataSource",
@@ -3623,6 +3669,8 @@ kendra_describe_data_source <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_experience
+#'
+#' @aliases kendra_describe_experience
 kendra_describe_experience <- function(Id, IndexId) {
   op <- new_operation(
     name = "DescribeExperience",
@@ -3688,6 +3736,8 @@ kendra_describe_experience <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_faq
+#'
+#' @aliases kendra_describe_faq
 kendra_describe_faq <- function(Id, IndexId) {
   op <- new_operation(
     name = "DescribeFaq",
@@ -3803,6 +3853,8 @@ kendra_describe_faq <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_index
+#'
+#' @aliases kendra_describe_index
 kendra_describe_index <- function(Id) {
   op <- new_operation(
     name = "DescribeIndex",
@@ -3880,6 +3932,8 @@ kendra_describe_index <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_principal_mapping
+#'
+#' @aliases kendra_describe_principal_mapping
 kendra_describe_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId) {
   op <- new_operation(
     name = "DescribePrincipalMapping",
@@ -3954,6 +4008,8 @@ kendra_describe_principal_mapping <- function(IndexId, DataSourceId = NULL, Grou
 #' @keywords internal
 #'
 #' @rdname kendra_describe_query_suggestions_block_list
+#'
+#' @aliases kendra_describe_query_suggestions_block_list
 kendra_describe_query_suggestions_block_list <- function(IndexId, Id) {
   op <- new_operation(
     name = "DescribeQuerySuggestionsBlockList",
@@ -4018,6 +4074,8 @@ kendra_describe_query_suggestions_block_list <- function(IndexId, Id) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_query_suggestions_config
+#'
+#' @aliases kendra_describe_query_suggestions_config
 kendra_describe_query_suggestions_config <- function(IndexId) {
   op <- new_operation(
     name = "DescribeQuerySuggestionsConfig",
@@ -4084,6 +4142,8 @@ kendra_describe_query_suggestions_config <- function(IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_describe_thesaurus
+#'
+#' @aliases kendra_describe_thesaurus
 kendra_describe_thesaurus <- function(Id, IndexId) {
   op <- new_operation(
     name = "DescribeThesaurus",
@@ -4149,6 +4209,8 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_disassociate_entities_from_experience
+#'
+#' @aliases kendra_disassociate_entities_from_experience
 kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList) {
   op <- new_operation(
     name = "DisassociateEntitiesFromExperience",
@@ -4213,6 +4275,8 @@ kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList
 #' @keywords internal
 #'
 #' @rdname kendra_disassociate_personas_from_entities
+#'
+#' @aliases kendra_disassociate_personas_from_entities
 kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
   op <- new_operation(
     name = "DisassociatePersonasFromEntities",
@@ -4289,6 +4353,8 @@ kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
 #' @keywords internal
 #'
 #' @rdname kendra_get_query_suggestions
+#'
+#' @aliases kendra_get_query_suggestions
 kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount = NULL) {
   op <- new_operation(
     name = "GetQuerySuggestions",
@@ -4389,6 +4455,8 @@ kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount
 #' @keywords internal
 #'
 #' @rdname kendra_get_snapshots
+#'
+#' @aliases kendra_get_snapshots
 kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetSnapshots",
@@ -4450,6 +4518,8 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname kendra_list_access_control_configurations
+#'
+#' @aliases kendra_list_access_control_configurations
 kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccessControlConfigurations",
@@ -4541,6 +4611,8 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname kendra_list_data_source_sync_jobs
+#'
+#' @aliases kendra_list_data_source_sync_jobs
 kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, MaxResults = NULL, StartTimeFilter = NULL, StatusFilter = NULL) {
   op <- new_operation(
     name = "ListDataSourceSyncJobs",
@@ -4608,6 +4680,8 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname kendra_list_data_sources
+#'
+#' @aliases kendra_list_data_sources
 kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDataSources",
@@ -4676,6 +4750,8 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname kendra_list_entity_personas
+#'
+#' @aliases kendra_list_entity_personas
 kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntityPersonas",
@@ -4747,6 +4823,8 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname kendra_list_experience_entities
+#'
+#' @aliases kendra_list_experience_entities
 kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
   op <- new_operation(
     name = "ListExperienceEntities",
@@ -4819,6 +4897,8 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname kendra_list_experiences
+#'
+#' @aliases kendra_list_experiences
 kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListExperiences",
@@ -4886,6 +4966,8 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname kendra_list_faqs
+#'
+#' @aliases kendra_list_faqs
 kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFaqs",
@@ -4959,6 +5041,8 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname kendra_list_groups_older_than_ordering_id
+#'
+#' @aliases kendra_list_groups_older_than_ordering_id
 kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NULL, OrderingId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListGroupsOlderThanOrderingId",
@@ -5023,6 +5107,8 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
 #' @keywords internal
 #'
 #' @rdname kendra_list_indices
+#'
+#' @aliases kendra_list_indices
 kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListIndices",
@@ -5103,6 +5189,8 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname kendra_list_query_suggestions_block_lists
+#'
+#' @aliases kendra_list_query_suggestions_block_lists
 kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQuerySuggestionsBlockLists",
@@ -5155,6 +5243,8 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname kendra_list_tags_for_resource
+#'
+#' @aliases kendra_list_tags_for_resource
 kendra_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -5220,6 +5310,8 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname kendra_list_thesauri
+#'
+#' @aliases kendra_list_thesauri
 kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListThesauri",
@@ -5343,6 +5435,8 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname kendra_put_principal_mapping
+#'
+#' @aliases kendra_put_principal_mapping
 kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, GroupMembers, OrderingId = NULL, RoleArn = NULL) {
   op <- new_operation(
     name = "PutPrincipalMapping",
@@ -5720,6 +5814,8 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' @keywords internal
 #'
 #' @rdname kendra_query
+#'
+#' @aliases kendra_query
 kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL, SpellCorrectionConfiguration = NULL) {
   op <- new_operation(
     name = "Query",
@@ -5769,6 +5865,8 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #' @keywords internal
 #'
 #' @rdname kendra_start_data_source_sync_job
+#'
+#' @aliases kendra_start_data_source_sync_job
 kendra_start_data_source_sync_job <- function(Id, IndexId) {
   op <- new_operation(
     name = "StartDataSourceSyncJob",
@@ -5813,6 +5911,8 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_stop_data_source_sync_job
+#'
+#' @aliases kendra_stop_data_source_sync_job
 kendra_stop_data_source_sync_job <- function(Id, IndexId) {
   op <- new_operation(
     name = "StopDataSourceSyncJob",
@@ -5881,6 +5981,8 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 #' @keywords internal
 #'
 #' @rdname kendra_submit_feedback
+#'
+#' @aliases kendra_submit_feedback
 kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, RelevanceFeedbackItems = NULL) {
   op <- new_operation(
     name = "SubmitFeedback",
@@ -5932,6 +6034,8 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 #' @keywords internal
 #'
 #' @rdname kendra_tag_resource
+#'
+#' @aliases kendra_tag_resource
 kendra_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5978,6 +6082,8 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname kendra_untag_resource
+#'
+#' @aliases kendra_untag_resource
 kendra_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -6076,6 +6182,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname kendra_update_access_control_configuration
+#'
+#' @aliases kendra_update_access_control_configuration
 kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL, Description = NULL, AccessControlList = NULL, HierarchicalAccessControlList = NULL) {
   op <- new_operation(
     name = "UpdateAccessControlConfiguration",
@@ -6996,6 +7104,8 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
 #' @keywords internal
 #'
 #' @rdname kendra_update_data_source
+#'
+#' @aliases kendra_update_data_source
 kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = NULL, Description = NULL, Schedule = NULL, RoleArn = NULL, LanguageCode = NULL, CustomDocumentEnrichmentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
@@ -7069,6 +7179,8 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' @keywords internal
 #'
 #' @rdname kendra_update_experience
+#'
+#' @aliases kendra_update_experience
 kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, Configuration = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateExperience",
@@ -7181,6 +7293,8 @@ kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, C
 #' @keywords internal
 #'
 #' @rdname kendra_update_index
+#'
+#' @aliases kendra_update_index
 kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = NULL, DocumentMetadataConfigurationUpdates = NULL, CapacityUnits = NULL, UserTokenConfigurations = NULL, UserContextPolicy = NULL, UserGroupResolutionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateIndex",
@@ -7262,6 +7376,8 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
 #' @keywords internal
 #'
 #' @rdname kendra_update_query_suggestions_block_list
+#'
+#' @aliases kendra_update_query_suggestions_block_list
 kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL, Description = NULL, SourceS3Path = NULL, RoleArn = NULL) {
   op <- new_operation(
     name = "UpdateQuerySuggestionsBlockList",
@@ -7369,6 +7485,8 @@ kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL,
 #' @keywords internal
 #'
 #' @rdname kendra_update_query_suggestions_config
+#'
+#' @aliases kendra_update_query_suggestions_config
 kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLogLookBackWindowInDays = NULL, IncludeQueriesWithoutUserInformation = NULL, MinimumNumberOfQueryingUsers = NULL, MinimumQueryCount = NULL) {
   op <- new_operation(
     name = "UpdateQuerySuggestionsConfig",
@@ -7424,6 +7542,8 @@ kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLo
 #' @keywords internal
 #'
 #' @rdname kendra_update_thesaurus
+#'
+#' @aliases kendra_update_thesaurus
 kendra_update_thesaurus <- function(Id, Name = NULL, IndexId, Description = NULL, RoleArn = NULL, SourceS3Path = NULL) {
   op <- new_operation(
     name = "UpdateThesaurus",

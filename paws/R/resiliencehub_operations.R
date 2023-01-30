@@ -74,6 +74,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname resiliencehub_add_draft_app_version_resource_mappings
+#'
+#' @aliases resiliencehub_add_draft_app_version_resource_mappings
 resiliencehub_add_draft_app_version_resource_mappings <- function(appArn, resourceMappings) {
   op <- new_operation(
     name = "AddDraftAppVersionResourceMappings",
@@ -168,6 +170,8 @@ resiliencehub_add_draft_app_version_resource_mappings <- function(appArn, resour
 #' @keywords internal
 #'
 #' @rdname resiliencehub_create_app
+#'
+#' @aliases resiliencehub_create_app
 resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NULL, description = NULL, name, policyArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApp",
@@ -293,6 +297,8 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
 #' @keywords internal
 #'
 #' @rdname resiliencehub_create_recommendation_template
+#'
+#' @aliases resiliencehub_create_recommendation_template
 resiliencehub_create_recommendation_template <- function(assessmentArn, bucketName = NULL, clientToken = NULL, format = NULL, name, recommendationIds = NULL, recommendationTypes = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRecommendationTemplate",
@@ -384,6 +390,8 @@ resiliencehub_create_recommendation_template <- function(assessmentArn, bucketNa
 #' @keywords internal
 #'
 #' @rdname resiliencehub_create_resiliency_policy
+#'
+#' @aliases resiliencehub_create_resiliency_policy
 resiliencehub_create_resiliency_policy <- function(clientToken = NULL, dataLocationConstraint = NULL, policy, policyDescription = NULL, policyName, tags = NULL, tier) {
   op <- new_operation(
     name = "CreateResiliencyPolicy",
@@ -440,6 +448,8 @@ resiliencehub_create_resiliency_policy <- function(clientToken = NULL, dataLocat
 #' @keywords internal
 #'
 #' @rdname resiliencehub_delete_app
+#'
+#' @aliases resiliencehub_delete_app
 resiliencehub_delete_app <- function(appArn, clientToken = NULL, forceDelete = NULL) {
   op <- new_operation(
     name = "DeleteApp",
@@ -496,6 +506,8 @@ resiliencehub_delete_app <- function(appArn, clientToken = NULL, forceDelete = N
 #' @keywords internal
 #'
 #' @rdname resiliencehub_delete_app_assessment
+#'
+#' @aliases resiliencehub_delete_app_assessment
 resiliencehub_delete_app_assessment <- function(assessmentArn, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteAppAssessment",
@@ -548,6 +560,8 @@ resiliencehub_delete_app_assessment <- function(assessmentArn, clientToken = NUL
 #' @keywords internal
 #'
 #' @rdname resiliencehub_delete_recommendation_template
+#'
+#' @aliases resiliencehub_delete_recommendation_template
 resiliencehub_delete_recommendation_template <- function(clientToken = NULL, recommendationTemplateArn) {
   op <- new_operation(
     name = "DeleteRecommendationTemplate",
@@ -603,6 +617,8 @@ resiliencehub_delete_recommendation_template <- function(clientToken = NULL, rec
 #' @keywords internal
 #'
 #' @rdname resiliencehub_delete_resiliency_policy
+#'
+#' @aliases resiliencehub_delete_resiliency_policy
 resiliencehub_delete_resiliency_policy <- function(clientToken = NULL, policyArn) {
   op <- new_operation(
     name = "DeleteResiliencyPolicy",
@@ -673,6 +689,8 @@ resiliencehub_delete_resiliency_policy <- function(clientToken = NULL, policyArn
 #' @keywords internal
 #'
 #' @rdname resiliencehub_describe_app
+#'
+#' @aliases resiliencehub_describe_app
 resiliencehub_describe_app <- function(appArn) {
   op <- new_operation(
     name = "DescribeApp",
@@ -796,6 +814,8 @@ resiliencehub_describe_app <- function(appArn) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_describe_app_assessment
+#'
+#' @aliases resiliencehub_describe_app_assessment
 resiliencehub_describe_app_assessment <- function(assessmentArn) {
   op <- new_operation(
     name = "DescribeAppAssessment",
@@ -856,7 +876,9 @@ resiliencehub_describe_app_assessment <- function(assessmentArn) {
 #'
 #' @keywords internal
 #'
-#' @rdname resiliencehub_describe_app_version_resources_resolution_status
+#' @rdname resiliencehub_descri_app_versio_resour_resolu_status
+#'
+#' @aliases resiliencehub_describe_app_version_resources_resolution_status
 resiliencehub_describe_app_version_resources_resolution_status <- function(appArn, appVersion, resolutionId = NULL) {
   op <- new_operation(
     name = "DescribeAppVersionResourcesResolutionStatus",
@@ -910,6 +932,8 @@ resiliencehub_describe_app_version_resources_resolution_status <- function(appAr
 #' @keywords internal
 #'
 #' @rdname resiliencehub_describe_app_version_template
+#'
+#' @aliases resiliencehub_describe_app_version_template
 resiliencehub_describe_app_version_template <- function(appArn, appVersion) {
   op <- new_operation(
     name = "DescribeAppVersionTemplate",
@@ -964,7 +988,9 @@ resiliencehub_describe_app_version_template <- function(appArn, appVersion) {
 #'
 #' @keywords internal
 #'
-#' @rdname resiliencehub_describe_draft_app_version_resources_import_status
+#' @rdname resiliencehub_descr_draft_app_versi_resou_impor_statu
+#'
+#' @aliases resiliencehub_describe_draft_app_version_resources_import_status
 resiliencehub_describe_draft_app_version_resources_import_status <- function(appArn) {
   op <- new_operation(
     name = "DescribeDraftAppVersionResourcesImportStatus",
@@ -1038,6 +1064,8 @@ resiliencehub_describe_draft_app_version_resources_import_status <- function(app
 #' @keywords internal
 #'
 #' @rdname resiliencehub_describe_resiliency_policy
+#'
+#' @aliases resiliencehub_describe_resiliency_policy
 resiliencehub_describe_resiliency_policy <- function(policyArn) {
   op <- new_operation(
     name = "DescribeResiliencyPolicy",
@@ -1113,6 +1141,8 @@ resiliencehub_describe_resiliency_policy <- function(policyArn) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_import_resources_to_draft_app_version
+#'
+#' @aliases resiliencehub_import_resources_to_draft_app_version
 resiliencehub_import_resources_to_draft_app_version <- function(appArn, sourceArns = NULL, terraformSources = NULL) {
   op <- new_operation(
     name = "ImportResourcesToDraftAppVersion",
@@ -1189,6 +1219,8 @@ resiliencehub_import_resources_to_draft_app_version <- function(appArn, sourceAr
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_alarm_recommendations
+#'
+#' @aliases resiliencehub_list_alarm_recommendations
 resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAlarmRecommendations",
@@ -1285,6 +1317,8 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_app_assessments
+#'
+#' @aliases resiliencehub_list_app_assessments
 resiliencehub_list_app_assessments <- function(appArn = NULL, assessmentName = NULL, assessmentStatus = NULL, complianceStatus = NULL, invoker = NULL, maxResults = NULL, nextToken = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "ListAppAssessments",
@@ -1374,6 +1408,8 @@ resiliencehub_list_app_assessments <- function(appArn = NULL, assessmentName = N
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_app_component_compliances
+#'
+#' @aliases resiliencehub_list_app_component_compliances
 resiliencehub_list_app_component_compliances <- function(assessmentArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAppComponentCompliances",
@@ -1478,6 +1514,8 @@ resiliencehub_list_app_component_compliances <- function(assessmentArn, maxResul
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_app_component_recommendations
+#'
+#' @aliases resiliencehub_list_app_component_recommendations
 resiliencehub_list_app_component_recommendations <- function(assessmentArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAppComponentRecommendations",
@@ -1555,6 +1593,8 @@ resiliencehub_list_app_component_recommendations <- function(assessmentArn, maxR
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_app_version_resource_mappings
+#'
+#' @aliases resiliencehub_list_app_version_resource_mappings
 resiliencehub_list_app_version_resource_mappings <- function(appArn, appVersion, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAppVersionResourceMappings",
@@ -1640,6 +1680,8 @@ resiliencehub_list_app_version_resource_mappings <- function(appArn, appVersion,
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_app_version_resources
+#'
+#' @aliases resiliencehub_list_app_version_resources
 resiliencehub_list_app_version_resources <- function(appArn, appVersion, maxResults = NULL, nextToken = NULL, resolutionId = NULL) {
   op <- new_operation(
     name = "ListAppVersionResources",
@@ -1700,6 +1742,8 @@ resiliencehub_list_app_version_resources <- function(appArn, appVersion, maxResu
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_app_versions
+#'
+#' @aliases resiliencehub_list_app_versions
 resiliencehub_list_app_versions <- function(appArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAppVersions",
@@ -1770,6 +1814,8 @@ resiliencehub_list_app_versions <- function(appArn, maxResults = NULL, nextToken
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_apps
+#'
+#' @aliases resiliencehub_list_apps
 resiliencehub_list_apps <- function(appArn = NULL, maxResults = NULL, name = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListApps",
@@ -1869,6 +1915,8 @@ resiliencehub_list_apps <- function(appArn = NULL, maxResults = NULL, name = NUL
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_recommendation_templates
+#'
+#' @aliases resiliencehub_list_recommendation_templates
 resiliencehub_list_recommendation_templates <- function(assessmentArn, maxResults = NULL, name = NULL, nextToken = NULL, recommendationTemplateArn = NULL, reverseOrder = NULL, status = NULL) {
   op <- new_operation(
     name = "ListRecommendationTemplates",
@@ -1943,6 +1991,8 @@ resiliencehub_list_recommendation_templates <- function(assessmentArn, maxResult
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_resiliency_policies
+#'
+#' @aliases resiliencehub_list_resiliency_policies
 resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken = NULL, policyName = NULL) {
   op <- new_operation(
     name = "ListResiliencyPolicies",
@@ -2021,6 +2071,8 @@ resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken 
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_sop_recommendations
+#'
+#' @aliases resiliencehub_list_sop_recommendations
 resiliencehub_list_sop_recommendations <- function(assessmentArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSopRecommendations",
@@ -2094,6 +2146,8 @@ resiliencehub_list_sop_recommendations <- function(assessmentArn, maxResults = N
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_suggested_resiliency_policies
+#'
+#' @aliases resiliencehub_list_suggested_resiliency_policies
 resiliencehub_list_suggested_resiliency_policies <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSuggestedResiliencyPolicies",
@@ -2142,6 +2196,8 @@ resiliencehub_list_suggested_resiliency_policies <- function(maxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_tags_for_resource
+#'
+#' @aliases resiliencehub_list_tags_for_resource
 resiliencehub_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2223,6 +2279,8 @@ resiliencehub_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_test_recommendations
+#'
+#' @aliases resiliencehub_list_test_recommendations
 resiliencehub_list_test_recommendations <- function(assessmentArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListTestRecommendations",
@@ -2304,6 +2362,8 @@ resiliencehub_list_test_recommendations <- function(assessmentArn, maxResults = 
 #' @keywords internal
 #'
 #' @rdname resiliencehub_list_unsupported_app_version_resources
+#'
+#' @aliases resiliencehub_list_unsupported_app_version_resources
 resiliencehub_list_unsupported_app_version_resources <- function(appArn, appVersion, maxResults = NULL, nextToken = NULL, resolutionId = NULL) {
   op <- new_operation(
     name = "ListUnsupportedAppVersionResources",
@@ -2354,6 +2414,8 @@ resiliencehub_list_unsupported_app_version_resources <- function(appArn, appVers
 #' @keywords internal
 #'
 #' @rdname resiliencehub_publish_app_version
+#'
+#' @aliases resiliencehub_publish_app_version
 resiliencehub_publish_app_version <- function(appArn) {
   op <- new_operation(
     name = "PublishAppVersion",
@@ -2408,6 +2470,8 @@ resiliencehub_publish_app_version <- function(appArn) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_put_draft_app_version_template
+#'
+#' @aliases resiliencehub_put_draft_app_version_template
 resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody) {
   op <- new_operation(
     name = "PutDraftAppVersionTemplate",
@@ -2482,6 +2546,8 @@ resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody
 #' @keywords internal
 #'
 #' @rdname resiliencehub_remove_draft_app_version_resource_mappings
+#'
+#' @aliases resiliencehub_remove_draft_app_version_resource_mappings
 resiliencehub_remove_draft_app_version_resource_mappings <- function(appArn, appRegistryAppNames = NULL, logicalStackNames = NULL, resourceGroupNames = NULL, resourceNames = NULL, terraformSourceNames = NULL) {
   op <- new_operation(
     name = "RemoveDraftAppVersionResourceMappings",
@@ -2536,6 +2602,8 @@ resiliencehub_remove_draft_app_version_resource_mappings <- function(appArn, app
 #' @keywords internal
 #'
 #' @rdname resiliencehub_resolve_app_version_resources
+#'
+#' @aliases resiliencehub_resolve_app_version_resources
 resiliencehub_resolve_app_version_resources <- function(appArn, appVersion) {
   op <- new_operation(
     name = "ResolveAppVersionResources",
@@ -2672,6 +2740,8 @@ resiliencehub_resolve_app_version_resources <- function(appArn, appVersion) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_start_app_assessment
+#'
+#' @aliases resiliencehub_start_app_assessment
 resiliencehub_start_app_assessment <- function(appArn, appVersion, assessmentName, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "StartAppAssessment",
@@ -2717,6 +2787,8 @@ resiliencehub_start_app_assessment <- function(appArn, appVersion, assessmentNam
 #' @keywords internal
 #'
 #' @rdname resiliencehub_tag_resource
+#'
+#' @aliases resiliencehub_tag_resource
 resiliencehub_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2761,6 +2833,8 @@ resiliencehub_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_untag_resource
+#'
+#' @aliases resiliencehub_untag_resource
 resiliencehub_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2845,6 +2919,8 @@ resiliencehub_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname resiliencehub_update_app
+#'
+#' @aliases resiliencehub_update_app
 resiliencehub_update_app <- function(appArn, assessmentSchedule = NULL, clearResiliencyPolicyArn = NULL, description = NULL, policyArn = NULL) {
   op <- new_operation(
     name = "UpdateApp",
@@ -2933,6 +3009,8 @@ resiliencehub_update_app <- function(appArn, assessmentSchedule = NULL, clearRes
 #' @keywords internal
 #'
 #' @rdname resiliencehub_update_resiliency_policy
+#'
+#' @aliases resiliencehub_update_resiliency_policy
 resiliencehub_update_resiliency_policy <- function(dataLocationConstraint = NULL, policy = NULL, policyArn, policyDescription = NULL, policyName = NULL, tier = NULL) {
   op <- new_operation(
     name = "UpdateResiliencyPolicy",

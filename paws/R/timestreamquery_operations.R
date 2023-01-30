@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname timestreamquery_cancel_query
+#'
+#' @aliases timestreamquery_cancel_query
 timestreamquery_cancel_query <- function(QueryId) {
   op <- new_operation(
     name = "CancelQuery",
@@ -194,6 +196,8 @@ timestreamquery_cancel_query <- function(QueryId) {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_create_scheduled_query
+#'
+#' @aliases timestreamquery_create_scheduled_query
 timestreamquery_create_scheduled_query <- function(Name, QueryString, ScheduleConfiguration, NotificationConfiguration, TargetConfiguration = NULL, ClientToken = NULL, ScheduledQueryExecutionRoleArn, Tags = NULL, KmsKeyId = NULL, ErrorReportConfiguration) {
   op <- new_operation(
     name = "CreateScheduledQuery",
@@ -234,6 +238,8 @@ timestreamquery_create_scheduled_query <- function(Name, QueryString, ScheduleCo
 #' @keywords internal
 #'
 #' @rdname timestreamquery_delete_scheduled_query
+#'
+#' @aliases timestreamquery_delete_scheduled_query
 timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
   op <- new_operation(
     name = "DeleteScheduledQuery",
@@ -299,6 +305,8 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_describe_endpoints
+#'
+#' @aliases timestreamquery_describe_endpoints
 timestreamquery_describe_endpoints <- function() {
   op <- new_operation(
     name = "DescribeEndpoints",
@@ -462,6 +470,8 @@ timestreamquery_describe_endpoints <- function() {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_describe_scheduled_query
+#'
+#' @aliases timestreamquery_describe_scheduled_query
 timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
   op <- new_operation(
     name = "DescribeScheduledQuery",
@@ -510,6 +520,8 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_execute_scheduled_query
+#'
+#' @aliases timestreamquery_execute_scheduled_query
 timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, InvocationTime, ClientToken = NULL) {
   op <- new_operation(
     name = "ExecuteScheduledQuery",
@@ -595,6 +607,8 @@ timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, Invocatio
 #' @keywords internal
 #'
 #' @rdname timestreamquery_list_scheduled_queries
+#'
+#' @aliases timestreamquery_list_scheduled_queries
 timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListScheduledQueries",
@@ -652,6 +666,8 @@ timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname timestreamquery_list_tags_for_resource
+#'
+#' @aliases timestreamquery_list_tags_for_resource
 timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -754,6 +770,8 @@ timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname timestreamquery_prepare_query
+#'
+#' @aliases timestreamquery_prepare_query
 timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
   op <- new_operation(
     name = "PrepareQuery",
@@ -937,6 +955,8 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_query
+#'
+#' @aliases timestreamquery_query
 timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = NULL, MaxRows = NULL) {
   op <- new_operation(
     name = "Query",
@@ -987,6 +1007,8 @@ timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname timestreamquery_tag_resource
+#'
+#' @aliases timestreamquery_tag_resource
 timestreamquery_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1033,6 +1055,8 @@ timestreamquery_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_untag_resource
+#'
+#' @aliases timestreamquery_untag_resource
 timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1075,6 +1099,8 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname timestreamquery_update_scheduled_query
+#'
+#' @aliases timestreamquery_update_scheduled_query
 timestreamquery_update_scheduled_query <- function(ScheduledQueryArn, State) {
   op <- new_operation(
     name = "UpdateScheduledQuery",

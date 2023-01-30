@@ -29,6 +29,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname augmentedairuntime_delete_human_loop
+#'
+#' @aliases augmentedairuntime_delete_human_loop
 augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
   op <- new_operation(
     name = "DeleteHumanLoop",
@@ -87,6 +89,8 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
 #' @keywords internal
 #'
 #' @rdname augmentedairuntime_describe_human_loop
+#'
+#' @aliases augmentedairuntime_describe_human_loop
 augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
   op <- new_operation(
     name = "DescribeHumanLoop",
@@ -165,6 +169,8 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 #' @keywords internal
 #'
 #' @rdname augmentedairuntime_list_human_loops
+#'
+#' @aliases augmentedairuntime_list_human_loops
 augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, FlowDefinitionArn, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHumanLoops",
@@ -228,6 +234,8 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
 #' @keywords internal
 #'
 #' @rdname augmentedairuntime_start_human_loop
+#'
+#' @aliases augmentedairuntime_start_human_loop
 augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn, HumanLoopInput, DataAttributes = NULL) {
   op <- new_operation(
     name = "StartHumanLoop",
@@ -268,6 +276,8 @@ augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn
 #' @keywords internal
 #'
 #' @rdname augmentedairuntime_stop_human_loop
+#'
+#' @aliases augmentedairuntime_stop_human_loop
 augmentedairuntime_stop_human_loop <- function(HumanLoopName) {
   op <- new_operation(
     name = "StopHumanLoop",

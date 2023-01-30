@@ -68,6 +68,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname marketplaceentitlementservice_get_entitlements
+#'
+#' @aliases marketplaceentitlementservice_get_entitlements
 marketplaceentitlementservice_get_entitlements <- function(ProductCode, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetEntitlements",

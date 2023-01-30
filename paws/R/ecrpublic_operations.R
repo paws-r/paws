@@ -63,6 +63,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ecrpublic_batch_check_layer_availability
+#'
+#' @aliases ecrpublic_batch_check_layer_availability
 ecrpublic_batch_check_layer_availability <- function(registryId = NULL, repositoryName, layerDigests) {
   op <- new_operation(
     name = "BatchCheckLayerAvailability",
@@ -146,6 +148,8 @@ ecrpublic_batch_check_layer_availability <- function(registryId = NULL, reposito
 #' @keywords internal
 #'
 #' @rdname ecrpublic_batch_delete_image
+#'
+#' @aliases ecrpublic_batch_delete_image
 ecrpublic_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) {
   op <- new_operation(
     name = "BatchDeleteImage",
@@ -219,6 +223,8 @@ ecrpublic_batch_delete_image <- function(registryId = NULL, repositoryName, imag
 #' @keywords internal
 #'
 #' @rdname ecrpublic_complete_layer_upload
+#'
+#' @aliases ecrpublic_complete_layer_upload
 ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadId, layerDigests) {
   op <- new_operation(
     name = "CompleteLayerUpload",
@@ -316,6 +322,8 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #' @keywords internal
 #'
 #' @rdname ecrpublic_create_repository
+#'
+#' @aliases ecrpublic_create_repository
 ecrpublic_create_repository <- function(repositoryName, catalogData = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
@@ -378,6 +386,8 @@ ecrpublic_create_repository <- function(repositoryName, catalogData = NULL, tags
 #' @keywords internal
 #'
 #' @rdname ecrpublic_delete_repository
+#'
+#' @aliases ecrpublic_delete_repository
 ecrpublic_delete_repository <- function(registryId = NULL, repositoryName, force = NULL) {
   op <- new_operation(
     name = "DeleteRepository",
@@ -430,6 +440,8 @@ ecrpublic_delete_repository <- function(registryId = NULL, repositoryName, force
 #' @keywords internal
 #'
 #' @rdname ecrpublic_delete_repository_policy
+#'
+#' @aliases ecrpublic_delete_repository_policy
 ecrpublic_delete_repository_policy <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "DeleteRepositoryPolicy",
@@ -519,6 +531,8 @@ ecrpublic_delete_repository_policy <- function(registryId = NULL, repositoryName
 #' @keywords internal
 #'
 #' @rdname ecrpublic_describe_image_tags
+#'
+#' @aliases ecrpublic_describe_image_tags
 ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeImageTags",
@@ -619,6 +633,8 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
 #' @keywords internal
 #'
 #' @rdname ecrpublic_describe_images
+#'
+#' @aliases ecrpublic_describe_images
 ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageIds = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeImages",
@@ -701,6 +717,8 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
 #' @keywords internal
 #'
 #' @rdname ecrpublic_describe_registries
+#'
+#' @aliases ecrpublic_describe_registries
 ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeRegistries",
@@ -791,6 +809,8 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_describe_repositories
+#'
+#' @aliases ecrpublic_describe_repositories
 ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeRepositories",
@@ -842,6 +862,8 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
 #' @keywords internal
 #'
 #' @rdname ecrpublic_get_authorization_token
+#'
+#' @aliases ecrpublic_get_authorization_token
 ecrpublic_get_authorization_token <- function() {
   op <- new_operation(
     name = "GetAuthorizationToken",
@@ -885,6 +907,8 @@ ecrpublic_get_authorization_token <- function() {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_get_registry_catalog_data
+#'
+#' @aliases ecrpublic_get_registry_catalog_data
 ecrpublic_get_registry_catalog_data <- function() {
   op <- new_operation(
     name = "GetRegistryCatalogData",
@@ -947,6 +971,8 @@ ecrpublic_get_registry_catalog_data <- function() {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_get_repository_catalog_data
+#'
+#' @aliases ecrpublic_get_repository_catalog_data
 ecrpublic_get_repository_catalog_data <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "GetRepositoryCatalogData",
@@ -998,6 +1024,8 @@ ecrpublic_get_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' @keywords internal
 #'
 #' @rdname ecrpublic_get_repository_policy
+#'
+#' @aliases ecrpublic_get_repository_policy
 ecrpublic_get_repository_policy <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "GetRepositoryPolicy",
@@ -1057,6 +1085,8 @@ ecrpublic_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_initiate_layer_upload
+#'
+#' @aliases ecrpublic_initiate_layer_upload
 ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "InitiateLayerUpload",
@@ -1109,6 +1139,8 @@ ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_list_tags_for_resource
+#'
+#' @aliases ecrpublic_list_tags_for_resource
 ecrpublic_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1188,6 +1220,8 @@ ecrpublic_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_put_image
+#'
+#' @aliases ecrpublic_put_image
 ecrpublic_put_image <- function(registryId = NULL, repositoryName, imageManifest, imageManifestMediaType = NULL, imageTag = NULL, imageDigest = NULL) {
   op <- new_operation(
     name = "PutImage",
@@ -1239,6 +1273,8 @@ ecrpublic_put_image <- function(registryId = NULL, repositoryName, imageManifest
 #' @keywords internal
 #'
 #' @rdname ecrpublic_put_registry_catalog_data
+#'
+#' @aliases ecrpublic_put_registry_catalog_data
 ecrpublic_put_registry_catalog_data <- function(displayName = NULL) {
   op <- new_operation(
     name = "PutRegistryCatalogData",
@@ -1317,6 +1353,8 @@ ecrpublic_put_registry_catalog_data <- function(displayName = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_put_repository_catalog_data
+#'
+#' @aliases ecrpublic_put_repository_catalog_data
 ecrpublic_put_repository_catalog_data <- function(registryId = NULL, repositoryName, catalogData) {
   op <- new_operation(
     name = "PutRepositoryCatalogData",
@@ -1384,6 +1422,8 @@ ecrpublic_put_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' @keywords internal
 #'
 #' @rdname ecrpublic_set_repository_policy
+#'
+#' @aliases ecrpublic_set_repository_policy
 ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, policyText, force = NULL) {
   op <- new_operation(
     name = "SetRepositoryPolicy",
@@ -1438,6 +1478,8 @@ ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, p
 #' @keywords internal
 #'
 #' @rdname ecrpublic_tag_resource
+#'
+#' @aliases ecrpublic_tag_resource
 ecrpublic_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1484,6 +1526,8 @@ ecrpublic_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_untag_resource
+#'
+#' @aliases ecrpublic_untag_resource
 ecrpublic_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1558,6 +1602,8 @@ ecrpublic_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ecrpublic_upload_layer_part
+#'
+#' @aliases ecrpublic_upload_layer_part
 ecrpublic_upload_layer_part <- function(registryId = NULL, repositoryName, uploadId, partFirstByte, partLastByte, layerPartBlob) {
   op <- new_operation(
     name = "UploadLayerPart",

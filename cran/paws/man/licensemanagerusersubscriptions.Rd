@@ -59,16 +59,16 @@ instances.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.management.p1:licensemanagerusersubscriptions_associate_user]{associate_user} \tab Associates the user to an EC2 instance to utilize user-based subscriptions\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_deregister_identity_provider]{deregister_identity_provider} \tab Deregisters the identity provider from providing user-based subscriptions\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_disassociate_user]{disassociate_user} \tab Disassociates the user from an EC2 instance providing user-based subscriptions\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_list_identity_providers]{list_identity_providers} \tab Lists the identity providers for user-based subscriptions\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_list_instances]{list_instances} \tab Lists the EC2 instances providing user-based subscriptions\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_list_product_subscriptions]{list_product_subscriptions} \tab Lists the user-based subscription products available from an identity provider\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_list_user_associations]{list_user_associations} \tab Lists user associations for an identity provider\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_register_identity_provider]{register_identity_provider} \tab Registers an identity provider for user-based subscriptions\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_start_product_subscription]{start_product_subscription} \tab Starts a product subscription for a user with the specified identity provider\cr
-\link[paws.management.p1:licensemanagerusersubscriptions_stop_product_subscription]{stop_product_subscription} \tab Stops a product subscription for a user with the specified identity provider
+\link[paws.management:licensemanagerusersubscriptions_associate_user]{associate_user} \tab Associates the user to an EC2 instance to utilize user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_deregister_identity_provider]{deregister_identity_provider} \tab Deregisters the identity provider from providing user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_disassociate_user]{disassociate_user} \tab Disassociates the user from an EC2 instance providing user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_list_identity_providers]{list_identity_providers} \tab Lists the identity providers for user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_list_instances]{list_instances} \tab Lists the EC2 instances providing user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_list_product_subscriptions]{list_product_subscriptions} \tab Lists the user-based subscription products available from an identity provider\cr
+\link[paws.management:licensemanagerusersubscriptions_list_user_associations]{list_user_associations} \tab Lists user associations for an identity provider\cr
+\link[paws.management:licensemanagerusersubscriptions_register_identity_provider]{register_identity_provider} \tab Registers an identity provider for user-based subscriptions\cr
+\link[paws.management:licensemanagerusersubscriptions_start_product_subscription]{start_product_subscription} \tab Starts a product subscription for a user with the specified identity provider\cr
+\link[paws.management:licensemanagerusersubscriptions_stop_product_subscription]{stop_product_subscription} \tab Stops a product subscription for a user with the specified identity provider
 }
 }
 

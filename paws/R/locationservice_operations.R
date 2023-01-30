@@ -44,6 +44,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname locationservice_associate_tracker_consumer
+#'
+#' @aliases locationservice_associate_tracker_consumer
 locationservice_associate_tracker_consumer <- function(ConsumerArn, TrackerName) {
   op <- new_operation(
     name = "AssociateTrackerConsumer",
@@ -107,6 +109,8 @@ locationservice_associate_tracker_consumer <- function(ConsumerArn, TrackerName)
 #' @keywords internal
 #'
 #' @rdname locationservice_batch_delete_device_position_history
+#'
+#' @aliases locationservice_batch_delete_device_position_history
 locationservice_batch_delete_device_position_history <- function(DeviceIds, TrackerName) {
   op <- new_operation(
     name = "BatchDeleteDevicePositionHistory",
@@ -166,6 +170,8 @@ locationservice_batch_delete_device_position_history <- function(DeviceIds, Trac
 #' @keywords internal
 #'
 #' @rdname locationservice_batch_delete_geofence
+#'
+#' @aliases locationservice_batch_delete_geofence
 locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
   op <- new_operation(
     name = "BatchDeleteGeofence",
@@ -265,6 +271,8 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
 #' @keywords internal
 #'
 #' @rdname locationservice_batch_evaluate_geofences
+#'
+#' @aliases locationservice_batch_evaluate_geofences
 locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePositionUpdates) {
   op <- new_operation(
     name = "BatchEvaluateGeofences",
@@ -345,6 +353,8 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 #' @keywords internal
 #'
 #' @rdname locationservice_batch_get_device_position
+#'
+#' @aliases locationservice_batch_get_device_position
 locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
   op <- new_operation(
     name = "BatchGetDevicePosition",
@@ -434,6 +444,8 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_batch_put_geofence
+#'
+#' @aliases locationservice_batch_put_geofence
 locationservice_batch_put_geofence <- function(CollectionName, Entries) {
   op <- new_operation(
     name = "BatchPutGeofence",
@@ -533,6 +545,8 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 #' @keywords internal
 #'
 #' @rdname locationservice_batch_update_device_position
+#'
+#' @aliases locationservice_batch_update_device_position
 locationservice_batch_update_device_position <- function(TrackerName, Updates) {
   op <- new_operation(
     name = "BatchUpdateDevicePosition",
@@ -780,6 +794,8 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @keywords internal
 #'
 #' @rdname locationservice_calculate_route
+#'
+#' @aliases locationservice_calculate_route
 locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePosition, DepartureTime = NULL, DestinationPosition, DistanceUnit = NULL, IncludeLegGeometry = NULL, TravelMode = NULL, TruckModeOptions = NULL, WaypointPositions = NULL) {
   op <- new_operation(
     name = "CalculateRoute",
@@ -1011,6 +1027,8 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' @keywords internal
 #'
 #' @rdname locationservice_calculate_route_matrix
+#'
+#' @aliases locationservice_calculate_route_matrix
 locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOptions = NULL, DepartNow = NULL, DeparturePositions, DepartureTime = NULL, DestinationPositions, DistanceUnit = NULL, TravelMode = NULL, TruckModeOptions = NULL) {
   op <- new_operation(
     name = "CalculateRouteMatrix",
@@ -1104,6 +1122,8 @@ locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOption
 #' @keywords internal
 #'
 #' @rdname locationservice_create_geofence_collection
+#'
+#' @aliases locationservice_create_geofence_collection
 locationservice_create_geofence_collection <- function(CollectionName, Description = NULL, KmsKeyId = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGeofenceCollection",
@@ -1202,6 +1222,8 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' @keywords internal
 #'
 #' @rdname locationservice_create_map
+#'
+#' @aliases locationservice_create_map
 locationservice_create_map <- function(Configuration, Description = NULL, MapName, PricingPlan = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMap",
@@ -1334,6 +1356,8 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #' @keywords internal
 #'
 #' @rdname locationservice_create_place_index
+#'
+#' @aliases locationservice_create_place_index
 locationservice_create_place_index <- function(DataSource, DataSourceConfiguration = NULL, Description = NULL, IndexName, PricingPlan = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePlaceIndex",
@@ -1456,6 +1480,8 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' @keywords internal
 #'
 #' @rdname locationservice_create_route_calculator
+#'
+#' @aliases locationservice_create_route_calculator
 locationservice_create_route_calculator <- function(CalculatorName, DataSource, Description = NULL, PricingPlan = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateRouteCalculator",
@@ -1581,6 +1607,8 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' @keywords internal
 #'
 #' @rdname locationservice_create_tracker
+#'
+#' @aliases locationservice_create_tracker
 locationservice_create_tracker <- function(Description = NULL, KmsKeyId = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL, TrackerName) {
   op <- new_operation(
     name = "CreateTracker",
@@ -1625,6 +1653,8 @@ locationservice_create_tracker <- function(Description = NULL, KmsKeyId = NULL, 
 #' @keywords internal
 #'
 #' @rdname locationservice_delete_geofence_collection
+#'
+#' @aliases locationservice_delete_geofence_collection
 locationservice_delete_geofence_collection <- function(CollectionName) {
   op <- new_operation(
     name = "DeleteGeofenceCollection",
@@ -1668,6 +1698,8 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_delete_map
+#'
+#' @aliases locationservice_delete_map
 locationservice_delete_map <- function(MapName) {
   op <- new_operation(
     name = "DeleteMap",
@@ -1710,6 +1742,8 @@ locationservice_delete_map <- function(MapName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_delete_place_index
+#'
+#' @aliases locationservice_delete_place_index
 locationservice_delete_place_index <- function(IndexName) {
   op <- new_operation(
     name = "DeletePlaceIndex",
@@ -1752,6 +1786,8 @@ locationservice_delete_place_index <- function(IndexName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_delete_route_calculator
+#'
+#' @aliases locationservice_delete_route_calculator
 locationservice_delete_route_calculator <- function(CalculatorName) {
   op <- new_operation(
     name = "DeleteRouteCalculator",
@@ -1796,6 +1832,8 @@ locationservice_delete_route_calculator <- function(CalculatorName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_delete_tracker
+#'
+#' @aliases locationservice_delete_tracker
 locationservice_delete_tracker <- function(TrackerName) {
   op <- new_operation(
     name = "DeleteTracker",
@@ -1855,6 +1893,8 @@ locationservice_delete_tracker <- function(TrackerName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_describe_geofence_collection
+#'
+#' @aliases locationservice_describe_geofence_collection
 locationservice_describe_geofence_collection <- function(CollectionName) {
   op <- new_operation(
     name = "DescribeGeofenceCollection",
@@ -1916,6 +1956,8 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_describe_map
+#'
+#' @aliases locationservice_describe_map
 locationservice_describe_map <- function(MapName) {
   op <- new_operation(
     name = "DescribeMap",
@@ -1977,6 +2019,8 @@ locationservice_describe_map <- function(MapName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_describe_place_index
+#'
+#' @aliases locationservice_describe_place_index
 locationservice_describe_place_index <- function(IndexName) {
   op <- new_operation(
     name = "DescribePlaceIndex",
@@ -2035,6 +2079,8 @@ locationservice_describe_place_index <- function(IndexName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_describe_route_calculator
+#'
+#' @aliases locationservice_describe_route_calculator
 locationservice_describe_route_calculator <- function(CalculatorName) {
   op <- new_operation(
     name = "DescribeRouteCalculator",
@@ -2095,6 +2141,8 @@ locationservice_describe_route_calculator <- function(CalculatorName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_describe_tracker
+#'
+#' @aliases locationservice_describe_tracker
 locationservice_describe_tracker <- function(TrackerName) {
   op <- new_operation(
     name = "DescribeTracker",
@@ -2148,6 +2196,8 @@ locationservice_describe_tracker <- function(TrackerName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_disassociate_tracker_consumer
+#'
+#' @aliases locationservice_disassociate_tracker_consumer
 locationservice_disassociate_tracker_consumer <- function(ConsumerArn, TrackerName) {
   op <- new_operation(
     name = "DisassociateTrackerConsumer",
@@ -2212,6 +2262,8 @@ locationservice_disassociate_tracker_consumer <- function(ConsumerArn, TrackerNa
 #' @keywords internal
 #'
 #' @rdname locationservice_get_device_position
+#'
+#' @aliases locationservice_get_device_position
 locationservice_get_device_position <- function(DeviceId, TrackerName) {
   op <- new_operation(
     name = "GetDevicePosition",
@@ -2319,6 +2371,8 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_get_device_position_history
+#'
+#' @aliases locationservice_get_device_position_history
 locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusive = NULL, MaxResults = NULL, NextToken = NULL, StartTimeInclusive = NULL, TrackerName) {
   op <- new_operation(
     name = "GetDevicePositionHistory",
@@ -2388,6 +2442,8 @@ locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusi
 #' @keywords internal
 #'
 #' @rdname locationservice_get_geofence
+#'
+#' @aliases locationservice_get_geofence
 locationservice_get_geofence <- function(CollectionName, GeofenceId) {
   op <- new_operation(
     name = "GetGeofence",
@@ -2470,6 +2526,8 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_glyphs
+#'
+#' @aliases locationservice_get_map_glyphs
 locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName) {
   op <- new_operation(
     name = "GetMapGlyphs",
@@ -2532,6 +2590,8 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName)
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_sprites
+#'
+#' @aliases locationservice_get_map_sprites
 locationservice_get_map_sprites <- function(FileName, MapName) {
   op <- new_operation(
     name = "GetMapSprites",
@@ -2583,6 +2643,8 @@ locationservice_get_map_sprites <- function(FileName, MapName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_style_descriptor
+#'
+#' @aliases locationservice_get_map_style_descriptor
 locationservice_get_map_style_descriptor <- function(MapName) {
   op <- new_operation(
     name = "GetMapStyleDescriptor",
@@ -2642,6 +2704,8 @@ locationservice_get_map_style_descriptor <- function(MapName) {
 #' @keywords internal
 #'
 #' @rdname locationservice_get_map_tile
+#'
+#' @aliases locationservice_get_map_tile
 locationservice_get_map_tile <- function(MapName, X, Y, Z) {
   op <- new_operation(
     name = "GetMapTile",
@@ -2714,6 +2778,8 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 #' @keywords internal
 #'
 #' @rdname locationservice_list_device_positions
+#'
+#' @aliases locationservice_list_device_positions
 locationservice_list_device_positions <- function(MaxResults = NULL, NextToken = NULL, TrackerName) {
   op <- new_operation(
     name = "ListDevicePositions",
@@ -2780,6 +2846,8 @@ locationservice_list_device_positions <- function(MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname locationservice_list_geofence_collections
+#'
+#' @aliases locationservice_list_geofence_collections
 locationservice_list_geofence_collections <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGeofenceCollections",
@@ -2861,6 +2929,8 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname locationservice_list_geofences
+#'
+#' @aliases locationservice_list_geofences
 locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGeofences",
@@ -2927,6 +2997,8 @@ locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname locationservice_list_maps
+#'
+#' @aliases locationservice_list_maps
 locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMaps",
@@ -2994,6 +3066,8 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname locationservice_list_place_indexes
+#'
+#' @aliases locationservice_list_place_indexes
 locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPlaceIndexes",
@@ -3060,6 +3134,8 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname locationservice_list_route_calculators
+#'
+#' @aliases locationservice_list_route_calculators
 locationservice_list_route_calculators <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRouteCalculators",
@@ -3113,6 +3189,8 @@ locationservice_list_route_calculators <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname locationservice_list_tags_for_resource
+#'
+#' @aliases locationservice_list_tags_for_resource
 locationservice_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3174,6 +3252,8 @@ locationservice_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname locationservice_list_tracker_consumers
+#'
+#' @aliases locationservice_list_tracker_consumers
 locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken = NULL, TrackerName) {
   op <- new_operation(
     name = "ListTrackerConsumers",
@@ -3240,6 +3320,8 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname locationservice_list_trackers
+#'
+#' @aliases locationservice_list_trackers
 locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTrackers",
@@ -3319,6 +3401,8 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname locationservice_put_geofence
+#'
+#' @aliases locationservice_put_geofence
 locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
   op <- new_operation(
     name = "PutGeofence",
@@ -3436,6 +3520,8 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' @keywords internal
 #'
 #' @rdname locationservice_search_place_index_for_position
+#'
+#' @aliases locationservice_search_place_index_for_position
 locationservice_search_place_index_for_position <- function(IndexName, Language = NULL, MaxResults = NULL, Position) {
   op <- new_operation(
     name = "SearchPlaceIndexForPosition",
@@ -3584,6 +3670,8 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #' @keywords internal
 #'
 #' @rdname locationservice_search_place_index_for_suggestions
+#'
+#' @aliases locationservice_search_place_index_for_suggestions
 locationservice_search_place_index_for_suggestions <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, Language = NULL, MaxResults = NULL, Text) {
   op <- new_operation(
     name = "SearchPlaceIndexForSuggestions",
@@ -3758,6 +3846,8 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #' @keywords internal
 #'
 #' @rdname locationservice_search_place_index_for_text
+#'
+#' @aliases locationservice_search_place_index_for_text
 locationservice_search_place_index_for_text <- function(BiasPosition = NULL, FilterBBox = NULL, FilterCountries = NULL, IndexName, Language = NULL, MaxResults = NULL, Text) {
   op <- new_operation(
     name = "SearchPlaceIndexForText",
@@ -3829,6 +3919,8 @@ locationservice_search_place_index_for_text <- function(BiasPosition = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname locationservice_tag_resource
+#'
+#' @aliases locationservice_tag_resource
 locationservice_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3877,6 +3969,8 @@ locationservice_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname locationservice_untag_resource
+#'
+#' @aliases locationservice_untag_resource
 locationservice_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3934,6 +4028,8 @@ locationservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname locationservice_update_geofence_collection
+#'
+#' @aliases locationservice_update_geofence_collection
 locationservice_update_geofence_collection <- function(CollectionName, Description = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL) {
   op <- new_operation(
     name = "UpdateGeofenceCollection",
@@ -3988,6 +4084,8 @@ locationservice_update_geofence_collection <- function(CollectionName, Descripti
 #' @keywords internal
 #'
 #' @rdname locationservice_update_map
+#'
+#' @aliases locationservice_update_map
 locationservice_update_map <- function(Description = NULL, MapName, PricingPlan = NULL) {
   op <- new_operation(
     name = "UpdateMap",
@@ -4047,6 +4145,8 @@ locationservice_update_map <- function(Description = NULL, MapName, PricingPlan 
 #' @keywords internal
 #'
 #' @rdname locationservice_update_place_index
+#'
+#' @aliases locationservice_update_place_index
 locationservice_update_place_index <- function(DataSourceConfiguration = NULL, Description = NULL, IndexName, PricingPlan = NULL) {
   op <- new_operation(
     name = "UpdatePlaceIndex",
@@ -4102,6 +4202,8 @@ locationservice_update_place_index <- function(DataSourceConfiguration = NULL, D
 #' @keywords internal
 #'
 #' @rdname locationservice_update_route_calculator
+#'
+#' @aliases locationservice_update_route_calculator
 locationservice_update_route_calculator <- function(CalculatorName, Description = NULL, PricingPlan = NULL) {
   op <- new_operation(
     name = "UpdateRouteCalculator",
@@ -4186,6 +4288,8 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' @keywords internal
 #'
 #' @rdname locationservice_update_tracker
+#'
+#' @aliases locationservice_update_tracker
 locationservice_update_tracker <- function(Description = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, TrackerName) {
   op <- new_operation(
     name = "UpdateTracker",

@@ -39,6 +39,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname appregistry_associate_attribute_group
+#'
+#' @aliases appregistry_associate_attribute_group
 appregistry_associate_attribute_group <- function(application, attributeGroup) {
   op <- new_operation(
     name = "AssociateAttributeGroup",
@@ -91,6 +93,8 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 #' @keywords internal
 #'
 #' @rdname appregistry_associate_resource
+#'
+#' @aliases appregistry_associate_resource
 appregistry_associate_resource <- function(application, resourceType, resource) {
   op <- new_operation(
     name = "AssociateResource",
@@ -165,6 +169,8 @@ appregistry_associate_resource <- function(application, resourceType, resource) 
 #' @keywords internal
 #'
 #' @rdname appregistry_create_application
+#'
+#' @aliases appregistry_create_application
 appregistry_create_application <- function(name, description = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateApplication",
@@ -243,6 +249,8 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
 #' @keywords internal
 #'
 #' @rdname appregistry_create_attribute_group
+#'
+#' @aliases appregistry_create_attribute_group
 appregistry_create_attribute_group <- function(name, description = NULL, attributes, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateAttributeGroup",
@@ -302,6 +310,8 @@ appregistry_create_attribute_group <- function(name, description = NULL, attribu
 #' @keywords internal
 #'
 #' @rdname appregistry_delete_application
+#'
+#' @aliases appregistry_delete_application
 appregistry_delete_application <- function(application) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -361,6 +371,8 @@ appregistry_delete_application <- function(application) {
 #' @keywords internal
 #'
 #' @rdname appregistry_delete_attribute_group
+#'
+#' @aliases appregistry_delete_attribute_group
 appregistry_delete_attribute_group <- function(attributeGroup) {
   op <- new_operation(
     name = "DeleteAttributeGroup",
@@ -415,6 +427,8 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
 #' @keywords internal
 #'
 #' @rdname appregistry_disassociate_attribute_group
+#'
+#' @aliases appregistry_disassociate_attribute_group
 appregistry_disassociate_attribute_group <- function(application, attributeGroup) {
   op <- new_operation(
     name = "DisassociateAttributeGroup",
@@ -466,6 +480,8 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
 #' @keywords internal
 #'
 #' @rdname appregistry_disassociate_resource
+#'
+#' @aliases appregistry_disassociate_resource
 appregistry_disassociate_resource <- function(application, resourceType, resource) {
   op <- new_operation(
     name = "DisassociateResource",
@@ -537,6 +553,8 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
 #' @keywords internal
 #'
 #' @rdname appregistry_get_application
+#'
+#' @aliases appregistry_get_application
 appregistry_get_application <- function(application) {
   op <- new_operation(
     name = "GetApplication",
@@ -599,6 +617,8 @@ appregistry_get_application <- function(application) {
 #' @keywords internal
 #'
 #' @rdname appregistry_get_associated_resource
+#'
+#' @aliases appregistry_get_associated_resource
 appregistry_get_associated_resource <- function(application, resourceType, resource) {
   op <- new_operation(
     name = "GetAssociatedResource",
@@ -659,6 +679,8 @@ appregistry_get_associated_resource <- function(application, resourceType, resou
 #' @keywords internal
 #'
 #' @rdname appregistry_get_attribute_group
+#'
+#' @aliases appregistry_get_attribute_group
 appregistry_get_attribute_group <- function(attributeGroup) {
   op <- new_operation(
     name = "GetAttributeGroup",
@@ -722,6 +744,8 @@ appregistry_get_attribute_group <- function(attributeGroup) {
 #' @keywords internal
 #'
 #' @rdname appregistry_list_applications
+#'
+#' @aliases appregistry_list_applications
 appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -779,6 +803,8 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname appregistry_list_associated_attribute_groups
+#'
+#' @aliases appregistry_list_associated_attribute_groups
 appregistry_list_associated_attribute_groups <- function(application, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssociatedAttributeGroups",
@@ -838,6 +864,8 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
 #' @keywords internal
 #'
 #' @rdname appregistry_list_associated_resources
+#'
+#' @aliases appregistry_list_associated_resources
 appregistry_list_associated_resources <- function(application, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssociatedResources",
@@ -902,6 +930,8 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname appregistry_list_attribute_groups
+#'
+#' @aliases appregistry_list_attribute_groups
 appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAttributeGroups",
@@ -963,6 +993,8 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname appregistry_list_attribute_groups_for_application
+#'
+#' @aliases appregistry_list_attribute_groups_for_application
 appregistry_list_attribute_groups_for_application <- function(application, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAttributeGroupsForApplication",
@@ -1010,6 +1042,8 @@ appregistry_list_attribute_groups_for_application <- function(application, nextT
 #' @keywords internal
 #'
 #' @rdname appregistry_list_tags_for_resource
+#'
+#' @aliases appregistry_list_tags_for_resource
 appregistry_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1066,6 +1100,8 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname appregistry_sync_resource
+#'
+#' @aliases appregistry_sync_resource
 appregistry_sync_resource <- function(resourceType, resource) {
   op <- new_operation(
     name = "SyncResource",
@@ -1116,6 +1152,8 @@ appregistry_sync_resource <- function(resourceType, resource) {
 #' @keywords internal
 #'
 #' @rdname appregistry_tag_resource
+#'
+#' @aliases appregistry_tag_resource
 appregistry_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1162,6 +1200,8 @@ appregistry_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname appregistry_untag_resource
+#'
+#' @aliases appregistry_untag_resource
 appregistry_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1227,6 +1267,8 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname appregistry_update_application
+#'
+#' @aliases appregistry_update_application
 appregistry_update_application <- function(application, name = NULL, description = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
@@ -1297,6 +1339,8 @@ appregistry_update_application <- function(application, name = NULL, description
 #' @keywords internal
 #'
 #' @rdname appregistry_update_attribute_group
+#'
+#' @aliases appregistry_update_attribute_group
 appregistry_update_attribute_group <- function(attributeGroup, name = NULL, description = NULL, attributes = NULL) {
   op <- new_operation(
     name = "UpdateAttributeGroup",

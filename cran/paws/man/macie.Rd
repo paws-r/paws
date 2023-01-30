@@ -66,13 +66,13 @@ Macie, see the \href{https://docs.aws.amazon.com/macie/latest/user/what-is-macie
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity.p2:macie_associate_member_account]{associate_member_account} \tab (Discontinued) Associates a specified Amazon Web Services account with Amazon Macie Classic as a member account\cr
-\link[paws.security.identity.p2:macie_associate_s3_resources]{associate_s3_resources} \tab (Discontinued) Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
-\link[paws.security.identity.p2:macie_disassociate_member_account]{disassociate_member_account} \tab (Discontinued) Removes the specified member account from Amazon Macie Classic\cr
-\link[paws.security.identity.p2:macie_disassociate_s3_resources]{disassociate_s3_resources} \tab (Discontinued) Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
-\link[paws.security.identity.p2:macie_list_member_accounts]{list_member_accounts} \tab (Discontinued) Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account\cr
-\link[paws.security.identity.p2:macie_list_s3_resources]{list_s3_resources} \tab (Discontinued) Lists all the S3 resources associated with Amazon Macie Classic\cr
-\link[paws.security.identity.p2:macie_update_s3_resources]{update_s3_resources} \tab (Discontinued) Updates the classification types for the specified S3 resources
+\link[paws.security.identity:macie_associate_member_account]{associate_member_account} \tab (Discontinued) Associates a specified Amazon Web Services account with Amazon Macie Classic as a member account\cr
+\link[paws.security.identity:macie_associate_s3_resources]{associate_s3_resources} \tab (Discontinued) Associates specified S3 resources with Amazon Macie Classic for monitoring and data classification\cr
+\link[paws.security.identity:macie_disassociate_member_account]{disassociate_member_account} \tab (Discontinued) Removes the specified member account from Amazon Macie Classic\cr
+\link[paws.security.identity:macie_disassociate_s3_resources]{disassociate_s3_resources} \tab (Discontinued) Removes specified S3 resources from being monitored by Amazon Macie Classic\cr
+\link[paws.security.identity:macie_list_member_accounts]{list_member_accounts} \tab (Discontinued) Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account\cr
+\link[paws.security.identity:macie_list_s3_resources]{list_s3_resources} \tab (Discontinued) Lists all the S3 resources associated with Amazon Macie Classic\cr
+\link[paws.security.identity:macie_update_s3_resources]{update_s3_resources} \tab (Discontinued) Updates the classification types for the specified S3 resources
 }
 }
 

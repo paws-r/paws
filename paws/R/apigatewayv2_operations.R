@@ -143,6 +143,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_api
+#'
+#' @aliases apigatewayv2_create_api
 apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, DisableExecuteApiEndpoint = NULL, Name, ProtocolType, RouteKey = NULL, RouteSelectionExpression = NULL, Tags = NULL, Target = NULL, Version = NULL) {
   op <- new_operation(
     name = "CreateApi",
@@ -197,6 +199,8 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_api_mapping
+#'
+#' @aliases apigatewayv2_create_api_mapping
 apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainName, Stage) {
   op <- new_operation(
     name = "CreateApiMapping",
@@ -342,6 +346,8 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_authorizer
+#'
+#' @aliases apigatewayv2_create_authorizer
 apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerPayloadFormatVersion = NULL, AuthorizerResultTtlInSeconds = NULL, AuthorizerType, AuthorizerUri = NULL, EnableSimpleResponses = NULL, IdentitySource, IdentityValidationExpression = NULL, JwtConfiguration = NULL, Name) {
   op <- new_operation(
     name = "CreateAuthorizer",
@@ -398,6 +404,8 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_deployment
+#'
+#' @aliases apigatewayv2_create_deployment
 apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName = NULL) {
   op <- new_operation(
     name = "CreateDeployment",
@@ -497,6 +505,8 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_domain_name
+#'
+#' @aliases apigatewayv2_create_domain_name
 apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
@@ -735,6 +745,8 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_integration
+#'
+#' @aliases apigatewayv2_create_integration
 apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationMethod = NULL, IntegrationSubtype = NULL, IntegrationType, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, ResponseParameters = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL, TlsConfig = NULL) {
   op <- new_operation(
     name = "CreateIntegration",
@@ -833,6 +845,8 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_integration_response
+#'
+#' @aliases apigatewayv2_create_integration_response
 apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrategy = NULL, IntegrationId, IntegrationResponseKey, ResponseParameters = NULL, ResponseTemplates = NULL, TemplateSelectionExpression = NULL) {
   op <- new_operation(
     name = "CreateIntegrationResponse",
@@ -891,6 +905,8 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_model
+#'
+#' @aliases apigatewayv2_create_model
 apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = NULL, Name, Schema) {
   op <- new_operation(
     name = "CreateModel",
@@ -998,6 +1014,8 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_route
+#'
+#' @aliases apigatewayv2_create_route
 apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, AuthorizationScopes = NULL, AuthorizationType = NULL, AuthorizerId = NULL, ModelSelectionExpression = NULL, OperationName = NULL, RequestModels = NULL, RequestParameters = NULL, RouteKey, RouteResponseSelectionExpression = NULL, Target = NULL) {
   op <- new_operation(
     name = "CreateRoute",
@@ -1071,6 +1089,8 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_route_response
+#'
+#' @aliases apigatewayv2_create_route_response
 apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression = NULL, ResponseModels = NULL, ResponseParameters = NULL, RouteId, RouteResponseKey) {
   op <- new_operation(
     name = "CreateRouteResponse",
@@ -1202,6 +1222,8 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_stage
+#'
+#' @aliases apigatewayv2_create_stage
 apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeploy = NULL, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStage",
@@ -1275,6 +1297,8 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_create_vpc_link
+#'
+#' @aliases apigatewayv2_create_vpc_link
 apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateVpcLink",
@@ -1319,6 +1343,8 @@ apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetId
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_access_log_settings
+#'
+#' @aliases apigatewayv2_delete_access_log_settings
 apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
   op <- new_operation(
     name = "DeleteAccessLogSettings",
@@ -1359,6 +1385,8 @@ apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_api
+#'
+#' @aliases apigatewayv2_delete_api
 apigatewayv2_delete_api <- function(ApiId) {
   op <- new_operation(
     name = "DeleteApi",
@@ -1401,6 +1429,8 @@ apigatewayv2_delete_api <- function(ApiId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_api_mapping
+#'
+#' @aliases apigatewayv2_delete_api_mapping
 apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
   op <- new_operation(
     name = "DeleteApiMapping",
@@ -1443,6 +1473,8 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_authorizer
+#'
+#' @aliases apigatewayv2_delete_authorizer
 apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
   op <- new_operation(
     name = "DeleteAuthorizer",
@@ -1483,6 +1515,8 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_cors_configuration
+#'
+#' @aliases apigatewayv2_delete_cors_configuration
 apigatewayv2_delete_cors_configuration <- function(ApiId) {
   op <- new_operation(
     name = "DeleteCorsConfiguration",
@@ -1525,6 +1559,8 @@ apigatewayv2_delete_cors_configuration <- function(ApiId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_deployment
+#'
+#' @aliases apigatewayv2_delete_deployment
 apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
   op <- new_operation(
     name = "DeleteDeployment",
@@ -1565,6 +1601,8 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_domain_name
+#'
+#' @aliases apigatewayv2_delete_domain_name
 apigatewayv2_delete_domain_name <- function(DomainName) {
   op <- new_operation(
     name = "DeleteDomainName",
@@ -1607,6 +1645,8 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_integration
+#'
+#' @aliases apigatewayv2_delete_integration
 apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
   op <- new_operation(
     name = "DeleteIntegration",
@@ -1652,6 +1692,8 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_integration_response
+#'
+#' @aliases apigatewayv2_delete_integration_response
 apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, IntegrationResponseId) {
   op <- new_operation(
     name = "DeleteIntegrationResponse",
@@ -1694,6 +1736,8 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_model
+#'
+#' @aliases apigatewayv2_delete_model
 apigatewayv2_delete_model <- function(ApiId, ModelId) {
   op <- new_operation(
     name = "DeleteModel",
@@ -1736,6 +1780,8 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_route
+#'
+#' @aliases apigatewayv2_delete_route
 apigatewayv2_delete_route <- function(ApiId, RouteId) {
   op <- new_operation(
     name = "DeleteRoute",
@@ -1781,6 +1827,8 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_route_request_parameter
+#'
+#' @aliases apigatewayv2_delete_route_request_parameter
 apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterKey, RouteId) {
   op <- new_operation(
     name = "DeleteRouteRequestParameter",
@@ -1825,6 +1873,8 @@ apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterK
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_route_response
+#'
+#' @aliases apigatewayv2_delete_route_response
 apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) {
   op <- new_operation(
     name = "DeleteRouteResponse",
@@ -1870,6 +1920,8 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_route_settings
+#'
+#' @aliases apigatewayv2_delete_route_settings
 apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
   op <- new_operation(
     name = "DeleteRouteSettings",
@@ -1913,6 +1965,8 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_stage
+#'
+#' @aliases apigatewayv2_delete_stage
 apigatewayv2_delete_stage <- function(ApiId, StageName) {
   op <- new_operation(
     name = "DeleteStage",
@@ -1953,6 +2007,8 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_delete_vpc_link
+#'
+#' @aliases apigatewayv2_delete_vpc_link
 apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
   op <- new_operation(
     name = "DeleteVpcLink",
@@ -2016,6 +2072,8 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_export_api
+#'
+#' @aliases apigatewayv2_export_api
 apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensions = NULL, OutputType, Specification, StageName = NULL) {
   op <- new_operation(
     name = "ExportApi",
@@ -2061,6 +2119,8 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_reset_authorizers_cache
+#'
+#' @aliases apigatewayv2_reset_authorizers_cache
 apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
   op <- new_operation(
     name = "ResetAuthorizersCache",
@@ -2144,6 +2204,8 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_api
+#'
+#' @aliases apigatewayv2_get_api
 apigatewayv2_get_api <- function(ApiId) {
   op <- new_operation(
     name = "GetApi",
@@ -2194,6 +2256,8 @@ apigatewayv2_get_api <- function(ApiId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_api_mapping
+#'
+#' @aliases apigatewayv2_get_api_mapping
 apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
   op <- new_operation(
     name = "GetApiMapping",
@@ -2252,6 +2316,8 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_api_mappings
+#'
+#' @aliases apigatewayv2_get_api_mappings
 apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetApiMappings",
@@ -2343,6 +2409,8 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_apis
+#'
+#' @aliases apigatewayv2_get_apis
 apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetApis",
@@ -2407,6 +2475,8 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_authorizer
+#'
+#' @aliases apigatewayv2_get_authorizer
 apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
   op <- new_operation(
     name = "GetAuthorizer",
@@ -2479,6 +2549,8 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_authorizers
+#'
+#' @aliases apigatewayv2_get_authorizers
 apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAuthorizers",
@@ -2533,6 +2605,8 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_deployment
+#'
+#' @aliases apigatewayv2_get_deployment
 apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
   op <- new_operation(
     name = "GetDeployment",
@@ -2595,6 +2669,8 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_deployments
+#'
+#' @aliases apigatewayv2_get_deployments
 apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDeployments",
@@ -2667,6 +2743,8 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_domain_name
+#'
+#' @aliases apigatewayv2_get_domain_name
 apigatewayv2_get_domain_name <- function(DomainName) {
   op <- new_operation(
     name = "GetDomainName",
@@ -2747,6 +2825,8 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_domain_names
+#'
+#' @aliases apigatewayv2_get_domain_names
 apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDomainNames",
@@ -2823,6 +2903,8 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_integration
+#'
+#' @aliases apigatewayv2_get_integration
 apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
   op <- new_operation(
     name = "GetIntegration",
@@ -2882,6 +2964,8 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_integration_response
+#'
+#' @aliases apigatewayv2_get_integration_response
 apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, IntegrationResponseId) {
   op <- new_operation(
     name = "GetIntegrationResponse",
@@ -2949,6 +3033,8 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_integration_responses
+#'
+#' @aliases apigatewayv2_get_integration_responses
 apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetIntegrationResponses",
@@ -3033,6 +3119,8 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_integrations
+#'
+#' @aliases apigatewayv2_get_integrations
 apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetIntegrations",
@@ -3084,6 +3172,8 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_model
+#'
+#' @aliases apigatewayv2_get_model
 apigatewayv2_get_model <- function(ApiId, ModelId) {
   op <- new_operation(
     name = "GetModel",
@@ -3131,6 +3221,8 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_model_template
+#'
+#' @aliases apigatewayv2_get_model_template
 apigatewayv2_get_model_template <- function(ApiId, ModelId) {
   op <- new_operation(
     name = "GetModelTemplate",
@@ -3190,6 +3282,8 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_models
+#'
+#' @aliases apigatewayv2_get_models
 apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetModels",
@@ -3257,6 +3351,8 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_route
+#'
+#' @aliases apigatewayv2_get_route
 apigatewayv2_get_route <- function(ApiId, RouteId) {
   op <- new_operation(
     name = "GetRoute",
@@ -3316,6 +3412,8 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_route_response
+#'
+#' @aliases apigatewayv2_get_route_response
 apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
   op <- new_operation(
     name = "GetRouteResponse",
@@ -3383,6 +3481,8 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_route_responses
+#'
+#' @aliases apigatewayv2_get_route_responses
 apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken = NULL, RouteId) {
   op <- new_operation(
     name = "GetRouteResponses",
@@ -3458,6 +3558,8 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_routes
+#'
+#' @aliases apigatewayv2_get_routes
 apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetRoutes",
@@ -3544,6 +3646,8 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_stage
+#'
+#' @aliases apigatewayv2_get_stage
 apigatewayv2_get_stage <- function(ApiId, StageName) {
   op <- new_operation(
     name = "GetStage",
@@ -3637,6 +3741,8 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_stages
+#'
+#' @aliases apigatewayv2_get_stages
 apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetStages",
@@ -3684,6 +3790,8 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_tags
+#'
+#' @aliases apigatewayv2_get_tags
 apigatewayv2_get_tags <- function(ResourceArn) {
   op <- new_operation(
     name = "GetTags",
@@ -3745,6 +3853,8 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_vpc_link
+#'
+#' @aliases apigatewayv2_get_vpc_link
 apigatewayv2_get_vpc_link <- function(VpcLinkId) {
   op <- new_operation(
     name = "GetVpcLink",
@@ -3814,6 +3924,8 @@ apigatewayv2_get_vpc_link <- function(VpcLinkId) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_get_vpc_links
+#'
+#' @aliases apigatewayv2_get_vpc_links
 apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetVpcLinks",
@@ -3907,6 +4019,8 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_import_api
+#'
+#' @aliases apigatewayv2_import_api
 apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL) {
   op <- new_operation(
     name = "ImportApi",
@@ -4002,6 +4116,8 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_reimport_api
+#'
+#' @aliases apigatewayv2_reimport_api
 apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnings = NULL) {
   op <- new_operation(
     name = "ReimportApi",
@@ -4047,6 +4163,8 @@ apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnin
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_tag_resource
+#'
+#' @aliases apigatewayv2_tag_resource
 apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
   op <- new_operation(
     name = "TagResource",
@@ -4091,6 +4209,8 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_untag_resource
+#'
+#' @aliases apigatewayv2_untag_resource
 apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4241,6 +4361,8 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_api
+#'
+#' @aliases apigatewayv2_update_api
 apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, CorsConfiguration = NULL, CredentialsArn = NULL, Description = NULL, DisableSchemaValidation = NULL, DisableExecuteApiEndpoint = NULL, Name = NULL, RouteKey = NULL, RouteSelectionExpression = NULL, Target = NULL, Version = NULL) {
   op <- new_operation(
     name = "UpdateApi",
@@ -4298,6 +4420,8 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_api_mapping
+#'
+#' @aliases apigatewayv2_update_api_mapping
 apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey = NULL, DomainName, Stage = NULL) {
   op <- new_operation(
     name = "UpdateApiMapping",
@@ -4445,6 +4569,8 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_authorizer
+#'
+#' @aliases apigatewayv2_update_authorizer
 apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NULL, AuthorizerId, AuthorizerPayloadFormatVersion = NULL, AuthorizerResultTtlInSeconds = NULL, AuthorizerType = NULL, AuthorizerUri = NULL, EnableSimpleResponses = NULL, IdentitySource = NULL, IdentityValidationExpression = NULL, JwtConfiguration = NULL, Name = NULL) {
   op <- new_operation(
     name = "UpdateAuthorizer",
@@ -4501,6 +4627,8 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_deployment
+#'
+#' @aliases apigatewayv2_update_deployment
 apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NULL) {
   op <- new_operation(
     name = "UpdateDeployment",
@@ -4596,6 +4724,8 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_domain_name
+#'
+#' @aliases apigatewayv2_update_domain_name
 apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations = NULL, MutualTlsAuthentication = NULL) {
   op <- new_operation(
     name = "UpdateDomainName",
@@ -4836,6 +4966,8 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_integration
+#'
+#' @aliases apigatewayv2_update_integration
 apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, ConnectionType = NULL, ContentHandlingStrategy = NULL, CredentialsArn = NULL, Description = NULL, IntegrationId, IntegrationMethod = NULL, IntegrationSubtype = NULL, IntegrationType = NULL, IntegrationUri = NULL, PassthroughBehavior = NULL, PayloadFormatVersion = NULL, RequestParameters = NULL, RequestTemplates = NULL, ResponseParameters = NULL, TemplateSelectionExpression = NULL, TimeoutInMillis = NULL, TlsConfig = NULL) {
   op <- new_operation(
     name = "UpdateIntegration",
@@ -4936,6 +5068,8 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_integration_response
+#'
+#' @aliases apigatewayv2_update_integration_response
 apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrategy = NULL, IntegrationId, IntegrationResponseId, IntegrationResponseKey = NULL, ResponseParameters = NULL, ResponseTemplates = NULL, TemplateSelectionExpression = NULL) {
   op <- new_operation(
     name = "UpdateIntegrationResponse",
@@ -4997,6 +5131,8 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_model
+#'
+#' @aliases apigatewayv2_update_model
 apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = NULL, ModelId, Name = NULL, Schema = NULL) {
   op <- new_operation(
     name = "UpdateModel",
@@ -5106,6 +5242,8 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_route
+#'
+#' @aliases apigatewayv2_update_route
 apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, AuthorizationScopes = NULL, AuthorizationType = NULL, AuthorizerId = NULL, ModelSelectionExpression = NULL, OperationName = NULL, RequestModels = NULL, RequestParameters = NULL, RouteId, RouteKey = NULL, RouteResponseSelectionExpression = NULL, Target = NULL) {
   op <- new_operation(
     name = "UpdateRoute",
@@ -5182,6 +5320,8 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_route_response
+#'
+#' @aliases apigatewayv2_update_route_response
 apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression = NULL, ResponseModels = NULL, ResponseParameters = NULL, RouteId, RouteResponseId, RouteResponseKey = NULL) {
   op <- new_operation(
     name = "UpdateRouteResponse",
@@ -5310,6 +5450,8 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_stage
+#'
+#' @aliases apigatewayv2_update_stage
 apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeploy = NULL, ClientCertificateId = NULL, DefaultRouteSettings = NULL, DeploymentId = NULL, Description = NULL, RouteSettings = NULL, StageName, StageVariables = NULL) {
   op <- new_operation(
     name = "UpdateStage",
@@ -5373,6 +5515,8 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 #' @keywords internal
 #'
 #' @rdname apigatewayv2_update_vpc_link
+#'
+#' @aliases apigatewayv2_update_vpc_link
 apigatewayv2_update_vpc_link <- function(Name = NULL, VpcLinkId) {
   op <- new_operation(
     name = "UpdateVpcLink",

@@ -27,6 +27,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_create_configuration_set
+#'
+#' @aliases pinpointsmsvoice_create_configuration_set
 pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
@@ -88,6 +90,8 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_create_configuration_set_event_destination
+#'
+#' @aliases pinpointsmsvoice_create_configuration_set_event_destination
 pinpointsmsvoice_create_configuration_set_event_destination <- function(ConfigurationSetName, EventDestination = NULL, EventDestinationName = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSetEventDestination",
@@ -128,6 +132,8 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_delete_configuration_set
+#'
+#' @aliases pinpointsmsvoice_delete_configuration_set
 pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteConfigurationSet",
@@ -171,6 +177,8 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_delete_configuration_set_event_destination
+#'
+#' @aliases pinpointsmsvoice_delete_configuration_set_event_destination
 pinpointsmsvoice_delete_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName) {
   op <- new_operation(
     name = "DeleteConfigurationSetEventDestination",
@@ -240,6 +248,8 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_get_configuration_set_event_destinations
+#'
+#' @aliases pinpointsmsvoice_get_configuration_set_event_destinations
 pinpointsmsvoice_get_configuration_set_event_destinations <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "GetConfigurationSetEventDestinations",
@@ -294,6 +304,8 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_list_configuration_sets
+#'
+#' @aliases pinpointsmsvoice_list_configuration_sets
 pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListConfigurationSets",
@@ -367,6 +379,8 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_send_voice_message
+#'
+#' @aliases pinpointsmsvoice_send_voice_message
 pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSetName = NULL, Content = NULL, DestinationPhoneNumber = NULL, OriginationPhoneNumber = NULL) {
   op <- new_operation(
     name = "SendVoiceMessage",
@@ -431,6 +445,8 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoice_update_configuration_set_event_destination
+#'
+#' @aliases pinpointsmsvoice_update_configuration_set_event_destination
 pinpointsmsvoice_update_configuration_set_event_destination <- function(ConfigurationSetName, EventDestination = NULL, EventDestinationName) {
   op <- new_operation(
     name = "UpdateConfigurationSetEventDestination",

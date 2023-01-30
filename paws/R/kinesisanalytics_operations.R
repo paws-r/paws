@@ -46,6 +46,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_add_application_cloud_watch_logging_option
+#'
+#' @aliases kinesisanalytics_add_application_cloud_watch_logging_option
 kinesisanalytics_add_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOption) {
   op <- new_operation(
     name = "AddApplicationCloudWatchLoggingOption",
@@ -158,6 +160,8 @@ kinesisanalytics_add_application_cloud_watch_logging_option <- function(Applicat
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_add_application_input
+#'
+#' @aliases kinesisanalytics_add_application_input
 kinesisanalytics_add_application_input <- function(ApplicationName, CurrentApplicationVersionId, Input) {
   op <- new_operation(
     name = "AddApplicationInput",
@@ -233,7 +237,9 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalytics_add_application_input_processing_configuration
+#' @rdname kinesisanalytics_add_applic_input_proces_config
+#'
+#' @aliases kinesisanalytics_add_application_input_processing_configuration
 kinesisanalytics_add_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId, InputProcessingConfiguration) {
   op <- new_operation(
     name = "AddApplicationInputProcessingConfiguration",
@@ -339,6 +345,8 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_add_application_output
+#'
+#' @aliases kinesisanalytics_add_application_output
 kinesisanalytics_add_application_output <- function(ApplicationName, CurrentApplicationVersionId, Output) {
   op <- new_operation(
     name = "AddApplicationOutput",
@@ -445,6 +453,8 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_add_application_reference_data_source
+#'
+#' @aliases kinesisanalytics_add_application_reference_data_source
 kinesisanalytics_add_application_reference_data_source <- function(ApplicationName, CurrentApplicationVersionId, ReferenceDataSource) {
   op <- new_operation(
     name = "AddApplicationReferenceDataSource",
@@ -670,6 +680,8 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_create_application
+#'
+#' @aliases kinesisanalytics_create_application
 kinesisanalytics_create_application <- function(ApplicationName, ApplicationDescription = NULL, Inputs = NULL, Outputs = NULL, CloudWatchLoggingOptions = NULL, ApplicationCode = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -728,6 +740,8 @@ kinesisanalytics_create_application <- function(ApplicationName, ApplicationDesc
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_delete_application
+#'
+#' @aliases kinesisanalytics_delete_application
 kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -784,7 +798,9 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalytics_delete_application_cloud_watch_logging_option
+#' @rdname kinesisanalytics_delet_appli_cloud_watch_loggi_optio
+#'
+#' @aliases kinesisanalytics_delete_application_cloud_watch_logging_option
 kinesisanalytics_delete_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId) {
   op <- new_operation(
     name = "DeleteApplicationCloudWatchLoggingOption",
@@ -841,7 +857,9 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalytics_delete_application_input_processing_configuration
+#' @rdname kinesisanalytics_delete_applic_input_proces_config
+#'
+#' @aliases kinesisanalytics_delete_application_input_processing_configuration
 kinesisanalytics_delete_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId) {
   op <- new_operation(
     name = "DeleteApplicationInputProcessingConfiguration",
@@ -911,6 +929,8 @@ kinesisanalytics_delete_application_input_processing_configuration <- function(A
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_delete_application_output
+#'
+#' @aliases kinesisanalytics_delete_application_output
 kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentApplicationVersionId, OutputId) {
   op <- new_operation(
     name = "DeleteApplicationOutput",
@@ -980,6 +1000,8 @@ kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentA
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_delete_application_reference_data_source
+#'
+#' @aliases kinesisanalytics_delete_application_reference_data_source
 kinesisanalytics_delete_application_reference_data_source <- function(ApplicationName, CurrentApplicationVersionId, ReferenceId) {
   op <- new_operation(
     name = "DeleteApplicationReferenceDataSource",
@@ -1166,6 +1188,8 @@ kinesisanalytics_delete_application_reference_data_source <- function(Applicatio
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_describe_application
+#'
+#' @aliases kinesisanalytics_describe_application
 kinesisanalytics_describe_application <- function(ApplicationName) {
   op <- new_operation(
     name = "DescribeApplication",
@@ -1291,6 +1315,8 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_discover_input_schema
+#'
+#' @aliases kinesisanalytics_discover_input_schema
 kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN = NULL, InputStartingPositionConfiguration = NULL, S3Configuration = NULL, InputProcessingConfiguration = NULL) {
   op <- new_operation(
     name = "DiscoverInputSchema",
@@ -1366,6 +1392,8 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_list_applications
+#'
+#' @aliases kinesisanalytics_list_applications
 kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartApplicationName = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -1418,6 +1446,8 @@ kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartAppli
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_list_tags_for_resource
+#'
+#' @aliases kinesisanalytics_list_tags_for_resource
 kinesisanalytics_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1493,6 +1523,8 @@ kinesisanalytics_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_start_application
+#'
+#' @aliases kinesisanalytics_start_application
 kinesisanalytics_start_application <- function(ApplicationName, InputConfigurations) {
   op <- new_operation(
     name = "StartApplication",
@@ -1548,6 +1580,8 @@ kinesisanalytics_start_application <- function(ApplicationName, InputConfigurati
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_stop_application
+#'
+#' @aliases kinesisanalytics_stop_application
 kinesisanalytics_stop_application <- function(ApplicationName) {
   op <- new_operation(
     name = "StopApplication",
@@ -1599,6 +1633,8 @@ kinesisanalytics_stop_application <- function(ApplicationName) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_tag_resource
+#'
+#' @aliases kinesisanalytics_tag_resource
 kinesisanalytics_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1646,6 +1682,8 @@ kinesisanalytics_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_untag_resource
+#'
+#' @aliases kinesisanalytics_untag_resource
 kinesisanalytics_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1815,6 +1853,8 @@ kinesisanalytics_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname kinesisanalytics_update_application
+#'
+#' @aliases kinesisanalytics_update_application
 kinesisanalytics_update_application <- function(ApplicationName, CurrentApplicationVersionId, ApplicationUpdate) {
   op <- new_operation(
     name = "UpdateApplication",

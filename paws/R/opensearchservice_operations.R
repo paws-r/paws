@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname opensearchservice_accept_inbound_connection
+#'
+#' @aliases opensearchservice_accept_inbound_connection
 opensearchservice_accept_inbound_connection <- function(ConnectionId) {
   op <- new_operation(
     name = "AcceptInboundConnection",
@@ -104,6 +106,8 @@ opensearchservice_accept_inbound_connection <- function(ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_add_tags
+#'
+#' @aliases opensearchservice_add_tags
 opensearchservice_add_tags <- function(ARN, TagList) {
   op <- new_operation(
     name = "AddTags",
@@ -168,6 +172,8 @@ opensearchservice_add_tags <- function(ARN, TagList) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_associate_package
+#'
+#' @aliases opensearchservice_associate_package
 opensearchservice_associate_package <- function(PackageID, DomainName) {
   op <- new_operation(
     name = "AssociatePackage",
@@ -229,6 +235,8 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_cancel_service_software_update
+#'
+#' @aliases opensearchservice_cancel_service_software_update
 opensearchservice_cancel_service_software_update <- function(DomainName) {
   op <- new_operation(
     name = "CancelServiceSoftwareUpdate",
@@ -551,6 +559,8 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_domain
+#'
+#' @aliases opensearchservice_create_domain
 opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
@@ -635,6 +645,8 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_outbound_connection
+#'
+#' @aliases opensearchservice_create_outbound_connection
 opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias) {
   op <- new_operation(
     name = "CreateOutboundConnection",
@@ -707,6 +719,8 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_package
+#'
+#' @aliases opensearchservice_create_package
 opensearchservice_create_package <- function(PackageName, PackageType, PackageDescription = NULL, PackageSource) {
   op <- new_operation(
     name = "CreatePackage",
@@ -873,6 +887,8 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
 #' @keywords internal
 #'
 #' @rdname opensearchservice_delete_domain
+#'
+#' @aliases opensearchservice_delete_domain
 opensearchservice_delete_domain <- function(DomainName) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -940,6 +956,8 @@ opensearchservice_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_delete_inbound_connection
+#'
+#' @aliases opensearchservice_delete_inbound_connection
 opensearchservice_delete_inbound_connection <- function(ConnectionId) {
   op <- new_operation(
     name = "DeleteInboundConnection",
@@ -1008,6 +1026,8 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_delete_outbound_connection
+#'
+#' @aliases opensearchservice_delete_outbound_connection
 opensearchservice_delete_outbound_connection <- function(ConnectionId) {
   op <- new_operation(
     name = "DeleteOutboundConnection",
@@ -1072,6 +1092,8 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_delete_package
+#'
+#' @aliases opensearchservice_delete_package
 opensearchservice_delete_package <- function(PackageID) {
   op <- new_operation(
     name = "DeletePackage",
@@ -1239,6 +1261,8 @@ opensearchservice_delete_package <- function(PackageID) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_domain
+#'
+#' @aliases opensearchservice_describe_domain
 opensearchservice_describe_domain <- function(DomainName) {
   op <- new_operation(
     name = "DescribeDomain",
@@ -1308,6 +1332,8 @@ opensearchservice_describe_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_domain_auto_tunes
+#'
+#' @aliases opensearchservice_describe_domain_auto_tunes
 opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDomainAutoTunes",
@@ -1382,6 +1408,8 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_domain_change_progress
+#'
+#' @aliases opensearchservice_describe_domain_change_progress
 opensearchservice_describe_domain_change_progress <- function(DomainName, ChangeId = NULL) {
   op <- new_operation(
     name = "DescribeDomainChangeProgress",
@@ -1723,6 +1751,8 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_domain_config
+#'
+#' @aliases opensearchservice_describe_domain_config
 opensearchservice_describe_domain_config <- function(DomainName) {
   op <- new_operation(
     name = "DescribeDomainConfig",
@@ -1894,6 +1924,8 @@ opensearchservice_describe_domain_config <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_domains
+#'
+#' @aliases opensearchservice_describe_domains
 opensearchservice_describe_domains <- function(DomainNames) {
   op <- new_operation(
     name = "DescribeDomains",
@@ -1984,6 +2016,8 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_inbound_connections
+#'
+#' @aliases opensearchservice_describe_inbound_connections
 opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInboundConnections",
@@ -2070,6 +2104,8 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_instance_type_limits
+#'
+#' @aliases opensearchservice_describe_instance_type_limits
 opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, InstanceType, EngineVersion) {
   op <- new_operation(
     name = "DescribeInstanceTypeLimits",
@@ -2160,6 +2196,8 @@ opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, I
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_outbound_connections
+#'
+#' @aliases opensearchservice_describe_outbound_connections
 opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOutboundConnections",
@@ -2241,6 +2279,8 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_packages
+#'
+#' @aliases opensearchservice_describe_packages
 opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePackages",
@@ -2311,6 +2351,8 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_reserved_instance_offerings
+#'
+#' @aliases opensearchservice_describe_reserved_instance_offerings
 opensearchservice_describe_reserved_instance_offerings <- function(ReservedInstanceOfferingId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstanceOfferings",
@@ -2390,6 +2432,8 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
 #' @keywords internal
 #'
 #' @rdname opensearchservice_describe_reserved_instances
+#'
+#' @aliases opensearchservice_describe_reserved_instances
 opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedInstances",
@@ -2454,6 +2498,8 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
 #' @keywords internal
 #'
 #' @rdname opensearchservice_dissociate_package
+#'
+#' @aliases opensearchservice_dissociate_package
 opensearchservice_dissociate_package <- function(PackageID, DomainName) {
   op <- new_operation(
     name = "DissociatePackage",
@@ -2510,6 +2556,8 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_get_compatible_versions
+#'
+#' @aliases opensearchservice_get_compatible_versions
 opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
   op <- new_operation(
     name = "GetCompatibleVersions",
@@ -2574,6 +2622,8 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_get_package_version_history
+#'
+#' @aliases opensearchservice_get_package_version_history
 opensearchservice_get_package_version_history <- function(PackageID, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetPackageVersionHistory",
@@ -2644,6 +2694,8 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
 #' @keywords internal
 #'
 #' @rdname opensearchservice_get_upgrade_history
+#'
+#' @aliases opensearchservice_get_upgrade_history
 opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetUpgradeHistory",
@@ -2693,6 +2745,8 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname opensearchservice_get_upgrade_status
+#'
+#' @aliases opensearchservice_get_upgrade_status
 opensearchservice_get_upgrade_status <- function(DomainName) {
   op <- new_operation(
     name = "GetUpgradeStatus",
@@ -2744,6 +2798,8 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_domain_names
+#'
+#' @aliases opensearchservice_list_domain_names
 opensearchservice_list_domain_names <- function(EngineType = NULL) {
   op <- new_operation(
     name = "ListDomainNames",
@@ -2814,6 +2870,8 @@ opensearchservice_list_domain_names <- function(EngineType = NULL) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_domains_for_package
+#'
+#' @aliases opensearchservice_list_domains_for_package
 opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDomainsForPackage",
@@ -2879,6 +2937,8 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_instance_type_details
+#'
+#' @aliases opensearchservice_list_instance_type_details
 opensearchservice_list_instance_type_details <- function(EngineVersion, DomainName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInstanceTypeDetails",
@@ -2949,6 +3009,8 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_packages_for_domain
+#'
+#' @aliases opensearchservice_list_packages_for_domain
 opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPackagesForDomain",
@@ -3000,6 +3062,8 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_tags
+#'
+#' @aliases opensearchservice_list_tags
 opensearchservice_list_tags <- function(ARN) {
   op <- new_operation(
     name = "ListTags",
@@ -3051,6 +3115,8 @@ opensearchservice_list_tags <- function(ARN) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_versions
+#'
+#' @aliases opensearchservice_list_versions
 opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListVersions",
@@ -3102,6 +3168,8 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname opensearchservice_purchase_reserved_instance_offering
+#'
+#' @aliases opensearchservice_purchase_reserved_instance_offering
 opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstanceOfferingId, ReservationName, InstanceCount = NULL) {
   op <- new_operation(
     name = "PurchaseReservedInstanceOffering",
@@ -3169,6 +3237,8 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
 #' @keywords internal
 #'
 #' @rdname opensearchservice_reject_inbound_connection
+#'
+#' @aliases opensearchservice_reject_inbound_connection
 opensearchservice_reject_inbound_connection <- function(ConnectionId) {
   op <- new_operation(
     name = "RejectInboundConnection",
@@ -3214,6 +3284,8 @@ opensearchservice_reject_inbound_connection <- function(ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_remove_tags
+#'
+#' @aliases opensearchservice_remove_tags
 opensearchservice_remove_tags <- function(ARN, TagKeys) {
   op <- new_operation(
     name = "RemoveTags",
@@ -3273,6 +3345,8 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_start_service_software_update
+#'
+#' @aliases opensearchservice_start_service_software_update
 opensearchservice_start_service_software_update <- function(DomainName) {
   op <- new_operation(
     name = "StartServiceSoftwareUpdate",
@@ -3756,6 +3830,8 @@ opensearchservice_start_service_software_update <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_domain_config
+#'
+#' @aliases opensearchservice_update_domain_config
 opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
@@ -3829,6 +3905,8 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_package
+#'
+#' @aliases opensearchservice_update_package
 opensearchservice_update_package <- function(PackageID, PackageSource, PackageDescription = NULL, CommitMessage = NULL) {
   op <- new_operation(
     name = "UpdatePackage",
@@ -3897,6 +3975,8 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
 #' @keywords internal
 #'
 #' @rdname opensearchservice_upgrade_domain
+#'
+#' @aliases opensearchservice_upgrade_domain
 opensearchservice_upgrade_domain <- function(DomainName, TargetVersion, PerformCheckOnly = NULL, AdvancedOptions = NULL) {
   op <- new_operation(
     name = "UpgradeDomain",

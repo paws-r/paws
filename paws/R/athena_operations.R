@@ -59,6 +59,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname athena_batch_get_named_query
+#'
+#' @aliases athena_batch_get_named_query
 athena_batch_get_named_query <- function(NamedQueryIds) {
   op <- new_operation(
     name = "BatchGetNamedQuery",
@@ -132,6 +134,8 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 #' @keywords internal
 #'
 #' @rdname athena_batch_get_prepared_statement
+#'
+#' @aliases athena_batch_get_prepared_statement
 athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGroup) {
   op <- new_operation(
     name = "BatchGetPreparedStatement",
@@ -248,6 +252,8 @@ athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGrou
 #' @keywords internal
 #'
 #' @rdname athena_batch_get_query_execution
+#'
+#' @aliases athena_batch_get_query_execution
 athena_batch_get_query_execution <- function(QueryExecutionIds) {
   op <- new_operation(
     name = "BatchGetQueryExecution",
@@ -352,6 +358,8 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' @keywords internal
 #'
 #' @rdname athena_create_data_catalog
+#'
+#' @aliases athena_create_data_catalog
 athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameters = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataCatalog",
@@ -425,6 +433,8 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' @keywords internal
 #'
 #' @rdname athena_create_named_query
+#'
+#' @aliases athena_create_named_query
 athena_create_named_query <- function(Name, Description = NULL, Database, QueryString, ClientRequestToken = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "CreateNamedQuery",
@@ -472,6 +482,8 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 #' @keywords internal
 #'
 #' @rdname athena_create_prepared_statement
+#'
+#' @aliases athena_create_prepared_statement
 athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStatement, Description = NULL) {
   op <- new_operation(
     name = "CreatePreparedStatement",
@@ -550,6 +562,8 @@ athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 #' @keywords internal
 #'
 #' @rdname athena_create_work_group
+#'
+#' @aliases athena_create_work_group
 athena_create_work_group <- function(Name, Configuration = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkGroup",
@@ -590,6 +604,8 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
 #' @keywords internal
 #'
 #' @rdname athena_delete_data_catalog
+#'
+#' @aliases athena_delete_data_catalog
 athena_delete_data_catalog <- function(Name) {
   op <- new_operation(
     name = "DeleteDataCatalog",
@@ -637,6 +653,8 @@ athena_delete_data_catalog <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname athena_delete_named_query
+#'
+#' @aliases athena_delete_named_query
 athena_delete_named_query <- function(NamedQueryId) {
   op <- new_operation(
     name = "DeleteNamedQuery",
@@ -681,6 +699,8 @@ athena_delete_named_query <- function(NamedQueryId) {
 #' @keywords internal
 #'
 #' @rdname athena_delete_prepared_statement
+#'
+#' @aliases athena_delete_prepared_statement
 athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
   op <- new_operation(
     name = "DeletePreparedStatement",
@@ -725,6 +745,8 @@ athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
 #' @keywords internal
 #'
 #' @rdname athena_delete_work_group
+#'
+#' @aliases athena_delete_work_group
 athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
   op <- new_operation(
     name = "DeleteWorkGroup",
@@ -777,6 +799,8 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
 #' @keywords internal
 #'
 #' @rdname athena_get_data_catalog
+#'
+#' @aliases athena_get_data_catalog
 athena_get_data_catalog <- function(Name) {
   op <- new_operation(
     name = "GetDataCatalog",
@@ -830,6 +854,8 @@ athena_get_data_catalog <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname athena_get_database
+#'
+#' @aliases athena_get_database
 athena_get_database <- function(CatalogName, DatabaseName) {
   op <- new_operation(
     name = "GetDatabase",
@@ -884,6 +910,8 @@ athena_get_database <- function(CatalogName, DatabaseName) {
 #' @keywords internal
 #'
 #' @rdname athena_get_named_query
+#'
+#' @aliases athena_get_named_query
 athena_get_named_query <- function(NamedQueryId) {
   op <- new_operation(
     name = "GetNamedQuery",
@@ -941,6 +969,8 @@ athena_get_named_query <- function(NamedQueryId) {
 #' @keywords internal
 #'
 #' @rdname athena_get_prepared_statement
+#'
+#' @aliases athena_get_prepared_statement
 athena_get_prepared_statement <- function(StatementName, WorkGroup) {
   op <- new_operation(
     name = "GetPreparedStatement",
@@ -1042,6 +1072,8 @@ athena_get_prepared_statement <- function(StatementName, WorkGroup) {
 #' @keywords internal
 #'
 #' @rdname athena_get_query_execution
+#'
+#' @aliases athena_get_query_execution
 athena_get_query_execution <- function(QueryExecutionId) {
   op <- new_operation(
     name = "GetQueryExecution",
@@ -1141,6 +1173,8 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' @keywords internal
 #'
 #' @rdname athena_get_query_results
+#'
+#' @aliases athena_get_query_results
 athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetQueryResults",
@@ -1226,6 +1260,8 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname athena_get_query_runtime_statistics
+#'
+#' @aliases athena_get_query_runtime_statistics
 athena_get_query_runtime_statistics <- function(QueryExecutionId) {
   op <- new_operation(
     name = "GetQueryRuntimeStatistics",
@@ -1302,6 +1338,8 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
 #' @keywords internal
 #'
 #' @rdname athena_get_table_metadata
+#'
+#' @aliases athena_get_table_metadata
 athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
   op <- new_operation(
     name = "GetTableMetadata",
@@ -1375,6 +1413,8 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
 #' @keywords internal
 #'
 #' @rdname athena_get_work_group
+#'
+#' @aliases athena_get_work_group
 athena_get_work_group <- function(WorkGroup) {
   op <- new_operation(
     name = "GetWorkGroup",
@@ -1431,6 +1471,8 @@ athena_get_work_group <- function(WorkGroup) {
 #' @keywords internal
 #'
 #' @rdname athena_list_data_catalogs
+#'
+#' @aliases athena_list_data_catalogs
 athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDataCatalogs",
@@ -1492,6 +1534,8 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname athena_list_databases
+#'
+#' @aliases athena_list_databases
 athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatabases",
@@ -1550,6 +1594,8 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname athena_list_engine_versions
+#'
+#' @aliases athena_list_engine_versions
 athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEngineVersions",
@@ -1616,6 +1662,8 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname athena_list_named_queries
+#'
+#' @aliases athena_list_named_queries
 athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListNamedQueries",
@@ -1676,6 +1724,8 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' @keywords internal
 #'
 #' @rdname athena_list_prepared_statements
+#'
+#' @aliases athena_list_prepared_statements
 athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPreparedStatements",
@@ -1742,6 +1792,8 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname athena_list_query_executions
+#'
+#' @aliases athena_list_query_executions
 athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, WorkGroup = NULL) {
   op <- new_operation(
     name = "ListQueryExecutions",
@@ -1831,6 +1883,8 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 #' @keywords internal
 #'
 #' @rdname athena_list_table_metadata
+#'
+#' @aliases athena_list_table_metadata
 athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTableMetadata",
@@ -1891,6 +1945,8 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
 #' @keywords internal
 #'
 #' @rdname athena_list_tags_for_resource
+#'
+#' @aliases athena_list_tags_for_resource
 athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1955,6 +2011,8 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname athena_list_work_groups
+#'
+#' @aliases athena_list_work_groups
 athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkGroups",
@@ -2053,6 +2111,8 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname athena_start_query_execution
+#'
+#' @aliases athena_start_query_execution
 athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL, QueryExecutionContext = NULL, ResultConfiguration = NULL, WorkGroup = NULL, ExecutionParameters = NULL) {
   op <- new_operation(
     name = "StartQueryExecution",
@@ -2099,6 +2159,8 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #' @keywords internal
 #'
 #' @rdname athena_stop_query_execution
+#'
+#' @aliases athena_stop_query_execution
 athena_stop_query_execution <- function(QueryExecutionId) {
   op <- new_operation(
     name = "StopQueryExecution",
@@ -2161,6 +2223,8 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #' @keywords internal
 #'
 #' @rdname athena_tag_resource
+#'
+#' @aliases athena_tag_resource
 athena_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2206,6 +2270,8 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname athena_untag_resource
+#'
+#' @aliases athena_untag_resource
 athena_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2282,6 +2348,8 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname athena_update_data_catalog
+#'
+#' @aliases athena_update_data_catalog
 athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "UpdateDataCatalog",
@@ -2329,6 +2397,8 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' @keywords internal
 #'
 #' @rdname athena_update_named_query
+#'
+#' @aliases athena_update_named_query
 athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, QueryString) {
   op <- new_operation(
     name = "UpdateNamedQuery",
@@ -2376,6 +2446,8 @@ athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, Qu
 #' @keywords internal
 #'
 #' @rdname athena_update_prepared_statement
+#'
+#' @aliases athena_update_prepared_statement
 athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStatement, Description = NULL) {
   op <- new_operation(
     name = "UpdatePreparedStatement",
@@ -2450,6 +2522,8 @@ athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStat
 #' @keywords internal
 #'
 #' @rdname athena_update_work_group
+#'
+#' @aliases athena_update_work_group
 athena_update_work_group <- function(WorkGroup, Description = NULL, ConfigurationUpdates = NULL, State = NULL) {
   op <- new_operation(
     name = "UpdateWorkGroup",

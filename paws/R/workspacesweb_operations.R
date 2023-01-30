@@ -34,6 +34,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_browser_settings
+#'
+#' @aliases workspacesweb_associate_browser_settings
 workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalArn) {
   op <- new_operation(
     name = "AssociateBrowserSettings",
@@ -82,6 +84,8 @@ workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalA
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_network_settings
+#'
+#' @aliases workspacesweb_associate_network_settings
 workspacesweb_associate_network_settings <- function(networkSettingsArn, portalArn) {
   op <- new_operation(
     name = "AssociateNetworkSettings",
@@ -130,6 +134,8 @@ workspacesweb_associate_network_settings <- function(networkSettingsArn, portalA
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_trust_store
+#'
+#' @aliases workspacesweb_associate_trust_store
 workspacesweb_associate_trust_store <- function(portalArn, trustStoreArn) {
   op <- new_operation(
     name = "AssociateTrustStore",
@@ -178,6 +184,8 @@ workspacesweb_associate_trust_store <- function(portalArn, trustStoreArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_associate_user_settings
+#'
+#' @aliases workspacesweb_associate_user_settings
 workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
   op <- new_operation(
     name = "AssociateUserSettings",
@@ -252,6 +260,8 @@ workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_browser_settings
+#'
+#' @aliases workspacesweb_create_browser_settings
 workspacesweb_create_browser_settings <- function(additionalEncryptionContext = NULL, browserPolicy, clientToken = NULL, customerManagedKey = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateBrowserSettings",
@@ -379,6 +389,8 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_identity_provider
+#'
+#' @aliases workspacesweb_create_identity_provider
 workspacesweb_create_identity_provider <- function(clientToken = NULL, identityProviderDetails, identityProviderName, identityProviderType, portalArn) {
   op <- new_operation(
     name = "CreateIdentityProvider",
@@ -456,6 +468,8 @@ workspacesweb_create_identity_provider <- function(clientToken = NULL, identityP
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_network_settings
+#'
+#' @aliases workspacesweb_create_network_settings
 workspacesweb_create_network_settings <- function(clientToken = NULL, securityGroupIds, subnetIds, tags = NULL, vpcId) {
   op <- new_operation(
     name = "CreateNetworkSettings",
@@ -526,6 +540,8 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_portal
+#'
+#' @aliases workspacesweb_create_portal
 workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, clientToken = NULL, customerManagedKey = NULL, displayName = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePortal",
@@ -595,6 +611,8 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, clie
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_trust_store
+#'
+#' @aliases workspacesweb_create_trust_store
 workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTrustStore",
@@ -683,6 +701,8 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname workspacesweb_create_user_settings
+#'
+#' @aliases workspacesweb_create_user_settings
 workspacesweb_create_user_settings <- function(clientToken = NULL, copyAllowed, disconnectTimeoutInMinutes = NULL, downloadAllowed, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed, printAllowed, tags = NULL, uploadAllowed) {
   op <- new_operation(
     name = "CreateUserSettings",
@@ -723,6 +743,8 @@ workspacesweb_create_user_settings <- function(clientToken = NULL, copyAllowed, 
 #' @keywords internal
 #'
 #' @rdname workspacesweb_delete_browser_settings
+#'
+#' @aliases workspacesweb_delete_browser_settings
 workspacesweb_delete_browser_settings <- function(browserSettingsArn) {
   op <- new_operation(
     name = "DeleteBrowserSettings",
@@ -763,6 +785,8 @@ workspacesweb_delete_browser_settings <- function(browserSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_delete_identity_provider
+#'
+#' @aliases workspacesweb_delete_identity_provider
 workspacesweb_delete_identity_provider <- function(identityProviderArn) {
   op <- new_operation(
     name = "DeleteIdentityProvider",
@@ -803,6 +827,8 @@ workspacesweb_delete_identity_provider <- function(identityProviderArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_delete_network_settings
+#'
+#' @aliases workspacesweb_delete_network_settings
 workspacesweb_delete_network_settings <- function(networkSettingsArn) {
   op <- new_operation(
     name = "DeleteNetworkSettings",
@@ -843,6 +869,8 @@ workspacesweb_delete_network_settings <- function(networkSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_delete_portal
+#'
+#' @aliases workspacesweb_delete_portal
 workspacesweb_delete_portal <- function(portalArn) {
   op <- new_operation(
     name = "DeletePortal",
@@ -883,6 +911,8 @@ workspacesweb_delete_portal <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_delete_trust_store
+#'
+#' @aliases workspacesweb_delete_trust_store
 workspacesweb_delete_trust_store <- function(trustStoreArn) {
   op <- new_operation(
     name = "DeleteTrustStore",
@@ -923,6 +953,8 @@ workspacesweb_delete_trust_store <- function(trustStoreArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_delete_user_settings
+#'
+#' @aliases workspacesweb_delete_user_settings
 workspacesweb_delete_user_settings <- function(userSettingsArn) {
   op <- new_operation(
     name = "DeleteUserSettings",
@@ -963,6 +995,8 @@ workspacesweb_delete_user_settings <- function(userSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_disassociate_browser_settings
+#'
+#' @aliases workspacesweb_disassociate_browser_settings
 workspacesweb_disassociate_browser_settings <- function(portalArn) {
   op <- new_operation(
     name = "DisassociateBrowserSettings",
@@ -1003,6 +1037,8 @@ workspacesweb_disassociate_browser_settings <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_disassociate_network_settings
+#'
+#' @aliases workspacesweb_disassociate_network_settings
 workspacesweb_disassociate_network_settings <- function(portalArn) {
   op <- new_operation(
     name = "DisassociateNetworkSettings",
@@ -1043,6 +1079,8 @@ workspacesweb_disassociate_network_settings <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_disassociate_trust_store
+#'
+#' @aliases workspacesweb_disassociate_trust_store
 workspacesweb_disassociate_trust_store <- function(portalArn) {
   op <- new_operation(
     name = "DisassociateTrustStore",
@@ -1083,6 +1121,8 @@ workspacesweb_disassociate_trust_store <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_disassociate_user_settings
+#'
+#' @aliases workspacesweb_disassociate_user_settings
 workspacesweb_disassociate_user_settings <- function(portalArn) {
   op <- new_operation(
     name = "DisassociateUserSettings",
@@ -1134,6 +1174,8 @@ workspacesweb_disassociate_user_settings <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_browser_settings
+#'
+#' @aliases workspacesweb_get_browser_settings
 workspacesweb_get_browser_settings <- function(browserSettingsArn) {
   op <- new_operation(
     name = "GetBrowserSettings",
@@ -1186,6 +1228,8 @@ workspacesweb_get_browser_settings <- function(browserSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_identity_provider
+#'
+#' @aliases workspacesweb_get_identity_provider
 workspacesweb_get_identity_provider <- function(identityProviderArn) {
   op <- new_operation(
     name = "GetIdentityProvider",
@@ -1243,6 +1287,8 @@ workspacesweb_get_identity_provider <- function(identityProviderArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_network_settings
+#'
+#' @aliases workspacesweb_get_network_settings
 workspacesweb_get_network_settings <- function(networkSettingsArn) {
   op <- new_operation(
     name = "GetNetworkSettings",
@@ -1303,6 +1349,8 @@ workspacesweb_get_network_settings <- function(networkSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_portal
+#'
+#' @aliases workspacesweb_get_portal
 workspacesweb_get_portal <- function(portalArn) {
   op <- new_operation(
     name = "GetPortal",
@@ -1349,6 +1397,8 @@ workspacesweb_get_portal <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_portal_service_provider_metadata
+#'
+#' @aliases workspacesweb_get_portal_service_provider_metadata
 workspacesweb_get_portal_service_provider_metadata <- function(portalArn) {
   op <- new_operation(
     name = "GetPortalServiceProviderMetadata",
@@ -1399,6 +1449,8 @@ workspacesweb_get_portal_service_provider_metadata <- function(portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_trust_store
+#'
+#' @aliases workspacesweb_get_trust_store
 workspacesweb_get_trust_store <- function(trustStoreArn) {
   op <- new_operation(
     name = "GetTrustStore",
@@ -1458,6 +1510,8 @@ workspacesweb_get_trust_store <- function(trustStoreArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_trust_store_certificate
+#'
+#' @aliases workspacesweb_get_trust_store_certificate
 workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn) {
   op <- new_operation(
     name = "GetTrustStoreCertificate",
@@ -1515,6 +1569,8 @@ workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn)
 #' @keywords internal
 #'
 #' @rdname workspacesweb_get_user_settings
+#'
+#' @aliases workspacesweb_get_user_settings
 workspacesweb_get_user_settings <- function(userSettingsArn) {
   op <- new_operation(
     name = "GetUserSettings",
@@ -1568,6 +1624,8 @@ workspacesweb_get_user_settings <- function(userSettingsArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_browser_settings
+#'
+#' @aliases workspacesweb_list_browser_settings
 workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBrowserSettings",
@@ -1625,6 +1683,8 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_identity_providers
+#'
+#' @aliases workspacesweb_list_identity_providers
 workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken = NULL, portalArn) {
   op <- new_operation(
     name = "ListIdentityProviders",
@@ -1679,6 +1739,8 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_network_settings
+#'
+#' @aliases workspacesweb_list_network_settings
 workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListNetworkSettings",
@@ -1744,6 +1806,8 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_portals
+#'
+#' @aliases workspacesweb_list_portals
 workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPortals",
@@ -1794,6 +1858,8 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_tags_for_resource
+#'
+#' @aliases workspacesweb_list_tags_for_resource
 workspacesweb_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1859,6 +1925,8 @@ workspacesweb_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_trust_store_certificates
+#'
+#' @aliases workspacesweb_list_trust_store_certificates
 workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextToken = NULL, trustStoreArn) {
   op <- new_operation(
     name = "ListTrustStoreCertificates",
@@ -1912,6 +1980,8 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_trust_stores
+#'
+#' @aliases workspacesweb_list_trust_stores
 workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListTrustStores",
@@ -1972,6 +2042,8 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname workspacesweb_list_user_settings
+#'
+#' @aliases workspacesweb_list_user_settings
 workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListUserSettings",
@@ -2028,6 +2100,8 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname workspacesweb_tag_resource
+#'
+#' @aliases workspacesweb_tag_resource
 workspacesweb_tag_resource <- function(clientToken = NULL, resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2072,6 +2146,8 @@ workspacesweb_tag_resource <- function(clientToken = NULL, resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_untag_resource
+#'
+#' @aliases workspacesweb_untag_resource
 workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2136,6 +2212,8 @@ workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_browser_settings
+#'
+#' @aliases workspacesweb_update_browser_settings
 workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserSettingsArn, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateBrowserSettings",
@@ -2267,6 +2345,8 @@ workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserS
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_identity_provider
+#'
+#' @aliases workspacesweb_update_identity_provider
 workspacesweb_update_identity_provider <- function(clientToken = NULL, identityProviderArn, identityProviderDetails = NULL, identityProviderName = NULL, identityProviderType = NULL) {
   op <- new_operation(
     name = "UpdateIdentityProvider",
@@ -2347,6 +2427,8 @@ workspacesweb_update_identity_provider <- function(clientToken = NULL, identityP
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_network_settings
+#'
+#' @aliases workspacesweb_update_network_settings
 workspacesweb_update_network_settings <- function(clientToken = NULL, networkSettingsArn, securityGroupIds = NULL, subnetIds = NULL, vpcId = NULL) {
   op <- new_operation(
     name = "UpdateNetworkSettings",
@@ -2410,6 +2492,8 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_portal
+#'
+#' @aliases workspacesweb_update_portal
 workspacesweb_update_portal <- function(displayName = NULL, portalArn) {
   op <- new_operation(
     name = "UpdatePortal",
@@ -2473,6 +2557,8 @@ workspacesweb_update_portal <- function(displayName = NULL, portalArn) {
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_trust_store
+#'
+#' @aliases workspacesweb_update_trust_store
 workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certificatesToDelete = NULL, clientToken = NULL, trustStoreArn) {
   op <- new_operation(
     name = "UpdateTrustStore",
@@ -2563,6 +2649,8 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
 #' @keywords internal
 #'
 #' @rdname workspacesweb_update_user_settings
+#'
+#' @aliases workspacesweb_update_user_settings
 workspacesweb_update_user_settings <- function(clientToken = NULL, copyAllowed = NULL, disconnectTimeoutInMinutes = NULL, downloadAllowed = NULL, idleDisconnectTimeoutInMinutes = NULL, pasteAllowed = NULL, printAllowed = NULL, uploadAllowed = NULL, userSettingsArn) {
   op <- new_operation(
     name = "UpdateUserSettings",

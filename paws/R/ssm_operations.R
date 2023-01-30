@@ -99,6 +99,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ssm_add_tags_to_resource
+#'
+#' @aliases ssm_add_tags_to_resource
 ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -163,6 +165,8 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 #' @keywords internal
 #'
 #' @rdname ssm_associate_ops_item_related_item
+#'
+#' @aliases ssm_associate_ops_item_related_item
 ssm_associate_ops_item_related_item <- function(OpsItemId, AssociationType, ResourceType, ResourceUri) {
   op <- new_operation(
     name = "AssociateOpsItemRelatedItem",
@@ -211,6 +215,8 @@ ssm_associate_ops_item_related_item <- function(OpsItemId, AssociationType, Reso
 #' @keywords internal
 #'
 #' @rdname ssm_cancel_command
+#'
+#' @aliases ssm_cancel_command
 ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
   op <- new_operation(
     name = "CancelCommand",
@@ -259,6 +265,8 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_cancel_maintenance_window_execution
+#'
+#' @aliases ssm_cancel_maintenance_window_execution
 ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
   op <- new_operation(
     name = "CancelMaintenanceWindowExecution",
@@ -386,6 +394,8 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_create_activation
+#'
+#' @aliases ssm_create_activation
 ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL, IamRole, RegistrationLimit = NULL, ExpirationDate = NULL, Tags = NULL, RegistrationMetadata = NULL) {
   op <- new_operation(
     name = "CreateActivation",
@@ -713,6 +723,8 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @keywords internal
 #'
 #' @rdname ssm_create_association
+#'
+#' @aliases ssm_create_association
 ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NULL, Parameters = NULL, Targets = NULL, ScheduleExpression = NULL, OutputLocation = NULL, AssociationName = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, TargetMaps = NULL) {
   op <- new_operation(
     name = "CreateAssociation",
@@ -977,6 +989,8 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #' @keywords internal
 #'
 #' @rdname ssm_create_association_batch
+#'
+#' @aliases ssm_create_association_batch
 ssm_create_association_batch <- function(Entries) {
   op <- new_operation(
     name = "CreateAssociationBatch",
@@ -1191,6 +1205,8 @@ ssm_create_association_batch <- function(Entries) {
 #' @keywords internal
 #'
 #' @rdname ssm_create_document
+#'
+#' @aliases ssm_create_document
 ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Name, DisplayName = NULL, VersionName = NULL, DocumentType = NULL, DocumentFormat = NULL, TargetType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDocument",
@@ -1315,6 +1331,8 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' @keywords internal
 #'
 #' @rdname ssm_create_maintenance_window
+#'
+#' @aliases ssm_create_maintenance_window
 ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = NULL, EndDate = NULL, Schedule, ScheduleTimezone = NULL, ScheduleOffset = NULL, Duration, Cutoff, AllowUnassociatedTargets, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMaintenanceWindow",
@@ -1479,6 +1497,8 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' @keywords internal
 #'
 #' @rdname ssm_create_ops_item
+#'
+#' @aliases ssm_create_ops_item
 ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData = NULL, Notifications = NULL, Priority = NULL, RelatedOpsItems = NULL, Source, Title, Tags = NULL, Category = NULL, Severity = NULL, ActualStartTime = NULL, ActualEndTime = NULL, PlannedStartTime = NULL, PlannedEndTime = NULL) {
   op <- new_operation(
     name = "CreateOpsItem",
@@ -1550,6 +1570,8 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' @keywords internal
 #'
 #' @rdname ssm_create_ops_metadata
+#'
+#' @aliases ssm_create_ops_metadata
 ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateOpsMetadata",
@@ -1714,6 +1736,8 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_create_patch_baseline
+#'
+#' @aliases ssm_create_patch_baseline
 ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePatchBaseline",
@@ -1826,6 +1850,8 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' @keywords internal
 #'
 #' @rdname ssm_create_resource_data_sync
+#'
+#' @aliases ssm_create_resource_data_sync
 ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncType = NULL, SyncSource = NULL) {
   op <- new_operation(
     name = "CreateResourceDataSync",
@@ -1869,6 +1895,8 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncTy
 #' @keywords internal
 #'
 #' @rdname ssm_delete_activation
+#'
+#' @aliases ssm_delete_activation
 ssm_delete_activation <- function(ActivationId) {
   op <- new_operation(
     name = "DeleteActivation",
@@ -1931,6 +1959,8 @@ ssm_delete_activation <- function(ActivationId) {
 #' @keywords internal
 #'
 #' @rdname ssm_delete_association
+#'
+#' @aliases ssm_delete_association
 ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId = NULL) {
   op <- new_operation(
     name = "DeleteAssociation",
@@ -1989,6 +2019,8 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' @keywords internal
 #'
 #' @rdname ssm_delete_document
+#'
+#' @aliases ssm_delete_document
 ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL, Force = NULL) {
   op <- new_operation(
     name = "DeleteDocument",
@@ -2072,6 +2104,8 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' @keywords internal
 #'
 #' @rdname ssm_delete_inventory
+#'
+#' @aliases ssm_delete_inventory
 ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "DeleteInventory",
@@ -2117,6 +2151,8 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 #' @keywords internal
 #'
 #' @rdname ssm_delete_maintenance_window
+#'
+#' @aliases ssm_delete_maintenance_window
 ssm_delete_maintenance_window <- function(WindowId) {
   op <- new_operation(
     name = "DeleteMaintenanceWindow",
@@ -2157,6 +2193,8 @@ ssm_delete_maintenance_window <- function(WindowId) {
 #' @keywords internal
 #'
 #' @rdname ssm_delete_ops_metadata
+#'
+#' @aliases ssm_delete_ops_metadata
 ssm_delete_ops_metadata <- function(OpsMetadataArn) {
   op <- new_operation(
     name = "DeleteOpsMetadata",
@@ -2198,6 +2236,8 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
 #' @keywords internal
 #'
 #' @rdname ssm_delete_parameter
+#'
+#' @aliases ssm_delete_parameter
 ssm_delete_parameter <- function(Name) {
   op <- new_operation(
     name = "DeleteParameter",
@@ -2252,6 +2292,8 @@ ssm_delete_parameter <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname ssm_delete_parameters
+#'
+#' @aliases ssm_delete_parameters
 ssm_delete_parameters <- function(Names) {
   op <- new_operation(
     name = "DeleteParameters",
@@ -2297,6 +2339,8 @@ ssm_delete_parameters <- function(Names) {
 #' @keywords internal
 #'
 #' @rdname ssm_delete_patch_baseline
+#'
+#' @aliases ssm_delete_patch_baseline
 ssm_delete_patch_baseline <- function(BaselineId) {
   op <- new_operation(
     name = "DeletePatchBaseline",
@@ -2341,6 +2385,8 @@ ssm_delete_patch_baseline <- function(BaselineId) {
 #' @keywords internal
 #'
 #' @rdname ssm_delete_resource_data_sync
+#'
+#' @aliases ssm_delete_resource_data_sync
 ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
   op <- new_operation(
     name = "DeleteResourceDataSync",
@@ -2386,6 +2432,8 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_deregister_managed_instance
+#'
+#' @aliases ssm_deregister_managed_instance
 ssm_deregister_managed_instance <- function(InstanceId) {
   op <- new_operation(
     name = "DeregisterManagedInstance",
@@ -2435,6 +2483,8 @@ ssm_deregister_managed_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname ssm_deregister_patch_baseline_for_patch_group
+#'
+#' @aliases ssm_deregister_patch_baseline_for_patch_group
 ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) {
   op <- new_operation(
     name = "DeregisterPatchBaselineForPatchGroup",
@@ -2488,6 +2538,8 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 #' @keywords internal
 #'
 #' @rdname ssm_deregister_target_from_maintenance_window
+#'
+#' @aliases ssm_deregister_target_from_maintenance_window
 ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTargetId, Safe = NULL) {
   op <- new_operation(
     name = "DeregisterTargetFromMaintenanceWindow",
@@ -2536,6 +2588,8 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 #' @keywords internal
 #'
 #' @rdname ssm_deregister_task_from_maintenance_window
+#'
+#' @aliases ssm_deregister_task_from_maintenance_window
 ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) {
   op <- new_operation(
     name = "DeregisterTaskFromMaintenanceWindow",
@@ -2624,6 +2678,8 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_activations
+#'
+#' @aliases ssm_describe_activations
 ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeActivations",
@@ -2768,6 +2824,8 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname ssm_describe_association
+#'
+#' @aliases ssm_describe_association
 ssm_describe_association <- function(Name = NULL, InstanceId = NULL, AssociationId = NULL, AssociationVersion = NULL) {
   op <- new_operation(
     name = "DescribeAssociation",
@@ -2856,6 +2914,8 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #' @keywords internal
 #'
 #' @rdname ssm_describe_association_execution_targets
+#'
+#' @aliases ssm_describe_association_execution_targets
 ssm_describe_association_execution_targets <- function(AssociationId, ExecutionId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAssociationExecutionTargets",
@@ -2940,6 +3000,8 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 #' @keywords internal
 #'
 #' @rdname ssm_describe_association_executions
+#'
+#' @aliases ssm_describe_association_executions
 ssm_describe_association_executions <- function(AssociationId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAssociationExecutions",
@@ -3100,6 +3162,8 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #' @keywords internal
 #'
 #' @rdname ssm_describe_automation_executions
+#'
+#' @aliases ssm_describe_automation_executions
 ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAutomationExecutions",
@@ -3236,6 +3300,8 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname ssm_describe_automation_step_executions
+#'
+#' @aliases ssm_describe_automation_step_executions
 ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filters = NULL, NextToken = NULL, MaxResults = NULL, ReverseOrder = NULL) {
   op <- new_operation(
     name = "DescribeAutomationStepExecutions",
@@ -3417,6 +3483,8 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' @keywords internal
 #'
 #' @rdname ssm_describe_available_patches
+#'
+#' @aliases ssm_describe_available_patches
 ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAvailablePatches",
@@ -3539,6 +3607,8 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname ssm_describe_document
+#'
+#' @aliases ssm_describe_document
 ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NULL) {
   op <- new_operation(
     name = "DescribeDocument",
@@ -3608,6 +3678,8 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #' @keywords internal
 #'
 #' @rdname ssm_describe_document_permission
+#'
+#' @aliases ssm_describe_document_permission
 ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDocumentPermission",
@@ -3669,6 +3741,8 @@ ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_effective_instance_associations
+#'
+#' @aliases ssm_describe_effective_instance_associations
 ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeEffectiveInstanceAssociations",
@@ -3767,6 +3841,8 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_effective_patches_for_patch_baseline
+#'
+#' @aliases ssm_describe_effective_patches_for_patch_baseline
 ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeEffectivePatchesForPatchBaseline",
@@ -3842,6 +3918,8 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 #' @keywords internal
 #'
 #' @rdname ssm_describe_instance_associations_status
+#'
+#' @aliases ssm_describe_instance_associations_status
 ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstanceAssociationsStatus",
@@ -3970,6 +4048,8 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname ssm_describe_instance_information
+#'
+#' @aliases ssm_describe_instance_information
 ssm_describe_instance_information <- function(InstanceInformationFilterList = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstanceInformation",
@@ -4055,6 +4135,8 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 #' @keywords internal
 #'
 #' @rdname ssm_describe_instance_patch_states
+#'
+#' @aliases ssm_describe_instance_patch_states
 ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeInstancePatchStates",
@@ -4157,6 +4239,8 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ssm_describe_instance_patch_states_for_patch_group
+#'
+#' @aliases ssm_describe_instance_patch_states_for_patch_group
 ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeInstancePatchStatesForPatchGroup",
@@ -4254,6 +4338,8 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' @keywords internal
 #'
 #' @rdname ssm_describe_instance_patches
+#'
+#' @aliases ssm_describe_instance_patches
 ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeInstancePatches",
@@ -4333,6 +4419,8 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_inventory_deletions
+#'
+#' @aliases ssm_describe_inventory_deletions
 ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeInventoryDeletions",
@@ -4423,6 +4511,8 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_window_execution_task_invocations
+#'
+#' @aliases ssm_describe_maintenance_window_execution_task_invocations
 ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExecutionId, TaskId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowExecutionTaskInvocations",
@@ -4505,6 +4595,8 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_window_execution_tasks
+#'
+#' @aliases ssm_describe_maintenance_window_execution_tasks
 ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowExecutionTasks",
@@ -4590,6 +4682,8 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_window_executions
+#'
+#' @aliases ssm_describe_maintenance_window_executions
 ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowExecutions",
@@ -4673,6 +4767,8 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_window_schedule
+#'
+#' @aliases ssm_describe_maintenance_window_schedule
 ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = NULL, ResourceType = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowSchedule",
@@ -4755,6 +4851,8 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_window_targets
+#'
+#' @aliases ssm_describe_maintenance_window_targets
 ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowTargets",
@@ -4860,6 +4958,8 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_window_tasks
+#'
+#' @aliases ssm_describe_maintenance_window_tasks
 ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowTasks",
@@ -4937,6 +5037,8 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_windows
+#'
+#' @aliases ssm_describe_maintenance_windows
 ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindows",
@@ -5008,6 +5110,8 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_maintenance_windows_for_target
+#'
+#' @aliases ssm_describe_maintenance_windows_for_target
 ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeMaintenanceWindowsForTarget",
@@ -5177,6 +5281,8 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' @keywords internal
 #'
 #' @rdname ssm_describe_ops_items
+#'
+#' @aliases ssm_describe_ops_items
 ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOpsItems",
@@ -5284,6 +5390,8 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname ssm_describe_parameters
+#'
+#' @aliases ssm_describe_parameters
 ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeParameters",
@@ -5366,6 +5474,8 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 #' @keywords internal
 #'
 #' @rdname ssm_describe_patch_baselines
+#'
+#' @aliases ssm_describe_patch_baselines
 ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePatchBaselines",
@@ -5424,6 +5534,8 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname ssm_describe_patch_group_state
+#'
+#' @aliases ssm_describe_patch_group_state
 ssm_describe_patch_group_state <- function(PatchGroup) {
   op <- new_operation(
     name = "DescribePatchGroupState",
@@ -5504,6 +5616,8 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' @keywords internal
 #'
 #' @rdname ssm_describe_patch_groups
+#'
+#' @aliases ssm_describe_patch_groups
 ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePatchGroups",
@@ -5621,6 +5735,8 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname ssm_describe_patch_properties
+#'
+#' @aliases ssm_describe_patch_properties
 ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePatchProperties",
@@ -5706,6 +5822,8 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #' @keywords internal
 #'
 #' @rdname ssm_describe_sessions
+#'
+#' @aliases ssm_describe_sessions
 ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeSessions",
@@ -5753,6 +5871,8 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 #' @keywords internal
 #'
 #' @rdname ssm_disassociate_ops_item_related_item
+#'
+#' @aliases ssm_disassociate_ops_item_related_item
 ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
   op <- new_operation(
     name = "DisassociateOpsItemRelatedItem",
@@ -5989,6 +6109,8 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_automation_execution
+#'
+#' @aliases ssm_get_automation_execution
 ssm_get_automation_execution <- function(AutomationExecutionId) {
   op <- new_operation(
     name = "GetAutomationExecution",
@@ -6063,6 +6185,8 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_calendar_state
+#'
+#' @aliases ssm_get_calendar_state
 ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
   op <- new_operation(
     name = "GetCalendarState",
@@ -6154,6 +6278,8 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_command_invocation
+#'
+#' @aliases ssm_get_command_invocation
 ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL) {
   op <- new_operation(
     name = "GetCommandInvocation",
@@ -6204,6 +6330,8 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 #' @keywords internal
 #'
 #' @rdname ssm_get_connection_status
+#'
+#' @aliases ssm_get_connection_status
 ssm_get_connection_status <- function(Target) {
   op <- new_operation(
     name = "GetConnectionStatus",
@@ -6255,6 +6383,8 @@ ssm_get_connection_status <- function(Target) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_default_patch_baseline
+#'
+#' @aliases ssm_get_default_patch_baseline
 ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
   op <- new_operation(
     name = "GetDefaultPatchBaseline",
@@ -6372,6 +6502,8 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_deployable_patch_snapshot_for_instance
+#'
+#' @aliases ssm_get_deployable_patch_snapshot_for_instance
 ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotId, BaselineOverride = NULL) {
   op <- new_operation(
     name = "GetDeployablePatchSnapshotForInstance",
@@ -6455,6 +6587,8 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #' @keywords internal
 #'
 #' @rdname ssm_get_document
+#'
+#' @aliases ssm_get_document
 ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL) {
   op <- new_operation(
     name = "GetDocument",
@@ -6566,6 +6700,8 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 #' @keywords internal
 #'
 #' @rdname ssm_get_inventory
+#'
+#' @aliases ssm_get_inventory
 ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttributes = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetInventory",
@@ -6641,6 +6777,8 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #' @keywords internal
 #'
 #' @rdname ssm_get_inventory_schema
+#'
+#' @aliases ssm_get_inventory_schema
 ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResults = NULL, Aggregator = NULL, SubType = NULL) {
   op <- new_operation(
     name = "GetInventorySchema",
@@ -6705,6 +6843,8 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname ssm_get_maintenance_window
+#'
+#' @aliases ssm_get_maintenance_window
 ssm_get_maintenance_window <- function(WindowId) {
   op <- new_operation(
     name = "GetMaintenanceWindow",
@@ -6761,6 +6901,8 @@ ssm_get_maintenance_window <- function(WindowId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_maintenance_window_execution
+#'
+#' @aliases ssm_get_maintenance_window_execution
 ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
   op <- new_operation(
     name = "GetMaintenanceWindowExecution",
@@ -6835,6 +6977,8 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_maintenance_window_execution_task
+#'
+#' @aliases ssm_get_maintenance_window_execution_task
 ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId) {
   op <- new_operation(
     name = "GetMaintenanceWindowExecutionTask",
@@ -6902,6 +7046,8 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 #' @keywords internal
 #'
 #' @rdname ssm_get_maintenance_window_execution_task_invocation
+#'
+#' @aliases ssm_get_maintenance_window_execution_task_invocation
 ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecutionId, TaskId, InvocationId) {
   op <- new_operation(
     name = "GetMaintenanceWindowExecutionTaskInvocation",
@@ -7034,6 +7180,8 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 #' @keywords internal
 #'
 #' @rdname ssm_get_maintenance_window_task
+#'
+#' @aliases ssm_get_maintenance_window_task
 ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
   op <- new_operation(
     name = "GetMaintenanceWindowTask",
@@ -7137,6 +7285,8 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_ops_item
+#'
+#' @aliases ssm_get_ops_item
 ssm_get_ops_item <- function(OpsItemId) {
   op <- new_operation(
     name = "GetOpsItem",
@@ -7197,6 +7347,8 @@ ssm_get_ops_item <- function(OpsItemId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_ops_metadata
+#'
+#' @aliases ssm_get_ops_metadata
 ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetOpsMetadata",
@@ -7309,6 +7461,8 @@ ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname ssm_get_ops_summary
+#'
+#' @aliases ssm_get_ops_summary
 ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = NULL, ResultAttributes = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetOpsSummary",
@@ -7377,6 +7531,8 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' @keywords internal
 #'
 #' @rdname ssm_get_parameter
+#'
+#' @aliases ssm_get_parameter
 ssm_get_parameter <- function(Name, WithDecryption = NULL) {
   op <- new_operation(
     name = "GetParameter",
@@ -7465,6 +7621,8 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_parameter_history
+#'
+#' @aliases ssm_get_parameter_history
 ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetParameterHistory",
@@ -7541,6 +7699,8 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname ssm_get_parameters
+#'
+#' @aliases ssm_get_parameters
 ssm_get_parameters <- function(Names, WithDecryption = NULL) {
   op <- new_operation(
     name = "GetParameters",
@@ -7652,6 +7812,8 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_parameters_by_path
+#'
+#' @aliases ssm_get_parameters_by_path
 ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters = NULL, WithDecryption = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetParametersByPath",
@@ -7764,6 +7926,8 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 #' @keywords internal
 #'
 #' @rdname ssm_get_patch_baseline
+#'
+#' @aliases ssm_get_patch_baseline
 ssm_get_patch_baseline <- function(BaselineId) {
   op <- new_operation(
     name = "GetPatchBaseline",
@@ -7816,6 +7980,8 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #' @keywords internal
 #'
 #' @rdname ssm_get_patch_baseline_for_patch_group
+#'
+#' @aliases ssm_get_patch_baseline_for_patch_group
 ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem = NULL) {
   op <- new_operation(
     name = "GetPatchBaselineForPatchGroup",
@@ -7905,6 +8071,8 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #' @keywords internal
 #'
 #' @rdname ssm_get_service_setting
+#'
+#' @aliases ssm_get_service_setting
 ssm_get_service_setting <- function(SettingId) {
   op <- new_operation(
     name = "GetServiceSetting",
@@ -7992,6 +8160,8 @@ ssm_get_service_setting <- function(SettingId) {
 #' @keywords internal
 #'
 #' @rdname ssm_label_parameter_version
+#'
+#' @aliases ssm_label_parameter_version
 ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
   op <- new_operation(
     name = "LabelParameterVersion",
@@ -8106,6 +8276,8 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #' @keywords internal
 #'
 #' @rdname ssm_list_association_versions
+#'
+#' @aliases ssm_list_association_versions
 ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAssociationVersions",
@@ -8211,6 +8383,8 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname ssm_list_associations
+#'
+#' @aliases ssm_list_associations
 ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAssociations",
@@ -8333,6 +8507,8 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname ssm_list_command_invocations
+#'
+#' @aliases ssm_list_command_invocations
 ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, Details = NULL) {
   op <- new_operation(
     name = "ListCommandInvocations",
@@ -8454,6 +8630,8 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ssm_list_commands
+#'
+#' @aliases ssm_list_commands
 ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListCommands",
@@ -8551,6 +8729,8 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname ssm_list_compliance_items
+#'
+#' @aliases ssm_list_compliance_items
 ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, ResourceTypes = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListComplianceItems",
@@ -8643,6 +8823,8 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #' @keywords internal
 #'
 #' @rdname ssm_list_compliance_summaries
+#'
+#' @aliases ssm_list_compliance_summaries
 ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListComplianceSummaries",
@@ -8726,6 +8908,8 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname ssm_list_document_metadata_history
+#'
+#' @aliases ssm_list_document_metadata_history
 ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Metadata, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDocumentMetadataHistory",
@@ -8794,6 +8978,8 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 #' @keywords internal
 #'
 #' @rdname ssm_list_document_versions
+#'
+#' @aliases ssm_list_document_versions
 ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDocumentVersions",
@@ -8906,6 +9092,8 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname ssm_list_documents
+#'
+#' @aliases ssm_list_documents
 ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDocuments",
@@ -8981,6 +9169,8 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname ssm_list_inventory_entries
+#'
+#' @aliases ssm_list_inventory_entries
 ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInventoryEntries",
@@ -9060,6 +9250,8 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname ssm_list_ops_item_events
+#'
+#' @aliases ssm_list_ops_item_events
 ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOpsItemEvents",
@@ -9149,6 +9341,8 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname ssm_list_ops_item_related_items
+#'
+#' @aliases ssm_list_ops_item_related_items
 ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOpsItemRelatedItems",
@@ -9224,6 +9418,8 @@ ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname ssm_list_ops_metadata
+#'
+#' @aliases ssm_list_ops_metadata
 ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOpsMetadata",
@@ -9325,6 +9521,8 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname ssm_list_resource_compliance_summaries
+#'
+#' @aliases ssm_list_resource_compliance_summaries
 ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListResourceComplianceSummaries",
@@ -9438,6 +9636,8 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname ssm_list_resource_data_sync
+#'
+#' @aliases ssm_list_resource_data_sync
 ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListResourceDataSync",
@@ -9493,6 +9693,8 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname ssm_list_tags_for_resource
+#'
+#' @aliases ssm_list_tags_for_resource
 ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -9558,6 +9760,8 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname ssm_modify_document_permission
+#'
+#' @aliases ssm_modify_document_permission
 ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd = NULL, AccountIdsToRemove = NULL, SharedDocumentVersion = NULL) {
   op <- new_operation(
     name = "ModifyDocumentPermission",
@@ -9692,6 +9896,8 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' @keywords internal
 #'
 #' @rdname ssm_put_compliance_items
+#'
+#' @aliases ssm_put_compliance_items
 ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, ExecutionSummary, Items, ItemContentHash = NULL, UploadType = NULL) {
   op <- new_operation(
     name = "PutComplianceItems",
@@ -9756,6 +9962,8 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
 #' @keywords internal
 #'
 #' @rdname ssm_put_inventory
+#'
+#' @aliases ssm_put_inventory
 ssm_put_inventory <- function(InstanceId, Items) {
   op <- new_operation(
     name = "PutInventory",
@@ -10023,6 +10231,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' @keywords internal
 #'
 #' @rdname ssm_put_parameter
+#'
+#' @aliases ssm_put_parameter
 ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyId = NULL, Overwrite = NULL, AllowedPattern = NULL, Tags = NULL, Tier = NULL, Policies = NULL, DataType = NULL) {
   op <- new_operation(
     name = "PutParameter",
@@ -10074,6 +10284,8 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
 #' @keywords internal
 #'
 #' @rdname ssm_register_default_patch_baseline
+#'
+#' @aliases ssm_register_default_patch_baseline
 ssm_register_default_patch_baseline <- function(BaselineId) {
   op <- new_operation(
     name = "RegisterDefaultPatchBaseline",
@@ -10122,6 +10334,8 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
 #' @keywords internal
 #'
 #' @rdname ssm_register_patch_baseline_for_patch_group
+#'
+#' @aliases ssm_register_patch_baseline_for_patch_group
 ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) {
   op <- new_operation(
     name = "RegisterPatchBaselineForPatchGroup",
@@ -10229,6 +10443,8 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' @keywords internal
 #'
 #' @rdname ssm_register_target_with_maintenance_window
+#'
+#' @aliases ssm_register_target_with_maintenance_window
 ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, Targets, OwnerInformation = NULL, Name = NULL, Description = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "RegisterTargetWithMaintenanceWindow",
@@ -10455,6 +10671,8 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @keywords internal
 #'
 #' @rdname ssm_register_task_with_maintenance_window
+#'
+#' @aliases ssm_register_task_with_maintenance_window
 ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, TaskArn, ServiceRoleArn = NULL, TaskType, TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, ClientToken = NULL, CutoffBehavior = NULL) {
   op <- new_operation(
     name = "RegisterTaskWithMaintenanceWindow",
@@ -10527,6 +10745,8 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' @keywords internal
 #'
 #' @rdname ssm_remove_tags_from_resource
+#'
+#' @aliases ssm_remove_tags_from_resource
 ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -10616,6 +10836,8 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname ssm_reset_service_setting
+#'
+#' @aliases ssm_reset_service_setting
 ssm_reset_service_setting <- function(SettingId) {
   op <- new_operation(
     name = "ResetServiceSetting",
@@ -10669,6 +10891,8 @@ ssm_reset_service_setting <- function(SettingId) {
 #' @keywords internal
 #'
 #' @rdname ssm_resume_session
+#'
+#' @aliases ssm_resume_session
 ssm_resume_session <- function(SessionId) {
   op <- new_operation(
     name = "ResumeSession",
@@ -10736,6 +10960,8 @@ ssm_resume_session <- function(SessionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_send_automation_signal
+#'
+#' @aliases ssm_send_automation_signal
 ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payload = NULL) {
   op <- new_operation(
     name = "SendAutomationSignal",
@@ -10961,6 +11187,8 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' @keywords internal
 #'
 #' @rdname ssm_send_command
+#'
+#' @aliases ssm_send_command
 ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, DocumentVersion = NULL, DocumentHash = NULL, DocumentHashType = NULL, TimeoutSeconds = NULL, Comment = NULL, Parameters = NULL, OutputS3Region = NULL, OutputS3BucketName = NULL, OutputS3KeyPrefix = NULL, MaxConcurrency = NULL, MaxErrors = NULL, ServiceRoleArn = NULL, NotificationConfig = NULL, CloudWatchOutputConfig = NULL) {
   op <- new_operation(
     name = "SendCommand",
@@ -11004,6 +11232,8 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 #' @keywords internal
 #'
 #' @rdname ssm_start_associations_once
+#'
+#' @aliases ssm_start_associations_once
 ssm_start_associations_once <- function(AssociationIds) {
   op <- new_operation(
     name = "StartAssociationsOnce",
@@ -11153,6 +11383,8 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @keywords internal
 #'
 #' @rdname ssm_start_automation_execution
+#'
+#' @aliases ssm_start_automation_execution
 ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL, Parameters = NULL, ClientToken = NULL, Mode = NULL, TargetParameterName = NULL, Targets = NULL, TargetMaps = NULL, MaxConcurrency = NULL, MaxErrors = NULL, TargetLocations = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartAutomationExecution",
@@ -11314,6 +11546,8 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' @keywords internal
 #'
 #' @rdname ssm_start_change_request_execution
+#'
+#' @aliases ssm_start_change_request_execution
 ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentName, DocumentVersion = NULL, Parameters = NULL, ChangeRequestName = NULL, ClientToken = NULL, AutoApprove = NULL, Runbooks, Tags = NULL, ScheduledEndTime = NULL, ChangeDetails = NULL) {
   op <- new_operation(
     name = "StartChangeRequestExecution",
@@ -11396,6 +11630,8 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
 #' @keywords internal
 #'
 #' @rdname ssm_start_session
+#'
+#' @aliases ssm_start_session
 ssm_start_session <- function(Target, DocumentName = NULL, Reason = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "StartSession",
@@ -11439,6 +11675,8 @@ ssm_start_session <- function(Target, DocumentName = NULL, Reason = NULL, Parame
 #' @keywords internal
 #'
 #' @rdname ssm_stop_automation_execution
+#'
+#' @aliases ssm_stop_automation_execution
 ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
   op <- new_operation(
     name = "StopAutomationExecution",
@@ -11487,6 +11725,8 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssm_terminate_session
+#'
+#' @aliases ssm_terminate_session
 ssm_terminate_session <- function(SessionId) {
   op <- new_operation(
     name = "TerminateSession",
@@ -11545,6 +11785,8 @@ ssm_terminate_session <- function(SessionId) {
 #' @keywords internal
 #'
 #' @rdname ssm_unlabel_parameter_version
+#'
+#' @aliases ssm_unlabel_parameter_version
 ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
   op <- new_operation(
     name = "UnlabelParameterVersion",
@@ -11889,6 +12131,8 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_association
+#'
+#' @aliases ssm_update_association
 ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVersion = NULL, ScheduleExpression = NULL, OutputLocation = NULL, Name = NULL, Targets = NULL, AssociationName = NULL, AssociationVersion = NULL, AutomationTargetParameterName = NULL, MaxErrors = NULL, MaxConcurrency = NULL, ComplianceSeverity = NULL, SyncCompliance = NULL, ApplyOnlyAtCronInterval = NULL, CalendarNames = NULL, TargetLocations = NULL, ScheduleOffset = NULL, TargetMaps = NULL) {
   op <- new_operation(
     name = "UpdateAssociation",
@@ -12037,6 +12281,8 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #' @keywords internal
 #'
 #' @rdname ssm_update_association_status
+#'
+#' @aliases ssm_update_association_status
 ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
   op <- new_operation(
     name = "UpdateAssociationStatus",
@@ -12187,6 +12433,8 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_document
+#'
+#' @aliases ssm_update_document
 ssm_update_document <- function(Content, Attachments = NULL, Name, DisplayName = NULL, VersionName = NULL, DocumentVersion = NULL, DocumentFormat = NULL, TargetType = NULL) {
   op <- new_operation(
     name = "UpdateDocument",
@@ -12244,6 +12492,8 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, DisplayName =
 #' @keywords internal
 #'
 #' @rdname ssm_update_document_default_version
+#'
+#' @aliases ssm_update_document_default_version
 ssm_update_document_default_version <- function(Name, DocumentVersion) {
   op <- new_operation(
     name = "UpdateDocumentDefaultVersion",
@@ -12299,6 +12549,8 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_document_metadata
+#'
+#' @aliases ssm_update_document_metadata
 ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentReviews) {
   op <- new_operation(
     name = "UpdateDocumentMetadata",
@@ -12414,6 +12666,8 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' @keywords internal
 #'
 #' @rdname ssm_update_maintenance_window
+#'
+#' @aliases ssm_update_maintenance_window
 ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = NULL, StartDate = NULL, EndDate = NULL, Schedule = NULL, ScheduleTimezone = NULL, ScheduleOffset = NULL, Duration = NULL, Cutoff = NULL, AllowUnassociatedTargets = NULL, Enabled = NULL, Replace = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceWindow",
@@ -12513,6 +12767,8 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 #' @keywords internal
 #'
 #' @rdname ssm_update_maintenance_window_target
+#'
+#' @aliases ssm_update_maintenance_window_target
 ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targets = NULL, OwnerInformation = NULL, Name = NULL, Description = NULL, Replace = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceWindowTarget",
@@ -12865,6 +13121,8 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @keywords internal
 #'
 #' @rdname ssm_update_maintenance_window_task
+#'
+#' @aliases ssm_update_maintenance_window_task
 ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets = NULL, TaskArn = NULL, ServiceRoleArn = NULL, TaskParameters = NULL, TaskInvocationParameters = NULL, Priority = NULL, MaxConcurrency = NULL, MaxErrors = NULL, LoggingInfo = NULL, Name = NULL, Description = NULL, Replace = NULL, CutoffBehavior = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceWindowTask",
@@ -12912,6 +13170,8 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' @keywords internal
 #'
 #' @rdname ssm_update_managed_instance_role
+#'
+#' @aliases ssm_update_managed_instance_role
 ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
   op <- new_operation(
     name = "UpdateManagedInstanceRole",
@@ -13057,6 +13317,8 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_ops_item
+#'
+#' @aliases ssm_update_ops_item
 ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, OperationalDataToDelete = NULL, Notifications = NULL, Priority = NULL, RelatedOpsItems = NULL, Status = NULL, OpsItemId, Title = NULL, Category = NULL, Severity = NULL, ActualStartTime = NULL, ActualEndTime = NULL, PlannedStartTime = NULL, PlannedEndTime = NULL) {
   op <- new_operation(
     name = "UpdateOpsItem",
@@ -13114,6 +13376,8 @@ ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, Oper
 #' @keywords internal
 #'
 #' @rdname ssm_update_ops_metadata
+#'
+#' @aliases ssm_update_ops_metadata
 ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, KeysToDelete = NULL) {
   op <- new_operation(
     name = "UpdateOpsMetadata",
@@ -13317,6 +13581,8 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @keywords internal
 #'
 #' @rdname ssm_update_patch_baseline
+#'
+#' @aliases ssm_update_patch_baseline
 ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = NULL, ApprovalRules = NULL, ApprovedPatches = NULL, ApprovedPatchesComplianceLevel = NULL, ApprovedPatchesEnableNonSecurity = NULL, RejectedPatches = NULL, RejectedPatchesAction = NULL, Description = NULL, Sources = NULL, Replace = NULL) {
   op <- new_operation(
     name = "UpdatePatchBaseline",
@@ -13387,6 +13653,8 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 #' @keywords internal
 #'
 #' @rdname ssm_update_resource_data_sync
+#'
+#' @aliases ssm_update_resource_data_sync
 ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
   op <- new_operation(
     name = "UpdateResourceDataSync",
@@ -13484,6 +13752,8 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' @keywords internal
 #'
 #' @rdname ssm_update_service_setting
+#'
+#' @aliases ssm_update_service_setting
 ssm_update_service_setting <- function(SettingId, SettingValue) {
   op <- new_operation(
     name = "UpdateServiceSetting",

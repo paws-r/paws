@@ -56,6 +56,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname autoscaling_attach_instances
+#'
+#' @aliases autoscaling_attach_instances
 autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupName) {
   op <- new_operation(
     name = "AttachInstances",
@@ -141,6 +143,8 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_attach_load_balancer_target_groups
+#'
+#' @aliases autoscaling_attach_load_balancer_target_groups
 autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName, TargetGroupARNs) {
   op <- new_operation(
     name = "AttachLoadBalancerTargetGroups",
@@ -221,6 +225,8 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' @keywords internal
 #'
 #' @rdname autoscaling_attach_load_balancers
+#'
+#' @aliases autoscaling_attach_load_balancers
 autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancerNames) {
   op <- new_operation(
     name = "AttachLoadBalancers",
@@ -280,6 +286,8 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' @keywords internal
 #'
 #' @rdname autoscaling_batch_delete_scheduled_action
+#'
+#' @aliases autoscaling_batch_delete_scheduled_action
 autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledActionNames) {
   op <- new_operation(
     name = "BatchDeleteScheduledAction",
@@ -351,6 +359,8 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
 #' @keywords internal
 #'
 #' @rdname autoscaling_batch_put_scheduled_update_group_action
+#'
+#' @aliases autoscaling_batch_put_scheduled_update_group_action
 autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroupName, ScheduledUpdateGroupActions) {
   op <- new_operation(
     name = "BatchPutScheduledUpdateGroupAction",
@@ -411,6 +421,8 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 #' @keywords internal
 #'
 #' @rdname autoscaling_cancel_instance_refresh
+#'
+#' @aliases autoscaling_cancel_instance_refresh
 autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
   op <- new_operation(
     name = "CancelInstanceRefresh",
@@ -510,6 +522,8 @@ autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
 #' @keywords internal
 #'
 #' @rdname autoscaling_complete_lifecycle_action
+#'
+#' @aliases autoscaling_complete_lifecycle_action
 autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScalingGroupName, LifecycleActionToken = NULL, LifecycleActionResult, InstanceId = NULL) {
   op <- new_operation(
     name = "CompleteLifecycleAction",
@@ -993,6 +1007,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @keywords internal
 #'
 #' @rdname autoscaling_create_auto_scaling_group
+#'
+#' @aliases autoscaling_create_auto_scaling_group
 autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL) {
   op <- new_operation(
     name = "CreateAutoScalingGroup",
@@ -1255,6 +1271,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' @keywords internal
 #'
 #' @rdname autoscaling_create_launch_configuration
+#'
+#' @aliases autoscaling_create_launch_configuration
 autoscaling_create_launch_configuration <- function(LaunchConfigurationName, ImageId = NULL, KeyName = NULL, SecurityGroups = NULL, ClassicLinkVPCId = NULL, ClassicLinkVPCSecurityGroups = NULL, UserData = NULL, InstanceId = NULL, InstanceType = NULL, KernelId = NULL, RamdiskId = NULL, BlockDeviceMappings = NULL, InstanceMonitoring = NULL, SpotPrice = NULL, IamInstanceProfile = NULL, EbsOptimized = NULL, AssociatePublicIpAddress = NULL, PlacementTenancy = NULL, MetadataOptions = NULL) {
   op <- new_operation(
     name = "CreateLaunchConfiguration",
@@ -1334,6 +1352,8 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 #' @keywords internal
 #'
 #' @rdname autoscaling_create_or_update_tags
+#'
+#' @aliases autoscaling_create_or_update_tags
 autoscaling_create_or_update_tags <- function(Tags) {
   op <- new_operation(
     name = "CreateOrUpdateTags",
@@ -1412,6 +1432,8 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_auto_scaling_group
+#'
+#' @aliases autoscaling_delete_auto_scaling_group
 autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDelete = NULL) {
   op <- new_operation(
     name = "DeleteAutoScalingGroup",
@@ -1464,6 +1486,8 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_launch_configuration
+#'
+#' @aliases autoscaling_delete_launch_configuration
 autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
   op <- new_operation(
     name = "DeleteLaunchConfiguration",
@@ -1520,6 +1544,8 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_lifecycle_hook
+#'
+#' @aliases autoscaling_delete_lifecycle_hook
 autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupName) {
   op <- new_operation(
     name = "DeleteLifecycleHook",
@@ -1573,6 +1599,8 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_notification_configuration
+#'
+#' @aliases autoscaling_delete_notification_configuration
 autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, TopicARN) {
   op <- new_operation(
     name = "DeleteNotificationConfiguration",
@@ -1632,6 +1660,8 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_policy
+#'
+#' @aliases autoscaling_delete_policy
 autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
   op <- new_operation(
     name = "DeletePolicy",
@@ -1685,6 +1715,8 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_scheduled_action
+#'
+#' @aliases autoscaling_delete_scheduled_action
 autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledActionName) {
   op <- new_operation(
     name = "DeleteScheduledAction",
@@ -1749,6 +1781,8 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_tags
+#'
+#' @aliases autoscaling_delete_tags
 autoscaling_delete_tags <- function(Tags) {
   op <- new_operation(
     name = "DeleteTags",
@@ -1798,6 +1832,8 @@ autoscaling_delete_tags <- function(Tags) {
 #' @keywords internal
 #'
 #' @rdname autoscaling_delete_warm_pool
+#'
+#' @aliases autoscaling_delete_warm_pool
 autoscaling_delete_warm_pool <- function(AutoScalingGroupName, ForceDelete = NULL) {
   op <- new_operation(
     name = "DeleteWarmPool",
@@ -1857,6 +1893,8 @@ autoscaling_delete_warm_pool <- function(AutoScalingGroupName, ForceDelete = NUL
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_account_limits
+#'
+#' @aliases autoscaling_describe_account_limits
 autoscaling_describe_account_limits <- function() {
   op <- new_operation(
     name = "DescribeAccountLimits",
@@ -1917,6 +1955,8 @@ autoscaling_describe_account_limits <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_adjustment_types
+#'
+#' @aliases autoscaling_describe_adjustment_types
 autoscaling_describe_adjustment_types <- function() {
   op <- new_operation(
     name = "DescribeAdjustmentTypes",
@@ -2187,6 +2227,8 @@ autoscaling_describe_adjustment_types <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_auto_scaling_groups
+#'
+#' @aliases autoscaling_describe_auto_scaling_groups
 autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NULL, NextToken = NULL, MaxRecords = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeAutoScalingGroups",
@@ -2275,6 +2317,8 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_auto_scaling_instances
+#'
+#' @aliases autoscaling_describe_auto_scaling_instances
 autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAutoScalingInstances",
@@ -2325,6 +2369,8 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_auto_scaling_notification_types
+#'
+#' @aliases autoscaling_describe_auto_scaling_notification_types
 autoscaling_describe_auto_scaling_notification_types <- function() {
   op <- new_operation(
     name = "DescribeAutoScalingNotificationTypes",
@@ -2552,6 +2598,8 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_instance_refreshes
+#'
+#' @aliases autoscaling_describe_instance_refreshes
 autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, InstanceRefreshIds = NULL, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeInstanceRefreshes",
@@ -2672,6 +2720,8 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_launch_configurations
+#'
+#' @aliases autoscaling_describe_launch_configurations
 autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames = NULL, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeLaunchConfigurations",
@@ -2726,6 +2776,8 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_lifecycle_hook_types
+#'
+#' @aliases autoscaling_describe_lifecycle_hook_types
 autoscaling_describe_lifecycle_hook_types <- function() {
   op <- new_operation(
     name = "DescribeLifecycleHookTypes",
@@ -2800,6 +2852,8 @@ autoscaling_describe_lifecycle_hook_types <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_lifecycle_hooks
+#'
+#' @aliases autoscaling_describe_lifecycle_hooks
 autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, LifecycleHookNames = NULL) {
   op <- new_operation(
     name = "DescribeLifecycleHooks",
@@ -2897,6 +2951,8 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_load_balancer_target_groups
+#'
+#' @aliases autoscaling_describe_load_balancer_target_groups
 autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupName, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeLoadBalancerTargetGroups",
@@ -3000,6 +3056,8 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_load_balancers
+#'
+#' @aliases autoscaling_describe_load_balancers
 autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeLoadBalancers",
@@ -3055,6 +3113,8 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_metric_collection_types
+#'
+#' @aliases autoscaling_describe_metric_collection_types
 autoscaling_describe_metric_collection_types <- function() {
   op <- new_operation(
     name = "DescribeMetricCollectionTypes",
@@ -3129,6 +3189,8 @@ autoscaling_describe_metric_collection_types <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_notification_configurations
+#'
+#' @aliases autoscaling_describe_notification_configurations
 autoscaling_describe_notification_configurations <- function(AutoScalingGroupNames = NULL, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeNotificationConfigurations",
@@ -3348,6 +3410,8 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_policies
+#'
+#' @aliases autoscaling_describe_policies
 autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNames = NULL, PolicyTypes = NULL, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribePolicies",
@@ -3456,6 +3520,8 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_scaling_activities
+#'
+#' @aliases autoscaling_describe_scaling_activities
 autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScalingGroupName = NULL, IncludeDeletedGroups = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalingActivities",
@@ -3509,6 +3575,8 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_scaling_process_types
+#'
+#' @aliases autoscaling_describe_scaling_process_types
 autoscaling_describe_scaling_process_types <- function() {
   op <- new_operation(
     name = "DescribeScalingProcessTypes",
@@ -3616,6 +3684,8 @@ autoscaling_describe_scaling_process_types <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_scheduled_actions
+#'
+#' @aliases autoscaling_describe_scheduled_actions
 autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, ScheduledActionNames = NULL, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeScheduledActions",
@@ -3712,6 +3782,8 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_tags
+#'
+#' @aliases autoscaling_describe_tags
 autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeTags",
@@ -3764,6 +3836,8 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_termination_policy_types
+#'
+#' @aliases autoscaling_describe_termination_policy_types
 autoscaling_describe_termination_policy_types <- function() {
   op <- new_operation(
     name = "DescribeTerminationPolicyTypes",
@@ -3846,6 +3920,8 @@ autoscaling_describe_termination_policy_types <- function() {
 #' @keywords internal
 #'
 #' @rdname autoscaling_describe_warm_pool
+#'
+#' @aliases autoscaling_describe_warm_pool
 autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWarmPool",
@@ -3947,6 +4023,8 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
 #' @keywords internal
 #'
 #' @rdname autoscaling_detach_instances
+#'
+#' @aliases autoscaling_detach_instances
 autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupName, ShouldDecrementDesiredCapacity) {
   op <- new_operation(
     name = "DetachInstances",
@@ -4012,6 +4090,8 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_detach_load_balancer_target_groups
+#'
+#' @aliases autoscaling_detach_load_balancer_target_groups
 autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName, TargetGroupARNs) {
   op <- new_operation(
     name = "DetachLoadBalancerTargetGroups",
@@ -4084,6 +4164,8 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' @keywords internal
 #'
 #' @rdname autoscaling_detach_load_balancers
+#'
+#' @aliases autoscaling_detach_load_balancers
 autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancerNames) {
   op <- new_operation(
     name = "DetachLoadBalancers",
@@ -4188,6 +4270,8 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' @keywords internal
 #'
 #' @rdname autoscaling_disable_metrics_collection
+#'
+#' @aliases autoscaling_disable_metrics_collection
 autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics = NULL) {
   op <- new_operation(
     name = "DisableMetricsCollection",
@@ -4303,6 +4387,8 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #' @keywords internal
 #'
 #' @rdname autoscaling_enable_metrics_collection
+#'
+#' @aliases autoscaling_enable_metrics_collection
 autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics = NULL, Granularity) {
   op <- new_operation(
     name = "EnableMetricsCollection",
@@ -4401,6 +4487,8 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #' @keywords internal
 #'
 #' @rdname autoscaling_enter_standby
+#'
+#' @aliases autoscaling_enter_standby
 autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, ShouldDecrementDesiredCapacity) {
   op <- new_operation(
     name = "EnterStandby",
@@ -4481,6 +4569,8 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' @keywords internal
 #'
 #' @rdname autoscaling_execute_policy
+#'
+#' @aliases autoscaling_execute_policy
 autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, HonorCooldown = NULL, MetricValue = NULL, BreachThreshold = NULL) {
   op <- new_operation(
     name = "ExecutePolicy",
@@ -4568,6 +4658,8 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #' @keywords internal
 #'
 #' @rdname autoscaling_exit_standby
+#'
+#' @aliases autoscaling_exit_standby
 autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
   op <- new_operation(
     name = "ExitStandby",
@@ -4757,6 +4849,8 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' @keywords internal
 #'
 #' @rdname autoscaling_get_predictive_scaling_forecast
+#'
+#' @aliases autoscaling_get_predictive_scaling_forecast
 autoscaling_get_predictive_scaling_forecast <- function(AutoScalingGroupName, PolicyName, StartTime, EndTime) {
   op <- new_operation(
     name = "GetPredictiveScalingForecast",
@@ -4907,6 +5001,8 @@ autoscaling_get_predictive_scaling_forecast <- function(AutoScalingGroupName, Po
 #' @keywords internal
 #'
 #' @rdname autoscaling_put_lifecycle_hook
+#'
+#' @aliases autoscaling_put_lifecycle_hook
 autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupName, LifecycleTransition = NULL, RoleARN = NULL, NotificationTargetARN = NULL, NotificationMetadata = NULL, HeartbeatTimeout = NULL, DefaultResult = NULL) {
   op <- new_operation(
     name = "PutLifecycleHook",
@@ -4983,6 +5079,8 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' @keywords internal
 #'
 #' @rdname autoscaling_put_notification_configuration
+#'
+#' @aliases autoscaling_put_notification_configuration
 autoscaling_put_notification_configuration <- function(AutoScalingGroupName, TopicARN, NotificationTypes) {
   op <- new_operation(
     name = "PutNotificationConfiguration",
@@ -5323,6 +5421,8 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' @keywords internal
 #'
 #' @rdname autoscaling_put_scaling_policy
+#'
+#' @aliases autoscaling_put_scaling_policy
 autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, PolicyType = NULL, AdjustmentType = NULL, MinAdjustmentStep = NULL, MinAdjustmentMagnitude = NULL, ScalingAdjustment = NULL, Cooldown = NULL, MetricAggregationType = NULL, StepAdjustments = NULL, EstimatedInstanceWarmup = NULL, TargetTrackingConfiguration = NULL, Enabled = NULL, PredictiveScalingConfiguration = NULL) {
   op <- new_operation(
     name = "PutScalingPolicy",
@@ -5445,6 +5545,8 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' @keywords internal
 #'
 #' @rdname autoscaling_put_scheduled_update_group_action
+#'
+#' @aliases autoscaling_put_scheduled_update_group_action
 autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, ScheduledActionName, Time = NULL, StartTime = NULL, EndTime = NULL, Recurrence = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, TimeZone = NULL) {
   op <- new_operation(
     name = "PutScheduledUpdateGroupAction",
@@ -5551,6 +5653,8 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' @keywords internal
 #'
 #' @rdname autoscaling_put_warm_pool
+#'
+#' @aliases autoscaling_put_warm_pool
 autoscaling_put_warm_pool <- function(AutoScalingGroupName, MaxGroupPreparedCapacity = NULL, MinSize = NULL, PoolState = NULL, InstanceReusePolicy = NULL) {
   op <- new_operation(
     name = "PutWarmPool",
@@ -5647,6 +5751,8 @@ autoscaling_put_warm_pool <- function(AutoScalingGroupName, MaxGroupPreparedCapa
 #' @keywords internal
 #'
 #' @rdname autoscaling_record_lifecycle_action_heartbeat
+#'
+#' @aliases autoscaling_record_lifecycle_action_heartbeat
 autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, AutoScalingGroupName, LifecycleActionToken = NULL, InstanceId = NULL) {
   op <- new_operation(
     name = "RecordLifecycleActionHeartbeat",
@@ -5729,6 +5835,8 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' @keywords internal
 #'
 #' @rdname autoscaling_resume_processes
+#'
+#' @aliases autoscaling_resume_processes
 autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses = NULL) {
   op <- new_operation(
     name = "ResumeProcesses",
@@ -5798,6 +5906,8 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 #' @keywords internal
 #'
 #' @rdname autoscaling_set_desired_capacity
+#'
+#' @aliases autoscaling_set_desired_capacity
 autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapacity, HonorCooldown = NULL) {
   op <- new_operation(
     name = "SetDesiredCapacity",
@@ -5867,6 +5977,8 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' @keywords internal
 #'
 #' @rdname autoscaling_set_instance_health
+#'
+#' @aliases autoscaling_set_instance_health
 autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldRespectGracePeriod = NULL) {
   op <- new_operation(
     name = "SetInstanceHealth",
@@ -5945,6 +6057,8 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #' @keywords internal
 #'
 #' @rdname autoscaling_set_instance_protection
+#'
+#' @aliases autoscaling_set_instance_protection
 autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupName, ProtectedFromScaleIn) {
   op <- new_operation(
     name = "SetInstanceProtection",
@@ -6162,6 +6276,8 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' @keywords internal
 #'
 #' @rdname autoscaling_start_instance_refresh
+#'
+#' @aliases autoscaling_start_instance_refresh
 autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = NULL, DesiredConfiguration = NULL, Preferences = NULL) {
   op <- new_operation(
     name = "StartInstanceRefresh",
@@ -6249,6 +6365,8 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
 #' @keywords internal
 #'
 #' @rdname autoscaling_suspend_processes
+#'
+#' @aliases autoscaling_suspend_processes
 autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses = NULL) {
   op <- new_operation(
     name = "SuspendProcesses",
@@ -6346,6 +6464,8 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' @keywords internal
 #'
 #' @rdname autoscaling_terminate_instance_in_auto_scaling_group
+#'
+#' @aliases autoscaling_terminate_instance_in_auto_scaling_group
 autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, ShouldDecrementDesiredCapacity) {
   op <- new_operation(
     name = "TerminateInstanceInAutoScalingGroup",
@@ -6691,6 +6811,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @keywords internal
 #'
 #' @rdname autoscaling_update_auto_scaling_group
+#'
+#' @aliases autoscaling_update_auto_scaling_group
 autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, MinSize = NULL, MaxSize = NULL, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, CapacityRebalance = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL) {
   op <- new_operation(
     name = "UpdateAutoScalingGroup",

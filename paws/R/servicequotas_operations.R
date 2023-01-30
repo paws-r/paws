@@ -25,6 +25,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname servicequotas_associate_service_quota_template
+#'
+#' @aliases servicequotas_associate_service_quota_template
 servicequotas_associate_service_quota_template <- function() {
   op <- new_operation(
     name = "AssociateServiceQuotaTemplate",
@@ -71,7 +73,9 @@ servicequotas_associate_service_quota_template <- function() {
 #'
 #' @keywords internal
 #'
-#' @rdname servicequotas_delete_service_quota_increase_request_from_template
+#' @rdname servicequotas_delet_servi_quota_incre_reque_from_templ
+#'
+#' @aliases servicequotas_delete_service_quota_increase_request_from_template
 servicequotas_delete_service_quota_increase_request_from_template <- function(ServiceCode, QuotaCode, AwsRegion) {
   op <- new_operation(
     name = "DeleteServiceQuotaIncreaseRequestFromTemplate",
@@ -111,6 +115,8 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 #' @keywords internal
 #'
 #' @rdname servicequotas_disassociate_service_quota_template
+#'
+#' @aliases servicequotas_disassociate_service_quota_template
 servicequotas_disassociate_service_quota_template <- function() {
   op <- new_operation(
     name = "DisassociateServiceQuotaTemplate",
@@ -185,6 +191,8 @@ servicequotas_disassociate_service_quota_template <- function() {
 #' @keywords internal
 #'
 #' @rdname servicequotas_get_aws_default_service_quota
+#'
+#' @aliases servicequotas_get_aws_default_service_quota
 servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) {
   op <- new_operation(
     name = "GetAWSDefaultServiceQuota",
@@ -226,6 +234,8 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
 #' @keywords internal
 #'
 #' @rdname servicequotas_get_association_for_service_quota_template
+#'
+#' @aliases servicequotas_get_association_for_service_quota_template
 servicequotas_get_association_for_service_quota_template <- function() {
   op <- new_operation(
     name = "GetAssociationForServiceQuotaTemplate",
@@ -290,6 +300,8 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #' @keywords internal
 #'
 #' @rdname servicequotas_get_requested_service_quota_change
+#'
+#' @aliases servicequotas_get_requested_service_quota_change
 servicequotas_get_requested_service_quota_change <- function(RequestId) {
   op <- new_operation(
     name = "GetRequestedServiceQuotaChange",
@@ -365,6 +377,8 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #' @keywords internal
 #'
 #' @rdname servicequotas_get_service_quota
+#'
+#' @aliases servicequotas_get_service_quota
 servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
   op <- new_operation(
     name = "GetServiceQuota",
@@ -425,7 +439,9 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
 #'
 #' @keywords internal
 #'
-#' @rdname servicequotas_get_service_quota_increase_request_from_template
+#' @rdname servicequotas_get_servi_quota_incre_reque_from_templ
+#'
+#' @aliases servicequotas_get_service_quota_increase_request_from_template
 servicequotas_get_service_quota_increase_request_from_template <- function(ServiceCode, QuotaCode, AwsRegion) {
   op <- new_operation(
     name = "GetServiceQuotaIncreaseRequestFromTemplate",
@@ -508,6 +524,8 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #' @keywords internal
 #'
 #' @rdname servicequotas_list_aws_default_service_quotas
+#'
+#' @aliases servicequotas_list_aws_default_service_quotas
 servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAWSDefaultServiceQuotas",
@@ -584,6 +602,8 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' @keywords internal
 #'
 #' @rdname servicequotas_list_requested_service_quota_change_history
+#'
+#' @aliases servicequotas_list_requested_service_quota_change_history
 servicequotas_list_requested_service_quota_change_history <- function(ServiceCode = NULL, Status = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRequestedServiceQuotaChangeHistory",
@@ -661,7 +681,9 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #'
 #' @keywords internal
 #'
-#' @rdname servicequotas_list_requested_service_quota_change_history_by_quota
+#' @rdname servicequotas_list_reque_servi_quota_chang_histo_by_quota
+#'
+#' @aliases servicequotas_list_requested_service_quota_change_history_by_quota
 servicequotas_list_requested_service_quota_change_history_by_quota <- function(ServiceCode, QuotaCode, Status = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRequestedServiceQuotaChangeHistoryByQuota",
@@ -729,7 +751,9 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #'
 #' @keywords internal
 #'
-#' @rdname servicequotas_list_service_quota_increase_requests_in_template
+#' @rdname servicequotas_list_servi_quota_incre_reque_in_templ
+#'
+#' @aliases servicequotas_list_service_quota_increase_requests_in_template
 servicequotas_list_service_quota_increase_requests_in_template <- function(ServiceCode = NULL, AwsRegion = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListServiceQuotaIncreaseRequestsInTemplate",
@@ -812,6 +836,8 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' @keywords internal
 #'
 #' @rdname servicequotas_list_service_quotas
+#'
+#' @aliases servicequotas_list_service_quotas
 servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListServiceQuotas",
@@ -869,6 +895,8 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname servicequotas_list_services
+#'
+#' @aliases servicequotas_list_services
 servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListServices",
@@ -925,6 +953,8 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname servicequotas_list_tags_for_resource
+#'
+#' @aliases servicequotas_list_tags_for_resource
 servicequotas_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -985,7 +1015,9 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
 #'
 #' @keywords internal
 #'
-#' @rdname servicequotas_put_service_quota_increase_request_into_template
+#' @rdname servicequotas_put_servi_quota_incre_reque_into_templ
+#'
+#' @aliases servicequotas_put_service_quota_increase_request_into_template
 servicequotas_put_service_quota_increase_request_into_template <- function(QuotaCode, ServiceCode, AwsRegion, DesiredValue) {
   op <- new_operation(
     name = "PutServiceQuotaIncreaseRequestIntoTemplate",
@@ -1055,6 +1087,8 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' @keywords internal
 #'
 #' @rdname servicequotas_request_service_quota_increase
+#'
+#' @aliases servicequotas_request_service_quota_increase
 servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue) {
   op <- new_operation(
     name = "RequestServiceQuotaIncrease",
@@ -1109,6 +1143,8 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 #' @keywords internal
 #'
 #' @rdname servicequotas_tag_resource
+#'
+#' @aliases servicequotas_tag_resource
 servicequotas_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1160,6 +1196,8 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname servicequotas_untag_resource
+#'
+#' @aliases servicequotas_untag_resource
 servicequotas_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",

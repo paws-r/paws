@@ -423,6 +423,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sts_assume_role
+#'
+#' @aliases sts_assume_role
 sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL, Tags = NULL, TransitiveTagKeys = NULL, ExternalId = NULL, SerialNumber = NULL, TokenCode = NULL, SourceIdentity = NULL) {
   op <- new_operation(
     name = "AssumeRole",
@@ -748,6 +750,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' @keywords internal
 #'
 #' @rdname sts_assume_role_with_saml
+#'
+#' @aliases sts_assume_role_with_saml
 sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL) {
   op <- new_operation(
     name = "AssumeRoleWithSAML",
@@ -1111,6 +1115,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' @keywords internal
 #'
 #' @rdname sts_assume_role_with_web_identity
+#'
+#' @aliases sts_assume_role_with_web_identity
 sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdentityToken, ProviderId = NULL, PolicyArns = NULL, Policy = NULL, DurationSeconds = NULL) {
   op <- new_operation(
     name = "AssumeRoleWithWebIdentity",
@@ -1204,6 +1210,8 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' @keywords internal
 #'
 #' @rdname sts_decode_authorization_message
+#'
+#' @aliases sts_decode_authorization_message
 sts_decode_authorization_message <- function(EncodedMessage) {
   op <- new_operation(
     name = "DecodeAuthorizationMessage",
@@ -1279,6 +1287,8 @@ sts_decode_authorization_message <- function(EncodedMessage) {
 #' @keywords internal
 #'
 #' @rdname sts_get_access_key_info
+#'
+#' @aliases sts_get_access_key_info
 sts_get_access_key_info <- function(AccessKeyId) {
   op <- new_operation(
     name = "GetAccessKeyInfo",
@@ -1350,6 +1360,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' @keywords internal
 #'
 #' @rdname sts_get_caller_identity
+#'
+#' @aliases sts_get_caller_identity
 sts_get_caller_identity <- function() {
   op <- new_operation(
     name = "GetCallerIdentity",
@@ -1683,6 +1695,8 @@ sts_get_caller_identity <- function() {
 #' @keywords internal
 #'
 #' @rdname sts_get_federation_token
+#'
+#' @aliases sts_get_federation_token
 sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, DurationSeconds = NULL, Tags = NULL) {
   op <- new_operation(
     name = "GetFederationToken",
@@ -1850,6 +1864,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' @keywords internal
 #'
 #' @rdname sts_get_session_token
+#'
+#' @aliases sts_get_session_token
 sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, TokenCode = NULL) {
   op <- new_operation(
     name = "GetSessionToken",

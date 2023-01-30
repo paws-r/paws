@@ -64,6 +64,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname simpledb_batch_delete_attributes
+#'
+#' @aliases simpledb_batch_delete_attributes
 simpledb_batch_delete_attributes <- function(DomainName, Items) {
   op <- new_operation(
     name = "BatchDeleteAttributes",
@@ -171,6 +173,8 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' @keywords internal
 #'
 #' @rdname simpledb_batch_put_attributes
+#'
+#' @aliases simpledb_batch_put_attributes
 simpledb_batch_put_attributes <- function(DomainName, Items) {
   op <- new_operation(
     name = "BatchPutAttributes",
@@ -225,6 +229,8 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #' @keywords internal
 #'
 #' @rdname simpledb_create_domain
+#'
+#' @aliases simpledb_create_domain
 simpledb_create_domain <- function(DomainName) {
   op <- new_operation(
     name = "CreateDomain",
@@ -302,6 +308,8 @@ simpledb_create_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname simpledb_delete_attributes
+#'
+#' @aliases simpledb_delete_attributes
 simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, Expected = NULL) {
   op <- new_operation(
     name = "DeleteAttributes",
@@ -349,6 +357,8 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 #' @keywords internal
 #'
 #' @rdname simpledb_delete_domain
+#'
+#' @aliases simpledb_delete_domain
 simpledb_delete_domain <- function(DomainName) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -404,6 +414,8 @@ simpledb_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname simpledb_domain_metadata
+#'
+#' @aliases simpledb_domain_metadata
 simpledb_domain_metadata <- function(DomainName) {
   op <- new_operation(
     name = "DomainMetadata",
@@ -478,6 +490,8 @@ simpledb_domain_metadata <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname simpledb_get_attributes
+#'
+#' @aliases simpledb_get_attributes
 simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL, ConsistentRead = NULL) {
   op <- new_operation(
     name = "GetAttributes",
@@ -537,6 +551,8 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
 #' @keywords internal
 #'
 #' @rdname simpledb_list_domains
+#'
+#' @aliases simpledb_list_domains
 simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -638,6 +654,8 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname simpledb_put_attributes
+#'
+#' @aliases simpledb_put_attributes
 simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected = NULL) {
   op <- new_operation(
     name = "PutAttributes",
@@ -720,6 +738,8 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #' @keywords internal
 #'
 #' @rdname simpledb_select
+#'
+#' @aliases simpledb_select
 simpledb_select <- function(SelectExpression, NextToken = NULL, ConsistentRead = NULL) {
   op <- new_operation(
     name = "Select",

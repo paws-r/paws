@@ -28,6 +28,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_activate_event_source
+#'
+#' @aliases cloudwatchevents_activate_event_source
 cloudwatchevents_activate_event_source <- function(Name) {
   op <- new_operation(
     name = "ActivateEventSource",
@@ -75,6 +77,8 @@ cloudwatchevents_activate_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_cancel_replay
+#'
+#' @aliases cloudwatchevents_cancel_replay
 cloudwatchevents_cancel_replay <- function(ReplayName) {
   op <- new_operation(
     name = "CancelReplay",
@@ -144,6 +148,8 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_create_api_destination
+#'
+#' @aliases cloudwatchevents_create_api_destination
 cloudwatchevents_create_api_destination <- function(Name, Description = NULL, ConnectionArn, InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond = NULL) {
   op <- new_operation(
     name = "CreateApiDestination",
@@ -209,6 +215,8 @@ cloudwatchevents_create_api_destination <- function(Name, Description = NULL, Co
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_create_archive
+#'
+#' @aliases cloudwatchevents_create_archive
 cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
   op <- new_operation(
     name = "CreateArchive",
@@ -334,6 +342,8 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_create_connection
+#'
+#' @aliases cloudwatchevents_create_connection
 cloudwatchevents_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
   op <- new_operation(
     name = "CreateConnection",
@@ -399,6 +409,8 @@ cloudwatchevents_create_connection <- function(Name, Description = NULL, Authori
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_create_event_bus
+#'
+#' @aliases cloudwatchevents_create_event_bus
 cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventBus",
@@ -478,6 +490,8 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_create_partner_event_source
+#'
+#' @aliases cloudwatchevents_create_partner_event_source
 cloudwatchevents_create_partner_event_source <- function(Name, Account) {
   op <- new_operation(
     name = "CreatePartnerEventSource",
@@ -527,6 +541,8 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_deactivate_event_source
+#'
+#' @aliases cloudwatchevents_deactivate_event_source
 cloudwatchevents_deactivate_event_source <- function(Name) {
   op <- new_operation(
     name = "DeactivateEventSource",
@@ -584,6 +600,8 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_deauthorize_connection
+#'
+#' @aliases cloudwatchevents_deauthorize_connection
 cloudwatchevents_deauthorize_connection <- function(Name) {
   op <- new_operation(
     name = "DeauthorizeConnection",
@@ -624,6 +642,8 @@ cloudwatchevents_deauthorize_connection <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_delete_api_destination
+#'
+#' @aliases cloudwatchevents_delete_api_destination
 cloudwatchevents_delete_api_destination <- function(Name) {
   op <- new_operation(
     name = "DeleteApiDestination",
@@ -664,6 +684,8 @@ cloudwatchevents_delete_api_destination <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_delete_archive
+#'
+#' @aliases cloudwatchevents_delete_archive
 cloudwatchevents_delete_archive <- function(ArchiveName) {
   op <- new_operation(
     name = "DeleteArchive",
@@ -719,6 +741,8 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_delete_connection
+#'
+#' @aliases cloudwatchevents_delete_connection
 cloudwatchevents_delete_connection <- function(Name) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -761,6 +785,8 @@ cloudwatchevents_delete_connection <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_delete_event_bus
+#'
+#' @aliases cloudwatchevents_delete_event_bus
 cloudwatchevents_delete_event_bus <- function(Name) {
   op <- new_operation(
     name = "DeleteEventBus",
@@ -808,6 +834,8 @@ cloudwatchevents_delete_event_bus <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_delete_partner_event_source
+#'
+#' @aliases cloudwatchevents_delete_partner_event_source
 cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
   op <- new_operation(
     name = "DeletePartnerEventSource",
@@ -875,6 +903,8 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_delete_rule
+#'
+#' @aliases cloudwatchevents_delete_rule
 cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
   op <- new_operation(
     name = "DeleteRule",
@@ -933,6 +963,8 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_api_destination
+#'
+#' @aliases cloudwatchevents_describe_api_destination
 cloudwatchevents_describe_api_destination <- function(Name) {
   op <- new_operation(
     name = "DescribeApiDestination",
@@ -990,6 +1022,8 @@ cloudwatchevents_describe_api_destination <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_archive
+#'
+#' @aliases cloudwatchevents_describe_archive
 cloudwatchevents_describe_archive <- function(ArchiveName) {
   op <- new_operation(
     name = "DescribeArchive",
@@ -1111,6 +1145,8 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_connection
+#'
+#' @aliases cloudwatchevents_describe_connection
 cloudwatchevents_describe_connection <- function(Name) {
   op <- new_operation(
     name = "DescribeConnection",
@@ -1170,6 +1206,8 @@ cloudwatchevents_describe_connection <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_event_bus
+#'
+#' @aliases cloudwatchevents_describe_event_bus
 cloudwatchevents_describe_event_bus <- function(Name = NULL) {
   op <- new_operation(
     name = "DescribeEventBus",
@@ -1226,6 +1264,8 @@ cloudwatchevents_describe_event_bus <- function(Name = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_event_source
+#'
+#' @aliases cloudwatchevents_describe_event_source
 cloudwatchevents_describe_event_source <- function(Name) {
   op <- new_operation(
     name = "DescribeEventSource",
@@ -1277,6 +1317,8 @@ cloudwatchevents_describe_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_partner_event_source
+#'
+#' @aliases cloudwatchevents_describe_partner_event_source
 cloudwatchevents_describe_partner_event_source <- function(Name) {
   op <- new_operation(
     name = "DescribePartnerEventSource",
@@ -1359,6 +1401,8 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_replay
+#'
+#' @aliases cloudwatchevents_describe_replay
 cloudwatchevents_describe_replay <- function(ReplayName) {
   op <- new_operation(
     name = "DescribeReplay",
@@ -1420,6 +1464,8 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_describe_rule
+#'
+#' @aliases cloudwatchevents_describe_rule
 cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
   op <- new_operation(
     name = "DescribeRule",
@@ -1467,6 +1513,8 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_disable_rule
+#'
+#' @aliases cloudwatchevents_disable_rule
 cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
   op <- new_operation(
     name = "DisableRule",
@@ -1515,6 +1563,8 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_enable_rule
+#'
+#' @aliases cloudwatchevents_enable_rule
 cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
   op <- new_operation(
     name = "EnableRule",
@@ -1587,6 +1637,8 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_api_destinations
+#'
+#' @aliases cloudwatchevents_list_api_destinations
 cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListApiDestinations",
@@ -1659,6 +1711,8 @@ cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, Connection
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_archives
+#'
+#' @aliases cloudwatchevents_list_archives
 cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, State = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListArchives",
@@ -1731,6 +1785,8 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_connections
+#'
+#' @aliases cloudwatchevents_list_connections
 cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListConnections",
@@ -1793,6 +1849,8 @@ cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_event_buses
+#'
+#' @aliases cloudwatchevents_list_event_buses
 cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListEventBuses",
@@ -1864,6 +1922,8 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_event_sources
+#'
+#' @aliases cloudwatchevents_list_event_sources
 cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListEventSources",
@@ -1935,6 +1995,8 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_partner_event_source_accounts
+#'
+#' @aliases cloudwatchevents_list_partner_event_source_accounts
 cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListPartnerEventSourceAccounts",
@@ -1998,6 +2060,8 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_partner_event_sources
+#'
+#' @aliases cloudwatchevents_list_partner_event_sources
 cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListPartnerEventSources",
@@ -2079,6 +2143,8 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_replays
+#'
+#' @aliases cloudwatchevents_list_replays
 cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourceArn = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListReplays",
@@ -2137,6 +2203,8 @@ cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, Event
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_rule_names_by_target
+#'
+#' @aliases cloudwatchevents_list_rule_names_by_target
 cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRuleNamesByTarget",
@@ -2208,6 +2276,8 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_rules
+#'
+#' @aliases cloudwatchevents_list_rules
 cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRules",
@@ -2259,6 +2329,8 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_tags_for_resource
+#'
+#' @aliases cloudwatchevents_list_tags_for_resource
 cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2435,6 +2507,8 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_list_targets_by_rule
+#'
+#' @aliases cloudwatchevents_list_targets_by_rule
 cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTargetsByRule",
@@ -2505,6 +2579,8 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_events
+#'
+#' @aliases cloudwatchevents_put_events
 cloudwatchevents_put_events <- function(Entries) {
   op <- new_operation(
     name = "PutEvents",
@@ -2571,6 +2647,8 @@ cloudwatchevents_put_events <- function(Entries) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_partner_events
+#'
+#' @aliases cloudwatchevents_put_partner_events
 cloudwatchevents_put_partner_events <- function(Entries) {
   op <- new_operation(
     name = "PutPartnerEvents",
@@ -2681,6 +2759,8 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_permission
+#'
+#' @aliases cloudwatchevents_put_permission
 cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, Principal = NULL, StatementId = NULL, Condition = NULL, Policy = NULL) {
   op <- new_operation(
     name = "PutPermission",
@@ -2820,6 +2900,8 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_rule
+#'
+#' @aliases cloudwatchevents_put_rule
 cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern = NULL, State = NULL, Description = NULL, RoleArn = NULL, Tags = NULL, EventBusName = NULL) {
   op <- new_operation(
     name = "PutRule",
@@ -3140,6 +3222,8 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_targets
+#'
+#' @aliases cloudwatchevents_put_targets
 cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
   op <- new_operation(
     name = "PutTargets",
@@ -3194,6 +3278,8 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_remove_permission
+#'
+#' @aliases cloudwatchevents_remove_permission
 cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPermissions = NULL, EventBusName = NULL) {
   op <- new_operation(
     name = "RemovePermission",
@@ -3271,6 +3357,8 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_remove_targets
+#'
+#' @aliases cloudwatchevents_remove_targets
 cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = NULL) {
   op <- new_operation(
     name = "RemoveTargets",
@@ -3354,6 +3442,8 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_start_replay
+#'
+#' @aliases cloudwatchevents_start_replay
 cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventSourceArn, EventStartTime, EventEndTime, Destination) {
   op <- new_operation(
     name = "StartReplay",
@@ -3418,6 +3508,8 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_tag_resource
+#'
+#' @aliases cloudwatchevents_tag_resource
 cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3490,6 +3582,8 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_test_event_pattern
+#'
+#' @aliases cloudwatchevents_test_event_pattern
 cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
   op <- new_operation(
     name = "TestEventPattern",
@@ -3536,6 +3630,8 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_untag_resource
+#'
+#' @aliases cloudwatchevents_untag_resource
 cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3601,6 +3697,8 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_update_api_destination
+#'
+#' @aliases cloudwatchevents_update_api_destination
 cloudwatchevents_update_api_destination <- function(Name, Description = NULL, ConnectionArn = NULL, InvocationEndpoint = NULL, HttpMethod = NULL, InvocationRateLimitPerSecond = NULL) {
   op <- new_operation(
     name = "UpdateApiDestination",
@@ -3658,6 +3756,8 @@ cloudwatchevents_update_api_destination <- function(Name, Description = NULL, Co
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_update_archive
+#'
+#' @aliases cloudwatchevents_update_archive
 cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
   op <- new_operation(
     name = "UpdateArchive",
@@ -3783,6 +3883,8 @@ cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, Eve
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_update_connection
+#'
+#' @aliases cloudwatchevents_update_connection
 cloudwatchevents_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
   op <- new_operation(
     name = "UpdateConnection",

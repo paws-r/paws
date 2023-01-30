@@ -52,6 +52,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname savingsplans_create_savings_plan
+#'
+#' @aliases savingsplans_create_savings_plan
 savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, upfrontPaymentAmount = NULL, purchaseTime = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSavingsPlan",
@@ -92,6 +94,8 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
 #' @keywords internal
 #'
 #' @rdname savingsplans_delete_queued_savings_plan
+#'
+#' @aliases savingsplans_delete_queued_savings_plan
 savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
   op <- new_operation(
     name = "DeleteQueuedSavingsPlan",
@@ -170,6 +174,8 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 #' @keywords internal
 #'
 #' @rdname savingsplans_describe_savings_plan_rates
+#'
+#' @aliases savingsplans_describe_savings_plan_rates
 savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeSavingsPlanRates",
@@ -266,6 +272,8 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 #' @keywords internal
 #'
 #' @rdname savingsplans_describe_savings_plans
+#'
+#' @aliases savingsplans_describe_savings_plans
 savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsPlanIds = NULL, nextToken = NULL, maxResults = NULL, states = NULL, filters = NULL) {
   op <- new_operation(
     name = "DescribeSavingsPlans",
@@ -378,6 +386,8 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 #' @keywords internal
 #'
 #' @rdname savingsplans_describe_savings_plans_offering_rates
+#'
+#' @aliases savingsplans_describe_savings_plans_offering_rates
 savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferingIds = NULL, savingsPlanPaymentOptions = NULL, savingsPlanTypes = NULL, products = NULL, serviceCodes = NULL, usageTypes = NULL, operations = NULL, filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeSavingsPlansOfferingRates",
@@ -498,6 +508,8 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 #' @keywords internal
 #'
 #' @rdname savingsplans_describe_savings_plans_offerings
+#'
+#' @aliases savingsplans_describe_savings_plans_offerings
 savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, paymentOptions = NULL, productType = NULL, planTypes = NULL, durations = NULL, currencies = NULL, descriptions = NULL, serviceCodes = NULL, usageTypes = NULL, operations = NULL, filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeSavingsPlansOfferings",
@@ -545,6 +557,8 @@ savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, pa
 #' @keywords internal
 #'
 #' @rdname savingsplans_list_tags_for_resource
+#'
+#' @aliases savingsplans_list_tags_for_resource
 savingsplans_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -590,6 +604,8 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname savingsplans_tag_resource
+#'
+#' @aliases savingsplans_tag_resource
 savingsplans_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -634,6 +650,8 @@ savingsplans_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname savingsplans_untag_resource
+#'
+#' @aliases savingsplans_untag_resource
 savingsplans_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",

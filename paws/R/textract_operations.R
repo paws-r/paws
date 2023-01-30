@@ -174,6 +174,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname textract_analyze_document
+#'
+#' @aliases textract_analyze_document
 textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = NULL, QueriesConfig = NULL) {
   op <- new_operation(
     name = "AnalyzeDocument",
@@ -343,6 +345,8 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #' @keywords internal
 #'
 #' @rdname textract_analyze_expense
+#'
+#' @aliases textract_analyze_expense
 textract_analyze_expense <- function(Document) {
   op <- new_operation(
     name = "AnalyzeExpense",
@@ -429,6 +433,8 @@ textract_analyze_expense <- function(Document) {
 #' @keywords internal
 #'
 #' @rdname textract_analyze_id
+#'
+#' @aliases textract_analyze_id
 textract_analyze_id <- function(DocumentPages) {
   op <- new_operation(
     name = "AnalyzeID",
@@ -553,6 +559,8 @@ textract_analyze_id <- function(DocumentPages) {
 #' @keywords internal
 #'
 #' @rdname textract_detect_document_text
+#'
+#' @aliases textract_detect_document_text
 textract_detect_document_text <- function(Document) {
   op <- new_operation(
     name = "DetectDocumentText",
@@ -728,6 +736,8 @@ textract_detect_document_text <- function(Document) {
 #' @keywords internal
 #'
 #' @rdname textract_get_document_analysis
+#'
+#' @aliases textract_get_document_analysis
 textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDocumentAnalysis",
@@ -886,6 +896,8 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname textract_get_document_text_detection
+#'
+#' @aliases textract_get_document_text_detection
 textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDocumentTextDetection",
@@ -1089,6 +1101,8 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname textract_get_expense_analysis
+#'
+#' @aliases textract_get_expense_analysis
 textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetExpenseAnalysis",
@@ -1218,6 +1232,8 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname textract_start_document_analysis
+#'
+#' @aliases textract_start_document_analysis
 textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL, QueriesConfig = NULL) {
   op <- new_operation(
     name = "StartDocumentAnalysis",
@@ -1323,6 +1339,8 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' @keywords internal
 #'
 #' @rdname textract_start_document_text_detection
+#'
+#' @aliases textract_start_document_text_detection
 textract_start_document_text_detection <- function(DocumentLocation, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
   op <- new_operation(
     name = "StartDocumentTextDetection",
@@ -1431,6 +1449,8 @@ textract_start_document_text_detection <- function(DocumentLocation, ClientReque
 #' @keywords internal
 #'
 #' @rdname textract_start_expense_analysis
+#'
+#' @aliases textract_start_expense_analysis
 textract_start_expense_analysis <- function(DocumentLocation, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
   op <- new_operation(
     name = "StartExpenseAnalysis",

@@ -131,6 +131,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname resourcegroups_create_group
+#'
+#' @aliases resourcegroups_create_group
 resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery = NULL, Tags = NULL, Configuration = NULL) {
   op <- new_operation(
     name = "CreateGroup",
@@ -190,6 +192,8 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
 #' @keywords internal
 #'
 #' @rdname resourcegroups_delete_group
+#'
+#' @aliases resourcegroups_delete_group
 resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -247,6 +251,8 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_get_group
+#'
+#' @aliases resourcegroups_get_group
 resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
   op <- new_operation(
     name = "GetGroup",
@@ -331,6 +337,8 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_get_group_configuration
+#'
+#' @aliases resourcegroups_get_group_configuration
 resourcegroups_get_group_configuration <- function(Group = NULL) {
   op <- new_operation(
     name = "GetGroupConfiguration",
@@ -394,6 +402,8 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_get_group_query
+#'
+#' @aliases resourcegroups_get_group_query
 resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
   op <- new_operation(
     name = "GetGroupQuery",
@@ -450,6 +460,8 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_get_tags
+#'
+#' @aliases resourcegroups_get_tags
 resourcegroups_get_tags <- function(Arn) {
   op <- new_operation(
     name = "GetTags",
@@ -519,6 +531,8 @@ resourcegroups_get_tags <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_group_resources
+#'
+#' @aliases resourcegroups_group_resources
 resourcegroups_group_resources <- function(Group, ResourceArns) {
   op <- new_operation(
     name = "GroupResources",
@@ -658,6 +672,8 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_list_group_resources
+#'
+#' @aliases resourcegroups_list_group_resources
 resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGroupResources",
@@ -760,6 +776,8 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #' @keywords internal
 #'
 #' @rdname resourcegroups_list_groups
+#'
+#' @aliases resourcegroups_list_groups
 resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGroups",
@@ -834,6 +852,8 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname resourcegroups_put_group_configuration
+#'
+#' @aliases resourcegroups_put_group_configuration
 resourcegroups_put_group_configuration <- function(Group = NULL, Configuration = NULL) {
   op <- new_operation(
     name = "PutGroupConfiguration",
@@ -928,6 +948,8 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' @keywords internal
 #'
 #' @rdname resourcegroups_search_resources
+#'
+#' @aliases resourcegroups_search_resources
 resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "SearchResources",
@@ -994,6 +1016,8 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname resourcegroups_tag
+#'
+#' @aliases resourcegroups_tag
 resourcegroups_tag <- function(Arn, Tags) {
   op <- new_operation(
     name = "Tag",
@@ -1064,6 +1088,8 @@ resourcegroups_tag <- function(Arn, Tags) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_ungroup_resources
+#'
+#' @aliases resourcegroups_ungroup_resources
 resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
   op <- new_operation(
     name = "UngroupResources",
@@ -1124,6 +1150,8 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_untag
+#'
+#' @aliases resourcegroups_untag
 resourcegroups_untag <- function(Arn, Keys) {
   op <- new_operation(
     name = "Untag",
@@ -1186,6 +1214,8 @@ resourcegroups_untag <- function(Arn, Keys) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_update_group
+#'
+#' @aliases resourcegroups_update_group
 resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
@@ -1256,6 +1286,8 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #' @keywords internal
 #'
 #' @rdname resourcegroups_update_group_query
+#'
+#' @aliases resourcegroups_update_group_query
 resourcegroups_update_group_query <- function(GroupName = NULL, Group = NULL, ResourceQuery) {
   op <- new_operation(
     name = "UpdateGroupQuery",

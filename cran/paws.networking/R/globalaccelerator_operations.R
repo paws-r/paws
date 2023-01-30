@@ -822,7 +822,7 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
 #'
 #' @keywords internal
 #'
-#' @rdname globalaccelerator_describe_custom_routing_accelerator_attributes
+#' @rdname globalaccelerator_descri_custom_routin_accele_attrib
 globalaccelerator_describe_custom_routing_accelerator_attributes <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DescribeCustomRoutingAcceleratorAttributes",
@@ -1178,7 +1178,7 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #'
 #' @keywords internal
 #'
-#' @rdname globalaccelerator_list_custom_routing_port_mappings_by_destination
+#' @rdname globalaccelerator_list_custo_routi_port_mappi_by_desti
 globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(EndpointId, DestinationAddress, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomRoutingPortMappingsByDestination",
@@ -1582,7 +1582,7 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #'
 #' @keywords internal
 #'
-#' @rdname globalaccelerator_update_custom_routing_accelerator_attributes
+#' @rdname globalaccelerator_update_custom_routin_accele_attrib
 globalaccelerator_update_custom_routing_accelerator_attributes <- function(AcceleratorArn, FlowLogsEnabled = NULL, FlowLogsS3Bucket = NULL, FlowLogsS3Prefix = NULL) {
   op <- new_operation(
     name = "UpdateCustomRoutingAcceleratorAttributes",

@@ -78,7 +78,7 @@ billingconductor_associate_pricing_rules <- function(Arn, PricingRuleArns) {
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_batch_associate_resources_to_custom_line_item
+#' @rdname billingconductor_batch_assoc_resou_to_custo_line_item
 billingconductor_batch_associate_resources_to_custom_line_item <- function(TargetArn, ResourceArns, BillingPeriodRange = NULL) {
   op <- new_operation(
     name = "BatchAssociateResourcesToCustomLineItem",
@@ -109,7 +109,7 @@ billingconductor_batch_associate_resources_to_custom_line_item <- function(Targe
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_batch_disassociate_resources_from_custom_line_item
+#' @rdname billingconductor_batch_disas_resou_from_custo_line_item
 billingconductor_batch_disassociate_resources_from_custom_line_item <- function(TargetArn, ResourceArns, BillingPeriodRange = NULL) {
   op <- new_operation(
     name = "BatchDisassociateResourcesFromCustomLineItem",
@@ -664,7 +664,7 @@ billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = 
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_list_pricing_plans_associated_with_pricing_rule
+#' @rdname billingconductor_list_prici_plans_assoc_with_prici_rule
 billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(BillingPeriod = NULL, PricingRuleArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPricingPlansAssociatedWithPricingRule",
@@ -732,7 +732,7 @@ billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = 
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_list_pricing_rules_associated_to_pricing_plan
+#' @rdname billingconductor_list_prici_rules_assoc_to_prici_plan
 billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(BillingPeriod = NULL, PricingPlanArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPricingRulesAssociatedToPricingPlan",
@@ -767,7 +767,7 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_list_resources_associated_to_custom_line_item
+#' @rdname billingconductor_list_resou_assoc_to_custo_line_item
 billingconductor_list_resources_associated_to_custom_line_item <- function(BillingPeriod = NULL, Arn, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResourcesAssociatedToCustomLineItem",

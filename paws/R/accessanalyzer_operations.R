@@ -32,6 +32,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_apply_archive_rule
+#'
+#' @aliases accessanalyzer_apply_archive_rule
 accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, ruleName) {
   op <- new_operation(
     name = "ApplyArchiveRule",
@@ -78,6 +80,8 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, clientToken = NULL, r
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_cancel_policy_generation
+#'
+#' @aliases accessanalyzer_cancel_policy_generation
 accessanalyzer_cancel_policy_generation <- function(jobId) {
   op <- new_operation(
     name = "CancelPolicyGeneration",
@@ -203,6 +207,8 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_create_access_preview
+#'
+#' @aliases accessanalyzer_create_access_preview
 accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL, configurations) {
   op <- new_operation(
     name = "CreateAccessPreview",
@@ -281,6 +287,8 @@ accessanalyzer_create_access_preview <- function(analyzerArn, clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_create_analyzer
+#'
+#' @aliases accessanalyzer_create_analyzer
 accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, clientToken = NULL, tags = NULL, type) {
   op <- new_operation(
     name = "CreateAnalyzer",
@@ -348,6 +356,8 @@ accessanalyzer_create_analyzer <- function(analyzerName, archiveRules = NULL, cl
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_create_archive_rule
+#'
+#' @aliases accessanalyzer_create_archive_rule
 accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL, filter, ruleName) {
   op <- new_operation(
     name = "CreateArchiveRule",
@@ -393,6 +403,8 @@ accessanalyzer_create_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_delete_analyzer
+#'
+#' @aliases accessanalyzer_delete_analyzer
 accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteAnalyzer",
@@ -438,6 +450,8 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_delete_archive_rule
+#'
+#' @aliases accessanalyzer_delete_archive_rule
 accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL, ruleName) {
   op <- new_operation(
     name = "DeleteArchiveRule",
@@ -566,6 +580,8 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_access_preview
+#'
+#' @aliases accessanalyzer_get_access_preview
 accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
   op <- new_operation(
     name = "GetAccessPreview",
@@ -637,6 +653,8 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_analyzed_resource
+#'
+#' @aliases accessanalyzer_get_analyzed_resource
 accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
   op <- new_operation(
     name = "GetAnalyzedResource",
@@ -700,6 +718,8 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_analyzer
+#'
+#' @aliases accessanalyzer_get_analyzer
 accessanalyzer_get_analyzer <- function(analyzerName) {
   op <- new_operation(
     name = "GetAnalyzer",
@@ -774,6 +794,8 @@ accessanalyzer_get_analyzer <- function(analyzerName) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_archive_rule
+#'
+#' @aliases accessanalyzer_get_archive_rule
 accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
   op <- new_operation(
     name = "GetArchiveRule",
@@ -857,6 +879,8 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_finding
+#'
+#' @aliases accessanalyzer_get_finding
 accessanalyzer_get_finding <- function(analyzerArn, id) {
   op <- new_operation(
     name = "GetFinding",
@@ -965,6 +989,8 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_get_generated_policy
+#'
+#' @aliases accessanalyzer_get_generated_policy
 accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NULL, includeServiceLevelTemplate = NULL, jobId) {
   op <- new_operation(
     name = "GetGeneratedPolicy",
@@ -1070,6 +1096,8 @@ accessanalyzer_get_generated_policy <- function(includeResourcePlaceholders = NU
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_access_preview_findings
+#'
+#' @aliases accessanalyzer_list_access_preview_findings
 accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAccessPreviewFindings",
@@ -1134,6 +1162,8 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_access_previews
+#'
+#' @aliases accessanalyzer_list_access_previews
 accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAccessPreviews",
@@ -1197,6 +1227,8 @@ accessanalyzer_list_access_previews <- function(analyzerArn, maxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_analyzed_resources
+#'
+#' @aliases accessanalyzer_list_analyzed_resources
 accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NULL, nextToken = NULL, resourceType = NULL) {
   op <- new_operation(
     name = "ListAnalyzedResources",
@@ -1267,6 +1299,8 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_analyzers
+#'
+#' @aliases accessanalyzer_list_analyzers
 accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, type = NULL) {
   op <- new_operation(
     name = "ListAnalyzers",
@@ -1341,6 +1375,8 @@ accessanalyzer_list_analyzers <- function(maxResults = NULL, nextToken = NULL, t
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_archive_rules
+#'
+#' @aliases accessanalyzer_list_archive_rules
 accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListArchiveRules",
@@ -1455,6 +1491,8 @@ accessanalyzer_list_archive_rules <- function(analyzerName, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_findings
+#'
+#' @aliases accessanalyzer_list_findings
 accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults = NULL, nextToken = NULL, sort = NULL) {
   op <- new_operation(
     name = "ListFindings",
@@ -1520,6 +1558,8 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, maxResults 
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_policy_generations
+#'
+#' @aliases accessanalyzer_list_policy_generations
 accessanalyzer_list_policy_generations <- function(maxResults = NULL, nextToken = NULL, principalArn = NULL) {
   op <- new_operation(
     name = "ListPolicyGenerations",
@@ -1567,6 +1607,8 @@ accessanalyzer_list_policy_generations <- function(maxResults = NULL, nextToken 
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_list_tags_for_resource
+#'
+#' @aliases accessanalyzer_list_tags_for_resource
 accessanalyzer_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1646,6 +1688,8 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_start_policy_generation
+#'
+#' @aliases accessanalyzer_start_policy_generation
 accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrailDetails = NULL, policyGenerationDetails) {
   op <- new_operation(
     name = "StartPolicyGeneration",
@@ -1692,6 +1736,8 @@ accessanalyzer_start_policy_generation <- function(clientToken = NULL, cloudTrai
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_start_resource_scan
+#'
+#' @aliases accessanalyzer_start_resource_scan
 accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn) {
   op <- new_operation(
     name = "StartResourceScan",
@@ -1736,6 +1782,8 @@ accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_tag_resource
+#'
+#' @aliases accessanalyzer_tag_resource
 accessanalyzer_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1780,6 +1828,8 @@ accessanalyzer_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_untag_resource
+#'
+#' @aliases accessanalyzer_untag_resource
 accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1841,6 +1891,8 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_update_archive_rule
+#'
+#' @aliases accessanalyzer_update_archive_rule
 accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL, filter, ruleName) {
   op <- new_operation(
     name = "UpdateArchiveRule",
@@ -1896,6 +1948,8 @@ accessanalyzer_update_archive_rule <- function(analyzerName, clientToken = NULL,
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_update_findings
+#'
+#' @aliases accessanalyzer_update_findings
 accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids = NULL, resourceArn = NULL, status) {
   op <- new_operation(
     name = "UpdateFindings",
@@ -2010,6 +2064,8 @@ accessanalyzer_update_findings <- function(analyzerArn, clientToken = NULL, ids 
 #' @keywords internal
 #'
 #' @rdname accessanalyzer_validate_policy
+#'
+#' @aliases accessanalyzer_validate_policy
 accessanalyzer_validate_policy <- function(locale = NULL, maxResults = NULL, nextToken = NULL, policyDocument, policyType, validatePolicyResourceType = NULL) {
   op <- new_operation(
     name = "ValidatePolicy",

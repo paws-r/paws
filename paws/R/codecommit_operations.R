@@ -37,6 +37,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codecommit_associate_approval_rule_template_with_repository
+#'
+#' @aliases codecommit_associate_approval_rule_template_with_repository
 codecommit_associate_approval_rule_template_with_repository <- function(approvalRuleTemplateName, repositoryName) {
   op <- new_operation(
     name = "AssociateApprovalRuleTemplateWithRepository",
@@ -101,7 +103,9 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_batch_associate_approval_rule_template_with_repositories
+#' @rdname codecommit_batch_associ_approv_rule_templa_with_reposi
+#'
+#' @aliases codecommit_batch_associate_approval_rule_template_with_repositories
 codecommit_batch_associate_approval_rule_template_with_repositories <- function(approvalRuleTemplateName, repositoryNames) {
   op <- new_operation(
     name = "BatchAssociateApprovalRuleTemplateWithRepositories",
@@ -251,6 +255,8 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' @keywords internal
 #'
 #' @rdname codecommit_batch_describe_merge_conflicts
+#'
+#' @aliases codecommit_batch_describe_merge_conflicts
 codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption, maxMergeHunks = NULL, maxConflictFiles = NULL, filePaths = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "BatchDescribeMergeConflicts",
@@ -316,7 +322,9 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_batch_disassociate_approval_rule_template_from_repositories
+#' @rdname codecommit_batch_disass_approv_rule_templa_from_reposi
+#'
+#' @aliases codecommit_batch_disassociate_approval_rule_template_from_repositories
 codecommit_batch_disassociate_approval_rule_template_from_repositories <- function(approvalRuleTemplateName, repositoryNames) {
   op <- new_operation(
     name = "BatchDisassociateApprovalRuleTemplateFromRepositories",
@@ -398,6 +406,8 @@ codecommit_batch_disassociate_approval_rule_template_from_repositories <- functi
 #' @keywords internal
 #'
 #' @rdname codecommit_batch_get_commits
+#'
+#' @aliases codecommit_batch_get_commits
 codecommit_batch_get_commits <- function(commitIds, repositoryName) {
   op <- new_operation(
     name = "BatchGetCommits",
@@ -475,6 +485,8 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_batch_get_repositories
+#'
+#' @aliases codecommit_batch_get_repositories
 codecommit_batch_get_repositories <- function(repositoryNames) {
   op <- new_operation(
     name = "BatchGetRepositories",
@@ -582,6 +594,8 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' @keywords internal
 #'
 #' @rdname codecommit_create_approval_rule_template
+#'
+#' @aliases codecommit_create_approval_rule_template
 codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, approvalRuleTemplateContent, approvalRuleTemplateDescription = NULL) {
   op <- new_operation(
     name = "CreateApprovalRuleTemplate",
@@ -629,6 +643,8 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
 #' @keywords internal
 #'
 #' @rdname codecommit_create_branch
+#'
+#' @aliases codecommit_create_branch
 codecommit_create_branch <- function(repositoryName, branchName, commitId) {
   op <- new_operation(
     name = "CreateBranch",
@@ -742,6 +758,8 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 #' @keywords internal
 #'
 #' @rdname codecommit_create_commit
+#'
+#' @aliases codecommit_create_commit
 codecommit_create_commit <- function(repositoryName, branchName, parentCommitId = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, putFiles = NULL, deleteFiles = NULL, setFileModes = NULL) {
   op <- new_operation(
     name = "CreateCommit",
@@ -860,6 +878,8 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #' @keywords internal
 #'
 #' @rdname codecommit_create_pull_request
+#'
+#' @aliases codecommit_create_pull_request
 codecommit_create_pull_request <- function(title, description = NULL, targets, clientRequestToken = NULL) {
   op <- new_operation(
     name = "CreatePullRequest",
@@ -960,6 +980,8 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' @keywords internal
 #'
 #' @rdname codecommit_create_pull_request_approval_rule
+#'
+#' @aliases codecommit_create_pull_request_approval_rule
 codecommit_create_pull_request_approval_rule <- function(pullRequestId, approvalRuleName, approvalRuleContent) {
   op <- new_operation(
     name = "CreatePullRequestApprovalRule",
@@ -1041,6 +1063,8 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #' @keywords internal
 #'
 #' @rdname codecommit_create_repository
+#'
+#' @aliases codecommit_create_repository
 codecommit_create_repository <- function(repositoryName, repositoryDescription = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
@@ -1154,6 +1178,8 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' @keywords internal
 #'
 #' @rdname codecommit_create_unreferenced_merge_commit
+#'
+#' @aliases codecommit_create_unreferenced_merge_commit
 codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, mergeOption, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
   op <- new_operation(
     name = "CreateUnreferencedMergeCommit",
@@ -1201,6 +1227,8 @@ codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCo
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_approval_rule_template
+#'
+#' @aliases codecommit_delete_approval_rule_template
 codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
   op <- new_operation(
     name = "DeleteApprovalRuleTemplate",
@@ -1253,6 +1281,8 @@ codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_branch
+#'
+#' @aliases codecommit_delete_branch
 codecommit_delete_branch <- function(repositoryName, branchName) {
   op <- new_operation(
     name = "DeleteBranch",
@@ -1322,6 +1352,8 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_comment_content
+#'
+#' @aliases codecommit_delete_comment_content
 codecommit_delete_comment_content <- function(commentId) {
   op <- new_operation(
     name = "DeleteCommentContent",
@@ -1403,6 +1435,8 @@ codecommit_delete_comment_content <- function(commentId) {
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_file
+#'
+#' @aliases codecommit_delete_file
 codecommit_delete_file <- function(repositoryName, branchName, filePath, parentCommitId, keepEmptyFolders = NULL, commitMessage = NULL, name = NULL, email = NULL) {
   op <- new_operation(
     name = "DeleteFile",
@@ -1457,6 +1491,8 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_pull_request_approval_rule
+#'
+#' @aliases codecommit_delete_pull_request_approval_rule
 codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approvalRuleName) {
   op <- new_operation(
     name = "DeletePullRequestApprovalRule",
@@ -1507,6 +1543,8 @@ codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approval
 #' @keywords internal
 #'
 #' @rdname codecommit_delete_repository
+#'
+#' @aliases codecommit_delete_repository
 codecommit_delete_repository <- function(repositoryName) {
   op <- new_operation(
     name = "DeleteRepository",
@@ -1641,6 +1679,8 @@ codecommit_delete_repository <- function(repositoryName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_describe_merge_conflicts
+#'
+#' @aliases codecommit_describe_merge_conflicts
 codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption, maxMergeHunks = NULL, filePath, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeMergeConflicts",
@@ -1750,6 +1790,8 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 #' @keywords internal
 #'
 #' @rdname codecommit_describe_pull_request_events
+#'
+#' @aliases codecommit_describe_pull_request_events
 codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEventType = NULL, actorArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribePullRequestEvents",
@@ -1799,7 +1841,9 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_disassociate_approval_rule_template_from_repository
+#' @rdname codecommit_disass_approv_rule_templa_from_reposi
+#'
+#' @aliases codecommit_disassociate_approval_rule_template_from_repository
 codecommit_disassociate_approval_rule_template_from_repository <- function(approvalRuleTemplateName, repositoryName) {
   op <- new_operation(
     name = "DisassociateApprovalRuleTemplateFromRepository",
@@ -1861,6 +1905,8 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
 #' @keywords internal
 #'
 #' @rdname codecommit_evaluate_pull_request_approval_rules
+#'
+#' @aliases codecommit_evaluate_pull_request_approval_rules
 codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revisionId) {
   op <- new_operation(
     name = "EvaluatePullRequestApprovalRules",
@@ -1920,6 +1966,8 @@ codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revis
 #' @keywords internal
 #'
 #' @rdname codecommit_get_approval_rule_template
+#'
+#' @aliases codecommit_get_approval_rule_template
 codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
   op <- new_operation(
     name = "GetApprovalRuleTemplate",
@@ -1969,6 +2017,8 @@ codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_blob
+#'
+#' @aliases codecommit_get_blob
 codecommit_get_blob <- function(repositoryName, blobId) {
   op <- new_operation(
     name = "GetBlob",
@@ -2022,6 +2072,8 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_branch
+#'
+#' @aliases codecommit_get_branch
 codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
   op <- new_operation(
     name = "GetBranch",
@@ -2095,6 +2147,8 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_comment
+#'
+#' @aliases codecommit_get_comment
 codecommit_get_comment <- function(commentId) {
   op <- new_operation(
     name = "GetComment",
@@ -2164,6 +2218,8 @@ codecommit_get_comment <- function(commentId) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_comment_reactions
+#'
+#' @aliases codecommit_get_comment_reactions
 codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetCommentReactions",
@@ -2264,6 +2320,8 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname codecommit_get_comments_for_compared_commit
+#'
+#' @aliases codecommit_get_comments_for_compared_commit
 codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCommitId = NULL, afterCommitId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetCommentsForComparedCommit",
@@ -2367,6 +2425,8 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #' @keywords internal
 #'
 #' @rdname codecommit_get_comments_for_pull_request
+#'
+#' @aliases codecommit_get_comments_for_pull_request
 codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryName = NULL, beforeCommitId = NULL, afterCommitId = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetCommentsForPullRequest",
@@ -2434,6 +2494,8 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
 #' @keywords internal
 #'
 #' @rdname codecommit_get_commit
+#'
+#' @aliases codecommit_get_commit
 codecommit_get_commit <- function(repositoryName, commitId) {
   op <- new_operation(
     name = "GetCommit",
@@ -2524,6 +2586,8 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_differences
+#'
+#' @aliases codecommit_get_differences
 codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = NULL, afterCommitSpecifier, beforePath = NULL, afterPath = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDifferences",
@@ -2585,6 +2649,8 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' @keywords internal
 #'
 #' @rdname codecommit_get_file
+#'
+#' @aliases codecommit_get_file
 codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath) {
   op <- new_operation(
     name = "GetFile",
@@ -2673,6 +2739,8 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 #' @keywords internal
 #'
 #' @rdname codecommit_get_folder
+#'
+#' @aliases codecommit_get_folder
 codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folderPath) {
   op <- new_operation(
     name = "GetFolder",
@@ -2741,6 +2809,8 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 #' @keywords internal
 #'
 #' @rdname codecommit_get_merge_commit
+#'
+#' @aliases codecommit_get_merge_commit
 codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL) {
   op <- new_operation(
     name = "GetMergeCommit",
@@ -2852,6 +2922,8 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' @keywords internal
 #'
 #' @rdname codecommit_get_merge_conflicts
+#'
+#' @aliases codecommit_get_merge_conflicts
 codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpecifier, sourceCommitSpecifier, mergeOption, conflictDetailLevel = NULL, maxConflictFiles = NULL, conflictResolutionStrategy = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetMergeConflicts",
@@ -2925,6 +2997,8 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #' @keywords internal
 #'
 #' @rdname codecommit_get_merge_options
+#'
+#' @aliases codecommit_get_merge_options
 codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL) {
   op <- new_operation(
     name = "GetMergeOptions",
@@ -3020,6 +3094,8 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
 #' @keywords internal
 #'
 #' @rdname codecommit_get_pull_request
+#'
+#' @aliases codecommit_get_pull_request
 codecommit_get_pull_request <- function(pullRequestId) {
   op <- new_operation(
     name = "GetPullRequest",
@@ -3074,6 +3150,8 @@ codecommit_get_pull_request <- function(pullRequestId) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_pull_request_approval_states
+#'
+#' @aliases codecommit_get_pull_request_approval_states
 codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionId) {
   op <- new_operation(
     name = "GetPullRequestApprovalStates",
@@ -3131,6 +3209,8 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
 #' @keywords internal
 #'
 #' @rdname codecommit_get_pull_request_override_state
+#'
+#' @aliases codecommit_get_pull_request_override_state
 codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId) {
   op <- new_operation(
     name = "GetPullRequestOverrideState",
@@ -3198,6 +3278,8 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
 #' @keywords internal
 #'
 #' @rdname codecommit_get_repository
+#'
+#' @aliases codecommit_get_repository
 codecommit_get_repository <- function(repositoryName) {
   op <- new_operation(
     name = "GetRepository",
@@ -3256,6 +3338,8 @@ codecommit_get_repository <- function(repositoryName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_get_repository_triggers
+#'
+#' @aliases codecommit_get_repository_triggers
 codecommit_get_repository_triggers <- function(repositoryName) {
   op <- new_operation(
     name = "GetRepositoryTriggers",
@@ -3311,6 +3395,8 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 #' @keywords internal
 #'
 #' @rdname codecommit_list_approval_rule_templates
+#'
+#' @aliases codecommit_list_approval_rule_templates
 codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListApprovalRuleTemplates",
@@ -3368,7 +3454,9 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_list_associated_approval_rule_templates_for_repository
+#' @rdname codecommit_list_associ_approv_rule_templa_for_reposi
+#'
+#' @aliases codecommit_list_associated_approval_rule_templates_for_repository
 codecommit_list_associated_approval_rule_templates_for_repository <- function(repositoryName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssociatedApprovalRuleTemplatesForRepository",
@@ -3419,6 +3507,8 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
 #' @keywords internal
 #'
 #' @rdname codecommit_list_branches
+#'
+#' @aliases codecommit_list_branches
 codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
   op <- new_operation(
     name = "ListBranches",
@@ -3482,6 +3572,8 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codecommit_list_pull_requests
+#'
+#' @aliases codecommit_list_pull_requests
 codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pullRequestStatus = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPullRequests",
@@ -3540,6 +3632,8 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #' @keywords internal
 #'
 #' @rdname codecommit_list_repositories
+#'
+#' @aliases codecommit_list_repositories
 codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order = NULL) {
   op <- new_operation(
     name = "ListRepositories",
@@ -3598,6 +3692,8 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #' @keywords internal
 #'
 #' @rdname codecommit_list_repositories_for_approval_rule_template
+#'
+#' @aliases codecommit_list_repositories_for_approval_rule_template
 codecommit_list_repositories_for_approval_rule_template <- function(approvalRuleTemplateName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRepositoriesForApprovalRuleTemplate",
@@ -3655,6 +3751,8 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 #' @keywords internal
 #'
 #' @rdname codecommit_list_tags_for_resource
+#'
+#' @aliases codecommit_list_tags_for_resource
 codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3710,6 +3808,8 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_branches_by_fast_forward
+#'
+#' @aliases codecommit_merge_branches_by_fast_forward
 codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, targetBranch = NULL) {
   op <- new_operation(
     name = "MergeBranchesByFastForward",
@@ -3814,6 +3914,8 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_branches_by_squash
+#'
+#' @aliases codecommit_merge_branches_by_squash
 codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, targetBranch = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
   op <- new_operation(
     name = "MergeBranchesBySquash",
@@ -3917,6 +4019,8 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_branches_by_three_way
+#'
+#' @aliases codecommit_merge_branches_by_three_way
 codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitSpecifier, destinationCommitSpecifier, targetBranch = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, authorName = NULL, email = NULL, commitMessage = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
   op <- new_operation(
     name = "MergeBranchesByThreeWay",
@@ -4025,6 +4129,8 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_pull_request_by_fast_forward
+#'
+#' @aliases codecommit_merge_pull_request_by_fast_forward
 codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, repositoryName, sourceCommitId = NULL) {
   op <- new_operation(
     name = "MergePullRequestByFastForward",
@@ -4180,6 +4286,8 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_pull_request_by_squash
+#'
+#' @aliases codecommit_merge_pull_request_by_squash
 codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryName, sourceCommitId = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, commitMessage = NULL, authorName = NULL, email = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
   op <- new_operation(
     name = "MergePullRequestBySquash",
@@ -4336,6 +4444,8 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' @keywords internal
 #'
 #' @rdname codecommit_merge_pull_request_by_three_way
+#'
+#' @aliases codecommit_merge_pull_request_by_three_way
 codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repositoryName, sourceCommitId = NULL, conflictDetailLevel = NULL, conflictResolutionStrategy = NULL, commitMessage = NULL, authorName = NULL, email = NULL, keepEmptyFolders = NULL, conflictResolution = NULL) {
   op <- new_operation(
     name = "MergePullRequestByThreeWay",
@@ -4389,6 +4499,8 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #' @keywords internal
 #'
 #' @rdname codecommit_override_pull_request_approval_rules
+#'
+#' @aliases codecommit_override_pull_request_approval_rules
 codecommit_override_pull_request_approval_rules <- function(pullRequestId, revisionId, overrideStatus) {
   op <- new_operation(
     name = "OverridePullRequestApprovalRules",
@@ -4486,6 +4598,8 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
 #' @keywords internal
 #'
 #' @rdname codecommit_post_comment_for_compared_commit
+#'
+#' @aliases codecommit_post_comment_for_compared_commit
 codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCommitId = NULL, afterCommitId, location = NULL, content, clientRequestToken = NULL) {
   op <- new_operation(
     name = "PostCommentForComparedCommit",
@@ -4590,6 +4704,8 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 #' @keywords internal
 #'
 #' @rdname codecommit_post_comment_for_pull_request
+#'
+#' @aliases codecommit_post_comment_for_pull_request
 codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryName, beforeCommitId, afterCommitId, location = NULL, content, clientRequestToken = NULL) {
   op <- new_operation(
     name = "PostCommentForPullRequest",
@@ -4668,6 +4784,8 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' @keywords internal
 #'
 #' @rdname codecommit_post_comment_reply
+#'
+#' @aliases codecommit_post_comment_reply
 codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, content) {
   op <- new_operation(
     name = "PostCommentReply",
@@ -4718,6 +4836,8 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname codecommit_put_comment_reaction
+#'
+#' @aliases codecommit_put_comment_reaction
 codecommit_put_comment_reaction <- function(commentId, reactionValue) {
   op <- new_operation(
     name = "PutCommentReaction",
@@ -4800,6 +4920,8 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 #' @keywords internal
 #'
 #' @rdname codecommit_put_file
+#'
+#' @aliases codecommit_put_file
 codecommit_put_file <- function(repositoryName, branchName, fileContent, filePath, fileMode = NULL, parentCommitId = NULL, commitMessage = NULL, name = NULL, email = NULL) {
   op <- new_operation(
     name = "PutFile",
@@ -4861,6 +4983,8 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
 #' @keywords internal
 #'
 #' @rdname codecommit_put_repository_triggers
+#'
+#' @aliases codecommit_put_repository_triggers
 codecommit_put_repository_triggers <- function(repositoryName, triggers) {
   op <- new_operation(
     name = "PutRepositoryTriggers",
@@ -4909,6 +5033,8 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 #' @keywords internal
 #'
 #' @rdname codecommit_tag_resource
+#'
+#' @aliases codecommit_tag_resource
 codecommit_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4980,6 +5106,8 @@ codecommit_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname codecommit_test_repository_triggers
+#'
+#' @aliases codecommit_test_repository_triggers
 codecommit_test_repository_triggers <- function(repositoryName, triggers) {
   op <- new_operation(
     name = "TestRepositoryTriggers",
@@ -5028,6 +5156,8 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 #' @keywords internal
 #'
 #' @rdname codecommit_untag_resource
+#'
+#' @aliases codecommit_untag_resource
 codecommit_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5097,6 +5227,8 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname codecommit_update_approval_rule_template_content
+#'
+#' @aliases codecommit_update_approval_rule_template_content
 codecommit_update_approval_rule_template_content <- function(approvalRuleTemplateName, newRuleContent, existingRuleContentSha256 = NULL) {
   op <- new_operation(
     name = "UpdateApprovalRuleTemplateContent",
@@ -5158,6 +5290,8 @@ codecommit_update_approval_rule_template_content <- function(approvalRuleTemplat
 #' @keywords internal
 #'
 #' @rdname codecommit_update_approval_rule_template_description
+#'
+#' @aliases codecommit_update_approval_rule_template_description
 codecommit_update_approval_rule_template_description <- function(approvalRuleTemplateName, approvalRuleTemplateDescription) {
   op <- new_operation(
     name = "UpdateApprovalRuleTemplateDescription",
@@ -5219,6 +5353,8 @@ codecommit_update_approval_rule_template_description <- function(approvalRuleTem
 #' @keywords internal
 #'
 #' @rdname codecommit_update_approval_rule_template_name
+#'
+#' @aliases codecommit_update_approval_rule_template_name
 codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplateName, newApprovalRuleTemplateName) {
   op <- new_operation(
     name = "UpdateApprovalRuleTemplateName",
@@ -5289,6 +5425,8 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 #' @keywords internal
 #'
 #' @rdname codecommit_update_comment
+#'
+#' @aliases codecommit_update_comment
 codecommit_update_comment <- function(commentId, content) {
   op <- new_operation(
     name = "UpdateComment",
@@ -5335,6 +5473,8 @@ codecommit_update_comment <- function(commentId, content) {
 #' @keywords internal
 #'
 #' @rdname codecommit_update_default_branch
+#'
+#' @aliases codecommit_update_default_branch
 codecommit_update_default_branch <- function(repositoryName, defaultBranchName) {
   op <- new_operation(
     name = "UpdateDefaultBranch",
@@ -5438,6 +5578,8 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' @keywords internal
 #'
 #' @rdname codecommit_update_pull_request_approval_rule_content
+#'
+#' @aliases codecommit_update_pull_request_approval_rule_content
 codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, approvalRuleName, existingRuleContentSha256 = NULL, newRuleContent) {
   op <- new_operation(
     name = "UpdatePullRequestApprovalRuleContent",
@@ -5484,6 +5626,8 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
 #' @keywords internal
 #'
 #' @rdname codecommit_update_pull_request_approval_state
+#'
+#' @aliases codecommit_update_pull_request_approval_state
 codecommit_update_pull_request_approval_state <- function(pullRequestId, revisionId, approvalState) {
   op <- new_operation(
     name = "UpdatePullRequestApprovalState",
@@ -5582,6 +5726,8 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
 #' @keywords internal
 #'
 #' @rdname codecommit_update_pull_request_description
+#'
+#' @aliases codecommit_update_pull_request_description
 codecommit_update_pull_request_description <- function(pullRequestId, description) {
   op <- new_operation(
     name = "UpdatePullRequestDescription",
@@ -5681,6 +5827,8 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 #' @keywords internal
 #'
 #' @rdname codecommit_update_pull_request_status
+#'
+#' @aliases codecommit_update_pull_request_status
 codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStatus) {
   op <- new_operation(
     name = "UpdatePullRequestStatus",
@@ -5778,6 +5926,8 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 #' @keywords internal
 #'
 #' @rdname codecommit_update_pull_request_title
+#'
+#' @aliases codecommit_update_pull_request_title
 codecommit_update_pull_request_title <- function(pullRequestId, title) {
   op <- new_operation(
     name = "UpdatePullRequestTitle",
@@ -5830,6 +5980,8 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
 #' @keywords internal
 #'
 #' @rdname codecommit_update_repository_description
+#'
+#' @aliases codecommit_update_repository_description
 codecommit_update_repository_description <- function(repositoryName, repositoryDescription = NULL) {
   op <- new_operation(
     name = "UpdateRepositoryDescription",
@@ -5878,6 +6030,8 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #' @keywords internal
 #'
 #' @rdname codecommit_update_repository_name
+#'
+#' @aliases codecommit_update_repository_name
 codecommit_update_repository_name <- function(oldName, newName) {
   op <- new_operation(
     name = "UpdateRepositoryName",

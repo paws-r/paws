@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lightsail_allocate_static_ip
+#'
+#' @aliases lightsail_allocate_static_ip
 lightsail_allocate_static_ip <- function(staticIpName) {
   op <- new_operation(
     name = "AllocateStaticIp",
@@ -150,6 +152,8 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_attach_certificate_to_distribution
+#'
+#' @aliases lightsail_attach_certificate_to_distribution
 lightsail_attach_certificate_to_distribution <- function(distributionName, certificateName) {
   op <- new_operation(
     name = "AttachCertificateToDistribution",
@@ -228,6 +232,8 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
 #' @keywords internal
 #'
 #' @rdname lightsail_attach_disk
+#'
+#' @aliases lightsail_attach_disk
 lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
   op <- new_operation(
     name = "AttachDisk",
@@ -316,6 +322,8 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
 #' @keywords internal
 #'
 #' @rdname lightsail_attach_instances_to_load_balancer
+#'
+#' @aliases lightsail_attach_instances_to_load_balancer
 lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instanceNames) {
   op <- new_operation(
     name = "AttachInstancesToLoadBalancer",
@@ -403,6 +411,8 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' @keywords internal
 #'
 #' @rdname lightsail_attach_load_balancer_tls_certificate
+#'
+#' @aliases lightsail_attach_load_balancer_tls_certificate
 lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, certificateName) {
   op <- new_operation(
     name = "AttachLoadBalancerTlsCertificate",
@@ -472,6 +482,8 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @keywords internal
 #'
 #' @rdname lightsail_attach_static_ip
+#'
+#' @aliases lightsail_attach_static_ip
 lightsail_attach_static_ip <- function(staticIpName, instanceName) {
   op <- new_operation(
     name = "AttachStaticIp",
@@ -558,6 +570,8 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_close_instance_public_ports
+#'
+#' @aliases lightsail_close_instance_public_ports
 lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
   op <- new_operation(
     name = "CloseInstancePublicPorts",
@@ -690,6 +704,8 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_copy_snapshot
+#'
+#' @aliases lightsail_copy_snapshot
 lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceName = NULL, restoreDate = NULL, useLatestRestorableAutoSnapshot = NULL, targetSnapshotName, sourceRegion) {
   op <- new_operation(
     name = "CopySnapshot",
@@ -839,6 +855,8 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' @keywords internal
 #'
 #' @rdname lightsail_create_bucket
+#'
+#' @aliases lightsail_create_bucket
 lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObjectVersioning = NULL) {
   op <- new_operation(
     name = "CreateBucket",
@@ -937,6 +955,8 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
 #' @keywords internal
 #'
 #' @rdname lightsail_create_bucket_access_key
+#'
+#' @aliases lightsail_create_bucket_access_key
 lightsail_create_bucket_access_key <- function(bucketName) {
   op <- new_operation(
     name = "CreateBucketAccessKey",
@@ -1120,6 +1140,8 @@ lightsail_create_bucket_access_key <- function(bucketName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_certificate
+#'
+#' @aliases lightsail_create_certificate
 lightsail_create_certificate <- function(certificateName, domainName, subjectAlternativeNames = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCertificate",
@@ -1208,6 +1230,8 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
 #' @keywords internal
 #'
 #' @rdname lightsail_create_cloud_formation_stack
+#'
+#' @aliases lightsail_create_cloud_formation_stack
 lightsail_create_cloud_formation_stack <- function(instances) {
   op <- new_operation(
     name = "CreateCloudFormationStack",
@@ -1318,6 +1342,8 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_contact_method
+#'
+#' @aliases lightsail_create_contact_method
 lightsail_create_contact_method <- function(protocol, contactEndpoint) {
   op <- new_operation(
     name = "CreateContactMethod",
@@ -1602,6 +1628,8 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_container_service
+#'
+#' @aliases lightsail_create_container_service
 lightsail_create_container_service <- function(serviceName, power, scale, tags = NULL, publicDomainNames = NULL, deployment = NULL, privateRegistryAccess = NULL) {
   op <- new_operation(
     name = "CreateContainerService",
@@ -1797,6 +1825,8 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
 #' @keywords internal
 #'
 #' @rdname lightsail_create_container_service_deployment
+#'
+#' @aliases lightsail_create_container_service_deployment
 lightsail_create_container_service_deployment <- function(serviceName, containers = NULL, publicEndpoint = NULL) {
   op <- new_operation(
     name = "CreateContainerServiceDeployment",
@@ -1868,6 +1898,8 @@ lightsail_create_container_service_deployment <- function(serviceName, container
 #' @keywords internal
 #'
 #' @rdname lightsail_create_container_service_registry_login
+#'
+#' @aliases lightsail_create_container_service_registry_login
 lightsail_create_container_service_registry_login <- function() {
   op <- new_operation(
     name = "CreateContainerServiceRegistryLogin",
@@ -1971,6 +2003,8 @@ lightsail_create_container_service_registry_login <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_disk
+#'
+#' @aliases lightsail_create_disk
 lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = NULL, addOns = NULL) {
   op <- new_operation(
     name = "CreateDisk",
@@ -2129,6 +2163,8 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' @keywords internal
 #'
 #' @rdname lightsail_create_disk_from_snapshot
+#'
+#' @aliases lightsail_create_disk_from_snapshot
 lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NULL, availabilityZone, sizeInGb, tags = NULL, addOns = NULL, sourceDiskName = NULL, restoreDate = NULL, useLatestRestorableAutoSnapshot = NULL) {
   op <- new_operation(
     name = "CreateDiskFromSnapshot",
@@ -2249,6 +2285,8 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' @keywords internal
 #'
 #' @rdname lightsail_create_disk_snapshot
+#'
+#' @aliases lightsail_create_disk_snapshot
 lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, instanceName = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDiskSnapshot",
@@ -2466,6 +2504,8 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' @keywords internal
 #'
 #' @rdname lightsail_create_distribution
+#'
+#' @aliases lightsail_create_distribution
 lightsail_create_distribution <- function(distributionName, origin, defaultCacheBehavior, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, bundleId, ipAddressType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDistribution",
@@ -2550,6 +2590,8 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #' @keywords internal
 #'
 #' @rdname lightsail_create_domain
+#'
+#' @aliases lightsail_create_domain
 lightsail_create_domain <- function(domainName, tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
@@ -2638,6 +2680,8 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_domain_entry
+#'
+#' @aliases lightsail_create_domain_entry
 lightsail_create_domain_entry <- function(domainName, domainEntry) {
   op <- new_operation(
     name = "CreateDomainEntry",
@@ -2724,6 +2768,8 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_instance_snapshot
+#'
+#' @aliases lightsail_create_instance_snapshot
 lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceName, tags = NULL) {
   op <- new_operation(
     name = "CreateInstanceSnapshot",
@@ -2862,6 +2908,8 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' @keywords internal
 #'
 #' @rdname lightsail_create_instances
+#'
+#' @aliases lightsail_create_instances
 lightsail_create_instances <- function(instanceNames, availabilityZone, customImageName = NULL, blueprintId, bundleId, userData = NULL, keyPairName = NULL, tags = NULL, addOns = NULL, ipAddressType = NULL) {
   op <- new_operation(
     name = "CreateInstances",
@@ -3050,6 +3098,8 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' @keywords internal
 #'
 #' @rdname lightsail_create_instances_from_snapshot
+#'
+#' @aliases lightsail_create_instances_from_snapshot
 lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDiskMapping = NULL, availabilityZone, instanceSnapshotName = NULL, bundleId, userData = NULL, keyPairName = NULL, tags = NULL, addOns = NULL, ipAddressType = NULL, sourceInstanceName = NULL, restoreDate = NULL, useLatestRestorableAutoSnapshot = NULL) {
   op <- new_operation(
     name = "CreateInstancesFromSnapshot",
@@ -3158,6 +3208,8 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #' @keywords internal
 #'
 #' @rdname lightsail_create_key_pair
+#'
+#' @aliases lightsail_create_key_pair
 lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
   op <- new_operation(
     name = "CreateKeyPair",
@@ -3293,6 +3345,8 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_create_load_balancer
+#'
+#' @aliases lightsail_create_load_balancer
 lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healthCheckPath = NULL, certificateName = NULL, certificateDomainName = NULL, certificateAlternativeNames = NULL, tags = NULL, ipAddressType = NULL, tlsPolicyName = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
@@ -3399,6 +3453,8 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' @keywords internal
 #'
 #' @rdname lightsail_create_load_balancer_tls_certificate
+#'
+#' @aliases lightsail_create_load_balancer_tls_certificate
 lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, certificateName, certificateDomainName, certificateAlternativeNames = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancerTlsCertificate",
@@ -3660,6 +3716,8 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @keywords internal
 #'
 #' @rdname lightsail_create_relational_database
+#'
+#' @aliases lightsail_create_relational_database
 lightsail_create_relational_database <- function(relationalDatabaseName, availabilityZone = NULL, relationalDatabaseBlueprintId, relationalDatabaseBundleId, masterDatabaseName, masterUsername, masterUserPassword = NULL, preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, publiclyAccessible = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRelationalDatabase",
@@ -3812,6 +3870,8 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' @keywords internal
 #'
 #' @rdname lightsail_create_relational_database_from_snapshot
+#'
+#' @aliases lightsail_create_relational_database_from_snapshot
 lightsail_create_relational_database_from_snapshot <- function(relationalDatabaseName, availabilityZone = NULL, publiclyAccessible = NULL, relationalDatabaseSnapshotName = NULL, relationalDatabaseBundleId = NULL, sourceRelationalDatabaseName = NULL, restoreTime = NULL, useLatestRestorableTime = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRelationalDatabaseFromSnapshot",
@@ -3904,6 +3964,8 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' @keywords internal
 #'
 #' @rdname lightsail_create_relational_database_snapshot
+#'
+#' @aliases lightsail_create_relational_database_snapshot
 lightsail_create_relational_database_snapshot <- function(relationalDatabaseName, relationalDatabaseSnapshotName, tags = NULL) {
   op <- new_operation(
     name = "CreateRelationalDatabaseSnapshot",
@@ -3976,6 +4038,8 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_alarm
+#'
+#' @aliases lightsail_delete_alarm
 lightsail_delete_alarm <- function(alarmName) {
   op <- new_operation(
     name = "DeleteAlarm",
@@ -4049,6 +4113,8 @@ lightsail_delete_alarm <- function(alarmName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_auto_snapshot
+#'
+#' @aliases lightsail_delete_auto_snapshot
 lightsail_delete_auto_snapshot <- function(resourceName, date) {
   op <- new_operation(
     name = "DeleteAutoSnapshot",
@@ -4142,6 +4208,8 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_bucket
+#'
+#' @aliases lightsail_delete_bucket
 lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
   op <- new_operation(
     name = "DeleteBucket",
@@ -4220,6 +4288,8 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_bucket_access_key
+#'
+#' @aliases lightsail_delete_bucket_access_key
 lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
   op <- new_operation(
     name = "DeleteBucketAccessKey",
@@ -4297,6 +4367,8 @@ lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_certificate
+#'
+#' @aliases lightsail_delete_certificate
 lightsail_delete_certificate <- function(certificateName) {
   op <- new_operation(
     name = "DeleteCertificate",
@@ -4377,6 +4449,8 @@ lightsail_delete_certificate <- function(certificateName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_contact_method
+#'
+#' @aliases lightsail_delete_contact_method
 lightsail_delete_contact_method <- function(protocol) {
   op <- new_operation(
     name = "DeleteContactMethod",
@@ -4432,6 +4506,8 @@ lightsail_delete_contact_method <- function(protocol) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_container_image
+#'
+#' @aliases lightsail_delete_container_image
 lightsail_delete_container_image <- function(serviceName, image) {
   op <- new_operation(
     name = "DeleteContainerImage",
@@ -4472,6 +4548,8 @@ lightsail_delete_container_image <- function(serviceName, image) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_container_service
+#'
+#' @aliases lightsail_delete_container_service
 lightsail_delete_container_service <- function(serviceName) {
   op <- new_operation(
     name = "DeleteContainerService",
@@ -4549,6 +4627,8 @@ lightsail_delete_container_service <- function(serviceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_disk
+#'
+#' @aliases lightsail_delete_disk
 lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
   op <- new_operation(
     name = "DeleteDisk",
@@ -4630,6 +4710,8 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_disk_snapshot
+#'
+#' @aliases lightsail_delete_disk_snapshot
 lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
   op <- new_operation(
     name = "DeleteDiskSnapshot",
@@ -4700,6 +4782,8 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_distribution
+#'
+#' @aliases lightsail_delete_distribution
 lightsail_delete_distribution <- function(distributionName = NULL) {
   op <- new_operation(
     name = "DeleteDistribution",
@@ -4769,6 +4853,8 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_domain
+#'
+#' @aliases lightsail_delete_domain
 lightsail_delete_domain <- function(domainName) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -4850,6 +4936,8 @@ lightsail_delete_domain <- function(domainName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_domain_entry
+#'
+#' @aliases lightsail_delete_domain_entry
 lightsail_delete_domain_entry <- function(domainName, domainEntry) {
   op <- new_operation(
     name = "DeleteDomainEntry",
@@ -4924,6 +5012,8 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_instance
+#'
+#' @aliases lightsail_delete_instance
 lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
   op <- new_operation(
     name = "DeleteInstance",
@@ -4996,6 +5086,8 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_instance_snapshot
+#'
+#' @aliases lightsail_delete_instance_snapshot
 lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
   op <- new_operation(
     name = "DeleteInstanceSnapshot",
@@ -5080,6 +5172,8 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_key_pair
+#'
+#' @aliases lightsail_delete_key_pair
 lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
   op <- new_operation(
     name = "DeleteKeyPair",
@@ -5158,6 +5252,8 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_known_host_keys
+#'
+#' @aliases lightsail_delete_known_host_keys
 lightsail_delete_known_host_keys <- function(instanceName) {
   op <- new_operation(
     name = "DeleteKnownHostKeys",
@@ -5234,6 +5330,8 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_load_balancer
+#'
+#' @aliases lightsail_delete_load_balancer
 lightsail_delete_load_balancer <- function(loadBalancerName) {
   op <- new_operation(
     name = "DeleteLoadBalancer",
@@ -5318,6 +5416,8 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_load_balancer_tls_certificate
+#'
+#' @aliases lightsail_delete_load_balancer_tls_certificate
 lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, certificateName, force = NULL) {
   op <- new_operation(
     name = "DeleteLoadBalancerTlsCertificate",
@@ -5413,6 +5513,8 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_relational_database
+#'
+#' @aliases lightsail_delete_relational_database
 lightsail_delete_relational_database <- function(relationalDatabaseName, skipFinalSnapshot = NULL, finalRelationalDatabaseSnapshotName = NULL) {
   op <- new_operation(
     name = "DeleteRelationalDatabase",
@@ -5486,6 +5588,8 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #' @keywords internal
 #'
 #' @rdname lightsail_delete_relational_database_snapshot
+#'
+#' @aliases lightsail_delete_relational_database_snapshot
 lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnapshotName) {
   op <- new_operation(
     name = "DeleteRelationalDatabaseSnapshot",
@@ -5559,6 +5663,8 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #' @keywords internal
 #'
 #' @rdname lightsail_detach_certificate_from_distribution
+#'
+#' @aliases lightsail_detach_certificate_from_distribution
 lightsail_detach_certificate_from_distribution <- function(distributionName) {
   op <- new_operation(
     name = "DetachCertificateFromDistribution",
@@ -5633,6 +5739,8 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_detach_disk
+#'
+#' @aliases lightsail_detach_disk
 lightsail_detach_disk <- function(diskName) {
   op <- new_operation(
     name = "DetachDisk",
@@ -5714,6 +5822,8 @@ lightsail_detach_disk <- function(diskName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_detach_instances_from_load_balancer
+#'
+#' @aliases lightsail_detach_instances_from_load_balancer
 lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, instanceNames) {
   op <- new_operation(
     name = "DetachInstancesFromLoadBalancer",
@@ -5783,6 +5893,8 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
 #' @keywords internal
 #'
 #' @rdname lightsail_detach_static_ip
+#'
+#' @aliases lightsail_detach_static_ip
 lightsail_detach_static_ip <- function(staticIpName) {
   op <- new_operation(
     name = "DetachStaticIp",
@@ -5853,6 +5965,8 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_disable_add_on
+#'
+#' @aliases lightsail_disable_add_on
 lightsail_disable_add_on <- function(addOnType, resourceName) {
   op <- new_operation(
     name = "DisableAddOn",
@@ -5901,6 +6015,8 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_download_default_key_pair
+#'
+#' @aliases lightsail_download_default_key_pair
 lightsail_download_default_key_pair <- function() {
   op <- new_operation(
     name = "DownloadDefaultKeyPair",
@@ -5977,6 +6093,8 @@ lightsail_download_default_key_pair <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_enable_add_on
+#'
+#' @aliases lightsail_enable_add_on
 lightsail_enable_add_on <- function(resourceName, addOnRequest) {
   op <- new_operation(
     name = "EnableAddOn",
@@ -6064,6 +6182,8 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
 #' @keywords internal
 #'
 #' @rdname lightsail_export_snapshot
+#'
+#' @aliases lightsail_export_snapshot
 lightsail_export_snapshot <- function(sourceSnapshotName) {
   op <- new_operation(
     name = "ExportSnapshot",
@@ -6117,6 +6237,8 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_active_names
+#'
+#' @aliases lightsail_get_active_names
 lightsail_get_active_names <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetActiveNames",
@@ -6221,6 +6343,8 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_alarms
+#'
+#' @aliases lightsail_get_alarms
 lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredResourceName = NULL) {
   op <- new_operation(
     name = "GetAlarms",
@@ -6284,6 +6408,8 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
 #' @keywords internal
 #'
 #' @rdname lightsail_get_auto_snapshots
+#'
+#' @aliases lightsail_get_auto_snapshots
 lightsail_get_auto_snapshots <- function(resourceName) {
   op <- new_operation(
     name = "GetAutoSnapshots",
@@ -6363,6 +6489,8 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_blueprints
+#'
+#' @aliases lightsail_get_blueprints
 lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetBlueprints",
@@ -6432,6 +6560,8 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_bucket_access_keys
+#'
+#' @aliases lightsail_get_bucket_access_keys
 lightsail_get_bucket_access_keys <- function(bucketName) {
   op <- new_operation(
     name = "GetBucketAccessKeys",
@@ -6493,6 +6623,8 @@ lightsail_get_bucket_access_keys <- function(bucketName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_bucket_bundles
+#'
+#' @aliases lightsail_get_bucket_bundles
 lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
   op <- new_operation(
     name = "GetBucketBundles",
@@ -6629,6 +6761,8 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_bucket_metric_data
+#'
+#' @aliases lightsail_get_bucket_metric_data
 lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, endTime, period, statistics, unit) {
   op <- new_operation(
     name = "GetBucketMetricData",
@@ -6750,6 +6884,8 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' @keywords internal
 #'
 #' @rdname lightsail_get_buckets
+#'
+#' @aliases lightsail_get_buckets
 lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeConnectedResources = NULL) {
   op <- new_operation(
     name = "GetBuckets",
@@ -6828,6 +6964,8 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
 #' @keywords internal
 #'
 #' @rdname lightsail_get_bundles
+#'
+#' @aliases lightsail_get_bundles
 lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetBundles",
@@ -6977,6 +7115,8 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_certificates
+#'
+#' @aliases lightsail_get_certificates
 lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertificateDetails = NULL, certificateName = NULL) {
   op <- new_operation(
     name = "GetCertificates",
@@ -7058,6 +7198,8 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
 #' @keywords internal
 #'
 #' @rdname lightsail_get_cloud_formation_stack_records
+#'
+#' @aliases lightsail_get_cloud_formation_stack_records
 lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetCloudFormationStackRecords",
@@ -7135,6 +7277,8 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_contact_methods
+#'
+#' @aliases lightsail_get_contact_methods
 lightsail_get_contact_methods <- function(protocols = NULL) {
   op <- new_operation(
     name = "GetContactMethods",
@@ -7182,6 +7326,8 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_api_metadata
+#'
+#' @aliases lightsail_get_container_api_metadata
 lightsail_get_container_api_metadata <- function() {
   op <- new_operation(
     name = "GetContainerAPIMetadata",
@@ -7243,6 +7389,8 @@ lightsail_get_container_api_metadata <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_images
+#'
+#' @aliases lightsail_get_container_images
 lightsail_get_container_images <- function(serviceName) {
   op <- new_operation(
     name = "GetContainerImages",
@@ -7369,6 +7517,8 @@ lightsail_get_container_images <- function(serviceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_log
+#'
+#' @aliases lightsail_get_container_log
 lightsail_get_container_log <- function(serviceName, containerName, startTime = NULL, endTime = NULL, filterPattern = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetContainerLog",
@@ -7460,6 +7610,8 @@ lightsail_get_container_log <- function(serviceName, containerName, startTime = 
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_service_deployments
+#'
+#' @aliases lightsail_get_container_service_deployments
 lightsail_get_container_service_deployments <- function(serviceName) {
   op <- new_operation(
     name = "GetContainerServiceDeployments",
@@ -7590,6 +7742,8 @@ lightsail_get_container_service_deployments <- function(serviceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_service_metric_data
+#'
+#' @aliases lightsail_get_container_service_metric_data
 lightsail_get_container_service_metric_data <- function(serviceName, metricName, startTime, endTime, period, statistics) {
   op <- new_operation(
     name = "GetContainerServiceMetricData",
@@ -7645,6 +7799,8 @@ lightsail_get_container_service_metric_data <- function(serviceName, metricName,
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_service_powers
+#'
+#' @aliases lightsail_get_container_service_powers
 lightsail_get_container_service_powers <- function() {
   op <- new_operation(
     name = "GetContainerServicePowers",
@@ -7803,6 +7959,8 @@ lightsail_get_container_service_powers <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_container_services
+#'
+#' @aliases lightsail_get_container_services
 lightsail_get_container_services <- function(serviceName = NULL) {
   op <- new_operation(
     name = "GetContainerServices",
@@ -7883,6 +8041,8 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_disk
+#'
+#' @aliases lightsail_get_disk
 lightsail_get_disk <- function(diskName) {
   op <- new_operation(
     name = "GetDisk",
@@ -7954,6 +8114,8 @@ lightsail_get_disk <- function(diskName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_disk_snapshot
+#'
+#' @aliases lightsail_get_disk_snapshot
 lightsail_get_disk_snapshot <- function(diskSnapshotName) {
   op <- new_operation(
     name = "GetDiskSnapshot",
@@ -8035,6 +8197,8 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_disk_snapshots
+#'
+#' @aliases lightsail_get_disk_snapshots
 lightsail_get_disk_snapshots <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetDiskSnapshots",
@@ -8125,6 +8289,8 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_disks
+#'
+#' @aliases lightsail_get_disks
 lightsail_get_disks <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetDisks",
@@ -8179,6 +8345,8 @@ lightsail_get_disks <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_distribution_bundles
+#'
+#' @aliases lightsail_get_distribution_bundles
 lightsail_get_distribution_bundles <- function() {
   op <- new_operation(
     name = "GetDistributionBundles",
@@ -8236,6 +8404,8 @@ lightsail_get_distribution_bundles <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_distribution_latest_cache_reset
+#'
+#' @aliases lightsail_get_distribution_latest_cache_reset
 lightsail_get_distribution_latest_cache_reset <- function(distributionName = NULL) {
   op <- new_operation(
     name = "GetDistributionLatestCacheReset",
@@ -8427,6 +8597,8 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' @keywords internal
 #'
 #' @rdname lightsail_get_distribution_metric_data
+#'
+#' @aliases lightsail_get_distribution_metric_data
 lightsail_get_distribution_metric_data <- function(distributionName, metricName, startTime, endTime, period, unit, statistics) {
   op <- new_operation(
     name = "GetDistributionMetricData",
@@ -8556,6 +8728,8 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #' @keywords internal
 #'
 #' @rdname lightsail_get_distributions
+#'
+#' @aliases lightsail_get_distributions
 lightsail_get_distributions <- function(distributionName = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetDistributions",
@@ -8631,6 +8805,8 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
 #' @keywords internal
 #'
 #' @rdname lightsail_get_domain
+#'
+#' @aliases lightsail_get_domain
 lightsail_get_domain <- function(domainName) {
   op <- new_operation(
     name = "GetDomain",
@@ -8714,6 +8890,8 @@ lightsail_get_domain <- function(domainName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_domains
+#'
+#' @aliases lightsail_get_domains
 lightsail_get_domains <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetDomains",
@@ -8816,6 +8994,8 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_export_snapshot_records
+#'
+#' @aliases lightsail_get_export_snapshot_records
 lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetExportSnapshotRecords",
@@ -8972,6 +9152,8 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance
+#'
+#' @aliases lightsail_get_instance
 lightsail_get_instance <- function(instanceName) {
   op <- new_operation(
     name = "GetInstance",
@@ -9058,6 +9240,8 @@ lightsail_get_instance <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_access_details
+#'
+#' @aliases lightsail_get_instance_access_details
 lightsail_get_instance_access_details <- function(instanceName, protocol = NULL) {
   op <- new_operation(
     name = "GetInstanceAccessDetails",
@@ -9267,6 +9451,8 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_metric_data
+#'
+#' @aliases lightsail_get_instance_metric_data
 lightsail_get_instance_metric_data <- function(instanceName, metricName, period, startTime, endTime, unit, statistics) {
   op <- new_operation(
     name = "GetInstanceMetricData",
@@ -9332,6 +9518,8 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_port_states
+#'
+#' @aliases lightsail_get_instance_port_states
 lightsail_get_instance_port_states <- function(instanceName) {
   op <- new_operation(
     name = "GetInstancePortStates",
@@ -9441,6 +9629,8 @@ lightsail_get_instance_port_states <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_snapshot
+#'
+#' @aliases lightsail_get_instance_snapshot
 lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
   op <- new_operation(
     name = "GetInstanceSnapshot",
@@ -9558,6 +9748,8 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_snapshots
+#'
+#' @aliases lightsail_get_instance_snapshots
 lightsail_get_instance_snapshots <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetInstanceSnapshots",
@@ -9607,6 +9799,8 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instance_state
+#'
+#' @aliases lightsail_get_instance_state
 lightsail_get_instance_state <- function(instanceName) {
   op <- new_operation(
     name = "GetInstanceState",
@@ -9771,6 +9965,8 @@ lightsail_get_instance_state <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_instances
+#'
+#' @aliases lightsail_get_instances
 lightsail_get_instances <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetInstances",
@@ -9835,6 +10031,8 @@ lightsail_get_instances <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_key_pair
+#'
+#' @aliases lightsail_get_key_pair
 lightsail_get_key_pair <- function(keyPairName) {
   op <- new_operation(
     name = "GetKeyPair",
@@ -9910,6 +10108,8 @@ lightsail_get_key_pair <- function(keyPairName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_key_pairs
+#'
+#' @aliases lightsail_get_key_pairs
 lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NULL) {
   op <- new_operation(
     name = "GetKeyPairs",
@@ -10000,6 +10200,8 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
 #' @keywords internal
 #'
 #' @rdname lightsail_get_load_balancer
+#'
+#' @aliases lightsail_get_load_balancer
 lightsail_get_load_balancer <- function(loadBalancerName) {
   op <- new_operation(
     name = "GetLoadBalancer",
@@ -10222,6 +10424,8 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_load_balancer_metric_data
+#'
+#' @aliases lightsail_get_load_balancer_metric_data
 lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName, period, startTime, endTime, unit, statistics) {
   op <- new_operation(
     name = "GetLoadBalancerMetricData",
@@ -10340,6 +10544,8 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
 #' @keywords internal
 #'
 #' @rdname lightsail_get_load_balancer_tls_certificates
+#'
+#' @aliases lightsail_get_load_balancer_tls_certificates
 lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
   op <- new_operation(
     name = "GetLoadBalancerTlsCertificates",
@@ -10410,6 +10616,8 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_load_balancer_tls_policies
+#'
+#' @aliases lightsail_get_load_balancer_tls_policies
 lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetLoadBalancerTlsPolicies",
@@ -10508,6 +10716,8 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_load_balancers
+#'
+#' @aliases lightsail_get_load_balancers
 lightsail_get_load_balancers <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetLoadBalancers",
@@ -10575,6 +10785,8 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_operation
+#'
+#' @aliases lightsail_get_operation
 lightsail_get_operation <- function(operationId) {
   op <- new_operation(
     name = "GetOperation",
@@ -10653,6 +10865,8 @@ lightsail_get_operation <- function(operationId) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_operations
+#'
+#' @aliases lightsail_get_operations
 lightsail_get_operations <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetOperations",
@@ -10731,6 +10945,8 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_operations_for_resource
+#'
+#' @aliases lightsail_get_operations_for_resource
 lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL) {
   op <- new_operation(
     name = "GetOperationsForResource",
@@ -10804,6 +11020,8 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #' @keywords internal
 #'
 #' @rdname lightsail_get_regions
+#'
+#' @aliases lightsail_get_regions
 lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelationalDatabaseAvailabilityZones = NULL) {
   op <- new_operation(
     name = "GetRegions",
@@ -10907,6 +11125,8 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database
+#'
+#' @aliases lightsail_get_relational_database
 lightsail_get_relational_database <- function(relationalDatabaseName) {
   op <- new_operation(
     name = "GetRelationalDatabase",
@@ -10972,6 +11192,8 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_blueprints
+#'
+#' @aliases lightsail_get_relational_database_blueprints
 lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseBlueprints",
@@ -11043,6 +11265,8 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_bundles
+#'
+#' @aliases lightsail_get_relational_database_bundles
 lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeInactive = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseBundles",
@@ -11116,6 +11340,8 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeI
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_events
+#'
+#' @aliases lightsail_get_relational_database_events
 lightsail_get_relational_database_events <- function(relationalDatabaseName, durationInMinutes = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseEvents",
@@ -11218,6 +11444,8 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_log_events
+#'
+#' @aliases lightsail_get_relational_database_log_events
 lightsail_get_relational_database_log_events <- function(relationalDatabaseName, logStreamName, startTime = NULL, endTime = NULL, startFromHead = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseLogEvents",
@@ -11267,6 +11495,8 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_log_streams
+#'
+#' @aliases lightsail_get_relational_database_log_streams
 lightsail_get_relational_database_log_streams <- function(relationalDatabaseName) {
   op <- new_operation(
     name = "GetRelationalDatabaseLogStreams",
@@ -11333,6 +11563,8 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_master_user_password
+#'
+#' @aliases lightsail_get_relational_database_master_user_password
 lightsail_get_relational_database_master_user_password <- function(relationalDatabaseName, passwordVersion = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseMasterUserPassword",
@@ -11512,6 +11744,8 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_metric_data
+#'
+#' @aliases lightsail_get_relational_database_metric_data
 lightsail_get_relational_database_metric_data <- function(relationalDatabaseName, metricName, period, startTime, endTime, unit, statistics) {
   op <- new_operation(
     name = "GetRelationalDatabaseMetricData",
@@ -11585,6 +11819,8 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_parameters
+#'
+#' @aliases lightsail_get_relational_database_parameters
 lightsail_get_relational_database_parameters <- function(relationalDatabaseName, pageToken = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseParameters",
@@ -11659,6 +11895,8 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_snapshot
+#'
+#' @aliases lightsail_get_relational_database_snapshot
 lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapshotName) {
   op <- new_operation(
     name = "GetRelationalDatabaseSnapshot",
@@ -11741,6 +11979,8 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_database_snapshots
+#'
+#' @aliases lightsail_get_relational_database_snapshots
 lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabaseSnapshots",
@@ -11853,6 +12093,8 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_relational_databases
+#'
+#' @aliases lightsail_get_relational_databases
 lightsail_get_relational_databases <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetRelationalDatabases",
@@ -11913,6 +12155,8 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_static_ip
+#'
+#' @aliases lightsail_get_static_ip
 lightsail_get_static_ip <- function(staticIpName) {
   op <- new_operation(
     name = "GetStaticIp",
@@ -11981,6 +12225,8 @@ lightsail_get_static_ip <- function(staticIpName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_get_static_ips
+#'
+#' @aliases lightsail_get_static_ips
 lightsail_get_static_ips <- function(pageToken = NULL) {
   op <- new_operation(
     name = "GetStaticIps",
@@ -12048,6 +12294,8 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_import_key_pair
+#'
+#' @aliases lightsail_import_key_pair
 lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
   op <- new_operation(
     name = "ImportKeyPair",
@@ -12089,6 +12337,8 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
 #' @keywords internal
 #'
 #' @rdname lightsail_is_vpc_peered
+#'
+#' @aliases lightsail_is_vpc_peered
 lightsail_is_vpc_peered <- function() {
   op <- new_operation(
     name = "IsVpcPeered",
@@ -12178,6 +12428,8 @@ lightsail_is_vpc_peered <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_open_instance_public_ports
+#'
+#' @aliases lightsail_open_instance_public_ports
 lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
   op <- new_operation(
     name = "OpenInstancePublicPorts",
@@ -12239,6 +12491,8 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_peer_vpc
+#'
+#' @aliases lightsail_peer_vpc
 lightsail_peer_vpc <- function() {
   op <- new_operation(
     name = "PeerVpc",
@@ -12451,6 +12705,8 @@ lightsail_peer_vpc <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_put_alarm
+#'
+#' @aliases lightsail_put_alarm
 lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, comparisonOperator, threshold, evaluationPeriods, datapointsToAlarm = NULL, treatMissingData = NULL, contactProtocols = NULL, notificationTriggers = NULL, notificationEnabled = NULL) {
   op <- new_operation(
     name = "PutAlarm",
@@ -12549,6 +12805,8 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #' @keywords internal
 #'
 #' @rdname lightsail_put_instance_public_ports
+#'
+#' @aliases lightsail_put_instance_public_ports
 lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
   op <- new_operation(
     name = "PutInstancePublicPorts",
@@ -12620,6 +12878,8 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_reboot_instance
+#'
+#' @aliases lightsail_reboot_instance
 lightsail_reboot_instance <- function(instanceName) {
   op <- new_operation(
     name = "RebootInstance",
@@ -12692,6 +12952,8 @@ lightsail_reboot_instance <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_reboot_relational_database
+#'
+#' @aliases lightsail_reboot_relational_database
 lightsail_reboot_relational_database <- function(relationalDatabaseName) {
   op <- new_operation(
     name = "RebootRelationalDatabase",
@@ -12777,6 +13039,8 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_register_container_image
+#'
+#' @aliases lightsail_register_container_image
 lightsail_register_container_image <- function(serviceName, label, digest) {
   op <- new_operation(
     name = "RegisterContainerImage",
@@ -12844,6 +13108,8 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
 #' @keywords internal
 #'
 #' @rdname lightsail_release_static_ip
+#'
+#' @aliases lightsail_release_static_ip
 lightsail_release_static_ip <- function(staticIpName) {
   op <- new_operation(
     name = "ReleaseStaticIp",
@@ -12921,6 +13187,8 @@ lightsail_release_static_ip <- function(staticIpName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_reset_distribution_cache
+#'
+#' @aliases lightsail_reset_distribution_cache
 lightsail_reset_distribution_cache <- function(distributionName = NULL) {
   op <- new_operation(
     name = "ResetDistributionCache",
@@ -13004,6 +13272,8 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_send_contact_method_verification
+#'
+#' @aliases lightsail_send_contact_method_verification
 lightsail_send_contact_method_verification <- function(protocol) {
   op <- new_operation(
     name = "SendContactMethodVerification",
@@ -13089,6 +13359,8 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' @keywords internal
 #'
 #' @rdname lightsail_set_ip_address_type
+#'
+#' @aliases lightsail_set_ip_address_type
 lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressType) {
   op <- new_operation(
     name = "SetIpAddressType",
@@ -13175,6 +13447,8 @@ lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressT
 #' @keywords internal
 #'
 #' @rdname lightsail_set_resource_access_for_bucket
+#'
+#' @aliases lightsail_set_resource_access_for_bucket
 lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, access) {
   op <- new_operation(
     name = "SetResourceAccessForBucket",
@@ -13253,6 +13527,8 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
 #' @keywords internal
 #'
 #' @rdname lightsail_start_instance
+#'
+#' @aliases lightsail_start_instance
 lightsail_start_instance <- function(instanceName) {
   op <- new_operation(
     name = "StartInstance",
@@ -13326,6 +13602,8 @@ lightsail_start_instance <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_start_relational_database
+#'
+#' @aliases lightsail_start_relational_database
 lightsail_start_relational_database <- function(relationalDatabaseName) {
   op <- new_operation(
     name = "StartRelationalDatabase",
@@ -13410,6 +13688,8 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #' @keywords internal
 #'
 #' @rdname lightsail_stop_instance
+#'
+#' @aliases lightsail_stop_instance
 lightsail_stop_instance <- function(instanceName, force = NULL) {
   op <- new_operation(
     name = "StopInstance",
@@ -13486,6 +13766,8 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #' @keywords internal
 #'
 #' @rdname lightsail_stop_relational_database
+#'
+#' @aliases lightsail_stop_relational_database
 lightsail_stop_relational_database <- function(relationalDatabaseName, relationalDatabaseSnapshotName = NULL) {
   op <- new_operation(
     name = "StopRelationalDatabase",
@@ -13571,6 +13853,8 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #' @keywords internal
 #'
 #' @rdname lightsail_tag_resource
+#'
+#' @aliases lightsail_tag_resource
 lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -13658,6 +13942,8 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #' @keywords internal
 #'
 #' @rdname lightsail_test_alarm
+#'
+#' @aliases lightsail_test_alarm
 lightsail_test_alarm <- function(alarmName, state) {
   op <- new_operation(
     name = "TestAlarm",
@@ -13719,6 +14005,8 @@ lightsail_test_alarm <- function(alarmName, state) {
 #' @keywords internal
 #'
 #' @rdname lightsail_unpeer_vpc
+#'
+#' @aliases lightsail_unpeer_vpc
 lightsail_unpeer_vpc <- function() {
   op <- new_operation(
     name = "UnpeerVpc",
@@ -13800,6 +14088,8 @@ lightsail_unpeer_vpc <- function() {
 #' @keywords internal
 #'
 #' @rdname lightsail_untag_resource
+#'
+#' @aliases lightsail_untag_resource
 lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -13947,6 +14237,8 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' @keywords internal
 #'
 #' @rdname lightsail_update_bucket
+#'
+#' @aliases lightsail_update_bucket
 lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning = NULL, readonlyAccessAccounts = NULL, accessLogConfig = NULL) {
   op <- new_operation(
     name = "UpdateBucket",
@@ -14037,6 +14329,8 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
 #' @keywords internal
 #'
 #' @rdname lightsail_update_bucket_bundle
+#'
+#' @aliases lightsail_update_bucket_bundle
 lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
   op <- new_operation(
     name = "UpdateBucketBundle",
@@ -14249,6 +14543,8 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
 #' @keywords internal
 #'
 #' @rdname lightsail_update_container_service
+#'
+#' @aliases lightsail_update_container_service
 lightsail_update_container_service <- function(serviceName, power = NULL, scale = NULL, isDisabled = NULL, publicDomainNames = NULL, privateRegistryAccess = NULL) {
   op <- new_operation(
     name = "UpdateContainerService",
@@ -14378,6 +14674,8 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #' @keywords internal
 #'
 #' @rdname lightsail_update_distribution
+#'
+#' @aliases lightsail_update_distribution
 lightsail_update_distribution <- function(distributionName, origin = NULL, defaultCacheBehavior = NULL, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, isEnabled = NULL) {
   op <- new_operation(
     name = "UpdateDistribution",
@@ -14466,6 +14764,8 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #' @keywords internal
 #'
 #' @rdname lightsail_update_distribution_bundle
+#'
+#' @aliases lightsail_update_distribution_bundle
 lightsail_update_distribution_bundle <- function(distributionName = NULL, bundleId = NULL) {
   op <- new_operation(
     name = "UpdateDistributionBundle",
@@ -14549,6 +14849,8 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
 #' @keywords internal
 #'
 #' @rdname lightsail_update_domain_entry
+#'
+#' @aliases lightsail_update_domain_entry
 lightsail_update_domain_entry <- function(domainName, domainEntry) {
   op <- new_operation(
     name = "UpdateDomainEntry",
@@ -14658,6 +14960,8 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #' @keywords internal
 #'
 #' @rdname lightsail_update_load_balancer_attribute
+#'
+#' @aliases lightsail_update_load_balancer_attribute
 lightsail_update_load_balancer_attribute <- function(loadBalancerName, attributeName, attributeValue) {
   op <- new_operation(
     name = "UpdateLoadBalancerAttribute",
@@ -14819,6 +15123,8 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' @keywords internal
 #'
 #' @rdname lightsail_update_relational_database
+#'
+#' @aliases lightsail_update_relational_database
 lightsail_update_relational_database <- function(relationalDatabaseName, masterUserPassword = NULL, rotateMasterUserPassword = NULL, preferredBackupWindow = NULL, preferredMaintenanceWindow = NULL, enableBackupRetention = NULL, disableBackupRetention = NULL, publiclyAccessible = NULL, applyImmediately = NULL, caCertificateIdentifier = NULL) {
   op <- new_operation(
     name = "UpdateRelationalDatabase",
@@ -14915,6 +15221,8 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' @keywords internal
 #'
 #' @rdname lightsail_update_relational_database_parameters
+#'
+#' @aliases lightsail_update_relational_database_parameters
 lightsail_update_relational_database_parameters <- function(relationalDatabaseName, parameters) {
   op <- new_operation(
     name = "UpdateRelationalDatabaseParameters",

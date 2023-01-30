@@ -28,6 +28,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname eventbridge_activate_event_source
+#'
+#' @aliases eventbridge_activate_event_source
 eventbridge_activate_event_source <- function(Name) {
   op <- new_operation(
     name = "ActivateEventSource",
@@ -75,6 +77,8 @@ eventbridge_activate_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_cancel_replay
+#'
+#' @aliases eventbridge_cancel_replay
 eventbridge_cancel_replay <- function(ReplayName) {
   op <- new_operation(
     name = "CancelReplay",
@@ -143,6 +147,8 @@ eventbridge_cancel_replay <- function(ReplayName) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_api_destination
+#'
+#' @aliases eventbridge_create_api_destination
 eventbridge_create_api_destination <- function(Name, Description = NULL, ConnectionArn, InvocationEndpoint, HttpMethod, InvocationRateLimitPerSecond = NULL) {
   op <- new_operation(
     name = "CreateApiDestination",
@@ -208,6 +214,8 @@ eventbridge_create_api_destination <- function(Name, Description = NULL, Connect
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_archive
+#'
+#' @aliases eventbridge_create_archive
 eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
   op <- new_operation(
     name = "CreateArchive",
@@ -333,6 +341,8 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_connection
+#'
+#' @aliases eventbridge_create_connection
 eventbridge_create_connection <- function(Name, Description = NULL, AuthorizationType, AuthParameters) {
   op <- new_operation(
     name = "CreateConnection",
@@ -435,6 +445,8 @@ eventbridge_create_connection <- function(Name, Description = NULL, Authorizatio
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_endpoint
+#'
+#' @aliases eventbridge_create_endpoint
 eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig, ReplicationConfig = NULL, EventBuses, RoleArn = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
@@ -500,6 +512,8 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_event_bus
+#'
+#' @aliases eventbridge_create_event_bus
 eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventBus",
@@ -579,6 +593,8 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Tags = NU
 #' @keywords internal
 #'
 #' @rdname eventbridge_create_partner_event_source
+#'
+#' @aliases eventbridge_create_partner_event_source
 eventbridge_create_partner_event_source <- function(Name, Account) {
   op <- new_operation(
     name = "CreatePartnerEventSource",
@@ -628,6 +644,8 @@ eventbridge_create_partner_event_source <- function(Name, Account) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_deactivate_event_source
+#'
+#' @aliases eventbridge_deactivate_event_source
 eventbridge_deactivate_event_source <- function(Name) {
   op <- new_operation(
     name = "DeactivateEventSource",
@@ -685,6 +703,8 @@ eventbridge_deactivate_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_deauthorize_connection
+#'
+#' @aliases eventbridge_deauthorize_connection
 eventbridge_deauthorize_connection <- function(Name) {
   op <- new_operation(
     name = "DeauthorizeConnection",
@@ -725,6 +745,8 @@ eventbridge_deauthorize_connection <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_api_destination
+#'
+#' @aliases eventbridge_delete_api_destination
 eventbridge_delete_api_destination <- function(Name) {
   op <- new_operation(
     name = "DeleteApiDestination",
@@ -765,6 +787,8 @@ eventbridge_delete_api_destination <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_archive
+#'
+#' @aliases eventbridge_delete_archive
 eventbridge_delete_archive <- function(ArchiveName) {
   op <- new_operation(
     name = "DeleteArchive",
@@ -820,6 +844,8 @@ eventbridge_delete_archive <- function(ArchiveName) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_connection
+#'
+#' @aliases eventbridge_delete_connection
 eventbridge_delete_connection <- function(Name) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -865,6 +891,8 @@ eventbridge_delete_connection <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_endpoint
+#'
+#' @aliases eventbridge_delete_endpoint
 eventbridge_delete_endpoint <- function(Name) {
   op <- new_operation(
     name = "DeleteEndpoint",
@@ -907,6 +935,8 @@ eventbridge_delete_endpoint <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_event_bus
+#'
+#' @aliases eventbridge_delete_event_bus
 eventbridge_delete_event_bus <- function(Name) {
   op <- new_operation(
     name = "DeleteEventBus",
@@ -954,6 +984,8 @@ eventbridge_delete_event_bus <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_partner_event_source
+#'
+#' @aliases eventbridge_delete_partner_event_source
 eventbridge_delete_partner_event_source <- function(Name, Account) {
   op <- new_operation(
     name = "DeletePartnerEventSource",
@@ -1021,6 +1053,8 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_delete_rule
+#'
+#' @aliases eventbridge_delete_rule
 eventbridge_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
   op <- new_operation(
     name = "DeleteRule",
@@ -1079,6 +1113,8 @@ eventbridge_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_api_destination
+#'
+#' @aliases eventbridge_describe_api_destination
 eventbridge_describe_api_destination <- function(Name) {
   op <- new_operation(
     name = "DescribeApiDestination",
@@ -1136,6 +1172,8 @@ eventbridge_describe_api_destination <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_archive
+#'
+#' @aliases eventbridge_describe_archive
 eventbridge_describe_archive <- function(ArchiveName) {
   op <- new_operation(
     name = "DescribeArchive",
@@ -1257,6 +1295,8 @@ eventbridge_describe_archive <- function(ArchiveName) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_connection
+#'
+#' @aliases eventbridge_describe_connection
 eventbridge_describe_connection <- function(Name) {
   op <- new_operation(
     name = "DescribeConnection",
@@ -1341,6 +1381,8 @@ eventbridge_describe_connection <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_endpoint
+#'
+#' @aliases eventbridge_describe_endpoint
 eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
   op <- new_operation(
     name = "DescribeEndpoint",
@@ -1399,6 +1441,8 @@ eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_event_bus
+#'
+#' @aliases eventbridge_describe_event_bus
 eventbridge_describe_event_bus <- function(Name = NULL) {
   op <- new_operation(
     name = "DescribeEventBus",
@@ -1455,6 +1499,8 @@ eventbridge_describe_event_bus <- function(Name = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_event_source
+#'
+#' @aliases eventbridge_describe_event_source
 eventbridge_describe_event_source <- function(Name) {
   op <- new_operation(
     name = "DescribeEventSource",
@@ -1506,6 +1552,8 @@ eventbridge_describe_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_partner_event_source
+#'
+#' @aliases eventbridge_describe_partner_event_source
 eventbridge_describe_partner_event_source <- function(Name) {
   op <- new_operation(
     name = "DescribePartnerEventSource",
@@ -1588,6 +1636,8 @@ eventbridge_describe_partner_event_source <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_replay
+#'
+#' @aliases eventbridge_describe_replay
 eventbridge_describe_replay <- function(ReplayName) {
   op <- new_operation(
     name = "DescribeReplay",
@@ -1649,6 +1699,8 @@ eventbridge_describe_replay <- function(ReplayName) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_describe_rule
+#'
+#' @aliases eventbridge_describe_rule
 eventbridge_describe_rule <- function(Name, EventBusName = NULL) {
   op <- new_operation(
     name = "DescribeRule",
@@ -1696,6 +1748,8 @@ eventbridge_describe_rule <- function(Name, EventBusName = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_disable_rule
+#'
+#' @aliases eventbridge_disable_rule
 eventbridge_disable_rule <- function(Name, EventBusName = NULL) {
   op <- new_operation(
     name = "DisableRule",
@@ -1744,6 +1798,8 @@ eventbridge_disable_rule <- function(Name, EventBusName = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_enable_rule
+#'
+#' @aliases eventbridge_enable_rule
 eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
   op <- new_operation(
     name = "EnableRule",
@@ -1816,6 +1872,8 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_api_destinations
+#'
+#' @aliases eventbridge_list_api_destinations
 eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListApiDestinations",
@@ -1888,6 +1946,8 @@ eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn =
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_archives
+#'
+#' @aliases eventbridge_list_archives
 eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, State = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListArchives",
@@ -1960,6 +2020,8 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_connections
+#'
+#' @aliases eventbridge_list_connections
 eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListConnections",
@@ -2059,6 +2121,8 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_endpoints
+#'
+#' @aliases eventbridge_list_endpoints
 eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEndpoints",
@@ -2121,6 +2185,8 @@ eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_event_buses
+#'
+#' @aliases eventbridge_list_event_buses
 eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListEventBuses",
@@ -2192,6 +2258,8 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_event_sources
+#'
+#' @aliases eventbridge_list_event_sources
 eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListEventSources",
@@ -2263,6 +2331,8 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_partner_event_source_accounts
+#'
+#' @aliases eventbridge_list_partner_event_source_accounts
 eventbridge_list_partner_event_source_accounts <- function(EventSourceName, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListPartnerEventSourceAccounts",
@@ -2325,6 +2395,8 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_partner_event_sources
+#'
+#' @aliases eventbridge_list_partner_event_sources
 eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListPartnerEventSources",
@@ -2406,6 +2478,8 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_replays
+#'
+#' @aliases eventbridge_list_replays
 eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourceArn = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListReplays",
@@ -2464,6 +2538,8 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_rule_names_by_target
+#'
+#' @aliases eventbridge_list_rule_names_by_target
 eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRuleNamesByTarget",
@@ -2535,6 +2611,8 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_rules
+#'
+#' @aliases eventbridge_list_rules
 eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRules",
@@ -2586,6 +2664,8 @@ eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_tags_for_resource
+#'
+#' @aliases eventbridge_list_tags_for_resource
 eventbridge_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2761,6 +2841,8 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_list_targets_by_rule
+#'
+#' @aliases eventbridge_list_targets_by_rule
 eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTargetsByRule",
@@ -2839,6 +2921,8 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_events
+#'
+#' @aliases eventbridge_put_events
 eventbridge_put_events <- function(Entries, EndpointId = NULL) {
   op <- new_operation(
     name = "PutEvents",
@@ -2905,6 +2989,8 @@ eventbridge_put_events <- function(Entries, EndpointId = NULL) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_partner_events
+#'
+#' @aliases eventbridge_put_partner_events
 eventbridge_put_partner_events <- function(Entries) {
   op <- new_operation(
     name = "PutPartnerEvents",
@@ -3017,6 +3103,8 @@ eventbridge_put_partner_events <- function(Entries) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_permission
+#'
+#' @aliases eventbridge_put_permission
 eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Principal = NULL, StatementId = NULL, Condition = NULL, Policy = NULL) {
   op <- new_operation(
     name = "PutPermission",
@@ -3155,6 +3243,8 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_rule
+#'
+#' @aliases eventbridge_put_rule
 eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern = NULL, State = NULL, Description = NULL, RoleArn = NULL, Tags = NULL, EventBusName = NULL) {
   op <- new_operation(
     name = "PutRule",
@@ -3484,6 +3574,8 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
 #' @keywords internal
 #'
 #' @rdname eventbridge_put_targets
+#'
+#' @aliases eventbridge_put_targets
 eventbridge_put_targets <- function(Rule, EventBusName = NULL, Targets) {
   op <- new_operation(
     name = "PutTargets",
@@ -3538,6 +3630,8 @@ eventbridge_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_remove_permission
+#'
+#' @aliases eventbridge_remove_permission
 eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissions = NULL, EventBusName = NULL) {
   op <- new_operation(
     name = "RemovePermission",
@@ -3619,6 +3713,8 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
 #' @keywords internal
 #'
 #' @rdname eventbridge_remove_targets
+#'
+#' @aliases eventbridge_remove_targets
 eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = NULL) {
   op <- new_operation(
     name = "RemoveTargets",
@@ -3702,6 +3798,8 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
 #' @keywords internal
 #'
 #' @rdname eventbridge_start_replay
+#'
+#' @aliases eventbridge_start_replay
 eventbridge_start_replay <- function(ReplayName, Description = NULL, EventSourceArn, EventStartTime, EventEndTime, Destination) {
   op <- new_operation(
     name = "StartReplay",
@@ -3765,6 +3863,8 @@ eventbridge_start_replay <- function(ReplayName, Description = NULL, EventSource
 #' @keywords internal
 #'
 #' @rdname eventbridge_tag_resource
+#'
+#' @aliases eventbridge_tag_resource
 eventbridge_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3837,6 +3937,8 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_test_event_pattern
+#'
+#' @aliases eventbridge_test_event_pattern
 eventbridge_test_event_pattern <- function(EventPattern, Event) {
   op <- new_operation(
     name = "TestEventPattern",
@@ -3883,6 +3985,8 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_untag_resource
+#'
+#' @aliases eventbridge_untag_resource
 eventbridge_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3947,6 +4051,8 @@ eventbridge_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_api_destination
+#'
+#' @aliases eventbridge_update_api_destination
 eventbridge_update_api_destination <- function(Name, Description = NULL, ConnectionArn = NULL, InvocationEndpoint = NULL, HttpMethod = NULL, InvocationRateLimitPerSecond = NULL) {
   op <- new_operation(
     name = "UpdateApiDestination",
@@ -4004,6 +4110,8 @@ eventbridge_update_api_destination <- function(Name, Description = NULL, Connect
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_archive
+#'
+#' @aliases eventbridge_update_archive
 eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
   op <- new_operation(
     name = "UpdateArchive",
@@ -4129,6 +4237,8 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_connection
+#'
+#' @aliases eventbridge_update_connection
 eventbridge_update_connection <- function(Name, Description = NULL, AuthorizationType = NULL, AuthParameters = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
@@ -4228,6 +4338,8 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
 #' @keywords internal
 #'
 #' @rdname eventbridge_update_endpoint
+#'
+#' @aliases eventbridge_update_endpoint
 eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig = NULL, ReplicationConfig = NULL, EventBuses = NULL, RoleArn = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",

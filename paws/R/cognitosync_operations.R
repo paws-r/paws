@@ -42,6 +42,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cognitosync_bulk_publish
+#'
+#' @aliases cognitosync_bulk_publish
 cognitosync_bulk_publish <- function(IdentityPoolId) {
   op <- new_operation(
     name = "BulkPublish",
@@ -114,6 +116,8 @@ cognitosync_bulk_publish <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_delete_dataset
+#'
+#' @aliases cognitosync_delete_dataset
 cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -187,6 +191,8 @@ cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) 
 #' @keywords internal
 #'
 #' @rdname cognitosync_describe_dataset
+#'
+#' @aliases cognitosync_describe_dataset
 cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName) {
   op <- new_operation(
     name = "DescribeDataset",
@@ -247,6 +253,8 @@ cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName
 #' @keywords internal
 #'
 #' @rdname cognitosync_describe_identity_pool_usage
+#'
+#' @aliases cognitosync_describe_identity_pool_usage
 cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
   op <- new_operation(
     name = "DescribeIdentityPoolUsage",
@@ -311,6 +319,8 @@ cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_describe_identity_usage
+#'
+#' @aliases cognitosync_describe_identity_usage
 cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
   op <- new_operation(
     name = "DescribeIdentityUsage",
@@ -370,6 +380,8 @@ cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_get_bulk_publish_details
+#'
+#' @aliases cognitosync_get_bulk_publish_details
 cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
   op <- new_operation(
     name = "GetBulkPublishDetails",
@@ -423,6 +435,8 @@ cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_get_cognito_events
+#'
+#' @aliases cognitosync_get_cognito_events
 cognitosync_get_cognito_events <- function(IdentityPoolId) {
   op <- new_operation(
     name = "GetCognitoEvents",
@@ -485,6 +499,8 @@ cognitosync_get_cognito_events <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_get_identity_pool_configuration
+#'
+#' @aliases cognitosync_get_identity_pool_configuration
 cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
   op <- new_operation(
     name = "GetIdentityPoolConfiguration",
@@ -563,6 +579,8 @@ cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_list_datasets
+#'
+#' @aliases cognitosync_list_datasets
 cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatasets",
@@ -626,6 +644,8 @@ cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname cognitosync_list_identity_pool_usage
+#'
+#' @aliases cognitosync_list_identity_pool_usage
 cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListIdentityPoolUsage",
@@ -720,6 +740,8 @@ cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname cognitosync_list_records
+#'
+#' @aliases cognitosync_list_records
 cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, LastSyncCount = NULL, NextToken = NULL, MaxResults = NULL, SyncSessionToken = NULL) {
   op <- new_operation(
     name = "ListRecords",
@@ -776,6 +798,8 @@ cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, La
 #' @keywords internal
 #'
 #' @rdname cognitosync_register_device
+#'
+#' @aliases cognitosync_register_device
 cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, Token) {
   op <- new_operation(
     name = "RegisterDevice",
@@ -827,6 +851,8 @@ cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, To
 #' @keywords internal
 #'
 #' @rdname cognitosync_set_cognito_events
+#'
+#' @aliases cognitosync_set_cognito_events
 cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
   op <- new_operation(
     name = "SetCognitoEvents",
@@ -903,6 +929,8 @@ cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
 #' @keywords internal
 #'
 #' @rdname cognitosync_set_identity_pool_configuration
+#'
+#' @aliases cognitosync_set_identity_pool_configuration
 cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync = NULL, CognitoStreams = NULL) {
   op <- new_operation(
     name = "SetIdentityPoolConfiguration",
@@ -957,6 +985,8 @@ cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync
 #' @keywords internal
 #'
 #' @rdname cognitosync_subscribe_to_dataset
+#'
+#' @aliases cognitosync_subscribe_to_dataset
 cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, DatasetName, DeviceId) {
   op <- new_operation(
     name = "SubscribeToDataset",
@@ -1011,6 +1041,8 @@ cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, Dataset
 #' @keywords internal
 #'
 #' @rdname cognitosync_unsubscribe_from_dataset
+#'
+#' @aliases cognitosync_unsubscribe_from_dataset
 cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, DatasetName, DeviceId) {
   op <- new_operation(
     name = "UnsubscribeFromDataset",
@@ -1118,6 +1150,8 @@ cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, Dat
 #' @keywords internal
 #'
 #' @rdname cognitosync_update_records
+#'
+#' @aliases cognitosync_update_records
 cognitosync_update_records <- function(IdentityPoolId, IdentityId, DatasetName, DeviceId = NULL, RecordPatches = NULL, SyncSessionToken, ClientContext = NULL) {
   op <- new_operation(
     name = "UpdateRecords",

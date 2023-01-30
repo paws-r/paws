@@ -115,6 +115,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname efs_create_access_point
+#'
+#' @aliases efs_create_access_point
 efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, PosixUser = NULL, RootDirectory = NULL) {
   op <- new_operation(
     name = "CreateAccessPoint",
@@ -368,6 +370,8 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' @keywords internal
 #'
 #' @rdname efs_create_file_system
+#'
+#' @aliases efs_create_file_system
 efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encrypted = NULL, KmsKeyId = NULL, ThroughputMode = NULL, ProvisionedThroughputInMibps = NULL, AvailabilityZoneName = NULL, Backup = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
@@ -563,6 +567,8 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' @keywords internal
 #'
 #' @rdname efs_create_mount_target
+#'
+#' @aliases efs_create_mount_target
 efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "CreateMountTarget",
@@ -701,6 +707,8 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #' @keywords internal
 #'
 #' @rdname efs_create_replication_configuration
+#'
+#' @aliases efs_create_replication_configuration
 efs_create_replication_configuration <- function(SourceFileSystemId, Destinations) {
   op <- new_operation(
     name = "CreateReplicationConfiguration",
@@ -774,6 +782,8 @@ efs_create_replication_configuration <- function(SourceFileSystemId, Destination
 #' @keywords internal
 #'
 #' @rdname efs_create_tags
+#'
+#' @aliases efs_create_tags
 efs_create_tags <- function(FileSystemId, Tags) {
   op <- new_operation(
     name = "CreateTags",
@@ -820,6 +830,8 @@ efs_create_tags <- function(FileSystemId, Tags) {
 #' @keywords internal
 #'
 #' @rdname efs_delete_access_point
+#'
+#' @aliases efs_delete_access_point
 efs_delete_access_point <- function(AccessPointId) {
   op <- new_operation(
     name = "DeleteAccessPoint",
@@ -894,6 +906,8 @@ efs_delete_access_point <- function(AccessPointId) {
 #' @keywords internal
 #'
 #' @rdname efs_delete_file_system
+#'
+#' @aliases efs_delete_file_system
 efs_delete_file_system <- function(FileSystemId) {
   op <- new_operation(
     name = "DeleteFileSystem",
@@ -942,6 +956,8 @@ efs_delete_file_system <- function(FileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_delete_file_system_policy
+#'
+#' @aliases efs_delete_file_system_policy
 efs_delete_file_system_policy <- function(FileSystemId) {
   op <- new_operation(
     name = "DeleteFileSystemPolicy",
@@ -1016,6 +1032,8 @@ efs_delete_file_system_policy <- function(FileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_delete_mount_target
+#'
+#' @aliases efs_delete_mount_target
 efs_delete_mount_target <- function(MountTargetId) {
   op <- new_operation(
     name = "DeleteMountTarget",
@@ -1062,6 +1080,8 @@ efs_delete_mount_target <- function(MountTargetId) {
 #' @keywords internal
 #'
 #' @rdname efs_delete_replication_configuration
+#'
+#' @aliases efs_delete_replication_configuration
 efs_delete_replication_configuration <- function(SourceFileSystemId) {
   op <- new_operation(
     name = "DeleteReplicationConfiguration",
@@ -1128,6 +1148,8 @@ efs_delete_replication_configuration <- function(SourceFileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_delete_tags
+#'
+#' @aliases efs_delete_tags
 efs_delete_tags <- function(FileSystemId, TagKeys) {
   op <- new_operation(
     name = "DeleteTags",
@@ -1226,6 +1248,8 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname efs_describe_access_points
+#'
+#' @aliases efs_describe_access_points
 efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, AccessPointId = NULL, FileSystemId = NULL) {
   op <- new_operation(
     name = "DescribeAccessPoints",
@@ -1288,6 +1312,8 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
 #' @keywords internal
 #'
 #' @rdname efs_describe_account_preferences
+#'
+#' @aliases efs_describe_account_preferences
 efs_describe_account_preferences <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeAccountPreferences",
@@ -1335,6 +1361,8 @@ efs_describe_account_preferences <- function(NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname efs_describe_backup_policy
+#'
+#' @aliases efs_describe_backup_policy
 efs_describe_backup_policy <- function(FileSystemId) {
   op <- new_operation(
     name = "DescribeBackupPolicy",
@@ -1384,6 +1412,8 @@ efs_describe_backup_policy <- function(FileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_describe_file_system_policy
+#'
+#' @aliases efs_describe_file_system_policy
 efs_describe_file_system_policy <- function(FileSystemId) {
   op <- new_operation(
     name = "DescribeFileSystemPolicy",
@@ -1514,6 +1544,8 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_describe_file_systems
+#'
+#' @aliases efs_describe_file_systems
 efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationToken = NULL, FileSystemId = NULL) {
   op <- new_operation(
     name = "DescribeFileSystems",
@@ -1587,6 +1619,8 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #' @keywords internal
 #'
 #' @rdname efs_describe_lifecycle_configuration
+#'
+#' @aliases efs_describe_lifecycle_configuration
 efs_describe_lifecycle_configuration <- function(FileSystemId) {
   op <- new_operation(
     name = "DescribeLifecycleConfiguration",
@@ -1654,6 +1688,8 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_describe_mount_target_security_groups
+#'
+#' @aliases efs_describe_mount_target_security_groups
 efs_describe_mount_target_security_groups <- function(MountTargetId) {
   op <- new_operation(
     name = "DescribeMountTargetSecurityGroups",
@@ -1754,6 +1790,8 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' @keywords internal
 #'
 #' @rdname efs_describe_mount_targets
+#'
+#' @aliases efs_describe_mount_targets
 efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSystemId = NULL, MountTargetId = NULL, AccessPointId = NULL) {
   op <- new_operation(
     name = "DescribeMountTargets",
@@ -1831,6 +1869,8 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' @keywords internal
 #'
 #' @rdname efs_describe_replication_configurations
+#'
+#' @aliases efs_describe_replication_configurations
 efs_describe_replication_configurations <- function(FileSystemId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeReplicationConfigurations",
@@ -1911,6 +1951,8 @@ efs_describe_replication_configurations <- function(FileSystemId = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname efs_describe_tags
+#'
+#' @aliases efs_describe_tags
 efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
   op <- new_operation(
     name = "DescribeTags",
@@ -1975,6 +2017,8 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
 #' @keywords internal
 #'
 #' @rdname efs_list_tags_for_resource
+#'
+#' @aliases efs_list_tags_for_resource
 efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2048,6 +2092,8 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname efs_modify_mount_target_security_groups
+#'
+#' @aliases efs_modify_mount_target_security_groups
 efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroups = NULL) {
   op <- new_operation(
     name = "ModifyMountTargetSecurityGroups",
@@ -2119,6 +2165,8 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #' @keywords internal
 #'
 #' @rdname efs_put_account_preferences
+#'
+#' @aliases efs_put_account_preferences
 efs_put_account_preferences <- function(ResourceIdType) {
   op <- new_operation(
     name = "PutAccountPreferences",
@@ -2172,6 +2220,8 @@ efs_put_account_preferences <- function(ResourceIdType) {
 #' @keywords internal
 #'
 #' @rdname efs_put_backup_policy
+#'
+#' @aliases efs_put_backup_policy
 efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
   op <- new_operation(
     name = "PutBackupPolicy",
@@ -2249,6 +2299,8 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' @keywords internal
 #'
 #' @rdname efs_put_file_system_policy
+#'
+#' @aliases efs_put_file_system_policy
 efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
   op <- new_operation(
     name = "PutFileSystemPolicy",
@@ -2392,6 +2444,8 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' @keywords internal
 #'
 #' @rdname efs_put_lifecycle_configuration
+#'
+#' @aliases efs_put_lifecycle_configuration
 efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
   op <- new_operation(
     name = "PutLifecycleConfiguration",
@@ -2443,6 +2497,8 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
 #' @keywords internal
 #'
 #' @rdname efs_tag_resource
+#'
+#' @aliases efs_tag_resource
 efs_tag_resource <- function(ResourceId, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2492,6 +2548,8 @@ efs_tag_resource <- function(ResourceId, Tags) {
 #' @keywords internal
 #'
 #' @rdname efs_untag_resource
+#'
+#' @aliases efs_untag_resource
 efs_untag_resource <- function(ResourceId, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2581,6 +2639,8 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname efs_update_file_system
+#'
+#' @aliases efs_update_file_system
 efs_update_file_system <- function(FileSystemId, ThroughputMode = NULL, ProvisionedThroughputInMibps = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",

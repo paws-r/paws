@@ -387,7 +387,7 @@ route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
 #'
 #' @keywords internal
 #'
-#' @rdname route53recoverycontrolconfig_list_associated_route_53_health_checks
+#' @rdname route53recoverycontrolconfig_lis_ass_rou_53_hea_che
 route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(MaxResults = NULL, NextToken = NULL, RoutingControlArn) {
   op <- new_operation(
     name = "ListAssociatedRoute53HealthChecks",

@@ -51,7 +51,7 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_batch_associate_approval_rule_template_with_repositories
+#' @rdname codecommit_batch_associ_approv_rule_templa_with_reposi
 codecommit_batch_associate_approval_rule_template_with_repositories <- function(approvalRuleTemplateName, repositoryNames) {
   op <- new_operation(
     name = "BatchAssociateApprovalRuleTemplateWithRepositories",
@@ -139,7 +139,7 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_batch_disassociate_approval_rule_template_from_repositories
+#' @rdname codecommit_batch_disass_approv_rule_templa_from_reposi
 codecommit_batch_disassociate_approval_rule_template_from_repositories <- function(approvalRuleTemplateName, repositoryNames) {
   op <- new_operation(
     name = "BatchDisassociateApprovalRuleTemplateFromRepositories",
@@ -887,7 +887,7 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_disassociate_approval_rule_template_from_repository
+#' @rdname codecommit_disass_approv_rule_templa_from_reposi
 codecommit_disassociate_approval_rule_template_from_repository <- function(approvalRuleTemplateName, repositoryName) {
   op <- new_operation(
     name = "DisassociateApprovalRuleTemplateFromRepository",
@@ -1671,7 +1671,7 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #'
 #' @keywords internal
 #'
-#' @rdname codecommit_list_associated_approval_rule_templates_for_repository
+#' @rdname codecommit_list_associ_approv_rule_templa_for_reposi
 codecommit_list_associated_approval_rule_templates_for_repository <- function(repositoryName, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssociatedApprovalRuleTemplatesForRepository",

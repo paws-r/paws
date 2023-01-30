@@ -34,6 +34,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_describe_report_creation
+#'
+#' @aliases resourcegroupstaggingapi_describe_report_creation
 resourcegroupstaggingapi_describe_report_creation <- function() {
   op <- new_operation(
     name = "DescribeReportCreation",
@@ -168,6 +170,8 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_get_compliance_summary
+#'
+#' @aliases resourcegroupstaggingapi_get_compliance_summary
 resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NULL, RegionFilters = NULL, ResourceTypeFilters = NULL, TagKeyFilters = NULL, GroupBy = NULL, MaxResults = NULL, PaginationToken = NULL) {
   op <- new_operation(
     name = "GetComplianceSummary",
@@ -384,6 +388,8 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_get_resources
+#'
+#' @aliases resourcegroupstaggingapi_get_resources
 resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFilters = NULL, ResourcesPerPage = NULL, TagsPerPage = NULL, ResourceTypeFilters = NULL, IncludeComplianceDetails = NULL, ExcludeCompliantResources = NULL, ResourceARNList = NULL) {
   op <- new_operation(
     name = "GetResources",
@@ -444,6 +450,8 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_get_tag_keys
+#'
+#' @aliases resourcegroupstaggingapi_get_tag_keys
 resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
   op <- new_operation(
     name = "GetTagKeys",
@@ -508,6 +516,8 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_get_tag_values
+#'
+#' @aliases resourcegroupstaggingapi_get_tag_values
 resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key) {
   op <- new_operation(
     name = "GetTagValues",
@@ -566,6 +576,8 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_start_report_creation
+#'
+#' @aliases resourcegroupstaggingapi_start_report_creation
 resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
   op <- new_operation(
     name = "StartReportCreation",
@@ -670,6 +682,8 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_tag_resources
+#'
+#' @aliases resourcegroupstaggingapi_tag_resources
 resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
   op <- new_operation(
     name = "TagResources",
@@ -759,6 +773,8 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' @keywords internal
 #'
 #' @rdname resourcegroupstaggingapi_untag_resources
+#'
+#' @aliases resourcegroupstaggingapi_untag_resources
 resourcegroupstaggingapi_untag_resources <- function(ResourceARNList, TagKeys) {
   op <- new_operation(
     name = "UntagResources",

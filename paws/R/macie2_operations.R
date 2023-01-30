@@ -37,6 +37,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname macie2_accept_invitation
+#'
+#' @aliases macie2_accept_invitation
 macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId, masterAccount = NULL) {
   op <- new_operation(
     name = "AcceptInvitation",
@@ -99,6 +101,8 @@ macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId
 #' @keywords internal
 #'
 #' @rdname macie2_batch_get_custom_data_identifiers
+#'
+#' @aliases macie2_batch_get_custom_data_identifiers
 macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
   op <- new_operation(
     name = "BatchGetCustomDataIdentifiers",
@@ -348,6 +352,8 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_create_classification_job
+#'
+#' @aliases macie2_create_classification_job
 macie2_create_classification_job <- function(clientToken, customDataIdentifierIds = NULL, description = NULL, initialRun = NULL, jobType, managedDataIdentifierIds = NULL, managedDataIdentifierSelector = NULL, name, s3JobDefinition, samplingPercentage = NULL, scheduleFrequency = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateClassificationJob",
@@ -470,6 +476,8 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' @keywords internal
 #'
 #' @rdname macie2_create_custom_data_identifier
+#'
+#' @aliases macie2_create_custom_data_identifier
 macie2_create_custom_data_identifier <- function(clientToken = NULL, description = NULL, ignoreWords = NULL, keywords = NULL, maximumMatchDistance = NULL, name, regex, severityLevels = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCustomDataIdentifier",
@@ -575,6 +583,8 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' @keywords internal
 #'
 #' @rdname macie2_create_findings_filter
+#'
+#' @aliases macie2_create_findings_filter
 macie2_create_findings_filter <- function(action, clientToken = NULL, description = NULL, findingCriteria, name, position = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFindingsFilter",
@@ -638,6 +648,8 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 #' @keywords internal
 #'
 #' @rdname macie2_create_invitations
+#'
+#' @aliases macie2_create_invitations
 macie2_create_invitations <- function(accountIds, disableEmailNotification = NULL, message = NULL) {
   op <- new_operation(
     name = "CreateInvitations",
@@ -695,6 +707,8 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 #' @keywords internal
 #'
 #' @rdname macie2_create_member
+#'
+#' @aliases macie2_create_member
 macie2_create_member <- function(account, tags = NULL) {
   op <- new_operation(
     name = "CreateMember",
@@ -739,6 +753,8 @@ macie2_create_member <- function(account, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_create_sample_findings
+#'
+#' @aliases macie2_create_sample_findings
 macie2_create_sample_findings <- function(findingTypes = NULL) {
   op <- new_operation(
     name = "CreateSampleFindings",
@@ -795,6 +811,8 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_decline_invitations
+#'
+#' @aliases macie2_decline_invitations
 macie2_decline_invitations <- function(accountIds) {
   op <- new_operation(
     name = "DeclineInvitations",
@@ -836,6 +854,8 @@ macie2_decline_invitations <- function(accountIds) {
 #' @keywords internal
 #'
 #' @rdname macie2_delete_custom_data_identifier
+#'
+#' @aliases macie2_delete_custom_data_identifier
 macie2_delete_custom_data_identifier <- function(id) {
   op <- new_operation(
     name = "DeleteCustomDataIdentifier",
@@ -877,6 +897,8 @@ macie2_delete_custom_data_identifier <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_delete_findings_filter
+#'
+#' @aliases macie2_delete_findings_filter
 macie2_delete_findings_filter <- function(id) {
   op <- new_operation(
     name = "DeleteFindingsFilter",
@@ -933,6 +955,8 @@ macie2_delete_findings_filter <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_delete_invitations
+#'
+#' @aliases macie2_delete_invitations
 macie2_delete_invitations <- function(accountIds) {
   op <- new_operation(
     name = "DeleteInvitations",
@@ -976,6 +1000,8 @@ macie2_delete_invitations <- function(accountIds) {
 #' @keywords internal
 #'
 #' @rdname macie2_delete_member
+#'
+#' @aliases macie2_delete_member
 macie2_delete_member <- function(id) {
   op <- new_operation(
     name = "DeleteMember",
@@ -1143,6 +1169,8 @@ macie2_delete_member <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_describe_buckets
+#'
+#' @aliases macie2_describe_buckets
 macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "DescribeBuckets",
@@ -1343,6 +1371,8 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 #' @keywords internal
 #'
 #' @rdname macie2_describe_classification_job
+#'
+#' @aliases macie2_describe_classification_job
 macie2_describe_classification_job <- function(jobId) {
   op <- new_operation(
     name = "DescribeClassificationJob",
@@ -1387,6 +1417,8 @@ macie2_describe_classification_job <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname macie2_describe_organization_configuration
+#'
+#' @aliases macie2_describe_organization_configuration
 macie2_describe_organization_configuration <- function() {
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
@@ -1425,6 +1457,8 @@ macie2_describe_organization_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_disable_macie
+#'
+#' @aliases macie2_disable_macie
 macie2_disable_macie <- function() {
   op <- new_operation(
     name = "DisableMacie",
@@ -1468,6 +1502,8 @@ macie2_disable_macie <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_disable_organization_admin_account
+#'
+#' @aliases macie2_disable_organization_admin_account
 macie2_disable_organization_admin_account <- function(adminAccountId) {
   op <- new_operation(
     name = "DisableOrganizationAdminAccount",
@@ -1506,6 +1542,8 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 #' @keywords internal
 #'
 #' @rdname macie2_disassociate_from_administrator_account
+#'
+#' @aliases macie2_disassociate_from_administrator_account
 macie2_disassociate_from_administrator_account <- function() {
   op <- new_operation(
     name = "DisassociateFromAdministratorAccount",
@@ -1545,6 +1583,8 @@ macie2_disassociate_from_administrator_account <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_disassociate_from_master_account
+#'
+#' @aliases macie2_disassociate_from_master_account
 macie2_disassociate_from_master_account <- function() {
   op <- new_operation(
     name = "DisassociateFromMasterAccount",
@@ -1588,6 +1628,8 @@ macie2_disassociate_from_master_account <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_disassociate_member
+#'
+#' @aliases macie2_disassociate_member
 macie2_disassociate_member <- function(id) {
   op <- new_operation(
     name = "DisassociateMember",
@@ -1638,6 +1680,8 @@ macie2_disassociate_member <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_enable_macie
+#'
+#' @aliases macie2_enable_macie
 macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency = NULL, status = NULL) {
   op <- new_operation(
     name = "EnableMacie",
@@ -1684,6 +1728,8 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 #' @keywords internal
 #'
 #' @rdname macie2_enable_organization_admin_account
+#'
+#' @aliases macie2_enable_organization_admin_account
 macie2_enable_organization_admin_account <- function(adminAccountId, clientToken = NULL) {
   op <- new_operation(
     name = "EnableOrganizationAdminAccount",
@@ -1734,6 +1780,8 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #' @keywords internal
 #'
 #' @rdname macie2_get_administrator_account
+#'
+#' @aliases macie2_get_administrator_account
 macie2_get_administrator_account <- function() {
   op <- new_operation(
     name = "GetAdministratorAccount",
@@ -1822,6 +1870,8 @@ macie2_get_administrator_account <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_bucket_statistics
+#'
+#' @aliases macie2_get_bucket_statistics
 macie2_get_bucket_statistics <- function(accountId = NULL) {
   op <- new_operation(
     name = "GetBucketStatistics",
@@ -1871,6 +1921,8 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_classification_export_configuration
+#'
+#' @aliases macie2_get_classification_export_configuration
 macie2_get_classification_export_configuration <- function() {
   op <- new_operation(
     name = "GetClassificationExportConfiguration",
@@ -1941,6 +1993,8 @@ macie2_get_classification_export_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_custom_data_identifier
+#'
+#' @aliases macie2_get_custom_data_identifier
 macie2_get_custom_data_identifier <- function(id) {
   op <- new_operation(
     name = "GetCustomDataIdentifier",
@@ -2032,6 +2086,8 @@ macie2_get_custom_data_identifier <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_finding_statistics
+#'
+#' @aliases macie2_get_finding_statistics
 macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "GetFindingStatistics",
@@ -2418,6 +2474,8 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 #' @keywords internal
 #'
 #' @rdname macie2_get_findings
+#'
+#' @aliases macie2_get_findings
 macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
   op <- new_operation(
     name = "GetFindings",
@@ -2491,6 +2549,8 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_findings_filter
+#'
+#' @aliases macie2_get_findings_filter
 macie2_get_findings_filter <- function(id) {
   op <- new_operation(
     name = "GetFindingsFilter",
@@ -2537,6 +2597,8 @@ macie2_get_findings_filter <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_findings_publication_configuration
+#'
+#' @aliases macie2_get_findings_publication_configuration
 macie2_get_findings_publication_configuration <- function() {
   op <- new_operation(
     name = "GetFindingsPublicationConfiguration",
@@ -2580,6 +2642,8 @@ macie2_get_findings_publication_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_invitations_count
+#'
+#' @aliases macie2_get_invitations_count
 macie2_get_invitations_count <- function() {
   op <- new_operation(
     name = "GetInvitationsCount",
@@ -2631,6 +2695,8 @@ macie2_get_invitations_count <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_macie_session
+#'
+#' @aliases macie2_get_macie_session
 macie2_get_macie_session <- function() {
   op <- new_operation(
     name = "GetMacieSession",
@@ -2682,6 +2748,8 @@ macie2_get_macie_session <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_master_account
+#'
+#' @aliases macie2_get_master_account
 macie2_get_master_account <- function() {
   op <- new_operation(
     name = "GetMasterAccount",
@@ -2744,6 +2812,8 @@ macie2_get_master_account <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_member
+#'
+#' @aliases macie2_get_member
 macie2_get_member <- function(id) {
   op <- new_operation(
     name = "GetMember",
@@ -2790,6 +2860,8 @@ macie2_get_member <- function(id) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_reveal_configuration
+#'
+#' @aliases macie2_get_reveal_configuration
 macie2_get_reveal_configuration <- function() {
   op <- new_operation(
     name = "GetRevealConfiguration",
@@ -2843,6 +2915,8 @@ macie2_get_reveal_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname macie2_get_sensitive_data_occurrences
+#'
+#' @aliases macie2_get_sensitive_data_occurrences
 macie2_get_sensitive_data_occurrences <- function(findingId) {
   op <- new_operation(
     name = "GetSensitiveDataOccurrences",
@@ -2893,6 +2967,8 @@ macie2_get_sensitive_data_occurrences <- function(findingId) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_sensitive_data_occurrences_availability
+#'
+#' @aliases macie2_get_sensitive_data_occurrences_availability
 macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
   op <- new_operation(
     name = "GetSensitiveDataOccurrencesAvailability",
@@ -2987,6 +3063,8 @@ macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
 #' @keywords internal
 #'
 #' @rdname macie2_get_usage_statistics
+#'
+#' @aliases macie2_get_usage_statistics
 macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL, sortBy = NULL, timeRange = NULL) {
   op <- new_operation(
     name = "GetUsageStatistics",
@@ -3043,6 +3121,8 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 #' @keywords internal
 #'
 #' @rdname macie2_get_usage_totals
+#'
+#' @aliases macie2_get_usage_totals
 macie2_get_usage_totals <- function(timeRange = NULL) {
   op <- new_operation(
     name = "GetUsageTotals",
@@ -3195,6 +3275,8 @@ macie2_get_usage_totals <- function(timeRange = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_list_classification_jobs
+#'
+#' @aliases macie2_list_classification_jobs
 macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "ListClassificationJobs",
@@ -3256,6 +3338,8 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
 #' @keywords internal
 #'
 #' @rdname macie2_list_custom_data_identifiers
+#'
+#' @aliases macie2_list_custom_data_identifiers
 macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListCustomDataIdentifiers",
@@ -3333,6 +3417,8 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname macie2_list_findings
+#'
+#' @aliases macie2_list_findings
 macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "ListFindings",
@@ -3395,6 +3481,8 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
 #' @keywords internal
 #'
 #' @rdname macie2_list_findings_filters
+#'
+#' @aliases macie2_list_findings_filters
 macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListFindingsFilters",
@@ -3456,6 +3544,8 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_list_invitations
+#'
+#' @aliases macie2_list_invitations
 macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListInvitations",
@@ -3510,6 +3600,8 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_list_managed_data_identifiers
+#'
+#' @aliases macie2_list_managed_data_identifiers
 macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
   op <- new_operation(
     name = "ListManagedDataIdentifiers",
@@ -3585,6 +3677,8 @@ macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie2_list_members
+#'
+#' @aliases macie2_list_members
 macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssociated = NULL) {
   op <- new_operation(
     name = "ListMembers",
@@ -3642,6 +3736,8 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 #' @keywords internal
 #'
 #' @rdname macie2_list_organization_admin_accounts
+#'
+#' @aliases macie2_list_organization_admin_accounts
 macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListOrganizationAdminAccounts",
@@ -3694,6 +3790,8 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
 #' @keywords internal
 #'
 #' @rdname macie2_list_tags_for_resource
+#'
+#' @aliases macie2_list_tags_for_resource
 macie2_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3754,6 +3852,8 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname macie2_put_classification_export_configuration
+#'
+#' @aliases macie2_put_classification_export_configuration
 macie2_put_classification_export_configuration <- function(configuration) {
   op <- new_operation(
     name = "PutClassificationExportConfiguration",
@@ -3804,6 +3904,8 @@ macie2_put_classification_export_configuration <- function(configuration) {
 #' @keywords internal
 #'
 #' @rdname macie2_put_findings_publication_configuration
+#'
+#' @aliases macie2_put_findings_publication_configuration
 macie2_put_findings_publication_configuration <- function(clientToken = NULL, securityHubConfiguration = NULL) {
   op <- new_operation(
     name = "PutFindingsPublicationConfiguration",
@@ -3949,6 +4051,8 @@ macie2_put_findings_publication_configuration <- function(clientToken = NULL, se
 #' @keywords internal
 #'
 #' @rdname macie2_search_resources
+#'
+#' @aliases macie2_search_resources
 macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "SearchResources",
@@ -4003,6 +4107,8 @@ macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, ne
 #' @keywords internal
 #'
 #' @rdname macie2_tag_resource
+#'
+#' @aliases macie2_tag_resource
 macie2_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4076,6 +4182,8 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname macie2_test_custom_data_identifier
+#'
+#' @aliases macie2_test_custom_data_identifier
 macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NULL, maximumMatchDistance = NULL, regex, sampleText) {
   op <- new_operation(
     name = "TestCustomDataIdentifier",
@@ -4125,6 +4233,8 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
 #' @keywords internal
 #'
 #' @rdname macie2_untag_resource
+#'
+#' @aliases macie2_untag_resource
 macie2_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4196,6 +4306,8 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname macie2_update_classification_job
+#'
+#' @aliases macie2_update_classification_job
 macie2_update_classification_job <- function(jobId, jobStatus) {
   op <- new_operation(
     name = "UpdateClassificationJob",
@@ -4292,6 +4404,8 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #' @keywords internal
 #'
 #' @rdname macie2_update_findings_filter
+#'
+#' @aliases macie2_update_findings_filter
 macie2_update_findings_filter <- function(action = NULL, description = NULL, findingCriteria = NULL, id, name = NULL, position = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateFindingsFilter",
@@ -4340,6 +4454,8 @@ macie2_update_findings_filter <- function(action = NULL, description = NULL, fin
 #' @keywords internal
 #'
 #' @rdname macie2_update_macie_session
+#'
+#' @aliases macie2_update_macie_session
 macie2_update_macie_session <- function(findingPublishingFrequency = NULL, status = NULL) {
   op <- new_operation(
     name = "UpdateMacieSession",
@@ -4387,6 +4503,8 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 #' @keywords internal
 #'
 #' @rdname macie2_update_member_session
+#'
+#' @aliases macie2_update_member_session
 macie2_update_member_session <- function(id, status) {
   op <- new_operation(
     name = "UpdateMemberSession",
@@ -4430,6 +4548,8 @@ macie2_update_member_session <- function(id, status) {
 #' @keywords internal
 #'
 #' @rdname macie2_update_organization_configuration
+#'
+#' @aliases macie2_update_organization_configuration
 macie2_update_organization_configuration <- function(autoEnable) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
@@ -4484,6 +4604,8 @@ macie2_update_organization_configuration <- function(autoEnable) {
 #' @keywords internal
 #'
 #' @rdname macie2_update_reveal_configuration
+#'
+#' @aliases macie2_update_reveal_configuration
 macie2_update_reveal_configuration <- function(configuration) {
   op <- new_operation(
     name = "UpdateRevealConfiguration",

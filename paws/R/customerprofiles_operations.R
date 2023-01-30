@@ -54,6 +54,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname customerprofiles_add_profile_key
+#'
+#' @aliases customerprofiles_add_profile_key
 customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainName) {
   op <- new_operation(
     name = "AddProfileKey",
@@ -212,6 +214,8 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_domain
+#'
+#' @aliases customerprofiles_create_domain
 customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
@@ -360,6 +364,8 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_integration_workflow
+#'
+#' @aliases customerprofiles_create_integration_workflow
 customerprofiles_create_integration_workflow <- function(DomainName, WorkflowType, IntegrationConfig, ObjectTypeName, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateIntegrationWorkflow",
@@ -504,6 +510,8 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_profile
+#'
+#' @aliases customerprofiles_create_profile
 customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, AdditionalInformation = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL) {
   op <- new_operation(
     name = "CreateProfile",
@@ -551,6 +559,8 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_domain
+#'
+#' @aliases customerprofiles_delete_domain
 customerprofiles_delete_domain <- function(DomainName) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -598,6 +608,8 @@ customerprofiles_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_integration
+#'
+#' @aliases customerprofiles_delete_integration
 customerprofiles_delete_integration <- function(DomainName, Uri) {
   op <- new_operation(
     name = "DeleteIntegration",
@@ -647,6 +659,8 @@ customerprofiles_delete_integration <- function(DomainName, Uri) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_profile
+#'
+#' @aliases customerprofiles_delete_profile
 customerprofiles_delete_profile <- function(ProfileId, DomainName) {
   op <- new_operation(
     name = "DeleteProfile",
@@ -701,6 +715,8 @@ customerprofiles_delete_profile <- function(ProfileId, DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_profile_key
+#'
+#' @aliases customerprofiles_delete_profile_key
 customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, DomainName) {
   op <- new_operation(
     name = "DeleteProfileKey",
@@ -754,6 +770,8 @@ customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, Doma
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_profile_object
+#'
+#' @aliases customerprofiles_delete_profile_object
 customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqueKey, ObjectTypeName, DomainName) {
   op <- new_operation(
     name = "DeleteProfileObject",
@@ -806,6 +824,8 @@ customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqu
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_profile_object_type
+#'
+#' @aliases customerprofiles_delete_profile_object_type
 customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeName) {
   op <- new_operation(
     name = "DeleteProfileObjectType",
@@ -849,6 +869,8 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #' @keywords internal
 #'
 #' @rdname customerprofiles_delete_workflow
+#'
+#' @aliases customerprofiles_delete_workflow
 customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
   op <- new_operation(
     name = "DeleteWorkflow",
@@ -931,6 +953,8 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_auto_merging_preview
+#'
+#' @aliases customerprofiles_get_auto_merging_preview
 customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation, ConflictResolution, MinAllowedConfidenceScoreForMerging = NULL) {
   op <- new_operation(
     name = "GetAutoMergingPreview",
@@ -1022,6 +1046,8 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_domain
+#'
+#' @aliases customerprofiles_get_domain
 customerprofiles_get_domain <- function(DomainName) {
   op <- new_operation(
     name = "GetDomain",
@@ -1117,6 +1143,8 @@ customerprofiles_get_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_identity_resolution_job
+#'
+#' @aliases customerprofiles_get_identity_resolution_job
 customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
   op <- new_operation(
     name = "GetIdentityResolutionJob",
@@ -1179,6 +1207,8 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_integration
+#'
+#' @aliases customerprofiles_get_integration
 customerprofiles_get_integration <- function(DomainName, Uri) {
   op <- new_operation(
     name = "GetIntegration",
@@ -1287,6 +1317,8 @@ customerprofiles_get_integration <- function(DomainName, Uri) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_matches
+#'
+#' @aliases customerprofiles_get_matches
 customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, DomainName) {
   op <- new_operation(
     name = "GetMatches",
@@ -1368,6 +1400,8 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_profile_object_type
+#'
+#' @aliases customerprofiles_get_profile_object_type
 customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName) {
   op <- new_operation(
     name = "GetProfileObjectType",
@@ -1442,6 +1476,8 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_profile_object_type_template
+#'
+#' @aliases customerprofiles_get_profile_object_type_template
 customerprofiles_get_profile_object_type_template <- function(TemplateId) {
   op <- new_operation(
     name = "GetProfileObjectTypeTemplate",
@@ -1512,6 +1548,8 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_workflow
+#'
+#' @aliases customerprofiles_get_workflow
 customerprofiles_get_workflow <- function(DomainName, WorkflowId) {
   op <- new_operation(
     name = "GetWorkflow",
@@ -1586,6 +1624,8 @@ customerprofiles_get_workflow <- function(DomainName, WorkflowId) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_get_workflow_steps
+#'
+#' @aliases customerprofiles_get_workflow_steps
 customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetWorkflowSteps",
@@ -1661,6 +1701,8 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_account_integrations
+#'
+#' @aliases customerprofiles_list_account_integrations
 customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, MaxResults = NULL, IncludeHidden = NULL) {
   op <- new_operation(
     name = "ListAccountIntegrations",
@@ -1724,6 +1766,8 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_domains
+#'
+#' @aliases customerprofiles_list_domains
 customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -1802,6 +1846,8 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_identity_resolution_jobs
+#'
+#' @aliases customerprofiles_list_identity_resolution_jobs
 customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListIdentityResolutionJobs",
@@ -1875,6 +1921,8 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_integrations
+#'
+#' @aliases customerprofiles_list_integrations
 customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, MaxResults = NULL, IncludeHidden = NULL) {
   op <- new_operation(
     name = "ListIntegrations",
@@ -1930,6 +1978,8 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_profile_object_type_templates
+#'
+#' @aliases customerprofiles_list_profile_object_type_templates
 customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListProfileObjectTypeTemplates",
@@ -1995,6 +2045,8 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_profile_object_types
+#'
+#' @aliases customerprofiles_list_profile_object_types
 customerprofiles_list_profile_object_types <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListProfileObjectTypes",
@@ -2067,6 +2119,8 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_profile_objects
+#'
+#' @aliases customerprofiles_list_profile_objects
 customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults = NULL, DomainName, ObjectTypeName, ProfileId, ObjectFilter = NULL) {
   op <- new_operation(
     name = "ListProfileObjects",
@@ -2117,6 +2171,8 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_tags_for_resource
+#'
+#' @aliases customerprofiles_list_tags_for_resource
 customerprofiles_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2195,6 +2251,8 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_list_workflows
+#'
+#' @aliases customerprofiles_list_workflows
 customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Status = NULL, QueryStartDate = NULL, QueryEndDate = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkflows",
@@ -2306,6 +2364,8 @@ customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Sta
 #' @keywords internal
 #'
 #' @rdname customerprofiles_merge_profiles
+#'
+#' @aliases customerprofiles_merge_profiles
 customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileIdsToBeMerged, FieldSourceProfileIds = NULL) {
   op <- new_operation(
     name = "MergeProfiles",
@@ -2462,6 +2522,8 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_integration
+#'
+#' @aliases customerprofiles_put_integration
 customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeName = NULL, Tags = NULL, FlowDefinition = NULL, ObjectTypeNames = NULL) {
   op <- new_operation(
     name = "PutIntegration",
@@ -2524,6 +2586,8 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_profile_object
+#'
+#' @aliases customerprofiles_put_profile_object
 customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainName) {
   op <- new_operation(
     name = "PutProfileObject",
@@ -2659,6 +2723,8 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @keywords internal
 #'
 #' @rdname customerprofiles_put_profile_object_type
+#'
+#' @aliases customerprofiles_put_profile_object_type
 customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName, Description, TemplateId = NULL, ExpirationDays = NULL, EncryptionKey = NULL, AllowProfileCreation = NULL, SourceLastUpdatedTimestampFormat = NULL, Fields = NULL, Keys = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutProfileObjectType",
@@ -2795,6 +2861,8 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' @keywords internal
 #'
 #' @rdname customerprofiles_search_profiles
+#'
+#' @aliases customerprofiles_search_profiles
 customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL, DomainName, KeyName, Values) {
   op <- new_operation(
     name = "SearchProfiles",
@@ -2856,6 +2924,8 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname customerprofiles_tag_resource
+#'
+#' @aliases customerprofiles_tag_resource
 customerprofiles_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2903,6 +2973,8 @@ customerprofiles_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_untag_resource
+#'
+#' @aliases customerprofiles_untag_resource
 customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3059,6 +3131,8 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname customerprofiles_update_domain
+#'
+#' @aliases customerprofiles_update_domain
 customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
@@ -3207,6 +3281,8 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @keywords internal
 #'
 #' @rdname customerprofiles_update_profile
+#'
+#' @aliases customerprofiles_update_profile
 customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInformation = NULL, AccountNumber = NULL, PartyType = NULL, BusinessName = NULL, FirstName = NULL, MiddleName = NULL, LastName = NULL, BirthDate = NULL, Gender = NULL, PhoneNumber = NULL, MobilePhoneNumber = NULL, HomePhoneNumber = NULL, BusinessPhoneNumber = NULL, EmailAddress = NULL, PersonalEmailAddress = NULL, BusinessEmailAddress = NULL, Address = NULL, ShippingAddress = NULL, MailingAddress = NULL, BillingAddress = NULL, Attributes = NULL) {
   op <- new_operation(
     name = "UpdateProfile",

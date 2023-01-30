@@ -85,6 +85,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname dynamodbstreams_describe_stream
+#'
+#' @aliases dynamodbstreams_describe_stream
 dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveStartShardId = NULL) {
   op <- new_operation(
     name = "DescribeStream",
@@ -247,6 +249,8 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 #' @keywords internal
 #'
 #' @rdname dynamodbstreams_get_records
+#'
+#' @aliases dynamodbstreams_get_records
 dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
   op <- new_operation(
     name = "GetRecords",
@@ -335,6 +339,8 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname dynamodbstreams_get_shard_iterator
+#'
+#' @aliases dynamodbstreams_get_shard_iterator
 dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIteratorType, SequenceNumber = NULL) {
   op <- new_operation(
     name = "GetShardIterator",
@@ -407,6 +413,8 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
 #' @keywords internal
 #'
 #' @rdname dynamodbstreams_list_streams
+#'
+#' @aliases dynamodbstreams_list_streams
 dynamodbstreams_list_streams <- function(TableName = NULL, Limit = NULL, ExclusiveStartStreamArn = NULL) {
   op <- new_operation(
     name = "ListStreams",

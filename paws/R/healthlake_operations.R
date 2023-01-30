@@ -60,6 +60,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname healthlake_create_fhir_datastore
+#'
+#' @aliases healthlake_create_fhir_datastore
 healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreTypeVersion, SseConfiguration = NULL, PreloadDataConfig = NULL, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFHIRDatastore",
@@ -108,6 +110,8 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 #' @keywords internal
 #'
 #' @rdname healthlake_delete_fhir_datastore
+#'
+#' @aliases healthlake_delete_fhir_datastore
 healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
   op <- new_operation(
     name = "DeleteFHIRDatastore",
@@ -177,6 +181,8 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #' @keywords internal
 #'
 #' @rdname healthlake_describe_fhir_datastore
+#'
+#' @aliases healthlake_describe_fhir_datastore
 healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
   op <- new_operation(
     name = "DescribeFHIRDatastore",
@@ -246,6 +252,8 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #' @keywords internal
 #'
 #' @rdname healthlake_describe_fhir_export_job
+#'
+#' @aliases healthlake_describe_fhir_export_job
 healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
   op <- new_operation(
     name = "DescribeFHIRExportJob",
@@ -317,6 +325,8 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #' @keywords internal
 #'
 #' @rdname healthlake_describe_fhir_import_job
+#'
+#' @aliases healthlake_describe_fhir_import_job
 healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
   op <- new_operation(
     name = "DescribeFHIRImportJob",
@@ -400,6 +410,8 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #' @keywords internal
 #'
 #' @rdname healthlake_list_fhir_datastores
+#'
+#' @aliases healthlake_list_fhir_datastores
 healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFHIRDatastores",
@@ -492,6 +504,8 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname healthlake_list_fhir_export_jobs
+#'
+#' @aliases healthlake_list_fhir_export_jobs
 healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxResults = NULL, JobName = NULL, JobStatus = NULL, SubmittedBefore = NULL, SubmittedAfter = NULL) {
   op <- new_operation(
     name = "ListFHIRExportJobs",
@@ -587,6 +601,8 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname healthlake_list_fhir_import_jobs
+#'
+#' @aliases healthlake_list_fhir_import_jobs
 healthlake_list_fhir_import_jobs <- function(DatastoreId, NextToken = NULL, MaxResults = NULL, JobName = NULL, JobStatus = NULL, SubmittedBefore = NULL, SubmittedAfter = NULL) {
   op <- new_operation(
     name = "ListFHIRImportJobs",
@@ -638,6 +654,8 @@ healthlake_list_fhir_import_jobs <- function(DatastoreId, NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname healthlake_list_tags_for_resource
+#'
+#' @aliases healthlake_list_tags_for_resource
 healthlake_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -701,6 +719,8 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname healthlake_start_fhir_export_job
+#'
+#' @aliases healthlake_start_fhir_export_job
 healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
   op <- new_operation(
     name = "StartFHIRExportJob",
@@ -768,6 +788,8 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 #' @keywords internal
 #'
 #' @rdname healthlake_start_fhir_import_job
+#'
+#' @aliases healthlake_start_fhir_import_job
 healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, JobOutputDataConfig, DatastoreId, DataAccessRoleArn, ClientToken) {
   op <- new_operation(
     name = "StartFHIRImportJob",
@@ -816,6 +838,8 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
 #' @keywords internal
 #'
 #' @rdname healthlake_tag_resource
+#'
+#' @aliases healthlake_tag_resource
 healthlake_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -861,6 +885,8 @@ healthlake_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname healthlake_untag_resource
+#'
+#' @aliases healthlake_untag_resource
 healthlake_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",

@@ -130,6 +130,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname swf_count_closed_workflow_executions
+#'
+#' @aliases swf_count_closed_workflow_executions
 swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL, closeTimeFilter = NULL, executionFilter = NULL, typeFilter = NULL, tagFilter = NULL, closeStatusFilter = NULL) {
   op <- new_operation(
     name = "CountClosedWorkflowExecutions",
@@ -247,6 +249,8 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' @keywords internal
 #'
 #' @rdname swf_count_open_workflow_executions
+#'
+#' @aliases swf_count_open_workflow_executions
 swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilter = NULL, tagFilter = NULL, executionFilter = NULL) {
   op <- new_operation(
     name = "CountOpenWorkflowExecutions",
@@ -324,6 +328,8 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #' @keywords internal
 #'
 #' @rdname swf_count_pending_activity_tasks
+#'
+#' @aliases swf_count_pending_activity_tasks
 swf_count_pending_activity_tasks <- function(domain, taskList) {
   op <- new_operation(
     name = "CountPendingActivityTasks",
@@ -401,6 +407,8 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #' @keywords internal
 #'
 #' @rdname swf_count_pending_decision_tasks
+#'
+#' @aliases swf_count_pending_decision_tasks
 swf_count_pending_decision_tasks <- function(domain, taskList) {
   op <- new_operation(
     name = "CountPendingDecisionTasks",
@@ -480,6 +488,8 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 #' @keywords internal
 #'
 #' @rdname swf_deprecate_activity_type
+#'
+#' @aliases swf_deprecate_activity_type
 swf_deprecate_activity_type <- function(domain, activityType) {
   op <- new_operation(
     name = "DeprecateActivityType",
@@ -549,6 +559,8 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 #' @keywords internal
 #'
 #' @rdname swf_deprecate_domain
+#'
+#' @aliases swf_deprecate_domain
 swf_deprecate_domain <- function(name) {
   op <- new_operation(
     name = "DeprecateDomain",
@@ -629,6 +641,8 @@ swf_deprecate_domain <- function(name) {
 #' @keywords internal
 #'
 #' @rdname swf_deprecate_workflow_type
+#'
+#' @aliases swf_deprecate_workflow_type
 swf_deprecate_workflow_type <- function(domain, workflowType) {
   op <- new_operation(
     name = "DeprecateWorkflowType",
@@ -734,6 +748,8 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 #' @keywords internal
 #'
 #' @rdname swf_describe_activity_type
+#'
+#' @aliases swf_describe_activity_type
 swf_describe_activity_type <- function(domain, activityType) {
   op <- new_operation(
     name = "DescribeActivityType",
@@ -810,6 +826,8 @@ swf_describe_activity_type <- function(domain, activityType) {
 #' @keywords internal
 #'
 #' @rdname swf_describe_domain
+#'
+#' @aliases swf_describe_domain
 swf_describe_domain <- function(name) {
   op <- new_operation(
     name = "DescribeDomain",
@@ -932,6 +950,8 @@ swf_describe_domain <- function(name) {
 #' @keywords internal
 #'
 #' @rdname swf_describe_workflow_execution
+#'
+#' @aliases swf_describe_workflow_execution
 swf_describe_workflow_execution <- function(domain, execution) {
   op <- new_operation(
     name = "DescribeWorkflowExecution",
@@ -1035,6 +1055,8 @@ swf_describe_workflow_execution <- function(domain, execution) {
 #' @keywords internal
 #'
 #' @rdname swf_describe_workflow_type
+#'
+#' @aliases swf_describe_workflow_type
 swf_describe_workflow_type <- function(domain, workflowType) {
   op <- new_operation(
     name = "DescribeWorkflowType",
@@ -1547,6 +1569,8 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' @keywords internal
 #'
 #' @rdname swf_get_workflow_execution_history
+#'
+#' @aliases swf_get_workflow_execution_history
 swf_get_workflow_execution_history <- function(domain, execution, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "GetWorkflowExecutionHistory",
@@ -1657,6 +1681,8 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' @keywords internal
 #'
 #' @rdname swf_list_activity_types
+#'
+#' @aliases swf_list_activity_types
 swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "ListActivityTypes",
@@ -1850,6 +1876,8 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' @keywords internal
 #'
 #' @rdname swf_list_closed_workflow_executions
+#'
+#' @aliases swf_list_closed_workflow_executions
 swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, closeTimeFilter = NULL, executionFilter = NULL, closeStatusFilter = NULL, typeFilter = NULL, tagFilter = NULL, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "ListClosedWorkflowExecutions",
@@ -1949,6 +1977,8 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' @keywords internal
 #'
 #' @rdname swf_list_domains
+#'
+#' @aliases swf_list_domains
 swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPageSize = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -2113,6 +2143,8 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' @keywords internal
 #'
 #' @rdname swf_list_open_workflow_executions
+#'
+#' @aliases swf_list_open_workflow_executions
 swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilter = NULL, tagFilter = NULL, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL, executionFilter = NULL) {
   op <- new_operation(
     name = "ListOpenWorkflowExecutions",
@@ -2163,6 +2195,8 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 #' @keywords internal
 #'
 #' @rdname swf_list_tags_for_resource
+#'
+#' @aliases swf_list_tags_for_resource
 swf_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2269,6 +2303,8 @@ swf_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname swf_list_workflow_types
+#'
+#' @aliases swf_list_workflow_types
 swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "ListWorkflowTypes",
@@ -2375,6 +2411,8 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' @keywords internal
 #'
 #' @rdname swf_poll_for_activity_task
+#'
+#' @aliases swf_poll_for_activity_task
 swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
   op <- new_operation(
     name = "PollForActivityTask",
@@ -2941,6 +2979,8 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' @keywords internal
 #'
 #' @rdname swf_poll_for_decision_task
+#'
+#' @aliases swf_poll_for_decision_task
 swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPageToken = NULL, maximumPageSize = NULL, reverseOrder = NULL) {
   op <- new_operation(
     name = "PollForDecisionTask",
@@ -3046,6 +3086,8 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' @keywords internal
 #'
 #' @rdname swf_record_activity_task_heartbeat
+#'
+#' @aliases swf_record_activity_task_heartbeat
 swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
   op <- new_operation(
     name = "RecordActivityTaskHeartbeat",
@@ -3195,6 +3237,8 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' @keywords internal
 #'
 #' @rdname swf_register_activity_type
+#'
+#' @aliases swf_register_activity_type
 swf_register_activity_type <- function(domain, name, version, description = NULL, defaultTaskStartToCloseTimeout = NULL, defaultTaskHeartbeatTimeout = NULL, defaultTaskList = NULL, defaultTaskPriority = NULL, defaultTaskScheduleToStartTimeout = NULL, defaultTaskScheduleToCloseTimeout = NULL) {
   op <- new_operation(
     name = "RegisterActivityType",
@@ -3290,6 +3334,8 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' @keywords internal
 #'
 #' @rdname swf_register_domain
+#'
+#' @aliases swf_register_domain
 swf_register_domain <- function(name, description = NULL, workflowExecutionRetentionPeriodInDays, tags = NULL) {
   op <- new_operation(
     name = "RegisterDomain",
@@ -3460,6 +3506,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' @keywords internal
 #'
 #' @rdname swf_register_workflow_type
+#'
+#' @aliases swf_register_workflow_type
 swf_register_workflow_type <- function(domain, name, version, description = NULL, defaultTaskStartToCloseTimeout = NULL, defaultExecutionStartToCloseTimeout = NULL, defaultTaskList = NULL, defaultTaskPriority = NULL, defaultChildPolicy = NULL, defaultLambdaRole = NULL) {
   op <- new_operation(
     name = "RegisterWorkflowType",
@@ -3540,6 +3588,8 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' @keywords internal
 #'
 #' @rdname swf_request_cancel_workflow_execution
+#'
+#' @aliases swf_request_cancel_workflow_execution
 swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NULL) {
   op <- new_operation(
     name = "RequestCancelWorkflowExecution",
@@ -3628,6 +3678,8 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' @keywords internal
 #'
 #' @rdname swf_respond_activity_task_canceled
+#'
+#' @aliases swf_respond_activity_task_canceled
 swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
   op <- new_operation(
     name = "RespondActivityTaskCanceled",
@@ -3718,6 +3770,8 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' @keywords internal
 #'
 #' @rdname swf_respond_activity_task_completed
+#'
+#' @aliases swf_respond_activity_task_completed
 swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
   op <- new_operation(
     name = "RespondActivityTaskCompleted",
@@ -3800,6 +3854,8 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' @keywords internal
 #'
 #' @rdname swf_respond_activity_task_failed
+#'
+#' @aliases swf_respond_activity_task_failed
 swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details = NULL) {
   op <- new_operation(
     name = "RespondActivityTaskFailed",
@@ -3972,6 +4028,8 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' @keywords internal
 #'
 #' @rdname swf_respond_decision_task_completed
+#'
+#' @aliases swf_respond_decision_task_completed
 swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, executionContext = NULL) {
   op <- new_operation(
     name = "RespondDecisionTaskCompleted",
@@ -4057,6 +4115,8 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' @keywords internal
 #'
 #' @rdname swf_signal_workflow_execution
+#'
+#' @aliases swf_signal_workflow_execution
 swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, signalName, input = NULL) {
   op <- new_operation(
     name = "SignalWorkflowExecution",
@@ -4268,6 +4328,8 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' @keywords internal
 #'
 #' @rdname swf_start_workflow_execution
+#'
+#' @aliases swf_start_workflow_execution
 swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskList = NULL, taskPriority = NULL, input = NULL, executionStartToCloseTimeout = NULL, tagList = NULL, taskStartToCloseTimeout = NULL, childPolicy = NULL, lambdaRole = NULL) {
   op <- new_operation(
     name = "StartWorkflowExecution",
@@ -4320,6 +4382,8 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 #' @keywords internal
 #'
 #' @rdname swf_tag_resource
+#'
+#' @aliases swf_tag_resource
 swf_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4430,6 +4494,8 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname swf_terminate_workflow_execution
+#'
+#' @aliases swf_terminate_workflow_execution
 swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, reason = NULL, details = NULL, childPolicy = NULL) {
   op <- new_operation(
     name = "TerminateWorkflowExecution",
@@ -4508,6 +4574,8 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
 #' @keywords internal
 #'
 #' @rdname swf_undeprecate_activity_type
+#'
+#' @aliases swf_undeprecate_activity_type
 swf_undeprecate_activity_type <- function(domain, activityType) {
   op <- new_operation(
     name = "UndeprecateActivityType",
@@ -4574,6 +4642,8 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
 #' @keywords internal
 #'
 #' @rdname swf_undeprecate_domain
+#'
+#' @aliases swf_undeprecate_domain
 swf_undeprecate_domain <- function(name) {
   op <- new_operation(
     name = "UndeprecateDomain",
@@ -4651,6 +4721,8 @@ swf_undeprecate_domain <- function(name) {
 #' @keywords internal
 #'
 #' @rdname swf_undeprecate_workflow_type
+#'
+#' @aliases swf_undeprecate_workflow_type
 swf_undeprecate_workflow_type <- function(domain, workflowType) {
   op <- new_operation(
     name = "UndeprecateWorkflowType",
@@ -4695,6 +4767,8 @@ swf_undeprecate_workflow_type <- function(domain, workflowType) {
 #' @keywords internal
 #'
 #' @rdname swf_untag_resource
+#'
+#' @aliases swf_untag_resource
 swf_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",

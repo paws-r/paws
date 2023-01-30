@@ -76,32 +76,32 @@ programmatically. For general information about IAM Roles Anywhere see
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity.p2:iamrolesanywhere_create_profile]{create_profile} \tab Creates a profile\cr
-\link[paws.security.identity.p2:iamrolesanywhere_create_trust_anchor]{create_trust_anchor} \tab Creates a trust anchor\cr
-\link[paws.security.identity.p2:iamrolesanywhere_delete_crl]{delete_crl} \tab Deletes a certificate revocation list (CRL)\cr
-\link[paws.security.identity.p2:iamrolesanywhere_delete_profile]{delete_profile} \tab Deletes a profile\cr
-\link[paws.security.identity.p2:iamrolesanywhere_delete_trust_anchor]{delete_trust_anchor} \tab Deletes a trust anchor\cr
-\link[paws.security.identity.p2:iamrolesanywhere_disable_crl]{disable_crl} \tab Disables a certificate revocation list (CRL)\cr
-\link[paws.security.identity.p2:iamrolesanywhere_disable_profile]{disable_profile} \tab Disables a profile\cr
-\link[paws.security.identity.p2:iamrolesanywhere_disable_trust_anchor]{disable_trust_anchor} \tab Disables a trust anchor\cr
-\link[paws.security.identity.p2:iamrolesanywhere_enable_crl]{enable_crl} \tab Enables a certificate revocation list (CRL)\cr
-\link[paws.security.identity.p2:iamrolesanywhere_enable_profile]{enable_profile} \tab Enables the roles in a profile to receive session credentials in CreateSession\cr
-\link[paws.security.identity.p2:iamrolesanywhere_enable_trust_anchor]{enable_trust_anchor} \tab Enables a trust anchor\cr
-\link[paws.security.identity.p2:iamrolesanywhere_get_crl]{get_crl} \tab Gets a certificate revocation list (CRL)\cr
-\link[paws.security.identity.p2:iamrolesanywhere_get_profile]{get_profile} \tab Gets a profile\cr
-\link[paws.security.identity.p2:iamrolesanywhere_get_subject]{get_subject} \tab Gets a Subject\cr
-\link[paws.security.identity.p2:iamrolesanywhere_get_trust_anchor]{get_trust_anchor} \tab Gets a trust anchor\cr
-\link[paws.security.identity.p2:iamrolesanywhere_import_crl]{import_crl} \tab Imports the certificate revocation list (CRL)\cr
-\link[paws.security.identity.p2:iamrolesanywhere_list_crls]{list_crls} \tab Lists all Crls in the authenticated account and Amazon Web Services Region\cr
-\link[paws.security.identity.p2:iamrolesanywhere_list_profiles]{list_profiles} \tab Lists all profiles in the authenticated account and Amazon Web Services Region\cr
-\link[paws.security.identity.p2:iamrolesanywhere_list_subjects]{list_subjects} \tab Lists the subjects in the authenticated account and Amazon Web Services Region\cr
-\link[paws.security.identity.p2:iamrolesanywhere_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags attached to the resource\cr
-\link[paws.security.identity.p2:iamrolesanywhere_list_trust_anchors]{list_trust_anchors} \tab Lists the trust anchors in the authenticated account and Amazon Web Services Region\cr
-\link[paws.security.identity.p2:iamrolesanywhere_tag_resource]{tag_resource} \tab Attaches tags to a resource\cr
-\link[paws.security.identity.p2:iamrolesanywhere_untag_resource]{untag_resource} \tab Removes tags from the resource\cr
-\link[paws.security.identity.p2:iamrolesanywhere_update_crl]{update_crl} \tab Updates the certificate revocation list (CRL)\cr
-\link[paws.security.identity.p2:iamrolesanywhere_update_profile]{update_profile} \tab Updates the profile\cr
-\link[paws.security.identity.p2:iamrolesanywhere_update_trust_anchor]{update_trust_anchor} \tab Updates the trust anchor
+\link[paws.security.identity:iamrolesanywhere_create_profile]{create_profile} \tab Creates a profile\cr
+\link[paws.security.identity:iamrolesanywhere_create_trust_anchor]{create_trust_anchor} \tab Creates a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_delete_crl]{delete_crl} \tab Deletes a certificate revocation list (CRL)\cr
+\link[paws.security.identity:iamrolesanywhere_delete_profile]{delete_profile} \tab Deletes a profile\cr
+\link[paws.security.identity:iamrolesanywhere_delete_trust_anchor]{delete_trust_anchor} \tab Deletes a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_disable_crl]{disable_crl} \tab Disables a certificate revocation list (CRL)\cr
+\link[paws.security.identity:iamrolesanywhere_disable_profile]{disable_profile} \tab Disables a profile\cr
+\link[paws.security.identity:iamrolesanywhere_disable_trust_anchor]{disable_trust_anchor} \tab Disables a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_enable_crl]{enable_crl} \tab Enables a certificate revocation list (CRL)\cr
+\link[paws.security.identity:iamrolesanywhere_enable_profile]{enable_profile} \tab Enables the roles in a profile to receive session credentials in CreateSession\cr
+\link[paws.security.identity:iamrolesanywhere_enable_trust_anchor]{enable_trust_anchor} \tab Enables a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_get_crl]{get_crl} \tab Gets a certificate revocation list (CRL)\cr
+\link[paws.security.identity:iamrolesanywhere_get_profile]{get_profile} \tab Gets a profile\cr
+\link[paws.security.identity:iamrolesanywhere_get_subject]{get_subject} \tab Gets a Subject\cr
+\link[paws.security.identity:iamrolesanywhere_get_trust_anchor]{get_trust_anchor} \tab Gets a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_import_crl]{import_crl} \tab Imports the certificate revocation list (CRL)\cr
+\link[paws.security.identity:iamrolesanywhere_list_crls]{list_crls} \tab Lists all Crls in the authenticated account and Amazon Web Services Region\cr
+\link[paws.security.identity:iamrolesanywhere_list_profiles]{list_profiles} \tab Lists all profiles in the authenticated account and Amazon Web Services Region\cr
+\link[paws.security.identity:iamrolesanywhere_list_subjects]{list_subjects} \tab Lists the subjects in the authenticated account and Amazon Web Services Region\cr
+\link[paws.security.identity:iamrolesanywhere_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags attached to the resource\cr
+\link[paws.security.identity:iamrolesanywhere_list_trust_anchors]{list_trust_anchors} \tab Lists the trust anchors in the authenticated account and Amazon Web Services Region\cr
+\link[paws.security.identity:iamrolesanywhere_tag_resource]{tag_resource} \tab Attaches tags to a resource\cr
+\link[paws.security.identity:iamrolesanywhere_untag_resource]{untag_resource} \tab Removes tags from the resource\cr
+\link[paws.security.identity:iamrolesanywhere_update_crl]{update_crl} \tab Updates the certificate revocation list (CRL)\cr
+\link[paws.security.identity:iamrolesanywhere_update_profile]{update_profile} \tab Updates the profile\cr
+\link[paws.security.identity:iamrolesanywhere_update_trust_anchor]{update_trust_anchor} \tab Updates the trust anchor
 }
 }
 

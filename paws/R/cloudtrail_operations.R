@@ -45,6 +45,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudtrail_add_tags
+#'
+#' @aliases cloudtrail_add_tags
 cloudtrail_add_tags <- function(ResourceId, TagsList) {
   op <- new_operation(
     name = "AddTags",
@@ -101,6 +103,8 @@ cloudtrail_add_tags <- function(ResourceId, TagsList) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_cancel_query
+#'
+#' @aliases cloudtrail_cancel_query
 cloudtrail_cancel_query <- function(EventDataStore, QueryId) {
   op <- new_operation(
     name = "CancelQuery",
@@ -247,6 +251,8 @@ cloudtrail_cancel_query <- function(EventDataStore, QueryId) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_create_event_data_store
+#'
+#' @aliases cloudtrail_create_event_data_store
 cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NULL, MultiRegionEnabled = NULL, OrganizationEnabled = NULL, RetentionPeriod = NULL, TerminationProtectionEnabled = NULL, TagsList = NULL) {
   op <- new_operation(
     name = "CreateEventDataStore",
@@ -396,6 +402,8 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' @keywords internal
 #'
 #' @rdname cloudtrail_create_trail
+#'
+#' @aliases cloudtrail_create_trail
 cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL, TagsList = NULL) {
   op <- new_operation(
     name = "CreateTrail",
@@ -453,6 +461,8 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
 #' @keywords internal
 #'
 #' @rdname cloudtrail_delete_event_data_store
+#'
+#' @aliases cloudtrail_delete_event_data_store
 cloudtrail_delete_event_data_store <- function(EventDataStore) {
   op <- new_operation(
     name = "DeleteEventDataStore",
@@ -498,6 +508,8 @@ cloudtrail_delete_event_data_store <- function(EventDataStore) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_delete_trail
+#'
+#' @aliases cloudtrail_delete_trail
 cloudtrail_delete_trail <- function(Name) {
   op <- new_operation(
     name = "DeleteTrail",
@@ -561,6 +573,8 @@ cloudtrail_delete_trail <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_describe_query
+#'
+#' @aliases cloudtrail_describe_query
 cloudtrail_describe_query <- function(EventDataStore, QueryId) {
   op <- new_operation(
     name = "DescribeQuery",
@@ -654,6 +668,8 @@ cloudtrail_describe_query <- function(EventDataStore, QueryId) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_describe_trails
+#'
+#' @aliases cloudtrail_describe_trails
 cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails = NULL) {
   op <- new_operation(
     name = "DescribeTrails",
@@ -742,6 +758,8 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_event_data_store
+#'
+#' @aliases cloudtrail_get_event_data_store
 cloudtrail_get_event_data_store <- function(EventDataStore) {
   op <- new_operation(
     name = "GetEventDataStore",
@@ -865,6 +883,8 @@ cloudtrail_get_event_data_store <- function(EventDataStore) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_event_selectors
+#'
+#' @aliases cloudtrail_get_event_selectors
 cloudtrail_get_event_selectors <- function(TrailName) {
   op <- new_operation(
     name = "GetEventSelectors",
@@ -944,6 +964,8 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_insight_selectors
+#'
+#' @aliases cloudtrail_get_insight_selectors
 cloudtrail_get_insight_selectors <- function(TrailName) {
   op <- new_operation(
     name = "GetInsightSelectors",
@@ -1013,6 +1035,8 @@ cloudtrail_get_insight_selectors <- function(TrailName) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_query_results
+#'
+#' @aliases cloudtrail_get_query_results
 cloudtrail_get_query_results <- function(EventDataStore, QueryId, NextToken = NULL, MaxQueryResults = NULL) {
   op <- new_operation(
     name = "GetQueryResults",
@@ -1076,6 +1100,8 @@ cloudtrail_get_query_results <- function(EventDataStore, QueryId, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_trail
+#'
+#' @aliases cloudtrail_get_trail
 cloudtrail_get_trail <- function(Name) {
   op <- new_operation(
     name = "GetTrail",
@@ -1158,6 +1184,8 @@ cloudtrail_get_trail <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_get_trail_status
+#'
+#' @aliases cloudtrail_get_trail_status
 cloudtrail_get_trail_status <- function(Name) {
   op <- new_operation(
     name = "GetTrailStatus",
@@ -1252,6 +1280,8 @@ cloudtrail_get_trail_status <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_list_event_data_stores
+#'
+#' @aliases cloudtrail_list_event_data_stores
 cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEventDataStores",
@@ -1330,6 +1360,8 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname cloudtrail_list_public_keys
+#'
+#' @aliases cloudtrail_list_public_keys
 cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPublicKeys",
@@ -1411,6 +1443,8 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname cloudtrail_list_queries
+#'
+#' @aliases cloudtrail_list_queries
 cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults = NULL, StartTime = NULL, EndTime = NULL, QueryStatus = NULL) {
   op <- new_operation(
     name = "ListQueries",
@@ -1472,6 +1506,8 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname cloudtrail_list_tags
+#'
+#' @aliases cloudtrail_list_tags
 cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -1528,6 +1564,8 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_list_trails
+#'
+#' @aliases cloudtrail_list_trails
 cloudtrail_list_trails <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListTrails",
@@ -1664,6 +1702,8 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_lookup_events
+#'
+#' @aliases cloudtrail_lookup_events
 cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, EndTime = NULL, EventCategory = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "LookupEvents",
@@ -1878,6 +1918,8 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudtrail_put_event_selectors
+#'
+#' @aliases cloudtrail_put_event_selectors
 cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, AdvancedEventSelectors = NULL) {
   op <- new_operation(
     name = "PutEventSelectors",
@@ -1943,6 +1985,8 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' @keywords internal
 #'
 #' @rdname cloudtrail_put_insight_selectors
+#'
+#' @aliases cloudtrail_put_insight_selectors
 cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
   op <- new_operation(
     name = "PutInsightSelectors",
@@ -1997,6 +2041,8 @@ cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_remove_tags
+#'
+#' @aliases cloudtrail_remove_tags
 cloudtrail_remove_tags <- function(ResourceId, TagsList) {
   op <- new_operation(
     name = "RemoveTags",
@@ -2088,6 +2134,8 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_restore_event_data_store
+#'
+#' @aliases cloudtrail_restore_event_data_store
 cloudtrail_restore_event_data_store <- function(EventDataStore) {
   op <- new_operation(
     name = "RestoreEventDataStore",
@@ -2137,6 +2185,8 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_start_logging
+#'
+#' @aliases cloudtrail_start_logging
 cloudtrail_start_logging <- function(Name) {
   op <- new_operation(
     name = "StartLogging",
@@ -2183,6 +2233,8 @@ cloudtrail_start_logging <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_start_query
+#'
+#' @aliases cloudtrail_start_query
 cloudtrail_start_query <- function(QueryStatement) {
   op <- new_operation(
     name = "StartQuery",
@@ -2235,6 +2287,8 @@ cloudtrail_start_query <- function(QueryStatement) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_stop_logging
+#'
+#' @aliases cloudtrail_stop_logging
 cloudtrail_stop_logging <- function(Name) {
   op <- new_operation(
     name = "StopLogging",
@@ -2374,6 +2428,8 @@ cloudtrail_stop_logging <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudtrail_update_event_data_store
+#'
+#' @aliases cloudtrail_update_event_data_store
 cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, AdvancedEventSelectors = NULL, MultiRegionEnabled = NULL, OrganizationEnabled = NULL, RetentionPeriod = NULL, TerminationProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdateEventDataStore",
@@ -2534,6 +2590,8 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' @keywords internal
 #'
 #' @rdname cloudtrail_update_trail
+#'
+#' @aliases cloudtrail_update_trail
 cloudtrail_update_trail <- function(Name, S3BucketName = NULL, S3KeyPrefix = NULL, SnsTopicName = NULL, IncludeGlobalServiceEvents = NULL, IsMultiRegionTrail = NULL, EnableLogFileValidation = NULL, CloudWatchLogsLogGroupArn = NULL, CloudWatchLogsRoleArn = NULL, KmsKeyId = NULL, IsOrganizationTrail = NULL) {
   op <- new_operation(
     name = "UpdateTrail",

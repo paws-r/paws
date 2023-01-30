@@ -66,6 +66,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_configuration_set
+#'
+#' @aliases pinpointemail_create_configuration_set
 pinpointemail_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
@@ -145,6 +147,8 @@ pinpointemail_create_configuration_set <- function(ConfigurationSetName, Trackin
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_configuration_set_event_destination
+#'
+#' @aliases pinpointemail_create_configuration_set_event_destination
 pinpointemail_create_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName, EventDestination) {
   op <- new_operation(
     name = "CreateConfigurationSetEventDestination",
@@ -197,6 +201,8 @@ pinpointemail_create_configuration_set_event_destination <- function(Configurati
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_dedicated_ip_pool
+#'
+#' @aliases pinpointemail_create_dedicated_ip_pool
 pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
   op <- new_operation(
     name = "CreateDedicatedIpPool",
@@ -292,6 +298,8 @@ pinpointemail_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_deliverability_test_report
+#'
+#' @aliases pinpointemail_create_deliverability_test_report
 pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, FromEmailAddress, Content, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliverabilityTestReport",
@@ -369,6 +377,8 @@ pinpointemail_create_deliverability_test_report <- function(ReportName = NULL, F
 #' @keywords internal
 #'
 #' @rdname pinpointemail_create_email_identity
+#'
+#' @aliases pinpointemail_create_email_identity
 pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
   op <- new_operation(
     name = "CreateEmailIdentity",
@@ -415,6 +425,8 @@ pinpointemail_create_email_identity <- function(EmailIdentity, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_delete_configuration_set
+#'
+#' @aliases pinpointemail_delete_configuration_set
 pinpointemail_delete_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteConfigurationSet",
@@ -466,6 +478,8 @@ pinpointemail_delete_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_delete_configuration_set_event_destination
+#'
+#' @aliases pinpointemail_delete_configuration_set_event_destination
 pinpointemail_delete_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName) {
   op <- new_operation(
     name = "DeleteConfigurationSetEventDestination",
@@ -506,6 +520,8 @@ pinpointemail_delete_configuration_set_event_destination <- function(Configurati
 #' @keywords internal
 #'
 #' @rdname pinpointemail_delete_dedicated_ip_pool
+#'
+#' @aliases pinpointemail_delete_dedicated_ip_pool
 pinpointemail_delete_dedicated_ip_pool <- function(PoolName) {
   op <- new_operation(
     name = "DeleteDedicatedIpPool",
@@ -550,6 +566,8 @@ pinpointemail_delete_dedicated_ip_pool <- function(PoolName) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_delete_email_identity
+#'
+#' @aliases pinpointemail_delete_email_identity
 pinpointemail_delete_email_identity <- function(EmailIdentity) {
   op <- new_operation(
     name = "DeleteEmailIdentity",
@@ -601,6 +619,8 @@ pinpointemail_delete_email_identity <- function(EmailIdentity) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_account
+#'
+#' @aliases pinpointemail_get_account
 pinpointemail_get_account <- function() {
   op <- new_operation(
     name = "GetAccount",
@@ -662,6 +682,8 @@ pinpointemail_get_account <- function() {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_blacklist_reports
+#'
+#' @aliases pinpointemail_get_blacklist_reports
 pinpointemail_get_blacklist_reports <- function(BlacklistItemNames) {
   op <- new_operation(
     name = "GetBlacklistReports",
@@ -740,6 +762,8 @@ pinpointemail_get_blacklist_reports <- function(BlacklistItemNames) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_configuration_set
+#'
+#' @aliases pinpointemail_get_configuration_set
 pinpointemail_get_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "GetConfigurationSet",
@@ -822,6 +846,8 @@ pinpointemail_get_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_configuration_set_event_destinations
+#'
+#' @aliases pinpointemail_get_configuration_set_event_destinations
 pinpointemail_get_configuration_set_event_destinations <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "GetConfigurationSetEventDestinations",
@@ -878,6 +904,8 @@ pinpointemail_get_configuration_set_event_destinations <- function(Configuration
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_dedicated_ip
+#'
+#' @aliases pinpointemail_get_dedicated_ip
 pinpointemail_get_dedicated_ip <- function(Ip) {
   op <- new_operation(
     name = "GetDedicatedIp",
@@ -943,6 +971,8 @@ pinpointemail_get_dedicated_ip <- function(Ip) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_dedicated_ips
+#'
+#' @aliases pinpointemail_get_dedicated_ips
 pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "GetDedicatedIps",
@@ -1028,6 +1058,8 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_deliverability_dashboard_options
+#'
+#' @aliases pinpointemail_get_deliverability_dashboard_options
 pinpointemail_get_deliverability_dashboard_options <- function() {
   op <- new_operation(
     name = "GetDeliverabilityDashboardOptions",
@@ -1108,6 +1140,8 @@ pinpointemail_get_deliverability_dashboard_options <- function() {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_deliverability_test_report
+#'
+#' @aliases pinpointemail_get_deliverability_test_report
 pinpointemail_get_deliverability_test_report <- function(ReportId) {
   op <- new_operation(
     name = "GetDeliverabilityTestReport",
@@ -1184,6 +1218,8 @@ pinpointemail_get_deliverability_test_report <- function(ReportId) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_domain_deliverability_campaign
+#'
+#' @aliases pinpointemail_get_domain_deliverability_campaign
 pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
   op <- new_operation(
     name = "GetDomainDeliverabilityCampaign",
@@ -1281,6 +1317,8 @@ pinpointemail_get_domain_deliverability_campaign <- function(CampaignId) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_domain_statistics_report
+#'
+#' @aliases pinpointemail_get_domain_statistics_report
 pinpointemail_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
   op <- new_operation(
     name = "GetDomainStatisticsReport",
@@ -1350,6 +1388,8 @@ pinpointemail_get_domain_statistics_report <- function(Domain, StartDate, EndDat
 #' @keywords internal
 #'
 #' @rdname pinpointemail_get_email_identity
+#'
+#' @aliases pinpointemail_get_email_identity
 pinpointemail_get_email_identity <- function(EmailIdentity) {
   op <- new_operation(
     name = "GetEmailIdentity",
@@ -1414,6 +1454,8 @@ pinpointemail_get_email_identity <- function(EmailIdentity) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_list_configuration_sets
+#'
+#' @aliases pinpointemail_list_configuration_sets
 pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListConfigurationSets",
@@ -1472,6 +1514,8 @@ pinpointemail_list_configuration_sets <- function(NextToken = NULL, PageSize = N
 #' @keywords internal
 #'
 #' @rdname pinpointemail_list_dedicated_ip_pools
+#'
+#' @aliases pinpointemail_list_dedicated_ip_pools
 pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListDedicatedIpPools",
@@ -1546,6 +1590,8 @@ pinpointemail_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = N
 #' @keywords internal
 #'
 #' @rdname pinpointemail_list_deliverability_test_reports
+#'
+#' @aliases pinpointemail_list_deliverability_test_reports
 pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListDeliverabilityTestReports",
@@ -1646,6 +1692,8 @@ pinpointemail_list_deliverability_test_reports <- function(NextToken = NULL, Pag
 #' @keywords internal
 #'
 #' @rdname pinpointemail_list_domain_deliverability_campaigns
+#'
+#' @aliases pinpointemail_list_domain_deliverability_campaigns
 pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDate, SubscribedDomain, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListDomainDeliverabilityCampaigns",
@@ -1713,6 +1761,8 @@ pinpointemail_list_domain_deliverability_campaigns <- function(StartDate, EndDat
 #' @keywords internal
 #'
 #' @rdname pinpointemail_list_email_identities
+#'
+#' @aliases pinpointemail_list_email_identities
 pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListEmailIdentities",
@@ -1770,6 +1820,8 @@ pinpointemail_list_email_identities <- function(NextToken = NULL, PageSize = NUL
 #' @keywords internal
 #'
 #' @rdname pinpointemail_list_tags_for_resource
+#'
+#' @aliases pinpointemail_list_tags_for_resource
 pinpointemail_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1816,6 +1868,8 @@ pinpointemail_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_account_dedicated_ip_warmup_attributes
+#'
+#' @aliases pinpointemail_put_account_dedicated_ip_warmup_attributes
 pinpointemail_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled = NULL) {
   op <- new_operation(
     name = "PutAccountDedicatedIpWarmupAttributes",
@@ -1860,6 +1914,8 @@ pinpointemail_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupE
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_account_sending_attributes
+#'
+#' @aliases pinpointemail_put_account_sending_attributes
 pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) {
   op <- new_operation(
     name = "PutAccountSendingAttributes",
@@ -1913,6 +1969,8 @@ pinpointemail_put_account_sending_attributes <- function(SendingEnabled = NULL) 
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_configuration_set_delivery_options
+#'
+#' @aliases pinpointemail_put_configuration_set_delivery_options
 pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSetName, TlsPolicy = NULL, SendingPoolName = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetDeliveryOptions",
@@ -1961,6 +2019,8 @@ pinpointemail_put_configuration_set_delivery_options <- function(ConfigurationSe
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_configuration_set_reputation_options
+#'
+#' @aliases pinpointemail_put_configuration_set_reputation_options
 pinpointemail_put_configuration_set_reputation_options <- function(ConfigurationSetName, ReputationMetricsEnabled = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetReputationOptions",
@@ -2008,6 +2068,8 @@ pinpointemail_put_configuration_set_reputation_options <- function(Configuration
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_configuration_set_sending_options
+#'
+#' @aliases pinpointemail_put_configuration_set_sending_options
 pinpointemail_put_configuration_set_sending_options <- function(ConfigurationSetName, SendingEnabled = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetSendingOptions",
@@ -2054,6 +2116,8 @@ pinpointemail_put_configuration_set_sending_options <- function(ConfigurationSet
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_configuration_set_tracking_options
+#'
+#' @aliases pinpointemail_put_configuration_set_tracking_options
 pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSetName, CustomRedirectDomain = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetTrackingOptions",
@@ -2107,6 +2171,8 @@ pinpointemail_put_configuration_set_tracking_options <- function(ConfigurationSe
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_dedicated_ip_in_pool
+#'
+#' @aliases pinpointemail_put_dedicated_ip_in_pool
 pinpointemail_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
   op <- new_operation(
     name = "PutDedicatedIpInPool",
@@ -2151,6 +2217,8 @@ pinpointemail_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_dedicated_ip_warmup_attributes
+#'
+#' @aliases pinpointemail_put_dedicated_ip_warmup_attributes
 pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
   op <- new_operation(
     name = "PutDedicatedIpWarmupAttributes",
@@ -2220,6 +2288,8 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_deliverability_dashboard_option
+#'
+#' @aliases pinpointemail_put_deliverability_dashboard_option
 pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, SubscribedDomains = NULL) {
   op <- new_operation(
     name = "PutDeliverabilityDashboardOption",
@@ -2268,6 +2338,8 @@ pinpointemail_put_deliverability_dashboard_option <- function(DashboardEnabled, 
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_email_identity_dkim_attributes
+#'
+#' @aliases pinpointemail_put_email_identity_dkim_attributes
 pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabled = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityDkimAttributes",
@@ -2339,6 +2411,8 @@ pinpointemail_put_email_identity_dkim_attributes <- function(EmailIdentity, Sign
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_email_identity_feedback_attributes
+#'
+#' @aliases pinpointemail_put_email_identity_feedback_attributes
 pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailForwardingEnabled = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityFeedbackAttributes",
@@ -2403,6 +2477,8 @@ pinpointemail_put_email_identity_feedback_attributes <- function(EmailIdentity, 
 #' @keywords internal
 #'
 #' @rdname pinpointemail_put_email_identity_mail_from_attributes
+#'
+#' @aliases pinpointemail_put_email_identity_mail_from_attributes
 pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFromDomain = NULL, BehaviorOnMxFailure = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityMailFromAttributes",
@@ -2522,6 +2598,8 @@ pinpointemail_put_email_identity_mail_from_attributes <- function(EmailIdentity,
 #' @keywords internal
 #'
 #' @rdname pinpointemail_send_email
+#'
+#' @aliases pinpointemail_send_email
 pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "SendEmail",
@@ -2582,6 +2660,8 @@ pinpointemail_send_email <- function(FromEmailAddress = NULL, Destination, Reply
 #' @keywords internal
 #'
 #' @rdname pinpointemail_tag_resource
+#'
+#' @aliases pinpointemail_tag_resource
 pinpointemail_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2634,6 +2714,8 @@ pinpointemail_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_untag_resource
+#'
+#' @aliases pinpointemail_untag_resource
 pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2712,6 +2794,8 @@ pinpointemail_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname pinpointemail_update_configuration_set_event_destination
+#'
+#' @aliases pinpointemail_update_configuration_set_event_destination
 pinpointemail_update_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName, EventDestination) {
   op <- new_operation(
     name = "UpdateConfigurationSetEventDestination",

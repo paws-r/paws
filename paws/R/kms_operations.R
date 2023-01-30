@@ -73,6 +73,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kms_cancel_key_deletion
+#'
+#' @aliases kms_cancel_key_deletion
 kms_cancel_key_deletion <- function(KeyId) {
   op <- new_operation(
     name = "CancelKeyDeletion",
@@ -196,6 +198,8 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_connect_custom_key_store
+#'
+#' @aliases kms_connect_custom_key_store
 kms_connect_custom_key_store <- function(CustomKeyStoreId) {
   op <- new_operation(
     name = "ConnectCustomKeyStore",
@@ -332,6 +336,8 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 #' @keywords internal
 #'
 #' @rdname kms_create_alias
+#'
+#' @aliases kms_create_alias
 kms_create_alias <- function(AliasName, TargetKeyId) {
   op <- new_operation(
     name = "CreateAlias",
@@ -461,6 +467,8 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_create_custom_key_store
+#'
+#' @aliases kms_create_custom_key_store
 kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = NULL, TrustAnchorCertificate = NULL, KeyStorePassword = NULL) {
   op <- new_operation(
     name = "CreateCustomKeyStore",
@@ -714,6 +722,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' @keywords internal
 #'
 #' @rdname kms_create_grant
+#'
+#' @aliases kms_create_grant
 kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL) {
   op <- new_operation(
     name = "CreateGrant",
@@ -1296,6 +1306,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' @keywords internal
 #'
 #' @rdname kms_create_key
+#'
+#' @aliases kms_create_key
 kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, CustomerMasterKeySpec = NULL, KeySpec = NULL, Origin = NULL, CustomKeyStoreId = NULL, BypassPolicyLockoutSafetyCheck = NULL, Tags = NULL, MultiRegion = NULL) {
   op <- new_operation(
     name = "CreateKey",
@@ -1514,6 +1526,8 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' @keywords internal
 #'
 #' @rdname kms_decrypt
+#'
+#' @aliases kms_decrypt
 kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL) {
   op <- new_operation(
     name = "Decrypt",
@@ -1603,6 +1617,8 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 #' @keywords internal
 #'
 #' @rdname kms_delete_alias
+#'
+#' @aliases kms_delete_alias
 kms_delete_alias <- function(AliasName) {
   op <- new_operation(
     name = "DeleteAlias",
@@ -1713,6 +1729,8 @@ kms_delete_alias <- function(AliasName) {
 #' @keywords internal
 #'
 #' @rdname kms_delete_custom_key_store
+#'
+#' @aliases kms_delete_custom_key_store
 kms_delete_custom_key_store <- function(CustomKeyStoreId) {
   op <- new_operation(
     name = "DeleteCustomKeyStore",
@@ -1805,6 +1823,8 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 #' @keywords internal
 #'
 #' @rdname kms_delete_imported_key_material
+#'
+#' @aliases kms_delete_imported_key_material
 kms_delete_imported_key_material <- function(KeyId) {
   op <- new_operation(
     name = "DeleteImportedKeyMaterial",
@@ -1954,6 +1974,8 @@ kms_delete_imported_key_material <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_describe_custom_key_stores
+#'
+#' @aliases kms_describe_custom_key_stores
 kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeyStoreName = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCustomKeyStores",
@@ -2180,6 +2202,8 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 #' @keywords internal
 #'
 #' @rdname kms_describe_key
+#'
+#' @aliases kms_describe_key
 kms_describe_key <- function(KeyId, GrantTokens = NULL) {
   op <- new_operation(
     name = "DescribeKey",
@@ -2261,6 +2285,8 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_disable_key
+#'
+#' @aliases kms_disable_key
 kms_disable_key <- function(KeyId) {
   op <- new_operation(
     name = "DisableKey",
@@ -2379,6 +2405,8 @@ kms_disable_key <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_disable_key_rotation
+#'
+#' @aliases kms_disable_key_rotation
 kms_disable_key_rotation <- function(KeyId) {
   op <- new_operation(
     name = "DisableKeyRotation",
@@ -2476,6 +2504,8 @@ kms_disable_key_rotation <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_disconnect_custom_key_store
+#'
+#' @aliases kms_disconnect_custom_key_store
 kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
   op <- new_operation(
     name = "DisconnectCustomKeyStore",
@@ -2552,6 +2582,8 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 #' @keywords internal
 #'
 #' @rdname kms_enable_key
+#'
+#' @aliases kms_enable_key
 kms_enable_key <- function(KeyId) {
   op <- new_operation(
     name = "EnableKey",
@@ -2688,6 +2720,8 @@ kms_enable_key <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_enable_key_rotation
+#'
+#' @aliases kms_enable_key_rotation
 kms_enable_key_rotation <- function(KeyId) {
   op <- new_operation(
     name = "EnableKeyRotation",
@@ -2894,6 +2928,8 @@ kms_enable_key_rotation <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_encrypt
+#'
+#' @aliases kms_encrypt
 kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens = NULL, EncryptionAlgorithm = NULL) {
   op <- new_operation(
     name = "Encrypt",
@@ -3124,6 +3160,8 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' @keywords internal
 #'
 #' @rdname kms_generate_data_key
+#'
+#' @aliases kms_generate_data_key
 kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL) {
   op <- new_operation(
     name = "GenerateDataKey",
@@ -3327,6 +3365,8 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' @keywords internal
 #'
 #' @rdname kms_generate_data_key_pair
+#'
+#' @aliases kms_generate_data_key_pair
 kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyPair",
@@ -3516,6 +3556,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' @keywords internal
 #'
 #' @rdname kms_generate_data_key_pair_without_plaintext
+#'
+#' @aliases kms_generate_data_key_pair_without_plaintext
 kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyPairWithoutPlaintext",
@@ -3704,6 +3746,8 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' @keywords internal
 #'
 #' @rdname kms_generate_data_key_without_plaintext
+#'
+#' @aliases kms_generate_data_key_without_plaintext
 kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = NULL, KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyWithoutPlaintext",
@@ -3829,6 +3873,8 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' @keywords internal
 #'
 #' @rdname kms_generate_mac
+#'
+#' @aliases kms_generate_mac
 kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL) {
   op <- new_operation(
     name = "GenerateMac",
@@ -3918,6 +3964,8 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_generate_random
+#'
+#' @aliases kms_generate_random
 kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
   op <- new_operation(
     name = "GenerateRandom",
@@ -3998,6 +4046,8 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_get_key_policy
+#'
+#' @aliases kms_get_key_policy
 kms_get_key_policy <- function(KeyId, PolicyName) {
   op <- new_operation(
     name = "GetKeyPolicy",
@@ -4138,6 +4188,8 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname kms_get_key_rotation_status
+#'
+#' @aliases kms_get_key_rotation_status
 kms_get_key_rotation_status <- function(KeyId) {
   op <- new_operation(
     name = "GetKeyRotationStatus",
@@ -4265,6 +4317,8 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_get_parameters_for_import
+#'
+#' @aliases kms_get_parameters_for_import
 kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeySpec) {
   op <- new_operation(
     name = "GetParametersForImport",
@@ -4426,6 +4480,8 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 #' @keywords internal
 #'
 #' @rdname kms_get_public_key
+#'
+#' @aliases kms_get_public_key
 kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
   op <- new_operation(
     name = "GetPublicKey",
@@ -4596,6 +4652,8 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_import_key_material
+#'
+#' @aliases kms_import_key_material
 kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, ValidTo = NULL, ExpirationModel = NULL) {
   op <- new_operation(
     name = "ImportKeyMaterial",
@@ -4729,6 +4787,8 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 #' @keywords internal
 #'
 #' @rdname kms_list_aliases
+#'
+#' @aliases kms_list_aliases
 kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListAliases",
@@ -4874,6 +4934,8 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_list_grants
+#'
+#' @aliases kms_list_grants
 kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, GranteePrincipal = NULL) {
   op <- new_operation(
     name = "ListGrants",
@@ -4972,6 +5034,8 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
 #' @keywords internal
 #'
 #' @rdname kms_list_key_policies
+#'
+#' @aliases kms_list_key_policies
 kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListKeyPolicies",
@@ -5058,6 +5122,8 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_list_keys
+#'
+#' @aliases kms_list_keys
 kms_list_keys <- function(Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListKeys",
@@ -5168,6 +5234,8 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_list_resource_tags
+#'
+#' @aliases kms_list_resource_tags
 kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListResourceTags",
@@ -5305,6 +5373,8 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_list_retirable_grants
+#'
+#' @aliases kms_list_retirable_grants
 kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrincipal) {
   op <- new_operation(
     name = "ListRetirableGrants",
@@ -5448,6 +5518,8 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 #' @keywords internal
 #'
 #' @rdname kms_put_key_policy
+#'
+#' @aliases kms_put_key_policy
 kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSafetyCheck = NULL) {
   op <- new_operation(
     name = "PutKeyPolicy",
@@ -5738,6 +5810,8 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' @keywords internal
 #'
 #' @rdname kms_re_encrypt
+#'
+#' @aliases kms_re_encrypt
 kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL) {
   op <- new_operation(
     name = "ReEncrypt",
@@ -6101,6 +6175,8 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' @keywords internal
 #'
 #' @rdname kms_replicate_key
+#'
+#' @aliases kms_replicate_key
 kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyLockoutSafetyCheck = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ReplicateKey",
@@ -6210,6 +6286,8 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' @keywords internal
 #'
 #' @rdname kms_retire_grant
+#'
+#' @aliases kms_retire_grant
 kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
   op <- new_operation(
     name = "RetireGrant",
@@ -6314,6 +6392,8 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_revoke_grant
+#'
+#' @aliases kms_revoke_grant
 kms_revoke_grant <- function(KeyId, GrantId) {
   op <- new_operation(
     name = "RevokeGrant",
@@ -6454,6 +6534,8 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' @keywords internal
 #'
 #' @rdname kms_schedule_key_deletion
+#'
+#' @aliases kms_schedule_key_deletion
 kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
   op <- new_operation(
     name = "ScheduleKeyDeletion",
@@ -6626,6 +6708,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' @keywords internal
 #'
 #' @rdname kms_sign
+#'
+#' @aliases kms_sign
 kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, SigningAlgorithm) {
   op <- new_operation(
     name = "Sign",
@@ -6761,6 +6845,8 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' @keywords internal
 #'
 #' @rdname kms_tag_resource
+#'
+#' @aliases kms_tag_resource
 kms_tag_resource <- function(KeyId, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -6871,6 +6957,8 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' @keywords internal
 #'
 #' @rdname kms_untag_resource
+#'
+#' @aliases kms_untag_resource
 kms_untag_resource <- function(KeyId, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -7008,6 +7096,8 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname kms_update_alias
+#'
+#' @aliases kms_update_alias
 kms_update_alias <- function(AliasName, TargetKeyId) {
   op <- new_operation(
     name = "UpdateAlias",
@@ -7167,6 +7257,8 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 #' @keywords internal
 #'
 #' @rdname kms_update_custom_key_store
+#'
+#' @aliases kms_update_custom_key_store
 kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName = NULL, KeyStorePassword = NULL, CloudHsmClusterId = NULL) {
   op <- new_operation(
     name = "UpdateCustomKeyStore",
@@ -7249,6 +7341,8 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 #' @keywords internal
 #'
 #' @rdname kms_update_key_description
+#'
+#' @aliases kms_update_key_description
 kms_update_key_description <- function(KeyId, Description) {
   op <- new_operation(
     name = "UpdateKeyDescription",
@@ -7393,6 +7487,8 @@ kms_update_key_description <- function(KeyId, Description) {
 #' @keywords internal
 #'
 #' @rdname kms_update_primary_region
+#'
+#' @aliases kms_update_primary_region
 kms_update_primary_region <- function(KeyId, PrimaryRegion) {
   op <- new_operation(
     name = "UpdatePrimaryRegion",
@@ -7561,6 +7657,8 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' @keywords internal
 #'
 #' @rdname kms_verify
+#'
+#' @aliases kms_verify
 kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlgorithm, GrantTokens = NULL) {
   op <- new_operation(
     name = "Verify",
@@ -7684,6 +7782,8 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' @keywords internal
 #'
 #' @rdname kms_verify_mac
+#'
+#' @aliases kms_verify_mac
 kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL) {
   op <- new_operation(
     name = "VerifyMac",

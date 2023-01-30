@@ -79,6 +79,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname finspace_create_environment
+#'
+#' @aliases finspace_create_environment
 finspace_create_environment <- function(name, description = NULL, kmsKeyId = NULL, tags = NULL, federationMode = NULL, federationParameters = NULL, superuserParameters = NULL, dataBundles = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
@@ -119,6 +121,8 @@ finspace_create_environment <- function(name, description = NULL, kmsKeyId = NUL
 #' @keywords internal
 #'
 #' @rdname finspace_delete_environment
+#'
+#' @aliases finspace_delete_environment
 finspace_delete_environment <- function(environmentId) {
   op <- new_operation(
     name = "DeleteEnvironment",
@@ -186,6 +190,8 @@ finspace_delete_environment <- function(environmentId) {
 #' @keywords internal
 #'
 #' @rdname finspace_get_environment
+#'
+#' @aliases finspace_get_environment
 finspace_get_environment <- function(environmentId) {
   op <- new_operation(
     name = "GetEnvironment",
@@ -261,6 +267,8 @@ finspace_get_environment <- function(environmentId) {
 #' @keywords internal
 #'
 #' @rdname finspace_list_environments
+#'
+#' @aliases finspace_list_environments
 finspace_list_environments <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEnvironments",
@@ -308,6 +316,8 @@ finspace_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname finspace_list_tags_for_resource
+#'
+#' @aliases finspace_list_tags_for_resource
 finspace_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -352,6 +362,8 @@ finspace_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname finspace_tag_resource
+#'
+#' @aliases finspace_tag_resource
 finspace_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -397,6 +409,8 @@ finspace_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname finspace_untag_resource
+#'
+#' @aliases finspace_untag_resource
 finspace_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -488,6 +502,8 @@ finspace_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname finspace_update_environment
+#'
+#' @aliases finspace_update_environment
 finspace_update_environment <- function(environmentId, name = NULL, description = NULL, federationMode = NULL, federationParameters = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",

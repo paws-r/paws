@@ -194,6 +194,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname marketplacecommerceanalytics_generate_data_set
+#'
+#' @aliases marketplacecommerceanalytics_generate_data_set
 marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetPublicationDate, roleNameArn, destinationS3BucketName, destinationS3Prefix = NULL, snsTopicArn, customerDefinedValues = NULL) {
   op <- new_operation(
     name = "GenerateDataSet",
@@ -294,6 +296,8 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' @keywords internal
 #'
 #' @rdname marketplacecommerceanalytics_start_support_data_export
+#'
+#' @aliases marketplacecommerceanalytics_start_support_data_export
 marketplacecommerceanalytics_start_support_data_export <- function(dataSetType, fromDate, roleNameArn, destinationS3BucketName, destinationS3Prefix = NULL, snsTopicArn, customerDefinedValues = NULL) {
   op <- new_operation(
     name = "StartSupportDataExport",

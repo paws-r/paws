@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_delete_session
+#'
+#' @aliases lexruntimeservice_delete_session
 lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
   op <- new_operation(
     name = "DeleteSession",
@@ -134,6 +136,8 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_get_session
+#'
+#' @aliases lexruntimeservice_get_session
 lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointLabelFilter = NULL) {
   op <- new_operation(
     name = "GetSession",
@@ -372,6 +376,8 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_post_content
+#'
+#' @aliases lexruntimeservice_post_content
 lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAttributes = NULL, requestAttributes = NULL, contentType, accept = NULL, inputStream, activeContexts = NULL) {
   op <- new_operation(
     name = "PostContent",
@@ -596,6 +602,8 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_post_text
+#'
+#' @aliases lexruntimeservice_post_text
 lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttributes = NULL, requestAttributes = NULL, inputText, activeContexts = NULL) {
   op <- new_operation(
     name = "PostText",
@@ -767,6 +775,8 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_put_session
+#'
+#' @aliases lexruntimeservice_put_session
 lexruntimeservice_put_session <- function(botName, botAlias, userId, sessionAttributes = NULL, dialogAction = NULL, recentIntentSummaryView = NULL, accept = NULL, activeContexts = NULL) {
   op <- new_operation(
     name = "PutSession",

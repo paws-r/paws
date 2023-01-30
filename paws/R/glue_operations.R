@@ -126,6 +126,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname glue_batch_create_partition
+#'
+#' @aliases glue_batch_create_partition
 glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionInputList) {
   op <- new_operation(
     name = "BatchCreatePartition",
@@ -184,6 +186,8 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @keywords internal
 #'
 #' @rdname glue_batch_delete_connection
+#'
+#' @aliases glue_batch_delete_connection
 glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
   op <- new_operation(
     name = "BatchDeleteConnection",
@@ -254,6 +258,8 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_delete_partition
+#'
+#' @aliases glue_batch_delete_partition
 glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionsToDelete) {
   op <- new_operation(
     name = "BatchDeletePartition",
@@ -331,6 +337,8 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @keywords internal
 #'
 #' @rdname glue_batch_delete_table
+#'
+#' @aliases glue_batch_delete_table
 glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDelete, TransactionId = NULL) {
   op <- new_operation(
     name = "BatchDeleteTable",
@@ -398,6 +406,8 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
 #' @keywords internal
 #'
 #' @rdname glue_batch_delete_table_version
+#'
+#' @aliases glue_batch_delete_table_version
 glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionIds) {
   op <- new_operation(
     name = "BatchDeleteTableVersion",
@@ -478,6 +488,8 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_blueprints
+#'
+#' @aliases glue_batch_get_blueprints
 glue_batch_get_blueprints <- function(Names, IncludeBlueprint = NULL, IncludeParameterSpec = NULL) {
   op <- new_operation(
     name = "BatchGetBlueprints",
@@ -638,6 +650,8 @@ glue_batch_get_blueprints <- function(Names, IncludeBlueprint = NULL, IncludePar
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_crawlers
+#'
+#' @aliases glue_batch_get_crawlers
 glue_batch_get_crawlers <- function(CrawlerNames) {
   op <- new_operation(
     name = "BatchGetCrawlers",
@@ -698,6 +712,8 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_custom_entity_types
+#'
+#' @aliases glue_batch_get_custom_entity_types
 glue_batch_get_custom_entity_types <- function(Names) {
   op <- new_operation(
     name = "BatchGetCustomEntityTypes",
@@ -793,6 +809,8 @@ glue_batch_get_custom_entity_types <- function(Names) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_dev_endpoints
+#'
+#' @aliases glue_batch_get_dev_endpoints
 glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
   op <- new_operation(
     name = "BatchGetDevEndpoints",
@@ -1668,6 +1686,8 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_jobs
+#'
+#' @aliases glue_batch_get_jobs
 glue_batch_get_jobs <- function(JobNames) {
   op <- new_operation(
     name = "BatchGetJobs",
@@ -1815,6 +1835,8 @@ glue_batch_get_jobs <- function(JobNames) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_partition
+#'
+#' @aliases glue_batch_get_partition
 glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionsToGet) {
   op <- new_operation(
     name = "BatchGetPartition",
@@ -1910,6 +1932,8 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_triggers
+#'
+#' @aliases glue_batch_get_triggers
 glue_batch_get_triggers <- function(TriggerNames) {
   op <- new_operation(
     name = "BatchGetTriggers",
@@ -2251,6 +2275,8 @@ glue_batch_get_triggers <- function(TriggerNames) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_get_workflows
+#'
+#' @aliases glue_batch_get_workflows
 glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
   op <- new_operation(
     name = "BatchGetWorkflows",
@@ -2316,6 +2342,8 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_stop_job_run
+#'
+#' @aliases glue_batch_stop_job_run
 glue_batch_stop_job_run <- function(JobName, JobRunIds) {
   op <- new_operation(
     name = "BatchStopJobRun",
@@ -2460,6 +2488,8 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 #' @keywords internal
 #'
 #' @rdname glue_batch_update_partition
+#'
+#' @aliases glue_batch_update_partition
 glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Entries) {
   op <- new_operation(
     name = "BatchUpdatePartition",
@@ -2513,6 +2543,8 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @keywords internal
 #'
 #' @rdname glue_cancel_ml_task_run
+#'
+#' @aliases glue_cancel_ml_task_run
 glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
   op <- new_operation(
     name = "CancelMLTaskRun",
@@ -2557,6 +2589,8 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
 #' @keywords internal
 #'
 #' @rdname glue_cancel_statement
+#'
+#' @aliases glue_cancel_statement
 glue_cancel_statement <- function(SessionId, Id, RequestOrigin = NULL) {
   op <- new_operation(
     name = "CancelStatement",
@@ -2609,6 +2643,8 @@ glue_cancel_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_check_schema_version_validity
+#'
+#' @aliases glue_check_schema_version_validity
 glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
   op <- new_operation(
     name = "CheckSchemaVersionValidity",
@@ -2662,6 +2698,8 @@ glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
 #' @keywords internal
 #'
 #' @rdname glue_create_blueprint
+#'
+#' @aliases glue_create_blueprint
 glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, Tags = NULL) {
   op <- new_operation(
     name = "CreateBlueprint",
@@ -2733,6 +2771,8 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #' @keywords internal
 #'
 #' @rdname glue_create_classifier
+#'
+#' @aliases glue_create_classifier
 glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, JsonClassifier = NULL, CsvClassifier = NULL) {
   op <- new_operation(
     name = "CreateClassifier",
@@ -2797,6 +2837,8 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @keywords internal
 #'
 #' @rdname glue_create_connection
+#'
+#' @aliases glue_create_connection
 glue_create_connection <- function(CatalogId = NULL, ConnectionInput, Tags = NULL) {
   op <- new_operation(
     name = "CreateConnection",
@@ -2958,6 +3000,8 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput, Tags = NUL
 #' @keywords internal
 #'
 #' @rdname glue_create_crawler
+#'
+#' @aliases glue_create_crawler
 glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = NULL, Targets, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, LakeFormationConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCrawler",
@@ -3021,6 +3065,8 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
 #' @keywords internal
 #'
 #' @rdname glue_create_custom_entity_type
+#'
+#' @aliases glue_create_custom_entity_type
 glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NULL) {
   op <- new_operation(
     name = "CreateCustomEntityType",
@@ -3089,6 +3135,8 @@ glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NUL
 #' @keywords internal
 #'
 #' @rdname glue_create_database
+#'
+#' @aliases glue_create_database
 glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatabase",
@@ -3259,6 +3307,8 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_create_dev_endpoint
+#'
+#' @aliases glue_create_dev_endpoint
 glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = NULL, SubnetId = NULL, PublicKey = NULL, PublicKeys = NULL, NumberOfNodes = NULL, WorkerType = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, ExtraPythonLibsS3Path = NULL, ExtraJarsS3Path = NULL, SecurityConfiguration = NULL, Tags = NULL, Arguments = NULL) {
   op <- new_operation(
     name = "CreateDevEndpoint",
@@ -4236,6 +4286,8 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' @keywords internal
 #'
 #' @rdname glue_create_job
+#'
+#' @aliases glue_create_job
 glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, ExecutionProperty = NULL, Command, DefaultArguments = NULL, NonOverridableArguments = NULL, Connections = NULL, MaxRetries = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, Tags = NULL, NotificationProperty = NULL, GlueVersion = NULL, NumberOfWorkers = NULL, WorkerType = NULL, CodeGenConfigurationNodes = NULL, ExecutionClass = NULL) {
   op <- new_operation(
     name = "CreateJob",
@@ -4424,6 +4476,8 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 #' @keywords internal
 #'
 #' @rdname glue_create_ml_transform
+#'
+#' @aliases glue_create_ml_transform
 glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables, Parameters, Role, GlueVersion = NULL, MaxCapacity = NULL, WorkerType = NULL, NumberOfWorkers = NULL, Timeout = NULL, MaxRetries = NULL, Tags = NULL, TransformEncryption = NULL) {
   op <- new_operation(
     name = "CreateMLTransform",
@@ -4546,6 +4600,8 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
 #' @keywords internal
 #'
 #' @rdname glue_create_partition
+#'
+#' @aliases glue_create_partition
 glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionInput) {
   op <- new_operation(
     name = "CreatePartition",
@@ -4601,6 +4657,8 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @keywords internal
 #'
 #' @rdname glue_create_partition_index
+#'
+#' @aliases glue_create_partition_index
 glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableName, PartitionIndex) {
   op <- new_operation(
     name = "CreatePartitionIndex",
@@ -4662,6 +4720,8 @@ glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @keywords internal
 #'
 #' @rdname glue_create_registry
+#'
+#' @aliases glue_create_registry
 glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateRegistry",
@@ -4804,6 +4864,8 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' @keywords internal
 #'
 #' @rdname glue_create_schema
+#'
+#' @aliases glue_create_schema
 glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compatibility = NULL, Description = NULL, Tags = NULL, SchemaDefinition = NULL) {
   op <- new_operation(
     name = "CreateSchema",
@@ -4873,6 +4935,8 @@ glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compat
 #' @keywords internal
 #'
 #' @rdname glue_create_script
+#'
+#' @aliases glue_create_script
 glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL) {
   op <- new_operation(
     name = "CreateScript",
@@ -4943,6 +5007,8 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
 #' @keywords internal
 #'
 #' @rdname glue_create_security_configuration
+#'
+#' @aliases glue_create_security_configuration
 glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
   op <- new_operation(
     name = "CreateSecurityConfiguration",
@@ -5076,6 +5142,8 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' @keywords internal
 #'
 #' @rdname glue_create_session
+#'
+#' @aliases glue_create_session
 glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout = NULL, IdleTimeout = NULL, DefaultArguments = NULL, Connections = NULL, MaxCapacity = NULL, NumberOfWorkers = NULL, WorkerType = NULL, SecurityConfiguration = NULL, GlueVersion = NULL, Tags = NULL, RequestOrigin = NULL) {
   op <- new_operation(
     name = "CreateSession",
@@ -5228,6 +5296,8 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
 #' @keywords internal
 #'
 #' @rdname glue_create_table
+#'
+#' @aliases glue_create_table
 glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, PartitionIndexes = NULL, TransactionId = NULL) {
   op <- new_operation(
     name = "CreateTable",
@@ -5335,6 +5405,8 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 #' @keywords internal
 #'
 #' @rdname glue_create_trigger
+#'
+#' @aliases glue_create_trigger
 glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL, Predicate = NULL, Actions, Description = NULL, StartOnCreation = NULL, Tags = NULL, EventBatchingCondition = NULL) {
   op <- new_operation(
     name = "CreateTrigger",
@@ -5393,6 +5465,8 @@ glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL
 #' @keywords internal
 #'
 #' @rdname glue_create_user_defined_function
+#'
+#' @aliases glue_create_user_defined_function
 glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, FunctionInput) {
   op <- new_operation(
     name = "CreateUserDefinedFunction",
@@ -5457,6 +5531,8 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @keywords internal
 #'
 #' @rdname glue_create_workflow
+#'
+#' @aliases glue_create_workflow
 glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties = NULL, Tags = NULL, MaxConcurrentRuns = NULL) {
   op <- new_operation(
     name = "CreateWorkflow",
@@ -5502,6 +5578,8 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
 #' @keywords internal
 #'
 #' @rdname glue_delete_blueprint
+#'
+#' @aliases glue_delete_blueprint
 glue_delete_blueprint <- function(Name) {
   op <- new_operation(
     name = "DeleteBlueprint",
@@ -5542,6 +5620,8 @@ glue_delete_blueprint <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_classifier
+#'
+#' @aliases glue_delete_classifier
 glue_delete_classifier <- function(Name) {
   op <- new_operation(
     name = "DeleteClassifier",
@@ -5597,6 +5677,8 @@ glue_delete_classifier <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_column_statistics_for_partition
+#'
+#' @aliases glue_delete_column_statistics_for_partition
 glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, ColumnName) {
   op <- new_operation(
     name = "DeleteColumnStatisticsForPartition",
@@ -5648,6 +5730,8 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' @keywords internal
 #'
 #' @rdname glue_delete_column_statistics_for_table
+#'
+#' @aliases glue_delete_column_statistics_for_table
 glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName, TableName, ColumnName) {
   op <- new_operation(
     name = "DeleteColumnStatisticsForTable",
@@ -5691,6 +5775,8 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #' @keywords internal
 #'
 #' @rdname glue_delete_connection
+#'
+#' @aliases glue_delete_connection
 glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -5733,6 +5819,8 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_crawler
+#'
+#' @aliases glue_delete_crawler
 glue_delete_crawler <- function(Name) {
   op <- new_operation(
     name = "DeleteCrawler",
@@ -5778,6 +5866,8 @@ glue_delete_crawler <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_custom_entity_type
+#'
+#' @aliases glue_delete_custom_entity_type
 glue_delete_custom_entity_type <- function(Name) {
   op <- new_operation(
     name = "DeleteCustomEntityType",
@@ -5839,6 +5929,8 @@ glue_delete_custom_entity_type <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_database
+#'
+#' @aliases glue_delete_database
 glue_delete_database <- function(CatalogId = NULL, Name) {
   op <- new_operation(
     name = "DeleteDatabase",
@@ -5879,6 +5971,8 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_dev_endpoint
+#'
+#' @aliases glue_delete_dev_endpoint
 glue_delete_dev_endpoint <- function(EndpointName) {
   op <- new_operation(
     name = "DeleteDevEndpoint",
@@ -5925,6 +6019,8 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_job
+#'
+#' @aliases glue_delete_job
 glue_delete_job <- function(JobName) {
   op <- new_operation(
     name = "DeleteJob",
@@ -5976,6 +6072,8 @@ glue_delete_job <- function(JobName) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_ml_transform
+#'
+#' @aliases glue_delete_ml_transform
 glue_delete_ml_transform <- function(TransformId) {
   op <- new_operation(
     name = "DeleteMLTransform",
@@ -6026,6 +6124,8 @@ glue_delete_ml_transform <- function(TransformId) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_partition
+#'
+#' @aliases glue_delete_partition
 glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues) {
   op <- new_operation(
     name = "DeletePartition",
@@ -6075,6 +6175,8 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @keywords internal
 #'
 #' @rdname glue_delete_partition_index
+#'
+#' @aliases glue_delete_partition_index
 glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableName, IndexName) {
   op <- new_operation(
     name = "DeletePartitionIndex",
@@ -6133,6 +6235,8 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 #' @keywords internal
 #'
 #' @rdname glue_delete_registry
+#'
+#' @aliases glue_delete_registry
 glue_delete_registry <- function(RegistryId) {
   op <- new_operation(
     name = "DeleteRegistry",
@@ -6175,6 +6279,8 @@ glue_delete_registry <- function(RegistryId) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_resource_policy
+#'
+#' @aliases glue_delete_resource_policy
 glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -6234,6 +6340,8 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
 #' @keywords internal
 #'
 #' @rdname glue_delete_schema
+#'
+#' @aliases glue_delete_schema
 glue_delete_schema <- function(SchemaId) {
   op <- new_operation(
     name = "DeleteSchema",
@@ -6317,6 +6425,8 @@ glue_delete_schema <- function(SchemaId) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_schema_versions
+#'
+#' @aliases glue_delete_schema_versions
 glue_delete_schema_versions <- function(SchemaId, Versions) {
   op <- new_operation(
     name = "DeleteSchemaVersions",
@@ -6357,6 +6467,8 @@ glue_delete_schema_versions <- function(SchemaId, Versions) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_security_configuration
+#'
+#' @aliases glue_delete_security_configuration
 glue_delete_security_configuration <- function(Name) {
   op <- new_operation(
     name = "DeleteSecurityConfiguration",
@@ -6404,6 +6516,8 @@ glue_delete_security_configuration <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_session
+#'
+#' @aliases glue_delete_session
 glue_delete_session <- function(Id, RequestOrigin = NULL) {
   op <- new_operation(
     name = "DeleteSession",
@@ -6466,6 +6580,8 @@ glue_delete_session <- function(Id, RequestOrigin = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_table
+#'
+#' @aliases glue_delete_table
 glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL) {
   op <- new_operation(
     name = "DeleteTable",
@@ -6516,6 +6632,8 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionI
 #' @keywords internal
 #'
 #' @rdname glue_delete_table_version
+#'
+#' @aliases glue_delete_table_version
 glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionId) {
   op <- new_operation(
     name = "DeleteTableVersion",
@@ -6562,6 +6680,8 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
 #' @keywords internal
 #'
 #' @rdname glue_delete_trigger
+#'
+#' @aliases glue_delete_trigger
 glue_delete_trigger <- function(Name) {
   op <- new_operation(
     name = "DeleteTrigger",
@@ -6608,6 +6728,8 @@ glue_delete_trigger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_delete_user_defined_function
+#'
+#' @aliases glue_delete_user_defined_function
 glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, FunctionName) {
   op <- new_operation(
     name = "DeleteUserDefinedFunction",
@@ -6653,6 +6775,8 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @keywords internal
 #'
 #' @rdname glue_delete_workflow
+#'
+#' @aliases glue_delete_workflow
 glue_delete_workflow <- function(Name) {
   op <- new_operation(
     name = "DeleteWorkflow",
@@ -6725,6 +6849,8 @@ glue_delete_workflow <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_blueprint
+#'
+#' @aliases glue_get_blueprint
 glue_get_blueprint <- function(Name, IncludeBlueprint = NULL, IncludeParameterSpec = NULL) {
   op <- new_operation(
     name = "GetBlueprint",
@@ -6787,6 +6913,8 @@ glue_get_blueprint <- function(Name, IncludeBlueprint = NULL, IncludeParameterSp
 #' @keywords internal
 #'
 #' @rdname glue_get_blueprint_run
+#'
+#' @aliases glue_get_blueprint_run
 glue_get_blueprint_run <- function(BlueprintName, RunId) {
   op <- new_operation(
     name = "GetBlueprintRun",
@@ -6854,6 +6982,8 @@ glue_get_blueprint_run <- function(BlueprintName, RunId) {
 #' @keywords internal
 #'
 #' @rdname glue_get_blueprint_runs
+#'
+#' @aliases glue_get_blueprint_runs
 glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetBlueprintRuns",
@@ -6906,6 +7036,8 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname glue_get_catalog_import_status
+#'
+#' @aliases glue_get_catalog_import_status
 glue_get_catalog_import_status <- function(CatalogId = NULL) {
   op <- new_operation(
     name = "GetCatalogImportStatus",
@@ -7006,6 +7138,8 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_classifier
+#'
+#' @aliases glue_get_classifier
 glue_get_classifier <- function(Name) {
   op <- new_operation(
     name = "GetClassifier",
@@ -7111,6 +7245,8 @@ glue_get_classifier <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_classifiers
+#'
+#' @aliases glue_get_classifiers
 glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetClassifiers",
@@ -7243,6 +7379,8 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_column_statistics_for_partition
+#'
+#' @aliases glue_get_column_statistics_for_partition
 glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, ColumnNames) {
   op <- new_operation(
     name = "GetColumnStatisticsForPartition",
@@ -7371,6 +7509,8 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 #' @keywords internal
 #'
 #' @rdname glue_get_column_statistics_for_table
+#'
+#' @aliases glue_get_column_statistics_for_table
 glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName, TableName, ColumnNames) {
   op <- new_operation(
     name = "GetColumnStatisticsForTable",
@@ -7450,6 +7590,8 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
 #' @keywords internal
 #'
 #' @rdname glue_get_connection
+#'
+#' @aliases glue_get_connection
 glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
   op <- new_operation(
     name = "GetConnection",
@@ -7542,6 +7684,8 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_connections
+#'
+#' @aliases glue_get_connections
 glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetConnections",
@@ -7690,6 +7834,8 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
 #' @keywords internal
 #'
 #' @rdname glue_get_crawler
+#'
+#' @aliases glue_get_crawler
 glue_get_crawler <- function(Name) {
   op <- new_operation(
     name = "GetCrawler",
@@ -7753,6 +7899,8 @@ glue_get_crawler <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_crawler_metrics
+#'
+#' @aliases glue_get_crawler_metrics
 glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetCrawlerMetrics",
@@ -7906,6 +8054,8 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname glue_get_crawlers
+#'
+#' @aliases glue_get_crawlers
 glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetCrawlers",
@@ -7955,6 +8105,8 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_custom_entity_type
+#'
+#' @aliases glue_get_custom_entity_type
 glue_get_custom_entity_type <- function(Name) {
   op <- new_operation(
     name = "GetCustomEntityType",
@@ -8011,6 +8163,8 @@ glue_get_custom_entity_type <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_data_catalog_encryption_settings
+#'
+#' @aliases glue_get_data_catalog_encryption_settings
 glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
   op <- new_operation(
     name = "GetDataCatalogEncryptionSettings",
@@ -8085,6 +8239,8 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_database
+#'
+#' @aliases glue_get_database
 glue_get_database <- function(CatalogId = NULL, Name) {
   op <- new_operation(
     name = "GetDatabase",
@@ -8172,6 +8328,8 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_databases
+#'
+#' @aliases glue_get_databases
 glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = NULL, ResourceShareType = NULL) {
   op <- new_operation(
     name = "GetDatabases",
@@ -8237,6 +8395,8 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname glue_get_dataflow_graph
+#'
+#' @aliases glue_get_dataflow_graph
 glue_get_dataflow_graph <- function(PythonScript = NULL) {
   op <- new_operation(
     name = "GetDataflowGraph",
@@ -8323,6 +8483,8 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_dev_endpoint
+#'
+#' @aliases glue_get_dev_endpoint
 glue_get_dev_endpoint <- function(EndpointName) {
   op <- new_operation(
     name = "GetDevEndpoint",
@@ -8414,6 +8576,8 @@ glue_get_dev_endpoint <- function(EndpointName) {
 #' @keywords internal
 #'
 #' @rdname glue_get_dev_endpoints
+#'
+#' @aliases glue_get_dev_endpoints
 glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDevEndpoints",
@@ -9277,6 +9441,8 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_job
+#'
+#' @aliases glue_get_job
 glue_get_job <- function(JobName) {
   op <- new_operation(
     name = "GetJob",
@@ -9332,6 +9498,8 @@ glue_get_job <- function(JobName) {
 #' @keywords internal
 #'
 #' @rdname glue_get_job_bookmark
+#'
+#' @aliases glue_get_job_bookmark
 glue_get_job_bookmark <- function(JobName, RunId = NULL) {
   op <- new_operation(
     name = "GetJobBookmark",
@@ -9421,6 +9589,8 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_job_run
+#'
+#' @aliases glue_get_job_run
 glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
   op <- new_operation(
     name = "GetJobRun",
@@ -9513,6 +9683,8 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_job_runs
+#'
+#' @aliases glue_get_job_runs
 glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetJobRuns",
@@ -10381,6 +10553,8 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_jobs
+#'
+#' @aliases glue_get_jobs
 glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetJobs",
@@ -10465,6 +10639,8 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_ml_task_run
+#'
+#' @aliases glue_get_ml_task_run
 glue_get_ml_task_run <- function(TransformId, TaskRunId) {
   op <- new_operation(
     name = "GetMLTaskRun",
@@ -10577,6 +10753,8 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 #' @keywords internal
 #'
 #' @rdname glue_get_ml_task_runs
+#'
+#' @aliases glue_get_ml_task_runs
 glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NULL, Filter = NULL, Sort = NULL) {
   op <- new_operation(
     name = "GetMLTaskRuns",
@@ -10697,6 +10875,8 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname glue_get_ml_transform
+#'
+#' @aliases glue_get_ml_transform
 glue_get_ml_transform <- function(TransformId) {
   op <- new_operation(
     name = "GetMLTransform",
@@ -10853,6 +11033,8 @@ glue_get_ml_transform <- function(TransformId) {
 #' @keywords internal
 #'
 #' @rdname glue_get_ml_transforms
+#'
+#' @aliases glue_get_ml_transforms
 glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter = NULL, Sort = NULL) {
   op <- new_operation(
     name = "GetMLTransforms",
@@ -10941,6 +11123,8 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
 #' @keywords internal
 #'
 #' @rdname glue_get_mapping
+#'
+#' @aliases glue_get_mapping
 glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
   op <- new_operation(
     name = "GetMapping",
@@ -11074,6 +11258,8 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_partition
+#'
+#' @aliases glue_get_partition
 glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues) {
   op <- new_operation(
     name = "GetPartition",
@@ -11152,6 +11338,8 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 #' @keywords internal
 #'
 #' @rdname glue_get_partition_indexes
+#'
+#' @aliases glue_get_partition_indexes
 glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL) {
   op <- new_operation(
     name = "GetPartitionIndexes",
@@ -11396,6 +11584,8 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' @keywords internal
 #'
 #' @rdname glue_get_partitions
+#'
+#' @aliases glue_get_partitions
 glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expression = NULL, NextToken = NULL, Segment = NULL, MaxResults = NULL, ExcludeColumnSchema = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
   op <- new_operation(
     name = "GetPartitions",
@@ -11502,6 +11692,8 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #' @keywords internal
 #'
 #' @rdname glue_get_plan
+#'
+#' @aliases glue_get_plan
 glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Language = NULL, AdditionalPlanOptionsMap = NULL) {
   op <- new_operation(
     name = "GetPlan",
@@ -11556,6 +11748,8 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 #' @keywords internal
 #'
 #' @rdname glue_get_registry
+#'
+#' @aliases glue_get_registry
 glue_get_registry <- function(RegistryId) {
   op <- new_operation(
     name = "GetRegistry",
@@ -11622,6 +11816,8 @@ glue_get_registry <- function(RegistryId) {
 #' @keywords internal
 #'
 #' @rdname glue_get_resource_policies
+#'
+#' @aliases glue_get_resource_policies
 glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetResourcePolicies",
@@ -11679,6 +11875,8 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_resource_policy
+#'
+#' @aliases glue_get_resource_policy
 glue_get_resource_policy <- function(ResourceArn = NULL) {
   op <- new_operation(
     name = "GetResourcePolicy",
@@ -11748,6 +11946,8 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_schema
+#'
+#' @aliases glue_get_schema
 glue_get_schema <- function(SchemaId) {
   op <- new_operation(
     name = "GetSchema",
@@ -11815,6 +12015,8 @@ glue_get_schema <- function(SchemaId) {
 #' @keywords internal
 #'
 #' @rdname glue_get_schema_by_definition
+#'
+#' @aliases glue_get_schema_by_definition
 glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
   op <- new_operation(
     name = "GetSchemaByDefinition",
@@ -11890,6 +12092,8 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
 #' @keywords internal
 #'
 #' @rdname glue_get_schema_version
+#'
+#' @aliases glue_get_schema_version
 glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, SchemaVersionNumber = NULL) {
   op <- new_operation(
     name = "GetSchemaVersion",
@@ -11964,6 +12168,8 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
 #' @keywords internal
 #'
 #' @rdname glue_get_schema_versions_diff
+#'
+#' @aliases glue_get_schema_versions_diff
 glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, SecondSchemaVersionNumber, SchemaDiffType) {
   op <- new_operation(
     name = "GetSchemaVersionsDiff",
@@ -12030,6 +12236,8 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
 #' @keywords internal
 #'
 #' @rdname glue_get_security_configuration
+#'
+#' @aliases glue_get_security_configuration
 glue_get_security_configuration <- function(Name) {
   op <- new_operation(
     name = "GetSecurityConfiguration",
@@ -12101,6 +12309,8 @@ glue_get_security_configuration <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_security_configurations
+#'
+#' @aliases glue_get_security_configurations
 glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetSecurityConfigurations",
@@ -12173,6 +12383,8 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname glue_get_session
+#'
+#' @aliases glue_get_session
 glue_get_session <- function(Id, RequestOrigin = NULL) {
   op <- new_operation(
     name = "GetSession",
@@ -12241,6 +12453,8 @@ glue_get_session <- function(Id, RequestOrigin = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_statement
+#'
+#' @aliases glue_get_statement
 glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
   op <- new_operation(
     name = "GetStatement",
@@ -12406,6 +12620,8 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_table
+#'
+#' @aliases glue_get_table
 glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId = NULL, QueryAsOfTime = NULL) {
   op <- new_operation(
     name = "GetTable",
@@ -12567,6 +12783,8 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
 #' @keywords internal
 #'
 #' @rdname glue_get_table_version
+#'
+#' @aliases glue_get_table_version
 glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, VersionId = NULL) {
   op <- new_operation(
     name = "GetTableVersion",
@@ -12735,6 +12953,8 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' @keywords internal
 #'
 #' @rdname glue_get_table_versions
+#'
+#' @aliases glue_get_table_versions
 glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetTableVersions",
@@ -12908,6 +13128,8 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' @keywords internal
 #'
 #' @rdname glue_get_tables
+#'
+#' @aliases glue_get_tables
 glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, NextToken = NULL, MaxResults = NULL, TransactionId = NULL, QueryAsOfTime = NULL) {
   op <- new_operation(
     name = "GetTables",
@@ -12956,6 +13178,8 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
 #' @keywords internal
 #'
 #' @rdname glue_get_tags
+#'
+#' @aliases glue_get_tags
 glue_get_tags <- function(ResourceArn) {
   op <- new_operation(
     name = "GetTags",
@@ -13039,6 +13263,8 @@ glue_get_tags <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname glue_get_trigger
+#'
+#' @aliases glue_get_trigger
 glue_get_trigger <- function(Name) {
   op <- new_operation(
     name = "GetTrigger",
@@ -13131,6 +13357,8 @@ glue_get_trigger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_get_triggers
+#'
+#' @aliases glue_get_triggers
 glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetTriggers",
@@ -13280,6 +13508,8 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_partition_metadata
+#'
+#' @aliases glue_get_unfiltered_partition_metadata
 glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, TableName, PartitionValues, AuditContext = NULL, SupportedPermissionTypes) {
   op <- new_operation(
     name = "GetUnfilteredPartitionMetadata",
@@ -13442,6 +13672,8 @@ glue_get_unfiltered_partition_metadata <- function(CatalogId, DatabaseName, Tabl
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_partitions_metadata
+#'
+#' @aliases glue_get_unfiltered_partitions_metadata
 glue_get_unfiltered_partitions_metadata <- function(CatalogId, DatabaseName, TableName, Expression = NULL, AuditContext = NULL, SupportedPermissionTypes, NextToken = NULL, Segment = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetUnfilteredPartitionsMetadata",
@@ -13617,6 +13849,8 @@ glue_get_unfiltered_partitions_metadata <- function(CatalogId, DatabaseName, Tab
 #' @keywords internal
 #'
 #' @rdname glue_get_unfiltered_table_metadata
+#'
+#' @aliases glue_get_unfiltered_table_metadata
 glue_get_unfiltered_table_metadata <- function(CatalogId, DatabaseName, Name, AuditContext = NULL, SupportedPermissionTypes) {
   op <- new_operation(
     name = "GetUnfilteredTableMetadata",
@@ -13684,6 +13918,8 @@ glue_get_unfiltered_table_metadata <- function(CatalogId, DatabaseName, Name, Au
 #' @keywords internal
 #'
 #' @rdname glue_get_user_defined_function
+#'
+#' @aliases glue_get_user_defined_function
 glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, FunctionName) {
   op <- new_operation(
     name = "GetUserDefinedFunction",
@@ -13762,6 +13998,8 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 #' @keywords internal
 #'
 #' @rdname glue_get_user_defined_functions
+#'
+#' @aliases glue_get_user_defined_functions
 glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NULL, Pattern, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetUserDefinedFunctions",
@@ -14091,6 +14329,8 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 #' @keywords internal
 #'
 #' @rdname glue_get_workflow
+#'
+#' @aliases glue_get_workflow
 glue_get_workflow <- function(Name, IncludeGraph = NULL) {
   op <- new_operation(
     name = "GetWorkflow",
@@ -14286,6 +14526,8 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_workflow_run
+#'
+#' @aliases glue_get_workflow_run
 glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
   op <- new_operation(
     name = "GetWorkflowRun",
@@ -14335,6 +14577,8 @@ glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_get_workflow_run_properties
+#'
+#' @aliases glue_get_workflow_run_properties
 glue_get_workflow_run_properties <- function(Name, RunId) {
   op <- new_operation(
     name = "GetWorkflowRunProperties",
@@ -14535,6 +14779,8 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 #' @keywords internal
 #'
 #' @rdname glue_get_workflow_runs
+#'
+#' @aliases glue_get_workflow_runs
 glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetWorkflowRuns",
@@ -14576,6 +14822,8 @@ glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname glue_import_catalog_to_glue
+#'
+#' @aliases glue_import_catalog_to_glue
 glue_import_catalog_to_glue <- function(CatalogId = NULL) {
   op <- new_operation(
     name = "ImportCatalogToGlue",
@@ -14630,6 +14878,8 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_list_blueprints
+#'
+#' @aliases glue_list_blueprints
 glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListBlueprints",
@@ -14693,6 +14943,8 @@ glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NUL
 #' @keywords internal
 #'
 #' @rdname glue_list_crawlers
+#'
+#' @aliases glue_list_crawlers
 glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListCrawlers",
@@ -14786,6 +15038,8 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
 #' @keywords internal
 #'
 #' @rdname glue_list_crawls
+#'
+#' @aliases glue_list_crawls
 glue_list_crawls <- function(CrawlerName, MaxResults = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCrawls",
@@ -14842,6 +15096,8 @@ glue_list_crawls <- function(CrawlerName, MaxResults = NULL, Filters = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname glue_list_custom_entity_types
+#'
+#' @aliases glue_list_custom_entity_types
 glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCustomEntityTypes",
@@ -14905,6 +15161,8 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_list_dev_endpoints
+#'
+#' @aliases glue_list_dev_endpoints
 glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListDevEndpoints",
@@ -14968,6 +15226,8 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
 #' @keywords internal
 #'
 #' @rdname glue_list_jobs
+#'
+#' @aliases glue_list_jobs
 glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListJobs",
@@ -15060,6 +15320,8 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_list_ml_transforms
+#'
+#' @aliases glue_list_ml_transforms
 glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter = NULL, Sort = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListMLTransforms",
@@ -15122,6 +15384,8 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 #' @keywords internal
 #'
 #' @rdname glue_list_registries
+#'
+#' @aliases glue_list_registries
 glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRegistries",
@@ -15197,6 +15461,8 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_list_schema_versions
+#'
+#' @aliases glue_list_schema_versions
 glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSchemaVersions",
@@ -15267,6 +15533,8 @@ glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname glue_list_schemas
+#'
+#' @aliases glue_list_schemas
 glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSchemas",
@@ -15352,6 +15620,8 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname glue_list_sessions
+#'
+#' @aliases glue_list_sessions
 glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL, RequestOrigin = NULL) {
   op <- new_operation(
     name = "ListSessions",
@@ -15423,6 +15693,8 @@ glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL,
 #' @keywords internal
 #'
 #' @rdname glue_list_statements
+#'
+#' @aliases glue_list_statements
 glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListStatements",
@@ -15490,6 +15762,8 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname glue_list_triggers
+#'
+#' @aliases glue_list_triggers
 glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResults = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ListTriggers",
@@ -15540,6 +15814,8 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname glue_list_workflows
+#'
+#' @aliases glue_list_workflows
 glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkflows",
@@ -15595,6 +15871,8 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_put_data_catalog_encryption_settings
+#'
+#' @aliases glue_put_data_catalog_encryption_settings
 glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCatalogEncryptionSettings) {
   op <- new_operation(
     name = "PutDataCatalogEncryptionSettings",
@@ -15665,6 +15943,8 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 #' @keywords internal
 #'
 #' @rdname glue_put_resource_policy
+#'
+#' @aliases glue_put_resource_policy
 glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHashCondition = NULL, PolicyExistsCondition = NULL, EnableHybrid = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -15736,6 +16016,8 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
 #' @keywords internal
 #'
 #' @rdname glue_put_schema_version_metadata
+#'
+#' @aliases glue_put_schema_version_metadata
 glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumber = NULL, SchemaVersionId = NULL, MetadataKeyValue) {
   op <- new_operation(
     name = "PutSchemaVersionMetadata",
@@ -15785,6 +16067,8 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
 #' @keywords internal
 #'
 #' @rdname glue_put_workflow_run_properties
+#'
+#' @aliases glue_put_workflow_run_properties
 glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
   op <- new_operation(
     name = "PutWorkflowRunProperties",
@@ -15869,6 +16153,8 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 #' @keywords internal
 #'
 #' @rdname glue_query_schema_version_metadata
+#'
+#' @aliases glue_query_schema_version_metadata
 glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumber = NULL, SchemaVersionId = NULL, MetadataList = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "QuerySchemaVersionMetadata",
@@ -15945,6 +16231,8 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #' @keywords internal
 #'
 #' @rdname glue_register_schema_version
+#'
+#' @aliases glue_register_schema_version
 glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
   op <- new_operation(
     name = "RegisterSchemaVersion",
@@ -16017,6 +16305,8 @@ glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
 #' @keywords internal
 #'
 #' @rdname glue_remove_schema_version_metadata
+#'
+#' @aliases glue_remove_schema_version_metadata
 glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumber = NULL, SchemaVersionId = NULL, MetadataKeyValue) {
   op <- new_operation(
     name = "RemoveSchemaVersionMetadata",
@@ -16072,6 +16362,8 @@ glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNu
 #' @keywords internal
 #'
 #' @rdname glue_reset_job_bookmark
+#'
+#' @aliases glue_reset_job_bookmark
 glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
   op <- new_operation(
     name = "ResetJobBookmark",
@@ -16130,6 +16422,8 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_resume_workflow_run
+#'
+#' @aliases glue_resume_workflow_run
 glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
   op <- new_operation(
     name = "ResumeWorkflowRun",
@@ -16179,6 +16473,8 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 #' @keywords internal
 #'
 #' @rdname glue_run_statement
+#'
+#' @aliases glue_run_statement
 glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
   op <- new_operation(
     name = "RunStatement",
@@ -16387,6 +16683,8 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_search_tables
+#'
+#' @aliases glue_search_tables
 glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NULL, SearchText = NULL, SortCriteria = NULL, MaxResults = NULL, ResourceShareType = NULL) {
   op <- new_operation(
     name = "SearchTables",
@@ -16436,6 +16734,8 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
 #' @keywords internal
 #'
 #' @rdname glue_start_blueprint_run
+#'
+#' @aliases glue_start_blueprint_run
 glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) {
   op <- new_operation(
     name = "StartBlueprintRun",
@@ -16479,6 +16779,8 @@ glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) 
 #' @keywords internal
 #'
 #' @rdname glue_start_crawler
+#'
+#' @aliases glue_start_crawler
 glue_start_crawler <- function(Name) {
   op <- new_operation(
     name = "StartCrawler",
@@ -16523,6 +16825,8 @@ glue_start_crawler <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_start_crawler_schedule
+#'
+#' @aliases glue_start_crawler_schedule
 glue_start_crawler_schedule <- function(CrawlerName) {
   op <- new_operation(
     name = "StartCrawlerSchedule",
@@ -16581,6 +16885,8 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' @keywords internal
 #'
 #' @rdname glue_start_export_labels_task_run
+#'
+#' @aliases glue_start_export_labels_task_run
 glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
   op <- new_operation(
     name = "StartExportLabelsTaskRun",
@@ -16667,6 +16973,8 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
 #' @keywords internal
 #'
 #' @rdname glue_start_import_labels_task_run
+#'
+#' @aliases glue_start_import_labels_task_run
 glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceAllLabels = NULL) {
   op <- new_operation(
     name = "StartImportLabelsTaskRun",
@@ -16811,6 +17119,8 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' @keywords internal
 #'
 #' @rdname glue_start_job_run
+#'
+#' @aliases glue_start_job_run
 glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, AllocatedCapacity = NULL, Timeout = NULL, MaxCapacity = NULL, SecurityConfiguration = NULL, NotificationProperty = NULL, WorkerType = NULL, NumberOfWorkers = NULL, ExecutionClass = NULL) {
   op <- new_operation(
     name = "StartJobRun",
@@ -16864,6 +17174,8 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
 #' @keywords internal
 #'
 #' @rdname glue_start_ml_evaluation_task_run
+#'
+#' @aliases glue_start_ml_evaluation_task_run
 glue_start_ml_evaluation_task_run <- function(TransformId) {
   op <- new_operation(
     name = "StartMLEvaluationTaskRun",
@@ -16934,6 +17246,8 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' @keywords internal
 #'
 #' @rdname glue_start_ml_labeling_set_generation_task_run
+#'
+#' @aliases glue_start_ml_labeling_set_generation_task_run
 glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3Path) {
   op <- new_operation(
     name = "StartMLLabelingSetGenerationTaskRun",
@@ -16981,6 +17295,8 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 #' @keywords internal
 #'
 #' @rdname glue_start_trigger
+#'
+#' @aliases glue_start_trigger
 glue_start_trigger <- function(Name) {
   op <- new_operation(
     name = "StartTrigger",
@@ -17030,6 +17346,8 @@ glue_start_trigger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_start_workflow_run
+#'
+#' @aliases glue_start_workflow_run
 glue_start_workflow_run <- function(Name, RunProperties = NULL) {
   op <- new_operation(
     name = "StartWorkflowRun",
@@ -17070,6 +17388,8 @@ glue_start_workflow_run <- function(Name, RunProperties = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_stop_crawler
+#'
+#' @aliases glue_stop_crawler
 glue_stop_crawler <- function(Name) {
   op <- new_operation(
     name = "StopCrawler",
@@ -17112,6 +17432,8 @@ glue_stop_crawler <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_stop_crawler_schedule
+#'
+#' @aliases glue_stop_crawler_schedule
 glue_stop_crawler_schedule <- function(CrawlerName) {
   op <- new_operation(
     name = "StopCrawlerSchedule",
@@ -17159,6 +17481,8 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 #' @keywords internal
 #'
 #' @rdname glue_stop_session
+#'
+#' @aliases glue_stop_session
 glue_stop_session <- function(Id, RequestOrigin = NULL) {
   op <- new_operation(
     name = "StopSession",
@@ -17204,6 +17528,8 @@ glue_stop_session <- function(Id, RequestOrigin = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_stop_trigger
+#'
+#' @aliases glue_stop_trigger
 glue_stop_trigger <- function(Name) {
   op <- new_operation(
     name = "StopTrigger",
@@ -17246,6 +17572,8 @@ glue_stop_trigger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname glue_stop_workflow_run
+#'
+#' @aliases glue_stop_workflow_run
 glue_stop_workflow_run <- function(Name, RunId) {
   op <- new_operation(
     name = "StopWorkflowRun",
@@ -17296,6 +17624,8 @@ glue_stop_workflow_run <- function(Name, RunId) {
 #' @keywords internal
 #'
 #' @rdname glue_tag_resource
+#'
+#' @aliases glue_tag_resource
 glue_tag_resource <- function(ResourceArn, TagsToAdd) {
   op <- new_operation(
     name = "TagResource",
@@ -17341,6 +17671,8 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 #' @keywords internal
 #'
 #' @rdname glue_untag_resource
+#'
+#' @aliases glue_untag_resource
 glue_untag_resource <- function(ResourceArn, TagsToRemove) {
   op <- new_operation(
     name = "UntagResource",
@@ -17390,6 +17722,8 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
 #' @keywords internal
 #'
 #' @rdname glue_update_blueprint
+#'
+#' @aliases glue_update_blueprint
 glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
   op <- new_operation(
     name = "UpdateBlueprint",
@@ -17462,6 +17796,8 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #' @keywords internal
 #'
 #' @rdname glue_update_classifier
+#'
+#' @aliases glue_update_classifier
 glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, JsonClassifier = NULL, CsvClassifier = NULL) {
   op <- new_operation(
     name = "UpdateClassifier",
@@ -17650,6 +17986,8 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 #' @keywords internal
 #'
 #' @rdname glue_update_column_statistics_for_partition
+#'
+#' @aliases glue_update_column_statistics_for_partition
 glue_update_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValues, ColumnStatisticsList) {
   op <- new_operation(
     name = "UpdateColumnStatisticsForPartition",
@@ -17834,6 +18172,8 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 #' @keywords internal
 #'
 #' @rdname glue_update_column_statistics_for_table
+#'
+#' @aliases glue_update_column_statistics_for_table
 glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName, TableName, ColumnStatisticsList) {
   op <- new_operation(
     name = "UpdateColumnStatisticsForTable",
@@ -17896,6 +18236,8 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 #' @keywords internal
 #'
 #' @rdname glue_update_connection
+#'
+#' @aliases glue_update_connection
 glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
   op <- new_operation(
     name = "UpdateConnection",
@@ -18046,6 +18388,8 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 #' @keywords internal
 #'
 #' @rdname glue_update_crawler
+#'
+#' @aliases glue_update_crawler
 glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Description = NULL, Targets = NULL, Schedule = NULL, Classifiers = NULL, TablePrefix = NULL, SchemaChangePolicy = NULL, RecrawlPolicy = NULL, LineageConfiguration = NULL, LakeFormationConfiguration = NULL, Configuration = NULL, CrawlerSecurityConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateCrawler",
@@ -18092,6 +18436,8 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 #' @keywords internal
 #'
 #' @rdname glue_update_crawler_schedule
+#'
+#' @aliases glue_update_crawler_schedule
 glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
   op <- new_operation(
     name = "UpdateCrawlerSchedule",
@@ -18160,6 +18506,8 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
 #' @keywords internal
 #'
 #' @rdname glue_update_database
+#'
+#' @aliases glue_update_database
 glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
   op <- new_operation(
     name = "UpdateDatabase",
@@ -18240,6 +18588,8 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' @keywords internal
 #'
 #' @rdname glue_update_dev_endpoint
+#'
+#' @aliases glue_update_dev_endpoint
 glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKeys = NULL, DeletePublicKeys = NULL, CustomLibraries = NULL, UpdateEtlLibraries = NULL, DeleteArguments = NULL, AddArguments = NULL) {
   op <- new_operation(
     name = "UpdateDevEndpoint",
@@ -19100,6 +19450,8 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #' @keywords internal
 #'
 #' @rdname glue_update_job
+#'
+#' @aliases glue_update_job
 glue_update_job <- function(JobName, JobUpdate) {
   op <- new_operation(
     name = "UpdateJob",
@@ -19212,6 +19564,8 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' @keywords internal
 #'
 #' @rdname glue_update_ml_transform
+#'
+#' @aliases glue_update_ml_transform
 glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NULL, Parameters = NULL, Role = NULL, GlueVersion = NULL, MaxCapacity = NULL, WorkerType = NULL, NumberOfWorkers = NULL, Timeout = NULL, MaxRetries = NULL) {
   op <- new_operation(
     name = "UpdateMLTransform",
@@ -19340,6 +19694,8 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 #' @keywords internal
 #'
 #' @rdname glue_update_partition
+#'
+#' @aliases glue_update_partition
 glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, PartitionValueList, PartitionInput) {
   op <- new_operation(
     name = "UpdatePartition",
@@ -19396,6 +19752,8 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' @keywords internal
 #'
 #' @rdname glue_update_registry
+#'
+#' @aliases glue_update_registry
 glue_update_registry <- function(RegistryId, Description) {
   op <- new_operation(
     name = "UpdateRegistry",
@@ -19479,6 +19837,8 @@ glue_update_registry <- function(RegistryId, Description) {
 #' @keywords internal
 #'
 #' @rdname glue_update_schema
+#'
+#' @aliases glue_update_schema
 glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibility = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateSchema",
@@ -19628,6 +19988,8 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #' @keywords internal
 #'
 #' @rdname glue_update_table
+#'
+#' @aliases glue_update_table
 glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipArchive = NULL, TransactionId = NULL, VersionId = NULL) {
   op <- new_operation(
     name = "UpdateTable",
@@ -19747,6 +20109,8 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 #' @keywords internal
 #'
 #' @rdname glue_update_trigger
+#'
+#' @aliases glue_update_trigger
 glue_update_trigger <- function(Name, TriggerUpdate) {
   op <- new_operation(
     name = "UpdateTrigger",
@@ -19809,6 +20173,8 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
 #' @keywords internal
 #'
 #' @rdname glue_update_user_defined_function
+#'
+#' @aliases glue_update_user_defined_function
 glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, FunctionName, FunctionInput) {
   op <- new_operation(
     name = "UpdateUserDefinedFunction",
@@ -19868,6 +20234,8 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 #' @keywords internal
 #'
 #' @rdname glue_update_workflow
+#'
+#' @aliases glue_update_workflow
 glue_update_workflow <- function(Name, Description = NULL, DefaultRunProperties = NULL, MaxConcurrentRuns = NULL) {
   op <- new_operation(
     name = "UpdateWorkflow",

@@ -423,6 +423,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudsearchdomain_search
+#'
+#' @aliases cloudsearchdomain_search
 cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, filterQuery = NULL, highlight = NULL, partial = NULL, query, queryOptions = NULL, queryParser = NULL, return = NULL, size = NULL, sort = NULL, start = NULL, stats = NULL) {
   op <- new_operation(
     name = "Search",
@@ -504,6 +506,8 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #' @keywords internal
 #'
 #' @rdname cloudsearchdomain_suggest
+#'
+#' @aliases cloudsearchdomain_suggest
 cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
   op <- new_operation(
     name = "Suggest",
@@ -588,6 +592,8 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudsearchdomain_upload_documents
+#'
+#' @aliases cloudsearchdomain_upload_documents
 cloudsearchdomain_upload_documents <- function(documents, contentType) {
   op <- new_operation(
     name = "UploadDocuments",

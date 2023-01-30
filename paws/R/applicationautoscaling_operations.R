@@ -189,6 +189,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_delete_scaling_policy
+#'
+#' @aliases applicationautoscaling_delete_scaling_policy
 applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceNamespace, ResourceId, ScalableDimension) {
   op <- new_operation(
     name = "DeleteScalingPolicy",
@@ -374,6 +376,8 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_delete_scheduled_action
+#'
+#' @aliases applicationautoscaling_delete_scheduled_action
 applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, ScheduledActionName, ResourceId, ScalableDimension) {
   op <- new_operation(
     name = "DeleteScheduledAction",
@@ -568,6 +572,8 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_deregister_scalable_target
+#'
+#' @aliases applicationautoscaling_deregister_scalable_target
 applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, ResourceId, ScalableDimension) {
   op <- new_operation(
     name = "DeregisterScalableTarget",
@@ -794,6 +800,8 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_describe_scalable_targets
+#'
+#' @aliases applicationautoscaling_describe_scalable_targets
 applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, ResourceIds = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalableTargets",
@@ -1022,6 +1030,8 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_describe_scaling_activities
+#'
+#' @aliases applicationautoscaling_describe_scaling_activities
 applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalingActivities",
@@ -1294,6 +1304,8 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_describe_scaling_policies
+#'
+#' @aliases applicationautoscaling_describe_scaling_policies
 applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL, ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalingPolicies",
@@ -1527,6 +1539,8 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_describe_scheduled_actions
+#'
+#' @aliases applicationautoscaling_describe_scheduled_actions
 applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNames = NULL, ServiceNamespace, ResourceId = NULL, ScalableDimension = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScheduledActions",
@@ -1839,6 +1853,8 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_put_scaling_policy
+#'
+#' @aliases applicationautoscaling_put_scaling_policy
 applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespace, ResourceId, ScalableDimension, PolicyType = NULL, StepScalingPolicyConfiguration = NULL, TargetTrackingScalingPolicyConfiguration = NULL) {
   op <- new_operation(
     name = "PutScalingPolicy",
@@ -2096,6 +2112,8 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_put_scheduled_action
+#'
+#' @aliases applicationautoscaling_put_scheduled_action
 applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedule = NULL, Timezone = NULL, ScheduledActionName, ResourceId, ScalableDimension, StartTime = NULL, EndTime = NULL, ScalableTargetAction = NULL) {
   op <- new_operation(
     name = "PutScheduledAction",
@@ -2382,6 +2400,8 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' @keywords internal
 #'
 #' @rdname applicationautoscaling_register_scalable_target
+#'
+#' @aliases applicationautoscaling_register_scalable_target
 applicationautoscaling_register_scalable_target <- function(ServiceNamespace, ResourceId, ScalableDimension, MinCapacity = NULL, MaxCapacity = NULL, RoleARN = NULL, SuspendedState = NULL) {
   op <- new_operation(
     name = "RegisterScalableTarget",

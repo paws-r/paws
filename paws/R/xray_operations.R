@@ -54,6 +54,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname xray_batch_get_traces
+#'
+#' @aliases xray_batch_get_traces
 xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
   op <- new_operation(
     name = "BatchGetTraces",
@@ -150,6 +152,8 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_create_group
+#'
+#' @aliases xray_create_group
 xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGroup",
@@ -271,6 +275,8 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' @keywords internal
 #'
 #' @rdname xray_create_sampling_rule
+#'
+#' @aliases xray_create_sampling_rule
 xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
   op <- new_operation(
     name = "CreateSamplingRule",
@@ -313,6 +319,8 @@ xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_delete_group
+#'
+#' @aliases xray_delete_group
 xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -386,6 +394,8 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_delete_sampling_rule
+#'
+#' @aliases xray_delete_sampling_rule
 xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
   op <- new_operation(
     name = "DeleteSamplingRule",
@@ -431,6 +441,8 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_encryption_config
+#'
+#' @aliases xray_get_encryption_config
 xray_get_encryption_config <- function() {
   op <- new_operation(
     name = "GetEncryptionConfig",
@@ -486,6 +498,8 @@ xray_get_encryption_config <- function() {
 #' @keywords internal
 #'
 #' @rdname xray_get_group
+#'
+#' @aliases xray_get_group
 xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
   op <- new_operation(
     name = "GetGroup",
@@ -542,6 +556,8 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_groups
+#'
+#' @aliases xray_get_groups
 xray_get_groups <- function(NextToken = NULL) {
   op <- new_operation(
     name = "GetGroups",
@@ -636,6 +652,8 @@ xray_get_groups <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_insight
+#'
+#' @aliases xray_get_insight
 xray_get_insight <- function(InsightId) {
   op <- new_operation(
     name = "GetInsight",
@@ -720,6 +738,8 @@ xray_get_insight <- function(InsightId) {
 #' @keywords internal
 #'
 #' @rdname xray_get_insight_events
+#'
+#' @aliases xray_get_insight_events
 xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetInsightEvents",
@@ -812,6 +832,8 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname xray_get_insight_impact_graph
+#'
+#' @aliases xray_get_insight_impact_graph
 xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextToken = NULL) {
   op <- new_operation(
     name = "GetInsightImpactGraph",
@@ -932,6 +954,8 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
 #' @keywords internal
 #'
 #' @rdname xray_get_insight_summaries
+#'
+#' @aliases xray_get_insight_summaries
 xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName = NULL, StartTime, EndTime, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetInsightSummaries",
@@ -1004,6 +1028,8 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
 #' @keywords internal
 #'
 #' @rdname xray_get_sampling_rules
+#'
+#' @aliases xray_get_sampling_rules
 xray_get_sampling_rules <- function(NextToken = NULL) {
   op <- new_operation(
     name = "GetSamplingRules",
@@ -1062,6 +1088,8 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_sampling_statistic_summaries
+#'
+#' @aliases xray_get_sampling_statistic_summaries
 xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
   op <- new_operation(
     name = "GetSamplingStatisticSummaries",
@@ -1140,6 +1168,8 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_sampling_targets
+#'
+#' @aliases xray_get_sampling_targets
 xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
   op <- new_operation(
     name = "GetSamplingTargets",
@@ -1298,6 +1328,8 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' @keywords internal
 #'
 #' @rdname xray_get_service_graph
+#'
+#' @aliases xray_get_service_graph
 xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupARN = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetServiceGraph",
@@ -1415,6 +1447,8 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' @keywords internal
 #'
 #' @rdname xray_get_time_series_service_statistics
+#'
+#' @aliases xray_get_time_series_service_statistics
 xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupName = NULL, GroupARN = NULL, EntitySelectorExpression = NULL, Period = NULL, ForecastStatistics = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTimeSeriesServiceStatistics",
@@ -1549,6 +1583,8 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
 #' @keywords internal
 #'
 #' @rdname xray_get_trace_graph
+#'
+#' @aliases xray_get_trace_graph
 xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
   op <- new_operation(
     name = "GetTraceGraph",
@@ -1812,6 +1848,8 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_get_trace_summaries
+#'
+#' @aliases xray_get_trace_summaries
 xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, Sampling = NULL, SamplingStrategy = NULL, FilterExpression = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTraceSummaries",
@@ -1869,6 +1907,8 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 #' @keywords internal
 #'
 #' @rdname xray_list_tags_for_resource
+#'
+#' @aliases xray_list_tags_for_resource
 xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1934,6 +1974,8 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_put_encryption_config
+#'
+#' @aliases xray_put_encryption_config
 xray_put_encryption_config <- function(KeyId = NULL, Type) {
   op <- new_operation(
     name = "PutEncryptionConfig",
@@ -1999,6 +2041,8 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 #' @keywords internal
 #'
 #' @rdname xray_put_telemetry_records
+#'
+#' @aliases xray_put_telemetry_records
 xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, Hostname = NULL, ResourceARN = NULL) {
   op <- new_operation(
     name = "PutTelemetryRecords",
@@ -2101,6 +2145,8 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #' @keywords internal
 #'
 #' @rdname xray_put_trace_segments
+#'
+#' @aliases xray_put_trace_segments
 xray_put_trace_segments <- function(TraceSegmentDocuments) {
   op <- new_operation(
     name = "PutTraceSegments",
@@ -2170,6 +2216,8 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' @keywords internal
 #'
 #' @rdname xray_tag_resource
+#'
+#' @aliases xray_tag_resource
 xray_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2216,6 +2264,8 @@ xray_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname xray_untag_resource
+#'
+#' @aliases xray_untag_resource
 xray_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2287,6 +2337,8 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname xray_update_group
+#'
+#' @aliases xray_update_group
 xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpression = NULL, InsightsConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
@@ -2371,6 +2423,8 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 #' @keywords internal
 #'
 #' @rdname xray_update_sampling_rule
+#'
+#' @aliases xray_update_sampling_rule
 xray_update_sampling_rule <- function(SamplingRuleUpdate) {
   op <- new_operation(
     name = "UpdateSamplingRule",

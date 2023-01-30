@@ -88,6 +88,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_create_profile
+#'
+#' @aliases iamrolesanywhere_create_profile
 iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NULL, managedPolicyArns = NULL, name, requireInstanceProperties = NULL, roleArns, sessionPolicy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateProfile",
@@ -177,6 +179,8 @@ iamrolesanywhere_create_profile <- function(durationSeconds = NULL, enabled = NU
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_create_trust_anchor
+#'
+#' @aliases iamrolesanywhere_create_trust_anchor
 iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, source, tags = NULL) {
   op <- new_operation(
     name = "CreateTrustAnchor",
@@ -237,6 +241,8 @@ iamrolesanywhere_create_trust_anchor <- function(enabled = NULL, name, source, t
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_delete_crl
+#'
+#' @aliases iamrolesanywhere_delete_crl
 iamrolesanywhere_delete_crl <- function(crlId) {
   op <- new_operation(
     name = "DeleteCrl",
@@ -305,6 +311,8 @@ iamrolesanywhere_delete_crl <- function(crlId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_delete_profile
+#'
+#' @aliases iamrolesanywhere_delete_profile
 iamrolesanywhere_delete_profile <- function(profileId) {
   op <- new_operation(
     name = "DeleteProfile",
@@ -370,6 +378,8 @@ iamrolesanywhere_delete_profile <- function(profileId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_delete_trust_anchor
+#'
+#' @aliases iamrolesanywhere_delete_trust_anchor
 iamrolesanywhere_delete_trust_anchor <- function(trustAnchorId) {
   op <- new_operation(
     name = "DeleteTrustAnchor",
@@ -430,6 +440,8 @@ iamrolesanywhere_delete_trust_anchor <- function(trustAnchorId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_disable_crl
+#'
+#' @aliases iamrolesanywhere_disable_crl
 iamrolesanywhere_disable_crl <- function(crlId) {
   op <- new_operation(
     name = "DisableCrl",
@@ -500,6 +512,8 @@ iamrolesanywhere_disable_crl <- function(crlId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_disable_profile
+#'
+#' @aliases iamrolesanywhere_disable_profile
 iamrolesanywhere_disable_profile <- function(profileId) {
   op <- new_operation(
     name = "DisableProfile",
@@ -567,6 +581,8 @@ iamrolesanywhere_disable_profile <- function(profileId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_disable_trust_anchor
+#'
+#' @aliases iamrolesanywhere_disable_trust_anchor
 iamrolesanywhere_disable_trust_anchor <- function(trustAnchorId) {
   op <- new_operation(
     name = "DisableTrustAnchor",
@@ -628,6 +644,8 @@ iamrolesanywhere_disable_trust_anchor <- function(trustAnchorId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_enable_crl
+#'
+#' @aliases iamrolesanywhere_enable_crl
 iamrolesanywhere_enable_crl <- function(crlId) {
   op <- new_operation(
     name = "EnableCrl",
@@ -698,6 +716,8 @@ iamrolesanywhere_enable_crl <- function(crlId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_enable_profile
+#'
+#' @aliases iamrolesanywhere_enable_profile
 iamrolesanywhere_enable_profile <- function(profileId) {
   op <- new_operation(
     name = "EnableProfile",
@@ -764,6 +784,8 @@ iamrolesanywhere_enable_profile <- function(profileId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_enable_trust_anchor
+#'
+#' @aliases iamrolesanywhere_enable_trust_anchor
 iamrolesanywhere_enable_trust_anchor <- function(trustAnchorId) {
   op <- new_operation(
     name = "EnableTrustAnchor",
@@ -824,6 +846,8 @@ iamrolesanywhere_enable_trust_anchor <- function(trustAnchorId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_get_crl
+#'
+#' @aliases iamrolesanywhere_get_crl
 iamrolesanywhere_get_crl <- function(crlId) {
   op <- new_operation(
     name = "GetCrl",
@@ -892,6 +916,8 @@ iamrolesanywhere_get_crl <- function(crlId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_get_profile
+#'
+#' @aliases iamrolesanywhere_get_profile
 iamrolesanywhere_get_profile <- function(profileId) {
   op <- new_operation(
     name = "GetProfile",
@@ -980,6 +1006,8 @@ iamrolesanywhere_get_profile <- function(profileId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_get_subject
+#'
+#' @aliases iamrolesanywhere_get_subject
 iamrolesanywhere_get_subject <- function(subjectId) {
   op <- new_operation(
     name = "GetSubject",
@@ -1045,6 +1073,8 @@ iamrolesanywhere_get_subject <- function(subjectId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_get_trust_anchor
+#'
+#' @aliases iamrolesanywhere_get_trust_anchor
 iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
   op <- new_operation(
     name = "GetTrustAnchor",
@@ -1123,6 +1153,8 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_import_crl
+#'
+#' @aliases iamrolesanywhere_import_crl
 iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NULL, trustAnchorArn) {
   op <- new_operation(
     name = "ImportCrl",
@@ -1192,6 +1224,8 @@ iamrolesanywhere_import_crl <- function(crlData, enabled = NULL, name, tags = NU
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_list_crls
+#'
+#' @aliases iamrolesanywhere_list_crls
 iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
   op <- new_operation(
     name = "ListCrls",
@@ -1269,6 +1303,8 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_list_profiles
+#'
+#' @aliases iamrolesanywhere_list_profiles
 iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
   op <- new_operation(
     name = "ListProfiles",
@@ -1339,6 +1375,8 @@ iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_list_subjects
+#'
+#' @aliases iamrolesanywhere_list_subjects
 iamrolesanywhere_list_subjects <- function(nextToken = NULL, pageSize = NULL) {
   op <- new_operation(
     name = "ListSubjects",
@@ -1391,6 +1429,8 @@ iamrolesanywhere_list_subjects <- function(nextToken = NULL, pageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_list_tags_for_resource
+#'
+#' @aliases iamrolesanywhere_list_tags_for_resource
 iamrolesanywhere_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1465,6 +1505,8 @@ iamrolesanywhere_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_list_trust_anchors
+#'
+#' @aliases iamrolesanywhere_list_trust_anchors
 iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NULL) {
   op <- new_operation(
     name = "ListTrustAnchors",
@@ -1514,6 +1556,8 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_tag_resource
+#'
+#' @aliases iamrolesanywhere_tag_resource
 iamrolesanywhere_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1560,6 +1604,8 @@ iamrolesanywhere_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_untag_resource
+#'
+#' @aliases iamrolesanywhere_untag_resource
 iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1627,6 +1673,8 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_crl
+#'
+#' @aliases iamrolesanywhere_update_crl
 iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
   op <- new_operation(
     name = "UpdateCrl",
@@ -1717,6 +1765,8 @@ iamrolesanywhere_update_crl <- function(crlData = NULL, crlId, name = NULL) {
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_profile
+#'
+#' @aliases iamrolesanywhere_update_profile
 iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolicyArns = NULL, name = NULL, profileId, roleArns = NULL, sessionPolicy = NULL) {
   op <- new_operation(
     name = "UpdateProfile",
@@ -1799,6 +1849,8 @@ iamrolesanywhere_update_profile <- function(durationSeconds = NULL, managedPolic
 #' @keywords internal
 #'
 #' @rdname iamrolesanywhere_update_trust_anchor
+#'
+#' @aliases iamrolesanywhere_update_trust_anchor
 iamrolesanywhere_update_trust_anchor <- function(name = NULL, source = NULL, trustAnchorId) {
   op <- new_operation(
     name = "UpdateTrustAnchor",

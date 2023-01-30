@@ -139,6 +139,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_batch_meter_usage
+#'
+#' @aliases marketplacemetering_batch_meter_usage
 marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
   op <- new_operation(
     name = "BatchMeterUsage",
@@ -233,6 +235,8 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_meter_usage
+#'
+#' @aliases marketplacemetering_meter_usage
 marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimension, UsageQuantity = NULL, DryRun = NULL, UsageAllocations = NULL) {
   op <- new_operation(
     name = "MeterUsage",
@@ -333,6 +337,8 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_register_usage
+#'
+#' @aliases marketplacemetering_register_usage
 marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, Nonce = NULL) {
   op <- new_operation(
     name = "RegisterUsage",
@@ -398,6 +404,8 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' @keywords internal
 #'
 #' @rdname marketplacemetering_resolve_customer
+#'
+#' @aliases marketplacemetering_resolve_customer
 marketplacemetering_resolve_customer <- function(RegistrationToken) {
   op <- new_operation(
     name = "ResolveCustomer",

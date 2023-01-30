@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname personalizeevents_put_events
+#'
+#' @aliases personalizeevents_put_events
 personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, eventList) {
   op <- new_operation(
     name = "PutEvents",
@@ -105,6 +107,8 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
 #' @keywords internal
 #'
 #' @rdname personalizeevents_put_items
+#'
+#' @aliases personalizeevents_put_items
 personalizeevents_put_items <- function(datasetArn, items) {
   op <- new_operation(
     name = "PutItems",
@@ -155,6 +159,8 @@ personalizeevents_put_items <- function(datasetArn, items) {
 #' @keywords internal
 #'
 #' @rdname personalizeevents_put_users
+#'
+#' @aliases personalizeevents_put_users
 personalizeevents_put_users <- function(datasetArn, users) {
   op <- new_operation(
     name = "PutUsers",

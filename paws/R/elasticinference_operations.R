@@ -49,6 +49,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname elasticinference_describe_accelerator_offerings
+#'
+#' @aliases elasticinference_describe_accelerator_offerings
 elasticinference_describe_accelerator_offerings <- function(locationType, acceleratorTypes = NULL) {
   op <- new_operation(
     name = "DescribeAcceleratorOfferings",
@@ -105,6 +107,8 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 #' @keywords internal
 #'
 #' @rdname elasticinference_describe_accelerator_types
+#'
+#' @aliases elasticinference_describe_accelerator_types
 elasticinference_describe_accelerator_types <- function() {
   op <- new_operation(
     name = "DescribeAcceleratorTypes",
@@ -188,6 +192,8 @@ elasticinference_describe_accelerator_types <- function() {
 #' @keywords internal
 #'
 #' @rdname elasticinference_describe_accelerators
+#'
+#' @aliases elasticinference_describe_accelerators
 elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeAccelerators",
@@ -235,6 +241,8 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
 #' @keywords internal
 #'
 #' @rdname elasticinference_list_tags_for_resource
+#'
+#' @aliases elasticinference_list_tags_for_resource
 elasticinference_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -279,6 +287,8 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname elasticinference_tag_resource
+#'
+#' @aliases elasticinference_tag_resource
 elasticinference_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -323,6 +333,8 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname elasticinference_untag_resource
+#'
+#' @aliases elasticinference_untag_resource
 elasticinference_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",

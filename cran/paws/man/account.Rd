@@ -57,11 +57,11 @@ Operations for Amazon Web Services Account Management
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity.p2:account_delete_alternate_contact]{delete_alternate_contact} \tab Deletes the specified alternate contact from an Amazon Web Services account\cr
-\link[paws.security.identity.p2:account_get_alternate_contact]{get_alternate_contact} \tab Retrieves the specified alternate contact attached to an Amazon Web Services account\cr
-\link[paws.security.identity.p2:account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
-\link[paws.security.identity.p2:account_put_alternate_contact]{put_alternate_contact} \tab Modifies the specified alternate contact attached to an Amazon Web Services account\cr
-\link[paws.security.identity.p2:account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account
+\link[paws.security.identity:account_delete_alternate_contact]{delete_alternate_contact} \tab Deletes the specified alternate contact from an Amazon Web Services account\cr
+\link[paws.security.identity:account_get_alternate_contact]{get_alternate_contact} \tab Retrieves the specified alternate contact attached to an Amazon Web Services account\cr
+\link[paws.security.identity:account_get_contact_information]{get_contact_information} \tab Retrieves the primary contact information of an Amazon Web Services account\cr
+\link[paws.security.identity:account_put_alternate_contact]{put_alternate_contact} \tab Modifies the specified alternate contact attached to an Amazon Web Services account\cr
+\link[paws.security.identity:account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account
 }
 }
 

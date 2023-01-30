@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ivs_batch_get_channel
+#'
+#' @aliases ivs_batch_get_channel
 ivs_batch_get_channel <- function(arns) {
   op <- new_operation(
     name = "BatchGetChannel",
@@ -119,6 +121,8 @@ ivs_batch_get_channel <- function(arns) {
 #' @keywords internal
 #'
 #' @rdname ivs_batch_get_stream_key
+#'
+#' @aliases ivs_batch_get_stream_key
 ivs_batch_get_stream_key <- function(arns) {
   op <- new_operation(
     name = "BatchGetStreamKey",
@@ -214,6 +218,8 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
+#'
+#' @aliases ivs_create_channel
 ivs_create_channel <- function(authorized = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateChannel",
@@ -308,6 +314,8 @@ ivs_create_channel <- function(authorized = NULL, latencyMode = NULL, name = NUL
 #' @keywords internal
 #'
 #' @rdname ivs_create_recording_configuration
+#'
+#' @aliases ivs_create_recording_configuration
 ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, tags = NULL, thumbnailConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRecordingConfiguration",
@@ -372,6 +380,8 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
 #' @keywords internal
 #'
 #' @rdname ivs_create_stream_key
+#'
+#' @aliases ivs_create_stream_key
 ivs_create_stream_key <- function(channelArn, tags = NULL) {
   op <- new_operation(
     name = "CreateStreamKey",
@@ -420,6 +430,8 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname ivs_delete_channel
+#'
+#' @aliases ivs_delete_channel
 ivs_delete_channel <- function(arn) {
   op <- new_operation(
     name = "DeleteChannel",
@@ -464,6 +476,8 @@ ivs_delete_channel <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_delete_playback_key_pair
+#'
+#' @aliases ivs_delete_playback_key_pair
 ivs_delete_playback_key_pair <- function(arn) {
   op <- new_operation(
     name = "DeletePlaybackKeyPair",
@@ -511,6 +525,8 @@ ivs_delete_playback_key_pair <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_delete_recording_configuration
+#'
+#' @aliases ivs_delete_recording_configuration
 ivs_delete_recording_configuration <- function(arn) {
   op <- new_operation(
     name = "DeleteRecordingConfiguration",
@@ -553,6 +569,8 @@ ivs_delete_recording_configuration <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_delete_stream_key
+#'
+#' @aliases ivs_delete_stream_key
 ivs_delete_stream_key <- function(arn) {
   op <- new_operation(
     name = "DeleteStreamKey",
@@ -611,6 +629,8 @@ ivs_delete_stream_key <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_get_channel
+#'
+#' @aliases ivs_get_channel
 ivs_get_channel <- function(arn) {
   op <- new_operation(
     name = "GetChannel",
@@ -669,6 +689,8 @@ ivs_get_channel <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_get_playback_key_pair
+#'
+#' @aliases ivs_get_playback_key_pair
 ivs_get_playback_key_pair <- function(arn) {
   op <- new_operation(
     name = "GetPlaybackKeyPair",
@@ -730,6 +752,8 @@ ivs_get_playback_key_pair <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_get_recording_configuration
+#'
+#' @aliases ivs_get_recording_configuration
 ivs_get_recording_configuration <- function(arn) {
   op <- new_operation(
     name = "GetRecordingConfiguration",
@@ -785,6 +809,8 @@ ivs_get_recording_configuration <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_get_stream
+#'
+#' @aliases ivs_get_stream
 ivs_get_stream <- function(channelArn) {
   op <- new_operation(
     name = "GetStream",
@@ -837,6 +863,8 @@ ivs_get_stream <- function(channelArn) {
 #' @keywords internal
 #'
 #' @rdname ivs_get_stream_key
+#'
+#' @aliases ivs_get_stream_key
 ivs_get_stream_key <- function(arn) {
   op <- new_operation(
     name = "GetStreamKey",
@@ -951,6 +979,8 @@ ivs_get_stream_key <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ivs_get_stream_session
+#'
+#' @aliases ivs_get_stream_session
 ivs_get_stream_session <- function(channelArn, streamId = NULL) {
   op <- new_operation(
     name = "GetStreamSession",
@@ -1016,6 +1046,8 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' @keywords internal
 #'
 #' @rdname ivs_import_playback_key_pair
+#'
+#' @aliases ivs_import_playback_key_pair
 ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = NULL) {
   op <- new_operation(
     name = "ImportPlaybackKeyPair",
@@ -1087,6 +1119,8 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' @keywords internal
 #'
 #' @rdname ivs_list_channels
+#'
+#' @aliases ivs_list_channels
 ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfigurationArn = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListChannels",
@@ -1147,6 +1181,8 @@ ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfiguratio
 #' @keywords internal
 #'
 #' @rdname ivs_list_playback_key_pairs
+#'
+#' @aliases ivs_list_playback_key_pairs
 ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPlaybackKeyPairs",
@@ -1214,6 +1250,8 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname ivs_list_recording_configurations
+#'
+#' @aliases ivs_list_recording_configurations
 ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRecordingConfigurations",
@@ -1273,6 +1311,8 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname ivs_list_stream_keys
+#'
+#' @aliases ivs_list_stream_keys
 ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStreamKeys",
@@ -1337,6 +1377,8 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname ivs_list_stream_sessions
+#'
+#' @aliases ivs_list_stream_sessions
 ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStreamSessions",
@@ -1403,6 +1445,8 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname ivs_list_streams
+#'
+#' @aliases ivs_list_streams
 ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStreams",
@@ -1450,6 +1494,8 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname ivs_list_tags_for_resource
+#'
+#' @aliases ivs_list_tags_for_resource
 ivs_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1500,6 +1546,8 @@ ivs_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ivs_put_metadata
+#'
+#' @aliases ivs_put_metadata
 ivs_put_metadata <- function(channelArn, metadata) {
   op <- new_operation(
     name = "PutMetadata",
@@ -1546,6 +1594,8 @@ ivs_put_metadata <- function(channelArn, metadata) {
 #' @keywords internal
 #'
 #' @rdname ivs_stop_stream
+#'
+#' @aliases ivs_stop_stream
 ivs_stop_stream <- function(channelArn) {
   op <- new_operation(
     name = "StopStream",
@@ -1592,6 +1642,8 @@ ivs_stop_stream <- function(channelArn) {
 #' @keywords internal
 #'
 #' @rdname ivs_tag_resource
+#'
+#' @aliases ivs_tag_resource
 ivs_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1636,6 +1688,8 @@ ivs_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ivs_untag_resource
+#'
+#' @aliases ivs_untag_resource
 ivs_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1723,6 +1777,8 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
+#'
+#' @aliases ivs_update_channel
 ivs_update_channel <- function(arn, authorized = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateChannel",

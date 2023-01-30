@@ -49,6 +49,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatch_delete_alarms
+#'
+#' @aliases cloudwatch_delete_alarms
 cloudwatch_delete_alarms <- function(AlarmNames) {
   op <- new_operation(
     name = "DeleteAlarms",
@@ -180,6 +182,8 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_delete_anomaly_detector
+#'
+#' @aliases cloudwatch_delete_anomaly_detector
 cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, Stat = NULL, SingleMetricAnomalyDetector = NULL, MetricMathAnomalyDetector = NULL) {
   op <- new_operation(
     name = "DeleteAnomalyDetector",
@@ -224,6 +228,8 @@ cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NU
 #' @keywords internal
 #'
 #' @rdname cloudwatch_delete_dashboards
+#'
+#' @aliases cloudwatch_delete_dashboards
 cloudwatch_delete_dashboards <- function(DashboardNames) {
   op <- new_operation(
     name = "DeleteDashboards",
@@ -284,6 +290,8 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_delete_insight_rules
+#'
+#' @aliases cloudwatch_delete_insight_rules
 cloudwatch_delete_insight_rules <- function(RuleNames) {
   op <- new_operation(
     name = "DeleteInsightRules",
@@ -324,6 +332,8 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_delete_metric_stream
+#'
+#' @aliases cloudwatch_delete_metric_stream
 cloudwatch_delete_metric_stream <- function(Name) {
   op <- new_operation(
     name = "DeleteMetricStream",
@@ -419,6 +429,8 @@ cloudwatch_delete_metric_stream <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_alarm_history
+#'
+#' @aliases cloudwatch_describe_alarm_history
 cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NULL, HistoryItemType = NULL, StartDate = NULL, EndDate = NULL, MaxRecords = NULL, NextToken = NULL, ScanBy = NULL) {
   op <- new_operation(
     name = "DescribeAlarmHistory",
@@ -639,6 +651,8 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_alarms
+#'
+#' @aliases cloudwatch_describe_alarms
 cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL, AlarmTypes = NULL, ChildrenOfAlarmName = NULL, ParentsOfAlarmName = NULL, StateValue = NULL, ActionPrefix = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAlarms",
@@ -781,6 +795,8 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_alarms_for_metric
+#'
+#' @aliases cloudwatch_describe_alarms_for_metric
 cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL) {
   op <- new_operation(
     name = "DescribeAlarmsForMetric",
@@ -928,6 +944,8 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_anomaly_detectors
+#'
+#' @aliases cloudwatch_describe_anomaly_detectors
 cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults = NULL, Namespace = NULL, MetricName = NULL, Dimensions = NULL, AnomalyDetectorTypes = NULL) {
   op <- new_operation(
     name = "DescribeAnomalyDetectors",
@@ -989,6 +1007,8 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname cloudwatch_describe_insight_rules
+#'
+#' @aliases cloudwatch_describe_insight_rules
 cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeInsightRules",
@@ -1033,6 +1053,8 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatch_disable_alarm_actions
+#'
+#' @aliases cloudwatch_disable_alarm_actions
 cloudwatch_disable_alarm_actions <- function(AlarmNames) {
   op <- new_operation(
     name = "DisableAlarmActions",
@@ -1090,6 +1112,8 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_disable_insight_rules
+#'
+#' @aliases cloudwatch_disable_insight_rules
 cloudwatch_disable_insight_rules <- function(RuleNames) {
   op <- new_operation(
     name = "DisableInsightRules",
@@ -1132,6 +1156,8 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_enable_alarm_actions
+#'
+#' @aliases cloudwatch_enable_alarm_actions
 cloudwatch_enable_alarm_actions <- function(AlarmNames) {
   op <- new_operation(
     name = "EnableAlarmActions",
@@ -1189,6 +1215,8 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_enable_insight_rules
+#'
+#' @aliases cloudwatch_enable_insight_rules
 cloudwatch_enable_insight_rules <- function(RuleNames) {
   op <- new_operation(
     name = "EnableInsightRules",
@@ -1242,6 +1270,8 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_dashboard
+#'
+#' @aliases cloudwatch_get_dashboard
 cloudwatch_get_dashboard <- function(DashboardName) {
   op <- new_operation(
     name = "GetDashboard",
@@ -1409,6 +1439,8 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_insight_rule_report
+#'
+#' @aliases cloudwatch_get_insight_rule_report
 cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Period, MaxContributorCount = NULL, Metrics = NULL, OrderBy = NULL) {
   op <- new_operation(
     name = "GetInsightRuleReport",
@@ -1649,6 +1681,8 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_metric_data
+#'
+#' @aliases cloudwatch_get_metric_data
 cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, NextToken = NULL, ScanBy = NULL, MaxDatapoints = NULL, LabelOptions = NULL) {
   op <- new_operation(
     name = "GetMetricData",
@@ -1871,6 +1905,8 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_metric_statistics
+#'
+#' @aliases cloudwatch_get_metric_statistics
 cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions = NULL, StartTime, EndTime, Period, Statistics = NULL, ExtendedStatistics = NULL, Unit = NULL) {
   op <- new_operation(
     name = "GetMetricStatistics",
@@ -1950,6 +1986,8 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_metric_stream
+#'
+#' @aliases cloudwatch_get_metric_stream
 cloudwatch_get_metric_stream <- function(Name) {
   op <- new_operation(
     name = "GetMetricStream",
@@ -2057,6 +2095,8 @@ cloudwatch_get_metric_stream <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_get_metric_widget_image
+#'
+#' @aliases cloudwatch_get_metric_widget_image
 cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL) {
   op <- new_operation(
     name = "GetMetricWidgetImage",
@@ -2126,6 +2166,8 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatch_list_dashboards
+#'
+#' @aliases cloudwatch_list_dashboards
 cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDashboards",
@@ -2189,6 +2231,8 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname cloudwatch_list_metric_streams
+#'
+#' @aliases cloudwatch_list_metric_streams
 cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMetricStreams",
@@ -2288,6 +2332,8 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' @keywords internal
 #'
 #' @rdname cloudwatch_list_metrics
+#'
+#' @aliases cloudwatch_list_metrics
 cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, NextToken = NULL, RecentlyActive = NULL) {
   op <- new_operation(
     name = "ListMetrics",
@@ -2350,6 +2396,8 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' @keywords internal
 #'
 #' @rdname cloudwatch_list_tags_for_resource
+#'
+#' @aliases cloudwatch_list_tags_for_resource
 cloudwatch_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2499,6 +2547,8 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_anomaly_detector
+#'
+#' @aliases cloudwatch_put_anomaly_detector
 cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, Stat = NULL, Configuration = NULL, SingleMetricAnomalyDetector = NULL, MetricMathAnomalyDetector = NULL) {
   op <- new_operation(
     name = "PutAnomalyDetector",
@@ -2710,6 +2760,8 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_composite_alarm
+#'
+#' @aliases cloudwatch_put_composite_alarm
 cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions = NULL, AlarmDescription = NULL, AlarmName, AlarmRule, InsufficientDataActions = NULL, OKActions = NULL, Tags = NULL, ActionsSuppressor = NULL, ActionsSuppressorWaitPeriod = NULL, ActionsSuppressorExtensionPeriod = NULL) {
   op <- new_operation(
     name = "PutCompositeAlarm",
@@ -2794,6 +2846,8 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_dashboard
+#'
+#' @aliases cloudwatch_put_dashboard
 cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
   op <- new_operation(
     name = "PutDashboard",
@@ -2869,6 +2923,8 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_insight_rule
+#'
+#' @aliases cloudwatch_put_insight_rule
 cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefinition, Tags = NULL) {
   op <- new_operation(
     name = "PutInsightRule",
@@ -3231,6 +3287,8 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_alarm
+#'
+#' @aliases cloudwatch_put_metric_alarm
 cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, ActionsEnabled = NULL, OKActions = NULL, AlarmActions = NULL, InsufficientDataActions = NULL, MetricName = NULL, Namespace = NULL, Statistic = NULL, ExtendedStatistic = NULL, Dimensions = NULL, Period = NULL, Unit = NULL, EvaluationPeriods, DatapointsToAlarm = NULL, Threshold = NULL, ComparisonOperator, TreatMissingData = NULL, EvaluateLowSampleCountPercentile = NULL, Metrics = NULL, Tags = NULL, ThresholdMetricId = NULL) {
   op <- new_operation(
     name = "PutMetricAlarm",
@@ -3357,6 +3415,8 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_data
+#'
+#' @aliases cloudwatch_put_metric_data
 cloudwatch_put_metric_data <- function(Namespace, MetricData) {
   op <- new_operation(
     name = "PutMetricData",
@@ -3526,6 +3586,8 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_put_metric_stream
+#'
+#' @aliases cloudwatch_put_metric_stream
 cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFilters = NULL, FirehoseArn, RoleArn, OutputFormat, Tags = NULL, StatisticsConfigurations = NULL) {
   op <- new_operation(
     name = "PutMetricStream",
@@ -3599,6 +3661,8 @@ cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFil
 #' @keywords internal
 #'
 #' @rdname cloudwatch_set_alarm_state
+#'
+#' @aliases cloudwatch_set_alarm_state
 cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, StateReasonData = NULL) {
   op <- new_operation(
     name = "SetAlarmState",
@@ -3645,6 +3709,8 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' @keywords internal
 #'
 #' @rdname cloudwatch_start_metric_streams
+#'
+#' @aliases cloudwatch_start_metric_streams
 cloudwatch_start_metric_streams <- function(Names) {
   op <- new_operation(
     name = "StartMetricStreams",
@@ -3691,6 +3757,8 @@ cloudwatch_start_metric_streams <- function(Names) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_stop_metric_streams
+#'
+#' @aliases cloudwatch_stop_metric_streams
 cloudwatch_stop_metric_streams <- function(Names) {
   op <- new_operation(
     name = "StopMetricStreams",
@@ -3767,6 +3835,8 @@ cloudwatch_stop_metric_streams <- function(Names) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_tag_resource
+#'
+#' @aliases cloudwatch_tag_resource
 cloudwatch_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3822,6 +3892,8 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname cloudwatch_untag_resource
+#'
+#' @aliases cloudwatch_untag_resource
 cloudwatch_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",

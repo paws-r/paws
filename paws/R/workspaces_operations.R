@@ -42,6 +42,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname workspaces_associate_connection_alias
+#'
+#' @aliases workspaces_associate_connection_alias
 workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
   op <- new_operation(
     name = "AssociateConnectionAlias",
@@ -88,6 +90,8 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_associate_ip_groups
+#'
+#' @aliases workspaces_associate_ip_groups
 workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
   op <- new_operation(
     name = "AssociateIpGroups",
@@ -138,6 +142,8 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 #' @keywords internal
 #'
 #' @rdname workspaces_authorize_ip_rules
+#'
+#' @aliases workspaces_authorize_ip_rules
 workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
   op <- new_operation(
     name = "AuthorizeIpRules",
@@ -216,6 +222,8 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' @keywords internal
 #'
 #' @rdname workspaces_copy_workspace_image
+#'
+#' @aliases workspaces_copy_workspace_image
 workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImageId, SourceRegion, Tags = NULL) {
   op <- new_operation(
     name = "CopyWorkspaceImage",
@@ -269,6 +277,8 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' @keywords internal
 #'
 #' @rdname workspaces_create_connect_client_add_in
+#'
+#' @aliases workspaces_create_connect_client_add_in
 workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
   op <- new_operation(
     name = "CreateConnectClientAddIn",
@@ -332,6 +342,8 @@ workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
 #' @keywords internal
 #'
 #' @rdname workspaces_create_connection_alias
+#'
+#' @aliases workspaces_create_connection_alias
 workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
   op <- new_operation(
     name = "CreateConnectionAlias",
@@ -407,6 +419,8 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname workspaces_create_ip_group
+#'
+#' @aliases workspaces_create_ip_group
 workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIpGroup",
@@ -456,6 +470,8 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #' @keywords internal
 #'
 #' @rdname workspaces_create_tags
+#'
+#' @aliases workspaces_create_tags
 workspaces_create_tags <- function(ResourceId, Tags) {
   op <- new_operation(
     name = "CreateTags",
@@ -534,6 +550,8 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #' @keywords internal
 #'
 #' @rdname workspaces_create_updated_workspace_image
+#'
+#' @aliases workspaces_create_updated_workspace_image
 workspaces_create_updated_workspace_image <- function(Name, Description, SourceImageId, Tags = NULL) {
   op <- new_operation(
     name = "CreateUpdatedWorkspaceImage",
@@ -630,6 +648,8 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #' @keywords internal
 #'
 #' @rdname workspaces_create_workspace_bundle
+#'
+#' @aliases workspaces_create_workspace_bundle
 workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, ImageId, ComputeType, UserStorage, RootStorage = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkspaceBundle",
@@ -699,6 +719,8 @@ workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, Im
 #' @keywords internal
 #'
 #' @rdname workspaces_create_workspace_image
+#'
+#' @aliases workspaces_create_workspace_image
 workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkspaceImage",
@@ -825,6 +847,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' @keywords internal
 #'
 #' @rdname workspaces_create_workspaces
+#'
+#' @aliases workspaces_create_workspaces
 workspaces_create_workspaces <- function(Workspaces) {
   op <- new_operation(
     name = "CreateWorkspaces",
@@ -876,6 +900,8 @@ workspaces_create_workspaces <- function(Workspaces) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_client_branding
+#'
+#' @aliases workspaces_delete_client_branding
 workspaces_delete_client_branding <- function(ResourceId, Platforms) {
   op <- new_operation(
     name = "DeleteClientBranding",
@@ -920,6 +946,8 @@ workspaces_delete_client_branding <- function(ResourceId, Platforms) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_connect_client_add_in
+#'
+#' @aliases workspaces_delete_connect_client_add_in
 workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
   op <- new_operation(
     name = "DeleteConnectClientAddIn",
@@ -975,6 +1003,8 @@ workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_connection_alias
+#'
+#' @aliases workspaces_delete_connection_alias
 workspaces_delete_connection_alias <- function(AliasId) {
   op <- new_operation(
     name = "DeleteConnectionAlias",
@@ -1018,6 +1048,8 @@ workspaces_delete_connection_alias <- function(AliasId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_ip_group
+#'
+#' @aliases workspaces_delete_ip_group
 workspaces_delete_ip_group <- function(GroupId) {
   op <- new_operation(
     name = "DeleteIpGroup",
@@ -1064,6 +1096,8 @@ workspaces_delete_ip_group <- function(GroupId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_tags
+#'
+#' @aliases workspaces_delete_tags
 workspaces_delete_tags <- function(ResourceId, TagKeys) {
   op <- new_operation(
     name = "DeleteTags",
@@ -1106,6 +1140,8 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_workspace_bundle
+#'
+#' @aliases workspaces_delete_workspace_bundle
 workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
   op <- new_operation(
     name = "DeleteWorkspaceBundle",
@@ -1148,6 +1184,8 @@ workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
 #' @keywords internal
 #'
 #' @rdname workspaces_delete_workspace_image
+#'
+#' @aliases workspaces_delete_workspace_image
 workspaces_delete_workspace_image <- function(ImageId) {
   op <- new_operation(
     name = "DeleteWorkspaceImage",
@@ -1206,6 +1244,8 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_deregister_workspace_directory
+#'
+#' @aliases workspaces_deregister_workspace_directory
 workspaces_deregister_workspace_directory <- function(DirectoryId) {
   op <- new_operation(
     name = "DeregisterWorkspaceDirectory",
@@ -1250,6 +1290,8 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_account
+#'
+#' @aliases workspaces_describe_account
 workspaces_describe_account <- function() {
   op <- new_operation(
     name = "DescribeAccount",
@@ -1310,6 +1352,8 @@ workspaces_describe_account <- function() {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_account_modifications
+#'
+#' @aliases workspaces_describe_account_modifications
 workspaces_describe_account_modifications <- function(NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAccountModifications",
@@ -1417,6 +1461,8 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_client_branding
+#'
+#' @aliases workspaces_describe_client_branding
 workspaces_describe_client_branding <- function(ResourceId) {
   op <- new_operation(
     name = "DescribeClientBranding",
@@ -1473,6 +1519,8 @@ workspaces_describe_client_branding <- function(ResourceId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_client_properties
+#'
+#' @aliases workspaces_describe_client_properties
 workspaces_describe_client_properties <- function(ResourceIds) {
   op <- new_operation(
     name = "DescribeClientProperties",
@@ -1533,6 +1581,8 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_connect_client_add_ins
+#'
+#' @aliases workspaces_describe_connect_client_add_ins
 workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeConnectClientAddIns",
@@ -1597,6 +1647,8 @@ workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = N
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_connection_alias_permissions
+#'
+#' @aliases workspaces_describe_connection_alias_permissions
 workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeConnectionAliasPermissions",
@@ -1672,6 +1724,8 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_connection_aliases
+#'
+#' @aliases workspaces_describe_connection_aliases
 workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeConnectionAliases",
@@ -1737,6 +1791,8 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_ip_groups
+#'
+#' @aliases workspaces_describe_ip_groups
 workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeIpGroups",
@@ -1789,6 +1845,8 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_tags
+#'
+#' @aliases workspaces_describe_tags
 workspaces_describe_tags <- function(ResourceId) {
   op <- new_operation(
     name = "DescribeTags",
@@ -1874,6 +1932,8 @@ workspaces_describe_tags <- function(ResourceId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_bundles
+#'
+#' @aliases workspaces_describe_workspace_bundles
 workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceBundles",
@@ -1983,6 +2043,8 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_directories
+#'
+#' @aliases workspaces_describe_workspace_directories
 workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceDirectories",
@@ -2042,6 +2104,8 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_image_permissions
+#'
+#' @aliases workspaces_describe_workspace_image_permissions
 workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceImagePermissions",
@@ -2122,6 +2186,8 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_images
+#'
+#' @aliases workspaces_describe_workspace_images
 workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceImages",
@@ -2180,6 +2246,8 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_snapshots
+#'
+#' @aliases workspaces_describe_workspace_snapshots
 workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
   op <- new_operation(
     name = "DescribeWorkspaceSnapshots",
@@ -2284,6 +2352,8 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspaces
+#'
+#' @aliases workspaces_describe_workspaces
 workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NULL, UserName = NULL, BundleId = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaces",
@@ -2347,6 +2417,8 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspaces_connection_status
+#'
+#' @aliases workspaces_describe_workspaces_connection_status
 workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeWorkspacesConnectionStatus",
@@ -2396,6 +2468,8 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #' @keywords internal
 #'
 #' @rdname workspaces_disassociate_connection_alias
+#'
+#' @aliases workspaces_disassociate_connection_alias
 workspaces_disassociate_connection_alias <- function(AliasId) {
   op <- new_operation(
     name = "DisassociateConnectionAlias",
@@ -2442,6 +2516,8 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_disassociate_ip_groups
+#'
+#' @aliases workspaces_disassociate_ip_groups
 workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
   op <- new_operation(
     name = "DisassociateIpGroups",
@@ -2627,6 +2703,8 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' @keywords internal
 #'
 #' @rdname workspaces_import_client_branding
+#'
+#' @aliases workspaces_import_client_branding
 workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NULL, DeviceTypeOsx = NULL, DeviceTypeAndroid = NULL, DeviceTypeIos = NULL, DeviceTypeLinux = NULL, DeviceTypeWeb = NULL) {
   op <- new_operation(
     name = "ImportClientBranding",
@@ -2710,6 +2788,8 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' @keywords internal
 #'
 #' @rdname workspaces_import_workspace_image
+#'
+#' @aliases workspaces_import_workspace_image
 workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, ImageName, ImageDescription, Tags = NULL, Applications = NULL) {
   op <- new_operation(
     name = "ImportWorkspaceImage",
@@ -2779,6 +2859,8 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' @keywords internal
 #'
 #' @rdname workspaces_list_available_management_cidr_ranges
+#'
+#' @aliases workspaces_list_available_management_cidr_ranges
 workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRangeConstraint, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAvailableManagementCidrRanges",
@@ -2841,6 +2923,8 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' @keywords internal
 #'
 #' @rdname workspaces_migrate_workspace
+#'
+#' @aliases workspaces_migrate_workspace
 workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
   op <- new_operation(
     name = "MigrateWorkspace",
@@ -2892,6 +2976,8 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_account
+#'
+#' @aliases workspaces_modify_account
 workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedTenancyManagementCidrRange = NULL) {
   op <- new_operation(
     name = "ModifyAccount",
@@ -2936,6 +3022,8 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_client_properties
+#'
+#' @aliases workspaces_modify_client_properties
 workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
   op <- new_operation(
     name = "ModifyClientProperties",
@@ -2998,6 +3086,8 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_saml_properties
+#'
+#' @aliases workspaces_modify_saml_properties
 workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL, PropertiesToDelete = NULL) {
   op <- new_operation(
     name = "ModifySamlProperties",
@@ -3051,6 +3141,8 @@ workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL,
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_selfservice_permissions
+#'
+#' @aliases workspaces_modify_selfservice_permissions
 workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePermissions) {
   op <- new_operation(
     name = "ModifySelfservicePermissions",
@@ -3106,6 +3198,8 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_workspace_access_properties
+#'
+#' @aliases workspaces_modify_workspace_access_properties
 workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceAccessProperties) {
   op <- new_operation(
     name = "ModifyWorkspaceAccessProperties",
@@ -3156,6 +3250,8 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_workspace_creation_properties
+#'
+#' @aliases workspaces_modify_workspace_creation_properties
 workspaces_modify_workspace_creation_properties <- function(ResourceId, WorkspaceCreationProperties) {
   op <- new_operation(
     name = "ModifyWorkspaceCreationProperties",
@@ -3206,6 +3302,8 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_workspace_properties
+#'
+#' @aliases workspaces_modify_workspace_properties
 workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspaceProperties) {
   op <- new_operation(
     name = "ModifyWorkspaceProperties",
@@ -3254,6 +3352,8 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 #' @keywords internal
 #'
 #' @rdname workspaces_modify_workspace_state
+#'
+#' @aliases workspaces_modify_workspace_state
 workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
   op <- new_operation(
     name = "ModifyWorkspaceState",
@@ -3315,6 +3415,8 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 #' @keywords internal
 #'
 #' @rdname workspaces_reboot_workspaces
+#'
+#' @aliases workspaces_reboot_workspaces
 workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
   op <- new_operation(
     name = "RebootWorkspaces",
@@ -3380,6 +3482,8 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #' @keywords internal
 #'
 #' @rdname workspaces_rebuild_workspaces
+#'
+#' @aliases workspaces_rebuild_workspaces
 workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
   op <- new_operation(
     name = "RebuildWorkspaces",
@@ -3461,6 +3565,8 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @keywords internal
 #'
 #' @rdname workspaces_register_workspace_directory
+#'
+#' @aliases workspaces_register_workspace_directory
 workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NULL, EnableWorkDocs, EnableSelfService = NULL, Tenancy = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RegisterWorkspaceDirectory",
@@ -3511,6 +3617,8 @@ workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NUL
 #' @keywords internal
 #'
 #' @rdname workspaces_restore_workspace
+#'
+#' @aliases workspaces_restore_workspace
 workspaces_restore_workspace <- function(WorkspaceId) {
   op <- new_operation(
     name = "RestoreWorkspace",
@@ -3555,6 +3663,8 @@ workspaces_restore_workspace <- function(WorkspaceId) {
 #' @keywords internal
 #'
 #' @rdname workspaces_revoke_ip_rules
+#'
+#' @aliases workspaces_revoke_ip_rules
 workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
   op <- new_operation(
     name = "RevokeIpRules",
@@ -3613,6 +3723,8 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 #' @keywords internal
 #'
 #' @rdname workspaces_start_workspaces
+#'
+#' @aliases workspaces_start_workspaces
 workspaces_start_workspaces <- function(StartWorkspaceRequests) {
   op <- new_operation(
     name = "StartWorkspaces",
@@ -3671,6 +3783,8 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 #' @keywords internal
 #'
 #' @rdname workspaces_stop_workspaces
+#'
+#' @aliases workspaces_stop_workspaces
 workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
   op <- new_operation(
     name = "StopWorkspaces",
@@ -3755,6 +3869,8 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #' @keywords internal
 #'
 #' @rdname workspaces_terminate_workspaces
+#'
+#' @aliases workspaces_terminate_workspaces
 workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
   op <- new_operation(
     name = "TerminateWorkspaces",
@@ -3802,6 +3918,8 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 #' @keywords internal
 #'
 #' @rdname workspaces_update_connect_client_add_in
+#'
+#' @aliases workspaces_update_connect_client_add_in
 workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = NULL, URL = NULL) {
   op <- new_operation(
     name = "UpdateConnectClientAddIn",
@@ -3870,6 +3988,8 @@ workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = 
 #' @keywords internal
 #'
 #' @rdname workspaces_update_connection_alias_permission
+#'
+#' @aliases workspaces_update_connection_alias_permission
 workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAliasPermission) {
   op <- new_operation(
     name = "UpdateConnectionAliasPermission",
@@ -3919,6 +4039,8 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
 #' @keywords internal
 #'
 #' @rdname workspaces_update_rules_of_ip_group
+#'
+#' @aliases workspaces_update_rules_of_ip_group
 workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
   op <- new_operation(
     name = "UpdateRulesOfIpGroup",
@@ -3968,6 +4090,8 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 #' @keywords internal
 #'
 #' @rdname workspaces_update_workspace_bundle
+#'
+#' @aliases workspaces_update_workspace_bundle
 workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) {
   op <- new_operation(
     name = "UpdateWorkspaceBundle",
@@ -4046,6 +4170,8 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
 #' @keywords internal
 #'
 #' @rdname workspaces_update_workspace_image_permission
+#'
+#' @aliases workspaces_update_workspace_image_permission
 workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage, SharedAccountId) {
   op <- new_operation(
     name = "UpdateWorkspaceImagePermission",

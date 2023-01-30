@@ -75,6 +75,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname fsx_associate_file_system_aliases
+#'
+#' @aliases fsx_associate_file_system_aliases
 fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSystemId, Aliases) {
   op <- new_operation(
     name = "AssociateFileSystemAliases",
@@ -131,6 +133,8 @@ fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSys
 #' @keywords internal
 #'
 #' @rdname fsx_cancel_data_repository_task
+#'
+#' @aliases fsx_cancel_data_repository_task
 fsx_cancel_data_repository_task <- function(TaskId) {
   op <- new_operation(
     name = "CancelDataRepositoryTask",
@@ -765,6 +769,8 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #' @keywords internal
 #'
 #' @rdname fsx_copy_backup
+#'
+#' @aliases fsx_copy_backup
 fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceRegion = NULL, KmsKeyId = NULL, CopyTags = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CopyBackup",
@@ -1413,6 +1419,8 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #' @keywords internal
 #'
 #' @rdname fsx_create_backup
+#'
+#' @aliases fsx_create_backup
 fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Tags = NULL, VolumeId = NULL) {
   op <- new_operation(
     name = "CreateBackup",
@@ -1569,6 +1577,8 @@ fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Ta
 #' @keywords internal
 #'
 #' @rdname fsx_create_data_repository_association
+#'
+#' @aliases fsx_create_data_repository_association
 fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath, DataRepositoryPath, BatchImportMetaDataOnCreate = NULL, ImportedFileChunkSize = NULL, S3 = NULL, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataRepositoryAssociation",
@@ -1709,6 +1719,8 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath,
 #' @keywords internal
 #'
 #' @rdname fsx_create_data_repository_task
+#'
+#' @aliases fsx_create_data_repository_task
 fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Report, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataRepositoryTask",
@@ -2306,6 +2318,8 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system
+#'
+#' @aliases fsx_create_file_system
 fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, StorageCapacity, StorageType = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystem",
@@ -2814,6 +2828,8 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' @keywords internal
 #'
 #' @rdname fsx_create_file_system_from_backup
+#'
+#' @aliases fsx_create_file_system_from_backup
 fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NULL, SubnetIds, SecurityGroupIds = NULL, Tags = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, StorageType = NULL, KmsKeyId = NULL, FileSystemTypeVersion = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFileSystemFromBackup",
@@ -3142,6 +3158,8 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #' @keywords internal
 #'
 #' @rdname fsx_create_snapshot
+#'
+#' @aliases fsx_create_snapshot
 fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -3296,6 +3314,8 @@ fsx_create_snapshot <- function(ClientRequestToken = NULL, Name, VolumeId, Tags 
 #' @keywords internal
 #'
 #' @rdname fsx_create_storage_virtual_machine
+#'
+#' @aliases fsx_create_storage_virtual_machine
 fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NULL, ClientRequestToken = NULL, FileSystemId, Name, SvmAdminPassword = NULL, Tags = NULL, RootVolumeSecurityStyle = NULL) {
   op <- new_operation(
     name = "CreateStorageVirtualMachine",
@@ -3642,6 +3662,8 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #' @keywords internal
 #'
 #' @rdname fsx_create_volume
+#'
+#' @aliases fsx_create_volume
 fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, OntapConfiguration = NULL, Tags = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "CreateVolume",
@@ -3956,6 +3978,8 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #' @keywords internal
 #'
 #' @rdname fsx_create_volume_from_backup
+#'
+#' @aliases fsx_create_volume_from_backup
 fsx_create_volume_from_backup <- function(BackupId, ClientRequestToken = NULL, Name, OntapConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateVolumeFromBackup",
@@ -4022,6 +4046,8 @@ fsx_create_volume_from_backup <- function(BackupId, ClientRequestToken = NULL, N
 #' @keywords internal
 #'
 #' @rdname fsx_delete_backup
+#'
+#' @aliases fsx_delete_backup
 fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "DeleteBackup",
@@ -4082,6 +4108,8 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname fsx_delete_data_repository_association
+#'
+#' @aliases fsx_delete_data_repository_association
 fsx_delete_data_repository_association <- function(AssociationId, ClientRequestToken = NULL, DeleteDataInFileSystem) {
   op <- new_operation(
     name = "DeleteDataRepositoryAssociation",
@@ -4230,6 +4258,8 @@ fsx_delete_data_repository_association <- function(AssociationId, ClientRequestT
 #' @keywords internal
 #'
 #' @rdname fsx_delete_file_system
+#'
+#' @aliases fsx_delete_file_system
 fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "DeleteFileSystem",
@@ -4284,6 +4314,8 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #' @keywords internal
 #'
 #' @rdname fsx_delete_snapshot
+#'
+#' @aliases fsx_delete_snapshot
 fsx_delete_snapshot <- function(ClientRequestToken = NULL, SnapshotId) {
   op <- new_operation(
     name = "DeleteSnapshot",
@@ -4335,6 +4367,8 @@ fsx_delete_snapshot <- function(ClientRequestToken = NULL, SnapshotId) {
 #' @keywords internal
 #'
 #' @rdname fsx_delete_storage_virtual_machine
+#'
+#' @aliases fsx_delete_storage_virtual_machine
 fsx_delete_storage_virtual_machine <- function(ClientRequestToken = NULL, StorageVirtualMachineId) {
   op <- new_operation(
     name = "DeleteStorageVirtualMachine",
@@ -4412,6 +4446,8 @@ fsx_delete_storage_virtual_machine <- function(ClientRequestToken = NULL, Storag
 #' @keywords internal
 #'
 #' @rdname fsx_delete_volume
+#'
+#' @aliases fsx_delete_volume
 fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "DeleteVolume",
@@ -5032,6 +5068,8 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #' @keywords internal
 #'
 #' @rdname fsx_describe_backups
+#'
+#' @aliases fsx_describe_backups
 fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBackups",
@@ -5154,6 +5192,8 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname fsx_describe_data_repository_associations
+#'
+#' @aliases fsx_describe_data_repository_associations
 fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDataRepositoryAssociations",
@@ -5278,6 +5318,8 @@ fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname fsx_describe_data_repository_tasks
+#'
+#' @aliases fsx_describe_data_repository_tasks
 fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDataRepositoryTasks",
@@ -5348,6 +5390,8 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' @keywords internal
 #'
 #' @rdname fsx_describe_file_system_aliases
+#'
+#' @aliases fsx_describe_file_system_aliases
 fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSystemId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFileSystemAliases",
@@ -5688,6 +5732,8 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' @keywords internal
 #'
 #' @rdname fsx_describe_file_systems
+#'
+#' @aliases fsx_describe_file_systems
 fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFileSystems",
@@ -6024,6 +6070,8 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname fsx_describe_snapshots
+#'
+#' @aliases fsx_describe_snapshots
 fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
@@ -6149,6 +6197,8 @@ fsx_describe_snapshots <- function(SnapshotIds = NULL, Filters = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname fsx_describe_storage_virtual_machines
+#'
+#' @aliases fsx_describe_storage_virtual_machines
 fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeStorageVirtualMachines",
@@ -6457,6 +6507,8 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #' @keywords internal
 #'
 #' @rdname fsx_describe_volumes
+#'
+#' @aliases fsx_describe_volumes
 fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVolumes",
@@ -6527,6 +6579,8 @@ fsx_describe_volumes <- function(VolumeIds = NULL, Filters = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname fsx_disassociate_file_system_aliases
+#'
+#' @aliases fsx_disassociate_file_system_aliases
 fsx_disassociate_file_system_aliases <- function(ClientRequestToken = NULL, FileSystemId, Aliases) {
   op <- new_operation(
     name = "DisassociateFileSystemAliases",
@@ -6618,6 +6672,8 @@ fsx_disassociate_file_system_aliases <- function(ClientRequestToken = NULL, File
 #' @keywords internal
 #'
 #' @rdname fsx_list_tags_for_resource
+#'
+#' @aliases fsx_list_tags_for_resource
 fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -6909,6 +6965,8 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname fsx_release_file_system_nfs_v3_locks
+#'
+#' @aliases fsx_release_file_system_nfs_v3_locks
 fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "ReleaseFileSystemNfsV3Locks",
@@ -6979,6 +7037,8 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #' @keywords internal
 #'
 #' @rdname fsx_restore_volume_from_snapshot
+#'
+#' @aliases fsx_restore_volume_from_snapshot
 fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId, SnapshotId, Options = NULL) {
   op <- new_operation(
     name = "RestoreVolumeFromSnapshot",
@@ -7042,6 +7102,8 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
 #' @keywords internal
 #'
 #' @rdname fsx_tag_resource
+#'
+#' @aliases fsx_tag_resource
 fsx_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -7098,6 +7160,8 @@ fsx_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname fsx_untag_resource
+#'
+#' @aliases fsx_untag_resource
 fsx_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -7209,6 +7273,8 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname fsx_update_data_repository_association
+#'
+#' @aliases fsx_update_data_repository_association
 fsx_update_data_repository_association <- function(AssociationId, ClientRequestToken = NULL, ImportedFileChunkSize = NULL, S3 = NULL) {
   op <- new_operation(
     name = "UpdateDataRepositoryAssociation",
@@ -7689,6 +7755,8 @@ fsx_update_data_repository_association <- function(AssociationId, ClientRequestT
 #' @keywords internal
 #'
 #' @rdname fsx_update_file_system
+#'
+#' @aliases fsx_update_file_system
 fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
@@ -7982,6 +8050,8 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #' @keywords internal
 #'
 #' @rdname fsx_update_snapshot
+#'
+#' @aliases fsx_update_snapshot
 fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
   op <- new_operation(
     name = "UpdateSnapshot",
@@ -8103,6 +8173,8 @@ fsx_update_snapshot <- function(ClientRequestToken = NULL, Name, SnapshotId) {
 #' @keywords internal
 #'
 #' @rdname fsx_update_storage_virtual_machine
+#'
+#' @aliases fsx_update_storage_virtual_machine
 fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NULL, ClientRequestToken = NULL, StorageVirtualMachineId, SvmAdminPassword = NULL) {
   op <- new_operation(
     name = "UpdateStorageVirtualMachine",
@@ -8440,6 +8512,8 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #' @keywords internal
 #'
 #' @rdname fsx_update_volume
+#'
+#' @aliases fsx_update_volume
 fsx_update_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfiguration = NULL, Name = NULL, OpenZFSConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateVolume",

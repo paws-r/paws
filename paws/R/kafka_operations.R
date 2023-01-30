@@ -42,6 +42,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kafka_batch_associate_scram_secret
+#'
+#' @aliases kafka_batch_associate_scram_secret
 kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
   op <- new_operation(
     name = "BatchAssociateScramSecret",
@@ -193,6 +195,8 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @keywords internal
 #'
 #' @rdname kafka_create_cluster
+#'
+#' @aliases kafka_create_cluster
 kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NULL, ClusterName, ConfigurationInfo = NULL, EncryptionInfo = NULL, EnhancedMonitoring = NULL, OpenMonitoring = NULL, KafkaVersion, LoggingInfo = NULL, NumberOfBrokerNodes, Tags = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -354,6 +358,8 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 #' @keywords internal
 #'
 #' @rdname kafka_create_cluster_v2
+#'
+#' @aliases kafka_create_cluster_v2
 kafka_create_cluster_v2 <- function(ClusterName, Tags = NULL, Provisioned = NULL, Serverless = NULL) {
   op <- new_operation(
     name = "CreateClusterV2",
@@ -424,6 +430,8 @@ kafka_create_cluster_v2 <- function(ClusterName, Tags = NULL, Provisioned = NULL
 #' @keywords internal
 #'
 #' @rdname kafka_create_configuration
+#'
+#' @aliases kafka_create_configuration
 kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL, Name, ServerProperties) {
   op <- new_operation(
     name = "CreateConfiguration",
@@ -474,6 +482,8 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #' @keywords internal
 #'
 #' @rdname kafka_delete_cluster
+#'
+#' @aliases kafka_delete_cluster
 kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -521,6 +531,8 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname kafka_delete_configuration
+#'
+#' @aliases kafka_delete_configuration
 kafka_delete_configuration <- function(Arn) {
   op <- new_operation(
     name = "DeleteConfiguration",
@@ -672,6 +684,8 @@ kafka_delete_configuration <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname kafka_describe_cluster
+#'
+#' @aliases kafka_describe_cluster
 kafka_describe_cluster <- function(ClusterArn) {
   op <- new_operation(
     name = "DescribeCluster",
@@ -845,6 +859,8 @@ kafka_describe_cluster <- function(ClusterArn) {
 #' @keywords internal
 #'
 #' @rdname kafka_describe_cluster_v2
+#'
+#' @aliases kafka_describe_cluster_v2
 kafka_describe_cluster_v2 <- function(ClusterArn) {
   op <- new_operation(
     name = "DescribeClusterV2",
@@ -1075,6 +1091,8 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
 #' @keywords internal
 #'
 #' @rdname kafka_describe_cluster_operation
+#'
+#' @aliases kafka_describe_cluster_operation
 kafka_describe_cluster_operation <- function(ClusterOperationArn) {
   op <- new_operation(
     name = "DescribeClusterOperation",
@@ -1137,6 +1155,8 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 #' @keywords internal
 #'
 #' @rdname kafka_describe_configuration
+#'
+#' @aliases kafka_describe_configuration
 kafka_describe_configuration <- function(Arn) {
   op <- new_operation(
     name = "DescribeConfiguration",
@@ -1191,6 +1211,8 @@ kafka_describe_configuration <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname kafka_describe_configuration_revision
+#'
+#' @aliases kafka_describe_configuration_revision
 kafka_describe_configuration_revision <- function(Arn, Revision) {
   op <- new_operation(
     name = "DescribeConfigurationRevision",
@@ -1247,6 +1269,8 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 #' @keywords internal
 #'
 #' @rdname kafka_batch_disassociate_scram_secret
+#'
+#' @aliases kafka_batch_disassociate_scram_secret
 kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
   op <- new_operation(
     name = "BatchDisassociateScramSecret",
@@ -1298,6 +1322,8 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 #' @keywords internal
 #'
 #' @rdname kafka_get_bootstrap_brokers
+#'
+#' @aliases kafka_get_bootstrap_brokers
 kafka_get_bootstrap_brokers <- function(ClusterArn) {
   op <- new_operation(
     name = "GetBootstrapBrokers",
@@ -1350,6 +1376,8 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
 #' @keywords internal
 #'
 #' @rdname kafka_get_compatible_kafka_versions
+#'
+#' @aliases kafka_get_compatible_kafka_versions
 kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
   op <- new_operation(
     name = "GetCompatibleKafkaVersions",
@@ -1591,6 +1619,8 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname kafka_list_cluster_operations
+#'
+#' @aliases kafka_list_cluster_operations
 kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListClusterOperations",
@@ -1751,6 +1781,8 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname kafka_list_clusters
+#'
+#' @aliases kafka_list_clusters
 kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListClusters",
@@ -1936,6 +1968,8 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname kafka_list_clusters_v2
+#'
+#' @aliases kafka_list_clusters_v2
 kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListClustersV2",
@@ -1998,6 +2032,8 @@ kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter =
 #' @keywords internal
 #'
 #' @rdname kafka_list_configuration_revisions
+#'
+#' @aliases kafka_list_configuration_revisions
 kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConfigurationRevisions",
@@ -2069,6 +2105,8 @@ kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname kafka_list_configurations
+#'
+#' @aliases kafka_list_configurations
 kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConfigurations",
@@ -2125,6 +2163,8 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname kafka_list_kafka_versions
+#'
+#' @aliases kafka_list_kafka_versions
 kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListKafkaVersions",
@@ -2208,6 +2248,8 @@ kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname kafka_list_nodes
+#'
+#' @aliases kafka_list_nodes
 kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListNodes",
@@ -2262,6 +2304,8 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname kafka_list_scram_secrets
+#'
+#' @aliases kafka_list_scram_secrets
 kafka_list_scram_secrets <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListScramSecrets",
@@ -2310,6 +2354,8 @@ kafka_list_scram_secrets <- function(ClusterArn, MaxResults = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname kafka_list_tags_for_resource
+#'
+#' @aliases kafka_list_tags_for_resource
 kafka_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2361,6 +2407,8 @@ kafka_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname kafka_reboot_broker
+#'
+#' @aliases kafka_reboot_broker
 kafka_reboot_broker <- function(BrokerIds, ClusterArn) {
   op <- new_operation(
     name = "RebootBroker",
@@ -2406,6 +2454,8 @@ kafka_reboot_broker <- function(BrokerIds, ClusterArn) {
 #' @keywords internal
 #'
 #' @rdname kafka_tag_resource
+#'
+#' @aliases kafka_tag_resource
 kafka_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2466,6 +2516,8 @@ kafka_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname kafka_untag_resource
+#'
+#' @aliases kafka_untag_resource
 kafka_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2519,6 +2571,8 @@ kafka_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname kafka_update_broker_count
+#'
+#' @aliases kafka_update_broker_count
 kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOfBrokerNodes) {
   op <- new_operation(
     name = "UpdateBrokerCount",
@@ -2571,6 +2625,8 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
 #' @keywords internal
 #'
 #' @rdname kafka_update_broker_type
+#'
+#' @aliases kafka_update_broker_type
 kafka_update_broker_type <- function(ClusterArn, CurrentVersion, TargetInstanceType) {
   op <- new_operation(
     name = "UpdateBrokerType",
@@ -2633,6 +2689,8 @@ kafka_update_broker_type <- function(ClusterArn, CurrentVersion, TargetInstanceT
 #' @keywords internal
 #'
 #' @rdname kafka_update_broker_storage
+#'
+#' @aliases kafka_update_broker_storage
 kafka_update_broker_storage <- function(ClusterArn, CurrentVersion, TargetBrokerEBSVolumeInfo) {
   op <- new_operation(
     name = "UpdateBrokerStorage",
@@ -2692,6 +2750,8 @@ kafka_update_broker_storage <- function(ClusterArn, CurrentVersion, TargetBroker
 #' @keywords internal
 #'
 #' @rdname kafka_update_configuration
+#'
+#' @aliases kafka_update_configuration
 kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties) {
   op <- new_operation(
     name = "UpdateConfiguration",
@@ -2748,6 +2808,8 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #' @keywords internal
 #'
 #' @rdname kafka_update_connectivity
+#'
+#' @aliases kafka_update_connectivity
 kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersion) {
   op <- new_operation(
     name = "UpdateConnectivity",
@@ -2805,6 +2867,8 @@ kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersi
 #' @keywords internal
 #'
 #' @rdname kafka_update_cluster_configuration
+#'
+#' @aliases kafka_update_cluster_configuration
 kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, CurrentVersion) {
   op <- new_operation(
     name = "UpdateClusterConfiguration",
@@ -2862,6 +2926,8 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 #' @keywords internal
 #'
 #' @rdname kafka_update_cluster_kafka_version
+#'
+#' @aliases kafka_update_cluster_kafka_version
 kafka_update_cluster_kafka_version <- function(ClusterArn, ConfigurationInfo = NULL, CurrentVersion, TargetKafkaVersion) {
   op <- new_operation(
     name = "UpdateClusterKafkaVersion",
@@ -2948,6 +3014,8 @@ kafka_update_cluster_kafka_version <- function(ClusterArn, ConfigurationInfo = N
 #' @keywords internal
 #'
 #' @rdname kafka_update_monitoring
+#'
+#' @aliases kafka_update_monitoring
 kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitoring = NULL, OpenMonitoring = NULL, LoggingInfo = NULL) {
   op <- new_operation(
     name = "UpdateMonitoring",
@@ -3030,6 +3098,8 @@ kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitori
 #' @keywords internal
 #'
 #' @rdname kafka_update_security
+#'
+#' @aliases kafka_update_security
 kafka_update_security <- function(ClientAuthentication = NULL, ClusterArn, CurrentVersion, EncryptionInfo = NULL) {
   op <- new_operation(
     name = "UpdateSecurity",

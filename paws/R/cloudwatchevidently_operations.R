@@ -78,6 +78,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_batch_evaluate_feature
+#'
+#' @aliases cloudwatchevidently_batch_evaluate_feature
 cloudwatchevidently_batch_evaluate_feature <- function(project, requests) {
   op <- new_operation(
     name = "BatchEvaluateFeature",
@@ -269,6 +271,8 @@ cloudwatchevidently_batch_evaluate_feature <- function(project, requests) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_create_experiment
+#'
+#' @aliases cloudwatchevidently_create_experiment
 cloudwatchevidently_create_experiment <- function(description = NULL, metricGoals, name, onlineAbConfig = NULL, project, randomizationSalt = NULL, samplingRate = NULL, segment = NULL, tags = NULL, treatments) {
   op <- new_operation(
     name = "CreateExperiment",
@@ -411,6 +415,8 @@ cloudwatchevidently_create_experiment <- function(description = NULL, metricGoal
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_create_feature
+#'
+#' @aliases cloudwatchevidently_create_feature
 cloudwatchevidently_create_feature <- function(defaultVariation = NULL, description = NULL, entityOverrides = NULL, evaluationStrategy = NULL, name, project, tags = NULL, variations) {
   op <- new_operation(
     name = "CreateFeature",
@@ -603,6 +609,8 @@ cloudwatchevidently_create_feature <- function(defaultVariation = NULL, descript
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_create_launch
+#'
+#' @aliases cloudwatchevidently_create_launch
 cloudwatchevidently_create_launch <- function(description = NULL, groups, metricMonitors = NULL, name, project, randomizationSalt = NULL, scheduledSplitsConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateLaunch",
@@ -711,6 +719,8 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_create_project
+#'
+#' @aliases cloudwatchevidently_create_project
 cloudwatchevidently_create_project <- function(dataDelivery = NULL, description = NULL, name, tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
@@ -802,6 +812,8 @@ cloudwatchevidently_create_project <- function(dataDelivery = NULL, description 
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_create_segment
+#'
+#' @aliases cloudwatchevidently_create_segment
 cloudwatchevidently_create_segment <- function(description = NULL, name, pattern, tags = NULL) {
   op <- new_operation(
     name = "CreateSegment",
@@ -848,6 +860,8 @@ cloudwatchevidently_create_segment <- function(description = NULL, name, pattern
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_delete_experiment
+#'
+#' @aliases cloudwatchevidently_delete_experiment
 cloudwatchevidently_delete_experiment <- function(experiment, project) {
   op <- new_operation(
     name = "DeleteExperiment",
@@ -890,6 +904,8 @@ cloudwatchevidently_delete_experiment <- function(experiment, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_delete_feature
+#'
+#' @aliases cloudwatchevidently_delete_feature
 cloudwatchevidently_delete_feature <- function(feature, project) {
   op <- new_operation(
     name = "DeleteFeature",
@@ -936,6 +952,8 @@ cloudwatchevidently_delete_feature <- function(feature, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_delete_launch
+#'
+#' @aliases cloudwatchevidently_delete_launch
 cloudwatchevidently_delete_launch <- function(launch, project) {
   op <- new_operation(
     name = "DeleteLaunch",
@@ -978,6 +996,8 @@ cloudwatchevidently_delete_launch <- function(launch, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_delete_project
+#'
+#' @aliases cloudwatchevidently_delete_project
 cloudwatchevidently_delete_project <- function(project) {
   op <- new_operation(
     name = "DeleteProject",
@@ -1020,6 +1040,8 @@ cloudwatchevidently_delete_project <- function(project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_delete_segment
+#'
+#' @aliases cloudwatchevidently_delete_segment
 cloudwatchevidently_delete_segment <- function(segment) {
   op <- new_operation(
     name = "DeleteSegment",
@@ -1096,6 +1118,8 @@ cloudwatchevidently_delete_segment <- function(segment) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_evaluate_feature
+#'
+#' @aliases cloudwatchevidently_evaluate_feature
 cloudwatchevidently_evaluate_feature <- function(entityId, evaluationContext = NULL, feature, project) {
   op <- new_operation(
     name = "EvaluateFeature",
@@ -1205,6 +1229,8 @@ cloudwatchevidently_evaluate_feature <- function(entityId, evaluationContext = N
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_get_experiment
+#'
+#' @aliases cloudwatchevidently_get_experiment
 cloudwatchevidently_get_experiment <- function(experiment, project) {
   op <- new_operation(
     name = "GetExperiment",
@@ -1338,6 +1364,8 @@ cloudwatchevidently_get_experiment <- function(experiment, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_get_experiment_results
+#'
+#' @aliases cloudwatchevidently_get_experiment_results
 cloudwatchevidently_get_experiment_results <- function(baseStat = NULL, endTime = NULL, experiment, metricNames, period = NULL, project, reportNames = NULL, resultStats = NULL, startTime = NULL, treatmentNames) {
   op <- new_operation(
     name = "GetExperimentResults",
@@ -1425,6 +1453,8 @@ cloudwatchevidently_get_experiment_results <- function(baseStat = NULL, endTime 
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_get_feature
+#'
+#' @aliases cloudwatchevidently_get_feature
 cloudwatchevidently_get_feature <- function(feature, project) {
   op <- new_operation(
     name = "GetFeature",
@@ -1541,6 +1571,8 @@ cloudwatchevidently_get_feature <- function(feature, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_get_launch
+#'
+#' @aliases cloudwatchevidently_get_launch
 cloudwatchevidently_get_launch <- function(launch, project) {
   op <- new_operation(
     name = "GetLaunch",
@@ -1616,6 +1648,8 @@ cloudwatchevidently_get_launch <- function(launch, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_get_project
+#'
+#' @aliases cloudwatchevidently_get_project
 cloudwatchevidently_get_project <- function(project) {
   op <- new_operation(
     name = "GetProject",
@@ -1678,6 +1712,8 @@ cloudwatchevidently_get_project <- function(project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_get_segment
+#'
+#' @aliases cloudwatchevidently_get_segment
 cloudwatchevidently_get_segment <- function(segment) {
   op <- new_operation(
     name = "GetSegment",
@@ -1798,6 +1834,8 @@ cloudwatchevidently_get_segment <- function(segment) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_experiments
+#'
+#' @aliases cloudwatchevidently_list_experiments
 cloudwatchevidently_list_experiments <- function(maxResults = NULL, nextToken = NULL, project, status = NULL) {
   op <- new_operation(
     name = "ListExperiments",
@@ -1876,6 +1914,8 @@ cloudwatchevidently_list_experiments <- function(maxResults = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_features
+#'
+#' @aliases cloudwatchevidently_list_features
 cloudwatchevidently_list_features <- function(maxResults = NULL, nextToken = NULL, project) {
   op <- new_operation(
     name = "ListFeatures",
@@ -2003,6 +2043,8 @@ cloudwatchevidently_list_features <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_launches
+#'
+#' @aliases cloudwatchevidently_list_launches
 cloudwatchevidently_list_launches <- function(maxResults = NULL, nextToken = NULL, project, status = NULL) {
   op <- new_operation(
     name = "ListLaunches",
@@ -2076,6 +2118,8 @@ cloudwatchevidently_list_launches <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_projects
+#'
+#' @aliases cloudwatchevidently_list_projects
 cloudwatchevidently_list_projects <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListProjects",
@@ -2146,6 +2190,8 @@ cloudwatchevidently_list_projects <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_segment_references
+#'
+#' @aliases cloudwatchevidently_list_segment_references
 cloudwatchevidently_list_segment_references <- function(maxResults = NULL, nextToken = NULL, segment, type) {
   op <- new_operation(
     name = "ListSegmentReferences",
@@ -2217,6 +2263,8 @@ cloudwatchevidently_list_segment_references <- function(maxResults = NULL, nextT
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_segments
+#'
+#' @aliases cloudwatchevidently_list_segments
 cloudwatchevidently_list_segments <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSegments",
@@ -2264,6 +2312,8 @@ cloudwatchevidently_list_segments <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_list_tags_for_resource
+#'
+#' @aliases cloudwatchevidently_list_tags_for_resource
 cloudwatchevidently_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2328,6 +2378,8 @@ cloudwatchevidently_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_put_project_events
+#'
+#' @aliases cloudwatchevidently_put_project_events
 cloudwatchevidently_put_project_events <- function(events, project) {
   op <- new_operation(
     name = "PutProjectEvents",
@@ -2384,6 +2436,8 @@ cloudwatchevidently_put_project_events <- function(events, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_start_experiment
+#'
+#' @aliases cloudwatchevidently_start_experiment
 cloudwatchevidently_start_experiment <- function(analysisCompleteTime, experiment, project) {
   op <- new_operation(
     name = "StartExperiment",
@@ -2499,6 +2553,8 @@ cloudwatchevidently_start_experiment <- function(analysisCompleteTime, experimen
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_start_launch
+#'
+#' @aliases cloudwatchevidently_start_launch
 cloudwatchevidently_start_launch <- function(launch, project) {
   op <- new_operation(
     name = "StartLaunch",
@@ -2555,6 +2611,8 @@ cloudwatchevidently_start_launch <- function(launch, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_stop_experiment
+#'
+#' @aliases cloudwatchevidently_stop_experiment
 cloudwatchevidently_stop_experiment <- function(desiredState = NULL, experiment, project, reason = NULL) {
   op <- new_operation(
     name = "StopExperiment",
@@ -2615,6 +2673,8 @@ cloudwatchevidently_stop_experiment <- function(desiredState = NULL, experiment,
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_stop_launch
+#'
+#' @aliases cloudwatchevidently_stop_launch
 cloudwatchevidently_stop_launch <- function(desiredState = NULL, launch, project, reason = NULL) {
   op <- new_operation(
     name = "StopLaunch",
@@ -2681,6 +2741,8 @@ cloudwatchevidently_stop_launch <- function(desiredState = NULL, launch, project
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_tag_resource
+#'
+#' @aliases cloudwatchevidently_tag_resource
 cloudwatchevidently_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2732,6 +2794,8 @@ cloudwatchevidently_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_test_segment_pattern
+#'
+#' @aliases cloudwatchevidently_test_segment_pattern
 cloudwatchevidently_test_segment_pattern <- function(pattern, payload) {
   op <- new_operation(
     name = "TestSegmentPattern",
@@ -2777,6 +2841,8 @@ cloudwatchevidently_test_segment_pattern <- function(pattern, payload) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_untag_resource
+#'
+#' @aliases cloudwatchevidently_untag_resource
 cloudwatchevidently_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2948,6 +3014,8 @@ cloudwatchevidently_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_update_experiment
+#'
+#' @aliases cloudwatchevidently_update_experiment
 cloudwatchevidently_update_experiment <- function(description = NULL, experiment, metricGoals = NULL, onlineAbConfig = NULL, project, randomizationSalt = NULL, removeSegment = NULL, samplingRate = NULL, segment = NULL, treatments = NULL) {
   op <- new_operation(
     name = "UpdateExperiment",
@@ -3080,6 +3148,8 @@ cloudwatchevidently_update_experiment <- function(description = NULL, experiment
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_update_feature
+#'
+#' @aliases cloudwatchevidently_update_feature
 cloudwatchevidently_update_feature <- function(addOrUpdateVariations = NULL, defaultVariation = NULL, description = NULL, entityOverrides = NULL, evaluationStrategy = NULL, feature, project, removeVariations = NULL) {
   op <- new_operation(
     name = "UpdateFeature",
@@ -3253,6 +3323,8 @@ cloudwatchevidently_update_feature <- function(addOrUpdateVariations = NULL, def
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_update_launch
+#'
+#' @aliases cloudwatchevidently_update_launch
 cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL, launch, metricMonitors = NULL, project, randomizationSalt = NULL, scheduledSplitsConfig = NULL) {
   op <- new_operation(
     name = "UpdateLaunch",
@@ -3338,6 +3410,8 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_update_project
+#'
+#' @aliases cloudwatchevidently_update_project
 cloudwatchevidently_update_project <- function(description = NULL, project) {
   op <- new_operation(
     name = "UpdateProject",
@@ -3431,6 +3505,8 @@ cloudwatchevidently_update_project <- function(description = NULL, project) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevidently_update_project_data_delivery
+#'
+#' @aliases cloudwatchevidently_update_project_data_delivery
 cloudwatchevidently_update_project_data_delivery <- function(cloudWatchLogs = NULL, project, s3Destination = NULL) {
   op <- new_operation(
     name = "UpdateProjectDataDelivery",

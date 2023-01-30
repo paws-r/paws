@@ -59,6 +59,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_associate_origination_identity
+#'
+#' @aliases pinpointsmsvoicev2_associate_origination_identity
 pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, OriginationIdentity, IsoCountryCode, ClientToken = NULL) {
   op <- new_operation(
     name = "AssociateOriginationIdentity",
@@ -134,6 +136,8 @@ pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, Originatio
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_create_configuration_set
+#'
+#' @aliases pinpointsmsvoicev2_create_configuration_set
 pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
@@ -242,6 +246,8 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_create_event_destination
+#'
+#' @aliases pinpointsmsvoicev2_create_event_destination
 pinpointsmsvoicev2_create_event_destination <- function(ConfigurationSetName, EventDestinationName, MatchingEventTypes, CloudWatchLogsDestination = NULL, KinesisFirehoseDestination = NULL, SnsDestination = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateEventDestination",
@@ -321,6 +327,8 @@ pinpointsmsvoicev2_create_event_destination <- function(ConfigurationSetName, Ev
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_create_opt_out_list
+#'
+#' @aliases pinpointsmsvoicev2_create_opt_out_list
 pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateOptOutList",
@@ -425,6 +433,8 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_create_pool
+#'
+#' @aliases pinpointsmsvoicev2_create_pool
 pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, MessageType, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreatePool",
@@ -505,6 +515,8 @@ pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, 
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_configuration_set
+#'
+#' @aliases pinpointsmsvoicev2_delete_configuration_set
 pinpointsmsvoicev2_delete_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteConfigurationSet",
@@ -563,6 +575,8 @@ pinpointsmsvoicev2_delete_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_default_message_type
+#'
+#' @aliases pinpointsmsvoicev2_delete_default_message_type
 pinpointsmsvoicev2_delete_default_message_type <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteDefaultMessageType",
@@ -618,6 +632,8 @@ pinpointsmsvoicev2_delete_default_message_type <- function(ConfigurationSetName)
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_default_sender_id
+#'
+#' @aliases pinpointsmsvoicev2_delete_default_sender_id
 pinpointsmsvoicev2_delete_default_sender_id <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteDefaultSenderId",
@@ -695,6 +711,8 @@ pinpointsmsvoicev2_delete_default_sender_id <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_event_destination
+#'
+#' @aliases pinpointsmsvoicev2_delete_event_destination
 pinpointsmsvoicev2_delete_event_destination <- function(ConfigurationSetName, EventDestinationName) {
   op <- new_operation(
     name = "DeleteEventDestination",
@@ -759,6 +777,8 @@ pinpointsmsvoicev2_delete_event_destination <- function(ConfigurationSetName, Ev
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_keyword
+#'
+#' @aliases pinpointsmsvoicev2_delete_keyword
 pinpointsmsvoicev2_delete_keyword <- function(OriginationIdentity, Keyword) {
   op <- new_operation(
     name = "DeleteKeyword",
@@ -815,6 +835,8 @@ pinpointsmsvoicev2_delete_keyword <- function(OriginationIdentity, Keyword) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_opt_out_list
+#'
+#' @aliases pinpointsmsvoicev2_delete_opt_out_list
 pinpointsmsvoicev2_delete_opt_out_list <- function(OptOutListName) {
   op <- new_operation(
     name = "DeleteOptOutList",
@@ -876,6 +898,8 @@ pinpointsmsvoicev2_delete_opt_out_list <- function(OptOutListName) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_opted_out_number
+#'
+#' @aliases pinpointsmsvoicev2_delete_opted_out_number
 pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutNumber) {
   op <- new_operation(
     name = "DeleteOptedOutNumber",
@@ -942,6 +966,8 @@ pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutN
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_pool
+#'
+#' @aliases pinpointsmsvoicev2_delete_pool
 pinpointsmsvoicev2_delete_pool <- function(PoolId) {
   op <- new_operation(
     name = "DeletePool",
@@ -990,6 +1016,8 @@ pinpointsmsvoicev2_delete_pool <- function(PoolId) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_text_message_spend_limit_override
+#'
+#' @aliases pinpointsmsvoicev2_delete_text_message_spend_limit_override
 pinpointsmsvoicev2_delete_text_message_spend_limit_override <- function() {
   op <- new_operation(
     name = "DeleteTextMessageSpendLimitOverride",
@@ -1037,6 +1065,8 @@ pinpointsmsvoicev2_delete_text_message_spend_limit_override <- function() {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_delete_voice_message_spend_limit_override
+#'
+#' @aliases pinpointsmsvoicev2_delete_voice_message_spend_limit_override
 pinpointsmsvoicev2_delete_voice_message_spend_limit_override <- function() {
   op <- new_operation(
     name = "DeleteVoiceMessageSpendLimitOverride",
@@ -1099,6 +1129,8 @@ pinpointsmsvoicev2_delete_voice_message_spend_limit_override <- function() {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_account_attributes
+#'
+#' @aliases pinpointsmsvoicev2_describe_account_attributes
 pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeAccountAttributes",
@@ -1164,6 +1196,8 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_account_limits
+#'
+#' @aliases pinpointsmsvoicev2_describe_account_limits
 pinpointsmsvoicev2_describe_account_limits <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeAccountLimits",
@@ -1267,6 +1301,8 @@ pinpointsmsvoicev2_describe_account_limits <- function(NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_configuration_sets
+#'
+#' @aliases pinpointsmsvoicev2_describe_configuration_sets
 pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationSets",
@@ -1355,6 +1391,8 @@ pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_keywords
+#'
+#' @aliases pinpointsmsvoicev2_describe_keywords
 pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeKeywords",
@@ -1428,6 +1466,8 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_opt_out_lists
+#'
+#' @aliases pinpointsmsvoicev2_describe_opt_out_lists
 pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeOptOutLists",
@@ -1517,6 +1557,8 @@ pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_opted_out_numbers
+#'
+#' @aliases pinpointsmsvoicev2_describe_opted_out_numbers
 pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedOutNumbers = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeOptedOutNumbers",
@@ -1615,6 +1657,8 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_phone_numbers
+#'
+#' @aliases pinpointsmsvoicev2_describe_phone_numbers
 pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribePhoneNumbers",
@@ -1708,6 +1752,8 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_pools
+#'
+#' @aliases pinpointsmsvoicev2_describe_pools
 pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribePools",
@@ -1794,6 +1840,8 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_sender_ids
+#'
+#' @aliases pinpointsmsvoicev2_describe_sender_ids
 pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSenderIds",
@@ -1859,6 +1907,8 @@ pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = N
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_describe_spend_limits
+#'
+#' @aliases pinpointsmsvoicev2_describe_spend_limits
 pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeSpendLimits",
@@ -1927,6 +1977,8 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_disassociate_origination_identity
+#'
+#' @aliases pinpointsmsvoicev2_disassociate_origination_identity
 pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, OriginationIdentity, IsoCountryCode, ClientToken = NULL) {
   op <- new_operation(
     name = "DisassociateOriginationIdentity",
@@ -2004,6 +2056,8 @@ pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, Origina
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_list_pool_origination_identities
+#'
+#' @aliases pinpointsmsvoicev2_list_pool_origination_identities
 pinpointsmsvoicev2_list_pool_origination_identities <- function(PoolId, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPoolOriginationIdentities",
@@ -2055,6 +2109,8 @@ pinpointsmsvoicev2_list_pool_origination_identities <- function(PoolId, Filters 
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_list_tags_for_resource
+#'
+#' @aliases pinpointsmsvoicev2_list_tags_for_resource
 pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2132,6 +2188,8 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_put_keyword
+#'
+#' @aliases pinpointsmsvoicev2_put_keyword
 pinpointsmsvoicev2_put_keyword <- function(OriginationIdentity, Keyword, KeywordMessage, KeywordAction = NULL) {
   op <- new_operation(
     name = "PutKeyword",
@@ -2188,6 +2246,8 @@ pinpointsmsvoicev2_put_keyword <- function(OriginationIdentity, Keyword, Keyword
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_put_opted_out_number
+#'
+#' @aliases pinpointsmsvoicev2_put_opted_out_number
 pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumber) {
   op <- new_operation(
     name = "PutOptedOutNumber",
@@ -2257,6 +2317,8 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_release_phone_number
+#'
+#' @aliases pinpointsmsvoicev2_release_phone_number
 pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
   op <- new_operation(
     name = "ReleasePhoneNumber",
@@ -2368,6 +2430,8 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_request_phone_number
+#'
+#' @aliases pinpointsmsvoicev2_request_phone_number
 pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType, NumberCapabilities, NumberType, OptOutListName = NULL, PoolId = NULL, RegistrationId = NULL, DeletionProtectionEnabled = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "RequestPhoneNumber",
@@ -2461,6 +2525,8 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_send_text_message
+#'
+#' @aliases pinpointsmsvoicev2_send_text_message
 pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, OriginationIdentity = NULL, MessageBody = NULL, MessageType = NULL, Keyword = NULL, ConfigurationSetName = NULL, MaxPrice = NULL, TimeToLive = NULL, Context = NULL, DestinationCountryParameters = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "SendTextMessage",
@@ -2546,6 +2612,8 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_send_voice_message
+#'
+#' @aliases pinpointsmsvoicev2_send_voice_message
 pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, OriginationIdentity, MessageBody = NULL, MessageBodyTextType = NULL, VoiceId = NULL, ConfigurationSetName = NULL, MaxPricePerMinute = NULL, TimeToLive = NULL, Context = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "SendVoiceMessage",
@@ -2606,6 +2674,8 @@ pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, Origin
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_set_default_message_type
+#'
+#' @aliases pinpointsmsvoicev2_set_default_message_type
 pinpointsmsvoicev2_set_default_message_type <- function(ConfigurationSetName, MessageType) {
   op <- new_operation(
     name = "SetDefaultMessageType",
@@ -2667,6 +2737,8 @@ pinpointsmsvoicev2_set_default_message_type <- function(ConfigurationSetName, Me
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_set_default_sender_id
+#'
+#' @aliases pinpointsmsvoicev2_set_default_sender_id
 pinpointsmsvoicev2_set_default_sender_id <- function(ConfigurationSetName, SenderId) {
   op <- new_operation(
     name = "SetDefaultSenderId",
@@ -2715,6 +2787,8 @@ pinpointsmsvoicev2_set_default_sender_id <- function(ConfigurationSetName, Sende
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_set_text_message_spend_limit_override
+#'
+#' @aliases pinpointsmsvoicev2_set_text_message_spend_limit_override
 pinpointsmsvoicev2_set_text_message_spend_limit_override <- function(MonthlyLimit) {
   op <- new_operation(
     name = "SetTextMessageSpendLimitOverride",
@@ -2763,6 +2837,8 @@ pinpointsmsvoicev2_set_text_message_spend_limit_override <- function(MonthlyLimi
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_set_voice_message_spend_limit_override
+#'
+#' @aliases pinpointsmsvoicev2_set_voice_message_spend_limit_override
 pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLimit) {
   op <- new_operation(
     name = "SetVoiceMessageSpendLimitOverride",
@@ -2819,6 +2895,8 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLim
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_tag_resource
+#'
+#' @aliases pinpointsmsvoicev2_tag_resource
 pinpointsmsvoicev2_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2868,6 +2946,8 @@ pinpointsmsvoicev2_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_untag_resource
+#'
+#' @aliases pinpointsmsvoicev2_untag_resource
 pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2967,6 +3047,8 @@ pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_update_event_destination
+#'
+#' @aliases pinpointsmsvoicev2_update_event_destination
 pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, EventDestinationName, Enabled = NULL, MatchingEventTypes = NULL, CloudWatchLogsDestination = NULL, KinesisFirehoseDestination = NULL, SnsDestination = NULL) {
   op <- new_operation(
     name = "UpdateEventDestination",
@@ -3057,6 +3139,8 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_update_phone_number
+#'
+#' @aliases pinpointsmsvoicev2_update_phone_number
 pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdatePhoneNumber",
@@ -3139,6 +3223,8 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
 #' @keywords internal
 #'
 #' @rdname pinpointsmsvoicev2_update_pool
+#'
+#' @aliases pinpointsmsvoicev2_update_pool
 pinpointsmsvoicev2_update_pool <- function(PoolId, TwoWayEnabled = NULL, TwoWayChannelArn = NULL, SelfManagedOptOutsEnabled = NULL, OptOutListName = NULL, SharedRoutesEnabled = NULL, DeletionProtectionEnabled = NULL) {
   op <- new_operation(
     name = "UpdatePool",

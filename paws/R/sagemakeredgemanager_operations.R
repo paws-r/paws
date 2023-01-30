@@ -51,6 +51,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sagemakeredgemanager_get_deployments
+#'
+#' @aliases sagemakeredgemanager_get_deployments
 sagemakeredgemanager_get_deployments <- function(DeviceName, DeviceFleetName) {
   op <- new_operation(
     name = "GetDeployments",
@@ -101,6 +103,8 @@ sagemakeredgemanager_get_deployments <- function(DeviceName, DeviceFleetName) {
 #' @keywords internal
 #'
 #' @rdname sagemakeredgemanager_get_device_registration
+#'
+#' @aliases sagemakeredgemanager_get_device_registration
 sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleetName) {
   op <- new_operation(
     name = "GetDeviceRegistration",
@@ -207,6 +211,8 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #' @keywords internal
 #'
 #' @rdname sagemakeredgemanager_send_heartbeat
+#'
+#' @aliases sagemakeredgemanager_send_heartbeat
 sagemakeredgemanager_send_heartbeat <- function(AgentMetrics = NULL, Models = NULL, AgentVersion, DeviceName, DeviceFleetName, DeploymentResult = NULL) {
   op <- new_operation(
     name = "SendHeartbeat",

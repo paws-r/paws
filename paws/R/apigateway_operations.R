@@ -76,6 +76,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname apigateway_create_api_key
+#'
+#' @aliases apigateway_create_api_key
 apigateway_create_api_key <- function(name = NULL, description = NULL, enabled = NULL, generateDistinctId = NULL, value = NULL, stageKeys = NULL, customerId = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApiKey",
@@ -203,6 +205,8 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 #' @keywords internal
 #'
 #' @rdname apigateway_create_authorizer
+#'
+#' @aliases apigateway_create_authorizer
 apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = NULL, authType = NULL, authorizerUri = NULL, authorizerCredentials = NULL, identitySource = NULL, identityValidationExpression = NULL, authorizerResultTtlInSeconds = NULL) {
   op <- new_operation(
     name = "CreateAuthorizer",
@@ -262,6 +266,8 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 #' @keywords internal
 #'
 #' @rdname apigateway_create_base_path_mapping
+#'
+#' @aliases apigateway_create_base_path_mapping
 apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, restApiId, stage = NULL) {
   op <- new_operation(
     name = "CreateBasePathMapping",
@@ -353,6 +359,8 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' @keywords internal
 #'
 #' @rdname apigateway_create_deployment
+#'
+#' @aliases apigateway_create_deployment
 apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescription = NULL, description = NULL, cacheClusterEnabled = NULL, cacheClusterSize = NULL, variables = NULL, canarySettings = NULL, tracingEnabled = NULL) {
   op <- new_operation(
     name = "CreateDeployment",
@@ -419,6 +427,8 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 #' @keywords internal
 #'
 #' @rdname apigateway_create_documentation_part
+#'
+#' @aliases apigateway_create_documentation_part
 apigateway_create_documentation_part <- function(restApiId, location, properties) {
   op <- new_operation(
     name = "CreateDocumentationPart",
@@ -475,6 +485,8 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 #' @keywords internal
 #'
 #' @rdname apigateway_create_documentation_version
+#'
+#' @aliases apigateway_create_documentation_version
 apigateway_create_documentation_version <- function(restApiId, documentationVersion, stageName = NULL, description = NULL) {
   op <- new_operation(
     name = "CreateDocumentationVersion",
@@ -615,6 +627,8 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' @keywords internal
 #'
 #' @rdname apigateway_create_domain_name
+#'
+#' @aliases apigateway_create_domain_name
 apigateway_create_domain_name <- function(domainName, certificateName = NULL, certificateBody = NULL, certificatePrivateKey = NULL, certificateChain = NULL, certificateArn = NULL, regionalCertificateName = NULL, regionalCertificateArn = NULL, endpointConfiguration = NULL, tags = NULL, securityPolicy = NULL, mutualTlsAuthentication = NULL, ownershipVerificationCertificateArn = NULL) {
   op <- new_operation(
     name = "CreateDomainName",
@@ -674,6 +688,8 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 #' @keywords internal
 #'
 #' @rdname apigateway_create_model
+#'
+#' @aliases apigateway_create_model
 apigateway_create_model <- function(restApiId, name, description = NULL, schema = NULL, contentType) {
   op <- new_operation(
     name = "CreateModel",
@@ -731,6 +747,8 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
 #' @keywords internal
 #'
 #' @rdname apigateway_create_request_validator
+#'
+#' @aliases apigateway_create_request_validator
 apigateway_create_request_validator <- function(restApiId, name = NULL, validateRequestBody = NULL, validateRequestParameters = NULL) {
   op <- new_operation(
     name = "CreateRequestValidator",
@@ -850,6 +868,8 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 #' @keywords internal
 #'
 #' @rdname apigateway_create_resource
+#'
+#' @aliases apigateway_create_resource
 apigateway_create_resource <- function(restApiId, parentId, pathPart) {
   op <- new_operation(
     name = "CreateResource",
@@ -972,6 +992,8 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' @keywords internal
 #'
 #' @rdname apigateway_create_rest_api
+#'
+#' @aliases apigateway_create_rest_api
 apigateway_create_rest_api <- function(name, description = NULL, version = NULL, cloneFrom = NULL, binaryMediaTypes = NULL, minimumCompressionSize = NULL, apiKeySource = NULL, endpointConfiguration = NULL, policy = NULL, tags = NULL, disableExecuteApiEndpoint = NULL) {
   op <- new_operation(
     name = "CreateRestApi",
@@ -1105,6 +1127,8 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' @keywords internal
 #'
 #' @rdname apigateway_create_stage
+#'
+#' @aliases apigateway_create_stage
 apigateway_create_stage <- function(restApiId, stageName, deploymentId, description = NULL, cacheClusterEnabled = NULL, cacheClusterSize = NULL, variables = NULL, documentationVersion = NULL, canarySettings = NULL, tracingEnabled = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateStage",
@@ -1212,6 +1236,8 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' @keywords internal
 #'
 #' @rdname apigateway_create_usage_plan
+#'
+#' @aliases apigateway_create_usage_plan
 apigateway_create_usage_plan <- function(name, description = NULL, apiStages = NULL, throttle = NULL, quota = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateUsagePlan",
@@ -1265,6 +1291,8 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
 #' @keywords internal
 #'
 #' @rdname apigateway_create_usage_plan_key
+#'
+#' @aliases apigateway_create_usage_plan_key
 apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
   op <- new_operation(
     name = "CreateUsagePlanKey",
@@ -1339,6 +1367,8 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' @keywords internal
 #'
 #' @rdname apigateway_create_vpc_link
+#'
+#' @aliases apigateway_create_vpc_link
 apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tags = NULL) {
   op <- new_operation(
     name = "CreateVpcLink",
@@ -1379,6 +1409,8 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tag
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_api_key
+#'
+#' @aliases apigateway_delete_api_key
 apigateway_delete_api_key <- function(apiKey) {
   op <- new_operation(
     name = "DeleteApiKey",
@@ -1421,6 +1453,8 @@ apigateway_delete_api_key <- function(apiKey) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_authorizer
+#'
+#' @aliases apigateway_delete_authorizer
 apigateway_delete_authorizer <- function(restApiId, authorizerId) {
   op <- new_operation(
     name = "DeleteAuthorizer",
@@ -1465,6 +1499,8 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_base_path_mapping
+#'
+#' @aliases apigateway_delete_base_path_mapping
 apigateway_delete_base_path_mapping <- function(domainName, basePath) {
   op <- new_operation(
     name = "DeleteBasePathMapping",
@@ -1505,6 +1541,8 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_client_certificate
+#'
+#' @aliases apigateway_delete_client_certificate
 apigateway_delete_client_certificate <- function(clientCertificateId) {
   op <- new_operation(
     name = "DeleteClientCertificate",
@@ -1548,6 +1586,8 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_deployment
+#'
+#' @aliases apigateway_delete_deployment
 apigateway_delete_deployment <- function(restApiId, deploymentId) {
   op <- new_operation(
     name = "DeleteDeployment",
@@ -1590,6 +1630,8 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_documentation_part
+#'
+#' @aliases apigateway_delete_documentation_part
 apigateway_delete_documentation_part <- function(restApiId, documentationPartId) {
   op <- new_operation(
     name = "DeleteDocumentationPart",
@@ -1632,6 +1674,8 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_documentation_version
+#'
+#' @aliases apigateway_delete_documentation_version
 apigateway_delete_documentation_version <- function(restApiId, documentationVersion) {
   op <- new_operation(
     name = "DeleteDocumentationVersion",
@@ -1672,6 +1716,8 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_domain_name
+#'
+#' @aliases apigateway_delete_domain_name
 apigateway_delete_domain_name <- function(domainName) {
   op <- new_operation(
     name = "DeleteDomainName",
@@ -1716,6 +1762,8 @@ apigateway_delete_domain_name <- function(domainName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_gateway_response
+#'
+#' @aliases apigateway_delete_gateway_response
 apigateway_delete_gateway_response <- function(restApiId, responseType) {
   op <- new_operation(
     name = "DeleteGatewayResponse",
@@ -1760,6 +1808,8 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_integration
+#'
+#' @aliases apigateway_delete_integration
 apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
   op <- new_operation(
     name = "DeleteIntegration",
@@ -1807,6 +1857,8 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_integration_response
+#'
+#' @aliases apigateway_delete_integration_response
 apigateway_delete_integration_response <- function(restApiId, resourceId, httpMethod, statusCode) {
   op <- new_operation(
     name = "DeleteIntegrationResponse",
@@ -1851,6 +1903,8 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_method
+#'
+#' @aliases apigateway_delete_method
 apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
   op <- new_operation(
     name = "DeleteMethod",
@@ -1898,6 +1952,8 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_method_response
+#'
+#' @aliases apigateway_delete_method_response
 apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod, statusCode) {
   op <- new_operation(
     name = "DeleteMethodResponse",
@@ -1940,6 +1996,8 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_model
+#'
+#' @aliases apigateway_delete_model
 apigateway_delete_model <- function(restApiId, modelName) {
   op <- new_operation(
     name = "DeleteModel",
@@ -1982,6 +2040,8 @@ apigateway_delete_model <- function(restApiId, modelName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_request_validator
+#'
+#' @aliases apigateway_delete_request_validator
 apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
   op <- new_operation(
     name = "DeleteRequestValidator",
@@ -2024,6 +2084,8 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_resource
+#'
+#' @aliases apigateway_delete_resource
 apigateway_delete_resource <- function(restApiId, resourceId) {
   op <- new_operation(
     name = "DeleteResource",
@@ -2064,6 +2126,8 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_rest_api
+#'
+#' @aliases apigateway_delete_rest_api
 apigateway_delete_rest_api <- function(restApiId) {
   op <- new_operation(
     name = "DeleteRestApi",
@@ -2106,6 +2170,8 @@ apigateway_delete_rest_api <- function(restApiId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_stage
+#'
+#' @aliases apigateway_delete_stage
 apigateway_delete_stage <- function(restApiId, stageName) {
   op <- new_operation(
     name = "DeleteStage",
@@ -2146,6 +2212,8 @@ apigateway_delete_stage <- function(restApiId, stageName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_usage_plan
+#'
+#' @aliases apigateway_delete_usage_plan
 apigateway_delete_usage_plan <- function(usagePlanId) {
   op <- new_operation(
     name = "DeleteUsagePlan",
@@ -2191,6 +2259,8 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_usage_plan_key
+#'
+#' @aliases apigateway_delete_usage_plan_key
 apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
   op <- new_operation(
     name = "DeleteUsagePlanKey",
@@ -2232,6 +2302,8 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_delete_vpc_link
+#'
+#' @aliases apigateway_delete_vpc_link
 apigateway_delete_vpc_link <- function(vpcLinkId) {
   op <- new_operation(
     name = "DeleteVpcLink",
@@ -2274,6 +2346,8 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_flush_stage_authorizers_cache
+#'
+#' @aliases apigateway_flush_stage_authorizers_cache
 apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
   op <- new_operation(
     name = "FlushStageAuthorizersCache",
@@ -2316,6 +2390,8 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_flush_stage_cache
+#'
+#' @aliases apigateway_flush_stage_cache
 apigateway_flush_stage_cache <- function(restApiId, stageName) {
   op <- new_operation(
     name = "FlushStageCache",
@@ -2378,6 +2454,8 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_generate_client_certificate
+#'
+#' @aliases apigateway_generate_client_certificate
 apigateway_generate_client_certificate <- function(description = NULL, tags = NULL) {
   op <- new_operation(
     name = "GenerateClientCertificate",
@@ -2427,6 +2505,8 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
 #' @keywords internal
 #'
 #' @rdname apigateway_get_account
+#'
+#' @aliases apigateway_get_account
 apigateway_get_account <- function() {
   op <- new_operation(
     name = "GetAccount",
@@ -2492,6 +2572,8 @@ apigateway_get_account <- function() {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_api_key
+#'
+#' @aliases apigateway_get_api_key
 apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
   op <- new_operation(
     name = "GetApiKey",
@@ -2574,6 +2656,8 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_api_keys
+#'
+#' @aliases apigateway_get_api_keys
 apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = NULL, customerId = NULL, includeValues = NULL) {
   op <- new_operation(
     name = "GetApiKeys",
@@ -2632,6 +2716,8 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 #' @keywords internal
 #'
 #' @rdname apigateway_get_authorizer
+#'
+#' @aliases apigateway_get_authorizer
 apigateway_get_authorizer <- function(restApiId, authorizerId) {
   op <- new_operation(
     name = "GetAuthorizer",
@@ -2698,6 +2784,8 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_authorizers
+#'
+#' @aliases apigateway_get_authorizers
 apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetAuthorizers",
@@ -2750,6 +2838,8 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 #' @keywords internal
 #'
 #' @rdname apigateway_get_base_path_mapping
+#'
+#' @aliases apigateway_get_base_path_mapping
 apigateway_get_base_path_mapping <- function(domainName, basePath) {
   op <- new_operation(
     name = "GetBasePathMapping",
@@ -2807,6 +2897,8 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_base_path_mappings
+#'
+#' @aliases apigateway_get_base_path_mappings
 apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetBasePathMappings",
@@ -2863,6 +2955,8 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
 #' @keywords internal
 #'
 #' @rdname apigateway_get_client_certificate
+#'
+#' @aliases apigateway_get_client_certificate
 apigateway_get_client_certificate <- function(clientCertificateId) {
   op <- new_operation(
     name = "GetClientCertificate",
@@ -2927,6 +3021,8 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_client_certificates
+#'
+#' @aliases apigateway_get_client_certificates
 apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetClientCertificates",
@@ -2999,6 +3095,8 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_deployment
+#'
+#' @aliases apigateway_get_deployment
 apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
   op <- new_operation(
     name = "GetDeployment",
@@ -3066,6 +3164,8 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_deployments
+#'
+#' @aliases apigateway_get_deployments
 apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetDeployments",
@@ -3121,6 +3221,8 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 #' @keywords internal
 #'
 #' @rdname apigateway_get_documentation_part
+#'
+#' @aliases apigateway_get_documentation_part
 apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
   op <- new_operation(
     name = "GetDocumentationPart",
@@ -3195,6 +3297,8 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_documentation_parts
+#'
+#' @aliases apigateway_get_documentation_parts
 apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery = NULL, path = NULL, position = NULL, limit = NULL, locationStatus = NULL) {
   op <- new_operation(
     name = "GetDocumentationParts",
@@ -3246,6 +3350,8 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 #' @keywords internal
 #'
 #' @rdname apigateway_get_documentation_version
+#'
+#' @aliases apigateway_get_documentation_version
 apigateway_get_documentation_version <- function(restApiId, documentationVersion) {
   op <- new_operation(
     name = "GetDocumentationVersion",
@@ -3305,6 +3411,8 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 #' @keywords internal
 #'
 #' @rdname apigateway_get_documentation_versions
+#'
+#' @aliases apigateway_get_documentation_versions
 apigateway_get_documentation_versions <- function(restApiId, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetDocumentationVersions",
@@ -3385,6 +3493,8 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #' @keywords internal
 #'
 #' @rdname apigateway_get_domain_name
+#'
+#' @aliases apigateway_get_domain_name
 apigateway_get_domain_name <- function(domainName) {
   op <- new_operation(
     name = "GetDomainName",
@@ -3471,6 +3581,8 @@ apigateway_get_domain_name <- function(domainName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_domain_names
+#'
+#' @aliases apigateway_get_domain_names
 apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetDomainNames",
@@ -3540,6 +3652,8 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_export
+#'
+#' @aliases apigateway_get_export
 apigateway_get_export <- function(restApiId, stageName, exportType, parameters = NULL, accepts = NULL) {
   op <- new_operation(
     name = "GetExport",
@@ -3596,6 +3710,8 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
 #' @keywords internal
 #'
 #' @rdname apigateway_get_gateway_response
+#'
+#' @aliases apigateway_get_gateway_response
 apigateway_get_gateway_response <- function(restApiId, responseType) {
   op <- new_operation(
     name = "GetGatewayResponse",
@@ -3665,6 +3781,8 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_gateway_responses
+#'
+#' @aliases apigateway_get_gateway_responses
 apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetGatewayResponses",
@@ -3748,6 +3866,8 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 #' @keywords internal
 #'
 #' @rdname apigateway_get_integration
+#'
+#' @aliases apigateway_get_integration
 apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
   op <- new_operation(
     name = "GetIntegration",
@@ -3808,6 +3928,8 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_integration_response
+#'
+#' @aliases apigateway_get_integration_response
 apigateway_get_integration_response <- function(restApiId, resourceId, httpMethod, statusCode) {
   op <- new_operation(
     name = "GetIntegrationResponse",
@@ -3919,6 +4041,8 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 #' @keywords internal
 #'
 #' @rdname apigateway_get_method
+#'
+#' @aliases apigateway_get_method
 apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
   op <- new_operation(
     name = "GetMethod",
@@ -3977,6 +4101,8 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_method_response
+#'
+#' @aliases apigateway_get_method_response
 apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, statusCode) {
   op <- new_operation(
     name = "GetMethodResponse",
@@ -4032,6 +4158,8 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
 #' @keywords internal
 #'
 #' @rdname apigateway_get_model
+#'
+#' @aliases apigateway_get_model
 apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
   op <- new_operation(
     name = "GetModel",
@@ -4081,6 +4209,8 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_model_template
+#'
+#' @aliases apigateway_get_model_template
 apigateway_get_model_template <- function(restApiId, modelName) {
   op <- new_operation(
     name = "GetModelTemplate",
@@ -4140,6 +4270,8 @@ apigateway_get_model_template <- function(restApiId, modelName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_models
+#'
+#' @aliases apigateway_get_models
 apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetModels",
@@ -4190,6 +4322,8 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_request_validator
+#'
+#' @aliases apigateway_get_request_validator
 apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
   op <- new_operation(
     name = "GetRequestValidator",
@@ -4248,6 +4382,8 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_request_validators
+#'
+#' @aliases apigateway_get_request_validators
 apigateway_get_request_validators <- function(restApiId, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetRequestValidators",
@@ -4375,6 +4511,8 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 #' @keywords internal
 #'
 #' @rdname apigateway_get_resource
+#'
+#' @aliases apigateway_get_resource
 apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
   op <- new_operation(
     name = "GetResource",
@@ -4510,6 +4648,8 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_resources
+#'
+#' @aliases apigateway_get_resources
 apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, embed = NULL) {
   op <- new_operation(
     name = "GetResources",
@@ -4582,6 +4722,8 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 #' @keywords internal
 #'
 #' @rdname apigateway_get_rest_api
+#'
+#' @aliases apigateway_get_rest_api
 apigateway_get_rest_api <- function(restApiId) {
   op <- new_operation(
     name = "GetRestApi",
@@ -4662,6 +4804,8 @@ apigateway_get_rest_api <- function(restApiId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_rest_apis
+#'
+#' @aliases apigateway_get_rest_apis
 apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetRestApis",
@@ -4724,6 +4868,8 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_sdk
+#'
+#' @aliases apigateway_get_sdk
 apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL) {
   op <- new_operation(
     name = "GetSdk",
@@ -4780,6 +4926,8 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 #' @keywords internal
 #'
 #' @rdname apigateway_get_sdk_type
+#'
+#' @aliases apigateway_get_sdk_type
 apigateway_get_sdk_type <- function(id) {
   op <- new_operation(
     name = "GetSdkType",
@@ -4844,6 +4992,8 @@ apigateway_get_sdk_type <- function(id) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_sdk_types
+#'
+#' @aliases apigateway_get_sdk_types
 apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetSdkTypes",
@@ -4938,6 +5088,8 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_stage
+#'
+#' @aliases apigateway_get_stage
 apigateway_get_stage <- function(restApiId, stageName) {
   op <- new_operation(
     name = "GetStage",
@@ -5036,6 +5188,8 @@ apigateway_get_stage <- function(restApiId, stageName) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_stages
+#'
+#' @aliases apigateway_get_stages
 apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
   op <- new_operation(
     name = "GetStages",
@@ -5089,6 +5243,8 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_tags
+#'
+#' @aliases apigateway_get_tags
 apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetTags",
@@ -5156,6 +5312,8 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_usage
+#'
+#' @aliases apigateway_get_usage
 apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetUsage",
@@ -5228,6 +5386,8 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
 #' @keywords internal
 #'
 #' @rdname apigateway_get_usage_plan
+#'
+#' @aliases apigateway_get_usage_plan
 apigateway_get_usage_plan <- function(usagePlanId) {
   op <- new_operation(
     name = "GetUsagePlan",
@@ -5280,6 +5440,8 @@ apigateway_get_usage_plan <- function(usagePlanId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_usage_plan_key
+#'
+#' @aliases apigateway_get_usage_plan_key
 apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
   op <- new_operation(
     name = "GetUsagePlanKey",
@@ -5344,6 +5506,8 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_usage_plan_keys
+#'
+#' @aliases apigateway_get_usage_plan_keys
 apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit = NULL, nameQuery = NULL) {
   op <- new_operation(
     name = "GetUsagePlanKeys",
@@ -5426,6 +5590,8 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
 #' @keywords internal
 #'
 #' @rdname apigateway_get_usage_plans
+#'
+#' @aliases apigateway_get_usage_plans
 apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetUsagePlans",
@@ -5482,6 +5648,8 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
 #' @keywords internal
 #'
 #' @rdname apigateway_get_vpc_link
+#'
+#' @aliases apigateway_get_vpc_link
 apigateway_get_vpc_link <- function(vpcLinkId) {
   op <- new_operation(
     name = "GetVpcLink",
@@ -5547,6 +5715,8 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
 #' @keywords internal
 #'
 #' @rdname apigateway_get_vpc_links
+#'
+#' @aliases apigateway_get_vpc_links
 apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
   op <- new_operation(
     name = "GetVpcLinks",
@@ -5604,6 +5774,8 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_import_api_keys
+#'
+#' @aliases apigateway_import_api_keys
 apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
   op <- new_operation(
     name = "ImportApiKeys",
@@ -5666,6 +5838,8 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_import_documentation_parts
+#'
+#' @aliases apigateway_import_documentation_parts
 apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOnWarnings = NULL, body) {
   op <- new_operation(
     name = "ImportDocumentationParts",
@@ -5769,6 +5943,8 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' @keywords internal
 #'
 #' @rdname apigateway_import_rest_api
+#'
+#' @aliases apigateway_import_rest_api
 apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL, body) {
   op <- new_operation(
     name = "ImportRestApi",
@@ -5839,6 +6015,8 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
 #' @keywords internal
 #'
 #' @rdname apigateway_put_gateway_response
+#'
+#' @aliases apigateway_put_gateway_response
 apigateway_put_gateway_response <- function(restApiId, responseType, statusCode = NULL, responseParameters = NULL, responseTemplates = NULL) {
   op <- new_operation(
     name = "PutGatewayResponse",
@@ -6015,6 +6193,8 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' @keywords internal
 #'
 #' @rdname apigateway_put_integration
+#'
+#' @aliases apigateway_put_integration
 apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, integrationHttpMethod = NULL, uri = NULL, connectionType = NULL, connectionId = NULL, credentials = NULL, requestParameters = NULL, requestTemplates = NULL, passthroughBehavior = NULL, cacheNamespace = NULL, cacheKeyParameters = NULL, contentHandling = NULL, timeoutInMillis = NULL, tlsConfig = NULL) {
   op <- new_operation(
     name = "PutIntegration",
@@ -6105,6 +6285,8 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 #' @keywords internal
 #'
 #' @rdname apigateway_put_integration_response
+#'
+#' @aliases apigateway_put_integration_response
 apigateway_put_integration_response <- function(restApiId, resourceId, httpMethod, statusCode, selectionPattern = NULL, responseParameters = NULL, responseTemplates = NULL, contentHandling = NULL) {
   op <- new_operation(
     name = "PutIntegrationResponse",
@@ -6265,6 +6447,8 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 #' @keywords internal
 #'
 #' @rdname apigateway_put_method
+#'
+#' @aliases apigateway_put_method
 apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizationType, authorizerId = NULL, apiKeyRequired = NULL, operationName = NULL, requestParameters = NULL, requestModels = NULL, requestValidatorId = NULL, authorizationScopes = NULL) {
   op <- new_operation(
     name = "PutMethod",
@@ -6345,6 +6529,8 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 #' @keywords internal
 #'
 #' @rdname apigateway_put_method_response
+#'
+#' @aliases apigateway_put_method_response
 apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, statusCode, responseParameters = NULL, responseModels = NULL) {
   op <- new_operation(
     name = "PutMethodResponse",
@@ -6440,6 +6626,8 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' @keywords internal
 #'
 #' @rdname apigateway_put_rest_api
+#'
+#' @aliases apigateway_put_rest_api
 apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NULL, parameters = NULL, body) {
   op <- new_operation(
     name = "PutRestApi",
@@ -6486,6 +6674,8 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 #' @keywords internal
 #'
 #' @rdname apigateway_tag_resource
+#'
+#' @aliases apigateway_tag_resource
 apigateway_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -6578,6 +6768,8 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname apigateway_test_invoke_authorizer
+#'
+#' @aliases apigateway_test_invoke_authorizer
 apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers = NULL, multiValueHeaders = NULL, pathWithQueryString = NULL, body = NULL, stageVariables = NULL, additionalContext = NULL) {
   op <- new_operation(
     name = "TestInvokeAuthorizer",
@@ -6668,6 +6860,8 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 #' @keywords internal
 #'
 #' @rdname apigateway_test_invoke_method
+#'
+#' @aliases apigateway_test_invoke_method
 apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pathWithQueryString = NULL, body = NULL, headers = NULL, multiValueHeaders = NULL, clientCertificateId = NULL, stageVariables = NULL) {
   op <- new_operation(
     name = "TestInvokeMethod",
@@ -6712,6 +6906,8 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 #' @keywords internal
 #'
 #' @rdname apigateway_untag_resource
+#'
+#' @aliases apigateway_untag_resource
 apigateway_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -6773,6 +6969,8 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname apigateway_update_account
+#'
+#' @aliases apigateway_update_account
 apigateway_update_account <- function(patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateAccount",
@@ -6845,6 +7043,8 @@ apigateway_update_account <- function(patchOperations = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_update_api_key
+#'
+#' @aliases apigateway_update_api_key
 apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateApiKey",
@@ -6913,6 +7113,8 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_update_authorizer
+#'
+#' @aliases apigateway_update_authorizer
 apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateAuthorizer",
@@ -6975,6 +7177,8 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 #' @keywords internal
 #'
 #' @rdname apigateway_update_base_path_mapping
+#'
+#' @aliases apigateway_update_base_path_mapping
 apigateway_update_base_path_mapping <- function(domainName, basePath, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateBasePathMapping",
@@ -7042,6 +7246,8 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
 #' @keywords internal
 #'
 #' @rdname apigateway_update_client_certificate
+#'
+#' @aliases apigateway_update_client_certificate
 apigateway_update_client_certificate <- function(clientCertificateId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateClientCertificate",
@@ -7112,6 +7318,8 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
 #' @keywords internal
 #'
 #' @rdname apigateway_update_deployment
+#'
+#' @aliases apigateway_update_deployment
 apigateway_update_deployment <- function(restApiId, deploymentId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateDeployment",
@@ -7178,6 +7386,8 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 #' @keywords internal
 #'
 #' @rdname apigateway_update_documentation_part
+#'
+#' @aliases apigateway_update_documentation_part
 apigateway_update_documentation_part <- function(restApiId, documentationPartId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateDocumentationPart",
@@ -7240,6 +7450,8 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 #' @keywords internal
 #'
 #' @rdname apigateway_update_documentation_version
+#'
+#' @aliases apigateway_update_documentation_version
 apigateway_update_documentation_version <- function(restApiId, documentationVersion, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateDocumentationVersion",
@@ -7328,6 +7540,8 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 #' @keywords internal
 #'
 #' @rdname apigateway_update_domain_name
+#'
+#' @aliases apigateway_update_domain_name
 apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateDomainName",
@@ -7396,6 +7610,8 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_update_gateway_response
+#'
+#' @aliases apigateway_update_gateway_response
 apigateway_update_gateway_response <- function(restApiId, responseType, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateGatewayResponse",
@@ -7490,6 +7706,8 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 #' @keywords internal
 #'
 #' @rdname apigateway_update_integration
+#'
+#' @aliases apigateway_update_integration
 apigateway_update_integration <- function(restApiId, resourceId, httpMethod, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateIntegration",
@@ -7560,6 +7778,8 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
 #' @keywords internal
 #'
 #' @rdname apigateway_update_integration_response
+#'
+#' @aliases apigateway_update_integration_response
 apigateway_update_integration_response <- function(restApiId, resourceId, httpMethod, statusCode, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateIntegrationResponse",
@@ -7682,6 +7902,8 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 #' @keywords internal
 #'
 #' @rdname apigateway_update_method
+#'
+#' @aliases apigateway_update_method
 apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateMethod",
@@ -7750,6 +7972,8 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
 #' @keywords internal
 #'
 #' @rdname apigateway_update_method_response
+#'
+#' @aliases apigateway_update_method_response
 apigateway_update_method_response <- function(restApiId, resourceId, httpMethod, statusCode, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateMethodResponse",
@@ -7811,6 +8035,8 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 #' @keywords internal
 #'
 #' @rdname apigateway_update_model
+#'
+#' @aliases apigateway_update_model
 apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateModel",
@@ -7872,6 +8098,8 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
 #' @keywords internal
 #'
 #' @rdname apigateway_update_request_validator
+#'
+#' @aliases apigateway_update_request_validator
 apigateway_update_request_validator <- function(restApiId, requestValidatorId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateRequestValidator",
@@ -7999,6 +8227,8 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 #' @keywords internal
 #'
 #' @rdname apigateway_update_resource
+#'
+#' @aliases apigateway_update_resource
 apigateway_update_resource <- function(restApiId, resourceId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateResource",
@@ -8081,6 +8311,8 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 #' @keywords internal
 #'
 #' @rdname apigateway_update_rest_api
+#'
+#' @aliases apigateway_update_rest_api
 apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateRestApi",
@@ -8185,6 +8417,8 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_update_stage
+#'
+#' @aliases apigateway_update_stage
 apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateStage",
@@ -8255,6 +8489,8 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
 #' @keywords internal
 #'
 #' @rdname apigateway_update_usage
+#'
+#' @aliases apigateway_update_usage
 apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateUsage",
@@ -8337,6 +8573,8 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
 #' @keywords internal
 #'
 #' @rdname apigateway_update_usage_plan
+#'
+#' @aliases apigateway_update_usage_plan
 apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateUsagePlan",
@@ -8403,6 +8641,8 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
 #' @keywords internal
 #'
 #' @rdname apigateway_update_vpc_link
+#'
+#' @aliases apigateway_update_vpc_link
 apigateway_update_vpc_link <- function(vpcLinkId, patchOperations = NULL) {
   op <- new_operation(
     name = "UpdateVpcLink",

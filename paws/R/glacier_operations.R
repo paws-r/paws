@@ -69,6 +69,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname glacier_abort_multipart_upload
+#'
+#' @aliases glacier_abort_multipart_upload
 glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
   op <- new_operation(
     name = "AbortMultipartUpload",
@@ -147,6 +149,8 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
 #' @keywords internal
 #'
 #' @rdname glacier_abort_vault_lock
+#'
+#' @aliases glacier_abort_vault_lock
 glacier_abort_vault_lock <- function(accountId, vaultName) {
   op <- new_operation(
     name = "AbortVaultLock",
@@ -218,6 +222,8 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_add_tags_to_vault
+#'
+#' @aliases glacier_add_tags_to_vault
 glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
   op <- new_operation(
     name = "AddTagsToVault",
@@ -346,6 +352,8 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname glacier_complete_multipart_upload
+#'
+#' @aliases glacier_complete_multipart_upload
 glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, archiveSize = NULL, checksum = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
@@ -427,6 +435,8 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #' @keywords internal
 #'
 #' @rdname glacier_complete_vault_lock
+#'
+#' @aliases glacier_complete_vault_lock
 glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
   op <- new_operation(
     name = "CompleteVaultLock",
@@ -514,6 +524,8 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' @keywords internal
 #'
 #' @rdname glacier_create_vault
+#'
+#' @aliases glacier_create_vault
 glacier_create_vault <- function(accountId, vaultName) {
   op <- new_operation(
     name = "CreateVault",
@@ -600,6 +612,8 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_delete_archive
+#'
+#' @aliases glacier_delete_archive
 glacier_delete_archive <- function(accountId, vaultName, archiveId) {
   op <- new_operation(
     name = "DeleteArchive",
@@ -682,6 +696,8 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' @keywords internal
 #'
 #' @rdname glacier_delete_vault
+#'
+#' @aliases glacier_delete_vault
 glacier_delete_vault <- function(accountId, vaultName) {
   op <- new_operation(
     name = "DeleteVault",
@@ -749,6 +765,8 @@ glacier_delete_vault <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_delete_vault_access_policy
+#'
+#' @aliases glacier_delete_vault_access_policy
 glacier_delete_vault_access_policy <- function(accountId, vaultName) {
   op <- new_operation(
     name = "DeleteVaultAccessPolicy",
@@ -823,6 +841,8 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_delete_vault_notifications
+#'
+#' @aliases glacier_delete_vault_notifications
 glacier_delete_vault_notifications <- function(accountId, vaultName) {
   op <- new_operation(
     name = "DeleteVaultNotifications",
@@ -992,6 +1012,8 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_describe_job
+#'
+#' @aliases glacier_describe_job
 glacier_describe_job <- function(accountId, vaultName, jobId) {
   op <- new_operation(
     name = "DescribeJob",
@@ -1085,6 +1107,8 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' @keywords internal
 #'
 #' @rdname glacier_describe_vault
+#'
+#' @aliases glacier_describe_vault
 glacier_describe_vault <- function(accountId, vaultName) {
   op <- new_operation(
     name = "DescribeVault",
@@ -1154,6 +1178,8 @@ glacier_describe_vault <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_get_data_retrieval_policy
+#'
+#' @aliases glacier_get_data_retrieval_policy
 glacier_get_data_retrieval_policy <- function(accountId) {
   op <- new_operation(
     name = "GetDataRetrievalPolicy",
@@ -1307,6 +1333,8 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' @keywords internal
 #'
 #' @rdname glacier_get_job_output
+#'
+#' @aliases glacier_get_job_output
 glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
   op <- new_operation(
     name = "GetJobOutput",
@@ -1379,6 +1407,8 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
 #' @keywords internal
 #'
 #' @rdname glacier_get_vault_access_policy
+#'
+#' @aliases glacier_get_vault_access_policy
 glacier_get_vault_access_policy <- function(accountId, vaultName) {
   op <- new_operation(
     name = "GetVaultAccessPolicy",
@@ -1470,6 +1500,8 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_get_vault_lock
+#'
+#' @aliases glacier_get_vault_lock
 glacier_get_vault_lock <- function(accountId, vaultName) {
   op <- new_operation(
     name = "GetVaultLock",
@@ -1559,6 +1591,8 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_get_vault_notifications
+#'
+#' @aliases glacier_get_vault_notifications
 glacier_get_vault_notifications <- function(accountId, vaultName) {
   op <- new_operation(
     name = "GetVaultNotifications",
@@ -1703,6 +1737,8 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_initiate_job
+#'
+#' @aliases glacier_initiate_job
 glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
   op <- new_operation(
     name = "InitiateJob",
@@ -1816,6 +1852,8 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' @keywords internal
 #'
 #' @rdname glacier_initiate_multipart_upload
+#'
+#' @aliases glacier_initiate_multipart_upload
 glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescription = NULL, partSize = NULL) {
   op <- new_operation(
     name = "InitiateMultipartUpload",
@@ -1924,6 +1962,8 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' @keywords internal
 #'
 #' @rdname glacier_initiate_vault_lock
+#'
+#' @aliases glacier_initiate_vault_lock
 glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
   op <- new_operation(
     name = "InitiateVaultLock",
@@ -2120,6 +2160,8 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
 #' @keywords internal
 #'
 #' @rdname glacier_list_jobs
+#'
+#' @aliases glacier_list_jobs
 glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL, statuscode = NULL, completed = NULL) {
   op <- new_operation(
     name = "ListJobs",
@@ -2236,6 +2278,8 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' @keywords internal
 #'
 #' @rdname glacier_list_multipart_uploads
+#'
+#' @aliases glacier_list_multipart_uploads
 glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, limit = NULL) {
   op <- new_operation(
     name = "ListMultipartUploads",
@@ -2349,6 +2393,8 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' @keywords internal
 #'
 #' @rdname glacier_list_parts
+#'
+#' @aliases glacier_list_parts
 glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, limit = NULL) {
   op <- new_operation(
     name = "ListParts",
@@ -2414,6 +2460,8 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
 #' @keywords internal
 #'
 #' @rdname glacier_list_provisioned_capacity
+#'
+#' @aliases glacier_list_provisioned_capacity
 glacier_list_provisioned_capacity <- function(accountId) {
   op <- new_operation(
     name = "ListProvisionedCapacity",
@@ -2479,6 +2527,8 @@ glacier_list_provisioned_capacity <- function(accountId) {
 #' @keywords internal
 #'
 #' @rdname glacier_list_tags_for_vault
+#'
+#' @aliases glacier_list_tags_for_vault
 glacier_list_tags_for_vault <- function(accountId, vaultName) {
   op <- new_operation(
     name = "ListTagsForVault",
@@ -2580,6 +2630,8 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #' @keywords internal
 #'
 #' @rdname glacier_list_vaults
+#'
+#' @aliases glacier_list_vaults
 glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
   op <- new_operation(
     name = "ListVaults",
@@ -2637,6 +2689,8 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname glacier_purchase_provisioned_capacity
+#'
+#' @aliases glacier_purchase_provisioned_capacity
 glacier_purchase_provisioned_capacity <- function(accountId) {
   op <- new_operation(
     name = "PurchaseProvisionedCapacity",
@@ -2705,6 +2759,8 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
 #' @keywords internal
 #'
 #' @rdname glacier_remove_tags_from_vault
+#'
+#' @aliases glacier_remove_tags_from_vault
 glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL) {
   op <- new_operation(
     name = "RemoveTagsFromVault",
@@ -2784,6 +2840,8 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
 #' @keywords internal
 #'
 #' @rdname glacier_set_data_retrieval_policy
+#'
+#' @aliases glacier_set_data_retrieval_policy
 glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
   op <- new_operation(
     name = "SetDataRetrievalPolicy",
@@ -2855,6 +2913,8 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #' @keywords internal
 #'
 #' @rdname glacier_set_vault_access_policy
+#'
+#' @aliases glacier_set_vault_access_policy
 glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL) {
   op <- new_operation(
     name = "SetVaultAccessPolicy",
@@ -2965,6 +3025,8 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' @keywords internal
 #'
 #' @rdname glacier_set_vault_notifications
+#'
+#' @aliases glacier_set_vault_notifications
 glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificationConfig = NULL) {
   op <- new_operation(
     name = "SetVaultNotifications",
@@ -3079,6 +3141,8 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' @keywords internal
 #'
 #' @rdname glacier_upload_archive
+#'
+#' @aliases glacier_upload_archive
 glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NULL, checksum = NULL, body = NULL) {
   op <- new_operation(
     name = "UploadArchive",
@@ -3206,6 +3270,8 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' @keywords internal
 #'
 #' @rdname glacier_upload_multipart_part
+#'
+#' @aliases glacier_upload_multipart_part
 glacier_upload_multipart_part <- function(accountId, vaultName, uploadId, checksum = NULL, range = NULL, body = NULL) {
   op <- new_operation(
     name = "UploadMultipartPart",

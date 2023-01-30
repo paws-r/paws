@@ -135,6 +135,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_associate_repository
+#'
+#' @aliases codegurureviewer_associate_repository
 codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL, Tags = NULL, KMSKeyDetails = NULL) {
   op <- new_operation(
     name = "AssociateRepository",
@@ -303,6 +305,8 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_create_code_review
+#'
+#' @aliases codegurureviewer_create_code_review
 codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, Type, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "CreateCodeReview",
@@ -411,6 +415,8 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_describe_code_review
+#'
+#' @aliases codegurureviewer_describe_code_review
 codegurureviewer_describe_code_review <- function(CodeReviewArn) {
   op <- new_operation(
     name = "DescribeCodeReview",
@@ -484,6 +490,8 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_describe_recommendation_feedback
+#'
+#' @aliases codegurureviewer_describe_recommendation_feedback
 codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, RecommendationId, UserId = NULL) {
   op <- new_operation(
     name = "DescribeRecommendationFeedback",
@@ -566,6 +574,8 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_describe_repository_association
+#'
+#' @aliases codegurureviewer_describe_repository_association
 codegurureviewer_describe_repository_association <- function(AssociationArn) {
   op <- new_operation(
     name = "DescribeRepositoryAssociation",
@@ -646,6 +656,8 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_disassociate_repository
+#'
+#' @aliases codegurureviewer_disassociate_repository
 codegurureviewer_disassociate_repository <- function(AssociationArn) {
   op <- new_operation(
     name = "DisassociateRepository",
@@ -785,6 +797,8 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_list_code_reviews
+#'
+#' @aliases codegurureviewer_list_code_reviews
 codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NULL, RepositoryNames = NULL, Type, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCodeReviews",
@@ -870,6 +884,8 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_list_recommendation_feedback
+#'
+#' @aliases codegurureviewer_list_recommendation_feedback
 codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxResults = NULL, CodeReviewArn, UserIds = NULL, RecommendationIds = NULL) {
   op <- new_operation(
     name = "ListRecommendationFeedback",
@@ -943,6 +959,8 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_list_recommendations
+#'
+#' @aliases codegurureviewer_list_recommendations
 codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults = NULL, CodeReviewArn) {
   op <- new_operation(
     name = "ListRecommendations",
@@ -1087,6 +1105,8 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_list_repository_associations
+#'
+#' @aliases codegurureviewer_list_repository_associations
 codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, States = NULL, Names = NULL, Owners = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRepositoryAssociations",
@@ -1140,6 +1160,8 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_list_tags_for_resource
+#'
+#' @aliases codegurureviewer_list_tags_for_resource
 codegurureviewer_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1193,6 +1215,8 @@ codegurureviewer_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_put_recommendation_feedback
+#'
+#' @aliases codegurureviewer_put_recommendation_feedback
 codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, RecommendationId, Reactions) {
   op <- new_operation(
     name = "PutRecommendationFeedback",
@@ -1250,6 +1274,8 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_tag_resource
+#'
+#' @aliases codegurureviewer_tag_resource
 codegurureviewer_tag_resource <- function(resourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1299,6 +1325,8 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_untag_resource
+#'
+#' @aliases codegurureviewer_untag_resource
 codegurureviewer_untag_resource <- function(resourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",

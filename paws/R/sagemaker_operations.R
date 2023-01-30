@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sagemaker_add_association
+#'
+#' @aliases sagemaker_add_association
 sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType = NULL) {
   op <- new_operation(
     name = "AddAssociation",
@@ -144,6 +146,8 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
 #' @keywords internal
 #'
 #' @rdname sagemaker_add_tags
+#'
+#' @aliases sagemaker_add_tags
 sagemaker_add_tags <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "AddTags",
@@ -196,6 +200,8 @@ sagemaker_add_tags <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_associate_trial_component
+#'
+#' @aliases sagemaker_associate_trial_component
 sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
   op <- new_operation(
     name = "AssociateTrialComponent",
@@ -293,6 +299,8 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_batch_describe_model_package
+#'
+#' @aliases sagemaker_batch_describe_model_package
 sagemaker_batch_describe_model_package <- function(ModelPackageArnList) {
   op <- new_operation(
     name = "BatchDescribeModelPackage",
@@ -374,6 +382,8 @@ sagemaker_batch_describe_model_package <- function(ModelPackageArnList) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_action
+#'
+#' @aliases sagemaker_create_action
 sagemaker_create_action <- function(ActionName, Source, ActionType, Description = NULL, Status = NULL, Properties = NULL, MetadataProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAction",
@@ -663,6 +673,8 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_algorithm
+#'
+#' @aliases sagemaker_create_algorithm
 sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NULL, TrainingSpecification, InferenceSpecification = NULL, ValidationSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAlgorithm",
@@ -744,6 +756,8 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_app
+#'
+#' @aliases sagemaker_create_app
 sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Tags = NULL, ResourceSpec = NULL) {
   op <- new_operation(
     name = "CreateApp",
@@ -817,6 +831,8 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_app_image_config
+#'
+#' @aliases sagemaker_create_app_image_config
 sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, KernelGatewayImageConfig = NULL) {
   op <- new_operation(
     name = "CreateAppImageConfig",
@@ -898,6 +914,8 @@ sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, K
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_artifact
+#'
+#' @aliases sagemaker_create_artifact
 sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType, Properties = NULL, MetadataProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateArtifact",
@@ -1034,6 +1052,8 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_auto_ml_job
+#'
+#' @aliases sagemaker_create_auto_ml_job
 sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputDataConfig, ProblemType = NULL, AutoMLJobObjective = NULL, AutoMLJobConfig = NULL, RoleArn, GenerateCandidateDefinitionsOnly = NULL, Tags = NULL, ModelDeployConfig = NULL) {
   op <- new_operation(
     name = "CreateAutoMLJob",
@@ -1108,6 +1128,8 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_code_repository
+#'
+#' @aliases sagemaker_create_code_repository
 sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateCodeRepository",
@@ -1263,6 +1285,8 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_compilation_job
+#'
+#' @aliases sagemaker_create_compilation_job
 sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, ModelPackageVersionArn = NULL, InputConfig = NULL, OutputConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL) {
   op <- new_operation(
     name = "CreateCompilationJob",
@@ -1335,6 +1359,8 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, ModelP
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_context
+#'
+#' @aliases sagemaker_create_context
 sagemaker_create_context <- function(ContextName, Source, ContextType, Description = NULL, Properties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateContext",
@@ -1478,6 +1504,8 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_data_quality_job_definition
+#'
+#' @aliases sagemaker_create_data_quality_job_definition
 sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, DataQualityBaselineConfig = NULL, DataQualityAppSpecification, DataQualityJobInput, DataQualityJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataQualityJobDefinition",
@@ -1545,6 +1573,8 @@ sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, Data
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_device_fleet
+#'
+#' @aliases sagemaker_create_device_fleet
 sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Description = NULL, OutputConfig, Tags = NULL, EnableIotRoleAlias = NULL) {
   op <- new_operation(
     name = "CreateDeviceFleet",
@@ -1774,6 +1804,8 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_domain
+#'
+#' @aliases sagemaker_create_domain
 sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL, AppSecurityGroupManagement = NULL, DomainSettings = NULL) {
   op <- new_operation(
     name = "CreateDomain",
@@ -1855,6 +1887,8 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_edge_deployment_plan
+#'
+#' @aliases sagemaker_create_edge_deployment_plan
 sagemaker_create_edge_deployment_plan <- function(EdgeDeploymentPlanName, ModelConfigs, DeviceFleetName, Stages = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEdgeDeploymentPlan",
@@ -1912,6 +1946,8 @@ sagemaker_create_edge_deployment_plan <- function(EdgeDeploymentPlanName, ModelC
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_edge_deployment_stage
+#'
+#' @aliases sagemaker_create_edge_deployment_stage
 sagemaker_create_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stages) {
   op <- new_operation(
     name = "CreateEdgeDeploymentStage",
@@ -1985,6 +2021,8 @@ sagemaker_create_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stage
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_edge_packaging_job
+#'
+#' @aliases sagemaker_create_edge_packaging_job
 sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, CompilationJobName, ModelName, ModelVersion, RoleArn, OutputConfig, ResourceKey = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEdgePackagingJob",
@@ -2155,6 +2193,8 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_endpoint
+#'
+#' @aliases sagemaker_create_endpoint
 sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, DeploymentConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
@@ -2345,6 +2385,8 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_endpoint_config
+#'
+#' @aliases sagemaker_create_endpoint_config
 sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVariants, DataCaptureConfig = NULL, Tags = NULL, KmsKeyId = NULL, AsyncInferenceConfig = NULL) {
   op <- new_operation(
     name = "CreateEndpointConfig",
@@ -2435,6 +2477,8 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_experiment
+#'
+#' @aliases sagemaker_create_experiment
 sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateExperiment",
@@ -2606,6 +2650,8 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_feature_group
+#'
+#' @aliases sagemaker_create_feature_group
 sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFeatureName, EventTimeFeatureName, FeatureDefinitions, OnlineStoreConfig = NULL, OfflineStoreConfig = NULL, RoleArn = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFeatureGroup",
@@ -2706,6 +2752,8 @@ sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFea
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_flow_definition
+#'
+#' @aliases sagemaker_create_flow_definition
 sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopRequestSource = NULL, HumanLoopActivationConfig = NULL, HumanLoopConfig, OutputConfig, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateFlowDefinition",
@@ -2767,6 +2815,8 @@ sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopReques
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_human_task_ui
+#'
+#' @aliases sagemaker_create_human_task_ui
 sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = NULL) {
   op <- new_operation(
     name = "CreateHumanTaskUi",
@@ -3179,6 +3229,8 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_hyper_parameter_tuning_job
+#'
+#' @aliases sagemaker_create_hyper_parameter_tuning_job
 sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName, HyperParameterTuningJobConfig, TrainingJobDefinition = NULL, TrainingJobDefinitions = NULL, WarmStartConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateHyperParameterTuningJob",
@@ -3244,6 +3296,8 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_image
+#'
+#' @aliases sagemaker_create_image
 sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, ImageName, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateImage",
@@ -3301,6 +3355,8 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_image_version
+#'
+#' @aliases sagemaker_create_image_version
 sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
   op <- new_operation(
     name = "CreateImageVersion",
@@ -3428,6 +3484,8 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_inference_recommendations_job
+#'
+#' @aliases sagemaker_create_inference_recommendations_job
 sagemaker_create_inference_recommendations_job <- function(JobName, JobType, RoleArn, InputConfig, JobDescription = NULL, StoppingConditions = NULL, OutputConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateInferenceRecommendationsJob",
@@ -3729,6 +3787,8 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_labeling_job
+#'
+#' @aliases sagemaker_create_labeling_job
 sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, InputConfig, OutputConfig, RoleArn, LabelCategoryConfigS3Uri = NULL, StoppingConditions = NULL, LabelingJobAlgorithmsConfig = NULL, HumanTaskConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateLabelingJob",
@@ -3898,6 +3958,8 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model
+#'
+#' @aliases sagemaker_create_model
 sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Containers = NULL, InferenceExecutionConfig = NULL, ExecutionRoleArn, Tags = NULL, VpcConfig = NULL, EnableNetworkIsolation = NULL) {
   op <- new_operation(
     name = "CreateModel",
@@ -4032,6 +4094,8 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_bias_job_definition
+#'
+#' @aliases sagemaker_create_model_bias_job_definition
 sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelBiasBaselineConfig = NULL, ModelBiasAppSpecification, ModelBiasJobInput, ModelBiasJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateModelBiasJobDefinition",
@@ -4165,6 +4229,8 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_explainability_job_definition
+#'
+#' @aliases sagemaker_create_model_explainability_job_definition
 sagemaker_create_model_explainability_job_definition <- function(JobDefinitionName, ModelExplainabilityBaselineConfig = NULL, ModelExplainabilityAppSpecification, ModelExplainabilityJobInput, ModelExplainabilityJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateModelExplainabilityJobDefinition",
@@ -4544,6 +4610,8 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package
+#'
+#' @aliases sagemaker_create_model_package
 sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, AdditionalInferenceSpecifications = NULL) {
   op <- new_operation(
     name = "CreateModelPackage",
@@ -4602,6 +4670,8 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package_group
+#'
+#' @aliases sagemaker_create_model_package_group
 sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPackageGroupDescription = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateModelPackageGroup",
@@ -4746,6 +4816,8 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_quality_job_definition
+#'
+#' @aliases sagemaker_create_model_quality_job_definition
 sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, ModelQualityBaselineConfig = NULL, ModelQualityAppSpecification, ModelQualityJobInput, ModelQualityJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateModelQualityJobDefinition",
@@ -4890,6 +4962,8 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_monitoring_schedule
+#'
+#' @aliases sagemaker_create_monitoring_schedule
 sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, MonitoringScheduleConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateMonitoringSchedule",
@@ -5081,6 +5155,8 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_notebook_instance
+#'
+#' @aliases sagemaker_create_notebook_instance
 sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceType, SubnetId = NULL, SecurityGroupIds = NULL, RoleArn, KmsKeyId = NULL, Tags = NULL, LifecycleConfigName = NULL, DirectInternetAccess = NULL, VolumeSizeInGB = NULL, AcceleratorTypes = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, RootAccess = NULL, PlatformIdentifier = NULL, InstanceMetadataServiceConfiguration = NULL) {
   op <- new_operation(
     name = "CreateNotebookInstance",
@@ -5162,6 +5238,8 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_notebook_instance_lifecycle_config
+#'
+#' @aliases sagemaker_create_notebook_instance_lifecycle_config
 sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstanceLifecycleConfigName, OnCreate = NULL, OnStart = NULL) {
   op <- new_operation(
     name = "CreateNotebookInstanceLifecycleConfig",
@@ -5242,6 +5320,8 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_pipeline
+#'
+#' @aliases sagemaker_create_pipeline
 sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, PipelineDefinition = NULL, PipelineDefinitionS3Location = NULL, PipelineDescription = NULL, ClientRequestToken, RoleArn, Tags = NULL, ParallelismConfiguration = NULL) {
   op <- new_operation(
     name = "CreatePipeline",
@@ -5321,6 +5401,8 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_presigned_domain_url
+#'
+#' @aliases sagemaker_create_presigned_domain_url
 sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, SessionExpirationDurationInSeconds = NULL, ExpiresInSeconds = NULL) {
   op <- new_operation(
     name = "CreatePresignedDomainUrl",
@@ -5394,6 +5476,8 @@ sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, Ses
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_presigned_notebook_instance_url
+#'
+#' @aliases sagemaker_create_presigned_notebook_instance_url
 sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceName, SessionExpirationDurationInSeconds = NULL) {
   op <- new_operation(
     name = "CreatePresignedNotebookInstanceUrl",
@@ -5568,6 +5652,8 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_processing_job
+#'
+#' @aliases sagemaker_create_processing_job
 sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingOutputConfig = NULL, ProcessingJobName, ProcessingResources, StoppingCondition = NULL, AppSpecification, Environment = NULL, NetworkConfig = NULL, RoleArn, Tags = NULL, ExperimentConfig = NULL) {
   op <- new_operation(
     name = "CreateProcessingJob",
@@ -5649,6 +5735,8 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_project
+#'
+#' @aliases sagemaker_create_project
 sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningDetails, Tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
@@ -5709,6 +5797,8 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_studio_lifecycle_config
+#'
+#' @aliases sagemaker_create_studio_lifecycle_config
 sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, StudioLifecycleConfigContent, StudioLifecycleConfigAppType, Tags = NULL) {
   op <- new_operation(
     name = "CreateStudioLifecycleConfig",
@@ -6076,6 +6166,8 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_training_job
+#'
+#' @aliases sagemaker_create_training_job
 sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL, Environment = NULL, RetryStrategy = NULL) {
   op <- new_operation(
     name = "CreateTrainingJob",
@@ -6267,6 +6359,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_transform_job
+#'
+#' @aliases sagemaker_create_transform_job
 sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcurrentTransforms = NULL, ModelClientConfig = NULL, MaxPayloadInMB = NULL, BatchStrategy = NULL, Environment = NULL, TransformInput, TransformOutput, TransformResources, DataProcessing = NULL, Tags = NULL, ExperimentConfig = NULL) {
   op <- new_operation(
     name = "CreateTransformJob",
@@ -6350,6 +6444,8 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_trial
+#'
+#' @aliases sagemaker_create_trial
 sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName, MetadataProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrial",
@@ -6472,6 +6568,8 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_trial_component
+#'
+#' @aliases sagemaker_create_trial_component
 sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = NULL, Status = NULL, StartTime = NULL, EndTime = NULL, Parameters = NULL, InputArtifacts = NULL, OutputArtifacts = NULL, MetadataProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrialComponent",
@@ -6616,6 +6714,8 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_user_profile
+#'
+#' @aliases sagemaker_create_user_profile
 sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignOnUserIdentifier = NULL, SingleSignOnUserValue = NULL, Tags = NULL, UserSettings = NULL) {
   op <- new_operation(
     name = "CreateUserProfile",
@@ -6733,6 +6833,8 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_workforce
+#'
+#' @aliases sagemaker_create_workforce
 sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, SourceIpConfig = NULL, WorkforceName, Tags = NULL, WorkforceVpcConfig = NULL) {
   op <- new_operation(
     name = "CreateWorkforce",
@@ -6840,6 +6942,8 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_workteam
+#'
+#' @aliases sagemaker_create_workteam
 sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, MemberDefinitions, Description, NotificationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkteam",
@@ -6885,6 +6989,8 @@ sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, Member
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_action
+#'
+#' @aliases sagemaker_delete_action
 sagemaker_delete_action <- function(ActionName) {
   op <- new_operation(
     name = "DeleteAction",
@@ -6925,6 +7031,8 @@ sagemaker_delete_action <- function(ActionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_algorithm
+#'
+#' @aliases sagemaker_delete_algorithm
 sagemaker_delete_algorithm <- function(AlgorithmName) {
   op <- new_operation(
     name = "DeleteAlgorithm",
@@ -6971,6 +7079,8 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_app
+#'
+#' @aliases sagemaker_delete_app
 sagemaker_delete_app <- function(DomainId, UserProfileName, AppType, AppName) {
   op <- new_operation(
     name = "DeleteApp",
@@ -7011,6 +7121,8 @@ sagemaker_delete_app <- function(DomainId, UserProfileName, AppType, AppName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_app_image_config
+#'
+#' @aliases sagemaker_delete_app_image_config
 sagemaker_delete_app_image_config <- function(AppImageConfigName) {
   op <- new_operation(
     name = "DeleteAppImageConfig",
@@ -7066,6 +7178,8 @@ sagemaker_delete_app_image_config <- function(AppImageConfigName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_artifact
+#'
+#' @aliases sagemaker_delete_artifact
 sagemaker_delete_artifact <- function(ArtifactArn = NULL, Source = NULL) {
   op <- new_operation(
     name = "DeleteArtifact",
@@ -7114,6 +7228,8 @@ sagemaker_delete_artifact <- function(ArtifactArn = NULL, Source = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_association
+#'
+#' @aliases sagemaker_delete_association
 sagemaker_delete_association <- function(SourceArn, DestinationArn) {
   op <- new_operation(
     name = "DeleteAssociation",
@@ -7154,6 +7270,8 @@ sagemaker_delete_association <- function(SourceArn, DestinationArn) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_code_repository
+#'
+#' @aliases sagemaker_delete_code_repository
 sagemaker_delete_code_repository <- function(CodeRepositoryName) {
   op <- new_operation(
     name = "DeleteCodeRepository",
@@ -7199,6 +7317,8 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_context
+#'
+#' @aliases sagemaker_delete_context
 sagemaker_delete_context <- function(ContextName) {
   op <- new_operation(
     name = "DeleteContext",
@@ -7239,6 +7359,8 @@ sagemaker_delete_context <- function(ContextName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_data_quality_job_definition
+#'
+#' @aliases sagemaker_delete_data_quality_job_definition
 sagemaker_delete_data_quality_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DeleteDataQualityJobDefinition",
@@ -7279,6 +7401,8 @@ sagemaker_delete_data_quality_job_definition <- function(JobDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_device_fleet
+#'
+#' @aliases sagemaker_delete_device_fleet
 sagemaker_delete_device_fleet <- function(DeviceFleetName) {
   op <- new_operation(
     name = "DeleteDeviceFleet",
@@ -7328,6 +7452,8 @@ sagemaker_delete_device_fleet <- function(DeviceFleetName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_domain
+#'
+#' @aliases sagemaker_delete_domain
 sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -7370,6 +7496,8 @@ sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_edge_deployment_plan
+#'
+#' @aliases sagemaker_delete_edge_deployment_plan
 sagemaker_delete_edge_deployment_plan <- function(EdgeDeploymentPlanName) {
   op <- new_operation(
     name = "DeleteEdgeDeploymentPlan",
@@ -7416,6 +7544,8 @@ sagemaker_delete_edge_deployment_plan <- function(EdgeDeploymentPlanName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_edge_deployment_stage
+#'
+#' @aliases sagemaker_delete_edge_deployment_stage
 sagemaker_delete_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageName) {
   op <- new_operation(
     name = "DeleteEdgeDeploymentStage",
@@ -7468,6 +7598,8 @@ sagemaker_delete_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stage
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_endpoint
+#'
+#' @aliases sagemaker_delete_endpoint
 sagemaker_delete_endpoint <- function(EndpointName) {
   op <- new_operation(
     name = "DeleteEndpoint",
@@ -7519,6 +7651,8 @@ sagemaker_delete_endpoint <- function(EndpointName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_endpoint_config
+#'
+#' @aliases sagemaker_delete_endpoint_config
 sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
   op <- new_operation(
     name = "DeleteEndpointConfig",
@@ -7567,6 +7701,8 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_experiment
+#'
+#' @aliases sagemaker_delete_experiment
 sagemaker_delete_experiment <- function(ExperimentName) {
   op <- new_operation(
     name = "DeleteExperiment",
@@ -7617,6 +7753,8 @@ sagemaker_delete_experiment <- function(ExperimentName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_feature_group
+#'
+#' @aliases sagemaker_delete_feature_group
 sagemaker_delete_feature_group <- function(FeatureGroupName) {
   op <- new_operation(
     name = "DeleteFeatureGroup",
@@ -7657,6 +7795,8 @@ sagemaker_delete_feature_group <- function(FeatureGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_flow_definition
+#'
+#' @aliases sagemaker_delete_flow_definition
 sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
   op <- new_operation(
     name = "DeleteFlowDefinition",
@@ -7705,6 +7845,8 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_human_task_ui
+#'
+#' @aliases sagemaker_delete_human_task_ui
 sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
   op <- new_operation(
     name = "DeleteHumanTaskUi",
@@ -7746,6 +7888,8 @@ sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_image
+#'
+#' @aliases sagemaker_delete_image
 sagemaker_delete_image <- function(ImageName) {
   op <- new_operation(
     name = "DeleteImage",
@@ -7789,6 +7933,8 @@ sagemaker_delete_image <- function(ImageName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_image_version
+#'
+#' @aliases sagemaker_delete_image_version
 sagemaker_delete_image_version <- function(ImageName, Version) {
   op <- new_operation(
     name = "DeleteImageVersion",
@@ -7833,6 +7979,8 @@ sagemaker_delete_image_version <- function(ImageName, Version) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model
+#'
+#' @aliases sagemaker_delete_model
 sagemaker_delete_model <- function(ModelName) {
   op <- new_operation(
     name = "DeleteModel",
@@ -7873,6 +8021,8 @@ sagemaker_delete_model <- function(ModelName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model_bias_job_definition
+#'
+#' @aliases sagemaker_delete_model_bias_job_definition
 sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DeleteModelBiasJobDefinition",
@@ -7913,6 +8063,8 @@ sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model_explainability_job_definition
+#'
+#' @aliases sagemaker_delete_model_explainability_job_definition
 sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DeleteModelExplainabilityJobDefinition",
@@ -7960,6 +8112,8 @@ sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionNa
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model_package
+#'
+#' @aliases sagemaker_delete_model_package
 sagemaker_delete_model_package <- function(ModelPackageName) {
   op <- new_operation(
     name = "DeleteModelPackage",
@@ -8000,6 +8154,8 @@ sagemaker_delete_model_package <- function(ModelPackageName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model_package_group
+#'
+#' @aliases sagemaker_delete_model_package_group
 sagemaker_delete_model_package_group <- function(ModelPackageGroupName) {
   op <- new_operation(
     name = "DeleteModelPackageGroup",
@@ -8040,6 +8196,8 @@ sagemaker_delete_model_package_group <- function(ModelPackageGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model_package_group_policy
+#'
+#' @aliases sagemaker_delete_model_package_group_policy
 sagemaker_delete_model_package_group_policy <- function(ModelPackageGroupName) {
   op <- new_operation(
     name = "DeleteModelPackageGroupPolicy",
@@ -8080,6 +8238,8 @@ sagemaker_delete_model_package_group_policy <- function(ModelPackageGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_model_quality_job_definition
+#'
+#' @aliases sagemaker_delete_model_quality_job_definition
 sagemaker_delete_model_quality_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DeleteModelQualityJobDefinition",
@@ -8122,6 +8282,8 @@ sagemaker_delete_model_quality_job_definition <- function(JobDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_monitoring_schedule
+#'
+#' @aliases sagemaker_delete_monitoring_schedule
 sagemaker_delete_monitoring_schedule <- function(MonitoringScheduleName) {
   op <- new_operation(
     name = "DeleteMonitoringSchedule",
@@ -8168,6 +8330,8 @@ sagemaker_delete_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_notebook_instance
+#'
+#' @aliases sagemaker_delete_notebook_instance
 sagemaker_delete_notebook_instance <- function(NotebookInstanceName) {
   op <- new_operation(
     name = "DeleteNotebookInstance",
@@ -8209,6 +8373,8 @@ sagemaker_delete_notebook_instance <- function(NotebookInstanceName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_notebook_instance_lifecycle_config
+#'
+#' @aliases sagemaker_delete_notebook_instance_lifecycle_config
 sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstanceLifecycleConfigName) {
   op <- new_operation(
     name = "DeleteNotebookInstanceLifecycleConfig",
@@ -8262,6 +8428,8 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_pipeline
+#'
+#' @aliases sagemaker_delete_pipeline
 sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
   op <- new_operation(
     name = "DeletePipeline",
@@ -8302,6 +8470,8 @@ sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_project
+#'
+#' @aliases sagemaker_delete_project
 sagemaker_delete_project <- function(ProjectName) {
   op <- new_operation(
     name = "DeleteProject",
@@ -8345,6 +8515,8 @@ sagemaker_delete_project <- function(ProjectName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_studio_lifecycle_config
+#'
+#' @aliases sagemaker_delete_studio_lifecycle_config
 sagemaker_delete_studio_lifecycle_config <- function(StudioLifecycleConfigName) {
   op <- new_operation(
     name = "DeleteStudioLifecycleConfig",
@@ -8402,6 +8574,8 @@ sagemaker_delete_studio_lifecycle_config <- function(StudioLifecycleConfigName) 
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_tags
+#'
+#' @aliases sagemaker_delete_tags
 sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "DeleteTags",
@@ -8450,6 +8624,8 @@ sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_trial
+#'
+#' @aliases sagemaker_delete_trial
 sagemaker_delete_trial <- function(TrialName) {
   op <- new_operation(
     name = "DeleteTrial",
@@ -8499,6 +8675,8 @@ sagemaker_delete_trial <- function(TrialName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_trial_component
+#'
+#' @aliases sagemaker_delete_trial_component
 sagemaker_delete_trial_component <- function(TrialComponentName) {
   op <- new_operation(
     name = "DeleteTrialComponent",
@@ -8543,6 +8721,8 @@ sagemaker_delete_trial_component <- function(TrialComponentName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_user_profile
+#'
+#' @aliases sagemaker_delete_user_profile
 sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
   op <- new_operation(
     name = "DeleteUserProfile",
@@ -8592,6 +8772,8 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_workforce
+#'
+#' @aliases sagemaker_delete_workforce
 sagemaker_delete_workforce <- function(WorkforceName) {
   op <- new_operation(
     name = "DeleteWorkforce",
@@ -8637,6 +8819,8 @@ sagemaker_delete_workforce <- function(WorkforceName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_delete_workteam
+#'
+#' @aliases sagemaker_delete_workteam
 sagemaker_delete_workteam <- function(WorkteamName) {
   op <- new_operation(
     name = "DeleteWorkteam",
@@ -8682,6 +8866,8 @@ sagemaker_delete_workteam <- function(WorkteamName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_deregister_devices
+#'
+#' @aliases sagemaker_deregister_devices
 sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
   op <- new_operation(
     name = "DeregisterDevices",
@@ -8762,6 +8948,8 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_action
+#'
+#' @aliases sagemaker_describe_action
 sagemaker_describe_action <- function(ActionName) {
   op <- new_operation(
     name = "DescribeAction",
@@ -9021,6 +9209,8 @@ sagemaker_describe_action <- function(ActionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_algorithm
+#'
+#' @aliases sagemaker_describe_algorithm
 sagemaker_describe_algorithm <- function(AlgorithmName) {
   op <- new_operation(
     name = "DescribeAlgorithm",
@@ -9093,6 +9283,8 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_app
+#'
+#' @aliases sagemaker_describe_app
 sagemaker_describe_app <- function(DomainId, UserProfileName, AppType, AppName) {
   op <- new_operation(
     name = "DescribeApp",
@@ -9158,6 +9350,8 @@ sagemaker_describe_app <- function(DomainId, UserProfileName, AppType, AppName) 
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_app_image_config
+#'
+#' @aliases sagemaker_describe_app_image_config
 sagemaker_describe_app_image_config <- function(AppImageConfigName) {
   op <- new_operation(
     name = "DescribeAppImageConfig",
@@ -9240,6 +9434,8 @@ sagemaker_describe_app_image_config <- function(AppImageConfigName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_artifact
+#'
+#' @aliases sagemaker_describe_artifact
 sagemaker_describe_artifact <- function(ArtifactArn) {
   op <- new_operation(
     name = "DescribeArtifact",
@@ -9424,6 +9620,8 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_auto_ml_job
+#'
+#' @aliases sagemaker_describe_auto_ml_job
 sagemaker_describe_auto_ml_job <- function(AutoMLJobName) {
   op <- new_operation(
     name = "DescribeAutoMLJob",
@@ -9481,6 +9679,8 @@ sagemaker_describe_auto_ml_job <- function(AutoMLJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_code_repository
+#'
+#' @aliases sagemaker_describe_code_repository
 sagemaker_describe_code_repository <- function(CodeRepositoryName) {
   op <- new_operation(
     name = "DescribeCodeRepository",
@@ -9584,6 +9784,8 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_compilation_job
+#'
+#' @aliases sagemaker_describe_compilation_job
 sagemaker_describe_compilation_job <- function(CompilationJobName) {
   op <- new_operation(
     name = "DescribeCompilationJob",
@@ -9657,6 +9859,8 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_context
+#'
+#' @aliases sagemaker_describe_context
 sagemaker_describe_context <- function(ContextName) {
   op <- new_operation(
     name = "DescribeContext",
@@ -9779,6 +9983,8 @@ sagemaker_describe_context <- function(ContextName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_data_quality_job_definition
+#'
+#' @aliases sagemaker_describe_data_quality_job_definition
 sagemaker_describe_data_quality_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DescribeDataQualityJobDefinition",
@@ -9853,6 +10059,8 @@ sagemaker_describe_data_quality_job_definition <- function(JobDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_device
+#'
+#' @aliases sagemaker_describe_device
 sagemaker_describe_device <- function(NextToken = NULL, DeviceName, DeviceFleetName) {
   op <- new_operation(
     name = "DescribeDevice",
@@ -9914,6 +10122,8 @@ sagemaker_describe_device <- function(NextToken = NULL, DeviceName, DeviceFleetN
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_device_fleet
+#'
+#' @aliases sagemaker_describe_device_fleet
 sagemaker_describe_device_fleet <- function(DeviceFleetName) {
   op <- new_operation(
     name = "DescribeDeviceFleet",
@@ -10065,6 +10275,8 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_domain
+#'
+#' @aliases sagemaker_describe_domain
 sagemaker_describe_domain <- function(DomainId) {
   op <- new_operation(
     name = "DescribeDomain",
@@ -10160,6 +10372,8 @@ sagemaker_describe_domain <- function(DomainId) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_edge_deployment_plan
+#'
+#' @aliases sagemaker_describe_edge_deployment_plan
 sagemaker_describe_edge_deployment_plan <- function(EdgeDeploymentPlanName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeEdgeDeploymentPlan",
@@ -10233,6 +10447,8 @@ sagemaker_describe_edge_deployment_plan <- function(EdgeDeploymentPlanName, Next
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_edge_packaging_job
+#'
+#' @aliases sagemaker_describe_edge_packaging_job
 sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
   op <- new_operation(
     name = "DescribeEdgePackagingJob",
@@ -10411,6 +10627,8 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_endpoint
+#'
+#' @aliases sagemaker_describe_endpoint
 sagemaker_describe_endpoint <- function(EndpointName) {
   op <- new_operation(
     name = "DescribeEndpoint",
@@ -10513,6 +10731,8 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_endpoint_config
+#'
+#' @aliases sagemaker_describe_endpoint_config
 sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
   op <- new_operation(
     name = "DescribeEndpointConfig",
@@ -10581,6 +10801,8 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_experiment
+#'
+#' @aliases sagemaker_describe_experiment
 sagemaker_describe_experiment <- function(ExperimentName) {
   op <- new_operation(
     name = "DescribeExperiment",
@@ -10679,6 +10901,8 @@ sagemaker_describe_experiment <- function(ExperimentName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_feature_group
+#'
+#' @aliases sagemaker_describe_feature_group
 sagemaker_describe_feature_group <- function(FeatureGroupName, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFeatureGroup",
@@ -10742,6 +10966,8 @@ sagemaker_describe_feature_group <- function(FeatureGroupName, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_feature_metadata
+#'
+#' @aliases sagemaker_describe_feature_metadata
 sagemaker_describe_feature_metadata <- function(FeatureGroupName, FeatureName) {
   op <- new_operation(
     name = "DescribeFeatureMetadata",
@@ -10825,6 +11051,8 @@ sagemaker_describe_feature_metadata <- function(FeatureGroupName, FeatureName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_flow_definition
+#'
+#' @aliases sagemaker_describe_flow_definition
 sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
   op <- new_operation(
     name = "DescribeFlowDefinition",
@@ -10882,6 +11110,8 @@ sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_human_task_ui
+#'
+#' @aliases sagemaker_describe_human_task_ui
 sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
   op <- new_operation(
     name = "DescribeHumanTaskUi",
@@ -11319,6 +11549,8 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_hyper_parameter_tuning_job
+#'
+#' @aliases sagemaker_describe_hyper_parameter_tuning_job
 sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName) {
   op <- new_operation(
     name = "DescribeHyperParameterTuningJob",
@@ -11376,6 +11608,8 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_image
+#'
+#' @aliases sagemaker_describe_image
 sagemaker_describe_image <- function(ImageName) {
   op <- new_operation(
     name = "DescribeImage",
@@ -11436,6 +11670,8 @@ sagemaker_describe_image <- function(ImageName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_image_version
+#'
+#' @aliases sagemaker_describe_image_version
 sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
   op <- new_operation(
     name = "DescribeImageVersion",
@@ -11568,6 +11804,8 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_inference_recommendations_job
+#'
+#' @aliases sagemaker_describe_inference_recommendations_job
 sagemaker_describe_inference_recommendations_job <- function(JobName) {
   op <- new_operation(
     name = "DescribeInferenceRecommendationsJob",
@@ -11709,6 +11947,8 @@ sagemaker_describe_inference_recommendations_job <- function(JobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_labeling_job
+#'
+#' @aliases sagemaker_describe_labeling_job
 sagemaker_describe_labeling_job <- function(LabelingJobName) {
   op <- new_operation(
     name = "DescribeLabelingJob",
@@ -11776,6 +12016,8 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_lineage_group
+#'
+#' @aliases sagemaker_describe_lineage_group
 sagemaker_describe_lineage_group <- function(LineageGroupName) {
   op <- new_operation(
     name = "DescribeLineageGroup",
@@ -11881,6 +12123,8 @@ sagemaker_describe_lineage_group <- function(LineageGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model
+#'
+#' @aliases sagemaker_describe_model
 sagemaker_describe_model <- function(ModelName) {
   op <- new_operation(
     name = "DescribeModel",
@@ -11997,6 +12241,8 @@ sagemaker_describe_model <- function(ModelName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_bias_job_definition
+#'
+#' @aliases sagemaker_describe_model_bias_job_definition
 sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DescribeModelBiasJobDefinition",
@@ -12112,6 +12358,8 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_explainability_job_definition
+#'
+#' @aliases sagemaker_describe_model_explainability_job_definition
 sagemaker_describe_model_explainability_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DescribeModelExplainabilityJobDefinition",
@@ -12436,6 +12684,8 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_package
+#'
+#' @aliases sagemaker_describe_model_package
 sagemaker_describe_model_package <- function(ModelPackageName) {
   op <- new_operation(
     name = "DescribeModelPackage",
@@ -12492,6 +12742,8 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_package_group
+#'
+#' @aliases sagemaker_describe_model_package_group
 sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
   op <- new_operation(
     name = "DescribeModelPackageGroup",
@@ -12616,6 +12868,8 @@ sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_model_quality_job_definition
+#'
+#' @aliases sagemaker_describe_model_quality_job_definition
 sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
   op <- new_operation(
     name = "DescribeModelQualityJobDefinition",
@@ -12774,6 +13028,8 @@ sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_monitoring_schedule
+#'
+#' @aliases sagemaker_describe_monitoring_schedule
 sagemaker_describe_monitoring_schedule <- function(MonitoringScheduleName) {
   op <- new_operation(
     name = "DescribeMonitoringSchedule",
@@ -12852,6 +13108,8 @@ sagemaker_describe_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_notebook_instance
+#'
+#' @aliases sagemaker_describe_notebook_instance
 sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
   op <- new_operation(
     name = "DescribeNotebookInstance",
@@ -12919,6 +13177,8 @@ sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_notebook_instance_lifecycle_config
+#'
+#' @aliases sagemaker_describe_notebook_instance_lifecycle_config
 sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstanceLifecycleConfigName) {
   op <- new_operation(
     name = "DescribeNotebookInstanceLifecycleConfig",
@@ -12992,6 +13252,8 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_pipeline
+#'
+#' @aliases sagemaker_describe_pipeline
 sagemaker_describe_pipeline <- function(PipelineName) {
   op <- new_operation(
     name = "DescribePipeline",
@@ -13041,6 +13303,8 @@ sagemaker_describe_pipeline <- function(PipelineName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_pipeline_definition_for_execution
+#'
+#' @aliases sagemaker_describe_pipeline_definition_for_execution
 sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecutionArn) {
   op <- new_operation(
     name = "DescribePipelineDefinitionForExecution",
@@ -13114,6 +13378,8 @@ sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecuti
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_pipeline_execution
+#'
+#' @aliases sagemaker_describe_pipeline_execution
 sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
   op <- new_operation(
     name = "DescribePipelineExecution",
@@ -13277,6 +13543,8 @@ sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_processing_job
+#'
+#' @aliases sagemaker_describe_processing_job
 sagemaker_describe_processing_job <- function(ProcessingJobName) {
   op <- new_operation(
     name = "DescribeProcessingJob",
@@ -13357,6 +13625,8 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_project
+#'
+#' @aliases sagemaker_describe_project
 sagemaker_describe_project <- function(ProjectName) {
   op <- new_operation(
     name = "DescribeProject",
@@ -13411,6 +13681,8 @@ sagemaker_describe_project <- function(ProjectName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_studio_lifecycle_config
+#'
+#' @aliases sagemaker_describe_studio_lifecycle_config
 sagemaker_describe_studio_lifecycle_config <- function(StudioLifecycleConfigName) {
   op <- new_operation(
     name = "DescribeStudioLifecycleConfig",
@@ -13464,6 +13736,8 @@ sagemaker_describe_studio_lifecycle_config <- function(StudioLifecycleConfigName
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_subscribed_workteam
+#'
+#' @aliases sagemaker_describe_subscribed_workteam
 sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
   op <- new_operation(
     name = "DescribeSubscribedWorkteam",
@@ -13729,6 +14003,8 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_training_job
+#'
+#' @aliases sagemaker_describe_training_job
 sagemaker_describe_training_job <- function(TrainingJobName) {
   op <- new_operation(
     name = "DescribeTrainingJob",
@@ -13831,6 +14107,8 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_transform_job
+#'
+#' @aliases sagemaker_describe_transform_job
 sagemaker_describe_transform_job <- function(TransformJobName) {
   op <- new_operation(
     name = "DescribeTransformJob",
@@ -13905,6 +14183,8 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_trial
+#'
+#' @aliases sagemaker_describe_trial
 sagemaker_describe_trial <- function(TrialName) {
   op <- new_operation(
     name = "DescribeTrial",
@@ -14022,6 +14302,8 @@ sagemaker_describe_trial <- function(TrialName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_trial_component
+#'
+#' @aliases sagemaker_describe_trial_component
 sagemaker_describe_trial_component <- function(TrialComponentName) {
   op <- new_operation(
     name = "DescribeTrialComponent",
@@ -14150,6 +14432,8 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_user_profile
+#'
+#' @aliases sagemaker_describe_user_profile
 sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
   op <- new_operation(
     name = "DescribeUserProfile",
@@ -14245,6 +14529,8 @@ sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_workforce
+#'
+#' @aliases sagemaker_describe_workforce
 sagemaker_describe_workforce <- function(WorkforceName) {
   op <- new_operation(
     name = "DescribeWorkforce",
@@ -14324,6 +14610,8 @@ sagemaker_describe_workforce <- function(WorkforceName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_describe_workteam
+#'
+#' @aliases sagemaker_describe_workteam
 sagemaker_describe_workteam <- function(WorkteamName) {
   op <- new_operation(
     name = "DescribeWorkteam",
@@ -14361,6 +14649,8 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_disable_sagemaker_servicecatalog_portfolio
+#'
+#' @aliases sagemaker_disable_sagemaker_servicecatalog_portfolio
 sagemaker_disable_sagemaker_servicecatalog_portfolio <- function() {
   op <- new_operation(
     name = "DisableSagemakerServicecatalogPortfolio",
@@ -14418,6 +14708,8 @@ sagemaker_disable_sagemaker_servicecatalog_portfolio <- function() {
 #' @keywords internal
 #'
 #' @rdname sagemaker_disassociate_trial_component
+#'
+#' @aliases sagemaker_disassociate_trial_component
 sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName) {
   op <- new_operation(
     name = "DisassociateTrialComponent",
@@ -14455,6 +14747,8 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 #' @keywords internal
 #'
 #' @rdname sagemaker_enable_sagemaker_servicecatalog_portfolio
+#'
+#' @aliases sagemaker_enable_sagemaker_servicecatalog_portfolio
 sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
   op <- new_operation(
     name = "EnableSagemakerServicecatalogPortfolio",
@@ -14531,6 +14825,8 @@ sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
 #' @keywords internal
 #'
 #' @rdname sagemaker_get_device_fleet_report
+#'
+#' @aliases sagemaker_get_device_fleet_report
 sagemaker_get_device_fleet_report <- function(DeviceFleetName) {
   op <- new_operation(
     name = "GetDeviceFleetReport",
@@ -14577,6 +14873,8 @@ sagemaker_get_device_fleet_report <- function(DeviceFleetName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_get_lineage_group_policy
+#'
+#' @aliases sagemaker_get_lineage_group_policy
 sagemaker_get_lineage_group_policy <- function(LineageGroupName) {
   op <- new_operation(
     name = "GetLineageGroupPolicy",
@@ -14626,6 +14924,8 @@ sagemaker_get_lineage_group_policy <- function(LineageGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_get_model_package_group_policy
+#'
+#' @aliases sagemaker_get_model_package_group_policy
 sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
   op <- new_operation(
     name = "GetModelPackageGroupPolicy",
@@ -14668,6 +14968,8 @@ sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_get_sagemaker_servicecatalog_portfolio_status
+#'
+#' @aliases sagemaker_get_sagemaker_servicecatalog_portfolio_status
 sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
   op <- new_operation(
     name = "GetSagemakerServicecatalogPortfolioStatus",
@@ -14727,6 +15029,8 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
 #' @keywords internal
 #'
 #' @rdname sagemaker_get_search_suggestions
+#'
+#' @aliases sagemaker_get_search_suggestions
 sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
   op <- new_operation(
     name = "GetSearchSuggestions",
@@ -14815,6 +15119,8 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_actions
+#'
+#' @aliases sagemaker_list_actions
 sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListActions",
@@ -14895,6 +15201,8 @@ sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedA
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_algorithms
+#'
+#' @aliases sagemaker_list_algorithms
 sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListAlgorithms",
@@ -15001,6 +15309,8 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_app_image_configs
+#'
+#' @aliases sagemaker_list_app_image_configs
 sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, ModifiedTimeBefore = NULL, ModifiedTimeAfter = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListAppImageConfigs",
@@ -15070,6 +15380,8 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_apps
+#'
+#' @aliases sagemaker_list_apps
 sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder = NULL, SortBy = NULL, DomainIdEquals = NULL, UserProfileNameEquals = NULL) {
   op <- new_operation(
     name = "ListApps",
@@ -15161,6 +15473,8 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_artifacts
+#'
+#' @aliases sagemaker_list_artifacts
 sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListArtifacts",
@@ -15259,6 +15573,8 @@ sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, Crea
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_associations
+#'
+#' @aliases sagemaker_list_associations
 sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL, SourceType = NULL, DestinationType = NULL, AssociationType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAssociations",
@@ -15356,6 +15672,8 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_auto_ml_jobs
+#'
+#' @aliases sagemaker_list_auto_ml_jobs
 sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortOrder = NULL, SortBy = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAutoMLJobs",
@@ -15467,6 +15785,8 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_candidates_for_auto_ml_job
+#'
+#' @aliases sagemaker_list_candidates_for_auto_ml_job
 sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEquals = NULL, CandidateNameEquals = NULL, SortOrder = NULL, SortBy = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCandidatesForAutoMLJob",
@@ -15562,6 +15882,8 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_code_repositories
+#'
+#' @aliases sagemaker_list_code_repositories
 sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListCodeRepositories",
@@ -15672,6 +15994,8 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_compilation_jobs
+#'
+#' @aliases sagemaker_list_compilation_jobs
 sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListCompilationJobs",
@@ -15759,6 +16083,8 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_contexts
+#'
+#' @aliases sagemaker_list_contexts
 sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListContexts",
@@ -15843,6 +16169,8 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_data_quality_job_definitions
+#'
+#' @aliases sagemaker_list_data_quality_job_definitions
 sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
   op <- new_operation(
     name = "ListDataQualityJobDefinitions",
@@ -15928,6 +16256,8 @@ sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, Sor
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_device_fleets
+#'
+#' @aliases sagemaker_list_device_fleets
 sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListDeviceFleets",
@@ -16008,6 +16338,8 @@ sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_devices
+#'
+#' @aliases sagemaker_list_devices
 sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHeartbeatAfter = NULL, ModelName = NULL, DeviceFleetName = NULL) {
   op <- new_operation(
     name = "ListDevices",
@@ -16071,6 +16403,8 @@ sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHe
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_domains
+#'
+#' @aliases sagemaker_list_domains
 sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -16164,6 +16498,8 @@ sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_edge_deployment_plans
+#'
+#' @aliases sagemaker_list_edge_deployment_plans
 sagemaker_list_edge_deployment_plans <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, DeviceFleetNameContains = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListEdgeDeploymentPlans",
@@ -16257,6 +16593,8 @@ sagemaker_list_edge_deployment_plans <- function(NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_edge_packaging_jobs
+#'
+#' @aliases sagemaker_list_edge_packaging_jobs
 sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, ModelNameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListEdgePackagingJobs",
@@ -16333,6 +16671,8 @@ sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_endpoint_configs
+#'
+#' @aliases sagemaker_list_endpoint_configs
 sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
   op <- new_operation(
     name = "ListEndpointConfigs",
@@ -16427,6 +16767,8 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_endpoints
+#'
+#' @aliases sagemaker_list_endpoints
 sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL) {
   op <- new_operation(
     name = "ListEndpoints",
@@ -16510,6 +16852,8 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_experiments
+#'
+#' @aliases sagemaker_list_experiments
 sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListExperiments",
@@ -16596,6 +16940,8 @@ sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_feature_groups
+#'
+#' @aliases sagemaker_list_feature_groups
 sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatusEquals = NULL, OfflineStoreStatusEquals = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortOrder = NULL, SortBy = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFeatureGroups",
@@ -16671,6 +17017,8 @@ sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatu
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_flow_definitions
+#'
+#' @aliases sagemaker_list_flow_definitions
 sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFlowDefinitions",
@@ -16745,6 +17093,8 @@ sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTi
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_human_task_uis
+#'
+#' @aliases sagemaker_list_human_task_uis
 sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHumanTaskUis",
@@ -16861,6 +17211,8 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_hyper_parameter_tuning_jobs
+#'
+#' @aliases sagemaker_list_hyper_parameter_tuning_jobs
 sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResults = NULL, SortBy = NULL, SortOrder = NULL, NameContains = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, StatusEquals = NULL) {
   op <- new_operation(
     name = "ListHyperParameterTuningJobs",
@@ -16956,6 +17308,8 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_image_versions
+#'
+#' @aliases sagemaker_list_image_versions
 sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, ImageName, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListImageVersions",
@@ -17053,6 +17407,8 @@ sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTime
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_images
+#'
+#' @aliases sagemaker_list_images
 sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListImages",
@@ -17154,6 +17510,8 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_inference_recommendations_jobs
+#'
+#' @aliases sagemaker_list_inference_recommendations_jobs
 sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInferenceRecommendationsJobs",
@@ -17279,6 +17637,8 @@ sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NU
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_labeling_jobs
+#'
+#' @aliases sagemaker_list_labeling_jobs
 sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, MaxResults = NULL, NextToken = NULL, NameContains = NULL, SortBy = NULL, SortOrder = NULL, StatusEquals = NULL) {
   op <- new_operation(
     name = "ListLabelingJobs",
@@ -17368,6 +17728,8 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_labeling_jobs_for_workteam
+#'
+#' @aliases sagemaker_list_labeling_jobs_for_workteam
 sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = NULL, NextToken = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, JobReferenceCodeContains = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListLabelingJobsForWorkteam",
@@ -17449,6 +17811,8 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_lineage_groups
+#'
+#' @aliases sagemaker_list_lineage_groups
 sagemaker_list_lineage_groups <- function(CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLineageGroups",
@@ -17530,6 +17894,8 @@ sagemaker_list_lineage_groups <- function(CreatedAfter = NULL, CreatedBefore = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_bias_job_definitions
+#'
+#' @aliases sagemaker_list_model_bias_job_definitions
 sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
   op <- new_operation(
     name = "ListModelBiasJobDefinitions",
@@ -17612,6 +17978,8 @@ sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortB
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_explainability_job_definitions
+#'
+#' @aliases sagemaker_list_model_explainability_job_definitions
 sagemaker_list_model_explainability_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
   op <- new_operation(
     name = "ListModelExplainabilityJobDefinitions",
@@ -17685,6 +18053,8 @@ sagemaker_list_model_explainability_job_definitions <- function(EndpointName = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_metadata
+#'
+#' @aliases sagemaker_list_model_metadata
 sagemaker_list_model_metadata <- function(SearchExpression = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListModelMetadata",
@@ -17765,6 +18135,8 @@ sagemaker_list_model_metadata <- function(SearchExpression = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_package_groups
+#'
+#' @aliases sagemaker_list_model_package_groups
 sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListModelPackageGroups",
@@ -17865,6 +18237,8 @@ sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, Creati
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_packages
+#'
+#' @aliases sagemaker_list_model_packages
 sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, ModelApprovalStatus = NULL, ModelPackageGroupName = NULL, ModelPackageType = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListModelPackages",
@@ -17950,6 +18324,8 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_quality_job_definitions
+#'
+#' @aliases sagemaker_list_model_quality_job_definitions
 sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
   op <- new_operation(
     name = "ListModelQualityJobDefinitions",
@@ -18027,6 +18403,8 @@ sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, So
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_models
+#'
+#' @aliases sagemaker_list_models
 sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
   op <- new_operation(
     name = "ListModels",
@@ -18142,6 +18520,8 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_monitoring_executions
+#'
+#' @aliases sagemaker_list_monitoring_executions
 sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, ScheduledTimeBefore = NULL, ScheduledTimeAfter = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL, MonitoringJobDefinitionName = NULL, MonitoringTypeEquals = NULL) {
   op <- new_operation(
     name = "ListMonitoringExecutions",
@@ -18249,6 +18629,8 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_monitoring_schedules
+#'
+#' @aliases sagemaker_list_monitoring_schedules
 sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL, MonitoringJobDefinitionName = NULL, MonitoringTypeEquals = NULL) {
   op <- new_operation(
     name = "ListMonitoringSchedules",
@@ -18344,6 +18726,8 @@ sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NU
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_notebook_instance_lifecycle_configs
+#'
+#' @aliases sagemaker_list_notebook_instance_lifecycle_configs
 sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL, MaxResults = NULL, SortBy = NULL, SortOrder = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL) {
   op <- new_operation(
     name = "ListNotebookInstanceLifecycleConfigs",
@@ -18468,6 +18852,8 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_notebook_instances
+#'
+#' @aliases sagemaker_list_notebook_instances
 sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NULL, SortBy = NULL, SortOrder = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL, NotebookInstanceLifecycleConfigNameContains = NULL, DefaultCodeRepositoryContains = NULL, AdditionalCodeRepositoryEquals = NULL) {
   op <- new_operation(
     name = "ListNotebookInstances",
@@ -18617,6 +19003,8 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_pipeline_execution_steps
+#'
+#' @aliases sagemaker_list_pipeline_execution_steps
 sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL, NextToken = NULL, MaxResults = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListPipelineExecutionSteps",
@@ -18696,6 +19084,8 @@ sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL,
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_pipeline_executions
+#'
+#' @aliases sagemaker_list_pipeline_executions
 sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPipelineExecutions",
@@ -18755,6 +19145,8 @@ sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_pipeline_parameters_for_execution
+#'
+#' @aliases sagemaker_list_pipeline_parameters_for_execution
 sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPipelineParametersForExecution",
@@ -18840,6 +19232,8 @@ sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionAr
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_pipelines
+#'
+#' @aliases sagemaker_list_pipelines
 sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPipelines",
@@ -18939,6 +19333,8 @@ sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_processing_jobs
+#'
+#' @aliases sagemaker_list_processing_jobs
 sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListProcessingJobs",
@@ -19018,6 +19414,8 @@ sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTim
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_projects
+#'
+#' @aliases sagemaker_list_projects
 sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListProjects",
@@ -19092,6 +19490,8 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_stage_devices
+#'
+#' @aliases sagemaker_list_stage_devices
 sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, EdgeDeploymentPlanName, ExcludeDevicesDeployedInOtherStage = NULL, StageName) {
   op <- new_operation(
     name = "ListStageDevices",
@@ -19189,6 +19589,8 @@ sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, Ed
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_studio_lifecycle_configs
+#'
+#' @aliases sagemaker_list_studio_lifecycle_configs
 sagemaker_list_studio_lifecycle_configs <- function(MaxResults = NULL, NextToken = NULL, NameContains = NULL, AppTypeEquals = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, ModifiedTimeBefore = NULL, ModifiedTimeAfter = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListStudioLifecycleConfigs",
@@ -19254,6 +19656,8 @@ sagemaker_list_studio_lifecycle_configs <- function(MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_subscribed_workteams
+#'
+#' @aliases sagemaker_list_subscribed_workteams
 sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSubscribedWorkteams",
@@ -19312,6 +19716,8 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_tags
+#'
+#' @aliases sagemaker_list_tags
 sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -19429,6 +19835,8 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_training_jobs
+#'
+#' @aliases sagemaker_list_training_jobs
 sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListTrainingJobs",
@@ -19522,6 +19930,8 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_training_jobs_for_hyper_parameter_tuning_job
+#'
+#' @aliases sagemaker_list_training_jobs_for_hyper_parameter_tuning_job
 sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName, NextToken = NULL, MaxResults = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListTrainingJobsForHyperParameterTuningJob",
@@ -19621,6 +20031,8 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_transform_jobs
+#'
+#' @aliases sagemaker_list_transform_jobs
 sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTransformJobs",
@@ -19743,6 +20155,8 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_trial_components
+#'
+#' @aliases sagemaker_list_trial_components
 sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = NULL, SourceArn = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTrialComponents",
@@ -19834,6 +20248,8 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_trials
+#'
+#' @aliases sagemaker_list_trials
 sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTrials",
@@ -19904,6 +20320,8 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_user_profiles
+#'
+#' @aliases sagemaker_list_user_profiles
 sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, SortOrder = NULL, SortBy = NULL, DomainIdEquals = NULL, UserProfileNameContains = NULL) {
   op <- new_operation(
     name = "ListUserProfiles",
@@ -20005,6 +20423,8 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_workforces
+#'
+#' @aliases sagemaker_list_workforces
 sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkforces",
@@ -20100,6 +20520,8 @@ sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameConta
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_workteams
+#'
+#' @aliases sagemaker_list_workteams
 sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkteams",
@@ -20152,6 +20574,8 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 #' @keywords internal
 #'
 #' @rdname sagemaker_put_model_package_group_policy
+#'
+#' @aliases sagemaker_put_model_package_group_policy
 sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, ResourcePolicy) {
   op <- new_operation(
     name = "PutModelPackageGroupPolicy",
@@ -20275,6 +20699,8 @@ sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, Reso
 #' @keywords internal
 #'
 #' @rdname sagemaker_query_lineage
+#'
+#' @aliases sagemaker_query_lineage
 sagemaker_query_lineage <- function(StartArns = NULL, Direction = NULL, IncludeEdges = NULL, Filters = NULL, MaxDepth = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "QueryLineage",
@@ -20330,6 +20756,8 @@ sagemaker_query_lineage <- function(StartArns = NULL, Direction = NULL, IncludeE
 #' @keywords internal
 #'
 #' @rdname sagemaker_register_devices
+#'
+#' @aliases sagemaker_register_devices
 sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
   op <- new_operation(
     name = "RegisterDevices",
@@ -20396,6 +20824,8 @@ sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_render_ui_template
+#'
+#' @aliases sagemaker_render_ui_template
 sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, HumanTaskUiArn = NULL) {
   op <- new_operation(
     name = "RenderUiTemplate",
@@ -20451,6 +20881,8 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #' @keywords internal
 #'
 #' @rdname sagemaker_retry_pipeline_execution
+#'
+#' @aliases sagemaker_retry_pipeline_execution
 sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientRequestToken, ParallelismConfiguration = NULL) {
   op <- new_operation(
     name = "RetryPipelineExecution",
@@ -21978,6 +22410,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #' @keywords internal
 #'
 #' @rdname sagemaker_search
+#'
+#' @aliases sagemaker_search
 sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "Search",
@@ -22034,6 +22468,8 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' @keywords internal
 #'
 #' @rdname sagemaker_send_pipeline_execution_step_failure
+#'
+#' @aliases sagemaker_send_pipeline_execution_step_failure
 sagemaker_send_pipeline_execution_step_failure <- function(CallbackToken, FailureReason = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "SendPipelineExecutionStepFailure",
@@ -22095,6 +22531,8 @@ sagemaker_send_pipeline_execution_step_failure <- function(CallbackToken, Failur
 #' @keywords internal
 #'
 #' @rdname sagemaker_send_pipeline_execution_step_success
+#'
+#' @aliases sagemaker_send_pipeline_execution_step_success
 sagemaker_send_pipeline_execution_step_success <- function(CallbackToken, OutputParameters = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "SendPipelineExecutionStepSuccess",
@@ -22137,6 +22575,8 @@ sagemaker_send_pipeline_execution_step_success <- function(CallbackToken, Output
 #' @keywords internal
 #'
 #' @rdname sagemaker_start_edge_deployment_stage
+#'
+#' @aliases sagemaker_start_edge_deployment_stage
 sagemaker_start_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageName) {
   op <- new_operation(
     name = "StartEdgeDeploymentStage",
@@ -22180,6 +22620,8 @@ sagemaker_start_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageN
 #' @keywords internal
 #'
 #' @rdname sagemaker_start_monitoring_schedule
+#'
+#' @aliases sagemaker_start_monitoring_schedule
 sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
   op <- new_operation(
     name = "StartMonitoringSchedule",
@@ -22225,6 +22667,8 @@ sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_start_notebook_instance
+#'
+#' @aliases sagemaker_start_notebook_instance
 sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
   op <- new_operation(
     name = "StartNotebookInstance",
@@ -22293,6 +22737,8 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_start_pipeline_execution
+#'
+#' @aliases sagemaker_start_pipeline_execution
 sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
@@ -22333,6 +22779,8 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_auto_ml_job
+#'
+#' @aliases sagemaker_stop_auto_ml_job
 sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
   op <- new_operation(
     name = "StopAutoMLJob",
@@ -22383,6 +22831,8 @@ sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_compilation_job
+#'
+#' @aliases sagemaker_stop_compilation_job
 sagemaker_stop_compilation_job <- function(CompilationJobName) {
   op <- new_operation(
     name = "StopCompilationJob",
@@ -22425,6 +22875,8 @@ sagemaker_stop_compilation_job <- function(CompilationJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_edge_deployment_stage
+#'
+#' @aliases sagemaker_stop_edge_deployment_stage
 sagemaker_stop_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageName) {
   op <- new_operation(
     name = "StopEdgeDeploymentStage",
@@ -22465,6 +22917,8 @@ sagemaker_stop_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageNa
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_edge_packaging_job
+#'
+#' @aliases sagemaker_stop_edge_packaging_job
 sagemaker_stop_edge_packaging_job <- function(EdgePackagingJobName) {
   op <- new_operation(
     name = "StopEdgePackagingJob",
@@ -22513,6 +22967,8 @@ sagemaker_stop_edge_packaging_job <- function(EdgePackagingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_hyper_parameter_tuning_job
+#'
+#' @aliases sagemaker_stop_hyper_parameter_tuning_job
 sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobName) {
   op <- new_operation(
     name = "StopHyperParameterTuningJob",
@@ -22553,6 +23009,8 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_inference_recommendations_job
+#'
+#' @aliases sagemaker_stop_inference_recommendations_job
 sagemaker_stop_inference_recommendations_job <- function(JobName) {
   op <- new_operation(
     name = "StopInferenceRecommendationsJob",
@@ -22595,6 +23053,8 @@ sagemaker_stop_inference_recommendations_job <- function(JobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_labeling_job
+#'
+#' @aliases sagemaker_stop_labeling_job
 sagemaker_stop_labeling_job <- function(LabelingJobName) {
   op <- new_operation(
     name = "StopLabelingJob",
@@ -22635,6 +23095,8 @@ sagemaker_stop_labeling_job <- function(LabelingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_monitoring_schedule
+#'
+#' @aliases sagemaker_stop_monitoring_schedule
 sagemaker_stop_monitoring_schedule <- function(MonitoringScheduleName) {
   op <- new_operation(
     name = "StopMonitoringSchedule",
@@ -22686,6 +23148,8 @@ sagemaker_stop_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_notebook_instance
+#'
+#' @aliases sagemaker_stop_notebook_instance
 sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
   op <- new_operation(
     name = "StopNotebookInstance",
@@ -22765,6 +23229,8 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_pipeline_execution
+#'
+#' @aliases sagemaker_stop_pipeline_execution
 sagemaker_stop_pipeline_execution <- function(PipelineExecutionArn, ClientRequestToken) {
   op <- new_operation(
     name = "StopPipelineExecution",
@@ -22805,6 +23271,8 @@ sagemaker_stop_pipeline_execution <- function(PipelineExecutionArn, ClientReques
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_processing_job
+#'
+#' @aliases sagemaker_stop_processing_job
 sagemaker_stop_processing_job <- function(ProcessingJobName) {
   op <- new_operation(
     name = "StopProcessingJob",
@@ -22852,6 +23320,8 @@ sagemaker_stop_processing_job <- function(ProcessingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_training_job
+#'
+#' @aliases sagemaker_stop_training_job
 sagemaker_stop_training_job <- function(TrainingJobName) {
   op <- new_operation(
     name = "StopTrainingJob",
@@ -22899,6 +23369,8 @@ sagemaker_stop_training_job <- function(TrainingJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_stop_transform_job
+#'
+#' @aliases sagemaker_stop_transform_job
 sagemaker_stop_transform_job <- function(TransformJobName) {
   op <- new_operation(
     name = "StopTransformJob",
@@ -22957,6 +23429,8 @@ sagemaker_stop_transform_job <- function(TransformJobName) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_action
+#'
+#' @aliases sagemaker_update_action
 sagemaker_update_action <- function(ActionName, Description = NULL, Status = NULL, Properties = NULL, PropertiesToRemove = NULL) {
   op <- new_operation(
     name = "UpdateAction",
@@ -23017,6 +23491,8 @@ sagemaker_update_action <- function(ActionName, Description = NULL, Status = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_app_image_config
+#'
+#' @aliases sagemaker_update_app_image_config
 sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayImageConfig = NULL) {
   op <- new_operation(
     name = "UpdateAppImageConfig",
@@ -23073,6 +23549,8 @@ sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayI
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_artifact
+#'
+#' @aliases sagemaker_update_artifact
 sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properties = NULL, PropertiesToRemove = NULL) {
   op <- new_operation(
     name = "UpdateArtifact",
@@ -23128,6 +23606,8 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_code_repository
+#'
+#' @aliases sagemaker_update_code_repository
 sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NULL) {
   op <- new_operation(
     name = "UpdateCodeRepository",
@@ -23184,6 +23664,8 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_context
+#'
+#' @aliases sagemaker_update_context
 sagemaker_update_context <- function(ContextName, Description = NULL, Properties = NULL, PropertiesToRemove = NULL) {
   op <- new_operation(
     name = "UpdateContext",
@@ -23243,6 +23725,8 @@ sagemaker_update_context <- function(ContextName, Description = NULL, Properties
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_device_fleet
+#'
+#' @aliases sagemaker_update_device_fleet
 sagemaker_update_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Description = NULL, OutputConfig, EnableIotRoleAlias = NULL) {
   op <- new_operation(
     name = "UpdateDeviceFleet",
@@ -23291,6 +23775,8 @@ sagemaker_update_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_devices
+#'
+#' @aliases sagemaker_update_devices
 sagemaker_update_devices <- function(DeviceFleetName, Devices) {
   op <- new_operation(
     name = "UpdateDevices",
@@ -23417,6 +23903,8 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_domain
+#'
+#' @aliases sagemaker_update_domain
 sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, DomainSettingsForUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
@@ -23538,6 +24026,8 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_endpoint
+#'
+#' @aliases sagemaker_update_endpoint
 sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAllVariantProperties = NULL, ExcludeRetainedVariantProperties = NULL, DeploymentConfig = NULL, RetainDeploymentConfig = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",
@@ -23599,6 +24089,8 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAl
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_endpoint_weights_and_capacities
+#'
+#' @aliases sagemaker_update_endpoint_weights_and_capacities
 sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, DesiredWeightsAndCapacities) {
   op <- new_operation(
     name = "UpdateEndpointWeightsAndCapacities",
@@ -23650,6 +24142,8 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_experiment
+#'
+#' @aliases sagemaker_update_experiment
 sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateExperiment",
@@ -23705,6 +24199,8 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_feature_group
+#'
+#' @aliases sagemaker_update_feature_group
 sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = NULL) {
   op <- new_operation(
     name = "UpdateFeatureGroup",
@@ -23764,6 +24260,8 @@ sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = 
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_feature_metadata
+#'
+#' @aliases sagemaker_update_feature_metadata
 sagemaker_update_feature_metadata <- function(FeatureGroupName, FeatureName, Description = NULL, ParameterAdditions = NULL, ParameterRemovals = NULL) {
   op <- new_operation(
     name = "UpdateFeatureMetadata",
@@ -23824,6 +24322,8 @@ sagemaker_update_feature_metadata <- function(FeatureGroupName, FeatureName, Des
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_image
+#'
+#' @aliases sagemaker_update_image
 sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, DisplayName = NULL, ImageName, RoleArn = NULL) {
   op <- new_operation(
     name = "UpdateImage",
@@ -23927,6 +24427,8 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_model_package
+#'
+#' @aliases sagemaker_update_model_package
 sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus = NULL, ApprovalDescription = NULL, CustomerMetadataProperties = NULL, CustomerMetadataPropertiesToRemove = NULL, AdditionalInferenceSpecificationsToAdd = NULL) {
   op <- new_operation(
     name = "UpdateModelPackage",
@@ -24060,6 +24562,8 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_monitoring_schedule
+#'
+#' @aliases sagemaker_update_monitoring_schedule
 sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, MonitoringScheduleConfig) {
   op <- new_operation(
     name = "UpdateMonitoringSchedule",
@@ -24192,6 +24696,8 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_notebook_instance
+#'
+#' @aliases sagemaker_update_notebook_instance
 sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceType = NULL, RoleArn = NULL, LifecycleConfigName = NULL, DisassociateLifecycleConfig = NULL, VolumeSizeInGB = NULL, DefaultCodeRepository = NULL, AdditionalCodeRepositories = NULL, AcceleratorTypes = NULL, DisassociateAcceleratorTypes = NULL, DisassociateDefaultCodeRepository = NULL, DisassociateAdditionalCodeRepositories = NULL, RootAccess = NULL, InstanceMetadataServiceConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateNotebookInstance",
@@ -24251,6 +24757,8 @@ sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_notebook_instance_lifecycle_config
+#'
+#' @aliases sagemaker_update_notebook_instance_lifecycle_config
 sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstanceLifecycleConfigName, OnCreate = NULL, OnStart = NULL) {
   op <- new_operation(
     name = "UpdateNotebookInstanceLifecycleConfig",
@@ -24318,6 +24826,8 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_pipeline
+#'
+#' @aliases sagemaker_update_pipeline
 sagemaker_update_pipeline <- function(PipelineName, PipelineDisplayName = NULL, PipelineDefinition = NULL, PipelineDefinitionS3Location = NULL, PipelineDescription = NULL, RoleArn = NULL, ParallelismConfiguration = NULL) {
   op <- new_operation(
     name = "UpdatePipeline",
@@ -24374,6 +24884,8 @@ sagemaker_update_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_pipeline_execution
+#'
+#' @aliases sagemaker_update_pipeline_execution
 sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineExecutionDescription = NULL, PipelineExecutionDisplayName = NULL, ParallelismConfiguration = NULL) {
   op <- new_operation(
     name = "UpdatePipelineExecution",
@@ -24460,6 +24972,8 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_project
+#'
+#' @aliases sagemaker_update_project
 sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningUpdateDetails = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateProject",
@@ -24534,6 +25048,8 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_training_job
+#'
+#' @aliases sagemaker_update_training_job
 sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateTrainingJob",
@@ -24582,6 +25098,8 @@ sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_trial
+#'
+#' @aliases sagemaker_update_trial
 sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
   op <- new_operation(
     name = "UpdateTrial",
@@ -24683,6 +25201,8 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_trial_component
+#'
+#' @aliases sagemaker_update_trial_component
 sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = NULL, Status = NULL, StartTime = NULL, EndTime = NULL, Parameters = NULL, ParametersToRemove = NULL, InputArtifacts = NULL, InputArtifactsToRemove = NULL, OutputArtifacts = NULL, OutputArtifactsToRemove = NULL) {
   op <- new_operation(
     name = "UpdateTrialComponent",
@@ -24798,6 +25318,8 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_user_profile
+#'
+#' @aliases sagemaker_update_user_profile
 sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSettings = NULL) {
   op <- new_operation(
     name = "UpdateUserProfile",
@@ -24950,6 +25472,8 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_workforce
+#'
+#' @aliases sagemaker_update_workforce
 sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, OidcConfig = NULL, WorkforceVpcConfig = NULL) {
   op <- new_operation(
     name = "UpdateWorkforce",
@@ -25074,6 +25598,8 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_workteam
+#'
+#' @aliases sagemaker_update_workteam
 sagemaker_update_workteam <- function(WorkteamName, MemberDefinitions = NULL, Description = NULL, NotificationConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateWorkteam",

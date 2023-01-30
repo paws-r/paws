@@ -72,6 +72,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname secretsmanager_cancel_rotate_secret
+#'
+#' @aliases secretsmanager_cancel_rotate_secret
 secretsmanager_cancel_rotate_secret <- function(SecretId) {
   op <- new_operation(
     name = "CancelRotateSecret",
@@ -328,6 +330,8 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_create_secret
+#'
+#' @aliases secretsmanager_create_secret
 secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL, Tags = NULL, AddReplicaRegions = NULL, ForceOverwriteReplicaSecret = NULL) {
   op <- new_operation(
     name = "CreateSecret",
@@ -396,6 +400,8 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' @keywords internal
 #'
 #' @rdname secretsmanager_delete_resource_policy
+#'
+#' @aliases secretsmanager_delete_resource_policy
 secretsmanager_delete_resource_policy <- function(SecretId) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -527,6 +533,8 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_delete_secret
+#'
+#' @aliases secretsmanager_delete_secret
 secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, ForceDeleteWithoutRecovery = NULL) {
   op <- new_operation(
     name = "DeleteSecret",
@@ -641,6 +649,8 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' @keywords internal
 #'
 #' @rdname secretsmanager_describe_secret
+#'
+#' @aliases secretsmanager_describe_secret
 secretsmanager_describe_secret <- function(SecretId) {
   op <- new_operation(
     name = "DescribeSecret",
@@ -733,6 +743,8 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_get_random_password
+#'
+#' @aliases secretsmanager_get_random_password
 secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCharacters = NULL, ExcludeNumbers = NULL, ExcludePunctuation = NULL, ExcludeUppercase = NULL, ExcludeLowercase = NULL, IncludeSpace = NULL, RequireEachIncludedType = NULL) {
   op <- new_operation(
     name = "GetRandomPassword",
@@ -804,6 +816,8 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' @keywords internal
 #'
 #' @rdname secretsmanager_get_resource_policy
+#'
+#' @aliases secretsmanager_get_resource_policy
 secretsmanager_get_resource_policy <- function(SecretId) {
   op <- new_operation(
     name = "GetResourcePolicy",
@@ -907,6 +921,8 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_get_secret_value
+#'
+#' @aliases secretsmanager_get_secret_value
 secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionStage = NULL) {
   op <- new_operation(
     name = "GetSecretValue",
@@ -1014,6 +1030,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secret_version_ids
+#'
+#' @aliases secretsmanager_list_secret_version_ids
 secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, NextToken = NULL, IncludeDeprecated = NULL) {
   op <- new_operation(
     name = "ListSecretVersionIds",
@@ -1153,6 +1171,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname secretsmanager_list_secrets
+#'
+#' @aliases secretsmanager_list_secrets
 secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListSecrets",
@@ -1235,6 +1255,8 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname secretsmanager_put_resource_policy
+#'
+#' @aliases secretsmanager_put_resource_policy
 secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPublicPolicy = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -1405,6 +1427,8 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' @keywords internal
 #'
 #' @rdname secretsmanager_put_secret_value
+#'
+#' @aliases secretsmanager_put_secret_value
 secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL, SecretBinary = NULL, SecretString = NULL, VersionStages = NULL) {
   op <- new_operation(
     name = "PutSecretValue",
@@ -1474,6 +1498,8 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' @keywords internal
 #'
 #' @rdname secretsmanager_remove_regions_from_replication
+#'
+#' @aliases secretsmanager_remove_regions_from_replication
 secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveReplicaRegions) {
   op <- new_operation(
     name = "RemoveRegionsFromReplication",
@@ -1548,6 +1574,8 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' @keywords internal
 #'
 #' @rdname secretsmanager_replicate_secret_to_regions
+#'
+#' @aliases secretsmanager_replicate_secret_to_regions
 secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegions, ForceOverwriteReplicaSecret = NULL) {
   op <- new_operation(
     name = "ReplicateSecretToRegions",
@@ -1615,6 +1643,8 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
 #' @keywords internal
 #'
 #' @rdname secretsmanager_restore_secret
+#'
+#' @aliases secretsmanager_restore_secret
 secretsmanager_restore_secret <- function(SecretId) {
   op <- new_operation(
     name = "RestoreSecret",
@@ -1780,6 +1810,8 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_rotate_secret
+#'
+#' @aliases secretsmanager_rotate_secret
 secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, RotationLambdaARN = NULL, RotationRules = NULL, RotateImmediately = NULL) {
   op <- new_operation(
     name = "RotateSecret",
@@ -1836,6 +1868,8 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' @keywords internal
 #'
 #' @rdname secretsmanager_stop_replication_to_replica
+#'
+#' @aliases secretsmanager_stop_replication_to_replica
 secretsmanager_stop_replication_to_replica <- function(SecretId) {
   op <- new_operation(
     name = "StopReplicationToReplica",
@@ -1950,6 +1984,8 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_tag_resource
+#'
+#' @aliases secretsmanager_tag_resource
 secretsmanager_tag_resource <- function(SecretId, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2036,6 +2072,8 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_untag_resource
+#'
+#' @aliases secretsmanager_untag_resource
 secretsmanager_untag_resource <- function(SecretId, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2207,6 +2245,8 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname secretsmanager_update_secret
+#'
+#' @aliases secretsmanager_update_secret
 secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, Description = NULL, KmsKeyId = NULL, SecretBinary = NULL, SecretString = NULL) {
   op <- new_operation(
     name = "UpdateSecret",
@@ -2334,6 +2374,8 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' @keywords internal
 #'
 #' @rdname secretsmanager_update_secret_version_stage
+#'
+#' @aliases secretsmanager_update_secret_version_stage
 secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, RemoveFromVersionId = NULL, MoveToVersionId = NULL) {
   op <- new_operation(
     name = "UpdateSecretVersionStage",
@@ -2422,6 +2464,8 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' @keywords internal
 #'
 #' @rdname secretsmanager_validate_resource_policy
+#'
+#' @aliases secretsmanager_validate_resource_policy
 secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePolicy) {
   op <- new_operation(
     name = "ValidateResourcePolicy",

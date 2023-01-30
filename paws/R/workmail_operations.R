@@ -31,6 +31,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname workmail_associate_delegate_to_resource
+#'
+#' @aliases workmail_associate_delegate_to_resource
 workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, EntityId) {
   op <- new_operation(
     name = "AssociateDelegateToResource",
@@ -75,6 +77,8 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 #' @keywords internal
 #'
 #' @rdname workmail_associate_member_to_group
+#'
+#' @aliases workmail_associate_member_to_group
 workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId) {
   op <- new_operation(
     name = "AssociateMemberToGroup",
@@ -122,6 +126,8 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 #' @keywords internal
 #'
 #' @rdname workmail_cancel_mailbox_export_job
+#'
+#' @aliases workmail_cancel_mailbox_export_job
 workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationId) {
   op <- new_operation(
     name = "CancelMailboxExportJob",
@@ -168,6 +174,8 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
 #' @keywords internal
 #'
 #' @rdname workmail_create_alias
+#'
+#' @aliases workmail_create_alias
 workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
   op <- new_operation(
     name = "CreateAlias",
@@ -231,6 +239,8 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #' @keywords internal
 #'
 #' @rdname workmail_create_availability_configuration
+#'
+#' @aliases workmail_create_availability_configuration
 workmail_create_availability_configuration <- function(ClientToken = NULL, OrganizationId, DomainName, EwsProvider = NULL, LambdaProvider = NULL) {
   op <- new_operation(
     name = "CreateAvailabilityConfiguration",
@@ -280,6 +290,8 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
 #' @keywords internal
 #'
 #' @rdname workmail_create_group
+#'
+#' @aliases workmail_create_group
 workmail_create_group <- function(OrganizationId, Name) {
   op <- new_operation(
     name = "CreateGroup",
@@ -375,6 +387,8 @@ workmail_create_group <- function(OrganizationId, Name) {
 #' @keywords internal
 #'
 #' @rdname workmail_create_mobile_device_access_rule
+#'
+#' @aliases workmail_create_mobile_device_access_rule
 workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToken = NULL, Name, Description = NULL, Effect, DeviceTypes = NULL, NotDeviceTypes = NULL, DeviceModels = NULL, NotDeviceModels = NULL, DeviceOperatingSystems = NULL, NotDeviceOperatingSystems = NULL, DeviceUserAgents = NULL, NotDeviceUserAgents = NULL) {
   op <- new_operation(
     name = "CreateMobileDeviceAccessRule",
@@ -461,6 +475,8 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
 #' @keywords internal
 #'
 #' @rdname workmail_create_organization
+#'
+#' @aliases workmail_create_organization
 workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken = NULL, Domains = NULL, KmsKeyArn = NULL, EnableInteroperability = NULL) {
   op <- new_operation(
     name = "CreateOrganization",
@@ -512,6 +528,8 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
 #' @keywords internal
 #'
 #' @rdname workmail_create_resource
+#'
+#' @aliases workmail_create_resource
 workmail_create_resource <- function(OrganizationId, Name, Type) {
   op <- new_operation(
     name = "CreateResource",
@@ -566,6 +584,8 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' @keywords internal
 #'
 #' @rdname workmail_create_user
+#'
+#' @aliases workmail_create_user
 workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
   op <- new_operation(
     name = "CreateUser",
@@ -612,6 +632,8 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_access_control_rule
+#'
+#' @aliases workmail_delete_access_control_rule
 workmail_delete_access_control_rule <- function(OrganizationId, Name) {
   op <- new_operation(
     name = "DeleteAccessControlRule",
@@ -661,6 +683,8 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_alias
+#'
+#' @aliases workmail_delete_alias
 workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
   op <- new_operation(
     name = "DeleteAlias",
@@ -706,6 +730,8 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_availability_configuration
+#'
+#' @aliases workmail_delete_availability_configuration
 workmail_delete_availability_configuration <- function(OrganizationId, DomainName) {
   op <- new_operation(
     name = "DeleteAvailabilityConfiguration",
@@ -747,6 +773,8 @@ workmail_delete_availability_configuration <- function(OrganizationId, DomainNam
 #' @keywords internal
 #'
 #' @rdname workmail_delete_email_monitoring_configuration
+#'
+#' @aliases workmail_delete_email_monitoring_configuration
 workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
   op <- new_operation(
     name = "DeleteEmailMonitoringConfiguration",
@@ -789,6 +817,8 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_group
+#'
+#' @aliases workmail_delete_group
 workmail_delete_group <- function(OrganizationId, GroupId) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -835,6 +865,8 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_mailbox_permissions
+#'
+#' @aliases workmail_delete_mailbox_permissions
 workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId) {
   op <- new_operation(
     name = "DeleteMailboxPermissions",
@@ -896,6 +928,8 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' @keywords internal
 #'
 #' @rdname workmail_delete_mobile_device_access_override
+#'
+#' @aliases workmail_delete_mobile_device_access_override
 workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId, DeviceId) {
   op <- new_operation(
     name = "DeleteMobileDeviceAccessOverride",
@@ -945,6 +979,8 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
 #' @keywords internal
 #'
 #' @rdname workmail_delete_mobile_device_access_rule
+#'
+#' @aliases workmail_delete_mobile_device_access_rule
 workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDeviceAccessRuleId) {
   op <- new_operation(
     name = "DeleteMobileDeviceAccessRule",
@@ -1003,6 +1039,8 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' @keywords internal
 #'
 #' @rdname workmail_delete_organization
+#'
+#' @aliases workmail_delete_organization
 workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, DeleteDirectory) {
   op <- new_operation(
     name = "DeleteOrganization",
@@ -1046,6 +1084,8 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
 #' @keywords internal
 #'
 #' @rdname workmail_delete_resource
+#'
+#' @aliases workmail_delete_resource
 workmail_delete_resource <- function(OrganizationId, ResourceId) {
   op <- new_operation(
     name = "DeleteResource",
@@ -1088,6 +1128,8 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_retention_policy
+#'
+#' @aliases workmail_delete_retention_policy
 workmail_delete_retention_policy <- function(OrganizationId, Id) {
   op <- new_operation(
     name = "DeleteRetentionPolicy",
@@ -1136,6 +1178,8 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 #' @keywords internal
 #'
 #' @rdname workmail_delete_user
+#'
+#' @aliases workmail_delete_user
 workmail_delete_user <- function(OrganizationId, UserId) {
   op <- new_operation(
     name = "DeleteUser",
@@ -1182,6 +1226,8 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #' @keywords internal
 #'
 #' @rdname workmail_deregister_from_work_mail
+#'
+#' @aliases workmail_deregister_from_work_mail
 workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
   op <- new_operation(
     name = "DeregisterFromWorkMail",
@@ -1229,6 +1275,8 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 #' @keywords internal
 #'
 #' @rdname workmail_deregister_mail_domain
+#'
+#' @aliases workmail_deregister_mail_domain
 workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
   op <- new_operation(
     name = "DeregisterMailDomain",
@@ -1278,6 +1326,8 @@ workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_email_monitoring_configuration
+#'
+#' @aliases workmail_describe_email_monitoring_configuration
 workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
   op <- new_operation(
     name = "DescribeEmailMonitoringConfiguration",
@@ -1334,6 +1384,8 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_group
+#'
+#' @aliases workmail_describe_group
 workmail_describe_group <- function(OrganizationId, GroupId) {
   op <- new_operation(
     name = "DescribeGroup",
@@ -1379,6 +1431,8 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_inbound_dmarc_settings
+#'
+#' @aliases workmail_describe_inbound_dmarc_settings
 workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
   op <- new_operation(
     name = "DescribeInboundDmarcSettings",
@@ -1441,6 +1495,8 @@ workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_mailbox_export_job
+#'
+#' @aliases workmail_describe_mailbox_export_job
 workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
   op <- new_operation(
     name = "DescribeMailboxExportJob",
@@ -1498,6 +1554,8 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_organization
+#'
+#' @aliases workmail_describe_organization
 workmail_describe_organization <- function(OrganizationId) {
   op <- new_operation(
     name = "DescribeOrganization",
@@ -1561,6 +1619,8 @@ workmail_describe_organization <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_resource
+#'
+#' @aliases workmail_describe_resource
 workmail_describe_resource <- function(OrganizationId, ResourceId) {
   op <- new_operation(
     name = "DescribeResource",
@@ -1619,6 +1679,8 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname workmail_describe_user
+#'
+#' @aliases workmail_describe_user
 workmail_describe_user <- function(OrganizationId, UserId) {
   op <- new_operation(
     name = "DescribeUser",
@@ -1666,6 +1728,8 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 #' @keywords internal
 #'
 #' @rdname workmail_disassociate_delegate_from_resource
+#'
+#' @aliases workmail_disassociate_delegate_from_resource
 workmail_disassociate_delegate_from_resource <- function(OrganizationId, ResourceId, EntityId) {
   op <- new_operation(
     name = "DisassociateDelegateFromResource",
@@ -1711,6 +1775,8 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 #' @keywords internal
 #'
 #' @rdname workmail_disassociate_member_from_group
+#'
+#' @aliases workmail_disassociate_member_from_group
 workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, MemberId) {
   op <- new_operation(
     name = "DisassociateMemberFromGroup",
@@ -1769,6 +1835,8 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #' @keywords internal
 #'
 #' @rdname workmail_get_access_control_effect
+#'
+#' @aliases workmail_get_access_control_effect
 workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action, UserId) {
   op <- new_operation(
     name = "GetAccessControlEffect",
@@ -1824,6 +1892,8 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
 #' @keywords internal
 #'
 #' @rdname workmail_get_default_retention_policy
+#'
+#' @aliases workmail_get_default_retention_policy
 workmail_get_default_retention_policy <- function(OrganizationId) {
   op <- new_operation(
     name = "GetDefaultRetentionPolicy",
@@ -1883,6 +1953,8 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_get_mail_domain
+#'
+#' @aliases workmail_get_mail_domain
 workmail_get_mail_domain <- function(OrganizationId, DomainName) {
   op <- new_operation(
     name = "GetMailDomain",
@@ -1932,6 +2004,8 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
 #' @keywords internal
 #'
 #' @rdname workmail_get_mailbox_details
+#'
+#' @aliases workmail_get_mailbox_details
 workmail_get_mailbox_details <- function(OrganizationId, UserId) {
   op <- new_operation(
     name = "GetMailboxDetails",
@@ -1996,6 +2070,8 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
 #' @keywords internal
 #'
 #' @rdname workmail_get_mobile_device_access_effect
+#'
+#' @aliases workmail_get_mobile_device_access_effect
 workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType = NULL, DeviceModel = NULL, DeviceOperatingSystem = NULL, DeviceUserAgent = NULL) {
   op <- new_operation(
     name = "GetMobileDeviceAccessEffect",
@@ -2067,6 +2143,8 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
 #' @keywords internal
 #'
 #' @rdname workmail_get_mobile_device_access_override
+#'
+#' @aliases workmail_get_mobile_device_access_override
 workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, DeviceId) {
   op <- new_operation(
     name = "GetMobileDeviceAccessOverride",
@@ -2142,6 +2220,8 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
 #' @keywords internal
 #'
 #' @rdname workmail_list_access_control_rules
+#'
+#' @aliases workmail_list_access_control_rules
 workmail_list_access_control_rules <- function(OrganizationId) {
   op <- new_operation(
     name = "ListAccessControlRules",
@@ -2199,6 +2279,8 @@ workmail_list_access_control_rules <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_list_aliases
+#'
+#' @aliases workmail_list_aliases
 workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAliases",
@@ -2272,6 +2354,8 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname workmail_list_availability_configurations
+#'
+#' @aliases workmail_list_availability_configurations
 workmail_list_availability_configurations <- function(OrganizationId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAvailabilityConfigurations",
@@ -2341,6 +2425,8 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
 #' @keywords internal
 #'
 #' @rdname workmail_list_group_members
+#'
+#' @aliases workmail_list_group_members
 workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListGroupMembers",
@@ -2405,6 +2491,8 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname workmail_list_groups
+#'
+#' @aliases workmail_list_groups
 workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListGroups",
@@ -2461,6 +2549,8 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname workmail_list_mail_domains
+#'
+#' @aliases workmail_list_mail_domains
 workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMailDomains",
@@ -2529,6 +2619,8 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname workmail_list_mailbox_export_jobs
+#'
+#' @aliases workmail_list_mailbox_export_jobs
 workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMailboxExportJobs",
@@ -2595,6 +2687,8 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname workmail_list_mailbox_permissions
+#'
+#' @aliases workmail_list_mailbox_permissions
 workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMailboxPermissions",
@@ -2675,6 +2769,8 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 #' @keywords internal
 #'
 #' @rdname workmail_list_mobile_device_access_overrides
+#'
+#' @aliases workmail_list_mobile_device_access_overrides
 workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId = NULL, DeviceId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMobileDeviceAccessOverrides",
@@ -2759,6 +2855,8 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
 #' @keywords internal
 #'
 #' @rdname workmail_list_mobile_device_access_rules
+#'
+#' @aliases workmail_list_mobile_device_access_rules
 workmail_list_mobile_device_access_rules <- function(OrganizationId) {
   op <- new_operation(
     name = "ListMobileDeviceAccessRules",
@@ -2816,6 +2914,8 @@ workmail_list_mobile_device_access_rules <- function(OrganizationId) {
 #' @keywords internal
 #'
 #' @rdname workmail_list_organizations
+#'
+#' @aliases workmail_list_organizations
 workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListOrganizations",
@@ -2877,6 +2977,8 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname workmail_list_resource_delegates
+#'
+#' @aliases workmail_list_resource_delegates
 workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListResourceDelegates",
@@ -2942,6 +3044,8 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 #' @keywords internal
 #'
 #' @rdname workmail_list_resources
+#'
+#' @aliases workmail_list_resources
 workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListResources",
@@ -2992,6 +3096,8 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname workmail_list_tags_for_resource
+#'
+#' @aliases workmail_list_tags_for_resource
 workmail_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3058,6 +3164,8 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname workmail_list_users
+#'
+#' @aliases workmail_list_users
 workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListUsers",
@@ -3136,6 +3244,8 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname workmail_put_access_control_rule
+#'
+#' @aliases workmail_put_access_control_rule
 workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges = NULL, NotIpRanges = NULL, Actions = NULL, NotActions = NULL, UserIds = NULL, NotUserIds = NULL, OrganizationId) {
   op <- new_operation(
     name = "PutAccessControlRule",
@@ -3186,6 +3296,8 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #' @keywords internal
 #'
 #' @rdname workmail_put_email_monitoring_configuration
+#'
+#' @aliases workmail_put_email_monitoring_configuration
 workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn, LogGroupArn) {
   op <- new_operation(
     name = "PutEmailMonitoringConfiguration",
@@ -3228,6 +3340,8 @@ workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn,
 #' @keywords internal
 #'
 #' @rdname workmail_put_inbound_dmarc_settings
+#'
+#' @aliases workmail_put_inbound_dmarc_settings
 workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
   op <- new_operation(
     name = "PutInboundDmarcSettings",
@@ -3287,6 +3401,8 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
 #' @keywords internal
 #'
 #' @rdname workmail_put_mailbox_permissions
+#'
+#' @aliases workmail_put_mailbox_permissions
 workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId, PermissionValues) {
   op <- new_operation(
     name = "PutMailboxPermissions",
@@ -3348,6 +3464,8 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #' @keywords internal
 #'
 #' @rdname workmail_put_mobile_device_access_override
+#'
+#' @aliases workmail_put_mobile_device_access_override
 workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, DeviceId, Effect, Description = NULL) {
   op <- new_operation(
     name = "PutMobileDeviceAccessOverride",
@@ -3403,6 +3521,8 @@ workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, D
 #' @keywords internal
 #'
 #' @rdname workmail_put_retention_policy
+#'
+#' @aliases workmail_put_retention_policy
 workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Description = NULL, FolderConfigurations) {
   op <- new_operation(
     name = "PutRetentionPolicy",
@@ -3451,6 +3571,8 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 #' @keywords internal
 #'
 #' @rdname workmail_register_mail_domain
+#'
+#' @aliases workmail_register_mail_domain
 workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, DomainName) {
   op <- new_operation(
     name = "RegisterMailDomain",
@@ -3508,6 +3630,8 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
 #' @keywords internal
 #'
 #' @rdname workmail_register_to_work_mail
+#'
+#' @aliases workmail_register_to_work_mail
 workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
   op <- new_operation(
     name = "RegisterToWorkMail",
@@ -3553,6 +3677,8 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
 #' @keywords internal
 #'
 #' @rdname workmail_reset_password
+#'
+#' @aliases workmail_reset_password
 workmail_reset_password <- function(OrganizationId, UserId, Password) {
   op <- new_operation(
     name = "ResetPassword",
@@ -3622,6 +3748,8 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' @keywords internal
 #'
 #' @rdname workmail_start_mailbox_export_job
+#'
+#' @aliases workmail_start_mailbox_export_job
 workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, EntityId, Description = NULL, RoleArn, KmsKeyArn, S3BucketName, S3Prefix) {
   op <- new_operation(
     name = "StartMailboxExportJob",
@@ -3671,6 +3799,8 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
 #' @keywords internal
 #'
 #' @rdname workmail_tag_resource
+#'
+#' @aliases workmail_tag_resource
 workmail_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3744,6 +3874,8 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname workmail_test_availability_configuration
+#'
+#' @aliases workmail_test_availability_configuration
 workmail_test_availability_configuration <- function(OrganizationId, DomainName = NULL, EwsProvider = NULL, LambdaProvider = NULL) {
   op <- new_operation(
     name = "TestAvailabilityConfiguration",
@@ -3790,6 +3922,8 @@ workmail_test_availability_configuration <- function(OrganizationId, DomainName 
 #' @keywords internal
 #'
 #' @rdname workmail_untag_resource
+#'
+#' @aliases workmail_untag_resource
 workmail_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3852,6 +3986,8 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname workmail_update_availability_configuration
+#'
+#' @aliases workmail_update_availability_configuration
 workmail_update_availability_configuration <- function(OrganizationId, DomainName, EwsProvider = NULL, LambdaProvider = NULL) {
   op <- new_operation(
     name = "UpdateAvailabilityConfiguration",
@@ -3896,6 +4032,8 @@ workmail_update_availability_configuration <- function(OrganizationId, DomainNam
 #' @keywords internal
 #'
 #' @rdname workmail_update_default_mail_domain
+#'
+#' @aliases workmail_update_default_mail_domain
 workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
   op <- new_operation(
     name = "UpdateDefaultMailDomain",
@@ -3943,6 +4081,8 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
 #' @keywords internal
 #'
 #' @rdname workmail_update_mailbox_quota
+#'
+#' @aliases workmail_update_mailbox_quota
 workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) {
   op <- new_operation(
     name = "UpdateMailboxQuota",
@@ -4033,6 +4173,8 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
 #' @keywords internal
 #'
 #' @rdname workmail_update_mobile_device_access_rule
+#'
+#' @aliases workmail_update_mobile_device_access_rule
 workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDeviceAccessRuleId, Name, Description = NULL, Effect, DeviceTypes = NULL, NotDeviceTypes = NULL, DeviceModels = NULL, NotDeviceModels = NULL, DeviceOperatingSystems = NULL, NotDeviceOperatingSystems = NULL, DeviceUserAgents = NULL, NotDeviceUserAgents = NULL) {
   op <- new_operation(
     name = "UpdateMobileDeviceAccessRule",
@@ -4080,6 +4222,8 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' @keywords internal
 #'
 #' @rdname workmail_update_primary_email_address
+#'
+#' @aliases workmail_update_primary_email_address
 workmail_update_primary_email_address <- function(OrganizationId, EntityId, Email) {
   op <- new_operation(
     name = "UpdatePrimaryEmailAddress",
@@ -4135,6 +4279,8 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #' @keywords internal
 #'
 #' @rdname workmail_update_resource
+#'
+#' @aliases workmail_update_resource
 workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, BookingOptions = NULL) {
   op <- new_operation(
     name = "UpdateResource",

@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lexruntimev2_delete_session
+#'
+#' @aliases lexruntimev2_delete_session
 lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) {
   op <- new_operation(
     name = "DeleteSession",
@@ -222,6 +224,8 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #' @keywords internal
 #'
 #' @rdname lexruntimev2_get_session
+#'
+#' @aliases lexruntimev2_get_session
 lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
   op <- new_operation(
     name = "GetSession",
@@ -375,6 +379,8 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #' @keywords internal
 #'
 #' @rdname lexruntimev2_put_session
+#'
+#' @aliases lexruntimev2_put_session
 lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, messages = NULL, sessionState, requestAttributes = NULL, responseContentType = NULL) {
   op <- new_operation(
     name = "PutSession",
@@ -632,6 +638,8 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #' @keywords internal
 #'
 #' @rdname lexruntimev2_recognize_text
+#'
+#' @aliases lexruntimev2_recognize_text
 lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, text, sessionState = NULL, requestAttributes = NULL) {
   op <- new_operation(
     name = "RecognizeText",
@@ -809,6 +817,8 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' @keywords internal
 #'
 #' @rdname lexruntimev2_recognize_utterance
+#'
+#' @aliases lexruntimev2_recognize_utterance
 lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessionId, sessionState = NULL, requestAttributes = NULL, requestContentType, responseContentType = NULL, inputStream = NULL) {
   op <- new_operation(
     name = "RecognizeUtterance",

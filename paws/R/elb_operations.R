@@ -64,6 +64,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname elb_add_tags
+#'
+#' @aliases elb_add_tags
 elb_add_tags <- function(LoadBalancerNames, Tags) {
   op <- new_operation(
     name = "AddTags",
@@ -136,6 +138,8 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
 #' @keywords internal
 #'
 #' @rdname elb_apply_security_groups_to_load_balancer
+#'
+#' @aliases elb_apply_security_groups_to_load_balancer
 elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, SecurityGroups) {
   op <- new_operation(
     name = "ApplySecurityGroupsToLoadBalancer",
@@ -208,6 +212,8 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
 #' @keywords internal
 #'
 #' @rdname elb_attach_load_balancer_to_subnets
+#'
+#' @aliases elb_attach_load_balancer_to_subnets
 elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
   op <- new_operation(
     name = "AttachLoadBalancerToSubnets",
@@ -289,6 +295,8 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
 #' @keywords internal
 #'
 #' @rdname elb_configure_health_check
+#'
+#' @aliases elb_configure_health_check
 elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
   op <- new_operation(
     name = "ConfigureHealthCheck",
@@ -365,6 +373,8 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
 #' @keywords internal
 #'
 #' @rdname elb_create_app_cookie_stickiness_policy
+#'
+#' @aliases elb_create_app_cookie_stickiness_policy
 elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName, CookieName) {
   op <- new_operation(
     name = "CreateAppCookieStickinessPolicy",
@@ -447,6 +457,8 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
 #' @keywords internal
 #'
 #' @rdname elb_create_lb_cookie_stickiness_policy
+#'
+#' @aliases elb_create_lb_cookie_stickiness_policy
 elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName, CookieExpirationPeriod = NULL) {
   op <- new_operation(
     name = "CreateLBCookieStickinessPolicy",
@@ -685,6 +697,8 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' @keywords internal
 #'
 #' @rdname elb_create_load_balancer
+#'
+#' @aliases elb_create_load_balancer
 elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZones = NULL, Subnets = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
@@ -774,6 +788,8 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #' @keywords internal
 #'
 #' @rdname elb_create_load_balancer_listeners
+#'
+#' @aliases elb_create_load_balancer_listeners
 elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
   op <- new_operation(
     name = "CreateLoadBalancerListeners",
@@ -878,6 +894,8 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #' @keywords internal
 #'
 #' @rdname elb_create_load_balancer_policy
+#'
+#' @aliases elb_create_load_balancer_policy
 elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, PolicyTypeName, PolicyAttributes = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancerPolicy",
@@ -936,6 +954,8 @@ elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, Policy
 #' @keywords internal
 #'
 #' @rdname elb_delete_load_balancer
+#'
+#' @aliases elb_delete_load_balancer
 elb_delete_load_balancer <- function(LoadBalancerName) {
   op <- new_operation(
     name = "DeleteLoadBalancer",
@@ -992,6 +1012,8 @@ elb_delete_load_balancer <- function(LoadBalancerName) {
 #' @keywords internal
 #'
 #' @rdname elb_delete_load_balancer_listeners
+#'
+#' @aliases elb_delete_load_balancer_listeners
 elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPorts) {
   op <- new_operation(
     name = "DeleteLoadBalancerListeners",
@@ -1045,6 +1067,8 @@ elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPor
 #' @keywords internal
 #'
 #' @rdname elb_delete_load_balancer_policy
+#'
+#' @aliases elb_delete_load_balancer_policy
 elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
   op <- new_operation(
     name = "DeleteLoadBalancerPolicy",
@@ -1123,6 +1147,8 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname elb_deregister_instances_from_load_balancer
+#'
+#' @aliases elb_deregister_instances_from_load_balancer
 elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instances) {
   op <- new_operation(
     name = "DeregisterInstancesFromLoadBalancer",
@@ -1183,6 +1209,8 @@ elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instan
 #' @keywords internal
 #'
 #' @rdname elb_describe_account_limits
+#'
+#' @aliases elb_describe_account_limits
 elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeAccountLimits",
@@ -1256,6 +1284,8 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname elb_describe_instance_health
+#'
+#' @aliases elb_describe_instance_health
 elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
   op <- new_operation(
     name = "DescribeInstanceHealth",
@@ -1332,6 +1362,8 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
 #' @keywords internal
 #'
 #' @rdname elb_describe_load_balancer_attributes
+#'
+#' @aliases elb_describe_load_balancer_attributes
 elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
   op <- new_operation(
     name = "DescribeLoadBalancerAttributes",
@@ -1412,6 +1444,8 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
 #' @keywords internal
 #'
 #' @rdname elb_describe_load_balancer_policies
+#'
+#' @aliases elb_describe_load_balancer_policies
 elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyNames = NULL) {
   op <- new_operation(
     name = "DescribeLoadBalancerPolicies",
@@ -1500,6 +1534,8 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
 #' @keywords internal
 #'
 #' @rdname elb_describe_load_balancer_policy_types
+#'
+#' @aliases elb_describe_load_balancer_policy_types
 elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
   op <- new_operation(
     name = "DescribeLoadBalancerPolicyTypes",
@@ -1641,6 +1677,8 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
 #' @keywords internal
 #'
 #' @rdname elb_describe_load_balancers
+#'
+#' @aliases elb_describe_load_balancers
 elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeLoadBalancers",
@@ -1708,6 +1746,8 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
 #' @keywords internal
 #'
 #' @rdname elb_describe_tags
+#'
+#' @aliases elb_describe_tags
 elb_describe_tags <- function(LoadBalancerNames) {
   op <- new_operation(
     name = "DescribeTags",
@@ -1778,6 +1818,8 @@ elb_describe_tags <- function(LoadBalancerNames) {
 #' @keywords internal
 #'
 #' @rdname elb_detach_load_balancer_from_subnets
+#'
+#' @aliases elb_detach_load_balancer_from_subnets
 elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
   op <- new_operation(
     name = "DetachLoadBalancerFromSubnets",
@@ -1858,6 +1900,8 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
 #' @keywords internal
 #'
 #' @rdname elb_disable_availability_zones_for_load_balancer
+#'
+#' @aliases elb_disable_availability_zones_for_load_balancer
 elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, AvailabilityZones) {
   op <- new_operation(
     name = "DisableAvailabilityZonesForLoadBalancer",
@@ -1934,6 +1978,8 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
 #' @keywords internal
 #'
 #' @rdname elb_enable_availability_zones_for_load_balancer
+#'
+#' @aliases elb_enable_availability_zones_for_load_balancer
 elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, AvailabilityZones) {
   op <- new_operation(
     name = "EnableAvailabilityZonesForLoadBalancer",
@@ -2076,6 +2122,8 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
 #' @keywords internal
 #'
 #' @rdname elb_modify_load_balancer_attributes
+#'
+#' @aliases elb_modify_load_balancer_attributes
 elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAttributes) {
   op <- new_operation(
     name = "ModifyLoadBalancerAttributes",
@@ -2171,6 +2219,8 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
 #' @keywords internal
 #'
 #' @rdname elb_register_instances_with_load_balancer
+#'
+#' @aliases elb_register_instances_with_load_balancer
 elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instances) {
   op <- new_operation(
     name = "RegisterInstancesWithLoadBalancer",
@@ -2235,6 +2285,8 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
 #' @keywords internal
 #'
 #' @rdname elb_remove_tags
+#'
+#' @aliases elb_remove_tags
 elb_remove_tags <- function(LoadBalancerNames, Tags) {
   op <- new_operation(
     name = "RemoveTags",
@@ -2299,6 +2351,8 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
 #' @keywords internal
 #'
 #' @rdname elb_set_load_balancer_listener_ssl_certificate
+#'
+#' @aliases elb_set_load_balancer_listener_ssl_certificate
 elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, LoadBalancerPort, SSLCertificateId) {
   op <- new_operation(
     name = "SetLoadBalancerListenerSSLCertificate",
@@ -2382,6 +2436,8 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
 #' @keywords internal
 #'
 #' @rdname elb_set_load_balancer_policies_for_backend_server
+#'
+#' @aliases elb_set_load_balancer_policies_for_backend_server
 elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, InstancePort, PolicyNames) {
   op <- new_operation(
     name = "SetLoadBalancerPoliciesForBackendServer",
@@ -2458,6 +2514,8 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
 #' @keywords internal
 #'
 #' @rdname elb_set_load_balancer_policies_of_listener
+#'
+#' @aliases elb_set_load_balancer_policies_of_listener
 elb_set_load_balancer_policies_of_listener <- function(LoadBalancerName, LoadBalancerPort, PolicyNames) {
   op <- new_operation(
     name = "SetLoadBalancerPoliciesOfListener",

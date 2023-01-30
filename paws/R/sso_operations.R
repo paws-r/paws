@@ -46,6 +46,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sso_get_role_credentials
+#'
+#' @aliases sso_get_role_credentials
 sso_get_role_credentials <- function(roleName, accountId, accessToken) {
   op <- new_operation(
     name = "GetRoleCredentials",
@@ -110,6 +112,8 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 #' @keywords internal
 #'
 #' @rdname sso_list_account_roles
+#'
+#' @aliases sso_list_account_roles
 sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessToken, accountId) {
   op <- new_operation(
     name = "ListAccountRoles",
@@ -175,6 +179,8 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 #' @keywords internal
 #'
 #' @rdname sso_list_accounts
+#'
+#' @aliases sso_list_accounts
 sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) {
   op <- new_operation(
     name = "ListAccounts",
@@ -237,6 +243,8 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 #' @keywords internal
 #'
 #' @rdname sso_logout
+#'
+#' @aliases sso_logout
 sso_logout <- function(accessToken) {
   op <- new_operation(
     name = "Logout",

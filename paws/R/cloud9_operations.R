@@ -125,6 +125,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_ec2
+#'
+#' @aliases cloud9_create_environment_ec2
 cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, imageId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentEC2",
@@ -200,6 +202,8 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_membership
+#'
+#' @aliases cloud9_create_environment_membership
 cloud9_create_environment_membership <- function(environmentId, userArn, permissions) {
   op <- new_operation(
     name = "CreateEnvironmentMembership",
@@ -249,6 +253,8 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
 #' @keywords internal
 #'
 #' @rdname cloud9_delete_environment
+#'
+#' @aliases cloud9_delete_environment
 cloud9_delete_environment <- function(environmentId) {
   op <- new_operation(
     name = "DeleteEnvironment",
@@ -301,6 +307,8 @@ cloud9_delete_environment <- function(environmentId) {
 #' @keywords internal
 #'
 #' @rdname cloud9_delete_environment_membership
+#'
+#' @aliases cloud9_delete_environment_membership
 cloud9_delete_environment_membership <- function(environmentId, userArn) {
   op <- new_operation(
     name = "DeleteEnvironmentMembership",
@@ -411,6 +419,8 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 #' @keywords internal
 #'
 #' @rdname cloud9_describe_environment_memberships
+#'
+#' @aliases cloud9_describe_environment_memberships
 cloud9_describe_environment_memberships <- function(userArn = NULL, environmentId = NULL, permissions = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeEnvironmentMemberships",
@@ -465,6 +475,8 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
 #' @keywords internal
 #'
 #' @rdname cloud9_describe_environment_status
+#'
+#' @aliases cloud9_describe_environment_status
 cloud9_describe_environment_status <- function(environmentId) {
   op <- new_operation(
     name = "DescribeEnvironmentStatus",
@@ -539,6 +551,8 @@ cloud9_describe_environment_status <- function(environmentId) {
 #' @keywords internal
 #'
 #' @rdname cloud9_describe_environments
+#'
+#' @aliases cloud9_describe_environments
 cloud9_describe_environments <- function(environmentIds) {
   op <- new_operation(
     name = "DescribeEnvironments",
@@ -600,6 +614,8 @@ cloud9_describe_environments <- function(environmentIds) {
 #' @keywords internal
 #'
 #' @rdname cloud9_list_environments
+#'
+#' @aliases cloud9_list_environments
 cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEnvironments",
@@ -653,6 +669,8 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloud9_list_tags_for_resource
+#'
+#' @aliases cloud9_list_tags_for_resource
 cloud9_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -704,6 +722,8 @@ cloud9_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname cloud9_tag_resource
+#'
+#' @aliases cloud9_tag_resource
 cloud9_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -750,6 +770,8 @@ cloud9_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname cloud9_untag_resource
+#'
+#' @aliases cloud9_untag_resource
 cloud9_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -818,6 +840,8 @@ cloud9_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cloud9_update_environment
+#'
+#' @aliases cloud9_update_environment
 cloud9_update_environment <- function(environmentId, name = NULL, description = NULL, managedCredentialsAction = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
@@ -895,6 +919,8 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 #' @keywords internal
 #'
 #' @rdname cloud9_update_environment_membership
+#'
+#' @aliases cloud9_update_environment_membership
 cloud9_update_environment_membership <- function(environmentId, userArn, permissions) {
   op <- new_operation(
     name = "UpdateEnvironmentMembership",

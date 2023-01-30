@@ -63,6 +63,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname support_add_attachments_to_set
+#'
+#' @aliases support_add_attachments_to_set
 support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) {
   op <- new_operation(
     name = "AddAttachmentsToSet",
@@ -136,6 +138,8 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #' @keywords internal
 #'
 #' @rdname support_add_communication_to_case
+#'
+#' @aliases support_add_communication_to_case
 support_add_communication_to_case <- function(caseId = NULL, communicationBody, ccEmailAddresses = NULL, attachmentSetId = NULL) {
   op <- new_operation(
     name = "AddCommunicationToCase",
@@ -266,6 +270,8 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @keywords internal
 #'
 #' @rdname support_create_case
+#'
+#' @aliases support_create_case
 support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL, categoryCode = NULL, communicationBody, ccEmailAddresses = NULL, language = NULL, issueType = NULL, attachmentSetId = NULL) {
   op <- new_operation(
     name = "CreateCase",
@@ -329,6 +335,8 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' @keywords internal
 #'
 #' @rdname support_describe_attachment
+#'
+#' @aliases support_describe_attachment
 support_describe_attachment <- function(attachmentId) {
   op <- new_operation(
     name = "DescribeAttachment",
@@ -465,6 +473,8 @@ support_describe_attachment <- function(attachmentId) {
 #' @keywords internal
 #'
 #' @rdname support_describe_cases
+#'
+#' @aliases support_describe_cases
 support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTime = NULL, beforeTime = NULL, includeResolvedCases = NULL, nextToken = NULL, maxResults = NULL, language = NULL, includeCommunications = NULL) {
   op <- new_operation(
     name = "DescribeCases",
@@ -559,6 +569,8 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #' @keywords internal
 #'
 #' @rdname support_describe_communications
+#'
+#' @aliases support_describe_communications
 support_describe_communications <- function(caseId, beforeTime = NULL, afterTime = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeCommunications",
@@ -645,6 +657,8 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' @keywords internal
 #'
 #' @rdname support_describe_services
+#'
+#' @aliases support_describe_services
 support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
   op <- new_operation(
     name = "DescribeServices",
@@ -711,6 +725,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' @keywords internal
 #'
 #' @rdname support_describe_severity_levels
+#'
+#' @aliases support_describe_severity_levels
 support_describe_severity_levels <- function(language = NULL) {
   op <- new_operation(
     name = "DescribeSeverityLevels",
@@ -786,6 +802,8 @@ support_describe_severity_levels <- function(language = NULL) {
 #' @keywords internal
 #'
 #' @rdname support_describe_trusted_advisor_check_refresh_statuses
+#'
+#' @aliases support_describe_trusted_advisor_check_refresh_statuses
 support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
   op <- new_operation(
     name = "DescribeTrustedAdvisorCheckRefreshStatuses",
@@ -895,6 +913,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' @keywords internal
 #'
 #' @rdname support_describe_trusted_advisor_check_result
+#'
+#' @aliases support_describe_trusted_advisor_check_result
 support_describe_trusted_advisor_check_result <- function(checkId, language = NULL) {
   op <- new_operation(
     name = "DescribeTrustedAdvisorCheckResult",
@@ -976,6 +996,8 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #' @keywords internal
 #'
 #' @rdname support_describe_trusted_advisor_check_summaries
+#'
+#' @aliases support_describe_trusted_advisor_check_summaries
 support_describe_trusted_advisor_check_summaries <- function(checkIds) {
   op <- new_operation(
     name = "DescribeTrustedAdvisorCheckSummaries",
@@ -1053,6 +1075,8 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' @keywords internal
 #'
 #' @rdname support_describe_trusted_advisor_checks
+#'
+#' @aliases support_describe_trusted_advisor_checks
 support_describe_trusted_advisor_checks <- function(language) {
   op <- new_operation(
     name = "DescribeTrustedAdvisorChecks",
@@ -1124,6 +1148,8 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' @keywords internal
 #'
 #' @rdname support_refresh_trusted_advisor_check
+#'
+#' @aliases support_refresh_trusted_advisor_check
 support_refresh_trusted_advisor_check <- function(checkId) {
   op <- new_operation(
     name = "RefreshTrustedAdvisorCheck",
@@ -1182,6 +1208,8 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' @keywords internal
 #'
 #' @rdname support_resolve_case
+#'
+#' @aliases support_resolve_case
 support_resolve_case <- function(caseId = NULL) {
   op <- new_operation(
     name = "ResolveCase",

@@ -123,30 +123,30 @@ the accounts in their behavior graph.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity.p2:detective_accept_invitation]{accept_invitation} \tab Accepts an invitation for the member account to contribute data to a behavior graph\cr
-\link[paws.security.identity.p2:detective_batch_get_graph_member_datasources]{batch_get_graph_member_datasources} \tab Gets data source package information for the behavior graph\cr
-\link[paws.security.identity.p2:detective_batch_get_membership_datasources]{batch_get_membership_datasources} \tab Gets information on the data source package history for an account\cr
-\link[paws.security.identity.p2:detective_create_graph]{create_graph} \tab Creates a new behavior graph for the calling account, and sets that account as the administrator account\cr
-\link[paws.security.identity.p2:detective_create_members]{create_members} \tab CreateMembers is used to send invitations to accounts\cr
-\link[paws.security.identity.p2:detective_delete_graph]{delete_graph} \tab Disables the specified behavior graph and queues it to be deleted\cr
-\link[paws.security.identity.p2:detective_delete_members]{delete_members} \tab Removes the specified member accounts from the behavior graph\cr
-\link[paws.security.identity.p2:detective_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the configuration for the organization behavior graph\cr
-\link[paws.security.identity.p2:detective_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the Detective administrator account in the current Region\cr
-\link[paws.security.identity.p2:detective_disassociate_membership]{disassociate_membership} \tab Removes the member account from the specified behavior graph\cr
-\link[paws.security.identity.p2:detective_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Detective administrator account for the organization in the current Region\cr
-\link[paws.security.identity.p2:detective_get_members]{get_members} \tab Returns the membership details for specified member accounts for a behavior graph\cr
-\link[paws.security.identity.p2:detective_list_datasource_packages]{list_datasource_packages} \tab Lists data source packages in the behavior graph\cr
-\link[paws.security.identity.p2:detective_list_graphs]{list_graphs} \tab Returns the list of behavior graphs that the calling account is an administrator account of\cr
-\link[paws.security.identity.p2:detective_list_invitations]{list_invitations} \tab Retrieves the list of open and accepted behavior graph invitations for the member account\cr
-\link[paws.security.identity.p2:detective_list_members]{list_members} \tab Retrieves the list of member accounts for a behavior graph\cr
-\link[paws.security.identity.p2:detective_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Returns information about the Detective administrator account for an organization\cr
-\link[paws.security.identity.p2:detective_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tag values that are assigned to a behavior graph\cr
-\link[paws.security.identity.p2:detective_reject_invitation]{reject_invitation} \tab Rejects an invitation to contribute the account data to a behavior graph\cr
-\link[paws.security.identity.p2:detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
-\link[paws.security.identity.p2:detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
-\link[paws.security.identity.p2:detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
-\link[paws.security.identity.p2:detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
-\link[paws.security.identity.p2:detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
+\link[paws.security.identity:detective_accept_invitation]{accept_invitation} \tab Accepts an invitation for the member account to contribute data to a behavior graph\cr
+\link[paws.security.identity:detective_batch_get_graph_member_datasources]{batch_get_graph_member_datasources} \tab Gets data source package information for the behavior graph\cr
+\link[paws.security.identity:detective_batch_get_membership_datasources]{batch_get_membership_datasources} \tab Gets information on the data source package history for an account\cr
+\link[paws.security.identity:detective_create_graph]{create_graph} \tab Creates a new behavior graph for the calling account, and sets that account as the administrator account\cr
+\link[paws.security.identity:detective_create_members]{create_members} \tab CreateMembers is used to send invitations to accounts\cr
+\link[paws.security.identity:detective_delete_graph]{delete_graph} \tab Disables the specified behavior graph and queues it to be deleted\cr
+\link[paws.security.identity:detective_delete_members]{delete_members} \tab Removes the specified member accounts from the behavior graph\cr
+\link[paws.security.identity:detective_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the configuration for the organization behavior graph\cr
+\link[paws.security.identity:detective_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the Detective administrator account in the current Region\cr
+\link[paws.security.identity:detective_disassociate_membership]{disassociate_membership} \tab Removes the member account from the specified behavior graph\cr
+\link[paws.security.identity:detective_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates the Detective administrator account for the organization in the current Region\cr
+\link[paws.security.identity:detective_get_members]{get_members} \tab Returns the membership details for specified member accounts for a behavior graph\cr
+\link[paws.security.identity:detective_list_datasource_packages]{list_datasource_packages} \tab Lists data source packages in the behavior graph\cr
+\link[paws.security.identity:detective_list_graphs]{list_graphs} \tab Returns the list of behavior graphs that the calling account is an administrator account of\cr
+\link[paws.security.identity:detective_list_invitations]{list_invitations} \tab Retrieves the list of open and accepted behavior graph invitations for the member account\cr
+\link[paws.security.identity:detective_list_members]{list_members} \tab Retrieves the list of member accounts for a behavior graph\cr
+\link[paws.security.identity:detective_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Returns information about the Detective administrator account for an organization\cr
+\link[paws.security.identity:detective_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tag values that are assigned to a behavior graph\cr
+\link[paws.security.identity:detective_reject_invitation]{reject_invitation} \tab Rejects an invitation to contribute the account data to a behavior graph\cr
+\link[paws.security.identity:detective_start_monitoring_member]{start_monitoring_member} \tab Sends a request to enable data ingest for a member account that has a status of ACCEPTED_BUT_DISABLED\cr
+\link[paws.security.identity:detective_tag_resource]{tag_resource} \tab Applies tag values to a behavior graph\cr
+\link[paws.security.identity:detective_untag_resource]{untag_resource} \tab Removes tags from a behavior graph\cr
+\link[paws.security.identity:detective_update_datasource_packages]{update_datasource_packages} \tab Starts a data source packages for the behavior graph\cr
+\link[paws.security.identity:detective_update_organization_configuration]{update_organization_configuration} \tab Updates the configuration for the Organizations integration in the current Region
 }
 }
 

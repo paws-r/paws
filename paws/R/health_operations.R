@@ -63,6 +63,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname health_describe_affected_accounts_for_organization
+#'
+#' @aliases health_describe_affected_accounts_for_organization
 health_describe_affected_accounts_for_organization <- function(eventArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeAffectedAccountsForOrganization",
@@ -183,6 +185,8 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' @keywords internal
 #'
 #' @rdname health_describe_affected_entities
+#'
+#' @aliases health_describe_affected_entities
 health_describe_affected_entities <- function(filter, locale = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeAffectedEntities",
@@ -293,6 +297,8 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' @keywords internal
 #'
 #' @rdname health_describe_affected_entities_for_organization
+#'
+#' @aliases health_describe_affected_entities_for_organization
 health_describe_affected_entities_for_organization <- function(organizationEntityFilters, locale = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeAffectedEntitiesForOrganization",
@@ -348,6 +354,8 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
 #' @keywords internal
 #'
 #' @rdname health_describe_entity_aggregates
+#'
+#' @aliases health_describe_entity_aggregates
 health_describe_entity_aggregates <- function(eventArns = NULL) {
   op <- new_operation(
     name = "DescribeEntityAggregates",
@@ -480,6 +488,8 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #' @keywords internal
 #'
 #' @rdname health_describe_event_aggregates
+#'
+#' @aliases health_describe_event_aggregates
 health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeEventAggregates",
@@ -583,6 +593,8 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 #' @keywords internal
 #'
 #' @rdname health_describe_event_details
+#'
+#' @aliases health_describe_event_details
 health_describe_event_details <- function(eventArns, locale = NULL) {
   op <- new_operation(
     name = "DescribeEventDetails",
@@ -715,6 +727,8 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' @keywords internal
 #'
 #' @rdname health_describe_event_details_for_organization
+#'
+#' @aliases health_describe_event_details_for_organization
 health_describe_event_details_for_organization <- function(organizationEventDetailFilters, locale = NULL) {
   op <- new_operation(
     name = "DescribeEventDetailsForOrganization",
@@ -800,6 +814,8 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 #' @keywords internal
 #'
 #' @rdname health_describe_event_types
+#'
+#' @aliases health_describe_event_types
 health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeEventTypes",
@@ -964,6 +980,8 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' @keywords internal
 #'
 #' @rdname health_describe_events
+#'
+#' @aliases health_describe_events
 health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults = NULL, locale = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -1118,6 +1136,8 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' @keywords internal
 #'
 #' @rdname health_describe_events_for_organization
+#'
+#' @aliases health_describe_events_for_organization
 health_describe_events_for_organization <- function(filter = NULL, nextToken = NULL, maxResults = NULL, locale = NULL) {
   op <- new_operation(
     name = "DescribeEventsForOrganization",
@@ -1162,6 +1182,8 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname health_describe_health_service_status_for_organization
+#'
+#' @aliases health_describe_health_service_status_for_organization
 health_describe_health_service_status_for_organization <- function() {
   op <- new_operation(
     name = "DescribeHealthServiceStatusForOrganization",
@@ -1219,6 +1241,8 @@ health_describe_health_service_status_for_organization <- function() {
 #' @keywords internal
 #'
 #' @rdname health_disable_health_service_access_for_organization
+#'
+#' @aliases health_disable_health_service_access_for_organization
 health_disable_health_service_access_for_organization <- function() {
   op <- new_operation(
     name = "DisableHealthServiceAccessForOrganization",
@@ -1279,6 +1303,8 @@ health_disable_health_service_access_for_organization <- function() {
 #' @keywords internal
 #'
 #' @rdname health_enable_health_service_access_for_organization
+#'
+#' @aliases health_enable_health_service_access_for_organization
 health_enable_health_service_access_for_organization <- function() {
   op <- new_operation(
     name = "EnableHealthServiceAccessForOrganization",

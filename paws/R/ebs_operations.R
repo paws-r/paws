@@ -52,6 +52,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ebs_complete_snapshot
+#'
+#' @aliases ebs_complete_snapshot
 ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NULL, ChecksumAlgorithm = NULL, ChecksumAggregationMethod = NULL) {
   op <- new_operation(
     name = "CompleteSnapshot",
@@ -117,6 +119,8 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' @keywords internal
 #'
 #' @rdname ebs_get_snapshot_block
+#'
+#' @aliases ebs_get_snapshot_block
 ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
   op <- new_operation(
     name = "GetSnapshotBlock",
@@ -207,6 +211,8 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' @keywords internal
 #'
 #' @rdname ebs_list_changed_blocks
+#'
+#' @aliases ebs_list_changed_blocks
 ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, NextToken = NULL, MaxResults = NULL, StartingBlockIndex = NULL) {
   op <- new_operation(
     name = "ListChangedBlocks",
@@ -286,6 +292,8 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #' @keywords internal
 #'
 #' @rdname ebs_list_snapshot_blocks
+#'
+#' @aliases ebs_list_snapshot_blocks
 ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = NULL, StartingBlockIndex = NULL) {
   op <- new_operation(
     name = "ListSnapshotBlocks",
@@ -377,6 +385,8 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname ebs_put_snapshot_block
+#'
+#' @aliases ebs_put_snapshot_block
 ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength, Progress = NULL, Checksum, ChecksumAlgorithm) {
   op <- new_operation(
     name = "PutSnapshotBlock",
@@ -536,6 +546,8 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' @keywords internal
 #'
 #' @rdname ebs_start_snapshot
+#'
+#' @aliases ebs_start_snapshot
 ebs_start_snapshot <- function(VolumeSize, ParentSnapshotId = NULL, Tags = NULL, Description = NULL, ClientToken = NULL, Encrypted = NULL, KmsKeyArn = NULL, Timeout = NULL) {
   op <- new_operation(
     name = "StartSnapshot",

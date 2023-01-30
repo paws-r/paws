@@ -63,6 +63,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ecr_batch_check_layer_availability
+#'
+#' @aliases ecr_batch_check_layer_availability
 ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName, layerDigests) {
   op <- new_operation(
     name = "BatchCheckLayerAvailability",
@@ -158,6 +160,8 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
 #' @keywords internal
 #'
 #' @rdname ecr_batch_delete_image
+#'
+#' @aliases ecr_batch_delete_image
 ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) {
   op <- new_operation(
     name = "BatchDeleteImage",
@@ -264,6 +268,8 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
 #' @keywords internal
 #'
 #' @rdname ecr_batch_get_image
+#'
+#' @aliases ecr_batch_get_image
 ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acceptedMediaTypes = NULL) {
   op <- new_operation(
     name = "BatchGetImage",
@@ -331,6 +337,8 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
 #' @keywords internal
 #'
 #' @rdname ecr_batch_get_repository_scanning_configuration
+#'
+#' @aliases ecr_batch_get_repository_scanning_configuration
 ecr_batch_get_repository_scanning_configuration <- function(repositoryNames) {
   op <- new_operation(
     name = "BatchGetRepositoryScanningConfiguration",
@@ -403,6 +411,8 @@ ecr_batch_get_repository_scanning_configuration <- function(repositoryNames) {
 #' @keywords internal
 #'
 #' @rdname ecr_complete_layer_upload
+#'
+#' @aliases ecr_complete_layer_upload
 ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadId, layerDigests) {
   op <- new_operation(
     name = "CompleteLayerUpload",
@@ -464,6 +474,8 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @keywords internal
 #'
 #' @rdname ecr_create_pull_through_cache_rule
+#'
+#' @aliases ecr_create_pull_through_cache_rule
 ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegistryUrl, registryId = NULL) {
   op <- new_operation(
     name = "CreatePullThroughCacheRule",
@@ -572,6 +584,8 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
 #' @keywords internal
 #'
 #' @rdname ecr_create_repository
+#'
+#' @aliases ecr_create_repository
 ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRepository",
@@ -626,6 +640,8 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
 #' @keywords internal
 #'
 #' @rdname ecr_delete_lifecycle_policy
+#'
+#' @aliases ecr_delete_lifecycle_policy
 ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "DeleteLifecyclePolicy",
@@ -681,6 +697,8 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecr_delete_pull_through_cache_rule
+#'
+#' @aliases ecr_delete_pull_through_cache_rule
 ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId = NULL) {
   op <- new_operation(
     name = "DeletePullThroughCacheRule",
@@ -723,6 +741,8 @@ ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId =
 #' @keywords internal
 #'
 #' @rdname ecr_delete_registry_policy
+#'
+#' @aliases ecr_delete_registry_policy
 ecr_delete_registry_policy <- function() {
   op <- new_operation(
     name = "DeleteRegistryPolicy",
@@ -803,6 +823,8 @@ ecr_delete_registry_policy <- function() {
 #' @keywords internal
 #'
 #' @rdname ecr_delete_repository
+#'
+#' @aliases ecr_delete_repository
 ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NULL) {
   op <- new_operation(
     name = "DeleteRepository",
@@ -864,6 +886,8 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
 #' @keywords internal
 #'
 #' @rdname ecr_delete_repository_policy
+#'
+#' @aliases ecr_delete_repository_policy
 ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "DeleteRepositoryPolicy",
@@ -930,6 +954,8 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecr_describe_image_replication_status
+#'
+#' @aliases ecr_describe_image_replication_status
 ecr_describe_image_replication_status <- function(repositoryName, imageId, registryId = NULL) {
   op <- new_operation(
     name = "DescribeImageReplicationStatus",
@@ -1144,6 +1170,8 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
 #' @keywords internal
 #'
 #' @rdname ecr_describe_image_scan_findings
+#'
+#' @aliases ecr_describe_image_scan_findings
 ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, imageId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeImageScanFindings",
@@ -1266,6 +1294,8 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
 #' @keywords internal
 #'
 #' @rdname ecr_describe_images
+#'
+#' @aliases ecr_describe_images
 ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NULL, nextToken = NULL, maxResults = NULL, filter = NULL) {
   op <- new_operation(
     name = "DescribeImages",
@@ -1347,6 +1377,8 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
 #' @keywords internal
 #'
 #' @rdname ecr_describe_pull_through_cache_rules
+#'
+#' @aliases ecr_describe_pull_through_cache_rules
 ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrRepositoryPrefixes = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribePullThroughCacheRules",
@@ -1409,6 +1441,8 @@ ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrReposito
 #' @keywords internal
 #'
 #' @rdname ecr_describe_registry
+#'
+#' @aliases ecr_describe_registry
 ecr_describe_registry <- function() {
   op <- new_operation(
     name = "DescribeRegistry",
@@ -1513,6 +1547,8 @@ ecr_describe_registry <- function() {
 #' @keywords internal
 #'
 #' @rdname ecr_describe_repositories
+#'
+#' @aliases ecr_describe_repositories
 ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeRepositories",
@@ -1586,6 +1622,8 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
 #' @keywords internal
 #'
 #' @rdname ecr_get_authorization_token
+#'
+#' @aliases ecr_get_authorization_token
 ecr_get_authorization_token <- function(registryIds = NULL) {
   op <- new_operation(
     name = "GetAuthorizationToken",
@@ -1649,6 +1687,8 @@ ecr_get_authorization_token <- function(registryIds = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecr_get_download_url_for_layer
+#'
+#' @aliases ecr_get_download_url_for_layer
 ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, layerDigest) {
   op <- new_operation(
     name = "GetDownloadUrlForLayer",
@@ -1703,6 +1743,8 @@ ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, la
 #' @keywords internal
 #'
 #' @rdname ecr_get_lifecycle_policy
+#'
+#' @aliases ecr_get_lifecycle_policy
 ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "GetLifecyclePolicy",
@@ -1808,6 +1850,8 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecr_get_lifecycle_policy_preview
+#'
+#' @aliases ecr_get_lifecycle_policy_preview
 ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, imageIds = NULL, nextToken = NULL, maxResults = NULL, filter = NULL) {
   op <- new_operation(
     name = "GetLifecyclePolicyPreview",
@@ -1850,6 +1894,8 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 #' @keywords internal
 #'
 #' @rdname ecr_get_registry_policy
+#'
+#' @aliases ecr_get_registry_policy
 ecr_get_registry_policy <- function() {
   op <- new_operation(
     name = "GetRegistryPolicy",
@@ -1905,6 +1951,8 @@ ecr_get_registry_policy <- function() {
 #' @keywords internal
 #'
 #' @rdname ecr_get_registry_scanning_configuration
+#'
+#' @aliases ecr_get_registry_scanning_configuration
 ecr_get_registry_scanning_configuration <- function() {
   op <- new_operation(
     name = "GetRegistryScanningConfiguration",
@@ -1965,6 +2013,8 @@ ecr_get_registry_scanning_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname ecr_get_repository_policy
+#'
+#' @aliases ecr_get_repository_policy
 ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "GetRepositoryPolicy",
@@ -2024,6 +2074,8 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecr_initiate_layer_upload
+#'
+#' @aliases ecr_initiate_layer_upload
 ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
   op <- new_operation(
     name = "InitiateLayerUpload",
@@ -2122,6 +2174,8 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' @keywords internal
 #'
 #' @rdname ecr_list_images
+#'
+#' @aliases ecr_list_images
 ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL, maxResults = NULL, filter = NULL) {
   op <- new_operation(
     name = "ListImages",
@@ -2174,6 +2228,8 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname ecr_list_tags_for_resource
+#'
+#' @aliases ecr_list_tags_for_resource
 ecr_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2253,6 +2309,8 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ecr_put_image
+#'
+#' @aliases ecr_put_image
 ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imageManifestMediaType = NULL, imageTag = NULL, imageDigest = NULL) {
   op <- new_operation(
     name = "PutImage",
@@ -2322,6 +2380,8 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
 #' @keywords internal
 #'
 #' @rdname ecr_put_image_scanning_configuration
+#'
+#' @aliases ecr_put_image_scanning_configuration
 ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryName, imageScanningConfiguration) {
   op <- new_operation(
     name = "PutImageScanningConfiguration",
@@ -2384,6 +2444,8 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
 #' @keywords internal
 #'
 #' @rdname ecr_put_image_tag_mutability
+#'
+#' @aliases ecr_put_image_tag_mutability
 ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imageTagMutability) {
   op <- new_operation(
     name = "PutImageTagMutability",
@@ -2440,6 +2502,8 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
 #' @keywords internal
 #'
 #' @rdname ecr_put_lifecycle_policy
+#'
+#' @aliases ecr_put_lifecycle_policy
 ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecyclePolicyText) {
   op <- new_operation(
     name = "PutLifecyclePolicy",
@@ -2495,6 +2559,8 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
 #' @keywords internal
 #'
 #' @rdname ecr_put_registry_policy
+#'
+#' @aliases ecr_put_registry_policy
 ecr_put_registry_policy <- function(policyText) {
   op <- new_operation(
     name = "PutRegistryPolicy",
@@ -2578,6 +2644,8 @@ ecr_put_registry_policy <- function(policyText) {
 #' @keywords internal
 #'
 #' @rdname ecr_put_registry_scanning_configuration
+#'
+#' @aliases ecr_put_registry_scanning_configuration
 ecr_put_registry_scanning_configuration <- function(scanType = NULL, rules = NULL) {
   op <- new_operation(
     name = "PutRegistryScanningConfiguration",
@@ -2670,6 +2738,8 @@ ecr_put_registry_scanning_configuration <- function(scanType = NULL, rules = NUL
 #' @keywords internal
 #'
 #' @rdname ecr_put_replication_configuration
+#'
+#' @aliases ecr_put_replication_configuration
 ecr_put_replication_configuration <- function(replicationConfiguration) {
   op <- new_operation(
     name = "PutReplicationConfiguration",
@@ -2735,6 +2805,8 @@ ecr_put_replication_configuration <- function(replicationConfiguration) {
 #' @keywords internal
 #'
 #' @rdname ecr_set_repository_policy
+#'
+#' @aliases ecr_set_repository_policy
 ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyText, force = NULL) {
   op <- new_operation(
     name = "SetRepositoryPolicy",
@@ -2802,6 +2874,8 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
 #' @keywords internal
 #'
 #' @rdname ecr_start_image_scan
+#'
+#' @aliases ecr_start_image_scan
 ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
   op <- new_operation(
     name = "StartImageScan",
@@ -2860,6 +2934,8 @@ ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
 #' @keywords internal
 #'
 #' @rdname ecr_start_lifecycle_policy_preview
+#'
+#' @aliases ecr_start_lifecycle_policy_preview
 ecr_start_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, lifecyclePolicyText = NULL) {
   op <- new_operation(
     name = "StartLifecyclePolicyPreview",
@@ -2912,6 +2988,8 @@ ecr_start_lifecycle_policy_preview <- function(registryId = NULL, repositoryName
 #' @keywords internal
 #'
 #' @rdname ecr_tag_resource
+#'
+#' @aliases ecr_tag_resource
 ecr_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2958,6 +3036,8 @@ ecr_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ecr_untag_resource
+#'
+#' @aliases ecr_untag_resource
 ecr_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3032,6 +3112,8 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ecr_upload_layer_part
+#'
+#' @aliases ecr_upload_layer_part
 ecr_upload_layer_part <- function(registryId = NULL, repositoryName, uploadId, partFirstByte, partLastByte, layerPartBlob) {
   op <- new_operation(
     name = "UploadLayerPart",

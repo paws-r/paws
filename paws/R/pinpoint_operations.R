@@ -44,6 +44,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_app
+#'
+#' @aliases pinpoint_create_app
 pinpoint_create_app <- function(CreateApplicationRequest) {
   op <- new_operation(
     name = "CreateApp",
@@ -1038,6 +1040,8 @@ pinpoint_create_app <- function(CreateApplicationRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_campaign
+#'
+#' @aliases pinpoint_create_campaign
 pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
   op <- new_operation(
     name = "CreateCampaign",
@@ -1104,6 +1108,8 @@ pinpoint_create_campaign <- function(ApplicationId, WriteCampaignRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_email_template
+#'
+#' @aliases pinpoint_create_email_template
 pinpoint_create_email_template <- function(EmailTemplateRequest, TemplateName) {
   op <- new_operation(
     name = "CreateEmailTemplate",
@@ -1178,6 +1184,8 @@ pinpoint_create_email_template <- function(EmailTemplateRequest, TemplateName) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_export_job
+#'
+#' @aliases pinpoint_create_export_job
 pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
   op <- new_operation(
     name = "CreateExportJob",
@@ -1260,6 +1268,8 @@ pinpoint_create_export_job <- function(ApplicationId, ExportJobRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_import_job
+#'
+#' @aliases pinpoint_create_import_job
 pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
   op <- new_operation(
     name = "CreateImportJob",
@@ -1385,6 +1395,8 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_in_app_template
+#'
+#' @aliases pinpoint_create_in_app_template
 pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) {
   op <- new_operation(
     name = "CreateInAppTemplate",
@@ -2368,6 +2380,8 @@ pinpoint_create_in_app_template <- function(InAppTemplateRequest, TemplateName) 
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_journey
+#'
+#' @aliases pinpoint_create_journey
 pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
   op <- new_operation(
     name = "CreateJourney",
@@ -2481,6 +2495,8 @@ pinpoint_create_journey <- function(ApplicationId, WriteJourneyRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_push_template
+#'
+#' @aliases pinpoint_create_push_template
 pinpoint_create_push_template <- function(PushNotificationTemplateRequest, TemplateName) {
   op <- new_operation(
     name = "CreatePushTemplate",
@@ -2554,6 +2570,8 @@ pinpoint_create_push_template <- function(PushNotificationTemplateRequest, Templ
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_recommender_configuration
+#'
+#' @aliases pinpoint_create_recommender_configuration
 pinpoint_create_recommender_configuration <- function(CreateRecommenderConfiguration) {
   op <- new_operation(
     name = "CreateRecommenderConfiguration",
@@ -2999,6 +3017,8 @@ pinpoint_create_recommender_configuration <- function(CreateRecommenderConfigura
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_segment
+#'
+#' @aliases pinpoint_create_segment
 pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
   op <- new_operation(
     name = "CreateSegment",
@@ -3063,6 +3083,8 @@ pinpoint_create_segment <- function(ApplicationId, WriteSegmentRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_sms_template
+#'
+#' @aliases pinpoint_create_sms_template
 pinpoint_create_sms_template <- function(SMSTemplateRequest, TemplateName) {
   op <- new_operation(
     name = "CreateSmsTemplate",
@@ -3128,6 +3150,8 @@ pinpoint_create_sms_template <- function(SMSTemplateRequest, TemplateName) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_create_voice_template
+#'
+#' @aliases pinpoint_create_voice_template
 pinpoint_create_voice_template <- function(TemplateName, VoiceTemplateRequest) {
   op <- new_operation(
     name = "CreateVoiceTemplate",
@@ -3187,6 +3211,8 @@ pinpoint_create_voice_template <- function(TemplateName, VoiceTemplateRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_adm_channel
+#'
+#' @aliases pinpoint_delete_adm_channel
 pinpoint_delete_adm_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteAdmChannel",
@@ -3248,6 +3274,8 @@ pinpoint_delete_adm_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_apns_channel
+#'
+#' @aliases pinpoint_delete_apns_channel
 pinpoint_delete_apns_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteApnsChannel",
@@ -3309,6 +3337,8 @@ pinpoint_delete_apns_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_apns_sandbox_channel
+#'
+#' @aliases pinpoint_delete_apns_sandbox_channel
 pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteApnsSandboxChannel",
@@ -3370,6 +3400,8 @@ pinpoint_delete_apns_sandbox_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_apns_voip_channel
+#'
+#' @aliases pinpoint_delete_apns_voip_channel
 pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteApnsVoipChannel",
@@ -3431,6 +3463,8 @@ pinpoint_delete_apns_voip_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_apns_voip_sandbox_channel
+#'
+#' @aliases pinpoint_delete_apns_voip_sandbox_channel
 pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteApnsVoipSandboxChannel",
@@ -3485,6 +3519,8 @@ pinpoint_delete_apns_voip_sandbox_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_app
+#'
+#' @aliases pinpoint_delete_app
 pinpoint_delete_app <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteApp",
@@ -3545,6 +3581,8 @@ pinpoint_delete_app <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_baidu_channel
+#'
+#' @aliases pinpoint_delete_baidu_channel
 pinpoint_delete_baidu_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteBaiduChannel",
@@ -4073,6 +4111,8 @@ pinpoint_delete_baidu_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_campaign
+#'
+#' @aliases pinpoint_delete_campaign
 pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
   op <- new_operation(
     name = "DeleteCampaign",
@@ -4137,6 +4177,8 @@ pinpoint_delete_campaign <- function(ApplicationId, CampaignId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_email_channel
+#'
+#' @aliases pinpoint_delete_email_channel
 pinpoint_delete_email_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteEmailChannel",
@@ -4213,6 +4255,8 @@ pinpoint_delete_email_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_email_template
+#'
+#' @aliases pinpoint_delete_email_template
 pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteEmailTemplate",
@@ -4306,6 +4350,8 @@ pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_endpoint
+#'
+#' @aliases pinpoint_delete_endpoint
 pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
   op <- new_operation(
     name = "DeleteEndpoint",
@@ -4359,6 +4405,8 @@ pinpoint_delete_endpoint <- function(ApplicationId, EndpointId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_event_stream
+#'
+#' @aliases pinpoint_delete_event_stream
 pinpoint_delete_event_stream <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteEventStream",
@@ -4419,6 +4467,8 @@ pinpoint_delete_event_stream <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_gcm_channel
+#'
+#' @aliases pinpoint_delete_gcm_channel
 pinpoint_delete_gcm_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteGcmChannel",
@@ -4495,6 +4545,8 @@ pinpoint_delete_gcm_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_in_app_template
+#'
+#' @aliases pinpoint_delete_in_app_template
 pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteInAppTemplate",
@@ -5013,6 +5065,8 @@ pinpoint_delete_in_app_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_journey
+#'
+#' @aliases pinpoint_delete_journey
 pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
   op <- new_operation(
     name = "DeleteJourney",
@@ -5089,6 +5143,8 @@ pinpoint_delete_journey <- function(ApplicationId, JourneyId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_push_template
+#'
+#' @aliases pinpoint_delete_push_template
 pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeletePushTemplate",
@@ -5151,6 +5207,8 @@ pinpoint_delete_push_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_recommender_configuration
+#'
+#' @aliases pinpoint_delete_recommender_configuration
 pinpoint_delete_recommender_configuration <- function(RecommenderId) {
   op <- new_operation(
     name = "DeleteRecommenderConfiguration",
@@ -5404,6 +5462,8 @@ pinpoint_delete_recommender_configuration <- function(RecommenderId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_segment
+#'
+#' @aliases pinpoint_delete_segment
 pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
   op <- new_operation(
     name = "DeleteSegment",
@@ -5467,6 +5527,8 @@ pinpoint_delete_segment <- function(ApplicationId, SegmentId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_sms_channel
+#'
+#' @aliases pinpoint_delete_sms_channel
 pinpoint_delete_sms_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteSmsChannel",
@@ -5543,6 +5605,8 @@ pinpoint_delete_sms_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_sms_template
+#'
+#' @aliases pinpoint_delete_sms_template
 pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteSmsTemplate",
@@ -5640,6 +5704,8 @@ pinpoint_delete_sms_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_user_endpoints
+#'
+#' @aliases pinpoint_delete_user_endpoints
 pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
   op <- new_operation(
     name = "DeleteUserEndpoints",
@@ -5699,6 +5765,8 @@ pinpoint_delete_user_endpoints <- function(ApplicationId, UserId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_voice_channel
+#'
+#' @aliases pinpoint_delete_voice_channel
 pinpoint_delete_voice_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteVoiceChannel",
@@ -5775,6 +5843,8 @@ pinpoint_delete_voice_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_delete_voice_template
+#'
+#' @aliases pinpoint_delete_voice_template
 pinpoint_delete_voice_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "DeleteVoiceTemplate",
@@ -5834,6 +5904,8 @@ pinpoint_delete_voice_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_adm_channel
+#'
+#' @aliases pinpoint_get_adm_channel
 pinpoint_get_adm_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetAdmChannel",
@@ -5895,6 +5967,8 @@ pinpoint_get_adm_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_apns_channel
+#'
+#' @aliases pinpoint_get_apns_channel
 pinpoint_get_apns_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApnsChannel",
@@ -5956,6 +6030,8 @@ pinpoint_get_apns_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_apns_sandbox_channel
+#'
+#' @aliases pinpoint_get_apns_sandbox_channel
 pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApnsSandboxChannel",
@@ -6017,6 +6093,8 @@ pinpoint_get_apns_sandbox_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_apns_voip_channel
+#'
+#' @aliases pinpoint_get_apns_voip_channel
 pinpoint_get_apns_voip_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApnsVoipChannel",
@@ -6078,6 +6156,8 @@ pinpoint_get_apns_voip_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_apns_voip_sandbox_channel
+#'
+#' @aliases pinpoint_get_apns_voip_sandbox_channel
 pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApnsVoipSandboxChannel",
@@ -6132,6 +6212,8 @@ pinpoint_get_apns_voip_sandbox_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_app
+#'
+#' @aliases pinpoint_get_app
 pinpoint_get_app <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApp",
@@ -6242,6 +6324,8 @@ pinpoint_get_app <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_application_date_range_kpi
+#'
+#' @aliases pinpoint_get_application_date_range_kpi
 pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NULL, KpiName, NextToken = NULL, PageSize = NULL, StartTime = NULL) {
   op <- new_operation(
     name = "GetApplicationDateRangeKpi",
@@ -6307,6 +6391,8 @@ pinpoint_get_application_date_range_kpi <- function(ApplicationId, EndTime = NUL
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_application_settings
+#'
+#' @aliases pinpoint_get_application_settings
 pinpoint_get_application_settings <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApplicationSettings",
@@ -6372,6 +6458,8 @@ pinpoint_get_application_settings <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_apps
+#'
+#' @aliases pinpoint_get_apps
 pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetApps",
@@ -6432,6 +6520,8 @@ pinpoint_get_apps <- function(PageSize = NULL, Token = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_baidu_channel
+#'
+#' @aliases pinpoint_get_baidu_channel
 pinpoint_get_baidu_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetBaiduChannel",
@@ -6962,6 +7052,8 @@ pinpoint_get_baidu_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_campaign
+#'
+#' @aliases pinpoint_get_campaign
 pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
   op <- new_operation(
     name = "GetCampaign",
@@ -7037,6 +7129,8 @@ pinpoint_get_campaign <- function(ApplicationId, CampaignId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_campaign_activities
+#'
+#' @aliases pinpoint_get_campaign_activities
 pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetCampaignActivities",
@@ -7150,6 +7244,8 @@ pinpoint_get_campaign_activities <- function(ApplicationId, CampaignId, PageSize
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_campaign_date_range_kpi
+#'
+#' @aliases pinpoint_get_campaign_date_range_kpi
 pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndTime = NULL, KpiName, NextToken = NULL, PageSize = NULL, StartTime = NULL) {
   op <- new_operation(
     name = "GetCampaignDateRangeKpi",
@@ -7682,6 +7778,8 @@ pinpoint_get_campaign_date_range_kpi <- function(ApplicationId, CampaignId, EndT
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_campaign_version
+#'
+#' @aliases pinpoint_get_campaign_version
 pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
   op <- new_operation(
     name = "GetCampaignVersion",
@@ -8225,6 +8323,8 @@ pinpoint_get_campaign_version <- function(ApplicationId, CampaignId, Version) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_campaign_versions
+#'
+#' @aliases pinpoint_get_campaign_versions
 pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetCampaignVersions",
@@ -8765,6 +8865,8 @@ pinpoint_get_campaign_versions <- function(ApplicationId, CampaignId, PageSize =
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_campaigns
+#'
+#' @aliases pinpoint_get_campaigns
 pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetCampaigns",
@@ -8827,6 +8929,8 @@ pinpoint_get_campaigns <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_channels
+#'
+#' @aliases pinpoint_get_channels
 pinpoint_get_channels <- function(ApplicationId) {
   op <- new_operation(
     name = "GetChannels",
@@ -8891,6 +8995,8 @@ pinpoint_get_channels <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_email_channel
+#'
+#' @aliases pinpoint_get_email_channel
 pinpoint_get_email_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetEmailChannel",
@@ -8980,6 +9086,8 @@ pinpoint_get_email_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_email_template
+#'
+#' @aliases pinpoint_get_email_template
 pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetEmailTemplate",
@@ -9075,6 +9183,8 @@ pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_endpoint
+#'
+#' @aliases pinpoint_get_endpoint
 pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
   op <- new_operation(
     name = "GetEndpoint",
@@ -9129,6 +9239,8 @@ pinpoint_get_endpoint <- function(ApplicationId, EndpointId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_event_stream
+#'
+#' @aliases pinpoint_get_event_stream
 pinpoint_get_event_stream <- function(ApplicationId) {
   op <- new_operation(
     name = "GetEventStream",
@@ -9200,6 +9312,8 @@ pinpoint_get_event_stream <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_export_job
+#'
+#' @aliases pinpoint_get_export_job
 pinpoint_get_export_job <- function(ApplicationId, JobId) {
   op <- new_operation(
     name = "GetExportJob",
@@ -9281,6 +9395,8 @@ pinpoint_get_export_job <- function(ApplicationId, JobId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_export_jobs
+#'
+#' @aliases pinpoint_get_export_jobs
 pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetExportJobs",
@@ -9341,6 +9457,8 @@ pinpoint_get_export_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_gcm_channel
+#'
+#' @aliases pinpoint_get_gcm_channel
 pinpoint_get_gcm_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetGcmChannel",
@@ -9416,6 +9534,8 @@ pinpoint_get_gcm_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_import_job
+#'
+#' @aliases pinpoint_get_import_job
 pinpoint_get_import_job <- function(ApplicationId, JobId) {
   op <- new_operation(
     name = "GetImportJob",
@@ -9501,6 +9621,8 @@ pinpoint_get_import_job <- function(ApplicationId, JobId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_import_jobs
+#'
+#' @aliases pinpoint_get_import_jobs
 pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetImportJobs",
@@ -9658,6 +9780,8 @@ pinpoint_get_import_jobs <- function(ApplicationId, PageSize = NULL, Token = NUL
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_in_app_messages
+#'
+#' @aliases pinpoint_get_in_app_messages
 pinpoint_get_in_app_messages <- function(ApplicationId, EndpointId) {
   op <- new_operation(
     name = "GetInAppMessages",
@@ -9806,6 +9930,8 @@ pinpoint_get_in_app_messages <- function(ApplicationId, EndpointId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_in_app_template
+#'
+#' @aliases pinpoint_get_in_app_template
 pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetInAppTemplate",
@@ -10326,6 +10452,8 @@ pinpoint_get_in_app_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey
+#'
+#' @aliases pinpoint_get_journey
 pinpoint_get_journey <- function(ApplicationId, JourneyId) {
   op <- new_operation(
     name = "GetJourney",
@@ -10439,6 +10567,8 @@ pinpoint_get_journey <- function(ApplicationId, JourneyId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey_date_range_kpi
+#'
+#' @aliases pinpoint_get_journey_date_range_kpi
 pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, JourneyId, KpiName, NextToken = NULL, PageSize = NULL, StartTime = NULL) {
   op <- new_operation(
     name = "GetJourneyDateRangeKpi",
@@ -10509,6 +10639,8 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey_execution_activity_metrics
+#'
+#' @aliases pinpoint_get_journey_execution_activity_metrics
 pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, JourneyActivityId, JourneyId, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "GetJourneyExecutionActivityMetrics",
@@ -10575,6 +10707,8 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_journey_execution_metrics
+#'
+#' @aliases pinpoint_get_journey_execution_metrics
 pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "GetJourneyExecutionMetrics",
@@ -10710,6 +10844,8 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_push_template
+#'
+#' @aliases pinpoint_get_push_template
 pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetPushTemplate",
@@ -10774,6 +10910,8 @@ pinpoint_get_push_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_recommender_configuration
+#'
+#' @aliases pinpoint_get_recommender_configuration
 pinpoint_get_recommender_configuration <- function(RecommenderId) {
   op <- new_operation(
     name = "GetRecommenderConfiguration",
@@ -10846,6 +10984,8 @@ pinpoint_get_recommender_configuration <- function(RecommenderId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_recommender_configurations
+#'
+#' @aliases pinpoint_get_recommender_configurations
 pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetRecommenderConfigurations",
@@ -11101,6 +11241,8 @@ pinpoint_get_recommender_configurations <- function(PageSize = NULL, Token = NUL
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_segment
+#'
+#' @aliases pinpoint_get_segment
 pinpoint_get_segment <- function(ApplicationId, SegmentId) {
   op <- new_operation(
     name = "GetSegment",
@@ -11185,6 +11327,8 @@ pinpoint_get_segment <- function(ApplicationId, SegmentId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_segment_export_jobs
+#'
+#' @aliases pinpoint_get_segment_export_jobs
 pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, SegmentId, Token = NULL) {
   op <- new_operation(
     name = "GetSegmentExportJobs",
@@ -11273,6 +11417,8 @@ pinpoint_get_segment_export_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_segment_import_jobs
+#'
+#' @aliases pinpoint_get_segment_import_jobs
 pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, SegmentId, Token = NULL) {
   op <- new_operation(
     name = "GetSegmentImportJobs",
@@ -11532,6 +11678,8 @@ pinpoint_get_segment_import_jobs <- function(ApplicationId, PageSize = NULL, Seg
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_segment_version
+#'
+#' @aliases pinpoint_get_segment_version
 pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
   op <- new_operation(
     name = "GetSegmentVersion",
@@ -11801,6 +11949,8 @@ pinpoint_get_segment_version <- function(ApplicationId, SegmentId, Version) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_segment_versions
+#'
+#' @aliases pinpoint_get_segment_versions
 pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, SegmentId, Token = NULL) {
   op <- new_operation(
     name = "GetSegmentVersions",
@@ -12066,6 +12216,8 @@ pinpoint_get_segment_versions <- function(ApplicationId, PageSize = NULL, Segmen
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_segments
+#'
+#' @aliases pinpoint_get_segments
 pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "GetSegments",
@@ -12129,6 +12281,8 @@ pinpoint_get_segments <- function(ApplicationId, PageSize = NULL, Token = NULL) 
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_sms_channel
+#'
+#' @aliases pinpoint_get_sms_channel
 pinpoint_get_sms_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetSmsChannel",
@@ -12216,6 +12370,8 @@ pinpoint_get_sms_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_sms_template
+#'
+#' @aliases pinpoint_get_sms_template
 pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetSmsTemplate",
@@ -12315,6 +12471,8 @@ pinpoint_get_sms_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_user_endpoints
+#'
+#' @aliases pinpoint_get_user_endpoints
 pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
   op <- new_operation(
     name = "GetUserEndpoints",
@@ -12374,6 +12532,8 @@ pinpoint_get_user_endpoints <- function(ApplicationId, UserId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_voice_channel
+#'
+#' @aliases pinpoint_get_voice_channel
 pinpoint_get_voice_channel <- function(ApplicationId) {
   op <- new_operation(
     name = "GetVoiceChannel",
@@ -12462,6 +12622,8 @@ pinpoint_get_voice_channel <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_get_voice_template
+#'
+#' @aliases pinpoint_get_voice_template
 pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
   op <- new_operation(
     name = "GetVoiceTemplate",
@@ -12992,6 +13154,8 @@ pinpoint_get_voice_template <- function(TemplateName, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_list_journeys
+#'
+#' @aliases pinpoint_list_journeys
 pinpoint_list_journeys <- function(ApplicationId, PageSize = NULL, Token = NULL) {
   op <- new_operation(
     name = "ListJourneys",
@@ -13043,6 +13207,8 @@ pinpoint_list_journeys <- function(ApplicationId, PageSize = NULL, Token = NULL)
 #' @keywords internal
 #'
 #' @rdname pinpoint_list_tags_for_resource
+#'
+#' @aliases pinpoint_list_tags_for_resource
 pinpoint_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -13120,6 +13286,8 @@ pinpoint_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_list_template_versions
+#'
+#' @aliases pinpoint_list_template_versions
 pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, TemplateName, TemplateType) {
   op <- new_operation(
     name = "ListTemplateVersions",
@@ -13198,6 +13366,8 @@ pinpoint_list_template_versions <- function(NextToken = NULL, PageSize = NULL, T
 #' @keywords internal
 #'
 #' @rdname pinpoint_list_templates
+#'
+#' @aliases pinpoint_list_templates
 pinpoint_list_templates <- function(NextToken = NULL, PageSize = NULL, Prefix = NULL, TemplateType = NULL) {
   op <- new_operation(
     name = "ListTemplates",
@@ -13261,6 +13431,8 @@ pinpoint_list_templates <- function(NextToken = NULL, PageSize = NULL, Prefix = 
 #' @keywords internal
 #'
 #' @rdname pinpoint_phone_number_validate
+#'
+#' @aliases pinpoint_phone_number_validate
 pinpoint_phone_number_validate <- function(NumberValidateRequest) {
   op <- new_operation(
     name = "PhoneNumberValidate",
@@ -13321,6 +13493,8 @@ pinpoint_phone_number_validate <- function(NumberValidateRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_put_event_stream
+#'
+#' @aliases pinpoint_put_event_stream
 pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
   op <- new_operation(
     name = "PutEventStream",
@@ -13456,6 +13630,8 @@ pinpoint_put_event_stream <- function(ApplicationId, WriteEventStream) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_put_events
+#'
+#' @aliases pinpoint_put_events
 pinpoint_put_events <- function(ApplicationId, EventsRequest) {
   op <- new_operation(
     name = "PutEvents",
@@ -13531,6 +13707,8 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_remove_attributes
+#'
+#' @aliases pinpoint_remove_attributes
 pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttributesRequest) {
   op <- new_operation(
     name = "RemoveAttributes",
@@ -13833,6 +14011,8 @@ pinpoint_remove_attributes <- function(ApplicationId, AttributeType, UpdateAttri
 #' @keywords internal
 #'
 #' @rdname pinpoint_send_messages
+#'
+#' @aliases pinpoint_send_messages
 pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
   op <- new_operation(
     name = "SendMessages",
@@ -13915,6 +14095,8 @@ pinpoint_send_messages <- function(ApplicationId, MessageRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_send_otp_message
+#'
+#' @aliases pinpoint_send_otp_message
 pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParameters) {
   op <- new_operation(
     name = "SendOTPMessage",
@@ -14194,6 +14376,8 @@ pinpoint_send_otp_message <- function(ApplicationId, SendOTPMessageRequestParame
 #' @keywords internal
 #'
 #' @rdname pinpoint_send_users_messages
+#'
+#' @aliases pinpoint_send_users_messages
 pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest) {
   op <- new_operation(
     name = "SendUsersMessages",
@@ -14242,6 +14426,8 @@ pinpoint_send_users_messages <- function(ApplicationId, SendUsersMessageRequest)
 #' @keywords internal
 #'
 #' @rdname pinpoint_tag_resource
+#'
+#' @aliases pinpoint_tag_resource
 pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
   op <- new_operation(
     name = "TagResource",
@@ -14290,6 +14476,8 @@ pinpoint_tag_resource <- function(ResourceArn, TagsModel) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_untag_resource
+#'
+#' @aliases pinpoint_untag_resource
 pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -14355,6 +14543,8 @@ pinpoint_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_adm_channel
+#'
+#' @aliases pinpoint_update_adm_channel
 pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
   op <- new_operation(
     name = "UpdateAdmChannel",
@@ -14427,6 +14617,8 @@ pinpoint_update_adm_channel <- function(ADMChannelRequest, ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_apns_channel
+#'
+#' @aliases pinpoint_update_apns_channel
 pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
   op <- new_operation(
     name = "UpdateApnsChannel",
@@ -14500,6 +14692,8 @@ pinpoint_update_apns_channel <- function(APNSChannelRequest, ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_apns_sandbox_channel
+#'
+#' @aliases pinpoint_update_apns_sandbox_channel
 pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, ApplicationId) {
   op <- new_operation(
     name = "UpdateApnsSandboxChannel",
@@ -14572,6 +14766,8 @@ pinpoint_update_apns_sandbox_channel <- function(APNSSandboxChannelRequest, Appl
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_apns_voip_channel
+#'
+#' @aliases pinpoint_update_apns_voip_channel
 pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, ApplicationId) {
   op <- new_operation(
     name = "UpdateApnsVoipChannel",
@@ -14645,6 +14841,8 @@ pinpoint_update_apns_voip_channel <- function(APNSVoipChannelRequest, Applicatio
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_apns_voip_sandbox_channel
+#'
+#' @aliases pinpoint_update_apns_voip_sandbox_channel
 pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequest, ApplicationId) {
   op <- new_operation(
     name = "UpdateApnsVoipSandboxChannel",
@@ -14732,6 +14930,8 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_application_settings
+#'
+#' @aliases pinpoint_update_application_settings
 pinpoint_update_application_settings <- function(ApplicationId, WriteApplicationSettingsRequest) {
   op <- new_operation(
     name = "UpdateApplicationSettings",
@@ -14798,6 +14998,8 @@ pinpoint_update_application_settings <- function(ApplicationId, WriteApplication
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_baidu_channel
+#'
+#' @aliases pinpoint_update_baidu_channel
 pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
   op <- new_operation(
     name = "UpdateBaiduChannel",
@@ -15793,6 +15995,8 @@ pinpoint_update_baidu_channel <- function(ApplicationId, BaiduChannelRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_campaign
+#'
+#' @aliases pinpoint_update_campaign
 pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignRequest) {
   op <- new_operation(
     name = "UpdateCampaign",
@@ -15865,6 +16069,8 @@ pinpoint_update_campaign <- function(ApplicationId, CampaignId, WriteCampaignReq
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_email_channel
+#'
+#' @aliases pinpoint_update_email_channel
 pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
   op <- new_operation(
     name = "UpdateEmailChannel",
@@ -15964,6 +16170,8 @@ pinpoint_update_email_channel <- function(ApplicationId, EmailChannelRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_email_template
+#'
+#' @aliases pinpoint_update_email_template
 pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdateEmailTemplate",
@@ -16063,6 +16271,8 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_endpoint
+#'
+#' @aliases pinpoint_update_endpoint
 pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest) {
   op <- new_operation(
     name = "UpdateEndpoint",
@@ -16167,6 +16377,8 @@ pinpoint_update_endpoint <- function(ApplicationId, EndpointId, EndpointRequest)
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_endpoints_batch
+#'
+#' @aliases pinpoint_update_endpoints_batch
 pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest) {
   op <- new_operation(
     name = "UpdateEndpointsBatch",
@@ -16232,6 +16444,8 @@ pinpoint_update_endpoints_batch <- function(ApplicationId, EndpointBatchRequest)
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_gcm_channel
+#'
+#' @aliases pinpoint_update_gcm_channel
 pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
   op <- new_operation(
     name = "UpdateGcmChannel",
@@ -16390,6 +16604,8 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_in_app_template
+#'
+#' @aliases pinpoint_update_in_app_template
 pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdateInAppTemplate",
@@ -17375,6 +17591,8 @@ pinpoint_update_in_app_template <- function(CreateNewVersion = NULL, InAppTempla
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_journey
+#'
+#' @aliases pinpoint_update_journey
 pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyRequest) {
   op <- new_operation(
     name = "UpdateJourney",
@@ -17898,6 +18116,8 @@ pinpoint_update_journey <- function(ApplicationId, JourneyId, WriteJourneyReques
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_journey_state
+#'
+#' @aliases pinpoint_update_journey_state
 pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyStateRequest) {
   op <- new_operation(
     name = "UpdateJourneyState",
@@ -18043,6 +18263,8 @@ pinpoint_update_journey_state <- function(ApplicationId, JourneyId, JourneyState
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_push_template
+#'
+#' @aliases pinpoint_update_push_template
 pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificationTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdatePushTemplate",
@@ -18120,6 +18342,8 @@ pinpoint_update_push_template <- function(CreateNewVersion = NULL, PushNotificat
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_recommender_configuration
+#'
+#' @aliases pinpoint_update_recommender_configuration
 pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecommenderConfiguration) {
   op <- new_operation(
     name = "UpdateRecommenderConfiguration",
@@ -18567,6 +18791,8 @@ pinpoint_update_recommender_configuration <- function(RecommenderId, UpdateRecom
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_segment
+#'
+#' @aliases pinpoint_update_segment
 pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentRequest) {
   op <- new_operation(
     name = "UpdateSegment",
@@ -18636,6 +18862,8 @@ pinpoint_update_segment <- function(ApplicationId, SegmentId, WriteSegmentReques
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_sms_channel
+#'
+#' @aliases pinpoint_update_sms_channel
 pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
   op <- new_operation(
     name = "UpdateSmsChannel",
@@ -18733,6 +18961,8 @@ pinpoint_update_sms_channel <- function(ApplicationId, SMSChannelRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_sms_template
+#'
+#' @aliases pinpoint_update_sms_template
 pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateRequest, TemplateName, Version = NULL) {
   op <- new_operation(
     name = "UpdateSmsTemplate",
@@ -18793,6 +19023,8 @@ pinpoint_update_sms_template <- function(CreateNewVersion = NULL, SMSTemplateReq
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_template_active_version
+#'
+#' @aliases pinpoint_update_template_active_version
 pinpoint_update_template_active_version <- function(TemplateActiveVersionRequest, TemplateName, TemplateType) {
   op <- new_operation(
     name = "UpdateTemplateActiveVersion",
@@ -18856,6 +19088,8 @@ pinpoint_update_template_active_version <- function(TemplateActiveVersionRequest
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_voice_channel
+#'
+#' @aliases pinpoint_update_voice_channel
 pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
   op <- new_operation(
     name = "UpdateVoiceChannel",
@@ -18954,6 +19188,8 @@ pinpoint_update_voice_channel <- function(ApplicationId, VoiceChannelRequest) {
 #' @keywords internal
 #'
 #' @rdname pinpoint_update_voice_template
+#'
+#' @aliases pinpoint_update_voice_template
 pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName, Version = NULL, VoiceTemplateRequest) {
   op <- new_operation(
     name = "UpdateVoiceTemplate",
@@ -19008,6 +19244,8 @@ pinpoint_update_voice_template <- function(CreateNewVersion = NULL, TemplateName
 #' @keywords internal
 #'
 #' @rdname pinpoint_verify_otp_message
+#'
+#' @aliases pinpoint_verify_otp_message
 pinpoint_verify_otp_message <- function(ApplicationId, VerifyOTPMessageRequestParameters) {
   op <- new_operation(
     name = "VerifyOTPMessage",

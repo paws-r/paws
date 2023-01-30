@@ -77,6 +77,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname personalize_create_batch_inference_job
+#'
+#' @aliases personalize_create_batch_inference_job
 personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, batchInferenceJobConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateBatchInferenceJob",
@@ -162,6 +164,8 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
 #' @keywords internal
 #'
 #' @rdname personalize_create_batch_segment_job
+#'
+#' @aliases personalize_create_batch_segment_job
 personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, filterArn = NULL, numResults = NULL, jobInput, jobOutput, roleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateBatchSegmentJob",
@@ -275,6 +279,8 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #' @keywords internal
 #'
 #' @rdname personalize_create_campaign
+#'
+#' @aliases personalize_create_campaign
 personalize_create_campaign <- function(name, solutionVersionArn, minProvisionedTPS = NULL, campaignConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
@@ -377,6 +383,8 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset
+#'
+#' @aliases personalize_create_dataset
 personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, datasetType, tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
@@ -468,6 +476,8 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset_export_job
+#'
+#' @aliases personalize_create_dataset_export_job
 personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestionMode = NULL, roleArn, jobOutput, tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetExportJob",
@@ -585,6 +595,8 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset_group
+#'
+#' @aliases personalize_create_dataset_group
 personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = NULL, domain = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetGroup",
@@ -693,6 +705,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @keywords internal
 #'
 #' @rdname personalize_create_dataset_import_job
+#'
+#' @aliases personalize_create_dataset_import_job
 personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn, tags = NULL, importMode = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
@@ -785,6 +799,8 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' @keywords internal
 #'
 #' @rdname personalize_create_event_tracker
+#'
+#' @aliases personalize_create_event_tracker
 personalize_create_event_tracker <- function(name, datasetGroupArn, tags = NULL) {
   op <- new_operation(
     name = "CreateEventTracker",
@@ -847,6 +863,8 @@ personalize_create_event_tracker <- function(name, datasetGroupArn, tags = NULL)
 #' @keywords internal
 #'
 #' @rdname personalize_create_filter
+#'
+#' @aliases personalize_create_filter
 personalize_create_filter <- function(name, datasetGroupArn, filterExpression, tags = NULL) {
   op <- new_operation(
     name = "CreateFilter",
@@ -974,6 +992,8 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression, t
 #' @keywords internal
 #'
 #' @rdname personalize_create_recommender
+#'
+#' @aliases personalize_create_recommender
 personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, recommenderConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRecommender",
@@ -1040,6 +1060,8 @@ personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, rec
 #' @keywords internal
 #'
 #' @rdname personalize_create_schema
+#'
+#' @aliases personalize_create_schema
 personalize_create_schema <- function(name, schema, domain = NULL) {
   op <- new_operation(
     name = "CreateSchema",
@@ -1235,6 +1257,8 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' @keywords internal
 #'
 #' @rdname personalize_create_solution
+#'
+#' @aliases personalize_create_solution
 personalize_create_solution <- function(name, performHPO = NULL, performAutoML = NULL, recipeArn = NULL, datasetGroupArn, eventType = NULL, solutionConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolution",
@@ -1346,6 +1370,8 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' @keywords internal
 #'
 #' @rdname personalize_create_solution_version
+#'
+#' @aliases personalize_create_solution_version
 personalize_create_solution_version <- function(solutionArn, trainingMode = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolutionVersion",
@@ -1391,6 +1417,8 @@ personalize_create_solution_version <- function(solutionArn, trainingMode = NULL
 #' @keywords internal
 #'
 #' @rdname personalize_delete_campaign
+#'
+#' @aliases personalize_delete_campaign
 personalize_delete_campaign <- function(campaignArn) {
   op <- new_operation(
     name = "DeleteCampaign",
@@ -1434,6 +1462,8 @@ personalize_delete_campaign <- function(campaignArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_dataset
+#'
+#' @aliases personalize_delete_dataset
 personalize_delete_dataset <- function(datasetArn) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -1481,6 +1511,8 @@ personalize_delete_dataset <- function(datasetArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_dataset_group
+#'
+#' @aliases personalize_delete_dataset_group
 personalize_delete_dataset_group <- function(datasetGroupArn) {
   op <- new_operation(
     name = "DeleteDatasetGroup",
@@ -1524,6 +1556,8 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_event_tracker
+#'
+#' @aliases personalize_delete_event_tracker
 personalize_delete_event_tracker <- function(eventTrackerArn) {
   op <- new_operation(
     name = "DeleteEventTracker",
@@ -1564,6 +1598,8 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_filter
+#'
+#' @aliases personalize_delete_filter
 personalize_delete_filter <- function(filterArn) {
   op <- new_operation(
     name = "DeleteFilter",
@@ -1607,6 +1643,8 @@ personalize_delete_filter <- function(filterArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_recommender
+#'
+#' @aliases personalize_delete_recommender
 personalize_delete_recommender <- function(recommenderArn) {
   op <- new_operation(
     name = "DeleteRecommender",
@@ -1649,6 +1687,8 @@ personalize_delete_recommender <- function(recommenderArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_schema
+#'
+#' @aliases personalize_delete_schema
 personalize_delete_schema <- function(schemaArn) {
   op <- new_operation(
     name = "DeleteSchema",
@@ -1696,6 +1736,8 @@ personalize_delete_schema <- function(schemaArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_delete_solution
+#'
+#' @aliases personalize_delete_solution
 personalize_delete_solution <- function(solutionArn) {
   op <- new_operation(
     name = "DeleteSolution",
@@ -1789,6 +1831,8 @@ personalize_delete_solution <- function(solutionArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_algorithm
+#'
+#' @aliases personalize_describe_algorithm
 personalize_describe_algorithm <- function(algorithmArn) {
   op <- new_operation(
     name = "DescribeAlgorithm",
@@ -1870,6 +1914,8 @@ personalize_describe_algorithm <- function(algorithmArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_batch_inference_job
+#'
+#' @aliases personalize_describe_batch_inference_job
 personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
   op <- new_operation(
     name = "DescribeBatchInferenceJob",
@@ -1946,6 +1992,8 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_batch_segment_job
+#'
+#' @aliases personalize_describe_batch_segment_job
 personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
   op <- new_operation(
     name = "DescribeBatchSegmentJob",
@@ -2038,6 +2086,8 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_campaign
+#'
+#' @aliases personalize_describe_campaign
 personalize_describe_campaign <- function(campaignArn) {
   op <- new_operation(
     name = "DescribeCampaign",
@@ -2097,6 +2147,8 @@ personalize_describe_campaign <- function(campaignArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_dataset
+#'
+#' @aliases personalize_describe_dataset
 personalize_describe_dataset <- function(datasetArn) {
   op <- new_operation(
     name = "DescribeDataset",
@@ -2165,6 +2217,8 @@ personalize_describe_dataset <- function(datasetArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_dataset_export_job
+#'
+#' @aliases personalize_describe_dataset_export_job
 personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
   op <- new_operation(
     name = "DescribeDatasetExportJob",
@@ -2225,6 +2279,8 @@ personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_dataset_group
+#'
+#' @aliases personalize_describe_dataset_group
 personalize_describe_dataset_group <- function(datasetGroupArn) {
   op <- new_operation(
     name = "DescribeDatasetGroup",
@@ -2290,6 +2346,8 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_dataset_import_job
+#'
+#' @aliases personalize_describe_dataset_import_job
 personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
   op <- new_operation(
     name = "DescribeDatasetImportJob",
@@ -2350,6 +2408,8 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_event_tracker
+#'
+#' @aliases personalize_describe_event_tracker
 personalize_describe_event_tracker <- function(eventTrackerArn) {
   op <- new_operation(
     name = "DescribeEventTracker",
@@ -2409,6 +2469,8 @@ personalize_describe_event_tracker <- function(eventTrackerArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_feature_transformation
+#'
+#' @aliases personalize_describe_feature_transformation
 personalize_describe_feature_transformation <- function(featureTransformationArn) {
   op <- new_operation(
     name = "DescribeFeatureTransformation",
@@ -2467,6 +2529,8 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
 #' @keywords internal
 #'
 #' @rdname personalize_describe_filter
+#'
+#' @aliases personalize_describe_filter
 personalize_describe_filter <- function(filterArn) {
   op <- new_operation(
     name = "DescribeFilter",
@@ -2545,6 +2609,8 @@ personalize_describe_filter <- function(filterArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_recipe
+#'
+#' @aliases personalize_describe_recipe
 personalize_describe_recipe <- function(recipeArn) {
   op <- new_operation(
     name = "DescribeRecipe",
@@ -2646,6 +2712,8 @@ personalize_describe_recipe <- function(recipeArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_recommender
+#'
+#' @aliases personalize_describe_recommender
 personalize_describe_recommender <- function(recommenderArn) {
   op <- new_operation(
     name = "DescribeRecommender",
@@ -2703,6 +2771,8 @@ personalize_describe_recommender <- function(recommenderArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_schema
+#'
+#' @aliases personalize_describe_schema
 personalize_describe_schema <- function(schemaArn) {
   op <- new_operation(
     name = "DescribeSchema",
@@ -2832,6 +2902,8 @@ personalize_describe_schema <- function(schemaArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_solution
+#'
+#' @aliases personalize_describe_solution
 personalize_describe_solution <- function(solutionArn) {
   op <- new_operation(
     name = "DescribeSolution",
@@ -2955,6 +3027,8 @@ personalize_describe_solution <- function(solutionArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_describe_solution_version
+#'
+#' @aliases personalize_describe_solution_version
 personalize_describe_solution_version <- function(solutionVersionArn) {
   op <- new_operation(
     name = "DescribeSolutionVersion",
@@ -3004,6 +3078,8 @@ personalize_describe_solution_version <- function(solutionVersionArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_get_solution_metrics
+#'
+#' @aliases personalize_get_solution_metrics
 personalize_get_solution_metrics <- function(solutionVersionArn) {
   op <- new_operation(
     name = "GetSolutionMetrics",
@@ -3073,6 +3149,8 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_list_batch_inference_jobs
+#'
+#' @aliases personalize_list_batch_inference_jobs
 personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListBatchInferenceJobs",
@@ -3142,6 +3220,8 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
 #' @keywords internal
 #'
 #' @rdname personalize_list_batch_segment_jobs
+#'
+#' @aliases personalize_list_batch_segment_jobs
 personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListBatchSegmentJobs",
@@ -3213,6 +3293,8 @@ personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextT
 #' @keywords internal
 #'
 #' @rdname personalize_list_campaigns
+#'
+#' @aliases personalize_list_campaigns
 personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListCampaigns",
@@ -3286,6 +3368,8 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
 #' @keywords internal
 #'
 #' @rdname personalize_list_dataset_export_jobs
+#'
+#' @aliases personalize_list_dataset_export_jobs
 personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDatasetExportJobs",
@@ -3353,6 +3437,8 @@ personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname personalize_list_dataset_groups
+#'
+#' @aliases personalize_list_dataset_groups
 personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDatasetGroups",
@@ -3427,6 +3513,8 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
 #' @keywords internal
 #'
 #' @rdname personalize_list_dataset_import_jobs
+#'
+#' @aliases personalize_list_dataset_import_jobs
 personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDatasetImportJobs",
@@ -3496,6 +3584,8 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname personalize_list_datasets
+#'
+#' @aliases personalize_list_datasets
 personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDatasets",
@@ -3564,6 +3654,8 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname personalize_list_event_trackers
+#'
+#' @aliases personalize_list_event_trackers
 personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEventTrackers",
@@ -3630,6 +3722,8 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname personalize_list_filters
+#'
+#' @aliases personalize_list_filters
 personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListFilters",
@@ -3701,6 +3795,8 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
 #' @keywords internal
 #'
 #' @rdname personalize_list_recipes
+#'
+#' @aliases personalize_list_recipes
 personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, maxResults = NULL, domain = NULL) {
   op <- new_operation(
     name = "ListRecipes",
@@ -3780,6 +3876,8 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
 #' @keywords internal
 #'
 #' @rdname personalize_list_recommenders
+#'
+#' @aliases personalize_list_recommenders
 personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRecommenders",
@@ -3845,6 +3943,8 @@ personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname personalize_list_schemas
+#'
+#' @aliases personalize_list_schemas
 personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSchemas",
@@ -3912,6 +4012,8 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname personalize_list_solution_versions
+#'
+#' @aliases personalize_list_solution_versions
 personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSolutionVersions",
@@ -3980,6 +4082,8 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname personalize_list_solutions
+#'
+#' @aliases personalize_list_solutions
 personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSolutions",
@@ -4030,6 +4134,8 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname personalize_list_tags_for_resource
+#'
+#' @aliases personalize_list_tags_for_resource
 personalize_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4077,6 +4183,8 @@ personalize_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_start_recommender
+#'
+#' @aliases personalize_start_recommender
 personalize_start_recommender <- function(recommenderArn) {
   op <- new_operation(
     name = "StartRecommender",
@@ -4123,6 +4231,8 @@ personalize_start_recommender <- function(recommenderArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_stop_recommender
+#'
+#' @aliases personalize_stop_recommender
 personalize_stop_recommender <- function(recommenderArn) {
   op <- new_operation(
     name = "StopRecommender",
@@ -4179,6 +4289,8 @@ personalize_stop_recommender <- function(recommenderArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_stop_solution_version_creation
+#'
+#' @aliases personalize_stop_solution_version_creation
 personalize_stop_solution_version_creation <- function(solutionVersionArn) {
   op <- new_operation(
     name = "StopSolutionVersionCreation",
@@ -4227,6 +4339,8 @@ personalize_stop_solution_version_creation <- function(solutionVersionArn) {
 #' @keywords internal
 #'
 #' @rdname personalize_tag_resource
+#'
+#' @aliases personalize_tag_resource
 personalize_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4271,6 +4385,8 @@ personalize_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname personalize_untag_resource
+#'
+#' @aliases personalize_untag_resource
 personalize_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4342,6 +4458,8 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname personalize_update_campaign
+#'
+#' @aliases personalize_update_campaign
 personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, minProvisionedTPS = NULL, campaignConfig = NULL) {
   op <- new_operation(
     name = "UpdateCampaign",
@@ -4394,6 +4512,8 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname personalize_update_recommender
+#'
+#' @aliases personalize_update_recommender
 personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
   op <- new_operation(
     name = "UpdateRecommender",

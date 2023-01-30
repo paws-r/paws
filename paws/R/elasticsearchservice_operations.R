@@ -49,7 +49,9 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_accept_inbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_accep_inbou_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_accept_inbound_cross_cluster_search_connection
 elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "AcceptInboundCrossClusterSearchConnection",
@@ -102,6 +104,8 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_add_tags
+#'
+#' @aliases elasticsearchservice_add_tags
 elasticsearchservice_add_tags <- function(ARN, TagList) {
   op <- new_operation(
     name = "AddTags",
@@ -166,6 +170,8 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_associate_package
+#'
+#' @aliases elasticsearchservice_associate_package
 elasticsearchservice_associate_package <- function(PackageID, DomainName) {
   op <- new_operation(
     name = "AssociatePackage",
@@ -225,7 +231,9 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_cancel_elasticsearch_service_software_update
+#' @rdname elasticsearchservice_cance_elast_servi_softw_updat
+#'
+#' @aliases elasticsearchservice_cancel_elasticsearch_service_software_update
 elasticsearchservice_cancel_elasticsearch_service_software_update <- function(DomainName) {
   op <- new_operation(
     name = "CancelElasticsearchServiceSoftwareUpdate",
@@ -546,6 +554,8 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_create_elasticsearch_domain
+#'
+#' @aliases elasticsearchservice_create_elasticsearch_domain
 elasticsearchservice_create_elasticsearch_domain <- function(DomainName, ElasticsearchVersion = NULL, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, TagList = NULL) {
   op <- new_operation(
     name = "CreateElasticsearchDomain",
@@ -622,7 +632,9 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_create_outbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_creat_outbo_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_create_outbound_cross_cluster_search_connection
 elasticsearchservice_create_outbound_cross_cluster_search_connection <- function(SourceDomainInfo, DestinationDomainInfo, ConnectionAlias) {
   op <- new_operation(
     name = "CreateOutboundCrossClusterSearchConnection",
@@ -695,6 +707,8 @@ elasticsearchservice_create_outbound_cross_cluster_search_connection <- function
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_create_package
+#'
+#' @aliases elasticsearchservice_create_package
 elasticsearchservice_create_package <- function(PackageName, PackageType, PackageDescription = NULL, PackageSource) {
   op <- new_operation(
     name = "CreatePackage",
@@ -863,6 +877,8 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_delete_elasticsearch_domain
+#'
+#' @aliases elasticsearchservice_delete_elasticsearch_domain
 elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
   op <- new_operation(
     name = "DeleteElasticsearchDomain",
@@ -905,6 +921,8 @@ elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_delete_elasticsearch_service_role
+#'
+#' @aliases elasticsearchservice_delete_elasticsearch_service_role
 elasticsearchservice_delete_elasticsearch_service_role <- function() {
   op <- new_operation(
     name = "DeleteElasticsearchServiceRole",
@@ -968,7 +986,9 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_delete_inbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_delet_inbou_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_delete_inbound_cross_cluster_search_connection
 elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "DeleteInboundCrossClusterSearchConnection",
@@ -1033,7 +1053,9 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_delete_outbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_delet_outbo_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_delete_outbound_cross_cluster_search_connection
 elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "DeleteOutboundCrossClusterSearchConnection",
@@ -1098,6 +1120,8 @@ elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_delete_package
+#'
+#' @aliases elasticsearchservice_delete_package
 elasticsearchservice_delete_package <- function(PackageID) {
   op <- new_operation(
     name = "DeletePackage",
@@ -1169,6 +1193,8 @@ elasticsearchservice_delete_package <- function(PackageID) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_describe_domain_auto_tunes
+#'
+#' @aliases elasticsearchservice_describe_domain_auto_tunes
 elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDomainAutoTunes",
@@ -1244,6 +1270,8 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_describe_domain_change_progress
+#'
+#' @aliases elasticsearchservice_describe_domain_change_progress
 elasticsearchservice_describe_domain_change_progress <- function(DomainName, ChangeId = NULL) {
   op <- new_operation(
     name = "DescribeDomainChangeProgress",
@@ -1413,6 +1441,8 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_describe_elasticsearch_domain
+#'
+#' @aliases elasticsearchservice_describe_elasticsearch_domain
 elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
   op <- new_operation(
     name = "DescribeElasticsearchDomain",
@@ -1754,6 +1784,8 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_describe_elasticsearch_domain_config
+#'
+#' @aliases elasticsearchservice_describe_elasticsearch_domain_config
 elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName) {
   op <- new_operation(
     name = "DescribeElasticsearchDomainConfig",
@@ -1927,6 +1959,8 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_describe_elasticsearch_domains
+#'
+#' @aliases elasticsearchservice_describe_elasticsearch_domains
 elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
   op <- new_operation(
     name = "DescribeElasticsearchDomains",
@@ -2013,7 +2047,9 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_elasticsearch_instance_type_limits
+#' @rdname elasticsearchservice_descr_elast_insta_type_limit
+#'
+#' @aliases elasticsearchservice_describe_elasticsearch_instance_type_limits
 elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(DomainName = NULL, InstanceType, ElasticsearchVersion) {
   op <- new_operation(
     name = "DescribeElasticsearchInstanceTypeLimits",
@@ -2100,7 +2136,9 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_inbound_cross_cluster_search_connections
+#' @rdname elasticsearchservice_descr_inbou_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_describe_inbound_cross_cluster_search_connections
 elasticsearchservice_describe_inbound_cross_cluster_search_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInboundCrossClusterSearchConnections",
@@ -2188,7 +2226,9 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_outbound_cross_cluster_search_connections
+#' @rdname elasticsearchservice_descr_outbo_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_describe_outbound_cross_cluster_search_connections
 elasticsearchservice_describe_outbound_cross_cluster_search_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOutboundCrossClusterSearchConnections",
@@ -2269,6 +2309,8 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_describe_packages
+#'
+#' @aliases elasticsearchservice_describe_packages
 elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePackages",
@@ -2339,7 +2381,9 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_reserved_elasticsearch_instance_offerings
+#' @rdname elasticsearchservice_descr_reser_elast_insta_offer
+#'
+#' @aliases elasticsearchservice_describe_reserved_elasticsearch_instance_offerings
 elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- function(ReservedElasticsearchInstanceOfferingId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedElasticsearchInstanceOfferings",
@@ -2419,7 +2463,9 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_reserved_elasticsearch_instances
+#' @rdname elasticsearchservice_descri_reserv_elasti_instan
+#'
+#' @aliases elasticsearchservice_describe_reserved_elasticsearch_instances
 elasticsearchservice_describe_reserved_elasticsearch_instances <- function(ReservedElasticsearchInstanceId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedElasticsearchInstances",
@@ -2484,6 +2530,8 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_dissociate_package
+#'
+#' @aliases elasticsearchservice_dissociate_package
 elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
   op <- new_operation(
     name = "DissociatePackage",
@@ -2538,6 +2586,8 @@ elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_get_compatible_elasticsearch_versions
+#'
+#' @aliases elasticsearchservice_get_compatible_elasticsearch_versions
 elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainName = NULL) {
   op <- new_operation(
     name = "GetCompatibleElasticsearchVersions",
@@ -2602,6 +2652,8 @@ elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainNam
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_get_package_version_history
+#'
+#' @aliases elasticsearchservice_get_package_version_history
 elasticsearchservice_get_package_version_history <- function(PackageID, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetPackageVersionHistory",
@@ -2673,6 +2725,8 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_get_upgrade_history
+#'
+#' @aliases elasticsearchservice_get_upgrade_history
 elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetUpgradeHistory",
@@ -2722,6 +2776,8 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_get_upgrade_status
+#'
+#' @aliases elasticsearchservice_get_upgrade_status
 elasticsearchservice_get_upgrade_status <- function(DomainName) {
   op <- new_operation(
     name = "GetUpgradeStatus",
@@ -2775,6 +2831,8 @@ elasticsearchservice_get_upgrade_status <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_domain_names
+#'
+#' @aliases elasticsearchservice_list_domain_names
 elasticsearchservice_list_domain_names <- function(EngineType = NULL) {
   op <- new_operation(
     name = "ListDomainNames",
@@ -2845,6 +2903,8 @@ elasticsearchservice_list_domain_names <- function(EngineType = NULL) {
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_domains_for_package
+#'
+#' @aliases elasticsearchservice_list_domains_for_package
 elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDomainsForPackage",
@@ -2907,6 +2967,8 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_elasticsearch_instance_types
+#'
+#' @aliases elasticsearchservice_list_elasticsearch_instance_types
 elasticsearchservice_list_elasticsearch_instance_types <- function(ElasticsearchVersion, DomainName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListElasticsearchInstanceTypes",
@@ -2958,6 +3020,8 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_elasticsearch_versions
+#'
+#' @aliases elasticsearchservice_list_elasticsearch_versions
 elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListElasticsearchVersions",
@@ -3028,6 +3092,8 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_packages_for_domain
+#'
+#' @aliases elasticsearchservice_list_packages_for_domain
 elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPackagesForDomain",
@@ -3079,6 +3145,8 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_list_tags
+#'
+#' @aliases elasticsearchservice_list_tags
 elasticsearchservice_list_tags <- function(ARN) {
   op <- new_operation(
     name = "ListTags",
@@ -3129,7 +3197,9 @@ elasticsearchservice_list_tags <- function(ARN) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_purchase_reserved_elasticsearch_instance_offering
+#' @rdname elasticsearchservice_purch_reser_elast_insta_offer
+#'
+#' @aliases elasticsearchservice_purchase_reserved_elasticsearch_instance_offering
 elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- function(ReservedElasticsearchInstanceOfferingId, ReservationName, InstanceCount = NULL) {
   op <- new_operation(
     name = "PurchaseReservedElasticsearchInstanceOffering",
@@ -3193,7 +3263,9 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_reject_inbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_rejec_inbou_cross_clust_searc_conne
+#'
+#' @aliases elasticsearchservice_reject_inbound_cross_cluster_search_connection
 elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "RejectInboundCrossClusterSearchConnection",
@@ -3242,6 +3314,8 @@ elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_remove_tags
+#'
+#' @aliases elasticsearchservice_remove_tags
 elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
   op <- new_operation(
     name = "RemoveTags",
@@ -3299,7 +3373,9 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_start_elasticsearch_service_software_update
+#' @rdname elasticsearchservice_start_elast_servi_softw_updat
+#'
+#' @aliases elasticsearchservice_start_elasticsearch_service_software_update
 elasticsearchservice_start_elasticsearch_service_software_update <- function(DomainName) {
   op <- new_operation(
     name = "StartElasticsearchServiceSoftwareUpdate",
@@ -3786,6 +3862,8 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_update_elasticsearch_domain_config
+#'
+#' @aliases elasticsearchservice_update_elasticsearch_domain_config
 elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, ElasticsearchClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, NodeToNodeEncryptionOptions = NULL, EncryptionAtRestOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "UpdateElasticsearchDomainConfig",
@@ -3859,6 +3937,8 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_update_package
+#'
+#' @aliases elasticsearchservice_update_package
 elasticsearchservice_update_package <- function(PackageID, PackageSource, PackageDescription = NULL, CommitMessage = NULL) {
   op <- new_operation(
     name = "UpdatePackage",
@@ -3918,6 +3998,8 @@ elasticsearchservice_update_package <- function(PackageID, PackageSource, Packag
 #' @keywords internal
 #'
 #' @rdname elasticsearchservice_upgrade_elasticsearch_domain
+#'
+#' @aliases elasticsearchservice_upgrade_elasticsearch_domain
 elasticsearchservice_upgrade_elasticsearch_domain <- function(DomainName, TargetVersion, PerformCheckOnly = NULL) {
   op <- new_operation(
     name = "UpgradeElasticsearchDomain",

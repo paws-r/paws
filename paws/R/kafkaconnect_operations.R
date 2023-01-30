@@ -126,6 +126,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_connector
+#'
+#' @aliases kafkaconnect_create_connector
 kafkaconnect_create_connector <- function(capacity, connectorConfiguration, connectorDescription = NULL, connectorName, kafkaCluster, kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit, kafkaConnectVersion, logDelivery = NULL, plugins, serviceExecutionRoleArn, workerConfiguration = NULL) {
   op <- new_operation(
     name = "CreateConnector",
@@ -187,6 +189,8 @@ kafkaconnect_create_connector <- function(capacity, connectorConfiguration, conn
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_custom_plugin
+#'
+#' @aliases kafkaconnect_create_custom_plugin
 kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, location, name) {
   op <- new_operation(
     name = "CreateCustomPlugin",
@@ -248,6 +252,8 @@ kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, l
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_create_worker_configuration
+#'
+#' @aliases kafkaconnect_create_worker_configuration
 kafkaconnect_create_worker_configuration <- function(description = NULL, name, propertiesFileContent) {
   op <- new_operation(
     name = "CreateWorkerConfiguration",
@@ -296,6 +302,8 @@ kafkaconnect_create_worker_configuration <- function(description = NULL, name, p
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_delete_connector
+#'
+#' @aliases kafkaconnect_delete_connector
 kafkaconnect_delete_connector <- function(connectorArn, currentVersion = NULL) {
   op <- new_operation(
     name = "DeleteConnector",
@@ -343,6 +351,8 @@ kafkaconnect_delete_connector <- function(connectorArn, currentVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_delete_custom_plugin
+#'
+#' @aliases kafkaconnect_delete_custom_plugin
 kafkaconnect_delete_custom_plugin <- function(customPluginArn) {
   op <- new_operation(
     name = "DeleteCustomPlugin",
@@ -470,6 +480,8 @@ kafkaconnect_delete_custom_plugin <- function(customPluginArn) {
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_describe_connector
+#'
+#' @aliases kafkaconnect_describe_connector
 kafkaconnect_describe_connector <- function(connectorArn) {
   op <- new_operation(
     name = "DescribeConnector",
@@ -544,6 +556,8 @@ kafkaconnect_describe_connector <- function(connectorArn) {
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_describe_custom_plugin
+#'
+#' @aliases kafkaconnect_describe_custom_plugin
 kafkaconnect_describe_custom_plugin <- function(customPluginArn) {
   op <- new_operation(
     name = "DescribeCustomPlugin",
@@ -603,6 +617,8 @@ kafkaconnect_describe_custom_plugin <- function(customPluginArn) {
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_describe_worker_configuration
+#'
+#' @aliases kafkaconnect_describe_worker_configuration
 kafkaconnect_describe_worker_configuration <- function(workerConfigurationArn) {
   op <- new_operation(
     name = "DescribeWorkerConfiguration",
@@ -736,6 +752,8 @@ kafkaconnect_describe_worker_configuration <- function(workerConfigurationArn) {
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_connectors
+#'
+#' @aliases kafkaconnect_list_connectors
 kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListConnectors",
@@ -815,6 +833,8 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_custom_plugins
+#'
+#' @aliases kafkaconnect_list_custom_plugins
 kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListCustomPlugins",
@@ -883,6 +903,8 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_list_worker_configurations
+#'
+#' @aliases kafkaconnect_list_worker_configurations
 kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListWorkerConfigurations",
@@ -949,6 +971,8 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, nextToken
 #' @keywords internal
 #'
 #' @rdname kafkaconnect_update_connector
+#'
+#' @aliases kafkaconnect_update_connector
 kafkaconnect_update_connector <- function(capacity, connectorArn, currentVersion) {
   op <- new_operation(
     name = "UpdateConnector",

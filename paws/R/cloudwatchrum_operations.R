@@ -98,6 +98,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_create_app_monitor
+#'
+#' @aliases cloudwatchrum_create_app_monitor
 cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CwLogEnabled = NULL, Domain, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateAppMonitor",
@@ -139,6 +141,8 @@ cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, CwL
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_delete_app_monitor
+#'
+#' @aliases cloudwatchrum_delete_app_monitor
 cloudwatchrum_delete_app_monitor <- function(Name) {
   op <- new_operation(
     name = "DeleteAppMonitor",
@@ -219,6 +223,8 @@ cloudwatchrum_delete_app_monitor <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_get_app_monitor
+#'
+#' @aliases cloudwatchrum_get_app_monitor
 cloudwatchrum_get_app_monitor <- function(Name) {
   op <- new_operation(
     name = "GetAppMonitor",
@@ -294,6 +300,8 @@ cloudwatchrum_get_app_monitor <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_get_app_monitor_data
+#'
+#' @aliases cloudwatchrum_get_app_monitor_data
 cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL, Name, NextToken = NULL, TimeRange) {
   op <- new_operation(
     name = "GetAppMonitorData",
@@ -351,6 +359,8 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_list_app_monitors
+#'
+#' @aliases cloudwatchrum_list_app_monitors
 cloudwatchrum_list_app_monitors <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAppMonitors",
@@ -399,6 +409,8 @@ cloudwatchrum_list_app_monitors <- function(MaxResults = NULL, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_list_tags_for_resource
+#'
+#' @aliases cloudwatchrum_list_tags_for_resource
 cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -475,6 +487,8 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_put_rum_events
+#'
+#' @aliases cloudwatchrum_put_rum_events
 cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEvents, UserDetails) {
   op <- new_operation(
     name = "PutRumEvents",
@@ -541,6 +555,8 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_tag_resource
+#'
+#' @aliases cloudwatchrum_tag_resource
 cloudwatchrum_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -585,6 +601,8 @@ cloudwatchrum_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_untag_resource
+#'
+#' @aliases cloudwatchrum_untag_resource
 cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -677,6 +695,8 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchrum_update_app_monitor
+#'
+#' @aliases cloudwatchrum_update_app_monitor
 cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, CwLogEnabled = NULL, Domain = NULL, Name) {
   op <- new_operation(
     name = "UpdateAppMonitor",

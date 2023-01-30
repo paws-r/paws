@@ -94,6 +94,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname recyclebin_create_rule
+#'
+#' @aliases recyclebin_create_rule
 recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateRule",
@@ -137,6 +139,8 @@ recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = N
 #' @keywords internal
 #'
 #' @rdname recyclebin_delete_rule
+#'
+#' @aliases recyclebin_delete_rule
 recyclebin_delete_rule <- function(Identifier) {
   op <- new_operation(
     name = "DeleteRule",
@@ -195,6 +199,8 @@ recyclebin_delete_rule <- function(Identifier) {
 #' @keywords internal
 #'
 #' @rdname recyclebin_get_rule
+#'
+#' @aliases recyclebin_get_rule
 recyclebin_get_rule <- function(Identifier) {
   op <- new_operation(
     name = "GetRule",
@@ -268,6 +274,8 @@ recyclebin_get_rule <- function(Identifier) {
 #' @keywords internal
 #'
 #' @rdname recyclebin_list_rules
+#'
+#' @aliases recyclebin_list_rules
 recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL) {
   op <- new_operation(
     name = "ListRules",
@@ -318,6 +326,8 @@ recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceT
 #' @keywords internal
 #'
 #' @rdname recyclebin_list_tags_for_resource
+#'
+#' @aliases recyclebin_list_tags_for_resource
 recyclebin_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -365,6 +375,8 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname recyclebin_tag_resource
+#'
+#' @aliases recyclebin_tag_resource
 recyclebin_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -410,6 +422,8 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname recyclebin_untag_resource
+#'
+#' @aliases recyclebin_untag_resource
 recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -507,6 +521,8 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname recyclebin_update_rule
+#'
+#' @aliases recyclebin_update_rule
 recyclebin_update_rule <- function(Identifier, RetentionPeriod = NULL, Description = NULL, ResourceType = NULL, ResourceTags = NULL) {
   op <- new_operation(
     name = "UpdateRule",

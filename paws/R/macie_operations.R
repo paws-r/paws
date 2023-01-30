@@ -29,6 +29,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname macie_associate_member_account
+#'
+#' @aliases macie_associate_member_account
 macie_associate_member_account <- function(memberAccountId) {
   op <- new_operation(
     name = "AssociateMemberAccount",
@@ -102,6 +104,8 @@ macie_associate_member_account <- function(memberAccountId) {
 #' @keywords internal
 #'
 #' @rdname macie_associate_s3_resources
+#'
+#' @aliases macie_associate_s3_resources
 macie_associate_s3_resources <- function(memberAccountId = NULL, s3Resources) {
   op <- new_operation(
     name = "AssociateS3Resources",
@@ -145,6 +149,8 @@ macie_associate_s3_resources <- function(memberAccountId = NULL, s3Resources) {
 #' @keywords internal
 #'
 #' @rdname macie_disassociate_member_account
+#'
+#' @aliases macie_disassociate_member_account
 macie_disassociate_member_account <- function(memberAccountId) {
   op <- new_operation(
     name = "DisassociateMemberAccount",
@@ -214,6 +220,8 @@ macie_disassociate_member_account <- function(memberAccountId) {
 #' @keywords internal
 #'
 #' @rdname macie_disassociate_s3_resources
+#'
+#' @aliases macie_disassociate_s3_resources
 macie_disassociate_s3_resources <- function(memberAccountId = NULL, associatedS3Resources) {
   op <- new_operation(
     name = "DisassociateS3Resources",
@@ -273,6 +281,8 @@ macie_disassociate_s3_resources <- function(memberAccountId = NULL, associatedS3
 #' @keywords internal
 #'
 #' @rdname macie_list_member_accounts
+#'
+#' @aliases macie_list_member_accounts
 macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListMemberAccounts",
@@ -344,6 +354,8 @@ macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname macie_list_s3_resources
+#'
+#' @aliases macie_list_s3_resources
 macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListS3Resources",
@@ -419,6 +431,8 @@ macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, ma
 #' @keywords internal
 #'
 #' @rdname macie_update_s3_resources
+#'
+#' @aliases macie_update_s3_resources
 macie_update_s3_resources <- function(memberAccountId = NULL, s3ResourcesUpdate) {
   op <- new_operation(
     name = "UpdateS3Resources",

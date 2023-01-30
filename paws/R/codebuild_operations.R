@@ -41,6 +41,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_delete_builds
+#'
+#' @aliases codebuild_batch_delete_builds
 codebuild_batch_delete_builds <- function(ids) {
   op <- new_operation(
     name = "BatchDeleteBuilds",
@@ -320,6 +322,8 @@ codebuild_batch_delete_builds <- function(ids) {
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_get_build_batches
+#'
+#' @aliases codebuild_batch_get_build_batches
 codebuild_batch_get_build_batches <- function(ids) {
   op <- new_operation(
     name = "BatchGetBuildBatches",
@@ -561,6 +565,8 @@ codebuild_batch_get_build_batches <- function(ids) {
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_get_builds
+#'
+#' @aliases codebuild_batch_get_builds
 codebuild_batch_get_builds <- function(ids) {
   op <- new_operation(
     name = "BatchGetBuilds",
@@ -806,6 +812,8 @@ codebuild_batch_get_builds <- function(ids) {
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_get_projects
+#'
+#' @aliases codebuild_batch_get_projects
 codebuild_batch_get_projects <- function(names) {
   op <- new_operation(
     name = "BatchGetProjects",
@@ -886,6 +894,8 @@ codebuild_batch_get_projects <- function(names) {
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_get_report_groups
+#'
+#' @aliases codebuild_batch_get_report_groups
 codebuild_batch_get_report_groups <- function(reportGroupArns) {
   op <- new_operation(
     name = "BatchGetReportGroups",
@@ -978,6 +988,8 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 #' @keywords internal
 #'
 #' @rdname codebuild_batch_get_reports
+#'
+#' @aliases codebuild_batch_get_reports
 codebuild_batch_get_reports <- function(reportArns) {
   op <- new_operation(
     name = "BatchGetReports",
@@ -1449,6 +1461,8 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @keywords internal
 #'
 #' @rdname codebuild_create_project
+#'
+#' @aliases codebuild_create_project
 codebuild_create_project <- function(name, description = NULL, source, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts, secondaryArtifacts = NULL, cache = NULL, environment, serviceRole, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "CreateProject",
@@ -1547,6 +1561,8 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 #' @keywords internal
 #'
 #' @rdname codebuild_create_report_group
+#'
+#' @aliases codebuild_create_report_group
 codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL) {
   op <- new_operation(
     name = "CreateReportGroup",
@@ -1652,6 +1668,8 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' @keywords internal
 #'
 #' @rdname codebuild_create_webhook
+#'
+#' @aliases codebuild_create_webhook
 codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGroups = NULL, buildType = NULL) {
   op <- new_operation(
     name = "CreateWebhook",
@@ -1706,6 +1724,8 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_build_batch
+#'
+#' @aliases codebuild_delete_build_batch
 codebuild_delete_build_batch <- function(id) {
   op <- new_operation(
     name = "DeleteBuildBatch",
@@ -1747,6 +1767,8 @@ codebuild_delete_build_batch <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_project
+#'
+#' @aliases codebuild_delete_project
 codebuild_delete_project <- function(name) {
   op <- new_operation(
     name = "DeleteProject",
@@ -1787,6 +1809,8 @@ codebuild_delete_project <- function(name) {
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_report
+#'
+#' @aliases codebuild_delete_report
 codebuild_delete_report <- function(arn) {
   op <- new_operation(
     name = "DeleteReport",
@@ -1838,6 +1862,8 @@ codebuild_delete_report <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_report_group
+#'
+#' @aliases codebuild_delete_report_group
 codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
   op <- new_operation(
     name = "DeleteReportGroup",
@@ -1878,6 +1904,8 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_resource_policy
+#'
+#' @aliases codebuild_delete_resource_policy
 codebuild_delete_resource_policy <- function(resourceArn) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -1925,6 +1953,8 @@ codebuild_delete_resource_policy <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_source_credentials
+#'
+#' @aliases codebuild_delete_source_credentials
 codebuild_delete_source_credentials <- function(arn) {
   op <- new_operation(
     name = "DeleteSourceCredentials",
@@ -1969,6 +1999,8 @@ codebuild_delete_source_credentials <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname codebuild_delete_webhook
+#'
+#' @aliases codebuild_delete_webhook
 codebuild_delete_webhook <- function(projectName) {
   op <- new_operation(
     name = "DeleteWebhook",
@@ -2054,6 +2086,8 @@ codebuild_delete_webhook <- function(projectName) {
 #' @keywords internal
 #'
 #' @rdname codebuild_describe_code_coverages
+#'
+#' @aliases codebuild_describe_code_coverages
 codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxResults = NULL, sortOrder = NULL, sortBy = NULL, minLineCoveragePercentage = NULL, maxLineCoveragePercentage = NULL) {
   op <- new_operation(
     name = "DescribeCodeCoverages",
@@ -2130,6 +2164,8 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 #' @keywords internal
 #'
 #' @rdname codebuild_describe_test_cases
+#'
+#' @aliases codebuild_describe_test_cases
 codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResults = NULL, filter = NULL) {
   op <- new_operation(
     name = "DescribeTestCases",
@@ -2238,6 +2274,8 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 #' @keywords internal
 #'
 #' @rdname codebuild_get_report_group_trend
+#'
+#' @aliases codebuild_get_report_group_trend
 codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL, trendField) {
   op <- new_operation(
     name = "GetReportGroupTrend",
@@ -2283,6 +2321,8 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
 #' @keywords internal
 #'
 #' @rdname codebuild_get_resource_policy
+#'
+#' @aliases codebuild_get_resource_policy
 codebuild_get_resource_policy <- function(resourceArn) {
   op <- new_operation(
     name = "GetResourcePolicy",
@@ -2347,6 +2387,8 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codebuild_import_source_credentials
+#'
+#' @aliases codebuild_import_source_credentials
 codebuild_import_source_credentials <- function(username = NULL, token, serverType, authType, shouldOverwrite = NULL) {
   op <- new_operation(
     name = "ImportSourceCredentials",
@@ -2387,6 +2429,8 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 #' @keywords internal
 #'
 #' @rdname codebuild_invalidate_project_cache
+#'
+#' @aliases codebuild_invalidate_project_cache
 codebuild_invalidate_project_cache <- function(projectName) {
   op <- new_operation(
     name = "InvalidateProjectCache",
@@ -2452,6 +2496,8 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' @keywords internal
 #'
 #' @rdname codebuild_list_build_batches
+#'
+#' @aliases codebuild_list_build_batches
 codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBuildBatches",
@@ -2520,6 +2566,8 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' @keywords internal
 #'
 #' @rdname codebuild_list_build_batches_for_project
+#'
+#' @aliases codebuild_list_build_batches_for_project
 codebuild_list_build_batches_for_project <- function(projectName = NULL, filter = NULL, maxResults = NULL, sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBuildBatchesForProject",
@@ -2580,6 +2628,8 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 #' @keywords internal
 #'
 #' @rdname codebuild_list_builds
+#'
+#' @aliases codebuild_list_builds
 codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBuilds",
@@ -2652,6 +2702,8 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codebuild_list_builds_for_project
+#'
+#' @aliases codebuild_list_builds_for_project
 codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBuildsForProject",
@@ -2711,6 +2763,8 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 #' @keywords internal
 #'
 #' @rdname codebuild_list_curated_environment_images
+#'
+#' @aliases codebuild_list_curated_environment_images
 codebuild_list_curated_environment_images <- function() {
   op <- new_operation(
     name = "ListCuratedEnvironmentImages",
@@ -2788,6 +2842,8 @@ codebuild_list_curated_environment_images <- function() {
 #' @keywords internal
 #'
 #' @rdname codebuild_list_projects
+#'
+#' @aliases codebuild_list_projects
 codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListProjects",
@@ -2861,6 +2917,8 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #' @keywords internal
 #'
 #' @rdname codebuild_list_report_groups
+#'
+#' @aliases codebuild_list_report_groups
 codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListReportGroups",
@@ -2934,6 +2992,8 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 #' @keywords internal
 #'
 #' @rdname codebuild_list_reports
+#'
+#' @aliases codebuild_list_reports
 codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResults = NULL, filter = NULL) {
   op <- new_operation(
     name = "ListReports",
@@ -3002,6 +3062,8 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
 #' @keywords internal
 #'
 #' @rdname codebuild_list_reports_for_report_group
+#'
+#' @aliases codebuild_list_reports_for_report_group
 codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = NULL, sortOrder = NULL, maxResults = NULL, filter = NULL) {
   op <- new_operation(
     name = "ListReportsForReportGroup",
@@ -3076,6 +3138,8 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 #' @keywords internal
 #'
 #' @rdname codebuild_list_shared_projects
+#'
+#' @aliases codebuild_list_shared_projects
 codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSharedProjects",
@@ -3151,6 +3215,8 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' @keywords internal
 #'
 #' @rdname codebuild_list_shared_report_groups
+#'
+#' @aliases codebuild_list_shared_report_groups
 codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListSharedReportGroups",
@@ -3198,6 +3264,8 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 #' @keywords internal
 #'
 #' @rdname codebuild_list_source_credentials
+#'
+#' @aliases codebuild_list_source_credentials
 codebuild_list_source_credentials <- function() {
   op <- new_operation(
     name = "ListSourceCredentials",
@@ -3251,6 +3319,8 @@ codebuild_list_source_credentials <- function() {
 #' @keywords internal
 #'
 #' @rdname codebuild_put_resource_policy
+#'
+#' @aliases codebuild_put_resource_policy
 codebuild_put_resource_policy <- function(policy, resourceArn) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -3492,6 +3562,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codebuild_retry_build
+#'
+#' @aliases codebuild_retry_build
 codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
   op <- new_operation(
     name = "RetryBuild",
@@ -3776,6 +3848,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codebuild_retry_build_batch
+#'
+#' @aliases codebuild_retry_build_batch
 codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retryType = NULL) {
   op <- new_operation(
     name = "RetryBuildBatch",
@@ -4280,6 +4354,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build
+#'
+#' @aliases codebuild_start_build
 codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildStatusOverride = NULL, buildStatusConfigOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, timeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, debugSessionEnabled = NULL) {
   op <- new_operation(
     name = "StartBuild",
@@ -4826,6 +4902,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #' @keywords internal
 #'
 #' @rdname codebuild_start_build_batch
+#'
+#' @aliases codebuild_start_build_batch
 codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = NULL, secondarySourcesVersionOverride = NULL, sourceVersion = NULL, artifactsOverride = NULL, secondaryArtifactsOverride = NULL, environmentVariablesOverride = NULL, sourceTypeOverride = NULL, sourceLocationOverride = NULL, sourceAuthOverride = NULL, gitCloneDepthOverride = NULL, gitSubmodulesConfigOverride = NULL, buildspecOverride = NULL, insecureSslOverride = NULL, reportBuildBatchStatusOverride = NULL, environmentTypeOverride = NULL, imageOverride = NULL, computeTypeOverride = NULL, certificateOverride = NULL, cacheOverride = NULL, serviceRoleOverride = NULL, privilegedModeOverride = NULL, buildTimeoutInMinutesOverride = NULL, queuedTimeoutInMinutesOverride = NULL, encryptionKeyOverride = NULL, idempotencyToken = NULL, logsConfigOverride = NULL, registryCredentialOverride = NULL, imagePullCredentialsTypeOverride = NULL, buildBatchConfigOverride = NULL, debugSessionEnabled = NULL) {
   op <- new_operation(
     name = "StartBuildBatch",
@@ -5060,6 +5138,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #' @keywords internal
 #'
 #' @rdname codebuild_stop_build
+#'
+#' @aliases codebuild_stop_build
 codebuild_stop_build <- function(id) {
   op <- new_operation(
     name = "StopBuild",
@@ -5332,6 +5412,8 @@ codebuild_stop_build <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codebuild_stop_build_batch
+#'
+#' @aliases codebuild_stop_build_batch
 codebuild_stop_build_batch <- function(id) {
   op <- new_operation(
     name = "StopBuildBatch",
@@ -5810,6 +5892,8 @@ codebuild_stop_build_batch <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project
+#'
+#' @aliases codebuild_update_project
 codebuild_update_project <- function(name, description = NULL, source = NULL, secondarySources = NULL, sourceVersion = NULL, secondarySourceVersions = NULL, artifacts = NULL, secondaryArtifacts = NULL, cache = NULL, environment = NULL, serviceRole = NULL, timeoutInMinutes = NULL, queuedTimeoutInMinutes = NULL, encryptionKey = NULL, tags = NULL, vpcConfig = NULL, badgeEnabled = NULL, logsConfig = NULL, fileSystemLocations = NULL, buildBatchConfig = NULL, concurrentBuildLimit = NULL) {
   op <- new_operation(
     name = "UpdateProject",
@@ -5896,6 +5980,8 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #' @keywords internal
 #'
 #' @rdname codebuild_update_project_visibility
+#'
+#' @aliases codebuild_update_project_visibility
 codebuild_update_project_visibility <- function(projectArn, projectVisibility, resourceAccessRole = NULL) {
   op <- new_operation(
     name = "UpdateProjectVisibility",
@@ -5996,6 +6082,8 @@ codebuild_update_project_visibility <- function(projectArn, projectVisibility, r
 #' @keywords internal
 #'
 #' @rdname codebuild_update_report_group
+#'
+#' @aliases codebuild_update_report_group
 codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateReportGroup",
@@ -6087,6 +6175,8 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 #' @keywords internal
 #'
 #' @rdname codebuild_update_webhook
+#'
+#' @aliases codebuild_update_webhook
 codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSecret = NULL, filterGroups = NULL, buildType = NULL) {
   op <- new_operation(
     name = "UpdateWebhook",

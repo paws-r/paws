@@ -32,6 +32,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname workmailmessageflow_get_raw_message_content
+#'
+#' @aliases workmailmessageflow_get_raw_message_content
 workmailmessageflow_get_raw_message_content <- function(messageId) {
   op <- new_operation(
     name = "GetRawMessageContent",
@@ -96,6 +98,8 @@ workmailmessageflow_get_raw_message_content <- function(messageId) {
 #' @keywords internal
 #'
 #' @rdname workmailmessageflow_put_raw_message_content
+#'
+#' @aliases workmailmessageflow_put_raw_message_content
 workmailmessageflow_put_raw_message_content <- function(messageId, content) {
   op <- new_operation(
     name = "PutRawMessageContent",

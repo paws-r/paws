@@ -80,6 +80,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ssooidc_create_token
+#'
+#' @aliases ssooidc_create_token
 ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode, code = NULL, refreshToken = NULL, scope = NULL, redirectUri = NULL) {
   op <- new_operation(
     name = "CreateToken",
@@ -140,6 +142,8 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode, 
 #' @keywords internal
 #'
 #' @rdname ssooidc_register_client
+#'
+#' @aliases ssooidc_register_client
 ssooidc_register_client <- function(clientName, clientType, scopes = NULL) {
   op <- new_operation(
     name = "RegisterClient",
@@ -204,6 +208,8 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssooidc_start_device_authorization
+#'
+#' @aliases ssooidc_start_device_authorization
 ssooidc_start_device_authorization <- function(clientId, clientSecret, startUrl) {
   op <- new_operation(
     name = "StartDeviceAuthorization",

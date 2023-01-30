@@ -41,6 +41,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname billingconductor_associate_accounts
+#'
+#' @aliases billingconductor_associate_accounts
 billingconductor_associate_accounts <- function(Arn, AccountIds) {
   op <- new_operation(
     name = "AssociateAccounts",
@@ -92,6 +94,8 @@ billingconductor_associate_accounts <- function(Arn, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_associate_pricing_rules
+#'
+#' @aliases billingconductor_associate_pricing_rules
 billingconductor_associate_pricing_rules <- function(Arn, PricingRuleArns) {
   op <- new_operation(
     name = "AssociatePricingRules",
@@ -163,7 +167,9 @@ billingconductor_associate_pricing_rules <- function(Arn, PricingRuleArns) {
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_batch_associate_resources_to_custom_line_item
+#' @rdname billingconductor_batch_assoc_resou_to_custo_line_item
+#'
+#' @aliases billingconductor_batch_associate_resources_to_custom_line_item
 billingconductor_batch_associate_resources_to_custom_line_item <- function(TargetArn, ResourceArns, BillingPeriodRange = NULL) {
   op <- new_operation(
     name = "BatchAssociateResourcesToCustomLineItem",
@@ -235,7 +241,9 @@ billingconductor_batch_associate_resources_to_custom_line_item <- function(Targe
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_batch_disassociate_resources_from_custom_line_item
+#' @rdname billingconductor_batch_disas_resou_from_custo_line_item
+#'
+#' @aliases billingconductor_batch_disassociate_resources_from_custom_line_item
 billingconductor_batch_disassociate_resources_from_custom_line_item <- function(TargetArn, ResourceArns, BillingPeriodRange = NULL) {
   op <- new_operation(
     name = "BatchDisassociateResourcesFromCustomLineItem",
@@ -311,6 +319,8 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
 #' @keywords internal
 #'
 #' @rdname billingconductor_create_billing_group
+#'
+#' @aliases billingconductor_create_billing_group
 billingconductor_create_billing_group <- function(ClientToken = NULL, Name, AccountGrouping, ComputationPreference, PrimaryAccountId = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateBillingGroup",
@@ -395,6 +405,8 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #' @keywords internal
 #'
 #' @rdname billingconductor_create_custom_line_item
+#'
+#' @aliases billingconductor_create_custom_line_item
 billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, Description, BillingGroupArn, BillingPeriodRange = NULL, Tags = NULL, ChargeDetails) {
   op <- new_operation(
     name = "CreateCustomLineItem",
@@ -458,6 +470,8 @@ billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, D
 #' @keywords internal
 #'
 #' @rdname billingconductor_create_pricing_plan
+#'
+#' @aliases billingconductor_create_pricing_plan
 billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Description = NULL, PricingRuleArns = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePricingPlan",
@@ -526,6 +540,8 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
 #' @keywords internal
 #'
 #' @rdname billingconductor_create_pricing_rule
+#'
+#' @aliases billingconductor_create_pricing_rule
 billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Description = NULL, Scope, Type, ModifierPercentage, Service = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePricingRule",
@@ -571,6 +587,8 @@ billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Descr
 #' @keywords internal
 #'
 #' @rdname billingconductor_delete_billing_group
+#'
+#' @aliases billingconductor_delete_billing_group
 billingconductor_delete_billing_group <- function(Arn) {
   op <- new_operation(
     name = "DeleteBillingGroup",
@@ -623,6 +641,8 @@ billingconductor_delete_billing_group <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_delete_custom_line_item
+#'
+#' @aliases billingconductor_delete_custom_line_item
 billingconductor_delete_custom_line_item <- function(Arn, BillingPeriodRange = NULL) {
   op <- new_operation(
     name = "DeleteCustomLineItem",
@@ -669,6 +689,8 @@ billingconductor_delete_custom_line_item <- function(Arn, BillingPeriodRange = N
 #' @keywords internal
 #'
 #' @rdname billingconductor_delete_pricing_plan
+#'
+#' @aliases billingconductor_delete_pricing_plan
 billingconductor_delete_pricing_plan <- function(Arn) {
   op <- new_operation(
     name = "DeletePricingPlan",
@@ -716,6 +738,8 @@ billingconductor_delete_pricing_plan <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_delete_pricing_rule
+#'
+#' @aliases billingconductor_delete_pricing_rule
 billingconductor_delete_pricing_rule <- function(Arn) {
   op <- new_operation(
     name = "DeletePricingRule",
@@ -766,6 +790,8 @@ billingconductor_delete_pricing_rule <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_disassociate_accounts
+#'
+#' @aliases billingconductor_disassociate_accounts
 billingconductor_disassociate_accounts <- function(Arn, AccountIds) {
   op <- new_operation(
     name = "DisassociateAccounts",
@@ -817,6 +843,8 @@ billingconductor_disassociate_accounts <- function(Arn, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_disassociate_pricing_rules
+#'
+#' @aliases billingconductor_disassociate_pricing_rules
 billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
   op <- new_operation(
     name = "DisassociatePricingRules",
@@ -897,6 +925,8 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_account_associations
+#'
+#' @aliases billingconductor_list_account_associations
 billingconductor_list_account_associations <- function(BillingPeriod = NULL, Filters = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountAssociations",
@@ -968,6 +998,8 @@ billingconductor_list_account_associations <- function(BillingPeriod = NULL, Fil
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_billing_group_cost_reports
+#'
+#' @aliases billingconductor_list_billing_group_cost_reports
 billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListBillingGroupCostReports",
@@ -1045,6 +1077,8 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_billing_groups
+#'
+#' @aliases billingconductor_list_billing_groups
 billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListBillingGroups",
@@ -1135,6 +1169,8 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_custom_line_items
+#'
+#' @aliases billingconductor_list_custom_line_items
 billingconductor_list_custom_line_items <- function(BillingPeriod = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListCustomLineItems",
@@ -1204,6 +1240,8 @@ billingconductor_list_custom_line_items <- function(BillingPeriod = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_pricing_plans
+#'
+#' @aliases billingconductor_list_pricing_plans
 billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPricingPlans",
@@ -1261,7 +1299,9 @@ billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = 
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_list_pricing_plans_associated_with_pricing_rule
+#' @rdname billingconductor_list_prici_plans_assoc_with_prici_rule
+#'
+#' @aliases billingconductor_list_pricing_plans_associated_with_pricing_rule
 billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(BillingPeriod = NULL, PricingRuleArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPricingPlansAssociatedWithPricingRule",
@@ -1336,6 +1376,8 @@ billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(Bil
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_pricing_rules
+#'
+#' @aliases billingconductor_list_pricing_rules
 billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPricingRules",
@@ -1394,7 +1436,9 @@ billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = 
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_list_pricing_rules_associated_to_pricing_plan
+#' @rdname billingconductor_list_prici_rules_assoc_to_prici_plan
+#'
+#' @aliases billingconductor_list_pricing_rules_associated_to_pricing_plan
 billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(BillingPeriod = NULL, PricingPlanArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPricingRulesAssociatedToPricingPlan",
@@ -1459,7 +1503,9 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
 #'
 #' @keywords internal
 #'
-#' @rdname billingconductor_list_resources_associated_to_custom_line_item
+#' @rdname billingconductor_list_resou_assoc_to_custo_line_item
+#'
+#' @aliases billingconductor_list_resources_associated_to_custom_line_item
 billingconductor_list_resources_associated_to_custom_line_item <- function(BillingPeriod = NULL, Arn, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResourcesAssociatedToCustomLineItem",
@@ -1508,6 +1554,8 @@ billingconductor_list_resources_associated_to_custom_line_item <- function(Billi
 #' @keywords internal
 #'
 #' @rdname billingconductor_list_tags_for_resource
+#'
+#' @aliases billingconductor_list_tags_for_resource
 billingconductor_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1555,6 +1603,8 @@ billingconductor_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_tag_resource
+#'
+#' @aliases billingconductor_tag_resource
 billingconductor_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1599,6 +1649,8 @@ billingconductor_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_untag_resource
+#'
+#' @aliases billingconductor_untag_resource
 billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1666,6 +1718,8 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname billingconductor_update_billing_group
+#'
+#' @aliases billingconductor_update_billing_group
 billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NULL, ComputationPreference = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateBillingGroup",
@@ -1747,6 +1801,8 @@ billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NUL
 #' @keywords internal
 #'
 #' @rdname billingconductor_update_custom_line_item
+#'
+#' @aliases billingconductor_update_custom_line_item
 billingconductor_update_custom_line_item <- function(Arn, Name = NULL, Description = NULL, ChargeDetails = NULL, BillingPeriodRange = NULL) {
   op <- new_operation(
     name = "UpdateCustomLineItem",
@@ -1801,6 +1857,8 @@ billingconductor_update_custom_line_item <- function(Arn, Name = NULL, Descripti
 #' @keywords internal
 #'
 #' @rdname billingconductor_update_pricing_plan
+#'
+#' @aliases billingconductor_update_pricing_plan
 billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdatePricingPlan",
@@ -1864,6 +1922,8 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
 #' @keywords internal
 #'
 #' @rdname billingconductor_update_pricing_rule
+#'
+#' @aliases billingconductor_update_pricing_rule
 billingconductor_update_pricing_rule <- function(Arn, Name = NULL, Description = NULL, Type = NULL, ModifierPercentage = NULL) {
   op <- new_operation(
     name = "UpdatePricingRule",

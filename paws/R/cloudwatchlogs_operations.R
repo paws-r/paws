@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_associate_kms_key
+#'
+#' @aliases cloudwatchlogs_associate_kms_key
 cloudwatchlogs_associate_kms_key <- function(logGroupName, kmsKeyId) {
   op <- new_operation(
     name = "AssociateKmsKey",
@@ -95,6 +97,8 @@ cloudwatchlogs_associate_kms_key <- function(logGroupName, kmsKeyId) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_cancel_export_task
+#'
+#' @aliases cloudwatchlogs_cancel_export_task
 cloudwatchlogs_cancel_export_task <- function(taskId) {
   op <- new_operation(
     name = "CancelExportTask",
@@ -188,6 +192,8 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_create_export_task
+#'
+#' @aliases cloudwatchlogs_create_export_task
 cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, logStreamNamePrefix = NULL, from, to, destination, destinationPrefix = NULL) {
   op <- new_operation(
     name = "CreateExportTask",
@@ -275,6 +281,8 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_create_log_group
+#'
+#' @aliases cloudwatchlogs_create_log_group
 cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateLogGroup",
@@ -332,6 +340,8 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_create_log_stream
+#'
+#' @aliases cloudwatchlogs_create_log_stream
 cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
   op <- new_operation(
     name = "CreateLogStream",
@@ -375,6 +385,8 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_destination
+#'
+#' @aliases cloudwatchlogs_delete_destination
 cloudwatchlogs_delete_destination <- function(destinationName) {
   op <- new_operation(
     name = "DeleteDestination",
@@ -417,6 +429,8 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_log_group
+#'
+#' @aliases cloudwatchlogs_delete_log_group
 cloudwatchlogs_delete_log_group <- function(logGroupName) {
   op <- new_operation(
     name = "DeleteLogGroup",
@@ -461,6 +475,8 @@ cloudwatchlogs_delete_log_group <- function(logGroupName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_log_stream
+#'
+#' @aliases cloudwatchlogs_delete_log_stream
 cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
   op <- new_operation(
     name = "DeleteLogStream",
@@ -503,6 +519,8 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_metric_filter
+#'
+#' @aliases cloudwatchlogs_delete_metric_filter
 cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
   op <- new_operation(
     name = "DeleteMetricFilter",
@@ -558,6 +576,8 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_query_definition
+#'
+#' @aliases cloudwatchlogs_delete_query_definition
 cloudwatchlogs_delete_query_definition <- function(queryDefinitionId) {
   op <- new_operation(
     name = "DeleteQueryDefinition",
@@ -599,6 +619,8 @@ cloudwatchlogs_delete_query_definition <- function(queryDefinitionId) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_resource_policy
+#'
+#' @aliases cloudwatchlogs_delete_resource_policy
 cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -642,6 +664,8 @@ cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_retention_policy
+#'
+#' @aliases cloudwatchlogs_delete_retention_policy
 cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
   op <- new_operation(
     name = "DeleteRetentionPolicy",
@@ -684,6 +708,8 @@ cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_delete_subscription_filter
+#'
+#' @aliases cloudwatchlogs_delete_subscription_filter
 cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) {
   op <- new_operation(
     name = "DeleteSubscriptionFilter",
@@ -748,6 +774,8 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_destinations
+#'
+#' @aliases cloudwatchlogs_describe_destinations
 cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeDestinations",
@@ -824,6 +852,8 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_export_tasks
+#'
+#' @aliases cloudwatchlogs_describe_export_tasks
 cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NULL, nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeExportTasks",
@@ -897,6 +927,8 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_log_groups
+#'
+#' @aliases cloudwatchlogs_describe_log_groups
 cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeLogGroups",
@@ -988,6 +1020,8 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_log_streams
+#'
+#' @aliases cloudwatchlogs_describe_log_streams
 cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefix = NULL, orderBy = NULL, descending = NULL, nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeLogStreams",
@@ -1073,6 +1107,8 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_metric_filters
+#'
+#' @aliases cloudwatchlogs_describe_metric_filters
 cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNamePrefix = NULL, nextToken = NULL, limit = NULL, metricName = NULL, metricNamespace = NULL) {
   op <- new_operation(
     name = "DescribeMetricFilters",
@@ -1140,6 +1176,8 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_queries
+#'
+#' @aliases cloudwatchlogs_describe_queries
 cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeQueries",
@@ -1208,6 +1246,8 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_query_definitions
+#'
+#' @aliases cloudwatchlogs_describe_query_definitions
 cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeQueryDefinitions",
@@ -1263,6 +1303,8 @@ cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_resource_policies
+#'
+#' @aliases cloudwatchlogs_describe_resource_policies
 cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeResourcePolicies",
@@ -1331,6 +1373,8 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_describe_subscription_filters
+#'
+#' @aliases cloudwatchlogs_describe_subscription_filters
 cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNamePrefix = NULL, nextToken = NULL, limit = NULL) {
   op <- new_operation(
     name = "DescribeSubscriptionFilters",
@@ -1380,6 +1424,8 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_disassociate_kms_key
+#'
+#' @aliases cloudwatchlogs_disassociate_kms_key
 cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
   op <- new_operation(
     name = "DisassociateKmsKey",
@@ -1499,6 +1545,8 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_filter_log_events
+#'
+#' @aliases cloudwatchlogs_filter_log_events
 cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL, logStreamNamePrefix = NULL, startTime = NULL, endTime = NULL, filterPattern = NULL, nextToken = NULL, limit = NULL, interleaved = NULL) {
   op <- new_operation(
     name = "FilterLogEvents",
@@ -1585,6 +1633,8 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_log_events
+#'
+#' @aliases cloudwatchlogs_get_log_events
 cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime = NULL, endTime = NULL, nextToken = NULL, limit = NULL, startFromHead = NULL) {
   op <- new_operation(
     name = "GetLogEvents",
@@ -1656,6 +1706,8 @@ cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_log_group_fields
+#'
+#' @aliases cloudwatchlogs_get_log_group_fields
 cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
   op <- new_operation(
     name = "GetLogGroupFields",
@@ -1713,6 +1765,8 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_log_record
+#'
+#' @aliases cloudwatchlogs_get_log_record
 cloudwatchlogs_get_log_record <- function(logRecordPointer) {
   op <- new_operation(
     name = "GetLogRecord",
@@ -1785,6 +1839,8 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_get_query_results
+#'
+#' @aliases cloudwatchlogs_get_query_results
 cloudwatchlogs_get_query_results <- function(queryId) {
   op <- new_operation(
     name = "GetQueryResults",
@@ -1832,6 +1888,8 @@ cloudwatchlogs_get_query_results <- function(queryId) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_list_tags_log_group
+#'
+#' @aliases cloudwatchlogs_list_tags_log_group
 cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
   op <- new_operation(
     name = "ListTagsLogGroup",
@@ -1908,6 +1966,8 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_destination
+#'
+#' @aliases cloudwatchlogs_put_destination
 cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) {
   op <- new_operation(
     name = "PutDestination",
@@ -1975,6 +2035,8 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_destination_policy
+#'
+#' @aliases cloudwatchlogs_put_destination_policy
 cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy, forceUpdate = NULL) {
   op <- new_operation(
     name = "PutDestinationPolicy",
@@ -2083,6 +2145,8 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_log_events
+#'
+#' @aliases cloudwatchlogs_put_log_events
 cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents, sequenceToken = NULL) {
   op <- new_operation(
     name = "PutLogEvents",
@@ -2166,6 +2230,8 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_metric_filter
+#'
+#' @aliases cloudwatchlogs_put_metric_filter
 cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPattern, metricTransformations) {
   op <- new_operation(
     name = "PutMetricFilter",
@@ -2250,6 +2316,8 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_query_definition
+#'
+#' @aliases cloudwatchlogs_put_query_definition
 cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, logGroupNames = NULL, queryString) {
   op <- new_operation(
     name = "PutQueryDefinition",
@@ -2325,6 +2393,8 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_resource_policy
+#'
+#' @aliases cloudwatchlogs_put_resource_policy
 cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -2369,6 +2439,8 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_retention_policy
+#'
+#' @aliases cloudwatchlogs_put_retention_policy
 cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
   op <- new_operation(
     name = "PutRetentionPolicy",
@@ -2476,6 +2548,8 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_subscription_filter
+#'
+#' @aliases cloudwatchlogs_put_subscription_filter
 cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, filterPattern, destinationArn, roleArn = NULL, distribution = NULL) {
   op <- new_operation(
     name = "PutSubscriptionFilter",
@@ -2558,6 +2632,8 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_start_query
+#'
+#' @aliases cloudwatchlogs_start_query
 cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL, startTime, endTime, queryString, limit = NULL) {
   op <- new_operation(
     name = "StartQuery",
@@ -2606,6 +2682,8 @@ cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_stop_query
+#'
+#' @aliases cloudwatchlogs_stop_query
 cloudwatchlogs_stop_query <- function(queryId) {
   op <- new_operation(
     name = "StopQuery",
@@ -2666,6 +2744,8 @@ cloudwatchlogs_stop_query <- function(queryId) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_tag_log_group
+#'
+#' @aliases cloudwatchlogs_tag_log_group
 cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
   op <- new_operation(
     name = "TagLogGroup",
@@ -2726,6 +2806,8 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_test_metric_filter
+#'
+#' @aliases cloudwatchlogs_test_metric_filter
 cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
   op <- new_operation(
     name = "TestMetricFilter",
@@ -2778,6 +2860,8 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_untag_log_group
+#'
+#' @aliases cloudwatchlogs_untag_log_group
 cloudwatchlogs_untag_log_group <- function(logGroupName, tags) {
   op <- new_operation(
     name = "UntagLogGroup",

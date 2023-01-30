@@ -35,6 +35,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mwaa_create_cli_token
+#'
+#' @aliases mwaa_create_cli_token
 mwaa_create_cli_token <- function(Name) {
   op <- new_operation(
     name = "CreateCliToken",
@@ -221,6 +223,8 @@ mwaa_create_cli_token <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname mwaa_create_environment
+#'
+#' @aliases mwaa_create_environment
 mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path, EnvironmentClass = NULL, ExecutionRoleArn, KmsKey = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, Schedulers = NULL, SourceBucketArn, Tags = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
@@ -270,6 +274,8 @@ mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowV
 #' @keywords internal
 #'
 #' @rdname mwaa_create_web_login_token
+#'
+#' @aliases mwaa_create_web_login_token
 mwaa_create_web_login_token <- function(Name) {
   op <- new_operation(
     name = "CreateWebLoginToken",
@@ -313,6 +319,8 @@ mwaa_create_web_login_token <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname mwaa_delete_environment
+#'
+#' @aliases mwaa_delete_environment
 mwaa_delete_environment <- function(Name) {
   op <- new_operation(
     name = "DeleteEnvironment",
@@ -437,6 +445,8 @@ mwaa_delete_environment <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname mwaa_get_environment
+#'
+#' @aliases mwaa_get_environment
 mwaa_get_environment <- function(Name) {
   op <- new_operation(
     name = "GetEnvironment",
@@ -490,6 +500,8 @@ mwaa_get_environment <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname mwaa_list_environments
+#'
+#' @aliases mwaa_list_environments
 mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironments",
@@ -542,6 +554,8 @@ mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname mwaa_list_tags_for_resource
+#'
+#' @aliases mwaa_list_tags_for_resource
 mwaa_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -609,6 +623,8 @@ mwaa_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname mwaa_publish_metrics
+#'
+#' @aliases mwaa_publish_metrics
 mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
   op <- new_operation(
     name = "PublishMetrics",
@@ -660,6 +676,8 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
 #' @keywords internal
 #'
 #' @rdname mwaa_tag_resource
+#'
+#' @aliases mwaa_tag_resource
 mwaa_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -710,6 +728,8 @@ mwaa_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname mwaa_untag_resource
+#'
+#' @aliases mwaa_untag_resource
 mwaa_untag_resource <- function(ResourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -871,6 +891,8 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname mwaa_update_environment
+#'
+#' @aliases mwaa_update_environment
 mwaa_update_environment <- function(AirflowConfigurationOptions = NULL, AirflowVersion = NULL, DagS3Path = NULL, EnvironmentClass = NULL, ExecutionRoleArn = NULL, LoggingConfiguration = NULL, MaxWorkers = NULL, MinWorkers = NULL, Name, NetworkConfiguration = NULL, PluginsS3ObjectVersion = NULL, PluginsS3Path = NULL, RequirementsS3ObjectVersion = NULL, RequirementsS3Path = NULL, Schedulers = NULL, SourceBucketArn = NULL, WebserverAccessMode = NULL, WeeklyMaintenanceWindowStart = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",

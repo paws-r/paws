@@ -70,7 +70,9 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_accept_direct_connect_gateway_association_proposal
+#' @rdname directconnect_accept_direct_connec_gatewa_associ_propos
+#'
+#' @aliases directconnect_accept_direct_connect_gateway_association_proposal
 directconnect_accept_direct_connect_gateway_association_proposal <- function(directConnectGatewayId, proposalId, associatedGatewayOwnerAccount, overrideAllowedPrefixesToDirectConnectGateway = NULL) {
   op <- new_operation(
     name = "AcceptDirectConnectGatewayAssociationProposal",
@@ -174,6 +176,8 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #' @keywords internal
 #'
 #' @rdname directconnect_allocate_connection_on_interconnect
+#'
+#' @aliases directconnect_allocate_connection_on_interconnect
 directconnect_allocate_connection_on_interconnect <- function(bandwidth, connectionName, ownerAccount, interconnectId, vlan) {
   op <- new_operation(
     name = "AllocateConnectionOnInterconnect",
@@ -285,6 +289,8 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' @keywords internal
 #'
 #' @rdname directconnect_allocate_hosted_connection
+#'
+#' @aliases directconnect_allocate_hosted_connection
 directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount, bandwidth, connectionName, vlan, tags = NULL) {
   op <- new_operation(
     name = "AllocateHostedConnection",
@@ -407,6 +413,8 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #' @keywords internal
 #'
 #' @rdname directconnect_allocate_private_virtual_interface
+#'
+#' @aliases directconnect_allocate_private_virtual_interface
 directconnect_allocate_private_virtual_interface <- function(connectionId, ownerAccount, newPrivateVirtualInterfaceAllocation) {
   op <- new_operation(
     name = "AllocatePrivateVirtualInterface",
@@ -541,6 +549,8 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #' @keywords internal
 #'
 #' @rdname directconnect_allocate_public_virtual_interface
+#'
+#' @aliases directconnect_allocate_public_virtual_interface
 directconnect_allocate_public_virtual_interface <- function(connectionId, ownerAccount, newPublicVirtualInterfaceAllocation) {
   op <- new_operation(
     name = "AllocatePublicVirtualInterface",
@@ -669,6 +679,8 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #' @keywords internal
 #'
 #' @rdname directconnect_allocate_transit_virtual_interface
+#'
+#' @aliases directconnect_allocate_transit_virtual_interface
 directconnect_allocate_transit_virtual_interface <- function(connectionId, ownerAccount, newTransitVirtualInterfaceAllocation) {
   op <- new_operation(
     name = "AllocateTransitVirtualInterface",
@@ -769,6 +781,8 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #' @keywords internal
 #'
 #' @rdname directconnect_associate_connection_with_lag
+#'
+#' @aliases directconnect_associate_connection_with_lag
 directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
   op <- new_operation(
     name = "AssociateConnectionWithLag",
@@ -860,6 +874,8 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_associate_hosted_connection
+#'
+#' @aliases directconnect_associate_hosted_connection
 directconnect_associate_hosted_connection <- function(connectionId, parentConnectionId) {
   op <- new_operation(
     name = "AssociateHostedConnection",
@@ -960,6 +976,8 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' @keywords internal
 #'
 #' @rdname directconnect_associate_mac_sec_key
+#'
+#' @aliases directconnect_associate_mac_sec_key
 directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, ckn = NULL, cak = NULL) {
   op <- new_operation(
     name = "AssociateMacSecKey",
@@ -1070,6 +1088,8 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
 #' @keywords internal
 #'
 #' @rdname directconnect_associate_virtual_interface
+#'
+#' @aliases directconnect_associate_virtual_interface
 directconnect_associate_virtual_interface <- function(virtualInterfaceId, connectionId) {
   op <- new_operation(
     name = "AssociateVirtualInterface",
@@ -1121,6 +1141,8 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
 #' @keywords internal
 #'
 #' @rdname directconnect_confirm_connection
+#'
+#' @aliases directconnect_confirm_connection
 directconnect_confirm_connection <- function(connectionId) {
   op <- new_operation(
     name = "ConfirmConnection",
@@ -1168,6 +1190,8 @@ directconnect_confirm_connection <- function(connectionId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_confirm_customer_agreement
+#'
+#' @aliases directconnect_confirm_customer_agreement
 directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
   op <- new_operation(
     name = "ConfirmCustomerAgreement",
@@ -1224,6 +1248,8 @@ directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
 #' @keywords internal
 #'
 #' @rdname directconnect_confirm_private_virtual_interface
+#'
+#' @aliases directconnect_confirm_private_virtual_interface
 directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, virtualGatewayId = NULL, directConnectGatewayId = NULL) {
   op <- new_operation(
     name = "ConfirmPrivateVirtualInterface",
@@ -1274,6 +1300,8 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 #' @keywords internal
 #'
 #' @rdname directconnect_confirm_public_virtual_interface
+#'
+#' @aliases directconnect_confirm_public_virtual_interface
 directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
   op <- new_operation(
     name = "ConfirmPublicVirtualInterface",
@@ -1328,6 +1356,8 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_confirm_transit_virtual_interface
+#'
+#' @aliases directconnect_confirm_transit_virtual_interface
 directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, directConnectGatewayId) {
   op <- new_operation(
     name = "ConfirmTransitVirtualInterface",
@@ -1445,6 +1475,8 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #' @keywords internal
 #'
 #' @rdname directconnect_create_bgp_peer
+#'
+#' @aliases directconnect_create_bgp_peer
 directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer = NULL) {
   op <- new_operation(
     name = "CreateBGPPeer",
@@ -1565,6 +1597,8 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @keywords internal
 #'
 #' @rdname directconnect_create_connection
+#'
+#' @aliases directconnect_create_connection
 directconnect_create_connection <- function(location, bandwidth, connectionName, lagId = NULL, tags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateConnection",
@@ -1632,6 +1666,8 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' @keywords internal
 #'
 #' @rdname directconnect_create_direct_connect_gateway
+#'
+#' @aliases directconnect_create_direct_connect_gateway
 directconnect_create_direct_connect_gateway <- function(directConnectGatewayName, amazonSideAsn = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGateway",
@@ -1719,6 +1755,8 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' @keywords internal
 #'
 #' @rdname directconnect_create_direct_connect_gateway_association
+#'
+#' @aliases directconnect_create_direct_connect_gateway_association
 directconnect_create_direct_connect_gateway_association <- function(directConnectGatewayId, gatewayId = NULL, addAllowedPrefixesToDirectConnectGateway = NULL, virtualGatewayId = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGatewayAssociation",
@@ -1810,7 +1848,9 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_create_direct_connect_gateway_association_proposal
+#' @rdname directconnect_create_direct_connec_gatewa_associ_propos
+#'
+#' @aliases directconnect_create_direct_connect_gateway_association_proposal
 directconnect_create_direct_connect_gateway_association_proposal <- function(directConnectGatewayId, directConnectGatewayOwnerAccount, gatewayId, addAllowedPrefixesToDirectConnectGateway = NULL, removeAllowedPrefixesToDirectConnectGateway = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGatewayAssociationProposal",
@@ -1918,6 +1958,8 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' @keywords internal
 #'
 #' @rdname directconnect_create_interconnect
+#'
+#' @aliases directconnect_create_interconnect
 directconnect_create_interconnect <- function(interconnectName, bandwidth, location, lagId = NULL, tags = NULL, providerName = NULL) {
   op <- new_operation(
     name = "CreateInterconnect",
@@ -2097,6 +2139,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @keywords internal
 #'
 #' @rdname directconnect_create_lag
+#'
+#' @aliases directconnect_create_lag
 directconnect_create_lag <- function(numberOfConnections, location, connectionsBandwidth, lagName, connectionId = NULL, tags = NULL, childConnectionTags = NULL, providerName = NULL, requestMACSec = NULL) {
   op <- new_operation(
     name = "CreateLag",
@@ -2227,6 +2271,8 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' @keywords internal
 #'
 #' @rdname directconnect_create_private_virtual_interface
+#'
+#' @aliases directconnect_create_private_virtual_interface
 directconnect_create_private_virtual_interface <- function(connectionId, newPrivateVirtualInterface) {
   op <- new_operation(
     name = "CreatePrivateVirtualInterface",
@@ -2348,6 +2394,8 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #' @keywords internal
 #'
 #' @rdname directconnect_create_public_virtual_interface
+#'
+#' @aliases directconnect_create_public_virtual_interface
 directconnect_create_public_virtual_interface <- function(connectionId, newPublicVirtualInterface) {
   op <- new_operation(
     name = "CreatePublicVirtualInterface",
@@ -2481,6 +2529,8 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' @keywords internal
 #'
 #' @rdname directconnect_create_transit_virtual_interface
+#'
+#' @aliases directconnect_create_transit_virtual_interface
 directconnect_create_transit_virtual_interface <- function(connectionId, newTransitVirtualInterface) {
   op <- new_operation(
     name = "CreateTransitVirtualInterface",
@@ -2587,6 +2637,8 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_bgp_peer
+#'
+#' @aliases directconnect_delete_bgp_peer
 directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL, customerAddress = NULL, bgpPeerId = NULL) {
   op <- new_operation(
     name = "DeleteBGPPeer",
@@ -2672,6 +2724,8 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_connection
+#'
+#' @aliases directconnect_delete_connection
 directconnect_delete_connection <- function(connectionId) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -2727,6 +2781,8 @@ directconnect_delete_connection <- function(connectionId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_direct_connect_gateway
+#'
+#' @aliases directconnect_delete_direct_connect_gateway
 directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) {
   op <- new_operation(
     name = "DeleteDirectConnectGateway",
@@ -2804,6 +2860,8 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_direct_connect_gateway_association
+#'
+#' @aliases directconnect_delete_direct_connect_gateway_association
 directconnect_delete_direct_connect_gateway_association <- function(associationId = NULL, directConnectGatewayId = NULL, virtualGatewayId = NULL) {
   op <- new_operation(
     name = "DeleteDirectConnectGatewayAssociation",
@@ -2872,7 +2930,9 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_delete_direct_connect_gateway_association_proposal
+#' @rdname directconnect_delete_direct_connec_gatewa_associ_propos
+#'
+#' @aliases directconnect_delete_direct_connect_gateway_association_proposal
 directconnect_delete_direct_connect_gateway_association_proposal <- function(proposalId) {
   op <- new_operation(
     name = "DeleteDirectConnectGatewayAssociationProposal",
@@ -2920,6 +2980,8 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_interconnect
+#'
+#' @aliases directconnect_delete_interconnect
 directconnect_delete_interconnect <- function(interconnectId) {
   op <- new_operation(
     name = "DeleteInterconnect",
@@ -3037,6 +3099,8 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_lag
+#'
+#' @aliases directconnect_delete_lag
 directconnect_delete_lag <- function(lagId) {
   op <- new_operation(
     name = "DeleteLag",
@@ -3082,6 +3146,8 @@ directconnect_delete_lag <- function(lagId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_delete_virtual_interface
+#'
+#' @aliases directconnect_delete_virtual_interface
 directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
   op <- new_operation(
     name = "DeleteVirtualInterface",
@@ -3149,6 +3215,8 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_connection_loa
+#'
+#' @aliases directconnect_describe_connection_loa
 directconnect_describe_connection_loa <- function(connectionId, providerName = NULL, loaContentType = NULL) {
   op <- new_operation(
     name = "DescribeConnectionLoa",
@@ -3233,6 +3301,8 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_connections
+#'
+#' @aliases directconnect_describe_connections
 directconnect_describe_connections <- function(connectionId = NULL) {
   op <- new_operation(
     name = "DescribeConnections",
@@ -3324,6 +3394,8 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_connections_on_interconnect
+#'
+#' @aliases directconnect_describe_connections_on_interconnect
 directconnect_describe_connections_on_interconnect <- function(interconnectId) {
   op <- new_operation(
     name = "DescribeConnectionsOnInterconnect",
@@ -3374,6 +3446,8 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_customer_metadata
+#'
+#' @aliases directconnect_describe_customer_metadata
 directconnect_describe_customer_metadata <- function() {
   op <- new_operation(
     name = "DescribeCustomerMetadata",
@@ -3459,7 +3533,9 @@ directconnect_describe_customer_metadata <- function() {
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_describe_direct_connect_gateway_association_proposals
+#' @rdname directconnect_descri_direct_connec_gatewa_associ_propos
+#'
+#' @aliases directconnect_describe_direct_connect_gateway_association_proposals
 directconnect_describe_direct_connect_gateway_association_proposals <- function(directConnectGatewayId = NULL, proposalId = NULL, associatedGatewayId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeDirectConnectGatewayAssociationProposals",
@@ -3571,6 +3647,8 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_direct_connect_gateway_associations
+#'
+#' @aliases directconnect_describe_direct_connect_gateway_associations
 directconnect_describe_direct_connect_gateway_associations <- function(associationId = NULL, associatedGatewayId = NULL, directConnectGatewayId = NULL, maxResults = NULL, nextToken = NULL, virtualGatewayId = NULL) {
   op <- new_operation(
     name = "DescribeDirectConnectGatewayAssociations",
@@ -3647,6 +3725,8 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_direct_connect_gateway_attachments
+#'
+#' @aliases directconnect_describe_direct_connect_gateway_attachments
 directconnect_describe_direct_connect_gateway_attachments <- function(directConnectGatewayId = NULL, virtualInterfaceId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeDirectConnectGatewayAttachments",
@@ -3714,6 +3794,8 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_direct_connect_gateways
+#'
+#' @aliases directconnect_describe_direct_connect_gateways
 directconnect_describe_direct_connect_gateways <- function(directConnectGatewayId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeDirectConnectGateways",
@@ -3802,6 +3884,8 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_hosted_connections
+#'
+#' @aliases directconnect_describe_hosted_connections
 directconnect_describe_hosted_connections <- function(connectionId) {
   op <- new_operation(
     name = "DescribeHostedConnections",
@@ -3867,6 +3951,8 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_interconnect_loa
+#'
+#' @aliases directconnect_describe_interconnect_loa
 directconnect_describe_interconnect_loa <- function(interconnectId, providerName = NULL, loaContentType = NULL) {
   op <- new_operation(
     name = "DescribeInterconnectLoa",
@@ -3939,6 +4025,8 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_interconnects
+#'
+#' @aliases directconnect_describe_interconnects
 directconnect_describe_interconnects <- function(interconnectId = NULL) {
   op <- new_operation(
     name = "DescribeInterconnects",
@@ -4059,6 +4147,8 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_lags
+#'
+#' @aliases directconnect_describe_lags
 directconnect_describe_lags <- function(lagId = NULL) {
   op <- new_operation(
     name = "DescribeLags",
@@ -4121,6 +4211,8 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_loa
+#'
+#' @aliases directconnect_describe_loa
 directconnect_describe_loa <- function(connectionId, providerName = NULL, loaContentType = NULL) {
   op <- new_operation(
     name = "DescribeLoa",
@@ -4180,6 +4272,8 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_locations
+#'
+#' @aliases directconnect_describe_locations
 directconnect_describe_locations <- function() {
   op <- new_operation(
     name = "DescribeLocations",
@@ -4239,6 +4333,8 @@ directconnect_describe_locations <- function() {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_router_configuration
+#'
+#' @aliases directconnect_describe_router_configuration
 directconnect_describe_router_configuration <- function(virtualInterfaceId, routerTypeIdentifier = NULL) {
   op <- new_operation(
     name = "DescribeRouterConfiguration",
@@ -4298,6 +4394,8 @@ directconnect_describe_router_configuration <- function(virtualInterfaceId, rout
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_tags
+#'
+#' @aliases directconnect_describe_tags
 directconnect_describe_tags <- function(resourceArns) {
   op <- new_operation(
     name = "DescribeTags",
@@ -4348,6 +4446,8 @@ directconnect_describe_tags <- function(resourceArns) {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_virtual_gateways
+#'
+#' @aliases directconnect_describe_virtual_gateways
 directconnect_describe_virtual_gateways <- function() {
   op <- new_operation(
     name = "DescribeVirtualGateways",
@@ -4455,6 +4555,8 @@ directconnect_describe_virtual_gateways <- function() {
 #' @keywords internal
 #'
 #' @rdname directconnect_describe_virtual_interfaces
+#'
+#' @aliases directconnect_describe_virtual_interfaces
 directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtualInterfaceId = NULL) {
   op <- new_operation(
     name = "DescribeVirtualInterfaces",
@@ -4549,6 +4651,8 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' @keywords internal
 #'
 #' @rdname directconnect_disassociate_connection_from_lag
+#'
+#' @aliases directconnect_disassociate_connection_from_lag
 directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) {
   op <- new_operation(
     name = "DisassociateConnectionFromLag",
@@ -4614,6 +4718,8 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 #' @keywords internal
 #'
 #' @rdname directconnect_disassociate_mac_sec_key
+#'
+#' @aliases directconnect_disassociate_mac_sec_key
 directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
   op <- new_operation(
     name = "DisassociateMacSecKey",
@@ -4696,6 +4802,8 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
 #' @keywords internal
 #'
 #' @rdname directconnect_list_virtual_interface_test_history
+#'
+#' @aliases directconnect_list_virtual_interface_test_history
 directconnect_list_virtual_interface_test_history <- function(testId = NULL, virtualInterfaceId = NULL, bgpPeers = NULL, status = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualInterfaceTestHistory",
@@ -4782,6 +4890,8 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' @keywords internal
 #'
 #' @rdname directconnect_start_bgp_failover_test
+#'
+#' @aliases directconnect_start_bgp_failover_test
 directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers = NULL, testDurationInMinutes = NULL) {
   op <- new_operation(
     name = "StartBgpFailoverTest",
@@ -4842,6 +4952,8 @@ directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers =
 #' @keywords internal
 #'
 #' @rdname directconnect_stop_bgp_failover_test
+#'
+#' @aliases directconnect_stop_bgp_failover_test
 directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
   op <- new_operation(
     name = "StopBgpFailoverTest",
@@ -4894,6 +5006,8 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
 #' @keywords internal
 #'
 #' @rdname directconnect_tag_resource
+#'
+#' @aliases directconnect_tag_resource
 directconnect_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4938,6 +5052,8 @@ directconnect_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname directconnect_untag_resource
+#'
+#' @aliases directconnect_untag_resource
 directconnect_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5034,6 +5150,8 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname directconnect_update_connection
+#'
+#' @aliases directconnect_update_connection
 directconnect_update_connection <- function(connectionId, connectionName = NULL, encryptionMode = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
@@ -5089,6 +5207,8 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
 #' @keywords internal
 #'
 #' @rdname directconnect_update_direct_connect_gateway
+#'
+#' @aliases directconnect_update_direct_connect_gateway
 directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, newDirectConnectGatewayName) {
   op <- new_operation(
     name = "UpdateDirectConnectGateway",
@@ -5173,6 +5293,8 @@ directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, 
 #' @keywords internal
 #'
 #' @rdname directconnect_update_direct_connect_gateway_association
+#'
+#' @aliases directconnect_update_direct_connect_gateway_association
 directconnect_update_direct_connect_gateway_association <- function(associationId = NULL, addAllowedPrefixesToDirectConnectGateway = NULL, removeAllowedPrefixesToDirectConnectGateway = NULL) {
   op <- new_operation(
     name = "UpdateDirectConnectGatewayAssociation",
@@ -5317,6 +5439,8 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' @keywords internal
 #'
 #' @rdname directconnect_update_lag
+#'
+#' @aliases directconnect_update_lag
 directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL, encryptionMode = NULL) {
   op <- new_operation(
     name = "UpdateLag",
@@ -5429,6 +5553,8 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' @keywords internal
 #'
 #' @rdname directconnect_update_virtual_interface_attributes
+#'
+#' @aliases directconnect_update_virtual_interface_attributes
 directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId, mtu = NULL, enableSiteLink = NULL, virtualInterfaceName = NULL) {
   op <- new_operation(
     name = "UpdateVirtualInterfaceAttributes",

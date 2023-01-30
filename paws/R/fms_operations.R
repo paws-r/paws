@@ -36,6 +36,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname fms_associate_admin_account
+#'
+#' @aliases fms_associate_admin_account
 fms_associate_admin_account <- function(AdminAccount) {
   op <- new_operation(
     name = "AssociateAdminAccount",
@@ -85,6 +87,8 @@ fms_associate_admin_account <- function(AdminAccount) {
 #' @keywords internal
 #'
 #' @rdname fms_associate_third_party_firewall
+#'
+#' @aliases fms_associate_third_party_firewall
 fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
   op <- new_operation(
     name = "AssociateThirdPartyFirewall",
@@ -128,6 +132,8 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
 #' @keywords internal
 #'
 #' @rdname fms_delete_apps_list
+#'
+#' @aliases fms_delete_apps_list
 fms_delete_apps_list <- function(ListId) {
   op <- new_operation(
     name = "DeleteAppsList",
@@ -168,6 +174,8 @@ fms_delete_apps_list <- function(ListId) {
 #' @keywords internal
 #'
 #' @rdname fms_delete_notification_channel
+#'
+#' @aliases fms_delete_notification_channel
 fms_delete_notification_channel <- function() {
   op <- new_operation(
     name = "DeleteNotificationChannel",
@@ -238,6 +246,8 @@ fms_delete_notification_channel <- function() {
 #' @keywords internal
 #'
 #' @rdname fms_delete_policy
+#'
+#' @aliases fms_delete_policy
 fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
   op <- new_operation(
     name = "DeletePolicy",
@@ -281,6 +291,8 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_delete_protocols_list
+#'
+#' @aliases fms_delete_protocols_list
 fms_delete_protocols_list <- function(ListId) {
   op <- new_operation(
     name = "DeleteProtocolsList",
@@ -321,6 +333,8 @@ fms_delete_protocols_list <- function(ListId) {
 #' @keywords internal
 #'
 #' @rdname fms_disassociate_admin_account
+#'
+#' @aliases fms_disassociate_admin_account
 fms_disassociate_admin_account <- function() {
   op <- new_operation(
     name = "DisassociateAdminAccount",
@@ -371,6 +385,8 @@ fms_disassociate_admin_account <- function() {
 #' @keywords internal
 #'
 #' @rdname fms_disassociate_third_party_firewall
+#'
+#' @aliases fms_disassociate_third_party_firewall
 fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
   op <- new_operation(
     name = "DisassociateThirdPartyFirewall",
@@ -415,6 +431,8 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
 #' @keywords internal
 #'
 #' @rdname fms_get_admin_account
+#'
+#' @aliases fms_get_admin_account
 fms_get_admin_account <- function() {
   op <- new_operation(
     name = "GetAdminAccount",
@@ -493,6 +511,8 @@ fms_get_admin_account <- function() {
 #' @keywords internal
 #'
 #' @rdname fms_get_apps_list
+#'
+#' @aliases fms_get_apps_list
 fms_get_apps_list <- function(ListId, DefaultList = NULL) {
   op <- new_operation(
     name = "GetAppsList",
@@ -585,6 +605,8 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_get_compliance_detail
+#'
+#' @aliases fms_get_compliance_detail
 fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
   op <- new_operation(
     name = "GetComplianceDetail",
@@ -629,6 +651,8 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 #' @keywords internal
 #'
 #' @rdname fms_get_notification_channel
+#'
+#' @aliases fms_get_notification_channel
 fms_get_notification_channel <- function() {
   op <- new_operation(
     name = "GetNotificationChannel",
@@ -714,6 +738,8 @@ fms_get_notification_channel <- function() {
 #' @keywords internal
 #'
 #' @rdname fms_get_policy
+#'
+#' @aliases fms_get_policy
 fms_get_policy <- function(PolicyId) {
   op <- new_operation(
     name = "GetPolicy",
@@ -796,6 +822,8 @@ fms_get_policy <- function(PolicyId) {
 #' @keywords internal
 #'
 #' @rdname fms_get_protection_status
+#'
+#' @aliases fms_get_protection_status
 fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetProtectionStatus",
@@ -864,6 +892,8 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 #' @keywords internal
 #'
 #' @rdname fms_get_protocols_list
+#'
+#' @aliases fms_get_protocols_list
 fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
   op <- new_operation(
     name = "GetProtocolsList",
@@ -912,6 +942,8 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_get_third_party_firewall_association_status
+#'
+#' @aliases fms_get_third_party_firewall_association_status
 fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) {
   op <- new_operation(
     name = "GetThirdPartyFirewallAssociationStatus",
@@ -1495,6 +1527,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' @keywords internal
 #'
 #' @rdname fms_get_violation_details
+#'
+#' @aliases fms_get_violation_details
 fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, ResourceType) {
   op <- new_operation(
     name = "GetViolationDetails",
@@ -1569,6 +1603,8 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
 #' @keywords internal
 #'
 #' @rdname fms_list_apps_lists
+#'
+#' @aliases fms_list_apps_lists
 fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResults) {
   op <- new_operation(
     name = "ListAppsLists",
@@ -1652,6 +1688,8 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname fms_list_compliance_status
+#'
+#' @aliases fms_list_compliance_status
 fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListComplianceStatus",
@@ -1716,6 +1754,8 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname fms_list_member_accounts
+#'
+#' @aliases fms_list_member_accounts
 fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMemberAccounts",
@@ -1785,6 +1825,8 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_list_policies
+#'
+#' @aliases fms_list_policies
 fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPolicies",
@@ -1855,6 +1897,8 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_list_protocols_lists
+#'
+#' @aliases fms_list_protocols_lists
 fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResults) {
   op <- new_operation(
     name = "ListProtocolsLists",
@@ -1909,6 +1953,8 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname fms_list_tags_for_resource
+#'
+#' @aliases fms_list_tags_for_resource
 fms_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1979,6 +2025,8 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname fms_list_third_party_firewall_firewall_policies
+#'
+#' @aliases fms_list_third_party_firewall_firewall_policies
 fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, NextToken = NULL, MaxResults) {
   op <- new_operation(
     name = "ListThirdPartyFirewallFirewallPolicies",
@@ -2084,6 +2132,8 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
 #' @keywords internal
 #'
 #' @rdname fms_put_apps_list
+#'
+#' @aliases fms_put_apps_list
 fms_put_apps_list <- function(AppsList, TagList = NULL) {
   op <- new_operation(
     name = "PutAppsList",
@@ -2137,6 +2187,8 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_put_notification_channel
+#'
+#' @aliases fms_put_notification_channel
 fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
   op <- new_operation(
     name = "PutNotificationChannel",
@@ -2296,6 +2348,8 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' @keywords internal
 #'
 #' @rdname fms_put_policy
+#'
+#' @aliases fms_put_policy
 fms_put_policy <- function(Policy, TagList = NULL) {
   op <- new_operation(
     name = "PutPolicy",
@@ -2385,6 +2439,8 @@ fms_put_policy <- function(Policy, TagList = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_put_protocols_list
+#'
+#' @aliases fms_put_protocols_list
 fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
   op <- new_operation(
     name = "PutProtocolsList",
@@ -2434,6 +2490,8 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
 #' @keywords internal
 #'
 #' @rdname fms_tag_resource
+#'
+#' @aliases fms_tag_resource
 fms_tag_resource <- function(ResourceArn, TagList) {
   op <- new_operation(
     name = "TagResource",
@@ -2480,6 +2538,8 @@ fms_tag_resource <- function(ResourceArn, TagList) {
 #' @keywords internal
 #'
 #' @rdname fms_untag_resource
+#'
+#' @aliases fms_untag_resource
 fms_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",

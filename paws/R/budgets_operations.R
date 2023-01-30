@@ -120,6 +120,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname budgets_create_budget
+#'
+#' @aliases budgets_create_budget
 budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscribers = NULL) {
   op <- new_operation(
     name = "CreateBudget",
@@ -222,6 +224,8 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #' @keywords internal
 #'
 #' @rdname budgets_create_budget_action
+#'
+#' @aliases budgets_create_budget_action
 budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType, ActionType, ActionThreshold, Definition, ExecutionRoleArn, ApprovalModel, Subscribers) {
   op <- new_operation(
     name = "CreateBudgetAction",
@@ -285,6 +289,8 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
 #' @keywords internal
 #'
 #' @rdname budgets_create_notification
+#'
+#' @aliases budgets_create_notification
 budgets_create_notification <- function(AccountId, BudgetName, Notification, Subscribers) {
   op <- new_operation(
     name = "CreateNotification",
@@ -344,6 +350,8 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 #' @keywords internal
 #'
 #' @rdname budgets_create_subscriber
+#'
+#' @aliases budgets_create_subscriber
 budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subscriber) {
   op <- new_operation(
     name = "CreateSubscriber",
@@ -390,6 +398,8 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' @keywords internal
 #'
 #' @rdname budgets_delete_budget
+#'
+#' @aliases budgets_delete_budget
 budgets_delete_budget <- function(AccountId, BudgetName) {
   op <- new_operation(
     name = "DeleteBudget",
@@ -486,6 +496,8 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
 #' @keywords internal
 #'
 #' @rdname budgets_delete_budget_action
+#'
+#' @aliases budgets_delete_budget_action
 budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
   op <- new_operation(
     name = "DeleteBudgetAction",
@@ -540,6 +552,8 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @keywords internal
 #'
 #' @rdname budgets_delete_notification
+#'
+#' @aliases budgets_delete_notification
 budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
   op <- new_operation(
     name = "DeleteNotification",
@@ -600,6 +614,8 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
 #' @keywords internal
 #'
 #' @rdname budgets_delete_subscriber
+#'
+#' @aliases budgets_delete_subscriber
 budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subscriber) {
   op <- new_operation(
     name = "DeleteSubscriber",
@@ -716,6 +732,8 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget
+#'
+#' @aliases budgets_describe_budget
 budgets_describe_budget <- function(AccountId, BudgetName) {
   op <- new_operation(
     name = "DescribeBudget",
@@ -812,6 +830,8 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget_action
+#'
+#' @aliases budgets_describe_budget_action
 budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
   op <- new_operation(
     name = "DescribeBudgetAction",
@@ -933,6 +953,8 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget_action_histories
+#'
+#' @aliases budgets_describe_budget_action_histories
 budgets_describe_budget_action_histories <- function(AccountId, BudgetName, ActionId, TimePeriod = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBudgetActionHistories",
@@ -1031,6 +1053,8 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget_actions_for_account
+#'
+#' @aliases budgets_describe_budget_actions_for_account
 budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBudgetActionsForAccount",
@@ -1131,6 +1155,8 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget_actions_for_budget
+#'
+#' @aliases budgets_describe_budget_actions_for_budget
 budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBudgetActionsForBudget",
@@ -1198,6 +1224,8 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget_notifications_for_account
+#'
+#' @aliases budgets_describe_budget_notifications_for_account
 budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBudgetNotificationsForAccount",
@@ -1304,6 +1332,8 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budget_performance_history
+#'
+#' @aliases budgets_describe_budget_performance_history
 budgets_describe_budget_performance_history <- function(AccountId, BudgetName, TimePeriod = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBudgetPerformanceHistory",
@@ -1427,6 +1457,8 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' @keywords internal
 #'
 #' @rdname budgets_describe_budgets
+#'
+#' @aliases budgets_describe_budgets
 budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBudgets",
@@ -1491,6 +1523,8 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname budgets_describe_notifications_for_budget
+#'
+#' @aliases budgets_describe_notifications_for_budget
 budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeNotificationsForBudget",
@@ -1560,6 +1594,8 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #' @keywords internal
 #'
 #' @rdname budgets_describe_subscribers_for_notification
+#'
+#' @aliases budgets_describe_subscribers_for_notification
 budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName, Notification, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeSubscribersForNotification",
@@ -1615,6 +1651,8 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #' @keywords internal
 #'
 #' @rdname budgets_execute_budget_action
+#'
+#' @aliases budgets_execute_budget_action
 budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, ExecutionType) {
   op <- new_operation(
     name = "ExecuteBudgetAction",
@@ -1731,6 +1769,8 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 #' @keywords internal
 #'
 #' @rdname budgets_update_budget
+#'
+#' @aliases budgets_update_budget
 budgets_update_budget <- function(AccountId, NewBudget) {
   op <- new_operation(
     name = "UpdateBudget",
@@ -1922,6 +1962,8 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 #' @keywords internal
 #'
 #' @rdname budgets_update_budget_action
+#'
+#' @aliases budgets_update_budget_action
 budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, NotificationType = NULL, ActionThreshold = NULL, Definition = NULL, ExecutionRoleArn = NULL, ApprovalModel = NULL, Subscribers = NULL) {
   op <- new_operation(
     name = "UpdateBudgetAction",
@@ -1982,6 +2024,8 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
 #' @keywords internal
 #'
 #' @rdname budgets_update_notification
+#'
+#' @aliases budgets_update_notification
 budgets_update_notification <- function(AccountId, BudgetName, OldNotification, NewNotification) {
   op <- new_operation(
     name = "UpdateNotification",
@@ -2044,6 +2088,8 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 #' @keywords internal
 #'
 #' @rdname budgets_update_subscriber
+#'
+#' @aliases budgets_update_subscriber
 budgets_update_subscriber <- function(AccountId, BudgetName, Notification, OldSubscriber, NewSubscriber) {
   op <- new_operation(
     name = "UpdateSubscriber",

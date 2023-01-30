@@ -103,6 +103,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudformation_activate_type
+#'
+#' @aliases cloudformation_activate_type
 cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, PublisherId = NULL, TypeName = NULL, TypeNameAlias = NULL, AutoUpdate = NULL, LoggingConfig = NULL, ExecutionRoleArn = NULL, VersionBump = NULL, MajorVersion = NULL) {
   op <- new_operation(
     name = "ActivateType",
@@ -197,6 +199,8 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
 #' @keywords internal
 #'
 #' @rdname cloudformation_batch_describe_type_configurations
+#'
+#' @aliases cloudformation_batch_describe_type_configurations
 cloudformation_batch_describe_type_configurations <- function(TypeConfigurationIdentifiers) {
   op <- new_operation(
     name = "BatchDescribeTypeConfigurations",
@@ -249,6 +253,8 @@ cloudformation_batch_describe_type_configurations <- function(TypeConfigurationI
 #' @keywords internal
 #'
 #' @rdname cloudformation_cancel_update_stack
+#'
+#' @aliases cloudformation_cancel_update_stack
 cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "CancelUpdateStack",
@@ -373,6 +379,8 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' @keywords internal
 #'
 #' @rdname cloudformation_continue_update_rollback
+#'
+#' @aliases cloudformation_continue_update_rollback
 cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, ResourcesToSkip = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "ContinueUpdateRollback",
@@ -661,6 +669,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_change_set
+#'
+#' @aliases cloudformation_create_change_set
 cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
@@ -948,6 +958,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_stack
+#'
+#' @aliases cloudformation_create_stack
 cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL) {
   op <- new_operation(
     name = "CreateStack",
@@ -1107,6 +1119,8 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_stack_instances
+#'
+#' @aliases cloudformation_create_stack_instances
 cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL, DeploymentTargets = NULL, Regions, ParameterOverrides = NULL, OperationPreferences = NULL, OperationId = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "CreateStackInstances",
@@ -1357,6 +1371,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_stack_set
+#'
+#' @aliases cloudformation_create_stack_set
 cloudformation_create_stack_set <- function(StackSetName, Description = NULL, TemplateBody = NULL, TemplateURL = NULL, StackId = NULL, Parameters = NULL, Capabilities = NULL, Tags = NULL, AdministrationRoleARN = NULL, ExecutionRoleName = NULL, PermissionModel = NULL, AutoDeployment = NULL, CallAs = NULL, ClientRequestToken = NULL, ManagedExecution = NULL) {
   op <- new_operation(
     name = "CreateStackSet",
@@ -1418,6 +1434,8 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' @keywords internal
 #'
 #' @rdname cloudformation_deactivate_type
+#'
+#' @aliases cloudformation_deactivate_type
 cloudformation_deactivate_type <- function(TypeName = NULL, Type = NULL, Arn = NULL) {
   op <- new_operation(
     name = "DeactivateType",
@@ -1472,6 +1490,8 @@ cloudformation_deactivate_type <- function(TypeName = NULL, Type = NULL, Arn = N
 #' @keywords internal
 #'
 #' @rdname cloudformation_delete_change_set
+#'
+#' @aliases cloudformation_delete_change_set
 cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
   op <- new_operation(
     name = "DeleteChangeSet",
@@ -1556,6 +1576,8 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_delete_stack
+#'
+#' @aliases cloudformation_delete_stack
 cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleARN = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "DeleteStack",
@@ -1681,6 +1703,8 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' @keywords internal
 #'
 #' @rdname cloudformation_delete_stack_instances
+#'
+#' @aliases cloudformation_delete_stack_instances
 cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL, DeploymentTargets = NULL, Regions, OperationPreferences = NULL, RetainStacks, OperationId = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "DeleteStackInstances",
@@ -1744,6 +1768,8 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudformation_delete_stack_set
+#'
+#' @aliases cloudformation_delete_stack_set
 cloudformation_delete_stack_set <- function(StackSetName, CallAs = NULL) {
   op <- new_operation(
     name = "DeleteStackSet",
@@ -1815,6 +1841,8 @@ cloudformation_delete_stack_set <- function(StackSetName, CallAs = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_deregister_type
+#'
+#' @aliases cloudformation_deregister_type
 cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, VersionId = NULL) {
   op <- new_operation(
     name = "DeregisterType",
@@ -1872,6 +1900,8 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_account_limits
+#'
+#' @aliases cloudformation_describe_account_limits
 cloudformation_describe_account_limits <- function(NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAccountLimits",
@@ -2007,6 +2037,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_change_set
+#'
+#' @aliases cloudformation_describe_change_set
 cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeChangeSet",
@@ -2089,6 +2121,8 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_change_set_hooks
+#'
+#' @aliases cloudformation_describe_change_set_hooks
 cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = NULL, NextToken = NULL, LogicalResourceId = NULL) {
   op <- new_operation(
     name = "DescribeChangeSetHooks",
@@ -2155,6 +2189,8 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_publisher
+#'
+#' @aliases cloudformation_describe_publisher
 cloudformation_describe_publisher <- function(PublisherId = NULL) {
   op <- new_operation(
     name = "DescribePublisher",
@@ -2230,6 +2266,8 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_drift_detection_status
+#'
+#' @aliases cloudformation_describe_stack_drift_detection_status
 cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetectionId) {
   op <- new_operation(
     name = "DescribeStackDriftDetectionStatus",
@@ -2316,6 +2354,8 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_events
+#'
+#' @aliases cloudformation_describe_stack_events
 cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeStackEvents",
@@ -2414,6 +2454,8 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_instance
+#'
+#' @aliases cloudformation_describe_stack_instance
 cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAccount, StackInstanceRegion, CallAs = NULL) {
   op <- new_operation(
     name = "DescribeStackInstance",
@@ -2497,6 +2539,8 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_resource
+#'
+#' @aliases cloudformation_describe_stack_resource
 cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId) {
   op <- new_operation(
     name = "DescribeStackResource",
@@ -2616,6 +2660,8 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_resource_drifts
+#'
+#' @aliases cloudformation_describe_stack_resource_drifts
 cloudformation_describe_stack_resource_drifts <- function(StackName, StackResourceDriftStatusFilters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeStackResourceDrifts",
@@ -2740,6 +2786,8 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_resources
+#'
+#' @aliases cloudformation_describe_stack_resources
 cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalResourceId = NULL, PhysicalResourceId = NULL) {
   op <- new_operation(
     name = "DescribeStackResources",
@@ -2852,6 +2900,8 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_set
+#'
+#' @aliases cloudformation_describe_stack_set
 cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
   op <- new_operation(
     name = "DescribeStackSet",
@@ -2966,6 +3016,8 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stack_set_operation
+#'
+#' @aliases cloudformation_describe_stack_set_operation
 cloudformation_describe_stack_set_operation <- function(StackSetName, OperationId, CallAs = NULL) {
   op <- new_operation(
     name = "DescribeStackSetOperation",
@@ -3094,6 +3146,8 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_stacks
+#'
+#' @aliases cloudformation_describe_stacks
 cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeStacks",
@@ -3214,6 +3268,8 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_type
+#'
+#' @aliases cloudformation_describe_type
 cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NULL, VersionId = NULL, PublisherId = NULL, PublicVersionNumber = NULL) {
   op <- new_operation(
     name = "DescribeType",
@@ -3277,6 +3333,8 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
 #' @keywords internal
 #'
 #' @rdname cloudformation_describe_type_registration
+#'
+#' @aliases cloudformation_describe_type_registration
 cloudformation_describe_type_registration <- function(RegistrationToken) {
   op <- new_operation(
     name = "DescribeTypeRegistration",
@@ -3361,6 +3419,8 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_detect_stack_drift
+#'
+#' @aliases cloudformation_detect_stack_drift
 cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NULL) {
   op <- new_operation(
     name = "DetectStackDrift",
@@ -3458,6 +3518,8 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' @keywords internal
 #'
 #' @rdname cloudformation_detect_stack_resource_drift
+#'
+#' @aliases cloudformation_detect_stack_resource_drift
 cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourceId) {
   op <- new_operation(
     name = "DetectStackResourceDrift",
@@ -3578,6 +3640,8 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' @keywords internal
 #'
 #' @rdname cloudformation_detect_stack_set_drift
+#'
+#' @aliases cloudformation_detect_stack_set_drift
 cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPreferences = NULL, OperationId = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "DetectStackSetDrift",
@@ -3651,6 +3715,8 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' @keywords internal
 #'
 #' @rdname cloudformation_estimate_template_cost
+#'
+#' @aliases cloudformation_estimate_template_cost
 cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "EstimateTemplateCost",
@@ -3726,6 +3792,8 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' @keywords internal
 #'
 #' @rdname cloudformation_execute_change_set
+#'
+#' @aliases cloudformation_execute_change_set
 cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, ClientRequestToken = NULL, DisableRollback = NULL) {
   op <- new_operation(
     name = "ExecuteChangeSet",
@@ -3773,6 +3841,8 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
 #' @keywords internal
 #'
 #' @rdname cloudformation_get_stack_policy
+#'
+#' @aliases cloudformation_get_stack_policy
 cloudformation_get_stack_policy <- function(StackName) {
   op <- new_operation(
     name = "GetStackPolicy",
@@ -3848,6 +3918,8 @@ cloudformation_get_stack_policy <- function(StackName) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_get_template
+#'
+#' @aliases cloudformation_get_template
 cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, TemplateStage = NULL) {
   op <- new_operation(
     name = "GetTemplate",
@@ -3993,6 +4065,8 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudformation_get_template_summary
+#'
+#' @aliases cloudformation_get_template_summary
 cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL = NULL, StackName = NULL, StackSetName = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "GetTemplateSummary",
@@ -4083,6 +4157,8 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' @keywords internal
 #'
 #' @rdname cloudformation_import_stacks_to_stack_set
+#'
+#' @aliases cloudformation_import_stacks_to_stack_set
 cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = NULL, StackIdsUrl = NULL, OrganizationalUnitIds = NULL, OperationPreferences = NULL, OperationId = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "ImportStacksToStackSet",
@@ -4153,6 +4229,8 @@ cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = N
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_change_sets
+#'
+#' @aliases cloudformation_list_change_sets
 cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
   op <- new_operation(
     name = "ListChangeSets",
@@ -4215,6 +4293,8 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_exports
+#'
+#' @aliases cloudformation_list_exports
 cloudformation_list_exports <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListExports",
@@ -4275,6 +4355,8 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_imports
+#'
+#' @aliases cloudformation_list_imports
 cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
   op <- new_operation(
     name = "ListImports",
@@ -4387,6 +4469,8 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_instances
+#'
+#' @aliases cloudformation_list_stack_instances
 cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, MaxResults = NULL, Filters = NULL, StackInstanceAccount = NULL, StackInstanceRegion = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "ListStackInstances",
@@ -4468,6 +4552,8 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_resources
+#'
+#' @aliases cloudformation_list_stack_resources
 cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
   op <- new_operation(
     name = "ListStackResources",
@@ -4561,6 +4647,8 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_set_operation_results
+#'
+#' @aliases cloudformation_list_stack_set_operation_results
 cloudformation_list_stack_set_operation_results <- function(StackSetName, OperationId, NextToken = NULL, MaxResults = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "ListStackSetOperationResults",
@@ -4653,6 +4741,8 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_set_operations
+#'
+#' @aliases cloudformation_list_stack_set_operations
 cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = NULL, MaxResults = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "ListStackSetOperations",
@@ -4768,6 +4858,8 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stack_sets
+#'
+#' @aliases cloudformation_list_stack_sets
 cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, Status = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "ListStackSets",
@@ -4852,6 +4944,8 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_stacks
+#'
+#' @aliases cloudformation_list_stacks
 cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NULL) {
   op <- new_operation(
     name = "ListStacks",
@@ -4927,6 +5021,8 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_type_registrations
+#'
+#' @aliases cloudformation_list_type_registrations
 cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL, TypeArn = NULL, RegistrationStatusFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTypeRegistrations",
@@ -5029,6 +5125,8 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_type_versions
+#'
+#' @aliases cloudformation_list_type_versions
 cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn = NULL, MaxResults = NULL, NextToken = NULL, DeprecatedStatus = NULL, PublisherId = NULL) {
   op <- new_operation(
     name = "ListTypeVersions",
@@ -5169,6 +5267,8 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_types
+#'
+#' @aliases cloudformation_list_types
 cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL, DeprecatedStatus = NULL, Type = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTypes",
@@ -5251,6 +5351,8 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
 #' @keywords internal
 #'
 #' @rdname cloudformation_publish_type
+#'
+#' @aliases cloudformation_publish_type
 cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL, PublicVersionNumber = NULL) {
   op <- new_operation(
     name = "PublishType",
@@ -5316,6 +5418,8 @@ cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL
 #' @keywords internal
 #'
 #' @rdname cloudformation_record_handler_progress
+#'
+#' @aliases cloudformation_record_handler_progress
 cloudformation_record_handler_progress <- function(BearerToken, OperationStatus, CurrentOperationStatus = NULL, StatusMessage = NULL, ErrorCode = NULL, ResourceModel = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "RecordHandlerProgress",
@@ -5386,6 +5490,8 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' @keywords internal
 #'
 #' @rdname cloudformation_register_publisher
+#'
+#' @aliases cloudformation_register_publisher
 cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, ConnectionArn = NULL) {
   op <- new_operation(
     name = "RegisterPublisher",
@@ -5536,6 +5642,8 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' @keywords internal
 #'
 #' @rdname cloudformation_register_type
+#'
+#' @aliases cloudformation_register_type
 cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPackage, LoggingConfig = NULL, ExecutionRoleArn = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "RegisterType",
@@ -5608,6 +5716,8 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' @keywords internal
 #'
 #' @rdname cloudformation_rollback_stack
+#'
+#' @aliases cloudformation_rollback_stack
 cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "RollbackStack",
@@ -5660,6 +5770,8 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
 #' @keywords internal
 #'
 #' @rdname cloudformation_set_stack_policy
+#'
+#' @aliases cloudformation_set_stack_policy
 cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, StackPolicyURL = NULL) {
   op <- new_operation(
     name = "SetStackPolicy",
@@ -5759,6 +5871,8 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #' @keywords internal
 #'
 #' @rdname cloudformation_set_type_configuration
+#'
+#' @aliases cloudformation_set_type_configuration
 cloudformation_set_type_configuration <- function(TypeArn = NULL, Configuration, ConfigurationAlias = NULL, TypeName = NULL, Type = NULL) {
   op <- new_operation(
     name = "SetTypeConfiguration",
@@ -5815,6 +5929,8 @@ cloudformation_set_type_configuration <- function(TypeArn = NULL, Configuration,
 #' @keywords internal
 #'
 #' @rdname cloudformation_set_type_default_version
+#'
+#' @aliases cloudformation_set_type_default_version
 cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, TypeName = NULL, VersionId = NULL) {
   op <- new_operation(
     name = "SetTypeDefaultVersion",
@@ -5878,6 +5994,8 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
 #' @keywords internal
 #'
 #' @rdname cloudformation_signal_resource
+#'
+#' @aliases cloudformation_signal_resource
 cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueId, Status) {
   op <- new_operation(
     name = "SignalResource",
@@ -5943,6 +6061,8 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
 #' @keywords internal
 #'
 #' @rdname cloudformation_stop_stack_set_operation
+#'
+#' @aliases cloudformation_stop_stack_set_operation
 cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, CallAs = NULL) {
   op <- new_operation(
     name = "StopStackSetOperation",
@@ -6057,6 +6177,8 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' @keywords internal
 #'
 #' @rdname cloudformation_test_type
+#'
+#' @aliases cloudformation_test_type
 cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, VersionId = NULL, LogDeliveryBucket = NULL) {
   op <- new_operation(
     name = "TestType",
@@ -6357,6 +6479,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_stack
+#'
+#' @aliases cloudformation_update_stack
 cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateStack",
@@ -6543,6 +6667,8 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_stack_instances
+#'
+#' @aliases cloudformation_update_stack_instances
 cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL, DeploymentTargets = NULL, Regions, ParameterOverrides = NULL, OperationPreferences = NULL, OperationId = NULL, CallAs = NULL) {
   op <- new_operation(
     name = "UpdateStackInstances",
@@ -6903,6 +7029,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_stack_set
+#'
+#' @aliases cloudformation_update_stack_set
 cloudformation_update_stack_set <- function(StackSetName, Description = NULL, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, Tags = NULL, OperationPreferences = NULL, AdministrationRoleARN = NULL, ExecutionRoleName = NULL, DeploymentTargets = NULL, PermissionModel = NULL, AutoDeployment = NULL, OperationId = NULL, Accounts = NULL, Regions = NULL, CallAs = NULL, ManagedExecution = NULL) {
   op <- new_operation(
     name = "UpdateStackSet",
@@ -6962,6 +7090,8 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_termination_protection
+#'
+#' @aliases cloudformation_update_termination_protection
 cloudformation_update_termination_protection <- function(EnableTerminationProtection, StackName) {
   op <- new_operation(
     name = "UpdateTerminationProtection",
@@ -7042,6 +7172,8 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' @keywords internal
 #'
 #' @rdname cloudformation_validate_template
+#'
+#' @aliases cloudformation_validate_template
 cloudformation_validate_template <- function(TemplateBody = NULL, TemplateURL = NULL) {
   op <- new_operation(
     name = "ValidateTemplate",

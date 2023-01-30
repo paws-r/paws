@@ -63,6 +63,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_create_database
+#'
+#' @aliases timestreamwrite_create_database
 timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatabase",
@@ -173,6 +175,8 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_create_table
+#'
+#' @aliases timestreamwrite_create_table
 timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL, MagneticStoreWriteProperties = NULL) {
   op <- new_operation(
     name = "CreateTable",
@@ -226,6 +230,8 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_delete_database
+#'
+#' @aliases timestreamwrite_delete_database
 timestreamwrite_delete_database <- function(DatabaseName) {
   op <- new_operation(
     name = "DeleteDatabase",
@@ -278,6 +284,8 @@ timestreamwrite_delete_database <- function(DatabaseName) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_delete_table
+#'
+#' @aliases timestreamwrite_delete_table
 timestreamwrite_delete_table <- function(DatabaseName, TableName) {
   op <- new_operation(
     name = "DeleteTable",
@@ -342,6 +350,8 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_describe_database
+#'
+#' @aliases timestreamwrite_describe_database
 timestreamwrite_describe_database <- function(DatabaseName) {
   op <- new_operation(
     name = "DescribeDatabase",
@@ -407,6 +417,8 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_describe_endpoints
+#'
+#' @aliases timestreamwrite_describe_endpoints
 timestreamwrite_describe_endpoints <- function() {
   op <- new_operation(
     name = "DescribeEndpoints",
@@ -487,6 +499,8 @@ timestreamwrite_describe_endpoints <- function() {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_describe_table
+#'
+#' @aliases timestreamwrite_describe_table
 timestreamwrite_describe_table <- function(DatabaseName, TableName) {
   op <- new_operation(
     name = "DescribeTable",
@@ -556,6 +570,8 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_list_databases
+#'
+#' @aliases timestreamwrite_list_databases
 timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatabases",
@@ -642,6 +658,8 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_list_tables
+#'
+#' @aliases timestreamwrite_list_tables
 timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTables",
@@ -693,6 +711,8 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_list_tags_for_resource
+#'
+#' @aliases timestreamwrite_list_tags_for_resource
 timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -743,6 +763,8 @@ timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_tag_resource
+#'
+#' @aliases timestreamwrite_tag_resource
 timestreamwrite_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -789,6 +811,8 @@ timestreamwrite_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_untag_resource
+#'
+#' @aliases timestreamwrite_untag_resource
 timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -869,6 +893,8 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_update_database
+#'
+#' @aliases timestreamwrite_update_database
 timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
   op <- new_operation(
     name = "UpdateDatabase",
@@ -973,6 +999,8 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_update_table
+#'
+#' @aliases timestreamwrite_update_table
 timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties = NULL, MagneticStoreWriteProperties = NULL) {
   op <- new_operation(
     name = "UpdateTable",
@@ -1128,6 +1156,8 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_write_records
+#'
+#' @aliases timestreamwrite_write_records
 timestreamwrite_write_records <- function(DatabaseName, TableName, CommonAttributes = NULL, Records) {
   op <- new_operation(
     name = "WriteRecords",

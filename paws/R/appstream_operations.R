@@ -37,6 +37,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname appstream_associate_application_fleet
+#'
+#' @aliases appstream_associate_application_fleet
 appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
   op <- new_operation(
     name = "AssociateApplicationFleet",
@@ -82,6 +84,8 @@ appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
 #' @keywords internal
 #'
 #' @rdname appstream_associate_application_to_entitlement
+#'
+#' @aliases appstream_associate_application_to_entitlement
 appstream_associate_application_to_entitlement <- function(StackName, EntitlementName, ApplicationIdentifier) {
   op <- new_operation(
     name = "AssociateApplicationToEntitlement",
@@ -124,6 +128,8 @@ appstream_associate_application_to_entitlement <- function(StackName, Entitlemen
 #' @keywords internal
 #'
 #' @rdname appstream_associate_fleet
+#'
+#' @aliases appstream_associate_fleet
 appstream_associate_fleet <- function(FleetName, StackName) {
   op <- new_operation(
     name = "AssociateFleet",
@@ -189,6 +195,8 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 #' @keywords internal
 #'
 #' @rdname appstream_batch_associate_user_stack
+#'
+#' @aliases appstream_batch_associate_user_stack
 appstream_batch_associate_user_stack <- function(UserStackAssociations) {
   op <- new_operation(
     name = "BatchAssociateUserStack",
@@ -252,6 +260,8 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 #' @keywords internal
 #'
 #' @rdname appstream_batch_disassociate_user_stack
+#'
+#' @aliases appstream_batch_disassociate_user_stack
 appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
   op <- new_operation(
     name = "BatchDisassociateUserStack",
@@ -309,6 +319,8 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #' @keywords internal
 #'
 #' @rdname appstream_copy_image
+#'
+#' @aliases appstream_copy_image
 appstream_copy_image <- function(SourceImageName, DestinationImageName, DestinationRegion, DestinationImageDescription = NULL) {
   op <- new_operation(
     name = "CopyImage",
@@ -408,6 +420,8 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 #' @keywords internal
 #'
 #' @rdname appstream_create_app_block
+#'
+#' @aliases appstream_create_app_block
 appstream_create_app_block <- function(Name, Description = NULL, DisplayName = NULL, SourceS3Location, SetupScriptDetails, Tags = NULL) {
   op <- new_operation(
     name = "CreateAppBlock",
@@ -524,6 +538,8 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
 #' @keywords internal
 #'
 #' @rdname appstream_create_application
+#'
+#' @aliases appstream_create_application
 appstream_create_application <- function(Name, DisplayName = NULL, Description = NULL, IconS3Location, LaunchPath, WorkingDirectory = NULL, LaunchParameters = NULL, Platforms, InstanceFamilies, AppBlockArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -596,6 +612,8 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
 #' @keywords internal
 #'
 #' @rdname appstream_create_directory_config
+#'
+#' @aliases appstream_create_directory_config
 appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = NULL) {
   op <- new_operation(
     name = "CreateDirectoryConfig",
@@ -678,6 +696,8 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @keywords internal
 #'
 #' @rdname appstream_create_entitlement
+#'
+#' @aliases appstream_create_entitlement
 appstream_create_entitlement <- function(Name, StackName, Description = NULL, AppVisibility, Attributes) {
   op <- new_operation(
     name = "CreateEntitlement",
@@ -999,6 +1019,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @keywords internal
 #'
 #' @rdname appstream_create_fleet
+#'
+#' @aliases appstream_create_fleet
 appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL) {
   op <- new_operation(
     name = "CreateFleet",
@@ -1238,6 +1260,8 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' @keywords internal
 #'
 #' @rdname appstream_create_image_builder
+#'
+#' @aliases appstream_create_image_builder
 appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, Description = NULL, DisplayName = NULL, VpcConfig = NULL, IamRoleArn = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, AppstreamAgentVersion = NULL, Tags = NULL, AccessEndpoints = NULL) {
   op <- new_operation(
     name = "CreateImageBuilder",
@@ -1289,6 +1313,8 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
 #' @keywords internal
 #'
 #' @rdname appstream_create_image_builder_streaming_url
+#'
+#' @aliases appstream_create_image_builder_streaming_url
 appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) {
   op <- new_operation(
     name = "CreateImageBuilderStreamingURL",
@@ -1459,6 +1485,8 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 #' @keywords internal
 #'
 #' @rdname appstream_create_stack
+#'
+#' @aliases appstream_create_stack
 appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL, StorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, UserSettings = NULL, ApplicationSettings = NULL, Tags = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL) {
   op <- new_operation(
     name = "CreateStack",
@@ -1527,6 +1555,8 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 #' @keywords internal
 #'
 #' @rdname appstream_create_streaming_url
+#'
+#' @aliases appstream_create_streaming_url
 appstream_create_streaming_url <- function(StackName, FleetName, UserId, ApplicationId = NULL, Validity = NULL, SessionContext = NULL) {
   op <- new_operation(
     name = "CreateStreamingURL",
@@ -1677,6 +1707,8 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 #' @keywords internal
 #'
 #' @rdname appstream_create_updated_image
+#'
+#' @aliases appstream_create_updated_image
 appstream_create_updated_image <- function(existingImageName, newImageName, newImageDescription = NULL, newImageDisplayName = NULL, newImageTags = NULL, dryRun = NULL) {
   op <- new_operation(
     name = "CreateUpdatedImage",
@@ -1719,6 +1751,8 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
 #' @keywords internal
 #'
 #' @rdname appstream_create_usage_report_subscription
+#'
+#' @aliases appstream_create_usage_report_subscription
 appstream_create_usage_report_subscription <- function() {
   op <- new_operation(
     name = "CreateUsageReportSubscription",
@@ -1780,6 +1814,8 @@ appstream_create_usage_report_subscription <- function() {
 #' @keywords internal
 #'
 #' @rdname appstream_create_user
+#'
+#' @aliases appstream_create_user
 appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NULL, LastName = NULL, AuthenticationType) {
   op <- new_operation(
     name = "CreateUser",
@@ -1820,6 +1856,8 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
 #' @keywords internal
 #'
 #' @rdname appstream_delete_app_block
+#'
+#' @aliases appstream_delete_app_block
 appstream_delete_app_block <- function(Name) {
   op <- new_operation(
     name = "DeleteAppBlock",
@@ -1860,6 +1898,8 @@ appstream_delete_app_block <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_application
+#'
+#' @aliases appstream_delete_application
 appstream_delete_application <- function(Name) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -1902,6 +1942,8 @@ appstream_delete_application <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_directory_config
+#'
+#' @aliases appstream_delete_directory_config
 appstream_delete_directory_config <- function(DirectoryName) {
   op <- new_operation(
     name = "DeleteDirectoryConfig",
@@ -1944,6 +1986,8 @@ appstream_delete_directory_config <- function(DirectoryName) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_entitlement
+#'
+#' @aliases appstream_delete_entitlement
 appstream_delete_entitlement <- function(Name, StackName) {
   op <- new_operation(
     name = "DeleteEntitlement",
@@ -1984,6 +2028,8 @@ appstream_delete_entitlement <- function(Name, StackName) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_fleet
+#'
+#' @aliases appstream_delete_fleet
 appstream_delete_fleet <- function(Name) {
   op <- new_operation(
     name = "DeleteFleet",
@@ -2096,6 +2142,8 @@ appstream_delete_fleet <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_image
+#'
+#' @aliases appstream_delete_image
 appstream_delete_image <- function(Name) {
   op <- new_operation(
     name = "DeleteImage",
@@ -2191,6 +2239,8 @@ appstream_delete_image <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_image_builder
+#'
+#' @aliases appstream_delete_image_builder
 appstream_delete_image_builder <- function(Name) {
   op <- new_operation(
     name = "DeleteImageBuilder",
@@ -2236,6 +2286,8 @@ appstream_delete_image_builder <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_image_permissions
+#'
+#' @aliases appstream_delete_image_permissions
 appstream_delete_image_permissions <- function(Name, SharedAccountId) {
   op <- new_operation(
     name = "DeleteImagePermissions",
@@ -2279,6 +2331,8 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_stack
+#'
+#' @aliases appstream_delete_stack
 appstream_delete_stack <- function(Name) {
   op <- new_operation(
     name = "DeleteStack",
@@ -2315,6 +2369,8 @@ appstream_delete_stack <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_usage_report_subscription
+#'
+#' @aliases appstream_delete_usage_report_subscription
 appstream_delete_usage_report_subscription <- function() {
   op <- new_operation(
     name = "DeleteUsageReportSubscription",
@@ -2359,6 +2415,8 @@ appstream_delete_usage_report_subscription <- function() {
 #' @keywords internal
 #'
 #' @rdname appstream_delete_user
+#'
+#' @aliases appstream_delete_user
 appstream_delete_user <- function(UserName, AuthenticationType) {
   op <- new_operation(
     name = "DeleteUser",
@@ -2435,6 +2493,8 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 #' @keywords internal
 #'
 #' @rdname appstream_describe_app_blocks
+#'
+#' @aliases appstream_describe_app_blocks
 appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeAppBlocks",
@@ -2496,6 +2556,8 @@ appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname appstream_describe_application_fleet_associations
+#'
+#' @aliases appstream_describe_application_fleet_associations
 appstream_describe_application_fleet_associations <- function(FleetName = NULL, ApplicationArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeApplicationFleetAssociations",
@@ -2578,6 +2640,8 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
 #' @keywords internal
 #'
 #' @rdname appstream_describe_applications
+#'
+#' @aliases appstream_describe_applications
 appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeApplications",
@@ -2654,6 +2718,8 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname appstream_describe_directory_configs
+#'
+#' @aliases appstream_describe_directory_configs
 appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDirectoryConfigs",
@@ -2726,6 +2792,8 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname appstream_describe_entitlements
+#'
+#' @aliases appstream_describe_entitlements
 appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeEntitlements",
@@ -2834,6 +2902,8 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #' @keywords internal
 #'
 #' @rdname appstream_describe_fleets
+#'
+#' @aliases appstream_describe_fleets
 appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFleets",
@@ -2942,6 +3012,8 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname appstream_describe_image_builders
+#'
+#' @aliases appstream_describe_image_builders
 appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeImageBuilders",
@@ -3011,6 +3083,8 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname appstream_describe_image_permissions
+#'
+#' @aliases appstream_describe_image_permissions
 appstream_describe_image_permissions <- function(Name, MaxResults = NULL, SharedAwsAccountIds = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeImagePermissions",
@@ -3140,6 +3214,8 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #' @keywords internal
 #'
 #' @rdname appstream_describe_images
+#'
+#' @aliases appstream_describe_images
 appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeImages",
@@ -3227,6 +3303,8 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname appstream_describe_sessions
+#'
+#' @aliases appstream_describe_sessions
 appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, NextToken = NULL, Limit = NULL, AuthenticationType = NULL) {
   op <- new_operation(
     name = "DescribeSessions",
@@ -3331,6 +3409,8 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname appstream_describe_stacks
+#'
+#' @aliases appstream_describe_stacks
 appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeStacks",
@@ -3394,6 +3474,8 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname appstream_describe_usage_report_subscriptions
+#'
+#' @aliases appstream_describe_usage_report_subscriptions
 appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeUsageReportSubscriptions",
@@ -3466,6 +3548,8 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname appstream_describe_user_stack_associations
+#'
+#' @aliases appstream_describe_user_stack_associations
 appstream_describe_user_stack_associations <- function(StackName = NULL, UserName = NULL, AuthenticationType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeUserStackAssociations",
@@ -3533,6 +3617,8 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #' @keywords internal
 #'
 #' @rdname appstream_describe_users
+#'
+#' @aliases appstream_describe_users
 appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeUsers",
@@ -3579,6 +3665,8 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname appstream_disable_user
+#'
+#' @aliases appstream_disable_user
 appstream_disable_user <- function(UserName, AuthenticationType) {
   op <- new_operation(
     name = "DisableUser",
@@ -3621,6 +3709,8 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
 #' @keywords internal
 #'
 #' @rdname appstream_disassociate_application_fleet
+#'
+#' @aliases appstream_disassociate_application_fleet
 appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) {
   op <- new_operation(
     name = "DisassociateApplicationFleet",
@@ -3666,6 +3756,8 @@ appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) 
 #' @keywords internal
 #'
 #' @rdname appstream_disassociate_application_from_entitlement
+#'
+#' @aliases appstream_disassociate_application_from_entitlement
 appstream_disassociate_application_from_entitlement <- function(StackName, EntitlementName, ApplicationIdentifier) {
   op <- new_operation(
     name = "DisassociateApplicationFromEntitlement",
@@ -3708,6 +3800,8 @@ appstream_disassociate_application_from_entitlement <- function(StackName, Entit
 #' @keywords internal
 #'
 #' @rdname appstream_disassociate_fleet
+#'
+#' @aliases appstream_disassociate_fleet
 appstream_disassociate_fleet <- function(FleetName, StackName) {
   op <- new_operation(
     name = "DisassociateFleet",
@@ -3757,6 +3851,8 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 #' @keywords internal
 #'
 #' @rdname appstream_enable_user
+#'
+#' @aliases appstream_enable_user
 appstream_enable_user <- function(UserName, AuthenticationType) {
   op <- new_operation(
     name = "EnableUser",
@@ -3797,6 +3893,8 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
 #' @keywords internal
 #'
 #' @rdname appstream_expire_session
+#'
+#' @aliases appstream_expire_session
 appstream_expire_session <- function(SessionId) {
   op <- new_operation(
     name = "ExpireSession",
@@ -3850,6 +3948,8 @@ appstream_expire_session <- function(SessionId) {
 #' @keywords internal
 #'
 #' @rdname appstream_list_associated_fleets
+#'
+#' @aliases appstream_list_associated_fleets
 appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
   op <- new_operation(
     name = "ListAssociatedFleets",
@@ -3903,6 +4003,8 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname appstream_list_associated_stacks
+#'
+#' @aliases appstream_list_associated_stacks
 appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
   op <- new_operation(
     name = "ListAssociatedStacks",
@@ -3961,6 +4063,8 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname appstream_list_entitled_applications
+#'
+#' @aliases appstream_list_entitled_applications
 appstream_list_entitled_applications <- function(StackName, EntitlementName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntitledApplications",
@@ -4013,6 +4117,8 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
 #' @keywords internal
 #'
 #' @rdname appstream_list_tags_for_resource
+#'
+#' @aliases appstream_list_tags_for_resource
 appstream_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4053,6 +4159,8 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname appstream_start_fleet
+#'
+#' @aliases appstream_start_fleet
 appstream_start_fleet <- function(Name) {
   op <- new_operation(
     name = "StartFleet",
@@ -4151,6 +4259,8 @@ appstream_start_fleet <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_start_image_builder
+#'
+#' @aliases appstream_start_image_builder
 appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
   op <- new_operation(
     name = "StartImageBuilder",
@@ -4191,6 +4301,8 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname appstream_stop_fleet
+#'
+#' @aliases appstream_stop_fleet
 appstream_stop_fleet <- function(Name) {
   op <- new_operation(
     name = "StopFleet",
@@ -4286,6 +4398,8 @@ appstream_stop_fleet <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_stop_image_builder
+#'
+#' @aliases appstream_stop_image_builder
 appstream_stop_image_builder <- function(Name) {
   op <- new_operation(
     name = "StopImageBuilder",
@@ -4353,6 +4467,8 @@ appstream_stop_image_builder <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname appstream_tag_resource
+#'
+#' @aliases appstream_tag_resource
 appstream_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4405,6 +4521,8 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname appstream_untag_resource
+#'
+#' @aliases appstream_untag_resource
 appstream_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4502,6 +4620,8 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname appstream_update_application
+#'
+#' @aliases appstream_update_application
 appstream_update_application <- function(Name, DisplayName = NULL, Description = NULL, IconS3Location = NULL, LaunchPath = NULL, WorkingDirectory = NULL, LaunchParameters = NULL, AppBlockArn = NULL, AttributesToDelete = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
@@ -4573,6 +4693,8 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
 #' @keywords internal
 #'
 #' @rdname appstream_update_directory_config
+#'
+#' @aliases appstream_update_directory_config
 appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitDistinguishedNames = NULL, ServiceAccountCredentials = NULL) {
   op <- new_operation(
     name = "UpdateDirectoryConfig",
@@ -4649,6 +4771,8 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 #' @keywords internal
 #'
 #' @rdname appstream_update_entitlement
+#'
+#' @aliases appstream_update_entitlement
 appstream_update_entitlement <- function(Name, StackName, Description = NULL, AppVisibility = NULL, Attributes = NULL) {
   op <- new_operation(
     name = "UpdateEntitlement",
@@ -4963,6 +5087,8 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @keywords internal
 #'
 #' @rdname appstream_update_fleet
+#'
+#' @aliases appstream_update_fleet
 appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
@@ -5012,6 +5138,8 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
 #' @keywords internal
 #'
 #' @rdname appstream_update_image_permissions
+#'
+#' @aliases appstream_update_image_permissions
 appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermissions) {
   op <- new_operation(
     name = "UpdateImagePermissions",
@@ -5169,6 +5297,8 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 #' @keywords internal
 #'
 #' @rdname appstream_update_stack
+#'
+#' @aliases appstream_update_stack
 appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name, StorageConnectors = NULL, DeleteStorageConnectors = NULL, RedirectURL = NULL, FeedbackURL = NULL, AttributesToDelete = NULL, UserSettings = NULL, ApplicationSettings = NULL, AccessEndpoints = NULL, EmbedHostDomains = NULL, StreamingExperienceSettings = NULL) {
   op <- new_operation(
     name = "UpdateStack",

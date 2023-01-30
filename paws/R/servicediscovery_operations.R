@@ -67,6 +67,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname servicediscovery_create_http_namespace
+#'
+#' @aliases servicediscovery_create_http_namespace
 servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateHttpNamespace",
@@ -163,6 +165,8 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
 #' @keywords internal
 #'
 #' @rdname servicediscovery_create_private_dns_namespace
+#'
+#' @aliases servicediscovery_create_private_dns_namespace
 servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId = NULL, Description = NULL, Vpc, Tags = NULL, Properties = NULL) {
   op <- new_operation(
     name = "CreatePrivateDnsNamespace",
@@ -255,6 +259,8 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
 #' @keywords internal
 #'
 #' @rdname servicediscovery_create_public_dns_namespace
+#'
+#' @aliases servicediscovery_create_public_dns_namespace
 servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId = NULL, Description = NULL, Tags = NULL, Properties = NULL) {
   op <- new_operation(
     name = "CreatePublicDnsNamespace",
@@ -464,6 +470,8 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' @keywords internal
 #'
 #' @rdname servicediscovery_create_service
+#'
+#' @aliases servicediscovery_create_service
 servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorRequestId = NULL, Description = NULL, DnsConfig = NULL, HealthCheckConfig = NULL, HealthCheckCustomConfig = NULL, Tags = NULL, Type = NULL) {
   op <- new_operation(
     name = "CreateService",
@@ -518,6 +526,8 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
 #' @keywords internal
 #'
 #' @rdname servicediscovery_delete_namespace
+#'
+#' @aliases servicediscovery_delete_namespace
 servicediscovery_delete_namespace <- function(Id) {
   op <- new_operation(
     name = "DeleteNamespace",
@@ -567,6 +577,8 @@ servicediscovery_delete_namespace <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_delete_service
+#'
+#' @aliases servicediscovery_delete_service
 servicediscovery_delete_service <- function(Id) {
   op <- new_operation(
     name = "DeleteService",
@@ -626,6 +638,8 @@ servicediscovery_delete_service <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_deregister_instance
+#'
+#' @aliases servicediscovery_deregister_instance
 servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
   op <- new_operation(
     name = "DeregisterInstance",
@@ -742,6 +756,8 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_discover_instances
+#'
+#' @aliases servicediscovery_discover_instances
 servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxResults = NULL, QueryParameters = NULL, OptionalParameters = NULL, HealthStatus = NULL) {
   op <- new_operation(
     name = "DiscoverInstances",
@@ -804,6 +820,8 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #' @keywords internal
 #'
 #' @rdname servicediscovery_get_instance
+#'
+#' @aliases servicediscovery_get_instance
 servicediscovery_get_instance <- function(ServiceId, InstanceId) {
   op <- new_operation(
     name = "GetInstance",
@@ -895,6 +913,8 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_get_instances_health_status
+#'
+#' @aliases servicediscovery_get_instances_health_status
 servicediscovery_get_instances_health_status <- function(ServiceId, Instances = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetInstancesHealthStatus",
@@ -970,6 +990,8 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 #' @keywords internal
 #'
 #' @rdname servicediscovery_get_namespace
+#'
+#' @aliases servicediscovery_get_namespace
 servicediscovery_get_namespace <- function(Id) {
   op <- new_operation(
     name = "GetNamespace",
@@ -1044,6 +1066,8 @@ servicediscovery_get_namespace <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_get_operation
+#'
+#' @aliases servicediscovery_get_operation
 servicediscovery_get_operation <- function(OperationId) {
   op <- new_operation(
     name = "GetOperation",
@@ -1127,6 +1151,8 @@ servicediscovery_get_operation <- function(OperationId) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_get_service
+#'
+#' @aliases servicediscovery_get_service
 servicediscovery_get_service <- function(Id) {
   op <- new_operation(
     name = "GetService",
@@ -1203,6 +1229,8 @@ servicediscovery_get_service <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_list_instances
+#'
+#' @aliases servicediscovery_list_instances
 servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInstances",
@@ -1311,6 +1339,8 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname servicediscovery_list_namespaces
+#'
+#' @aliases servicediscovery_list_namespaces
 servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListNamespaces",
@@ -1412,6 +1442,8 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname servicediscovery_list_operations
+#'
+#' @aliases servicediscovery_list_operations
 servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListOperations",
@@ -1527,6 +1559,8 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname servicediscovery_list_services
+#'
+#' @aliases servicediscovery_list_services
 servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListServices",
@@ -1586,6 +1620,8 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname servicediscovery_list_tags_for_resource
+#'
+#' @aliases servicediscovery_list_tags_for_resource
 servicediscovery_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1822,6 +1858,8 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_register_instance
+#'
+#' @aliases servicediscovery_register_instance
 servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorRequestId = NULL, Attributes) {
   op <- new_operation(
     name = "RegisterInstance",
@@ -1890,6 +1928,8 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
 #' @keywords internal
 #'
 #' @rdname servicediscovery_tag_resource
+#'
+#' @aliases servicediscovery_tag_resource
 servicediscovery_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1948,6 +1988,8 @@ servicediscovery_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_untag_resource
+#'
+#' @aliases servicediscovery_untag_resource
 servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2003,6 +2045,8 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_http_namespace
+#'
+#' @aliases servicediscovery_update_http_namespace
 servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, Namespace) {
   op <- new_operation(
     name = "UpdateHttpNamespace",
@@ -2073,6 +2117,8 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_instance_custom_health_status
+#'
+#' @aliases servicediscovery_update_instance_custom_health_status
 servicediscovery_update_instance_custom_health_status <- function(ServiceId, InstanceId, Status) {
   op <- new_operation(
     name = "UpdateInstanceCustomHealthStatus",
@@ -2136,6 +2182,8 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_private_dns_namespace
+#'
+#' @aliases servicediscovery_update_private_dns_namespace
 servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId = NULL, Namespace) {
   op <- new_operation(
     name = "UpdatePrivateDnsNamespace",
@@ -2199,6 +2247,8 @@ servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId =
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_public_dns_namespace
+#'
+#' @aliases servicediscovery_update_public_dns_namespace
 servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = NULL, Namespace) {
   op <- new_operation(
     name = "UpdatePublicDnsNamespace",
@@ -2307,6 +2357,8 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #' @keywords internal
 #'
 #' @rdname servicediscovery_update_service
+#'
+#' @aliases servicediscovery_update_service
 servicediscovery_update_service <- function(Id, Service) {
   op <- new_operation(
     name = "UpdateService",

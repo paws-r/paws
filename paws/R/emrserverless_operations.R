@@ -34,6 +34,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname emrserverless_cancel_job_run
+#'
+#' @aliases emrserverless_cancel_job_run
 emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
   op <- new_operation(
     name = "CancelJobRun",
@@ -134,6 +136,8 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_create_application
+#'
+#' @aliases emrserverless_create_application
 emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -175,6 +179,8 @@ emrserverless_create_application <- function(name = NULL, releaseLabel, type, cl
 #' @keywords internal
 #'
 #' @rdname emrserverless_delete_application
+#'
+#' @aliases emrserverless_delete_application
 emrserverless_delete_application <- function(applicationId) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -267,6 +273,8 @@ emrserverless_delete_application <- function(applicationId) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_get_application
+#'
+#' @aliases emrserverless_get_application
 emrserverless_get_application <- function(applicationId) {
   op <- new_operation(
     name = "GetApplication",
@@ -382,6 +390,8 @@ emrserverless_get_application <- function(applicationId) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_get_job_run
+#'
+#' @aliases emrserverless_get_job_run
 emrserverless_get_job_run <- function(applicationId, jobRunId) {
   op <- new_operation(
     name = "GetJobRun",
@@ -452,6 +462,8 @@ emrserverless_get_job_run <- function(applicationId, jobRunId) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_list_applications
+#'
+#' @aliases emrserverless_list_applications
 emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL, states = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -535,6 +547,8 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname emrserverless_list_job_runs
+#'
+#' @aliases emrserverless_list_job_runs
 emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResults = NULL, createdAtAfter = NULL, createdAtBefore = NULL, states = NULL) {
   op <- new_operation(
     name = "ListJobRuns",
@@ -584,6 +598,8 @@ emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResu
 #' @keywords internal
 #'
 #' @rdname emrserverless_list_tags_for_resource
+#'
+#' @aliases emrserverless_list_tags_for_resource
 emrserverless_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -626,6 +642,8 @@ emrserverless_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_start_application
+#'
+#' @aliases emrserverless_start_application
 emrserverless_start_application <- function(applicationId) {
   op <- new_operation(
     name = "StartApplication",
@@ -726,6 +744,8 @@ emrserverless_start_application <- function(applicationId) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_start_job_run
+#'
+#' @aliases emrserverless_start_job_run
 emrserverless_start_job_run <- function(applicationId, clientToken, executionRoleArn, jobDriver = NULL, configurationOverrides = NULL, tags = NULL, executionTimeoutMinutes = NULL, name = NULL) {
   op <- new_operation(
     name = "StartJobRun",
@@ -769,6 +789,8 @@ emrserverless_start_job_run <- function(applicationId, clientToken, executionRol
 #' @keywords internal
 #'
 #' @rdname emrserverless_stop_application
+#'
+#' @aliases emrserverless_stop_application
 emrserverless_stop_application <- function(applicationId) {
   op <- new_operation(
     name = "StopApplication",
@@ -820,6 +842,8 @@ emrserverless_stop_application <- function(applicationId) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_tag_resource
+#'
+#' @aliases emrserverless_tag_resource
 emrserverless_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -866,6 +890,8 @@ emrserverless_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_untag_resource
+#'
+#' @aliases emrserverless_untag_resource
 emrserverless_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1004,6 +1030,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname emrserverless_update_application
+#'
+#' @aliases emrserverless_update_application
 emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateApplication",

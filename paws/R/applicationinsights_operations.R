@@ -72,6 +72,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
+#'
+#' @aliases applicationinsights_create_application
 applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -121,6 +123,8 @@ applicationinsights_create_application <- function(ResourceGroupName = NULL, Ops
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_component
+#'
+#' @aliases applicationinsights_create_component
 applicationinsights_create_component <- function(ResourceGroupName, ComponentName, ResourceList) {
   op <- new_operation(
     name = "CreateComponent",
@@ -192,6 +196,8 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_log_pattern
+#'
+#' @aliases applicationinsights_create_log_pattern
 applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName, Pattern, Rank) {
   op <- new_operation(
     name = "CreateLogPattern",
@@ -233,6 +239,8 @@ applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSet
 #' @keywords internal
 #'
 #' @rdname applicationinsights_delete_application
+#'
+#' @aliases applicationinsights_delete_application
 applicationinsights_delete_application <- function(ResourceGroupName) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -277,6 +285,8 @@ applicationinsights_delete_application <- function(ResourceGroupName) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_delete_component
+#'
+#' @aliases applicationinsights_delete_component
 applicationinsights_delete_component <- function(ResourceGroupName, ComponentName) {
   op <- new_operation(
     name = "DeleteComponent",
@@ -322,6 +332,8 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
 #' @keywords internal
 #'
 #' @rdname applicationinsights_delete_log_pattern
+#'
+#' @aliases applicationinsights_delete_log_pattern
 applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName) {
   op <- new_operation(
     name = "DeleteLogPattern",
@@ -376,6 +388,8 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_application
+#'
+#' @aliases applicationinsights_describe_application
 applicationinsights_describe_application <- function(ResourceGroupName) {
   op <- new_operation(
     name = "DescribeApplication",
@@ -440,6 +454,8 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_component
+#'
+#' @aliases applicationinsights_describe_component
 applicationinsights_describe_component <- function(ResourceGroupName, ComponentName) {
   op <- new_operation(
     name = "DescribeComponent",
@@ -490,6 +506,8 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_component_configuration
+#'
+#' @aliases applicationinsights_describe_component_configuration
 applicationinsights_describe_component_configuration <- function(ResourceGroupName, ComponentName) {
   op <- new_operation(
     name = "DescribeComponentConfiguration",
@@ -539,7 +557,9 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #'
 #' @keywords internal
 #'
-#' @rdname applicationinsights_describe_component_configuration_recommendation
+#' @rdname applicationinsights_descri_compon_config_recomm
+#'
+#' @aliases applicationinsights_describe_component_configuration_recommendation
 applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier) {
   op <- new_operation(
     name = "DescribeComponentConfigurationRecommendation",
@@ -596,6 +616,8 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_log_pattern
+#'
+#' @aliases applicationinsights_describe_log_pattern
 applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName) {
   op <- new_operation(
     name = "DescribeLogPattern",
@@ -693,6 +715,8 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_observation
+#'
+#' @aliases applicationinsights_describe_observation
 applicationinsights_describe_observation <- function(ObservationId) {
   op <- new_operation(
     name = "DescribeObservation",
@@ -759,6 +783,8 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_problem
+#'
+#' @aliases applicationinsights_describe_problem
 applicationinsights_describe_problem <- function(ProblemId) {
   op <- new_operation(
     name = "DescribeProblem",
@@ -860,6 +886,8 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_problem_observations
+#'
+#' @aliases applicationinsights_describe_problem_observations
 applicationinsights_describe_problem_observations <- function(ProblemId) {
   op <- new_operation(
     name = "DescribeProblemObservations",
@@ -921,6 +949,8 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_applications
+#'
+#' @aliases applicationinsights_list_applications
 applicationinsights_list_applications <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -990,6 +1020,8 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_components
+#'
+#' @aliases applicationinsights_list_components
 applicationinsights_list_components <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListComponents",
@@ -1090,6 +1122,8 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_configuration_history
+#'
+#' @aliases applicationinsights_list_configuration_history
 applicationinsights_list_configuration_history <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConfigurationHistory",
@@ -1146,6 +1180,8 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_log_pattern_sets
+#'
+#' @aliases applicationinsights_list_log_pattern_sets
 applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListLogPatternSets",
@@ -1209,6 +1245,8 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_log_patterns
+#'
+#' @aliases applicationinsights_list_log_patterns
 applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListLogPatterns",
@@ -1299,6 +1337,8 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_problems
+#'
+#' @aliases applicationinsights_list_problems
 applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL) {
   op <- new_operation(
     name = "ListProblems",
@@ -1356,6 +1396,8 @@ applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTim
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_tags_for_resource
+#'
+#' @aliases applicationinsights_list_tags_for_resource
 applicationinsights_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1416,6 +1458,8 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_tag_resource
+#'
+#' @aliases applicationinsights_tag_resource
 applicationinsights_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1467,6 +1511,8 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_untag_resource
+#'
+#' @aliases applicationinsights_untag_resource
 applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1539,6 +1585,8 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_application
+#'
+#' @aliases applicationinsights_update_application
 applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
@@ -1590,6 +1638,8 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_component
+#'
+#' @aliases applicationinsights_update_component
 applicationinsights_update_component <- function(ResourceGroupName, ComponentName, NewComponentName = NULL, ResourceList = NULL) {
   op <- new_operation(
     name = "UpdateComponent",
@@ -1653,6 +1703,8 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_component_configuration
+#'
+#' @aliases applicationinsights_update_component_configuration
 applicationinsights_update_component_configuration <- function(ResourceGroupName, ComponentName, Monitor = NULL, Tier = NULL, ComponentConfiguration = NULL, AutoConfigEnabled = NULL) {
   op <- new_operation(
     name = "UpdateComponentConfiguration",
@@ -1724,6 +1776,8 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_log_pattern
+#'
+#' @aliases applicationinsights_update_log_pattern
 applicationinsights_update_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName, Pattern = NULL, Rank = NULL) {
   op <- new_operation(
     name = "UpdateLogPattern",

@@ -61,6 +61,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_create_campaign
+#'
+#' @aliases connectcampaignservice_create_campaign
 connectcampaignservice_create_campaign <- function(connectInstanceId, dialerConfig, name, outboundCallConfig, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
@@ -101,6 +103,8 @@ connectcampaignservice_create_campaign <- function(connectInstanceId, dialerConf
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_delete_campaign
+#'
+#' @aliases connectcampaignservice_delete_campaign
 connectcampaignservice_delete_campaign <- function(id) {
   op <- new_operation(
     name = "DeleteCampaign",
@@ -141,6 +145,8 @@ connectcampaignservice_delete_campaign <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_delete_connect_instance_config
+#'
+#' @aliases connectcampaignservice_delete_connect_instance_config
 connectcampaignservice_delete_connect_instance_config <- function(connectInstanceId) {
   op <- new_operation(
     name = "DeleteConnectInstanceConfig",
@@ -183,6 +189,8 @@ connectcampaignservice_delete_connect_instance_config <- function(connectInstanc
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_delete_instance_onboarding_job
+#'
+#' @aliases connectcampaignservice_delete_instance_onboarding_job
 connectcampaignservice_delete_instance_onboarding_job <- function(connectInstanceId) {
   op <- new_operation(
     name = "DeleteInstanceOnboardingJob",
@@ -252,6 +260,8 @@ connectcampaignservice_delete_instance_onboarding_job <- function(connectInstanc
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_describe_campaign
+#'
+#' @aliases connectcampaignservice_describe_campaign
 connectcampaignservice_describe_campaign <- function(id) {
   op <- new_operation(
     name = "DescribeCampaign",
@@ -297,6 +307,8 @@ connectcampaignservice_describe_campaign <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_get_campaign_state
+#'
+#' @aliases connectcampaignservice_get_campaign_state
 connectcampaignservice_get_campaign_state <- function(id) {
   op <- new_operation(
     name = "GetCampaignState",
@@ -355,6 +367,8 @@ connectcampaignservice_get_campaign_state <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_get_campaign_state_batch
+#'
+#' @aliases connectcampaignservice_get_campaign_state_batch
 connectcampaignservice_get_campaign_state_batch <- function(campaignIds) {
   op <- new_operation(
     name = "GetCampaignStateBatch",
@@ -408,6 +422,8 @@ connectcampaignservice_get_campaign_state_batch <- function(campaignIds) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_get_connect_instance_config
+#'
+#' @aliases connectcampaignservice_get_connect_instance_config
 connectcampaignservice_get_connect_instance_config <- function(connectInstanceId) {
   op <- new_operation(
     name = "GetConnectInstanceConfig",
@@ -458,6 +474,8 @@ connectcampaignservice_get_connect_instance_config <- function(connectInstanceId
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_get_instance_onboarding_job_status
+#'
+#' @aliases connectcampaignservice_get_instance_onboarding_job_status
 connectcampaignservice_get_instance_onboarding_job_status <- function(connectInstanceId) {
   op <- new_operation(
     name = "GetInstanceOnboardingJobStatus",
@@ -522,6 +540,8 @@ connectcampaignservice_get_instance_onboarding_job_status <- function(connectIns
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_list_campaigns
+#'
+#' @aliases connectcampaignservice_list_campaigns
 connectcampaignservice_list_campaigns <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListCampaigns",
@@ -569,6 +589,8 @@ connectcampaignservice_list_campaigns <- function(filters = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_list_tags_for_resource
+#'
+#' @aliases connectcampaignservice_list_tags_for_resource
 connectcampaignservice_list_tags_for_resource <- function(arn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -609,6 +631,8 @@ connectcampaignservice_list_tags_for_resource <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_pause_campaign
+#'
+#' @aliases connectcampaignservice_pause_campaign
 connectcampaignservice_pause_campaign <- function(id) {
   op <- new_operation(
     name = "PauseCampaign",
@@ -680,6 +704,8 @@ connectcampaignservice_pause_campaign <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_put_dial_request_batch
+#'
+#' @aliases connectcampaignservice_put_dial_request_batch
 connectcampaignservice_put_dial_request_batch <- function(dialRequests, id) {
   op <- new_operation(
     name = "PutDialRequestBatch",
@@ -720,6 +746,8 @@ connectcampaignservice_put_dial_request_batch <- function(dialRequests, id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_resume_campaign
+#'
+#' @aliases connectcampaignservice_resume_campaign
 connectcampaignservice_resume_campaign <- function(id) {
   op <- new_operation(
     name = "ResumeCampaign",
@@ -760,6 +788,8 @@ connectcampaignservice_resume_campaign <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_start_campaign
+#'
+#' @aliases connectcampaignservice_start_campaign
 connectcampaignservice_start_campaign <- function(id) {
   op <- new_operation(
     name = "StartCampaign",
@@ -816,6 +846,8 @@ connectcampaignservice_start_campaign <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_start_instance_onboarding_job
+#'
+#' @aliases connectcampaignservice_start_instance_onboarding_job
 connectcampaignservice_start_instance_onboarding_job <- function(connectInstanceId, encryptionConfig) {
   op <- new_operation(
     name = "StartInstanceOnboardingJob",
@@ -856,6 +888,8 @@ connectcampaignservice_start_instance_onboarding_job <- function(connectInstance
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_stop_campaign
+#'
+#' @aliases connectcampaignservice_stop_campaign
 connectcampaignservice_stop_campaign <- function(id) {
   op <- new_operation(
     name = "StopCampaign",
@@ -900,6 +934,8 @@ connectcampaignservice_stop_campaign <- function(id) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_tag_resource
+#'
+#' @aliases connectcampaignservice_tag_resource
 connectcampaignservice_tag_resource <- function(arn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -944,6 +980,8 @@ connectcampaignservice_tag_resource <- function(arn, tags) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_untag_resource
+#'
+#' @aliases connectcampaignservice_untag_resource
 connectcampaignservice_untag_resource <- function(arn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -993,6 +1031,8 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_update_campaign_dialer_config
+#'
+#' @aliases connectcampaignservice_update_campaign_dialer_config
 connectcampaignservice_update_campaign_dialer_config <- function(dialerConfig, id) {
   op <- new_operation(
     name = "UpdateCampaignDialerConfig",
@@ -1035,6 +1075,8 @@ connectcampaignservice_update_campaign_dialer_config <- function(dialerConfig, i
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_update_campaign_name
+#'
+#' @aliases connectcampaignservice_update_campaign_name
 connectcampaignservice_update_campaign_name <- function(id, name) {
   op <- new_operation(
     name = "UpdateCampaignName",
@@ -1085,6 +1127,8 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_update_campaign_outbound_call_config
+#'
+#' @aliases connectcampaignservice_update_campaign_outbound_call_config
 connectcampaignservice_update_campaign_outbound_call_config <- function(answerMachineDetectionConfig = NULL, connectContactFlowId = NULL, connectSourcePhoneNumber = NULL, id) {
   op <- new_operation(
     name = "UpdateCampaignOutboundCallConfig",

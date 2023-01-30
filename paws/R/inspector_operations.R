@@ -65,6 +65,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname inspector_add_attributes_to_findings
+#'
+#' @aliases inspector_add_attributes_to_findings
 inspector_add_attributes_to_findings <- function(findingArns, attributes) {
   op <- new_operation(
     name = "AddAttributesToFindings",
@@ -143,6 +145,8 @@ inspector_add_attributes_to_findings <- function(findingArns, attributes) {
 #' @keywords internal
 #'
 #' @rdname inspector_create_assessment_target
+#'
+#' @aliases inspector_create_assessment_target
 inspector_create_assessment_target <- function(assessmentTargetName, resourceGroupArn = NULL) {
   op <- new_operation(
     name = "CreateAssessmentTarget",
@@ -239,6 +243,8 @@ inspector_create_assessment_target <- function(assessmentTargetName, resourceGro
 #' @keywords internal
 #'
 #' @rdname inspector_create_assessment_template
+#'
+#' @aliases inspector_create_assessment_template
 inspector_create_assessment_template <- function(assessmentTargetArn, assessmentTemplateName, durationInSeconds, rulesPackageArns, userAttributesForFindings = NULL) {
   op <- new_operation(
     name = "CreateAssessmentTemplate",
@@ -289,6 +295,8 @@ inspector_create_assessment_template <- function(assessmentTargetArn, assessment
 #' @keywords internal
 #'
 #' @rdname inspector_create_exclusions_preview
+#'
+#' @aliases inspector_create_exclusions_preview
 inspector_create_exclusions_preview <- function(assessmentTemplateArn) {
   op <- new_operation(
     name = "CreateExclusionsPreview",
@@ -365,6 +373,8 @@ inspector_create_exclusions_preview <- function(assessmentTemplateArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_create_resource_group
+#'
+#' @aliases inspector_create_resource_group
 inspector_create_resource_group <- function(resourceGroupTags) {
   op <- new_operation(
     name = "CreateResourceGroup",
@@ -416,6 +426,8 @@ inspector_create_resource_group <- function(resourceGroupTags) {
 #' @keywords internal
 #'
 #' @rdname inspector_delete_assessment_run
+#'
+#' @aliases inspector_delete_assessment_run
 inspector_delete_assessment_run <- function(assessmentRunArn) {
   op <- new_operation(
     name = "DeleteAssessmentRun",
@@ -467,6 +479,8 @@ inspector_delete_assessment_run <- function(assessmentRunArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_delete_assessment_target
+#'
+#' @aliases inspector_delete_assessment_target
 inspector_delete_assessment_target <- function(assessmentTargetArn) {
   op <- new_operation(
     name = "DeleteAssessmentTarget",
@@ -518,6 +532,8 @@ inspector_delete_assessment_target <- function(assessmentTargetArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_delete_assessment_template
+#'
+#' @aliases inspector_delete_assessment_template
 inspector_delete_assessment_template <- function(assessmentTemplateArn) {
   op <- new_operation(
     name = "DeleteAssessmentTemplate",
@@ -637,6 +653,8 @@ inspector_delete_assessment_template <- function(assessmentTemplateArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_assessment_runs
+#'
+#' @aliases inspector_describe_assessment_runs
 inspector_describe_assessment_runs <- function(assessmentRunArns) {
   op <- new_operation(
     name = "DescribeAssessmentRuns",
@@ -716,6 +734,8 @@ inspector_describe_assessment_runs <- function(assessmentRunArns) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_assessment_targets
+#'
+#' @aliases inspector_describe_assessment_targets
 inspector_describe_assessment_targets <- function(assessmentTargetArns) {
   op <- new_operation(
     name = "DescribeAssessmentTargets",
@@ -803,6 +823,8 @@ inspector_describe_assessment_targets <- function(assessmentTargetArns) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_assessment_templates
+#'
+#' @aliases inspector_describe_assessment_templates
 inspector_describe_assessment_templates <- function(assessmentTemplateArns) {
   op <- new_operation(
     name = "DescribeAssessmentTemplates",
@@ -856,6 +878,8 @@ inspector_describe_assessment_templates <- function(assessmentTemplateArns) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_cross_account_access_role
+#'
+#' @aliases inspector_describe_cross_account_access_role
 inspector_describe_cross_account_access_role <- function() {
   op <- new_operation(
     name = "DescribeCrossAccountAccessRole",
@@ -931,6 +955,8 @@ inspector_describe_cross_account_access_role <- function() {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_exclusions
+#'
+#' @aliases inspector_describe_exclusions
 inspector_describe_exclusions <- function(exclusionArns, locale = NULL) {
   op <- new_operation(
     name = "DescribeExclusions",
@@ -1077,6 +1103,8 @@ inspector_describe_exclusions <- function(exclusionArns, locale = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_findings
+#'
+#' @aliases inspector_describe_findings
 inspector_describe_findings <- function(findingArns, locale = NULL) {
   op <- new_operation(
     name = "DescribeFindings",
@@ -1156,6 +1184,8 @@ inspector_describe_findings <- function(findingArns, locale = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_resource_groups
+#'
+#' @aliases inspector_describe_resource_groups
 inspector_describe_resource_groups <- function(resourceGroupArns) {
   op <- new_operation(
     name = "DescribeResourceGroups",
@@ -1232,6 +1262,8 @@ inspector_describe_resource_groups <- function(resourceGroupArns) {
 #' @keywords internal
 #'
 #' @rdname inspector_describe_rules_packages
+#'
+#' @aliases inspector_describe_rules_packages
 inspector_describe_rules_packages <- function(rulesPackageArns, locale = NULL) {
   op <- new_operation(
     name = "DescribeRulesPackages",
@@ -1290,6 +1322,8 @@ inspector_describe_rules_packages <- function(rulesPackageArns, locale = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector_get_assessment_report
+#'
+#' @aliases inspector_get_assessment_report
 inspector_get_assessment_report <- function(assessmentRunArn, reportFileFormat, reportType) {
   op <- new_operation(
     name = "GetAssessmentReport",
@@ -1375,6 +1409,8 @@ inspector_get_assessment_report <- function(assessmentRunArn, reportFileFormat, 
 #' @keywords internal
 #'
 #' @rdname inspector_get_exclusions_preview
+#'
+#' @aliases inspector_get_exclusions_preview
 inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken, nextToken = NULL, maxResults = NULL, locale = NULL) {
   op <- new_operation(
     name = "GetExclusionsPreview",
@@ -1438,6 +1474,8 @@ inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken
 #' @keywords internal
 #'
 #' @rdname inspector_get_telemetry_metadata
+#'
+#' @aliases inspector_get_telemetry_metadata
 inspector_get_telemetry_metadata <- function(assessmentRunArn) {
   op <- new_operation(
     name = "GetTelemetryMetadata",
@@ -1537,6 +1575,8 @@ inspector_get_telemetry_metadata <- function(assessmentRunArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_list_assessment_run_agents
+#'
+#' @aliases inspector_list_assessment_run_agents
 inspector_list_assessment_run_agents <- function(assessmentRunArn, filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentRunAgents",
@@ -1656,6 +1696,8 @@ inspector_list_assessment_run_agents <- function(assessmentRunArn, filter = NULL
 #' @keywords internal
 #'
 #' @rdname inspector_list_assessment_runs
+#'
+#' @aliases inspector_list_assessment_runs
 inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentRuns",
@@ -1731,6 +1773,8 @@ inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter
 #' @keywords internal
 #'
 #' @rdname inspector_list_assessment_targets
+#'
+#' @aliases inspector_list_assessment_targets
 inspector_list_assessment_targets <- function(filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentTargets",
@@ -1822,6 +1866,8 @@ inspector_list_assessment_targets <- function(filter = NULL, nextToken = NULL, m
 #' @keywords internal
 #'
 #' @rdname inspector_list_assessment_templates
+#'
+#' @aliases inspector_list_assessment_templates
 inspector_list_assessment_templates <- function(assessmentTargetArns = NULL, filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentTemplates",
@@ -1905,6 +1951,8 @@ inspector_list_assessment_templates <- function(assessmentTargetArns = NULL, fil
 #' @keywords internal
 #'
 #' @rdname inspector_list_event_subscriptions
+#'
+#' @aliases inspector_list_event_subscriptions
 inspector_list_event_subscriptions <- function(resourceArn = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEventSubscriptions",
@@ -1964,6 +2012,8 @@ inspector_list_event_subscriptions <- function(resourceArn = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname inspector_list_exclusions
+#'
+#' @aliases inspector_list_exclusions
 inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListExclusions",
@@ -2082,6 +2132,8 @@ inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname inspector_list_findings
+#'
+#' @aliases inspector_list_findings
 inspector_list_findings <- function(assessmentRunArns = NULL, filter = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListFindings",
@@ -2145,6 +2197,8 @@ inspector_list_findings <- function(assessmentRunArns = NULL, filter = NULL, nex
 #' @keywords internal
 #'
 #' @rdname inspector_list_rules_packages
+#'
+#' @aliases inspector_list_rules_packages
 inspector_list_rules_packages <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRulesPackages",
@@ -2204,6 +2258,8 @@ inspector_list_rules_packages <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector_list_tags_for_resource
+#'
+#' @aliases inspector_list_tags_for_resource
 inspector_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2282,6 +2338,8 @@ inspector_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_preview_agents
+#'
+#' @aliases inspector_preview_agents
 inspector_preview_agents <- function(previewAgentsArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "PreviewAgents",
@@ -2335,6 +2393,8 @@ inspector_preview_agents <- function(previewAgentsArn, nextToken = NULL, maxResu
 #' @keywords internal
 #'
 #' @rdname inspector_register_cross_account_access_role
+#'
+#' @aliases inspector_register_cross_account_access_role
 inspector_register_cross_account_access_role <- function(roleArn) {
   op <- new_operation(
     name = "RegisterCrossAccountAccessRole",
@@ -2412,6 +2472,8 @@ inspector_register_cross_account_access_role <- function(roleArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_remove_attributes_from_findings
+#'
+#' @aliases inspector_remove_attributes_from_findings
 inspector_remove_attributes_from_findings <- function(findingArns, attributeKeys) {
   op <- new_operation(
     name = "RemoveAttributesFromFindings",
@@ -2477,6 +2539,8 @@ inspector_remove_attributes_from_findings <- function(findingArns, attributeKeys
 #' @keywords internal
 #'
 #' @rdname inspector_set_tags_for_resource
+#'
+#' @aliases inspector_set_tags_for_resource
 inspector_set_tags_for_resource <- function(resourceArn, tags = NULL) {
   op <- new_operation(
     name = "SetTagsForResource",
@@ -2541,6 +2605,8 @@ inspector_set_tags_for_resource <- function(resourceArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector_start_assessment_run
+#'
+#' @aliases inspector_start_assessment_run
 inspector_start_assessment_run <- function(assessmentTemplateArn, assessmentRunName = NULL) {
   op <- new_operation(
     name = "StartAssessmentRun",
@@ -2598,6 +2664,8 @@ inspector_start_assessment_run <- function(assessmentTemplateArn, assessmentRunN
 #' @keywords internal
 #'
 #' @rdname inspector_stop_assessment_run
+#'
+#' @aliases inspector_stop_assessment_run
 inspector_stop_assessment_run <- function(assessmentRunArn, stopAction = NULL) {
   op <- new_operation(
     name = "StopAssessmentRun",
@@ -2656,6 +2724,8 @@ inspector_stop_assessment_run <- function(assessmentRunArn, stopAction = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector_subscribe_to_event
+#'
+#' @aliases inspector_subscribe_to_event
 inspector_subscribe_to_event <- function(resourceArn, event, topicArn) {
   op <- new_operation(
     name = "SubscribeToEvent",
@@ -2714,6 +2784,8 @@ inspector_subscribe_to_event <- function(resourceArn, event, topicArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_unsubscribe_from_event
+#'
+#' @aliases inspector_unsubscribe_from_event
 inspector_unsubscribe_from_event <- function(resourceArn, event, topicArn) {
   op <- new_operation(
     name = "UnsubscribeFromEvent",
@@ -2776,6 +2848,8 @@ inspector_unsubscribe_from_event <- function(resourceArn, event, topicArn) {
 #' @keywords internal
 #'
 #' @rdname inspector_update_assessment_target
+#'
+#' @aliases inspector_update_assessment_target
 inspector_update_assessment_target <- function(assessmentTargetArn, assessmentTargetName, resourceGroupArn = NULL) {
   op <- new_operation(
     name = "UpdateAssessmentTarget",

@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname finspacedata_associate_user_to_permission_group
+#'
+#' @aliases finspacedata_associate_user_to_permission_group
 finspacedata_associate_user_to_permission_group <- function(permissionGroupId, userId, clientToken = NULL) {
   op <- new_operation(
     name = "AssociateUserToPermissionGroup",
@@ -147,6 +149,8 @@ finspacedata_associate_user_to_permission_group <- function(permissionGroupId, u
 #' @keywords internal
 #'
 #' @rdname finspacedata_create_changeset
+#'
+#' @aliases finspacedata_create_changeset
 finspacedata_create_changeset <- function(clientToken = NULL, datasetId, changeType, sourceParams, formatParams) {
   op <- new_operation(
     name = "CreateChangeset",
@@ -218,6 +222,8 @@ finspacedata_create_changeset <- function(clientToken = NULL, datasetId, changeT
 #' @keywords internal
 #'
 #' @rdname finspacedata_create_data_view
+#'
+#' @aliases finspacedata_create_data_view
 finspacedata_create_data_view <- function(clientToken = NULL, datasetId, autoUpdate = NULL, sortColumns = NULL, partitionColumns = NULL, asOfTimestamp = NULL, destinationTypeParams) {
   op <- new_operation(
     name = "CreateDataView",
@@ -307,6 +313,8 @@ finspacedata_create_data_view <- function(clientToken = NULL, datasetId, autoUpd
 #' @keywords internal
 #'
 #' @rdname finspacedata_create_dataset
+#'
+#' @aliases finspacedata_create_dataset
 finspacedata_create_dataset <- function(clientToken = NULL, datasetTitle, kind, datasetDescription = NULL, ownerInfo = NULL, permissionGroupParams, alias = NULL, schemaDefinition = NULL) {
   op <- new_operation(
     name = "CreateDataset",
@@ -390,6 +398,8 @@ finspacedata_create_dataset <- function(clientToken = NULL, datasetTitle, kind, 
 #' @keywords internal
 #'
 #' @rdname finspacedata_create_permission_group
+#'
+#' @aliases finspacedata_create_permission_group
 finspacedata_create_permission_group <- function(name, description = NULL, applicationPermissions, clientToken = NULL) {
   op <- new_operation(
     name = "CreatePermissionGroup",
@@ -467,6 +477,8 @@ finspacedata_create_permission_group <- function(name, description = NULL, appli
 #' @keywords internal
 #'
 #' @rdname finspacedata_create_user
+#'
+#' @aliases finspacedata_create_user
 finspacedata_create_user <- function(emailAddress, type, firstName = NULL, lastName = NULL, ApiAccess = NULL, apiAccessPrincipalArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateUser",
@@ -514,6 +526,8 @@ finspacedata_create_user <- function(emailAddress, type, firstName = NULL, lastN
 #' @keywords internal
 #'
 #' @rdname finspacedata_delete_dataset
+#'
+#' @aliases finspacedata_delete_dataset
 finspacedata_delete_dataset <- function(clientToken = NULL, datasetId) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -561,6 +575,8 @@ finspacedata_delete_dataset <- function(clientToken = NULL, datasetId) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_delete_permission_group
+#'
+#' @aliases finspacedata_delete_permission_group
 finspacedata_delete_permission_group <- function(permissionGroupId, clientToken = NULL) {
   op <- new_operation(
     name = "DeletePermissionGroup",
@@ -610,6 +626,8 @@ finspacedata_delete_permission_group <- function(permissionGroupId, clientToken 
 #' @keywords internal
 #'
 #' @rdname finspacedata_disable_user
+#'
+#' @aliases finspacedata_disable_user
 finspacedata_disable_user <- function(userId, clientToken = NULL) {
   op <- new_operation(
     name = "DisableUser",
@@ -660,6 +678,8 @@ finspacedata_disable_user <- function(userId, clientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_disassociate_user_from_permission_group
+#'
+#' @aliases finspacedata_disassociate_user_from_permission_group
 finspacedata_disassociate_user_from_permission_group <- function(permissionGroupId, userId, clientToken = NULL) {
   op <- new_operation(
     name = "DisassociateUserFromPermissionGroup",
@@ -708,6 +728,8 @@ finspacedata_disassociate_user_from_permission_group <- function(permissionGroup
 #' @keywords internal
 #'
 #' @rdname finspacedata_enable_user
+#'
+#' @aliases finspacedata_enable_user
 finspacedata_enable_user <- function(userId, clientToken = NULL) {
   op <- new_operation(
     name = "EnableUser",
@@ -775,6 +797,8 @@ finspacedata_enable_user <- function(userId, clientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_changeset
+#'
+#' @aliases finspacedata_get_changeset
 finspacedata_get_changeset <- function(datasetId, changesetId) {
   op <- new_operation(
     name = "GetChangeset",
@@ -846,6 +870,8 @@ finspacedata_get_changeset <- function(datasetId, changesetId) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_data_view
+#'
+#' @aliases finspacedata_get_data_view
 finspacedata_get_data_view <- function(dataViewId, datasetId) {
   op <- new_operation(
     name = "GetDataView",
@@ -913,6 +939,8 @@ finspacedata_get_data_view <- function(dataViewId, datasetId) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_dataset
+#'
+#' @aliases finspacedata_get_dataset
 finspacedata_get_dataset <- function(datasetId) {
   op <- new_operation(
     name = "GetDataset",
@@ -977,6 +1005,8 @@ finspacedata_get_dataset <- function(datasetId) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_external_data_view_access_details
+#'
+#' @aliases finspacedata_get_external_data_view_access_details
 finspacedata_get_external_data_view_access_details <- function(dataViewId, datasetId) {
   op <- new_operation(
     name = "GetExternalDataViewAccessDetails",
@@ -1032,6 +1062,8 @@ finspacedata_get_external_data_view_access_details <- function(dataViewId, datas
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_permission_group
+#'
+#' @aliases finspacedata_get_permission_group
 finspacedata_get_permission_group <- function(permissionGroupId) {
   op <- new_operation(
     name = "GetPermissionGroup",
@@ -1085,6 +1117,8 @@ finspacedata_get_permission_group <- function(permissionGroupId) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_programmatic_access_credentials
+#'
+#' @aliases finspacedata_get_programmatic_access_credentials
 finspacedata_get_programmatic_access_credentials <- function(durationInMinutes = NULL, environmentId) {
   op <- new_operation(
     name = "GetProgrammaticAccessCredentials",
@@ -1142,6 +1176,8 @@ finspacedata_get_programmatic_access_credentials <- function(durationInMinutes =
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_user
+#'
+#' @aliases finspacedata_get_user
 finspacedata_get_user <- function(userId) {
   op <- new_operation(
     name = "GetUser",
@@ -1199,6 +1235,8 @@ finspacedata_get_user <- function(userId) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_get_working_location
+#'
+#' @aliases finspacedata_get_working_location
 finspacedata_get_working_location <- function(locationType = NULL) {
   op <- new_operation(
     name = "GetWorkingLocation",
@@ -1273,6 +1311,8 @@ finspacedata_get_working_location <- function(locationType = NULL) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_changesets
+#'
+#' @aliases finspacedata_list_changesets
 finspacedata_list_changesets <- function(datasetId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListChangesets",
@@ -1351,6 +1391,8 @@ finspacedata_list_changesets <- function(datasetId, maxResults = NULL, nextToken
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_data_views
+#'
+#' @aliases finspacedata_list_data_views
 finspacedata_list_data_views <- function(datasetId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDataViews",
@@ -1429,6 +1471,8 @@ finspacedata_list_data_views <- function(datasetId, nextToken = NULL, maxResults
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_datasets
+#'
+#' @aliases finspacedata_list_datasets
 finspacedata_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListDatasets",
@@ -1489,6 +1533,8 @@ finspacedata_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_permission_groups
+#'
+#' @aliases finspacedata_list_permission_groups
 finspacedata_list_permission_groups <- function(nextToken = NULL, maxResults) {
   op <- new_operation(
     name = "ListPermissionGroups",
@@ -1548,6 +1594,8 @@ finspacedata_list_permission_groups <- function(nextToken = NULL, maxResults) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_permission_groups_by_user
+#'
+#' @aliases finspacedata_list_permission_groups_by_user
 finspacedata_list_permission_groups_by_user <- function(userId, nextToken = NULL, maxResults) {
   op <- new_operation(
     name = "ListPermissionGroupsByUser",
@@ -1612,6 +1660,8 @@ finspacedata_list_permission_groups_by_user <- function(userId, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_users
+#'
+#' @aliases finspacedata_list_users
 finspacedata_list_users <- function(nextToken = NULL, maxResults) {
   op <- new_operation(
     name = "ListUsers",
@@ -1675,6 +1725,8 @@ finspacedata_list_users <- function(nextToken = NULL, maxResults) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_list_users_by_permission_group
+#'
+#' @aliases finspacedata_list_users_by_permission_group
 finspacedata_list_users_by_permission_group <- function(permissionGroupId, nextToken = NULL, maxResults) {
   op <- new_operation(
     name = "ListUsersByPermissionGroup",
@@ -1728,6 +1780,8 @@ finspacedata_list_users_by_permission_group <- function(permissionGroupId, nextT
 #' @keywords internal
 #'
 #' @rdname finspacedata_reset_user_password
+#'
+#' @aliases finspacedata_reset_user_password
 finspacedata_reset_user_password <- function(userId, clientToken = NULL) {
   op <- new_operation(
     name = "ResetUserPassword",
@@ -1827,6 +1881,8 @@ finspacedata_reset_user_password <- function(userId, clientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname finspacedata_update_changeset
+#'
+#' @aliases finspacedata_update_changeset
 finspacedata_update_changeset <- function(clientToken = NULL, datasetId, changesetId, sourceParams, formatParams) {
   op <- new_operation(
     name = "UpdateChangeset",
@@ -1902,6 +1958,8 @@ finspacedata_update_changeset <- function(clientToken = NULL, datasetId, changes
 #' @keywords internal
 #'
 #' @rdname finspacedata_update_dataset
+#'
+#' @aliases finspacedata_update_dataset
 finspacedata_update_dataset <- function(clientToken = NULL, datasetId, datasetTitle, kind, datasetDescription = NULL, alias = NULL, schemaDefinition = NULL) {
   op <- new_operation(
     name = "UpdateDataset",
@@ -1986,6 +2044,8 @@ finspacedata_update_dataset <- function(clientToken = NULL, datasetId, datasetTi
 #' @keywords internal
 #'
 #' @rdname finspacedata_update_permission_group
+#'
+#' @aliases finspacedata_update_permission_group
 finspacedata_update_permission_group <- function(permissionGroupId, name = NULL, description = NULL, applicationPermissions = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdatePermissionGroup",
@@ -2061,6 +2121,8 @@ finspacedata_update_permission_group <- function(permissionGroupId, name = NULL,
 #' @keywords internal
 #'
 #' @rdname finspacedata_update_user
+#'
+#' @aliases finspacedata_update_user
 finspacedata_update_user <- function(userId, type = NULL, firstName = NULL, lastName = NULL, apiAccess = NULL, apiAccessPrincipalArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateUser",

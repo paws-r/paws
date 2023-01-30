@@ -208,6 +208,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_auto_predictor
+#'
+#' @aliases forecastservice_create_auto_predictor
 forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon = NULL, ForecastTypes = NULL, ForecastDimensions = NULL, ForecastFrequency = NULL, DataConfig = NULL, EncryptionConfig = NULL, ReferencePredictorArn = NULL, OptimizationMetric = NULL, ExplainPredictor = NULL, Tags = NULL, MonitorConfig = NULL, TimeAlignmentBoundary = NULL) {
   op <- new_operation(
     name = "CreateAutoPredictor",
@@ -364,6 +366,8 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset
+#'
+#' @aliases forecastservice_create_dataset
 forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, DataFrequency = NULL, Schema, EncryptionConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
@@ -480,6 +484,8 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset_group
+#'
+#' @aliases forecastservice_create_dataset_group
 forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, DatasetArns = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetGroup",
@@ -653,6 +659,8 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset_import_job
+#'
+#' @aliases forecastservice_create_dataset_import_job
 forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, TimeZone = NULL, UseGeolocationForTimeZone = NULL, GeolocationFormat = NULL, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
@@ -850,6 +858,8 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_explainability
+#'
+#' @aliases forecastservice_create_explainability
 forecastservice_create_explainability <- function(ExplainabilityName, ResourceArn, ExplainabilityConfig, DataSource = NULL, Schema = NULL, EnableVisualization = NULL, StartDateTime = NULL, EndDateTime = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateExplainability",
@@ -954,6 +964,8 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_explainability_export
+#'
+#' @aliases forecastservice_create_explainability_export
 forecastservice_create_explainability_export <- function(ExplainabilityExportName, ExplainabilityArn, Destination, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreateExplainabilityExport",
@@ -1114,6 +1126,8 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_forecast
+#'
+#' @aliases forecastservice_create_forecast
 forecastservice_create_forecast <- function(ForecastName, PredictorArn, ForecastTypes = NULL, Tags = NULL, TimeSeriesSelector = NULL) {
   op <- new_operation(
     name = "CreateForecast",
@@ -1240,6 +1254,8 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_forecast_export_job
+#'
+#' @aliases forecastservice_create_forecast_export_job
 forecastservice_create_forecast_export_job <- function(ForecastExportJobName, ForecastArn, Destination, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreateForecastExportJob",
@@ -1299,6 +1315,8 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_monitor
+#'
+#' @aliases forecastservice_create_monitor
 forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateMonitor",
@@ -1612,6 +1630,8 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_predictor
+#'
+#' @aliases forecastservice_create_predictor
 forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, ForecastTypes = NULL, PerformAutoML = NULL, AutoMLOverrideStrategy = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL, Tags = NULL, OptimizationMetric = NULL) {
   op <- new_operation(
     name = "CreatePredictor",
@@ -1725,6 +1745,8 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_predictor_backtest_export_job
+#'
+#' @aliases forecastservice_create_predictor_backtest_export_job
 forecastservice_create_predictor_backtest_export_job <- function(PredictorBacktestExportJobName, PredictorArn, Destination, Tags = NULL, Format = NULL) {
   op <- new_operation(
     name = "CreatePredictorBacktestExportJob",
@@ -1775,6 +1797,8 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_dataset
+#'
+#' @aliases forecastservice_delete_dataset
 forecastservice_delete_dataset <- function(DatasetArn) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -1823,6 +1847,8 @@ forecastservice_delete_dataset <- function(DatasetArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_dataset_group
+#'
+#' @aliases forecastservice_delete_dataset_group
 forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
   op <- new_operation(
     name = "DeleteDatasetGroup",
@@ -1869,6 +1895,8 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_dataset_import_job
+#'
+#' @aliases forecastservice_delete_dataset_import_job
 forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
   op <- new_operation(
     name = "DeleteDatasetImportJob",
@@ -1914,6 +1942,8 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_explainability
+#'
+#' @aliases forecastservice_delete_explainability
 forecastservice_delete_explainability <- function(ExplainabilityArn) {
   op <- new_operation(
     name = "DeleteExplainability",
@@ -1954,6 +1984,8 @@ forecastservice_delete_explainability <- function(ExplainabilityArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_explainability_export
+#'
+#' @aliases forecastservice_delete_explainability_export
 forecastservice_delete_explainability_export <- function(ExplainabilityExportArn) {
   op <- new_operation(
     name = "DeleteExplainabilityExport",
@@ -2001,6 +2033,8 @@ forecastservice_delete_explainability_export <- function(ExplainabilityExportArn
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_forecast
+#'
+#' @aliases forecastservice_delete_forecast
 forecastservice_delete_forecast <- function(ForecastArn) {
   op <- new_operation(
     name = "DeleteForecast",
@@ -2047,6 +2081,8 @@ forecastservice_delete_forecast <- function(ForecastArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_forecast_export_job
+#'
+#' @aliases forecastservice_delete_forecast_export_job
 forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
   op <- new_operation(
     name = "DeleteForecastExportJob",
@@ -2089,6 +2125,8 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_monitor
+#'
+#' @aliases forecastservice_delete_monitor
 forecastservice_delete_monitor <- function(MonitorArn) {
   op <- new_operation(
     name = "DeleteMonitor",
@@ -2135,6 +2173,8 @@ forecastservice_delete_monitor <- function(MonitorArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_predictor
+#'
+#' @aliases forecastservice_delete_predictor
 forecastservice_delete_predictor <- function(PredictorArn) {
   op <- new_operation(
     name = "DeletePredictor",
@@ -2177,6 +2217,8 @@ forecastservice_delete_predictor <- function(PredictorArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_predictor_backtest_export_job
+#'
+#' @aliases forecastservice_delete_predictor_backtest_export_job
 forecastservice_delete_predictor_backtest_export_job <- function(PredictorBacktestExportJobArn) {
   op <- new_operation(
     name = "DeletePredictorBacktestExportJob",
@@ -2240,6 +2282,8 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
 #' @keywords internal
 #'
 #' @rdname forecastservice_delete_resource_tree
+#'
+#' @aliases forecastservice_delete_resource_tree
 forecastservice_delete_resource_tree <- function(ResourceArn) {
   op <- new_operation(
     name = "DeleteResourceTree",
@@ -2350,6 +2394,8 @@ forecastservice_delete_resource_tree <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_auto_predictor
+#'
+#' @aliases forecastservice_describe_auto_predictor
 forecastservice_describe_auto_predictor <- function(PredictorArn) {
   op <- new_operation(
     name = "DescribeAutoPredictor",
@@ -2430,6 +2476,8 @@ forecastservice_describe_auto_predictor <- function(PredictorArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_dataset
+#'
+#' @aliases forecastservice_describe_dataset
 forecastservice_describe_dataset <- function(DatasetArn) {
   op <- new_operation(
     name = "DescribeDataset",
@@ -2501,6 +2549,8 @@ forecastservice_describe_dataset <- function(DatasetArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_dataset_group
+#'
+#' @aliases forecastservice_describe_dataset_group
 forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
   op <- new_operation(
     name = "DescribeDatasetGroup",
@@ -2605,6 +2655,8 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_dataset_import_job
+#'
+#' @aliases forecastservice_describe_dataset_import_job
 forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
   op <- new_operation(
     name = "DescribeDatasetImportJob",
@@ -2686,6 +2738,8 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_explainability
+#'
+#' @aliases forecastservice_describe_explainability
 forecastservice_describe_explainability <- function(ExplainabilityArn) {
   op <- new_operation(
     name = "DescribeExplainability",
@@ -2752,6 +2806,8 @@ forecastservice_describe_explainability <- function(ExplainabilityArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_explainability_export
+#'
+#' @aliases forecastservice_describe_explainability_export
 forecastservice_describe_explainability_export <- function(ExplainabilityExportArn) {
   op <- new_operation(
     name = "DescribeExplainabilityExport",
@@ -2848,6 +2904,8 @@ forecastservice_describe_explainability_export <- function(ExplainabilityExportA
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_forecast
+#'
+#' @aliases forecastservice_describe_forecast
 forecastservice_describe_forecast <- function(ForecastArn) {
   op <- new_operation(
     name = "DescribeForecast",
@@ -2926,6 +2984,8 @@ forecastservice_describe_forecast <- function(ForecastArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_forecast_export_job
+#'
+#' @aliases forecastservice_describe_forecast_export_job
 forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
   op <- new_operation(
     name = "DescribeForecastExportJob",
@@ -3012,6 +3072,8 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_monitor
+#'
+#' @aliases forecastservice_describe_monitor
 forecastservice_describe_monitor <- function(MonitorArn) {
   op <- new_operation(
     name = "DescribeMonitor",
@@ -3194,6 +3256,8 @@ forecastservice_describe_monitor <- function(MonitorArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_predictor
+#'
+#' @aliases forecastservice_describe_predictor
 forecastservice_describe_predictor <- function(PredictorArn) {
   op <- new_operation(
     name = "DescribePredictor",
@@ -3273,6 +3337,8 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_describe_predictor_backtest_export_job
+#'
+#' @aliases forecastservice_describe_predictor_backtest_export_job
 forecastservice_describe_predictor_backtest_export_job <- function(PredictorBacktestExportJobArn) {
   op <- new_operation(
     name = "DescribePredictorBacktestExportJob",
@@ -3380,6 +3446,8 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
 #' @keywords internal
 #'
 #' @rdname forecastservice_get_accuracy_metrics
+#'
+#' @aliases forecastservice_get_accuracy_metrics
 forecastservice_get_accuracy_metrics <- function(PredictorArn) {
   op <- new_operation(
     name = "GetAccuracyMetrics",
@@ -3449,6 +3517,8 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_dataset_groups
+#'
+#' @aliases forecastservice_list_dataset_groups
 forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatasetGroups",
@@ -3556,6 +3626,8 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_dataset_import_jobs
+#'
+#' @aliases forecastservice_list_dataset_import_jobs
 forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListDatasetImportJobs",
@@ -3624,6 +3696,8 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_datasets
+#'
+#' @aliases forecastservice_list_datasets
 forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatasets",
@@ -3722,6 +3796,8 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_explainabilities
+#'
+#' @aliases forecastservice_list_explainabilities
 forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListExplainabilities",
@@ -3823,6 +3899,8 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_explainability_exports
+#'
+#' @aliases forecastservice_list_explainability_exports
 forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListExplainabilityExports",
@@ -3930,6 +4008,8 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_forecast_export_jobs
+#'
+#' @aliases forecastservice_list_forecast_export_jobs
 forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListForecastExportJobs",
@@ -4030,6 +4110,8 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_forecasts
+#'
+#' @aliases forecastservice_list_forecasts
 forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListForecasts",
@@ -4151,6 +4233,8 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_monitor_evaluations
+#'
+#' @aliases forecastservice_list_monitor_evaluations
 forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResults = NULL, MonitorArn, Filters = NULL) {
   op <- new_operation(
     name = "ListMonitorEvaluations",
@@ -4248,6 +4332,8 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_monitors
+#'
+#' @aliases forecastservice_list_monitors
 forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListMonitors",
@@ -4352,6 +4438,8 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_predictor_backtest_export_jobs
+#'
+#' @aliases forecastservice_list_predictor_backtest_export_jobs
 forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListPredictorBacktestExportJobs",
@@ -4459,6 +4547,8 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_predictors
+#'
+#' @aliases forecastservice_list_predictors
 forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListPredictors",
@@ -4510,6 +4600,8 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname forecastservice_list_tags_for_resource
+#'
+#' @aliases forecastservice_list_tags_for_resource
 forecastservice_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4550,6 +4642,8 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_resume_resource
+#'
+#' @aliases forecastservice_resume_resource
 forecastservice_resume_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ResumeResource",
@@ -4613,6 +4707,8 @@ forecastservice_resume_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_stop_resource
+#'
+#' @aliases forecastservice_stop_resource
 forecastservice_stop_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "StopResource",
@@ -4692,6 +4788,8 @@ forecastservice_stop_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_tag_resource
+#'
+#' @aliases forecastservice_tag_resource
 forecastservice_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4737,6 +4835,8 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_untag_resource
+#'
+#' @aliases forecastservice_untag_resource
 forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4787,6 +4887,8 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname forecastservice_update_dataset_group
+#'
+#' @aliases forecastservice_update_dataset_group
 forecastservice_update_dataset_group <- function(DatasetGroupArn, DatasetArns) {
   op <- new_operation(
     name = "UpdateDatasetGroup",

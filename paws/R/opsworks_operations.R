@@ -45,6 +45,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname opsworks_assign_instance
+#'
+#' @aliases opsworks_assign_instance
 opsworks_assign_instance <- function(InstanceId, LayerIds) {
   op <- new_operation(
     name = "AssignInstance",
@@ -101,6 +103,8 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' @keywords internal
 #'
 #' @rdname opsworks_assign_volume
+#'
+#' @aliases opsworks_assign_volume
 opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
   op <- new_operation(
     name = "AssignVolume",
@@ -154,6 +158,8 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_associate_elastic_ip
+#'
+#' @aliases opsworks_associate_elastic_ip
 opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
   op <- new_operation(
     name = "AssociateElasticIp",
@@ -212,6 +218,8 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_attach_elastic_load_balancer
+#'
+#' @aliases opsworks_attach_elastic_load_balancer
 opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, LayerId) {
   op <- new_operation(
     name = "AttachElasticLoadBalancer",
@@ -516,6 +524,8 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @keywords internal
 #'
 #' @rdname opsworks_clone_stack
+#'
+#' @aliases opsworks_clone_stack
 opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcId = NULL, Attributes = NULL, ServiceRoleArn, DefaultInstanceProfileArn = NULL, DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL, DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL, ChefConfiguration = NULL, UseCustomCookbooks = NULL, UseOpsworksSecurityGroups = NULL, CustomCookbooksSource = NULL, DefaultSshKeyName = NULL, ClonePermissions = NULL, CloneAppIds = NULL, DefaultRootDeviceType = NULL, AgentVersion = NULL) {
   op <- new_operation(
     name = "CloneStack",
@@ -641,6 +651,8 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 #' @keywords internal
 #'
 #' @rdname opsworks_create_app
+#'
+#' @aliases opsworks_create_app
 opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = NULL, DataSources = NULL, Type, AppSource = NULL, Domains = NULL, EnableSsl = NULL, SslConfiguration = NULL, Attributes = NULL, Environment = NULL) {
   op <- new_operation(
     name = "CreateApp",
@@ -731,6 +743,8 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 #' @keywords internal
 #'
 #' @rdname opsworks_create_deployment
+#'
+#' @aliases opsworks_create_deployment
 opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL, LayerIds = NULL, Command, Comment = NULL, CustomJson = NULL) {
   op <- new_operation(
     name = "CreateDeployment",
@@ -935,6 +949,8 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @keywords internal
 #'
 #' @rdname opsworks_create_instance
+#'
+#' @aliases opsworks_create_instance
 opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalingType = NULL, Hostname = NULL, Os = NULL, AmiId = NULL, SshKeyName = NULL, AvailabilityZone = NULL, VirtualizationType = NULL, SubnetId = NULL, Architecture = NULL, RootDeviceType = NULL, BlockDeviceMappings = NULL, InstallUpdatesOnBoot = NULL, EbsOptimized = NULL, AgentVersion = NULL, Tenancy = NULL) {
   op <- new_operation(
     name = "CreateInstance",
@@ -1126,6 +1142,8 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 #' @keywords internal
 #'
 #' @rdname opsworks_create_layer
+#'
+#' @aliases opsworks_create_layer
 opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = NULL, CloudWatchLogsConfiguration = NULL, CustomInstanceProfileArn = NULL, CustomJson = NULL, CustomSecurityGroupIds = NULL, Packages = NULL, VolumeConfigurations = NULL, EnableAutoHealing = NULL, AutoAssignElasticIps = NULL, AutoAssignPublicIps = NULL, CustomRecipes = NULL, InstallUpdatesOnBoot = NULL, UseEbsOptimizedInstances = NULL, LifecycleEventConfiguration = NULL) {
   op <- new_operation(
     name = "CreateLayer",
@@ -1430,6 +1448,8 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' @keywords internal
 #'
 #' @rdname opsworks_create_stack
+#'
+#' @aliases opsworks_create_stack
 opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL, ServiceRoleArn, DefaultInstanceProfileArn, DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL, DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL, ChefConfiguration = NULL, UseCustomCookbooks = NULL, UseOpsworksSecurityGroups = NULL, CustomCookbooksSource = NULL, DefaultSshKeyName = NULL, DefaultRootDeviceType = NULL, AgentVersion = NULL) {
   op <- new_operation(
     name = "CreateStack",
@@ -1494,6 +1514,8 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 #' @keywords internal
 #'
 #' @rdname opsworks_create_user_profile
+#'
+#' @aliases opsworks_create_user_profile
 opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPublicKey = NULL, AllowSelfManagement = NULL) {
   op <- new_operation(
     name = "CreateUserProfile",
@@ -1540,6 +1562,8 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' @keywords internal
 #'
 #' @rdname opsworks_delete_app
+#'
+#' @aliases opsworks_delete_app
 opsworks_delete_app <- function(AppId) {
   op <- new_operation(
     name = "DeleteApp",
@@ -1595,6 +1619,8 @@ opsworks_delete_app <- function(AppId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_delete_instance
+#'
+#' @aliases opsworks_delete_instance
 opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteVolumes = NULL) {
   op <- new_operation(
     name = "DeleteInstance",
@@ -1644,6 +1670,8 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 #' @keywords internal
 #'
 #' @rdname opsworks_delete_layer
+#'
+#' @aliases opsworks_delete_layer
 opsworks_delete_layer <- function(LayerId) {
   op <- new_operation(
     name = "DeleteLayer",
@@ -1693,6 +1721,8 @@ opsworks_delete_layer <- function(LayerId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_delete_stack
+#'
+#' @aliases opsworks_delete_stack
 opsworks_delete_stack <- function(StackId) {
   op <- new_operation(
     name = "DeleteStack",
@@ -1738,6 +1768,8 @@ opsworks_delete_stack <- function(StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_delete_user_profile
+#'
+#' @aliases opsworks_delete_user_profile
 opsworks_delete_user_profile <- function(IamUserArn) {
   op <- new_operation(
     name = "DeleteUserProfile",
@@ -1786,6 +1818,8 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 #' @keywords internal
 #'
 #' @rdname opsworks_deregister_ecs_cluster
+#'
+#' @aliases opsworks_deregister_ecs_cluster
 opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
   op <- new_operation(
     name = "DeregisterEcsCluster",
@@ -1834,6 +1868,8 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 #' @keywords internal
 #'
 #' @rdname opsworks_deregister_elastic_ip
+#'
+#' @aliases opsworks_deregister_elastic_ip
 opsworks_deregister_elastic_ip <- function(ElasticIp) {
   op <- new_operation(
     name = "DeregisterElasticIp",
@@ -1883,6 +1919,8 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 #' @keywords internal
 #'
 #' @rdname opsworks_deregister_instance
+#'
+#' @aliases opsworks_deregister_instance
 opsworks_deregister_instance <- function(InstanceId) {
   op <- new_operation(
     name = "DeregisterInstance",
@@ -1929,6 +1967,8 @@ opsworks_deregister_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_deregister_rds_db_instance
+#'
+#' @aliases opsworks_deregister_rds_db_instance
 opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
   op <- new_operation(
     name = "DeregisterRdsDbInstance",
@@ -1979,6 +2019,8 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 #' @keywords internal
 #'
 #' @rdname opsworks_deregister_volume
+#'
+#' @aliases opsworks_deregister_volume
 opsworks_deregister_volume <- function(VolumeId) {
   op <- new_operation(
     name = "DeregisterVolume",
@@ -2041,6 +2083,8 @@ opsworks_deregister_volume <- function(VolumeId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_agent_versions
+#'
+#' @aliases opsworks_describe_agent_versions
 opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManager = NULL) {
   op <- new_operation(
     name = "DescribeAgentVersions",
@@ -2147,6 +2191,8 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_apps
+#'
+#' @aliases opsworks_describe_apps
 opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
   op <- new_operation(
     name = "DescribeApps",
@@ -2226,6 +2272,8 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_commands
+#'
+#' @aliases opsworks_describe_commands
 opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, CommandIds = NULL) {
   op <- new_operation(
     name = "DescribeCommands",
@@ -2313,6 +2361,8 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_deployments
+#'
+#' @aliases opsworks_describe_deployments
 opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, DeploymentIds = NULL) {
   op <- new_operation(
     name = "DescribeDeployments",
@@ -2398,6 +2448,8 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_ecs_clusters
+#'
+#' @aliases opsworks_describe_ecs_clusters
 opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeEcsClusters",
@@ -2475,6 +2527,8 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_elastic_ips
+#'
+#' @aliases opsworks_describe_elastic_ips
 opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips = NULL) {
   op <- new_operation(
     name = "DescribeElasticIps",
@@ -2552,6 +2606,8 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_elastic_load_balancers
+#'
+#' @aliases opsworks_describe_elastic_load_balancers
 opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = NULL) {
   op <- new_operation(
     name = "DescribeElasticLoadBalancers",
@@ -2683,6 +2739,8 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_instances
+#'
+#' @aliases opsworks_describe_instances
 opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, InstanceIds = NULL) {
   op <- new_operation(
     name = "DescribeInstances",
@@ -2840,6 +2898,8 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_layers
+#'
+#' @aliases opsworks_describe_layers
 opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
   op <- new_operation(
     name = "DescribeLayers",
@@ -2922,6 +2982,8 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_load_based_auto_scaling
+#'
+#' @aliases opsworks_describe_load_based_auto_scaling
 opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
   op <- new_operation(
     name = "DescribeLoadBasedAutoScaling",
@@ -2973,6 +3035,8 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_my_user_profile
+#'
+#' @aliases opsworks_describe_my_user_profile
 opsworks_describe_my_user_profile <- function() {
   op <- new_operation(
     name = "DescribeMyUserProfile",
@@ -3030,6 +3094,8 @@ opsworks_describe_my_user_profile <- function() {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_operating_systems
+#'
+#' @aliases opsworks_describe_operating_systems
 opsworks_describe_operating_systems <- function() {
   op <- new_operation(
     name = "DescribeOperatingSystems",
@@ -3093,6 +3159,8 @@ opsworks_describe_operating_systems <- function() {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_permissions
+#'
+#' @aliases opsworks_describe_permissions
 opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
   op <- new_operation(
     name = "DescribePermissions",
@@ -3173,6 +3241,8 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_raid_arrays
+#'
+#' @aliases opsworks_describe_raid_arrays
 opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, RaidArrayIds = NULL) {
   op <- new_operation(
     name = "DescribeRaidArrays",
@@ -3243,6 +3313,8 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_rds_db_instances
+#'
+#' @aliases opsworks_describe_rds_db_instances
 opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL) {
   op <- new_operation(
     name = "DescribeRdsDbInstances",
@@ -3318,6 +3390,8 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_service_errors
+#'
+#' @aliases opsworks_describe_service_errors
 opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, ServiceErrorIds = NULL) {
   op <- new_operation(
     name = "DescribeServiceErrors",
@@ -3372,6 +3446,8 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_stack_provisioning_parameters
+#'
+#' @aliases opsworks_describe_stack_provisioning_parameters
 opsworks_describe_stack_provisioning_parameters <- function(StackId) {
   op <- new_operation(
     name = "DescribeStackProvisioningParameters",
@@ -3453,6 +3529,8 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_stack_summary
+#'
+#' @aliases opsworks_describe_stack_summary
 opsworks_describe_stack_summary <- function(StackId) {
   op <- new_operation(
     name = "DescribeStackSummary",
@@ -3548,6 +3626,8 @@ opsworks_describe_stack_summary <- function(StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_stacks
+#'
+#' @aliases opsworks_describe_stacks
 opsworks_describe_stacks <- function(StackIds = NULL) {
   op <- new_operation(
     name = "DescribeStacks",
@@ -3631,6 +3711,8 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_time_based_auto_scaling
+#'
+#' @aliases opsworks_describe_time_based_auto_scaling
 opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
   op <- new_operation(
     name = "DescribeTimeBasedAutoScaling",
@@ -3692,6 +3774,8 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_user_profiles
+#'
+#' @aliases opsworks_describe_user_profiles
 opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
   op <- new_operation(
     name = "DescribeUserProfiles",
@@ -3778,6 +3862,8 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_describe_volumes
+#'
+#' @aliases opsworks_describe_volumes
 opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArrayId = NULL, VolumeIds = NULL) {
   op <- new_operation(
     name = "DescribeVolumes",
@@ -3827,6 +3913,8 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 #' @keywords internal
 #'
 #' @rdname opsworks_detach_elastic_load_balancer
+#'
+#' @aliases opsworks_detach_elastic_load_balancer
 opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, LayerId) {
   op <- new_operation(
     name = "DetachElasticLoadBalancer",
@@ -3875,6 +3963,8 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @keywords internal
 #'
 #' @rdname opsworks_disassociate_elastic_ip
+#'
+#' @aliases opsworks_disassociate_elastic_ip
 opsworks_disassociate_elastic_ip <- function(ElasticIp) {
   op <- new_operation(
     name = "DisassociateElasticIp",
@@ -3929,6 +4019,8 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #' @keywords internal
 #'
 #' @rdname opsworks_get_hostname_suggestion
+#'
+#' @aliases opsworks_get_hostname_suggestion
 opsworks_get_hostname_suggestion <- function(LayerId) {
   op <- new_operation(
     name = "GetHostnameSuggestion",
@@ -3986,6 +4078,8 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_grant_access
+#'
+#' @aliases opsworks_grant_access
 opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
   op <- new_operation(
     name = "GrantAccess",
@@ -4040,6 +4134,8 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_list_tags
+#'
+#' @aliases opsworks_list_tags
 opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -4088,6 +4184,8 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname opsworks_reboot_instance
+#'
+#' @aliases opsworks_reboot_instance
 opsworks_reboot_instance <- function(InstanceId) {
   op <- new_operation(
     name = "RebootInstance",
@@ -4144,6 +4242,8 @@ opsworks_reboot_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_register_ecs_cluster
+#'
+#' @aliases opsworks_register_ecs_cluster
 opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
   op <- new_operation(
     name = "RegisterEcsCluster",
@@ -4202,6 +4302,8 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_register_elastic_ip
+#'
+#' @aliases opsworks_register_elastic_ip
 opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
   op <- new_operation(
     name = "RegisterElasticIp",
@@ -4289,6 +4391,8 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_register_instance
+#'
+#' @aliases opsworks_register_instance
 opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL, PrivateIp = NULL, RsaPublicKey = NULL, RsaPublicKeyFingerprint = NULL, InstanceIdentity = NULL) {
   op <- new_operation(
     name = "RegisterInstance",
@@ -4342,6 +4446,8 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 #' @keywords internal
 #'
 #' @rdname opsworks_register_rds_db_instance
+#'
+#' @aliases opsworks_register_rds_db_instance
 opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser, DbPassword) {
   op <- new_operation(
     name = "RegisterRdsDbInstance",
@@ -4400,6 +4506,8 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 #' @keywords internal
 #'
 #' @rdname opsworks_register_volume
+#'
+#' @aliases opsworks_register_volume
 opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
   op <- new_operation(
     name = "RegisterVolume",
@@ -4486,6 +4594,8 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_set_load_based_auto_scaling
+#'
+#' @aliases opsworks_set_load_based_auto_scaling
 opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScaling = NULL, DownScaling = NULL) {
   op <- new_operation(
     name = "SetLoadBasedAutoScaling",
@@ -4556,6 +4666,8 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' @keywords internal
 #'
 #' @rdname opsworks_set_permission
+#'
+#' @aliases opsworks_set_permission
 opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowSudo = NULL, Level = NULL) {
   op <- new_operation(
     name = "SetPermission",
@@ -4630,6 +4742,8 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #' @keywords internal
 #'
 #' @rdname opsworks_set_time_based_auto_scaling
+#'
+#' @aliases opsworks_set_time_based_auto_scaling
 opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule = NULL) {
   op <- new_operation(
     name = "SetTimeBasedAutoScaling",
@@ -4678,6 +4792,8 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 #' @keywords internal
 #'
 #' @rdname opsworks_start_instance
+#'
+#' @aliases opsworks_start_instance
 opsworks_start_instance <- function(InstanceId) {
   op <- new_operation(
     name = "StartInstance",
@@ -4724,6 +4840,8 @@ opsworks_start_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_start_stack
+#'
+#' @aliases opsworks_start_stack
 opsworks_start_stack <- function(StackId) {
   op <- new_operation(
     name = "StartStack",
@@ -4782,6 +4900,8 @@ opsworks_start_stack <- function(StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_stop_instance
+#'
+#' @aliases opsworks_stop_instance
 opsworks_stop_instance <- function(InstanceId, Force = NULL) {
   op <- new_operation(
     name = "StopInstance",
@@ -4828,6 +4948,8 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_stop_stack
+#'
+#' @aliases opsworks_stop_stack
 opsworks_stop_stack <- function(StackId) {
   op <- new_operation(
     name = "StopStack",
@@ -4892,6 +5014,8 @@ opsworks_stop_stack <- function(StackId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_tag_resource
+#'
+#' @aliases opsworks_tag_resource
 opsworks_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4942,6 +5066,8 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname opsworks_unassign_instance
+#'
+#' @aliases opsworks_unassign_instance
 opsworks_unassign_instance <- function(InstanceId) {
   op <- new_operation(
     name = "UnassignInstance",
@@ -4990,6 +5116,8 @@ opsworks_unassign_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_unassign_volume
+#'
+#' @aliases opsworks_unassign_volume
 opsworks_unassign_volume <- function(VolumeId) {
   op <- new_operation(
     name = "UnassignVolume",
@@ -5034,6 +5162,8 @@ opsworks_unassign_volume <- function(VolumeId) {
 #' @keywords internal
 #'
 #' @rdname opsworks_untag_resource
+#'
+#' @aliases opsworks_untag_resource
 opsworks_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5145,6 +5275,8 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname opsworks_update_app
+#'
+#' @aliases opsworks_update_app
 opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSources = NULL, Type = NULL, AppSource = NULL, Domains = NULL, EnableSsl = NULL, SslConfiguration = NULL, Attributes = NULL, Environment = NULL) {
   op <- new_operation(
     name = "UpdateApp",
@@ -5195,6 +5327,8 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 #' @keywords internal
 #'
 #' @rdname opsworks_update_elastic_ip
+#'
+#' @aliases opsworks_update_elastic_ip
 opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
   op <- new_operation(
     name = "UpdateElasticIp",
@@ -5342,6 +5476,8 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_update_instance
+#'
+#' @aliases opsworks_update_instance
 opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType = NULL, AutoScalingType = NULL, Hostname = NULL, Os = NULL, AmiId = NULL, SshKeyName = NULL, Architecture = NULL, InstallUpdatesOnBoot = NULL, EbsOptimized = NULL, AgentVersion = NULL) {
   op <- new_operation(
     name = "UpdateInstance",
@@ -5510,6 +5646,8 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' @keywords internal
 #'
 #' @rdname opsworks_update_layer
+#'
+#' @aliases opsworks_update_layer
 opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attributes = NULL, CloudWatchLogsConfiguration = NULL, CustomInstanceProfileArn = NULL, CustomJson = NULL, CustomSecurityGroupIds = NULL, Packages = NULL, VolumeConfigurations = NULL, EnableAutoHealing = NULL, AutoAssignElasticIps = NULL, AutoAssignPublicIps = NULL, CustomRecipes = NULL, InstallUpdatesOnBoot = NULL, UseEbsOptimizedInstances = NULL, LifecycleEventConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateLayer",
@@ -5556,6 +5694,8 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 #' @keywords internal
 #'
 #' @rdname opsworks_update_my_user_profile
+#'
+#' @aliases opsworks_update_my_user_profile
 opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
   op <- new_operation(
     name = "UpdateMyUserProfile",
@@ -5606,6 +5746,8 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworks_update_rds_db_instance
+#'
+#' @aliases opsworks_update_rds_db_instance
 opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbPassword = NULL) {
   op <- new_operation(
     name = "UpdateRdsDbInstance",
@@ -5849,6 +5991,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' @keywords internal
 #'
 #' @rdname opsworks_update_stack
+#'
+#' @aliases opsworks_update_stack
 opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, ServiceRoleArn = NULL, DefaultInstanceProfileArn = NULL, DefaultOs = NULL, HostnameTheme = NULL, DefaultAvailabilityZone = NULL, DefaultSubnetId = NULL, CustomJson = NULL, ConfigurationManager = NULL, ChefConfiguration = NULL, UseCustomCookbooks = NULL, CustomCookbooksSource = NULL, DefaultSshKeyName = NULL, DefaultRootDeviceType = NULL, UseOpsworksSecurityGroups = NULL, AgentVersion = NULL) {
   op <- new_operation(
     name = "UpdateStack",
@@ -5907,6 +6051,8 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 #' @keywords internal
 #'
 #' @rdname opsworks_update_user_profile
+#'
+#' @aliases opsworks_update_user_profile
 opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPublicKey = NULL, AllowSelfManagement = NULL) {
   op <- new_operation(
     name = "UpdateUserProfile",
@@ -5959,6 +6105,8 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 #' @keywords internal
 #'
 #' @rdname opsworks_update_volume
+#'
+#' @aliases opsworks_update_volume
 opsworks_update_volume <- function(VolumeId, Name = NULL, MountPoint = NULL) {
   op <- new_operation(
     name = "UpdateVolume",

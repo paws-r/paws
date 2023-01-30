@@ -34,6 +34,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname worklink_associate_domain
+#'
+#' @aliases worklink_associate_domain
 worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, AcmCertificateArn) {
   op <- new_operation(
     name = "AssociateDomain",
@@ -87,6 +89,8 @@ worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, 
 #' @keywords internal
 #'
 #' @rdname worklink_associate_website_authorization_provider
+#'
+#' @aliases worklink_associate_website_authorization_provider
 worklink_associate_website_authorization_provider <- function(FleetArn, AuthorizationProviderType, DomainName = NULL) {
   op <- new_operation(
     name = "AssociateWebsiteAuthorizationProvider",
@@ -141,6 +145,8 @@ worklink_associate_website_authorization_provider <- function(FleetArn, Authoriz
 #' @keywords internal
 #'
 #' @rdname worklink_associate_website_certificate_authority
+#'
+#' @aliases worklink_associate_website_certificate_authority
 worklink_associate_website_certificate_authority <- function(FleetArn, Certificate, DisplayName = NULL) {
   op <- new_operation(
     name = "AssociateWebsiteCertificateAuthority",
@@ -199,6 +205,8 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
 #' @keywords internal
 #'
 #' @rdname worklink_create_fleet
+#'
+#' @aliases worklink_create_fleet
 worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndUserLocation = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFleet",
@@ -240,6 +248,8 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
 #' @keywords internal
 #'
 #' @rdname worklink_delete_fleet
+#'
+#' @aliases worklink_delete_fleet
 worklink_delete_fleet <- function(FleetArn) {
   op <- new_operation(
     name = "DeleteFleet",
@@ -287,6 +297,8 @@ worklink_delete_fleet <- function(FleetArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_audit_stream_configuration
+#'
+#' @aliases worklink_describe_audit_stream_configuration
 worklink_describe_audit_stream_configuration <- function(FleetArn) {
   op <- new_operation(
     name = "DescribeAuditStreamConfiguration",
@@ -340,6 +352,8 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_company_network_configuration
+#'
+#' @aliases worklink_describe_company_network_configuration
 worklink_describe_company_network_configuration <- function(FleetArn) {
   op <- new_operation(
     name = "DescribeCompanyNetworkConfiguration",
@@ -399,6 +413,8 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_device
+#'
+#' @aliases worklink_describe_device
 worklink_describe_device <- function(FleetArn, DeviceId) {
   op <- new_operation(
     name = "DescribeDevice",
@@ -444,6 +460,8 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_device_policy_configuration
+#'
+#' @aliases worklink_describe_device_policy_configuration
 worklink_describe_device_policy_configuration <- function(FleetArn) {
   op <- new_operation(
     name = "DescribeDevicePolicyConfiguration",
@@ -497,6 +515,8 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_domain
+#'
+#' @aliases worklink_describe_domain
 worklink_describe_domain <- function(FleetArn, DomainName) {
   op <- new_operation(
     name = "DescribeDomain",
@@ -557,6 +577,8 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_fleet_metadata
+#'
+#' @aliases worklink_describe_fleet_metadata
 worklink_describe_fleet_metadata <- function(FleetArn) {
   op <- new_operation(
     name = "DescribeFleetMetadata",
@@ -604,6 +626,8 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_identity_provider_configuration
+#'
+#' @aliases worklink_describe_identity_provider_configuration
 worklink_describe_identity_provider_configuration <- function(FleetArn) {
   op <- new_operation(
     name = "DescribeIdentityProviderConfiguration",
@@ -655,6 +679,8 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_describe_website_certificate_authority
+#'
+#' @aliases worklink_describe_website_certificate_authority
 worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaId) {
   op <- new_operation(
     name = "DescribeWebsiteCertificateAuthority",
@@ -698,6 +724,8 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
 #' @keywords internal
 #'
 #' @rdname worklink_disassociate_domain
+#'
+#' @aliases worklink_disassociate_domain
 worklink_disassociate_domain <- function(FleetArn, DomainName) {
   op <- new_operation(
     name = "DisassociateDomain",
@@ -743,6 +771,8 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
 #' @keywords internal
 #'
 #' @rdname worklink_disassociate_website_authorization_provider
+#'
+#' @aliases worklink_disassociate_website_authorization_provider
 worklink_disassociate_website_authorization_provider <- function(FleetArn, AuthorizationProviderId) {
   op <- new_operation(
     name = "DisassociateWebsiteAuthorizationProvider",
@@ -786,6 +816,8 @@ worklink_disassociate_website_authorization_provider <- function(FleetArn, Autho
 #' @keywords internal
 #'
 #' @rdname worklink_disassociate_website_certificate_authority
+#'
+#' @aliases worklink_disassociate_website_certificate_authority
 worklink_disassociate_website_certificate_authority <- function(FleetArn, WebsiteCaId) {
   op <- new_operation(
     name = "DisassociateWebsiteCertificateAuthority",
@@ -842,6 +874,8 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
 #' @keywords internal
 #'
 #' @rdname worklink_list_devices
+#'
+#' @aliases worklink_list_devices
 worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDevices",
@@ -902,6 +936,8 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #' @keywords internal
 #'
 #' @rdname worklink_list_domains
+#'
+#' @aliases worklink_list_domains
 worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -968,6 +1004,8 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #' @keywords internal
 #'
 #' @rdname worklink_list_fleets
+#'
+#' @aliases worklink_list_fleets
 worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFleets",
@@ -1015,6 +1053,8 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname worklink_list_tags_for_resource
+#'
+#' @aliases worklink_list_tags_for_resource
 worklink_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1078,6 +1118,8 @@ worklink_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname worklink_list_website_authorization_providers
+#'
+#' @aliases worklink_list_website_authorization_providers
 worklink_list_website_authorization_providers <- function(FleetArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWebsiteAuthorizationProviders",
@@ -1140,6 +1182,8 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
 #' @keywords internal
 #'
 #' @rdname worklink_list_website_certificate_authorities
+#'
+#' @aliases worklink_list_website_certificate_authorities
 worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListWebsiteCertificateAuthorities",
@@ -1182,6 +1226,8 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
 #' @keywords internal
 #'
 #' @rdname worklink_restore_domain_access
+#'
+#' @aliases worklink_restore_domain_access
 worklink_restore_domain_access <- function(FleetArn, DomainName) {
   op <- new_operation(
     name = "RestoreDomainAccess",
@@ -1224,6 +1270,8 @@ worklink_restore_domain_access <- function(FleetArn, DomainName) {
 #' @keywords internal
 #'
 #' @rdname worklink_revoke_domain_access
+#'
+#' @aliases worklink_revoke_domain_access
 worklink_revoke_domain_access <- function(FleetArn, DomainName) {
   op <- new_operation(
     name = "RevokeDomainAccess",
@@ -1267,6 +1315,8 @@ worklink_revoke_domain_access <- function(FleetArn, DomainName) {
 #' @keywords internal
 #'
 #' @rdname worklink_sign_out_user
+#'
+#' @aliases worklink_sign_out_user
 worklink_sign_out_user <- function(FleetArn, Username) {
   op <- new_operation(
     name = "SignOutUser",
@@ -1314,6 +1364,8 @@ worklink_sign_out_user <- function(FleetArn, Username) {
 #' @keywords internal
 #'
 #' @rdname worklink_tag_resource
+#'
+#' @aliases worklink_tag_resource
 worklink_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1358,6 +1410,8 @@ worklink_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname worklink_untag_resource
+#'
+#' @aliases worklink_untag_resource
 worklink_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1401,6 +1455,8 @@ worklink_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname worklink_update_audit_stream_configuration
+#'
+#' @aliases worklink_update_audit_stream_configuration
 worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn = NULL) {
   op <- new_operation(
     name = "UpdateAuditStreamConfiguration",
@@ -1453,6 +1509,8 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
 #' @keywords internal
 #'
 #' @rdname worklink_update_company_network_configuration
+#'
+#' @aliases worklink_update_company_network_configuration
 worklink_update_company_network_configuration <- function(FleetArn, VpcId, SubnetIds, SecurityGroupIds) {
   op <- new_operation(
     name = "UpdateCompanyNetworkConfiguration",
@@ -1497,6 +1555,8 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
 #' @keywords internal
 #'
 #' @rdname worklink_update_device_policy_configuration
+#'
+#' @aliases worklink_update_device_policy_configuration
 worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertificate = NULL) {
   op <- new_operation(
     name = "UpdateDevicePolicyConfiguration",
@@ -1541,6 +1601,8 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
 #' @keywords internal
 #'
 #' @rdname worklink_update_domain_metadata
+#'
+#' @aliases worklink_update_domain_metadata
 worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = NULL) {
   op <- new_operation(
     name = "UpdateDomainMetadata",
@@ -1589,6 +1651,8 @@ worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = 
 #' @keywords internal
 #'
 #' @rdname worklink_update_fleet_metadata
+#'
+#' @aliases worklink_update_fleet_metadata
 worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, OptimizeForEndUserLocation = NULL) {
   op <- new_operation(
     name = "UpdateFleetMetadata",
@@ -1635,6 +1699,8 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
 #' @keywords internal
 #'
 #' @rdname worklink_update_identity_provider_configuration
+#'
+#' @aliases worklink_update_identity_provider_configuration
 worklink_update_identity_provider_configuration <- function(FleetArn, IdentityProviderType, IdentityProviderSamlMetadata = NULL) {
   op <- new_operation(
     name = "UpdateIdentityProviderConfiguration",

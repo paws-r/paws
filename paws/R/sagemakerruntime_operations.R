@@ -118,6 +118,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint
+#'
+#' @aliases sagemakerruntime_invoke_endpoint
 sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, TargetModel = NULL, TargetVariant = NULL, TargetContainerHostname = NULL, InferenceId = NULL) {
   op <- new_operation(
     name = "InvokeEndpoint",
@@ -220,6 +222,8 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
 #' @keywords internal
 #'
 #' @rdname sagemakerruntime_invoke_endpoint_async
+#'
+#' @aliases sagemakerruntime_invoke_endpoint_async
 sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = NULL, Accept = NULL, CustomAttributes = NULL, InferenceId = NULL, InputLocation, RequestTTLSeconds = NULL) {
   op <- new_operation(
     name = "InvokeEndpointAsync",

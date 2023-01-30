@@ -57,6 +57,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname comprehend_batch_detect_dominant_language
+#'
+#' @aliases comprehend_batch_detect_dominant_language
 comprehend_batch_detect_dominant_language <- function(TextList) {
   op <- new_operation(
     name = "BatchDetectDominantLanguage",
@@ -133,6 +135,8 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' @keywords internal
 #'
 #' @rdname comprehend_batch_detect_entities
+#'
+#' @aliases comprehend_batch_detect_entities
 comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
   op <- new_operation(
     name = "BatchDetectEntities",
@@ -205,6 +209,8 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_batch_detect_key_phrases
+#'
+#' @aliases comprehend_batch_detect_key_phrases
 comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
   op <- new_operation(
     name = "BatchDetectKeyPhrases",
@@ -278,6 +284,8 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_batch_detect_sentiment
+#'
+#' @aliases comprehend_batch_detect_sentiment
 comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
   op <- new_operation(
     name = "BatchDetectSentiment",
@@ -358,6 +366,8 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_batch_detect_syntax
+#'
+#' @aliases comprehend_batch_detect_syntax
 comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
   op <- new_operation(
     name = "BatchDetectSyntax",
@@ -422,6 +432,8 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_classify_document
+#'
+#' @aliases comprehend_classify_document
 comprehend_classify_document <- function(Text, EndpointArn) {
   op <- new_operation(
     name = "ClassifyDocument",
@@ -481,6 +493,8 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_contains_pii_entities
+#'
+#' @aliases comprehend_contains_pii_entities
 comprehend_contains_pii_entities <- function(Text, LanguageCode) {
   op <- new_operation(
     name = "ContainsPiiEntities",
@@ -642,6 +656,8 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_create_document_classifier
+#'
+#' @aliases comprehend_create_document_classifier
 comprehend_create_document_classifier <- function(DocumentClassifierName, VersionName = NULL, DataAccessRoleArn, Tags = NULL, InputDataConfig, OutputDataConfig = NULL, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, Mode = NULL, ModelKmsKeyId = NULL, ModelPolicy = NULL) {
   op <- new_operation(
     name = "CreateDocumentClassifier",
@@ -719,6 +735,8 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, Versio
 #' @keywords internal
 #'
 #' @rdname comprehend_create_endpoint
+#'
+#' @aliases comprehend_create_endpoint
 comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL, DataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
@@ -880,6 +898,8 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' @keywords internal
 #'
 #' @rdname comprehend_create_entity_recognizer
+#'
+#' @aliases comprehend_create_entity_recognizer
 comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NULL, DataAccessRoleArn, Tags = NULL, InputDataConfig, ClientRequestToken = NULL, LanguageCode, VolumeKmsKeyId = NULL, VpcConfig = NULL, ModelKmsKeyId = NULL, ModelPolicy = NULL) {
   op <- new_operation(
     name = "CreateEntityRecognizer",
@@ -929,6 +949,8 @@ comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NU
 #' @keywords internal
 #'
 #' @rdname comprehend_delete_document_classifier
+#'
+#' @aliases comprehend_delete_document_classifier
 comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
   op <- new_operation(
     name = "DeleteDocumentClassifier",
@@ -972,6 +994,8 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_delete_endpoint
+#'
+#' @aliases comprehend_delete_endpoint
 comprehend_delete_endpoint <- function(EndpointArn) {
   op <- new_operation(
     name = "DeleteEndpoint",
@@ -1021,6 +1045,8 @@ comprehend_delete_endpoint <- function(EndpointArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_delete_entity_recognizer
+#'
+#' @aliases comprehend_delete_entity_recognizer
 comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
   op <- new_operation(
     name = "DeleteEntityRecognizer",
@@ -1064,6 +1090,8 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_delete_resource_policy
+#'
+#' @aliases comprehend_delete_resource_policy
 comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -1149,6 +1177,8 @@ comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NU
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_document_classification_job
+#'
+#' @aliases comprehend_describe_document_classification_job
 comprehend_describe_document_classification_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeDocumentClassificationJob",
@@ -1263,6 +1293,8 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_document_classifier
+#'
+#' @aliases comprehend_describe_document_classifier
 comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
   op <- new_operation(
     name = "DescribeDocumentClassifier",
@@ -1347,6 +1379,8 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_dominant_language_detection_job
+#'
+#' @aliases comprehend_describe_dominant_language_detection_job
 comprehend_describe_dominant_language_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeDominantLanguageDetectionJob",
@@ -1411,6 +1445,8 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_endpoint
+#'
+#' @aliases comprehend_describe_endpoint
 comprehend_describe_endpoint <- function(EndpointArn) {
   op <- new_operation(
     name = "DescribeEndpoint",
@@ -1497,6 +1533,8 @@ comprehend_describe_endpoint <- function(EndpointArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_entities_detection_job
+#'
+#' @aliases comprehend_describe_entities_detection_job
 comprehend_describe_entities_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeEntitiesDetectionJob",
@@ -1626,6 +1664,8 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_entity_recognizer
+#'
+#' @aliases comprehend_describe_entity_recognizer
 comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
   op <- new_operation(
     name = "DescribeEntityRecognizer",
@@ -1703,6 +1743,8 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_events_detection_job
+#'
+#' @aliases comprehend_describe_events_detection_job
 comprehend_describe_events_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeEventsDetectionJob",
@@ -1788,6 +1830,8 @@ comprehend_describe_events_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_key_phrases_detection_job
+#'
+#' @aliases comprehend_describe_key_phrases_detection_job
 comprehend_describe_key_phrases_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeKeyPhrasesDetectionJob",
@@ -1872,6 +1916,8 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_pii_entities_detection_job
+#'
+#' @aliases comprehend_describe_pii_entities_detection_job
 comprehend_describe_pii_entities_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribePiiEntitiesDetectionJob",
@@ -1926,6 +1972,8 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_resource_policy
+#'
+#' @aliases comprehend_describe_resource_policy
 comprehend_describe_resource_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DescribeResourcePolicy",
@@ -2011,6 +2059,8 @@ comprehend_describe_resource_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_sentiment_detection_job
+#'
+#' @aliases comprehend_describe_sentiment_detection_job
 comprehend_describe_sentiment_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeSentimentDetectionJob",
@@ -2096,6 +2146,8 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_targeted_sentiment_detection_job
+#'
+#' @aliases comprehend_describe_targeted_sentiment_detection_job
 comprehend_describe_targeted_sentiment_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeTargetedSentimentDetectionJob",
@@ -2180,6 +2232,8 @@ comprehend_describe_targeted_sentiment_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_describe_topics_detection_job
+#'
+#' @aliases comprehend_describe_topics_detection_job
 comprehend_describe_topics_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeTopicsDetectionJob",
@@ -2234,6 +2288,8 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_dominant_language
+#'
+#' @aliases comprehend_detect_dominant_language
 comprehend_detect_dominant_language <- function(Text) {
   op <- new_operation(
     name = "DetectDominantLanguage",
@@ -2309,6 +2365,8 @@ comprehend_detect_dominant_language <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_entities
+#'
+#' @aliases comprehend_detect_entities
 comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = NULL) {
   op <- new_operation(
     name = "DetectEntities",
@@ -2366,6 +2424,8 @@ comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = 
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_key_phrases
+#'
+#' @aliases comprehend_detect_key_phrases
 comprehend_detect_key_phrases <- function(Text, LanguageCode) {
   op <- new_operation(
     name = "DetectKeyPhrases",
@@ -2424,6 +2484,8 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_pii_entities
+#'
+#' @aliases comprehend_detect_pii_entities
 comprehend_detect_pii_entities <- function(Text, LanguageCode) {
   op <- new_operation(
     name = "DetectPiiEntities",
@@ -2482,6 +2544,8 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_sentiment
+#'
+#' @aliases comprehend_detect_sentiment
 comprehend_detect_sentiment <- function(Text, LanguageCode) {
   op <- new_operation(
     name = "DetectSentiment",
@@ -2545,6 +2609,8 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_syntax
+#'
+#' @aliases comprehend_detect_syntax
 comprehend_detect_syntax <- function(Text, LanguageCode) {
   op <- new_operation(
     name = "DetectSyntax",
@@ -2632,6 +2698,8 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' @keywords internal
 #'
 #' @rdname comprehend_import_model
+#'
+#' @aliases comprehend_import_model
 comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionName = NULL, ModelKmsKeyId = NULL, DataAccessRoleArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportModel",
@@ -2737,6 +2805,8 @@ comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionNam
 #' @keywords internal
 #'
 #' @rdname comprehend_list_document_classification_jobs
+#'
+#' @aliases comprehend_list_document_classification_jobs
 comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDocumentClassificationJobs",
@@ -2798,6 +2868,8 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname comprehend_list_document_classifier_summaries
+#'
+#' @aliases comprehend_list_document_classifier_summaries
 comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDocumentClassifierSummaries",
@@ -2930,6 +3002,8 @@ comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname comprehend_list_document_classifiers
+#'
+#' @aliases comprehend_list_document_classifiers
 comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDocumentClassifiers",
@@ -3034,6 +3108,8 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname comprehend_list_dominant_language_detection_jobs
+#'
+#' @aliases comprehend_list_dominant_language_detection_jobs
 comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDominantLanguageDetectionJobs",
@@ -3116,6 +3192,8 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 #' @keywords internal
 #'
 #' @rdname comprehend_list_endpoints
+#'
+#' @aliases comprehend_list_endpoints
 comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEndpoints",
@@ -3219,6 +3297,8 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname comprehend_list_entities_detection_jobs
+#'
+#' @aliases comprehend_list_entities_detection_jobs
 comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntitiesDetectionJobs",
@@ -3280,6 +3360,8 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname comprehend_list_entity_recognizer_summaries
+#'
+#' @aliases comprehend_list_entity_recognizer_summaries
 comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntityRecognizerSummaries",
@@ -3434,6 +3516,8 @@ comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname comprehend_list_entity_recognizers
+#'
+#' @aliases comprehend_list_entity_recognizers
 comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntityRecognizers",
@@ -3529,6 +3613,8 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname comprehend_list_events_detection_jobs
+#'
+#' @aliases comprehend_list_events_detection_jobs
 comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEventsDetectionJobs",
@@ -3632,6 +3718,8 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname comprehend_list_key_phrases_detection_jobs
+#'
+#' @aliases comprehend_list_key_phrases_detection_jobs
 comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListKeyPhrasesDetectionJobs",
@@ -3733,6 +3821,8 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname comprehend_list_pii_entities_detection_jobs
+#'
+#' @aliases comprehend_list_pii_entities_detection_jobs
 comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPiiEntitiesDetectionJobs",
@@ -3835,6 +3925,8 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname comprehend_list_sentiment_detection_jobs
+#'
+#' @aliases comprehend_list_sentiment_detection_jobs
 comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSentimentDetectionJobs",
@@ -3887,6 +3979,8 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname comprehend_list_tags_for_resource
+#'
+#' @aliases comprehend_list_tags_for_resource
 comprehend_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3991,6 +4085,8 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_list_targeted_sentiment_detection_jobs
+#'
+#' @aliases comprehend_list_targeted_sentiment_detection_jobs
 comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTargetedSentimentDetectionJobs",
@@ -4093,6 +4189,8 @@ comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname comprehend_list_topics_detection_jobs
+#'
+#' @aliases comprehend_list_topics_detection_jobs
 comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTopicsDetectionJobs",
@@ -4160,6 +4258,8 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname comprehend_put_resource_policy
+#'
+#' @aliases comprehend_put_resource_policy
 comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRevisionId = NULL) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -4268,6 +4368,8 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
 #' @keywords internal
 #'
 #' @rdname comprehend_start_document_classification_job
+#'
+#' @aliases comprehend_start_document_classification_job
 comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartDocumentClassificationJob",
@@ -4376,6 +4478,8 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' @keywords internal
 #'
 #' @rdname comprehend_start_dominant_language_detection_job
+#'
+#' @aliases comprehend_start_dominant_language_detection_job
 comprehend_start_dominant_language_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartDominantLanguageDetectionJob",
@@ -4500,6 +4604,8 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' @keywords internal
 #'
 #' @rdname comprehend_start_entities_detection_job
+#'
+#' @aliases comprehend_start_entities_detection_job
 comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartEntitiesDetectionJob",
@@ -4589,6 +4695,8 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #' @keywords internal
 #'
 #' @rdname comprehend_start_events_detection_job
+#'
+#' @aliases comprehend_start_events_detection_job
 comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, TargetEventTypes, Tags = NULL) {
   op <- new_operation(
     name = "StartEventsDetectionJob",
@@ -4701,6 +4809,8 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' @keywords internal
 #'
 #' @rdname comprehend_start_key_phrases_detection_job
+#'
+#' @aliases comprehend_start_key_phrases_detection_job
 comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartKeyPhrasesDetectionJob",
@@ -4804,6 +4914,8 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' @keywords internal
 #'
 #' @rdname comprehend_start_pii_entities_detection_job
+#'
+#' @aliases comprehend_start_pii_entities_detection_job
 comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputDataConfig, Mode, RedactionConfig = NULL, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartPiiEntitiesDetectionJob",
@@ -4916,6 +5028,8 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' @keywords internal
 #'
 #' @rdname comprehend_start_sentiment_detection_job
+#'
+#' @aliases comprehend_start_sentiment_detection_job
 comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartSentimentDetectionJob",
@@ -5022,6 +5136,8 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' @keywords internal
 #'
 #' @rdname comprehend_start_targeted_sentiment_detection_job
+#'
+#' @aliases comprehend_start_targeted_sentiment_detection_job
 comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartTargetedSentimentDetectionJob",
@@ -5134,6 +5250,8 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
 #' @keywords internal
 #'
 #' @rdname comprehend_start_topics_detection_job
+#'
+#' @aliases comprehend_start_topics_detection_job
 comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, NumberOfTopics = NULL, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartTopicsDetectionJob",
@@ -5192,6 +5310,8 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_dominant_language_detection_job
+#'
+#' @aliases comprehend_stop_dominant_language_detection_job
 comprehend_stop_dominant_language_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopDominantLanguageDetectionJob",
@@ -5250,6 +5370,8 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_entities_detection_job
+#'
+#' @aliases comprehend_stop_entities_detection_job
 comprehend_stop_entities_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopEntitiesDetectionJob",
@@ -5296,6 +5418,8 @@ comprehend_stop_entities_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_events_detection_job
+#'
+#' @aliases comprehend_stop_events_detection_job
 comprehend_stop_events_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopEventsDetectionJob",
@@ -5354,6 +5478,8 @@ comprehend_stop_events_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_key_phrases_detection_job
+#'
+#' @aliases comprehend_stop_key_phrases_detection_job
 comprehend_stop_key_phrases_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopKeyPhrasesDetectionJob",
@@ -5400,6 +5526,8 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_pii_entities_detection_job
+#'
+#' @aliases comprehend_stop_pii_entities_detection_job
 comprehend_stop_pii_entities_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopPiiEntitiesDetectionJob",
@@ -5458,6 +5586,8 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_sentiment_detection_job
+#'
+#' @aliases comprehend_stop_sentiment_detection_job
 comprehend_stop_sentiment_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopSentimentDetectionJob",
@@ -5516,6 +5646,8 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_targeted_sentiment_detection_job
+#'
+#' @aliases comprehend_stop_targeted_sentiment_detection_job
 comprehend_stop_targeted_sentiment_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopTargetedSentimentDetectionJob",
@@ -5563,6 +5695,8 @@ comprehend_stop_targeted_sentiment_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_training_document_classifier
+#'
+#' @aliases comprehend_stop_training_document_classifier
 comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) {
   op <- new_operation(
     name = "StopTrainingDocumentClassifier",
@@ -5611,6 +5745,8 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
 #' @keywords internal
 #'
 #' @rdname comprehend_stop_training_entity_recognizer
+#'
+#' @aliases comprehend_stop_training_entity_recognizer
 comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
   op <- new_operation(
     name = "StopTrainingEntityRecognizer",
@@ -5664,6 +5800,8 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
 #' @keywords internal
 #'
 #' @rdname comprehend_tag_resource
+#'
+#' @aliases comprehend_tag_resource
 comprehend_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5712,6 +5850,8 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname comprehend_untag_resource
+#'
+#' @aliases comprehend_untag_resource
 comprehend_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5764,6 +5904,8 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname comprehend_update_endpoint
+#'
+#' @aliases comprehend_update_endpoint
 comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, DesiredInferenceUnits = NULL, DesiredDataAccessRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",

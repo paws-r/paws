@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connectparticipant_complete_attachment_upload
+#'
+#' @aliases connectparticipant_complete_attachment_upload
 connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientToken, ConnectionToken) {
   op <- new_operation(
     name = "CompleteAttachmentUpload",
@@ -140,6 +142,8 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' @keywords internal
 #'
 #' @rdname connectparticipant_create_participant_connection
+#'
+#' @aliases connectparticipant_create_participant_connection
 connectparticipant_create_participant_connection <- function(Type, ParticipantToken, ConnectParticipant = NULL) {
   op <- new_operation(
     name = "CreateParticipantConnection",
@@ -188,6 +192,8 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 #' @keywords internal
 #'
 #' @rdname connectparticipant_disconnect_participant
+#'
+#' @aliases connectparticipant_disconnect_participant
 connectparticipant_disconnect_participant <- function(ClientToken = NULL, ConnectionToken) {
   op <- new_operation(
     name = "DisconnectParticipant",
@@ -241,6 +247,8 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' @keywords internal
 #'
 #' @rdname connectparticipant_get_attachment
+#'
+#' @aliases connectparticipant_get_attachment
 connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
   op <- new_operation(
     name = "GetAttachment",
@@ -335,6 +343,8 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' @keywords internal
 #'
 #' @rdname connectparticipant_get_transcript
+#'
+#' @aliases connectparticipant_get_transcript
 connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NULL, NextToken = NULL, ScanDirection = NULL, SortOrder = NULL, StartPosition = NULL, ConnectionToken) {
   op <- new_operation(
     name = "GetTranscript",
@@ -399,6 +409,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname connectparticipant_send_event
+#'
+#' @aliases connectparticipant_send_event
 connectparticipant_send_event <- function(ContentType, Content = NULL, ClientToken = NULL, ConnectionToken) {
   op <- new_operation(
     name = "SendEvent",
@@ -458,6 +470,8 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' @keywords internal
 #'
 #' @rdname connectparticipant_send_message
+#'
+#' @aliases connectparticipant_send_message
 connectparticipant_send_message <- function(ContentType, Content, ClientToken = NULL, ConnectionToken) {
   op <- new_operation(
     name = "SendMessage",
@@ -528,6 +542,8 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' @keywords internal
 #'
 #' @rdname connectparticipant_start_attachment_upload
+#'
+#' @aliases connectparticipant_start_attachment_upload
 connectparticipant_start_attachment_upload <- function(ContentType, AttachmentSizeInBytes, AttachmentName, ClientToken, ConnectionToken) {
   op <- new_operation(
     name = "StartAttachmentUpload",

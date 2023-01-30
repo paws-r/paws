@@ -33,6 +33,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname licensemanager_accept_grant
+#'
+#' @aliases licensemanager_accept_grant
 licensemanager_accept_grant <- function(GrantArn) {
   op <- new_operation(
     name = "AcceptGrant",
@@ -76,6 +78,8 @@ licensemanager_accept_grant <- function(GrantArn) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_check_in_license
+#'
+#' @aliases licensemanager_check_in_license
 licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary = NULL) {
   op <- new_operation(
     name = "CheckInLicense",
@@ -165,6 +169,8 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @keywords internal
 #'
 #' @rdname licensemanager_checkout_borrow_license
+#'
+#' @aliases licensemanager_checkout_borrow_license
 licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, DigitalSignatureMethod, NodeId = NULL, CheckoutMetadata = NULL, ClientToken) {
   op <- new_operation(
     name = "CheckoutBorrowLicense",
@@ -243,6 +249,8 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' @keywords internal
 #'
 #' @rdname licensemanager_checkout_license
+#'
+#' @aliases licensemanager_checkout_license
 licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerprint, Entitlements, ClientToken, Beneficiary = NULL, NodeId = NULL) {
   op <- new_operation(
     name = "CheckoutLicense",
@@ -307,6 +315,8 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_grant
+#'
+#' @aliases licensemanager_create_grant
 licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Principals, HomeRegion, AllowedOperations) {
   op <- new_operation(
     name = "CreateGrant",
@@ -370,6 +380,8 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_grant_version
+#'
+#' @aliases licensemanager_create_grant_version
 licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName = NULL, AllowedOperations = NULL, Status = NULL, StatusReason = NULL, SourceVersion = NULL) {
   op <- new_operation(
     name = "CreateGrantVersion",
@@ -472,6 +484,8 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license
+#'
+#' @aliases licensemanager_create_license
 licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, Issuer, HomeRegion, Validity, Entitlements, Beneficiary, ConsumptionConfiguration, LicenseMetadata = NULL, ClientToken) {
   op <- new_operation(
     name = "CreateLicense",
@@ -584,6 +598,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license_configuration
+#'
+#' @aliases licensemanager_create_license_configuration
 licensemanager_create_license_configuration <- function(Name, Description = NULL, LicenseCountingType, LicenseCount = NULL, LicenseCountHardLimit = NULL, LicenseRules = NULL, Tags = NULL, DisassociateWhenNotFound = NULL, ProductInformationList = NULL) {
   op <- new_operation(
     name = "CreateLicenseConfiguration",
@@ -647,6 +663,8 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license_conversion_task_for_resource
+#'
+#' @aliases licensemanager_create_license_conversion_task_for_resource
 licensemanager_create_license_conversion_task_for_resource <- function(ResourceArn, SourceLicenseContext, DestinationLicenseContext) {
   op <- new_operation(
     name = "CreateLicenseConversionTaskForResource",
@@ -728,6 +746,8 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license_manager_report_generator
+#'
+#' @aliases licensemanager_create_license_manager_report_generator
 licensemanager_create_license_manager_report_generator <- function(ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateLicenseManagerReportGenerator",
@@ -833,6 +853,8 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_license_version
+#'
+#' @aliases licensemanager_create_license_version
 licensemanager_create_license_version <- function(LicenseArn, LicenseName, ProductName, Issuer, HomeRegion, Validity, LicenseMetadata = NULL, Entitlements, ConsumptionConfiguration, Status, ClientToken, SourceVersion = NULL) {
   op <- new_operation(
     name = "CreateLicenseVersion",
@@ -902,6 +924,8 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
 #' @keywords internal
 #'
 #' @rdname licensemanager_create_token
+#'
+#' @aliases licensemanager_create_token
 licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationInDays = NULL, TokenProperties = NULL, ClientToken) {
   op <- new_operation(
     name = "CreateToken",
@@ -953,6 +977,8 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_grant
+#'
+#' @aliases licensemanager_delete_grant
 licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) {
   op <- new_operation(
     name = "DeleteGrant",
@@ -1001,6 +1027,8 @@ licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) 
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_license
+#'
+#' @aliases licensemanager_delete_license
 licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
   op <- new_operation(
     name = "DeleteLicense",
@@ -1043,6 +1071,8 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_license_configuration
+#'
+#' @aliases licensemanager_delete_license_configuration
 licensemanager_delete_license_configuration <- function(LicenseConfigurationArn) {
   op <- new_operation(
     name = "DeleteLicenseConfiguration",
@@ -1088,6 +1118,8 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_license_manager_report_generator
+#'
+#' @aliases licensemanager_delete_license_manager_report_generator
 licensemanager_delete_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn) {
   op <- new_operation(
     name = "DeleteLicenseManagerReportGenerator",
@@ -1128,6 +1160,8 @@ licensemanager_delete_license_manager_report_generator <- function(LicenseManage
 #' @keywords internal
 #'
 #' @rdname licensemanager_delete_token
+#'
+#' @aliases licensemanager_delete_token
 licensemanager_delete_token <- function(TokenId) {
   op <- new_operation(
     name = "DeleteToken",
@@ -1179,6 +1213,8 @@ licensemanager_delete_token <- function(TokenId) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_extend_license_consumption
+#'
+#' @aliases licensemanager_extend_license_consumption
 licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, DryRun = NULL) {
   op <- new_operation(
     name = "ExtendLicenseConsumption",
@@ -1229,6 +1265,8 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_access_token
+#'
+#' @aliases licensemanager_get_access_token
 licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
   op <- new_operation(
     name = "GetAccessToken",
@@ -1289,6 +1327,8 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_grant
+#'
+#' @aliases licensemanager_get_grant
 licensemanager_get_grant <- function(GrantArn, Version = NULL) {
   op <- new_operation(
     name = "GetGrant",
@@ -1381,6 +1421,8 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_license
+#'
+#' @aliases licensemanager_get_license
 licensemanager_get_license <- function(LicenseArn, Version = NULL) {
   op <- new_operation(
     name = "GetLicense",
@@ -1476,6 +1518,8 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_license_configuration
+#'
+#' @aliases licensemanager_get_license_configuration
 licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
   op <- new_operation(
     name = "GetLicenseConfiguration",
@@ -1539,6 +1583,8 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_license_conversion_task
+#'
+#' @aliases licensemanager_get_license_conversion_task
 licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) {
   op <- new_operation(
     name = "GetLicenseConversionTask",
@@ -1616,6 +1662,8 @@ licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) 
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_license_manager_report_generator
+#'
+#' @aliases licensemanager_get_license_manager_report_generator
 licensemanager_get_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn) {
   op <- new_operation(
     name = "GetLicenseManagerReportGenerator",
@@ -1670,6 +1718,8 @@ licensemanager_get_license_manager_report_generator <- function(LicenseManagerRe
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_license_usage
+#'
+#' @aliases licensemanager_get_license_usage
 licensemanager_get_license_usage <- function(LicenseArn) {
   op <- new_operation(
     name = "GetLicenseUsage",
@@ -1717,6 +1767,8 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_get_service_settings
+#'
+#' @aliases licensemanager_get_service_settings
 licensemanager_get_service_settings <- function() {
   op <- new_operation(
     name = "GetServiceSettings",
@@ -1782,6 +1834,8 @@ licensemanager_get_service_settings <- function() {
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_associations_for_license_configuration
+#'
+#' @aliases licensemanager_list_associations_for_license_configuration
 licensemanager_list_associations_for_license_configuration <- function(LicenseConfigurationArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAssociationsForLicenseConfiguration",
@@ -1869,6 +1923,8 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_distributed_grants
+#'
+#' @aliases licensemanager_list_distributed_grants
 licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDistributedGrants",
@@ -1937,7 +1993,9 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
 #'
 #' @keywords internal
 #'
-#' @rdname licensemanager_list_failures_for_license_configuration_operations
+#' @rdname licensemanager_list_failur_for_licens_config_operat
+#'
+#' @aliases licensemanager_list_failures_for_license_configuration_operations
 licensemanager_list_failures_for_license_configuration_operations <- function(LicenseConfigurationArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFailuresForLicenseConfigurationOperations",
@@ -2061,6 +2119,8 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_license_configurations
+#'
+#' @aliases licensemanager_list_license_configurations
 licensemanager_list_license_configurations <- function(LicenseConfigurationArns = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListLicenseConfigurations",
@@ -2142,6 +2202,8 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_license_conversion_tasks
+#'
+#' @aliases licensemanager_list_license_conversion_tasks
 licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListLicenseConversionTasks",
@@ -2235,6 +2297,8 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_license_manager_report_generators
+#'
+#' @aliases licensemanager_list_license_manager_report_generators
 licensemanager_list_license_manager_report_generators <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLicenseManagerReportGenerators",
@@ -2292,6 +2356,8 @@ licensemanager_list_license_manager_report_generators <- function(Filters = NULL
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_license_specifications_for_resource
+#'
+#' @aliases licensemanager_list_license_specifications_for_resource
 licensemanager_list_license_specifications_for_resource <- function(ResourceArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListLicenseSpecificationsForResource",
@@ -2389,6 +2455,8 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_license_versions
+#'
+#' @aliases licensemanager_list_license_versions
 licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLicenseVersions",
@@ -2506,6 +2574,8 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_licenses
+#'
+#' @aliases licensemanager_list_licenses
 licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLicenses",
@@ -2593,6 +2663,8 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_received_grants
+#'
+#' @aliases licensemanager_list_received_grants
 licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListReceivedGrants",
@@ -2719,6 +2791,8 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_received_licenses
+#'
+#' @aliases licensemanager_list_received_licenses
 licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListReceivedLicenses",
@@ -2806,6 +2880,8 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_resource_inventory
+#'
+#' @aliases licensemanager_list_resource_inventory
 licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResourceInventory",
@@ -2856,6 +2932,8 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_tags_for_resource
+#'
+#' @aliases licensemanager_list_tags_for_resource
 licensemanager_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2933,6 +3011,8 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_tokens
+#'
+#' @aliases licensemanager_list_tokens
 licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTokens",
@@ -3019,6 +3099,8 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname licensemanager_list_usage_for_license_configuration
+#'
+#' @aliases licensemanager_list_usage_for_license_configuration
 licensemanager_list_usage_for_license_configuration <- function(LicenseConfigurationArn, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListUsageForLicenseConfiguration",
@@ -3066,6 +3148,8 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 #' @keywords internal
 #'
 #' @rdname licensemanager_reject_grant
+#'
+#' @aliases licensemanager_reject_grant
 licensemanager_reject_grant <- function(GrantArn) {
   op <- new_operation(
     name = "RejectGrant",
@@ -3113,6 +3197,8 @@ licensemanager_reject_grant <- function(GrantArn) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_tag_resource
+#'
+#' @aliases licensemanager_tag_resource
 licensemanager_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3157,6 +3243,8 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_untag_resource
+#'
+#' @aliases licensemanager_untag_resource
 licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3232,6 +3320,8 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname licensemanager_update_license_configuration
+#'
+#' @aliases licensemanager_update_license_configuration
 licensemanager_update_license_configuration <- function(LicenseConfigurationArn, LicenseConfigurationStatus = NULL, LicenseRules = NULL, LicenseCount = NULL, LicenseCountHardLimit = NULL, Name = NULL, Description = NULL, ProductInformationList = NULL, DisassociateWhenNotFound = NULL) {
   op <- new_operation(
     name = "UpdateLicenseConfiguration",
@@ -3305,6 +3395,8 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #' @keywords internal
 #'
 #' @rdname licensemanager_update_license_manager_report_generator
+#'
+#' @aliases licensemanager_update_license_manager_report_generator
 licensemanager_update_license_manager_report_generator <- function(LicenseManagerReportGeneratorArn, ReportGeneratorName, Type, ReportContext, ReportFrequency, ClientToken, Description = NULL) {
   op <- new_operation(
     name = "UpdateLicenseManagerReportGenerator",
@@ -3367,6 +3459,8 @@ licensemanager_update_license_manager_report_generator <- function(LicenseManage
 #' @keywords internal
 #'
 #' @rdname licensemanager_update_license_specifications_for_resource
+#'
+#' @aliases licensemanager_update_license_specifications_for_resource
 licensemanager_update_license_specifications_for_resource <- function(ResourceArn, AddLicenseSpecifications = NULL, RemoveLicenseSpecifications = NULL) {
   op <- new_operation(
     name = "UpdateLicenseSpecificationsForResource",
@@ -3418,6 +3512,8 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' @keywords internal
 #'
 #' @rdname licensemanager_update_service_settings
+#'
+#' @aliases licensemanager_update_service_settings
 licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicArn = NULL, OrganizationConfiguration = NULL, EnableCrossAccountsDiscovery = NULL) {
   op <- new_operation(
     name = "UpdateServiceSettings",

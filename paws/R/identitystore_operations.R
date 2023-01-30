@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname identitystore_describe_group
+#'
+#' @aliases identitystore_describe_group
 identitystore_describe_group <- function(IdentityStoreId, GroupId) {
   op <- new_operation(
     name = "DescribeGroup",
@@ -94,6 +96,8 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' @keywords internal
 #'
 #' @rdname identitystore_describe_user
+#'
+#' @aliases identitystore_describe_user
 identitystore_describe_user <- function(IdentityStoreId, UserId) {
   op <- new_operation(
     name = "DescribeUser",
@@ -176,6 +180,8 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #' @keywords internal
 #'
 #' @rdname identitystore_list_groups
+#'
+#' @aliases identitystore_list_groups
 identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListGroups",
@@ -258,6 +264,8 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname identitystore_list_users
+#'
+#' @aliases identitystore_list_users
 identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListUsers",

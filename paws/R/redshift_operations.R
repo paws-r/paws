@@ -62,6 +62,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname redshift_accept_reserved_node_exchange
+#'
+#' @aliases redshift_accept_reserved_node_exchange
 redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReservedNodeOfferingId) {
   op <- new_operation(
     name = "AcceptReservedNodeExchange",
@@ -118,6 +120,8 @@ redshift_accept_reserved_node_exchange <- function(ReservedNodeId, TargetReserve
 #' @keywords internal
 #'
 #' @rdname redshift_add_partner
+#'
+#' @aliases redshift_add_partner
 redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName) {
   op <- new_operation(
     name = "AddPartner",
@@ -196,6 +200,8 @@ redshift_add_partner <- function(AccountId, ClusterIdentifier, DatabaseName, Par
 #' @keywords internal
 #'
 #' @rdname redshift_associate_data_share_consumer
+#'
+#' @aliases redshift_associate_data_share_consumer
 redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntireAccount = NULL, ConsumerArn = NULL, ConsumerRegion = NULL) {
   op <- new_operation(
     name = "AssociateDataShareConsumer",
@@ -309,6 +315,8 @@ redshift_associate_data_share_consumer <- function(DataShareArn, AssociateEntire
 #' @keywords internal
 #'
 #' @rdname redshift_authorize_cluster_security_group_ingress
+#'
+#' @aliases redshift_authorize_cluster_security_group_ingress
 redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGroupName, CIDRIP = NULL, EC2SecurityGroupName = NULL, EC2SecurityGroupOwnerId = NULL) {
   op <- new_operation(
     name = "AuthorizeClusterSecurityGroupIngress",
@@ -379,6 +387,8 @@ redshift_authorize_cluster_security_group_ingress <- function(ClusterSecurityGro
 #' @keywords internal
 #'
 #' @rdname redshift_authorize_data_share
+#'
+#' @aliases redshift_authorize_data_share
 redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
   op <- new_operation(
     name = "AuthorizeDataShare",
@@ -442,6 +452,8 @@ redshift_authorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_authorize_endpoint_access
+#'
+#' @aliases redshift_authorize_endpoint_access
 redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account, VpcIds = NULL) {
   op <- new_operation(
     name = "AuthorizeEndpointAccess",
@@ -561,6 +573,8 @@ redshift_authorize_endpoint_access <- function(ClusterIdentifier = NULL, Account
 #' @keywords internal
 #'
 #' @rdname redshift_authorize_snapshot_access
+#'
+#' @aliases redshift_authorize_snapshot_access
 redshift_authorize_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess) {
   op <- new_operation(
     name = "AuthorizeSnapshotAccess",
@@ -621,6 +635,8 @@ redshift_authorize_snapshot_access <- function(SnapshotIdentifier = NULL, Snapsh
 #' @keywords internal
 #'
 #' @rdname redshift_batch_delete_cluster_snapshots
+#'
+#' @aliases redshift_batch_delete_cluster_snapshots
 redshift_batch_delete_cluster_snapshots <- function(Identifiers) {
   op <- new_operation(
     name = "BatchDeleteClusterSnapshots",
@@ -692,6 +708,8 @@ redshift_batch_delete_cluster_snapshots <- function(Identifiers) {
 #' @keywords internal
 #'
 #' @rdname redshift_batch_modify_cluster_snapshots
+#'
+#' @aliases redshift_batch_modify_cluster_snapshots
 redshift_batch_modify_cluster_snapshots <- function(SnapshotIdentifierList, ManualSnapshotRetentionPeriod = NULL, Force = NULL) {
   op <- new_operation(
     name = "BatchModifyClusterSnapshots",
@@ -759,6 +777,8 @@ redshift_batch_modify_cluster_snapshots <- function(SnapshotIdentifierList, Manu
 #' @keywords internal
 #'
 #' @rdname redshift_cancel_resize
+#'
+#' @aliases redshift_cancel_resize
 redshift_cancel_resize <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "CancelResize",
@@ -910,6 +930,8 @@ redshift_cancel_resize <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_copy_cluster_snapshot
+#'
+#' @aliases redshift_copy_cluster_snapshot
 redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnapshotClusterIdentifier = NULL, TargetSnapshotIdentifier, ManualSnapshotRetentionPeriod = NULL) {
   op <- new_operation(
     name = "CopyClusterSnapshot",
@@ -960,6 +982,8 @@ redshift_copy_cluster_snapshot <- function(SourceSnapshotIdentifier, SourceSnaps
 #' @keywords internal
 #'
 #' @rdname redshift_create_authentication_profile
+#'
+#' @aliases redshift_create_authentication_profile
 redshift_create_authentication_profile <- function(AuthenticationProfileName, AuthenticationProfileContent) {
   op <- new_operation(
     name = "CreateAuthenticationProfile",
@@ -1500,6 +1524,8 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster
+#'
+#' @aliases redshift_create_cluster
 redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -1601,6 +1627,8 @@ redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterTyp
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster_parameter_group
+#'
+#' @aliases redshift_create_cluster_parameter_group
 redshift_create_cluster_parameter_group <- function(ParameterGroupName, ParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateClusterParameterGroup",
@@ -1708,6 +1736,8 @@ redshift_create_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster_security_group
+#'
+#' @aliases redshift_create_cluster_security_group
 redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateClusterSecurityGroup",
@@ -1843,6 +1873,8 @@ redshift_create_cluster_security_group <- function(ClusterSecurityGroupName, Des
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster_snapshot
+#'
+#' @aliases redshift_create_cluster_snapshot
 redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifier, ManualSnapshotRetentionPeriod = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateClusterSnapshot",
@@ -1947,6 +1979,8 @@ redshift_create_cluster_snapshot <- function(SnapshotIdentifier, ClusterIdentifi
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster_subnet_group
+#'
+#' @aliases redshift_create_cluster_subnet_group
 redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Description, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateClusterSubnetGroup",
@@ -2037,6 +2071,8 @@ redshift_create_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @keywords internal
 #'
 #' @rdname redshift_create_endpoint_access
+#'
+#' @aliases redshift_create_endpoint_access
 redshift_create_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOwner = NULL, EndpointName, SubnetGroupName, VpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "CreateEndpointAccess",
@@ -2186,6 +2222,8 @@ redshift_create_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOw
 #' @keywords internal
 #'
 #' @rdname redshift_create_event_subscription
+#'
+#' @aliases redshift_create_event_subscription
 redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceType = NULL, SourceIds = NULL, EventCategories = NULL, Severity = NULL, Enabled = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventSubscription",
@@ -2262,6 +2300,8 @@ redshift_create_event_subscription <- function(SubscriptionName, SnsTopicArn, So
 #' @keywords internal
 #'
 #' @rdname redshift_create_hsm_client_certificate
+#'
+#' @aliases redshift_create_hsm_client_certificate
 redshift_create_hsm_client_certificate <- function(HsmClientCertificateIdentifier, Tags = NULL) {
   op <- new_operation(
     name = "CreateHsmClientCertificate",
@@ -2352,6 +2392,8 @@ redshift_create_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #' @keywords internal
 #'
 #' @rdname redshift_create_hsm_configuration
+#'
+#' @aliases redshift_create_hsm_configuration
 redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Description, HsmIpAddress, HsmPartitionName, HsmPartitionPassword, HsmServerPublicCertificate, Tags = NULL) {
   op <- new_operation(
     name = "CreateHsmConfiguration",
@@ -2479,6 +2521,8 @@ redshift_create_hsm_configuration <- function(HsmConfigurationIdentifier, Descri
 #' @keywords internal
 #'
 #' @rdname redshift_create_scheduled_action
+#'
+#' @aliases redshift_create_scheduled_action
 redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, Schedule, IamRole, ScheduledActionDescription = NULL, StartTime = NULL, EndTime = NULL, Enable = NULL) {
   op <- new_operation(
     name = "CreateScheduledAction",
@@ -2568,6 +2612,8 @@ redshift_create_scheduled_action <- function(ScheduledActionName, TargetAction, 
 #' @keywords internal
 #'
 #' @rdname redshift_create_snapshot_copy_grant
+#'
+#' @aliases redshift_create_snapshot_copy_grant
 redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshotCopyGrant",
@@ -2657,6 +2703,8 @@ redshift_create_snapshot_copy_grant <- function(SnapshotCopyGrantName, KmsKeyId 
 #' @keywords internal
 #'
 #' @rdname redshift_create_snapshot_schedule
+#'
+#' @aliases redshift_create_snapshot_schedule
 redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, ScheduleIdentifier = NULL, ScheduleDescription = NULL, Tags = NULL, DryRun = NULL, NextInvocations = NULL) {
   op <- new_operation(
     name = "CreateSnapshotSchedule",
@@ -2717,6 +2765,8 @@ redshift_create_snapshot_schedule <- function(ScheduleDefinitions = NULL, Schedu
 #' @keywords internal
 #'
 #' @rdname redshift_create_tags
+#'
+#' @aliases redshift_create_tags
 redshift_create_tags <- function(ResourceName, Tags) {
   op <- new_operation(
     name = "CreateTags",
@@ -2804,6 +2854,8 @@ redshift_create_tags <- function(ResourceName, Tags) {
 #' @keywords internal
 #'
 #' @rdname redshift_create_usage_limit
+#'
+#' @aliases redshift_create_usage_limit
 redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitType, Amount, Period = NULL, BreachAction = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateUsageLimit",
@@ -2872,6 +2924,8 @@ redshift_create_usage_limit <- function(ClusterIdentifier, FeatureType, LimitTyp
 #' @keywords internal
 #'
 #' @rdname redshift_deauthorize_data_share
+#'
+#' @aliases redshift_deauthorize_data_share
 redshift_deauthorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
   op <- new_operation(
     name = "DeauthorizeDataShare",
@@ -2917,6 +2971,8 @@ redshift_deauthorize_data_share <- function(DataShareArn, ConsumerIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_authentication_profile
+#'
+#' @aliases redshift_delete_authentication_profile
 redshift_delete_authentication_profile <- function(AuthenticationProfileName) {
   op <- new_operation(
     name = "DeleteAuthenticationProfile",
@@ -3205,6 +3261,8 @@ redshift_delete_authentication_profile <- function(AuthenticationProfileName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_cluster
+#'
+#' @aliases redshift_delete_cluster
 redshift_delete_cluster <- function(ClusterIdentifier, SkipFinalClusterSnapshot = NULL, FinalClusterSnapshotIdentifier = NULL, FinalClusterSnapshotRetentionPeriod = NULL) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -3253,6 +3311,8 @@ redshift_delete_cluster <- function(ClusterIdentifier, SkipFinalClusterSnapshot 
 #' @keywords internal
 #'
 #' @rdname redshift_delete_cluster_parameter_group
+#'
+#' @aliases redshift_delete_cluster_parameter_group
 redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
   op <- new_operation(
     name = "DeleteClusterParameterGroup",
@@ -3301,6 +3361,8 @@ redshift_delete_cluster_parameter_group <- function(ParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_cluster_security_group
+#'
+#' @aliases redshift_delete_cluster_security_group
 redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
   op <- new_operation(
     name = "DeleteClusterSecurityGroup",
@@ -3419,6 +3481,8 @@ redshift_delete_cluster_security_group <- function(ClusterSecurityGroupName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_cluster_snapshot
+#'
+#' @aliases redshift_delete_cluster_snapshot
 redshift_delete_cluster_snapshot <- function(SnapshotIdentifier, SnapshotClusterIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteClusterSnapshot",
@@ -3459,6 +3523,8 @@ redshift_delete_cluster_snapshot <- function(SnapshotIdentifier, SnapshotCluster
 #' @keywords internal
 #'
 #' @rdname redshift_delete_cluster_subnet_group
+#'
+#' @aliases redshift_delete_cluster_subnet_group
 redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
   op <- new_operation(
     name = "DeleteClusterSubnetGroup",
@@ -3531,6 +3597,8 @@ redshift_delete_cluster_subnet_group <- function(ClusterSubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_endpoint_access
+#'
+#' @aliases redshift_delete_endpoint_access
 redshift_delete_endpoint_access <- function(EndpointName) {
   op <- new_operation(
     name = "DeleteEndpointAccess",
@@ -3572,6 +3640,8 @@ redshift_delete_endpoint_access <- function(EndpointName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_event_subscription
+#'
+#' @aliases redshift_delete_event_subscription
 redshift_delete_event_subscription <- function(SubscriptionName) {
   op <- new_operation(
     name = "DeleteEventSubscription",
@@ -3612,6 +3682,8 @@ redshift_delete_event_subscription <- function(SubscriptionName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_hsm_client_certificate
+#'
+#' @aliases redshift_delete_hsm_client_certificate
 redshift_delete_hsm_client_certificate <- function(HsmClientCertificateIdentifier) {
   op <- new_operation(
     name = "DeleteHsmClientCertificate",
@@ -3652,6 +3724,8 @@ redshift_delete_hsm_client_certificate <- function(HsmClientCertificateIdentifie
 #' @keywords internal
 #'
 #' @rdname redshift_delete_hsm_configuration
+#'
+#' @aliases redshift_delete_hsm_configuration
 redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
   op <- new_operation(
     name = "DeleteHsmConfiguration",
@@ -3707,6 +3781,8 @@ redshift_delete_hsm_configuration <- function(HsmConfigurationIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_partner
+#'
+#' @aliases redshift_delete_partner
 redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName) {
   op <- new_operation(
     name = "DeletePartner",
@@ -3747,6 +3823,8 @@ redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, 
 #' @keywords internal
 #'
 #' @rdname redshift_delete_scheduled_action
+#'
+#' @aliases redshift_delete_scheduled_action
 redshift_delete_scheduled_action <- function(ScheduledActionName) {
   op <- new_operation(
     name = "DeleteScheduledAction",
@@ -3787,6 +3865,8 @@ redshift_delete_scheduled_action <- function(ScheduledActionName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_snapshot_copy_grant
+#'
+#' @aliases redshift_delete_snapshot_copy_grant
 redshift_delete_snapshot_copy_grant <- function(SnapshotCopyGrantName) {
   op <- new_operation(
     name = "DeleteSnapshotCopyGrant",
@@ -3827,6 +3907,8 @@ redshift_delete_snapshot_copy_grant <- function(SnapshotCopyGrantName) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_snapshot_schedule
+#'
+#' @aliases redshift_delete_snapshot_schedule
 redshift_delete_snapshot_schedule <- function(ScheduleIdentifier) {
   op <- new_operation(
     name = "DeleteSnapshotSchedule",
@@ -3873,6 +3955,8 @@ redshift_delete_snapshot_schedule <- function(ScheduleIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_tags
+#'
+#' @aliases redshift_delete_tags
 redshift_delete_tags <- function(ResourceName, TagKeys) {
   op <- new_operation(
     name = "DeleteTags",
@@ -3913,6 +3997,8 @@ redshift_delete_tags <- function(ResourceName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname redshift_delete_usage_limit
+#'
+#' @aliases redshift_delete_usage_limit
 redshift_delete_usage_limit <- function(UsageLimitId) {
   op <- new_operation(
     name = "DeleteUsageLimit",
@@ -3969,6 +4055,8 @@ redshift_delete_usage_limit <- function(UsageLimitId) {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_account_attributes
+#'
+#' @aliases redshift_describe_account_attributes
 redshift_describe_account_attributes <- function(AttributeNames = NULL) {
   op <- new_operation(
     name = "DescribeAccountAttributes",
@@ -4020,6 +4108,8 @@ redshift_describe_account_attributes <- function(AttributeNames = NULL) {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_authentication_profiles
+#'
+#' @aliases redshift_describe_authentication_profiles
 redshift_describe_authentication_profiles <- function(AuthenticationProfileName = NULL) {
   op <- new_operation(
     name = "DescribeAuthenticationProfiles",
@@ -4107,6 +4197,8 @@ redshift_describe_authentication_profiles <- function(AuthenticationProfileName 
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_db_revisions
+#'
+#' @aliases redshift_describe_cluster_db_revisions
 redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeClusterDbRevisions",
@@ -4226,6 +4318,8 @@ redshift_describe_cluster_db_revisions <- function(ClusterIdentifier = NULL, Max
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_parameter_groups
+#'
+#' @aliases redshift_describe_cluster_parameter_groups
 redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeClusterParameterGroups",
@@ -4326,6 +4420,8 @@ redshift_describe_cluster_parameter_groups <- function(ParameterGroupName = NULL
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_parameters
+#'
+#' @aliases redshift_describe_cluster_parameters
 redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeClusterParameters",
@@ -4470,6 +4566,8 @@ redshift_describe_cluster_parameters <- function(ParameterGroupName, Source = NU
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_security_groups
+#'
+#' @aliases redshift_describe_cluster_security_groups
 redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeClusterSecurityGroups",
@@ -4687,6 +4785,8 @@ redshift_describe_cluster_security_groups <- function(ClusterSecurityGroupName =
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_snapshots
+#'
+#' @aliases redshift_describe_cluster_snapshots
 redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotType = NULL, StartTime = NULL, EndTime = NULL, MaxRecords = NULL, Marker = NULL, OwnerAccount = NULL, TagKeys = NULL, TagValues = NULL, ClusterExists = NULL, SortingEntities = NULL) {
   op <- new_operation(
     name = "DescribeClusterSnapshots",
@@ -4812,6 +4912,8 @@ redshift_describe_cluster_snapshots <- function(ClusterIdentifier = NULL, Snapsh
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_subnet_groups
+#'
+#' @aliases redshift_describe_cluster_subnet_groups
 redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeClusterSubnetGroups",
@@ -4885,6 +4987,8 @@ redshift_describe_cluster_subnet_groups <- function(ClusterSubnetGroupName = NUL
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_tracks
+#'
+#' @aliases redshift_describe_cluster_tracks
 redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeClusterTracks",
@@ -4974,6 +5078,8 @@ redshift_describe_cluster_tracks <- function(MaintenanceTrackName = NULL, MaxRec
 #' @keywords internal
 #'
 #' @rdname redshift_describe_cluster_versions
+#'
+#' @aliases redshift_describe_cluster_versions
 redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterParameterGroupFamily = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeClusterVersions",
@@ -5265,6 +5371,8 @@ redshift_describe_cluster_versions <- function(ClusterVersion = NULL, ClusterPar
 #' @keywords internal
 #'
 #' @rdname redshift_describe_clusters
+#'
+#' @aliases redshift_describe_clusters
 redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeClusters",
@@ -5347,6 +5455,8 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 #' @keywords internal
 #'
 #' @rdname redshift_describe_data_shares
+#'
+#' @aliases redshift_describe_data_shares
 redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDataShares",
@@ -5435,6 +5545,8 @@ redshift_describe_data_shares <- function(DataShareArn = NULL, MaxRecords = NULL
 #' @keywords internal
 #'
 #' @rdname redshift_describe_data_shares_for_consumer
+#'
+#' @aliases redshift_describe_data_shares_for_consumer
 redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Status = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDataSharesForConsumer",
@@ -5523,6 +5635,8 @@ redshift_describe_data_shares_for_consumer <- function(ConsumerArn = NULL, Statu
 #' @keywords internal
 #'
 #' @rdname redshift_describe_data_shares_for_producer
+#'
+#' @aliases redshift_describe_data_shares_for_producer
 redshift_describe_data_shares_for_producer <- function(ProducerArn = NULL, Status = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDataSharesForProducer",
@@ -5610,6 +5724,8 @@ redshift_describe_data_shares_for_producer <- function(ProducerArn = NULL, Statu
 #' @keywords internal
 #'
 #' @rdname redshift_describe_default_cluster_parameters
+#'
+#' @aliases redshift_describe_default_cluster_parameters
 redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDefaultClusterParameters",
@@ -5705,6 +5821,8 @@ redshift_describe_default_cluster_parameters <- function(ParameterGroupFamily, M
 #' @keywords internal
 #'
 #' @rdname redshift_describe_endpoint_access
+#'
+#' @aliases redshift_describe_endpoint_access
 redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, ResourceOwner = NULL, EndpointName = NULL, VpcId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEndpointAccess",
@@ -5788,6 +5906,8 @@ redshift_describe_endpoint_access <- function(ClusterIdentifier = NULL, Resource
 #' @keywords internal
 #'
 #' @rdname redshift_describe_endpoint_authorization
+#'
+#' @aliases redshift_describe_endpoint_authorization
 redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, Account = NULL, Grantee = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEndpointAuthorization",
@@ -5855,6 +5975,8 @@ redshift_describe_endpoint_authorization <- function(ClusterIdentifier = NULL, A
 #' @keywords internal
 #'
 #' @rdname redshift_describe_event_categories
+#'
+#' @aliases redshift_describe_event_categories
 redshift_describe_event_categories <- function(SourceType = NULL) {
   op <- new_operation(
     name = "DescribeEventCategories",
@@ -5979,6 +6101,8 @@ redshift_describe_event_categories <- function(SourceType = NULL) {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_event_subscriptions
+#'
+#' @aliases redshift_describe_event_subscriptions
 redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeEventSubscriptions",
@@ -6121,6 +6245,8 @@ redshift_describe_event_subscriptions <- function(SubscriptionName = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname redshift_describe_events
+#'
+#' @aliases redshift_describe_events
 redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -6232,6 +6358,8 @@ redshift_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL,
 #' @keywords internal
 #'
 #' @rdname redshift_describe_hsm_client_certificates
+#'
+#' @aliases redshift_describe_hsm_client_certificates
 redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdentifier = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeHsmClientCertificates",
@@ -6346,6 +6474,8 @@ redshift_describe_hsm_client_certificates <- function(HsmClientCertificateIdenti
 #' @keywords internal
 #'
 #' @rdname redshift_describe_hsm_configurations
+#'
+#' @aliases redshift_describe_hsm_configurations
 redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeHsmConfigurations",
@@ -6408,6 +6538,8 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
 #' @keywords internal
 #'
 #' @rdname redshift_describe_logging_status
+#'
+#' @aliases redshift_describe_logging_status
 redshift_describe_logging_status <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "DescribeLoggingStatus",
@@ -6511,6 +6643,8 @@ redshift_describe_logging_status <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_node_configuration_options
+#'
+#' @aliases redshift_describe_node_configuration_options
 redshift_describe_node_configuration_options <- function(ActionType, ClusterIdentifier = NULL, SnapshotIdentifier = NULL, SnapshotArn = NULL, OwnerAccount = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeNodeConfigurationOptions",
@@ -6611,6 +6745,8 @@ redshift_describe_node_configuration_options <- function(ActionType, ClusterIden
 #' @keywords internal
 #'
 #' @rdname redshift_describe_orderable_cluster_options
+#'
+#' @aliases redshift_describe_orderable_cluster_options
 redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, NodeType = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeOrderableClusterOptions",
@@ -6681,6 +6817,8 @@ redshift_describe_orderable_cluster_options <- function(ClusterVersion = NULL, N
 #' @keywords internal
 #'
 #' @rdname redshift_describe_partners
+#'
+#' @aliases redshift_describe_partners
 redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseName = NULL, PartnerName = NULL) {
   op <- new_operation(
     name = "DescribePartners",
@@ -6762,6 +6900,8 @@ redshift_describe_partners <- function(AccountId, ClusterIdentifier, DatabaseNam
 #' @keywords internal
 #'
 #' @rdname redshift_describe_reserved_node_exchange_status
+#'
+#' @aliases redshift_describe_reserved_node_exchange_status
 redshift_describe_reserved_node_exchange_status <- function(ReservedNodeId = NULL, ReservedNodeExchangeRequestId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedNodeExchangeStatus",
@@ -6859,6 +6999,8 @@ redshift_describe_reserved_node_exchange_status <- function(ReservedNodeId = NUL
 #' @keywords internal
 #'
 #' @rdname redshift_describe_reserved_node_offerings
+#'
+#' @aliases redshift_describe_reserved_node_offerings
 redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedNodeOfferings",
@@ -6946,6 +7088,8 @@ redshift_describe_reserved_node_offerings <- function(ReservedNodeOfferingId = N
 #' @keywords internal
 #'
 #' @rdname redshift_describe_reserved_nodes
+#'
+#' @aliases redshift_describe_reserved_nodes
 redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedNodes",
@@ -7025,6 +7169,8 @@ redshift_describe_reserved_nodes <- function(ReservedNodeId = NULL, MaxRecords =
 #' @keywords internal
 #'
 #' @rdname redshift_describe_resize
+#'
+#' @aliases redshift_describe_resize
 redshift_describe_resize <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "DescribeResize",
@@ -7151,6 +7297,8 @@ redshift_describe_resize <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_scheduled_actions
+#'
+#' @aliases redshift_describe_scheduled_actions
 redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, TargetActionType = NULL, StartTime = NULL, EndTime = NULL, Active = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeScheduledActions",
@@ -7254,6 +7402,8 @@ redshift_describe_scheduled_actions <- function(ScheduledActionName = NULL, Targ
 #' @keywords internal
 #'
 #' @rdname redshift_describe_snapshot_copy_grants
+#'
+#' @aliases redshift_describe_snapshot_copy_grants
 redshift_describe_snapshot_copy_grants <- function(SnapshotCopyGrantName = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeSnapshotCopyGrants",
@@ -7351,6 +7501,8 @@ redshift_describe_snapshot_copy_grants <- function(SnapshotCopyGrantName = NULL,
 #' @keywords internal
 #'
 #' @rdname redshift_describe_snapshot_schedules
+#'
+#' @aliases redshift_describe_snapshot_schedules
 redshift_describe_snapshot_schedules <- function(ClusterIdentifier = NULL, ScheduleIdentifier = NULL, TagKeys = NULL, TagValues = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeSnapshotSchedules",
@@ -7392,6 +7544,8 @@ redshift_describe_snapshot_schedules <- function(ClusterIdentifier = NULL, Sched
 #' @keywords internal
 #'
 #' @rdname redshift_describe_storage
+#'
+#' @aliases redshift_describe_storage
 redshift_describe_storage <- function() {
   op <- new_operation(
     name = "DescribeStorage",
@@ -7483,6 +7637,8 @@ redshift_describe_storage <- function() {
 #' @keywords internal
 #'
 #' @rdname redshift_describe_table_restore_status
+#'
+#' @aliases redshift_describe_table_restore_status
 redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, TableRestoreRequestId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeTableRestoreStatus",
@@ -7624,6 +7780,8 @@ redshift_describe_table_restore_status <- function(ClusterIdentifier = NULL, Tab
 #' @keywords internal
 #'
 #' @rdname redshift_describe_tags
+#'
+#' @aliases redshift_describe_tags
 redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeTags",
@@ -7745,6 +7903,8 @@ redshift_describe_tags <- function(ResourceName = NULL, ResourceType = NULL, Max
 #' @keywords internal
 #'
 #' @rdname redshift_describe_usage_limits
+#'
+#' @aliases redshift_describe_usage_limits
 redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifier = NULL, FeatureType = NULL, MaxRecords = NULL, Marker = NULL, TagKeys = NULL, TagValues = NULL) {
   op <- new_operation(
     name = "DescribeUsageLimits",
@@ -7807,6 +7967,8 @@ redshift_describe_usage_limits <- function(UsageLimitId = NULL, ClusterIdentifie
 #' @keywords internal
 #'
 #' @rdname redshift_disable_logging
+#'
+#' @aliases redshift_disable_logging
 redshift_disable_logging <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "DisableLogging",
@@ -8046,6 +8208,8 @@ redshift_disable_logging <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_disable_snapshot_copy
+#'
+#' @aliases redshift_disable_snapshot_copy
 redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "DisableSnapshotCopy",
@@ -8121,6 +8285,8 @@ redshift_disable_snapshot_copy <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_disassociate_data_share_consumer
+#'
+#' @aliases redshift_disassociate_data_share_consumer
 redshift_disassociate_data_share_consumer <- function(DataShareArn, DisassociateEntireAccount = NULL, ConsumerArn = NULL, ConsumerRegion = NULL) {
   op <- new_operation(
     name = "DisassociateDataShareConsumer",
@@ -8220,6 +8386,8 @@ redshift_disassociate_data_share_consumer <- function(DataShareArn, Disassociate
 #' @keywords internal
 #'
 #' @rdname redshift_enable_logging
+#'
+#' @aliases redshift_enable_logging
 redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyPrefix = NULL, LogDestinationType = NULL, LogExports = NULL) {
   op <- new_operation(
     name = "EnableLogging",
@@ -8478,6 +8646,8 @@ redshift_enable_logging <- function(ClusterIdentifier, BucketName = NULL, S3KeyP
 #' @keywords internal
 #'
 #' @rdname redshift_enable_snapshot_copy
+#'
+#' @aliases redshift_enable_snapshot_copy
 redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, RetentionPeriod = NULL, SnapshotCopyGrantName = NULL, ManualSnapshotRetentionPeriod = NULL) {
   op <- new_operation(
     name = "EnableSnapshotCopy",
@@ -8637,6 +8807,8 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 #' @keywords internal
 #'
 #' @rdname redshift_get_cluster_credentials
+#'
+#' @aliases redshift_get_cluster_credentials
 redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdentifier, DurationSeconds = NULL, AutoCreate = NULL, DbGroups = NULL) {
   op <- new_operation(
     name = "GetClusterCredentials",
@@ -8714,6 +8886,8 @@ redshift_get_cluster_credentials <- function(DbUser, DbName = NULL, ClusterIdent
 #' @keywords internal
 #'
 #' @rdname redshift_get_cluster_credentials_with_iam
+#'
+#' @aliases redshift_get_cluster_credentials_with_iam
 redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIdentifier, DurationSeconds = NULL) {
   op <- new_operation(
     name = "GetClusterCredentialsWithIAM",
@@ -8827,6 +9001,8 @@ redshift_get_cluster_credentials_with_iam <- function(DbName = NULL, ClusterIden
 #' @keywords internal
 #'
 #' @rdname redshift_get_reserved_node_exchange_configuration_options
+#'
+#' @aliases redshift_get_reserved_node_exchange_configuration_options
 redshift_get_reserved_node_exchange_configuration_options <- function(ActionType, ClusterIdentifier = NULL, SnapshotIdentifier = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetReservedNodeExchangeConfigurationOptions",
@@ -8900,6 +9076,8 @@ redshift_get_reserved_node_exchange_configuration_options <- function(ActionType
 #' @keywords internal
 #'
 #' @rdname redshift_get_reserved_node_exchange_offerings
+#'
+#' @aliases redshift_get_reserved_node_exchange_offerings
 redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetReservedNodeExchangeOfferings",
@@ -8959,6 +9137,8 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 #' @keywords internal
 #'
 #' @rdname redshift_modify_aqua_configuration
+#'
+#' @aliases redshift_modify_aqua_configuration
 redshift_modify_aqua_configuration <- function(ClusterIdentifier, AquaConfigurationStatus = NULL) {
   op <- new_operation(
     name = "ModifyAquaConfiguration",
@@ -9010,6 +9190,8 @@ redshift_modify_aqua_configuration <- function(ClusterIdentifier, AquaConfigurat
 #' @keywords internal
 #'
 #' @rdname redshift_modify_authentication_profile
+#'
+#' @aliases redshift_modify_authentication_profile
 redshift_modify_authentication_profile <- function(AuthenticationProfileName, AuthenticationProfileContent) {
   op <- new_operation(
     name = "ModifyAuthenticationProfile",
@@ -9481,6 +9663,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster
+#'
+#' @aliases redshift_modify_cluster
 redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, MasterUserPassword = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, PreferredMaintenanceWindow = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL, PubliclyAccessible = NULL, ElasticIp = NULL, EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL, Encrypted = NULL, KmsKeyId = NULL, AvailabilityZoneRelocation = NULL, AvailabilityZone = NULL, Port = NULL) {
   op <- new_operation(
     name = "ModifyCluster",
@@ -9717,6 +9901,8 @@ redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_db_revision
+#'
+#' @aliases redshift_modify_cluster_db_revision
 redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarget) {
   op <- new_operation(
     name = "ModifyClusterDbRevision",
@@ -9965,6 +10151,8 @@ redshift_modify_cluster_db_revision <- function(ClusterIdentifier, RevisionTarge
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_iam_roles
+#'
+#' @aliases redshift_modify_cluster_iam_roles
 redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = NULL, RemoveIamRoles = NULL, DefaultIamRoleArn = NULL) {
   op <- new_operation(
     name = "ModifyClusterIamRoles",
@@ -10212,6 +10400,8 @@ redshift_modify_cluster_iam_roles <- function(ClusterIdentifier, AddIamRoles = N
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_maintenance
+#'
+#' @aliases redshift_modify_cluster_maintenance
 redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintenance = NULL, DeferMaintenanceIdentifier = NULL, DeferMaintenanceStartTime = NULL, DeferMaintenanceEndTime = NULL, DeferMaintenanceDuration = NULL) {
   op <- new_operation(
     name = "ModifyClusterMaintenance",
@@ -10286,6 +10476,8 @@ redshift_modify_cluster_maintenance <- function(ClusterIdentifier, DeferMaintena
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_parameter_group
+#'
+#' @aliases redshift_modify_cluster_parameter_group
 redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Parameters) {
   op <- new_operation(
     name = "ModifyClusterParameterGroup",
@@ -10399,6 +10591,8 @@ redshift_modify_cluster_parameter_group <- function(ParameterGroupName, Paramete
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_snapshot
+#'
+#' @aliases redshift_modify_cluster_snapshot
 redshift_modify_cluster_snapshot <- function(SnapshotIdentifier, ManualSnapshotRetentionPeriod = NULL, Force = NULL) {
   op <- new_operation(
     name = "ModifyClusterSnapshot",
@@ -10447,6 +10641,8 @@ redshift_modify_cluster_snapshot <- function(SnapshotIdentifier, ManualSnapshotR
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_snapshot_schedule
+#'
+#' @aliases redshift_modify_cluster_snapshot_schedule
 redshift_modify_cluster_snapshot_schedule <- function(ClusterIdentifier, ScheduleIdentifier = NULL, DisassociateSchedule = NULL) {
   op <- new_operation(
     name = "ModifyClusterSnapshotSchedule",
@@ -10528,6 +10724,8 @@ redshift_modify_cluster_snapshot_schedule <- function(ClusterIdentifier, Schedul
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster_subnet_group
+#'
+#' @aliases redshift_modify_cluster_subnet_group
 redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Description = NULL, SubnetIds) {
   op <- new_operation(
     name = "ModifyClusterSubnetGroup",
@@ -10605,6 +10803,8 @@ redshift_modify_cluster_subnet_group <- function(ClusterSubnetGroupName, Descrip
 #' @keywords internal
 #'
 #' @rdname redshift_modify_endpoint_access
+#'
+#' @aliases redshift_modify_endpoint_access
 redshift_modify_endpoint_access <- function(EndpointName, VpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "ModifyEndpointAccess",
@@ -10714,6 +10914,8 @@ redshift_modify_endpoint_access <- function(EndpointName, VpcSecurityGroupIds = 
 #' @keywords internal
 #'
 #' @rdname redshift_modify_event_subscription
+#'
+#' @aliases redshift_modify_event_subscription
 redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, SourceType = NULL, SourceIds = NULL, EventCategories = NULL, Severity = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "ModifyEventSubscription",
@@ -10833,6 +11035,8 @@ redshift_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = N
 #' @keywords internal
 #'
 #' @rdname redshift_modify_scheduled_action
+#'
+#' @aliases redshift_modify_scheduled_action
 redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction = NULL, Schedule = NULL, IamRole = NULL, ScheduledActionDescription = NULL, StartTime = NULL, EndTime = NULL, Enable = NULL) {
   op <- new_operation(
     name = "ModifyScheduledAction",
@@ -11104,6 +11308,8 @@ redshift_modify_scheduled_action <- function(ScheduledActionName, TargetAction =
 #' @keywords internal
 #'
 #' @rdname redshift_modify_snapshot_copy_retention_period
+#'
+#' @aliases redshift_modify_snapshot_copy_retention_period
 redshift_modify_snapshot_copy_retention_period <- function(ClusterIdentifier, RetentionPeriod, Manual = NULL) {
   op <- new_operation(
     name = "ModifySnapshotCopyRetentionPeriod",
@@ -11179,6 +11385,8 @@ redshift_modify_snapshot_copy_retention_period <- function(ClusterIdentifier, Re
 #' @keywords internal
 #'
 #' @rdname redshift_modify_snapshot_schedule
+#'
+#' @aliases redshift_modify_snapshot_schedule
 redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefinitions) {
   op <- new_operation(
     name = "ModifySnapshotSchedule",
@@ -11243,6 +11451,8 @@ redshift_modify_snapshot_schedule <- function(ScheduleIdentifier, ScheduleDefini
 #' @keywords internal
 #'
 #' @rdname redshift_modify_usage_limit
+#'
+#' @aliases redshift_modify_usage_limit
 redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachAction = NULL) {
   op <- new_operation(
     name = "ModifyUsageLimit",
@@ -11470,6 +11680,8 @@ redshift_modify_usage_limit <- function(UsageLimitId, Amount = NULL, BreachActio
 #' @keywords internal
 #'
 #' @rdname redshift_pause_cluster
+#'
+#' @aliases redshift_pause_cluster
 redshift_pause_cluster <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "PauseCluster",
@@ -11553,6 +11765,8 @@ redshift_pause_cluster <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_purchase_reserved_node_offering
+#'
+#' @aliases redshift_purchase_reserved_node_offering
 redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, NodeCount = NULL) {
   op <- new_operation(
     name = "PurchaseReservedNodeOffering",
@@ -11787,6 +12001,8 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 #' @keywords internal
 #'
 #' @rdname redshift_reboot_cluster
+#'
+#' @aliases redshift_reboot_cluster
 redshift_reboot_cluster <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "RebootCluster",
@@ -11848,6 +12064,8 @@ redshift_reboot_cluster <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_reject_data_share
+#'
+#' @aliases redshift_reject_data_share
 redshift_reject_data_share <- function(DataShareArn) {
   op <- new_operation(
     name = "RejectDataShare",
@@ -11924,6 +12142,8 @@ redshift_reject_data_share <- function(DataShareArn) {
 #' @keywords internal
 #'
 #' @rdname redshift_reset_cluster_parameter_group
+#'
+#' @aliases redshift_reset_cluster_parameter_group
 redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllParameters = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ResetClusterParameterGroup",
@@ -12197,6 +12417,8 @@ redshift_reset_cluster_parameter_group <- function(ParameterGroupName, ResetAllP
 #' @keywords internal
 #'
 #' @rdname redshift_resize_cluster
+#'
+#' @aliases redshift_resize_cluster
 redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, Classic = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL) {
   op <- new_operation(
     name = "ResizeCluster",
@@ -12665,6 +12887,8 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @keywords internal
 #'
 #' @rdname redshift_restore_from_cluster_snapshot
+#'
+#' @aliases redshift_restore_from_cluster_snapshot
 redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL, Encrypted = NULL) {
   op <- new_operation(
     name = "RestoreFromClusterSnapshot",
@@ -12769,6 +12993,8 @@ redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotId
 #' @keywords internal
 #'
 #' @rdname redshift_restore_table_from_cluster_snapshot
+#'
+#' @aliases redshift_restore_table_from_cluster_snapshot
 redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier, SourceDatabaseName, SourceSchemaName = NULL, SourceTableName, TargetDatabaseName = NULL, TargetSchemaName = NULL, NewTableName, EnableCaseSensitiveIdentifier = NULL) {
   op <- new_operation(
     name = "RestoreTableFromClusterSnapshot",
@@ -12996,6 +13222,8 @@ redshift_restore_table_from_cluster_snapshot <- function(ClusterIdentifier, Snap
 #' @keywords internal
 #'
 #' @rdname redshift_resume_cluster
+#'
+#' @aliases redshift_resume_cluster
 redshift_resume_cluster <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "ResumeCluster",
@@ -13101,6 +13329,8 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_revoke_cluster_security_group_ingress
+#'
+#' @aliases redshift_revoke_cluster_security_group_ingress
 redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupName, CIDRIP = NULL, EC2SecurityGroupName = NULL, EC2SecurityGroupOwnerId = NULL) {
   op <- new_operation(
     name = "RevokeClusterSecurityGroupIngress",
@@ -13170,6 +13400,8 @@ redshift_revoke_cluster_security_group_ingress <- function(ClusterSecurityGroupN
 #' @keywords internal
 #'
 #' @rdname redshift_revoke_endpoint_access
+#'
+#' @aliases redshift_revoke_endpoint_access
 redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = NULL, VpcIds = NULL, Force = NULL) {
   op <- new_operation(
     name = "RevokeEndpointAccess",
@@ -13288,6 +13520,8 @@ redshift_revoke_endpoint_access <- function(ClusterIdentifier = NULL, Account = 
 #' @keywords internal
 #'
 #' @rdname redshift_revoke_snapshot_access
+#'
+#' @aliases redshift_revoke_snapshot_access
 redshift_revoke_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, AccountWithRestoreAccess) {
   op <- new_operation(
     name = "RevokeSnapshotAccess",
@@ -13519,6 +13753,8 @@ redshift_revoke_snapshot_access <- function(SnapshotIdentifier = NULL, SnapshotA
 #' @keywords internal
 #'
 #' @rdname redshift_rotate_encryption_key
+#'
+#' @aliases redshift_rotate_encryption_key
 redshift_rotate_encryption_key <- function(ClusterIdentifier) {
   op <- new_operation(
     name = "RotateEncryptionKey",
@@ -13578,6 +13814,8 @@ redshift_rotate_encryption_key <- function(ClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname redshift_update_partner_status
+#'
+#' @aliases redshift_update_partner_status
 redshift_update_partner_status <- function(AccountId, ClusterIdentifier, DatabaseName, PartnerName, Status, StatusMessage = NULL) {
   op <- new_operation(
     name = "UpdatePartnerStatus",

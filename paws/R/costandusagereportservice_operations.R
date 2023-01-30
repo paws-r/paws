@@ -41,6 +41,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname costandusagereportservice_delete_report_definition
+#'
+#' @aliases costandusagereportservice_delete_report_definition
 costandusagereportservice_delete_report_definition <- function(ReportName = NULL) {
   op <- new_operation(
     name = "DeleteReportDefinition",
@@ -118,6 +120,8 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #' @keywords internal
 #'
 #' @rdname costandusagereportservice_describe_report_definitions
+#'
+#' @aliases costandusagereportservice_describe_report_definitions
 costandusagereportservice_describe_report_definitions <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReportDefinitions",
@@ -178,6 +182,8 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #' @keywords internal
 #'
 #' @rdname costandusagereportservice_modify_report_definition
+#'
+#' @aliases costandusagereportservice_modify_report_definition
 costandusagereportservice_modify_report_definition <- function(ReportName, ReportDefinition) {
   op <- new_operation(
     name = "ModifyReportDefinition",
@@ -260,6 +266,8 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #' @keywords internal
 #'
 #' @rdname costandusagereportservice_put_report_definition
+#'
+#' @aliases costandusagereportservice_put_report_definition
 costandusagereportservice_put_report_definition <- function(ReportDefinition) {
   op <- new_operation(
     name = "PutReportDefinition",

@@ -196,6 +196,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname acmpca_create_certificate_authority
+#'
+#' @aliases acmpca_create_certificate_authority
 acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguration, RevocationConfiguration = NULL, CertificateAuthorityType, IdempotencyToken = NULL, KeyStorageSecurityStandard = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCertificateAuthority",
@@ -268,6 +270,8 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' @keywords internal
 #'
 #' @rdname acmpca_create_certificate_authority_audit_report
+#'
+#' @aliases acmpca_create_certificate_authority_audit_report
 acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorityArn, S3BucketName, AuditReportResponseFormat) {
   op <- new_operation(
     name = "CreateCertificateAuthorityAuditReport",
@@ -354,6 +358,8 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' @keywords internal
 #'
 #' @rdname acmpca_create_permission
+#'
+#' @aliases acmpca_create_permission
 acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceAccount = NULL, Actions) {
   op <- new_operation(
     name = "CreatePermission",
@@ -434,6 +440,8 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' @keywords internal
 #'
 #' @rdname acmpca_delete_certificate_authority
+#'
+#' @aliases acmpca_delete_certificate_authority
 acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, PermanentDeletionTimeInDays = NULL) {
   op <- new_operation(
     name = "DeleteCertificateAuthority",
@@ -516,6 +524,8 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' @keywords internal
 #'
 #' @rdname acmpca_delete_permission
+#'
+#' @aliases acmpca_delete_permission
 acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceAccount = NULL) {
   op <- new_operation(
     name = "DeletePermission",
@@ -596,6 +606,8 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' @keywords internal
 #'
 #' @rdname acmpca_delete_policy
+#'
+#' @aliases acmpca_delete_policy
 acmpca_delete_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DeletePolicy",
@@ -791,6 +803,8 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname acmpca_describe_certificate_authority
+#'
+#' @aliases acmpca_describe_certificate_authority
 acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
   op <- new_operation(
     name = "DescribeCertificateAuthority",
@@ -855,6 +869,8 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #' @keywords internal
 #'
 #' @rdname acmpca_describe_certificate_authority_audit_report
+#'
+#' @aliases acmpca_describe_certificate_authority_audit_report
 acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthorityArn, AuditReportId) {
   op <- new_operation(
     name = "DescribeCertificateAuthorityAuditReport",
@@ -919,6 +935,8 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' @keywords internal
 #'
 #' @rdname acmpca_get_certificate
+#'
+#' @aliases acmpca_get_certificate
 acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
   op <- new_operation(
     name = "GetCertificate",
@@ -972,6 +990,8 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
 #' @keywords internal
 #'
 #' @rdname acmpca_get_certificate_authority_certificate
+#'
+#' @aliases acmpca_get_certificate_authority_certificate
 acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn) {
   op <- new_operation(
     name = "GetCertificateAuthorityCertificate",
@@ -1029,6 +1049,8 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #' @keywords internal
 #'
 #' @rdname acmpca_get_certificate_authority_csr
+#'
+#' @aliases acmpca_get_certificate_authority_csr
 acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
   op <- new_operation(
     name = "GetCertificateAuthorityCsr",
@@ -1106,6 +1128,8 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' @keywords internal
 #'
 #' @rdname acmpca_get_policy
+#'
+#' @aliases acmpca_get_policy
 acmpca_get_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "GetPolicy",
@@ -1256,6 +1280,8 @@ acmpca_get_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname acmpca_import_certificate_authority_certificate
+#'
+#' @aliases acmpca_import_certificate_authority_certificate
 acmpca_import_certificate_authority_certificate <- function(CertificateAuthorityArn, Certificate, CertificateChain = NULL) {
   op <- new_operation(
     name = "ImportCertificateAuthorityCertificate",
@@ -1519,6 +1545,8 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' @keywords internal
 #'
 #' @rdname acmpca_issue_certificate
+#'
+#' @aliases acmpca_issue_certificate
 acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthorityArn, Csr, SigningAlgorithm, TemplateArn = NULL, Validity, ValidityNotBefore = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "IssueCertificate",
@@ -1702,6 +1730,8 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #' @keywords internal
 #'
 #' @rdname acmpca_list_certificate_authorities
+#'
+#' @aliases acmpca_list_certificate_authorities
 acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = NULL, ResourceOwner = NULL) {
   op <- new_operation(
     name = "ListCertificateAuthorities",
@@ -1806,6 +1836,8 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname acmpca_list_permissions
+#'
+#' @aliases acmpca_list_permissions
 acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPermissions",
@@ -1879,6 +1911,8 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname acmpca_list_tags
+#'
+#' @aliases acmpca_list_tags
 acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -1962,6 +1996,8 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname acmpca_put_policy
+#'
+#' @aliases acmpca_put_policy
 acmpca_put_policy <- function(ResourceArn, Policy) {
   op <- new_operation(
     name = "PutPolicy",
@@ -2026,6 +2062,8 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 #' @keywords internal
 #'
 #' @rdname acmpca_restore_certificate_authority
+#'
+#' @aliases acmpca_restore_certificate_authority
 acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
   op <- new_operation(
     name = "RestoreCertificateAuthority",
@@ -2108,6 +2146,8 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' @keywords internal
 #'
 #' @rdname acmpca_revoke_certificate
+#'
+#' @aliases acmpca_revoke_certificate
 acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial, RevocationReason) {
   op <- new_operation(
     name = "RevokeCertificate",
@@ -2169,6 +2209,8 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #' @keywords internal
 #'
 #' @rdname acmpca_tag_certificate_authority
+#'
+#' @aliases acmpca_tag_certificate_authority
 acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
   op <- new_operation(
     name = "TagCertificateAuthority",
@@ -2227,6 +2269,8 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname acmpca_untag_certificate_authority
+#'
+#' @aliases acmpca_untag_certificate_authority
 acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
   op <- new_operation(
     name = "UntagCertificateAuthority",
@@ -2301,6 +2345,8 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname acmpca_update_certificate_authority
+#'
+#' @aliases acmpca_update_certificate_authority
 acmpca_update_certificate_authority <- function(CertificateAuthorityArn, RevocationConfiguration = NULL, Status = NULL) {
   op <- new_operation(
     name = "UpdateCertificateAuthority",

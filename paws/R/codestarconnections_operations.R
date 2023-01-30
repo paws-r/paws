@@ -56,6 +56,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codestarconnections_create_connection
+#'
+#' @aliases codestarconnections_create_connection
 codestarconnections_create_connection <- function(ProviderType = NULL, ConnectionName, Tags = NULL, HostArn = NULL) {
   op <- new_operation(
     name = "CreateConnection",
@@ -146,6 +148,8 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' @keywords internal
 #'
 #' @rdname codestarconnections_create_host
+#'
+#' @aliases codestarconnections_create_host
 codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint, VpcConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateHost",
@@ -188,6 +192,8 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
 #' @keywords internal
 #'
 #' @rdname codestarconnections_delete_connection
+#'
+#' @aliases codestarconnections_delete_connection
 codestarconnections_delete_connection <- function(ConnectionArn) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -232,6 +238,8 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_delete_host
+#'
+#' @aliases codestarconnections_delete_host
 codestarconnections_delete_host <- function(HostArn) {
   op <- new_operation(
     name = "DeleteHost",
@@ -286,6 +294,8 @@ codestarconnections_delete_host <- function(HostArn) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_get_connection
+#'
+#' @aliases codestarconnections_get_connection
 codestarconnections_get_connection <- function(ConnectionArn) {
   op <- new_operation(
     name = "GetConnection",
@@ -346,6 +356,8 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_get_host
+#'
+#' @aliases codestarconnections_get_host
 codestarconnections_get_host <- function(HostArn) {
   op <- new_operation(
     name = "GetHost",
@@ -414,6 +426,8 @@ codestarconnections_get_host <- function(HostArn) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_list_connections
+#'
+#' @aliases codestarconnections_list_connections
 codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, HostArnFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConnections",
@@ -485,6 +499,8 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 #' @keywords internal
 #'
 #' @rdname codestarconnections_list_hosts
+#'
+#' @aliases codestarconnections_list_hosts
 codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListHosts",
@@ -538,6 +554,8 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname codestarconnections_list_tags_for_resource
+#'
+#' @aliases codestarconnections_list_tags_for_resource
 codestarconnections_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -587,6 +605,8 @@ codestarconnections_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_tag_resource
+#'
+#' @aliases codestarconnections_tag_resource
 codestarconnections_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -631,6 +651,8 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_untag_resource
+#'
+#' @aliases codestarconnections_untag_resource
 codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -687,6 +709,8 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname codestarconnections_update_host
+#'
+#' @aliases codestarconnections_update_host
 codestarconnections_update_host <- function(HostArn, ProviderEndpoint = NULL, VpcConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateHost",

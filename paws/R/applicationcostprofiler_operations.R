@@ -32,6 +32,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname applicationcostprofiler_delete_report_definition
+#'
+#' @aliases applicationcostprofiler_delete_report_definition
 applicationcostprofiler_delete_report_definition <- function(reportId) {
   op <- new_operation(
     name = "DeleteReportDefinition",
@@ -92,6 +94,8 @@ applicationcostprofiler_delete_report_definition <- function(reportId) {
 #' @keywords internal
 #'
 #' @rdname applicationcostprofiler_get_report_definition
+#'
+#' @aliases applicationcostprofiler_get_report_definition
 applicationcostprofiler_get_report_definition <- function(reportId) {
   op <- new_operation(
     name = "GetReportDefinition",
@@ -147,6 +151,8 @@ applicationcostprofiler_get_report_definition <- function(reportId) {
 #' @keywords internal
 #'
 #' @rdname applicationcostprofiler_import_application_usage
+#'
+#' @aliases applicationcostprofiler_import_application_usage
 applicationcostprofiler_import_application_usage <- function(sourceS3Location) {
   op <- new_operation(
     name = "ImportApplicationUsage",
@@ -216,6 +222,8 @@ applicationcostprofiler_import_application_usage <- function(sourceS3Location) {
 #' @keywords internal
 #'
 #' @rdname applicationcostprofiler_list_report_definitions
+#'
+#' @aliases applicationcostprofiler_list_report_definitions
 applicationcostprofiler_list_report_definitions <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListReportDefinitions",
@@ -275,6 +283,8 @@ applicationcostprofiler_list_report_definitions <- function(nextToken = NULL, ma
 #' @keywords internal
 #'
 #' @rdname applicationcostprofiler_put_report_definition
+#'
+#' @aliases applicationcostprofiler_put_report_definition
 applicationcostprofiler_put_report_definition <- function(reportId, reportDescription, reportFrequency, format, destinationS3Location) {
   op <- new_operation(
     name = "PutReportDefinition",
@@ -333,6 +343,8 @@ applicationcostprofiler_put_report_definition <- function(reportId, reportDescri
 #' @keywords internal
 #'
 #' @rdname applicationcostprofiler_update_report_definition
+#'
+#' @aliases applicationcostprofiler_update_report_definition
 applicationcostprofiler_update_report_definition <- function(reportId, reportDescription, reportFrequency, format, destinationS3Location) {
   op <- new_operation(
     name = "UpdateReportDefinition",

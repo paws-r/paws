@@ -81,36 +81,36 @@ the \emph{Amazon Web Services General Reference}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.compute.p2:apprunner_associate_custom_domain]{associate_custom_domain} \tab Associate your own domain name with the App Runner subdomain URL of your App Runner service\cr
-\link[paws.compute.p2:apprunner_create_auto_scaling_configuration]{create_auto_scaling_configuration} \tab Create an App Runner automatic scaling configuration resource\cr
-\link[paws.compute.p2:apprunner_create_connection]{create_connection} \tab Create an App Runner connection resource\cr
-\link[paws.compute.p2:apprunner_create_observability_configuration]{create_observability_configuration} \tab Create an App Runner observability configuration resource\cr
-\link[paws.compute.p2:apprunner_create_service]{create_service} \tab Create an App Runner service\cr
-\link[paws.compute.p2:apprunner_create_vpc_connector]{create_vpc_connector} \tab Create an App Runner VPC connector resource\cr
-\link[paws.compute.p2:apprunner_delete_auto_scaling_configuration]{delete_auto_scaling_configuration} \tab Delete an App Runner automatic scaling configuration resource\cr
-\link[paws.compute.p2:apprunner_delete_connection]{delete_connection} \tab Delete an App Runner connection\cr
-\link[paws.compute.p2:apprunner_delete_observability_configuration]{delete_observability_configuration} \tab Delete an App Runner observability configuration resource\cr
-\link[paws.compute.p2:apprunner_delete_service]{delete_service} \tab Delete an App Runner service\cr
-\link[paws.compute.p2:apprunner_delete_vpc_connector]{delete_vpc_connector} \tab Delete an App Runner VPC connector resource\cr
-\link[paws.compute.p2:apprunner_describe_auto_scaling_configuration]{describe_auto_scaling_configuration} \tab Return a full description of an App Runner automatic scaling configuration resource\cr
-\link[paws.compute.p2:apprunner_describe_custom_domains]{describe_custom_domains} \tab Return a description of custom domain names that are associated with an App Runner service\cr
-\link[paws.compute.p2:apprunner_describe_observability_configuration]{describe_observability_configuration} \tab Return a full description of an App Runner observability configuration resource\cr
-\link[paws.compute.p2:apprunner_describe_service]{describe_service} \tab Return a full description of an App Runner service\cr
-\link[paws.compute.p2:apprunner_describe_vpc_connector]{describe_vpc_connector} \tab Return a description of an App Runner VPC connector resource\cr
-\link[paws.compute.p2:apprunner_disassociate_custom_domain]{disassociate_custom_domain} \tab Disassociate a custom domain name from an App Runner service\cr
-\link[paws.compute.p2:apprunner_list_auto_scaling_configurations]{list_auto_scaling_configurations} \tab Returns a list of active App Runner automatic scaling configurations in your Amazon Web Services account\cr
-\link[paws.compute.p2:apprunner_list_connections]{list_connections} \tab Returns a list of App Runner connections that are associated with your Amazon Web Services account\cr
-\link[paws.compute.p2:apprunner_list_observability_configurations]{list_observability_configurations} \tab Returns a list of active App Runner observability configurations in your Amazon Web Services account\cr
-\link[paws.compute.p2:apprunner_list_operations]{list_operations} \tab Return a list of operations that occurred on an App Runner service\cr
-\link[paws.compute.p2:apprunner_list_services]{list_services} \tab Returns a list of running App Runner services in your Amazon Web Services account\cr
-\link[paws.compute.p2:apprunner_list_tags_for_resource]{list_tags_for_resource} \tab List tags that are associated with for an App Runner resource\cr
-\link[paws.compute.p2:apprunner_list_vpc_connectors]{list_vpc_connectors} \tab Returns a list of App Runner VPC connectors in your Amazon Web Services account\cr
-\link[paws.compute.p2:apprunner_pause_service]{pause_service} \tab Pause an active App Runner service\cr
-\link[paws.compute.p2:apprunner_resume_service]{resume_service} \tab Resume an active App Runner service\cr
-\link[paws.compute.p2:apprunner_start_deployment]{start_deployment} \tab Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository to an App Runner service\cr
-\link[paws.compute.p2:apprunner_tag_resource]{tag_resource} \tab Add tags to, or update the tag values of, an App Runner resource\cr
-\link[paws.compute.p2:apprunner_untag_resource]{untag_resource} \tab Remove tags from an App Runner resource\cr
-\link[paws.compute.p2:apprunner_update_service]{update_service} \tab Update an App Runner service
+\link[paws.compute:apprunner_associate_custom_domain]{associate_custom_domain} \tab Associate your own domain name with the App Runner subdomain URL of your App Runner service\cr
+\link[paws.compute:apprunner_create_auto_scaling_configuration]{create_auto_scaling_configuration} \tab Create an App Runner automatic scaling configuration resource\cr
+\link[paws.compute:apprunner_create_connection]{create_connection} \tab Create an App Runner connection resource\cr
+\link[paws.compute:apprunner_create_observability_configuration]{create_observability_configuration} \tab Create an App Runner observability configuration resource\cr
+\link[paws.compute:apprunner_create_service]{create_service} \tab Create an App Runner service\cr
+\link[paws.compute:apprunner_create_vpc_connector]{create_vpc_connector} \tab Create an App Runner VPC connector resource\cr
+\link[paws.compute:apprunner_delete_auto_scaling_configuration]{delete_auto_scaling_configuration} \tab Delete an App Runner automatic scaling configuration resource\cr
+\link[paws.compute:apprunner_delete_connection]{delete_connection} \tab Delete an App Runner connection\cr
+\link[paws.compute:apprunner_delete_observability_configuration]{delete_observability_configuration} \tab Delete an App Runner observability configuration resource\cr
+\link[paws.compute:apprunner_delete_service]{delete_service} \tab Delete an App Runner service\cr
+\link[paws.compute:apprunner_delete_vpc_connector]{delete_vpc_connector} \tab Delete an App Runner VPC connector resource\cr
+\link[paws.compute:apprunner_describe_auto_scaling_configuration]{describe_auto_scaling_configuration} \tab Return a full description of an App Runner automatic scaling configuration resource\cr
+\link[paws.compute:apprunner_describe_custom_domains]{describe_custom_domains} \tab Return a description of custom domain names that are associated with an App Runner service\cr
+\link[paws.compute:apprunner_describe_observability_configuration]{describe_observability_configuration} \tab Return a full description of an App Runner observability configuration resource\cr
+\link[paws.compute:apprunner_describe_service]{describe_service} \tab Return a full description of an App Runner service\cr
+\link[paws.compute:apprunner_describe_vpc_connector]{describe_vpc_connector} \tab Return a description of an App Runner VPC connector resource\cr
+\link[paws.compute:apprunner_disassociate_custom_domain]{disassociate_custom_domain} \tab Disassociate a custom domain name from an App Runner service\cr
+\link[paws.compute:apprunner_list_auto_scaling_configurations]{list_auto_scaling_configurations} \tab Returns a list of active App Runner automatic scaling configurations in your Amazon Web Services account\cr
+\link[paws.compute:apprunner_list_connections]{list_connections} \tab Returns a list of App Runner connections that are associated with your Amazon Web Services account\cr
+\link[paws.compute:apprunner_list_observability_configurations]{list_observability_configurations} \tab Returns a list of active App Runner observability configurations in your Amazon Web Services account\cr
+\link[paws.compute:apprunner_list_operations]{list_operations} \tab Return a list of operations that occurred on an App Runner service\cr
+\link[paws.compute:apprunner_list_services]{list_services} \tab Returns a list of running App Runner services in your Amazon Web Services account\cr
+\link[paws.compute:apprunner_list_tags_for_resource]{list_tags_for_resource} \tab List tags that are associated with for an App Runner resource\cr
+\link[paws.compute:apprunner_list_vpc_connectors]{list_vpc_connectors} \tab Returns a list of App Runner VPC connectors in your Amazon Web Services account\cr
+\link[paws.compute:apprunner_pause_service]{pause_service} \tab Pause an active App Runner service\cr
+\link[paws.compute:apprunner_resume_service]{resume_service} \tab Resume an active App Runner service\cr
+\link[paws.compute:apprunner_start_deployment]{start_deployment} \tab Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository to an App Runner service\cr
+\link[paws.compute:apprunner_tag_resource]{tag_resource} \tab Add tags to, or update the tag values of, an App Runner resource\cr
+\link[paws.compute:apprunner_untag_resource]{untag_resource} \tab Remove tags from an App Runner resource\cr
+\link[paws.compute:apprunner_update_service]{update_service} \tab Update an App Runner service
 }
 }
 

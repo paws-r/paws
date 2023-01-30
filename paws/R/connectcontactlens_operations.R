@@ -76,6 +76,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connectcontactlens_list_realtime_contact_analysis_segments
+#'
+#' @aliases connectcontactlens_list_realtime_contact_analysis_segments
 connectcontactlens_list_realtime_contact_analysis_segments <- function(InstanceId, ContactId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRealtimeContactAnalysisSegments",

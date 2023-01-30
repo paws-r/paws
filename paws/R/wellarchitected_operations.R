@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname wellarchitected_associate_lenses
+#'
+#' @aliases wellarchitected_associate_lenses
 wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
   op <- new_operation(
     name = "AssociateLenses",
@@ -103,6 +105,8 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_lens_share
+#'
+#' @aliases wellarchitected_create_lens_share
 wellarchitected_create_lens_share <- function(LensAlias, SharedWith, ClientRequestToken) {
   op <- new_operation(
     name = "CreateLensShare",
@@ -163,6 +167,8 @@ wellarchitected_create_lens_share <- function(LensAlias, SharedWith, ClientReque
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_lens_version
+#'
+#' @aliases wellarchitected_create_lens_version
 wellarchitected_create_lens_version <- function(LensAlias, LensVersion, IsMajorVersion = NULL, ClientRequestToken) {
   op <- new_operation(
     name = "CreateLensVersion",
@@ -214,6 +220,8 @@ wellarchitected_create_lens_version <- function(LensAlias, LensVersion, IsMajorV
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_milestone
+#'
+#' @aliases wellarchitected_create_milestone
 wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRequestToken) {
   op <- new_operation(
     name = "CreateMilestone",
@@ -311,6 +319,8 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload
+#'
+#' @aliases wellarchitected_create_workload
 wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
@@ -373,6 +383,8 @@ wellarchitected_create_workload <- function(WorkloadName, Description, Environme
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload_share
+#'
+#' @aliases wellarchitected_create_workload_share
 wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, PermissionType, ClientRequestToken) {
   op <- new_operation(
     name = "CreateWorkloadShare",
@@ -431,6 +443,8 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
 #' @keywords internal
 #'
 #' @rdname wellarchitected_delete_lens
+#'
+#' @aliases wellarchitected_delete_lens
 wellarchitected_delete_lens <- function(LensAlias, ClientRequestToken, LensStatus) {
   op <- new_operation(
     name = "DeleteLens",
@@ -489,6 +503,8 @@ wellarchitected_delete_lens <- function(LensAlias, ClientRequestToken, LensStatu
 #' @keywords internal
 #'
 #' @rdname wellarchitected_delete_lens_share
+#'
+#' @aliases wellarchitected_delete_lens_share
 wellarchitected_delete_lens_share <- function(ShareId, LensAlias, ClientRequestToken) {
   op <- new_operation(
     name = "DeleteLensShare",
@@ -531,6 +547,8 @@ wellarchitected_delete_lens_share <- function(ShareId, LensAlias, ClientRequestT
 #' @keywords internal
 #'
 #' @rdname wellarchitected_delete_workload
+#'
+#' @aliases wellarchitected_delete_workload
 wellarchitected_delete_workload <- function(WorkloadId, ClientRequestToken) {
   op <- new_operation(
     name = "DeleteWorkload",
@@ -576,6 +594,8 @@ wellarchitected_delete_workload <- function(WorkloadId, ClientRequestToken) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_delete_workload_share
+#'
+#' @aliases wellarchitected_delete_workload_share
 wellarchitected_delete_workload_share <- function(ShareId, WorkloadId, ClientRequestToken) {
   op <- new_operation(
     name = "DeleteWorkloadShare",
@@ -626,6 +646,8 @@ wellarchitected_delete_workload_share <- function(ShareId, WorkloadId, ClientReq
 #' @keywords internal
 #'
 #' @rdname wellarchitected_disassociate_lenses
+#'
+#' @aliases wellarchitected_disassociate_lenses
 wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
   op <- new_operation(
     name = "DisassociateLenses",
@@ -688,6 +710,8 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_export_lens
+#'
+#' @aliases wellarchitected_export_lens
 wellarchitected_export_lens <- function(LensAlias, LensVersion = NULL) {
   op <- new_operation(
     name = "ExportLens",
@@ -793,6 +817,8 @@ wellarchitected_export_lens <- function(LensAlias, LensVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_answer
+#'
+#' @aliases wellarchitected_get_answer
 wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, MilestoneNumber = NULL) {
   op <- new_operation(
     name = "GetAnswer",
@@ -850,6 +876,8 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_lens
+#'
+#' @aliases wellarchitected_get_lens
 wellarchitected_get_lens <- function(LensAlias, LensVersion = NULL) {
   op <- new_operation(
     name = "GetLens",
@@ -925,6 +953,8 @@ wellarchitected_get_lens <- function(LensAlias, LensVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_lens_review
+#'
+#' @aliases wellarchitected_get_lens_review
 wellarchitected_get_lens_review <- function(WorkloadId, LensAlias, MilestoneNumber = NULL) {
   op <- new_operation(
     name = "GetLensReview",
@@ -981,6 +1011,8 @@ wellarchitected_get_lens_review <- function(WorkloadId, LensAlias, MilestoneNumb
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_lens_review_report
+#'
+#' @aliases wellarchitected_get_lens_review_report
 wellarchitected_get_lens_review_report <- function(WorkloadId, LensAlias, MilestoneNumber = NULL) {
   op <- new_operation(
     name = "GetLensReviewReport",
@@ -1051,6 +1083,8 @@ wellarchitected_get_lens_review_report <- function(WorkloadId, LensAlias, Milest
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_lens_version_difference
+#'
+#' @aliases wellarchitected_get_lens_version_difference
 wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersion = NULL, TargetLensVersion = NULL) {
   op <- new_operation(
     name = "GetLensVersionDifference",
@@ -1148,6 +1182,8 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_milestone
+#'
+#' @aliases wellarchitected_get_milestone
 wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
   op <- new_operation(
     name = "GetMilestone",
@@ -1235,6 +1271,8 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_get_workload
+#'
+#' @aliases wellarchitected_get_workload
 wellarchitected_get_workload <- function(WorkloadId) {
   op <- new_operation(
     name = "GetWorkload",
@@ -1310,6 +1348,8 @@ wellarchitected_get_workload <- function(WorkloadId) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_import_lens
+#'
+#' @aliases wellarchitected_import_lens
 wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequestToken, Tags = NULL) {
   op <- new_operation(
     name = "ImportLens",
@@ -1416,6 +1456,8 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_answers
+#'
+#' @aliases wellarchitected_list_answers
 wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAnswers",
@@ -1492,6 +1534,8 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_lens_review_improvements
+#'
+#' @aliases wellarchitected_list_lens_review_improvements
 wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLensReviewImprovements",
@@ -1561,6 +1605,8 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_lens_reviews
+#'
+#' @aliases wellarchitected_list_lens_reviews
 wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLensReviews",
@@ -1624,6 +1670,8 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_lens_shares
+#'
+#' @aliases wellarchitected_list_lens_shares
 wellarchitected_list_lens_shares <- function(LensAlias, SharedWithPrefix = NULL, NextToken = NULL, MaxResults = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListLensShares",
@@ -1696,6 +1744,8 @@ wellarchitected_list_lens_shares <- function(LensAlias, SharedWithPrefix = NULL,
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_lenses
+#'
+#' @aliases wellarchitected_list_lenses
 wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, LensType = NULL, LensStatus = NULL, LensName = NULL) {
   op <- new_operation(
     name = "ListLenses",
@@ -1771,6 +1821,8 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, Len
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_milestones
+#'
+#' @aliases wellarchitected_list_milestones
 wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMilestones",
@@ -1833,6 +1885,8 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_notifications
+#'
+#' @aliases wellarchitected_list_notifications
 wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListNotifications",
@@ -1901,6 +1955,8 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_share_invitations
+#'
+#' @aliases wellarchitected_list_share_invitations
 wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListShareInvitations",
@@ -1951,6 +2007,8 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Le
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_tags_for_resource
+#'
+#' @aliases wellarchitected_list_tags_for_resource
 wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2016,6 +2074,8 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_workload_shares
+#'
+#' @aliases wellarchitected_list_workload_shares
 wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = NULL, NextToken = NULL, MaxResults = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListWorkloadShares",
@@ -2084,6 +2144,8 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_workloads
+#'
+#' @aliases wellarchitected_list_workloads
 wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkloads",
@@ -2131,6 +2193,8 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname wellarchitected_tag_resource
+#'
+#' @aliases wellarchitected_tag_resource
 wellarchitected_tag_resource <- function(WorkloadArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2184,6 +2248,8 @@ wellarchitected_tag_resource <- function(WorkloadArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_untag_resource
+#'
+#' @aliases wellarchitected_untag_resource
 wellarchitected_untag_resource <- function(WorkloadArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2305,6 +2371,8 @@ wellarchitected_untag_resource <- function(WorkloadArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_answer
+#'
+#' @aliases wellarchitected_update_answer
 wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, SelectedChoices = NULL, ChoiceUpdates = NULL, Notes = NULL, IsApplicable = NULL, Reason = NULL) {
   op <- new_operation(
     name = "UpdateAnswer",
@@ -2347,6 +2415,8 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_global_settings
+#'
+#' @aliases wellarchitected_update_global_settings
 wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL) {
   op <- new_operation(
     name = "UpdateGlobalSettings",
@@ -2426,6 +2496,8 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_lens_review
+#'
+#' @aliases wellarchitected_update_lens_review
 wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes = NULL, PillarNotes = NULL) {
   op <- new_operation(
     name = "UpdateLensReview",
@@ -2480,6 +2552,8 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_share_invitation
+#'
+#' @aliases wellarchitected_update_share_invitation
 wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvitationAction) {
   op <- new_operation(
     name = "UpdateShareInvitation",
@@ -2611,6 +2685,8 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_workload
+#'
+#' @aliases wellarchitected_update_workload
 wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL) {
   op <- new_operation(
     name = "UpdateWorkload",
@@ -2670,6 +2746,8 @@ wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Des
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_workload_share
+#'
+#' @aliases wellarchitected_update_workload_share
 wellarchitected_update_workload_share <- function(ShareId, WorkloadId, PermissionType) {
   op <- new_operation(
     name = "UpdateWorkloadShare",
@@ -2717,6 +2795,8 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
 #' @keywords internal
 #'
 #' @rdname wellarchitected_upgrade_lens_review
+#'
+#' @aliases wellarchitected_upgrade_lens_review
 wellarchitected_upgrade_lens_review <- function(WorkloadId, LensAlias, MilestoneName, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "UpgradeLensReview",

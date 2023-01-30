@@ -67,6 +67,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname networkmanager_accept_attachment
+#'
+#' @aliases networkmanager_accept_attachment
 networkmanager_accept_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "AcceptAttachment",
@@ -131,6 +133,8 @@ networkmanager_accept_attachment <- function(AttachmentId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_associate_connect_peer
+#'
+#' @aliases networkmanager_associate_connect_peer
 networkmanager_associate_connect_peer <- function(GlobalNetworkId, ConnectPeerId, DeviceId, LinkId = NULL) {
   op <- new_operation(
     name = "AssociateConnectPeer",
@@ -202,6 +206,8 @@ networkmanager_associate_connect_peer <- function(GlobalNetworkId, ConnectPeerId
 #' @keywords internal
 #'
 #' @rdname networkmanager_associate_customer_gateway
+#'
+#' @aliases networkmanager_associate_customer_gateway
 networkmanager_associate_customer_gateway <- function(CustomerGatewayArn, GlobalNetworkId, DeviceId, LinkId = NULL) {
   op <- new_operation(
     name = "AssociateCustomerGateway",
@@ -258,6 +264,8 @@ networkmanager_associate_customer_gateway <- function(CustomerGatewayArn, Global
 #' @keywords internal
 #'
 #' @rdname networkmanager_associate_link
+#'
+#' @aliases networkmanager_associate_link
 networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
   op <- new_operation(
     name = "AssociateLink",
@@ -325,6 +333,8 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_associate_transit_gateway_connect_peer
+#'
+#' @aliases networkmanager_associate_transit_gateway_connect_peer
 networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkId, TransitGatewayConnectPeerArn, DeviceId, LinkId = NULL) {
   op <- new_operation(
     name = "AssociateTransitGatewayConnectPeer",
@@ -434,6 +444,8 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_connect_attachment
+#'
+#' @aliases networkmanager_create_connect_attachment
 networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation, TransportAttachmentId, Options, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateConnectAttachment",
@@ -537,6 +549,8 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_connect_peer
+#'
+#' @aliases networkmanager_create_connect_peer
 networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateConnectPeer",
@@ -624,6 +638,8 @@ networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkA
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_connection
+#'
+#' @aliases networkmanager_create_connection
 networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, ConnectedDeviceId, LinkId = NULL, ConnectedLinkId = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConnection",
@@ -720,6 +736,8 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_core_network
+#'
+#' @aliases networkmanager_create_core_network
 networkmanager_create_core_network <- function(GlobalNetworkId, Description = NULL, Tags = NULL, PolicyDocument = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateCoreNetwork",
@@ -836,6 +854,8 @@ networkmanager_create_core_network <- function(GlobalNetworkId, Description = NU
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_device
+#'
+#' @aliases networkmanager_create_device
 networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, Description = NULL, Type = NULL, Vendor = NULL, Model = NULL, SerialNumber = NULL, Location = NULL, SiteId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDevice",
@@ -904,6 +924,8 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_global_network
+#'
+#' @aliases networkmanager_create_global_network
 networkmanager_create_global_network <- function(Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGlobalNetwork",
@@ -1000,6 +1022,8 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_link
+#'
+#' @aliases networkmanager_create_link
 networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type = NULL, Bandwidth, Provider = NULL, SiteId, Tags = NULL) {
   op <- new_operation(
     name = "CreateLink",
@@ -1090,6 +1114,8 @@ networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_site
+#'
+#' @aliases networkmanager_create_site
 networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Location = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSite",
@@ -1186,6 +1212,8 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_site_to_site_vpn_attachment
+#'
+#' @aliases networkmanager_create_site_to_site_vpn_attachment
 networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, VpnConnectionArn, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateSiteToSiteVpnAttachment",
@@ -1264,6 +1292,8 @@ networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, Vpn
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_transit_gateway_peering
+#'
+#' @aliases networkmanager_create_transit_gateway_peering
 networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, TransitGatewayArn, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayPeering",
@@ -1358,6 +1388,8 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_transit_gateway_route_table_attachment
+#'
+#' @aliases networkmanager_create_transit_gateway_route_table_attachment
 networkmanager_create_transit_gateway_route_table_attachment <- function(PeeringId, TransitGatewayRouteTableArn, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTransitGatewayRouteTableAttachment",
@@ -1464,6 +1496,8 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_vpc_attachment
+#'
+#' @aliases networkmanager_create_vpc_attachment
 networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetArns, Options = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateVpcAttachment",
@@ -1542,6 +1576,8 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_attachment
+#'
+#' @aliases networkmanager_delete_attachment
 networkmanager_delete_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "DeleteAttachment",
@@ -1618,6 +1654,8 @@ networkmanager_delete_attachment <- function(AttachmentId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_connect_peer
+#'
+#' @aliases networkmanager_delete_connect_peer
 networkmanager_delete_connect_peer <- function(ConnectPeerId) {
   op <- new_operation(
     name = "DeleteConnectPeer",
@@ -1684,6 +1722,8 @@ networkmanager_delete_connect_peer <- function(ConnectPeerId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_connection
+#'
+#' @aliases networkmanager_delete_connection
 networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -1765,6 +1805,8 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_core_network
+#'
+#' @aliases networkmanager_delete_core_network
 networkmanager_delete_core_network <- function(CoreNetworkId) {
   op <- new_operation(
     name = "DeleteCoreNetwork",
@@ -1831,6 +1873,8 @@ networkmanager_delete_core_network <- function(CoreNetworkId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_core_network_policy_version
+#'
+#' @aliases networkmanager_delete_core_network_policy_version
 networkmanager_delete_core_network_policy_version <- function(CoreNetworkId, PolicyVersionId) {
   op <- new_operation(
     name = "DeleteCoreNetworkPolicyVersion",
@@ -1908,6 +1952,8 @@ networkmanager_delete_core_network_policy_version <- function(CoreNetworkId, Pol
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_device
+#'
+#' @aliases networkmanager_delete_device
 networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
   op <- new_operation(
     name = "DeleteDevice",
@@ -1969,6 +2015,8 @@ networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_global_network
+#'
+#' @aliases networkmanager_delete_global_network
 networkmanager_delete_global_network <- function(GlobalNetworkId) {
   op <- new_operation(
     name = "DeleteGlobalNetwork",
@@ -2039,6 +2087,8 @@ networkmanager_delete_global_network <- function(GlobalNetworkId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_link
+#'
+#' @aliases networkmanager_delete_link
 networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
   op <- new_operation(
     name = "DeleteLink",
@@ -2102,6 +2152,8 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_peering
+#'
+#' @aliases networkmanager_delete_peering
 networkmanager_delete_peering <- function(PeeringId) {
   op <- new_operation(
     name = "DeletePeering",
@@ -2143,6 +2195,8 @@ networkmanager_delete_peering <- function(PeeringId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_resource_policy
+#'
+#' @aliases networkmanager_delete_resource_policy
 networkmanager_delete_resource_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -2211,6 +2265,8 @@ networkmanager_delete_resource_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_delete_site
+#'
+#' @aliases networkmanager_delete_site
 networkmanager_delete_site <- function(GlobalNetworkId, SiteId) {
   op <- new_operation(
     name = "DeleteSite",
@@ -2268,6 +2324,8 @@ networkmanager_delete_site <- function(GlobalNetworkId, SiteId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_deregister_transit_gateway
+#'
+#' @aliases networkmanager_deregister_transit_gateway
 networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGatewayArn) {
   op <- new_operation(
     name = "DeregisterTransitGateway",
@@ -2341,6 +2399,8 @@ networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGa
 #' @keywords internal
 #'
 #' @rdname networkmanager_describe_global_networks
+#'
+#' @aliases networkmanager_describe_global_networks
 networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeGlobalNetworks",
@@ -2394,6 +2454,8 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 #' @keywords internal
 #'
 #' @rdname networkmanager_disassociate_connect_peer
+#'
+#' @aliases networkmanager_disassociate_connect_peer
 networkmanager_disassociate_connect_peer <- function(GlobalNetworkId, ConnectPeerId) {
   op <- new_operation(
     name = "DisassociateConnectPeer",
@@ -2448,6 +2510,8 @@ networkmanager_disassociate_connect_peer <- function(GlobalNetworkId, ConnectPee
 #' @keywords internal
 #'
 #' @rdname networkmanager_disassociate_customer_gateway
+#'
+#' @aliases networkmanager_disassociate_customer_gateway
 networkmanager_disassociate_customer_gateway <- function(GlobalNetworkId, CustomerGatewayArn) {
   op <- new_operation(
     name = "DisassociateCustomerGateway",
@@ -2503,6 +2567,8 @@ networkmanager_disassociate_customer_gateway <- function(GlobalNetworkId, Custom
 #' @keywords internal
 #'
 #' @rdname networkmanager_disassociate_link
+#'
+#' @aliases networkmanager_disassociate_link
 networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
   op <- new_operation(
     name = "DisassociateLink",
@@ -2557,6 +2623,8 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
 #' @keywords internal
 #'
 #' @rdname networkmanager_disassociate_transit_gateway_connect_peer
+#'
+#' @aliases networkmanager_disassociate_transit_gateway_connect_peer
 networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetworkId, TransitGatewayConnectPeerArn) {
   op <- new_operation(
     name = "DisassociateTransitGatewayConnectPeer",
@@ -2601,6 +2669,8 @@ networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetwo
 #' @keywords internal
 #'
 #' @rdname networkmanager_execute_core_network_change_set
+#'
+#' @aliases networkmanager_execute_core_network_change_set
 networkmanager_execute_core_network_change_set <- function(CoreNetworkId, PolicyVersionId) {
   op <- new_operation(
     name = "ExecuteCoreNetworkChangeSet",
@@ -2685,6 +2755,8 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_connect_attachment
+#'
+#' @aliases networkmanager_get_connect_attachment
 networkmanager_get_connect_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "GetConnectAttachment",
@@ -2761,6 +2833,8 @@ networkmanager_get_connect_attachment <- function(AttachmentId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_connect_peer
+#'
+#' @aliases networkmanager_get_connect_peer
 networkmanager_get_connect_peer <- function(ConnectPeerId) {
   op <- new_operation(
     name = "GetConnectPeer",
@@ -2824,6 +2898,8 @@ networkmanager_get_connect_peer <- function(ConnectPeerId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_connect_peer_associations
+#'
+#' @aliases networkmanager_get_connect_peer_associations
 networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, ConnectPeerIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetConnectPeerAssociations",
@@ -2904,6 +2980,8 @@ networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, Connec
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_connections
+#'
+#' @aliases networkmanager_get_connections
 networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL, DeviceId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetConnections",
@@ -2984,6 +3062,8 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_core_network
+#'
+#' @aliases networkmanager_get_core_network
 networkmanager_get_core_network <- function(CoreNetworkId) {
   op <- new_operation(
     name = "GetCoreNetwork",
@@ -3053,6 +3133,8 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_core_network_change_events
+#'
+#' @aliases networkmanager_get_core_network_change_events
 networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyVersionId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetCoreNetworkChangeEvents",
@@ -3145,6 +3227,8 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_core_network_change_set
+#'
+#' @aliases networkmanager_get_core_network_change_set
 networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVersionId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetCoreNetworkChangeSet",
@@ -3213,6 +3297,8 @@ networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVers
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_core_network_policy
+#'
+#' @aliases networkmanager_get_core_network_policy
 networkmanager_get_core_network_policy <- function(CoreNetworkId, PolicyVersionId = NULL, Alias = NULL) {
   op <- new_operation(
     name = "GetCoreNetworkPolicy",
@@ -3279,6 +3365,8 @@ networkmanager_get_core_network_policy <- function(CoreNetworkId, PolicyVersionI
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_customer_gateway_associations
+#'
+#' @aliases networkmanager_get_customer_gateway_associations
 networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, CustomerGatewayArns = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetCustomerGatewayAssociations",
@@ -3367,6 +3455,8 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_devices
+#'
+#' @aliases networkmanager_get_devices
 networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetDevices",
@@ -3430,6 +3520,8 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_link_associations
+#'
+#' @aliases networkmanager_get_link_associations
 networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NULL, LinkId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetLinkAssociations",
@@ -3519,6 +3611,8 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_links
+#'
+#' @aliases networkmanager_get_links
 networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = NULL, Type = NULL, Provider = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetLinks",
@@ -3611,6 +3705,8 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_network_resource_counts
+#'
+#' @aliases networkmanager_get_network_resource_counts
 networkmanager_get_network_resource_counts <- function(GlobalNetworkId, ResourceType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetNetworkResourceCounts",
@@ -3713,6 +3809,8 @@ networkmanager_get_network_resource_counts <- function(GlobalNetworkId, Resource
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_network_resource_relationships
+#'
+#' @aliases networkmanager_get_network_resource_relationships
 networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, CoreNetworkId = NULL, RegisteredGatewayArn = NULL, AwsRegion = NULL, AccountId = NULL, ResourceType = NULL, ResourceArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetNetworkResourceRelationships",
@@ -3848,6 +3946,8 @@ networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, C
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_network_resources
+#'
+#' @aliases networkmanager_get_network_resources
 networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId = NULL, RegisteredGatewayArn = NULL, AwsRegion = NULL, AccountId = NULL, ResourceType = NULL, ResourceArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetNetworkResources",
@@ -3967,6 +4067,8 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_network_routes
+#'
+#' @aliases networkmanager_get_network_routes
 networkmanager_get_network_routes <- function(GlobalNetworkId, RouteTableIdentifier, ExactCidrMatches = NULL, LongestPrefixMatches = NULL, SubnetOfMatches = NULL, SupernetOfMatches = NULL, PrefixListIds = NULL, States = NULL, Types = NULL, DestinationFilters = NULL) {
   op <- new_operation(
     name = "GetNetworkRoutes",
@@ -4081,6 +4183,8 @@ networkmanager_get_network_routes <- function(GlobalNetworkId, RouteTableIdentif
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_network_telemetry
+#'
+#' @aliases networkmanager_get_network_telemetry
 networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId = NULL, RegisteredGatewayArn = NULL, AwsRegion = NULL, AccountId = NULL, ResourceType = NULL, ResourceArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetNetworkTelemetry",
@@ -4126,6 +4230,8 @@ networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId 
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_resource_policy
+#'
+#' @aliases networkmanager_get_resource_policy
 networkmanager_get_resource_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "GetResourcePolicy",
@@ -4239,6 +4345,8 @@ networkmanager_get_resource_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_route_analysis
+#'
+#' @aliases networkmanager_get_route_analysis
 networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) {
   op <- new_operation(
     name = "GetRouteAnalysis",
@@ -4320,6 +4428,8 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_site_to_site_vpn_attachment
+#'
+#' @aliases networkmanager_get_site_to_site_vpn_attachment
 networkmanager_get_site_to_site_vpn_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "GetSiteToSiteVpnAttachment",
@@ -4397,6 +4507,8 @@ networkmanager_get_site_to_site_vpn_attachment <- function(AttachmentId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_sites
+#'
+#' @aliases networkmanager_get_sites
 networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetSites",
@@ -4462,6 +4574,8 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_transit_gateway_connect_peer_associations
+#'
+#' @aliases networkmanager_get_transit_gateway_connect_peer_associations
 networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalNetworkId, TransitGatewayConnectPeerArns = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayConnectPeerAssociations",
@@ -4528,6 +4642,8 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_transit_gateway_peering
+#'
+#' @aliases networkmanager_get_transit_gateway_peering
 networkmanager_get_transit_gateway_peering <- function(PeeringId) {
   op <- new_operation(
     name = "GetTransitGatewayPeering",
@@ -4595,6 +4711,8 @@ networkmanager_get_transit_gateway_peering <- function(PeeringId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_transit_gateway_registrations
+#'
+#' @aliases networkmanager_get_transit_gateway_registrations
 networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, TransitGatewayArns = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTransitGatewayRegistrations",
@@ -4677,6 +4795,8 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_transit_gateway_route_table_attachment
+#'
+#' @aliases networkmanager_get_transit_gateway_route_table_attachment
 networkmanager_get_transit_gateway_route_table_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "GetTransitGatewayRouteTableAttachment",
@@ -4763,6 +4883,8 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #' @keywords internal
 #'
 #' @rdname networkmanager_get_vpc_attachment
+#'
+#' @aliases networkmanager_get_vpc_attachment
 networkmanager_get_vpc_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "GetVpcAttachment",
@@ -4855,6 +4977,8 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_attachments
+#'
+#' @aliases networkmanager_list_attachments
 networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType = NULL, EdgeLocation = NULL, State = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAttachments",
@@ -4925,6 +5049,8 @@ networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_connect_peers
+#'
+#' @aliases networkmanager_list_connect_peers
 networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttachmentId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConnectPeers",
@@ -4987,6 +5113,8 @@ networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttac
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_core_network_policy_versions
+#'
+#' @aliases networkmanager_list_core_network_policy_versions
 networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCoreNetworkPolicyVersions",
@@ -5050,6 +5178,8 @@ networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxR
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_core_networks
+#'
+#' @aliases networkmanager_list_core_networks
 networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCoreNetworks",
@@ -5111,6 +5241,8 @@ networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_organization_service_access_status
+#'
+#' @aliases networkmanager_list_organization_service_access_status
 networkmanager_list_organization_service_access_status <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOrganizationServiceAccessStatus",
@@ -5188,6 +5320,8 @@ networkmanager_list_organization_service_access_status <- function(MaxResults = 
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_peerings
+#'
+#' @aliases networkmanager_list_peerings
 networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NULL, EdgeLocation = NULL, State = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPeerings",
@@ -5238,6 +5372,8 @@ networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NUL
 #' @keywords internal
 #'
 #' @rdname networkmanager_list_tags_for_resource
+#'
+#' @aliases networkmanager_list_tags_for_resource
 networkmanager_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -5311,6 +5447,8 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_put_core_network_policy
+#'
+#' @aliases networkmanager_put_core_network_policy
 networkmanager_put_core_network_policy <- function(CoreNetworkId, PolicyDocument, Description = NULL, LatestVersionId = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "PutCoreNetworkPolicy",
@@ -5353,6 +5491,8 @@ networkmanager_put_core_network_policy <- function(CoreNetworkId, PolicyDocument
 #' @keywords internal
 #'
 #' @rdname networkmanager_put_resource_policy
+#'
+#' @aliases networkmanager_put_resource_policy
 networkmanager_put_resource_policy <- function(PolicyDocument, ResourceArn) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -5411,6 +5551,8 @@ networkmanager_put_resource_policy <- function(PolicyDocument, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_register_transit_gateway
+#'
+#' @aliases networkmanager_register_transit_gateway
 networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGatewayArn) {
   op <- new_operation(
     name = "RegisterTransitGateway",
@@ -5489,6 +5631,8 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #' @keywords internal
 #'
 #' @rdname networkmanager_reject_attachment
+#'
+#' @aliases networkmanager_reject_attachment
 networkmanager_reject_attachment <- function(AttachmentId) {
   op <- new_operation(
     name = "RejectAttachment",
@@ -5557,6 +5701,8 @@ networkmanager_reject_attachment <- function(AttachmentId) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_restore_core_network_policy_version
+#'
+#' @aliases networkmanager_restore_core_network_policy_version
 networkmanager_restore_core_network_policy_version <- function(CoreNetworkId, PolicyVersionId) {
   op <- new_operation(
     name = "RestoreCoreNetworkPolicyVersion",
@@ -5616,6 +5762,8 @@ networkmanager_restore_core_network_policy_version <- function(CoreNetworkId, Po
 #' @keywords internal
 #'
 #' @rdname networkmanager_start_organization_service_access_update
+#'
+#' @aliases networkmanager_start_organization_service_access_update
 networkmanager_start_organization_service_access_update <- function(Action) {
   op <- new_operation(
     name = "StartOrganizationServiceAccessUpdate",
@@ -5746,6 +5894,8 @@ networkmanager_start_organization_service_access_update <- function(Action) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_start_route_analysis
+#'
+#' @aliases networkmanager_start_route_analysis
 networkmanager_start_route_analysis <- function(GlobalNetworkId, Source, Destination, IncludeReturnPath = NULL, UseMiddleboxes = NULL) {
   op <- new_operation(
     name = "StartRouteAnalysis",
@@ -5793,6 +5943,8 @@ networkmanager_start_route_analysis <- function(GlobalNetworkId, Source, Destina
 #' @keywords internal
 #'
 #' @rdname networkmanager_tag_resource
+#'
+#' @aliases networkmanager_tag_resource
 networkmanager_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5837,6 +5989,8 @@ networkmanager_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_untag_resource
+#'
+#' @aliases networkmanager_untag_resource
 networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5913,6 +6067,8 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_connection
+#'
+#' @aliases networkmanager_update_connection
 networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, LinkId = NULL, ConnectedLinkId = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateConnection",
@@ -5995,6 +6151,8 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_core_network
+#'
+#' @aliases networkmanager_update_core_network
 networkmanager_update_core_network <- function(CoreNetworkId, Description = NULL) {
   op <- new_operation(
     name = "UpdateCoreNetwork",
@@ -6105,6 +6263,8 @@ networkmanager_update_core_network <- function(CoreNetworkId, Description = NULL
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_device
+#'
+#' @aliases networkmanager_update_device
 networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation = NULL, Description = NULL, Type = NULL, Vendor = NULL, Model = NULL, SerialNumber = NULL, Location = NULL, SiteId = NULL) {
   op <- new_operation(
     name = "UpdateDevice",
@@ -6169,6 +6329,8 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_global_network
+#'
+#' @aliases networkmanager_update_global_network
 networkmanager_update_global_network <- function(GlobalNetworkId, Description = NULL) {
   op <- new_operation(
     name = "UpdateGlobalNetwork",
@@ -6257,6 +6419,8 @@ networkmanager_update_global_network <- function(GlobalNetworkId, Description = 
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_link
+#'
+#' @aliases networkmanager_update_link
 networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NULL, Type = NULL, Bandwidth = NULL, Provider = NULL) {
   op <- new_operation(
     name = "UpdateLink",
@@ -6312,6 +6476,8 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_network_resource_metadata
+#'
+#' @aliases networkmanager_update_network_resource_metadata
 networkmanager_update_network_resource_metadata <- function(GlobalNetworkId, ResourceArn, Metadata) {
   op <- new_operation(
     name = "UpdateNetworkResourceMetadata",
@@ -6397,6 +6563,8 @@ networkmanager_update_network_resource_metadata <- function(GlobalNetworkId, Res
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_site
+#'
+#' @aliases networkmanager_update_site
 networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NULL, Location = NULL) {
   op <- new_operation(
     name = "UpdateSite",
@@ -6496,6 +6664,8 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #' @keywords internal
 #'
 #' @rdname networkmanager_update_vpc_attachment
+#'
+#' @aliases networkmanager_update_vpc_attachment
 networkmanager_update_vpc_attachment <- function(AttachmentId, AddSubnetArns = NULL, RemoveSubnetArns = NULL, Options = NULL) {
   op <- new_operation(
     name = "UpdateVpcAttachment",

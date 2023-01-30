@@ -44,6 +44,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudfront_associate_alias
+#'
+#' @aliases cloudfront_associate_alias
 cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
   op <- new_operation(
     name = "AssociateAlias",
@@ -194,6 +196,8 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_cache_policy
+#'
+#' @aliases cloudfront_create_cache_policy
 cloudfront_create_cache_policy <- function(CachePolicyConfig) {
   op <- new_operation(
     name = "CreateCachePolicy",
@@ -258,6 +262,8 @@ cloudfront_create_cache_policy <- function(CachePolicyConfig) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_cloud_front_origin_access_identity
+#'
+#' @aliases cloudfront_create_cloud_front_origin_access_identity
 cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOriginAccessIdentityConfig) {
   op <- new_operation(
     name = "CreateCloudFrontOriginAccessIdentity",
@@ -939,6 +945,8 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_distribution
+#'
+#' @aliases cloudfront_create_distribution
 cloudfront_create_distribution <- function(DistributionConfig) {
   op <- new_operation(
     name = "CreateDistribution",
@@ -1616,6 +1624,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_distribution_with_tags
+#'
+#' @aliases cloudfront_create_distribution_with_tags
 cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags) {
   op <- new_operation(
     name = "CreateDistributionWithTags",
@@ -1726,6 +1736,8 @@ cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags)
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_field_level_encryption_config
+#'
+#' @aliases cloudfront_create_field_level_encryption_config
 cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryptionConfig) {
   op <- new_operation(
     name = "CreateFieldLevelEncryptionConfig",
@@ -1818,6 +1830,8 @@ cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryption
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_field_level_encryption_profile
+#'
+#' @aliases cloudfront_create_field_level_encryption_profile
 cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptionProfileConfig) {
   op <- new_operation(
     name = "CreateFieldLevelEncryptionProfile",
@@ -1908,6 +1922,8 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_function
+#'
+#' @aliases cloudfront_create_function
 cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
   op <- new_operation(
     name = "CreateFunction",
@@ -1979,6 +1995,8 @@ cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_invalidation
+#'
+#' @aliases cloudfront_create_invalidation
 cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
   op <- new_operation(
     name = "CreateInvalidation",
@@ -2059,6 +2077,8 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_key_group
+#'
+#' @aliases cloudfront_create_key_group
 cloudfront_create_key_group <- function(KeyGroupConfig) {
   op <- new_operation(
     name = "CreateKeyGroup",
@@ -2123,6 +2143,8 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_monitoring_subscription
+#'
+#' @aliases cloudfront_create_monitoring_subscription
 cloudfront_create_monitoring_subscription <- function(DistributionId, MonitoringSubscription) {
   op <- new_operation(
     name = "CreateMonitoringSubscription",
@@ -2262,6 +2284,8 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_origin_request_policy
+#'
+#' @aliases cloudfront_create_origin_request_policy
 cloudfront_create_origin_request_policy <- function(OriginRequestPolicyConfig) {
   op <- new_operation(
     name = "CreateOriginRequestPolicy",
@@ -2330,6 +2354,8 @@ cloudfront_create_origin_request_policy <- function(OriginRequestPolicyConfig) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_public_key
+#'
+#' @aliases cloudfront_create_public_key
 cloudfront_create_public_key <- function(PublicKeyConfig) {
   op <- new_operation(
     name = "CreatePublicKey",
@@ -2424,6 +2450,8 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_realtime_log_config
+#'
+#' @aliases cloudfront_create_realtime_log_config
 cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, SamplingRate) {
   op <- new_operation(
     name = "CreateRealtimeLogConfig",
@@ -2639,6 +2667,8 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_response_headers_policy
+#'
+#' @aliases cloudfront_create_response_headers_policy
 cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfig) {
   op <- new_operation(
     name = "CreateResponseHeadersPolicy",
@@ -2768,6 +2798,8 @@ cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_streaming_distribution
+#'
+#' @aliases cloudfront_create_streaming_distribution
 cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig) {
   op <- new_operation(
     name = "CreateStreamingDistribution",
@@ -2908,6 +2940,8 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #' @keywords internal
 #'
 #' @rdname cloudfront_create_streaming_distribution_with_tags
+#'
+#' @aliases cloudfront_create_streaming_distribution_with_tags
 cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistributionConfigWithTags) {
   op <- new_operation(
     name = "CreateStreamingDistributionWithTags",
@@ -2965,6 +2999,8 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_cache_policy
+#'
+#' @aliases cloudfront_delete_cache_policy
 cloudfront_delete_cache_policy <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteCachePolicy",
@@ -3008,6 +3044,8 @@ cloudfront_delete_cache_policy <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_cloud_front_origin_access_identity
+#'
+#' @aliases cloudfront_delete_cloud_front_origin_access_identity
 cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteCloudFrontOriginAccessIdentity",
@@ -3051,6 +3089,8 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_distribution
+#'
+#' @aliases cloudfront_delete_distribution
 cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteDistribution",
@@ -3094,6 +3134,8 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_field_level_encryption_config
+#'
+#' @aliases cloudfront_delete_field_level_encryption_config
 cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteFieldLevelEncryptionConfig",
@@ -3137,6 +3179,8 @@ cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) 
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_field_level_encryption_profile
+#'
+#' @aliases cloudfront_delete_field_level_encryption_profile
 cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteFieldLevelEncryptionProfile",
@@ -3190,6 +3234,8 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_function
+#'
+#' @aliases cloudfront_delete_function
 cloudfront_delete_function <- function(Name, IfMatch) {
   op <- new_operation(
     name = "DeleteFunction",
@@ -3246,6 +3292,8 @@ cloudfront_delete_function <- function(Name, IfMatch) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_key_group
+#'
+#' @aliases cloudfront_delete_key_group
 cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteKeyGroup",
@@ -3288,6 +3336,8 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_monitoring_subscription
+#'
+#' @aliases cloudfront_delete_monitoring_subscription
 cloudfront_delete_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "DeleteMonitoringSubscription",
@@ -3346,6 +3396,8 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_origin_request_policy
+#'
+#' @aliases cloudfront_delete_origin_request_policy
 cloudfront_delete_origin_request_policy <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteOriginRequestPolicy",
@@ -3389,6 +3441,8 @@ cloudfront_delete_origin_request_policy <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_public_key
+#'
+#' @aliases cloudfront_delete_public_key
 cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeletePublicKey",
@@ -3442,6 +3496,8 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_realtime_log_config
+#'
+#' @aliases cloudfront_delete_realtime_log_config
 cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
   op <- new_operation(
     name = "DeleteRealtimeLogConfig",
@@ -3505,6 +3561,8 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_response_headers_policy
+#'
+#' @aliases cloudfront_delete_response_headers_policy
 cloudfront_delete_response_headers_policy <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteResponseHeadersPolicy",
@@ -3587,6 +3645,8 @@ cloudfront_delete_response_headers_policy <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_delete_streaming_distribution
+#'
+#' @aliases cloudfront_delete_streaming_distribution
 cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
   op <- new_operation(
     name = "DeleteStreamingDistribution",
@@ -3659,6 +3719,8 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_describe_function
+#'
+#' @aliases cloudfront_describe_function
 cloudfront_describe_function <- function(Name, Stage = NULL) {
   op <- new_operation(
     name = "DescribeFunction",
@@ -3765,6 +3827,8 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_cache_policy
+#'
+#' @aliases cloudfront_get_cache_policy
 cloudfront_get_cache_policy <- function(Id) {
   op <- new_operation(
     name = "GetCachePolicy",
@@ -3861,6 +3925,8 @@ cloudfront_get_cache_policy <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_cache_policy_config
+#'
+#' @aliases cloudfront_get_cache_policy_config
 cloudfront_get_cache_policy_config <- function(Id) {
   op <- new_operation(
     name = "GetCachePolicyConfig",
@@ -3914,6 +3980,8 @@ cloudfront_get_cache_policy_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_cloud_front_origin_access_identity
+#'
+#' @aliases cloudfront_get_cloud_front_origin_access_identity
 cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
   op <- new_operation(
     name = "GetCloudFrontOriginAccessIdentity",
@@ -3963,6 +4031,8 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_cloud_front_origin_access_identity_config
+#'
+#' @aliases cloudfront_get_cloud_front_origin_access_identity_config
 cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
   op <- new_operation(
     name = "GetCloudFrontOriginAccessIdentityConfig",
@@ -4343,6 +4413,8 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_distribution
+#'
+#' @aliases cloudfront_get_distribution
 cloudfront_get_distribution <- function(Id) {
   op <- new_operation(
     name = "GetDistribution",
@@ -4677,6 +4749,8 @@ cloudfront_get_distribution <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_distribution_config
+#'
+#' @aliases cloudfront_get_distribution_config
 cloudfront_get_distribution_config <- function(Id) {
   op <- new_operation(
     name = "GetDistributionConfig",
@@ -4757,6 +4831,8 @@ cloudfront_get_distribution_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_field_level_encryption
+#'
+#' @aliases cloudfront_get_field_level_encryption
 cloudfront_get_field_level_encryption <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryption",
@@ -4831,6 +4907,8 @@ cloudfront_get_field_level_encryption <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_field_level_encryption_config
+#'
+#' @aliases cloudfront_get_field_level_encryption_config
 cloudfront_get_field_level_encryption_config <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryptionConfig",
@@ -4902,6 +4980,8 @@ cloudfront_get_field_level_encryption_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_field_level_encryption_profile
+#'
+#' @aliases cloudfront_get_field_level_encryption_profile
 cloudfront_get_field_level_encryption_profile <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryptionProfile",
@@ -4968,6 +5048,8 @@ cloudfront_get_field_level_encryption_profile <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_field_level_encryption_profile_config
+#'
+#' @aliases cloudfront_get_field_level_encryption_profile_config
 cloudfront_get_field_level_encryption_profile_config <- function(Id) {
   op <- new_operation(
     name = "GetFieldLevelEncryptionProfileConfig",
@@ -5023,6 +5105,8 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_function
+#'
+#' @aliases cloudfront_get_function
 cloudfront_get_function <- function(Name, Stage = NULL) {
   op <- new_operation(
     name = "GetFunction",
@@ -5086,6 +5170,8 @@ cloudfront_get_function <- function(Name, Stage = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_invalidation
+#'
+#' @aliases cloudfront_get_invalidation
 cloudfront_get_invalidation <- function(DistributionId, Id) {
   op <- new_operation(
     name = "GetInvalidation",
@@ -5155,6 +5241,8 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_key_group
+#'
+#' @aliases cloudfront_get_key_group
 cloudfront_get_key_group <- function(Id) {
   op <- new_operation(
     name = "GetKeyGroup",
@@ -5216,6 +5304,8 @@ cloudfront_get_key_group <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_key_group_config
+#'
+#' @aliases cloudfront_get_key_group_config
 cloudfront_get_key_group_config <- function(Id) {
   op <- new_operation(
     name = "GetKeyGroupConfig",
@@ -5267,6 +5357,8 @@ cloudfront_get_key_group_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_monitoring_subscription
+#'
+#' @aliases cloudfront_get_monitoring_subscription
 cloudfront_get_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "GetMonitoringSubscription",
@@ -5369,6 +5461,8 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_origin_request_policy
+#'
+#' @aliases cloudfront_get_origin_request_policy
 cloudfront_get_origin_request_policy <- function(Id) {
   op <- new_operation(
     name = "GetOriginRequestPolicy",
@@ -5461,6 +5555,8 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_origin_request_policy_config
+#'
+#' @aliases cloudfront_get_origin_request_policy_config
 cloudfront_get_origin_request_policy_config <- function(Id) {
   op <- new_operation(
     name = "GetOriginRequestPolicyConfig",
@@ -5518,6 +5614,8 @@ cloudfront_get_origin_request_policy_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_public_key
+#'
+#' @aliases cloudfront_get_public_key
 cloudfront_get_public_key <- function(Id) {
   op <- new_operation(
     name = "GetPublicKey",
@@ -5569,6 +5667,8 @@ cloudfront_get_public_key <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_public_key_config
+#'
+#' @aliases cloudfront_get_public_key_config
 cloudfront_get_public_key_config <- function(Id) {
   op <- new_operation(
     name = "GetPublicKeyConfig",
@@ -5638,6 +5738,8 @@ cloudfront_get_public_key_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_realtime_log_config
+#'
+#' @aliases cloudfront_get_realtime_log_config
 cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetRealtimeLogConfig",
@@ -5784,6 +5886,8 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_response_headers_policy
+#'
+#' @aliases cloudfront_get_response_headers_policy
 cloudfront_get_response_headers_policy <- function(Id) {
   op <- new_operation(
     name = "GetResponseHeadersPolicy",
@@ -5922,6 +6026,8 @@ cloudfront_get_response_headers_policy <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_response_headers_policy_config
+#'
+#' @aliases cloudfront_get_response_headers_policy_config
 cloudfront_get_response_headers_policy_config <- function(Id) {
   op <- new_operation(
     name = "GetResponseHeadersPolicyConfig",
@@ -6021,6 +6127,8 @@ cloudfront_get_response_headers_policy_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_streaming_distribution
+#'
+#' @aliases cloudfront_get_streaming_distribution
 cloudfront_get_streaming_distribution <- function(Id) {
   op <- new_operation(
     name = "GetStreamingDistribution",
@@ -6094,6 +6202,8 @@ cloudfront_get_streaming_distribution <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_get_streaming_distribution_config
+#'
+#' @aliases cloudfront_get_streaming_distribution_config
 cloudfront_get_streaming_distribution_config <- function(Id) {
   op <- new_operation(
     name = "GetStreamingDistributionConfig",
@@ -6218,6 +6328,8 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_cache_policies
+#'
+#' @aliases cloudfront_list_cache_policies
 cloudfront_list_cache_policies <- function(Type = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListCachePolicies",
@@ -6283,6 +6395,8 @@ cloudfront_list_cache_policies <- function(Type = NULL, Marker = NULL, MaxItems 
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_cloud_front_origin_access_identities
+#'
+#' @aliases cloudfront_list_cloud_front_origin_access_identities
 cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListCloudFrontOriginAccessIdentities",
@@ -6384,6 +6498,8 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_conflicting_aliases
+#'
+#' @aliases cloudfront_list_conflicting_aliases
 cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListConflictingAliases",
@@ -6736,6 +6852,8 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions
+#'
+#' @aliases cloudfront_list_distributions
 cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListDistributions",
@@ -6809,6 +6927,8 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions_by_cache_policy_id
+#'
+#' @aliases cloudfront_list_distributions_by_cache_policy_id
 cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxItems = NULL, CachePolicyId) {
   op <- new_operation(
     name = "ListDistributionsByCachePolicyId",
@@ -6881,6 +7001,8 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions_by_key_group
+#'
+#' @aliases cloudfront_list_distributions_by_key_group
 cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems = NULL, KeyGroupId) {
   op <- new_operation(
     name = "ListDistributionsByKeyGroup",
@@ -6954,6 +7076,8 @@ cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems =
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions_by_origin_request_policy_id
+#'
+#' @aliases cloudfront_list_distributions_by_origin_request_policy_id
 cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = NULL, MaxItems = NULL, OriginRequestPolicyId) {
   op <- new_operation(
     name = "ListDistributionsByOriginRequestPolicyId",
@@ -7327,6 +7451,8 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions_by_realtime_log_config
+#'
+#' @aliases cloudfront_list_distributions_by_realtime_log_config
 cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, MaxItems = NULL, RealtimeLogConfigName = NULL, RealtimeLogConfigArn = NULL) {
   op <- new_operation(
     name = "ListDistributionsByRealtimeLogConfig",
@@ -7401,6 +7527,8 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions_by_response_headers_policy_id
+#'
+#' @aliases cloudfront_list_distributions_by_response_headers_policy_id
 cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker = NULL, MaxItems = NULL, ResponseHeadersPolicyId) {
   op <- new_operation(
     name = "ListDistributionsByResponseHeadersPolicyId",
@@ -7759,6 +7887,8 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_distributions_by_web_acl_id
+#'
+#' @aliases cloudfront_list_distributions_by_web_acl_id
 cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems = NULL, WebACLId) {
   op <- new_operation(
     name = "ListDistributionsByWebACLId",
@@ -7851,6 +7981,8 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_field_level_encryption_configs
+#'
+#' @aliases cloudfront_list_field_level_encryption_configs
 cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListFieldLevelEncryptionConfigs",
@@ -7934,6 +8066,8 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_field_level_encryption_profiles
+#'
+#' @aliases cloudfront_list_field_level_encryption_profiles
 cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListFieldLevelEncryptionProfiles",
@@ -8024,6 +8158,8 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_functions
+#'
+#' @aliases cloudfront_list_functions
 cloudfront_list_functions <- function(Marker = NULL, MaxItems = NULL, Stage = NULL) {
   op <- new_operation(
     name = "ListFunctions",
@@ -8095,6 +8231,8 @@ cloudfront_list_functions <- function(Marker = NULL, MaxItems = NULL, Stage = NU
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_invalidations
+#'
+#' @aliases cloudfront_list_invalidations
 cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListInvalidations",
@@ -8174,6 +8312,8 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_key_groups
+#'
+#' @aliases cloudfront_list_key_groups
 cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListKeyGroups",
@@ -8292,6 +8432,8 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_origin_request_policies
+#'
+#' @aliases cloudfront_list_origin_request_policies
 cloudfront_list_origin_request_policies <- function(Type = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListOriginRequestPolicies",
@@ -8359,6 +8501,8 @@ cloudfront_list_origin_request_policies <- function(Type = NULL, Marker = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_public_keys
+#'
+#' @aliases cloudfront_list_public_keys
 cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListPublicKeys",
@@ -8442,6 +8586,8 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_realtime_log_configs
+#'
+#' @aliases cloudfront_list_realtime_log_configs
 cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListRealtimeLogConfigs",
@@ -8605,6 +8751,8 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_response_headers_policies
+#'
+#' @aliases cloudfront_list_response_headers_policies
 cloudfront_list_response_headers_policies <- function(Type = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListResponseHeadersPolicies",
@@ -8689,6 +8837,8 @@ cloudfront_list_response_headers_policies <- function(Type = NULL, Marker = NULL
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_streaming_distributions
+#'
+#' @aliases cloudfront_list_streaming_distributions
 cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListStreamingDistributions",
@@ -8741,6 +8891,8 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
 #' @keywords internal
 #'
 #' @rdname cloudfront_list_tags_for_resource
+#'
+#' @aliases cloudfront_list_tags_for_resource
 cloudfront_list_tags_for_resource <- function(Resource) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -8820,6 +8972,8 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_publish_function
+#'
+#' @aliases cloudfront_publish_function
 cloudfront_publish_function <- function(Name, IfMatch) {
   op <- new_operation(
     name = "PublishFunction",
@@ -8869,6 +9023,8 @@ cloudfront_publish_function <- function(Name, IfMatch) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_tag_resource
+#'
+#' @aliases cloudfront_tag_resource
 cloudfront_tag_resource <- function(Resource, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -8966,6 +9122,8 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_test_function
+#'
+#' @aliases cloudfront_test_function
 cloudfront_test_function <- function(Name, IfMatch, Stage = NULL, EventObject) {
   op <- new_operation(
     name = "TestFunction",
@@ -9012,6 +9170,8 @@ cloudfront_test_function <- function(Name, IfMatch, Stage = NULL, EventObject) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_untag_resource
+#'
+#' @aliases cloudfront_untag_resource
 cloudfront_untag_resource <- function(Resource, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -9161,6 +9321,8 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_cache_policy
+#'
+#' @aliases cloudfront_update_cache_policy
 cloudfront_update_cache_policy <- function(CachePolicyConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateCachePolicy",
@@ -9223,6 +9385,8 @@ cloudfront_update_cache_policy <- function(CachePolicyConfig, Id, IfMatch = NULL
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_cloud_front_origin_access_identity
+#'
+#' @aliases cloudfront_update_cloud_front_origin_access_identity
 cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOriginAccessIdentityConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateCloudFrontOriginAccessIdentity",
@@ -9969,6 +10133,8 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_distribution
+#'
+#' @aliases cloudfront_update_distribution
 cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateDistribution",
@@ -10083,6 +10249,8 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_field_level_encryption_config
+#'
+#' @aliases cloudfront_update_field_level_encryption_config
 cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryptionConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateFieldLevelEncryptionConfig",
@@ -10179,6 +10347,8 @@ cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryption
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_field_level_encryption_profile
+#'
+#' @aliases cloudfront_update_field_level_encryption_profile
 cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptionProfileConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateFieldLevelEncryptionProfile",
@@ -10264,6 +10434,8 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_function
+#'
+#' @aliases cloudfront_update_function
 cloudfront_update_function <- function(Name, IfMatch, FunctionConfig, FunctionCode) {
   op <- new_operation(
     name = "UpdateFunction",
@@ -10348,6 +10520,8 @@ cloudfront_update_function <- function(Name, IfMatch, FunctionConfig, FunctionCo
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_key_group
+#'
+#' @aliases cloudfront_update_key_group
 cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateKeyGroup",
@@ -10488,6 +10662,8 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_origin_request_policy
+#'
+#' @aliases cloudfront_update_origin_request_policy
 cloudfront_update_origin_request_policy <- function(OriginRequestPolicyConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateOriginRequestPolicy",
@@ -10556,6 +10732,8 @@ cloudfront_update_origin_request_policy <- function(OriginRequestPolicyConfig, I
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_public_key
+#'
+#' @aliases cloudfront_update_public_key
 cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdatePublicKey",
@@ -10662,6 +10840,8 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_realtime_log_config
+#'
+#' @aliases cloudfront_update_realtime_log_config
 cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NULL, Name = NULL, ARN = NULL, SamplingRate = NULL) {
   op <- new_operation(
     name = "UpdateRealtimeLogConfig",
@@ -10889,6 +11069,8 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_response_headers_policy
+#'
+#' @aliases cloudfront_update_response_headers_policy
 cloudfront_update_response_headers_policy <- function(ResponseHeadersPolicyConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateResponseHeadersPolicy",
@@ -11019,6 +11201,8 @@ cloudfront_update_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #' @keywords internal
 #'
 #' @rdname cloudfront_update_streaming_distribution
+#'
+#' @aliases cloudfront_update_streaming_distribution
 cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig, Id, IfMatch = NULL) {
   op <- new_operation(
     name = "UpdateStreamingDistribution",

@@ -151,6 +151,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_batch_execute_statement
+#'
+#' @aliases rdsdataservice_batch_execute_statement
 rdsdataservice_batch_execute_statement <- function(database = NULL, parameterSets = NULL, resourceArn, schema = NULL, secretArn, sql, transactionId = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
@@ -205,6 +207,8 @@ rdsdataservice_batch_execute_statement <- function(database = NULL, parameterSet
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_begin_transaction
+#'
+#' @aliases rdsdataservice_begin_transaction
 rdsdataservice_begin_transaction <- function(database = NULL, resourceArn, schema = NULL, secretArn) {
   op <- new_operation(
     name = "BeginTransaction",
@@ -257,6 +261,8 @@ rdsdataservice_begin_transaction <- function(database = NULL, resourceArn, schem
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_commit_transaction
+#'
+#' @aliases rdsdataservice_commit_transaction
 rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactionId) {
   op <- new_operation(
     name = "CommitTransaction",
@@ -375,6 +381,8 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_execute_sql
+#'
+#' @aliases rdsdataservice_execute_sql
 rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClusterOrInstanceArn, schema = NULL, sqlStatements) {
   op <- new_operation(
     name = "ExecuteSql",
@@ -587,6 +595,8 @@ rdsdataservice_execute_sql <- function(awsSecretStoreArn, database = NULL, dbClu
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_execute_statement
+#'
+#' @aliases rdsdataservice_execute_statement
 rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, database = NULL, formatRecordsAs = NULL, includeResultMetadata = NULL, parameters = NULL, resourceArn, resultSetOptions = NULL, schema = NULL, secretArn, sql, transactionId = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
@@ -638,6 +648,8 @@ rdsdataservice_execute_statement <- function(continueAfterTimeout = NULL, databa
 #' @keywords internal
 #'
 #' @rdname rdsdataservice_rollback_transaction
+#'
+#' @aliases rdsdataservice_rollback_transaction
 rdsdataservice_rollback_transaction <- function(resourceArn, secretArn, transactionId) {
   op <- new_operation(
     name = "RollbackTransaction",

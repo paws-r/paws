@@ -48,6 +48,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname directoryservice_accept_shared_directory
+#'
+#' @aliases directoryservice_accept_shared_directory
 directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
   op <- new_operation(
     name = "AcceptSharedDirectory",
@@ -162,6 +164,8 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_add_ip_routes
+#'
+#' @aliases directoryservice_add_ip_routes
 directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurityGroupForDirectoryControllers = NULL) {
   op <- new_operation(
     name = "AddIpRoutes",
@@ -215,6 +219,8 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
 #' @keywords internal
 #'
 #' @rdname directoryservice_add_region
+#'
+#' @aliases directoryservice_add_region
 directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
   op <- new_operation(
     name = "AddRegion",
@@ -264,6 +270,8 @@ directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_add_tags_to_resource
+#'
+#' @aliases directoryservice_add_tags_to_resource
 directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -310,6 +318,8 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_cancel_schema_extension
+#'
+#' @aliases directoryservice_cancel_schema_extension
 directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensionId) {
   op <- new_operation(
     name = "CancelSchemaExtension",
@@ -392,6 +402,8 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @keywords internal
 #'
 #' @rdname directoryservice_connect_directory
+#'
+#' @aliases directoryservice_connect_directory
 directoryservice_connect_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, ConnectSettings, Tags = NULL) {
   op <- new_operation(
     name = "ConnectDirectory",
@@ -449,6 +461,8 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_alias
+#'
+#' @aliases directoryservice_create_alias
 directoryservice_create_alias <- function(DirectoryId, Alias) {
   op <- new_operation(
     name = "CreateAlias",
@@ -520,6 +534,8 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_computer
+#'
+#' @aliases directoryservice_create_computer
 directoryservice_create_computer <- function(DirectoryId, ComputerName, Password, OrganizationalUnitDistinguishedName = NULL, ComputerAttributes = NULL) {
   op <- new_operation(
     name = "CreateComputer",
@@ -574,6 +590,8 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_conditional_forwarder
+#'
+#' @aliases directoryservice_create_conditional_forwarder
 directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDomainName, DnsIpAddrs) {
   op <- new_operation(
     name = "CreateConditionalForwarder",
@@ -684,6 +702,8 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_directory
+#'
+#' @aliases directoryservice_create_directory
 directoryservice_create_directory <- function(Name, ShortName = NULL, Password, Description = NULL, Size, VpcSettings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDirectory",
@@ -732,6 +752,8 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_log_subscription
+#'
+#' @aliases directoryservice_create_log_subscription
 directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) {
   op <- new_operation(
     name = "CreateLogSubscription",
@@ -823,6 +845,8 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_microsoft_ad
+#'
+#' @aliases directoryservice_create_microsoft_ad
 directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Password, Description = NULL, VpcSettings, Edition = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMicrosoftAD",
@@ -874,6 +898,8 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_snapshot
+#'
+#' @aliases directoryservice_create_snapshot
 directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -949,6 +975,8 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_create_trust
+#'
+#' @aliases directoryservice_create_trust
 directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPassword, TrustDirection, TrustType = NULL, ConditionalForwarderIpAddrs = NULL, SelectiveAuth = NULL) {
   op <- new_operation(
     name = "CreateTrust",
@@ -995,6 +1023,8 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
 #' @keywords internal
 #'
 #' @rdname directoryservice_delete_conditional_forwarder
+#'
+#' @aliases directoryservice_delete_conditional_forwarder
 directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDomainName) {
   op <- new_operation(
     name = "DeleteConditionalForwarder",
@@ -1048,6 +1078,8 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @keywords internal
 #'
 #' @rdname directoryservice_delete_directory
+#'
+#' @aliases directoryservice_delete_directory
 directoryservice_delete_directory <- function(DirectoryId) {
   op <- new_operation(
     name = "DeleteDirectory",
@@ -1088,6 +1120,8 @@ directoryservice_delete_directory <- function(DirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_delete_log_subscription
+#'
+#' @aliases directoryservice_delete_log_subscription
 directoryservice_delete_log_subscription <- function(DirectoryId) {
   op <- new_operation(
     name = "DeleteLogSubscription",
@@ -1133,6 +1167,8 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_delete_snapshot
+#'
+#' @aliases directoryservice_delete_snapshot
 directoryservice_delete_snapshot <- function(SnapshotId) {
   op <- new_operation(
     name = "DeleteSnapshot",
@@ -1183,6 +1219,8 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_delete_trust
+#'
+#' @aliases directoryservice_delete_trust
 directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalForwarder = NULL) {
   op <- new_operation(
     name = "DeleteTrust",
@@ -1227,6 +1265,8 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
 #' @keywords internal
 #'
 #' @rdname directoryservice_deregister_certificate
+#'
+#' @aliases directoryservice_deregister_certificate
 directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) {
   op <- new_operation(
     name = "DeregisterCertificate",
@@ -1273,6 +1313,8 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
 #' @keywords internal
 #'
 #' @rdname directoryservice_deregister_event_topic
+#'
+#' @aliases directoryservice_deregister_event_topic
 directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
   op <- new_operation(
     name = "DeregisterEventTopic",
@@ -1337,6 +1379,8 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_certificate
+#'
+#' @aliases directoryservice_describe_certificate
 directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
   op <- new_operation(
     name = "DescribeCertificate",
@@ -1410,6 +1454,8 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_client_authentication_settings
+#'
+#' @aliases directoryservice_describe_client_authentication_settings
 directoryservice_describe_client_authentication_settings <- function(DirectoryId, Type = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeClientAuthenticationSettings",
@@ -1474,6 +1520,8 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_conditional_forwarders
+#'
+#' @aliases directoryservice_describe_conditional_forwarders
 directoryservice_describe_conditional_forwarders <- function(DirectoryId, RemoteDomainNames = NULL) {
   op <- new_operation(
     name = "DescribeConditionalForwarders",
@@ -1649,6 +1697,8 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_directories
+#'
+#' @aliases directoryservice_describe_directories
 directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeDirectories",
@@ -1725,6 +1775,8 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_domain_controllers
+#'
+#' @aliases directoryservice_describe_domain_controllers
 directoryservice_describe_domain_controllers <- function(DirectoryId, DomainControllerIds = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeDomainControllers",
@@ -1795,6 +1847,8 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_event_topics
+#'
+#' @aliases directoryservice_describe_event_topics
 directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicNames = NULL) {
   op <- new_operation(
     name = "DescribeEventTopics",
@@ -1857,6 +1911,8 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_ldaps_settings
+#'
+#' @aliases directoryservice_describe_ldaps_settings
 directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeLDAPSSettings",
@@ -1934,6 +1990,8 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_regions
+#'
+#' @aliases directoryservice_describe_regions
 directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeRegions",
@@ -2008,6 +2066,8 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_settings
+#'
+#' @aliases directoryservice_describe_settings
 directoryservice_describe_settings <- function(DirectoryId, Status = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeSettings",
@@ -2082,6 +2142,8 @@ directoryservice_describe_settings <- function(DirectoryId, Status = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_shared_directories
+#'
+#' @aliases directoryservice_describe_shared_directories
 directoryservice_describe_shared_directories <- function(OwnerDirectoryId, SharedDirectoryIds = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeSharedDirectories",
@@ -2165,6 +2227,8 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_snapshots
+#'
+#' @aliases directoryservice_describe_snapshots
 directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
@@ -2251,6 +2315,8 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 #' @keywords internal
 #'
 #' @rdname directoryservice_describe_trusts
+#'
+#' @aliases directoryservice_describe_trusts
 directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeTrusts",
@@ -2296,6 +2362,8 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' @keywords internal
 #'
 #' @rdname directoryservice_disable_client_authentication
+#'
+#' @aliases directoryservice_disable_client_authentication
 directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
   op <- new_operation(
     name = "DisableClientAuthentication",
@@ -2339,6 +2407,8 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_disable_ldaps
+#'
+#' @aliases directoryservice_disable_ldaps
 directoryservice_disable_ldaps <- function(DirectoryId, Type) {
   op <- new_operation(
     name = "DisableLDAPS",
@@ -2383,6 +2453,8 @@ directoryservice_disable_ldaps <- function(DirectoryId, Type) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_disable_radius
+#'
+#' @aliases directoryservice_disable_radius
 directoryservice_disable_radius <- function(DirectoryId) {
   op <- new_operation(
     name = "DisableRadius",
@@ -2437,6 +2509,8 @@ directoryservice_disable_radius <- function(DirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_disable_sso
+#'
+#' @aliases directoryservice_disable_sso
 directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password = NULL) {
   op <- new_operation(
     name = "DisableSso",
@@ -2484,6 +2558,8 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' @keywords internal
 #'
 #' @rdname directoryservice_enable_client_authentication
+#'
+#' @aliases directoryservice_enable_client_authentication
 directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
   op <- new_operation(
     name = "EnableClientAuthentication",
@@ -2529,6 +2605,8 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_enable_ldaps
+#'
+#' @aliases directoryservice_enable_ldaps
 directoryservice_enable_ldaps <- function(DirectoryId, Type) {
   op <- new_operation(
     name = "EnableLDAPS",
@@ -2587,6 +2665,8 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_enable_radius
+#'
+#' @aliases directoryservice_enable_radius
 directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
   op <- new_operation(
     name = "EnableRadius",
@@ -2644,6 +2724,8 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_enable_sso
+#'
+#' @aliases directoryservice_enable_sso
 directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password = NULL) {
   op <- new_operation(
     name = "EnableSso",
@@ -2695,6 +2777,8 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
 #' @keywords internal
 #'
 #' @rdname directoryservice_get_directory_limits
+#'
+#' @aliases directoryservice_get_directory_limits
 directoryservice_get_directory_limits <- function() {
   op <- new_operation(
     name = "GetDirectoryLimits",
@@ -2744,6 +2828,8 @@ directoryservice_get_directory_limits <- function() {
 #' @keywords internal
 #'
 #' @rdname directoryservice_get_snapshot_limits
+#'
+#' @aliases directoryservice_get_snapshot_limits
 directoryservice_get_snapshot_limits <- function(DirectoryId) {
   op <- new_operation(
     name = "GetSnapshotLimits",
@@ -2809,6 +2895,8 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_list_certificates
+#'
+#' @aliases directoryservice_list_certificates
 directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListCertificates",
@@ -2874,6 +2962,8 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
 #' @keywords internal
 #'
 #' @rdname directoryservice_list_ip_routes
+#'
+#' @aliases directoryservice_list_ip_routes
 directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListIpRoutes",
@@ -2936,6 +3026,8 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
 #' @keywords internal
 #'
 #' @rdname directoryservice_list_log_subscriptions
+#'
+#' @aliases directoryservice_list_log_subscriptions
 directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListLogSubscriptions",
@@ -3003,6 +3095,8 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname directoryservice_list_schema_extensions
+#'
+#' @aliases directoryservice_list_schema_extensions
 directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListSchemaExtensions",
@@ -3058,6 +3152,8 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname directoryservice_list_tags_for_resource
+#'
+#' @aliases directoryservice_list_tags_for_resource
 directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3117,6 +3213,8 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname directoryservice_register_certificate
+#'
+#' @aliases directoryservice_register_certificate
 directoryservice_register_certificate <- function(DirectoryId, CertificateData, Type = NULL, ClientCertAuthSettings = NULL) {
   op <- new_operation(
     name = "RegisterCertificate",
@@ -3167,6 +3265,8 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
 #' @keywords internal
 #'
 #' @rdname directoryservice_register_event_topic
+#'
+#' @aliases directoryservice_register_event_topic
 directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
   op <- new_operation(
     name = "RegisterEventTopic",
@@ -3215,6 +3315,8 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_reject_shared_directory
+#'
+#' @aliases directoryservice_reject_shared_directory
 directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
   op <- new_operation(
     name = "RejectSharedDirectory",
@@ -3260,6 +3362,8 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_remove_ip_routes
+#'
+#' @aliases directoryservice_remove_ip_routes
 directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
   op <- new_operation(
     name = "RemoveIpRoutes",
@@ -3305,6 +3409,8 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_remove_region
+#'
+#' @aliases directoryservice_remove_region
 directoryservice_remove_region <- function(DirectoryId) {
   op <- new_operation(
     name = "RemoveRegion",
@@ -3349,6 +3455,8 @@ directoryservice_remove_region <- function(DirectoryId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_remove_tags_from_resource
+#'
+#' @aliases directoryservice_remove_tags_from_resource
 directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -3412,6 +3520,8 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_reset_user_password
+#'
+#' @aliases directoryservice_reset_user_password
 directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassword) {
   op <- new_operation(
     name = "ResetUserPassword",
@@ -3462,6 +3572,8 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 #' @keywords internal
 #'
 #' @rdname directoryservice_restore_from_snapshot
+#'
+#' @aliases directoryservice_restore_from_snapshot
 directoryservice_restore_from_snapshot <- function(SnapshotId) {
   op <- new_operation(
     name = "RestoreFromSnapshot",
@@ -3546,6 +3658,8 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_share_directory
+#'
+#' @aliases directoryservice_share_directory
 directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, ShareTarget, ShareMethod) {
   op <- new_operation(
     name = "ShareDirectory",
@@ -3603,6 +3717,8 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #' @keywords internal
 #'
 #' @rdname directoryservice_start_schema_extension
+#'
+#' @aliases directoryservice_start_schema_extension
 directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotBeforeSchemaExtension, LdifContent, Description) {
   op <- new_operation(
     name = "StartSchemaExtension",
@@ -3657,6 +3773,8 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
 #' @keywords internal
 #'
 #' @rdname directoryservice_unshare_directory
+#'
+#' @aliases directoryservice_unshare_directory
 directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
   op <- new_operation(
     name = "UnshareDirectory",
@@ -3709,6 +3827,8 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_update_conditional_forwarder
+#'
+#' @aliases directoryservice_update_conditional_forwarder
 directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDomainName, DnsIpAddrs) {
   op <- new_operation(
     name = "UpdateConditionalForwarder",
@@ -3758,6 +3878,8 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @keywords internal
 #'
 #' @rdname directoryservice_update_number_of_domain_controllers
+#'
+#' @aliases directoryservice_update_number_of_domain_controllers
 directoryservice_update_number_of_domain_controllers <- function(DirectoryId, DesiredNumber) {
   op <- new_operation(
     name = "UpdateNumberOfDomainControllers",
@@ -3815,6 +3937,8 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
 #' @keywords internal
 #'
 #' @rdname directoryservice_update_radius
+#'
+#' @aliases directoryservice_update_radius
 directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
   op <- new_operation(
     name = "UpdateRadius",
@@ -3867,6 +3991,8 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_update_settings
+#'
+#' @aliases directoryservice_update_settings
 directoryservice_update_settings <- function(DirectoryId, Settings) {
   op <- new_operation(
     name = "UpdateSettings",
@@ -3917,6 +4043,8 @@ directoryservice_update_settings <- function(DirectoryId, Settings) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_update_trust
+#'
+#' @aliases directoryservice_update_trust
 directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
   op <- new_operation(
     name = "UpdateTrust",
@@ -3967,6 +4095,8 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
 #' @keywords internal
 #'
 #' @rdname directoryservice_verify_trust
+#'
+#' @aliases directoryservice_verify_trust
 directoryservice_verify_trust <- function(TrustId) {
   op <- new_operation(
     name = "VerifyTrust",

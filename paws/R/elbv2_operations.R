@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname elbv2_add_listener_certificates
+#'
+#' @aliases elbv2_add_listener_certificates
 elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
   op <- new_operation(
     name = "AddListenerCertificates",
@@ -130,6 +132,8 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #' @keywords internal
 #'
 #' @rdname elbv2_add_tags
+#'
+#' @aliases elbv2_add_tags
 elbv2_add_tags <- function(ResourceArns, Tags) {
   op <- new_operation(
     name = "AddTags",
@@ -428,6 +432,8 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @keywords internal
 #'
 #' @rdname elbv2_create_listener
+#'
+#' @aliases elbv2_create_listener
 elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions, AlpnPolicy = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateListener",
@@ -649,6 +655,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' @keywords internal
 #'
 #' @rdname elbv2_create_load_balancer
+#'
+#' @aliases elbv2_create_load_balancer
 elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL, CustomerOwnedIpv4Pool = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
@@ -951,6 +959,8 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' @keywords internal
 #'
 #' @rdname elbv2_create_rule
+#'
+#' @aliases elbv2_create_rule
 elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
@@ -1167,6 +1177,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 #' @keywords internal
 #'
 #' @rdname elbv2_create_target_group
+#'
+#' @aliases elbv2_create_target_group
 elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "CreateTargetGroup",
@@ -1218,6 +1230,8 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 #' @keywords internal
 #'
 #' @rdname elbv2_delete_listener
+#'
+#' @aliases elbv2_delete_listener
 elbv2_delete_listener <- function(ListenerArn) {
   op <- new_operation(
     name = "DeleteListener",
@@ -1278,6 +1292,8 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' @keywords internal
 #'
 #' @rdname elbv2_delete_load_balancer
+#'
+#' @aliases elbv2_delete_load_balancer
 elbv2_delete_load_balancer <- function(LoadBalancerArn) {
   op <- new_operation(
     name = "DeleteLoadBalancer",
@@ -1328,6 +1344,8 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 #' @keywords internal
 #'
 #' @rdname elbv2_delete_rule
+#'
+#' @aliases elbv2_delete_rule
 elbv2_delete_rule <- function(RuleArn) {
   op <- new_operation(
     name = "DeleteRule",
@@ -1382,6 +1400,8 @@ elbv2_delete_rule <- function(RuleArn) {
 #' @keywords internal
 #'
 #' @rdname elbv2_delete_target_group
+#'
+#' @aliases elbv2_delete_target_group
 elbv2_delete_target_group <- function(TargetGroupArn) {
   op <- new_operation(
     name = "DeleteTargetGroup",
@@ -1448,6 +1468,8 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 #' @keywords internal
 #'
 #' @rdname elbv2_deregister_targets
+#'
+#' @aliases elbv2_deregister_targets
 elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
   op <- new_operation(
     name = "DeregisterTargets",
@@ -1515,6 +1537,8 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_account_limits
+#'
+#' @aliases elbv2_describe_account_limits
 elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeAccountLimits",
@@ -1583,6 +1607,8 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_listener_certificates
+#'
+#' @aliases elbv2_describe_listener_certificates
 elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeListenerCertificates",
@@ -1731,6 +1757,8 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_listeners
+#'
+#' @aliases elbv2_describe_listeners
 elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL, Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeListeners",
@@ -1805,6 +1833,8 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_load_balancer_attributes
+#'
+#' @aliases elbv2_describe_load_balancer_attributes
 elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
   op <- new_operation(
     name = "DescribeLoadBalancerAttributes",
@@ -1910,6 +1940,8 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_load_balancers
+#'
+#' @aliases elbv2_describe_load_balancers
 elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL, Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeLoadBalancers",
@@ -2084,6 +2116,8 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_rules
+#'
+#' @aliases elbv2_describe_rules
 elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeRules",
@@ -2174,6 +2208,8 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_ssl_policies
+#'
+#' @aliases elbv2_describe_ssl_policies
 elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = NULL, LoadBalancerType = NULL) {
   op <- new_operation(
     name = "DescribeSSLPolicies",
@@ -2245,6 +2281,8 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_tags
+#'
+#' @aliases elbv2_describe_tags
 elbv2_describe_tags <- function(ResourceArns) {
   op <- new_operation(
     name = "DescribeTags",
@@ -2317,6 +2355,8 @@ elbv2_describe_tags <- function(ResourceArns) {
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_target_group_attributes
+#'
+#' @aliases elbv2_describe_target_group_attributes
 elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
   op <- new_operation(
     name = "DescribeTargetGroupAttributes",
@@ -2417,6 +2457,8 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_target_groups
+#'
+#' @aliases elbv2_describe_target_groups
 elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns = NULL, Names = NULL, Marker = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeTargetGroups",
@@ -2506,6 +2548,8 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 #' @keywords internal
 #'
 #' @rdname elbv2_describe_target_health
+#'
+#' @aliases elbv2_describe_target_health
 elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
   op <- new_operation(
     name = "DescribeTargetHealth",
@@ -2772,6 +2816,8 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_listener
+#'
+#' @aliases elbv2_modify_listener
 elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions = NULL, AlpnPolicy = NULL) {
   op <- new_operation(
     name = "ModifyListener",
@@ -2884,6 +2930,8 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_load_balancer_attributes
+#'
+#' @aliases elbv2_modify_load_balancer_attributes
 elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
   op <- new_operation(
     name = "ModifyLoadBalancerAttributes",
@@ -3162,6 +3210,8 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_rule
+#'
+#' @aliases elbv2_modify_rule
 elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
   op <- new_operation(
     name = "ModifyRule",
@@ -3296,6 +3346,8 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_target_group
+#'
+#' @aliases elbv2_modify_target_group
 elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckPath = NULL, HealthCheckEnabled = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL) {
   op <- new_operation(
     name = "ModifyTargetGroup",
@@ -3368,6 +3420,8 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 #' @keywords internal
 #'
 #' @rdname elbv2_modify_target_group_attributes
+#'
+#' @aliases elbv2_modify_target_group_attributes
 elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
   op <- new_operation(
     name = "ModifyTargetGroupAttributes",
@@ -3464,6 +3518,8 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #' @keywords internal
 #'
 #' @rdname elbv2_register_targets
+#'
+#' @aliases elbv2_register_targets
 elbv2_register_targets <- function(TargetGroupArn, Targets) {
   op <- new_operation(
     name = "RegisterTargets",
@@ -3514,6 +3570,8 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 #' @keywords internal
 #'
 #' @rdname elbv2_remove_listener_certificates
+#'
+#' @aliases elbv2_remove_listener_certificates
 elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
   op <- new_operation(
     name = "RemoveListenerCertificates",
@@ -3579,6 +3637,8 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #' @keywords internal
 #'
 #' @rdname elbv2_remove_tags
+#'
+#' @aliases elbv2_remove_tags
 elbv2_remove_tags <- function(ResourceArns, TagKeys) {
   op <- new_operation(
     name = "RemoveTags",
@@ -3630,6 +3690,8 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname elbv2_set_ip_address_type
+#'
+#' @aliases elbv2_set_ip_address_type
 elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
   op <- new_operation(
     name = "SetIpAddressType",
@@ -3805,6 +3867,8 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 #' @keywords internal
 #'
 #' @rdname elbv2_set_rule_priorities
+#'
+#' @aliases elbv2_set_rule_priorities
 elbv2_set_rule_priorities <- function(RulePriorities) {
   op <- new_operation(
     name = "SetRulePriorities",
@@ -3874,6 +3938,8 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' @keywords internal
 #'
 #' @rdname elbv2_set_security_groups
+#'
+#' @aliases elbv2_set_security_groups
 elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
   op <- new_operation(
     name = "SetSecurityGroups",
@@ -4005,6 +4071,8 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' @keywords internal
 #'
 #' @rdname elbv2_set_subnets
+#'
+#' @aliases elbv2_set_subnets
 elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "SetSubnets",

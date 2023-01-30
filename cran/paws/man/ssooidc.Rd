@@ -96,9 +96,9 @@ in the \emph{Amazon Web Services SSO User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity.p2:ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client\cr
-\link[paws.security.identity.p2:ssooidc_register_client]{register_client} \tab Registers a client with Amazon Web Services SSO\cr
-\link[paws.security.identity.p2:ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
+\link[paws.security.identity:ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client\cr
+\link[paws.security.identity:ssooidc_register_client]{register_client} \tab Registers a client with Amazon Web Services SSO\cr
+\link[paws.security.identity:ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 }
 }
 
