@@ -2,16 +2,24 @@
 
 * local macOS install, R 4.2.1
 * R-hub (devel and release)
+* win-builder
 
 ## R CMD check results
 
 There were no ERRORs, or WARNINGs.
-
-There was one Note:
+Notes:
+checking installed package size ... NOTE
+  installed size is  5.4Mb
+  sub-directories of 1Mb or more:
+    R      2.0Mb
+    help   3.2Mb
+    
 New maintainer:
   Dyfan Jones <dyfan.r.jones@gmail.com>
 Old maintainer(s):
   David Kretch <david.kretch@gmail.com>
+
+Maintainer Notes: tarball package size: 467.8K
 
 ## Downstream dependencies
 
