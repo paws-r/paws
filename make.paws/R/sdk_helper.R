@@ -194,7 +194,7 @@ paws_check_pkg_size <- function(in_dir = "../cran",
   dir_info <- dir_info[, c("package", "size")]
   setDT(dir_info)
 
-  dir_info[, c("status", "percentage") := .(
+  dir_info[, c("status", "percentage") := list(
       fcase(
         get("size") > threshold, "ERROR",
         get("size") > threshold *.75, "WARNING",
