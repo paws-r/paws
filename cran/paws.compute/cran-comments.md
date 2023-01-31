@@ -14,7 +14,7 @@ checking installed package size ... NOTE
     R      3.0Mb
     help   3.3Mb
 
-Maintainer Notes: tarball package size:  89.5K
+Maintainer Notes: tarball package size: 856.7K
 
 ## Downstream dependencies
 

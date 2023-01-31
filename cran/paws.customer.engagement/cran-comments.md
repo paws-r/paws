@@ -14,7 +14,7 @@ Notes:
   Old maintainer(s):
     David Kretch <david.kretch@gmail.com>
 
-Maintainer Notes: tarball package size: 662.2K
+Maintainer Notes: tarball package size: 290.6K
 
 ## Downstream dependencies
 
