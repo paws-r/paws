@@ -49,6 +49,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_build_bot_locale
+#'
+#' @aliases lexmodelsv2_build_bot_locale
 lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
   op <- new_operation(
     name = "BuildBotLocale",
@@ -147,6 +149,8 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot
+#'
+#' @aliases lexmodelsv2_create_bot
 lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL) {
   op <- new_operation(
     name = "CreateBot",
@@ -313,6 +317,8 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot_alias
+#'
+#' @aliases lexmodelsv2_create_bot_alias
 lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVersion = NULL, botAliasLocaleSettings = NULL, conversationLogSettings = NULL, sentimentAnalysisSettings = NULL, botId, tags = NULL) {
   op <- new_operation(
     name = "CreateBotAlias",
@@ -413,6 +419,8 @@ lexmodelsv2_create_bot_alias <- function(botAliasName, description = NULL, botVe
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot_locale
+#'
+#' @aliases lexmodelsv2_create_bot_locale
 lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL) {
   op <- new_operation(
     name = "CreateBotLocale",
@@ -488,6 +496,8 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_bot_version
+#'
+#' @aliases lexmodelsv2_create_bot_version
 lexmodelsv2_create_bot_version <- function(botId, description = NULL, botVersionLocaleSpecification) {
   op <- new_operation(
     name = "CreateBotVersion",
@@ -587,6 +597,8 @@ lexmodelsv2_create_bot_version <- function(botId, description = NULL, botVersion
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_export
+#'
+#' @aliases lexmodelsv2_create_export
 lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePassword = NULL) {
   op <- new_operation(
     name = "CreateExport",
@@ -1685,6 +1697,8 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_intent
+#'
+#' @aliases lexmodelsv2_create_intent
 lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId) {
   op <- new_operation(
     name = "CreateIntent",
@@ -1741,6 +1755,8 @@ lexmodelsv2_create_intent <- function(intentName, description = NULL, parentInte
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_resource_policy
+#'
+#' @aliases lexmodelsv2_create_resource_policy
 lexmodelsv2_create_resource_policy <- function(resourceArn, policy) {
   op <- new_operation(
     name = "CreateResourcePolicy",
@@ -1839,6 +1855,8 @@ lexmodelsv2_create_resource_policy <- function(resourceArn, policy) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_resource_policy_statement
+#'
+#' @aliases lexmodelsv2_create_resource_policy_statement
 lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementId, effect, principal, action, condition = NULL, expectedRevisionId = NULL) {
   op <- new_operation(
     name = "CreateResourcePolicyStatement",
@@ -2411,6 +2429,8 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_slot
+#'
+#' @aliases lexmodelsv2_create_slot
 lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL) {
   op <- new_operation(
     name = "CreateSlot",
@@ -2568,6 +2588,8 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_slot_type
+#'
+#' @aliases lexmodelsv2_create_slot_type
 lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL) {
   op <- new_operation(
     name = "CreateSlotType",
@@ -2612,6 +2634,8 @@ lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotT
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_create_upload_url
+#'
+#' @aliases lexmodelsv2_create_upload_url
 lexmodelsv2_create_upload_url <- function() {
   op <- new_operation(
     name = "CreateUploadUrl",
@@ -2672,6 +2696,8 @@ lexmodelsv2_create_upload_url <- function() {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_bot
+#'
+#' @aliases lexmodelsv2_delete_bot
 lexmodelsv2_delete_bot <- function(botId, skipResourceInUseCheck = NULL) {
   op <- new_operation(
     name = "DeleteBot",
@@ -2724,6 +2750,8 @@ lexmodelsv2_delete_bot <- function(botId, skipResourceInUseCheck = NULL) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_bot_alias
+#'
+#' @aliases lexmodelsv2_delete_bot_alias
 lexmodelsv2_delete_bot_alias <- function(botAliasId, botId, skipResourceInUseCheck = NULL) {
   op <- new_operation(
     name = "DeleteBotAlias",
@@ -2782,6 +2810,8 @@ lexmodelsv2_delete_bot_alias <- function(botAliasId, botId, skipResourceInUseChe
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_bot_locale
+#'
+#' @aliases lexmodelsv2_delete_bot_locale
 lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
   op <- new_operation(
     name = "DeleteBotLocale",
@@ -2839,6 +2869,8 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_bot_version
+#'
+#' @aliases lexmodelsv2_delete_bot_version
 lexmodelsv2_delete_bot_version <- function(botId, botVersion, skipResourceInUseCheck = NULL) {
   op <- new_operation(
     name = "DeleteBotVersion",
@@ -2894,6 +2926,8 @@ lexmodelsv2_delete_bot_version <- function(botId, botVersion, skipResourceInUseC
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_custom_vocabulary
+#'
+#' @aliases lexmodelsv2_delete_custom_vocabulary
 lexmodelsv2_delete_custom_vocabulary <- function(botId, botVersion, localeId) {
   op <- new_operation(
     name = "DeleteCustomVocabulary",
@@ -2942,6 +2976,8 @@ lexmodelsv2_delete_custom_vocabulary <- function(botId, botVersion, localeId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_export
+#'
+#' @aliases lexmodelsv2_delete_export
 lexmodelsv2_delete_export <- function(exportId) {
   op <- new_operation(
     name = "DeleteExport",
@@ -2989,6 +3025,8 @@ lexmodelsv2_delete_export <- function(exportId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_import
+#'
+#' @aliases lexmodelsv2_delete_import
 lexmodelsv2_delete_import <- function(importId) {
   op <- new_operation(
     name = "DeleteImport",
@@ -3040,6 +3078,8 @@ lexmodelsv2_delete_import <- function(importId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_intent
+#'
+#' @aliases lexmodelsv2_delete_intent
 lexmodelsv2_delete_intent <- function(intentId, botId, botVersion, localeId) {
   op <- new_operation(
     name = "DeleteIntent",
@@ -3094,6 +3134,8 @@ lexmodelsv2_delete_intent <- function(intentId, botId, botVersion, localeId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_resource_policy
+#'
+#' @aliases lexmodelsv2_delete_resource_policy
 lexmodelsv2_delete_resource_policy <- function(resourceArn, expectedRevisionId = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -3154,6 +3196,8 @@ lexmodelsv2_delete_resource_policy <- function(resourceArn, expectedRevisionId =
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_resource_policy_statement
+#'
+#' @aliases lexmodelsv2_delete_resource_policy_statement
 lexmodelsv2_delete_resource_policy_statement <- function(resourceArn, statementId, expectedRevisionId = NULL) {
   op <- new_operation(
     name = "DeleteResourcePolicyStatement",
@@ -3205,6 +3249,8 @@ lexmodelsv2_delete_resource_policy_statement <- function(resourceArn, statementI
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_slot
+#'
+#' @aliases lexmodelsv2_delete_slot
 lexmodelsv2_delete_slot <- function(slotId, botId, botVersion, localeId, intentId) {
   op <- new_operation(
     name = "DeleteSlot",
@@ -3265,6 +3311,8 @@ lexmodelsv2_delete_slot <- function(slotId, botId, botVersion, localeId, intentI
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_slot_type
+#'
+#' @aliases lexmodelsv2_delete_slot_type
 lexmodelsv2_delete_slot_type <- function(slotTypeId, botId, botVersion, localeId, skipResourceInUseCheck = NULL) {
   op <- new_operation(
     name = "DeleteSlotType",
@@ -3331,6 +3379,8 @@ lexmodelsv2_delete_slot_type <- function(slotTypeId, botId, botVersion, localeId
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_delete_utterances
+#'
+#' @aliases lexmodelsv2_delete_utterances
 lexmodelsv2_delete_utterances <- function(botId, localeId = NULL, sessionId = NULL) {
   op <- new_operation(
     name = "DeleteUtterances",
@@ -3390,6 +3440,8 @@ lexmodelsv2_delete_utterances <- function(botId, localeId = NULL, sessionId = NU
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_bot
+#'
+#' @aliases lexmodelsv2_describe_bot
 lexmodelsv2_describe_bot <- function(botId) {
   op <- new_operation(
     name = "DescribeBot",
@@ -3498,6 +3550,8 @@ lexmodelsv2_describe_bot <- function(botId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_bot_alias
+#'
+#' @aliases lexmodelsv2_describe_bot_alias
 lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
   op <- new_operation(
     name = "DescribeBotAlias",
@@ -3584,6 +3638,8 @@ lexmodelsv2_describe_bot_alias <- function(botAliasId, botId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_bot_locale
+#'
+#' @aliases lexmodelsv2_describe_bot_locale
 lexmodelsv2_describe_bot_locale <- function(botId, botVersion, localeId) {
   op <- new_operation(
     name = "DescribeBotLocale",
@@ -3696,6 +3752,8 @@ lexmodelsv2_describe_bot_locale <- function(botId, botVersion, localeId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_bot_recommendation
+#'
+#' @aliases lexmodelsv2_describe_bot_recommendation
 lexmodelsv2_describe_bot_recommendation <- function(botId, botVersion, localeId, botRecommendationId) {
   op <- new_operation(
     name = "DescribeBotRecommendation",
@@ -3758,6 +3816,8 @@ lexmodelsv2_describe_bot_recommendation <- function(botId, botVersion, localeId,
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_bot_version
+#'
+#' @aliases lexmodelsv2_describe_bot_version
 lexmodelsv2_describe_bot_version <- function(botId, botVersion) {
   op <- new_operation(
     name = "DescribeBotVersion",
@@ -3818,6 +3878,8 @@ lexmodelsv2_describe_bot_version <- function(botId, botVersion) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_custom_vocabulary_metadata
+#'
+#' @aliases lexmodelsv2_describe_custom_vocabulary_metadata
 lexmodelsv2_describe_custom_vocabulary_metadata <- function(botId, botVersion, localeId) {
   op <- new_operation(
     name = "DescribeCustomVocabularyMetadata",
@@ -3891,6 +3953,8 @@ lexmodelsv2_describe_custom_vocabulary_metadata <- function(botId, botVersion, l
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_export
+#'
+#' @aliases lexmodelsv2_describe_export
 lexmodelsv2_describe_export <- function(exportId) {
   op <- new_operation(
     name = "DescribeExport",
@@ -3980,6 +4044,8 @@ lexmodelsv2_describe_export <- function(exportId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_import
+#'
+#' @aliases lexmodelsv2_describe_import
 lexmodelsv2_describe_import <- function(importId) {
   op <- new_operation(
     name = "DescribeImport",
@@ -4520,6 +4586,8 @@ lexmodelsv2_describe_import <- function(importId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_intent
+#'
+#' @aliases lexmodelsv2_describe_intent
 lexmodelsv2_describe_intent <- function(intentId, botId, botVersion, localeId) {
   op <- new_operation(
     name = "DescribeIntent",
@@ -4568,6 +4636,8 @@ lexmodelsv2_describe_intent <- function(intentId, botId, botVersion, localeId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_resource_policy
+#'
+#' @aliases lexmodelsv2_describe_resource_policy
 lexmodelsv2_describe_resource_policy <- function(resourceArn) {
   op <- new_operation(
     name = "DescribeResourcePolicy",
@@ -4877,6 +4947,8 @@ lexmodelsv2_describe_resource_policy <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_slot
+#'
+#' @aliases lexmodelsv2_describe_slot
 lexmodelsv2_describe_slot <- function(slotId, botId, botVersion, localeId, intentId) {
   op <- new_operation(
     name = "DescribeSlot",
@@ -4973,6 +5045,8 @@ lexmodelsv2_describe_slot <- function(slotId, botId, botVersion, localeId, inten
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_describe_slot_type
+#'
+#' @aliases lexmodelsv2_describe_slot_type
 lexmodelsv2_describe_slot_type <- function(slotTypeId, botId, botVersion, localeId) {
   op <- new_operation(
     name = "DescribeSlotType",
@@ -5120,6 +5194,8 @@ lexmodelsv2_describe_slot_type <- function(slotTypeId, botId, botVersion, locale
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_aggregated_utterances
+#'
+#' @aliases lexmodelsv2_list_aggregated_utterances
 lexmodelsv2_list_aggregated_utterances <- function(botId, botAliasId = NULL, botVersion = NULL, localeId, aggregationDuration, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAggregatedUtterances",
@@ -5191,6 +5267,8 @@ lexmodelsv2_list_aggregated_utterances <- function(botId, botAliasId = NULL, bot
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_bot_aliases
+#'
+#' @aliases lexmodelsv2_list_bot_aliases
 lexmodelsv2_list_bot_aliases <- function(botId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBotAliases",
@@ -5283,6 +5361,8 @@ lexmodelsv2_list_bot_aliases <- function(botId, maxResults = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_bot_locales
+#'
+#' @aliases lexmodelsv2_list_bot_locales
 lexmodelsv2_list_bot_locales <- function(botId, botVersion, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBotLocales",
@@ -5359,6 +5439,8 @@ lexmodelsv2_list_bot_locales <- function(botId, botVersion, sortBy = NULL, filte
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_bot_recommendations
+#'
+#' @aliases lexmodelsv2_list_bot_recommendations
 lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBotRecommendations",
@@ -5442,6 +5524,8 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_bot_versions
+#'
+#' @aliases lexmodelsv2_list_bot_versions
 lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBotVersions",
@@ -5529,6 +5613,8 @@ lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_bots
+#'
+#' @aliases lexmodelsv2_list_bots
 lexmodelsv2_list_bots <- function(sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBots",
@@ -5609,6 +5695,8 @@ lexmodelsv2_list_bots <- function(sortBy = NULL, filters = NULL, maxResults = NU
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_built_in_intents
+#'
+#' @aliases lexmodelsv2_list_built_in_intents
 lexmodelsv2_list_built_in_intents <- function(localeId, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBuiltInIntents",
@@ -5683,6 +5771,8 @@ lexmodelsv2_list_built_in_intents <- function(localeId, sortBy = NULL, maxResult
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_built_in_slot_types
+#'
+#' @aliases lexmodelsv2_list_built_in_slot_types
 lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListBuiltInSlotTypes",
@@ -5800,6 +5890,8 @@ lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_exports
+#'
+#' @aliases lexmodelsv2_list_exports
 lexmodelsv2_list_exports <- function(botId = NULL, botVersion = NULL, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL, localeId = NULL) {
   op <- new_operation(
     name = "ListExports",
@@ -5904,6 +5996,8 @@ lexmodelsv2_list_exports <- function(botId = NULL, botVersion = NULL, sortBy = N
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_imports
+#'
+#' @aliases lexmodelsv2_list_imports
 lexmodelsv2_list_imports <- function(botId = NULL, botVersion = NULL, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL, localeId = NULL) {
   op <- new_operation(
     name = "ListImports",
@@ -6017,6 +6111,8 @@ lexmodelsv2_list_imports <- function(botId = NULL, botVersion = NULL, sortBy = N
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_intents
+#'
+#' @aliases lexmodelsv2_list_intents
 lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListIntents",
@@ -6093,6 +6189,8 @@ lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL,
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_recommended_intents
+#'
+#' @aliases lexmodelsv2_list_recommended_intents
 lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, botRecommendationId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListRecommendedIntents",
@@ -6191,6 +6289,8 @@ lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, bo
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_slot_types
+#'
+#' @aliases lexmodelsv2_list_slot_types
 lexmodelsv2_list_slot_types <- function(botId, botVersion, localeId, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSlotTypes",
@@ -6346,6 +6446,8 @@ lexmodelsv2_list_slot_types <- function(botId, botVersion, localeId, sortBy = NU
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_slots
+#'
+#' @aliases lexmodelsv2_list_slots
 lexmodelsv2_list_slots <- function(botId, botVersion, localeId, intentId, sortBy = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSlots",
@@ -6395,6 +6497,8 @@ lexmodelsv2_list_slots <- function(botId, botVersion, localeId, intentId, sortBy
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_list_tags_for_resource
+#'
+#' @aliases lexmodelsv2_list_tags_for_resource
 lexmodelsv2_list_tags_for_resource <- function(resourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -6484,6 +6588,8 @@ lexmodelsv2_list_tags_for_resource <- function(resourceARN) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_search_associated_transcripts
+#'
+#' @aliases lexmodelsv2_search_associated_transcripts
 lexmodelsv2_search_associated_transcripts <- function(botId, botVersion, localeId, botRecommendationId, searchOrder = NULL, filters, maxResults = NULL, nextIndex = NULL) {
   op <- new_operation(
     name = "SearchAssociatedTranscripts",
@@ -6609,6 +6715,8 @@ lexmodelsv2_search_associated_transcripts <- function(botId, botVersion, localeI
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_start_bot_recommendation
+#'
+#' @aliases lexmodelsv2_start_bot_recommendation
 lexmodelsv2_start_bot_recommendation <- function(botId, botVersion, localeId, transcriptSourceSetting, encryptionSetting = NULL) {
   op <- new_operation(
     name = "StartBotRecommendation",
@@ -6735,6 +6843,8 @@ lexmodelsv2_start_bot_recommendation <- function(botId, botVersion, localeId, tr
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_start_import
+#'
+#' @aliases lexmodelsv2_start_import
 lexmodelsv2_start_import <- function(importId, resourceSpecification, mergeStrategy, filePassword = NULL) {
   op <- new_operation(
     name = "StartImport",
@@ -6782,6 +6892,8 @@ lexmodelsv2_start_import <- function(importId, resourceSpecification, mergeStrat
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_tag_resource
+#'
+#' @aliases lexmodelsv2_tag_resource
 lexmodelsv2_tag_resource <- function(resourceARN, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -6827,6 +6939,8 @@ lexmodelsv2_tag_resource <- function(resourceARN, tags) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_untag_resource
+#'
+#' @aliases lexmodelsv2_untag_resource
 lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -6910,6 +7024,8 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot
+#'
+#' @aliases lexmodelsv2_update_bot
 lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds) {
   op <- new_operation(
     name = "UpdateBot",
@@ -7058,6 +7174,8 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot_alias
+#'
+#' @aliases lexmodelsv2_update_bot_alias
 lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description = NULL, botVersion = NULL, botAliasLocaleSettings = NULL, conversationLogSettings = NULL, sentimentAnalysisSettings = NULL, botId) {
   op <- new_operation(
     name = "UpdateBotAlias",
@@ -7145,6 +7263,8 @@ lexmodelsv2_update_bot_alias <- function(botAliasId, botAliasName, description =
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot_locale
+#'
+#' @aliases lexmodelsv2_update_bot_locale
 lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, description = NULL, nluIntentConfidenceThreshold, voiceSettings = NULL) {
   op <- new_operation(
     name = "UpdateBotLocale",
@@ -7248,6 +7368,8 @@ lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, descripti
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_bot_recommendation
+#'
+#' @aliases lexmodelsv2_update_bot_recommendation
 lexmodelsv2_update_bot_recommendation <- function(botId, botVersion, localeId, botRecommendationId, encryptionSetting) {
   op <- new_operation(
     name = "UpdateBotRecommendation",
@@ -7324,6 +7446,8 @@ lexmodelsv2_update_bot_recommendation <- function(botId, botVersion, localeId, b
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_export
+#'
+#' @aliases lexmodelsv2_update_export
 lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
   op <- new_operation(
     name = "UpdateExport",
@@ -8365,6 +8489,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_intent
+#'
+#' @aliases lexmodelsv2_update_intent
 lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId) {
   op <- new_operation(
     name = "UpdateIntent",
@@ -8431,6 +8557,8 @@ lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, 
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_resource_policy
+#'
+#' @aliases lexmodelsv2_update_resource_policy
 lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevisionId = NULL) {
   op <- new_operation(
     name = "UpdateResourcePolicy",
@@ -8998,6 +9126,8 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_slot
+#'
+#' @aliases lexmodelsv2_update_slot
 lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL) {
   op <- new_operation(
     name = "UpdateSlot",
@@ -9138,6 +9268,8 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #' @keywords internal
 #'
 #' @rdname lexmodelsv2_update_slot_type
+#'
+#' @aliases lexmodelsv2_update_slot_type
 lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL) {
   op <- new_operation(
     name = "UpdateSlotType",

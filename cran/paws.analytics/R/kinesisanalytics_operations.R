@@ -101,7 +101,7 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalytics_add_application_input_processing_configuration
+#' @rdname kinesisanalytics_add_applic_input_proces_config
 kinesisanalytics_add_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId, InputProcessingConfiguration) {
   op <- new_operation(
     name = "AddApplicationInputProcessingConfiguration",
@@ -346,7 +346,7 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalytics_delete_application_cloud_watch_logging_option
+#' @rdname kinesisanalytics_delet_appli_cloud_watch_loggi_optio
 kinesisanalytics_delete_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId, CloudWatchLoggingOptionId) {
   op <- new_operation(
     name = "DeleteApplicationCloudWatchLoggingOption",
@@ -382,7 +382,7 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalytics_delete_application_input_processing_configuration
+#' @rdname kinesisanalytics_delete_applic_input_proces_config
 kinesisanalytics_delete_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId) {
   op <- new_operation(
     name = "DeleteApplicationInputProcessingConfiguration",

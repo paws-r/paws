@@ -167,6 +167,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_create_application
+#'
+#' @aliases serverlessapplicationrepository_create_application
 serverlessapplicationrepository_create_application <- function(Author, Description, HomePageUrl = NULL, Labels = NULL, LicenseBody = NULL, LicenseUrl = NULL, Name, ReadmeBody = NULL, ReadmeUrl = NULL, SemanticVersion = NULL, SourceCodeArchiveUrl = NULL, SourceCodeUrl = NULL, SpdxLicenseId = NULL, TemplateBody = NULL, TemplateUrl = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -258,6 +260,8 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_create_application_version
+#'
+#' @aliases serverlessapplicationrepository_create_application_version
 serverlessapplicationrepository_create_application_version <- function(ApplicationId, SemanticVersion, SourceCodeArchiveUrl = NULL, SourceCodeUrl = NULL, TemplateBody = NULL, TemplateUrl = NULL) {
   op <- new_operation(
     name = "CreateApplicationVersion",
@@ -422,7 +426,9 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #'
 #' @keywords internal
 #'
-#' @rdname serverlessapplicationrepository_create_cloud_formation_change_set
+#' @rdname serverlessapplicationrepository_cre_clo_for_cha_set
+#'
+#' @aliases serverlessapplicationrepository_create_cloud_formation_change_set
 serverlessapplicationrepository_create_cloud_formation_change_set <- function(ApplicationId, Capabilities = NULL, ChangeSetName = NULL, ClientToken = NULL, Description = NULL, NotificationArns = NULL, ParameterOverrides = NULL, ResourceTypes = NULL, RollbackConfiguration = NULL, SemanticVersion = NULL, StackName, Tags = NULL, TemplateId = NULL) {
   op <- new_operation(
     name = "CreateCloudFormationChangeSet",
@@ -478,7 +484,9 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 #'
 #' @keywords internal
 #'
-#' @rdname serverlessapplicationrepository_create_cloud_formation_template
+#' @rdname serverlessapplicationrepository_cre_clo_for_tem
+#'
+#' @aliases serverlessapplicationrepository_create_cloud_formation_template
 serverlessapplicationrepository_create_cloud_formation_template <- function(ApplicationId, SemanticVersion = NULL) {
   op <- new_operation(
     name = "CreateCloudFormationTemplate",
@@ -519,6 +527,8 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_delete_application
+#'
+#' @aliases serverlessapplicationrepository_delete_application
 serverlessapplicationrepository_delete_application <- function(ApplicationId) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -613,6 +623,8 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_get_application
+#'
+#' @aliases serverlessapplicationrepository_get_application
 serverlessapplicationrepository_get_application <- function(ApplicationId, SemanticVersion = NULL) {
   op <- new_operation(
     name = "GetApplication",
@@ -671,6 +683,8 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_get_application_policy
+#'
+#' @aliases serverlessapplicationrepository_get_application_policy
 serverlessapplicationrepository_get_application_policy <- function(ApplicationId) {
   op <- new_operation(
     name = "GetApplicationPolicy",
@@ -728,6 +742,8 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_get_cloud_formation_template
+#'
+#' @aliases serverlessapplicationrepository_get_cloud_formation_template
 serverlessapplicationrepository_get_cloud_formation_template <- function(ApplicationId, TemplateId) {
   op <- new_operation(
     name = "GetCloudFormationTemplate",
@@ -785,7 +801,9 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
 #'
 #' @keywords internal
 #'
-#' @rdname serverlessapplicationrepository_list_application_dependencies
+#' @rdname serverlessapplicationrepository_lis_app_dep
+#'
+#' @aliases serverlessapplicationrepository_list_application_dependencies
 serverlessapplicationrepository_list_application_dependencies <- function(ApplicationId, MaxItems = NULL, NextToken = NULL, SemanticVersion = NULL) {
   op <- new_operation(
     name = "ListApplicationDependencies",
@@ -844,6 +862,8 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_list_application_versions
+#'
+#' @aliases serverlessapplicationrepository_list_application_versions
 serverlessapplicationrepository_list_application_versions <- function(ApplicationId, MaxItems = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplicationVersions",
@@ -905,6 +925,8 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_list_applications
+#'
+#' @aliases serverlessapplicationrepository_list_applications
 serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -982,6 +1004,8 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_put_application_policy
+#'
+#' @aliases serverlessapplicationrepository_put_application_policy
 serverlessapplicationrepository_put_application_policy <- function(ApplicationId, Statements) {
   op <- new_operation(
     name = "PutApplicationPolicy",
@@ -1028,6 +1052,8 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_unshare_application
+#'
+#' @aliases serverlessapplicationrepository_unshare_application
 serverlessapplicationrepository_unshare_application <- function(ApplicationId, OrganizationId) {
   op <- new_operation(
     name = "UnshareApplication",
@@ -1151,6 +1177,8 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' @keywords internal
 #'
 #' @rdname serverlessapplicationrepository_update_application
+#'
+#' @aliases serverlessapplicationrepository_update_application
 serverlessapplicationrepository_update_application <- function(ApplicationId, Author = NULL, Description = NULL, HomePageUrl = NULL, Labels = NULL, ReadmeBody = NULL, ReadmeUrl = NULL) {
   op <- new_operation(
     name = "UpdateApplication",

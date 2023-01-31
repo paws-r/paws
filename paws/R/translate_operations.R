@@ -54,6 +54,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname translate_create_parallel_data
+#'
+#' @aliases translate_create_parallel_data
 translate_create_parallel_data <- function(Name, Description = NULL, ParallelDataConfig, EncryptionKey = NULL, ClientToken) {
   op <- new_operation(
     name = "CreateParallelData",
@@ -100,6 +102,8 @@ translate_create_parallel_data <- function(Name, Description = NULL, ParallelDat
 #' @keywords internal
 #'
 #' @rdname translate_delete_parallel_data
+#'
+#' @aliases translate_delete_parallel_data
 translate_delete_parallel_data <- function(Name) {
   op <- new_operation(
     name = "DeleteParallelData",
@@ -140,6 +144,8 @@ translate_delete_parallel_data <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname translate_delete_terminology
+#'
+#' @aliases translate_delete_terminology
 translate_delete_terminology <- function(Name) {
   op <- new_operation(
     name = "DeleteTerminology",
@@ -233,6 +239,8 @@ translate_delete_terminology <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname translate_describe_text_translation_job
+#'
+#' @aliases translate_describe_text_translation_job
 translate_describe_text_translation_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeTextTranslationJob",
@@ -322,6 +330,8 @@ translate_describe_text_translation_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname translate_get_parallel_data
+#'
+#' @aliases translate_get_parallel_data
 translate_get_parallel_data <- function(Name) {
   op <- new_operation(
     name = "GetParallelData",
@@ -410,6 +420,8 @@ translate_get_parallel_data <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname translate_get_terminology
+#'
+#' @aliases translate_get_terminology
 translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
   op <- new_operation(
     name = "GetTerminology",
@@ -512,6 +524,8 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
 #' @keywords internal
 #'
 #' @rdname translate_import_terminology
+#'
+#' @aliases translate_import_terminology
 translate_import_terminology <- function(Name, MergeStrategy, Description = NULL, TerminologyData, EncryptionKey = NULL) {
   op <- new_operation(
     name = "ImportTerminology",
@@ -572,6 +586,8 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
 #' @keywords internal
 #'
 #' @rdname translate_list_languages
+#'
+#' @aliases translate_list_languages
 translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLanguages",
@@ -655,6 +671,8 @@ translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname translate_list_parallel_data
+#'
+#' @aliases translate_list_parallel_data
 translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListParallelData",
@@ -730,6 +748,8 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname translate_list_terminologies
+#'
+#' @aliases translate_list_terminologies
 translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTerminologies",
@@ -836,6 +856,8 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname translate_list_text_translation_jobs
+#'
+#' @aliases translate_list_text_translation_jobs
 translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTextTranslationJobs",
@@ -968,6 +990,8 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname translate_start_text_translation_job
+#'
+#' @aliases translate_start_text_translation_job
 translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig, OutputDataConfig, DataAccessRoleArn, SourceLanguageCode, TargetLanguageCodes, TerminologyNames = NULL, ParallelDataNames = NULL, ClientToken, Settings = NULL) {
   op <- new_operation(
     name = "StartTextTranslationJob",
@@ -1026,6 +1050,8 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 #' @keywords internal
 #'
 #' @rdname translate_stop_text_translation_job
+#'
+#' @aliases translate_stop_text_translation_job
 translate_stop_text_translation_job <- function(JobId) {
   op <- new_operation(
     name = "StopTextTranslationJob",
@@ -1125,6 +1151,8 @@ translate_stop_text_translation_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname translate_translate_text
+#'
+#' @aliases translate_translate_text
 translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLanguageCode, TargetLanguageCode, Settings = NULL) {
   op <- new_operation(
     name = "TranslateText",
@@ -1188,6 +1216,8 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
 #' @keywords internal
 #'
 #' @rdname translate_update_parallel_data
+#'
+#' @aliases translate_update_parallel_data
 translate_update_parallel_data <- function(Name, Description = NULL, ParallelDataConfig, ClientToken) {
   op <- new_operation(
     name = "UpdateParallelData",

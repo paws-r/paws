@@ -45,6 +45,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codestar_associate_team_member
+#'
+#' @aliases codestar_associate_team_member
 codestar_associate_team_member <- function(projectId, clientRequestToken = NULL, userArn, projectRole, remoteAccessAllowed = NULL) {
   op <- new_operation(
     name = "AssociateTeamMember",
@@ -151,6 +153,8 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 #' @keywords internal
 #'
 #' @rdname codestar_create_project
+#'
+#' @aliases codestar_create_project
 codestar_create_project <- function(name, id, description = NULL, clientRequestToken = NULL, sourceCode = NULL, toolchain = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
@@ -223,6 +227,8 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' @keywords internal
 #'
 #' @rdname codestar_create_user_profile
+#'
+#' @aliases codestar_create_user_profile
 codestar_create_user_profile <- function(userArn, displayName, emailAddress, sshPublicKey = NULL) {
   op <- new_operation(
     name = "CreateUserProfile",
@@ -281,6 +287,8 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 #' @keywords internal
 #'
 #' @rdname codestar_delete_project
+#'
+#' @aliases codestar_delete_project
 codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack = NULL) {
   op <- new_operation(
     name = "DeleteProject",
@@ -331,6 +339,8 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
 #' @keywords internal
 #'
 #' @rdname codestar_delete_user_profile
+#'
+#' @aliases codestar_delete_user_profile
 codestar_delete_user_profile <- function(userArn) {
   op <- new_operation(
     name = "DeleteUserProfile",
@@ -389,6 +399,8 @@ codestar_delete_user_profile <- function(userArn) {
 #' @keywords internal
 #'
 #' @rdname codestar_describe_project
+#'
+#' @aliases codestar_describe_project
 codestar_describe_project <- function(id) {
   op <- new_operation(
     name = "DescribeProject",
@@ -445,6 +457,8 @@ codestar_describe_project <- function(id) {
 #' @keywords internal
 #'
 #' @rdname codestar_describe_user_profile
+#'
+#' @aliases codestar_describe_user_profile
 codestar_describe_user_profile <- function(userArn) {
   op <- new_operation(
     name = "DescribeUserProfile",
@@ -493,6 +507,8 @@ codestar_describe_user_profile <- function(userArn) {
 #' @keywords internal
 #'
 #' @rdname codestar_disassociate_team_member
+#'
+#' @aliases codestar_disassociate_team_member
 codestar_disassociate_team_member <- function(projectId, userArn) {
   op <- new_operation(
     name = "DisassociateTeamMember",
@@ -548,6 +564,8 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
 #' @keywords internal
 #'
 #' @rdname codestar_list_projects
+#'
+#' @aliases codestar_list_projects
 codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListProjects",
@@ -604,6 +622,8 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname codestar_list_resources
+#'
+#' @aliases codestar_list_resources
 codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListResources",
@@ -656,6 +676,8 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
 #' @keywords internal
 #'
 #' @rdname codestar_list_tags_for_project
+#'
+#' @aliases codestar_list_tags_for_project
 codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForProject",
@@ -713,6 +735,8 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
 #' @keywords internal
 #'
 #' @rdname codestar_list_team_members
+#'
+#' @aliases codestar_list_team_members
 codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTeamMembers",
@@ -771,6 +795,8 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
 #' @keywords internal
 #'
 #' @rdname codestar_list_user_profiles
+#'
+#' @aliases codestar_list_user_profiles
 codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListUserProfiles",
@@ -822,6 +848,8 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname codestar_tag_project
+#'
+#' @aliases codestar_tag_project
 codestar_tag_project <- function(id, tags) {
   op <- new_operation(
     name = "TagProject",
@@ -866,6 +894,8 @@ codestar_tag_project <- function(id, tags) {
 #' @keywords internal
 #'
 #' @rdname codestar_untag_project
+#'
+#' @aliases codestar_untag_project
 codestar_untag_project <- function(id, tags) {
   op <- new_operation(
     name = "UntagProject",
@@ -910,6 +940,8 @@ codestar_untag_project <- function(id, tags) {
 #' @keywords internal
 #'
 #' @rdname codestar_update_project
+#'
+#' @aliases codestar_update_project
 codestar_update_project <- function(id, name = NULL, description = NULL) {
   op <- new_operation(
     name = "UpdateProject",
@@ -973,6 +1005,8 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' @keywords internal
 #'
 #' @rdname codestar_update_team_member
+#'
+#' @aliases codestar_update_team_member
 codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, remoteAccessAllowed = NULL) {
   op <- new_operation(
     name = "UpdateTeamMember",
@@ -1042,6 +1076,8 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 #' @keywords internal
 #'
 #' @rdname codestar_update_user_profile
+#'
+#' @aliases codestar_update_user_profile
 codestar_update_user_profile <- function(userArn, displayName = NULL, emailAddress = NULL, sshPublicKey = NULL) {
   op <- new_operation(
     name = "UpdateUserProfile",

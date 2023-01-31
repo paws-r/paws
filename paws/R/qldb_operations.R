@@ -39,6 +39,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname qldb_cancel_journal_kinesis_stream
+#'
+#' @aliases qldb_cancel_journal_kinesis_stream
 qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
   op <- new_operation(
     name = "CancelJournalKinesisStream",
@@ -184,6 +186,8 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' @keywords internal
 #'
 #' @rdname qldb_create_ledger
+#'
+#' @aliases qldb_create_ledger
 qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProtection = NULL, KmsKey = NULL) {
   op <- new_operation(
     name = "CreateLedger",
@@ -229,6 +233,8 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
 #' @keywords internal
 #'
 #' @rdname qldb_delete_ledger
+#'
+#' @aliases qldb_delete_ledger
 qldb_delete_ledger <- function(Name) {
   op <- new_operation(
     name = "DeleteLedger",
@@ -306,6 +312,8 @@ qldb_delete_ledger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname qldb_describe_journal_kinesis_stream
+#'
+#' @aliases qldb_describe_journal_kinesis_stream
 qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
   op <- new_operation(
     name = "DescribeJournalKinesisStream",
@@ -392,6 +400,8 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' @keywords internal
 #'
 #' @rdname qldb_describe_journal_s3_export
+#'
+#' @aliases qldb_describe_journal_s3_export
 qldb_describe_journal_s3_export <- function(Name, ExportId) {
   op <- new_operation(
     name = "DescribeJournalS3Export",
@@ -453,6 +463,8 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
 #' @keywords internal
 #'
 #' @rdname qldb_describe_ledger
+#'
+#' @aliases qldb_describe_ledger
 qldb_describe_ledger <- function(Name) {
   op <- new_operation(
     name = "DescribeLedger",
@@ -572,6 +584,8 @@ qldb_describe_ledger <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname qldb_export_journal_to_s3
+#'
+#' @aliases qldb_export_journal_to_s3
 qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime, S3ExportConfiguration, RoleArn, OutputFormat = NULL) {
   op <- new_operation(
     name = "ExportJournalToS3",
@@ -652,6 +666,8 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
 #' @keywords internal
 #'
 #' @rdname qldb_get_block
+#'
+#' @aliases qldb_get_block
 qldb_get_block <- function(Name, BlockAddress, DigestTipAddress = NULL) {
   op <- new_operation(
     name = "GetBlock",
@@ -702,6 +718,8 @@ qldb_get_block <- function(Name, BlockAddress, DigestTipAddress = NULL) {
 #' @keywords internal
 #'
 #' @rdname qldb_get_digest
+#'
+#' @aliases qldb_get_digest
 qldb_get_digest <- function(Name) {
   op <- new_operation(
     name = "GetDigest",
@@ -774,6 +792,8 @@ qldb_get_digest <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname qldb_get_revision
+#'
+#' @aliases qldb_get_revision
 qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress = NULL) {
   op <- new_operation(
     name = "GetRevision",
@@ -868,6 +888,8 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #' @keywords internal
 #'
 #' @rdname qldb_list_journal_kinesis_streams_for_ledger
+#'
+#' @aliases qldb_list_journal_kinesis_streams_for_ledger
 qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListJournalKinesisStreamsForLedger",
@@ -958,6 +980,8 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #' @keywords internal
 #'
 #' @rdname qldb_list_journal_s3_exports
+#'
+#' @aliases qldb_list_journal_s3_exports
 qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListJournalS3Exports",
@@ -1051,6 +1075,8 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname qldb_list_journal_s3_exports_for_ledger
+#'
+#' @aliases qldb_list_journal_s3_exports_for_ledger
 qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListJournalS3ExportsForLedger",
@@ -1118,6 +1144,8 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname qldb_list_ledgers
+#'
+#' @aliases qldb_list_ledgers
 qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListLedgers",
@@ -1167,6 +1195,8 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname qldb_list_tags_for_resource
+#'
+#' @aliases qldb_list_tags_for_resource
 qldb_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1268,6 +1298,8 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname qldb_stream_journal_to_kinesis
+#'
+#' @aliases qldb_stream_journal_to_kinesis
 qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, InclusiveStartTime, ExclusiveEndTime = NULL, KinesisConfiguration, StreamName) {
   op <- new_operation(
     name = "StreamJournalToKinesis",
@@ -1321,6 +1353,8 @@ qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, Inc
 #' @keywords internal
 #'
 #' @rdname qldb_tag_resource
+#'
+#' @aliases qldb_tag_resource
 qldb_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1369,6 +1403,8 @@ qldb_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname qldb_untag_resource
+#'
+#' @aliases qldb_untag_resource
 qldb_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1476,6 +1512,8 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname qldb_update_ledger
+#'
+#' @aliases qldb_update_ledger
 qldb_update_ledger <- function(Name, DeletionProtection = NULL, KmsKey = NULL) {
   op <- new_operation(
     name = "UpdateLedger",
@@ -1557,6 +1595,8 @@ qldb_update_ledger <- function(Name, DeletionProtection = NULL, KmsKey = NULL) {
 #' @keywords internal
 #'
 #' @rdname qldb_update_ledger_permissions_mode
+#'
+#' @aliases qldb_update_ledger_permissions_mode
 qldb_update_ledger_permissions_mode <- function(Name, PermissionsMode) {
   op <- new_operation(
     name = "UpdateLedgerPermissionsMode",

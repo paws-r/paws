@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codedeploy_add_tags_to_on_premises_instances
+#'
+#' @aliases codedeploy_add_tags_to_on_premises_instances
 codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
   op <- new_operation(
     name = "AddTagsToOnPremisesInstances",
@@ -154,6 +156,8 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_application_revisions
+#'
+#' @aliases codedeploy_batch_get_application_revisions
 codedeploy_batch_get_application_revisions <- function(applicationName, revisions) {
   op <- new_operation(
     name = "BatchGetApplicationRevisions",
@@ -214,6 +218,8 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_applications
+#'
+#' @aliases codedeploy_batch_get_applications
 codedeploy_batch_get_applications <- function(applicationNames) {
   op <- new_operation(
     name = "BatchGetApplications",
@@ -438,6 +444,8 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_deployment_groups
+#'
+#' @aliases codedeploy_batch_get_deployment_groups
 codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGroupNames) {
   op <- new_operation(
     name = "BatchGetDeploymentGroups",
@@ -526,6 +534,8 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_deployment_instances
+#'
+#' @aliases codedeploy_batch_get_deployment_instances
 codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds) {
   op <- new_operation(
     name = "BatchGetDeploymentInstances",
@@ -745,6 +755,8 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_deployment_targets
+#'
+#' @aliases codedeploy_batch_get_deployment_targets
 codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetIds = NULL) {
   op <- new_operation(
     name = "BatchGetDeploymentTargets",
@@ -967,6 +979,8 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_deployments
+#'
+#' @aliases codedeploy_batch_get_deployments
 codedeploy_batch_get_deployments <- function(deploymentIds) {
   op <- new_operation(
     name = "BatchGetDeployments",
@@ -1035,6 +1049,8 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_batch_get_on_premises_instances
+#'
+#' @aliases codedeploy_batch_get_on_premises_instances
 codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
   op <- new_operation(
     name = "BatchGetOnPremisesInstances",
@@ -1089,6 +1105,8 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_continue_deployment
+#'
+#' @aliases codedeploy_continue_deployment
 codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitType = NULL) {
   op <- new_operation(
     name = "ContinueDeployment",
@@ -1147,6 +1165,8 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_application
+#'
+#' @aliases codedeploy_create_application
 codedeploy_create_application <- function(applicationName, computePlatform = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -1311,6 +1331,8 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment
+#'
+#' @aliases codedeploy_create_deployment
 codedeploy_create_deployment <- function(applicationName, deploymentGroupName = NULL, revision = NULL, deploymentConfigName = NULL, description = NULL, ignoreApplicationStopFailures = NULL, targetInstances = NULL, autoRollbackConfiguration = NULL, updateOutdatedInstancesOnly = NULL, fileExistsBehavior = NULL) {
   op <- new_operation(
     name = "CreateDeployment",
@@ -1395,6 +1417,8 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_config
+#'
+#' @aliases codedeploy_create_deployment_config
 codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHealthyHosts = NULL, trafficRoutingConfig = NULL, computePlatform = NULL) {
   op <- new_operation(
     name = "CreateDeploymentConfig",
@@ -1634,6 +1658,8 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' @keywords internal
 #'
 #' @rdname codedeploy_create_deployment_group
+#'
+#' @aliases codedeploy_create_deployment_group
 codedeploy_create_deployment_group <- function(applicationName, deploymentGroupName, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDeploymentGroup",
@@ -1675,6 +1701,8 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
 #' @keywords internal
 #'
 #' @rdname codedeploy_delete_application
+#'
+#' @aliases codedeploy_delete_application
 codedeploy_delete_application <- function(applicationName) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -1719,6 +1747,8 @@ codedeploy_delete_application <- function(applicationName) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_delete_deployment_config
+#'
+#' @aliases codedeploy_delete_deployment_config
 codedeploy_delete_deployment_config <- function(deploymentConfigName) {
   op <- new_operation(
     name = "DeleteDeploymentConfig",
@@ -1772,6 +1802,8 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_delete_deployment_group
+#'
+#' @aliases codedeploy_delete_deployment_group
 codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupName) {
   op <- new_operation(
     name = "DeleteDeploymentGroup",
@@ -1817,6 +1849,8 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
 #' @keywords internal
 #'
 #' @rdname codedeploy_delete_git_hub_account_token
+#'
+#' @aliases codedeploy_delete_git_hub_account_token
 codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
   op <- new_operation(
     name = "DeleteGitHubAccountToken",
@@ -1858,6 +1892,8 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_delete_resources_by_external_id
+#'
+#' @aliases codedeploy_delete_resources_by_external_id
 codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
   op <- new_operation(
     name = "DeleteResourcesByExternalId",
@@ -1898,6 +1934,8 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_deregister_on_premises_instance
+#'
+#' @aliases codedeploy_deregister_on_premises_instance
 codedeploy_deregister_on_premises_instance <- function(instanceName) {
   op <- new_operation(
     name = "DeregisterOnPremisesInstance",
@@ -1953,6 +1991,8 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_application
+#'
+#' @aliases codedeploy_get_application
 codedeploy_get_application <- function(applicationName) {
   op <- new_operation(
     name = "GetApplication",
@@ -2059,6 +2099,8 @@ codedeploy_get_application <- function(applicationName) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_application_revision
+#'
+#' @aliases codedeploy_get_application_revision
 codedeploy_get_application_revision <- function(applicationName, revision) {
   op <- new_operation(
     name = "GetApplicationRevision",
@@ -2282,6 +2324,8 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_deployment
+#'
+#' @aliases codedeploy_get_deployment
 codedeploy_get_deployment <- function(deploymentId) {
   op <- new_operation(
     name = "GetDeployment",
@@ -2350,6 +2394,8 @@ codedeploy_get_deployment <- function(deploymentId) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_deployment_config
+#'
+#' @aliases codedeploy_get_deployment_config
 codedeploy_get_deployment_config <- function(deploymentConfigName) {
   op <- new_operation(
     name = "GetDeploymentConfig",
@@ -2568,6 +2614,8 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_deployment_group
+#'
+#' @aliases codedeploy_get_deployment_group
 codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName) {
   op <- new_operation(
     name = "GetDeploymentGroup",
@@ -2641,6 +2689,8 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_deployment_instance
+#'
+#' @aliases codedeploy_get_deployment_instance
 codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
   op <- new_operation(
     name = "GetDeploymentInstance",
@@ -2821,6 +2871,8 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_deployment_target
+#'
+#' @aliases codedeploy_get_deployment_target
 codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NULL) {
   op <- new_operation(
     name = "GetDeploymentTarget",
@@ -2883,6 +2935,8 @@ codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NUL
 #' @keywords internal
 #'
 #' @rdname codedeploy_get_on_premises_instance
+#'
+#' @aliases codedeploy_get_on_premises_instance
 codedeploy_get_on_premises_instance <- function(instanceName) {
   op <- new_operation(
     name = "GetOnPremisesInstance",
@@ -3000,6 +3054,8 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_application_revisions
+#'
+#' @aliases codedeploy_list_application_revisions
 codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL, sortOrder = NULL, s3Bucket = NULL, s3KeyPrefix = NULL, deployed = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListApplicationRevisions",
@@ -3049,6 +3105,8 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_applications
+#'
+#' @aliases codedeploy_list_applications
 codedeploy_list_applications <- function(nextToken = NULL) {
   op <- new_operation(
     name = "ListApplications",
@@ -3100,6 +3158,8 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployment_configs
+#'
+#' @aliases codedeploy_list_deployment_configs
 codedeploy_list_deployment_configs <- function(nextToken = NULL) {
   op <- new_operation(
     name = "ListDeploymentConfigs",
@@ -3155,6 +3215,8 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployment_groups
+#'
+#' @aliases codedeploy_list_deployment_groups
 codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL) {
   op <- new_operation(
     name = "ListDeploymentGroups",
@@ -3241,6 +3303,8 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployment_instances
+#'
+#' @aliases codedeploy_list_deployment_instances
 codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL, instanceStatusFilter = NULL, instanceTypeFilter = NULL) {
   op <- new_operation(
     name = "ListDeploymentInstances",
@@ -3307,6 +3371,8 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployment_targets
+#'
+#' @aliases codedeploy_list_deployment_targets
 codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = NULL, targetFilters = NULL) {
   op <- new_operation(
     name = "ListDeploymentTargets",
@@ -3402,6 +3468,8 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_deployments
+#'
+#' @aliases codedeploy_list_deployments
 codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupName = NULL, externalId = NULL, includeOnlyStatuses = NULL, createTimeRange = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDeployments",
@@ -3452,6 +3520,8 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_git_hub_account_token_names
+#'
+#' @aliases codedeploy_list_git_hub_account_token_names
 codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
   op <- new_operation(
     name = "ListGitHubAccountTokenNames",
@@ -3524,6 +3594,8 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_on_premises_instances
+#'
+#' @aliases codedeploy_list_on_premises_instances
 codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tagFilters = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListOnPremisesInstances",
@@ -3585,6 +3657,8 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #' @keywords internal
 #'
 #' @rdname codedeploy_list_tags_for_resource
+#'
+#' @aliases codedeploy_list_tags_for_resource
 codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3649,6 +3723,8 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_put_lifecycle_event_hook_execution_status
+#'
+#' @aliases codedeploy_put_lifecycle_event_hook_execution_status
 codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = NULL, lifecycleEventHookExecutionId = NULL, status = NULL) {
   op <- new_operation(
     name = "PutLifecycleEventHookExecutionStatus",
@@ -3717,6 +3793,8 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
 #' @keywords internal
 #'
 #' @rdname codedeploy_register_application_revision
+#'
+#' @aliases codedeploy_register_application_revision
 codedeploy_register_application_revision <- function(applicationName, description = NULL, revision) {
   op <- new_operation(
     name = "RegisterApplicationRevision",
@@ -3765,6 +3843,8 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
 #' @keywords internal
 #'
 #' @rdname codedeploy_register_on_premises_instance
+#'
+#' @aliases codedeploy_register_on_premises_instance
 codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn = NULL, iamUserArn = NULL) {
   op <- new_operation(
     name = "RegisterOnPremisesInstance",
@@ -3814,6 +3894,8 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
 #' @keywords internal
 #'
 #' @rdname codedeploy_remove_tags_from_on_premises_instances
+#'
+#' @aliases codedeploy_remove_tags_from_on_premises_instances
 codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceNames) {
   op <- new_operation(
     name = "RemoveTagsFromOnPremisesInstances",
@@ -3857,6 +3939,8 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
 #' @keywords internal
 #'
 #' @rdname codedeploy_skip_wait_time_for_instance_termination
+#'
+#' @aliases codedeploy_skip_wait_time_for_instance_termination
 codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NULL) {
   op <- new_operation(
     name = "SkipWaitTimeForInstanceTermination",
@@ -3907,6 +3991,8 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
 #' @keywords internal
 #'
 #' @rdname codedeploy_stop_deployment
+#'
+#' @aliases codedeploy_stop_deployment
 codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL) {
   op <- new_operation(
     name = "StopDeployment",
@@ -3959,6 +4045,8 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
 #' @keywords internal
 #'
 #' @rdname codedeploy_tag_resource
+#'
+#' @aliases codedeploy_tag_resource
 codedeploy_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4008,6 +4096,8 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_untag_resource
+#'
+#' @aliases codedeploy_untag_resource
 codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4050,6 +4140,8 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname codedeploy_update_application
+#'
+#' @aliases codedeploy_update_application
 codedeploy_update_application <- function(applicationName = NULL, newApplicationName = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
@@ -4276,6 +4368,8 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @keywords internal
 #'
 #' @rdname codedeploy_update_deployment_group
+#'
+#' @aliases codedeploy_update_deployment_group
 codedeploy_update_deployment_group <- function(applicationName, currentDeploymentGroupName, newDeploymentGroupName = NULL, deploymentConfigName = NULL, ec2TagFilters = NULL, onPremisesInstanceTagFilters = NULL, autoScalingGroups = NULL, serviceRoleArn = NULL, triggerConfigurations = NULL, alarmConfiguration = NULL, autoRollbackConfiguration = NULL, outdatedInstancesStrategy = NULL, deploymentStyle = NULL, blueGreenDeploymentConfiguration = NULL, loadBalancerInfo = NULL, ec2TagSet = NULL, ecsServices = NULL, onPremisesTagSet = NULL) {
   op <- new_operation(
     name = "UpdateDeploymentGroup",

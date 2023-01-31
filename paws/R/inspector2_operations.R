@@ -34,6 +34,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname inspector2_associate_member
+#'
+#' @aliases inspector2_associate_member
 inspector2_associate_member <- function(accountId) {
   op <- new_operation(
     name = "AssociateMember",
@@ -117,6 +119,8 @@ inspector2_associate_member <- function(accountId) {
 #' @keywords internal
 #'
 #' @rdname inspector2_batch_get_account_status
+#'
+#' @aliases inspector2_batch_get_account_status
 inspector2_batch_get_account_status <- function(accountIds = NULL) {
   op <- new_operation(
     name = "BatchGetAccountStatus",
@@ -187,6 +191,8 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector2_batch_get_free_trial_info
+#'
+#' @aliases inspector2_batch_get_free_trial_info
 inspector2_batch_get_free_trial_info <- function(accountIds) {
   op <- new_operation(
     name = "BatchGetFreeTrialInfo",
@@ -232,6 +238,8 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
 #' @keywords internal
 #'
 #' @rdname inspector2_cancel_findings_report
+#'
+#' @aliases inspector2_cancel_findings_report
 inspector2_cancel_findings_report <- function(reportId) {
   op <- new_operation(
     name = "CancelFindingsReport",
@@ -519,6 +527,8 @@ inspector2_cancel_findings_report <- function(reportId) {
 #' @keywords internal
 #'
 #' @rdname inspector2_create_filter
+#'
+#' @aliases inspector2_create_filter
 inspector2_create_filter <- function(action, description = NULL, filterCriteria, name, reason = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFilter",
@@ -799,6 +809,8 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
 #' @keywords internal
 #'
 #' @rdname inspector2_create_findings_report
+#'
+#' @aliases inspector2_create_findings_report
 inspector2_create_findings_report <- function(filterCriteria = NULL, reportFormat, s3Destination) {
   op <- new_operation(
     name = "CreateFindingsReport",
@@ -844,6 +856,8 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
 #' @keywords internal
 #'
 #' @rdname inspector2_delete_filter
+#'
+#' @aliases inspector2_delete_filter
 inspector2_delete_filter <- function(arn) {
   op <- new_operation(
     name = "DeleteFilter",
@@ -891,6 +905,8 @@ inspector2_delete_filter <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname inspector2_describe_organization_configuration
+#'
+#' @aliases inspector2_describe_organization_configuration
 inspector2_describe_organization_configuration <- function() {
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
@@ -966,6 +982,8 @@ inspector2_describe_organization_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname inspector2_disable
+#'
+#' @aliases inspector2_disable
 inspector2_disable <- function(accountIds = NULL, resourceTypes = NULL) {
   op <- new_operation(
     name = "Disable",
@@ -1014,6 +1032,8 @@ inspector2_disable <- function(accountIds = NULL, resourceTypes = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector2_disable_delegated_admin_account
+#'
+#' @aliases inspector2_disable_delegated_admin_account
 inspector2_disable_delegated_admin_account <- function(delegatedAdminAccountId) {
   op <- new_operation(
     name = "DisableDelegatedAdminAccount",
@@ -1062,6 +1082,8 @@ inspector2_disable_delegated_admin_account <- function(delegatedAdminAccountId) 
 #' @keywords internal
 #'
 #' @rdname inspector2_disassociate_member
+#'
+#' @aliases inspector2_disassociate_member
 inspector2_disassociate_member <- function(accountId) {
   op <- new_operation(
     name = "DisassociateMember",
@@ -1138,6 +1160,8 @@ inspector2_disassociate_member <- function(accountId) {
 #' @keywords internal
 #'
 #' @rdname inspector2_enable
+#'
+#' @aliases inspector2_enable
 inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTypes) {
   op <- new_operation(
     name = "Enable",
@@ -1189,6 +1213,8 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
 #' @keywords internal
 #'
 #' @rdname inspector2_enable_delegated_admin_account
+#'
+#' @aliases inspector2_enable_delegated_admin_account
 inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delegatedAdminAccountId) {
   op <- new_operation(
     name = "EnableDelegatedAdminAccount",
@@ -1238,6 +1264,8 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
 #' @keywords internal
 #'
 #' @rdname inspector2_get_configuration
+#'
+#' @aliases inspector2_get_configuration
 inspector2_get_configuration <- function() {
   op <- new_operation(
     name = "GetConfiguration",
@@ -1284,6 +1312,8 @@ inspector2_get_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname inspector2_get_delegated_admin_account
+#'
+#' @aliases inspector2_get_delegated_admin_account
 inspector2_get_delegated_admin_account <- function() {
   op <- new_operation(
     name = "GetDelegatedAdminAccount",
@@ -1564,6 +1594,8 @@ inspector2_get_delegated_admin_account <- function() {
 #' @keywords internal
 #'
 #' @rdname inspector2_get_findings_report_status
+#'
+#' @aliases inspector2_get_findings_report_status
 inspector2_get_findings_report_status <- function(reportId = NULL) {
   op <- new_operation(
     name = "GetFindingsReportStatus",
@@ -1617,6 +1649,8 @@ inspector2_get_findings_report_status <- function(reportId = NULL) {
 #' @keywords internal
 #'
 #' @rdname inspector2_get_member
+#'
+#' @aliases inspector2_get_member
 inspector2_get_member <- function(accountId) {
   op <- new_operation(
     name = "GetMember",
@@ -1675,6 +1709,8 @@ inspector2_get_member <- function(accountId) {
 #' @keywords internal
 #'
 #' @rdname inspector2_list_account_permissions
+#'
+#' @aliases inspector2_list_account_permissions
 inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = NULL, service = NULL) {
   op <- new_operation(
     name = "ListAccountPermissions",
@@ -1814,6 +1850,8 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname inspector2_list_coverage
+#'
+#' @aliases inspector2_list_coverage
 inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListCoverage",
@@ -1930,6 +1968,8 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname inspector2_list_coverage_statistics
+#'
+#' @aliases inspector2_list_coverage_statistics
 inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListCoverageStatistics",
@@ -1988,6 +2028,8 @@ inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy =
 #' @keywords internal
 #'
 #' @rdname inspector2_list_delegated_admin_accounts
+#'
+#' @aliases inspector2_list_delegated_admin_accounts
 inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDelegatedAdminAccounts",
@@ -2290,6 +2332,8 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #' @keywords internal
 #'
 #' @rdname inspector2_list_filters
+#'
+#' @aliases inspector2_list_filters
 inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListFilters",
@@ -2611,6 +2655,8 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname inspector2_list_finding_aggregations
+#'
+#' @aliases inspector2_list_finding_aggregations
 inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationRequest = NULL, aggregationType, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListFindingAggregations",
@@ -3036,6 +3082,8 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' @keywords internal
 #'
 #' @rdname inspector2_list_findings
+#'
+#' @aliases inspector2_list_findings
 inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, nextToken = NULL, sortCriteria = NULL) {
   op <- new_operation(
     name = "ListFindings",
@@ -3101,6 +3149,8 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname inspector2_list_members
+#'
+#' @aliases inspector2_list_members
 inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssociated = NULL) {
   op <- new_operation(
     name = "ListMembers",
@@ -3148,6 +3198,8 @@ inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAss
 #' @keywords internal
 #'
 #' @rdname inspector2_list_tags_for_resource
+#'
+#' @aliases inspector2_list_tags_for_resource
 inspector2_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3215,6 +3267,8 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname inspector2_list_usage_totals
+#'
+#' @aliases inspector2_list_usage_totals
 inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListUsageTotals",
@@ -3259,6 +3313,8 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname inspector2_tag_resource
+#'
+#' @aliases inspector2_tag_resource
 inspector2_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3303,6 +3359,8 @@ inspector2_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname inspector2_untag_resource
+#'
+#' @aliases inspector2_untag_resource
 inspector2_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3349,6 +3407,8 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname inspector2_update_configuration
+#'
+#' @aliases inspector2_update_configuration
 inspector2_update_configuration <- function(ecrConfiguration) {
   op <- new_operation(
     name = "UpdateConfiguration",
@@ -3634,6 +3694,8 @@ inspector2_update_configuration <- function(ecrConfiguration) {
 #' @keywords internal
 #'
 #' @rdname inspector2_update_filter
+#'
+#' @aliases inspector2_update_filter
 inspector2_update_filter <- function(action = NULL, description = NULL, filterArn, filterCriteria = NULL, name = NULL, reason = NULL) {
   op <- new_operation(
     name = "UpdateFilter",
@@ -3686,6 +3748,8 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
 #' @keywords internal
 #'
 #' @rdname inspector2_update_organization_configuration
+#'
+#' @aliases inspector2_update_organization_configuration
 inspector2_update_organization_configuration <- function(autoEnable) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",

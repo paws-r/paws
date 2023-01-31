@@ -64,6 +64,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ivschat_create_chat_token
+#'
+#' @aliases ivschat_create_chat_token
 ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, roomIdentifier, sessionDurationInMinutes = NULL, userId) {
   op <- new_operation(
     name = "CreateChatToken",
@@ -144,6 +146,8 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #' @keywords internal
 #'
 #' @rdname ivschat_create_room
+#'
+#' @aliases ivschat_create_room
 ivschat_create_room <- function(maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRoom",
@@ -204,6 +208,8 @@ ivschat_create_room <- function(maximumMessageLength = NULL, maximumMessageRateP
 #' @keywords internal
 #'
 #' @rdname ivschat_delete_message
+#'
+#' @aliases ivschat_delete_message
 ivschat_delete_message <- function(id, reason = NULL, roomIdentifier) {
   op <- new_operation(
     name = "DeleteMessage",
@@ -244,6 +250,8 @@ ivschat_delete_message <- function(id, reason = NULL, roomIdentifier) {
 #' @keywords internal
 #'
 #' @rdname ivschat_delete_room
+#'
+#' @aliases ivschat_delete_room
 ivschat_delete_room <- function(identifier) {
   op <- new_operation(
     name = "DeleteRoom",
@@ -292,6 +300,8 @@ ivschat_delete_room <- function(identifier) {
 #' @keywords internal
 #'
 #' @rdname ivschat_disconnect_user
+#'
+#' @aliases ivschat_disconnect_user
 ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
   op <- new_operation(
     name = "DisconnectUser",
@@ -355,6 +365,8 @@ ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
 #' @keywords internal
 #'
 #' @rdname ivschat_get_room
+#'
+#' @aliases ivschat_get_room
 ivschat_get_room <- function(identifier) {
   op <- new_operation(
     name = "GetRoom",
@@ -430,6 +442,8 @@ ivschat_get_room <- function(identifier) {
 #' @keywords internal
 #'
 #' @rdname ivschat_list_rooms
+#'
+#' @aliases ivschat_list_rooms
 ivschat_list_rooms <- function(maxResults = NULL, messageReviewHandlerUri = NULL, name = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRooms",
@@ -477,6 +491,8 @@ ivschat_list_rooms <- function(maxResults = NULL, messageReviewHandlerUri = NULL
 #' @keywords internal
 #'
 #' @rdname ivschat_list_tags_for_resource
+#'
+#' @aliases ivschat_list_tags_for_resource
 ivschat_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -532,6 +548,8 @@ ivschat_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ivschat_send_event
+#'
+#' @aliases ivschat_send_event
 ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
   op <- new_operation(
     name = "SendEvent",
@@ -576,6 +594,8 @@ ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
 #' @keywords internal
 #'
 #' @rdname ivschat_tag_resource
+#'
+#' @aliases ivschat_tag_resource
 ivschat_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -620,6 +640,8 @@ ivschat_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ivschat_untag_resource
+#'
+#' @aliases ivschat_untag_resource
 ivschat_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -699,6 +721,8 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ivschat_update_room
+#'
+#' @aliases ivschat_update_room
 ivschat_update_room <- function(identifier, maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdateRoom",

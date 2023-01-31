@@ -247,6 +247,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname rekognition_compare_faces
+#'
+#' @aliases rekognition_compare_faces
 rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThreshold = NULL, QualityFilter = NULL) {
   op <- new_operation(
     name = "CompareFaces",
@@ -324,6 +326,8 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' @keywords internal
 #'
 #' @rdname rekognition_create_collection
+#'
+#' @aliases rekognition_create_collection
 rekognition_create_collection <- function(CollectionId, Tags = NULL) {
   op <- new_operation(
     name = "CreateCollection",
@@ -418,6 +422,8 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname rekognition_create_dataset
+#'
+#' @aliases rekognition_create_dataset
 rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, ProjectArn) {
   op <- new_operation(
     name = "CreateDataset",
@@ -468,6 +474,8 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
 #' @keywords internal
 #'
 #' @rdname rekognition_create_project
+#'
+#' @aliases rekognition_create_project
 rekognition_create_project <- function(ProjectName) {
   op <- new_operation(
     name = "CreateProject",
@@ -624,6 +632,8 @@ rekognition_create_project <- function(ProjectName) {
 #' @keywords internal
 #'
 #' @rdname rekognition_create_project_version
+#'
+#' @aliases rekognition_create_project_version
 rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData = NULL, TestingData = NULL, Tags = NULL, KmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateProjectVersion",
@@ -807,6 +817,8 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' @keywords internal
 #'
 #' @rdname rekognition_create_stream_processor
+#'
+#' @aliases rekognition_create_stream_processor
 rekognition_create_stream_processor <- function(Input, Output, Name, Settings, RoleArn, Tags = NULL, NotificationChannel = NULL, KmsKeyId = NULL, RegionsOfInterest = NULL, DataSharingPreference = NULL) {
   op <- new_operation(
     name = "CreateStreamProcessor",
@@ -865,6 +877,8 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_collection
+#'
+#' @aliases rekognition_delete_collection
 rekognition_delete_collection <- function(CollectionId) {
   op <- new_operation(
     name = "DeleteCollection",
@@ -918,6 +932,8 @@ rekognition_delete_collection <- function(CollectionId) {
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_dataset
+#'
+#' @aliases rekognition_delete_dataset
 rekognition_delete_dataset <- function(DatasetArn) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -984,6 +1000,8 @@ rekognition_delete_dataset <- function(DatasetArn) {
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_faces
+#'
+#' @aliases rekognition_delete_faces
 rekognition_delete_faces <- function(CollectionId, FaceIds) {
   op <- new_operation(
     name = "DeleteFaces",
@@ -1040,6 +1058,8 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_project
+#'
+#' @aliases rekognition_delete_project
 rekognition_delete_project <- function(ProjectArn) {
   op <- new_operation(
     name = "DeleteProject",
@@ -1096,6 +1116,8 @@ rekognition_delete_project <- function(ProjectArn) {
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_project_version
+#'
+#' @aliases rekognition_delete_project_version
 rekognition_delete_project_version <- function(ProjectVersionArn) {
   op <- new_operation(
     name = "DeleteProjectVersion",
@@ -1141,6 +1163,8 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_stream_processor
+#'
+#' @aliases rekognition_delete_stream_processor
 rekognition_delete_stream_processor <- function(Name) {
   op <- new_operation(
     name = "DeleteStreamProcessor",
@@ -1197,6 +1221,8 @@ rekognition_delete_stream_processor <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_collection
+#'
+#' @aliases rekognition_describe_collection
 rekognition_describe_collection <- function(CollectionId) {
   op <- new_operation(
     name = "DescribeCollection",
@@ -1263,6 +1289,8 @@ rekognition_describe_collection <- function(CollectionId) {
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_dataset
+#'
+#' @aliases rekognition_describe_dataset
 rekognition_describe_dataset <- function(DatasetArn) {
   op <- new_operation(
     name = "DescribeDataset",
@@ -1457,6 +1485,8 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_project_versions
+#'
+#' @aliases rekognition_describe_project_versions
 rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeProjectVersions",
@@ -1539,6 +1569,8 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_projects
+#'
+#' @aliases rekognition_describe_projects
 rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, ProjectNames = NULL) {
   op <- new_operation(
     name = "DescribeProjects",
@@ -1648,6 +1680,8 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_stream_processor
+#'
+#' @aliases rekognition_describe_stream_processor
 rekognition_describe_stream_processor <- function(Name) {
   op <- new_operation(
     name = "DescribeStreamProcessor",
@@ -1780,6 +1814,8 @@ rekognition_describe_stream_processor <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_custom_labels
+#'
+#' @aliases rekognition_detect_custom_labels
 rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResults = NULL, MinConfidence = NULL) {
   op <- new_operation(
     name = "DetectCustomLabels",
@@ -1955,6 +1991,8 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_faces
+#'
+#' @aliases rekognition_detect_faces
 rekognition_detect_faces <- function(Image, Attributes = NULL) {
   op <- new_operation(
     name = "DetectFaces",
@@ -2137,6 +2175,8 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_labels
+#'
+#' @aliases rekognition_detect_labels
 rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = NULL) {
   op <- new_operation(
     name = "DetectLabels",
@@ -2244,6 +2284,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_moderation_labels
+#'
+#' @aliases rekognition_detect_moderation_labels
 rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, HumanLoopConfig = NULL) {
   op <- new_operation(
     name = "DetectModerationLabels",
@@ -2391,6 +2433,8 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_protective_equipment
+#'
+#' @aliases rekognition_detect_protective_equipment
 rekognition_detect_protective_equipment <- function(Image, SummarizationAttributes = NULL) {
   op <- new_operation(
     name = "DetectProtectiveEquipment",
@@ -2533,6 +2577,8 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_text
+#'
+#' @aliases rekognition_detect_text
 rekognition_detect_text <- function(Image, Filters = NULL) {
   op <- new_operation(
     name = "DetectText",
@@ -2599,6 +2645,8 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname rekognition_distribute_dataset_entries
+#'
+#' @aliases rekognition_distribute_dataset_entries
 rekognition_distribute_dataset_entries <- function(Datasets) {
   op <- new_operation(
     name = "DistributeDatasetEntries",
@@ -2662,6 +2710,8 @@ rekognition_distribute_dataset_entries <- function(Datasets) {
 #' @keywords internal
 #'
 #' @rdname rekognition_get_celebrity_info
+#'
+#' @aliases rekognition_get_celebrity_info
 rekognition_get_celebrity_info <- function(Id) {
   op <- new_operation(
     name = "GetCelebrityInfo",
@@ -2880,6 +2930,8 @@ rekognition_get_celebrity_info <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname rekognition_get_celebrity_recognition
+#'
+#' @aliases rekognition_get_celebrity_recognition
 rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetCelebrityRecognition",
@@ -3012,6 +3064,8 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname rekognition_get_content_moderation
+#'
+#' @aliases rekognition_get_content_moderation
 rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetContentModeration",
@@ -3176,6 +3230,8 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname rekognition_get_face_detection
+#'
+#' @aliases rekognition_get_face_detection
 rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetFaceDetection",
@@ -3383,6 +3439,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname rekognition_get_face_search
+#'
+#' @aliases rekognition_get_face_search
 rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetFaceSearch",
@@ -3517,6 +3575,8 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname rekognition_get_label_detection
+#'
+#' @aliases rekognition_get_label_detection
 rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetLabelDetection",
@@ -3711,6 +3771,8 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname rekognition_get_person_tracking
+#'
+#' @aliases rekognition_get_person_tracking
 rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetPersonTracking",
@@ -3856,6 +3918,8 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname rekognition_get_segment_detection
+#'
+#' @aliases rekognition_get_segment_detection
 rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetSegmentDetection",
@@ -3982,6 +4046,8 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname rekognition_get_text_detection
+#'
+#' @aliases rekognition_get_text_detection
 rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTextDetection",
@@ -4375,6 +4441,8 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname rekognition_index_faces
+#'
+#' @aliases rekognition_index_faces
 rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL, DetectionAttributes = NULL, MaxFaces = NULL, QualityFilter = NULL) {
   op <- new_operation(
     name = "IndexFaces",
@@ -4442,6 +4510,8 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #' @keywords internal
 #'
 #' @rdname rekognition_list_collections
+#'
+#' @aliases rekognition_list_collections
 rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCollections",
@@ -4538,6 +4608,8 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname rekognition_list_dataset_entries
+#'
+#' @aliases rekognition_list_dataset_entries
 rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, Labeled = NULL, SourceRefContains = NULL, HasErrors = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatasetEntries",
@@ -4607,6 +4679,8 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
 #' @keywords internal
 #'
 #' @rdname rekognition_list_dataset_labels
+#'
+#' @aliases rekognition_list_dataset_labels
 rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatasetLabels",
@@ -4691,6 +4765,8 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname rekognition_list_faces
+#'
+#' @aliases rekognition_list_faces
 rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFaces",
@@ -4750,6 +4826,8 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname rekognition_list_stream_processors
+#'
+#' @aliases rekognition_list_stream_processors
 rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListStreamProcessors",
@@ -4803,6 +4881,8 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname rekognition_list_tags_for_resource
+#'
+#' @aliases rekognition_list_tags_for_resource
 rekognition_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4983,6 +5063,8 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname rekognition_recognize_celebrities
+#'
+#' @aliases rekognition_recognize_celebrities
 rekognition_recognize_celebrities <- function(Image) {
   op <- new_operation(
     name = "RecognizeCelebrities",
@@ -5090,6 +5172,8 @@ rekognition_recognize_celebrities <- function(Image) {
 #' @keywords internal
 #'
 #' @rdname rekognition_search_faces
+#'
+#' @aliases rekognition_search_faces
 rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, FaceMatchThreshold = NULL) {
   op <- new_operation(
     name = "SearchFaces",
@@ -5263,6 +5347,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' @keywords internal
 #'
 #' @rdname rekognition_search_faces_by_image
+#'
+#' @aliases rekognition_search_faces_by_image
 rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NULL, FaceMatchThreshold = NULL, QualityFilter = NULL) {
   op <- new_operation(
     name = "SearchFacesByImage",
@@ -5354,6 +5440,8 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 #' @keywords internal
 #'
 #' @rdname rekognition_start_celebrity_recognition
+#'
+#' @aliases rekognition_start_celebrity_recognition
 rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL) {
   op <- new_operation(
     name = "StartCelebrityRecognition",
@@ -5459,6 +5547,8 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' @keywords internal
 #'
 #' @rdname rekognition_start_content_moderation
+#'
+#' @aliases rekognition_start_content_moderation
 rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL) {
   op <- new_operation(
     name = "StartContentModeration",
@@ -5555,6 +5645,8 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' @keywords internal
 #'
 #' @rdname rekognition_start_face_detection
+#'
+#' @aliases rekognition_start_face_detection
 rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, FaceAttributes = NULL, JobTag = NULL) {
   op <- new_operation(
     name = "StartFaceDetection",
@@ -5650,6 +5742,8 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' @keywords internal
 #'
 #' @rdname rekognition_start_face_search
+#'
+#' @aliases rekognition_start_face_search
 rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, FaceMatchThreshold = NULL, CollectionId, NotificationChannel = NULL, JobTag = NULL) {
   op <- new_operation(
     name = "StartFaceSearch",
@@ -5752,6 +5846,8 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' @keywords internal
 #'
 #' @rdname rekognition_start_label_detection
+#'
+#' @aliases rekognition_start_label_detection
 rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, MinConfidence = NULL, NotificationChannel = NULL, JobTag = NULL) {
   op <- new_operation(
     name = "StartLabelDetection",
@@ -5839,6 +5935,8 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname rekognition_start_person_tracking
+#'
+#' @aliases rekognition_start_person_tracking
 rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL) {
   op <- new_operation(
     name = "StartPersonTracking",
@@ -5915,6 +6013,8 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname rekognition_start_project_version
+#'
+#' @aliases rekognition_start_project_version
 rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUnits, MaxInferenceUnits = NULL) {
   op <- new_operation(
     name = "StartProjectVersion",
@@ -6029,6 +6129,8 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' @keywords internal
 #'
 #' @rdname rekognition_start_segment_detection
+#'
+#' @aliases rekognition_start_segment_detection
 rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL, Filters = NULL, SegmentTypes) {
   op <- new_operation(
     name = "StartSegmentDetection",
@@ -6105,6 +6207,8 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 #' @keywords internal
 #'
 #' @rdname rekognition_start_stream_processor
+#'
+#' @aliases rekognition_start_stream_processor
 rekognition_start_stream_processor <- function(Name, StartSelector = NULL, StopSelector = NULL) {
   op <- new_operation(
     name = "StartStreamProcessor",
@@ -6211,6 +6315,8 @@ rekognition_start_stream_processor <- function(Name, StartSelector = NULL, StopS
 #' @keywords internal
 #'
 #' @rdname rekognition_start_text_detection
+#'
+#' @aliases rekognition_start_text_detection
 rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, NotificationChannel = NULL, JobTag = NULL, Filters = NULL) {
   op <- new_operation(
     name = "StartTextDetection",
@@ -6262,6 +6368,8 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' @keywords internal
 #'
 #' @rdname rekognition_stop_project_version
+#'
+#' @aliases rekognition_stop_project_version
 rekognition_stop_project_version <- function(ProjectVersionArn) {
   op <- new_operation(
     name = "StopProjectVersion",
@@ -6305,6 +6413,8 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
 #' @keywords internal
 #'
 #' @rdname rekognition_stop_stream_processor
+#'
+#' @aliases rekognition_stop_stream_processor
 rekognition_stop_stream_processor <- function(Name) {
   op <- new_operation(
     name = "StopStreamProcessor",
@@ -6357,6 +6467,8 @@ rekognition_stop_stream_processor <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname rekognition_tag_resource
+#'
+#' @aliases rekognition_tag_resource
 rekognition_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -6407,6 +6519,8 @@ rekognition_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname rekognition_untag_resource
+#'
+#' @aliases rekognition_untag_resource
 rekognition_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -6482,6 +6596,8 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname rekognition_update_dataset_entries
+#'
+#' @aliases rekognition_update_dataset_entries
 rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
   op <- new_operation(
     name = "UpdateDatasetEntries",
@@ -6566,6 +6682,8 @@ rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
 #' @keywords internal
 #'
 #' @rdname rekognition_update_stream_processor
+#'
+#' @aliases rekognition_update_stream_processor
 rekognition_update_stream_processor <- function(Name, SettingsForUpdate = NULL, RegionsOfInterestForUpdate = NULL, DataSharingPreferenceForUpdate = NULL, ParametersToDelete = NULL) {
   op <- new_operation(
     name = "UpdateStreamProcessor",

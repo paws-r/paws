@@ -69,6 +69,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname elasticache_add_tags_to_resource
+#'
+#' @aliases elasticache_add_tags_to_resource
 elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -139,6 +141,8 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @keywords internal
 #'
 #' @rdname elasticache_authorize_cache_security_group_ingress
+#'
+#' @aliases elasticache_authorize_cache_security_group_ingress
 elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGroupName, EC2SecurityGroupName, EC2SecurityGroupOwnerId) {
   op <- new_operation(
     name = "AuthorizeCacheSecurityGroupIngress",
@@ -211,6 +215,8 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' @keywords internal
 #'
 #' @rdname elasticache_batch_apply_update_action
+#'
+#' @aliases elasticache_batch_apply_update_action
 elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, CacheClusterIds = NULL, ServiceUpdateName) {
   op <- new_operation(
     name = "BatchApplyUpdateAction",
@@ -283,6 +289,8 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
 #' @keywords internal
 #'
 #' @rdname elasticache_batch_stop_update_action
+#'
+#' @aliases elasticache_batch_stop_update_action
 elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, CacheClusterIds = NULL, ServiceUpdateName) {
   op <- new_operation(
     name = "BatchStopUpdateAction",
@@ -451,6 +459,8 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 #' @keywords internal
 #'
 #' @rdname elasticache_complete_migration
+#'
+#' @aliases elasticache_complete_migration
 elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
   op <- new_operation(
     name = "CompleteMigration",
@@ -657,6 +667,8 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #' @keywords internal
 #'
 #' @rdname elasticache_copy_snapshot
+#'
+#' @aliases elasticache_copy_snapshot
 elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, TargetBucket = NULL, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CopySnapshot",
@@ -1152,6 +1164,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_cluster
+#'
+#' @aliases elasticache_create_cache_cluster
 elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId = NULL, AZMode = NULL, PreferredAvailabilityZone = NULL, PreferredAvailabilityZones = NULL, NumCacheNodes = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, OutpostMode = NULL, PreferredOutpostArn = NULL, PreferredOutpostArns = NULL, LogDeliveryConfigurations = NULL, TransitEncryptionEnabled = NULL) {
   op <- new_operation(
     name = "CreateCacheCluster",
@@ -1236,6 +1250,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_parameter_group
+#'
+#' @aliases elasticache_create_cache_parameter_group
 elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, CacheParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateCacheParameterGroup",
@@ -1317,6 +1333,8 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_security_group
+#'
+#' @aliases elasticache_create_cache_security_group
 elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateCacheSecurityGroup",
@@ -1402,6 +1420,8 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #' @keywords internal
 #'
 #' @rdname elasticache_create_cache_subnet_group
+#'
+#' @aliases elasticache_create_cache_subnet_group
 elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSubnetGroupDescription, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateCacheSubnetGroup",
@@ -1505,6 +1525,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @keywords internal
 #'
 #' @rdname elasticache_create_global_replication_group
+#'
+#' @aliases elasticache_create_global_replication_group
 elasticache_create_global_replication_group <- function(GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = NULL, PrimaryReplicationGroupId) {
   op <- new_operation(
     name = "CreateGlobalReplicationGroup",
@@ -2155,6 +2177,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @keywords internal
 #'
 #' @rdname elasticache_create_replication_group
+#'
+#' @aliases elasticache_create_replication_group
 elasticache_create_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription, GlobalReplicationGroupId = NULL, PrimaryClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NumCacheClusters = NULL, PreferredCacheClusterAZs = NULL, NumNodeGroups = NULL, ReplicasPerNodeGroup = NULL, NodeGroupConfiguration = NULL, CacheNodeType = NULL, Engine = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, CacheSubnetGroupName = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, Tags = NULL, SnapshotArns = NULL, SnapshotName = NULL, PreferredMaintenanceWindow = NULL, Port = NULL, NotificationTopicArn = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, AuthToken = NULL, TransitEncryptionEnabled = NULL, AtRestEncryptionEnabled = NULL, KmsKeyId = NULL, UserGroupIds = NULL, LogDeliveryConfigurations = NULL, DataTieringEnabled = NULL) {
   op <- new_operation(
     name = "CreateReplicationGroup",
@@ -2278,6 +2302,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' @keywords internal
 #'
 #' @rdname elasticache_create_snapshot
+#'
+#' @aliases elasticache_create_snapshot
 elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterId = NULL, SnapshotName, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -2360,6 +2386,8 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' @keywords internal
 #'
 #' @rdname elasticache_create_user
+#'
+#' @aliases elasticache_create_user
 elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, AccessString, NoPasswordRequired = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateUser",
@@ -2439,6 +2467,8 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' @keywords internal
 #'
 #' @rdname elasticache_create_user_group
+#'
+#' @aliases elasticache_create_user_group
 elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateUserGroup",
@@ -2535,6 +2565,8 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, T
 #' @keywords internal
 #'
 #' @rdname elasticache_decrease_node_groups_in_global_replication_group
+#'
+#' @aliases elasticache_decrease_node_groups_in_global_replication_group
 elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalReplicationGroupId, NodeGroupCount, GlobalNodeGroupsToRemove = NULL, GlobalNodeGroupsToRetain = NULL, ApplyImmediately) {
   op <- new_operation(
     name = "DecreaseNodeGroupsInGlobalReplicationGroup",
@@ -2748,6 +2780,8 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #' @keywords internal
 #'
 #' @rdname elasticache_decrease_replica_count
+#'
+#' @aliases elasticache_decrease_replica_count
 elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCount = NULL, ReplicaConfiguration = NULL, ReplicasToRemove = NULL, ApplyImmediately) {
   op <- new_operation(
     name = "DecreaseReplicaCount",
@@ -2932,6 +2966,8 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_cache_cluster
+#'
+#' @aliases elasticache_delete_cache_cluster
 elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteCacheCluster",
@@ -2977,6 +3013,8 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_cache_parameter_group
+#'
+#' @aliases elasticache_delete_cache_parameter_group
 elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
   op <- new_operation(
     name = "DeleteCacheParameterGroup",
@@ -3022,6 +3060,8 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_cache_security_group
+#'
+#' @aliases elasticache_delete_cache_security_group
 elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
   op <- new_operation(
     name = "DeleteCacheSecurityGroup",
@@ -3068,6 +3108,8 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_cache_subnet_group
+#'
+#' @aliases elasticache_delete_cache_subnet_group
 elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
   op <- new_operation(
     name = "DeleteCacheSubnetGroup",
@@ -3164,6 +3206,8 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_global_replication_group
+#'
+#' @aliases elasticache_delete_global_replication_group
 elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId, RetainPrimaryReplicationGroup) {
   op <- new_operation(
     name = "DeleteGlobalReplicationGroup",
@@ -3349,6 +3393,8 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_replication_group
+#'
+#' @aliases elasticache_delete_replication_group
 elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrimaryCluster = NULL, FinalSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteReplicationGroup",
@@ -3455,6 +3501,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_snapshot
+#'
+#' @aliases elasticache_delete_snapshot
 elasticache_delete_snapshot <- function(SnapshotName) {
   op <- new_operation(
     name = "DeleteSnapshot",
@@ -3516,6 +3564,8 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_user
+#'
+#' @aliases elasticache_delete_user
 elasticache_delete_user <- function(UserId) {
   op <- new_operation(
     name = "DeleteUser",
@@ -3583,6 +3633,8 @@ elasticache_delete_user <- function(UserId) {
 #' @keywords internal
 #'
 #' @rdname elasticache_delete_user_group
+#'
+#' @aliases elasticache_delete_user_group
 elasticache_delete_user_group <- function(UserGroupId) {
   op <- new_operation(
     name = "DeleteUserGroup",
@@ -3791,6 +3843,8 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_cache_clusters
+#'
+#' @aliases elasticache_describe_cache_clusters
 elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecords = NULL, Marker = NULL, ShowCacheNodeInfo = NULL, ShowCacheClustersNotInReplicationGroups = NULL) {
   op <- new_operation(
     name = "DescribeCacheClusters",
@@ -3881,6 +3935,8 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_cache_engine_versions
+#'
+#' @aliases elasticache_describe_cache_engine_versions
 elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVersion = NULL, CacheParameterGroupFamily = NULL, MaxRecords = NULL, Marker = NULL, DefaultOnly = NULL) {
   op <- new_operation(
     name = "DescribeCacheEngineVersions",
@@ -3951,6 +4007,8 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_cache_parameter_groups
+#'
+#' @aliases elasticache_describe_cache_parameter_groups
 elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCacheParameterGroups",
@@ -4047,6 +4105,8 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_cache_parameters
+#'
+#' @aliases elasticache_describe_cache_parameters
 elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Source = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCacheParameters",
@@ -4123,6 +4183,8 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_cache_security_groups
+#'
+#' @aliases elasticache_describe_cache_security_groups
 elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCacheSecurityGroups",
@@ -4204,6 +4266,8 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_cache_subnet_groups
+#'
+#' @aliases elasticache_describe_cache_subnet_groups
 elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCacheSubnetGroups",
@@ -4303,6 +4367,8 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_engine_default_parameters
+#'
+#' @aliases elasticache_describe_engine_default_parameters
 elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFamily, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEngineDefaultParameters",
@@ -4399,6 +4465,8 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_events
+#'
+#' @aliases elasticache_describe_events
 elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -4488,6 +4556,8 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_global_replication_groups
+#'
+#' @aliases elasticache_describe_global_replication_groups
 elasticache_describe_global_replication_groups <- function(GlobalReplicationGroupId = NULL, MaxRecords = NULL, Marker = NULL, ShowMemberInfo = NULL) {
   op <- new_operation(
     name = "DescribeGlobalReplicationGroups",
@@ -4678,6 +4748,8 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_replication_groups
+#'
+#' @aliases elasticache_describe_replication_groups
 elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReplicationGroups",
@@ -4897,6 +4969,8 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_reserved_cache_nodes
+#'
+#' @aliases elasticache_describe_reserved_cache_nodes
 elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL, ReservedCacheNodesOfferingId = NULL, CacheNodeType = NULL, Duration = NULL, ProductDescription = NULL, OfferingType = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedCacheNodes",
@@ -5107,6 +5181,8 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_reserved_cache_nodes_offerings
+#'
+#' @aliases elasticache_describe_reserved_cache_nodes_offerings
 elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNodesOfferingId = NULL, CacheNodeType = NULL, Duration = NULL, ProductDescription = NULL, OfferingType = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedCacheNodesOfferings",
@@ -5186,6 +5262,8 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_service_updates
+#'
+#' @aliases elasticache_describe_service_updates
 elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, ServiceUpdateStatus = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeServiceUpdates",
@@ -5326,6 +5404,8 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_snapshots
+#'
+#' @aliases elasticache_describe_snapshots
 elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClusterId = NULL, SnapshotName = NULL, SnapshotSource = NULL, Marker = NULL, MaxRecords = NULL, ShowNodeGroupConfig = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
@@ -5489,6 +5569,8 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_update_actions
+#'
+#' @aliases elasticache_describe_update_actions
 elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, ReplicationGroupIds = NULL, CacheClusterIds = NULL, Engine = NULL, ServiceUpdateStatus = NULL, ServiceUpdateTimeRange = NULL, UpdateActionStatus = NULL, ShowNodeLevelUpdateStatus = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeUpdateActions",
@@ -5566,6 +5648,8 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_user_groups
+#'
+#' @aliases elasticache_describe_user_groups
 elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeUserGroups",
@@ -5649,6 +5733,8 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 #' @keywords internal
 #'
 #' @rdname elasticache_describe_users
+#'
+#' @aliases elasticache_describe_users
 elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeUsers",
@@ -5732,6 +5818,8 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
 #' @keywords internal
 #'
 #' @rdname elasticache_disassociate_global_replication_group
+#'
+#' @aliases elasticache_disassociate_global_replication_group
 elasticache_disassociate_global_replication_group <- function(GlobalReplicationGroupId, ReplicationGroupId, ReplicationGroupRegion) {
   op <- new_operation(
     name = "DisassociateGlobalReplicationGroup",
@@ -5811,6 +5899,8 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
 #' @keywords internal
 #'
 #' @rdname elasticache_failover_global_replication_group
+#'
+#' @aliases elasticache_failover_global_replication_group
 elasticache_failover_global_replication_group <- function(GlobalReplicationGroupId, PrimaryRegion, PrimaryReplicationGroupId) {
   op <- new_operation(
     name = "FailoverGlobalReplicationGroup",
@@ -5907,6 +5997,8 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
 #' @keywords internal
 #'
 #' @rdname elasticache_increase_node_groups_in_global_replication_group
+#'
+#' @aliases elasticache_increase_node_groups_in_global_replication_group
 elasticache_increase_node_groups_in_global_replication_group <- function(GlobalReplicationGroupId, NodeGroupCount, RegionalConfigurations = NULL, ApplyImmediately) {
   op <- new_operation(
     name = "IncreaseNodeGroupsInGlobalReplicationGroup",
@@ -6103,6 +6195,8 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #' @keywords internal
 #'
 #' @rdname elasticache_increase_replica_count
+#'
+#' @aliases elasticache_increase_replica_count
 elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCount = NULL, ReplicaConfiguration = NULL, ApplyImmediately) {
   op <- new_operation(
     name = "IncreaseReplicaCount",
@@ -6177,6 +6271,8 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' @keywords internal
 #'
 #' @rdname elasticache_list_allowed_node_type_modifications
+#'
+#' @aliases elasticache_list_allowed_node_type_modifications
 elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NULL, ReplicationGroupId = NULL) {
   op <- new_operation(
     name = "ListAllowedNodeTypeModifications",
@@ -6246,6 +6342,8 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' @keywords internal
 #'
 #' @rdname elasticache_list_tags_for_resource
+#'
+#' @aliases elasticache_list_tags_for_resource
 elasticache_list_tags_for_resource <- function(ResourceName) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -6697,6 +6795,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_cache_cluster
+#'
+#' @aliases elasticache_modify_cache_cluster
 elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NULL, CacheNodeIdsToRemove = NULL, AZMode = NULL, NewAvailabilityZones = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, LogDeliveryConfigurations = NULL) {
   op <- new_operation(
     name = "ModifyCacheCluster",
@@ -6754,6 +6854,8 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_cache_parameter_group
+#'
+#' @aliases elasticache_modify_cache_parameter_group
 elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, ParameterNameValues) {
   op <- new_operation(
     name = "ModifyCacheParameterGroup",
@@ -6828,6 +6930,8 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_cache_subnet_group
+#'
+#' @aliases elasticache_modify_cache_subnet_group
 elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSubnetGroupDescription = NULL, SubnetIds = NULL) {
   op <- new_operation(
     name = "ModifyCacheSubnetGroup",
@@ -6921,6 +7025,8 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_global_replication_group
+#'
+#' @aliases elasticache_modify_global_replication_group
 elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId, ApplyImmediately, CacheNodeType = NULL, EngineVersion = NULL, CacheParameterGroupName = NULL, GlobalReplicationGroupDescription = NULL, AutomaticFailoverEnabled = NULL) {
   op <- new_operation(
     name = "ModifyGlobalReplicationGroup",
@@ -7283,6 +7389,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_replication_group
+#'
+#' @aliases elasticache_modify_replication_group
 elasticache_modify_replication_group <- function(ReplicationGroupId, ReplicationGroupDescription = NULL, PrimaryClusterId = NULL, SnapshottingClusterId = NULL, AutomaticFailoverEnabled = NULL, MultiAZEnabled = NULL, NodeGroupId = NULL, CacheSecurityGroupNames = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, CacheParameterGroupName = NULL, NotificationTopicStatus = NULL, ApplyImmediately = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, SnapshotRetentionLimit = NULL, SnapshotWindow = NULL, CacheNodeType = NULL, AuthToken = NULL, AuthTokenUpdateStrategy = NULL, UserGroupIdsToAdd = NULL, UserGroupIdsToRemove = NULL, RemoveUserGroups = NULL, LogDeliveryConfigurations = NULL) {
   op <- new_operation(
     name = "ModifyReplicationGroup",
@@ -7498,6 +7606,8 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_replication_group_shard_configuration
+#'
+#' @aliases elasticache_modify_replication_group_shard_configuration
 elasticache_modify_replication_group_shard_configuration <- function(ReplicationGroupId, NodeGroupCount, ApplyImmediately, ReshardingConfiguration = NULL, NodeGroupsToRemove = NULL, NodeGroupsToRetain = NULL) {
   op <- new_operation(
     name = "ModifyReplicationGroupShardConfiguration",
@@ -7567,6 +7677,8 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_user
+#'
+#' @aliases elasticache_modify_user
 elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessString = NULL, Passwords = NULL, NoPasswordRequired = NULL) {
   op <- new_operation(
     name = "ModifyUser",
@@ -7639,6 +7751,8 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
 #' @keywords internal
 #'
 #' @rdname elasticache_modify_user_group
+#'
+#' @aliases elasticache_modify_user_group
 elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, UserIdsToRemove = NULL) {
   op <- new_operation(
     name = "ModifyUserGroup",
@@ -7734,6 +7848,8 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' @keywords internal
 #'
 #' @rdname elasticache_purchase_reserved_cache_nodes_offering
+#'
+#' @aliases elasticache_purchase_reserved_cache_nodes_offering
 elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNodesOfferingId, ReservedCacheNodeId = NULL, CacheNodeCount = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PurchaseReservedCacheNodesOffering",
@@ -7811,6 +7927,8 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
 #' @keywords internal
 #'
 #' @rdname elasticache_rebalance_slots_in_global_replication_group
+#'
+#' @aliases elasticache_rebalance_slots_in_global_replication_group
 elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplicationGroupId, ApplyImmediately) {
   op <- new_operation(
     name = "RebalanceSlotsInGlobalReplicationGroup",
@@ -7992,6 +8110,8 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #' @keywords internal
 #'
 #' @rdname elasticache_reboot_cache_cluster
+#'
+#' @aliases elasticache_reboot_cache_cluster
 elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboot) {
   op <- new_operation(
     name = "RebootCacheCluster",
@@ -8061,6 +8181,8 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' @keywords internal
 #'
 #' @rdname elasticache_remove_tags_from_resource
+#'
+#' @aliases elasticache_remove_tags_from_resource
 elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -8128,6 +8250,8 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname elasticache_reset_cache_parameter_group
+#'
+#' @aliases elasticache_reset_cache_parameter_group
 elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, ResetAllParameters = NULL, ParameterNameValues = NULL) {
   op <- new_operation(
     name = "ResetCacheParameterGroup",
@@ -8194,6 +8318,8 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
 #' @keywords internal
 #'
 #' @rdname elasticache_revoke_cache_security_group_ingress
+#'
+#' @aliases elasticache_revoke_cache_security_group_ingress
 elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupName, EC2SecurityGroupName, EC2SecurityGroupOwnerId) {
   op <- new_operation(
     name = "RevokeCacheSecurityGroupIngress",
@@ -8367,6 +8493,8 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #' @keywords internal
 #'
 #' @rdname elasticache_start_migration
+#'
+#' @aliases elasticache_start_migration
 elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpointList) {
   op <- new_operation(
     name = "StartMigration",
@@ -8594,6 +8722,8 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #' @keywords internal
 #'
 #' @rdname elasticache_test_failover
+#'
+#' @aliases elasticache_test_failover
 elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
   op <- new_operation(
     name = "TestFailover",

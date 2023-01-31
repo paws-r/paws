@@ -118,6 +118,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname storagegateway_activate_gateway
+#'
+#' @aliases storagegateway_activate_gateway
 storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayTimezone, GatewayRegion, GatewayType = NULL, TapeDriveType = NULL, MediumChangerType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ActivateGateway",
@@ -190,6 +192,8 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' @keywords internal
 #'
 #' @rdname storagegateway_add_cache
+#'
+#' @aliases storagegateway_add_cache
 storagegateway_add_cache <- function(GatewayARN, DiskIds) {
   op <- new_operation(
     name = "AddCache",
@@ -279,6 +283,8 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_add_tags_to_resource
+#'
+#' @aliases storagegateway_add_tags_to_resource
 storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -351,6 +357,8 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_add_upload_buffer
+#'
+#' @aliases storagegateway_add_upload_buffer
 storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
   op <- new_operation(
     name = "AddUploadBuffer",
@@ -429,6 +437,8 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_add_working_storage
+#'
+#' @aliases storagegateway_add_working_storage
 storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
   op <- new_operation(
     name = "AddWorkingStorage",
@@ -495,6 +505,8 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_assign_tape_pool
+#'
+#' @aliases storagegateway_assign_tape_pool
 storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRetention = NULL) {
   op <- new_operation(
     name = "AssignTapePool",
@@ -581,6 +593,8 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
 #' @keywords internal
 #'
 #' @rdname storagegateway_associate_file_system
+#'
+#' @aliases storagegateway_associate_file_system
 storagegateway_associate_file_system <- function(UserName, Password, ClientToken, GatewayARN, LocationARN, Tags = NULL, AuditDestinationARN = NULL, CacheAttributes = NULL, EndpointNetworkConfiguration = NULL) {
   op <- new_operation(
     name = "AssociateFileSystem",
@@ -657,6 +671,8 @@ storagegateway_associate_file_system <- function(UserName, Password, ClientToken
 #' @keywords internal
 #'
 #' @rdname storagegateway_attach_volume
+#'
+#' @aliases storagegateway_attach_volume
 storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeARN, NetworkInterfaceId, DiskId = NULL) {
   op <- new_operation(
     name = "AttachVolume",
@@ -718,6 +734,8 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
 #' @keywords internal
 #'
 #' @rdname storagegateway_cancel_archival
+#'
+#' @aliases storagegateway_cancel_archival
 storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
   op <- new_operation(
     name = "CancelArchival",
@@ -780,6 +798,8 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_cancel_retrieval
+#'
+#' @aliases storagegateway_cancel_retrieval
 storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
   op <- new_operation(
     name = "CancelRetrieval",
@@ -916,6 +936,8 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_cachedi_scsi_volume
+#'
+#' @aliases storagegateway_create_cachedi_scsi_volume
 storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBytes, SnapshotId = NULL, TargetName, SourceVolumeARN = NULL, NetworkInterfaceId, ClientToken, KMSEncrypted = NULL, KMSKey = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCachediSCSIVolume",
@@ -1138,6 +1160,8 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_nfs_file_share
+#'
+#' @aliases storagegateway_create_nfs_file_share
 storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaults = NULL, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, AuditDestinationARN = NULL) {
   op <- new_operation(
     name = "CreateNFSFileShare",
@@ -1397,6 +1421,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_smb_file_share
+#'
+#' @aliases storagegateway_create_smb_file_share
 storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEncrypted = NULL, KMSKey = NULL, Role, LocationARN, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, Authentication = NULL, CaseSensitivity = NULL, Tags = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, VPCEndpointDNSName = NULL, BucketRegion = NULL, OplocksEnabled = NULL) {
   op <- new_operation(
     name = "CreateSMBFileShare",
@@ -1503,6 +1529,8 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_snapshot
+#'
+#' @aliases storagegateway_create_snapshot
 storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -1603,6 +1631,8 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_snapshot_from_volume_recovery_point
+#'
+#' @aliases storagegateway_create_snapshot_from_volume_recovery_point
 storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN, SnapshotDescription, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshotFromVolumeRecoveryPoint",
@@ -1732,6 +1762,8 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_storedi_scsi_volume
+#'
+#' @aliases storagegateway_create_storedi_scsi_volume
 storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, SnapshotId = NULL, PreserveExistingData, TargetName, NetworkInterfaceId, KMSEncrypted = NULL, KMSKey = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStorediSCSIVolume",
@@ -1807,6 +1839,8 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tape_pool
+#'
+#' @aliases storagegateway_create_tape_pool
 storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLockType = NULL, RetentionLockTimeInDays = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTapePool",
@@ -1915,6 +1949,8 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tape_with_barcode
+#'
+#' @aliases storagegateway_create_tape_with_barcode
 storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes, TapeBarcode, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL, Worm = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTapeWithBarcode",
@@ -2035,6 +2071,8 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 #' @keywords internal
 #'
 #' @rdname storagegateway_create_tapes
+#'
+#' @aliases storagegateway_create_tapes
 storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken, NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted = NULL, KMSKey = NULL, PoolId = NULL, Worm = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTapes",
@@ -2082,6 +2120,8 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_automatic_tape_creation_policy
+#'
+#' @aliases storagegateway_delete_automatic_tape_creation_policy
 storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
   op <- new_operation(
     name = "DeleteAutomaticTapeCreationPolicy",
@@ -2147,6 +2187,8 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_bandwidth_rate_limit
+#'
+#' @aliases storagegateway_delete_bandwidth_rate_limit
 storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType) {
   op <- new_operation(
     name = "DeleteBandwidthRateLimit",
@@ -2210,6 +2252,8 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_chap_credentials
+#'
+#' @aliases storagegateway_delete_chap_credentials
 storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
   op <- new_operation(
     name = "DeleteChapCredentials",
@@ -2264,6 +2308,8 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_file_share
+#'
+#' @aliases storagegateway_delete_file_share
 storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
   op <- new_operation(
     name = "DeleteFileShare",
@@ -2335,6 +2381,8 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_gateway
+#'
+#' @aliases storagegateway_delete_gateway
 storagegateway_delete_gateway <- function(GatewayARN) {
   op <- new_operation(
     name = "DeleteGateway",
@@ -2401,6 +2449,8 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_snapshot_schedule
+#'
+#' @aliases storagegateway_delete_snapshot_schedule
 storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
   op <- new_operation(
     name = "DeleteSnapshotSchedule",
@@ -2467,6 +2517,8 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_tape
+#'
+#' @aliases storagegateway_delete_tape
 storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRetention = NULL) {
   op <- new_operation(
     name = "DeleteTape",
@@ -2527,6 +2579,8 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRete
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_tape_archive
+#'
+#' @aliases storagegateway_delete_tape_archive
 storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetention = NULL) {
   op <- new_operation(
     name = "DeleteTapeArchive",
@@ -2574,6 +2628,8 @@ storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetentio
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_tape_pool
+#'
+#' @aliases storagegateway_delete_tape_pool
 storagegateway_delete_tape_pool <- function(PoolARN) {
   op <- new_operation(
     name = "DeleteTapePool",
@@ -2650,6 +2706,8 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_delete_volume
+#'
+#' @aliases storagegateway_delete_volume
 storagegateway_delete_volume <- function(VolumeARN) {
   op <- new_operation(
     name = "DeleteVolume",
@@ -2702,6 +2760,8 @@ storagegateway_delete_volume <- function(VolumeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_availability_monitor_test
+#'
+#' @aliases storagegateway_describe_availability_monitor_test
 storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeAvailabilityMonitorTest",
@@ -2769,6 +2829,8 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_bandwidth_rate_limit
+#'
+#' @aliases storagegateway_describe_bandwidth_rate_limit
 storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeBandwidthRateLimit",
@@ -2846,6 +2908,8 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_bandwidth_rate_limit_schedule
+#'
+#' @aliases storagegateway_describe_bandwidth_rate_limit_schedule
 storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeBandwidthRateLimitSchedule",
@@ -2911,6 +2975,8 @@ storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_cache
+#'
+#' @aliases storagegateway_describe_cache
 storagegateway_describe_cache <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeCache",
@@ -3002,6 +3068,8 @@ storagegateway_describe_cache <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_cachedi_scsi_volumes
+#'
+#' @aliases storagegateway_describe_cachedi_scsi_volumes
 storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
   op <- new_operation(
     name = "DescribeCachediSCSIVolumes",
@@ -3071,6 +3139,8 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_chap_credentials
+#'
+#' @aliases storagegateway_describe_chap_credentials
 storagegateway_describe_chap_credentials <- function(TargetARN) {
   op <- new_operation(
     name = "DescribeChapCredentials",
@@ -3148,6 +3218,8 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_file_system_associations
+#'
+#' @aliases storagegateway_describe_file_system_associations
 storagegateway_describe_file_system_associations <- function(FileSystemAssociationARNList) {
   op <- new_operation(
     name = "DescribeFileSystemAssociations",
@@ -3241,6 +3313,8 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_gateway_information
+#'
+#' @aliases storagegateway_describe_gateway_information
 storagegateway_describe_gateway_information <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeGatewayInformation",
@@ -3303,6 +3377,8 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_maintenance_start_time
+#'
+#' @aliases storagegateway_describe_maintenance_start_time
 storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeMaintenanceStartTime",
@@ -3395,6 +3471,8 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_nfs_file_shares
+#'
+#' @aliases storagegateway_describe_nfs_file_shares
 storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
   op <- new_operation(
     name = "DescribeNFSFileShares",
@@ -3491,6 +3569,8 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_smb_file_shares
+#'
+#' @aliases storagegateway_describe_smb_file_shares
 storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
   op <- new_operation(
     name = "DescribeSMBFileShares",
@@ -3548,6 +3628,8 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_smb_settings
+#'
+#' @aliases storagegateway_describe_smb_settings
 storagegateway_describe_smb_settings <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeSMBSettings",
@@ -3617,6 +3699,8 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_snapshot_schedule
+#'
+#' @aliases storagegateway_describe_snapshot_schedule
 storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
   op <- new_operation(
     name = "DescribeSnapshotSchedule",
@@ -3709,6 +3793,8 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_storedi_scsi_volumes
+#'
+#' @aliases storagegateway_describe_storedi_scsi_volumes
 storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
   op <- new_operation(
     name = "DescribeStorediSCSIVolumes",
@@ -3808,6 +3894,8 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_tape_archives
+#'
+#' @aliases storagegateway_describe_tape_archives
 storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeTapeArchives",
@@ -3888,6 +3976,8 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_tape_recovery_points
+#'
+#' @aliases storagegateway_describe_tape_recovery_points
 storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeTapeRecoveryPoints",
@@ -3994,6 +4084,8 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_tapes
+#'
+#' @aliases storagegateway_describe_tapes
 storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeTapes",
@@ -4065,6 +4157,8 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_upload_buffer
+#'
+#' @aliases storagegateway_describe_upload_buffer
 storagegateway_describe_upload_buffer <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeUploadBuffer",
@@ -4158,6 +4252,8 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_vtl_devices
+#'
+#' @aliases storagegateway_describe_vtl_devices
 storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeVTLDevices",
@@ -4228,6 +4324,8 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
 #' @keywords internal
 #'
 #' @rdname storagegateway_describe_working_storage
+#'
+#' @aliases storagegateway_describe_working_storage
 storagegateway_describe_working_storage <- function(GatewayARN) {
   op <- new_operation(
     name = "DescribeWorkingStorage",
@@ -4286,6 +4384,8 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_detach_volume
+#'
+#' @aliases storagegateway_detach_volume
 storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
   op <- new_operation(
     name = "DetachVolume",
@@ -4347,6 +4447,8 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_disable_gateway
+#'
+#' @aliases storagegateway_disable_gateway
 storagegateway_disable_gateway <- function(GatewayARN) {
   op <- new_operation(
     name = "DisableGateway",
@@ -4403,6 +4505,8 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_disassociate_file_system
+#'
+#' @aliases storagegateway_disassociate_file_system
 storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, ForceDelete = NULL) {
   op <- new_operation(
     name = "DisassociateFileSystem",
@@ -4478,6 +4582,8 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
 #' @keywords internal
 #'
 #' @rdname storagegateway_join_domain
+#'
+#' @aliases storagegateway_join_domain
 storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUnit = NULL, DomainControllers = NULL, TimeoutInSeconds = NULL, UserName, Password) {
   op <- new_operation(
     name = "JoinDomain",
@@ -4540,6 +4646,8 @@ storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUni
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_automatic_tape_creation_policies
+#'
+#' @aliases storagegateway_list_automatic_tape_creation_policies
 storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NULL) {
   op <- new_operation(
     name = "ListAutomaticTapeCreationPolicies",
@@ -4607,6 +4715,8 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_file_shares
+#'
+#' @aliases storagegateway_list_file_shares
 storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListFileShares",
@@ -4674,6 +4784,8 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_file_system_associations
+#'
+#' @aliases storagegateway_list_file_system_associations
 storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListFileSystemAssociations",
@@ -4759,6 +4871,8 @@ storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limi
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_gateways
+#'
+#' @aliases storagegateway_list_gateways
 storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListGateways",
@@ -4837,6 +4951,8 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_local_disks
+#'
+#' @aliases storagegateway_list_local_disks
 storagegateway_list_local_disks <- function(GatewayARN) {
   op <- new_operation(
     name = "ListLocalDisks",
@@ -4907,6 +5023,8 @@ storagegateway_list_local_disks <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_tags_for_resource
+#'
+#' @aliases storagegateway_list_tags_for_resource
 storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4981,6 +5099,8 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_tape_pools
+#'
+#' @aliases storagegateway_list_tape_pools
 storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTapePools",
@@ -5062,6 +5182,8 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_tapes
+#'
+#' @aliases storagegateway_list_tapes
 storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTapes",
@@ -5114,6 +5236,8 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_volume_initiators
+#'
+#' @aliases storagegateway_list_volume_initiators
 storagegateway_list_volume_initiators <- function(VolumeARN) {
   op <- new_operation(
     name = "ListVolumeInitiators",
@@ -5184,6 +5308,8 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_volume_recovery_points
+#'
+#' @aliases storagegateway_list_volume_recovery_points
 storagegateway_list_volume_recovery_points <- function(GatewayARN) {
   op <- new_operation(
     name = "ListVolumeRecoveryPoints",
@@ -5273,6 +5399,8 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_list_volumes
+#'
+#' @aliases storagegateway_list_volumes
 storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListVolumes",
@@ -5334,6 +5462,8 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 #' @keywords internal
 #'
 #' @rdname storagegateway_notify_when_uploaded
+#'
+#' @aliases storagegateway_notify_when_uploaded
 storagegateway_notify_when_uploaded <- function(FileShareARN) {
   op <- new_operation(
     name = "NotifyWhenUploaded",
@@ -5443,6 +5573,8 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_refresh_cache
+#'
+#' @aliases storagegateway_refresh_cache
 storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recursive = NULL) {
   op <- new_operation(
     name = "RefreshCache",
@@ -5508,6 +5640,8 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
 #' @keywords internal
 #'
 #' @rdname storagegateway_remove_tags_from_resource
+#'
+#' @aliases storagegateway_remove_tags_from_resource
 storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -5576,6 +5710,8 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_reset_cache
+#'
+#' @aliases storagegateway_reset_cache
 storagegateway_reset_cache <- function(GatewayARN) {
   op <- new_operation(
     name = "ResetCache",
@@ -5651,6 +5787,8 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_retrieve_tape_archive
+#'
+#' @aliases storagegateway_retrieve_tape_archive
 storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
   op <- new_operation(
     name = "RetrieveTapeArchive",
@@ -5717,6 +5855,8 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_retrieve_tape_recovery_point
+#'
+#' @aliases storagegateway_retrieve_tape_recovery_point
 storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
   op <- new_operation(
     name = "RetrieveTapeRecoveryPoint",
@@ -5777,6 +5917,8 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_set_local_console_password
+#'
+#' @aliases storagegateway_set_local_console_password
 storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePassword) {
   op <- new_operation(
     name = "SetLocalConsolePassword",
@@ -5827,6 +5969,8 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
 #' @keywords internal
 #'
 #' @rdname storagegateway_set_smb_guest_password
+#'
+#' @aliases storagegateway_set_smb_guest_password
 storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
   op <- new_operation(
     name = "SetSMBGuestPassword",
@@ -5907,6 +6051,8 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_shutdown_gateway
+#'
+#' @aliases storagegateway_shutdown_gateway
 storagegateway_shutdown_gateway <- function(GatewayARN) {
   op <- new_operation(
     name = "ShutdownGateway",
@@ -5962,6 +6108,8 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_start_availability_monitor_test
+#'
+#' @aliases storagegateway_start_availability_monitor_test
 storagegateway_start_availability_monitor_test <- function(GatewayARN) {
   op <- new_operation(
     name = "StartAvailabilityMonitorTest",
@@ -6029,6 +6177,8 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_start_gateway
+#'
+#' @aliases storagegateway_start_gateway
 storagegateway_start_gateway <- function(GatewayARN) {
   op <- new_operation(
     name = "StartGateway",
@@ -6093,6 +6243,8 @@ storagegateway_start_gateway <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_automatic_tape_creation_policy
+#'
+#' @aliases storagegateway_update_automatic_tape_creation_policy
 storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCreationRules, GatewayARN) {
   op <- new_operation(
     name = "UpdateAutomaticTapeCreationPolicy",
@@ -6170,6 +6322,8 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_bandwidth_rate_limit
+#'
+#' @aliases storagegateway_update_bandwidth_rate_limit
 storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUploadRateLimitInBitsPerSec = NULL, AverageDownloadRateLimitInBitsPerSec = NULL) {
   op <- new_operation(
     name = "UpdateBandwidthRateLimit",
@@ -6237,6 +6391,8 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_bandwidth_rate_limit_schedule
+#'
+#' @aliases storagegateway_update_bandwidth_rate_limit_schedule
 storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, BandwidthRateLimitIntervals) {
   op <- new_operation(
     name = "UpdateBandwidthRateLimitSchedule",
@@ -6320,6 +6476,8 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_chap_credentials
+#'
+#' @aliases storagegateway_update_chap_credentials
 storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthenticateInitiator, InitiatorName, SecretToAuthenticateTarget = NULL) {
   op <- new_operation(
     name = "UpdateChapCredentials",
@@ -6380,6 +6538,8 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_file_system_association
+#'
+#' @aliases storagegateway_update_file_system_association
 storagegateway_update_file_system_association <- function(FileSystemAssociationARN, UserName = NULL, Password = NULL, AuditDestinationARN = NULL, CacheAttributes = NULL) {
   op <- new_operation(
     name = "UpdateFileSystemAssociation",
@@ -6457,6 +6617,8 @@ storagegateway_update_file_system_association <- function(FileSystemAssociationA
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_gateway_information
+#'
+#' @aliases storagegateway_update_gateway_information
 storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = NULL, GatewayTimezone = NULL, CloudWatchLogGroupARN = NULL, GatewayCapacity = NULL) {
   op <- new_operation(
     name = "UpdateGatewayInformation",
@@ -6528,6 +6690,8 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_gateway_software_now
+#'
+#' @aliases storagegateway_update_gateway_software_now
 storagegateway_update_gateway_software_now <- function(GatewayARN) {
   op <- new_operation(
     name = "UpdateGatewaySoftwareNow",
@@ -6606,6 +6770,8 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_maintenance_start_time
+#'
+#' @aliases storagegateway_update_maintenance_start_time
 storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, MinuteOfHour, DayOfWeek = NULL, DayOfMonth = NULL) {
   op <- new_operation(
     name = "UpdateMaintenanceStartTime",
@@ -6764,6 +6930,8 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_nfs_file_share
+#'
+#' @aliases storagegateway_update_nfs_file_share
 storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, NFSFileShareDefaults = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ClientList = NULL, Squash = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, AuditDestinationARN = NULL) {
   op <- new_operation(
     name = "UpdateNFSFileShare",
@@ -6956,6 +7124,8 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_file_share
+#'
+#' @aliases storagegateway_update_smb_file_share
 storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NULL, KMSKey = NULL, DefaultStorageClass = NULL, ObjectACL = NULL, ReadOnly = NULL, GuessMIMETypeEnabled = NULL, RequesterPays = NULL, SMBACLEnabled = NULL, AccessBasedEnumeration = NULL, AdminUserList = NULL, ValidUserList = NULL, InvalidUserList = NULL, AuditDestinationARN = NULL, CaseSensitivity = NULL, FileShareName = NULL, CacheAttributes = NULL, NotificationPolicy = NULL, OplocksEnabled = NULL) {
   op <- new_operation(
     name = "UpdateSMBFileShare",
@@ -7007,6 +7177,8 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_file_share_visibility
+#'
+#' @aliases storagegateway_update_smb_file_share_visibility
 storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileSharesVisible) {
   op <- new_operation(
     name = "UpdateSMBFileShareVisibility",
@@ -7061,6 +7233,8 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_local_groups
+#'
+#' @aliases storagegateway_update_smb_local_groups
 storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
   op <- new_operation(
     name = "UpdateSMBLocalGroups",
@@ -7130,6 +7304,8 @@ storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_smb_security_strategy
+#'
+#' @aliases storagegateway_update_smb_security_strategy
 storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityStrategy) {
   op <- new_operation(
     name = "UpdateSMBSecurityStrategy",
@@ -7222,6 +7398,8 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_snapshot_schedule
+#'
+#' @aliases storagegateway_update_snapshot_schedule
 storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, RecurrenceInHours, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateSnapshotSchedule",
@@ -7285,6 +7463,8 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 #' @keywords internal
 #'
 #' @rdname storagegateway_update_vtl_device_type
+#'
+#' @aliases storagegateway_update_vtl_device_type
 storagegateway_update_vtl_device_type <- function(VTLDeviceARN, DeviceType) {
   op <- new_operation(
     name = "UpdateVTLDeviceType",

@@ -80,6 +80,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname managedgrafana_associate_license
+#'
+#' @aliases managedgrafana_associate_license
 managedgrafana_associate_license <- function(licenseType, workspaceId) {
   op <- new_operation(
     name = "AssociateLicense",
@@ -261,6 +263,8 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_create_workspace
+#'
+#' @aliases managedgrafana_create_workspace
 managedgrafana_create_workspace <- function(accountAccessType, authenticationProviders, clientToken = NULL, organizationRoleName = NULL, permissionType, stackSetName = NULL, tags = NULL, workspaceDataSources = NULL, workspaceDescription = NULL, workspaceName = NULL, workspaceNotificationDestinations = NULL, workspaceOrganizationalUnits = NULL, workspaceRoleArn = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
@@ -322,6 +326,8 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
 #' @keywords internal
 #'
 #' @rdname managedgrafana_create_workspace_api_key
+#'
+#' @aliases managedgrafana_create_workspace_api_key
 managedgrafana_create_workspace_api_key <- function(keyName, keyRole, secondsToLive, workspaceId) {
   op <- new_operation(
     name = "CreateWorkspaceApiKey",
@@ -411,6 +417,8 @@ managedgrafana_create_workspace_api_key <- function(keyName, keyRole, secondsToL
 #' @keywords internal
 #'
 #' @rdname managedgrafana_delete_workspace
+#'
+#' @aliases managedgrafana_delete_workspace
 managedgrafana_delete_workspace <- function(workspaceId) {
   op <- new_operation(
     name = "DeleteWorkspace",
@@ -459,6 +467,8 @@ managedgrafana_delete_workspace <- function(workspaceId) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_delete_workspace_api_key
+#'
+#' @aliases managedgrafana_delete_workspace_api_key
 managedgrafana_delete_workspace_api_key <- function(keyName, workspaceId) {
   op <- new_operation(
     name = "DeleteWorkspaceApiKey",
@@ -548,6 +558,8 @@ managedgrafana_delete_workspace_api_key <- function(keyName, workspaceId) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_describe_workspace
+#'
+#' @aliases managedgrafana_describe_workspace
 managedgrafana_describe_workspace <- function(workspaceId) {
   op <- new_operation(
     name = "DescribeWorkspace",
@@ -631,6 +643,8 @@ managedgrafana_describe_workspace <- function(workspaceId) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_describe_workspace_authentication
+#'
+#' @aliases managedgrafana_describe_workspace_authentication
 managedgrafana_describe_workspace_authentication <- function(workspaceId) {
   op <- new_operation(
     name = "DescribeWorkspaceAuthentication",
@@ -722,6 +736,8 @@ managedgrafana_describe_workspace_authentication <- function(workspaceId) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_disassociate_license
+#'
+#' @aliases managedgrafana_disassociate_license
 managedgrafana_disassociate_license <- function(licenseType, workspaceId) {
   op <- new_operation(
     name = "DisassociateLicense",
@@ -798,6 +814,8 @@ managedgrafana_disassociate_license <- function(licenseType, workspaceId) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_list_permissions
+#'
+#' @aliases managedgrafana_list_permissions
 managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, nextToken = NULL, userId = NULL, userType = NULL, workspaceId) {
   op <- new_operation(
     name = "ListPermissions",
@@ -850,6 +868,8 @@ managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname managedgrafana_list_tags_for_resource
+#'
+#' @aliases managedgrafana_list_tags_for_resource
 managedgrafana_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -931,6 +951,8 @@ managedgrafana_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_list_workspaces
+#'
+#' @aliases managedgrafana_list_workspaces
 managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListWorkspaces",
@@ -985,6 +1007,8 @@ managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname managedgrafana_tag_resource
+#'
+#' @aliases managedgrafana_tag_resource
 managedgrafana_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1031,6 +1055,8 @@ managedgrafana_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_untag_resource
+#'
+#' @aliases managedgrafana_untag_resource
 managedgrafana_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1106,6 +1132,8 @@ managedgrafana_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname managedgrafana_update_permissions
+#'
+#' @aliases managedgrafana_update_permissions
 managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceId) {
   op <- new_operation(
     name = "UpdatePermissions",
@@ -1274,6 +1302,8 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
 #' @keywords internal
 #'
 #' @rdname managedgrafana_update_workspace
+#'
+#' @aliases managedgrafana_update_workspace
 managedgrafana_update_workspace <- function(accountAccessType = NULL, organizationRoleName = NULL, permissionType = NULL, stackSetName = NULL, workspaceDataSources = NULL, workspaceDescription = NULL, workspaceId, workspaceName = NULL, workspaceNotificationDestinations = NULL, workspaceOrganizationalUnits = NULL, workspaceRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateWorkspace",
@@ -1399,6 +1429,8 @@ managedgrafana_update_workspace <- function(accountAccessType = NULL, organizati
 #' @keywords internal
 #'
 #' @rdname managedgrafana_update_workspace_authentication
+#'
+#' @aliases managedgrafana_update_workspace_authentication
 managedgrafana_update_workspace_authentication <- function(authenticationProviders, samlConfiguration = NULL, workspaceId) {
   op <- new_operation(
     name = "UpdateWorkspaceAuthentication",

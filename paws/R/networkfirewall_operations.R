@@ -67,6 +67,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname networkfirewall_associate_firewall_policy
+#'
+#' @aliases networkfirewall_associate_firewall_policy
 networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, FirewallPolicyArn) {
   op <- new_operation(
     name = "AssociateFirewallPolicy",
@@ -159,6 +161,8 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
 #' @keywords internal
 #'
 #' @rdname networkfirewall_associate_subnets
+#'
+#' @aliases networkfirewall_associate_subnets
 networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, SubnetMappings) {
   op <- new_operation(
     name = "AssociateSubnets",
@@ -339,6 +343,8 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_firewall
+#'
+#' @aliases networkfirewall_create_firewall
 networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, VpcId, SubnetMappings, DeleteProtection = NULL, SubnetChangeProtection = NULL, FirewallPolicyChangeProtection = NULL, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFirewall",
@@ -488,6 +494,8 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_firewall_policy
+#'
+#' @aliases networkfirewall_create_firewall_policy
 networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallPolicy, Description = NULL, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateFirewallPolicy",
@@ -795,6 +803,8 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_rule_group
+#'
+#' @aliases networkfirewall_create_rule_group
 networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
@@ -918,6 +928,8 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' @keywords internal
 #'
 #' @rdname networkfirewall_delete_firewall
+#'
+#' @aliases networkfirewall_delete_firewall
 networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = NULL) {
   op <- new_operation(
     name = "DeleteFirewall",
@@ -993,6 +1005,8 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 #' @keywords internal
 #'
 #' @rdname networkfirewall_delete_firewall_policy
+#'
+#' @aliases networkfirewall_delete_firewall_policy
 networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, FirewallPolicyArn = NULL) {
   op <- new_operation(
     name = "DeleteFirewallPolicy",
@@ -1036,6 +1050,8 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
 #' @keywords internal
 #'
 #' @rdname networkfirewall_delete_resource_policy
+#'
+#' @aliases networkfirewall_delete_resource_policy
 networkfirewall_delete_resource_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -1123,6 +1139,8 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname networkfirewall_delete_rule_group
+#'
+#' @aliases networkfirewall_delete_rule_group
 networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
   op <- new_operation(
     name = "DeleteRuleGroup",
@@ -1231,6 +1249,8 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_firewall
+#'
+#' @aliases networkfirewall_describe_firewall
 networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn = NULL) {
   op <- new_operation(
     name = "DescribeFirewall",
@@ -1350,6 +1370,8 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_firewall_policy
+#'
+#' @aliases networkfirewall_describe_firewall_policy
 networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, FirewallPolicyArn = NULL) {
   op <- new_operation(
     name = "DescribeFirewallPolicy",
@@ -1414,6 +1436,8 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_logging_configuration
+#'
+#' @aliases networkfirewall_describe_logging_configuration
 networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, FirewallName = NULL) {
   op <- new_operation(
     name = "DescribeLoggingConfiguration",
@@ -1462,6 +1486,8 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_resource_policy
+#'
+#' @aliases networkfirewall_describe_resource_policy
 networkfirewall_describe_resource_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DescribeResourcePolicy",
@@ -1674,6 +1700,8 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_rule_group
+#'
+#' @aliases networkfirewall_describe_rule_group
 networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
   op <- new_operation(
     name = "DescribeRuleGroup",
@@ -1750,6 +1778,8 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_rule_group_metadata
+#'
+#' @aliases networkfirewall_describe_rule_group_metadata
 networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
   op <- new_operation(
     name = "DescribeRuleGroupMetadata",
@@ -1834,6 +1864,8 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 #' @keywords internal
 #'
 #' @rdname networkfirewall_disassociate_subnets
+#'
+#' @aliases networkfirewall_disassociate_subnets
 networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, SubnetIds) {
   op <- new_operation(
     name = "DisassociateSubnets",
@@ -1896,6 +1928,8 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_firewall_policies
+#'
+#' @aliases networkfirewall_list_firewall_policies
 networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFirewallPolicies",
@@ -1967,6 +2001,8 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_firewalls
+#'
+#' @aliases networkfirewall_list_firewalls
 networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFirewalls",
@@ -2041,6 +2077,8 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_rule_groups
+#'
+#' @aliases networkfirewall_list_rule_groups
 networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL, Scope = NULL, ManagedType = NULL, Type = NULL) {
   op <- new_operation(
     name = "ListRuleGroups",
@@ -2112,6 +2150,8 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname networkfirewall_list_tags_for_resource
+#'
+#' @aliases networkfirewall_list_tags_for_resource
 networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults = NULL, ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2205,6 +2245,8 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname networkfirewall_put_resource_policy
+#'
+#' @aliases networkfirewall_put_resource_policy
 networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -2260,6 +2302,8 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
 #' @keywords internal
 #'
 #' @rdname networkfirewall_tag_resource
+#'
+#' @aliases networkfirewall_tag_resource
 networkfirewall_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2313,6 +2357,8 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname networkfirewall_untag_resource
+#'
+#' @aliases networkfirewall_untag_resource
 networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2397,6 +2443,8 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_firewall_delete_protection
+#'
+#' @aliases networkfirewall_update_firewall_delete_protection
 networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, DeleteProtection) {
   op <- new_operation(
     name = "UpdateFirewallDeleteProtection",
@@ -2475,6 +2523,8 @@ networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_firewall_description
+#'
+#' @aliases networkfirewall_update_firewall_description
 networkfirewall_update_firewall_description <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateFirewallDescription",
@@ -2555,6 +2605,8 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_firewall_encryption_configuration
+#'
+#' @aliases networkfirewall_update_firewall_encryption_configuration
 networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateFirewallEncryptionConfiguration",
@@ -2710,6 +2762,8 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_firewall_policy
+#'
+#' @aliases networkfirewall_update_firewall_policy
 networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyArn = NULL, FirewallPolicyName = NULL, FirewallPolicy, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateFirewallPolicy",
@@ -2794,6 +2848,8 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_firewall_policy_change_protection
+#'
+#' @aliases networkfirewall_update_firewall_policy_change_protection
 networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, FirewallPolicyChangeProtection) {
   op <- new_operation(
     name = "UpdateFirewallPolicyChangeProtection",
@@ -2896,6 +2952,8 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_logging_configuration
+#'
+#' @aliases networkfirewall_update_logging_configuration
 networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, FirewallName = NULL, LoggingConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateLoggingConfiguration",
@@ -3174,6 +3232,8 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_rule_group
+#'
+#' @aliases networkfirewall_update_rule_group
 networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
@@ -3254,6 +3314,8 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_subnet_change_protection
+#'
+#' @aliases networkfirewall_update_subnet_change_protection
 networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, FirewallArn = NULL, FirewallName = NULL, SubnetChangeProtection) {
   op <- new_operation(
     name = "UpdateSubnetChangeProtection",

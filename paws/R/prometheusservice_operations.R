@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_alert_manager_definition
+#'
+#' @aliases prometheusservice_create_alert_manager_definition
 prometheusservice_create_alert_manager_definition <- function(clientToken = NULL, data, workspaceId) {
   op <- new_operation(
     name = "CreateAlertManagerDefinition",
@@ -105,6 +107,8 @@ prometheusservice_create_alert_manager_definition <- function(clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_rule_groups_namespace
+#'
+#' @aliases prometheusservice_create_rule_groups_namespace
 prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, data, name, tags = NULL, workspaceId) {
   op <- new_operation(
     name = "CreateRuleGroupsNamespace",
@@ -165,6 +169,8 @@ prometheusservice_create_rule_groups_namespace <- function(clientToken = NULL, d
 #' @keywords internal
 #'
 #' @rdname prometheusservice_create_workspace
+#'
+#' @aliases prometheusservice_create_workspace
 prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateWorkspace",
@@ -209,6 +215,8 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL,
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_alert_manager_definition
+#'
+#' @aliases prometheusservice_delete_alert_manager_definition
 prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "DeleteAlertManagerDefinition",
@@ -255,6 +263,8 @@ prometheusservice_delete_alert_manager_definition <- function(clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_rule_groups_namespace
+#'
+#' @aliases prometheusservice_delete_rule_groups_namespace
 prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, name, workspaceId) {
   op <- new_operation(
     name = "DeleteRuleGroupsNamespace",
@@ -298,6 +308,8 @@ prometheusservice_delete_rule_groups_namespace <- function(clientToken = NULL, n
 #' @keywords internal
 #'
 #' @rdname prometheusservice_delete_workspace
+#'
+#' @aliases prometheusservice_delete_workspace
 prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "DeleteWorkspace",
@@ -355,6 +367,8 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
 #' @keywords internal
 #'
 #' @rdname prometheusservice_describe_alert_manager_definition
+#'
+#' @aliases prometheusservice_describe_alert_manager_definition
 prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
   op <- new_operation(
     name = "DescribeAlertManagerDefinition",
@@ -419,6 +433,8 @@ prometheusservice_describe_alert_manager_definition <- function(workspaceId) {
 #' @keywords internal
 #'
 #' @rdname prometheusservice_describe_rule_groups_namespace
+#'
+#' @aliases prometheusservice_describe_rule_groups_namespace
 prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) {
   op <- new_operation(
     name = "DescribeRuleGroupsNamespace",
@@ -478,6 +494,8 @@ prometheusservice_describe_rule_groups_namespace <- function(name, workspaceId) 
 #' @keywords internal
 #'
 #' @rdname prometheusservice_describe_workspace
+#'
+#' @aliases prometheusservice_describe_workspace
 prometheusservice_describe_workspace <- function(workspaceId) {
   op <- new_operation(
     name = "DescribeWorkspace",
@@ -552,6 +570,8 @@ prometheusservice_describe_workspace <- function(workspaceId) {
 #' @keywords internal
 #'
 #' @rdname prometheusservice_list_rule_groups_namespaces
+#'
+#' @aliases prometheusservice_list_rule_groups_namespaces
 prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, name = NULL, nextToken = NULL, workspaceId) {
   op <- new_operation(
     name = "ListRuleGroupsNamespaces",
@@ -599,6 +619,8 @@ prometheusservice_list_rule_groups_namespaces <- function(maxResults = NULL, nam
 #' @keywords internal
 #'
 #' @rdname prometheusservice_list_tags_for_resource
+#'
+#' @aliases prometheusservice_list_tags_for_resource
 prometheusservice_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -667,6 +689,8 @@ prometheusservice_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname prometheusservice_list_workspaces
+#'
+#' @aliases prometheusservice_list_workspaces
 prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListWorkspaces",
@@ -721,6 +745,8 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname prometheusservice_put_alert_manager_definition
+#'
+#' @aliases prometheusservice_put_alert_manager_definition
 prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, data, workspaceId) {
   op <- new_operation(
     name = "PutAlertManagerDefinition",
@@ -782,6 +808,8 @@ prometheusservice_put_alert_manager_definition <- function(clientToken = NULL, d
 #' @keywords internal
 #'
 #' @rdname prometheusservice_put_rule_groups_namespace
+#'
+#' @aliases prometheusservice_put_rule_groups_namespace
 prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data, name, workspaceId) {
   op <- new_operation(
     name = "PutRuleGroupsNamespace",
@@ -826,6 +854,8 @@ prometheusservice_put_rule_groups_namespace <- function(clientToken = NULL, data
 #' @keywords internal
 #'
 #' @rdname prometheusservice_tag_resource
+#'
+#' @aliases prometheusservice_tag_resource
 prometheusservice_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -870,6 +900,8 @@ prometheusservice_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname prometheusservice_untag_resource
+#'
+#' @aliases prometheusservice_untag_resource
 prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -916,6 +948,8 @@ prometheusservice_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname prometheusservice_update_workspace_alias
+#'
+#' @aliases prometheusservice_update_workspace_alias
 prometheusservice_update_workspace_alias <- function(alias = NULL, clientToken = NULL, workspaceId) {
   op <- new_operation(
     name = "UpdateWorkspaceAlias",

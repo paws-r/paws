@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mturk_accept_qualification_request
+#'
+#' @aliases mturk_accept_qualification_request
 mturk_accept_qualification_request <- function(QualificationRequestId, IntegerValue = NULL) {
   op <- new_operation(
     name = "AcceptQualificationRequest",
@@ -110,6 +112,8 @@ mturk_accept_qualification_request <- function(QualificationRequestId, IntegerVa
 #' @keywords internal
 #'
 #' @rdname mturk_approve_assignment
+#'
+#' @aliases mturk_approve_assignment
 mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, OverrideRejection = NULL) {
   op <- new_operation(
     name = "ApproveAssignment",
@@ -183,6 +187,8 @@ mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, Ove
 #' @keywords internal
 #'
 #' @rdname mturk_associate_qualification_with_worker
+#'
+#' @aliases mturk_associate_qualification_with_worker
 mturk_associate_qualification_with_worker <- function(QualificationTypeId, WorkerId, IntegerValue = NULL, SendNotification = NULL) {
   op <- new_operation(
     name = "AssociateQualificationWithWorker",
@@ -252,6 +258,8 @@ mturk_associate_qualification_with_worker <- function(QualificationTypeId, Worke
 #' @keywords internal
 #'
 #' @rdname mturk_create_additional_assignments_for_hit
+#'
+#' @aliases mturk_create_additional_assignments_for_hit
 mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditionalAssignments, UniqueRequestToken = NULL) {
   op <- new_operation(
     name = "CreateAdditionalAssignmentsForHIT",
@@ -517,6 +525,8 @@ mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditiona
 #' @keywords internal
 #'
 #' @rdname mturk_create_hit
+#'
+#' @aliases mturk_create_hit
 mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds = NULL, LifetimeInSeconds, AssignmentDurationInSeconds, Reward, Title, Keywords = NULL, Description, Question = NULL, RequesterAnnotation = NULL, QualificationRequirements = NULL, UniqueRequestToken = NULL, AssignmentReviewPolicy = NULL, HITReviewPolicy = NULL, HITLayoutId = NULL, HITLayoutParameters = NULL) {
   op <- new_operation(
     name = "CreateHIT",
@@ -616,6 +626,8 @@ mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds =
 #' @keywords internal
 #'
 #' @rdname mturk_create_hit_type
+#'
+#' @aliases mturk_create_hit_type
 mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentDurationInSeconds, Reward, Title, Keywords = NULL, Description, QualificationRequirements = NULL) {
   op <- new_operation(
     name = "CreateHITType",
@@ -825,6 +837,8 @@ mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentD
 #' @keywords internal
 #'
 #' @rdname mturk_create_hit_with_hit_type
+#'
+#' @aliases mturk_create_hit_with_hit_type
 mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, LifetimeInSeconds, Question = NULL, RequesterAnnotation = NULL, UniqueRequestToken = NULL, AssignmentReviewPolicy = NULL, HITReviewPolicy = NULL, HITLayoutId = NULL, HITLayoutParameters = NULL) {
   op <- new_operation(
     name = "CreateHITWithHITType",
@@ -949,6 +963,8 @@ mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, Lif
 #' @keywords internal
 #'
 #' @rdname mturk_create_qualification_type
+#'
+#' @aliases mturk_create_qualification_type
 mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, QualificationTypeStatus, RetryDelayInSeconds = NULL, Test = NULL, AnswerKey = NULL, TestDurationInSeconds = NULL, AutoGranted = NULL, AutoGrantedValue = NULL) {
   op <- new_operation(
     name = "CreateQualificationType",
@@ -997,6 +1013,8 @@ mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, 
 #' @keywords internal
 #'
 #' @rdname mturk_create_worker_block
+#'
+#' @aliases mturk_create_worker_block
 mturk_create_worker_block <- function(WorkerId, Reason) {
   op <- new_operation(
     name = "CreateWorkerBlock",
@@ -1058,6 +1076,8 @@ mturk_create_worker_block <- function(WorkerId, Reason) {
 #' @keywords internal
 #'
 #' @rdname mturk_delete_hit
+#'
+#' @aliases mturk_delete_hit
 mturk_delete_hit <- function(HITId) {
   op <- new_operation(
     name = "DeleteHIT",
@@ -1113,6 +1133,8 @@ mturk_delete_hit <- function(HITId) {
 #' @keywords internal
 #'
 #' @rdname mturk_delete_qualification_type
+#'
+#' @aliases mturk_delete_qualification_type
 mturk_delete_qualification_type <- function(QualificationTypeId) {
   op <- new_operation(
     name = "DeleteQualificationType",
@@ -1163,6 +1185,8 @@ mturk_delete_qualification_type <- function(QualificationTypeId) {
 #' @keywords internal
 #'
 #' @rdname mturk_delete_worker_block
+#'
+#' @aliases mturk_delete_worker_block
 mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
   op <- new_operation(
     name = "DeleteWorkerBlock",
@@ -1215,6 +1239,8 @@ mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
 #' @keywords internal
 #'
 #' @rdname mturk_disassociate_qualification_from_worker
+#'
+#' @aliases mturk_disassociate_qualification_from_worker
 mturk_disassociate_qualification_from_worker <- function(WorkerId, QualificationTypeId, Reason = NULL) {
   op <- new_operation(
     name = "DisassociateQualificationFromWorker",
@@ -1264,6 +1290,8 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
 #' @keywords internal
 #'
 #' @rdname mturk_get_account_balance
+#'
+#' @aliases mturk_get_account_balance
 mturk_get_account_balance <- function() {
   op <- new_operation(
     name = "GetAccountBalance",
@@ -1379,6 +1407,8 @@ mturk_get_account_balance <- function() {
 #' @keywords internal
 #'
 #' @rdname mturk_get_assignment
+#'
+#' @aliases mturk_get_assignment
 mturk_get_assignment <- function(AssignmentId) {
   op <- new_operation(
     name = "GetAssignment",
@@ -1439,6 +1469,8 @@ mturk_get_assignment <- function(AssignmentId) {
 #' @keywords internal
 #'
 #' @rdname mturk_get_file_upload_url
+#'
+#' @aliases mturk_get_file_upload_url
 mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
   op <- new_operation(
     name = "GetFileUploadURL",
@@ -1527,6 +1559,8 @@ mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
 #' @keywords internal
 #'
 #' @rdname mturk_get_hit
+#'
+#' @aliases mturk_get_hit
 mturk_get_hit <- function(HITId) {
   op <- new_operation(
     name = "GetHIT",
@@ -1596,6 +1630,8 @@ mturk_get_hit <- function(HITId) {
 #' @keywords internal
 #'
 #' @rdname mturk_get_qualification_score
+#'
+#' @aliases mturk_get_qualification_score
 mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
   op <- new_operation(
     name = "GetQualificationScore",
@@ -1659,6 +1695,8 @@ mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
 #' @keywords internal
 #'
 #' @rdname mturk_get_qualification_type
+#'
+#' @aliases mturk_get_qualification_type
 mturk_get_qualification_type <- function(QualificationTypeId) {
   op <- new_operation(
     name = "GetQualificationType",
@@ -1764,6 +1802,8 @@ mturk_get_qualification_type <- function(QualificationTypeId) {
 #' @keywords internal
 #'
 #' @rdname mturk_list_assignments_for_hit
+#'
+#' @aliases mturk_list_assignments_for_hit
 mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults = NULL, AssignmentStatuses = NULL) {
   op <- new_operation(
     name = "ListAssignmentsForHIT",
@@ -1836,6 +1876,8 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname mturk_list_bonus_payments
+#'
+#' @aliases mturk_list_bonus_payments
 mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListBonusPayments",
@@ -1932,6 +1974,8 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname mturk_list_hi_ts
+#'
+#' @aliases mturk_list_hi_ts
 mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHITs",
@@ -2035,6 +2079,8 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname mturk_list_hi_ts_for_qualification_type
+#'
+#' @aliases mturk_list_hi_ts_for_qualification_type
 mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHITsForQualificationType",
@@ -2103,6 +2149,8 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
 #' @keywords internal
 #'
 #' @rdname mturk_list_qualification_requests
+#'
+#' @aliases mturk_list_qualification_requests
 mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQualificationRequests",
@@ -2187,6 +2235,8 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname mturk_list_qualification_types
+#'
+#' @aliases mturk_list_qualification_types
 mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, MustBeOwnedByCaller = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQualificationTypes",
@@ -2349,6 +2399,8 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
 #' @keywords internal
 #'
 #' @rdname mturk_list_review_policy_results_for_hit
+#'
+#' @aliases mturk_list_review_policy_results_for_hit
 mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL, RetrieveActions = NULL, RetrieveResults = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListReviewPolicyResultsForHIT",
@@ -2452,6 +2504,8 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
 #' @keywords internal
 #'
 #' @rdname mturk_list_reviewable_hi_ts
+#'
+#' @aliases mturk_list_reviewable_hi_ts
 mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListReviewableHITs",
@@ -2508,6 +2562,8 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname mturk_list_worker_blocks
+#'
+#' @aliases mturk_list_worker_blocks
 mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkerBlocks",
@@ -2580,6 +2636,8 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname mturk_list_workers_with_qualification_type
+#'
+#' @aliases mturk_list_workers_with_qualification_type
 mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Status = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWorkersWithQualificationType",
@@ -2646,6 +2704,8 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
 #' @keywords internal
 #'
 #' @rdname mturk_notify_workers
+#'
+#' @aliases mturk_notify_workers
 mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
   op <- new_operation(
     name = "NotifyWorkers",
@@ -2701,6 +2761,8 @@ mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
 #' @keywords internal
 #'
 #' @rdname mturk_reject_assignment
+#'
+#' @aliases mturk_reject_assignment
 mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
   op <- new_operation(
     name = "RejectAssignment",
@@ -2751,6 +2813,8 @@ mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
 #' @keywords internal
 #'
 #' @rdname mturk_reject_qualification_request
+#'
+#' @aliases mturk_reject_qualification_request
 mturk_reject_qualification_request <- function(QualificationRequestId, Reason = NULL) {
   op <- new_operation(
     name = "RejectQualificationRequest",
@@ -2818,6 +2882,8 @@ mturk_reject_qualification_request <- function(QualificationRequestId, Reason = 
 #' @keywords internal
 #'
 #' @rdname mturk_send_bonus
+#'
+#' @aliases mturk_send_bonus
 mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, UniqueRequestToken = NULL) {
   op <- new_operation(
     name = "SendBonus",
@@ -2880,6 +2946,8 @@ mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, Unique
 #' @keywords internal
 #'
 #' @rdname mturk_send_test_event_notification
+#'
+#' @aliases mturk_send_test_event_notification
 mturk_send_test_event_notification <- function(Notification, TestEventType) {
   op <- new_operation(
     name = "SendTestEventNotification",
@@ -2927,6 +2995,8 @@ mturk_send_test_event_notification <- function(Notification, TestEventType) {
 #' @keywords internal
 #'
 #' @rdname mturk_update_expiration_for_hit
+#'
+#' @aliases mturk_update_expiration_for_hit
 mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
   op <- new_operation(
     name = "UpdateExpirationForHIT",
@@ -2978,6 +3048,8 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
 #' @keywords internal
 #'
 #' @rdname mturk_update_hit_review_status
+#'
+#' @aliases mturk_update_hit_review_status
 mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
   op <- new_operation(
     name = "UpdateHITReviewStatus",
@@ -3025,6 +3097,8 @@ mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
 #' @keywords internal
 #'
 #' @rdname mturk_update_hit_type_of_hit
+#'
+#' @aliases mturk_update_hit_type_of_hit
 mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
   op <- new_operation(
     name = "UpdateHITTypeOfHIT",
@@ -3092,6 +3166,8 @@ mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
 #' @keywords internal
 #'
 #' @rdname mturk_update_notification_settings
+#'
+#' @aliases mturk_update_notification_settings
 mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, Active = NULL) {
   op <- new_operation(
     name = "UpdateNotificationSettings",
@@ -3230,6 +3306,8 @@ mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, A
 #' @keywords internal
 #'
 #' @rdname mturk_update_qualification_type
+#'
+#' @aliases mturk_update_qualification_type
 mturk_update_qualification_type <- function(QualificationTypeId, Description = NULL, QualificationTypeStatus = NULL, Test = NULL, AnswerKey = NULL, TestDurationInSeconds = NULL, RetryDelayInSeconds = NULL, AutoGranted = NULL, AutoGrantedValue = NULL) {
   op <- new_operation(
     name = "UpdateQualificationType",

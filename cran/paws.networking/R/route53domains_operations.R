@@ -21,7 +21,7 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname route53domains_accept_domain_transfer_from_another_aws_account
+#' @rdname route53domains_accep_domai_trans_from_anoth_aws_accou
 route53domains_accept_domain_transfer_from_another_aws_account <- function(DomainName, Password) {
   op <- new_operation(
     name = "AcceptDomainTransferFromAnotherAwsAccount",
@@ -799,7 +799,7 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'
 #' @keywords internal
 #'
-#' @rdname route53domains_reject_domain_transfer_from_another_aws_account
+#' @rdname route53domains_rejec_domai_trans_from_anoth_aws_accou
 route53domains_reject_domain_transfer_from_another_aws_account <- function(DomainName) {
   op <- new_operation(
     name = "RejectDomainTransferFromAnotherAwsAccount",

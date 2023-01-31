@@ -195,6 +195,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
+#'
+#' @aliases mq_create_broker
 mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users) {
   op <- new_operation(
     name = "CreateBroker",
@@ -271,6 +273,8 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @keywords internal
 #'
 #' @rdname mq_create_configuration
+#'
+#' @aliases mq_create_configuration
 mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, EngineVersion, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfiguration",
@@ -315,6 +319,8 @@ mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, E
 #' @keywords internal
 #'
 #' @rdname mq_create_tags
+#'
+#' @aliases mq_create_tags
 mq_create_tags <- function(ResourceArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateTags",
@@ -372,6 +378,8 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname mq_create_user
+#'
+#' @aliases mq_create_user
 mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password, Username) {
   op <- new_operation(
     name = "CreateUser",
@@ -417,6 +425,8 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 #' @keywords internal
 #'
 #' @rdname mq_delete_broker
+#'
+#' @aliases mq_delete_broker
 mq_delete_broker <- function(BrokerId) {
   op <- new_operation(
     name = "DeleteBroker",
@@ -461,6 +471,8 @@ mq_delete_broker <- function(BrokerId) {
 #' @keywords internal
 #'
 #' @rdname mq_delete_tags
+#'
+#' @aliases mq_delete_tags
 mq_delete_tags <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "DeleteTags",
@@ -505,6 +517,8 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname mq_delete_user
+#'
+#' @aliases mq_delete_user
 mq_delete_user <- function(BrokerId, Username) {
   op <- new_operation(
     name = "DeleteUser",
@@ -663,6 +677,8 @@ mq_delete_user <- function(BrokerId, Username) {
 #' @keywords internal
 #'
 #' @rdname mq_describe_broker
+#'
+#' @aliases mq_describe_broker
 mq_describe_broker <- function(BrokerId) {
   op <- new_operation(
     name = "DescribeBroker",
@@ -725,6 +741,8 @@ mq_describe_broker <- function(BrokerId) {
 #' @keywords internal
 #'
 #' @rdname mq_describe_broker_engine_types
+#'
+#' @aliases mq_describe_broker_engine_types
 mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeBrokerEngineTypes",
@@ -800,6 +818,8 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname mq_describe_broker_instance_options
+#'
+#' @aliases mq_describe_broker_instance_options
 mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceType = NULL, MaxResults = NULL, NextToken = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "DescribeBrokerInstanceOptions",
@@ -864,6 +884,8 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
 #' @keywords internal
 #'
 #' @rdname mq_describe_configuration
+#'
+#' @aliases mq_describe_configuration
 mq_describe_configuration <- function(ConfigurationId) {
   op <- new_operation(
     name = "DescribeConfiguration",
@@ -919,6 +941,8 @@ mq_describe_configuration <- function(ConfigurationId) {
 #' @keywords internal
 #'
 #' @rdname mq_describe_configuration_revision
+#'
+#' @aliases mq_describe_configuration_revision
 mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRevision) {
   op <- new_operation(
     name = "DescribeConfigurationRevision",
@@ -980,6 +1004,8 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
 #' @keywords internal
 #'
 #' @rdname mq_describe_user
+#'
+#' @aliases mq_describe_user
 mq_describe_user <- function(BrokerId, Username) {
   op <- new_operation(
     name = "DescribeUser",
@@ -1043,6 +1069,8 @@ mq_describe_user <- function(BrokerId, Username) {
 #' @keywords internal
 #'
 #' @rdname mq_list_brokers
+#'
+#' @aliases mq_list_brokers
 mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListBrokers",
@@ -1105,6 +1133,8 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname mq_list_configuration_revisions
+#'
+#' @aliases mq_list_configuration_revisions
 mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConfigurationRevisions",
@@ -1179,6 +1209,8 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname mq_list_configurations
+#'
+#' @aliases mq_list_configurations
 mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConfigurations",
@@ -1226,6 +1258,8 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname mq_list_tags
+#'
+#' @aliases mq_list_tags
 mq_list_tags <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTags",
@@ -1285,6 +1319,8 @@ mq_list_tags <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname mq_list_users
+#'
+#' @aliases mq_list_users
 mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListUsers",
@@ -1325,6 +1361,8 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname mq_reboot_broker
+#'
+#' @aliases mq_reboot_broker
 mq_reboot_broker <- function(BrokerId) {
   op <- new_operation(
     name = "RebootBroker",
@@ -1460,6 +1498,8 @@ mq_reboot_broker <- function(BrokerId) {
 #' @keywords internal
 #'
 #' @rdname mq_update_broker
+#'
+#' @aliases mq_update_broker
 mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
@@ -1528,6 +1568,8 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @keywords internal
 #'
 #' @rdname mq_update_configuration
+#'
+#' @aliases mq_update_configuration
 mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
   op <- new_operation(
     name = "UpdateConfiguration",
@@ -1585,6 +1627,8 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
 #' @keywords internal
 #'
 #' @rdname mq_update_user
+#'
+#' @aliases mq_update_user
 mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password = NULL, Username) {
   op <- new_operation(
     name = "UpdateUser",

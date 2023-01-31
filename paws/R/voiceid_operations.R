@@ -74,6 +74,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname voiceid_create_domain
+#'
+#' @aliases voiceid_create_domain
 voiceid_create_domain <- function(ClientToken = NULL, Description = NULL, Name, ServerSideEncryptionConfiguration, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
@@ -114,6 +116,8 @@ voiceid_create_domain <- function(ClientToken = NULL, Description = NULL, Name, 
 #' @keywords internal
 #'
 #' @rdname voiceid_delete_domain
+#'
+#' @aliases voiceid_delete_domain
 voiceid_delete_domain <- function(DomainId) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -156,6 +160,8 @@ voiceid_delete_domain <- function(DomainId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_delete_fraudster
+#'
+#' @aliases voiceid_delete_fraudster
 voiceid_delete_fraudster <- function(DomainId, FraudsterId) {
   op <- new_operation(
     name = "DeleteFraudster",
@@ -198,6 +204,8 @@ voiceid_delete_fraudster <- function(DomainId, FraudsterId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_delete_speaker
+#'
+#' @aliases voiceid_delete_speaker
 voiceid_delete_speaker <- function(DomainId, SpeakerId) {
   op <- new_operation(
     name = "DeleteSpeaker",
@@ -263,6 +271,8 @@ voiceid_delete_speaker <- function(DomainId, SpeakerId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_describe_domain
+#'
+#' @aliases voiceid_describe_domain
 voiceid_describe_domain <- function(DomainId) {
   op <- new_operation(
     name = "DescribeDomain",
@@ -316,6 +326,8 @@ voiceid_describe_domain <- function(DomainId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_describe_fraudster
+#'
+#' @aliases voiceid_describe_fraudster
 voiceid_describe_fraudster <- function(DomainId, FraudsterId) {
   op <- new_operation(
     name = "DescribeFraudster",
@@ -393,6 +405,8 @@ voiceid_describe_fraudster <- function(DomainId, FraudsterId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_describe_fraudster_registration_job
+#'
+#' @aliases voiceid_describe_fraudster_registration_job
 voiceid_describe_fraudster_registration_job <- function(DomainId, JobId) {
   op <- new_operation(
     name = "DescribeFraudsterRegistrationJob",
@@ -454,6 +468,8 @@ voiceid_describe_fraudster_registration_job <- function(DomainId, JobId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_describe_speaker
+#'
+#' @aliases voiceid_describe_speaker
 voiceid_describe_speaker <- function(DomainId, SpeakerId) {
   op <- new_operation(
     name = "DescribeSpeaker",
@@ -534,6 +550,8 @@ voiceid_describe_speaker <- function(DomainId, SpeakerId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_describe_speaker_enrollment_job
+#'
+#' @aliases voiceid_describe_speaker_enrollment_job
 voiceid_describe_speaker_enrollment_job <- function(DomainId, JobId) {
   op <- new_operation(
     name = "DescribeSpeakerEnrollmentJob",
@@ -625,6 +643,8 @@ voiceid_describe_speaker_enrollment_job <- function(DomainId, JobId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_evaluate_session
+#'
+#' @aliases voiceid_evaluate_session
 voiceid_evaluate_session <- function(DomainId, SessionNameOrId) {
   op <- new_operation(
     name = "EvaluateSession",
@@ -700,6 +720,8 @@ voiceid_evaluate_session <- function(DomainId, SessionNameOrId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_list_domains
+#'
+#' @aliases voiceid_list_domains
 voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -781,6 +803,8 @@ voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname voiceid_list_fraudster_registration_jobs
+#'
+#' @aliases voiceid_list_fraudster_registration_jobs
 voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFraudsterRegistrationJobs",
@@ -862,6 +886,8 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
 #' @keywords internal
 #'
 #' @rdname voiceid_list_speaker_enrollment_jobs
+#'
+#' @aliases voiceid_list_speaker_enrollment_jobs
 voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSpeakerEnrollmentJobs",
@@ -933,6 +959,8 @@ voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, Max
 #' @keywords internal
 #'
 #' @rdname voiceid_list_speakers
+#'
+#' @aliases voiceid_list_speakers
 voiceid_list_speakers <- function(DomainId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSpeakers",
@@ -984,6 +1012,8 @@ voiceid_list_speakers <- function(DomainId, MaxResults = NULL, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname voiceid_list_tags_for_resource
+#'
+#' @aliases voiceid_list_tags_for_resource
 voiceid_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1051,6 +1081,8 @@ voiceid_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname voiceid_opt_out_speaker
+#'
+#' @aliases voiceid_opt_out_speaker
 voiceid_opt_out_speaker <- function(DomainId, SpeakerId) {
   op <- new_operation(
     name = "OptOutSpeaker",
@@ -1159,6 +1191,8 @@ voiceid_opt_out_speaker <- function(DomainId, SpeakerId) {
 #' @keywords internal
 #'
 #' @rdname voiceid_start_fraudster_registration_job
+#'
+#' @aliases voiceid_start_fraudster_registration_job
 voiceid_start_fraudster_registration_job <- function(ClientToken = NULL, DataAccessRoleArn, DomainId, InputDataConfig, JobName = NULL, OutputDataConfig, RegistrationConfig = NULL) {
   op <- new_operation(
     name = "StartFraudsterRegistrationJob",
@@ -1273,6 +1307,8 @@ voiceid_start_fraudster_registration_job <- function(ClientToken = NULL, DataAcc
 #' @keywords internal
 #'
 #' @rdname voiceid_start_speaker_enrollment_job
+#'
+#' @aliases voiceid_start_speaker_enrollment_job
 voiceid_start_speaker_enrollment_job <- function(ClientToken = NULL, DataAccessRoleArn, DomainId, EnrollmentConfig = NULL, InputDataConfig, JobName = NULL, OutputDataConfig) {
   op <- new_operation(
     name = "StartSpeakerEnrollmentJob",
@@ -1320,6 +1356,8 @@ voiceid_start_speaker_enrollment_job <- function(ClientToken = NULL, DataAccessR
 #' @keywords internal
 #'
 #' @rdname voiceid_tag_resource
+#'
+#' @aliases voiceid_tag_resource
 voiceid_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1366,6 +1404,8 @@ voiceid_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname voiceid_untag_resource
+#'
+#' @aliases voiceid_untag_resource
 voiceid_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1446,6 +1486,8 @@ voiceid_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname voiceid_update_domain
+#'
+#' @aliases voiceid_update_domain
 voiceid_update_domain <- function(Description = NULL, DomainId, Name, ServerSideEncryptionConfiguration) {
   op <- new_operation(
     name = "UpdateDomain",

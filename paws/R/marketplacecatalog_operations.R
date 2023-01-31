@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_cancel_change_set
+#'
+#' @aliases marketplacecatalog_cancel_change_set
 marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
   op <- new_operation(
     name = "CancelChangeSet",
@@ -114,6 +116,8 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_describe_change_set
+#'
+#' @aliases marketplacecatalog_describe_change_set
 marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
   op <- new_operation(
     name = "DescribeChangeSet",
@@ -166,6 +170,8 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_describe_entity
+#'
+#' @aliases marketplacecatalog_describe_entity
 marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
   op <- new_operation(
     name = "DescribeEntity",
@@ -254,6 +260,8 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_list_change_sets
+#'
+#' @aliases marketplacecatalog_list_change_sets
 marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListChangeSets",
@@ -333,6 +341,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_list_entities
+#'
+#' @aliases marketplacecatalog_list_entities
 marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntities",
@@ -412,6 +422,8 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' @keywords internal
 #'
 #' @rdname marketplacecatalog_start_change_set
+#'
+#' @aliases marketplacecatalog_start_change_set
 marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "StartChangeSet",

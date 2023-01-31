@@ -101,6 +101,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname backup_create_backup_plan
+#'
+#' @aliases backup_create_backup_plan
 backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, CreatorRequestId = NULL) {
   op <- new_operation(
     name = "CreateBackupPlan",
@@ -207,6 +209,8 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
 #' @keywords internal
 #'
 #' @rdname backup_create_backup_selection
+#'
+#' @aliases backup_create_backup_selection
 backup_create_backup_selection <- function(BackupPlanId, BackupSelection, CreatorRequestId = NULL) {
   op <- new_operation(
     name = "CreateBackupSelection",
@@ -282,6 +286,8 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
 #' @keywords internal
 #'
 #' @rdname backup_create_backup_vault
+#'
+#' @aliases backup_create_backup_vault
 backup_create_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, EncryptionKeyArn = NULL, CreatorRequestId = NULL) {
   op <- new_operation(
     name = "CreateBackupVault",
@@ -372,6 +378,8 @@ backup_create_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, 
 #' @keywords internal
 #'
 #' @rdname backup_create_framework
+#'
+#' @aliases backup_create_framework
 backup_create_framework <- function(FrameworkName, FrameworkDescription = NULL, FrameworkControls, IdempotencyToken = NULL, FrameworkTags = NULL) {
   op <- new_operation(
     name = "CreateFramework",
@@ -468,6 +476,8 @@ backup_create_framework <- function(FrameworkName, FrameworkDescription = NULL, 
 #' @keywords internal
 #'
 #' @rdname backup_create_report_plan
+#'
+#' @aliases backup_create_report_plan
 backup_create_report_plan <- function(ReportPlanName, ReportPlanDescription = NULL, ReportDeliveryChannel, ReportSetting, ReportPlanTags = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "CreateReportPlan",
@@ -521,6 +531,8 @@ backup_create_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
 #' @keywords internal
 #'
 #' @rdname backup_delete_backup_plan
+#'
+#' @aliases backup_delete_backup_plan
 backup_delete_backup_plan <- function(BackupPlanId) {
   op <- new_operation(
     name = "DeleteBackupPlan",
@@ -566,6 +578,8 @@ backup_delete_backup_plan <- function(BackupPlanId) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_backup_selection
+#'
+#' @aliases backup_delete_backup_selection
 backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
   op <- new_operation(
     name = "DeleteBackupSelection",
@@ -610,6 +624,8 @@ backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_backup_vault
+#'
+#' @aliases backup_delete_backup_vault
 backup_delete_backup_vault <- function(BackupVaultName) {
   op <- new_operation(
     name = "DeleteBackupVault",
@@ -653,6 +669,8 @@ backup_delete_backup_vault <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_backup_vault_access_policy
+#'
+#' @aliases backup_delete_backup_vault_access_policy
 backup_delete_backup_vault_access_policy <- function(BackupVaultName) {
   op <- new_operation(
     name = "DeleteBackupVaultAccessPolicy",
@@ -702,6 +720,8 @@ backup_delete_backup_vault_access_policy <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_backup_vault_lock_configuration
+#'
+#' @aliases backup_delete_backup_vault_lock_configuration
 backup_delete_backup_vault_lock_configuration <- function(BackupVaultName) {
   op <- new_operation(
     name = "DeleteBackupVaultLockConfiguration",
@@ -745,6 +765,8 @@ backup_delete_backup_vault_lock_configuration <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_backup_vault_notifications
+#'
+#' @aliases backup_delete_backup_vault_notifications
 backup_delete_backup_vault_notifications <- function(BackupVaultName) {
   op <- new_operation(
     name = "DeleteBackupVaultNotifications",
@@ -785,6 +807,8 @@ backup_delete_backup_vault_notifications <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_framework
+#'
+#' @aliases backup_delete_framework
 backup_delete_framework <- function(FrameworkName) {
   op <- new_operation(
     name = "DeleteFramework",
@@ -836,6 +860,8 @@ backup_delete_framework <- function(FrameworkName) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_recovery_point
+#'
+#' @aliases backup_delete_recovery_point
 backup_delete_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
   op <- new_operation(
     name = "DeleteRecoveryPoint",
@@ -876,6 +902,8 @@ backup_delete_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 #' @keywords internal
 #'
 #' @rdname backup_delete_report_plan
+#'
+#' @aliases backup_delete_report_plan
 backup_delete_report_plan <- function(ReportPlanName) {
   op <- new_operation(
     name = "DeleteReportPlan",
@@ -955,6 +983,8 @@ backup_delete_report_plan <- function(ReportPlanName) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_backup_job
+#'
+#' @aliases backup_describe_backup_job
 backup_describe_backup_job <- function(BackupJobId) {
   op <- new_operation(
     name = "DescribeBackupJob",
@@ -1016,6 +1046,8 @@ backup_describe_backup_job <- function(BackupJobId) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_backup_vault
+#'
+#' @aliases backup_describe_backup_vault
 backup_describe_backup_vault <- function(BackupVaultName) {
   op <- new_operation(
     name = "DescribeBackupVault",
@@ -1086,6 +1118,8 @@ backup_describe_backup_vault <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_copy_job
+#'
+#' @aliases backup_describe_copy_job
 backup_describe_copy_job <- function(CopyJobId) {
   op <- new_operation(
     name = "DescribeCopyJob",
@@ -1161,6 +1195,8 @@ backup_describe_copy_job <- function(CopyJobId) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_framework
+#'
+#' @aliases backup_describe_framework
 backup_describe_framework <- function(FrameworkName) {
   op <- new_operation(
     name = "DescribeFramework",
@@ -1211,6 +1247,8 @@ backup_describe_framework <- function(FrameworkName) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_global_settings
+#'
+#' @aliases backup_describe_global_settings
 backup_describe_global_settings <- function() {
   op <- new_operation(
     name = "DescribeGlobalSettings",
@@ -1265,6 +1303,8 @@ backup_describe_global_settings <- function() {
 #' @keywords internal
 #'
 #' @rdname backup_describe_protected_resource
+#'
+#' @aliases backup_describe_protected_resource
 backup_describe_protected_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "DescribeProtectedResource",
@@ -1358,6 +1398,8 @@ backup_describe_protected_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_recovery_point
+#'
+#' @aliases backup_describe_recovery_point
 backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
   op <- new_operation(
     name = "DescribeRecoveryPoint",
@@ -1408,6 +1450,8 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_region_settings
+#'
+#' @aliases backup_describe_region_settings
 backup_describe_region_settings <- function() {
   op <- new_operation(
     name = "DescribeRegionSettings",
@@ -1475,6 +1519,8 @@ backup_describe_region_settings <- function() {
 #' @keywords internal
 #'
 #' @rdname backup_describe_report_job
+#'
+#' @aliases backup_describe_report_job
 backup_describe_report_job <- function(ReportJobId) {
   op <- new_operation(
     name = "DescribeReportJob",
@@ -1550,6 +1596,8 @@ backup_describe_report_job <- function(ReportJobId) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_report_plan
+#'
+#' @aliases backup_describe_report_plan
 backup_describe_report_plan <- function(ReportPlanName) {
   op <- new_operation(
     name = "DescribeReportPlan",
@@ -1613,6 +1661,8 @@ backup_describe_report_plan <- function(ReportPlanName) {
 #' @keywords internal
 #'
 #' @rdname backup_describe_restore_job
+#'
+#' @aliases backup_describe_restore_job
 backup_describe_restore_job <- function(RestoreJobId) {
   op <- new_operation(
     name = "DescribeRestoreJob",
@@ -1664,6 +1714,8 @@ backup_describe_restore_job <- function(RestoreJobId) {
 #' @keywords internal
 #'
 #' @rdname backup_disassociate_recovery_point
+#'
+#' @aliases backup_disassociate_recovery_point
 backup_disassociate_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
   op <- new_operation(
     name = "DisassociateRecoveryPoint",
@@ -1711,6 +1763,8 @@ backup_disassociate_recovery_point <- function(BackupVaultName, RecoveryPointArn
 #' @keywords internal
 #'
 #' @rdname backup_export_backup_plan_template
+#'
+#' @aliases backup_export_backup_plan_template
 backup_export_backup_plan_template <- function(BackupPlanId) {
   op <- new_operation(
     name = "ExportBackupPlanTemplate",
@@ -1819,6 +1873,8 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
 #' @keywords internal
 #'
 #' @rdname backup_get_backup_plan
+#'
+#' @aliases backup_get_backup_plan
 backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
   op <- new_operation(
     name = "GetBackupPlan",
@@ -1901,6 +1957,8 @@ backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_get_backup_plan_from_json
+#'
+#' @aliases backup_get_backup_plan_from_json
 backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
   op <- new_operation(
     name = "GetBackupPlanFromJSON",
@@ -1983,6 +2041,8 @@ backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
 #' @keywords internal
 #'
 #' @rdname backup_get_backup_plan_from_template
+#'
+#' @aliases backup_get_backup_plan_from_template
 backup_get_backup_plan_from_template <- function(BackupPlanTemplateId) {
   op <- new_operation(
     name = "GetBackupPlanFromTemplate",
@@ -2081,6 +2141,8 @@ backup_get_backup_plan_from_template <- function(BackupPlanTemplateId) {
 #' @keywords internal
 #'
 #' @rdname backup_get_backup_selection
+#'
+#' @aliases backup_get_backup_selection
 backup_get_backup_selection <- function(BackupPlanId, SelectionId) {
   op <- new_operation(
     name = "GetBackupSelection",
@@ -2133,6 +2195,8 @@ backup_get_backup_selection <- function(BackupPlanId, SelectionId) {
 #' @keywords internal
 #'
 #' @rdname backup_get_backup_vault_access_policy
+#'
+#' @aliases backup_get_backup_vault_access_policy
 backup_get_backup_vault_access_policy <- function(BackupVaultName) {
   op <- new_operation(
     name = "GetBackupVaultAccessPolicy",
@@ -2186,6 +2250,8 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_get_backup_vault_notifications
+#'
+#' @aliases backup_get_backup_vault_notifications
 backup_get_backup_vault_notifications <- function(BackupVaultName) {
   op <- new_operation(
     name = "GetBackupVaultNotifications",
@@ -2245,6 +2311,8 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
 #' @keywords internal
 #'
 #' @rdname backup_get_recovery_point_restore_metadata
+#'
+#' @aliases backup_get_recovery_point_restore_metadata
 backup_get_recovery_point_restore_metadata <- function(BackupVaultName, RecoveryPointArn) {
   op <- new_operation(
     name = "GetRecoveryPointRestoreMetadata",
@@ -2287,6 +2355,8 @@ backup_get_recovery_point_restore_metadata <- function(BackupVaultName, Recovery
 #' @keywords internal
 #'
 #' @rdname backup_get_supported_resource_types
+#'
+#' @aliases backup_get_supported_resource_types
 backup_get_supported_resource_types <- function() {
   op <- new_operation(
     name = "GetSupportedResourceTypes",
@@ -2443,6 +2513,8 @@ backup_get_supported_resource_types <- function() {
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_jobs
+#'
+#' @aliases backup_list_backup_jobs
 backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByAccountId = NULL, ByCompleteAfter = NULL, ByCompleteBefore = NULL) {
   op <- new_operation(
     name = "ListBackupJobs",
@@ -2501,6 +2573,8 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_plan_templates
+#'
+#' @aliases backup_list_backup_plan_templates
 backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListBackupPlanTemplates",
@@ -2583,6 +2657,8 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_plan_versions
+#'
+#' @aliases backup_list_backup_plan_versions
 backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListBackupPlanVersions",
@@ -2665,6 +2741,8 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_plans
+#'
+#' @aliases backup_list_backup_plans
 backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, IncludeDeleted = NULL) {
   op <- new_operation(
     name = "ListBackupPlans",
@@ -2731,6 +2809,8 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_selections
+#'
+#' @aliases backup_list_backup_selections
 backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListBackupSelections",
@@ -2801,6 +2881,8 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_vaults
+#'
+#' @aliases backup_list_backup_vaults
 backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListBackupVaults",
@@ -2937,6 +3019,8 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_list_copy_jobs
+#'
+#' @aliases backup_list_copy_jobs
 backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByDestinationVaultArn = NULL, ByAccountId = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL) {
   op <- new_operation(
     name = "ListCopyJobs",
@@ -3001,6 +3085,8 @@ backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourc
 #' @keywords internal
 #'
 #' @rdname backup_list_frameworks
+#'
+#' @aliases backup_list_frameworks
 backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFrameworks",
@@ -3064,6 +3150,8 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_list_protected_resources
+#'
+#' @aliases backup_list_protected_resources
 backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListProtectedResources",
@@ -3186,6 +3274,8 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' @keywords internal
 #'
 #' @rdname backup_list_recovery_points_by_backup_vault
+#'
+#' @aliases backup_list_recovery_points_by_backup_vault
 backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByResourceType = NULL, ByBackupPlanId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL) {
   op <- new_operation(
     name = "ListRecoveryPointsByBackupVault",
@@ -3260,6 +3350,8 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextTok
 #' @keywords internal
 #'
 #' @rdname backup_list_recovery_points_by_resource
+#'
+#' @aliases backup_list_recovery_points_by_resource
 backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRecoveryPointsByResource",
@@ -3353,6 +3445,8 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname backup_list_report_jobs
+#'
+#' @aliases backup_list_report_jobs
 backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = NULL, ByCreationAfter = NULL, ByStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListReportJobs",
@@ -3436,6 +3530,8 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
 #' @keywords internal
 #'
 #' @rdname backup_list_report_plans
+#'
+#' @aliases backup_list_report_plans
 backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListReportPlans",
@@ -3534,6 +3630,8 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_list_restore_jobs
+#'
+#' @aliases backup_list_restore_jobs
 backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAccountId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByStatus = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL) {
   op <- new_operation(
     name = "ListRestoreJobs",
@@ -3601,6 +3699,8 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
 #' @keywords internal
 #'
 #' @rdname backup_list_tags
+#'
+#' @aliases backup_list_tags
 backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -3649,6 +3749,8 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_put_backup_vault_access_policy
+#'
+#' @aliases backup_put_backup_vault_access_policy
 backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL) {
   op <- new_operation(
     name = "PutBackupVaultAccessPolicy",
@@ -3759,6 +3861,8 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #' @keywords internal
 #'
 #' @rdname backup_put_backup_vault_lock_configuration
+#'
+#' @aliases backup_put_backup_vault_lock_configuration
 backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinRetentionDays = NULL, MaxRetentionDays = NULL, ChangeableForDays = NULL) {
   op <- new_operation(
     name = "PutBackupVaultLockConfiguration",
@@ -3832,6 +3936,8 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
 #' @keywords internal
 #'
 #' @rdname backup_put_backup_vault_notifications
+#'
+#' @aliases backup_put_backup_vault_notifications
 backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, BackupVaultEvents) {
   op <- new_operation(
     name = "PutBackupVaultNotifications",
@@ -3942,6 +4048,8 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' @keywords internal
 #'
 #' @rdname backup_start_backup_job
+#'
+#' @aliases backup_start_backup_job
 backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, IdempotencyToken = NULL, StartWindowMinutes = NULL, CompleteWindowMinutes = NULL, Lifecycle = NULL, RecoveryPointTags = NULL, BackupOptions = NULL) {
   op <- new_operation(
     name = "StartBackupJob",
@@ -4017,6 +4125,8 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 #' @keywords internal
 #'
 #' @rdname backup_start_copy_job
+#'
+#' @aliases backup_start_copy_job
 backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, DestinationBackupVaultArn, IamRoleArn, IdempotencyToken = NULL, Lifecycle = NULL) {
   op <- new_operation(
     name = "StartCopyJob",
@@ -4067,6 +4177,8 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 #' @keywords internal
 #'
 #' @rdname backup_start_report_job
+#'
+#' @aliases backup_start_report_job
 backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "StartReportJob",
@@ -4193,6 +4305,8 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_start_restore_job
+#'
+#' @aliases backup_start_restore_job
 backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NULL, IdempotencyToken = NULL, ResourceType = NULL) {
   op <- new_operation(
     name = "StartRestoreJob",
@@ -4233,6 +4347,8 @@ backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NU
 #' @keywords internal
 #'
 #' @rdname backup_stop_backup_job
+#'
+#' @aliases backup_stop_backup_job
 backup_stop_backup_job <- function(BackupJobId) {
   op <- new_operation(
     name = "StopBackupJob",
@@ -4282,6 +4398,8 @@ backup_stop_backup_job <- function(BackupJobId) {
 #' @keywords internal
 #'
 #' @rdname backup_tag_resource
+#'
+#' @aliases backup_tag_resource
 backup_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4330,6 +4448,8 @@ backup_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname backup_untag_resource
+#'
+#' @aliases backup_untag_resource
 backup_untag_resource <- function(ResourceArn, TagKeyList) {
   op <- new_operation(
     name = "UntagResource",
@@ -4430,6 +4550,8 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
 #' @keywords internal
 #'
 #' @rdname backup_update_backup_plan
+#'
+#' @aliases backup_update_backup_plan
 backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
   op <- new_operation(
     name = "UpdateBackupPlan",
@@ -4516,6 +4638,8 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 #' @keywords internal
 #'
 #' @rdname backup_update_framework
+#'
+#' @aliases backup_update_framework
 backup_update_framework <- function(FrameworkName, FrameworkDescription = NULL, FrameworkControls = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "UpdateFramework",
@@ -4564,6 +4688,8 @@ backup_update_framework <- function(FrameworkName, FrameworkDescription = NULL, 
 #' @keywords internal
 #'
 #' @rdname backup_update_global_settings
+#'
+#' @aliases backup_update_global_settings
 backup_update_global_settings <- function(GlobalSettings = NULL) {
   op <- new_operation(
     name = "UpdateGlobalSettings",
@@ -4661,6 +4787,8 @@ backup_update_global_settings <- function(GlobalSettings = NULL) {
 #' @keywords internal
 #'
 #' @rdname backup_update_recovery_point_lifecycle
+#'
+#' @aliases backup_update_recovery_point_lifecycle
 backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPointArn, Lifecycle = NULL) {
   op <- new_operation(
     name = "UpdateRecoveryPointLifecycle",
@@ -4720,6 +4848,8 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
 #' @keywords internal
 #'
 #' @rdname backup_update_region_settings
+#'
+#' @aliases backup_update_region_settings
 backup_update_region_settings <- function(ResourceTypeOptInPreference = NULL, ResourceTypeManagementPreference = NULL) {
   op <- new_operation(
     name = "UpdateRegionSettings",
@@ -4807,6 +4937,8 @@ backup_update_region_settings <- function(ResourceTypeOptInPreference = NULL, Re
 #' @keywords internal
 #'
 #' @rdname backup_update_report_plan
+#'
+#' @aliases backup_update_report_plan
 backup_update_report_plan <- function(ReportPlanName, ReportPlanDescription = NULL, ReportDeliveryChannel = NULL, ReportSetting = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "UpdateReportPlan",

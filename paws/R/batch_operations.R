@@ -44,6 +44,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname batch_cancel_job
+#'
+#' @aliases batch_cancel_job
 batch_cancel_job <- function(jobId, reason) {
   op <- new_operation(
     name = "CancelJob",
@@ -367,6 +369,8 @@ batch_cancel_job <- function(jobId, reason) {
 #' @keywords internal
 #'
 #' @rdname batch_create_compute_environment
+#'
+#' @aliases batch_create_compute_environment
 batch_create_compute_environment <- function(computeEnvironmentName, type, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateComputeEnvironment",
@@ -508,6 +512,8 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 #' @keywords internal
 #'
 #' @rdname batch_create_job_queue
+#'
+#' @aliases batch_create_job_queue
 batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyArn = NULL, priority, computeEnvironmentOrder, tags = NULL) {
   op <- new_operation(
     name = "CreateJobQueue",
@@ -579,6 +585,8 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 #' @keywords internal
 #'
 #' @rdname batch_create_scheduling_policy
+#'
+#' @aliases batch_create_scheduling_policy
 batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSchedulingPolicy",
@@ -637,6 +645,8 @@ batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = 
 #' @keywords internal
 #'
 #' @rdname batch_delete_compute_environment
+#'
+#' @aliases batch_delete_compute_environment
 batch_delete_compute_environment <- function(computeEnvironment) {
   op <- new_operation(
     name = "DeleteComputeEnvironment",
@@ -693,6 +703,8 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 #' @keywords internal
 #'
 #' @rdname batch_delete_job_queue
+#'
+#' @aliases batch_delete_job_queue
 batch_delete_job_queue <- function(jobQueue) {
   op <- new_operation(
     name = "DeleteJobQueue",
@@ -735,6 +747,8 @@ batch_delete_job_queue <- function(jobQueue) {
 #' @keywords internal
 #'
 #' @rdname batch_delete_scheduling_policy
+#'
+#' @aliases batch_delete_scheduling_policy
 batch_delete_scheduling_policy <- function(arn) {
   op <- new_operation(
     name = "DeleteSchedulingPolicy",
@@ -785,6 +799,8 @@ batch_delete_scheduling_policy <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname batch_deregister_job_definition
+#'
+#' @aliases batch_deregister_job_definition
 batch_deregister_job_definition <- function(jobDefinition) {
   op <- new_operation(
     name = "DeregisterJobDefinition",
@@ -928,6 +944,8 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #' @keywords internal
 #'
 #' @rdname batch_describe_compute_environments
+#'
+#' @aliases batch_describe_compute_environments
 batch_describe_compute_environments <- function(computeEnvironments = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeComputeEnvironments",
@@ -1271,6 +1289,8 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 #' @keywords internal
 #'
 #' @rdname batch_describe_job_definitions
+#'
+#' @aliases batch_describe_job_definitions
 batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = NULL, jobDefinitionName = NULL, status = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeJobDefinitions",
@@ -1372,6 +1392,8 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname batch_describe_job_queues
+#'
+#' @aliases batch_describe_job_queues
 batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeJobQueues",
@@ -1739,6 +1761,8 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 #' @keywords internal
 #'
 #' @rdname batch_describe_jobs
+#'
+#' @aliases batch_describe_jobs
 batch_describe_jobs <- function(jobs) {
   op <- new_operation(
     name = "DescribeJobs",
@@ -1805,6 +1829,8 @@ batch_describe_jobs <- function(jobs) {
 #' @keywords internal
 #'
 #' @rdname batch_describe_scheduling_policies
+#'
+#' @aliases batch_describe_scheduling_policies
 batch_describe_scheduling_policies <- function(arns) {
   op <- new_operation(
     name = "DescribeSchedulingPolicies",
@@ -1988,6 +2014,8 @@ batch_describe_scheduling_policies <- function(arns) {
 #' @keywords internal
 #'
 #' @rdname batch_list_jobs
+#'
+#' @aliases batch_list_jobs
 batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId = NULL, jobStatus = NULL, maxResults = NULL, nextToken = NULL, filters = NULL) {
   op <- new_operation(
     name = "ListJobs",
@@ -2060,6 +2088,8 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 #' @keywords internal
 #'
 #' @rdname batch_list_scheduling_policies
+#'
+#' @aliases batch_list_scheduling_policies
 batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListSchedulingPolicies",
@@ -2122,6 +2152,8 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname batch_list_tags_for_resource
+#'
+#' @aliases batch_list_tags_for_resource
 batch_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2536,6 +2568,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname batch_register_job_definition
+#'
+#' @aliases batch_register_job_definition
 batch_register_job_definition <- function(jobDefinitionName, type, parameters = NULL, schedulingPriority = NULL, containerProperties = NULL, nodeProperties = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL, platformCapabilities = NULL) {
   op <- new_operation(
     name = "RegisterJobDefinition",
@@ -2768,6 +2802,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @keywords internal
 #'
 #' @rdname batch_submit_job
+#'
+#' @aliases batch_submit_job
 batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, schedulingPriorityOverride = NULL, arrayProperties = NULL, dependsOn = NULL, jobDefinition, parameters = NULL, containerOverrides = NULL, nodeOverrides = NULL, retryStrategy = NULL, propagateTags = NULL, timeout = NULL, tags = NULL) {
   op <- new_operation(
     name = "SubmitJob",
@@ -2837,6 +2873,8 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
 #' @keywords internal
 #'
 #' @rdname batch_tag_resource
+#'
+#' @aliases batch_tag_resource
 batch_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2894,6 +2932,8 @@ batch_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname batch_terminate_job
+#'
+#' @aliases batch_terminate_job
 batch_terminate_job <- function(jobId, reason) {
   op <- new_operation(
     name = "TerminateJob",
@@ -2952,6 +2992,8 @@ batch_terminate_job <- function(jobId, reason) {
 #' @keywords internal
 #'
 #' @rdname batch_untag_resource
+#'
+#' @aliases batch_untag_resource
 batch_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3109,6 +3151,8 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname batch_update_compute_environment
+#'
+#' @aliases batch_update_compute_environment
 batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL) {
   op <- new_operation(
     name = "UpdateComputeEnvironment",
@@ -3203,6 +3247,8 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
 #' @keywords internal
 #'
 #' @rdname batch_update_job_queue
+#'
+#' @aliases batch_update_job_queue
 batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn = NULL, priority = NULL, computeEnvironmentOrder = NULL) {
   op <- new_operation(
     name = "UpdateJobQueue",
@@ -3254,6 +3300,8 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
 #' @keywords internal
 #'
 #' @rdname batch_update_scheduling_policy
+#'
+#' @aliases batch_update_scheduling_policy
 batch_update_scheduling_policy <- function(arn, fairsharePolicy = NULL) {
   op <- new_operation(
     name = "UpdateSchedulingPolicy",

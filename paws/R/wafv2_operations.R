@@ -68,6 +68,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname wafv2_associate_web_acl
+#'
+#' @aliases wafv2_associate_web_acl
 wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
   op <- new_operation(
     name = "AssociateWebACL",
@@ -658,6 +660,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_check_capacity
+#'
+#' @aliases wafv2_check_capacity
 wafv2_check_capacity <- function(Scope, Rules) {
   op <- new_operation(
     name = "CheckCapacity",
@@ -779,6 +783,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' @keywords internal
 #'
 #' @rdname wafv2_create_ip_set
+#'
+#' @aliases wafv2_create_ip_set
 wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersion, Addresses, Tags = NULL) {
   op <- new_operation(
     name = "CreateIPSet",
@@ -864,6 +870,8 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' @keywords internal
 #'
 #' @rdname wafv2_create_regex_pattern_set
+#'
+#' @aliases wafv2_create_regex_pattern_set
 wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, RegularExpressionList, Tags = NULL) {
   op <- new_operation(
     name = "CreateRegexPatternSet",
@@ -1514,6 +1522,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @keywords internal
 #'
 #' @rdname wafv2_create_rule_group
+#'
+#' @aliases wafv2_create_rule_group
 wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
@@ -2188,6 +2198,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @keywords internal
 #'
 #' @rdname wafv2_create_web_acl
+#'
+#' @aliases wafv2_create_web_acl
 wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
@@ -2247,6 +2259,8 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_firewall_manager_rule_groups
+#'
+#' @aliases wafv2_delete_firewall_manager_rule_groups
 wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken) {
   op <- new_operation(
     name = "DeleteFirewallManagerRuleGroups",
@@ -2314,6 +2328,8 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_ip_set
+#'
+#' @aliases wafv2_delete_ip_set
 wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
   op <- new_operation(
     name = "DeleteIPSet",
@@ -2355,6 +2371,8 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_logging_configuration
+#'
+#' @aliases wafv2_delete_logging_configuration
 wafv2_delete_logging_configuration <- function(ResourceArn) {
   op <- new_operation(
     name = "DeleteLoggingConfiguration",
@@ -2400,6 +2418,8 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_permission_policy
+#'
+#' @aliases wafv2_delete_permission_policy
 wafv2_delete_permission_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "DeletePermissionPolicy",
@@ -2467,6 +2487,8 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_regex_pattern_set
+#'
+#' @aliases wafv2_delete_regex_pattern_set
 wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
   op <- new_operation(
     name = "DeleteRegexPatternSet",
@@ -2534,6 +2556,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_rule_group
+#'
+#' @aliases wafv2_delete_rule_group
 wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
   op <- new_operation(
     name = "DeleteRuleGroup",
@@ -2626,6 +2650,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' @keywords internal
 #'
 #' @rdname wafv2_delete_web_acl
+#'
+#' @aliases wafv2_delete_web_acl
 wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
   op <- new_operation(
     name = "DeleteWebACL",
@@ -2756,6 +2782,8 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' @keywords internal
 #'
 #' @rdname wafv2_describe_managed_rule_group
+#'
+#' @aliases wafv2_describe_managed_rule_group
 wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionName = NULL) {
   op <- new_operation(
     name = "DescribeManagedRuleGroup",
@@ -2822,6 +2850,8 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' @keywords internal
 #'
 #' @rdname wafv2_disassociate_web_acl
+#'
+#' @aliases wafv2_disassociate_web_acl
 wafv2_disassociate_web_acl <- function(ResourceArn) {
   op <- new_operation(
     name = "DisassociateWebACL",
@@ -2878,6 +2908,8 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_generate_mobile_sdk_release_url
+#'
+#' @aliases wafv2_generate_mobile_sdk_release_url
 wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
   op <- new_operation(
     name = "GenerateMobileSdkReleaseUrl",
@@ -2951,6 +2983,8 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_ip_set
+#'
+#' @aliases wafv2_get_ip_set
 wafv2_get_ip_set <- function(Name, Scope, Id) {
   op <- new_operation(
     name = "GetIPSet",
@@ -3076,6 +3110,8 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_logging_configuration
+#'
+#' @aliases wafv2_get_logging_configuration
 wafv2_get_logging_configuration <- function(ResourceArn) {
   op <- new_operation(
     name = "GetLoggingConfiguration",
@@ -3178,6 +3214,8 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_managed_rule_set
+#'
+#' @aliases wafv2_get_managed_rule_set
 wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
   op <- new_operation(
     name = "GetManagedRuleSet",
@@ -3246,6 +3284,8 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_mobile_sdk_release
+#'
+#' @aliases wafv2_get_mobile_sdk_release
 wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
   op <- new_operation(
     name = "GetMobileSdkRelease",
@@ -3294,6 +3334,8 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_permission_policy
+#'
+#' @aliases wafv2_get_permission_policy
 wafv2_get_permission_policy <- function(ResourceArn) {
   op <- new_operation(
     name = "GetPermissionPolicy",
@@ -3395,6 +3437,8 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_rate_based_statement_managed_keys
+#'
+#' @aliases wafv2_get_rate_based_statement_managed_keys
 wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebACLId, RuleGroupRuleName = NULL, RuleName) {
   op <- new_operation(
     name = "GetRateBasedStatementManagedKeys",
@@ -3469,6 +3513,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' @keywords internal
 #'
 #' @rdname wafv2_get_regex_pattern_set
+#'
+#' @aliases wafv2_get_regex_pattern_set
 wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
   op <- new_operation(
     name = "GetRegexPatternSet",
@@ -4084,6 +4130,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_rule_group
+#'
+#' @aliases wafv2_get_rule_group
 wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NULL) {
   op <- new_operation(
     name = "GetRuleGroup",
@@ -4231,6 +4279,8 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #' @keywords internal
 #'
 #' @rdname wafv2_get_sampled_requests
+#'
+#' @aliases wafv2_get_sampled_requests
 wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWindow, MaxItems) {
   op <- new_operation(
     name = "GetSampledRequests",
@@ -5819,6 +5869,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' @keywords internal
 #'
 #' @rdname wafv2_get_web_acl
+#'
+#' @aliases wafv2_get_web_acl
 wafv2_get_web_acl <- function(Name, Scope, Id) {
   op <- new_operation(
     name = "GetWebACL",
@@ -7402,6 +7454,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' @keywords internal
 #'
 #' @rdname wafv2_get_web_acl_for_resource
+#'
+#' @aliases wafv2_get_web_acl_for_resource
 wafv2_get_web_acl_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "GetWebACLForResource",
@@ -7486,6 +7540,8 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname wafv2_list_available_managed_rule_group_versions
+#'
+#' @aliases wafv2_list_available_managed_rule_group_versions
 wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListAvailableManagedRuleGroupVersions",
@@ -7564,6 +7620,8 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #' @keywords internal
 #'
 #' @rdname wafv2_list_available_managed_rule_groups
+#'
+#' @aliases wafv2_list_available_managed_rule_groups
 wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListAvailableManagedRuleGroups",
@@ -7641,6 +7699,8 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' @keywords internal
 #'
 #' @rdname wafv2_list_ip_sets
+#'
+#' @aliases wafv2_list_ip_sets
 wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListIPSets",
@@ -7789,6 +7849,8 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafv2_list_logging_configurations
+#'
+#' @aliases wafv2_list_logging_configurations
 wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListLoggingConfigurations",
@@ -7877,6 +7939,8 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #' @keywords internal
 #'
 #' @rdname wafv2_list_managed_rule_sets
+#'
+#' @aliases wafv2_list_managed_rule_sets
 wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListManagedRuleSets",
@@ -7949,6 +8013,8 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
 #' @keywords internal
 #'
 #' @rdname wafv2_list_mobile_sdk_releases
+#'
+#' @aliases wafv2_list_mobile_sdk_releases
 wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListMobileSdkReleases",
@@ -8026,6 +8092,8 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #' @keywords internal
 #'
 #' @rdname wafv2_list_regex_pattern_sets
+#'
+#' @aliases wafv2_list_regex_pattern_sets
 wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRegexPatternSets",
@@ -8082,6 +8150,8 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' @keywords internal
 #'
 #' @rdname wafv2_list_resources_for_web_acl
+#'
+#' @aliases wafv2_list_resources_for_web_acl
 wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
   op <- new_operation(
     name = "ListResourcesForWebACL",
@@ -8159,6 +8229,8 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafv2_list_rule_groups
+#'
+#' @aliases wafv2_list_rule_groups
 wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListRuleGroups",
@@ -8232,6 +8304,8 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafv2_list_tags_for_resource
+#'
+#' @aliases wafv2_list_tags_for_resource
 wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -8309,6 +8383,8 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' @keywords internal
 #'
 #' @rdname wafv2_list_web_ac_ls
+#'
+#' @aliases wafv2_list_web_ac_ls
 wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListWebACLs",
@@ -8552,6 +8628,8 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname wafv2_put_logging_configuration
+#'
+#' @aliases wafv2_put_logging_configuration
 wafv2_put_logging_configuration <- function(LoggingConfiguration) {
   op <- new_operation(
     name = "PutLoggingConfiguration",
@@ -8666,6 +8744,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' @keywords internal
 #'
 #' @rdname wafv2_put_managed_rule_set_versions
+#'
+#' @aliases wafv2_put_managed_rule_set_versions
 wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, RecommendedVersion = NULL, VersionsToPublish = NULL) {
   op <- new_operation(
     name = "PutManagedRuleSetVersions",
@@ -8742,6 +8822,8 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 #' @keywords internal
 #'
 #' @rdname wafv2_put_permission_policy
+#'
+#' @aliases wafv2_put_permission_policy
 wafv2_put_permission_policy <- function(ResourceArn, Policy) {
   op <- new_operation(
     name = "PutPermissionPolicy",
@@ -8798,6 +8880,8 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 #' @keywords internal
 #'
 #' @rdname wafv2_tag_resource
+#'
+#' @aliases wafv2_tag_resource
 wafv2_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -8847,6 +8931,8 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname wafv2_untag_resource
+#'
+#' @aliases wafv2_untag_resource
 wafv2_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -8980,6 +9066,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname wafv2_update_ip_set
+#'
+#' @aliases wafv2_update_ip_set
 wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, LockToken) {
   op <- new_operation(
     name = "UpdateIPSet",
@@ -9086,6 +9174,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' @keywords internal
 #'
 #' @rdname wafv2_update_managed_rule_set_version_expiry_date
+#'
+#' @aliases wafv2_update_managed_rule_set_version_expiry_date
 wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, LockToken, VersionToExpire, ExpiryTimestamp) {
   op <- new_operation(
     name = "UpdateManagedRuleSetVersionExpiryDate",
@@ -9188,6 +9278,8 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' @keywords internal
 #'
 #' @rdname wafv2_update_regex_pattern_set
+#'
+#' @aliases wafv2_update_regex_pattern_set
 wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, RegularExpressionList, LockToken) {
   op <- new_operation(
     name = "UpdateRegexPatternSet",
@@ -9843,6 +9935,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @keywords internal
 #'
 #' @rdname wafv2_update_rule_group
+#'
+#' @aliases wafv2_update_rule_group
 wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
@@ -10539,6 +10633,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @keywords internal
 #'
 #' @rdname wafv2_update_web_acl
+#'
+#' @aliases wafv2_update_web_acl
 wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",

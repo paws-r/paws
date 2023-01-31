@@ -54,7 +54,9 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname route53domains_accept_domain_transfer_from_another_aws_account
+#' @rdname route53domains_accep_domai_trans_from_anoth_aws_accou
+#'
+#' @aliases route53domains_accept_domain_transfer_from_another_aws_account
 route53domains_accept_domain_transfer_from_another_aws_account <- function(DomainName, Password) {
   op <- new_operation(
     name = "AcceptDomainTransferFromAnotherAwsAccount",
@@ -116,6 +118,8 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 #' @keywords internal
 #'
 #' @rdname route53domains_cancel_domain_transfer_to_another_aws_account
+#'
+#' @aliases route53domains_cancel_domain_transfer_to_another_aws_account
 route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainName) {
   op <- new_operation(
     name = "CancelDomainTransferToAnotherAwsAccount",
@@ -190,6 +194,8 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' @keywords internal
 #'
 #' @rdname route53domains_check_domain_availability
+#'
+#' @aliases route53domains_check_domain_availability
 route53domains_check_domain_availability <- function(DomainName, IdnLangCode = NULL) {
   op <- new_operation(
     name = "CheckDomainAvailability",
@@ -258,6 +264,8 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' @keywords internal
 #'
 #' @rdname route53domains_check_domain_transferability
+#'
+#' @aliases route53domains_check_domain_transferability
 route53domains_check_domain_transferability <- function(DomainName, AuthCode = NULL) {
   op <- new_operation(
     name = "CheckDomainTransferability",
@@ -321,6 +329,8 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 #' @keywords internal
 #'
 #' @rdname route53domains_delete_domain
+#'
+#' @aliases route53domains_delete_domain
 route53domains_delete_domain <- function(DomainName) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -368,6 +378,8 @@ route53domains_delete_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_delete_tags_for_domain
+#'
+#' @aliases route53domains_delete_tags_for_domain
 route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
   op <- new_operation(
     name = "DeleteTagsForDomain",
@@ -410,6 +422,8 @@ route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
 #' @keywords internal
 #'
 #' @rdname route53domains_disable_domain_auto_renew
+#'
+#' @aliases route53domains_disable_domain_auto_renew
 route53domains_disable_domain_auto_renew <- function(DomainName) {
   op <- new_operation(
     name = "DisableDomainAutoRenew",
@@ -462,6 +476,8 @@ route53domains_disable_domain_auto_renew <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_disable_domain_transfer_lock
+#'
+#' @aliases route53domains_disable_domain_transfer_lock
 route53domains_disable_domain_transfer_lock <- function(DomainName) {
   op <- new_operation(
     name = "DisableDomainTransferLock",
@@ -514,6 +530,8 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_enable_domain_auto_renew
+#'
+#' @aliases route53domains_enable_domain_auto_renew
 route53domains_enable_domain_auto_renew <- function(DomainName) {
   op <- new_operation(
     name = "EnableDomainAutoRenew",
@@ -564,6 +582,8 @@ route53domains_enable_domain_auto_renew <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_enable_domain_transfer_lock
+#'
+#' @aliases route53domains_enable_domain_transfer_lock
 route53domains_enable_domain_transfer_lock <- function(DomainName) {
   op <- new_operation(
     name = "EnableDomainTransferLock",
@@ -621,6 +641,8 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_get_contact_reachability_status
+#'
+#' @aliases route53domains_get_contact_reachability_status
 route53domains_get_contact_reachability_status <- function(domainName = NULL) {
   op <- new_operation(
     name = "GetContactReachabilityStatus",
@@ -764,6 +786,8 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #' @keywords internal
 #'
 #' @rdname route53domains_get_domain_detail
+#'
+#' @aliases route53domains_get_domain_detail
 route53domains_get_domain_detail <- function(DomainName) {
   op <- new_operation(
     name = "GetDomainDetail",
@@ -849,6 +873,8 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_get_domain_suggestions
+#'
+#' @aliases route53domains_get_domain_suggestions
 route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, OnlyAvailable) {
   op <- new_operation(
     name = "GetDomainSuggestions",
@@ -905,6 +931,8 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #' @keywords internal
 #'
 #' @rdname route53domains_get_operation_detail
+#'
+#' @aliases route53domains_get_operation_detail
 route53domains_get_operation_detail <- function(OperationId) {
   op <- new_operation(
     name = "GetOperationDetail",
@@ -996,6 +1024,8 @@ route53domains_get_operation_detail <- function(OperationId) {
 #' @keywords internal
 #'
 #' @rdname route53domains_list_domains
+#'
+#' @aliases route53domains_list_domains
 route53domains_list_domains <- function(FilterConditions = NULL, SortCondition = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -1073,6 +1103,8 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @keywords internal
 #'
 #' @rdname route53domains_list_operations
+#'
+#' @aliases route53domains_list_operations
 route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListOperations",
@@ -1173,6 +1205,8 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
 #' @keywords internal
 #'
 #' @rdname route53domains_list_prices
+#'
+#' @aliases route53domains_list_prices
 route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListPrices",
@@ -1228,6 +1262,8 @@ route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NUL
 #' @keywords internal
 #'
 #' @rdname route53domains_list_tags_for_domain
+#'
+#' @aliases route53domains_list_tags_for_domain
 route53domains_list_tags_for_domain <- function(DomainName) {
   op <- new_operation(
     name = "ListTagsForDomain",
@@ -1458,6 +1494,8 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_register_domain
+#'
+#' @aliases route53domains_register_domain
 route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL) {
   op <- new_operation(
     name = "RegisterDomain",
@@ -1517,7 +1555,9 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #'
 #' @keywords internal
 #'
-#' @rdname route53domains_reject_domain_transfer_from_another_aws_account
+#' @rdname route53domains_rejec_domai_trans_from_anoth_aws_accou
+#'
+#' @aliases route53domains_reject_domain_transfer_from_another_aws_account
 route53domains_reject_domain_transfer_from_another_aws_account <- function(DomainName) {
   op <- new_operation(
     name = "RejectDomainTransferFromAnotherAwsAccount",
@@ -1586,6 +1626,8 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' @keywords internal
 #'
 #' @rdname route53domains_renew_domain
+#'
+#' @aliases route53domains_renew_domain
 route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, CurrentExpiryYear) {
   op <- new_operation(
     name = "RenewDomain",
@@ -1640,6 +1682,8 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
 #' @keywords internal
 #'
 #' @rdname route53domains_resend_contact_reachability_email
+#'
+#' @aliases route53domains_resend_contact_reachability_email
 route53domains_resend_contact_reachability_email <- function(domainName = NULL) {
   op <- new_operation(
     name = "ResendContactReachabilityEmail",
@@ -1686,6 +1730,8 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 #' @keywords internal
 #'
 #' @rdname route53domains_retrieve_domain_auth_code
+#'
+#' @aliases route53domains_retrieve_domain_auth_code
 route53domains_retrieve_domain_auth_code <- function(DomainName) {
   op <- new_operation(
     name = "RetrieveDomainAuthCode",
@@ -1919,6 +1965,8 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname route53domains_transfer_domain
+#'
+#' @aliases route53domains_transfer_domain
 route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, DurationInYears, Nameservers = NULL, AuthCode = NULL, AutoRenew = NULL, AdminContact, RegistrantContact, TechContact, PrivacyProtectAdminContact = NULL, PrivacyProtectRegistrantContact = NULL, PrivacyProtectTechContact = NULL) {
   op <- new_operation(
     name = "TransferDomain",
@@ -2000,6 +2048,8 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' @keywords internal
 #'
 #' @rdname route53domains_transfer_domain_to_another_aws_account
+#'
+#' @aliases route53domains_transfer_domain_to_another_aws_account
 route53domains_transfer_domain_to_another_aws_account <- function(DomainName, AccountId) {
   op <- new_operation(
     name = "TransferDomainToAnotherAwsAccount",
@@ -2119,6 +2169,8 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @keywords internal
 #'
 #' @rdname route53domains_update_domain_contact
+#'
+#' @aliases route53domains_update_domain_contact
 route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL, RegistrantContact = NULL, TechContact = NULL) {
   op <- new_operation(
     name = "UpdateDomainContact",
@@ -2220,6 +2272,8 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' @keywords internal
 #'
 #' @rdname route53domains_update_domain_contact_privacy
+#'
+#' @aliases route53domains_update_domain_contact_privacy
 route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivacy = NULL, RegistrantPrivacy = NULL, TechPrivacy = NULL) {
   op <- new_operation(
     name = "UpdateDomainContactPrivacy",
@@ -2286,6 +2340,8 @@ route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivac
 #' @keywords internal
 #'
 #' @rdname route53domains_update_domain_nameservers
+#'
+#' @aliases route53domains_update_domain_nameservers
 route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NULL, Nameservers) {
   op <- new_operation(
     name = "UpdateDomainNameservers",
@@ -2338,6 +2394,8 @@ route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NUL
 #' @keywords internal
 #'
 #' @rdname route53domains_update_tags_for_domain
+#'
+#' @aliases route53domains_update_tags_for_domain
 route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NULL) {
   op <- new_operation(
     name = "UpdateTagsForDomain",
@@ -2421,6 +2479,8 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #' @keywords internal
 #'
 #' @rdname route53domains_view_billing
+#'
+#' @aliases route53domains_view_billing
 route53domains_view_billing <- function(Start = NULL, End = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ViewBilling",

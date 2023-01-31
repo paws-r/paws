@@ -15,7 +15,7 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_accept_inbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_accep_inbou_cross_clust_searc_conne
 elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "AcceptInboundCrossClusterSearchConnection",
@@ -107,7 +107,7 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_cancel_elasticsearch_service_software_update
+#' @rdname elasticsearchservice_cance_elast_servi_softw_updat
 elasticsearchservice_cancel_elasticsearch_service_software_update <- function(DomainName) {
   op <- new_operation(
     name = "CancelElasticsearchServiceSoftwareUpdate",
@@ -208,7 +208,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_create_outbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_creat_outbo_cross_clust_searc_conne
 elasticsearchservice_create_outbound_cross_cluster_search_connection <- function(SourceDomainInfo, DestinationDomainInfo, ConnectionAlias) {
   op <- new_operation(
     name = "CreateOutboundCrossClusterSearchConnection",
@@ -331,7 +331,7 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_delete_inbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_delet_inbou_cross_clust_searc_conne
 elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "DeleteInboundCrossClusterSearchConnection",
@@ -361,7 +361,7 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_delete_outbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_delet_outbo_cross_clust_searc_conne
 elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "DeleteOutboundCrossClusterSearchConnection",
@@ -588,7 +588,7 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_elasticsearch_instance_type_limits
+#' @rdname elasticsearchservice_descr_elast_insta_type_limit
 elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(DomainName = NULL, InstanceType, ElasticsearchVersion) {
   op <- new_operation(
     name = "DescribeElasticsearchInstanceTypeLimits",
@@ -629,7 +629,7 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_inbound_cross_cluster_search_connections
+#' @rdname elasticsearchservice_descr_inbou_cross_clust_searc_conne
 elasticsearchservice_describe_inbound_cross_cluster_search_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInboundCrossClusterSearchConnections",
@@ -670,7 +670,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_outbound_cross_cluster_search_connections
+#' @rdname elasticsearchservice_descr_outbo_cross_clust_searc_conne
 elasticsearchservice_describe_outbound_cross_cluster_search_connections <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOutboundCrossClusterSearchConnections",
@@ -739,7 +739,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_reserved_elasticsearch_instance_offerings
+#' @rdname elasticsearchservice_descr_reser_elast_insta_offer
 elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- function(ReservedElasticsearchInstanceOfferingId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedElasticsearchInstanceOfferings",
@@ -775,7 +775,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_describe_reserved_elasticsearch_instances
+#' @rdname elasticsearchservice_descri_reserv_elasti_instan
 elasticsearchservice_describe_reserved_elasticsearch_instances <- function(ReservedElasticsearchInstanceId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeReservedElasticsearchInstances",
@@ -1159,7 +1159,7 @@ elasticsearchservice_list_tags <- function(ARN) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_purchase_reserved_elasticsearch_instance_offering
+#' @rdname elasticsearchservice_purch_reser_elast_insta_offer
 elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- function(ReservedElasticsearchInstanceOfferingId, ReservationName, InstanceCount = NULL) {
   op <- new_operation(
     name = "PurchaseReservedElasticsearchInstanceOffering",
@@ -1189,7 +1189,7 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_reject_inbound_cross_cluster_search_connection
+#' @rdname elasticsearchservice_rejec_inbou_cross_clust_searc_conne
 elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(CrossClusterSearchConnectionId) {
   op <- new_operation(
     name = "RejectInboundCrossClusterSearchConnection",
@@ -1252,7 +1252,7 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
 #'
 #' @keywords internal
 #'
-#' @rdname elasticsearchservice_start_elasticsearch_service_software_update
+#' @rdname elasticsearchservice_start_elast_servi_softw_updat
 elasticsearchservice_start_elasticsearch_service_software_update <- function(DomainName) {
   op <- new_operation(
     name = "StartElasticsearchServiceSoftwareUpdate",

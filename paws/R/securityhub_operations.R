@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname securityhub_accept_administrator_invitation
+#'
+#' @aliases securityhub_accept_administrator_invitation
 securityhub_accept_administrator_invitation <- function(AdministratorId, InvitationId) {
   op <- new_operation(
     name = "AcceptAdministratorInvitation",
@@ -107,6 +109,8 @@ securityhub_accept_administrator_invitation <- function(AdministratorId, Invitat
 #' @keywords internal
 #'
 #' @rdname securityhub_accept_invitation
+#'
+#' @aliases securityhub_accept_invitation
 securityhub_accept_invitation <- function(MasterId, InvitationId) {
   op <- new_operation(
     name = "AcceptInvitation",
@@ -172,6 +176,8 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_disable_standards
+#'
+#' @aliases securityhub_batch_disable_standards
 securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
   op <- new_operation(
     name = "BatchDisableStandards",
@@ -242,6 +248,8 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_enable_standards
+#'
+#' @aliases securityhub_batch_enable_standards
 securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
   op <- new_operation(
     name = "BatchEnableStandards",
@@ -3812,6 +3820,8 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_import_findings
+#'
+#' @aliases securityhub_batch_import_findings
 securityhub_batch_import_findings <- function(Findings) {
   op <- new_operation(
     name = "BatchImportFindings",
@@ -3996,6 +4006,8 @@ securityhub_batch_import_findings <- function(Findings) {
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_update_findings
+#'
+#' @aliases securityhub_batch_update_findings
 securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, Severity = NULL, VerificationState = NULL, Confidence = NULL, Criticality = NULL, Types = NULL, UserDefinedFields = NULL, Workflow = NULL, RelatedFindings = NULL) {
   op <- new_operation(
     name = "BatchUpdateFindings",
@@ -4049,6 +4061,8 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #' @keywords internal
 #'
 #' @rdname securityhub_create_action_target
+#'
+#' @aliases securityhub_create_action_target
 securityhub_create_action_target <- function(Name, Description, Id) {
   op <- new_operation(
     name = "CreateActionTarget",
@@ -4138,6 +4152,8 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #' @keywords internal
 #'
 #' @rdname securityhub_create_finding_aggregator
+#'
+#' @aliases securityhub_create_finding_aggregator
 securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = NULL) {
   op <- new_operation(
     name = "CreateFindingAggregator",
@@ -4818,6 +4834,8 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #' @keywords internal
 #'
 #' @rdname securityhub_create_insight
+#'
+#' @aliases securityhub_create_insight
 securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
   op <- new_operation(
     name = "CreateInsight",
@@ -4926,6 +4944,8 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' @keywords internal
 #'
 #' @rdname securityhub_create_members
+#'
+#' @aliases securityhub_create_members
 securityhub_create_members <- function(AccountDetails) {
   op <- new_operation(
     name = "CreateMembers",
@@ -4982,6 +5002,8 @@ securityhub_create_members <- function(AccountDetails) {
 #' @keywords internal
 #'
 #' @rdname securityhub_decline_invitations
+#'
+#' @aliases securityhub_decline_invitations
 securityhub_decline_invitations <- function(AccountIds) {
   op <- new_operation(
     name = "DeclineInvitations",
@@ -5031,6 +5053,8 @@ securityhub_decline_invitations <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_action_target
+#'
+#' @aliases securityhub_delete_action_target
 securityhub_delete_action_target <- function(ActionTargetArn) {
   op <- new_operation(
     name = "DeleteActionTarget",
@@ -5077,6 +5101,8 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_finding_aggregator
+#'
+#' @aliases securityhub_delete_finding_aggregator
 securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
   op <- new_operation(
     name = "DeleteFindingAggregator",
@@ -5122,6 +5148,8 @@ securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_insight
+#'
+#' @aliases securityhub_delete_insight
 securityhub_delete_insight <- function(InsightArn) {
   op <- new_operation(
     name = "DeleteInsight",
@@ -5179,6 +5207,8 @@ securityhub_delete_insight <- function(InsightArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_invitations
+#'
+#' @aliases securityhub_delete_invitations
 securityhub_delete_invitations <- function(AccountIds) {
   op <- new_operation(
     name = "DeleteInvitations",
@@ -5234,6 +5264,8 @@ securityhub_delete_invitations <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_members
+#'
+#' @aliases securityhub_delete_members
 securityhub_delete_members <- function(AccountIds) {
   op <- new_operation(
     name = "DeleteMembers",
@@ -5302,6 +5334,8 @@ securityhub_delete_members <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_action_targets
+#'
+#' @aliases securityhub_describe_action_targets
 securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeActionTargets",
@@ -5351,6 +5385,8 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_hub
+#'
+#' @aliases securityhub_describe_hub
 securityhub_describe_hub <- function(HubArn = NULL) {
   op <- new_operation(
     name = "DescribeHub",
@@ -5396,6 +5432,8 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_organization_configuration
+#'
+#' @aliases securityhub_describe_organization_configuration
 securityhub_describe_organization_configuration <- function() {
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
@@ -5474,6 +5512,8 @@ securityhub_describe_organization_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_products
+#'
+#' @aliases securityhub_describe_products
 securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, ProductArn = NULL) {
   op <- new_operation(
     name = "DescribeProducts",
@@ -5538,6 +5578,8 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_standards
+#'
+#' @aliases securityhub_describe_standards
 securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeStandards",
@@ -5618,6 +5660,8 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_standards_controls
+#'
+#' @aliases securityhub_describe_standards_controls
 securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeStandardsControls",
@@ -5660,6 +5704,8 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_import_findings_for_product
+#'
+#' @aliases securityhub_disable_import_findings_for_product
 securityhub_disable_import_findings_for_product <- function(ProductSubscriptionArn) {
   op <- new_operation(
     name = "DisableImportFindingsForProduct",
@@ -5702,6 +5748,8 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_organization_admin_account
+#'
+#' @aliases securityhub_disable_organization_admin_account
 securityhub_disable_organization_admin_account <- function(AdminAccountId) {
   op <- new_operation(
     name = "DisableOrganizationAdminAccount",
@@ -5751,6 +5799,8 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_security_hub
+#'
+#' @aliases securityhub_disable_security_hub
 securityhub_disable_security_hub <- function() {
   op <- new_operation(
     name = "DisableSecurityHub",
@@ -5793,6 +5843,8 @@ securityhub_disable_security_hub <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_from_administrator_account
+#'
+#' @aliases securityhub_disassociate_from_administrator_account
 securityhub_disassociate_from_administrator_account <- function() {
   op <- new_operation(
     name = "DisassociateFromAdministratorAccount",
@@ -5850,6 +5902,8 @@ securityhub_disassociate_from_administrator_account <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_from_master_account
+#'
+#' @aliases securityhub_disassociate_from_master_account
 securityhub_disassociate_from_master_account <- function() {
   op <- new_operation(
     name = "DisassociateFromMasterAccount",
@@ -5898,6 +5952,8 @@ securityhub_disassociate_from_master_account <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_members
+#'
+#' @aliases securityhub_disassociate_members
 securityhub_disassociate_members <- function(AccountIds) {
   op <- new_operation(
     name = "DisassociateMembers",
@@ -5947,6 +6003,8 @@ securityhub_disassociate_members <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_import_findings_for_product
+#'
+#' @aliases securityhub_enable_import_findings_for_product
 securityhub_enable_import_findings_for_product <- function(ProductArn) {
   op <- new_operation(
     name = "EnableImportFindingsForProduct",
@@ -5989,6 +6047,8 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_organization_admin_account
+#'
+#' @aliases securityhub_enable_organization_admin_account
 securityhub_enable_organization_admin_account <- function(AdminAccountId) {
   op <- new_operation(
     name = "EnableOrganizationAdminAccount",
@@ -6068,6 +6128,8 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_security_hub
+#'
+#' @aliases securityhub_enable_security_hub
 securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards = NULL) {
   op <- new_operation(
     name = "EnableSecurityHub",
@@ -6121,6 +6183,8 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #' @keywords internal
 #'
 #' @rdname securityhub_get_administrator_account
+#'
+#' @aliases securityhub_get_administrator_account
 securityhub_get_administrator_account <- function() {
   op <- new_operation(
     name = "GetAdministratorAccount",
@@ -6193,6 +6257,8 @@ securityhub_get_administrator_account <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_get_enabled_standards
+#'
+#' @aliases securityhub_get_enabled_standards
 securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetEnabledStandards",
@@ -6245,6 +6311,8 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #' @keywords internal
 #'
 #' @rdname securityhub_get_finding_aggregator
+#'
+#' @aliases securityhub_get_finding_aggregator
 securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
   op <- new_operation(
     name = "GetFindingAggregator",
@@ -10401,6 +10469,8 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_get_findings
+#'
+#' @aliases securityhub_get_findings
 securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetFindings",
@@ -10457,6 +10527,8 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname securityhub_get_insight_results
+#'
+#' @aliases securityhub_get_insight_results
 securityhub_get_insight_results <- function(InsightArn) {
   op <- new_operation(
     name = "GetInsightResults",
@@ -11145,6 +11217,8 @@ securityhub_get_insight_results <- function(InsightArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_get_insights
+#'
+#' @aliases securityhub_get_insights
 securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetInsights",
@@ -11190,6 +11264,8 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname securityhub_get_invitations_count
+#'
+#' @aliases securityhub_get_invitations_count
 securityhub_get_invitations_count <- function() {
   op <- new_operation(
     name = "GetInvitationsCount",
@@ -11257,6 +11333,8 @@ securityhub_get_invitations_count <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_get_master_account
+#'
+#' @aliases securityhub_get_master_account
 securityhub_get_master_account <- function() {
   op <- new_operation(
     name = "GetMasterAccount",
@@ -11334,6 +11412,8 @@ securityhub_get_master_account <- function() {
 #' @keywords internal
 #'
 #' @rdname securityhub_get_members
+#'
+#' @aliases securityhub_get_members
 securityhub_get_members <- function(AccountIds) {
   op <- new_operation(
     name = "GetMembers",
@@ -11400,6 +11480,8 @@ securityhub_get_members <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_invite_members
+#'
+#' @aliases securityhub_invite_members
 securityhub_invite_members <- function(AccountIds) {
   op <- new_operation(
     name = "InviteMembers",
@@ -11458,6 +11540,8 @@ securityhub_invite_members <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname securityhub_list_enabled_products_for_import
+#'
+#' @aliases securityhub_list_enabled_products_for_import
 securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEnabledProductsForImport",
@@ -11516,6 +11600,8 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname securityhub_list_finding_aggregators
+#'
+#' @aliases securityhub_list_finding_aggregators
 securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFindingAggregators",
@@ -11585,6 +11671,8 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname securityhub_list_invitations
+#'
+#' @aliases securityhub_list_invitations
 securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInvitations",
@@ -11669,6 +11757,8 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname securityhub_list_members
+#'
+#' @aliases securityhub_list_members
 securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMembers",
@@ -11727,6 +11817,8 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname securityhub_list_organization_admin_accounts
+#'
+#' @aliases securityhub_list_organization_admin_accounts
 securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOrganizationAdminAccounts",
@@ -11774,6 +11866,8 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname securityhub_list_tags_for_resource
+#'
+#' @aliases securityhub_list_tags_for_resource
 securityhub_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -11820,6 +11914,8 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname securityhub_tag_resource
+#'
+#' @aliases securityhub_tag_resource
 securityhub_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -11865,6 +11961,8 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname securityhub_untag_resource
+#'
+#' @aliases securityhub_untag_resource
 securityhub_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -11911,6 +12009,8 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname securityhub_update_action_target
+#'
+#' @aliases securityhub_update_action_target
 securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateActionTarget",
@@ -12005,6 +12105,8 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #' @keywords internal
 #'
 #' @rdname securityhub_update_finding_aggregator
+#'
+#' @aliases securityhub_update_finding_aggregator
 securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLinkingMode, Regions = NULL) {
   op <- new_operation(
     name = "UpdateFindingAggregator",
@@ -12680,6 +12782,8 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #' @keywords internal
 #'
 #' @rdname securityhub_update_findings
+#'
+#' @aliases securityhub_update_findings
 securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL) {
   op <- new_operation(
     name = "UpdateFindings",
@@ -13348,6 +13452,8 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #' @keywords internal
 #'
 #' @rdname securityhub_update_insight
+#'
+#' @aliases securityhub_update_insight
 securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, GroupByAttribute = NULL) {
   op <- new_operation(
     name = "UpdateInsight",
@@ -13407,6 +13513,8 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' @keywords internal
 #'
 #' @rdname securityhub_update_organization_configuration
+#'
+#' @aliases securityhub_update_organization_configuration
 securityhub_update_organization_configuration <- function(AutoEnable, AutoEnableStandards = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
@@ -13452,6 +13560,8 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
 #' @keywords internal
 #'
 #' @rdname securityhub_update_security_hub_configuration
+#'
+#' @aliases securityhub_update_security_hub_configuration
 securityhub_update_security_hub_configuration <- function(AutoEnableControls = NULL) {
   op <- new_operation(
     name = "UpdateSecurityHubConfiguration",
@@ -13500,6 +13610,8 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
 #' @keywords internal
 #'
 #' @rdname securityhub_update_standards_control
+#'
+#' @aliases securityhub_update_standards_control
 securityhub_update_standards_control <- function(StandardsControlArn, ControlStatus = NULL, DisabledReason = NULL) {
   op <- new_operation(
     name = "UpdateStandardsControl",

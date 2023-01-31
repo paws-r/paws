@@ -75,6 +75,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname opsworkscm_associate_node
+#'
+#' @aliases opsworkscm_associate_node
 opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
   op <- new_operation(
     name = "AssociateNode",
@@ -192,6 +194,8 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_backup
+#'
+#' @aliases opsworkscm_create_backup
 opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateBackup",
@@ -508,6 +512,8 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @keywords internal
 #'
 #' @rdname opsworkscm_create_server
+#'
+#' @aliases opsworkscm_create_server
 opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDomain = NULL, CustomCertificate = NULL, CustomPrivateKey = NULL, DisableAutomatedBackup = NULL, Engine, EngineModel = NULL, EngineVersion = NULL, EngineAttributes = NULL, BackupRetentionCount = NULL, ServerName, InstanceProfileArn, InstanceType, KeyPair = NULL, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL, SecurityGroupIds = NULL, ServiceRoleArn, SubnetIds = NULL, Tags = NULL, BackupId = NULL) {
   op <- new_operation(
     name = "CreateServer",
@@ -556,6 +562,8 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
 #' @keywords internal
 #'
 #' @rdname opsworkscm_delete_backup
+#'
+#' @aliases opsworkscm_delete_backup
 opsworkscm_delete_backup <- function(BackupId) {
   op <- new_operation(
     name = "DeleteBackup",
@@ -608,6 +616,8 @@ opsworkscm_delete_backup <- function(BackupId) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_delete_server
+#'
+#' @aliases opsworkscm_delete_server
 opsworkscm_delete_server <- function(ServerName) {
   op <- new_operation(
     name = "DeleteServer",
@@ -657,6 +667,8 @@ opsworkscm_delete_server <- function(ServerName) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_describe_account_attributes
+#'
+#' @aliases opsworkscm_describe_account_attributes
 opsworkscm_describe_account_attributes <- function() {
   op <- new_operation(
     name = "DescribeAccountAttributes",
@@ -752,6 +764,8 @@ opsworkscm_describe_account_attributes <- function() {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_describe_backups
+#'
+#' @aliases opsworkscm_describe_backups
 opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeBackups",
@@ -830,6 +844,8 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' @keywords internal
 #'
 #' @rdname opsworkscm_describe_events
+#'
+#' @aliases opsworkscm_describe_events
 opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -892,6 +908,8 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname opsworkscm_describe_node_association_status
+#'
+#' @aliases opsworkscm_describe_node_association_status
 opsworkscm_describe_node_association_status <- function(NodeAssociationStatusToken, ServerName) {
   op <- new_operation(
     name = "DescribeNodeAssociationStatus",
@@ -991,6 +1009,8 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' @keywords internal
 #'
 #' @rdname opsworkscm_describe_servers
+#'
+#' @aliases opsworkscm_describe_servers
 opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeServers",
@@ -1063,6 +1083,8 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname opsworkscm_disassociate_node
+#'
+#' @aliases opsworkscm_disassociate_node
 opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes = NULL) {
   op <- new_operation(
     name = "DisassociateNode",
@@ -1152,6 +1174,8 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #' @keywords internal
 #'
 #' @rdname opsworkscm_export_server_engine_attribute
+#'
+#' @aliases opsworkscm_export_server_engine_attribute
 opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, ServerName, InputAttributes = NULL) {
   op <- new_operation(
     name = "ExportServerEngineAttribute",
@@ -1227,6 +1251,8 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' @keywords internal
 #'
 #' @rdname opsworkscm_list_tags_for_resource
+#'
+#' @aliases opsworkscm_list_tags_for_resource
 opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1338,6 +1364,8 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname opsworkscm_restore_server
+#'
+#' @aliases opsworkscm_restore_server
 opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL, KeyPair = NULL) {
   op <- new_operation(
     name = "RestoreServer",
@@ -1446,6 +1474,8 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #' @keywords internal
 #'
 #' @rdname opsworkscm_start_maintenance
+#'
+#' @aliases opsworkscm_start_maintenance
 opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
   op <- new_operation(
     name = "StartMaintenance",
@@ -1514,6 +1544,8 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_tag_resource
+#'
+#' @aliases opsworkscm_tag_resource
 opsworkscm_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1560,6 +1592,8 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_untag_resource
+#'
+#' @aliases opsworkscm_untag_resource
 opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1653,6 +1687,8 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname opsworkscm_update_server
+#'
+#' @aliases opsworkscm_update_server
 opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetentionCount = NULL, ServerName, PreferredMaintenanceWindow = NULL, PreferredBackupWindow = NULL) {
   op <- new_operation(
     name = "UpdateServer",
@@ -1751,6 +1787,8 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 #' @keywords internal
 #'
 #' @rdname opsworkscm_update_server_engine_attributes
+#'
+#' @aliases opsworkscm_update_server_engine_attributes
 opsworkscm_update_server_engine_attributes <- function(ServerName, AttributeName, AttributeValue = NULL) {
   op <- new_operation(
     name = "UpdateServerEngineAttributes",

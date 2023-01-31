@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname quicksight_cancel_ingestion
+#'
+#' @aliases quicksight_cancel_ingestion
 quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
   op <- new_operation(
     name = "CancelIngestion",
@@ -146,6 +148,8 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_create_account_customization
+#'
+#' @aliases quicksight_create_account_customization
 quicksight_create_account_customization <- function(AwsAccountId, Namespace = NULL, AccountCustomization, Tags = NULL) {
   op <- new_operation(
     name = "CreateAccountCustomization",
@@ -323,6 +327,8 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 #' @keywords internal
 #'
 #' @rdname quicksight_create_account_subscription
+#'
+#' @aliases quicksight_create_account_subscription
 quicksight_create_account_subscription <- function(Edition, AuthenticationMethod, AwsAccountId, AccountName, NotificationEmail, ActiveDirectoryName = NULL, Realm = NULL, DirectoryId = NULL, AdminGroup = NULL, AuthorGroup = NULL, ReaderGroup = NULL, FirstName = NULL, LastName = NULL, EmailAddress = NULL, ContactNumber = NULL) {
   op <- new_operation(
     name = "CreateAccountSubscription",
@@ -460,6 +466,8 @@ quicksight_create_account_subscription <- function(Edition, AuthenticationMethod
 #' @keywords internal
 #'
 #' @rdname quicksight_create_analysis
+#'
+#' @aliases quicksight_create_analysis
 quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameters = NULL, Permissions = NULL, SourceEntity, ThemeArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAnalysis",
@@ -643,6 +651,8 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' @keywords internal
 #'
 #' @rdname quicksight_create_dashboard
+#'
+#' @aliases quicksight_create_dashboard
 quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Parameters = NULL, Permissions = NULL, SourceEntity, Tags = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL) {
   op <- new_operation(
     name = "CreateDashboard",
@@ -898,6 +908,8 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_set
+#'
+#' @aliases quicksight_create_data_set
 quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL, DataSetUsageConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataSet",
@@ -1196,6 +1208,8 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_source
+#'
+#' @aliases quicksight_create_data_source
 quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type, DataSourceParameters = NULL, Credentials = NULL, Permissions = NULL, VpcConnectionProperties = NULL, SslProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
@@ -1276,6 +1290,8 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
 #' @keywords internal
 #'
 #' @rdname quicksight_create_folder
+#'
+#' @aliases quicksight_create_folder
 quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, FolderType = NULL, ParentFolderArn = NULL, Permissions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFolder",
@@ -1334,6 +1350,8 @@ quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, Folder
 #' @keywords internal
 #'
 #' @rdname quicksight_create_folder_membership
+#'
+#' @aliases quicksight_create_folder_membership
 quicksight_create_folder_membership <- function(AwsAccountId, FolderId, MemberId, MemberType) {
   op <- new_operation(
     name = "CreateFolderMembership",
@@ -1402,6 +1420,8 @@ quicksight_create_folder_membership <- function(AwsAccountId, FolderId, MemberId
 #' @keywords internal
 #'
 #' @rdname quicksight_create_group
+#'
+#' @aliases quicksight_create_group
 quicksight_create_group <- function(GroupName, Description = NULL, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "CreateGroup",
@@ -1461,6 +1481,8 @@ quicksight_create_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' @keywords internal
 #'
 #' @rdname quicksight_create_group_membership
+#'
+#' @aliases quicksight_create_group_membership
 quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "CreateGroupMembership",
@@ -1549,6 +1571,8 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #' @keywords internal
 #'
 #' @rdname quicksight_create_iam_policy_assignment
+#'
+#' @aliases quicksight_create_iam_policy_assignment
 quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName, AssignmentStatus, PolicyArn = NULL, Identities = NULL, Namespace) {
   op <- new_operation(
     name = "CreateIAMPolicyAssignment",
@@ -1616,6 +1640,8 @@ quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @keywords internal
 #'
 #' @rdname quicksight_create_ingestion
+#'
+#' @aliases quicksight_create_ingestion
 quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId, IngestionType = NULL) {
   op <- new_operation(
     name = "CreateIngestion",
@@ -1694,6 +1720,8 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId, In
 #' @keywords internal
 #'
 #' @rdname quicksight_create_namespace
+#'
+#' @aliases quicksight_create_namespace
 quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, Tags = NULL) {
   op <- new_operation(
     name = "CreateNamespace",
@@ -1812,6 +1840,8 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 #' @keywords internal
 #'
 #' @rdname quicksight_create_template
+#'
+#' @aliases quicksight_create_template
 quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Permissions = NULL, SourceEntity, Tags = NULL, VersionDescription = NULL) {
   op <- new_operation(
     name = "CreateTemplate",
@@ -1873,6 +1903,8 @@ quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Pe
 #' @keywords internal
 #'
 #' @rdname quicksight_create_template_alias
+#'
+#' @aliases quicksight_create_template_alias
 quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName, TemplateVersionNumber) {
   op <- new_operation(
     name = "CreateTemplateAlias",
@@ -2009,6 +2041,8 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @keywords internal
 #'
 #' @rdname quicksight_create_theme
+#'
+#' @aliases quicksight_create_theme
 quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, VersionDescription = NULL, Configuration, Permissions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTheme",
@@ -2070,6 +2104,8 @@ quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, Ve
 #' @keywords internal
 #'
 #' @rdname quicksight_create_theme_alias
+#'
+#' @aliases quicksight_create_theme_alias
 quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, ThemeVersionNumber) {
   op <- new_operation(
     name = "CreateThemeAlias",
@@ -2125,6 +2161,8 @@ quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_account_customization
+#'
+#' @aliases quicksight_delete_account_customization
 quicksight_delete_account_customization <- function(AwsAccountId, Namespace = NULL) {
   op <- new_operation(
     name = "DeleteAccountCustomization",
@@ -2204,6 +2242,8 @@ quicksight_delete_account_customization <- function(AwsAccountId, Namespace = NU
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_analysis
+#'
+#' @aliases quicksight_delete_analysis
 quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowInDays = NULL, ForceDeleteWithoutRecovery = NULL) {
   op <- new_operation(
     name = "DeleteAnalysis",
@@ -2258,6 +2298,8 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_dashboard
+#'
+#' @aliases quicksight_delete_dashboard
 quicksight_delete_dashboard <- function(AwsAccountId, DashboardId, VersionNumber = NULL) {
   op <- new_operation(
     name = "DeleteDashboard",
@@ -2309,6 +2351,8 @@ quicksight_delete_dashboard <- function(AwsAccountId, DashboardId, VersionNumber
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_data_set
+#'
+#' @aliases quicksight_delete_data_set
 quicksight_delete_data_set <- function(AwsAccountId, DataSetId) {
   op <- new_operation(
     name = "DeleteDataSet",
@@ -2361,6 +2405,8 @@ quicksight_delete_data_set <- function(AwsAccountId, DataSetId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_data_source
+#'
+#' @aliases quicksight_delete_data_source
 quicksight_delete_data_source <- function(AwsAccountId, DataSourceId) {
   op <- new_operation(
     name = "DeleteDataSource",
@@ -2411,6 +2457,8 @@ quicksight_delete_data_source <- function(AwsAccountId, DataSourceId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_folder
+#'
+#' @aliases quicksight_delete_folder
 quicksight_delete_folder <- function(AwsAccountId, FolderId) {
   op <- new_operation(
     name = "DeleteFolder",
@@ -2467,6 +2515,8 @@ quicksight_delete_folder <- function(AwsAccountId, FolderId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_folder_membership
+#'
+#' @aliases quicksight_delete_folder_membership
 quicksight_delete_folder_membership <- function(AwsAccountId, FolderId, MemberId, MemberType) {
   op <- new_operation(
     name = "DeleteFolderMembership",
@@ -2519,6 +2569,8 @@ quicksight_delete_folder_membership <- function(AwsAccountId, FolderId, MemberId
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_group
+#'
+#' @aliases quicksight_delete_group
 quicksight_delete_group <- function(GroupName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -2576,6 +2628,8 @@ quicksight_delete_group <- function(GroupName, AwsAccountId, Namespace) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_group_membership
+#'
+#' @aliases quicksight_delete_group_membership
 quicksight_delete_group_membership <- function(MemberName, GroupName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DeleteGroupMembership",
@@ -2629,6 +2683,8 @@ quicksight_delete_group_membership <- function(MemberName, GroupName, AwsAccount
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_iam_policy_assignment
+#'
+#' @aliases quicksight_delete_iam_policy_assignment
 quicksight_delete_iam_policy_assignment <- function(AwsAccountId, AssignmentName, Namespace) {
   op <- new_operation(
     name = "DeleteIAMPolicyAssignment",
@@ -2682,6 +2738,8 @@ quicksight_delete_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_namespace
+#'
+#' @aliases quicksight_delete_namespace
 quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DeleteNamespace",
@@ -2738,6 +2796,8 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_template
+#'
+#' @aliases quicksight_delete_template
 quicksight_delete_template <- function(AwsAccountId, TemplateId, VersionNumber = NULL) {
   op <- new_operation(
     name = "DeleteTemplate",
@@ -2797,6 +2857,8 @@ quicksight_delete_template <- function(AwsAccountId, TemplateId, VersionNumber =
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_template_alias
+#'
+#' @aliases quicksight_delete_template_alias
 quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName) {
   op <- new_operation(
     name = "DeleteTemplateAlias",
@@ -2854,6 +2916,8 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_theme
+#'
+#' @aliases quicksight_delete_theme
 quicksight_delete_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL) {
   op <- new_operation(
     name = "DeleteTheme",
@@ -2911,6 +2975,8 @@ quicksight_delete_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL)
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_theme_alias
+#'
+#' @aliases quicksight_delete_theme_alias
 quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
   op <- new_operation(
     name = "DeleteThemeAlias",
@@ -2967,6 +3033,8 @@ quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_user
+#'
+#' @aliases quicksight_delete_user
 quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DeleteUser",
@@ -3020,6 +3088,8 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 #' @keywords internal
 #'
 #' @rdname quicksight_delete_user_by_principal_id
+#'
+#' @aliases quicksight_delete_user_by_principal_id
 quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DeleteUserByPrincipalId",
@@ -3143,6 +3213,8 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_account_customization
+#'
+#' @aliases quicksight_describe_account_customization
 quicksight_describe_account_customization <- function(AwsAccountId, Namespace = NULL, Resolved = NULL) {
   op <- new_operation(
     name = "DescribeAccountCustomization",
@@ -3199,6 +3271,8 @@ quicksight_describe_account_customization <- function(AwsAccountId, Namespace = 
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_account_settings
+#'
+#' @aliases quicksight_describe_account_settings
 quicksight_describe_account_settings <- function(AwsAccountId) {
   op <- new_operation(
     name = "DescribeAccountSettings",
@@ -3258,6 +3332,8 @@ quicksight_describe_account_settings <- function(AwsAccountId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_account_subscription
+#'
+#' @aliases quicksight_describe_account_subscription
 quicksight_describe_account_subscription <- function(AwsAccountId) {
   op <- new_operation(
     name = "DescribeAccountSubscription",
@@ -3337,6 +3413,8 @@ quicksight_describe_account_subscription <- function(AwsAccountId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_analysis
+#'
+#' @aliases quicksight_describe_analysis
 quicksight_describe_analysis <- function(AwsAccountId, AnalysisId) {
   op <- new_operation(
     name = "DescribeAnalysis",
@@ -3398,6 +3476,8 @@ quicksight_describe_analysis <- function(AwsAccountId, AnalysisId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_analysis_permissions
+#'
+#' @aliases quicksight_describe_analysis_permissions
 quicksight_describe_analysis_permissions <- function(AwsAccountId, AnalysisId) {
   op <- new_operation(
     name = "DescribeAnalysisPermissions",
@@ -3493,6 +3573,8 @@ quicksight_describe_analysis_permissions <- function(AwsAccountId, AnalysisId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_dashboard
+#'
+#' @aliases quicksight_describe_dashboard
 quicksight_describe_dashboard <- function(AwsAccountId, DashboardId, VersionNumber = NULL, AliasName = NULL) {
   op <- new_operation(
     name = "DescribeDashboard",
@@ -3562,6 +3644,8 @@ quicksight_describe_dashboard <- function(AwsAccountId, DashboardId, VersionNumb
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_dashboard_permissions
+#'
+#' @aliases quicksight_describe_dashboard_permissions
 quicksight_describe_dashboard_permissions <- function(AwsAccountId, DashboardId) {
   op <- new_operation(
     name = "DescribeDashboardPermissions",
@@ -3794,6 +3878,8 @@ quicksight_describe_dashboard_permissions <- function(AwsAccountId, DashboardId)
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_data_set
+#'
+#' @aliases quicksight_describe_data_set
 quicksight_describe_data_set <- function(AwsAccountId, DataSetId) {
   op <- new_operation(
     name = "DescribeDataSet",
@@ -3856,6 +3942,8 @@ quicksight_describe_data_set <- function(AwsAccountId, DataSetId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_data_set_permissions
+#'
+#' @aliases quicksight_describe_data_set_permissions
 quicksight_describe_data_set_permissions <- function(AwsAccountId, DataSetId) {
   op <- new_operation(
     name = "DescribeDataSetPermissions",
@@ -4126,6 +4214,8 @@ quicksight_describe_data_set_permissions <- function(AwsAccountId, DataSetId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_data_source
+#'
+#' @aliases quicksight_describe_data_source
 quicksight_describe_data_source <- function(AwsAccountId, DataSourceId) {
   op <- new_operation(
     name = "DescribeDataSource",
@@ -4185,6 +4275,8 @@ quicksight_describe_data_source <- function(AwsAccountId, DataSourceId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_data_source_permissions
+#'
+#' @aliases quicksight_describe_data_source_permissions
 quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSourceId) {
   op <- new_operation(
     name = "DescribeDataSourcePermissions",
@@ -4248,6 +4340,8 @@ quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSource
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_folder
+#'
+#' @aliases quicksight_describe_folder
 quicksight_describe_folder <- function(AwsAccountId, FolderId) {
   op <- new_operation(
     name = "DescribeFolder",
@@ -4306,6 +4400,8 @@ quicksight_describe_folder <- function(AwsAccountId, FolderId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_folder_permissions
+#'
+#' @aliases quicksight_describe_folder_permissions
 quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId) {
   op <- new_operation(
     name = "DescribeFolderPermissions",
@@ -4366,6 +4462,8 @@ quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_folder_resolved_permissions
+#'
+#' @aliases quicksight_describe_folder_resolved_permissions
 quicksight_describe_folder_resolved_permissions <- function(AwsAccountId, FolderId) {
   op <- new_operation(
     name = "DescribeFolderResolvedPermissions",
@@ -4426,6 +4524,8 @@ quicksight_describe_folder_resolved_permissions <- function(AwsAccountId, Folder
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_group
+#'
+#' @aliases quicksight_describe_group
 quicksight_describe_group <- function(GroupName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DescribeGroup",
@@ -4490,6 +4590,8 @@ quicksight_describe_group <- function(GroupName, AwsAccountId, Namespace) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_group_membership
+#'
+#' @aliases quicksight_describe_group_membership
 quicksight_describe_group_membership <- function(MemberName, GroupName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DescribeGroupMembership",
@@ -4556,6 +4658,8 @@ quicksight_describe_group_membership <- function(MemberName, GroupName, AwsAccou
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_iam_policy_assignment
+#'
+#' @aliases quicksight_describe_iam_policy_assignment
 quicksight_describe_iam_policy_assignment <- function(AwsAccountId, AssignmentName, Namespace) {
   op <- new_operation(
     name = "DescribeIAMPolicyAssignment",
@@ -4631,6 +4735,8 @@ quicksight_describe_iam_policy_assignment <- function(AwsAccountId, AssignmentNa
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_ingestion
+#'
+#' @aliases quicksight_describe_ingestion
 quicksight_describe_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
   op <- new_operation(
     name = "DescribeIngestion",
@@ -4682,6 +4788,8 @@ quicksight_describe_ingestion <- function(AwsAccountId, DataSetId, IngestionId) 
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_ip_restriction
+#'
+#' @aliases quicksight_describe_ip_restriction
 quicksight_describe_ip_restriction <- function(AwsAccountId) {
   op <- new_operation(
     name = "DescribeIpRestriction",
@@ -4742,6 +4850,8 @@ quicksight_describe_ip_restriction <- function(AwsAccountId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_namespace
+#'
+#' @aliases quicksight_describe_namespace
 quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DescribeNamespace",
@@ -4859,6 +4969,8 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_template
+#'
+#' @aliases quicksight_describe_template
 quicksight_describe_template <- function(AwsAccountId, TemplateId, VersionNumber = NULL, AliasName = NULL) {
   op <- new_operation(
     name = "DescribeTemplate",
@@ -4919,6 +5031,8 @@ quicksight_describe_template <- function(AwsAccountId, TemplateId, VersionNumber
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_template_alias
+#'
+#' @aliases quicksight_describe_template_alias
 quicksight_describe_template_alias <- function(AwsAccountId, TemplateId, AliasName) {
   op <- new_operation(
     name = "DescribeTemplateAlias",
@@ -4978,6 +5092,8 @@ quicksight_describe_template_alias <- function(AwsAccountId, TemplateId, AliasNa
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_template_permissions
+#'
+#' @aliases quicksight_describe_template_permissions
 quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
   op <- new_operation(
     name = "DescribeTemplatePermissions",
@@ -5110,6 +5226,8 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_theme
+#'
+#' @aliases quicksight_describe_theme
 quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL, AliasName = NULL) {
   op <- new_operation(
     name = "DescribeTheme",
@@ -5166,6 +5284,8 @@ quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NUL
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_theme_alias
+#'
+#' @aliases quicksight_describe_theme_alias
 quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
   op <- new_operation(
     name = "DescribeThemeAlias",
@@ -5225,6 +5345,8 @@ quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_theme_permissions
+#'
+#' @aliases quicksight_describe_theme_permissions
 quicksight_describe_theme_permissions <- function(AwsAccountId, ThemeId) {
   op <- new_operation(
     name = "DescribeThemePermissions",
@@ -5290,6 +5412,8 @@ quicksight_describe_theme_permissions <- function(AwsAccountId, ThemeId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_user
+#'
+#' @aliases quicksight_describe_user
 quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "DescribeUser",
@@ -5417,6 +5541,8 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' @keywords internal
 #'
 #' @rdname quicksight_generate_embed_url_for_anonymous_user
+#'
+#' @aliases quicksight_generate_embed_url_for_anonymous_user
 quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, SessionLifetimeInMinutes = NULL, Namespace, SessionTags = NULL, AuthorizedResourceArns, ExperienceConfiguration, AllowedDomains = NULL) {
   op <- new_operation(
     name = "GenerateEmbedUrlForAnonymousUser",
@@ -5528,6 +5654,8 @@ quicksight_generate_embed_url_for_anonymous_user <- function(AwsAccountId, Sessi
 #' @keywords internal
 #'
 #' @rdname quicksight_generate_embed_url_for_registered_user
+#'
+#' @aliases quicksight_generate_embed_url_for_registered_user
 quicksight_generate_embed_url_for_registered_user <- function(AwsAccountId, SessionLifetimeInMinutes = NULL, UserArn, ExperienceConfiguration, AllowedDomains = NULL) {
   op <- new_operation(
     name = "GenerateEmbedUrlForRegisteredUser",
@@ -5660,6 +5788,8 @@ quicksight_generate_embed_url_for_registered_user <- function(AwsAccountId, Sess
 #' @keywords internal
 #'
 #' @rdname quicksight_get_dashboard_embed_url
+#'
+#' @aliases quicksight_get_dashboard_embed_url
 quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, IdentityType, SessionLifetimeInMinutes = NULL, UndoRedoDisabled = NULL, ResetDisabled = NULL, StatePersistenceEnabled = NULL, UserArn = NULL, Namespace = NULL, AdditionalDashboardIds = NULL) {
   op <- new_operation(
     name = "GetDashboardEmbedUrl",
@@ -5763,6 +5893,8 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' @keywords internal
 #'
 #' @rdname quicksight_get_session_embed_url
+#'
+#' @aliases quicksight_get_session_embed_url
 quicksight_get_session_embed_url <- function(AwsAccountId, EntryPoint = NULL, SessionLifetimeInMinutes = NULL, UserArn = NULL) {
   op <- new_operation(
     name = "GetSessionEmbedUrl",
@@ -5830,6 +5962,8 @@ quicksight_get_session_embed_url <- function(AwsAccountId, EntryPoint = NULL, Se
 #' @keywords internal
 #'
 #' @rdname quicksight_list_analyses
+#'
+#' @aliases quicksight_list_analyses
 quicksight_list_analyses <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAnalyses",
@@ -5900,6 +6034,8 @@ quicksight_list_analyses <- function(AwsAccountId, NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname quicksight_list_dashboard_versions
+#'
+#' @aliases quicksight_list_dashboard_versions
 quicksight_list_dashboard_versions <- function(AwsAccountId, DashboardId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDashboardVersions",
@@ -5970,6 +6106,8 @@ quicksight_list_dashboard_versions <- function(AwsAccountId, DashboardId, NextTo
 #' @keywords internal
 #'
 #' @rdname quicksight_list_dashboards
+#'
+#' @aliases quicksight_list_dashboards
 quicksight_list_dashboards <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDashboards",
@@ -6050,6 +6188,8 @@ quicksight_list_dashboards <- function(AwsAccountId, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname quicksight_list_data_sets
+#'
+#' @aliases quicksight_list_data_sets
 quicksight_list_data_sets <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDataSets",
@@ -6327,6 +6467,8 @@ quicksight_list_data_sets <- function(AwsAccountId, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname quicksight_list_data_sources
+#'
+#' @aliases quicksight_list_data_sources
 quicksight_list_data_sources <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDataSources",
@@ -6388,6 +6530,8 @@ quicksight_list_data_sources <- function(AwsAccountId, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname quicksight_list_folder_members
+#'
+#' @aliases quicksight_list_folder_members
 quicksight_list_folder_members <- function(AwsAccountId, FolderId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFolderMembers",
@@ -6454,6 +6598,8 @@ quicksight_list_folder_members <- function(AwsAccountId, FolderId, NextToken = N
 #' @keywords internal
 #'
 #' @rdname quicksight_list_folders
+#'
+#' @aliases quicksight_list_folders
 quicksight_list_folders <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFolders",
@@ -6518,6 +6664,8 @@ quicksight_list_folders <- function(AwsAccountId, NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname quicksight_list_group_memberships
+#'
+#' @aliases quicksight_list_group_memberships
 quicksight_list_group_memberships <- function(GroupName, NextToken = NULL, MaxResults = NULL, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "ListGroupMemberships",
@@ -6581,6 +6729,8 @@ quicksight_list_group_memberships <- function(GroupName, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname quicksight_list_groups
+#'
+#' @aliases quicksight_list_groups
 quicksight_list_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Namespace) {
   op <- new_operation(
     name = "ListGroups",
@@ -6645,6 +6795,8 @@ quicksight_list_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname quicksight_list_iam_policy_assignments
+#'
+#' @aliases quicksight_list_iam_policy_assignments
 quicksight_list_iam_policy_assignments <- function(AwsAccountId, AssignmentStatus = NULL, Namespace, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListIAMPolicyAssignments",
@@ -6712,6 +6864,8 @@ quicksight_list_iam_policy_assignments <- function(AwsAccountId, AssignmentStatu
 #' @keywords internal
 #'
 #' @rdname quicksight_list_iam_policy_assignments_for_user
+#'
+#' @aliases quicksight_list_iam_policy_assignments_for_user
 quicksight_list_iam_policy_assignments_for_user <- function(AwsAccountId, UserName, NextToken = NULL, MaxResults = NULL, Namespace) {
   op <- new_operation(
     name = "ListIAMPolicyAssignmentsForUser",
@@ -6794,6 +6948,8 @@ quicksight_list_iam_policy_assignments_for_user <- function(AwsAccountId, UserNa
 #' @keywords internal
 #'
 #' @rdname quicksight_list_ingestions
+#'
+#' @aliases quicksight_list_ingestions
 quicksight_list_ingestions <- function(DataSetId, NextToken = NULL, AwsAccountId, MaxResults = NULL) {
   op <- new_operation(
     name = "ListIngestions",
@@ -6868,6 +7024,8 @@ quicksight_list_ingestions <- function(DataSetId, NextToken = NULL, AwsAccountId
 #' @keywords internal
 #'
 #' @rdname quicksight_list_namespaces
+#'
+#' @aliases quicksight_list_namespaces
 quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListNamespaces",
@@ -6921,6 +7079,8 @@ quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname quicksight_list_tags_for_resource
+#'
+#' @aliases quicksight_list_tags_for_resource
 quicksight_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -6984,6 +7144,8 @@ quicksight_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname quicksight_list_template_aliases
+#'
+#' @aliases quicksight_list_template_aliases
 quicksight_list_template_aliases <- function(AwsAccountId, TemplateId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTemplateAliases",
@@ -7053,6 +7215,8 @@ quicksight_list_template_aliases <- function(AwsAccountId, TemplateId, NextToken
 #' @keywords internal
 #'
 #' @rdname quicksight_list_template_versions
+#'
+#' @aliases quicksight_list_template_versions
 quicksight_list_template_versions <- function(AwsAccountId, TemplateId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTemplateVersions",
@@ -7120,6 +7284,8 @@ quicksight_list_template_versions <- function(AwsAccountId, TemplateId, NextToke
 #' @keywords internal
 #'
 #' @rdname quicksight_list_templates
+#'
+#' @aliases quicksight_list_templates
 quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTemplates",
@@ -7183,6 +7349,8 @@ quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname quicksight_list_theme_aliases
+#'
+#' @aliases quicksight_list_theme_aliases
 quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListThemeAliases",
@@ -7252,6 +7420,8 @@ quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname quicksight_list_theme_versions
+#'
+#' @aliases quicksight_list_theme_versions
 quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListThemeVersions",
@@ -7330,6 +7500,8 @@ quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname quicksight_list_themes
+#'
+#' @aliases quicksight_list_themes
 quicksight_list_themes <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Type = NULL) {
   op <- new_operation(
     name = "ListThemes",
@@ -7399,6 +7571,8 @@ quicksight_list_themes <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname quicksight_list_user_groups
+#'
+#' @aliases quicksight_list_user_groups
 quicksight_list_user_groups <- function(UserName, AwsAccountId, Namespace, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListUserGroups",
@@ -7471,6 +7645,8 @@ quicksight_list_user_groups <- function(UserName, AwsAccountId, Namespace, NextT
 #' @keywords internal
 #'
 #' @rdname quicksight_list_users
+#'
+#' @aliases quicksight_list_users
 quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Namespace) {
   op <- new_operation(
     name = "ListUsers",
@@ -7634,6 +7810,8 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname quicksight_register_user
+#'
+#' @aliases quicksight_register_user
 quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NULL, SessionName = NULL, AwsAccountId, Namespace, UserName = NULL, CustomPermissionsName = NULL, ExternalLoginFederationProviderType = NULL, CustomFederationProviderUrl = NULL, ExternalLoginId = NULL) {
   op <- new_operation(
     name = "RegisterUser",
@@ -7684,6 +7862,8 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 #' @keywords internal
 #'
 #' @rdname quicksight_restore_analysis
+#'
+#' @aliases quicksight_restore_analysis
 quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
   op <- new_operation(
     name = "RestoreAnalysis",
@@ -7762,6 +7942,8 @@ quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
 #' @keywords internal
 #'
 #' @rdname quicksight_search_analyses
+#'
+#' @aliases quicksight_search_analyses
 quicksight_search_analyses <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "SearchAnalyses",
@@ -7846,6 +8028,8 @@ quicksight_search_analyses <- function(AwsAccountId, Filters, NextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname quicksight_search_dashboards
+#'
+#' @aliases quicksight_search_dashboards
 quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "SearchDashboards",
@@ -7922,6 +8106,8 @@ quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname quicksight_search_folders
+#'
+#' @aliases quicksight_search_folders
 quicksight_search_folders <- function(AwsAccountId, Filters, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "SearchFolders",
@@ -7998,6 +8184,8 @@ quicksight_search_folders <- function(AwsAccountId, Filters, NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname quicksight_search_groups
+#'
+#' @aliases quicksight_search_groups
 quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = NULL, Namespace, Filters) {
   op <- new_operation(
     name = "SearchGroups",
@@ -8077,6 +8265,8 @@ quicksight_search_groups <- function(AwsAccountId, NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname quicksight_tag_resource
+#'
+#' @aliases quicksight_tag_resource
 quicksight_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -8128,6 +8318,8 @@ quicksight_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname quicksight_untag_resource
+#'
+#' @aliases quicksight_untag_resource
 quicksight_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -8203,6 +8395,8 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname quicksight_update_account_customization
+#'
+#' @aliases quicksight_update_account_customization
 quicksight_update_account_customization <- function(AwsAccountId, Namespace = NULL, AccountCustomization) {
   op <- new_operation(
     name = "UpdateAccountCustomization",
@@ -8262,6 +8456,8 @@ quicksight_update_account_customization <- function(AwsAccountId, Namespace = NU
 #' @keywords internal
 #'
 #' @rdname quicksight_update_account_settings
+#'
+#' @aliases quicksight_update_account_settings
 quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, NotificationEmail = NULL) {
   op <- new_operation(
     name = "UpdateAccountSettings",
@@ -8376,6 +8572,8 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 #' @keywords internal
 #'
 #' @rdname quicksight_update_analysis
+#'
+#' @aliases quicksight_update_analysis
 quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameters = NULL, SourceEntity, ThemeArn = NULL) {
   op <- new_operation(
     name = "UpdateAnalysis",
@@ -8458,6 +8656,8 @@ quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' @keywords internal
 #'
 #' @rdname quicksight_update_analysis_permissions
+#'
+#' @aliases quicksight_update_analysis_permissions
 quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, GrantPermissions = NULL, RevokePermissions = NULL) {
   op <- new_operation(
     name = "UpdateAnalysisPermissions",
@@ -8618,6 +8818,8 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' @keywords internal
 #'
 #' @rdname quicksight_update_dashboard
+#'
+#' @aliases quicksight_update_dashboard
 quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceEntity, Parameters = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL) {
   op <- new_operation(
     name = "UpdateDashboard",
@@ -8725,6 +8927,8 @@ quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceE
 #' @keywords internal
 #'
 #' @rdname quicksight_update_dashboard_permissions
+#'
+#' @aliases quicksight_update_dashboard_permissions
 quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, GrantPermissions = NULL, RevokePermissions = NULL, GrantLinkPermissions = NULL, RevokeLinkPermissions = NULL) {
   op <- new_operation(
     name = "UpdateDashboardPermissions",
@@ -8779,6 +8983,8 @@ quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, G
 #' @keywords internal
 #'
 #' @rdname quicksight_update_dashboard_published_version
+#'
+#' @aliases quicksight_update_dashboard_published_version
 quicksight_update_dashboard_published_version <- function(AwsAccountId, DashboardId, VersionNumber) {
   op <- new_operation(
     name = "UpdateDashboardPublishedVersion",
@@ -9016,6 +9222,8 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_set
+#'
+#' @aliases quicksight_update_data_set
 quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, DataSetUsageConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateDataSet",
@@ -9090,6 +9298,8 @@ quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_set_permissions
+#'
+#' @aliases quicksight_update_data_set_permissions
 quicksight_update_data_set_permissions <- function(AwsAccountId, DataSetId, GrantPermissions = NULL, RevokePermissions = NULL) {
   op <- new_operation(
     name = "UpdateDataSetPermissions",
@@ -9366,6 +9576,8 @@ quicksight_update_data_set_permissions <- function(AwsAccountId, DataSetId, Gran
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_source
+#'
+#' @aliases quicksight_update_data_source
 quicksight_update_data_source <- function(AwsAccountId, DataSourceId, Name, DataSourceParameters = NULL, Credentials = NULL, VpcConnectionProperties = NULL, SslProperties = NULL) {
   op <- new_operation(
     name = "UpdateDataSource",
@@ -9438,6 +9650,8 @@ quicksight_update_data_source <- function(AwsAccountId, DataSourceId, Name, Data
 #' @keywords internal
 #'
 #' @rdname quicksight_update_data_source_permissions
+#'
+#' @aliases quicksight_update_data_source_permissions
 quicksight_update_data_source_permissions <- function(AwsAccountId, DataSourceId, GrantPermissions = NULL, RevokePermissions = NULL) {
   op <- new_operation(
     name = "UpdateDataSourcePermissions",
@@ -9491,6 +9705,8 @@ quicksight_update_data_source_permissions <- function(AwsAccountId, DataSourceId
 #' @keywords internal
 #'
 #' @rdname quicksight_update_folder
+#'
+#' @aliases quicksight_update_folder
 quicksight_update_folder <- function(AwsAccountId, FolderId, Name) {
   op <- new_operation(
     name = "UpdateFolder",
@@ -9569,6 +9785,8 @@ quicksight_update_folder <- function(AwsAccountId, FolderId, Name) {
 #' @keywords internal
 #'
 #' @rdname quicksight_update_folder_permissions
+#'
+#' @aliases quicksight_update_folder_permissions
 quicksight_update_folder_permissions <- function(AwsAccountId, FolderId, GrantPermissions = NULL, RevokePermissions = NULL) {
   op <- new_operation(
     name = "UpdateFolderPermissions",
@@ -9629,6 +9847,8 @@ quicksight_update_folder_permissions <- function(AwsAccountId, FolderId, GrantPe
 #' @keywords internal
 #'
 #' @rdname quicksight_update_group
+#'
+#' @aliases quicksight_update_group
 quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId, Namespace) {
   op <- new_operation(
     name = "UpdateGroup",
@@ -9714,6 +9934,8 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 #' @keywords internal
 #'
 #' @rdname quicksight_update_iam_policy_assignment
+#'
+#' @aliases quicksight_update_iam_policy_assignment
 quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName, Namespace, AssignmentStatus = NULL, PolicyArn = NULL, Identities = NULL) {
   op <- new_operation(
     name = "UpdateIAMPolicyAssignment",
@@ -9772,6 +9994,8 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' @keywords internal
 #'
 #' @rdname quicksight_update_ip_restriction
+#'
+#' @aliases quicksight_update_ip_restriction
 quicksight_update_ip_restriction <- function(AwsAccountId, IpRestrictionRuleMap = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "UpdateIpRestriction",
@@ -9837,6 +10061,8 @@ quicksight_update_ip_restriction <- function(AwsAccountId, IpRestrictionRuleMap 
 #' @keywords internal
 #'
 #' @rdname quicksight_update_public_sharing_settings
+#'
+#' @aliases quicksight_update_public_sharing_settings
 quicksight_update_public_sharing_settings <- function(AwsAccountId, PublicSharingEnabled = NULL) {
   op <- new_operation(
     name = "UpdatePublicSharingSettings",
@@ -9928,6 +10154,8 @@ quicksight_update_public_sharing_settings <- function(AwsAccountId, PublicSharin
 #' @keywords internal
 #'
 #' @rdname quicksight_update_template
+#'
+#' @aliases quicksight_update_template
 quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity, VersionDescription = NULL, Name = NULL) {
   op <- new_operation(
     name = "UpdateTemplate",
@@ -9991,6 +10219,8 @@ quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity, V
 #' @keywords internal
 #'
 #' @rdname quicksight_update_template_alias
+#'
+#' @aliases quicksight_update_template_alias
 quicksight_update_template_alias <- function(AwsAccountId, TemplateId, AliasName, TemplateVersionNumber) {
   op <- new_operation(
     name = "UpdateTemplateAlias",
@@ -10068,6 +10298,8 @@ quicksight_update_template_alias <- function(AwsAccountId, TemplateId, AliasName
 #' @keywords internal
 #'
 #' @rdname quicksight_update_template_permissions
+#'
+#' @aliases quicksight_update_template_permissions
 quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, GrantPermissions = NULL, RevokePermissions = NULL) {
   op <- new_operation(
     name = "UpdateTemplatePermissions",
@@ -10178,6 +10410,8 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
 #' @keywords internal
 #'
 #' @rdname quicksight_update_theme
+#'
+#' @aliases quicksight_update_theme
 quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThemeId, VersionDescription = NULL, Configuration = NULL) {
   op <- new_operation(
     name = "UpdateTheme",
@@ -10237,6 +10471,8 @@ quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThem
 #' @keywords internal
 #'
 #' @rdname quicksight_update_theme_alias
+#'
+#' @aliases quicksight_update_theme_alias
 quicksight_update_theme_alias <- function(AwsAccountId, ThemeId, AliasName, ThemeVersionNumber) {
   op <- new_operation(
     name = "UpdateThemeAlias",
@@ -10356,6 +10592,8 @@ quicksight_update_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' @keywords internal
 #'
 #' @rdname quicksight_update_theme_permissions
+#'
+#' @aliases quicksight_update_theme_permissions
 quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPermissions = NULL, RevokePermissions = NULL) {
   op <- new_operation(
     name = "UpdateThemePermissions",
@@ -10499,6 +10737,8 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 #' @keywords internal
 #'
 #' @rdname quicksight_update_user
+#'
+#' @aliases quicksight_update_user
 quicksight_update_user <- function(UserName, AwsAccountId, Namespace, Email, Role, CustomPermissionsName = NULL, UnapplyCustomPermissions = NULL, ExternalLoginFederationProviderType = NULL, CustomFederationProviderUrl = NULL, ExternalLoginId = NULL) {
   op <- new_operation(
     name = "UpdateUser",

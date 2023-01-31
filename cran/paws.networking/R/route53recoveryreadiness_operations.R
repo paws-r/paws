@@ -547,7 +547,7 @@ route53recoveryreadiness_get_recovery_group <- function(RecoveryGroupName) {
 #'
 #' @keywords internal
 #'
-#' @rdname route53recoveryreadiness_get_recovery_group_readiness_summary
+#' @rdname route53recoveryreadiness_get_reco_grou_read_summ
 route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxResults = NULL, NextToken = NULL, RecoveryGroupName) {
   op <- new_operation(
     name = "GetRecoveryGroupReadinessSummary",

@@ -104,19 +104,19 @@ return more results.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.management.p1:health_describe_affected_accounts_for_organization]{describe_affected_accounts_for_organization} \tab Returns a list of accounts in the organization from Organizations that are affected by the provided event\cr
-\link[paws.management.p1:health_describe_affected_entities]{describe_affected_entities} \tab Returns a list of entities that have been affected by the specified events, based on the specified filter criteria\cr
-\link[paws.management.p1:health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization} \tab Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria\cr
-\link[paws.management.p1:health_describe_entity_aggregates]{describe_entity_aggregates} \tab Returns the number of entities that are affected by each of the specified events\cr
-\link[paws.management.p1:health_describe_event_aggregates]{describe_event_aggregates} \tab Returns the number of events of each event type (issue, scheduled change, and account notification)\cr
-\link[paws.management.p1:health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events\cr
-\link[paws.management.p1:health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more Amazon Web Services accounts in your organization\cr
-\link[paws.management.p1:health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria\cr
-\link[paws.management.p1:health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in Organizations\cr
-\link[paws.management.p1:health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria\cr
-\link[paws.management.p1:health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling Health to work with your organization\cr
-\link[paws.management.p1:health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Disables Health from working with Organizations\cr
-\link[paws.management.p1:health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Enables Health to work with Organizations
+\link[paws.management:health_describe_affected_accounts_for_organization]{describe_affected_accounts_for_organization} \tab Returns a list of accounts in the organization from Organizations that are affected by the provided event\cr
+\link[paws.management:health_describe_affected_entities]{describe_affected_entities} \tab Returns a list of entities that have been affected by the specified events, based on the specified filter criteria\cr
+\link[paws.management:health_describe_affected_entities_for_organization]{describe_affected_entities_for_organization} \tab Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria\cr
+\link[paws.management:health_describe_entity_aggregates]{describe_entity_aggregates} \tab Returns the number of entities that are affected by each of the specified events\cr
+\link[paws.management:health_describe_event_aggregates]{describe_event_aggregates} \tab Returns the number of events of each event type (issue, scheduled change, and account notification)\cr
+\link[paws.management:health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events\cr
+\link[paws.management:health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more Amazon Web Services accounts in your organization\cr
+\link[paws.management:health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria\cr
+\link[paws.management:health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in Organizations\cr
+\link[paws.management:health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria\cr
+\link[paws.management:health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling Health to work with your organization\cr
+\link[paws.management:health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Disables Health from working with Organizations\cr
+\link[paws.management:health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Enables Health to work with Organizations
 }
 }
 

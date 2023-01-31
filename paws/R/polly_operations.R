@@ -42,6 +42,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname polly_delete_lexicon
+#'
+#' @aliases polly_delete_lexicon
 polly_delete_lexicon <- function(Name) {
   op <- new_operation(
     name = "DeleteLexicon",
@@ -151,6 +153,8 @@ polly_delete_lexicon <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname polly_describe_voices
+#'
+#' @aliases polly_describe_voices
 polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdditionalLanguageCodes = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeVoices",
@@ -221,6 +225,8 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 #' @keywords internal
 #'
 #' @rdname polly_get_lexicon
+#'
+#' @aliases polly_get_lexicon
 polly_get_lexicon <- function(Name) {
   op <- new_operation(
     name = "GetLexicon",
@@ -291,6 +297,8 @@ polly_get_lexicon <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname polly_get_speech_synthesis_task
+#'
+#' @aliases polly_get_speech_synthesis_task
 polly_get_speech_synthesis_task <- function(TaskId) {
   op <- new_operation(
     name = "GetSpeechSynthesisTask",
@@ -362,6 +370,8 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 #' @keywords internal
 #'
 #' @rdname polly_list_lexicons
+#'
+#' @aliases polly_list_lexicons
 polly_list_lexicons <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListLexicons",
@@ -440,6 +450,8 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname polly_list_speech_synthesis_tasks
+#'
+#' @aliases polly_list_speech_synthesis_tasks
 polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListSpeechSynthesisTasks",
@@ -500,6 +512,8 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname polly_put_lexicon
+#'
+#' @aliases polly_put_lexicon
 polly_put_lexicon <- function(Name, Content) {
   op <- new_operation(
     name = "PutLexicon",
@@ -629,6 +643,8 @@ polly_put_lexicon <- function(Name, Content) {
 #' @keywords internal
 #'
 #' @rdname polly_start_speech_synthesis_task
+#'
+#' @aliases polly_start_speech_synthesis_task
 polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL, LexiconNames = NULL, OutputFormat, OutputS3BucketName, OutputS3KeyPrefix = NULL, SampleRate = NULL, SnsTopicArn = NULL, SpeechMarkTypes = NULL, Text, TextType = NULL, VoiceId) {
   op <- new_operation(
     name = "StartSpeechSynthesisTask",
@@ -767,6 +783,8 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' @keywords internal
 #'
 #' @rdname polly_synthesize_speech
+#'
+#' @aliases polly_synthesize_speech
 polly_synthesize_speech <- function(Engine = NULL, LanguageCode = NULL, LexiconNames = NULL, OutputFormat, SampleRate = NULL, SpeechMarkTypes = NULL, Text, TextType = NULL, VoiceId) {
   op <- new_operation(
     name = "SynthesizeSpeech",

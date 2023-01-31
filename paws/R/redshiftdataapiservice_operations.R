@@ -82,6 +82,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_batch_execute_statement
+#'
+#' @aliases redshiftdataapiservice_batch_execute_statement
 redshiftdataapiservice_batch_execute_statement <- function(ClusterIdentifier = NULL, Database, DbUser = NULL, SecretArn = NULL, Sqls, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
@@ -131,6 +133,8 @@ redshiftdataapiservice_batch_execute_statement <- function(ClusterIdentifier = N
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_cancel_statement
+#'
+#' @aliases redshiftdataapiservice_cancel_statement
 redshiftdataapiservice_cancel_statement <- function(Id) {
   op <- new_operation(
     name = "CancelStatement",
@@ -232,6 +236,8 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_describe_statement
+#'
+#' @aliases redshiftdataapiservice_describe_statement
 redshiftdataapiservice_describe_statement <- function(Id) {
   op <- new_operation(
     name = "DescribeStatement",
@@ -351,6 +357,8 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_describe_table
+#'
+#' @aliases redshiftdataapiservice_describe_table
 redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, Schema = NULL, SecretArn = NULL, Table = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "DescribeTable",
@@ -453,6 +461,8 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Conn
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_execute_statement
+#'
+#' @aliases redshiftdataapiservice_execute_statement
 redshiftdataapiservice_execute_statement <- function(ClusterIdentifier = NULL, Database, DbUser = NULL, Parameters = NULL, SecretArn = NULL, Sql, StatementName = NULL, WithEvent = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
@@ -542,6 +552,8 @@ redshiftdataapiservice_execute_statement <- function(ClusterIdentifier = NULL, D
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_get_statement_result
+#'
+#' @aliases redshiftdataapiservice_get_statement_result
 redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
   op <- new_operation(
     name = "GetStatementResult",
@@ -632,6 +644,8 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_databases
+#'
+#' @aliases redshiftdataapiservice_list_databases
 redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SecretArn = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListDatabases",
@@ -732,6 +746,8 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Data
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_schemas
+#'
+#' @aliases redshiftdataapiservice_list_schemas
 redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListSchemas",
@@ -845,6 +861,8 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Connec
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_statements
+#'
+#' @aliases redshiftdataapiservice_list_statements
 redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken = NULL, RoleLevel = NULL, StatementName = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListStatements",
@@ -960,6 +978,8 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_tables
+#'
+#' @aliases redshiftdataapiservice_list_tables
 redshiftdataapiservice_list_tables <- function(ClusterIdentifier = NULL, ConnectedDatabase = NULL, Database, DbUser = NULL, MaxResults = NULL, NextToken = NULL, SchemaPattern = NULL, SecretArn = NULL, TablePattern = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListTables",

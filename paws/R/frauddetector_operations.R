@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname frauddetector_batch_create_variable
+#'
+#' @aliases frauddetector_batch_create_variable
 frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
   op <- new_operation(
     name = "BatchCreateVariable",
@@ -119,6 +121,8 @@ frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_batch_get_variable
+#'
+#' @aliases frauddetector_batch_get_variable
 frauddetector_batch_get_variable <- function(names) {
   op <- new_operation(
     name = "BatchGetVariable",
@@ -162,6 +166,8 @@ frauddetector_batch_get_variable <- function(names) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_cancel_batch_import_job
+#'
+#' @aliases frauddetector_cancel_batch_import_job
 frauddetector_cancel_batch_import_job <- function(jobId) {
   op <- new_operation(
     name = "CancelBatchImportJob",
@@ -202,6 +208,8 @@ frauddetector_cancel_batch_import_job <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_cancel_batch_prediction_job
+#'
+#' @aliases frauddetector_cancel_batch_prediction_job
 frauddetector_cancel_batch_prediction_job <- function(jobId) {
   op <- new_operation(
     name = "CancelBatchPredictionJob",
@@ -261,6 +269,8 @@ frauddetector_cancel_batch_prediction_job <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_batch_import_job
+#'
+#' @aliases frauddetector_create_batch_import_job
 frauddetector_create_batch_import_job <- function(jobId, inputPath, outputPath, eventTypeName, iamRoleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateBatchImportJob",
@@ -321,6 +331,8 @@ frauddetector_create_batch_import_job <- function(jobId, inputPath, outputPath, 
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_batch_prediction_job
+#'
+#' @aliases frauddetector_create_batch_prediction_job
 frauddetector_create_batch_prediction_job <- function(jobId, inputPath, outputPath, eventTypeName, detectorName, detectorVersion = NULL, iamRoleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateBatchPredictionJob",
@@ -414,6 +426,8 @@ frauddetector_create_batch_prediction_job <- function(jobId, inputPath, outputPa
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_detector_version
+#'
+#' @aliases frauddetector_create_detector_version
 frauddetector_create_detector_version <- function(detectorId, description = NULL, externalModelEndpoints = NULL, rules, modelVersions = NULL, ruleExecutionMode = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDetectorVersion",
@@ -468,6 +482,8 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_model
+#'
+#' @aliases frauddetector_create_model
 frauddetector_create_model <- function(modelId, modelType, description = NULL, eventTypeName, tags = NULL) {
   op <- new_operation(
     name = "CreateModel",
@@ -559,6 +575,8 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_model_version
+#'
+#' @aliases frauddetector_create_model_version
 frauddetector_create_model_version <- function(modelId, modelType, trainingDataSource, trainingDataSchema, externalEventsDetail = NULL, ingestedEventsDetail = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateModelVersion",
@@ -628,6 +646,8 @@ frauddetector_create_model_version <- function(modelId, modelType, trainingDataS
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_rule
+#'
+#' @aliases frauddetector_create_rule
 frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, expression, language, outcomes, tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
@@ -690,6 +710,8 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_variable
+#'
+#' @aliases frauddetector_create_variable
 frauddetector_create_variable <- function(name, dataType, dataSource, defaultValue, description = NULL, variableType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateVariable",
@@ -731,6 +753,8 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_batch_import_job
+#'
+#' @aliases frauddetector_delete_batch_import_job
 frauddetector_delete_batch_import_job <- function(jobId) {
   op <- new_operation(
     name = "DeleteBatchImportJob",
@@ -771,6 +795,8 @@ frauddetector_delete_batch_import_job <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_batch_prediction_job
+#'
+#' @aliases frauddetector_delete_batch_prediction_job
 frauddetector_delete_batch_prediction_job <- function(jobId) {
   op <- new_operation(
     name = "DeleteBatchPredictionJob",
@@ -815,6 +841,8 @@ frauddetector_delete_batch_prediction_job <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_detector
+#'
+#' @aliases frauddetector_delete_detector
 frauddetector_delete_detector <- function(detectorId) {
   op <- new_operation(
     name = "DeleteDetector",
@@ -862,6 +890,8 @@ frauddetector_delete_detector <- function(detectorId) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_detector_version
+#'
+#' @aliases frauddetector_delete_detector_version
 frauddetector_delete_detector_version <- function(detectorId, detectorVersionId) {
   op <- new_operation(
     name = "DeleteDetectorVersion",
@@ -908,6 +938,8 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_entity_type
+#'
+#' @aliases frauddetector_delete_entity_type
 frauddetector_delete_entity_type <- function(name) {
   op <- new_operation(
     name = "DeleteEntityType",
@@ -956,6 +988,8 @@ frauddetector_delete_entity_type <- function(name) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_event
+#'
+#' @aliases frauddetector_delete_event
 frauddetector_delete_event <- function(eventId, eventTypeName, deleteAuditHistory = NULL) {
   op <- new_operation(
     name = "DeleteEvent",
@@ -1002,6 +1036,8 @@ frauddetector_delete_event <- function(eventId, eventTypeName, deleteAuditHistor
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_event_type
+#'
+#' @aliases frauddetector_delete_event_type
 frauddetector_delete_event_type <- function(name) {
   op <- new_operation(
     name = "DeleteEventType",
@@ -1048,6 +1084,8 @@ frauddetector_delete_event_type <- function(name) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_events_by_event_type
+#'
+#' @aliases frauddetector_delete_events_by_event_type
 frauddetector_delete_events_by_event_type <- function(eventTypeName) {
   op <- new_operation(
     name = "DeleteEventsByEventType",
@@ -1092,6 +1130,8 @@ frauddetector_delete_events_by_event_type <- function(eventTypeName) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_external_model
+#'
+#' @aliases frauddetector_delete_external_model
 frauddetector_delete_external_model <- function(modelEndpoint) {
   op <- new_operation(
     name = "DeleteExternalModel",
@@ -1141,6 +1181,8 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_label
+#'
+#' @aliases frauddetector_delete_label
 frauddetector_delete_label <- function(name) {
   op <- new_operation(
     name = "DeleteLabel",
@@ -1189,6 +1231,8 @@ frauddetector_delete_label <- function(name) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_model
+#'
+#' @aliases frauddetector_delete_model
 frauddetector_delete_model <- function(modelId, modelType) {
   op <- new_operation(
     name = "DeleteModel",
@@ -1241,6 +1285,8 @@ frauddetector_delete_model <- function(modelId, modelType) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_model_version
+#'
+#' @aliases frauddetector_delete_model_version
 frauddetector_delete_model_version <- function(modelId, modelType, modelVersionNumber) {
   op <- new_operation(
     name = "DeleteModelVersion",
@@ -1286,6 +1332,8 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_outcome
+#'
+#' @aliases frauddetector_delete_outcome
 frauddetector_delete_outcome <- function(name) {
   op <- new_operation(
     name = "DeleteOutcome",
@@ -1334,6 +1382,8 @@ frauddetector_delete_outcome <- function(name) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_rule
+#'
+#' @aliases frauddetector_delete_rule
 frauddetector_delete_rule <- function(rule) {
   op <- new_operation(
     name = "DeleteRule",
@@ -1384,6 +1434,8 @@ frauddetector_delete_rule <- function(rule) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_variable
+#'
+#' @aliases frauddetector_delete_variable
 frauddetector_delete_variable <- function(name) {
   op <- new_operation(
     name = "DeleteVariable",
@@ -1443,6 +1495,8 @@ frauddetector_delete_variable <- function(name) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_describe_detector
+#'
+#' @aliases frauddetector_describe_detector
 frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeDetector",
@@ -1655,6 +1709,8 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname frauddetector_describe_model_versions
+#'
+#' @aliases frauddetector_describe_model_versions
 frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNumber = NULL, modelType = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeModelVersions",
@@ -1727,6 +1783,8 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_batch_import_jobs
+#'
+#' @aliases frauddetector_get_batch_import_jobs
 frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetBatchImportJobs",
@@ -1801,6 +1859,8 @@ frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_batch_prediction_jobs
+#'
+#' @aliases frauddetector_get_batch_prediction_jobs
 frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetBatchPredictionJobs",
@@ -1849,6 +1909,8 @@ frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_delete_events_by_event_type_status
+#'
+#' @aliases frauddetector_get_delete_events_by_event_type_status
 frauddetector_get_delete_events_by_event_type_status <- function(eventTypeName) {
   op <- new_operation(
     name = "GetDeleteEventsByEventTypeStatus",
@@ -1921,6 +1983,8 @@ frauddetector_get_delete_events_by_event_type_status <- function(eventTypeName) 
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_detector_version
+#'
+#' @aliases frauddetector_get_detector_version
 frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
   op <- new_operation(
     name = "GetDetectorVersion",
@@ -1986,6 +2050,8 @@ frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_detectors
+#'
+#' @aliases frauddetector_get_detectors
 frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetDetectors",
@@ -2050,6 +2116,8 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_entity_types
+#'
+#' @aliases frauddetector_get_entity_types
 frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetEntityTypes",
@@ -2113,6 +2181,8 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_event
+#'
+#' @aliases frauddetector_get_event
 frauddetector_get_event <- function(eventId, eventTypeName) {
   op <- new_operation(
     name = "GetEvent",
@@ -2245,6 +2315,8 @@ frauddetector_get_event <- function(eventId, eventTypeName) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_event_prediction
+#'
+#' @aliases frauddetector_get_event_prediction
 frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = NULL, eventId, eventTypeName, entities, eventTimestamp, eventVariables, externalModelEndpointDataBlobs = NULL) {
   op <- new_operation(
     name = "GetEventPrediction",
@@ -2385,6 +2457,8 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_event_prediction_metadata
+#'
+#' @aliases frauddetector_get_event_prediction_metadata
 frauddetector_get_event_prediction_metadata <- function(eventId, eventTypeName, detectorId, detectorVersionId, predictionTimestamp) {
   op <- new_operation(
     name = "GetEventPredictionMetadata",
@@ -2466,6 +2540,8 @@ frauddetector_get_event_prediction_metadata <- function(eventId, eventTypeName, 
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_event_types
+#'
+#' @aliases frauddetector_get_event_types
 frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetEventTypes",
@@ -2549,6 +2625,8 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_external_models
+#'
+#' @aliases frauddetector_get_external_models
 frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetExternalModels",
@@ -2593,6 +2671,8 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_kms_encryption_key
+#'
+#' @aliases frauddetector_get_kms_encryption_key
 frauddetector_get_kms_encryption_key <- function() {
   op <- new_operation(
     name = "GetKMSEncryptionKey",
@@ -2656,6 +2736,8 @@ frauddetector_get_kms_encryption_key <- function() {
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_labels
+#'
+#' @aliases frauddetector_get_labels
 frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetLabels",
@@ -2733,6 +2815,8 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_model_version
+#'
+#' @aliases frauddetector_get_model_version
 frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumber) {
   op <- new_operation(
     name = "GetModelVersion",
@@ -2805,6 +2889,8 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_models
+#'
+#' @aliases frauddetector_get_models
 frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetModels",
@@ -2868,6 +2954,8 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_outcomes
+#'
+#' @aliases frauddetector_get_outcomes
 frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetOutcomes",
@@ -2948,6 +3036,8 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_rules
+#'
+#' @aliases frauddetector_get_rules
 frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetRules",
@@ -3015,6 +3105,8 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_variables
+#'
+#' @aliases frauddetector_get_variables
 frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetVariables",
@@ -3108,6 +3200,8 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
 #' @keywords internal
 #'
 #' @rdname frauddetector_list_event_predictions
+#'
+#' @aliases frauddetector_list_event_predictions
 frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NULL, detectorId = NULL, detectorVersionId = NULL, predictionTimeRange = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListEventPredictions",
@@ -3166,6 +3260,8 @@ frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NUL
 #' @keywords internal
 #'
 #' @rdname frauddetector_list_tags_for_resource
+#'
+#' @aliases frauddetector_list_tags_for_resource
 frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3217,6 +3313,8 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_detector
+#'
+#' @aliases frauddetector_put_detector
 frauddetector_put_detector <- function(detectorId, description = NULL, eventTypeName, tags = NULL) {
   op <- new_operation(
     name = "PutDetector",
@@ -3270,6 +3368,8 @@ frauddetector_put_detector <- function(detectorId, description = NULL, eventType
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_entity_type
+#'
+#' @aliases frauddetector_put_entity_type
 frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutEntityType",
@@ -3341,6 +3441,8 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_event_type
+#'
+#' @aliases frauddetector_put_event_type
 frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, eventIngestion = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutEventType",
@@ -3416,6 +3518,8 @@ frauddetector_put_event_type <- function(name, description = NULL, eventVariable
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_external_model
+#'
+#' @aliases frauddetector_put_external_model
 frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeModelEndpointRoleArn, inputConfiguration, outputConfiguration, modelEndpointStatus, tags = NULL) {
   op <- new_operation(
     name = "PutExternalModel",
@@ -3458,6 +3562,8 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_kms_encryption_key
+#'
+#' @aliases frauddetector_put_kms_encryption_key
 frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
   op <- new_operation(
     name = "PutKMSEncryptionKey",
@@ -3509,6 +3615,8 @@ frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_label
+#'
+#' @aliases frauddetector_put_label
 frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutLabel",
@@ -3558,6 +3666,8 @@ frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_outcome
+#'
+#' @aliases frauddetector_put_outcome
 frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutOutcome",
@@ -3627,6 +3737,8 @@ frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_send_event
+#'
+#' @aliases frauddetector_send_event
 frauddetector_send_event <- function(eventId, eventTypeName, eventTimestamp, eventVariables, assignedLabel = NULL, labelTimestamp = NULL, entities) {
   op <- new_operation(
     name = "SendEvent",
@@ -3674,6 +3786,8 @@ frauddetector_send_event <- function(eventId, eventTypeName, eventTimestamp, eve
 #' @keywords internal
 #'
 #' @rdname frauddetector_tag_resource
+#'
+#' @aliases frauddetector_tag_resource
 frauddetector_tag_resource <- function(resourceARN, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3718,6 +3832,8 @@ frauddetector_tag_resource <- function(resourceARN, tags) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_untag_resource
+#'
+#' @aliases frauddetector_untag_resource
 frauddetector_untag_resource <- function(resourceARN, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3799,6 +3915,8 @@ frauddetector_untag_resource <- function(resourceARN, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_detector_version
+#'
+#' @aliases frauddetector_update_detector_version
 frauddetector_update_detector_version <- function(detectorId, detectorVersionId, externalModelEndpoints, rules, description = NULL, modelVersions = NULL, ruleExecutionMode = NULL) {
   op <- new_operation(
     name = "UpdateDetectorVersion",
@@ -3845,6 +3963,8 @@ frauddetector_update_detector_version <- function(detectorId, detectorVersionId,
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_detector_version_metadata
+#'
+#' @aliases frauddetector_update_detector_version_metadata
 frauddetector_update_detector_version_metadata <- function(detectorId, detectorVersionId, description) {
   op <- new_operation(
     name = "UpdateDetectorVersionMetadata",
@@ -3893,6 +4013,8 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_detector_version_status
+#'
+#' @aliases frauddetector_update_detector_version_status
 frauddetector_update_detector_version_status <- function(detectorId, detectorVersionId, status) {
   op <- new_operation(
     name = "UpdateDetectorVersionStatus",
@@ -3941,6 +4063,8 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_event_label
+#'
+#' @aliases frauddetector_update_event_label
 frauddetector_update_event_label <- function(eventId, eventTypeName, assignedLabel, labelTimestamp) {
   op <- new_operation(
     name = "UpdateEventLabel",
@@ -3985,6 +4109,8 @@ frauddetector_update_event_label <- function(eventId, eventTypeName, assignedLab
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_model
+#'
+#' @aliases frauddetector_update_model
 frauddetector_update_model <- function(modelId, modelType, description = NULL) {
   op <- new_operation(
     name = "UpdateModel",
@@ -4064,6 +4190,8 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_model_version
+#'
+#' @aliases frauddetector_update_model_version
 frauddetector_update_model_version <- function(modelId, modelType, majorVersionNumber, externalEventsDetail = NULL, ingestedEventsDetail = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateModelVersion",
@@ -4119,6 +4247,8 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_model_version_status
+#'
+#' @aliases frauddetector_update_model_version_status
 frauddetector_update_model_version_status <- function(modelId, modelType, modelVersionNumber, status) {
   op <- new_operation(
     name = "UpdateModelVersionStatus",
@@ -4165,6 +4295,8 @@ frauddetector_update_model_version_status <- function(modelId, modelType, modelV
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_rule_metadata
+#'
+#' @aliases frauddetector_update_rule_metadata
 frauddetector_update_rule_metadata <- function(rule, description) {
   op <- new_operation(
     name = "UpdateRuleMetadata",
@@ -4237,6 +4369,8 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_rule_version
+#'
+#' @aliases frauddetector_update_rule_version
 frauddetector_update_rule_version <- function(rule, description = NULL, expression, language, outcomes, tags = NULL) {
   op <- new_operation(
     name = "UpdateRuleVersion",
@@ -4285,6 +4419,8 @@ frauddetector_update_rule_version <- function(rule, description = NULL, expressi
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_variable
+#'
+#' @aliases frauddetector_update_variable
 frauddetector_update_variable <- function(name, defaultValue = NULL, description = NULL, variableType = NULL) {
   op <- new_operation(
     name = "UpdateVariable",

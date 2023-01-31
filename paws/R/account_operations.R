@@ -67,6 +67,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname account_delete_alternate_contact
+#'
+#' @aliases account_delete_alternate_contact
 account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactType) {
   op <- new_operation(
     name = "DeleteAlternateContact",
@@ -159,6 +161,8 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
 #' @keywords internal
 #'
 #' @rdname account_get_alternate_contact
+#'
+#' @aliases account_get_alternate_contact
 account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType) {
   op <- new_operation(
     name = "GetAlternateContact",
@@ -247,6 +251,8 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' @keywords internal
 #'
 #' @rdname account_get_contact_information
+#'
+#' @aliases account_get_contact_information
 account_get_contact_information <- function(AccountId = NULL) {
   op <- new_operation(
     name = "GetContactInformation",
@@ -337,6 +343,8 @@ account_get_contact_information <- function(AccountId = NULL) {
 #' @keywords internal
 #'
 #' @rdname account_put_alternate_contact
+#'
+#' @aliases account_put_alternate_contact
 account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType, EmailAddress, Name, PhoneNumber, Title) {
   op <- new_operation(
     name = "PutAlternateContact",
@@ -423,6 +431,8 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' @keywords internal
 #'
 #' @rdname account_put_contact_information
+#'
+#' @aliases account_put_contact_information
 account_put_contact_information <- function(AccountId = NULL, ContactInformation) {
   op <- new_operation(
     name = "PutContactInformation",

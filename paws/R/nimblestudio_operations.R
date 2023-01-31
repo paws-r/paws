@@ -50,6 +50,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname nimblestudio_accept_eulas
+#'
+#' @aliases nimblestudio_accept_eulas
 nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studioId) {
   op <- new_operation(
     name = "AcceptEulas",
@@ -204,6 +206,8 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #' @keywords internal
 #'
 #' @rdname nimblestudio_create_launch_profile
+#'
+#' @aliases nimblestudio_create_launch_profile
 nimblestudio_create_launch_profile <- function(clientToken = NULL, description = NULL, ec2SubnetIds, launchProfileProtocolVersions, name, streamConfiguration, studioComponentIds, studioId, tags = NULL) {
   op <- new_operation(
     name = "CreateLaunchProfile",
@@ -288,6 +292,8 @@ nimblestudio_create_launch_profile <- function(clientToken = NULL, description =
 #' @keywords internal
 #'
 #' @rdname nimblestudio_create_streaming_image
+#'
+#' @aliases nimblestudio_create_streaming_image
 nimblestudio_create_streaming_image <- function(clientToken = NULL, description = NULL, ec2ImageId, name, studioId, tags = NULL) {
   op <- new_operation(
     name = "CreateStreamingImage",
@@ -392,6 +398,8 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #' @keywords internal
 #'
 #' @rdname nimblestudio_create_streaming_session
+#'
+#' @aliases nimblestudio_create_streaming_session
 nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2InstanceType = NULL, launchProfileId = NULL, ownedBy = NULL, streamingImageId = NULL, studioId, tags = NULL) {
   op <- new_operation(
     name = "CreateStreamingSession",
@@ -463,6 +471,8 @@ nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2Instanc
 #' @keywords internal
 #'
 #' @rdname nimblestudio_create_streaming_session_stream
+#'
+#' @aliases nimblestudio_create_streaming_session_stream
 nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, expirationInSeconds = NULL, sessionId, studioId) {
   op <- new_operation(
     name = "CreateStreamingSessionStream",
@@ -588,6 +598,8 @@ nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, exp
 #' @keywords internal
 #'
 #' @rdname nimblestudio_create_studio
+#'
+#' @aliases nimblestudio_create_studio
 nimblestudio_create_studio <- function(adminRoleArn, clientToken = NULL, displayName, studioEncryptionConfiguration = NULL, studioName, tags = NULL, userRoleArn) {
   op <- new_operation(
     name = "CreateStudio",
@@ -775,6 +787,8 @@ nimblestudio_create_studio <- function(adminRoleArn, clientToken = NULL, display
 #' @keywords internal
 #'
 #' @rdname nimblestudio_create_studio_component
+#'
+#' @aliases nimblestudio_create_studio_component
 nimblestudio_create_studio_component <- function(clientToken = NULL, configuration = NULL, description = NULL, ec2SecurityGroupIds = NULL, initializationScripts = NULL, name, runtimeRoleArn = NULL, scriptParameters = NULL, secureInitializationRoleArn = NULL, studioId, subtype = NULL, tags = NULL, type) {
   op <- new_operation(
     name = "CreateStudioComponent",
@@ -884,6 +898,8 @@ nimblestudio_create_studio_component <- function(clientToken = NULL, configurati
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_launch_profile
+#'
+#' @aliases nimblestudio_delete_launch_profile
 nimblestudio_delete_launch_profile <- function(clientToken = NULL, launchProfileId, studioId) {
   op <- new_operation(
     name = "DeleteLaunchProfile",
@@ -935,6 +951,8 @@ nimblestudio_delete_launch_profile <- function(clientToken = NULL, launchProfile
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_launch_profile_member
+#'
+#' @aliases nimblestudio_delete_launch_profile_member
 nimblestudio_delete_launch_profile_member <- function(clientToken = NULL, launchProfileId, principalId, studioId) {
   op <- new_operation(
     name = "DeleteLaunchProfileMember",
@@ -1009,6 +1027,8 @@ nimblestudio_delete_launch_profile_member <- function(clientToken = NULL, launch
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_streaming_image
+#'
+#' @aliases nimblestudio_delete_streaming_image
 nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingImageId, studioId) {
   op <- new_operation(
     name = "DeleteStreamingImage",
@@ -1102,6 +1122,8 @@ nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingIma
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_streaming_session
+#'
+#' @aliases nimblestudio_delete_streaming_session
 nimblestudio_delete_streaming_session <- function(clientToken = NULL, sessionId, studioId) {
   op <- new_operation(
     name = "DeleteStreamingSession",
@@ -1178,6 +1200,8 @@ nimblestudio_delete_streaming_session <- function(clientToken = NULL, sessionId,
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_studio
+#'
+#' @aliases nimblestudio_delete_studio
 nimblestudio_delete_studio <- function(clientToken = NULL, studioId) {
   op <- new_operation(
     name = "DeleteStudio",
@@ -1297,6 +1321,8 @@ nimblestudio_delete_studio <- function(clientToken = NULL, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_studio_component
+#'
+#' @aliases nimblestudio_delete_studio_component
 nimblestudio_delete_studio_component <- function(clientToken = NULL, studioComponentId, studioId) {
   op <- new_operation(
     name = "DeleteStudioComponent",
@@ -1345,6 +1371,8 @@ nimblestudio_delete_studio_component <- function(clientToken = NULL, studioCompo
 #' @keywords internal
 #'
 #' @rdname nimblestudio_delete_studio_member
+#'
+#' @aliases nimblestudio_delete_studio_member
 nimblestudio_delete_studio_member <- function(clientToken = NULL, principalId, studioId) {
   op <- new_operation(
     name = "DeleteStudioMember",
@@ -1400,6 +1428,8 @@ nimblestudio_delete_studio_member <- function(clientToken = NULL, principalId, s
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_eula
+#'
+#' @aliases nimblestudio_get_eula
 nimblestudio_get_eula <- function(eulaId) {
   op <- new_operation(
     name = "GetEula",
@@ -1503,6 +1533,8 @@ nimblestudio_get_eula <- function(eulaId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_launch_profile
+#'
+#' @aliases nimblestudio_get_launch_profile
 nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
   op <- new_operation(
     name = "GetLaunchProfile",
@@ -1653,6 +1685,8 @@ nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_launch_profile_details
+#'
+#' @aliases nimblestudio_get_launch_profile_details
 nimblestudio_get_launch_profile_details <- function(launchProfileId, studioId) {
   op <- new_operation(
     name = "GetLaunchProfileDetails",
@@ -1753,6 +1787,8 @@ nimblestudio_get_launch_profile_details <- function(launchProfileId, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_launch_profile_initialization
+#'
+#' @aliases nimblestudio_get_launch_profile_initialization
 nimblestudio_get_launch_profile_initialization <- function(launchProfileId, launchProfileProtocolVersions, launchPurpose, platform, studioId) {
   op <- new_operation(
     name = "GetLaunchProfileInitialization",
@@ -1809,6 +1845,8 @@ nimblestudio_get_launch_profile_initialization <- function(launchProfileId, laun
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_launch_profile_member
+#'
+#' @aliases nimblestudio_get_launch_profile_member
 nimblestudio_get_launch_profile_member <- function(launchProfileId, principalId, studioId) {
   op <- new_operation(
     name = "GetLaunchProfileMember",
@@ -1877,6 +1915,8 @@ nimblestudio_get_launch_profile_member <- function(launchProfileId, principalId,
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_streaming_image
+#'
+#' @aliases nimblestudio_get_streaming_image
 nimblestudio_get_streaming_image <- function(streamingImageId, studioId) {
   op <- new_operation(
     name = "GetStreamingImage",
@@ -1962,6 +2002,8 @@ nimblestudio_get_streaming_image <- function(streamingImageId, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_streaming_session
+#'
+#' @aliases nimblestudio_get_streaming_session
 nimblestudio_get_streaming_session <- function(sessionId, studioId) {
   op <- new_operation(
     name = "GetStreamingSession",
@@ -2030,6 +2072,8 @@ nimblestudio_get_streaming_session <- function(sessionId, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_streaming_session_stream
+#'
+#' @aliases nimblestudio_get_streaming_session_stream
 nimblestudio_get_streaming_session_stream <- function(sessionId, streamId, studioId) {
   op <- new_operation(
     name = "GetStreamingSessionStream",
@@ -2101,6 +2145,8 @@ nimblestudio_get_streaming_session_stream <- function(sessionId, streamId, studi
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_studio
+#'
+#' @aliases nimblestudio_get_studio
 nimblestudio_get_studio <- function(studioId) {
   op <- new_operation(
     name = "GetStudio",
@@ -2214,6 +2260,8 @@ nimblestudio_get_studio <- function(studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_studio_component
+#'
+#' @aliases nimblestudio_get_studio_component
 nimblestudio_get_studio_component <- function(studioComponentId, studioId) {
   op <- new_operation(
     name = "GetStudioComponent",
@@ -2267,6 +2315,8 @@ nimblestudio_get_studio_component <- function(studioComponentId, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_get_studio_member
+#'
+#' @aliases nimblestudio_get_studio_member
 nimblestudio_get_studio_member <- function(principalId, studioId) {
   op <- new_operation(
     name = "GetStudioMember",
@@ -2329,6 +2379,8 @@ nimblestudio_get_studio_member <- function(principalId, studioId) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_eula_acceptances
+#'
+#' @aliases nimblestudio_list_eula_acceptances
 nimblestudio_list_eula_acceptances <- function(eulaIds = NULL, nextToken = NULL, studioId) {
   op <- new_operation(
     name = "ListEulaAcceptances",
@@ -2391,6 +2443,8 @@ nimblestudio_list_eula_acceptances <- function(eulaIds = NULL, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_eulas
+#'
+#' @aliases nimblestudio_list_eulas
 nimblestudio_list_eulas <- function(eulaIds = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEulas",
@@ -2451,6 +2505,8 @@ nimblestudio_list_eulas <- function(eulaIds = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_launch_profile_members
+#'
+#' @aliases nimblestudio_list_launch_profile_members
 nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults = NULL, nextToken = NULL, studioId) {
   op <- new_operation(
     name = "ListLaunchProfileMembers",
@@ -2567,6 +2623,8 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_launch_profiles
+#'
+#' @aliases nimblestudio_list_launch_profiles
 nimblestudio_list_launch_profiles <- function(maxResults = NULL, nextToken = NULL, principalId = NULL, states = NULL, studioId) {
   op <- new_operation(
     name = "ListLaunchProfiles",
@@ -2643,6 +2701,8 @@ nimblestudio_list_launch_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_streaming_images
+#'
+#' @aliases nimblestudio_list_streaming_images
 nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, studioId) {
   op <- new_operation(
     name = "ListStreamingImages",
@@ -2735,6 +2795,8 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_streaming_sessions
+#'
+#' @aliases nimblestudio_list_streaming_sessions
 nimblestudio_list_streaming_sessions <- function(createdBy = NULL, nextToken = NULL, ownedBy = NULL, sessionIds = NULL, studioId) {
   op <- new_operation(
     name = "ListStreamingSessions",
@@ -2864,6 +2926,8 @@ nimblestudio_list_streaming_sessions <- function(createdBy = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_studio_components
+#'
+#' @aliases nimblestudio_list_studio_components
 nimblestudio_list_studio_components <- function(maxResults = NULL, nextToken = NULL, states = NULL, studioId, types = NULL) {
   op <- new_operation(
     name = "ListStudioComponents",
@@ -2924,6 +2988,8 @@ nimblestudio_list_studio_components <- function(maxResults = NULL, nextToken = N
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_studio_members
+#'
+#' @aliases nimblestudio_list_studio_members
 nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL, studioId) {
   op <- new_operation(
     name = "ListStudioMembers",
@@ -3000,6 +3066,8 @@ nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_studios
+#'
+#' @aliases nimblestudio_list_studios
 nimblestudio_list_studios <- function(nextToken = NULL) {
   op <- new_operation(
     name = "ListStudios",
@@ -3054,6 +3122,8 @@ nimblestudio_list_studios <- function(nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_list_tags_for_resource
+#'
+#' @aliases nimblestudio_list_tags_for_resource
 nimblestudio_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3111,6 +3181,8 @@ nimblestudio_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_put_launch_profile_members
+#'
+#' @aliases nimblestudio_put_launch_profile_members
 nimblestudio_put_launch_profile_members <- function(clientToken = NULL, identityStoreId, launchProfileId, members, studioId) {
   op <- new_operation(
     name = "PutLaunchProfileMembers",
@@ -3166,6 +3238,8 @@ nimblestudio_put_launch_profile_members <- function(clientToken = NULL, identity
 #' @keywords internal
 #'
 #' @rdname nimblestudio_put_studio_members
+#'
+#' @aliases nimblestudio_put_studio_members
 nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId, members, studioId) {
   op <- new_operation(
     name = "PutStudioMembers",
@@ -3255,6 +3329,8 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #' @keywords internal
 #'
 #' @rdname nimblestudio_start_streaming_session
+#'
+#' @aliases nimblestudio_start_streaming_session
 nimblestudio_start_streaming_session <- function(clientToken = NULL, sessionId, studioId) {
   op <- new_operation(
     name = "StartStreamingSession",
@@ -3345,6 +3421,8 @@ nimblestudio_start_streaming_session <- function(clientToken = NULL, sessionId, 
 #' @keywords internal
 #'
 #' @rdname nimblestudio_start_studio_sso_configuration_repair
+#'
+#' @aliases nimblestudio_start_studio_sso_configuration_repair
 nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NULL, studioId) {
   op <- new_operation(
     name = "StartStudioSSOConfigurationRepair",
@@ -3434,6 +3512,8 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #' @keywords internal
 #'
 #' @rdname nimblestudio_stop_streaming_session
+#'
+#' @aliases nimblestudio_stop_streaming_session
 nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, studioId) {
   op <- new_operation(
     name = "StopStreamingSession",
@@ -3479,6 +3559,8 @@ nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, s
 #' @keywords internal
 #'
 #' @rdname nimblestudio_tag_resource
+#'
+#' @aliases nimblestudio_tag_resource
 nimblestudio_tag_resource <- function(resourceArn, tags = NULL) {
   op <- new_operation(
     name = "TagResource",
@@ -3524,6 +3606,8 @@ nimblestudio_tag_resource <- function(resourceArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_untag_resource
+#'
+#' @aliases nimblestudio_untag_resource
 nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3669,6 +3753,8 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname nimblestudio_update_launch_profile
+#'
+#' @aliases nimblestudio_update_launch_profile
 nimblestudio_update_launch_profile <- function(clientToken = NULL, description = NULL, launchProfileId, launchProfileProtocolVersions = NULL, name = NULL, streamConfiguration = NULL, studioComponentIds = NULL, studioId) {
   op <- new_operation(
     name = "UpdateLaunchProfile",
@@ -3732,6 +3818,8 @@ nimblestudio_update_launch_profile <- function(clientToken = NULL, description =
 #' @keywords internal
 #'
 #' @rdname nimblestudio_update_launch_profile_member
+#'
+#' @aliases nimblestudio_update_launch_profile_member
 nimblestudio_update_launch_profile_member <- function(clientToken = NULL, launchProfileId, persona, principalId, studioId) {
   op <- new_operation(
     name = "UpdateLaunchProfileMember",
@@ -3810,6 +3898,8 @@ nimblestudio_update_launch_profile_member <- function(clientToken = NULL, launch
 #' @keywords internal
 #'
 #' @rdname nimblestudio_update_streaming_image
+#'
+#' @aliases nimblestudio_update_streaming_image
 nimblestudio_update_streaming_image <- function(clientToken = NULL, description = NULL, name = NULL, streamingImageId, studioId) {
   op <- new_operation(
     name = "UpdateStreamingImage",
@@ -3898,6 +3988,8 @@ nimblestudio_update_streaming_image <- function(clientToken = NULL, description 
 #' @keywords internal
 #'
 #' @rdname nimblestudio_update_studio
+#'
+#' @aliases nimblestudio_update_studio
 nimblestudio_update_studio <- function(adminRoleArn = NULL, clientToken = NULL, displayName = NULL, studioId, userRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateStudio",
@@ -4082,6 +4174,8 @@ nimblestudio_update_studio <- function(adminRoleArn = NULL, clientToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname nimblestudio_update_studio_component
+#'
+#' @aliases nimblestudio_update_studio_component
 nimblestudio_update_studio_component <- function(clientToken = NULL, configuration = NULL, description = NULL, ec2SecurityGroupIds = NULL, initializationScripts = NULL, name = NULL, runtimeRoleArn = NULL, scriptParameters = NULL, secureInitializationRoleArn = NULL, studioComponentId, studioId, subtype = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateStudioComponent",

@@ -58,6 +58,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname clouddirectory_add_facet_to_object
+#'
+#' @aliases clouddirectory_add_facet_to_object
 clouddirectory_add_facet_to_object <- function(DirectoryArn, SchemaFacet, ObjectAttributeList = NULL, ObjectReference) {
   op <- new_operation(
     name = "AddFacetToObject",
@@ -111,6 +113,8 @@ clouddirectory_add_facet_to_object <- function(DirectoryArn, SchemaFacet, Object
 #' @keywords internal
 #'
 #' @rdname clouddirectory_apply_schema
+#'
+#' @aliases clouddirectory_apply_schema
 clouddirectory_apply_schema <- function(PublishedSchemaArn, DirectoryArn) {
   op <- new_operation(
     name = "ApplySchema",
@@ -173,6 +177,8 @@ clouddirectory_apply_schema <- function(PublishedSchemaArn, DirectoryArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_attach_object
+#'
+#' @aliases clouddirectory_attach_object
 clouddirectory_attach_object <- function(DirectoryArn, ParentReference, ChildReference, LinkName) {
   op <- new_operation(
     name = "AttachObject",
@@ -225,6 +231,8 @@ clouddirectory_attach_object <- function(DirectoryArn, ParentReference, ChildRef
 #' @keywords internal
 #'
 #' @rdname clouddirectory_attach_policy
+#'
+#' @aliases clouddirectory_attach_policy
 clouddirectory_attach_policy <- function(DirectoryArn, PolicyReference, ObjectReference) {
   op <- new_operation(
     name = "AttachPolicy",
@@ -280,6 +288,8 @@ clouddirectory_attach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 #' @keywords internal
 #'
 #' @rdname clouddirectory_attach_to_index
+#'
+#' @aliases clouddirectory_attach_to_index
 clouddirectory_attach_to_index <- function(DirectoryArn, IndexReference, TargetReference) {
   op <- new_operation(
     name = "AttachToIndex",
@@ -382,6 +392,8 @@ clouddirectory_attach_to_index <- function(DirectoryArn, IndexReference, TargetR
 #' @keywords internal
 #'
 #' @rdname clouddirectory_attach_typed_link
+#'
+#' @aliases clouddirectory_attach_typed_link
 clouddirectory_attach_typed_link <- function(DirectoryArn, SourceObjectReference, TargetObjectReference, TypedLinkFacet, Attributes) {
   op <- new_operation(
     name = "AttachTypedLink",
@@ -905,6 +917,8 @@ clouddirectory_attach_typed_link <- function(DirectoryArn, SourceObjectReference
 #' @keywords internal
 #'
 #' @rdname clouddirectory_batch_read
+#'
+#' @aliases clouddirectory_batch_read
 clouddirectory_batch_read <- function(DirectoryArn, Operations, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "BatchRead",
@@ -1280,6 +1294,8 @@ clouddirectory_batch_read <- function(DirectoryArn, Operations, ConsistencyLevel
 #' @keywords internal
 #'
 #' @rdname clouddirectory_batch_write
+#'
+#' @aliases clouddirectory_batch_write
 clouddirectory_batch_write <- function(DirectoryArn, Operations) {
   op <- new_operation(
     name = "BatchWrite",
@@ -1337,6 +1353,8 @@ clouddirectory_batch_write <- function(DirectoryArn, Operations) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_create_directory
+#'
+#' @aliases clouddirectory_create_directory
 clouddirectory_create_directory <- function(Name, SchemaArn) {
   op <- new_operation(
     name = "CreateDirectory",
@@ -1435,6 +1453,8 @@ clouddirectory_create_directory <- function(Name, SchemaArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_create_facet
+#'
+#' @aliases clouddirectory_create_facet
 clouddirectory_create_facet <- function(SchemaArn, Name, Attributes = NULL, ObjectType = NULL, FacetStyle = NULL) {
   op <- new_operation(
     name = "CreateFacet",
@@ -1501,6 +1521,8 @@ clouddirectory_create_facet <- function(SchemaArn, Name, Attributes = NULL, Obje
 #' @keywords internal
 #'
 #' @rdname clouddirectory_create_index
+#'
+#' @aliases clouddirectory_create_index
 clouddirectory_create_index <- function(DirectoryArn, OrderedIndexedAttributeList, IsUnique, ParentReference = NULL, LinkName = NULL) {
   op <- new_operation(
     name = "CreateIndex",
@@ -1587,6 +1609,8 @@ clouddirectory_create_index <- function(DirectoryArn, OrderedIndexedAttributeLis
 #' @keywords internal
 #'
 #' @rdname clouddirectory_create_object
+#'
+#' @aliases clouddirectory_create_object
 clouddirectory_create_object <- function(DirectoryArn, SchemaFacets, ObjectAttributeList = NULL, ParentReference = NULL, LinkName = NULL) {
   op <- new_operation(
     name = "CreateObject",
@@ -1646,6 +1670,8 @@ clouddirectory_create_object <- function(DirectoryArn, SchemaFacets, ObjectAttri
 #' @keywords internal
 #'
 #' @rdname clouddirectory_create_schema
+#'
+#' @aliases clouddirectory_create_schema
 clouddirectory_create_schema <- function(Name) {
   op <- new_operation(
     name = "CreateSchema",
@@ -1720,6 +1746,8 @@ clouddirectory_create_schema <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_create_typed_link_facet
+#'
+#' @aliases clouddirectory_create_typed_link_facet
 clouddirectory_create_typed_link_facet <- function(SchemaArn, Facet) {
   op <- new_operation(
     name = "CreateTypedLinkFacet",
@@ -1767,6 +1795,8 @@ clouddirectory_create_typed_link_facet <- function(SchemaArn, Facet) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_delete_directory
+#'
+#' @aliases clouddirectory_delete_directory
 clouddirectory_delete_directory <- function(DirectoryArn) {
   op <- new_operation(
     name = "DeleteDirectory",
@@ -1812,6 +1842,8 @@ clouddirectory_delete_directory <- function(DirectoryArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_delete_facet
+#'
+#' @aliases clouddirectory_delete_facet
 clouddirectory_delete_facet <- function(SchemaArn, Name) {
   op <- new_operation(
     name = "DeleteFacet",
@@ -1861,6 +1893,8 @@ clouddirectory_delete_facet <- function(SchemaArn, Name) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_delete_object
+#'
+#' @aliases clouddirectory_delete_object
 clouddirectory_delete_object <- function(DirectoryArn, ObjectReference) {
   op <- new_operation(
     name = "DeleteObject",
@@ -1908,6 +1942,8 @@ clouddirectory_delete_object <- function(DirectoryArn, ObjectReference) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_delete_schema
+#'
+#' @aliases clouddirectory_delete_schema
 clouddirectory_delete_schema <- function(SchemaArn) {
   op <- new_operation(
     name = "DeleteSchema",
@@ -1952,6 +1988,8 @@ clouddirectory_delete_schema <- function(SchemaArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_delete_typed_link_facet
+#'
+#' @aliases clouddirectory_delete_typed_link_facet
 clouddirectory_delete_typed_link_facet <- function(SchemaArn, Name) {
   op <- new_operation(
     name = "DeleteTypedLinkFacet",
@@ -2007,6 +2045,8 @@ clouddirectory_delete_typed_link_facet <- function(SchemaArn, Name) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_detach_from_index
+#'
+#' @aliases clouddirectory_detach_from_index
 clouddirectory_detach_from_index <- function(DirectoryArn, IndexReference, TargetReference) {
   op <- new_operation(
     name = "DetachFromIndex",
@@ -2061,6 +2101,8 @@ clouddirectory_detach_from_index <- function(DirectoryArn, IndexReference, Targe
 #' @keywords internal
 #'
 #' @rdname clouddirectory_detach_object
+#'
+#' @aliases clouddirectory_detach_object
 clouddirectory_detach_object <- function(DirectoryArn, ParentReference, LinkName) {
   op <- new_operation(
     name = "DetachObject",
@@ -2112,6 +2154,8 @@ clouddirectory_detach_object <- function(DirectoryArn, ParentReference, LinkName
 #' @keywords internal
 #'
 #' @rdname clouddirectory_detach_policy
+#'
+#' @aliases clouddirectory_detach_policy
 clouddirectory_detach_policy <- function(DirectoryArn, PolicyReference, ObjectReference) {
   op <- new_operation(
     name = "DetachPolicy",
@@ -2182,6 +2226,8 @@ clouddirectory_detach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 #' @keywords internal
 #'
 #' @rdname clouddirectory_detach_typed_link
+#'
+#' @aliases clouddirectory_detach_typed_link
 clouddirectory_detach_typed_link <- function(DirectoryArn, TypedLinkSpecifier) {
   op <- new_operation(
     name = "DetachTypedLink",
@@ -2229,6 +2275,8 @@ clouddirectory_detach_typed_link <- function(DirectoryArn, TypedLinkSpecifier) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_disable_directory
+#'
+#' @aliases clouddirectory_disable_directory
 clouddirectory_disable_directory <- function(DirectoryArn) {
   op <- new_operation(
     name = "DisableDirectory",
@@ -2275,6 +2323,8 @@ clouddirectory_disable_directory <- function(DirectoryArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_enable_directory
+#'
+#' @aliases clouddirectory_enable_directory
 clouddirectory_enable_directory <- function(DirectoryArn) {
   op <- new_operation(
     name = "EnableDirectory",
@@ -2322,6 +2372,8 @@ clouddirectory_enable_directory <- function(DirectoryArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_applied_schema_version
+#'
+#' @aliases clouddirectory_get_applied_schema_version
 clouddirectory_get_applied_schema_version <- function(SchemaArn) {
   op <- new_operation(
     name = "GetAppliedSchemaVersion",
@@ -2374,6 +2426,8 @@ clouddirectory_get_applied_schema_version <- function(SchemaArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_directory
+#'
+#' @aliases clouddirectory_get_directory
 clouddirectory_get_directory <- function(DirectoryArn) {
   op <- new_operation(
     name = "GetDirectory",
@@ -2429,6 +2483,8 @@ clouddirectory_get_directory <- function(DirectoryArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_facet
+#'
+#' @aliases clouddirectory_get_facet
 clouddirectory_get_facet <- function(SchemaArn, Name) {
   op <- new_operation(
     name = "GetFacet",
@@ -2528,6 +2584,8 @@ clouddirectory_get_facet <- function(SchemaArn, Name) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_link_attributes
+#'
+#' @aliases clouddirectory_get_link_attributes
 clouddirectory_get_link_attributes <- function(DirectoryArn, TypedLinkSpecifier, AttributeNames, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "GetLinkAttributes",
@@ -2608,6 +2666,8 @@ clouddirectory_get_link_attributes <- function(DirectoryArn, TypedLinkSpecifier,
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_object_attributes
+#'
+#' @aliases clouddirectory_get_object_attributes
 clouddirectory_get_object_attributes <- function(DirectoryArn, ObjectReference, ConsistencyLevel = NULL, SchemaFacet, AttributeNames) {
   op <- new_operation(
     name = "GetObjectAttributes",
@@ -2666,6 +2726,8 @@ clouddirectory_get_object_attributes <- function(DirectoryArn, ObjectReference, 
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_object_information
+#'
+#' @aliases clouddirectory_get_object_information
 clouddirectory_get_object_information <- function(DirectoryArn, ObjectReference, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "GetObjectInformation",
@@ -2714,6 +2776,8 @@ clouddirectory_get_object_information <- function(DirectoryArn, ObjectReference,
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_schema_as_json
+#'
+#' @aliases clouddirectory_get_schema_as_json
 clouddirectory_get_schema_as_json <- function(SchemaArn) {
   op <- new_operation(
     name = "GetSchemaAsJson",
@@ -2766,6 +2830,8 @@ clouddirectory_get_schema_as_json <- function(SchemaArn) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_get_typed_link_facet_information
+#'
+#' @aliases clouddirectory_get_typed_link_facet_information
 clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
   op <- new_operation(
     name = "GetTypedLinkFacetInformation",
@@ -2825,6 +2891,8 @@ clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_applied_schema_arns
+#'
+#' @aliases clouddirectory_list_applied_schema_arns
 clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAppliedSchemaArns",
@@ -2904,6 +2972,8 @@ clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NU
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_attached_indices
+#'
+#' @aliases clouddirectory_list_attached_indices
 clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListAttachedIndices",
@@ -2956,6 +3026,8 @@ clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, 
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_development_schema_arns
+#'
+#' @aliases clouddirectory_list_development_schema_arns
 clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDevelopmentSchemaArns",
@@ -3016,6 +3088,8 @@ clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_directories
+#'
+#' @aliases clouddirectory_list_directories
 clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL, state = NULL) {
   op <- new_operation(
     name = "ListDirectories",
@@ -3099,6 +3173,8 @@ clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_facet_attributes
+#'
+#' @aliases clouddirectory_list_facet_attributes
 clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFacetAttributes",
@@ -3151,6 +3227,8 @@ clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_facet_names
+#'
+#' @aliases clouddirectory_list_facet_names
 clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListFacetNames",
@@ -3278,6 +3356,8 @@ clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_incoming_typed_links
+#'
+#' @aliases clouddirectory_list_incoming_typed_links
 clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReference, FilterAttributeRanges = NULL, FilterTypedLink = NULL, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListIncomingTypedLinks",
@@ -3392,6 +3472,8 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_index
+#'
+#' @aliases clouddirectory_list_index
 clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL, IndexReference, MaxResults = NULL, NextToken = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListIndex",
@@ -3448,6 +3530,8 @@ clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_managed_schema_arns
+#'
+#' @aliases clouddirectory_list_managed_schema_arns
 clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListManagedSchemaArns",
@@ -3533,6 +3617,8 @@ clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_object_attributes
+#'
+#' @aliases clouddirectory_list_object_attributes
 clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL, FacetFilter = NULL) {
   op <- new_operation(
     name = "ListObjectAttributes",
@@ -3599,6 +3685,8 @@ clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference,
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_object_children
+#'
+#' @aliases clouddirectory_list_object_children
 clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListObjectChildren",
@@ -3674,6 +3762,8 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_object_parent_paths
+#'
+#' @aliases clouddirectory_list_object_parent_paths
 clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReference, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListObjectParentPaths",
@@ -3749,6 +3839,8 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_object_parents
+#'
+#' @aliases clouddirectory_list_object_parents
 clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL, IncludeAllLinksToEachParent = NULL) {
   op <- new_operation(
     name = "ListObjectParents",
@@ -3812,6 +3904,8 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_object_policies
+#'
+#' @aliases clouddirectory_list_object_policies
 clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListObjectPolicies",
@@ -3939,6 +4033,8 @@ clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, N
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_outgoing_typed_links
+#'
+#' @aliases clouddirectory_list_outgoing_typed_links
 clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReference, FilterAttributeRanges = NULL, FilterTypedLink = NULL, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListOutgoingTypedLinks",
@@ -4003,6 +4099,8 @@ clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReferen
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_policy_attachments
+#'
+#' @aliases clouddirectory_list_policy_attachments
 clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference, NextToken = NULL, MaxResults = NULL, ConsistencyLevel = NULL) {
   op <- new_operation(
     name = "ListPolicyAttachments",
@@ -4061,6 +4159,8 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_published_schema_arns
+#'
+#' @aliases clouddirectory_list_published_schema_arns
 clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPublishedSchemaArns",
@@ -4122,6 +4222,8 @@ clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_tags_for_resource
+#'
+#' @aliases clouddirectory_list_tags_for_resource
 clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4203,6 +4305,8 @@ clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_typed_link_facet_attributes
+#'
+#' @aliases clouddirectory_list_typed_link_facet_attributes
 clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTypedLinkFacetAttributes",
@@ -4260,6 +4364,8 @@ clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, Nex
 #' @keywords internal
 #'
 #' @rdname clouddirectory_list_typed_link_facet_names
+#'
+#' @aliases clouddirectory_list_typed_link_facet_names
 clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTypedLinkFacetNames",
@@ -4336,6 +4442,8 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname clouddirectory_lookup_policy
+#'
+#' @aliases clouddirectory_lookup_policy
 clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "LookupPolicy",
@@ -4395,6 +4503,8 @@ clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToke
 #' @keywords internal
 #'
 #' @rdname clouddirectory_publish_schema
+#'
+#' @aliases clouddirectory_publish_schema
 clouddirectory_publish_schema <- function(DevelopmentSchemaArn, Version, MinorVersion = NULL, Name = NULL) {
   op <- new_operation(
     name = "PublishSchema",
@@ -4445,6 +4555,8 @@ clouddirectory_publish_schema <- function(DevelopmentSchemaArn, Version, MinorVe
 #' @keywords internal
 #'
 #' @rdname clouddirectory_put_schema_from_json
+#'
+#' @aliases clouddirectory_put_schema_from_json
 clouddirectory_put_schema_from_json <- function(SchemaArn, Document) {
   op <- new_operation(
     name = "PutSchemaFromJson",
@@ -4495,6 +4607,8 @@ clouddirectory_put_schema_from_json <- function(SchemaArn, Document) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_remove_facet_from_object
+#'
+#' @aliases clouddirectory_remove_facet_from_object
 clouddirectory_remove_facet_from_object <- function(DirectoryArn, SchemaFacet, ObjectReference) {
   op <- new_operation(
     name = "RemoveFacetFromObject",
@@ -4543,6 +4657,8 @@ clouddirectory_remove_facet_from_object <- function(DirectoryArn, SchemaFacet, O
 #' @keywords internal
 #'
 #' @rdname clouddirectory_tag_resource
+#'
+#' @aliases clouddirectory_tag_resource
 clouddirectory_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4588,6 +4704,8 @@ clouddirectory_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_untag_resource
+#'
+#' @aliases clouddirectory_untag_resource
 clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4678,6 +4796,8 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_update_facet
+#'
+#' @aliases clouddirectory_update_facet
 clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL, ObjectType = NULL) {
   op <- new_operation(
     name = "UpdateFacet",
@@ -4773,6 +4893,8 @@ clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL
 #' @keywords internal
 #'
 #' @rdname clouddirectory_update_link_attributes
+#'
+#' @aliases clouddirectory_update_link_attributes
 clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifier, AttributeUpdates) {
   op <- new_operation(
     name = "UpdateLinkAttributes",
@@ -4846,6 +4968,8 @@ clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifi
 #' @keywords internal
 #'
 #' @rdname clouddirectory_update_object_attributes
+#'
+#' @aliases clouddirectory_update_object_attributes
 clouddirectory_update_object_attributes <- function(DirectoryArn, ObjectReference, AttributeUpdates) {
   op <- new_operation(
     name = "UpdateObjectAttributes",
@@ -4895,6 +5019,8 @@ clouddirectory_update_object_attributes <- function(DirectoryArn, ObjectReferenc
 #' @keywords internal
 #'
 #' @rdname clouddirectory_update_schema
+#'
+#' @aliases clouddirectory_update_schema
 clouddirectory_update_schema <- function(SchemaArn, Name) {
   op <- new_operation(
     name = "UpdateSchema",
@@ -4982,6 +5108,8 @@ clouddirectory_update_schema <- function(SchemaArn, Name) {
 #' @keywords internal
 #'
 #' @rdname clouddirectory_update_typed_link_facet
+#'
+#' @aliases clouddirectory_update_typed_link_facet
 clouddirectory_update_typed_link_facet <- function(SchemaArn, Name, AttributeUpdates, IdentityAttributeOrder) {
   op <- new_operation(
     name = "UpdateTypedLinkFacet",
@@ -5043,6 +5171,8 @@ clouddirectory_update_typed_link_facet <- function(SchemaArn, Name, AttributeUpd
 #' @keywords internal
 #'
 #' @rdname clouddirectory_upgrade_applied_schema
+#'
+#' @aliases clouddirectory_upgrade_applied_schema
 clouddirectory_upgrade_applied_schema <- function(PublishedSchemaArn, DirectoryArn, DryRun = NULL) {
   op <- new_operation(
     name = "UpgradeAppliedSchema",
@@ -5102,6 +5232,8 @@ clouddirectory_upgrade_applied_schema <- function(PublishedSchemaArn, DirectoryA
 #' @keywords internal
 #'
 #' @rdname clouddirectory_upgrade_published_schema
+#'
+#' @aliases clouddirectory_upgrade_published_schema
 clouddirectory_upgrade_published_schema <- function(DevelopmentSchemaArn, PublishedSchemaArn, MinorVersion, DryRun = NULL) {
   op <- new_operation(
     name = "UpgradePublishedSchema",

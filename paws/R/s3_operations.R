@@ -99,6 +99,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname s3_abort_multipart_upload
+#'
+#' @aliases s3_abort_multipart_upload
 s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "AbortMultipartUpload",
@@ -358,6 +360,8 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @keywords internal
 #'
 #' @rdname s3_complete_multipart_upload
+#'
+#' @aliases s3_complete_multipart_upload
 s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, UploadId, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "CompleteMultipartUpload",
@@ -837,6 +841,8 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @keywords internal
 #'
 #' @rdname s3_copy_object
+#'
+#' @aliases s3_copy_object
 s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgorithm = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, MetadataDirective = NULL, TaggingDirective = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
   op <- new_operation(
     name = "CopyObject",
@@ -1056,6 +1062,8 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' @keywords internal
 #'
 #' @rdname s3_create_bucket
+#'
+#' @aliases s3_create_bucket
 s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, ObjectLockEnabledForBucket = NULL, ObjectOwnership = NULL) {
   op <- new_operation(
     name = "CreateBucket",
@@ -1487,6 +1495,8 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @keywords internal
 #'
 #' @rdname s3_create_multipart_upload
+#'
+#' @aliases s3_create_multipart_upload
 s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentType = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL, ChecksumAlgorithm = NULL) {
   op <- new_operation(
     name = "CreateMultipartUpload",
@@ -1547,6 +1557,8 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket
+#'
+#' @aliases s3_delete_bucket
 s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucket",
@@ -1618,6 +1630,8 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_analytics_configuration
+#'
+#' @aliases s3_delete_bucket_analytics_configuration
 s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketAnalyticsConfiguration",
@@ -1684,6 +1698,8 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_cors
+#'
+#' @aliases s3_delete_bucket_cors
 s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketCors",
@@ -1750,6 +1766,8 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_encryption
+#'
+#' @aliases s3_delete_bucket_encryption
 s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketEncryption",
@@ -1825,6 +1843,8 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_intelligent_tiering_configuration
+#'
+#' @aliases s3_delete_bucket_intelligent_tiering_configuration
 s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
   op <- new_operation(
     name = "DeleteBucketIntelligentTieringConfiguration",
@@ -1896,6 +1916,8 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_inventory_configuration
+#'
+#' @aliases s3_delete_bucket_inventory_configuration
 s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketInventoryConfiguration",
@@ -1970,6 +1992,8 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_lifecycle
+#'
+#' @aliases s3_delete_bucket_lifecycle
 s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketLifecycle",
@@ -2044,6 +2068,8 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_metrics_configuration
+#'
+#' @aliases s3_delete_bucket_metrics_configuration
 s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketMetricsConfiguration",
@@ -2102,6 +2128,8 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_ownership_controls
+#'
+#' @aliases s3_delete_bucket_ownership_controls
 s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketOwnershipControls",
@@ -2183,6 +2211,8 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_policy
+#'
+#' @aliases s3_delete_bucket_policy
 s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketPolicy",
@@ -2257,6 +2287,8 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_replication
+#'
+#' @aliases s3_delete_bucket_replication
 s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketReplication",
@@ -2320,6 +2352,8 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_tagging
+#'
+#' @aliases s3_delete_bucket_tagging
 s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketTagging",
@@ -2394,6 +2428,8 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_bucket_website
+#'
+#' @aliases s3_delete_bucket_website
 s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteBucketWebsite",
@@ -2526,6 +2562,8 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_delete_object
+#'
+#' @aliases s3_delete_object
 s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestPayer = NULL, BypassGovernanceRetention = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteObject",
@@ -2636,6 +2674,8 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' @keywords internal
 #'
 #' @rdname s3_delete_object_tagging
+#'
+#' @aliases s3_delete_object_tagging
 s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeleteObjectTagging",
@@ -2846,6 +2886,8 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' @keywords internal
 #'
 #' @rdname s3_delete_objects
+#'
+#' @aliases s3_delete_objects
 s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, BypassGovernanceRetention = NULL, ExpectedBucketOwner = NULL, ChecksumAlgorithm = NULL) {
   op <- new_operation(
     name = "DeleteObjects",
@@ -2909,6 +2951,8 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' @keywords internal
 #'
 #' @rdname s3_delete_public_access_block
+#'
+#' @aliases s3_delete_public_access_block
 s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "DeletePublicAccessBlock",
@@ -2992,6 +3036,8 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_accelerate_configuration
+#'
+#' @aliases s3_get_bucket_accelerate_configuration
 s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketAccelerateConfiguration",
@@ -3073,6 +3119,8 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_acl
+#'
+#' @aliases s3_get_bucket_acl
 s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketAcl",
@@ -3181,6 +3229,8 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_analytics_configuration
+#'
+#' @aliases s3_get_bucket_analytics_configuration
 s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketAnalyticsConfiguration",
@@ -3272,6 +3322,8 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_cors
+#'
+#' @aliases s3_get_bucket_cors
 s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketCors",
@@ -3355,6 +3407,8 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_encryption
+#'
+#' @aliases s3_get_bucket_encryption
 s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketEncryption",
@@ -3458,6 +3512,8 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_intelligent_tiering_configuration
+#'
+#' @aliases s3_get_bucket_intelligent_tiering_configuration
 s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
   op <- new_operation(
     name = "GetBucketIntelligentTieringConfiguration",
@@ -3560,6 +3616,8 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_inventory_configuration
+#'
+#' @aliases s3_get_bucket_inventory_configuration
 s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketInventoryConfiguration",
@@ -3686,6 +3744,8 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_lifecycle
+#'
+#' @aliases s3_get_bucket_lifecycle
 s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketLifecycle",
@@ -3842,6 +3902,8 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_lifecycle_configuration
+#'
+#' @aliases s3_get_bucket_lifecycle_configuration
 s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketLifecycleConfiguration",
@@ -3915,6 +3977,8 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_location
+#'
+#' @aliases s3_get_bucket_location
 s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketLocation",
@@ -3988,6 +4052,8 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_logging
+#'
+#' @aliases s3_get_bucket_logging
 s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketLogging",
@@ -4087,6 +4153,8 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_metrics_configuration
+#'
+#' @aliases s3_get_bucket_metrics_configuration
 s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketMetricsConfiguration",
@@ -4176,6 +4244,8 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_notification
+#'
+#' @aliases s3_get_bucket_notification
 s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketNotification",
@@ -4301,6 +4371,8 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_notification_configuration
+#'
+#' @aliases s3_get_bucket_notification_configuration
 s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketNotificationConfiguration",
@@ -4371,6 +4443,8 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_ownership_controls
+#'
+#' @aliases s3_get_bucket_ownership_controls
 s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketOwnershipControls",
@@ -4453,6 +4527,8 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_policy
+#'
+#' @aliases s3_get_bucket_policy
 s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketPolicy",
@@ -4526,6 +4602,8 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_policy_status
+#'
+#' @aliases s3_get_bucket_policy_status
 s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketPolicyStatus",
@@ -4675,6 +4753,8 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_replication
+#'
+#' @aliases s3_get_bucket_replication
 s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketReplication",
@@ -4741,6 +4821,8 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_request_payment
+#'
+#' @aliases s3_get_bucket_request_payment
 s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketRequestPayment",
@@ -4821,6 +4903,8 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_tagging
+#'
+#' @aliases s3_get_bucket_tagging
 s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketTagging",
@@ -4895,6 +4979,8 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_versioning
+#'
+#' @aliases s3_get_bucket_versioning
 s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketVersioning",
@@ -4993,6 +5079,8 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_website
+#'
+#' @aliases s3_get_bucket_website
 s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetBucketWebsite",
@@ -5334,6 +5422,8 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_get_object
+#'
+#' @aliases s3_get_object
 s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Key, Range = NULL, ResponseCacheControl = NULL, ResponseContentDisposition = NULL, ResponseContentEncoding = NULL, ResponseContentLanguage = NULL, ResponseContentType = NULL, ResponseExpires = NULL, VersionId = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, PartNumber = NULL, ExpectedBucketOwner = NULL, ChecksumMode = NULL) {
   op <- new_operation(
     name = "GetObject",
@@ -5457,6 +5547,8 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' @keywords internal
 #'
 #' @rdname s3_get_object_acl
+#'
+#' @aliases s3_get_object_acl
 s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetObjectAcl",
@@ -5689,6 +5781,8 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' @keywords internal
 #'
 #' @rdname s3_get_object_attributes
+#'
+#' @aliases s3_get_object_attributes
 s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = NULL, PartNumberMarker = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, ObjectAttributes) {
   op <- new_operation(
     name = "GetObjectAttributes",
@@ -5768,6 +5862,8 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 #' @keywords internal
 #'
 #' @rdname s3_get_object_legal_hold
+#'
+#' @aliases s3_get_object_legal_hold
 s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetObjectLegalHold",
@@ -5844,6 +5940,8 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 #' @keywords internal
 #'
 #' @rdname s3_get_object_lock_configuration
+#'
+#' @aliases s3_get_object_lock_configuration
 s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetObjectLockConfiguration",
@@ -5926,6 +6024,8 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 #' @keywords internal
 #'
 #' @rdname s3_get_object_retention
+#'
+#' @aliases s3_get_object_retention
 s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetObjectRetention",
@@ -6049,6 +6149,8 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' @keywords internal
 #'
 #' @rdname s3_get_object_tagging
+#'
+#' @aliases s3_get_object_tagging
 s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketOwner = NULL, RequestPayer = NULL) {
   op <- new_operation(
     name = "GetObjectTagging",
@@ -6129,6 +6231,8 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' @keywords internal
 #'
 #' @rdname s3_get_object_torrent
+#'
+#' @aliases s3_get_object_torrent
 s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetObjectTorrent",
@@ -6211,6 +6315,8 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' @keywords internal
 #'
 #' @rdname s3_get_public_access_block
+#'
+#' @aliases s3_get_public_access_block
 s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "GetPublicAccessBlock",
@@ -6308,6 +6414,8 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_head_bucket
+#'
+#' @aliases s3_head_bucket
 s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "HeadBucket",
@@ -6561,6 +6669,8 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3_head_object
+#'
+#' @aliases s3_head_object
 s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNoneMatch = NULL, IfUnmodifiedSince = NULL, Key, Range = NULL, VersionId = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, PartNumber = NULL, ExpectedBucketOwner = NULL, ChecksumMode = NULL) {
   op <- new_operation(
     name = "HeadObject",
@@ -6683,6 +6793,8 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' @keywords internal
 #'
 #' @rdname s3_list_bucket_analytics_configurations
+#'
+#' @aliases s3_list_bucket_analytics_configurations
 s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListBucketAnalyticsConfigurations",
@@ -6794,6 +6906,8 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' @keywords internal
 #'
 #' @rdname s3_list_bucket_intelligent_tiering_configurations
+#'
+#' @aliases s3_list_bucket_intelligent_tiering_configurations
 s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, ContinuationToken = NULL) {
   op <- new_operation(
     name = "ListBucketIntelligentTieringConfigurations",
@@ -6913,6 +7027,8 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' @keywords internal
 #'
 #' @rdname s3_list_bucket_inventory_configurations
+#'
+#' @aliases s3_list_bucket_inventory_configurations
 s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListBucketInventoryConfigurations",
@@ -7028,6 +7144,8 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' @keywords internal
 #'
 #' @rdname s3_list_bucket_metrics_configurations
+#'
+#' @aliases s3_list_bucket_metrics_configurations
 s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListBucketMetricsConfigurations",
@@ -7092,6 +7210,8 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' @keywords internal
 #'
 #' @rdname s3_list_buckets
+#'
+#' @aliases s3_list_buckets
 s3_list_buckets <- function() {
   op <- new_operation(
     name = "ListBuckets",
@@ -7290,6 +7410,8 @@ s3_list_buckets <- function() {
 #' @keywords internal
 #'
 #' @rdname s3_list_multipart_uploads
+#'
+#' @aliases s3_list_multipart_uploads
 s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListMultipartUploads",
@@ -7452,6 +7574,8 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' @keywords internal
 #'
 #' @rdname s3_list_object_versions
+#'
+#' @aliases s3_list_object_versions
 s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxKeys = NULL, Prefix = NULL, VersionIdMarker = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListObjectVersions",
@@ -7601,6 +7725,8 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' @keywords internal
 #'
 #' @rdname s3_list_objects
+#'
+#' @aliases s3_list_objects
 s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marker = NULL, MaxKeys = NULL, Prefix = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListObjects",
@@ -7776,6 +7902,8 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' @keywords internal
 #'
 #' @rdname s3_list_objects_v2
+#'
+#' @aliases s3_list_objects_v2
 s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, MaxKeys = NULL, Prefix = NULL, ContinuationToken = NULL, FetchOwner = NULL, StartAfter = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "ListObjectsV2",
@@ -7959,6 +8087,8 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname s3_list_parts
+#'
+#' @aliases s3_list_parts
 s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
     name = "ListParts",
@@ -8059,6 +8189,8 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_accelerate_configuration
+#'
+#' @aliases s3_put_bucket_accelerate_configuration
 s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfiguration, ExpectedBucketOwner = NULL, ChecksumAlgorithm = NULL) {
   op <- new_operation(
     name = "PutBucketAccelerateConfiguration",
@@ -8325,6 +8457,8 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_acl
+#'
+#' @aliases s3_put_bucket_acl
 s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketAcl",
@@ -8465,6 +8599,8 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_analytics_configuration
+#'
+#' @aliases s3_put_bucket_analytics_configuration
 s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketAnalyticsConfiguration",
@@ -8643,6 +8779,8 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_cors
+#'
+#' @aliases s3_put_bucket_cors
 s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketCors",
@@ -8761,6 +8899,8 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_encryption
+#'
+#' @aliases s3_put_bucket_encryption
 s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ServerSideEncryptionConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketEncryption",
@@ -8890,6 +9030,8 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_intelligent_tiering_configuration
+#'
+#' @aliases s3_put_bucket_intelligent_tiering_configuration
 s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, IntelligentTieringConfiguration) {
   op <- new_operation(
     name = "PutBucketIntelligentTieringConfiguration",
@@ -9032,6 +9174,8 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_inventory_configuration
+#'
+#' @aliases s3_put_bucket_inventory_configuration
 s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketInventoryConfiguration",
@@ -9186,6 +9330,8 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_lifecycle
+#'
+#' @aliases s3_put_bucket_lifecycle
 s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, LifecycleConfiguration = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketLifecycle",
@@ -9408,6 +9554,8 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_lifecycle_configuration
+#'
+#' @aliases s3_put_bucket_lifecycle_configuration
 s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NULL, LifecycleConfiguration = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketLifecycleConfiguration",
@@ -9580,6 +9728,8 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_logging
+#'
+#' @aliases s3_put_bucket_logging
 s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketLogging",
@@ -9686,6 +9836,8 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_metrics_configuration
+#'
+#' @aliases s3_put_bucket_metrics_configuration
 s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketMetricsConfiguration",
@@ -9780,6 +9932,8 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_notification
+#'
+#' @aliases s3_put_bucket_notification
 s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, NotificationConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketNotification",
@@ -9971,6 +10125,8 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_notification_configuration
+#'
+#' @aliases s3_put_bucket_notification_configuration
 s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfiguration, ExpectedBucketOwner = NULL, SkipDestinationValidation = NULL) {
   op <- new_operation(
     name = "PutBucketNotificationConfiguration",
@@ -10046,6 +10202,8 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_ownership_controls
+#'
+#' @aliases s3_put_bucket_ownership_controls
 s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, ExpectedBucketOwner = NULL, OwnershipControls) {
   op <- new_operation(
     name = "PutBucketOwnershipControls",
@@ -10149,6 +10307,8 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_policy
+#'
+#' @aliases s3_put_bucket_policy
 s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ConfirmRemoveSelfBucketAccess = NULL, Policy, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketPolicy",
@@ -10374,6 +10534,8 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_replication
+#'
+#' @aliases s3_put_bucket_replication
 s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ReplicationConfiguration, Token = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketReplication",
@@ -10468,6 +10630,8 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_request_payment
+#'
+#' @aliases s3_put_bucket_request_payment
 s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, RequestPaymentConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketRequestPayment",
@@ -10621,6 +10785,8 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_tagging
+#'
+#' @aliases s3_put_bucket_tagging
 s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, Tagging, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketTagging",
@@ -10743,6 +10909,8 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_versioning
+#'
+#' @aliases s3_put_bucket_versioning
 s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, MFA = NULL, VersioningConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketVersioning",
@@ -10923,6 +11091,8 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @keywords internal
 #'
 #' @rdname s3_put_bucket_website
+#'
+#' @aliases s3_put_bucket_website
 s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, WebsiteConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutBucketWebsite",
@@ -11390,6 +11560,8 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @keywords internal
 #'
 #' @rdname s3_put_object
+#'
+#' @aliases s3_put_object
 s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentMD5 = NULL, ContentType = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Expires = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWriteACP = NULL, Key, Metadata = NULL, ServerSideEncryption = NULL, StorageClass = NULL, WebsiteRedirectLocation = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, SSEKMSKeyId = NULL, SSEKMSEncryptionContext = NULL, BucketKeyEnabled = NULL, RequestPayer = NULL, Tagging = NULL, ObjectLockMode = NULL, ObjectLockRetainUntilDate = NULL, ObjectLockLegalHoldStatus = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObject",
@@ -11713,6 +11885,8 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' @keywords internal
 #'
 #' @rdname s3_put_object_acl
+#'
+#' @aliases s3_put_object_acl
 s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, Key, RequestPayer = NULL, VersionId = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObjectAcl",
@@ -11806,6 +11980,8 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' @keywords internal
 #'
 #' @rdname s3_put_object_legal_hold
+#'
+#' @aliases s3_put_object_legal_hold
 s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer = NULL, VersionId = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObjectLegalHold",
@@ -11905,6 +12081,8 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' @keywords internal
 #'
 #' @rdname s3_put_object_lock_configuration
+#'
+#' @aliases s3_put_object_lock_configuration
 s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = NULL, RequestPayer = NULL, Token = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObjectLockConfiguration",
@@ -12010,6 +12188,8 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' @keywords internal
 #'
 #' @rdname s3_put_object_retention
+#'
+#' @aliases s3_put_object_retention
 s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer = NULL, VersionId = NULL, BypassGovernanceRetention = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutObjectRetention",
@@ -12185,6 +12365,8 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' @keywords internal
 #'
 #' @rdname s3_put_object_tagging
+#'
+#' @aliases s3_put_object_tagging
 s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, Tagging, ExpectedBucketOwner = NULL, RequestPayer = NULL) {
   op <- new_operation(
     name = "PutObjectTagging",
@@ -12289,6 +12471,8 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' @keywords internal
 #'
 #' @rdname s3_put_public_access_block
+#'
+#' @aliases s3_put_public_access_block
 s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = NULL, PublicAccessBlockConfiguration, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "PutPublicAccessBlock",
@@ -12709,6 +12893,8 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @keywords internal
 #'
 #' @rdname s3_restore_object
+#'
+#' @aliases s3_restore_object
 s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NULL, RequestPayer = NULL, ChecksumAlgorithm = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "RestoreObject",
@@ -12968,6 +13154,8 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' @keywords internal
 #'
 #' @rdname s3_select_object_content
+#'
+#' @aliases s3_select_object_content
 s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, Expression, ExpressionType, RequestProgress = NULL, InputSerialization, OutputSerialization, ScanRange = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "SelectObjectContent",
@@ -13244,6 +13432,8 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @keywords internal
 #'
 #' @rdname s3_upload_part
+#'
+#' @aliases s3_upload_part
 s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5 = NULL, ChecksumAlgorithm = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
     name = "UploadPart",
@@ -13574,6 +13764,8 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' @keywords internal
 #'
 #' @rdname s3_upload_part_copy
+#'
+#' @aliases s3_upload_part_copy
 s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, CopySourceIfModifiedSince = NULL, CopySourceIfNoneMatch = NULL, CopySourceIfUnmodifiedSince = NULL, CopySourceRange = NULL, Key, PartNumber, UploadId, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL, CopySourceSSECustomerAlgorithm = NULL, CopySourceSSECustomerKey = NULL, CopySourceSSECustomerKeyMD5 = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, ExpectedSourceBucketOwner = NULL) {
   op <- new_operation(
     name = "CopyPart",
@@ -13883,6 +14075,8 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @keywords internal
 #'
 #' @rdname s3_write_get_object_response
+#'
+#' @aliases s3_write_get_object_response
 s3_write_get_object_response <- function(RequestRoute, RequestToken, Body = NULL, StatusCode = NULL, ErrorCode = NULL, ErrorMessage = NULL, AcceptRanges = NULL, CacheControl = NULL, ContentDisposition = NULL, ContentEncoding = NULL, ContentLanguage = NULL, ContentLength = NULL, ContentRange = NULL, ContentType = NULL, ChecksumCRC32 = NULL, ChecksumCRC32C = NULL, ChecksumSHA1 = NULL, ChecksumSHA256 = NULL, DeleteMarker = NULL, ETag = NULL, Expires = NULL, Expiration = NULL, LastModified = NULL, MissingMeta = NULL, Metadata = NULL, ObjectLockMode = NULL, ObjectLockLegalHoldStatus = NULL, ObjectLockRetainUntilDate = NULL, PartsCount = NULL, ReplicationStatus = NULL, RequestCharged = NULL, Restore = NULL, ServerSideEncryption = NULL, SSECustomerAlgorithm = NULL, SSEKMSKeyId = NULL, SSECustomerKeyMD5 = NULL, StorageClass = NULL, TagCount = NULL, VersionId = NULL, BucketKeyEnabled = NULL) {
   op <- new_operation(
     name = "WriteGetObjectResponse",

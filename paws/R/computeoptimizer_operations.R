@@ -61,6 +61,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_delete_recommendation_preferences
+#'
+#' @aliases computeoptimizer_delete_recommendation_preferences
 computeoptimizer_delete_recommendation_preferences <- function(resourceType, scope = NULL, recommendationPreferenceNames) {
   op <- new_operation(
     name = "DeleteRecommendationPreferences",
@@ -164,6 +166,8 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_describe_recommendation_export_jobs
+#'
+#' @aliases computeoptimizer_describe_recommendation_export_jobs
 computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "DescribeRecommendationExportJobs",
@@ -306,6 +310,8 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_export_auto_scaling_group_recommendations
+#'
+#' @aliases computeoptimizer_export_auto_scaling_group_recommendations
 computeoptimizer_export_auto_scaling_group_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "ExportAutoScalingGroupRecommendations",
@@ -428,6 +434,8 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_export_ebs_volume_recommendations
+#'
+#' @aliases computeoptimizer_export_ebs_volume_recommendations
 computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
   op <- new_operation(
     name = "ExportEBSVolumeRecommendations",
@@ -567,6 +575,8 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_export_ec2_instance_recommendations
+#'
+#' @aliases computeoptimizer_export_ec2_instance_recommendations
 computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "ExportEC2InstanceRecommendations",
@@ -690,6 +700,8 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_export_lambda_function_recommendations
+#'
+#' @aliases computeoptimizer_export_lambda_function_recommendations
 computeoptimizer_export_lambda_function_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
   op <- new_operation(
     name = "ExportLambdaFunctionRecommendations",
@@ -853,6 +865,8 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_auto_scaling_group_recommendations
+#'
+#' @aliases computeoptimizer_get_auto_scaling_group_recommendations
 computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds = NULL, autoScalingGroupArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "GetAutoScalingGroupRecommendations",
@@ -992,6 +1006,8 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_ebs_volume_recommendations
+#'
+#' @aliases computeoptimizer_get_ebs_volume_recommendations
 computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL) {
   op <- new_operation(
     name = "GetEBSVolumeRecommendations",
@@ -1155,6 +1171,8 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_ec2_instance_recommendations
+#'
+#' @aliases computeoptimizer_get_ec2_instance_recommendations
 computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "GetEC2InstanceRecommendations",
@@ -1248,6 +1266,8 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_ec2_recommendation_projected_metrics
+#'
+#' @aliases computeoptimizer_get_ec2_recommendation_projected_metrics
 computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceArn, stat, period, startTime, endTime, recommendationPreferences = NULL) {
   op <- new_operation(
     name = "GetEC2RecommendationProjectedMetrics",
@@ -1303,6 +1323,8 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_effective_recommendation_preferences
+#'
+#' @aliases computeoptimizer_get_effective_recommendation_preferences
 computeoptimizer_get_effective_recommendation_preferences <- function(resourceArn) {
   op <- new_operation(
     name = "GetEffectiveRecommendationPreferences",
@@ -1359,6 +1381,8 @@ computeoptimizer_get_effective_recommendation_preferences <- function(resourceAr
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_enrollment_status
+#'
+#' @aliases computeoptimizer_get_enrollment_status
 computeoptimizer_get_enrollment_status <- function() {
   op <- new_operation(
     name = "GetEnrollmentStatus",
@@ -1438,6 +1462,8 @@ computeoptimizer_get_enrollment_status <- function() {
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_enrollment_statuses_for_organization
+#'
+#' @aliases computeoptimizer_get_enrollment_statuses_for_organization
 computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetEnrollmentStatusesForOrganization",
@@ -1576,6 +1602,8 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_lambda_function_recommendations
+#'
+#' @aliases computeoptimizer_get_lambda_function_recommendations
 computeoptimizer_get_lambda_function_recommendations <- function(functionArns = NULL, accountIds = NULL, filters = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetLambdaFunctionRecommendations",
@@ -1673,6 +1701,8 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_recommendation_preferences
+#'
+#' @aliases computeoptimizer_get_recommendation_preferences
 computeoptimizer_get_recommendation_preferences <- function(resourceType, scope = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetRecommendationPreferences",
@@ -1781,6 +1811,8 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_get_recommendation_summaries
+#'
+#' @aliases computeoptimizer_get_recommendation_summaries
 computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetRecommendationSummaries",
@@ -1882,6 +1914,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_put_recommendation_preferences
+#'
+#' @aliases computeoptimizer_put_recommendation_preferences
 computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL) {
   op <- new_operation(
     name = "PutRecommendationPreferences",
@@ -1966,6 +2000,8 @@ computeoptimizer_put_recommendation_preferences <- function(resourceType, scope 
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_update_enrollment_status
+#'
+#' @aliases computeoptimizer_update_enrollment_status
 computeoptimizer_update_enrollment_status <- function(status, includeMemberAccounts = NULL) {
   op <- new_operation(
     name = "UpdateEnrollmentStatus",

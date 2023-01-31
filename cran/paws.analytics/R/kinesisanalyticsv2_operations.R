@@ -28,7 +28,7 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_add_application_cloud_watch_logging_option
+#' @rdname kinesisanalyticsv2_add_appli_cloud_watch_loggi_optio
 kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId = NULL, CloudWatchLoggingOption, ConditionalToken = NULL) {
   op <- new_operation(
     name = "AddApplicationCloudWatchLoggingOption",
@@ -107,7 +107,7 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_add_application_input_processing_configuration
+#' @rdname kinesisanalyticsv2_add_applic_input_proces_config
 kinesisanalyticsv2_add_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId, InputProcessingConfiguration) {
   op <- new_operation(
     name = "AddApplicationInputProcessingConfiguration",
@@ -421,7 +421,7 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_delete_application_cloud_watch_logging_option
+#' @rdname kinesisanalyticsv2_delet_appli_cloud_watch_loggi_optio
 kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(ApplicationName, CurrentApplicationVersionId = NULL, CloudWatchLoggingOptionId, ConditionalToken = NULL) {
   op <- new_operation(
     name = "DeleteApplicationCloudWatchLoggingOption",
@@ -460,7 +460,7 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_delete_application_input_processing_configuration
+#' @rdname kinesisanalyticsv2_delete_applic_input_proces_config
 kinesisanalyticsv2_delete_application_input_processing_configuration <- function(ApplicationName, CurrentApplicationVersionId, InputId) {
   op <- new_operation(
     name = "DeleteApplicationInputProcessingConfiguration",
@@ -1134,7 +1134,7 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
 #'
 #' @keywords internal
 #'
-#' @rdname kinesisanalyticsv2_update_application_maintenance_configuration
+#' @rdname kinesisanalyticsv2_update_applic_mainte_config
 kinesisanalyticsv2_update_application_maintenance_configuration <- function(ApplicationName, ApplicationMaintenanceConfigurationUpdate) {
   op <- new_operation(
     name = "UpdateApplicationMaintenanceConfiguration",

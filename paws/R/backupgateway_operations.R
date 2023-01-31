@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname backupgateway_associate_gateway_to_server
+#'
+#' @aliases backupgateway_associate_gateway_to_server
 backupgateway_associate_gateway_to_server <- function(GatewayArn, ServerArn) {
   op <- new_operation(
     name = "AssociateGatewayToServer",
@@ -99,6 +101,8 @@ backupgateway_associate_gateway_to_server <- function(GatewayArn, ServerArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_create_gateway
+#'
+#' @aliases backupgateway_create_gateway
 backupgateway_create_gateway <- function(ActivationKey, GatewayDisplayName, GatewayType, Tags = NULL) {
   op <- new_operation(
     name = "CreateGateway",
@@ -144,6 +148,8 @@ backupgateway_create_gateway <- function(ActivationKey, GatewayDisplayName, Gate
 #' @keywords internal
 #'
 #' @rdname backupgateway_delete_gateway
+#'
+#' @aliases backupgateway_delete_gateway
 backupgateway_delete_gateway <- function(GatewayArn) {
   op <- new_operation(
     name = "DeleteGateway",
@@ -189,6 +195,8 @@ backupgateway_delete_gateway <- function(GatewayArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_delete_hypervisor
+#'
+#' @aliases backupgateway_delete_hypervisor
 backupgateway_delete_hypervisor <- function(HypervisorArn) {
   op <- new_operation(
     name = "DeleteHypervisor",
@@ -236,6 +244,8 @@ backupgateway_delete_hypervisor <- function(HypervisorArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_disassociate_gateway_from_server
+#'
+#' @aliases backupgateway_disassociate_gateway_from_server
 backupgateway_disassociate_gateway_from_server <- function(GatewayArn) {
   op <- new_operation(
     name = "DisassociateGatewayFromServer",
@@ -295,6 +305,8 @@ backupgateway_disassociate_gateway_from_server <- function(GatewayArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_get_gateway
+#'
+#' @aliases backupgateway_get_gateway
 backupgateway_get_gateway <- function(GatewayArn) {
   op <- new_operation(
     name = "GetGateway",
@@ -357,6 +369,8 @@ backupgateway_get_gateway <- function(GatewayArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_import_hypervisor_configuration
+#'
+#' @aliases backupgateway_import_hypervisor_configuration
 backupgateway_import_hypervisor_configuration <- function(Host, KmsKeyArn = NULL, Name, Password = NULL, Tags = NULL, Username = NULL) {
   op <- new_operation(
     name = "ImportHypervisorConfiguration",
@@ -421,6 +435,8 @@ backupgateway_import_hypervisor_configuration <- function(Host, KmsKeyArn = NULL
 #' @keywords internal
 #'
 #' @rdname backupgateway_list_gateways
+#'
+#' @aliases backupgateway_list_gateways
 backupgateway_list_gateways <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGateways",
@@ -480,6 +496,8 @@ backupgateway_list_gateways <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_list_hypervisors
+#'
+#' @aliases backupgateway_list_hypervisors
 backupgateway_list_hypervisors <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListHypervisors",
@@ -533,6 +551,8 @@ backupgateway_list_hypervisors <- function(MaxResults = NULL, NextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname backupgateway_list_tags_for_resource
+#'
+#' @aliases backupgateway_list_tags_for_resource
 backupgateway_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -595,6 +615,8 @@ backupgateway_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_list_virtual_machines
+#'
+#' @aliases backupgateway_list_virtual_machines
 backupgateway_list_virtual_machines <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualMachines",
@@ -652,6 +674,8 @@ backupgateway_list_virtual_machines <- function(MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname backupgateway_put_maintenance_start_time
+#'
+#' @aliases backupgateway_put_maintenance_start_time
 backupgateway_put_maintenance_start_time <- function(DayOfMonth = NULL, DayOfWeek = NULL, GatewayArn, HourOfDay, MinuteOfHour) {
   op <- new_operation(
     name = "PutMaintenanceStartTime",
@@ -704,6 +728,8 @@ backupgateway_put_maintenance_start_time <- function(DayOfMonth = NULL, DayOfWee
 #' @keywords internal
 #'
 #' @rdname backupgateway_tag_resource
+#'
+#' @aliases backupgateway_tag_resource
 backupgateway_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -754,6 +780,8 @@ backupgateway_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_test_hypervisor_configuration
+#'
+#' @aliases backupgateway_test_hypervisor_configuration
 backupgateway_test_hypervisor_configuration <- function(GatewayArn, Host, Password = NULL, Username = NULL) {
   op <- new_operation(
     name = "TestHypervisorConfiguration",
@@ -804,6 +832,8 @@ backupgateway_test_hypervisor_configuration <- function(GatewayArn, Host, Passwo
 #' @keywords internal
 #'
 #' @rdname backupgateway_untag_resource
+#'
+#' @aliases backupgateway_untag_resource
 backupgateway_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -852,6 +882,8 @@ backupgateway_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_update_gateway_information
+#'
+#' @aliases backupgateway_update_gateway_information
 backupgateway_update_gateway_information <- function(GatewayArn, GatewayDisplayName = NULL) {
   op <- new_operation(
     name = "UpdateGatewayInformation",
@@ -902,6 +934,8 @@ backupgateway_update_gateway_information <- function(GatewayArn, GatewayDisplayN
 #' @keywords internal
 #'
 #' @rdname backupgateway_update_gateway_software_now
+#'
+#' @aliases backupgateway_update_gateway_software_now
 backupgateway_update_gateway_software_now <- function(GatewayArn) {
   op <- new_operation(
     name = "UpdateGatewaySoftwareNow",
@@ -960,6 +994,8 @@ backupgateway_update_gateway_software_now <- function(GatewayArn) {
 #' @keywords internal
 #'
 #' @rdname backupgateway_update_hypervisor
+#'
+#' @aliases backupgateway_update_hypervisor
 backupgateway_update_hypervisor <- function(Host = NULL, HypervisorArn, Name = NULL, Password = NULL, Username = NULL) {
   op <- new_operation(
     name = "UpdateHypervisor",

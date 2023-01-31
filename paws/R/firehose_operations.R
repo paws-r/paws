@@ -635,6 +635,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
+#'
+#' @aliases firehose_create_delivery_stream
 firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, AmazonopensearchserviceDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
@@ -701,6 +703,8 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 #' @keywords internal
 #'
 #' @rdname firehose_delete_delivery_stream
+#'
+#' @aliases firehose_delete_delivery_stream
 firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete = NULL) {
   op <- new_operation(
     name = "DeleteDeliveryStream",
@@ -1274,6 +1278,8 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 #' @keywords internal
 #'
 #' @rdname firehose_describe_delivery_stream
+#'
+#' @aliases firehose_describe_delivery_stream
 firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, ExclusiveStartDestinationId = NULL) {
   op <- new_operation(
     name = "DescribeDeliveryStream",
@@ -1349,6 +1355,8 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #' @keywords internal
 #'
 #' @rdname firehose_list_delivery_streams
+#'
+#' @aliases firehose_list_delivery_streams
 firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NULL, ExclusiveStartDeliveryStreamName = NULL) {
   op <- new_operation(
     name = "ListDeliveryStreams",
@@ -1412,6 +1420,8 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 #' @keywords internal
 #'
 #' @rdname firehose_list_tags_for_delivery_stream
+#'
+#' @aliases firehose_list_tags_for_delivery_stream
 firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, ExclusiveStartTagKey = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTagsForDeliveryStream",
@@ -1506,6 +1516,8 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' @keywords internal
 #'
 #' @rdname firehose_put_record
+#'
+#' @aliases firehose_put_record
 firehose_put_record <- function(DeliveryStreamName, Record) {
   op <- new_operation(
     name = "PutRecord",
@@ -1635,6 +1647,8 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' @keywords internal
 #'
 #' @rdname firehose_put_record_batch
+#'
+#' @aliases firehose_put_record_batch
 firehose_put_record_batch <- function(DeliveryStreamName, Records) {
   op <- new_operation(
     name = "PutRecordBatch",
@@ -1734,6 +1748,8 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 #' @keywords internal
 #'
 #' @rdname firehose_start_delivery_stream_encryption
+#'
+#' @aliases firehose_start_delivery_stream_encryption
 firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, DeliveryStreamEncryptionConfigurationInput = NULL) {
   op <- new_operation(
     name = "StartDeliveryStreamEncryption",
@@ -1805,6 +1821,8 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 #' @keywords internal
 #'
 #' @rdname firehose_stop_delivery_stream_encryption
+#'
+#' @aliases firehose_stop_delivery_stream_encryption
 firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
   op <- new_operation(
     name = "StopDeliveryStreamEncryption",
@@ -1864,6 +1882,8 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 #' @keywords internal
 #'
 #' @rdname firehose_tag_delivery_stream
+#'
+#' @aliases firehose_tag_delivery_stream
 firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
   op <- new_operation(
     name = "TagDeliveryStream",
@@ -1915,6 +1935,8 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 #' @keywords internal
 #'
 #' @rdname firehose_untag_delivery_stream
+#'
+#' @aliases firehose_untag_delivery_stream
 firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
   op <- new_operation(
     name = "UntagDeliveryStream",
@@ -2458,6 +2480,8 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname firehose_update_destination
+#'
+#' @aliases firehose_update_destination
 firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, AmazonopensearchserviceDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",

@@ -35,6 +35,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname guardduty_accept_administrator_invitation
+#'
+#' @aliases guardduty_accept_administrator_invitation
 guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorId, InvitationId) {
   op <- new_operation(
     name = "AcceptAdministratorInvitation",
@@ -83,6 +85,8 @@ guardduty_accept_administrator_invitation <- function(DetectorId, AdministratorI
 #' @keywords internal
 #'
 #' @rdname guardduty_accept_invitation
+#'
+#' @aliases guardduty_accept_invitation
 guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
   op <- new_operation(
     name = "AcceptInvitation",
@@ -133,6 +137,8 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_archive_findings
+#'
+#' @aliases guardduty_archive_findings
 guardduty_archive_findings <- function(DetectorId, FindingIds) {
   op <- new_operation(
     name = "ArchiveFindings",
@@ -207,6 +213,8 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_create_detector
+#'
+#' @aliases guardduty_create_detector
 guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL, DataSources = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDetector",
@@ -424,6 +432,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' @keywords internal
 #'
 #' @rdname guardduty_create_filter
+#'
+#' @aliases guardduty_create_filter
 guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action = NULL, Rank = NULL, FindingCriteria, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateFilter",
@@ -495,6 +505,8 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' @keywords internal
 #'
 #' @rdname guardduty_create_ip_set
+#'
+#' @aliases guardduty_create_ip_set
 guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIPSet",
@@ -568,6 +580,8 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' @keywords internal
 #'
 #' @rdname guardduty_create_members
+#'
+#' @aliases guardduty_create_members
 guardduty_create_members <- function(DetectorId, AccountDetails) {
   op <- new_operation(
     name = "CreateMembers",
@@ -627,6 +641,8 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 #' @keywords internal
 #'
 #' @rdname guardduty_create_publishing_destination
+#'
+#' @aliases guardduty_create_publishing_destination
 guardduty_create_publishing_destination <- function(DetectorId, DestinationType, DestinationProperties, ClientToken = NULL) {
   op <- new_operation(
     name = "CreatePublishingDestination",
@@ -674,6 +690,8 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 #' @keywords internal
 #'
 #' @rdname guardduty_create_sample_findings
+#'
+#' @aliases guardduty_create_sample_findings
 guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
   op <- new_operation(
     name = "CreateSampleFindings",
@@ -740,6 +758,8 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #' @keywords internal
 #'
 #' @rdname guardduty_create_threat_intel_set
+#'
+#' @aliases guardduty_create_threat_intel_set
 guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location, Activate, ClientToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateThreatIntelSet",
@@ -796,6 +816,8 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
 #' @keywords internal
 #'
 #' @rdname guardduty_decline_invitations
+#'
+#' @aliases guardduty_decline_invitations
 guardduty_decline_invitations <- function(AccountIds) {
   op <- new_operation(
     name = "DeclineInvitations",
@@ -838,6 +860,8 @@ guardduty_decline_invitations <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_detector
+#'
+#' @aliases guardduty_delete_detector
 guardduty_delete_detector <- function(DetectorId) {
   op <- new_operation(
     name = "DeleteDetector",
@@ -880,6 +904,8 @@ guardduty_delete_detector <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_filter
+#'
+#' @aliases guardduty_delete_filter
 guardduty_delete_filter <- function(DetectorId, FilterName) {
   op <- new_operation(
     name = "DeleteFilter",
@@ -923,6 +949,8 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_ip_set
+#'
+#' @aliases guardduty_delete_ip_set
 guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
   op <- new_operation(
     name = "DeleteIPSet",
@@ -979,6 +1007,8 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_invitations
+#'
+#' @aliases guardduty_delete_invitations
 guardduty_delete_invitations <- function(AccountIds) {
   op <- new_operation(
     name = "DeleteInvitations",
@@ -1037,6 +1067,8 @@ guardduty_delete_invitations <- function(AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_members
+#'
+#' @aliases guardduty_delete_members
 guardduty_delete_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "DeleteMembers",
@@ -1080,6 +1112,8 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_publishing_destination
+#'
+#' @aliases guardduty_delete_publishing_destination
 guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
   op <- new_operation(
     name = "DeletePublishingDestination",
@@ -1123,6 +1157,8 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_delete_threat_intel_set
+#'
+#' @aliases guardduty_delete_threat_intel_set
 guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   op <- new_operation(
     name = "DeleteThreatIntelSet",
@@ -1236,6 +1272,8 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_describe_malware_scans
+#'
+#' @aliases guardduty_describe_malware_scans
 guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxResults = NULL, FilterCriteria = NULL, SortCriteria = NULL) {
   op <- new_operation(
     name = "DescribeMalwareScans",
@@ -1302,6 +1340,8 @@ guardduty_describe_malware_scans <- function(DetectorId, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname guardduty_describe_organization_configuration
+#'
+#' @aliases guardduty_describe_organization_configuration
 guardduty_describe_organization_configuration <- function(DetectorId) {
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
@@ -1359,6 +1399,8 @@ guardduty_describe_organization_configuration <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_describe_publishing_destination
+#'
+#' @aliases guardduty_describe_publishing_destination
 guardduty_describe_publishing_destination <- function(DetectorId, DestinationId) {
   op <- new_operation(
     name = "DescribePublishingDestination",
@@ -1402,6 +1444,8 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 #' @keywords internal
 #'
 #' @rdname guardduty_disable_organization_admin_account
+#'
+#' @aliases guardduty_disable_organization_admin_account
 guardduty_disable_organization_admin_account <- function(AdminAccountId) {
   op <- new_operation(
     name = "DisableOrganizationAdminAccount",
@@ -1444,6 +1488,8 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_disassociate_from_administrator_account
+#'
+#' @aliases guardduty_disassociate_from_administrator_account
 guardduty_disassociate_from_administrator_account <- function(DetectorId) {
   op <- new_operation(
     name = "DisassociateFromAdministratorAccount",
@@ -1486,6 +1532,8 @@ guardduty_disassociate_from_administrator_account <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_disassociate_from_master_account
+#'
+#' @aliases guardduty_disassociate_from_master_account
 guardduty_disassociate_from_master_account <- function(DetectorId) {
   op <- new_operation(
     name = "DisassociateFromMasterAccount",
@@ -1544,6 +1592,8 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_disassociate_members
+#'
+#' @aliases guardduty_disassociate_members
 guardduty_disassociate_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "DisassociateMembers",
@@ -1587,6 +1637,8 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_enable_organization_admin_account
+#'
+#' @aliases guardduty_enable_organization_admin_account
 guardduty_enable_organization_admin_account <- function(AdminAccountId) {
   op <- new_operation(
     name = "EnableOrganizationAdminAccount",
@@ -1639,6 +1691,8 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_administrator_account
+#'
+#' @aliases guardduty_get_administrator_account
 guardduty_get_administrator_account <- function(DetectorId) {
   op <- new_operation(
     name = "GetAdministratorAccount",
@@ -1718,6 +1772,8 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_detector
+#'
+#' @aliases guardduty_get_detector
 guardduty_get_detector <- function(DetectorId) {
   op <- new_operation(
     name = "GetDetector",
@@ -1797,6 +1853,8 @@ guardduty_get_detector <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_filter
+#'
+#' @aliases guardduty_get_filter
 guardduty_get_filter <- function(DetectorId, FilterName) {
   op <- new_operation(
     name = "GetFilter",
@@ -2356,6 +2414,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_findings
+#'
+#' @aliases guardduty_get_findings
 guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) {
   op <- new_operation(
     name = "GetFindings",
@@ -2439,6 +2499,8 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 #' @keywords internal
 #'
 #' @rdname guardduty_get_findings_statistics
+#'
+#' @aliases guardduty_get_findings_statistics
 guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes, FindingCriteria = NULL) {
   op <- new_operation(
     name = "GetFindingsStatistics",
@@ -2492,6 +2554,8 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
 #' @keywords internal
 #'
 #' @rdname guardduty_get_ip_set
+#'
+#' @aliases guardduty_get_ip_set
 guardduty_get_ip_set <- function(DetectorId, IpSetId) {
   op <- new_operation(
     name = "GetIPSet",
@@ -2535,6 +2599,8 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_invitations_count
+#'
+#' @aliases guardduty_get_invitations_count
 guardduty_get_invitations_count <- function() {
   op <- new_operation(
     name = "GetInvitationsCount",
@@ -2602,6 +2668,8 @@ guardduty_get_invitations_count <- function() {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_malware_scan_settings
+#'
+#' @aliases guardduty_get_malware_scan_settings
 guardduty_get_malware_scan_settings <- function(DetectorId) {
   op <- new_operation(
     name = "GetMalwareScanSettings",
@@ -2654,6 +2722,8 @@ guardduty_get_malware_scan_settings <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_master_account
+#'
+#' @aliases guardduty_get_master_account
 guardduty_get_master_account <- function(DetectorId) {
   op <- new_operation(
     name = "GetMasterAccount",
@@ -2742,6 +2812,8 @@ guardduty_get_master_account <- function(DetectorId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_member_detectors
+#'
+#' @aliases guardduty_get_member_detectors
 guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "GetMemberDetectors",
@@ -2812,6 +2884,8 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_members
+#'
+#' @aliases guardduty_get_members
 guardduty_get_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "GetMembers",
@@ -2897,6 +2971,8 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_remaining_free_trial_days
+#'
+#' @aliases guardduty_get_remaining_free_trial_days
 guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NULL) {
   op <- new_operation(
     name = "GetRemainingFreeTrialDays",
@@ -2951,6 +3027,8 @@ guardduty_get_remaining_free_trial_days <- function(DetectorId, AccountIds = NUL
 #' @keywords internal
 #'
 #' @rdname guardduty_get_threat_intel_set
+#'
+#' @aliases guardduty_get_threat_intel_set
 guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
   op <- new_operation(
     name = "GetThreatIntelSet",
@@ -3067,6 +3145,8 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @keywords internal
 #'
 #' @rdname guardduty_get_usage_statistics
+#'
+#' @aliases guardduty_get_usage_statistics
 guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, UsageCriteria, Unit = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetUsageStatistics",
@@ -3139,6 +3219,8 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' @keywords internal
 #'
 #' @rdname guardduty_invite_members
+#'
+#' @aliases guardduty_invite_members
 guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotification = NULL, Message = NULL) {
   op <- new_operation(
     name = "InviteMembers",
@@ -3196,6 +3278,8 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' @keywords internal
 #'
 #' @rdname guardduty_list_detectors
+#'
+#' @aliases guardduty_list_detectors
 guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDetectors",
@@ -3253,6 +3337,8 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname guardduty_list_filters
+#'
+#' @aliases guardduty_list_filters
 guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFilters",
@@ -3447,6 +3533,8 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname guardduty_list_findings
+#'
+#' @aliases guardduty_list_findings
 guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCriteria = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFindings",
@@ -3505,6 +3593,8 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #' @keywords internal
 #'
 #' @rdname guardduty_list_ip_sets
+#'
+#' @aliases guardduty_list_ip_sets
 guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListIPSets",
@@ -3567,6 +3657,8 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname guardduty_list_invitations
+#'
+#' @aliases guardduty_list_invitations
 guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInvitations",
@@ -3639,6 +3731,8 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname guardduty_list_members
+#'
+#' @aliases guardduty_list_members
 guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NULL, OnlyAssociated = NULL) {
   op <- new_operation(
     name = "ListMembers",
@@ -3695,6 +3789,8 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname guardduty_list_organization_admin_accounts
+#'
+#' @aliases guardduty_list_organization_admin_accounts
 guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOrganizationAdminAccounts",
@@ -3757,6 +3853,8 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname guardduty_list_publishing_destinations
+#'
+#' @aliases guardduty_list_publishing_destinations
 guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPublishingDestinations",
@@ -3807,6 +3905,8 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname guardduty_list_tags_for_resource
+#'
+#' @aliases guardduty_list_tags_for_resource
 guardduty_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3869,6 +3969,8 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname guardduty_list_threat_intel_sets
+#'
+#' @aliases guardduty_list_threat_intel_sets
 guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListThreatIntelSets",
@@ -3928,6 +4030,8 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname guardduty_start_monitoring_members
+#'
+#' @aliases guardduty_start_monitoring_members
 guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "StartMonitoringMembers",
@@ -3985,6 +4089,8 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_stop_monitoring_members
+#'
+#' @aliases guardduty_stop_monitoring_members
 guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
   op <- new_operation(
     name = "StopMonitoringMembers",
@@ -4030,6 +4136,8 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_tag_resource
+#'
+#' @aliases guardduty_tag_resource
 guardduty_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4074,6 +4182,8 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname guardduty_unarchive_findings
+#'
+#' @aliases guardduty_unarchive_findings
 guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
   op <- new_operation(
     name = "UnarchiveFindings",
@@ -4118,6 +4228,8 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_untag_resource
+#'
+#' @aliases guardduty_untag_resource
 guardduty_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4180,6 +4292,8 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname guardduty_update_detector
+#'
+#' @aliases guardduty_update_detector
 guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishingFrequency = NULL, DataSources = NULL) {
   op <- new_operation(
     name = "UpdateDetector",
@@ -4265,6 +4379,8 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 #' @keywords internal
 #'
 #' @rdname guardduty_update_filter
+#'
+#' @aliases guardduty_update_filter
 guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, Action = NULL, Rank = NULL, FindingCriteria = NULL) {
   op <- new_operation(
     name = "UpdateFilter",
@@ -4315,6 +4431,8 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
 #' @keywords internal
 #'
 #' @rdname guardduty_update_findings_feedback
+#'
+#' @aliases guardduty_update_findings_feedback
 guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback, Comments = NULL) {
   op <- new_operation(
     name = "UpdateFindingsFeedback",
@@ -4365,6 +4483,8 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 #' @keywords internal
 #'
 #' @rdname guardduty_update_ip_set
+#'
+#' @aliases guardduty_update_ip_set
 guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location = NULL, Activate = NULL) {
   op <- new_operation(
     name = "UpdateIPSet",
@@ -4433,6 +4553,8 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 #' @keywords internal
 #'
 #' @rdname guardduty_update_malware_scan_settings
+#'
+#' @aliases guardduty_update_malware_scan_settings
 guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCriteria = NULL, EbsSnapshotPreservation = NULL) {
   op <- new_operation(
     name = "UpdateMalwareScanSettings",
@@ -4503,6 +4625,8 @@ guardduty_update_malware_scan_settings <- function(DetectorId, ScanResourceCrite
 #' @keywords internal
 #'
 #' @rdname guardduty_update_member_detectors
+#'
+#' @aliases guardduty_update_member_detectors
 guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSources = NULL) {
   op <- new_operation(
     name = "UpdateMemberDetectors",
@@ -4565,6 +4689,8 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' @keywords internal
 #'
 #' @rdname guardduty_update_organization_configuration
+#'
+#' @aliases guardduty_update_organization_configuration
 guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, DataSources = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
@@ -4617,6 +4743,8 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, 
 #' @keywords internal
 #'
 #' @rdname guardduty_update_publishing_destination
+#'
+#' @aliases guardduty_update_publishing_destination
 guardduty_update_publishing_destination <- function(DetectorId, DestinationId, DestinationProperties = NULL) {
   op <- new_operation(
     name = "UpdatePublishingDestination",
@@ -4668,6 +4796,8 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' @keywords internal
 #'
 #' @rdname guardduty_update_threat_intel_set
+#'
+#' @aliases guardduty_update_threat_intel_set
 guardduty_update_threat_intel_set <- function(DetectorId, ThreatIntelSetId, Name = NULL, Location = NULL, Activate = NULL) {
   op <- new_operation(
     name = "UpdateThreatIntelSet",

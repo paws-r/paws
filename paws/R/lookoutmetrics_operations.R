@@ -26,6 +26,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_activate_anomaly_detector
+#'
+#' @aliases lookoutmetrics_activate_anomaly_detector
 lookoutmetrics_activate_anomaly_detector <- function(AnomalyDetectorArn) {
   op <- new_operation(
     name = "ActivateAnomalyDetector",
@@ -66,6 +68,8 @@ lookoutmetrics_activate_anomaly_detector <- function(AnomalyDetectorArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_back_test_anomaly_detector
+#'
+#' @aliases lookoutmetrics_back_test_anomaly_detector
 lookoutmetrics_back_test_anomaly_detector <- function(AnomalyDetectorArn) {
   op <- new_operation(
     name = "BackTestAnomalyDetector",
@@ -151,6 +155,8 @@ lookoutmetrics_back_test_anomaly_detector <- function(AnomalyDetectorArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_create_alert
+#'
+#' @aliases lookoutmetrics_create_alert
 lookoutmetrics_create_alert <- function(AlertName, AlertSensitivityThreshold = NULL, AlertDescription = NULL, AnomalyDetectorArn, Action, Tags = NULL, AlertFilters = NULL) {
   op <- new_operation(
     name = "CreateAlert",
@@ -211,6 +217,8 @@ lookoutmetrics_create_alert <- function(AlertName, AlertSensitivityThreshold = N
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_create_anomaly_detector
+#'
+#' @aliases lookoutmetrics_create_anomaly_detector
 lookoutmetrics_create_anomaly_detector <- function(AnomalyDetectorName, AnomalyDetectorDescription = NULL, AnomalyDetectorConfig, KmsKeyArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAnomalyDetector",
@@ -377,6 +385,8 @@ lookoutmetrics_create_anomaly_detector <- function(AnomalyDetectorName, AnomalyD
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_create_metric_set
+#'
+#' @aliases lookoutmetrics_create_metric_set
 lookoutmetrics_create_metric_set <- function(AnomalyDetectorArn, MetricSetName, MetricSetDescription = NULL, MetricList, Offset = NULL, TimestampColumn = NULL, DimensionList = NULL, MetricSetFrequency = NULL, MetricSource, Timezone = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMetricSet",
@@ -417,6 +427,8 @@ lookoutmetrics_create_metric_set <- function(AnomalyDetectorArn, MetricSetName, 
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_deactivate_anomaly_detector
+#'
+#' @aliases lookoutmetrics_deactivate_anomaly_detector
 lookoutmetrics_deactivate_anomaly_detector <- function(AnomalyDetectorArn) {
   op <- new_operation(
     name = "DeactivateAnomalyDetector",
@@ -457,6 +469,8 @@ lookoutmetrics_deactivate_anomaly_detector <- function(AnomalyDetectorArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_delete_alert
+#'
+#' @aliases lookoutmetrics_delete_alert
 lookoutmetrics_delete_alert <- function(AlertArn) {
   op <- new_operation(
     name = "DeleteAlert",
@@ -498,6 +512,8 @@ lookoutmetrics_delete_alert <- function(AlertArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_delete_anomaly_detector
+#'
+#' @aliases lookoutmetrics_delete_anomaly_detector
 lookoutmetrics_delete_anomaly_detector <- function(AnomalyDetectorArn) {
   op <- new_operation(
     name = "DeleteAnomalyDetector",
@@ -586,6 +602,8 @@ lookoutmetrics_delete_anomaly_detector <- function(AnomalyDetectorArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_describe_alert
+#'
+#' @aliases lookoutmetrics_describe_alert
 lookoutmetrics_describe_alert <- function(AlertArn) {
   op <- new_operation(
     name = "DescribeAlert",
@@ -648,6 +666,8 @@ lookoutmetrics_describe_alert <- function(AlertArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_describe_anomaly_detection_executions
+#'
+#' @aliases lookoutmetrics_describe_anomaly_detection_executions
 lookoutmetrics_describe_anomaly_detection_executions <- function(AnomalyDetectorArn, Timestamp = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAnomalyDetectionExecutions",
@@ -713,6 +733,8 @@ lookoutmetrics_describe_anomaly_detection_executions <- function(AnomalyDetector
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_describe_anomaly_detector
+#'
+#' @aliases lookoutmetrics_describe_anomaly_detector
 lookoutmetrics_describe_anomaly_detector <- function(AnomalyDetectorArn) {
   op <- new_operation(
     name = "DescribeAnomalyDetector",
@@ -871,6 +893,8 @@ lookoutmetrics_describe_anomaly_detector <- function(AnomalyDetectorArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_describe_metric_set
+#'
+#' @aliases lookoutmetrics_describe_metric_set
 lookoutmetrics_describe_metric_set <- function(MetricSetArn) {
   op <- new_operation(
     name = "DescribeMetricSet",
@@ -1119,6 +1143,8 @@ lookoutmetrics_describe_metric_set <- function(MetricSetArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_detect_metric_set_config
+#'
+#' @aliases lookoutmetrics_detect_metric_set_config
 lookoutmetrics_detect_metric_set_config <- function(AnomalyDetectorArn, AutoDetectionMetricSource) {
   op <- new_operation(
     name = "DetectMetricSetConfig",
@@ -1191,6 +1217,8 @@ lookoutmetrics_detect_metric_set_config <- function(AnomalyDetectorArn, AutoDete
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_get_anomaly_group
+#'
+#' @aliases lookoutmetrics_get_anomaly_group
 lookoutmetrics_get_anomaly_group <- function(AnomalyGroupId, AnomalyDetectorArn) {
   op <- new_operation(
     name = "GetAnomalyGroup",
@@ -1253,6 +1281,8 @@ lookoutmetrics_get_anomaly_group <- function(AnomalyGroupId, AnomalyDetectorArn)
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_get_feedback
+#'
+#' @aliases lookoutmetrics_get_feedback
 lookoutmetrics_get_feedback <- function(AnomalyDetectorArn, AnomalyGroupTimeSeriesFeedback, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetFeedback",
@@ -1329,6 +1359,8 @@ lookoutmetrics_get_feedback <- function(AnomalyDetectorArn, AnomalyGroupTimeSeri
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_get_sample_data
+#'
+#' @aliases lookoutmetrics_get_sample_data
 lookoutmetrics_get_sample_data <- function(S3SourceConfig = NULL) {
   op <- new_operation(
     name = "GetSampleData",
@@ -1404,6 +1436,8 @@ lookoutmetrics_get_sample_data <- function(S3SourceConfig = NULL) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_alerts
+#'
+#' @aliases lookoutmetrics_list_alerts
 lookoutmetrics_list_alerts <- function(AnomalyDetectorArn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAlerts",
@@ -1475,6 +1509,8 @@ lookoutmetrics_list_alerts <- function(AnomalyDetectorArn = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_anomaly_detectors
+#'
+#' @aliases lookoutmetrics_list_anomaly_detectors
 lookoutmetrics_list_anomaly_detectors <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAnomalyDetectors",
@@ -1542,6 +1578,8 @@ lookoutmetrics_list_anomaly_detectors <- function(MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_anomaly_group_related_metrics
+#'
+#' @aliases lookoutmetrics_list_anomaly_group_related_metrics
 lookoutmetrics_list_anomaly_group_related_metrics <- function(AnomalyDetectorArn, AnomalyGroupId, RelationshipTypeFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAnomalyGroupRelatedMetrics",
@@ -1614,6 +1652,8 @@ lookoutmetrics_list_anomaly_group_related_metrics <- function(AnomalyDetectorArn
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_anomaly_group_summaries
+#'
+#' @aliases lookoutmetrics_list_anomaly_group_summaries
 lookoutmetrics_list_anomaly_group_summaries <- function(AnomalyDetectorArn, SensitivityThreshold, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAnomalyGroupSummaries",
@@ -1688,6 +1728,8 @@ lookoutmetrics_list_anomaly_group_summaries <- function(AnomalyDetectorArn, Sens
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_anomaly_group_time_series
+#'
+#' @aliases lookoutmetrics_list_anomaly_group_time_series
 lookoutmetrics_list_anomaly_group_time_series <- function(AnomalyDetectorArn, AnomalyGroupId, MetricName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAnomalyGroupTimeSeries",
@@ -1762,6 +1804,8 @@ lookoutmetrics_list_anomaly_group_time_series <- function(AnomalyDetectorArn, An
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_metric_sets
+#'
+#' @aliases lookoutmetrics_list_metric_sets
 lookoutmetrics_list_metric_sets <- function(AnomalyDetectorArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMetricSets",
@@ -1811,6 +1855,8 @@ lookoutmetrics_list_metric_sets <- function(AnomalyDetectorArn = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_list_tags_for_resource
+#'
+#' @aliases lookoutmetrics_list_tags_for_resource
 lookoutmetrics_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1858,6 +1904,8 @@ lookoutmetrics_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_put_feedback
+#'
+#' @aliases lookoutmetrics_put_feedback
 lookoutmetrics_put_feedback <- function(AnomalyDetectorArn, AnomalyGroupTimeSeriesFeedback) {
   op <- new_operation(
     name = "PutFeedback",
@@ -1905,6 +1953,8 @@ lookoutmetrics_put_feedback <- function(AnomalyDetectorArn, AnomalyGroupTimeSeri
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_tag_resource
+#'
+#' @aliases lookoutmetrics_tag_resource
 lookoutmetrics_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1951,6 +2001,8 @@ lookoutmetrics_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_untag_resource
+#'
+#' @aliases lookoutmetrics_untag_resource
 lookoutmetrics_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2028,6 +2080,8 @@ lookoutmetrics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_update_alert
+#'
+#' @aliases lookoutmetrics_update_alert
 lookoutmetrics_update_alert <- function(AlertArn, AlertDescription = NULL, AlertSensitivityThreshold = NULL, Action = NULL, AlertFilters = NULL) {
   op <- new_operation(
     name = "UpdateAlert",
@@ -2084,6 +2138,8 @@ lookoutmetrics_update_alert <- function(AlertArn, AlertDescription = NULL, Alert
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_update_anomaly_detector
+#'
+#' @aliases lookoutmetrics_update_anomaly_detector
 lookoutmetrics_update_anomaly_detector <- function(AnomalyDetectorArn, KmsKeyArn = NULL, AnomalyDetectorDescription = NULL, AnomalyDetectorConfig = NULL) {
   op <- new_operation(
     name = "UpdateAnomalyDetector",
@@ -2239,6 +2295,8 @@ lookoutmetrics_update_anomaly_detector <- function(AnomalyDetectorArn, KmsKeyArn
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_update_metric_set
+#'
+#' @aliases lookoutmetrics_update_metric_set
 lookoutmetrics_update_metric_set <- function(MetricSetArn, MetricSetDescription = NULL, MetricList = NULL, Offset = NULL, TimestampColumn = NULL, DimensionList = NULL, MetricSetFrequency = NULL, MetricSource = NULL) {
   op <- new_operation(
     name = "UpdateMetricSet",

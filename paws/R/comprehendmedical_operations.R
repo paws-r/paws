@@ -61,6 +61,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_describe_entities_detection_v2_job
+#'
+#' @aliases comprehendmedical_describe_entities_detection_v2_job
 comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeEntitiesDetectionV2Job",
@@ -136,6 +138,8 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_describe_icd10cm_inference_job
+#'
+#' @aliases comprehendmedical_describe_icd10cm_inference_job
 comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeICD10CMInferenceJob",
@@ -212,6 +216,8 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_describe_phi_detection_job
+#'
+#' @aliases comprehendmedical_describe_phi_detection_job
 comprehendmedical_describe_phi_detection_job <- function(JobId) {
   op <- new_operation(
     name = "DescribePHIDetectionJob",
@@ -287,6 +293,8 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_describe_rx_norm_inference_job
+#'
+#' @aliases comprehendmedical_describe_rx_norm_inference_job
 comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeRxNormInferenceJob",
@@ -362,6 +370,8 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_describe_snomedct_inference_job
+#'
+#' @aliases comprehendmedical_describe_snomedct_inference_job
 comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeSNOMEDCTInferenceJob",
@@ -475,6 +485,8 @@ comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_detect_entities
+#'
+#' @aliases comprehendmedical_detect_entities
 comprehendmedical_detect_entities <- function(Text) {
   op <- new_operation(
     name = "DetectEntities",
@@ -599,6 +611,8 @@ comprehendmedical_detect_entities <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_detect_entities_v2
+#'
+#' @aliases comprehendmedical_detect_entities_v2
 comprehendmedical_detect_entities_v2 <- function(Text) {
   op <- new_operation(
     name = "DetectEntitiesV2",
@@ -688,6 +702,8 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_detect_phi
+#'
+#' @aliases comprehendmedical_detect_phi
 comprehendmedical_detect_phi <- function(Text) {
   op <- new_operation(
     name = "DetectPHI",
@@ -784,6 +800,8 @@ comprehendmedical_detect_phi <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_infer_icd10cm
+#'
+#' @aliases comprehendmedical_infer_icd10cm
 comprehendmedical_infer_icd10cm <- function(Text) {
   op <- new_operation(
     name = "InferICD10CM",
@@ -877,6 +895,8 @@ comprehendmedical_infer_icd10cm <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_infer_rx_norm
+#'
+#' @aliases comprehendmedical_infer_rx_norm
 comprehendmedical_infer_rx_norm <- function(Text) {
   op <- new_operation(
     name = "InferRxNorm",
@@ -986,6 +1006,8 @@ comprehendmedical_infer_rx_norm <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_infer_snomedct
+#'
+#' @aliases comprehendmedical_infer_snomedct
 comprehendmedical_infer_snomedct <- function(Text) {
   op <- new_operation(
     name = "InferSNOMEDCT",
@@ -1078,6 +1100,8 @@ comprehendmedical_infer_snomedct <- function(Text) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_list_entities_detection_v2_jobs
+#'
+#' @aliases comprehendmedical_list_entities_detection_v2_jobs
 comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEntitiesDetectionV2Jobs",
@@ -1170,6 +1194,8 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_list_icd10cm_inference_jobs
+#'
+#' @aliases comprehendmedical_list_icd10cm_inference_jobs
 comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListICD10CMInferenceJobs",
@@ -1263,6 +1289,8 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_list_phi_detection_jobs
+#'
+#' @aliases comprehendmedical_list_phi_detection_jobs
 comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPHIDetectionJobs",
@@ -1354,6 +1382,8 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_list_rx_norm_inference_jobs
+#'
+#' @aliases comprehendmedical_list_rx_norm_inference_jobs
 comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRxNormInferenceJobs",
@@ -1444,6 +1474,8 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_list_snomedct_inference_jobs
+#'
+#' @aliases comprehendmedical_list_snomedct_inference_jobs
 comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSNOMEDCTInferenceJobs",
@@ -1521,6 +1553,8 @@ comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_start_entities_detection_v2_job
+#'
+#' @aliases comprehendmedical_start_entities_detection_v2_job
 comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
   op <- new_operation(
     name = "StartEntitiesDetectionV2Job",
@@ -1597,6 +1631,8 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_start_icd10cm_inference_job
+#'
+#' @aliases comprehendmedical_start_icd10cm_inference_job
 comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
   op <- new_operation(
     name = "StartICD10CMInferenceJob",
@@ -1672,6 +1708,8 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_start_phi_detection_job
+#'
+#' @aliases comprehendmedical_start_phi_detection_job
 comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
   op <- new_operation(
     name = "StartPHIDetectionJob",
@@ -1748,6 +1786,8 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_start_rx_norm_inference_job
+#'
+#' @aliases comprehendmedical_start_rx_norm_inference_job
 comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
   op <- new_operation(
     name = "StartRxNormInferenceJob",
@@ -1821,6 +1861,8 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_start_snomedct_inference_job
+#'
+#' @aliases comprehendmedical_start_snomedct_inference_job
 comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, ClientRequestToken = NULL, KMSKey = NULL, LanguageCode) {
   op <- new_operation(
     name = "StartSNOMEDCTInferenceJob",
@@ -1866,6 +1908,8 @@ comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, Outp
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_stop_entities_detection_v2_job
+#'
+#' @aliases comprehendmedical_stop_entities_detection_v2_job
 comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
   op <- new_operation(
     name = "StopEntitiesDetectionV2Job",
@@ -1911,6 +1955,8 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_stop_icd10cm_inference_job
+#'
+#' @aliases comprehendmedical_stop_icd10cm_inference_job
 comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
   op <- new_operation(
     name = "StopICD10CMInferenceJob",
@@ -1956,6 +2002,8 @@ comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_stop_phi_detection_job
+#'
+#' @aliases comprehendmedical_stop_phi_detection_job
 comprehendmedical_stop_phi_detection_job <- function(JobId) {
   op <- new_operation(
     name = "StopPHIDetectionJob",
@@ -2001,6 +2049,8 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_stop_rx_norm_inference_job
+#'
+#' @aliases comprehendmedical_stop_rx_norm_inference_job
 comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
   op <- new_operation(
     name = "StopRxNormInferenceJob",
@@ -2046,6 +2096,8 @@ comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname comprehendmedical_stop_snomedct_inference_job
+#'
+#' @aliases comprehendmedical_stop_snomedct_inference_job
 comprehendmedical_stop_snomedct_inference_job <- function(JobId) {
   op <- new_operation(
     name = "StopSNOMEDCTInferenceJob",

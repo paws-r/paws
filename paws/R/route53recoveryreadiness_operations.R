@@ -51,6 +51,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_create_cell
+#'
+#' @aliases route53recoveryreadiness_create_cell
 route53recoveryreadiness_create_cell <- function(CellName, Cells = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateCell",
@@ -100,6 +102,8 @@ route53recoveryreadiness_create_cell <- function(CellName, Cells = NULL, Tags = 
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_create_cross_account_authorization
+#'
+#' @aliases route53recoveryreadiness_create_cross_account_authorization
 route53recoveryreadiness_create_cross_account_authorization <- function(CrossAccountAuthorization) {
   op <- new_operation(
     name = "CreateCrossAccountAuthorization",
@@ -161,6 +165,8 @@ route53recoveryreadiness_create_cross_account_authorization <- function(CrossAcc
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_create_readiness_check
+#'
+#' @aliases route53recoveryreadiness_create_readiness_check
 route53recoveryreadiness_create_readiness_check <- function(ReadinessCheckName, ResourceSetName, Tags = NULL) {
   op <- new_operation(
     name = "CreateReadinessCheck",
@@ -224,6 +230,8 @@ route53recoveryreadiness_create_readiness_check <- function(ReadinessCheckName, 
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_create_recovery_group
+#'
+#' @aliases route53recoveryreadiness_create_recovery_group
 route53recoveryreadiness_create_recovery_group <- function(Cells = NULL, RecoveryGroupName, Tags = NULL) {
   op <- new_operation(
     name = "CreateRecoveryGroup",
@@ -343,6 +351,8 @@ route53recoveryreadiness_create_recovery_group <- function(Cells = NULL, Recover
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_create_resource_set
+#'
+#' @aliases route53recoveryreadiness_create_resource_set
 route53recoveryreadiness_create_resource_set <- function(ResourceSetName, ResourceSetType, Resources, Tags = NULL) {
   op <- new_operation(
     name = "CreateResourceSet",
@@ -384,6 +394,8 @@ route53recoveryreadiness_create_resource_set <- function(ResourceSetName, Resour
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_delete_cell
+#'
+#' @aliases route53recoveryreadiness_delete_cell
 route53recoveryreadiness_delete_cell <- function(CellName) {
   op <- new_operation(
     name = "DeleteCell",
@@ -425,6 +437,8 @@ route53recoveryreadiness_delete_cell <- function(CellName) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_delete_cross_account_authorization
+#'
+#' @aliases route53recoveryreadiness_delete_cross_account_authorization
 route53recoveryreadiness_delete_cross_account_authorization <- function(CrossAccountAuthorization) {
   op <- new_operation(
     name = "DeleteCrossAccountAuthorization",
@@ -465,6 +479,8 @@ route53recoveryreadiness_delete_cross_account_authorization <- function(CrossAcc
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_delete_readiness_check
+#'
+#' @aliases route53recoveryreadiness_delete_readiness_check
 route53recoveryreadiness_delete_readiness_check <- function(ReadinessCheckName) {
   op <- new_operation(
     name = "DeleteReadinessCheck",
@@ -505,6 +521,8 @@ route53recoveryreadiness_delete_readiness_check <- function(ReadinessCheckName) 
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_delete_recovery_group
+#'
+#' @aliases route53recoveryreadiness_delete_recovery_group
 route53recoveryreadiness_delete_recovery_group <- function(RecoveryGroupName) {
   op <- new_operation(
     name = "DeleteRecoveryGroup",
@@ -545,6 +563,8 @@ route53recoveryreadiness_delete_recovery_group <- function(RecoveryGroupName) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_delete_resource_set
+#'
+#' @aliases route53recoveryreadiness_delete_resource_set
 route53recoveryreadiness_delete_resource_set <- function(ResourceSetName) {
   op <- new_operation(
     name = "DeleteResourceSet",
@@ -605,6 +625,8 @@ route53recoveryreadiness_delete_resource_set <- function(ResourceSetName) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_architecture_recommendations
+#'
+#' @aliases route53recoveryreadiness_get_architecture_recommendations
 route53recoveryreadiness_get_architecture_recommendations <- function(MaxResults = NULL, NextToken = NULL, RecoveryGroupName) {
   op <- new_operation(
     name = "GetArchitectureRecommendations",
@@ -664,6 +686,8 @@ route53recoveryreadiness_get_architecture_recommendations <- function(MaxResults
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_cell
+#'
+#' @aliases route53recoveryreadiness_get_cell
 route53recoveryreadiness_get_cell <- function(CellName) {
   op <- new_operation(
     name = "GetCell",
@@ -722,6 +746,8 @@ route53recoveryreadiness_get_cell <- function(CellName) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_cell_readiness_summary
+#'
+#' @aliases route53recoveryreadiness_get_cell_readiness_summary
 route53recoveryreadiness_get_cell_readiness_summary <- function(CellName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetCellReadinessSummary",
@@ -772,6 +798,8 @@ route53recoveryreadiness_get_cell_readiness_summary <- function(CellName, MaxRes
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_readiness_check
+#'
+#' @aliases route53recoveryreadiness_get_readiness_check
 route53recoveryreadiness_get_readiness_check <- function(ReadinessCheckName) {
   op <- new_operation(
     name = "GetReadinessCheck",
@@ -844,6 +872,8 @@ route53recoveryreadiness_get_readiness_check <- function(ReadinessCheckName) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_readiness_check_resource_status
+#'
+#' @aliases route53recoveryreadiness_get_readiness_check_resource_status
 route53recoveryreadiness_get_readiness_check_resource_status <- function(MaxResults = NULL, NextToken = NULL, ReadinessCheckName, ResourceIdentifier) {
   op <- new_operation(
     name = "GetReadinessCheckResourceStatus",
@@ -913,6 +943,8 @@ route53recoveryreadiness_get_readiness_check_resource_status <- function(MaxResu
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_readiness_check_status
+#'
+#' @aliases route53recoveryreadiness_get_readiness_check_status
 route53recoveryreadiness_get_readiness_check_status <- function(MaxResults = NULL, NextToken = NULL, ReadinessCheckName) {
   op <- new_operation(
     name = "GetReadinessCheckStatus",
@@ -967,6 +999,8 @@ route53recoveryreadiness_get_readiness_check_status <- function(MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_recovery_group
+#'
+#' @aliases route53recoveryreadiness_get_recovery_group
 route53recoveryreadiness_get_recovery_group <- function(RecoveryGroupName) {
   op <- new_operation(
     name = "GetRecoveryGroup",
@@ -1026,7 +1060,9 @@ route53recoveryreadiness_get_recovery_group <- function(RecoveryGroupName) {
 #'
 #' @keywords internal
 #'
-#' @rdname route53recoveryreadiness_get_recovery_group_readiness_summary
+#' @rdname route53recoveryreadiness_get_reco_grou_read_summ
+#'
+#' @aliases route53recoveryreadiness_get_recovery_group_readiness_summary
 route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxResults = NULL, NextToken = NULL, RecoveryGroupName) {
   op <- new_operation(
     name = "GetRecoveryGroupReadinessSummary",
@@ -1103,6 +1139,8 @@ route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxRes
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_get_resource_set
+#'
+#' @aliases route53recoveryreadiness_get_resource_set
 route53recoveryreadiness_get_resource_set <- function(ResourceSetName) {
   op <- new_operation(
     name = "GetResourceSet",
@@ -1165,6 +1203,8 @@ route53recoveryreadiness_get_resource_set <- function(ResourceSetName) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_cells
+#'
+#' @aliases route53recoveryreadiness_list_cells
 route53recoveryreadiness_list_cells <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCells",
@@ -1218,6 +1258,8 @@ route53recoveryreadiness_list_cells <- function(MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_cross_account_authorizations
+#'
+#' @aliases route53recoveryreadiness_list_cross_account_authorizations
 route53recoveryreadiness_list_cross_account_authorizations <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCrossAccountAuthorizations",
@@ -1275,6 +1317,8 @@ route53recoveryreadiness_list_cross_account_authorizations <- function(MaxResult
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_readiness_checks
+#'
+#' @aliases route53recoveryreadiness_list_readiness_checks
 route53recoveryreadiness_list_readiness_checks <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListReadinessChecks",
@@ -1334,6 +1378,8 @@ route53recoveryreadiness_list_readiness_checks <- function(MaxResults = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_recovery_groups
+#'
+#' @aliases route53recoveryreadiness_list_recovery_groups
 route53recoveryreadiness_list_recovery_groups <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRecoveryGroups",
@@ -1415,6 +1461,8 @@ route53recoveryreadiness_list_recovery_groups <- function(MaxResults = NULL, Nex
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_resource_sets
+#'
+#' @aliases route53recoveryreadiness_list_resource_sets
 route53recoveryreadiness_list_resource_sets <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListResourceSets",
@@ -1473,6 +1521,8 @@ route53recoveryreadiness_list_resource_sets <- function(MaxResults = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_rules
+#'
+#' @aliases route53recoveryreadiness_list_rules
 route53recoveryreadiness_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType = NULL) {
   op <- new_operation(
     name = "ListRules",
@@ -1520,6 +1570,8 @@ route53recoveryreadiness_list_rules <- function(MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_list_tags_for_resources
+#'
+#' @aliases route53recoveryreadiness_list_tags_for_resources
 route53recoveryreadiness_list_tags_for_resources <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResources",
@@ -1564,6 +1616,8 @@ route53recoveryreadiness_list_tags_for_resources <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_tag_resource
+#'
+#' @aliases route53recoveryreadiness_tag_resource
 route53recoveryreadiness_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1608,6 +1662,8 @@ route53recoveryreadiness_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_untag_resource
+#'
+#' @aliases route53recoveryreadiness_untag_resource
 route53recoveryreadiness_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1670,6 +1726,8 @@ route53recoveryreadiness_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_update_cell
+#'
+#' @aliases route53recoveryreadiness_update_cell
 route53recoveryreadiness_update_cell <- function(CellName, Cells) {
   op <- new_operation(
     name = "UpdateCell",
@@ -1723,6 +1781,8 @@ route53recoveryreadiness_update_cell <- function(CellName, Cells) {
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_update_readiness_check
+#'
+#' @aliases route53recoveryreadiness_update_readiness_check
 route53recoveryreadiness_update_readiness_check <- function(ReadinessCheckName, ResourceSetName) {
   op <- new_operation(
     name = "UpdateReadinessCheck",
@@ -1780,6 +1840,8 @@ route53recoveryreadiness_update_readiness_check <- function(ReadinessCheckName, 
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_update_recovery_group
+#'
+#' @aliases route53recoveryreadiness_update_recovery_group
 route53recoveryreadiness_update_recovery_group <- function(Cells, RecoveryGroupName) {
   op <- new_operation(
     name = "UpdateRecoveryGroup",
@@ -1893,6 +1955,8 @@ route53recoveryreadiness_update_recovery_group <- function(Cells, RecoveryGroupN
 #' @keywords internal
 #'
 #' @rdname route53recoveryreadiness_update_resource_set
+#'
+#' @aliases route53recoveryreadiness_update_resource_set
 route53recoveryreadiness_update_resource_set <- function(ResourceSetName, ResourceSetType, Resources) {
   op <- new_operation(
     name = "UpdateResourceSet",

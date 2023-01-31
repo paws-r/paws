@@ -83,6 +83,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname configservice_batch_get_aggregate_resource_config
+#'
+#' @aliases configservice_batch_get_aggregate_resource_config
 configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggregatorName, ResourceIdentifiers) {
   op <- new_operation(
     name = "BatchGetAggregateResourceConfig",
@@ -172,6 +174,8 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 #' @keywords internal
 #'
 #' @rdname configservice_batch_get_resource_config
+#'
+#' @aliases configservice_batch_get_resource_config
 configservice_batch_get_resource_config <- function(resourceKeys) {
   op <- new_operation(
     name = "BatchGetResourceConfig",
@@ -217,6 +221,8 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
 #' @keywords internal
 #'
 #' @rdname configservice_delete_aggregation_authorization
+#'
+#' @aliases configservice_delete_aggregation_authorization
 configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, AuthorizedAwsRegion) {
   op <- new_operation(
     name = "DeleteAggregationAuthorization",
@@ -266,6 +272,8 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 #' @keywords internal
 #'
 #' @rdname configservice_delete_config_rule
+#'
+#' @aliases configservice_delete_config_rule
 configservice_delete_config_rule <- function(ConfigRuleName) {
   op <- new_operation(
     name = "DeleteConfigRule",
@@ -309,6 +317,8 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
 #' @keywords internal
 #'
 #' @rdname configservice_delete_configuration_aggregator
+#'
+#' @aliases configservice_delete_configuration_aggregator
 configservice_delete_configuration_aggregator <- function(ConfigurationAggregatorName) {
   op <- new_operation(
     name = "DeleteConfigurationAggregator",
@@ -363,6 +373,8 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 #' @keywords internal
 #'
 #' @rdname configservice_delete_configuration_recorder
+#'
+#' @aliases configservice_delete_configuration_recorder
 configservice_delete_configuration_recorder <- function(ConfigurationRecorderName) {
   op <- new_operation(
     name = "DeleteConfigurationRecorder",
@@ -411,6 +423,8 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 #' @keywords internal
 #'
 #' @rdname configservice_delete_conformance_pack
+#'
+#' @aliases configservice_delete_conformance_pack
 configservice_delete_conformance_pack <- function(ConformancePackName) {
   op <- new_operation(
     name = "DeleteConformancePack",
@@ -456,6 +470,8 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 #' @keywords internal
 #'
 #' @rdname configservice_delete_delivery_channel
+#'
+#' @aliases configservice_delete_delivery_channel
 configservice_delete_delivery_channel <- function(DeliveryChannelName) {
   op <- new_operation(
     name = "DeleteDeliveryChannel",
@@ -502,6 +518,8 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 #' @keywords internal
 #'
 #' @rdname configservice_delete_evaluation_results
+#'
+#' @aliases configservice_delete_evaluation_results
 configservice_delete_evaluation_results <- function(ConfigRuleName) {
   op <- new_operation(
     name = "DeleteEvaluationResults",
@@ -553,6 +571,8 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 #' @keywords internal
 #'
 #' @rdname configservice_delete_organization_config_rule
+#'
+#' @aliases configservice_delete_organization_config_rule
 configservice_delete_organization_config_rule <- function(OrganizationConfigRuleName) {
   op <- new_operation(
     name = "DeleteOrganizationConfigRule",
@@ -607,6 +627,8 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
 #' @keywords internal
 #'
 #' @rdname configservice_delete_organization_conformance_pack
+#'
+#' @aliases configservice_delete_organization_conformance_pack
 configservice_delete_organization_conformance_pack <- function(OrganizationConformancePackName) {
   op <- new_operation(
     name = "DeleteOrganizationConformancePack",
@@ -652,6 +674,8 @@ configservice_delete_organization_conformance_pack <- function(OrganizationConfo
 #' @keywords internal
 #'
 #' @rdname configservice_delete_pending_aggregation_request
+#'
+#' @aliases configservice_delete_pending_aggregation_request
 configservice_delete_pending_aggregation_request <- function(RequesterAccountId, RequesterAwsRegion) {
   op <- new_operation(
     name = "DeletePendingAggregationRequest",
@@ -696,6 +720,8 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 #' @keywords internal
 #'
 #' @rdname configservice_delete_remediation_configuration
+#'
+#' @aliases configservice_delete_remediation_configuration
 configservice_delete_remediation_configuration <- function(ConfigRuleName, ResourceType = NULL) {
   op <- new_operation(
     name = "DeleteRemediationConfiguration",
@@ -768,6 +794,8 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #' @keywords internal
 #'
 #' @rdname configservice_delete_remediation_exceptions
+#'
+#' @aliases configservice_delete_remediation_exceptions
 configservice_delete_remediation_exceptions <- function(ConfigRuleName, ResourceKeys) {
   op <- new_operation(
     name = "DeleteRemediationExceptions",
@@ -814,6 +842,8 @@ configservice_delete_remediation_exceptions <- function(ConfigRuleName, Resource
 #' @keywords internal
 #'
 #' @rdname configservice_delete_resource_config
+#'
+#' @aliases configservice_delete_resource_config
 configservice_delete_resource_config <- function(ResourceType, ResourceId) {
   op <- new_operation(
     name = "DeleteResourceConfig",
@@ -854,6 +884,8 @@ configservice_delete_resource_config <- function(ResourceType, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname configservice_delete_retention_configuration
+#'
+#' @aliases configservice_delete_retention_configuration
 configservice_delete_retention_configuration <- function(RetentionConfigurationName) {
   op <- new_operation(
     name = "DeleteRetentionConfiguration",
@@ -896,6 +928,8 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 #' @keywords internal
 #'
 #' @rdname configservice_delete_stored_query
+#'
+#' @aliases configservice_delete_stored_query
 configservice_delete_stored_query <- function(QueryName) {
   op <- new_operation(
     name = "DeleteStoredQuery",
@@ -953,6 +987,8 @@ configservice_delete_stored_query <- function(QueryName) {
 #' @keywords internal
 #'
 #' @rdname configservice_deliver_config_snapshot
+#'
+#' @aliases configservice_deliver_config_snapshot
 configservice_deliver_config_snapshot <- function(deliveryChannelName) {
   op <- new_operation(
     name = "DeliverConfigSnapshot",
@@ -1032,6 +1068,8 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' @keywords internal
 #'
 #' @rdname configservice_describe_aggregate_compliance_by_config_rules
+#'
+#' @aliases configservice_describe_aggregate_compliance_by_config_rules
 configservice_describe_aggregate_compliance_by_config_rules <- function(ConfigurationAggregatorName, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAggregateComplianceByConfigRules",
@@ -1114,7 +1152,9 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #'
 #' @keywords internal
 #'
-#' @rdname configservice_describe_aggregate_compliance_by_conformance_packs
+#' @rdname configservice_descri_aggreg_compli_by_confor_packs
+#'
+#' @aliases configservice_describe_aggregate_compliance_by_conformance_packs
 configservice_describe_aggregate_compliance_by_conformance_packs <- function(ConfigurationAggregatorName, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAggregateComplianceByConformancePacks",
@@ -1176,6 +1216,8 @@ configservice_describe_aggregate_compliance_by_conformance_packs <- function(Con
 #' @keywords internal
 #'
 #' @rdname configservice_describe_aggregation_authorizations
+#'
+#' @aliases configservice_describe_aggregation_authorizations
 configservice_describe_aggregation_authorizations <- function(Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeAggregationAuthorizations",
@@ -1270,6 +1312,8 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #' @keywords internal
 #'
 #' @rdname configservice_describe_compliance_by_config_rule
+#'
+#' @aliases configservice_describe_compliance_by_config_rule
 configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = NULL, ComplianceTypes = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeComplianceByConfigRule",
@@ -1377,6 +1421,8 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' @keywords internal
 #'
 #' @rdname configservice_describe_compliance_by_resource
+#'
+#' @aliases configservice_describe_compliance_by_resource
 configservice_describe_compliance_by_resource <- function(ResourceType = NULL, ResourceId = NULL, ComplianceTypes = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeComplianceByResource",
@@ -1475,6 +1521,8 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 #' @keywords internal
 #'
 #' @rdname configservice_describe_config_rule_evaluation_status
+#'
+#' @aliases configservice_describe_config_rule_evaluation_status
 configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeConfigRuleEvaluationStatus",
@@ -1562,6 +1610,8 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' @keywords internal
 #'
 #' @rdname configservice_describe_config_rules
+#'
+#' @aliases configservice_describe_config_rules
 configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeConfigRules",
@@ -1639,7 +1689,9 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 #'
 #' @keywords internal
 #'
-#' @rdname configservice_describe_configuration_aggregator_sources_status
+#' @rdname configservice_describ_configu_aggrega_sources_status
+#'
+#' @aliases configservice_describe_configuration_aggregator_sources_status
 configservice_describe_configuration_aggregator_sources_status <- function(ConfigurationAggregatorName, UpdateStatus = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationAggregatorSourcesStatus",
@@ -1728,6 +1780,8 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 #' @keywords internal
 #'
 #' @rdname configservice_describe_configuration_aggregators
+#'
+#' @aliases configservice_describe_configuration_aggregators
 configservice_describe_configuration_aggregators <- function(ConfigurationAggregatorNames = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationAggregators",
@@ -1800,6 +1854,8 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 #' @keywords internal
 #'
 #' @rdname configservice_describe_configuration_recorder_status
+#'
+#' @aliases configservice_describe_configuration_recorder_status
 configservice_describe_configuration_recorder_status <- function(ConfigurationRecorderNames = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationRecorderStatus",
@@ -1865,6 +1921,8 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 #' @keywords internal
 #'
 #' @rdname configservice_describe_configuration_recorders
+#'
+#' @aliases configservice_describe_configuration_recorders
 configservice_describe_configuration_recorders <- function(ConfigurationRecorderNames = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationRecorders",
@@ -1936,6 +1994,8 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 #' @keywords internal
 #'
 #' @rdname configservice_describe_conformance_pack_compliance
+#'
+#' @aliases configservice_describe_conformance_pack_compliance
 configservice_describe_conformance_pack_compliance <- function(ConformancePackName, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeConformancePackCompliance",
@@ -2007,6 +2067,8 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
 #' @keywords internal
 #'
 #' @rdname configservice_describe_conformance_pack_status
+#'
+#' @aliases configservice_describe_conformance_pack_status
 configservice_describe_conformance_pack_status <- function(ConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeConformancePackStatus",
@@ -2081,6 +2143,8 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
 #' @keywords internal
 #'
 #' @rdname configservice_describe_conformance_packs
+#'
+#' @aliases configservice_describe_conformance_packs
 configservice_describe_conformance_packs <- function(ConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeConformancePacks",
@@ -2173,6 +2237,8 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
 #' @keywords internal
 #'
 #' @rdname configservice_describe_delivery_channel_status
+#'
+#' @aliases configservice_describe_delivery_channel_status
 configservice_describe_delivery_channel_status <- function(DeliveryChannelNames = NULL) {
   op <- new_operation(
     name = "DescribeDeliveryChannelStatus",
@@ -2236,6 +2302,8 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 #' @keywords internal
 #'
 #' @rdname configservice_describe_delivery_channels
+#'
+#' @aliases configservice_describe_delivery_channels
 configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL) {
   op <- new_operation(
     name = "DescribeDeliveryChannels",
@@ -2313,6 +2381,8 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 #' @keywords internal
 #'
 #' @rdname configservice_describe_organization_config_rule_statuses
+#'
+#' @aliases configservice_describe_organization_config_rule_statuses
 configservice_describe_organization_config_rule_statuses <- function(OrganizationConfigRuleNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationConfigRuleStatuses",
@@ -2450,6 +2520,8 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 #' @keywords internal
 #'
 #' @rdname configservice_describe_organization_config_rules
+#'
+#' @aliases configservice_describe_organization_config_rules
 configservice_describe_organization_config_rules <- function(OrganizationConfigRuleNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationConfigRules",
@@ -2528,7 +2600,9 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #'
 #' @keywords internal
 #'
-#' @rdname configservice_describe_organization_conformance_pack_statuses
+#' @rdname configservice_describ_organiz_conform_pack_statuse
+#'
+#' @aliases configservice_describe_organization_conformance_pack_statuses
 configservice_describe_organization_conformance_pack_statuses <- function(OrganizationConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationConformancePackStatuses",
@@ -2627,6 +2701,8 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
 #' @keywords internal
 #'
 #' @rdname configservice_describe_organization_conformance_packs
+#'
+#' @aliases configservice_describe_organization_conformance_packs
 configservice_describe_organization_conformance_packs <- function(OrganizationConformancePackNames = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationConformancePacks",
@@ -2682,6 +2758,8 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
 #' @keywords internal
 #'
 #' @rdname configservice_describe_pending_aggregation_requests
+#'
+#' @aliases configservice_describe_pending_aggregation_requests
 configservice_describe_pending_aggregation_requests <- function(Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribePendingAggregationRequests",
@@ -2761,6 +2839,8 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname configservice_describe_remediation_configurations
+#'
+#' @aliases configservice_describe_remediation_configurations
 configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
   op <- new_operation(
     name = "DescribeRemediationConfigurations",
@@ -2847,6 +2927,8 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 #' @keywords internal
 #'
 #' @rdname configservice_describe_remediation_exceptions
+#'
+#' @aliases configservice_describe_remediation_exceptions
 configservice_describe_remediation_exceptions <- function(ConfigRuleName, ResourceKeys = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeRemediationExceptions",
@@ -2941,6 +3023,8 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #' @keywords internal
 #'
 #' @rdname configservice_describe_remediation_execution_status
+#'
+#' @aliases configservice_describe_remediation_execution_status
 configservice_describe_remediation_execution_status <- function(ConfigRuleName, ResourceKeys = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeRemediationExecutionStatus",
@@ -3008,6 +3092,8 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 #' @keywords internal
 #'
 #' @rdname configservice_describe_retention_configurations
+#'
+#' @aliases configservice_describe_retention_configurations
 configservice_describe_retention_configurations <- function(RetentionConfigurationNames = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeRetentionConfigurations",
@@ -3104,7 +3190,9 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #'
 #' @keywords internal
 #'
-#' @rdname configservice_get_aggregate_compliance_details_by_config_rule
+#' @rdname configservice_get_aggre_compl_detai_by_confi_rule
+#'
+#' @aliases configservice_get_aggregate_compliance_details_by_config_rule
 configservice_get_aggregate_compliance_details_by_config_rule <- function(ConfigurationAggregatorName, ConfigRuleName, AccountId, AwsRegion, ComplianceType = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAggregateComplianceDetailsByConfigRule",
@@ -3190,6 +3278,8 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' @keywords internal
 #'
 #' @rdname configservice_get_aggregate_config_rule_compliance_summary
+#'
+#' @aliases configservice_get_aggregate_config_rule_compliance_summary
 configservice_get_aggregate_config_rule_compliance_summary <- function(ConfigurationAggregatorName, Filters = NULL, GroupByKey = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAggregateConfigRuleComplianceSummary",
@@ -3268,7 +3358,9 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #'
 #' @keywords internal
 #'
-#' @rdname configservice_get_aggregate_conformance_pack_compliance_summary
+#' @rdname configservice_get_aggreg_confor_pack_compli_summar
+#'
+#' @aliases configservice_get_aggregate_conformance_pack_compliance_summary
 configservice_get_aggregate_conformance_pack_compliance_summary <- function(ConfigurationAggregatorName, Filters = NULL, GroupByKey = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAggregateConformancePackComplianceSummary",
@@ -3347,6 +3439,8 @@ configservice_get_aggregate_conformance_pack_compliance_summary <- function(Conf
 #' @keywords internal
 #'
 #' @rdname configservice_get_aggregate_discovered_resource_counts
+#'
+#' @aliases configservice_get_aggregate_discovered_resource_counts
 configservice_get_aggregate_discovered_resource_counts <- function(ConfigurationAggregatorName, Filters = NULL, GroupByKey = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetAggregateDiscoveredResourceCounts",
@@ -3439,6 +3533,8 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #' @keywords internal
 #'
 #' @rdname configservice_get_aggregate_resource_config
+#'
+#' @aliases configservice_get_aggregate_resource_config
 configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorName, ResourceIdentifier) {
   op <- new_operation(
     name = "GetAggregateResourceConfig",
@@ -3525,6 +3621,8 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 #' @keywords internal
 #'
 #' @rdname configservice_get_compliance_details_by_config_rule
+#'
+#' @aliases configservice_get_compliance_details_by_config_rule
 configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, ComplianceTypes = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetComplianceDetailsByConfigRule",
@@ -3612,6 +3710,8 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 #' @keywords internal
 #'
 #' @rdname configservice_get_compliance_details_by_resource
+#'
+#' @aliases configservice_get_compliance_details_by_resource
 configservice_get_compliance_details_by_resource <- function(ResourceType, ResourceId, ComplianceTypes = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetComplianceDetailsByResource",
@@ -3666,6 +3766,8 @@ configservice_get_compliance_details_by_resource <- function(ResourceType, Resou
 #' @keywords internal
 #'
 #' @rdname configservice_get_compliance_summary_by_config_rule
+#'
+#' @aliases configservice_get_compliance_summary_by_config_rule
 configservice_get_compliance_summary_by_config_rule <- function() {
   op <- new_operation(
     name = "GetComplianceSummaryByConfigRule",
@@ -3740,6 +3842,8 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #' @keywords internal
 #'
 #' @rdname configservice_get_compliance_summary_by_resource_type
+#'
+#' @aliases configservice_get_compliance_summary_by_resource_type
 configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes = NULL) {
   op <- new_operation(
     name = "GetComplianceSummaryByResourceType",
@@ -3828,6 +3932,8 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 #' @keywords internal
 #'
 #' @rdname configservice_get_conformance_pack_compliance_details
+#'
+#' @aliases configservice_get_conformance_pack_compliance_details
 configservice_get_conformance_pack_compliance_details <- function(ConformancePackName, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetConformancePackComplianceDetails",
@@ -3889,6 +3995,8 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
 #' @keywords internal
 #'
 #' @rdname configservice_get_conformance_pack_compliance_summary
+#'
+#' @aliases configservice_get_conformance_pack_compliance_summary
 configservice_get_conformance_pack_compliance_summary <- function(ConformancePackNames, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetConformancePackComplianceSummary",
@@ -3936,6 +4044,8 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #' @keywords internal
 #'
 #' @rdname configservice_get_custom_rule_policy
+#'
+#' @aliases configservice_get_custom_rule_policy
 configservice_get_custom_rule_policy <- function(ConfigRuleName = NULL) {
   op <- new_operation(
     name = "GetCustomRulePolicy",
@@ -4050,6 +4160,8 @@ configservice_get_custom_rule_policy <- function(ConfigRuleName = NULL) {
 #' @keywords internal
 #'
 #' @rdname configservice_get_discovered_resource_counts
+#'
+#' @aliases configservice_get_discovered_resource_counts
 configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, limit = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetDiscoveredResourceCounts",
@@ -4123,6 +4235,8 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #' @keywords internal
 #'
 #' @rdname configservice_get_organization_config_rule_detailed_status
+#'
+#' @aliases configservice_get_organization_config_rule_detailed_status
 configservice_get_organization_config_rule_detailed_status <- function(OrganizationConfigRuleName, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetOrganizationConfigRuleDetailedStatus",
@@ -4195,7 +4309,9 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #'
 #' @keywords internal
 #'
-#' @rdname configservice_get_organization_conformance_pack_detailed_status
+#' @rdname configservice_get_organi_confor_pack_detail_status
+#'
+#' @aliases configservice_get_organization_conformance_pack_detailed_status
 configservice_get_organization_conformance_pack_detailed_status <- function(OrganizationConformancePackName, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetOrganizationConformancePackDetailedStatus",
@@ -4244,6 +4360,8 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
 #' @keywords internal
 #'
 #' @rdname configservice_get_organization_custom_rule_policy
+#'
+#' @aliases configservice_get_organization_custom_rule_policy
 configservice_get_organization_custom_rule_policy <- function(OrganizationConfigRuleName) {
   op <- new_operation(
     name = "GetOrganizationCustomRulePolicy",
@@ -4368,6 +4486,8 @@ configservice_get_organization_custom_rule_policy <- function(OrganizationConfig
 #' @keywords internal
 #'
 #' @rdname configservice_get_resource_config_history
+#'
+#' @aliases configservice_get_resource_config_history
 configservice_get_resource_config_history <- function(resourceType, resourceId, laterTime = NULL, earlierTime = NULL, chronologicalOrder = NULL, limit = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetResourceConfigHistory",
@@ -4419,6 +4539,8 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 #' @keywords internal
 #'
 #' @rdname configservice_get_stored_query
+#'
+#' @aliases configservice_get_stored_query
 configservice_get_stored_query <- function(QueryName) {
   op <- new_operation(
     name = "GetStoredQuery",
@@ -4501,6 +4623,8 @@ configservice_get_stored_query <- function(QueryName) {
 #' @keywords internal
 #'
 #' @rdname configservice_list_aggregate_discovered_resources
+#'
+#' @aliases configservice_list_aggregate_discovered_resources
 configservice_list_aggregate_discovered_resources <- function(ConfigurationAggregatorName, ResourceType, Filters = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAggregateDiscoveredResources",
@@ -4591,6 +4715,8 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' @keywords internal
 #'
 #' @rdname configservice_list_conformance_pack_compliance_scores
+#'
+#' @aliases configservice_list_conformance_pack_compliance_scores
 configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL, SortOrder = NULL, SortBy = NULL, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConformancePackComplianceScores",
@@ -4682,6 +4808,8 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
 #' @keywords internal
 #'
 #' @rdname configservice_list_discovered_resources
+#'
+#' @aliases configservice_list_discovered_resources
 configservice_list_discovered_resources <- function(resourceType, resourceIds = NULL, resourceName = NULL, limit = NULL, includeDeletedResources = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDiscoveredResources",
@@ -4740,6 +4868,8 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 #' @keywords internal
 #'
 #' @rdname configservice_list_stored_queries
+#'
+#' @aliases configservice_list_stored_queries
 configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListStoredQueries",
@@ -4800,6 +4930,8 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname configservice_list_tags_for_resource
+#'
+#' @aliases configservice_list_tags_for_resource
 configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4864,6 +4996,8 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #' @keywords internal
 #'
 #' @rdname configservice_put_aggregation_authorization
+#'
+#' @aliases configservice_put_aggregation_authorization
 configservice_put_aggregation_authorization <- function(AuthorizedAccountId, AuthorizedAwsRegion, Tags = NULL) {
   op <- new_operation(
     name = "PutAggregationAuthorization",
@@ -4986,6 +5120,8 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' @keywords internal
 #'
 #' @rdname configservice_put_config_rule
+#'
+#' @aliases configservice_put_config_rule
 configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigRule",
@@ -5111,6 +5247,8 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname configservice_put_configuration_aggregator
+#'
+#' @aliases configservice_put_configuration_aggregator
 configservice_put_configuration_aggregator <- function(ConfigurationAggregatorName, AccountAggregationSources = NULL, OrganizationAggregationSource = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PutConfigurationAggregator",
@@ -5175,6 +5313,8 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #' @keywords internal
 #'
 #' @rdname configservice_put_configuration_recorder
+#'
+#' @aliases configservice_put_configuration_recorder
 configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
   op <- new_operation(
     name = "PutConfigurationRecorder",
@@ -5266,6 +5406,8 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' @keywords internal
 #'
 #' @rdname configservice_put_conformance_pack
+#'
+#' @aliases configservice_put_conformance_pack
 configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL) {
   op <- new_operation(
     name = "PutConformancePack",
@@ -5331,6 +5473,8 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 #' @keywords internal
 #'
 #' @rdname configservice_put_delivery_channel
+#'
+#' @aliases configservice_put_delivery_channel
 configservice_put_delivery_channel <- function(DeliveryChannel) {
   op <- new_operation(
     name = "PutDeliveryChannel",
@@ -5414,6 +5558,8 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' @keywords internal
 #'
 #' @rdname configservice_put_evaluations
+#'
+#' @aliases configservice_put_evaluations
 configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestMode = NULL) {
   op <- new_operation(
     name = "PutEvaluations",
@@ -5467,6 +5613,8 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 #' @keywords internal
 #'
 #' @rdname configservice_put_external_evaluation
+#'
+#' @aliases configservice_put_external_evaluation
 configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvaluation) {
   op <- new_operation(
     name = "PutExternalEvaluation",
@@ -5642,6 +5790,8 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' @keywords internal
 #'
 #' @rdname configservice_put_organization_config_rule
+#'
+#' @aliases configservice_put_organization_config_rule
 configservice_put_organization_config_rule <- function(OrganizationConfigRuleName, OrganizationManagedRuleMetadata = NULL, OrganizationCustomRuleMetadata = NULL, ExcludedAccounts = NULL, OrganizationCustomPolicyRuleMetadata = NULL) {
   op <- new_operation(
     name = "PutOrganizationConfigRule",
@@ -5753,6 +5903,8 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' @keywords internal
 #'
 #' @rdname configservice_put_organization_conformance_pack
+#'
+#' @aliases configservice_put_organization_conformance_pack
 configservice_put_organization_conformance_pack <- function(OrganizationConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, ExcludedAccounts = NULL) {
   op <- new_operation(
     name = "PutOrganizationConformancePack",
@@ -5887,6 +6039,8 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
 #' @keywords internal
 #'
 #' @rdname configservice_put_remediation_configurations
+#'
+#' @aliases configservice_put_remediation_configurations
 configservice_put_remediation_configurations <- function(RemediationConfigurations) {
   op <- new_operation(
     name = "PutRemediationConfigurations",
@@ -5972,6 +6126,8 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #' @keywords internal
 #'
 #' @rdname configservice_put_remediation_exceptions
+#'
+#' @aliases configservice_put_remediation_exceptions
 configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKeys, Message = NULL, ExpirationTime = NULL) {
   op <- new_operation(
     name = "PutRemediationExceptions",
@@ -6052,6 +6208,8 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 #' @keywords internal
 #'
 #' @rdname configservice_put_resource_config
+#'
+#' @aliases configservice_put_resource_config
 configservice_put_resource_config <- function(ResourceType, SchemaVersionId, ResourceId, ResourceName = NULL, Configuration, Tags = NULL) {
   op <- new_operation(
     name = "PutResourceConfig",
@@ -6112,6 +6270,8 @@ configservice_put_resource_config <- function(ResourceType, SchemaVersionId, Res
 #' @keywords internal
 #'
 #' @rdname configservice_put_retention_configuration
+#'
+#' @aliases configservice_put_retention_configuration
 configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
   op <- new_operation(
     name = "PutRetentionConfiguration",
@@ -6178,6 +6338,8 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 #' @keywords internal
 #'
 #' @rdname configservice_put_stored_query
+#'
+#' @aliases configservice_put_stored_query
 configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
   op <- new_operation(
     name = "PutStoredQuery",
@@ -6266,6 +6428,8 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname configservice_select_aggregate_resource_config
+#'
+#' @aliases configservice_select_aggregate_resource_config
 configservice_select_aggregate_resource_config <- function(Expression, ConfigurationAggregatorName, Limit = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "SelectAggregateResourceConfig",
@@ -6334,6 +6498,8 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
 #' @keywords internal
 #'
 #' @rdname configservice_select_resource_config
+#'
+#' @aliases configservice_select_resource_config
 configservice_select_resource_config <- function(Expression, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "SelectResourceConfig",
@@ -6417,6 +6583,8 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname configservice_start_config_rules_evaluation
+#'
+#' @aliases configservice_start_config_rules_evaluation
 configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) {
   op <- new_operation(
     name = "StartConfigRulesEvaluation",
@@ -6463,6 +6631,8 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 #' @keywords internal
 #'
 #' @rdname configservice_start_configuration_recorder
+#'
+#' @aliases configservice_start_configuration_recorder
 configservice_start_configuration_recorder <- function(ConfigurationRecorderName) {
   op <- new_operation(
     name = "StartConfigurationRecorder",
@@ -6530,6 +6700,8 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #' @keywords internal
 #'
 #' @rdname configservice_start_remediation_execution
+#'
+#' @aliases configservice_start_remediation_execution
 configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKeys) {
   op <- new_operation(
     name = "StartRemediationExecution",
@@ -6573,6 +6745,8 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #' @keywords internal
 #'
 #' @rdname configservice_stop_configuration_recorder
+#'
+#' @aliases configservice_stop_configuration_recorder
 configservice_stop_configuration_recorder <- function(ConfigurationRecorderName) {
   op <- new_operation(
     name = "StopConfigurationRecorder",
@@ -6626,6 +6800,8 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' @keywords internal
 #'
 #' @rdname configservice_tag_resource
+#'
+#' @aliases configservice_tag_resource
 configservice_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -6672,6 +6848,8 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname configservice_untag_resource
+#'
+#' @aliases configservice_untag_resource
 configservice_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",

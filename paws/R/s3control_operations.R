@@ -96,6 +96,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname s3control_create_access_point
+#'
+#' @aliases s3control_create_access_point
 s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfiguration = NULL, PublicAccessBlockConfiguration = NULL) {
   op <- new_operation(
     name = "CreateAccessPoint",
@@ -178,6 +180,8 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 #' @keywords internal
 #'
 #' @rdname s3control_create_access_point_for_object_lambda
+#'
+#' @aliases s3control_create_access_point_for_object_lambda
 s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Configuration) {
   op <- new_operation(
     name = "CreateAccessPointForObjectLambda",
@@ -309,6 +313,8 @@ s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Con
 #' @keywords internal
 #'
 #' @rdname s3control_create_bucket
+#'
+#' @aliases s3control_create_bucket
 s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NULL, GrantFullControl = NULL, GrantRead = NULL, GrantReadACP = NULL, GrantWrite = NULL, GrantWriteACP = NULL, ObjectLockEnabledForBucket = NULL, OutpostId = NULL) {
   op <- new_operation(
     name = "CreateBucket",
@@ -571,6 +577,8 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #' @keywords internal
 #'
 #' @rdname s3control_create_job
+#'
+#' @aliases s3control_create_job
 s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operation, Report, ClientRequestToken, Manifest = NULL, Description = NULL, Priority, RoleArn, Tags = NULL, ManifestGenerator = NULL) {
   op <- new_operation(
     name = "CreateJob",
@@ -666,6 +674,8 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
 #' @keywords internal
 #'
 #' @rdname s3control_create_multi_region_access_point
+#'
+#' @aliases s3control_create_multi_region_access_point
 s3control_create_multi_region_access_point <- function(AccountId, ClientToken, Details) {
   op <- new_operation(
     name = "CreateMultiRegionAccessPoint",
@@ -739,6 +749,8 @@ s3control_create_multi_region_access_point <- function(AccountId, ClientToken, D
 #' @keywords internal
 #'
 #' @rdname s3control_delete_access_point
+#'
+#' @aliases s3control_delete_access_point
 s3control_delete_access_point <- function(AccountId, Name) {
   op <- new_operation(
     name = "DeleteAccessPoint",
@@ -791,6 +803,8 @@ s3control_delete_access_point <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_access_point_for_object_lambda
+#'
+#' @aliases s3control_delete_access_point_for_object_lambda
 s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
   op <- new_operation(
     name = "DeleteAccessPointForObjectLambda",
@@ -862,6 +876,8 @@ s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_access_point_policy
+#'
+#' @aliases s3control_delete_access_point_policy
 s3control_delete_access_point_policy <- function(AccountId, Name) {
   op <- new_operation(
     name = "DeleteAccessPointPolicy",
@@ -913,6 +929,8 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_access_point_policy_for_object_lambda
+#'
+#' @aliases s3control_delete_access_point_policy_for_object_lambda
 s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Name) {
   op <- new_operation(
     name = "DeleteAccessPointPolicyForObjectLambda",
@@ -994,6 +1012,8 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
 #' @keywords internal
 #'
 #' @rdname s3control_delete_bucket
+#'
+#' @aliases s3control_delete_bucket
 s3control_delete_bucket <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "DeleteBucket",
@@ -1086,6 +1106,8 @@ s3control_delete_bucket <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_bucket_lifecycle_configuration
+#'
+#' @aliases s3control_delete_bucket_lifecycle_configuration
 s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "DeleteBucketLifecycleConfiguration",
@@ -1185,6 +1207,8 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_bucket_policy
+#'
+#' @aliases s3control_delete_bucket_policy
 s3control_delete_bucket_policy <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "DeleteBucketPolicy",
@@ -1270,6 +1294,8 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_bucket_tagging
+#'
+#' @aliases s3control_delete_bucket_tagging
 s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "DeleteBucketTagging",
@@ -1326,6 +1352,8 @@ s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_job_tagging
+#'
+#' @aliases s3control_delete_job_tagging
 s3control_delete_job_tagging <- function(AccountId, JobId) {
   op <- new_operation(
     name = "DeleteJobTagging",
@@ -1406,6 +1434,8 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_multi_region_access_point
+#'
+#' @aliases s3control_delete_multi_region_access_point
 s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, Details) {
   op <- new_operation(
     name = "DeleteMultiRegionAccessPoint",
@@ -1456,6 +1486,8 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
 #' @keywords internal
 #'
 #' @rdname s3control_delete_public_access_block
+#'
+#' @aliases s3control_delete_public_access_block
 s3control_delete_public_access_block <- function(AccountId) {
   op <- new_operation(
     name = "DeletePublicAccessBlock",
@@ -1508,6 +1540,8 @@ s3control_delete_public_access_block <- function(AccountId) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_storage_lens_configuration
+#'
+#' @aliases s3control_delete_storage_lens_configuration
 s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
   op <- new_operation(
     name = "DeleteStorageLensConfiguration",
@@ -1560,6 +1594,8 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
 #' @keywords internal
 #'
 #' @rdname s3control_delete_storage_lens_configuration_tagging
+#'
+#' @aliases s3control_delete_storage_lens_configuration_tagging
 s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, AccountId) {
   op <- new_operation(
     name = "DeleteStorageLensConfigurationTagging",
@@ -1824,6 +1860,8 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
 #' @keywords internal
 #'
 #' @rdname s3control_describe_job
+#'
+#' @aliases s3control_describe_job
 s3control_describe_job <- function(AccountId, JobId) {
   op <- new_operation(
     name = "DescribeJob",
@@ -1939,6 +1977,8 @@ s3control_describe_job <- function(AccountId, JobId) {
 #' @keywords internal
 #'
 #' @rdname s3control_describe_multi_region_access_point_operation
+#'
+#' @aliases s3control_describe_multi_region_access_point_operation
 s3control_describe_multi_region_access_point_operation <- function(AccountId, RequestTokenARN) {
   op <- new_operation(
     name = "DescribeMultiRegionAccessPointOperation",
@@ -2037,6 +2077,8 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point
+#'
+#' @aliases s3control_get_access_point
 s3control_get_access_point <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPoint",
@@ -2111,6 +2153,8 @@ s3control_get_access_point <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point_configuration_for_object_lambda
+#'
+#' @aliases s3control_get_access_point_configuration_for_object_lambda
 s3control_get_access_point_configuration_for_object_lambda <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPointConfigurationForObjectLambda",
@@ -2179,6 +2223,8 @@ s3control_get_access_point_configuration_for_object_lambda <- function(AccountId
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point_for_object_lambda
+#'
+#' @aliases s3control_get_access_point_for_object_lambda
 s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPointForObjectLambda",
@@ -2248,6 +2294,8 @@ s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point_policy
+#'
+#' @aliases s3control_get_access_point_policy
 s3control_get_access_point_policy <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPointPolicy",
@@ -2303,6 +2351,8 @@ s3control_get_access_point_policy <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point_policy_for_object_lambda
+#'
+#' @aliases s3control_get_access_point_policy_for_object_lambda
 s3control_get_access_point_policy_for_object_lambda <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPointPolicyForObjectLambda",
@@ -2357,6 +2407,8 @@ s3control_get_access_point_policy_for_object_lambda <- function(AccountId, Name)
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point_policy_status
+#'
+#' @aliases s3control_get_access_point_policy_status
 s3control_get_access_point_policy_status <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPointPolicyStatus",
@@ -2410,6 +2462,8 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_access_point_policy_status_for_object_lambda
+#'
+#' @aliases s3control_get_access_point_policy_status_for_object_lambda
 s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetAccessPointPolicyStatusForObjectLambda",
@@ -2506,6 +2560,8 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
 #' @keywords internal
 #'
 #' @rdname s3control_get_bucket
+#'
+#' @aliases s3control_get_bucket
 s3control_get_bucket <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "GetBucket",
@@ -2662,6 +2718,8 @@ s3control_get_bucket <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_bucket_lifecycle_configuration
+#'
+#' @aliases s3control_get_bucket_lifecycle_configuration
 s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "GetBucketLifecycleConfiguration",
@@ -2769,6 +2827,8 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_bucket_policy
+#'
+#' @aliases s3control_get_bucket_policy
 s3control_get_bucket_policy <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "GetBucketPolicy",
@@ -2869,6 +2929,8 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_bucket_tagging
+#'
+#' @aliases s3control_get_bucket_tagging
 s3control_get_bucket_tagging <- function(AccountId, Bucket) {
   op <- new_operation(
     name = "GetBucketTagging",
@@ -2934,6 +2996,8 @@ s3control_get_bucket_tagging <- function(AccountId, Bucket) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_job_tagging
+#'
+#' @aliases s3control_get_job_tagging
 s3control_get_job_tagging <- function(AccountId, JobId) {
   op <- new_operation(
     name = "GetJobTagging",
@@ -3026,6 +3090,8 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_multi_region_access_point
+#'
+#' @aliases s3control_get_multi_region_access_point
 s3control_get_multi_region_access_point <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetMultiRegionAccessPoint",
@@ -3101,6 +3167,8 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_multi_region_access_point_policy
+#'
+#' @aliases s3control_get_multi_region_access_point_policy
 s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetMultiRegionAccessPointPolicy",
@@ -3171,6 +3239,8 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_multi_region_access_point_policy_status
+#'
+#' @aliases s3control_get_multi_region_access_point_policy_status
 s3control_get_multi_region_access_point_policy_status <- function(AccountId, Name) {
   op <- new_operation(
     name = "GetMultiRegionAccessPointPolicyStatus",
@@ -3232,6 +3302,8 @@ s3control_get_multi_region_access_point_policy_status <- function(AccountId, Nam
 #' @keywords internal
 #'
 #' @rdname s3control_get_public_access_block
+#'
+#' @aliases s3control_get_public_access_block
 s3control_get_public_access_block <- function(AccountId) {
   op <- new_operation(
     name = "GetPublicAccessBlock",
@@ -3349,6 +3421,8 @@ s3control_get_public_access_block <- function(AccountId) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_storage_lens_configuration
+#'
+#' @aliases s3control_get_storage_lens_configuration
 s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
   op <- new_operation(
     name = "GetStorageLensConfiguration",
@@ -3411,6 +3485,8 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
 #' @keywords internal
 #'
 #' @rdname s3control_get_storage_lens_configuration_tagging
+#'
+#' @aliases s3control_get_storage_lens_configuration_tagging
 s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId) {
   op <- new_operation(
     name = "GetStorageLensConfigurationTagging",
@@ -3519,6 +3595,8 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' @keywords internal
 #'
 #' @rdname s3control_list_access_points
+#'
+#' @aliases s3control_list_access_points
 s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPoints",
@@ -3596,6 +3674,8 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname s3control_list_access_points_for_object_lambda
+#'
+#' @aliases s3control_list_access_points_for_object_lambda
 s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccessPointsForObjectLambda",
@@ -3694,6 +3774,8 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
 #' @keywords internal
 #'
 #' @rdname s3control_list_jobs
+#'
+#' @aliases s3control_list_jobs
 s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListJobs",
@@ -3787,6 +3869,8 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname s3control_list_multi_region_access_points
+#'
+#' @aliases s3control_list_multi_region_access_points
 s3control_list_multi_region_access_points <- function(AccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMultiRegionAccessPoints",
@@ -3863,6 +3947,8 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname s3control_list_regional_buckets
+#'
+#' @aliases s3control_list_regional_buckets
 s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResults = NULL, OutpostId = NULL) {
   op <- new_operation(
     name = "ListRegionalBuckets",
@@ -3928,6 +4014,8 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname s3control_list_storage_lens_configurations
+#'
+#' @aliases s3control_list_storage_lens_configurations
 s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NULL) {
   op <- new_operation(
     name = "ListStorageLensConfigurations",
@@ -3998,6 +4086,8 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname s3control_put_access_point_configuration_for_object_lambda
+#'
+#' @aliases s3control_put_access_point_configuration_for_object_lambda
 s3control_put_access_point_configuration_for_object_lambda <- function(AccountId, Name, Configuration) {
   op <- new_operation(
     name = "PutAccessPointConfigurationForObjectLambda",
@@ -4079,6 +4169,8 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 #' @keywords internal
 #'
 #' @rdname s3control_put_access_point_policy
+#'
+#' @aliases s3control_put_access_point_policy
 s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
   op <- new_operation(
     name = "PutAccessPointPolicy",
@@ -4135,6 +4227,8 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
 #' @keywords internal
 #'
 #' @rdname s3control_put_access_point_policy_for_object_lambda
+#'
+#' @aliases s3control_put_access_point_policy_for_object_lambda
 s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name, Policy) {
   op <- new_operation(
     name = "PutAccessPointPolicyForObjectLambda",
@@ -4256,6 +4350,8 @@ s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name,
 #' @keywords internal
 #'
 #' @rdname s3control_put_bucket_lifecycle_configuration
+#'
+#' @aliases s3control_put_bucket_lifecycle_configuration
 s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, LifecycleConfiguration = NULL) {
   op <- new_operation(
     name = "PutBucketLifecycleConfiguration",
@@ -4364,6 +4460,8 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
 #' @keywords internal
 #'
 #' @rdname s3control_put_bucket_policy
+#'
+#' @aliases s3control_put_bucket_policy
 s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBucketAccess = NULL, Policy) {
   op <- new_operation(
     name = "PutBucketPolicy",
@@ -4501,6 +4599,8 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
 #' @keywords internal
 #'
 #' @rdname s3control_put_bucket_tagging
+#'
+#' @aliases s3control_put_bucket_tagging
 s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
   op <- new_operation(
     name = "PutBucketTagging",
@@ -4601,6 +4701,8 @@ s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
 #' @keywords internal
 #'
 #' @rdname s3control_put_job_tagging
+#'
+#' @aliases s3control_put_job_tagging
 s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
   op <- new_operation(
     name = "PutJobTagging",
@@ -4674,6 +4776,8 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
 #' @keywords internal
 #'
 #' @rdname s3control_put_multi_region_access_point_policy
+#'
+#' @aliases s3control_put_multi_region_access_point_policy
 s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToken, Details) {
   op <- new_operation(
     name = "PutMultiRegionAccessPointPolicy",
@@ -4735,6 +4839,8 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
 #' @keywords internal
 #'
 #' @rdname s3control_put_public_access_block
+#'
+#' @aliases s3control_put_public_access_block
 s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, AccountId) {
   op <- new_operation(
     name = "PutPublicAccessBlock",
@@ -4859,6 +4965,8 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 #' @keywords internal
 #'
 #' @rdname s3control_put_storage_lens_configuration
+#'
+#' @aliases s3control_put_storage_lens_configuration
 s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, StorageLensConfiguration, Tags = NULL) {
   op <- new_operation(
     name = "PutStorageLensConfiguration",
@@ -4921,6 +5029,8 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
 #' @keywords internal
 #'
 #' @rdname s3control_put_storage_lens_configuration_tagging
+#'
+#' @aliases s3control_put_storage_lens_configuration_tagging
 s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId, Tags) {
   op <- new_operation(
     name = "PutStorageLensConfigurationTagging",
@@ -4985,6 +5095,8 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' @keywords internal
 #'
 #' @rdname s3control_update_job_priority
+#'
+#' @aliases s3control_update_job_priority
 s3control_update_job_priority <- function(AccountId, JobId, Priority) {
   op <- new_operation(
     name = "UpdateJobPriority",
@@ -5055,6 +5167,8 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 #' @keywords internal
 #'
 #' @rdname s3control_update_job_status
+#'
+#' @aliases s3control_update_job_status
 s3control_update_job_status <- function(AccountId, JobId, RequestedJobStatus, StatusUpdateReason = NULL) {
   op <- new_operation(
     name = "UpdateJobStatus",

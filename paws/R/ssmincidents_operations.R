@@ -41,6 +41,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ssmincidents_create_replication_set
+#'
+#' @aliases ssmincidents_create_replication_set
 ssmincidents_create_replication_set <- function(clientToken = NULL, regions) {
   op <- new_operation(
     name = "CreateReplicationSet",
@@ -148,6 +150,8 @@ ssmincidents_create_replication_set <- function(clientToken = NULL, regions) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_create_response_plan
+#'
+#' @aliases ssmincidents_create_response_plan
 ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL, clientToken = NULL, displayName = NULL, engagements = NULL, incidentTemplate, name, tags = NULL) {
   op <- new_operation(
     name = "CreateResponsePlan",
@@ -213,6 +217,8 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
 #' @keywords internal
 #'
 #' @rdname ssmincidents_create_timeline_event
+#'
+#' @aliases ssmincidents_create_timeline_event
 ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, eventTime, eventType, incidentRecordArn) {
   op <- new_operation(
     name = "CreateTimelineEvent",
@@ -253,6 +259,8 @@ ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, ev
 #' @keywords internal
 #'
 #' @rdname ssmincidents_delete_incident_record
+#'
+#' @aliases ssmincidents_delete_incident_record
 ssmincidents_delete_incident_record <- function(arn) {
   op <- new_operation(
     name = "DeleteIncidentRecord",
@@ -294,6 +302,8 @@ ssmincidents_delete_incident_record <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_delete_replication_set
+#'
+#' @aliases ssmincidents_delete_replication_set
 ssmincidents_delete_replication_set <- function(arn) {
   op <- new_operation(
     name = "DeleteReplicationSet",
@@ -339,6 +349,8 @@ ssmincidents_delete_replication_set <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_delete_resource_policy
+#'
+#' @aliases ssmincidents_delete_resource_policy
 ssmincidents_delete_resource_policy <- function(policyId, resourceArn) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -381,6 +393,8 @@ ssmincidents_delete_resource_policy <- function(policyId, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_delete_response_plan
+#'
+#' @aliases ssmincidents_delete_response_plan
 ssmincidents_delete_response_plan <- function(arn) {
   op <- new_operation(
     name = "DeleteResponsePlan",
@@ -425,6 +439,8 @@ ssmincidents_delete_response_plan <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_delete_timeline_event
+#'
+#' @aliases ssmincidents_delete_timeline_event
 ssmincidents_delete_timeline_event <- function(eventId, incidentRecordArn) {
   op <- new_operation(
     name = "DeleteTimelineEvent",
@@ -509,6 +525,8 @@ ssmincidents_delete_timeline_event <- function(eventId, incidentRecordArn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_get_incident_record
+#'
+#' @aliases ssmincidents_get_incident_record
 ssmincidents_get_incident_record <- function(arn) {
   op <- new_operation(
     name = "GetIncidentRecord",
@@ -577,6 +595,8 @@ ssmincidents_get_incident_record <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_get_replication_set
+#'
+#' @aliases ssmincidents_get_replication_set
 ssmincidents_get_replication_set <- function(arn) {
   op <- new_operation(
     name = "GetReplicationSet",
@@ -634,6 +654,8 @@ ssmincidents_get_replication_set <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_get_resource_policies
+#'
+#' @aliases ssmincidents_get_resource_policies
 ssmincidents_get_resource_policies <- function(maxResults = NULL, nextToken = NULL, resourceArn) {
   op <- new_operation(
     name = "GetResourcePolicies",
@@ -724,6 +746,8 @@ ssmincidents_get_resource_policies <- function(maxResults = NULL, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname ssmincidents_get_response_plan
+#'
+#' @aliases ssmincidents_get_response_plan
 ssmincidents_get_response_plan <- function(arn) {
   op <- new_operation(
     name = "GetResponsePlan",
@@ -784,6 +808,8 @@ ssmincidents_get_response_plan <- function(arn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_get_timeline_event
+#'
+#' @aliases ssmincidents_get_timeline_event
 ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
   op <- new_operation(
     name = "GetTimelineEvent",
@@ -895,6 +921,8 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_list_incident_records
+#'
+#' @aliases ssmincidents_list_incident_records
 ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListIncidentRecords",
@@ -959,6 +987,8 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
 #' @keywords internal
 #'
 #' @rdname ssmincidents_list_related_items
+#'
+#' @aliases ssmincidents_list_related_items
 ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRelatedItems",
@@ -1009,6 +1039,8 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
 #' @keywords internal
 #'
 #' @rdname ssmincidents_list_replication_sets
+#'
+#' @aliases ssmincidents_list_replication_sets
 ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListReplicationSets",
@@ -1063,6 +1095,8 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname ssmincidents_list_response_plans
+#'
+#' @aliases ssmincidents_list_response_plans
 ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListResponsePlans",
@@ -1110,6 +1144,8 @@ ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname ssmincidents_list_tags_for_resource
+#'
+#' @aliases ssmincidents_list_tags_for_resource
 ssmincidents_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1217,6 +1253,8 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_list_timeline_events
+#'
+#' @aliases ssmincidents_list_timeline_events
 ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn, maxResults = NULL, nextToken = NULL, sortBy = NULL, sortOrder = NULL) {
   op <- new_operation(
     name = "ListTimelineEvents",
@@ -1269,6 +1307,8 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
 #' @keywords internal
 #'
 #' @rdname ssmincidents_put_resource_policy
+#'
+#' @aliases ssmincidents_put_resource_policy
 ssmincidents_put_resource_policy <- function(policy, resourceArn) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -1369,6 +1409,8 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_start_incident
+#'
+#' @aliases ssmincidents_start_incident
 ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relatedItems = NULL, responsePlanArn, title = NULL, triggerDetails = NULL) {
   op <- new_operation(
     name = "StartIncident",
@@ -1414,6 +1456,8 @@ ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relat
 #' @keywords internal
 #'
 #' @rdname ssmincidents_tag_resource
+#'
+#' @aliases ssmincidents_tag_resource
 ssmincidents_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1459,6 +1503,8 @@ ssmincidents_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_untag_resource
+#'
+#' @aliases ssmincidents_untag_resource
 ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1507,6 +1553,8 @@ ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_deletion_protection
+#'
+#' @aliases ssmincidents_update_deletion_protection
 ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, deletionProtected) {
   op <- new_operation(
     name = "UpdateDeletionProtection",
@@ -1597,6 +1645,8 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_incident_record
+#'
+#' @aliases ssmincidents_update_incident_record
 ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientToken = NULL, impact = NULL, notificationTargets = NULL, status = NULL, summary = NULL, title = NULL) {
   op <- new_operation(
     name = "UpdateIncidentRecord",
@@ -1666,6 +1716,8 @@ ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientT
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_related_items
+#'
+#' @aliases ssmincidents_update_related_items
 ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecordArn, relatedItemsUpdate) {
   op <- new_operation(
     name = "UpdateRelatedItems",
@@ -1721,6 +1773,8 @@ ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecord
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_replication_set
+#'
+#' @aliases ssmincidents_update_replication_set
 ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateReplicationSet",
@@ -1845,6 +1899,8 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_response_plan
+#'
+#' @aliases ssmincidents_update_response_plan
 ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel = NULL, clientToken = NULL, displayName = NULL, engagements = NULL, incidentTemplateDedupeString = NULL, incidentTemplateImpact = NULL, incidentTemplateNotificationTargets = NULL, incidentTemplateSummary = NULL, incidentTemplateTags = NULL, incidentTemplateTitle = NULL) {
   op <- new_operation(
     name = "UpdateResponsePlan",
@@ -1901,6 +1957,8 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
 #' @keywords internal
 #'
 #' @rdname ssmincidents_update_timeline_event
+#'
+#' @aliases ssmincidents_update_timeline_event
 ssmincidents_update_timeline_event <- function(clientToken = NULL, eventData = NULL, eventId, eventTime = NULL, eventType = NULL, incidentRecordArn) {
   op <- new_operation(
     name = "UpdateTimelineEvent",

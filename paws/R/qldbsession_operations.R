@@ -155,6 +155,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname qldbsession_send_command
+#'
+#' @aliases qldbsession_send_command
 qldbsession_send_command <- function(SessionToken = NULL, StartSession = NULL, StartTransaction = NULL, EndSession = NULL, CommitTransaction = NULL, AbortTransaction = NULL, ExecuteStatement = NULL, FetchPage = NULL) {
   op <- new_operation(
     name = "SendCommand",

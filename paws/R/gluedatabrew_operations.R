@@ -71,6 +71,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_batch_delete_recipe_version
+#'
+#' @aliases gluedatabrew_batch_delete_recipe_version
 gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
   op <- new_operation(
     name = "BatchDeleteRecipeVersion",
@@ -208,6 +210,8 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_dataset
+#'
+#' @aliases gluedatabrew_create_dataset
 gluedatabrew_create_dataset <- function(Name, Format = NULL, FormatOptions = NULL, Input, PathOptions = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
@@ -367,6 +371,8 @@ gluedatabrew_create_dataset <- function(Name, Format = NULL, FormatOptions = NUL
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_profile_job
+#'
+#' @aliases gluedatabrew_create_profile_job
 gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, OutputLocation, Configuration = NULL, ValidationConfigurations = NULL, RoleArn, Tags = NULL, Timeout = NULL, JobSample = NULL) {
   op <- new_operation(
     name = "CreateProfileJob",
@@ -430,6 +436,8 @@ gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_project
+#'
+#' @aliases gluedatabrew_create_project
 gluedatabrew_create_project <- function(DatasetName, Name, RecipeName, Sample = NULL, RoleArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateProject",
@@ -502,6 +510,8 @@ gluedatabrew_create_project <- function(DatasetName, Name, RecipeName, Sample = 
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_recipe
+#'
+#' @aliases gluedatabrew_create_recipe
 gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = NULL) {
   op <- new_operation(
     name = "CreateRecipe",
@@ -653,6 +663,8 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_recipe_job
+#'
+#' @aliases gluedatabrew_create_recipe_job
 gluedatabrew_create_recipe_job <- function(DatasetName = NULL, EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, Outputs = NULL, DataCatalogOutputs = NULL, DatabaseOutputs = NULL, ProjectName = NULL, RecipeReference = NULL, RoleArn, Tags = NULL, Timeout = NULL) {
   op <- new_operation(
     name = "CreateRecipeJob",
@@ -733,6 +745,8 @@ gluedatabrew_create_recipe_job <- function(DatasetName = NULL, EncryptionKeyArn 
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_ruleset
+#'
+#' @aliases gluedatabrew_create_ruleset
 gluedatabrew_create_ruleset <- function(Name, Description = NULL, TargetArn, Rules, Tags = NULL) {
   op <- new_operation(
     name = "CreateRuleset",
@@ -793,6 +807,8 @@ gluedatabrew_create_ruleset <- function(Name, Description = NULL, TargetArn, Rul
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_create_schedule
+#'
+#' @aliases gluedatabrew_create_schedule
 gluedatabrew_create_schedule <- function(JobNames = NULL, CronExpression, Tags = NULL, Name) {
   op <- new_operation(
     name = "CreateSchedule",
@@ -838,6 +854,8 @@ gluedatabrew_create_schedule <- function(JobNames = NULL, CronExpression, Tags =
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_delete_dataset
+#'
+#' @aliases gluedatabrew_delete_dataset
 gluedatabrew_delete_dataset <- function(Name) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -883,6 +901,8 @@ gluedatabrew_delete_dataset <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_delete_job
+#'
+#' @aliases gluedatabrew_delete_job
 gluedatabrew_delete_job <- function(Name) {
   op <- new_operation(
     name = "DeleteJob",
@@ -928,6 +948,8 @@ gluedatabrew_delete_job <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_delete_project
+#'
+#' @aliases gluedatabrew_delete_project
 gluedatabrew_delete_project <- function(Name) {
   op <- new_operation(
     name = "DeleteProject",
@@ -978,6 +1000,8 @@ gluedatabrew_delete_project <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_delete_recipe_version
+#'
+#' @aliases gluedatabrew_delete_recipe_version
 gluedatabrew_delete_recipe_version <- function(Name, RecipeVersion) {
   op <- new_operation(
     name = "DeleteRecipeVersion",
@@ -1023,6 +1047,8 @@ gluedatabrew_delete_recipe_version <- function(Name, RecipeVersion) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_delete_ruleset
+#'
+#' @aliases gluedatabrew_delete_ruleset
 gluedatabrew_delete_ruleset <- function(Name) {
   op <- new_operation(
     name = "DeleteRuleset",
@@ -1068,6 +1094,8 @@ gluedatabrew_delete_ruleset <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_delete_schedule
+#'
+#' @aliases gluedatabrew_delete_schedule
 gluedatabrew_delete_schedule <- function(Name) {
   op <- new_operation(
     name = "DeleteSchedule",
@@ -1206,6 +1234,8 @@ gluedatabrew_delete_schedule <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_dataset
+#'
+#' @aliases gluedatabrew_describe_dataset
 gluedatabrew_describe_dataset <- function(Name) {
   op <- new_operation(
     name = "DescribeDataset",
@@ -1401,6 +1431,8 @@ gluedatabrew_describe_dataset <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_job
+#'
+#' @aliases gluedatabrew_describe_job
 gluedatabrew_describe_job <- function(Name) {
   op <- new_operation(
     name = "DescribeJob",
@@ -1591,6 +1623,8 @@ gluedatabrew_describe_job <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_job_run
+#'
+#' @aliases gluedatabrew_describe_job_run
 gluedatabrew_describe_job_run <- function(Name, RunId) {
   op <- new_operation(
     name = "DescribeJobRun",
@@ -1660,6 +1694,8 @@ gluedatabrew_describe_job_run <- function(Name, RunId) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_project
+#'
+#' @aliases gluedatabrew_describe_project
 gluedatabrew_describe_project <- function(Name) {
   op <- new_operation(
     name = "DescribeProject",
@@ -1746,6 +1782,8 @@ gluedatabrew_describe_project <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_recipe
+#'
+#' @aliases gluedatabrew_describe_recipe
 gluedatabrew_describe_recipe <- function(Name, RecipeVersion = NULL) {
   op <- new_operation(
     name = "DescribeRecipe",
@@ -1826,6 +1864,8 @@ gluedatabrew_describe_recipe <- function(Name, RecipeVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_ruleset
+#'
+#' @aliases gluedatabrew_describe_ruleset
 gluedatabrew_describe_ruleset <- function(Name) {
   op <- new_operation(
     name = "DescribeRuleset",
@@ -1887,6 +1927,8 @@ gluedatabrew_describe_ruleset <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_describe_schedule
+#'
+#' @aliases gluedatabrew_describe_schedule
 gluedatabrew_describe_schedule <- function(Name) {
   op <- new_operation(
     name = "DescribeSchedule",
@@ -2034,6 +2076,8 @@ gluedatabrew_describe_schedule <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_datasets
+#'
+#' @aliases gluedatabrew_list_datasets
 gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDatasets",
@@ -2176,6 +2220,8 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_job_runs
+#'
+#' @aliases gluedatabrew_list_job_runs
 gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListJobRuns",
@@ -2332,6 +2378,8 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_jobs
+#'
+#' @aliases gluedatabrew_list_jobs
 gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextToken = NULL, ProjectName = NULL) {
   op <- new_operation(
     name = "ListJobs",
@@ -2409,6 +2457,8 @@ gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_projects
+#'
+#' @aliases gluedatabrew_list_projects
 gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListProjects",
@@ -2502,6 +2552,8 @@ gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_recipe_versions
+#'
+#' @aliases gluedatabrew_list_recipe_versions
 gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NULL, Name) {
   op <- new_operation(
     name = "ListRecipeVersions",
@@ -2598,6 +2650,8 @@ gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_recipes
+#'
+#' @aliases gluedatabrew_list_recipes
 gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, RecipeVersion = NULL) {
   op <- new_operation(
     name = "ListRecipes",
@@ -2675,6 +2729,8 @@ gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, Recip
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_rulesets
+#'
+#' @aliases gluedatabrew_list_rulesets
 gluedatabrew_list_rulesets <- function(TargetArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRulesets",
@@ -2747,6 +2803,8 @@ gluedatabrew_list_rulesets <- function(TargetArn = NULL, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_schedules
+#'
+#' @aliases gluedatabrew_list_schedules
 gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSchedules",
@@ -2795,6 +2853,8 @@ gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextT
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_list_tags_for_resource
+#'
+#' @aliases gluedatabrew_list_tags_for_resource
 gluedatabrew_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2843,6 +2903,8 @@ gluedatabrew_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_publish_recipe
+#'
+#' @aliases gluedatabrew_publish_recipe
 gluedatabrew_publish_recipe <- function(Description = NULL, Name) {
   op <- new_operation(
     name = "PublishRecipe",
@@ -2930,6 +2992,8 @@ gluedatabrew_publish_recipe <- function(Description = NULL, Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_send_project_session_action
+#'
+#' @aliases gluedatabrew_send_project_session_action
 gluedatabrew_send_project_session_action <- function(Preview = NULL, Name, RecipeStep = NULL, StepIndex = NULL, ClientSessionId = NULL, ViewFrame = NULL) {
   op <- new_operation(
     name = "SendProjectSessionAction",
@@ -2975,6 +3039,8 @@ gluedatabrew_send_project_session_action <- function(Preview = NULL, Name, Recip
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_start_job_run
+#'
+#' @aliases gluedatabrew_start_job_run
 gluedatabrew_start_job_run <- function(Name) {
   op <- new_operation(
     name = "StartJobRun",
@@ -3026,6 +3092,8 @@ gluedatabrew_start_job_run <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_start_project_session
+#'
+#' @aliases gluedatabrew_start_project_session
 gluedatabrew_start_project_session <- function(Name, AssumeControl = NULL) {
   op <- new_operation(
     name = "StartProjectSession",
@@ -3073,6 +3141,8 @@ gluedatabrew_start_project_session <- function(Name, AssumeControl = NULL) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_stop_job_run
+#'
+#' @aliases gluedatabrew_stop_job_run
 gluedatabrew_stop_job_run <- function(Name, RunId) {
   op <- new_operation(
     name = "StopJobRun",
@@ -3121,6 +3191,8 @@ gluedatabrew_stop_job_run <- function(Name, RunId) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_tag_resource
+#'
+#' @aliases gluedatabrew_tag_resource
 gluedatabrew_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3166,6 +3238,8 @@ gluedatabrew_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_untag_resource
+#'
+#' @aliases gluedatabrew_untag_resource
 gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3298,6 +3372,8 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_dataset
+#'
+#' @aliases gluedatabrew_update_dataset
 gluedatabrew_update_dataset <- function(Name, Format = NULL, FormatOptions = NULL, Input, PathOptions = NULL) {
   op <- new_operation(
     name = "UpdateDataset",
@@ -3449,6 +3525,8 @@ gluedatabrew_update_dataset <- function(Name, Format = NULL, FormatOptions = NUL
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_profile_job
+#'
+#' @aliases gluedatabrew_update_profile_job
 gluedatabrew_update_profile_job <- function(Configuration = NULL, EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, OutputLocation, ValidationConfigurations = NULL, RoleArn, Timeout = NULL, JobSample = NULL) {
   op <- new_operation(
     name = "UpdateProfileJob",
@@ -3505,6 +3583,8 @@ gluedatabrew_update_profile_job <- function(Configuration = NULL, EncryptionKeyA
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_project
+#'
+#' @aliases gluedatabrew_update_project
 gluedatabrew_update_project <- function(Sample = NULL, RoleArn, Name) {
   op <- new_operation(
     name = "UpdateProject",
@@ -3573,6 +3653,8 @@ gluedatabrew_update_project <- function(Sample = NULL, RoleArn, Name) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_recipe
+#'
+#' @aliases gluedatabrew_update_recipe
 gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
   op <- new_operation(
     name = "UpdateRecipe",
@@ -3706,6 +3788,8 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_recipe_job
+#'
+#' @aliases gluedatabrew_update_recipe_job
 gluedatabrew_update_recipe_job <- function(EncryptionKeyArn = NULL, EncryptionMode = NULL, Name, LogSubscription = NULL, MaxCapacity = NULL, MaxRetries = NULL, Outputs = NULL, DataCatalogOutputs = NULL, DatabaseOutputs = NULL, RoleArn, Timeout = NULL) {
   op <- new_operation(
     name = "UpdateRecipeJob",
@@ -3776,6 +3860,8 @@ gluedatabrew_update_recipe_job <- function(EncryptionKeyArn = NULL, EncryptionMo
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_ruleset
+#'
+#' @aliases gluedatabrew_update_ruleset
 gluedatabrew_update_ruleset <- function(Name, Description = NULL, Rules) {
   op <- new_operation(
     name = "UpdateRuleset",
@@ -3830,6 +3916,8 @@ gluedatabrew_update_ruleset <- function(Name, Description = NULL, Rules) {
 #' @keywords internal
 #'
 #' @rdname gluedatabrew_update_schedule
+#'
+#' @aliases gluedatabrew_update_schedule
 gluedatabrew_update_schedule <- function(JobNames = NULL, CronExpression, Name) {
   op <- new_operation(
     name = "UpdateSchedule",

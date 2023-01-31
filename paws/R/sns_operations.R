@@ -43,6 +43,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sns_add_permission
+#'
+#' @aliases sns_add_permission
 sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
   op <- new_operation(
     name = "AddPermission",
@@ -94,6 +96,8 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
 #' @keywords internal
 #'
 #' @rdname sns_check_if_phone_number_is_opted_out
+#'
+#' @aliases sns_check_if_phone_number_is_opted_out
 sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
   op <- new_operation(
     name = "CheckIfPhoneNumberIsOptedOut",
@@ -154,6 +158,8 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
 #' @keywords internal
 #'
 #' @rdname sns_confirm_subscription
+#'
+#' @aliases sns_confirm_subscription
 sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe = NULL) {
   op <- new_operation(
     name = "ConfirmSubscription",
@@ -245,6 +251,8 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' @keywords internal
 #'
 #' @rdname sns_create_platform_application
+#'
+#' @aliases sns_create_platform_application
 sns_create_platform_application <- function(Name, Platform, Attributes) {
   op <- new_operation(
     name = "CreatePlatformApplication",
@@ -327,6 +335,8 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' @keywords internal
 #'
 #' @rdname sns_create_platform_endpoint
+#'
+#' @aliases sns_create_platform_endpoint
 sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUserData = NULL, Attributes = NULL) {
   op <- new_operation(
     name = "CreatePlatformEndpoint",
@@ -384,6 +394,8 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 #' @keywords internal
 #'
 #' @rdname sns_create_sms_sandbox_phone_number
+#'
+#' @aliases sns_create_sms_sandbox_phone_number
 sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL) {
   op <- new_operation(
     name = "CreateSMSSandboxPhoneNumber",
@@ -504,6 +516,8 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' @keywords internal
 #'
 #' @rdname sns_create_topic
+#'
+#' @aliases sns_create_topic
 sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTopic",
@@ -550,6 +564,8 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_delete_endpoint
+#'
+#' @aliases sns_delete_endpoint
 sns_delete_endpoint <- function(EndpointArn) {
   op <- new_operation(
     name = "DeleteEndpoint",
@@ -594,6 +610,8 @@ sns_delete_endpoint <- function(EndpointArn) {
 #' @keywords internal
 #'
 #' @rdname sns_delete_platform_application
+#'
+#' @aliases sns_delete_platform_application
 sns_delete_platform_application <- function(PlatformApplicationArn) {
   op <- new_operation(
     name = "DeletePlatformApplication",
@@ -647,6 +665,8 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
 #' @keywords internal
 #'
 #' @rdname sns_delete_sms_sandbox_phone_number
+#'
+#' @aliases sns_delete_sms_sandbox_phone_number
 sns_delete_sms_sandbox_phone_number <- function(PhoneNumber) {
   op <- new_operation(
     name = "DeleteSMSSandboxPhoneNumber",
@@ -690,6 +710,8 @@ sns_delete_sms_sandbox_phone_number <- function(PhoneNumber) {
 #' @keywords internal
 #'
 #' @rdname sns_delete_topic
+#'
+#' @aliases sns_delete_topic
 sns_delete_topic <- function(TopicArn) {
   op <- new_operation(
     name = "DeleteTopic",
@@ -742,6 +764,8 @@ sns_delete_topic <- function(TopicArn) {
 #' @keywords internal
 #'
 #' @rdname sns_get_endpoint_attributes
+#'
+#' @aliases sns_get_endpoint_attributes
 sns_get_endpoint_attributes <- function(EndpointArn) {
   op <- new_operation(
     name = "GetEndpointAttributes",
@@ -795,6 +819,8 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #' @keywords internal
 #'
 #' @rdname sns_get_platform_application_attributes
+#'
+#' @aliases sns_get_platform_application_attributes
 sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
   op <- new_operation(
     name = "GetPlatformApplicationAttributes",
@@ -855,6 +881,8 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
 #' @keywords internal
 #'
 #' @rdname sns_get_sms_attributes
+#'
+#' @aliases sns_get_sms_attributes
 sns_get_sms_attributes <- function(attributes = NULL) {
   op <- new_operation(
     name = "GetSMSAttributes",
@@ -909,6 +937,8 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_get_sms_sandbox_account_status
+#'
+#' @aliases sns_get_sms_sandbox_account_status
 sns_get_sms_sandbox_account_status <- function() {
   op <- new_operation(
     name = "GetSMSSandboxAccountStatus",
@@ -956,6 +986,8 @@ sns_get_sms_sandbox_account_status <- function() {
 #' @keywords internal
 #'
 #' @rdname sns_get_subscription_attributes
+#'
+#' @aliases sns_get_subscription_attributes
 sns_get_subscription_attributes <- function(SubscriptionArn) {
   op <- new_operation(
     name = "GetSubscriptionAttributes",
@@ -1004,6 +1036,8 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
 #' @keywords internal
 #'
 #' @rdname sns_get_topic_attributes
+#'
+#' @aliases sns_get_topic_attributes
 sns_get_topic_attributes <- function(TopicArn) {
   op <- new_operation(
     name = "GetTopicAttributes",
@@ -1078,6 +1112,8 @@ sns_get_topic_attributes <- function(TopicArn) {
 #' @keywords internal
 #'
 #' @rdname sns_list_endpoints_by_platform_application
+#'
+#' @aliases sns_list_endpoints_by_platform_application
 sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListEndpointsByPlatformApplication",
@@ -1146,6 +1182,8 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' @keywords internal
 #'
 #' @rdname sns_list_origination_numbers
+#'
+#' @aliases sns_list_origination_numbers
 sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListOriginationNumbers",
@@ -1208,6 +1246,8 @@ sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_list_phone_numbers_opted_out
+#'
+#' @aliases sns_list_phone_numbers_opted_out
 sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
   op <- new_operation(
     name = "ListPhoneNumbersOptedOut",
@@ -1277,6 +1317,8 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_list_platform_applications
+#'
+#' @aliases sns_list_platform_applications
 sns_list_platform_applications <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListPlatformApplications",
@@ -1344,6 +1386,8 @@ sns_list_platform_applications <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_list_sms_sandbox_phone_numbers
+#'
+#' @aliases sns_list_sms_sandbox_phone_numbers
 sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSMSSandboxPhoneNumbers",
@@ -1405,6 +1449,8 @@ sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname sns_list_subscriptions
+#'
+#' @aliases sns_list_subscriptions
 sns_list_subscriptions <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptions",
@@ -1470,6 +1516,8 @@ sns_list_subscriptions <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_list_subscriptions_by_topic
+#'
+#' @aliases sns_list_subscriptions_by_topic
 sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListSubscriptionsByTopic",
@@ -1523,6 +1571,8 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_list_tags_for_resource
+#'
+#' @aliases sns_list_tags_for_resource
 sns_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1578,6 +1628,8 @@ sns_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname sns_list_topics
+#'
+#' @aliases sns_list_topics
 sns_list_topics <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListTopics",
@@ -1622,6 +1674,8 @@ sns_list_topics <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sns_opt_in_phone_number
+#'
+#' @aliases sns_opt_in_phone_number
 sns_opt_in_phone_number <- function(phoneNumber) {
   op <- new_operation(
     name = "OptInPhoneNumber",
@@ -1818,6 +1872,8 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @keywords internal
 #'
 #' @rdname sns_publish
+#'
+#' @aliases sns_publish
 sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, Message, Subject = NULL, MessageStructure = NULL, MessageAttributes = NULL, MessageDeduplicationId = NULL, MessageGroupId = NULL) {
   op <- new_operation(
     name = "Publish",
@@ -1926,6 +1982,8 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 #' @keywords internal
 #'
 #' @rdname sns_publish_batch
+#'
+#' @aliases sns_publish_batch
 sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
   op <- new_operation(
     name = "PublishBatch",
@@ -1968,6 +2026,8 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
 #' @keywords internal
 #'
 #' @rdname sns_remove_permission
+#'
+#' @aliases sns_remove_permission
 sns_remove_permission <- function(TopicArn, Label) {
   op <- new_operation(
     name = "RemovePermission",
@@ -2032,6 +2092,8 @@ sns_remove_permission <- function(TopicArn, Label) {
 #' @keywords internal
 #'
 #' @rdname sns_set_endpoint_attributes
+#'
+#' @aliases sns_set_endpoint_attributes
 sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
   op <- new_operation(
     name = "SetEndpointAttributes",
@@ -2147,6 +2209,8 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' @keywords internal
 #'
 #' @rdname sns_set_platform_application_attributes
+#'
+#' @aliases sns_set_platform_application_attributes
 sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attributes) {
   op <- new_operation(
     name = "SetPlatformApplicationAttributes",
@@ -2277,6 +2341,8 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' @keywords internal
 #'
 #' @rdname sns_set_sms_attributes
+#'
+#' @aliases sns_set_sms_attributes
 sns_set_sms_attributes <- function(attributes) {
   op <- new_operation(
     name = "SetSMSAttributes",
@@ -2362,6 +2428,8 @@ sns_set_sms_attributes <- function(attributes) {
 #' @keywords internal
 #'
 #' @rdname sns_set_subscription_attributes
+#'
+#' @aliases sns_set_subscription_attributes
 sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, AttributeValue = NULL) {
   op <- new_operation(
     name = "SetSubscriptionAttributes",
@@ -2450,6 +2518,8 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' @keywords internal
 #'
 #' @rdname sns_set_topic_attributes
+#'
+#' @aliases sns_set_topic_attributes
 sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = NULL) {
   op <- new_operation(
     name = "SetTopicAttributes",
@@ -2612,6 +2682,8 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' @keywords internal
 #'
 #' @rdname sns_subscribe
+#'
+#' @aliases sns_subscribe
 sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL, ReturnSubscriptionArn = NULL) {
   op <- new_operation(
     name = "Subscribe",
@@ -2678,6 +2750,8 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 #' @keywords internal
 #'
 #' @rdname sns_tag_resource
+#'
+#' @aliases sns_tag_resource
 sns_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2727,6 +2801,8 @@ sns_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname sns_unsubscribe
+#'
+#' @aliases sns_unsubscribe
 sns_unsubscribe <- function(SubscriptionArn) {
   op <- new_operation(
     name = "Unsubscribe",
@@ -2774,6 +2850,8 @@ sns_unsubscribe <- function(SubscriptionArn) {
 #' @keywords internal
 #'
 #' @rdname sns_untag_resource
+#'
+#' @aliases sns_untag_resource
 sns_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2830,6 +2908,8 @@ sns_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname sns_verify_sms_sandbox_phone_number
+#'
+#' @aliases sns_verify_sms_sandbox_phone_number
 sns_verify_sms_sandbox_phone_number <- function(PhoneNumber, OneTimePassword) {
   op <- new_operation(
     name = "VerifySMSSandboxPhoneNumber",

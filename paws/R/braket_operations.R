@@ -32,6 +32,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname braket_cancel_job
+#'
+#' @aliases braket_cancel_job
 braket_cancel_job <- function(jobArn) {
   op <- new_operation(
     name = "CancelJob",
@@ -80,6 +82,8 @@ braket_cancel_job <- function(jobArn) {
 #' @keywords internal
 #'
 #' @rdname braket_cancel_quantum_task
+#'
+#' @aliases braket_cancel_quantum_task
 braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
   op <- new_operation(
     name = "CancelQuantumTask",
@@ -199,6 +203,8 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 #' @keywords internal
 #'
 #' @rdname braket_create_job
+#'
+#' @aliases braket_create_job
 braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, clientToken, deviceConfig, hyperParameters = NULL, inputDataConfig = NULL, instanceConfig, jobName, outputDataConfig, roleArn, stoppingCondition = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateJob",
@@ -266,6 +272,8 @@ braket_create_job <- function(algorithmSpecification, checkpointConfig = NULL, c
 #' @keywords internal
 #'
 #' @rdname braket_create_quantum_task
+#'
+#' @aliases braket_create_quantum_task
 braket_create_quantum_task <- function(action, clientToken, deviceArn, deviceParameters = NULL, jobToken = NULL, outputS3Bucket, outputS3KeyPrefix, shots, tags = NULL) {
   op <- new_operation(
     name = "CreateQuantumTask",
@@ -326,6 +334,8 @@ braket_create_quantum_task <- function(action, clientToken, deviceArn, devicePar
 #' @keywords internal
 #'
 #' @rdname braket_get_device
+#'
+#' @aliases braket_get_device
 braket_get_device <- function(deviceArn) {
   op <- new_operation(
     name = "GetDevice",
@@ -440,6 +450,8 @@ braket_get_device <- function(deviceArn) {
 #' @keywords internal
 #'
 #' @rdname braket_get_job
+#'
+#' @aliases braket_get_job
 braket_get_job <- function(jobArn) {
   op <- new_operation(
     name = "GetJob",
@@ -502,6 +514,8 @@ braket_get_job <- function(jobArn) {
 #' @keywords internal
 #'
 #' @rdname braket_get_quantum_task
+#'
+#' @aliases braket_get_quantum_task
 braket_get_quantum_task <- function(quantumTaskArn) {
   op <- new_operation(
     name = "GetQuantumTask",
@@ -549,6 +563,8 @@ braket_get_quantum_task <- function(quantumTaskArn) {
 #' @keywords internal
 #'
 #' @rdname braket_list_tags_for_resource
+#'
+#' @aliases braket_list_tags_for_resource
 braket_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -616,6 +632,8 @@ braket_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname braket_search_devices
+#'
+#' @aliases braket_search_devices
 braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchDevices",
@@ -695,6 +713,8 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname braket_search_jobs
+#'
+#' @aliases braket_search_jobs
 braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchJobs",
@@ -773,6 +793,8 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname braket_search_quantum_tasks
+#'
+#' @aliases braket_search_quantum_tasks
 braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "SearchQuantumTasks",
@@ -817,6 +839,8 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname braket_tag_resource
+#'
+#' @aliases braket_tag_resource
 braket_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -862,6 +886,8 @@ braket_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname braket_untag_resource
+#'
+#' @aliases braket_untag_resource
 braket_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",

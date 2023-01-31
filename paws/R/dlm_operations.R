@@ -169,6 +169,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname dlm_create_lifecycle_policy
+#'
+#' @aliases dlm_create_lifecycle_policy
 dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, PolicyDetails, Tags = NULL) {
   op <- new_operation(
     name = "CreateLifecyclePolicy",
@@ -211,6 +213,8 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' @keywords internal
 #'
 #' @rdname dlm_delete_lifecycle_policy
+#'
+#' @aliases dlm_delete_lifecycle_policy
 dlm_delete_lifecycle_policy <- function(PolicyId) {
   op <- new_operation(
     name = "DeleteLifecyclePolicy",
@@ -295,6 +299,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' @keywords internal
 #'
 #' @rdname dlm_get_lifecycle_policies
+#'
+#' @aliases dlm_get_lifecycle_policies
 dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceTypes = NULL, TargetTags = NULL, TagsToAdd = NULL) {
   op <- new_operation(
     name = "GetLifecyclePolicies",
@@ -480,6 +486,8 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #' @keywords internal
 #'
 #' @rdname dlm_get_lifecycle_policy
+#'
+#' @aliases dlm_get_lifecycle_policy
 dlm_get_lifecycle_policy <- function(PolicyId) {
   op <- new_operation(
     name = "GetLifecyclePolicy",
@@ -527,6 +535,8 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 #' @keywords internal
 #'
 #' @rdname dlm_list_tags_for_resource
+#'
+#' @aliases dlm_list_tags_for_resource
 dlm_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -571,6 +581,8 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname dlm_tag_resource
+#'
+#' @aliases dlm_tag_resource
 dlm_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -615,6 +627,8 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname dlm_untag_resource
+#'
+#' @aliases dlm_untag_resource
 dlm_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -789,6 +803,8 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname dlm_update_lifecycle_policy
+#'
+#' @aliases dlm_update_lifecycle_policy
 dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State = NULL, Description = NULL, PolicyDetails = NULL) {
   op <- new_operation(
     name = "UpdateLifecyclePolicy",

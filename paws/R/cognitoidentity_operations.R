@@ -115,6 +115,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_create_identity_pool
+#'
+#' @aliases cognitoidentity_create_identity_pool
 cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthenticatedIdentities, AllowClassicFlow = NULL, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
   op <- new_operation(
     name = "CreateIdentityPool",
@@ -170,6 +172,8 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_delete_identities
+#'
+#' @aliases cognitoidentity_delete_identities
 cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
   op <- new_operation(
     name = "DeleteIdentities",
@@ -213,6 +217,8 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_delete_identity_pool
+#'
+#' @aliases cognitoidentity_delete_identity_pool
 cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
   op <- new_operation(
     name = "DeleteIdentityPool",
@@ -271,6 +277,8 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_describe_identity
+#'
+#' @aliases cognitoidentity_describe_identity
 cognitoidentity_describe_identity <- function(IdentityId) {
   op <- new_operation(
     name = "DescribeIdentity",
@@ -343,6 +351,8 @@ cognitoidentity_describe_identity <- function(IdentityId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_describe_identity_pool
+#'
+#' @aliases cognitoidentity_describe_identity_pool
 cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
   op <- new_operation(
     name = "DescribeIdentityPool",
@@ -422,6 +432,8 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_credentials_for_identity
+#'
+#' @aliases cognitoidentity_get_credentials_for_identity
 cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NULL, CustomRoleArn = NULL) {
   op <- new_operation(
     name = "GetCredentialsForIdentity",
@@ -491,6 +503,8 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_id
+#'
+#' @aliases cognitoidentity_get_id
 cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NULL) {
   op <- new_operation(
     name = "GetId",
@@ -557,6 +571,8 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_identity_pool_roles
+#'
+#' @aliases cognitoidentity_get_identity_pool_roles
 cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
   op <- new_operation(
     name = "GetIdentityPoolRoles",
@@ -618,6 +634,8 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_open_id_token
+#'
+#' @aliases cognitoidentity_get_open_id_token
 cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
   op <- new_operation(
     name = "GetOpenIdToken",
@@ -715,6 +733,8 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_open_id_token_for_developer_identity
+#'
+#' @aliases cognitoidentity_get_open_id_token_for_developer_identity
 cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoolId, IdentityId = NULL, Logins, PrincipalTags = NULL, TokenDuration = NULL) {
   op <- new_operation(
     name = "GetOpenIdTokenForDeveloperIdentity",
@@ -772,6 +792,8 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_get_principal_tag_attribute_map
+#'
+#' @aliases cognitoidentity_get_principal_tag_attribute_map
 cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, IdentityProviderName) {
   op <- new_operation(
     name = "GetPrincipalTagAttributeMap",
@@ -843,6 +865,8 @@ cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, Iden
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_list_identities
+#'
+#' @aliases cognitoidentity_list_identities
 cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToken = NULL, HideDisabled = NULL) {
   op <- new_operation(
     name = "ListIdentities",
@@ -898,6 +922,8 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_list_identity_pools
+#'
+#' @aliases cognitoidentity_list_identity_pools
 cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
   op <- new_operation(
     name = "ListIdentityPools",
@@ -952,6 +978,8 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_list_tags_for_resource
+#'
+#' @aliases cognitoidentity_list_tags_for_resource
 cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1038,6 +1066,8 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_lookup_developer_identity
+#'
+#' @aliases cognitoidentity_lookup_developer_identity
 cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId = NULL, DeveloperUserIdentifier = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "LookupDeveloperIdentity",
@@ -1112,6 +1142,8 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_merge_developer_identities
+#'
+#' @aliases cognitoidentity_merge_developer_identities
 cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, DestinationUserIdentifier, DeveloperProviderName, IdentityPoolId) {
   op <- new_operation(
     name = "MergeDeveloperIdentities",
@@ -1186,6 +1218,8 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_set_identity_pool_roles
+#'
+#' @aliases cognitoidentity_set_identity_pool_roles
 cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleMappings = NULL) {
   op <- new_operation(
     name = "SetIdentityPoolRoles",
@@ -1248,6 +1282,8 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_set_principal_tag_attribute_map
+#'
+#' @aliases cognitoidentity_set_principal_tag_attribute_map
 cognitoidentity_set_principal_tag_attribute_map <- function(IdentityPoolId, IdentityProviderName, UseDefaults = NULL, PrincipalTags = NULL) {
   op <- new_operation(
     name = "SetPrincipalTagAttributeMap",
@@ -1311,6 +1347,8 @@ cognitoidentity_set_principal_tag_attribute_map <- function(IdentityPoolId, Iden
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_tag_resource
+#'
+#' @aliases cognitoidentity_tag_resource
 cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1365,6 +1403,8 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_unlink_developer_identity
+#'
+#' @aliases cognitoidentity_unlink_developer_identity
 cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId, DeveloperProviderName, DeveloperUserIdentifier) {
   op <- new_operation(
     name = "UnlinkDeveloperIdentity",
@@ -1418,6 +1458,8 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_unlink_identity
+#'
+#' @aliases cognitoidentity_unlink_identity
 cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) {
   op <- new_operation(
     name = "UnlinkIdentity",
@@ -1464,6 +1506,8 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_untag_resource
+#'
+#' @aliases cognitoidentity_untag_resource
 cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1577,6 +1621,8 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentity_update_identity_pool
+#'
+#' @aliases cognitoidentity_update_identity_pool
 cognitoidentity_update_identity_pool <- function(IdentityPoolId, IdentityPoolName, AllowUnauthenticatedIdentities, AllowClassicFlow = NULL, SupportedLoginProviders = NULL, DeveloperProviderName = NULL, OpenIdConnectProviderARNs = NULL, CognitoIdentityProviders = NULL, SamlProviderARNs = NULL, IdentityPoolTags = NULL) {
   op <- new_operation(
     name = "UpdateIdentityPool",

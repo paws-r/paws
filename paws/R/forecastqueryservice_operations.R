@@ -83,6 +83,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname forecastqueryservice_query_forecast
+#'
+#' @aliases forecastqueryservice_query_forecast
 forecastqueryservice_query_forecast <- function(ForecastArn, StartDate = NULL, EndDate = NULL, Filters, NextToken = NULL) {
   op <- new_operation(
     name = "QueryForecast",

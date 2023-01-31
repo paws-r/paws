@@ -53,6 +53,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ses_clone_receipt_rule_set
+#'
+#' @aliases ses_clone_receipt_rule_set
 ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
   op <- new_operation(
     name = "CloneReceiptRuleSet",
@@ -102,6 +104,8 @@ ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
 #' @keywords internal
 #'
 #' @rdname ses_create_configuration_set
+#'
+#' @aliases ses_create_configuration_set
 ses_create_configuration_set <- function(ConfigurationSet) {
   op <- new_operation(
     name = "CreateConfigurationSet",
@@ -181,6 +185,8 @@ ses_create_configuration_set <- function(ConfigurationSet) {
 #' @keywords internal
 #'
 #' @rdname ses_create_configuration_set_event_destination
+#'
+#' @aliases ses_create_configuration_set_event_destination
 ses_create_configuration_set_event_destination <- function(ConfigurationSetName, EventDestination) {
   op <- new_operation(
     name = "CreateConfigurationSetEventDestination",
@@ -235,6 +241,8 @@ ses_create_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @keywords internal
 #'
 #' @rdname ses_create_configuration_set_tracking_options
+#'
+#' @aliases ses_create_configuration_set_tracking_options
 ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, TrackingOptions) {
   op <- new_operation(
     name = "CreateConfigurationSetTrackingOptions",
@@ -301,6 +309,8 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' @keywords internal
 #'
 #' @rdname ses_create_custom_verification_email_template
+#'
+#' @aliases ses_create_custom_verification_email_template
 ses_create_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, SuccessRedirectionURL, FailureRedirectionURL) {
   op <- new_operation(
     name = "CreateCustomVerificationEmailTemplate",
@@ -369,6 +379,8 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
 #' @keywords internal
 #'
 #' @rdname ses_create_receipt_filter
+#'
+#' @aliases ses_create_receipt_filter
 ses_create_receipt_filter <- function(Filter) {
   op <- new_operation(
     name = "CreateReceiptFilter",
@@ -491,6 +503,8 @@ ses_create_receipt_filter <- function(Filter) {
 #' @keywords internal
 #'
 #' @rdname ses_create_receipt_rule
+#'
+#' @aliases ses_create_receipt_rule
 ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
   op <- new_operation(
     name = "CreateReceiptRule",
@@ -552,6 +566,8 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
 #' @keywords internal
 #'
 #' @rdname ses_create_receipt_rule_set
+#'
+#' @aliases ses_create_receipt_rule_set
 ses_create_receipt_rule_set <- function(RuleSetName) {
   op <- new_operation(
     name = "CreateReceiptRuleSet",
@@ -603,6 +619,8 @@ ses_create_receipt_rule_set <- function(RuleSetName) {
 #' @keywords internal
 #'
 #' @rdname ses_create_template
+#'
+#' @aliases ses_create_template
 ses_create_template <- function(Template) {
   op <- new_operation(
     name = "CreateTemplate",
@@ -648,6 +666,8 @@ ses_create_template <- function(Template) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_configuration_set
+#'
+#' @aliases ses_delete_configuration_set
 ses_delete_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteConfigurationSet",
@@ -698,6 +718,8 @@ ses_delete_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_configuration_set_event_destination
+#'
+#' @aliases ses_delete_configuration_set_event_destination
 ses_delete_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName) {
   op <- new_operation(
     name = "DeleteConfigurationSetEventDestination",
@@ -751,6 +773,8 @@ ses_delete_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @keywords internal
 #'
 #' @rdname ses_delete_configuration_set_tracking_options
+#'
+#' @aliases ses_delete_configuration_set_tracking_options
 ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteConfigurationSetTrackingOptions",
@@ -799,6 +823,8 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
 #' @keywords internal
 #'
 #' @rdname ses_delete_custom_verification_email_template
+#'
+#' @aliases ses_delete_custom_verification_email_template
 ses_delete_custom_verification_email_template <- function(TemplateName) {
   op <- new_operation(
     name = "DeleteCustomVerificationEmailTemplate",
@@ -853,6 +879,8 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_identity
+#'
+#' @aliases ses_delete_identity
 ses_delete_identity <- function(Identity) {
   op <- new_operation(
     name = "DeleteIdentity",
@@ -923,6 +951,8 @@ ses_delete_identity <- function(Identity) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_identity_policy
+#'
+#' @aliases ses_delete_identity_policy
 ses_delete_identity_policy <- function(Identity, PolicyName) {
   op <- new_operation(
     name = "DeleteIdentityPolicy",
@@ -977,6 +1007,8 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_receipt_filter
+#'
+#' @aliases ses_delete_receipt_filter
 ses_delete_receipt_filter <- function(FilterName) {
   op <- new_operation(
     name = "DeleteReceiptFilter",
@@ -1035,6 +1067,8 @@ ses_delete_receipt_filter <- function(FilterName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_receipt_rule
+#'
+#' @aliases ses_delete_receipt_rule
 ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
   op <- new_operation(
     name = "DeleteReceiptRule",
@@ -1093,6 +1127,8 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_receipt_rule_set
+#'
+#' @aliases ses_delete_receipt_rule_set
 ses_delete_receipt_rule_set <- function(RuleSetName) {
   op <- new_operation(
     name = "DeleteReceiptRuleSet",
@@ -1135,6 +1171,8 @@ ses_delete_receipt_rule_set <- function(RuleSetName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_template
+#'
+#' @aliases ses_delete_template
 ses_delete_template <- function(TemplateName) {
   op <- new_operation(
     name = "DeleteTemplate",
@@ -1185,6 +1223,8 @@ ses_delete_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname ses_delete_verified_email_address
+#'
+#' @aliases ses_delete_verified_email_address
 ses_delete_verified_email_address <- function(EmailAddress) {
   op <- new_operation(
     name = "DeleteVerifiedEmailAddress",
@@ -1295,6 +1335,8 @@ ses_delete_verified_email_address <- function(EmailAddress) {
 #' @keywords internal
 #'
 #' @rdname ses_describe_active_receipt_rule_set
+#'
+#' @aliases ses_describe_active_receipt_rule_set
 ses_describe_active_receipt_rule_set <- function() {
   op <- new_operation(
     name = "DescribeActiveReceiptRuleSet",
@@ -1389,6 +1431,8 @@ ses_describe_active_receipt_rule_set <- function() {
 #' @keywords internal
 #'
 #' @rdname ses_describe_configuration_set
+#'
+#' @aliases ses_describe_configuration_set
 ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSetAttributeNames = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationSet",
@@ -1497,6 +1541,8 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
 #' @keywords internal
 #'
 #' @rdname ses_describe_receipt_rule
+#'
+#' @aliases ses_describe_receipt_rule
 ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
   op <- new_operation(
     name = "DescribeReceiptRule",
@@ -1611,6 +1657,8 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
 #' @keywords internal
 #'
 #' @rdname ses_describe_receipt_rule_set
+#'
+#' @aliases ses_describe_receipt_rule_set
 ses_describe_receipt_rule_set <- function(RuleSetName) {
   op <- new_operation(
     name = "DescribeReceiptRuleSet",
@@ -1662,6 +1710,8 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
 #' @keywords internal
 #'
 #' @rdname ses_get_account_sending_enabled
+#'
+#' @aliases ses_get_account_sending_enabled
 ses_get_account_sending_enabled <- function() {
   op <- new_operation(
     name = "GetAccountSendingEnabled",
@@ -1722,6 +1772,8 @@ ses_get_account_sending_enabled <- function() {
 #' @keywords internal
 #'
 #' @rdname ses_get_custom_verification_email_template
+#'
+#' @aliases ses_get_custom_verification_email_template
 ses_get_custom_verification_email_template <- function(TemplateName) {
   op <- new_operation(
     name = "GetCustomVerificationEmailTemplate",
@@ -1812,6 +1864,8 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname ses_get_identity_dkim_attributes
+#'
+#' @aliases ses_get_identity_dkim_attributes
 ses_get_identity_dkim_attributes <- function(Identities) {
   op <- new_operation(
     name = "GetIdentityDkimAttributes",
@@ -1881,6 +1935,8 @@ ses_get_identity_dkim_attributes <- function(Identities) {
 #' @keywords internal
 #'
 #' @rdname ses_get_identity_mail_from_domain_attributes
+#'
+#' @aliases ses_get_identity_mail_from_domain_attributes
 ses_get_identity_mail_from_domain_attributes <- function(Identities) {
   op <- new_operation(
     name = "GetIdentityMailFromDomainAttributes",
@@ -1961,6 +2017,8 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
 #' @keywords internal
 #'
 #' @rdname ses_get_identity_notification_attributes
+#'
+#' @aliases ses_get_identity_notification_attributes
 ses_get_identity_notification_attributes <- function(Identities) {
   op <- new_operation(
     name = "GetIdentityNotificationAttributes",
@@ -2046,6 +2104,8 @@ ses_get_identity_notification_attributes <- function(Identities) {
 #' @keywords internal
 #'
 #' @rdname ses_get_identity_policies
+#'
+#' @aliases ses_get_identity_policies
 ses_get_identity_policies <- function(Identity, PolicyNames) {
   op <- new_operation(
     name = "GetIdentityPolicies",
@@ -2133,6 +2193,8 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
 #' @keywords internal
 #'
 #' @rdname ses_get_identity_verification_attributes
+#'
+#' @aliases ses_get_identity_verification_attributes
 ses_get_identity_verification_attributes <- function(Identities) {
   op <- new_operation(
     name = "GetIdentityVerificationAttributes",
@@ -2184,6 +2246,8 @@ ses_get_identity_verification_attributes <- function(Identities) {
 #' @keywords internal
 #'
 #' @rdname ses_get_send_quota
+#'
+#' @aliases ses_get_send_quota
 ses_get_send_quota <- function() {
   op <- new_operation(
     name = "GetSendQuota",
@@ -2245,6 +2309,8 @@ ses_get_send_quota <- function() {
 #' @keywords internal
 #'
 #' @rdname ses_get_send_statistics
+#'
+#' @aliases ses_get_send_statistics
 ses_get_send_statistics <- function() {
   op <- new_operation(
     name = "GetSendStatistics",
@@ -2299,6 +2365,8 @@ ses_get_send_statistics <- function() {
 #' @keywords internal
 #'
 #' @rdname ses_get_template
+#'
+#' @aliases ses_get_template
 ses_get_template <- function(TemplateName) {
   op <- new_operation(
     name = "GetTemplate",
@@ -2366,6 +2434,8 @@ ses_get_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname ses_list_configuration_sets
+#'
+#' @aliases ses_list_configuration_sets
 ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListConfigurationSets",
@@ -2435,6 +2505,8 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname ses_list_custom_verification_email_templates
+#'
+#' @aliases ses_list_custom_verification_email_templates
 ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCustomVerificationEmailTemplates",
@@ -2507,6 +2579,8 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname ses_list_identities
+#'
+#' @aliases ses_list_identities
 ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListIdentities",
@@ -2583,6 +2657,8 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
 #' @keywords internal
 #'
 #' @rdname ses_list_identity_policies
+#'
+#' @aliases ses_list_identity_policies
 ses_list_identity_policies <- function(Identity) {
   op <- new_operation(
     name = "ListIdentityPolicies",
@@ -2647,6 +2723,8 @@ ses_list_identity_policies <- function(Identity) {
 #' @keywords internal
 #'
 #' @rdname ses_list_receipt_filters
+#'
+#' @aliases ses_list_receipt_filters
 ses_list_receipt_filters <- function() {
   op <- new_operation(
     name = "ListReceiptFilters",
@@ -2722,6 +2800,8 @@ ses_list_receipt_filters <- function() {
 #' @keywords internal
 #'
 #' @rdname ses_list_receipt_rule_sets
+#'
+#' @aliases ses_list_receipt_rule_sets
 ses_list_receipt_rule_sets <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListReceiptRuleSets",
@@ -2786,6 +2866,8 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname ses_list_templates
+#'
+#' @aliases ses_list_templates
 ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListTemplates",
@@ -2836,6 +2918,8 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname ses_list_verified_email_addresses
+#'
+#' @aliases ses_list_verified_email_addresses
 ses_list_verified_email_addresses <- function() {
   op <- new_operation(
     name = "ListVerifiedEmailAddresses",
@@ -2883,6 +2967,8 @@ ses_list_verified_email_addresses <- function() {
 #' @keywords internal
 #'
 #' @rdname ses_put_configuration_set_delivery_options
+#'
+#' @aliases ses_put_configuration_set_delivery_options
 ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, DeliveryOptions = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetDeliveryOptions",
@@ -2962,6 +3048,8 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' @keywords internal
 #'
 #' @rdname ses_put_identity_policy
+#'
+#' @aliases ses_put_identity_policy
 ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
   op <- new_operation(
     name = "PutIdentityPolicy",
@@ -3030,6 +3118,8 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
 #' @keywords internal
 #'
 #' @rdname ses_reorder_receipt_rule_set
+#'
+#' @aliases ses_reorder_receipt_rule_set
 ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
   op <- new_operation(
     name = "ReorderReceiptRuleSet",
@@ -3143,6 +3233,8 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
 #' @keywords internal
 #'
 #' @rdname ses_send_bounce
+#'
+#' @aliases ses_send_bounce
 ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL, MessageDsn = NULL, BouncedRecipientInfoList, BounceSenderArn = NULL) {
   op <- new_operation(
     name = "SendBounce",
@@ -3353,6 +3445,8 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' @keywords internal
 #'
 #' @rdname ses_send_bulk_templated_email
+#'
+#' @aliases ses_send_bulk_templated_email
 ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddresses = NULL, ReturnPath = NULL, ReturnPathArn = NULL, ConfigurationSetName = NULL, DefaultTags = NULL, Template, TemplateArn = NULL, DefaultTemplateData = NULL, Destinations) {
   op <- new_operation(
     name = "SendBulkTemplatedEmail",
@@ -3416,6 +3510,8 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
 #' @keywords internal
 #'
 #' @rdname ses_send_custom_verification_email
+#'
+#' @aliases ses_send_custom_verification_email
 ses_send_custom_verification_email <- function(EmailAddress, TemplateName, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "SendCustomVerificationEmail",
@@ -3648,6 +3744,8 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' @keywords internal
 #'
 #' @rdname ses_send_email
+#'
+#' @aliases ses_send_email
 ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL, ReturnPath = NULL, SourceArn = NULL, ReturnPathArn = NULL, Tags = NULL, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "SendEmail",
@@ -3929,6 +4027,8 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' @keywords internal
 #'
 #' @rdname ses_send_raw_email
+#'
+#' @aliases ses_send_raw_email
 ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, FromArn = NULL, SourceArn = NULL, ReturnPathArn = NULL, Tags = NULL, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "SendRawEmail",
@@ -4128,6 +4228,8 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' @keywords internal
 #'
 #' @rdname ses_send_templated_email
+#'
+#' @aliases ses_send_templated_email
 ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NULL, ReturnPath = NULL, SourceArn = NULL, ReturnPathArn = NULL, Tags = NULL, ConfigurationSetName = NULL, Template, TemplateArn = NULL, TemplateData) {
   op <- new_operation(
     name = "SendTemplatedEmail",
@@ -4186,6 +4288,8 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
 #' @keywords internal
 #'
 #' @rdname ses_set_active_receipt_rule_set
+#'
+#' @aliases ses_set_active_receipt_rule_set
 ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
   op <- new_operation(
     name = "SetActiveReceiptRuleSet",
@@ -4257,6 +4361,8 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
 #' @keywords internal
 #'
 #' @rdname ses_set_identity_dkim_enabled
+#'
+#' @aliases ses_set_identity_dkim_enabled
 ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
   op <- new_operation(
     name = "SetIdentityDkimEnabled",
@@ -4331,6 +4437,8 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
 #' @keywords internal
 #'
 #' @rdname ses_set_identity_feedback_forwarding_enabled
+#'
+#' @aliases ses_set_identity_feedback_forwarding_enabled
 ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEnabled) {
   op <- new_operation(
     name = "SetIdentityFeedbackForwardingEnabled",
@@ -4406,6 +4514,8 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
 #' @keywords internal
 #'
 #' @rdname ses_set_identity_headers_in_notifications_enabled
+#'
+#' @aliases ses_set_identity_headers_in_notifications_enabled
 ses_set_identity_headers_in_notifications_enabled <- function(Identity, NotificationType, Enabled) {
   op <- new_operation(
     name = "SetIdentityHeadersInNotificationsEnabled",
@@ -4489,6 +4599,8 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
 #' @keywords internal
 #'
 #' @rdname ses_set_identity_mail_from_domain
+#'
+#' @aliases ses_set_identity_mail_from_domain
 ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, BehaviorOnMXFailure = NULL) {
   op <- new_operation(
     name = "SetIdentityMailFromDomain",
@@ -4570,6 +4682,8 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
 #' @keywords internal
 #'
 #' @rdname ses_set_identity_notification_topic
+#'
+#' @aliases ses_set_identity_notification_topic
 ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsTopic = NULL) {
   op <- new_operation(
     name = "SetIdentityNotificationTopic",
@@ -4633,6 +4747,8 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
 #' @keywords internal
 #'
 #' @rdname ses_set_receipt_rule_position
+#'
+#' @aliases ses_set_receipt_rule_position
 ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
   op <- new_operation(
     name = "SetReceiptRulePosition",
@@ -4686,6 +4802,8 @@ ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
 #' @keywords internal
 #'
 #' @rdname ses_test_render_template
+#'
+#' @aliases ses_test_render_template
 ses_test_render_template <- function(TemplateName, TemplateData) {
   op <- new_operation(
     name = "TestRenderTemplate",
@@ -4742,6 +4860,8 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
 #' @keywords internal
 #'
 #' @rdname ses_update_account_sending_enabled
+#'
+#' @aliases ses_update_account_sending_enabled
 ses_update_account_sending_enabled <- function(Enabled = NULL) {
   op <- new_operation(
     name = "UpdateAccountSendingEnabled",
@@ -4822,6 +4942,8 @@ ses_update_account_sending_enabled <- function(Enabled = NULL) {
 #' @keywords internal
 #'
 #' @rdname ses_update_configuration_set_event_destination
+#'
+#' @aliases ses_update_configuration_set_event_destination
 ses_update_configuration_set_event_destination <- function(ConfigurationSetName, EventDestination) {
   op <- new_operation(
     name = "UpdateConfigurationSetEventDestination",
@@ -4883,6 +5005,8 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
 #' @keywords internal
 #'
 #' @rdname ses_update_configuration_set_reputation_metrics_enabled
+#'
+#' @aliases ses_update_configuration_set_reputation_metrics_enabled
 ses_update_configuration_set_reputation_metrics_enabled <- function(ConfigurationSetName, Enabled) {
   op <- new_operation(
     name = "UpdateConfigurationSetReputationMetricsEnabled",
@@ -4944,6 +5068,8 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
 #' @keywords internal
 #'
 #' @rdname ses_update_configuration_set_sending_enabled
+#'
+#' @aliases ses_update_configuration_set_sending_enabled
 ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, Enabled) {
   op <- new_operation(
     name = "UpdateConfigurationSetSendingEnabled",
@@ -4998,6 +5124,8 @@ ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, E
 #' @keywords internal
 #'
 #' @rdname ses_update_configuration_set_tracking_options
+#'
+#' @aliases ses_update_configuration_set_tracking_options
 ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, TrackingOptions) {
   op <- new_operation(
     name = "UpdateConfigurationSetTrackingOptions",
@@ -5065,6 +5193,8 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
 #' @keywords internal
 #'
 #' @rdname ses_update_custom_verification_email_template
+#'
+#' @aliases ses_update_custom_verification_email_template
 ses_update_custom_verification_email_template <- function(TemplateName, FromEmailAddress = NULL, TemplateSubject = NULL, TemplateContent = NULL, SuccessRedirectionURL = NULL, FailureRedirectionURL = NULL) {
   op <- new_operation(
     name = "UpdateCustomVerificationEmailTemplate",
@@ -5181,6 +5311,8 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
 #' @keywords internal
 #'
 #' @rdname ses_update_receipt_rule
+#'
+#' @aliases ses_update_receipt_rule
 ses_update_receipt_rule <- function(RuleSetName, Rule) {
   op <- new_operation(
     name = "UpdateReceiptRule",
@@ -5231,6 +5363,8 @@ ses_update_receipt_rule <- function(RuleSetName, Rule) {
 #' @keywords internal
 #'
 #' @rdname ses_update_template
+#'
+#' @aliases ses_update_template
 ses_update_template <- function(Template) {
   op <- new_operation(
     name = "UpdateTemplate",
@@ -5322,6 +5456,8 @@ ses_update_template <- function(Template) {
 #' @keywords internal
 #'
 #' @rdname ses_verify_domain_dkim
+#'
+#' @aliases ses_verify_domain_dkim
 ses_verify_domain_dkim <- function(Domain) {
   op <- new_operation(
     name = "VerifyDomainDkim",
@@ -5383,6 +5519,8 @@ ses_verify_domain_dkim <- function(Domain) {
 #' @keywords internal
 #'
 #' @rdname ses_verify_domain_identity
+#'
+#' @aliases ses_verify_domain_identity
 ses_verify_domain_identity <- function(Domain) {
   op <- new_operation(
     name = "VerifyDomainIdentity",
@@ -5433,6 +5571,8 @@ ses_verify_domain_identity <- function(Domain) {
 #' @keywords internal
 #'
 #' @rdname ses_verify_email_address
+#'
+#' @aliases ses_verify_email_address
 ses_verify_email_address <- function(EmailAddress) {
   op <- new_operation(
     name = "VerifyEmailAddress",
@@ -5488,6 +5628,8 @@ ses_verify_email_address <- function(EmailAddress) {
 #' @keywords internal
 #'
 #' @rdname ses_verify_email_identity
+#'
+#' @aliases ses_verify_email_identity
 ses_verify_email_identity <- function(EmailAddress) {
   op <- new_operation(
     name = "VerifyEmailIdentity",

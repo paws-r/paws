@@ -110,6 +110,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ecs_create_capacity_provider
+#'
+#' @aliases ecs_create_capacity_provider
 ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = NULL) {
   op <- new_operation(
     name = "CreateCapacityProvider",
@@ -345,6 +347,8 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' @keywords internal
 #'
 #' @rdname ecs_create_cluster
+#'
+#' @aliases ecs_create_cluster
 ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL, configuration = NULL, capacityProviders = NULL, defaultCapacityProviderStrategy = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -1062,6 +1066,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' @keywords internal
 #'
 #' @rdname ecs_create_service
+#'
+#' @aliases ecs_create_service
 ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NULL, loadBalancers = NULL, serviceRegistries = NULL, desiredCount = NULL, clientToken = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, role = NULL, deploymentConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, networkConfiguration = NULL, healthCheckGracePeriodSeconds = NULL, schedulingStrategy = NULL, deploymentController = NULL, tags = NULL, enableECSManagedTags = NULL, propagateTags = NULL, enableExecuteCommand = NULL) {
   op <- new_operation(
     name = "CreateService",
@@ -1321,6 +1327,8 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' @keywords internal
 #'
 #' @rdname ecs_create_task_set
+#'
+#' @aliases ecs_create_task_set
 ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinition, networkConfiguration = NULL, loadBalancers = NULL, serviceRegistries = NULL, launchType = NULL, capacityProviderStrategy = NULL, platformVersion = NULL, scale = NULL, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTaskSet",
@@ -1403,6 +1411,8 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @keywords internal
 #'
 #' @rdname ecs_delete_account_setting
+#'
+#' @aliases ecs_delete_account_setting
 ecs_delete_account_setting <- function(name, principalArn = NULL) {
   op <- new_operation(
     name = "DeleteAccountSetting",
@@ -1470,6 +1480,8 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_delete_attributes
+#'
+#' @aliases ecs_delete_attributes
 ecs_delete_attributes <- function(cluster = NULL, attributes) {
   op <- new_operation(
     name = "DeleteAttributes",
@@ -1558,6 +1570,8 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' @keywords internal
 #'
 #' @rdname ecs_delete_capacity_provider
+#'
+#' @aliases ecs_delete_capacity_provider
 ecs_delete_capacity_provider <- function(capacityProvider) {
   op <- new_operation(
     name = "DeleteCapacityProvider",
@@ -1685,6 +1699,8 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 #' @keywords internal
 #'
 #' @rdname ecs_delete_cluster
+#'
+#' @aliases ecs_delete_cluster
 ecs_delete_cluster <- function(cluster) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -1972,6 +1988,8 @@ ecs_delete_cluster <- function(cluster) {
 #' @keywords internal
 #'
 #' @rdname ecs_delete_service
+#'
+#' @aliases ecs_delete_service
 ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
   op <- new_operation(
     name = "DeleteService",
@@ -2100,6 +2118,8 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_delete_task_set
+#'
+#' @aliases ecs_delete_task_set
 ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
   op <- new_operation(
     name = "DeleteTaskSet",
@@ -2281,6 +2301,8 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_deregister_container_instance
+#'
+#' @aliases ecs_deregister_container_instance
 ecs_deregister_container_instance <- function(cluster = NULL, containerInstance, force = NULL) {
   op <- new_operation(
     name = "DeregisterContainerInstance",
@@ -2615,6 +2637,8 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #' @keywords internal
 #'
 #' @rdname ecs_deregister_task_definition
+#'
+#' @aliases ecs_deregister_task_definition
 ecs_deregister_task_definition <- function(taskDefinition) {
   op <- new_operation(
     name = "DeregisterTaskDefinition",
@@ -2728,6 +2752,8 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' @keywords internal
 #'
 #' @rdname ecs_describe_capacity_providers
+#'
+#' @aliases ecs_describe_capacity_providers
 ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeCapacityProviders",
@@ -2880,6 +2906,8 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #' @keywords internal
 #'
 #' @rdname ecs_describe_clusters
+#'
+#' @aliases ecs_describe_clusters
 ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
   op <- new_operation(
     name = "DescribeClusters",
@@ -3050,6 +3078,8 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_describe_container_instances
+#'
+#' @aliases ecs_describe_container_instances
 ecs_describe_container_instances <- function(cluster = NULL, containerInstances, include = NULL) {
   op <- new_operation(
     name = "DescribeContainerInstances",
@@ -3336,6 +3366,8 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' @keywords internal
 #'
 #' @rdname ecs_describe_services
+#'
+#' @aliases ecs_describe_services
 ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
   op <- new_operation(
     name = "DescribeServices",
@@ -3679,6 +3711,8 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_describe_task_definition
+#'
+#' @aliases ecs_describe_task_definition
 ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
   op <- new_operation(
     name = "DescribeTaskDefinition",
@@ -3820,6 +3854,8 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_describe_task_sets
+#'
+#' @aliases ecs_describe_task_sets
 ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = NULL) {
   op <- new_operation(
     name = "DescribeTaskSets",
@@ -4073,6 +4109,8 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #' @keywords internal
 #'
 #' @rdname ecs_describe_tasks
+#'
+#' @aliases ecs_describe_tasks
 ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
   op <- new_operation(
     name = "DescribeTasks",
@@ -4129,6 +4167,8 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_discover_poll_endpoint
+#'
+#' @aliases ecs_discover_poll_endpoint
 ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL) {
   op <- new_operation(
     name = "DiscoverPollEndpoint",
@@ -4200,6 +4240,8 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' @keywords internal
 #'
 #' @rdname ecs_execute_command
+#'
+#' @aliases ecs_execute_command
 ecs_execute_command <- function(cluster = NULL, container = NULL, command, interactive, task) {
   op <- new_operation(
     name = "ExecuteCommand",
@@ -4306,6 +4348,8 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
 #' @keywords internal
 #'
 #' @rdname ecs_list_account_settings
+#'
+#' @aliases ecs_list_account_settings
 ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = NULL, effectiveSettings = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAccountSettings",
@@ -4398,6 +4442,8 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' @keywords internal
 #'
 #' @rdname ecs_list_attributes
+#'
+#' @aliases ecs_list_attributes
 ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL, attributeValue = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAttributes",
@@ -4472,6 +4518,8 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' @keywords internal
 #'
 #' @rdname ecs_list_clusters
+#'
+#' @aliases ecs_list_clusters
 ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListClusters",
@@ -4575,6 +4623,8 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_list_container_instances
+#'
+#' @aliases ecs_list_container_instances
 ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToken = NULL, maxResults = NULL, status = NULL) {
   op <- new_operation(
     name = "ListContainerInstances",
@@ -4661,6 +4711,8 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' @keywords internal
 #'
 #' @rdname ecs_list_services
+#'
+#' @aliases ecs_list_services
 ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NULL, launchType = NULL, schedulingStrategy = NULL) {
   op <- new_operation(
     name = "ListServices",
@@ -4721,6 +4773,8 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname ecs_list_tags_for_resource
+#'
+#' @aliases ecs_list_tags_for_resource
 ecs_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4825,6 +4879,8 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname ecs_list_task_definition_families
+#'
+#' @aliases ecs_list_task_definition_families
 ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTaskDefinitionFamilies",
@@ -4927,6 +4983,8 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' @keywords internal
 #'
 #' @rdname ecs_list_task_definitions
+#'
+#' @aliases ecs_list_task_definitions
 ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTaskDefinitions",
@@ -5051,6 +5109,8 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' @keywords internal
 #'
 #' @rdname ecs_list_tasks
+#'
+#' @aliases ecs_list_tasks
 ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NULL, nextToken = NULL, maxResults = NULL, startedBy = NULL, serviceName = NULL, desiredStatus = NULL, launchType = NULL) {
   op <- new_operation(
     name = "ListTasks",
@@ -5177,6 +5237,8 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' @keywords internal
 #'
 #' @rdname ecs_put_account_setting
+#'
+#' @aliases ecs_put_account_setting
 ecs_put_account_setting <- function(name, value, principalArn = NULL) {
   op <- new_operation(
     name = "PutAccountSetting",
@@ -5252,6 +5314,8 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_put_account_setting_default
+#'
+#' @aliases ecs_put_account_setting_default
 ecs_put_account_setting_default <- function(name, value) {
   op <- new_operation(
     name = "PutAccountSettingDefault",
@@ -5322,6 +5386,8 @@ ecs_put_account_setting_default <- function(name, value) {
 #' @keywords internal
 #'
 #' @rdname ecs_put_attributes
+#'
+#' @aliases ecs_put_attributes
 ecs_put_attributes <- function(cluster = NULL, attributes) {
   op <- new_operation(
     name = "PutAttributes",
@@ -5499,6 +5565,8 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' @keywords internal
 #'
 #' @rdname ecs_put_cluster_capacity_providers
+#'
+#' @aliases ecs_put_cluster_capacity_providers
 ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defaultCapacityProviderStrategy) {
   op <- new_operation(
     name = "PutClusterCapacityProviders",
@@ -5721,6 +5789,8 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' @keywords internal
 #'
 #' @rdname ecs_register_container_instance
+#'
+#' @aliases ecs_register_container_instance
 ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocument = NULL, instanceIdentityDocumentSignature = NULL, totalResources = NULL, versionInfo = NULL, containerInstanceArn = NULL, attributes = NULL, platformDevices = NULL, tags = NULL) {
   op <- new_operation(
     name = "RegisterContainerInstance",
@@ -6591,6 +6661,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @keywords internal
 #'
 #' @rdname ecs_register_task_definition
+#'
+#' @aliases ecs_register_task_definition
 ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRoleArn = NULL, networkMode = NULL, containerDefinitions, volumes = NULL, placementConstraints = NULL, requiresCompatibilities = NULL, cpu = NULL, memory = NULL, tags = NULL, pidMode = NULL, ipcMode = NULL, proxyConfiguration = NULL, inferenceAccelerators = NULL, ephemeralStorage = NULL, runtimePlatform = NULL) {
   op <- new_operation(
     name = "RegisterTaskDefinition",
@@ -7104,6 +7176,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @keywords internal
 #'
 #' @rdname ecs_run_task
+#'
+#' @aliases ecs_run_task
 ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count = NULL, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, launchType = NULL, networkConfiguration = NULL, overrides = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
   op <- new_operation(
     name = "RunTask",
@@ -7482,6 +7556,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' @keywords internal
 #'
 #' @rdname ecs_start_task
+#'
+#' @aliases ecs_start_task
 ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedTags = NULL, enableExecuteCommand = NULL, group = NULL, networkConfiguration = NULL, overrides = NULL, propagateTags = NULL, referenceId = NULL, startedBy = NULL, tags = NULL, taskDefinition) {
   op <- new_operation(
     name = "StartTask",
@@ -7721,6 +7797,8 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @keywords internal
 #'
 #' @rdname ecs_stop_task
+#'
+#' @aliases ecs_stop_task
 ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
   op <- new_operation(
     name = "StopTask",
@@ -7778,6 +7856,8 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_submit_attachment_state_changes
+#'
+#' @aliases ecs_submit_attachment_state_changes
 ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
   op <- new_operation(
     name = "SubmitAttachmentStateChanges",
@@ -7850,6 +7930,8 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
 #' @keywords internal
 #'
 #' @rdname ecs_submit_container_state_change
+#'
+#' @aliases ecs_submit_container_state_change
 ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, containerName = NULL, runtimeId = NULL, status = NULL, exitCode = NULL, reason = NULL, networkBindings = NULL) {
   op <- new_operation(
     name = "SubmitContainerStateChange",
@@ -7955,6 +8037,8 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
 #' @keywords internal
 #'
 #' @rdname ecs_submit_task_state_change
+#'
+#' @aliases ecs_submit_task_state_change
 ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = NULL, reason = NULL, containers = NULL, attachments = NULL, managedAgents = NULL, pullStartedAt = NULL, pullStoppedAt = NULL, executionStoppedAt = NULL) {
   op <- new_operation(
     name = "SubmitTaskStateChange",
@@ -8047,6 +8131,8 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' @keywords internal
 #'
 #' @rdname ecs_tag_resource
+#'
+#' @aliases ecs_tag_resource
 ecs_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -8104,6 +8190,8 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ecs_untag_resource
+#'
+#' @aliases ecs_untag_resource
 ecs_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -8184,6 +8272,8 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ecs_update_capacity_provider
+#'
+#' @aliases ecs_update_capacity_provider
 ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
   op <- new_operation(
     name = "UpdateCapacityProvider",
@@ -8313,6 +8403,8 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #' @keywords internal
 #'
 #' @rdname ecs_update_cluster
+#'
+#' @aliases ecs_update_cluster
 ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
@@ -8432,6 +8524,8 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL) {
 #' @keywords internal
 #'
 #' @rdname ecs_update_cluster_settings
+#'
+#' @aliases ecs_update_cluster_settings
 ecs_update_cluster_settings <- function(cluster, settings) {
   op <- new_operation(
     name = "UpdateClusterSettings",
@@ -8588,6 +8682,8 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 #' @keywords internal
 #'
 #' @rdname ecs_update_container_agent
+#'
+#' @aliases ecs_update_container_agent
 ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
   op <- new_operation(
     name = "UpdateContainerAgent",
@@ -8793,6 +8889,8 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' @keywords internal
 #'
 #' @rdname ecs_update_container_instances_state
+#'
+#' @aliases ecs_update_container_instances_state
 ecs_update_container_instances_state <- function(cluster = NULL, containerInstances, status) {
   op <- new_operation(
     name = "UpdateContainerInstancesState",
@@ -9394,6 +9492,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @keywords internal
 #'
 #' @rdname ecs_update_service
+#'
+#' @aliases ecs_update_service
 ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, taskDefinition = NULL, capacityProviderStrategy = NULL, deploymentConfiguration = NULL, networkConfiguration = NULL, placementConstraints = NULL, placementStrategy = NULL, platformVersion = NULL, forceNewDeployment = NULL, healthCheckGracePeriodSeconds = NULL, enableExecuteCommand = NULL, enableECSManagedTags = NULL, loadBalancers = NULL, propagateTags = NULL, serviceRegistries = NULL) {
   op <- new_operation(
     name = "UpdateService",
@@ -9521,6 +9621,8 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' @keywords internal
 #'
 #' @rdname ecs_update_service_primary_task_set
+#'
+#' @aliases ecs_update_service_primary_task_set
 ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet) {
   op <- new_operation(
     name = "UpdateServicePrimaryTaskSet",
@@ -9652,6 +9754,8 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' @keywords internal
 #'
 #' @rdname ecs_update_task_set
+#'
+#' @aliases ecs_update_task_set
 ecs_update_task_set <- function(cluster, service, taskSet, scale) {
   op <- new_operation(
     name = "UpdateTaskSet",

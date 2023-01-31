@@ -36,6 +36,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname rds_add_role_to_db_cluster
+#'
+#' @aliases rds_add_role_to_db_cluster
 rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName = NULL) {
   op <- new_operation(
     name = "AddRoleToDBCluster",
@@ -90,6 +92,8 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName
 #' @keywords internal
 #'
 #' @rdname rds_add_role_to_db_instance
+#'
+#' @aliases rds_add_role_to_db_instance
 rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureName) {
   op <- new_operation(
     name = "AddRoleToDBInstance",
@@ -179,6 +183,8 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
 #' @keywords internal
 #'
 #' @rdname rds_add_source_identifier_to_subscription
+#'
+#' @aliases rds_add_source_identifier_to_subscription
 rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceIdentifier) {
   op <- new_operation(
     name = "AddSourceIdentifierToSubscription",
@@ -235,6 +241,8 @@ rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceId
 #' @keywords internal
 #'
 #' @rdname rds_add_tags_to_resource
+#'
+#' @aliases rds_add_tags_to_resource
 rds_add_tags_to_resource <- function(ResourceName, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -322,6 +330,8 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @keywords internal
 #'
 #' @rdname rds_apply_pending_maintenance_action
+#'
+#' @aliases rds_apply_pending_maintenance_action
 rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction, OptInType) {
   op <- new_operation(
     name = "ApplyPendingMaintenanceAction",
@@ -423,6 +433,8 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
 #' @keywords internal
 #'
 #' @rdname rds_authorize_db_security_group_ingress
+#'
+#' @aliases rds_authorize_db_security_group_ingress
 rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = NULL, EC2SecurityGroupName = NULL, EC2SecurityGroupId = NULL, EC2SecurityGroupOwnerId = NULL) {
   op <- new_operation(
     name = "AuthorizeDBSecurityGroupIngress",
@@ -527,6 +539,8 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #' @keywords internal
 #'
 #' @rdname rds_backtrack_db_cluster
+#'
+#' @aliases rds_backtrack_db_cluster
 rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = NULL, UseEarliestTimeOnPointInTimeUnavailable = NULL) {
   op <- new_operation(
     name = "BacktrackDBCluster",
@@ -597,6 +611,8 @@ rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = N
 #' @keywords internal
 #'
 #' @rdname rds_cancel_export_task
+#'
+#' @aliases rds_cancel_export_task
 rds_cancel_export_task <- function(ExportTaskIdentifier) {
   op <- new_operation(
     name = "CancelExportTask",
@@ -681,6 +697,8 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_copy_db_cluster_parameter_group
+#'
+#' @aliases rds_copy_db_cluster_parameter_group
 rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBClusterParameterGroup",
@@ -931,6 +949,8 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 #' @keywords internal
 #'
 #' @rdname rds_copy_db_cluster_snapshot
+#'
+#' @aliases rds_copy_db_cluster_snapshot
 rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier, KmsKeyId = NULL, PreSignedUrl = NULL, CopyTags = NULL, Tags = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CopyDBClusterSnapshot",
@@ -1013,6 +1033,8 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 #' @keywords internal
 #'
 #' @rdname rds_copy_db_parameter_group
+#'
+#' @aliases rds_copy_db_parameter_group
 rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBParameterGroup",
@@ -1275,6 +1297,8 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 #' @keywords internal
 #'
 #' @rdname rds_copy_db_snapshot
+#'
+#' @aliases rds_copy_db_snapshot
 rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIdentifier, KmsKeyId = NULL, Tags = NULL, CopyTags = NULL, PreSignedUrl = NULL, OptionGroupName = NULL, TargetCustomAvailabilityZone = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CopyDBSnapshot",
@@ -1391,6 +1415,8 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
 #' @keywords internal
 #'
 #' @rdname rds_copy_option_group
+#'
+#' @aliases rds_copy_option_group
 rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroupIdentifier, TargetOptionGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CopyOptionGroup",
@@ -1619,6 +1645,8 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' @keywords internal
 #'
 #' @rdname rds_create_custom_db_engine_version
+#'
+#' @aliases rds_create_custom_db_engine_version
 rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseInstallationFilesS3BucketName, DatabaseInstallationFilesS3Prefix = NULL, KMSKeyId, Description = NULL, Manifest, Tags = NULL) {
   op <- new_operation(
     name = "CreateCustomDBEngineVersion",
@@ -2496,6 +2524,8 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' @keywords internal
 #'
 #' @rdname rds_create_db_cluster
+#'
+#' @aliases rds_create_db_cluster
 rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
@@ -2585,6 +2615,8 @@ rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPerio
 #' @keywords internal
 #'
 #' @rdname rds_create_db_cluster_endpoint
+#'
+#' @aliases rds_create_db_cluster_endpoint
 rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpointIdentifier, EndpointType, StaticMembers = NULL, ExcludedMembers = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterEndpoint",
@@ -2741,6 +2773,8 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' @keywords internal
 #'
 #' @rdname rds_create_db_cluster_parameter_group
+#'
+#' @aliases rds_create_db_cluster_parameter_group
 rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, DBParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterParameterGroup",
@@ -2857,6 +2891,8 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 #' @keywords internal
 #'
 #' @rdname rds_create_db_cluster_snapshot
+#'
+#' @aliases rds_create_db_cluster_snapshot
 rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClusterIdentifier, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterSnapshot",
@@ -4145,6 +4181,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' @keywords internal
 #'
 #' @rdname rds_create_db_instance
+#'
+#' @aliases rds_create_db_instance
 rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, CharacterSetName = NULL, NcharCharacterSetName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBClusterIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, Timezone = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
@@ -4897,6 +4935,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' @keywords internal
 #'
 #' @rdname rds_create_db_instance_read_replica
+#'
+#' @aliases rds_create_db_instance_read_replica
 rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBInstanceIdentifier, DBInstanceClass = NULL, AvailabilityZone = NULL, Port = NULL, MultiAZ = NULL, AutoMinorVersionUpgrade = NULL, Iops = NULL, OptionGroupName = NULL, DBParameterGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, StorageType = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, Domain = NULL, DomainIAMRoleName = NULL, ReplicaMode = NULL, MaxAllocatedStorage = NULL, CustomIamInstanceProfile = NULL, NetworkType = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CreateDBInstanceReadReplica",
@@ -5040,6 +5080,8 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #' @keywords internal
 #'
 #' @rdname rds_create_db_parameter_group
+#'
+#' @aliases rds_create_db_parameter_group
 rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBParameterGroup",
@@ -5175,6 +5217,8 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 #' @keywords internal
 #'
 #' @rdname rds_create_db_proxy
+#'
+#' @aliases rds_create_db_proxy
 rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSubnetIds, VpcSecurityGroupIds = NULL, RequireTLS = NULL, IdleClientTimeout = NULL, DebugLogging = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBProxy",
@@ -5268,6 +5312,8 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSub
 #' @keywords internal
 #'
 #' @rdname rds_create_db_proxy_endpoint
+#'
+#' @aliases rds_create_db_proxy_endpoint
 rds_create_db_proxy_endpoint <- function(DBProxyName, DBProxyEndpointName, VpcSubnetIds, VpcSecurityGroupIds = NULL, TargetRole = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBProxyEndpoint",
@@ -5360,6 +5406,8 @@ rds_create_db_proxy_endpoint <- function(DBProxyName, DBProxyEndpointName, VpcSu
 #' @keywords internal
 #'
 #' @rdname rds_create_db_security_group
+#'
+#' @aliases rds_create_db_security_group
 rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBSecurityGroup",
@@ -5480,6 +5528,8 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 #' @keywords internal
 #'
 #' @rdname rds_create_db_snapshot
+#'
+#' @aliases rds_create_db_snapshot
 rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBSnapshot",
@@ -5573,6 +5623,8 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
 #' @keywords internal
 #'
 #' @rdname rds_create_db_subnet_group
+#'
+#' @aliases rds_create_db_subnet_group
 rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescription, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBSubnetGroup",
@@ -5729,6 +5781,8 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' @keywords internal
 #'
 #' @rdname rds_create_event_subscription
+#'
+#' @aliases rds_create_event_subscription
 rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceType = NULL, EventCategories = NULL, SourceIds = NULL, Enabled = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventSubscription",
@@ -5829,6 +5883,8 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 #' @keywords internal
 #'
 #' @rdname rds_create_global_cluster
+#'
+#' @aliases rds_create_global_cluster
 rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, DatabaseName = NULL, StorageEncrypted = NULL) {
   op <- new_operation(
     name = "CreateGlobalCluster",
@@ -5969,6 +6025,8 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 #' @keywords internal
 #'
 #' @rdname rds_create_option_group
+#'
+#' @aliases rds_create_option_group
 rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVersion, OptionGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CreateOptionGroup",
@@ -6110,6 +6168,8 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 #' @keywords internal
 #'
 #' @rdname rds_delete_custom_db_engine_version
+#'
+#' @aliases rds_delete_custom_db_engine_version
 rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
   op <- new_operation(
     name = "DeleteCustomDBEngineVersion",
@@ -6343,6 +6403,8 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_cluster
+#'
+#' @aliases rds_delete_db_cluster
 rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteDBCluster",
@@ -6406,6 +6468,8 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_cluster_endpoint
+#'
+#' @aliases rds_delete_db_cluster_endpoint
 rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
   op <- new_operation(
     name = "DeleteDBClusterEndpoint",
@@ -6464,6 +6528,8 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_cluster_parameter_group
+#'
+#' @aliases rds_delete_db_cluster_parameter_group
 rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
   op <- new_operation(
     name = "DeleteDBClusterParameterGroup",
@@ -6558,6 +6624,8 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_cluster_snapshot
+#'
+#' @aliases rds_delete_db_cluster_snapshot
 rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
   op <- new_operation(
     name = "DeleteDBClusterSnapshot",
@@ -6887,6 +6955,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_instance
+#'
+#' @aliases rds_delete_db_instance
 rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL, DeleteAutomatedBackups = NULL) {
   op <- new_operation(
     name = "DeleteDBInstance",
@@ -6983,6 +7053,8 @@ rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NUL
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_instance_automated_backup
+#'
+#' @aliases rds_delete_db_instance_automated_backup
 rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInstanceAutomatedBackupsArn = NULL) {
   op <- new_operation(
     name = "DeleteDBInstanceAutomatedBackup",
@@ -7032,6 +7104,8 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInst
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_parameter_group
+#'
+#' @aliases rds_delete_db_parameter_group
 rds_delete_db_parameter_group <- function(DBParameterGroupName) {
   op <- new_operation(
     name = "DeleteDBParameterGroup",
@@ -7109,6 +7183,8 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_proxy
+#'
+#' @aliases rds_delete_db_proxy
 rds_delete_db_proxy <- function(DBProxyName) {
   op <- new_operation(
     name = "DeleteDBProxy",
@@ -7175,6 +7251,8 @@ rds_delete_db_proxy <- function(DBProxyName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_proxy_endpoint
+#'
+#' @aliases rds_delete_db_proxy_endpoint
 rds_delete_db_proxy_endpoint <- function(DBProxyEndpointName) {
   op <- new_operation(
     name = "DeleteDBProxyEndpoint",
@@ -7230,6 +7308,8 @@ rds_delete_db_proxy_endpoint <- function(DBProxyEndpointName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_security_group
+#'
+#' @aliases rds_delete_db_security_group
 rds_delete_db_security_group <- function(DBSecurityGroupName) {
   op <- new_operation(
     name = "DeleteDBSecurityGroup",
@@ -7329,6 +7409,8 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_snapshot
+#'
+#' @aliases rds_delete_db_snapshot
 rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
   op <- new_operation(
     name = "DeleteDBSnapshot",
@@ -7379,6 +7461,8 @@ rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_subnet_group
+#'
+#' @aliases rds_delete_db_subnet_group
 rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
   op <- new_operation(
     name = "DeleteDBSubnetGroup",
@@ -7439,6 +7523,8 @@ rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_event_subscription
+#'
+#' @aliases rds_delete_event_subscription
 rds_delete_event_subscription <- function(SubscriptionName) {
   op <- new_operation(
     name = "DeleteEventSubscription",
@@ -7512,6 +7598,8 @@ rds_delete_event_subscription <- function(SubscriptionName) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_global_cluster
+#'
+#' @aliases rds_delete_global_cluster
 rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
   op <- new_operation(
     name = "DeleteGlobalCluster",
@@ -7554,6 +7642,8 @@ rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_delete_option_group
+#'
+#' @aliases rds_delete_option_group
 rds_delete_option_group <- function(OptionGroupName) {
   op <- new_operation(
     name = "DeleteOptionGroup",
@@ -7608,6 +7698,8 @@ rds_delete_option_group <- function(OptionGroupName) {
 #' @keywords internal
 #'
 #' @rdname rds_deregister_db_proxy_targets
+#'
+#' @aliases rds_deregister_db_proxy_targets
 rds_deregister_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, DBInstanceIdentifiers = NULL, DBClusterIdentifiers = NULL) {
   op <- new_operation(
     name = "DeregisterDBProxyTargets",
@@ -7660,6 +7752,8 @@ rds_deregister_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL,
 #' @keywords internal
 #'
 #' @rdname rds_describe_account_attributes
+#'
+#' @aliases rds_describe_account_attributes
 rds_describe_account_attributes <- function() {
   op <- new_operation(
     name = "DescribeAccountAttributes",
@@ -7755,6 +7849,8 @@ rds_describe_account_attributes <- function() {
 #' @keywords internal
 #'
 #' @rdname rds_describe_certificates
+#'
+#' @aliases rds_describe_certificates
 rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCertificates",
@@ -7887,6 +7983,8 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_backtracks
+#'
+#' @aliases rds_describe_db_cluster_backtracks
 rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterBacktracks",
@@ -7990,6 +8088,8 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_endpoints
+#'
+#' @aliases rds_describe_db_cluster_endpoints
 rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClusterEndpointIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterEndpoints",
@@ -8084,6 +8184,8 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_parameter_groups
+#'
+#' @aliases rds_describe_db_cluster_parameter_groups
 rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterParameterGroups",
@@ -8190,6 +8292,8 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_parameters
+#'
+#' @aliases rds_describe_db_cluster_parameters
 rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Source = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterParameters",
@@ -8262,6 +8366,8 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_snapshot_attributes
+#'
+#' @aliases rds_describe_db_cluster_snapshot_attributes
 rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentifier) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshotAttributes",
@@ -8456,6 +8562,8 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_snapshots
+#'
+#' @aliases rds_describe_db_cluster_snapshots
 rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClusterSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshots",
@@ -8714,6 +8822,8 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_clusters
+#'
+#' @aliases rds_describe_db_clusters
 rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL) {
   op <- new_operation(
     name = "DescribeDBClusters",
@@ -8962,6 +9072,8 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_engine_versions
+#'
+#' @aliases rds_describe_db_engine_versions
 rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL, DBParameterGroupFamily = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, DefaultOnly = NULL, ListSupportedCharacterSets = NULL, ListSupportedTimezones = NULL, IncludeAll = NULL) {
   op <- new_operation(
     name = "DescribeDBEngineVersions",
@@ -9113,6 +9225,8 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_instance_automated_backups
+#'
+#' @aliases rds_describe_db_instance_automated_backups
 rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBInstanceIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, DBInstanceAutomatedBackupsArn = NULL) {
   op <- new_operation(
     name = "DescribeDBInstanceAutomatedBackups",
@@ -9424,6 +9538,8 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_instances
+#'
+#' @aliases rds_describe_db_instances
 rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBInstances",
@@ -9511,6 +9627,8 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_log_files
+#'
+#' @aliases rds_describe_db_log_files
 rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = NULL, FileLastWritten = NULL, FileSize = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBLogFiles",
@@ -9595,6 +9713,8 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_parameter_groups
+#'
+#' @aliases rds_describe_db_parameter_groups
 rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBParameterGroups",
@@ -9691,6 +9811,8 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_parameters
+#'
+#' @aliases rds_describe_db_parameters
 rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBParameters",
@@ -9795,6 +9917,8 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_proxies
+#'
+#' @aliases rds_describe_db_proxies
 rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeDBProxies",
@@ -9890,6 +10014,8 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_proxy_endpoints
+#'
+#' @aliases rds_describe_db_proxy_endpoints
 rds_describe_db_proxy_endpoints <- function(DBProxyName = NULL, DBProxyEndpointName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeDBProxyEndpoints",
@@ -9986,6 +10112,8 @@ rds_describe_db_proxy_endpoints <- function(DBProxyName = NULL, DBProxyEndpointN
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_proxy_target_groups
+#'
+#' @aliases rds_describe_db_proxy_target_groups
 rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeDBProxyTargetGroups",
@@ -10073,6 +10201,8 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_proxy_targets
+#'
+#' @aliases rds_describe_db_proxy_targets
 rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeDBProxyTargets",
@@ -10167,6 +10297,8 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_security_groups
+#'
+#' @aliases rds_describe_db_security_groups
 rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBSecurityGroups",
@@ -10238,6 +10370,8 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_snapshot_attributes
+#'
+#' @aliases rds_describe_db_snapshot_attributes
 rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
   op <- new_operation(
     name = "DescribeDBSnapshotAttributes",
@@ -10447,6 +10581,8 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_snapshots
+#'
+#' @aliases rds_describe_db_snapshots
 rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL, DbiResourceId = NULL) {
   op <- new_operation(
     name = "DescribeDBSnapshots",
@@ -10545,6 +10681,8 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_subnet_groups
+#'
+#' @aliases rds_describe_db_subnet_groups
 rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBSubnetGroups",
@@ -10641,6 +10779,8 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #' @keywords internal
 #'
 #' @rdname rds_describe_engine_default_cluster_parameters
+#'
+#' @aliases rds_describe_engine_default_cluster_parameters
 rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamily, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEngineDefaultClusterParameters",
@@ -10812,6 +10952,8 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' @keywords internal
 #'
 #' @rdname rds_describe_engine_default_parameters
+#'
+#' @aliases rds_describe_engine_default_parameters
 rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEngineDefaultParameters",
@@ -10885,6 +11027,8 @@ rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filte
 #' @keywords internal
 #'
 #' @rdname rds_describe_event_categories
+#'
+#' @aliases rds_describe_event_categories
 rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeEventCategories",
@@ -10979,6 +11123,8 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname rds_describe_event_subscriptions
+#'
+#' @aliases rds_describe_event_subscriptions
 rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEventSubscriptions",
@@ -11133,6 +11279,8 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 #' @keywords internal
 #'
 #' @rdname rds_describe_events
+#'
+#' @aliases rds_describe_events
 rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, EventCategories = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -11260,6 +11408,8 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 #' @keywords internal
 #'
 #' @rdname rds_describe_export_tasks
+#'
+#' @aliases rds_describe_export_tasks
 rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribeExportTasks",
@@ -11370,6 +11520,8 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 #' @keywords internal
 #'
 #' @rdname rds_describe_global_clusters
+#'
+#' @aliases rds_describe_global_clusters
 rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeGlobalClusters",
@@ -11511,6 +11663,8 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
 #' @keywords internal
 #'
 #' @rdname rds_describe_option_group_options
+#'
+#' @aliases rds_describe_option_group_options
 rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeOptionGroupOptions",
@@ -11657,6 +11811,8 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 #' @keywords internal
 #'
 #' @rdname rds_describe_option_groups
+#'
+#' @aliases rds_describe_option_groups
 rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL, EngineName = NULL, MajorEngineVersion = NULL) {
   op <- new_operation(
     name = "DescribeOptionGroups",
@@ -11836,6 +11992,8 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 #' @keywords internal
 #'
 #' @rdname rds_describe_orderable_db_instance_options
+#'
+#' @aliases rds_describe_orderable_db_instance_options
 rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = NULL, DBInstanceClass = NULL, LicenseModel = NULL, AvailabilityZoneGroup = NULL, Vpc = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeOrderableDBInstanceOptions",
@@ -11940,6 +12098,8 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' @keywords internal
 #'
 #' @rdname rds_describe_pending_maintenance_actions
+#'
+#' @aliases rds_describe_pending_maintenance_actions
 rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribePendingMaintenanceActions",
@@ -12067,6 +12227,8 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' @keywords internal
 #'
 #' @rdname rds_describe_reserved_db_instances
+#'
+#' @aliases rds_describe_reserved_db_instances
 rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, ReservedDBInstancesOfferingId = NULL, DBInstanceClass = NULL, Duration = NULL, ProductDescription = NULL, OfferingType = NULL, MultiAZ = NULL, LeaseId = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedDBInstances",
@@ -12179,6 +12341,8 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 #' @keywords internal
 #'
 #' @rdname rds_describe_reserved_db_instances_offerings
+#'
+#' @aliases rds_describe_reserved_db_instances_offerings
 rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOfferingId = NULL, DBInstanceClass = NULL, Duration = NULL, ProductDescription = NULL, OfferingType = NULL, MultiAZ = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeReservedDBInstancesOfferings",
@@ -12264,6 +12428,8 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #' @keywords internal
 #'
 #' @rdname rds_describe_source_regions
+#'
+#' @aliases rds_describe_source_regions
 rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Marker = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeSourceRegions",
@@ -12350,6 +12516,8 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname rds_describe_valid_db_instance_modifications
+#'
+#' @aliases rds_describe_valid_db_instance_modifications
 rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
   op <- new_operation(
     name = "DescribeValidDBInstanceModifications",
@@ -12437,6 +12605,8 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_download_db_log_file_portion
+#'
+#' @aliases rds_download_db_log_file_portion
 rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, Marker = NULL, NumberOfLines = NULL) {
   op <- new_operation(
     name = "DownloadDBLogFilePortion",
@@ -12666,6 +12836,8 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 #' @keywords internal
 #'
 #' @rdname rds_failover_db_cluster
+#'
+#' @aliases rds_failover_db_cluster
 rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentifier = NULL) {
   op <- new_operation(
     name = "FailoverDBCluster",
@@ -12769,6 +12941,8 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 #' @keywords internal
 #'
 #' @rdname rds_failover_global_cluster
+#'
+#' @aliases rds_failover_global_cluster
 rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
   op <- new_operation(
     name = "FailoverGlobalCluster",
@@ -12837,6 +13011,8 @@ rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbCluster
 #' @keywords internal
 #'
 #' @rdname rds_list_tags_for_resource
+#'
+#' @aliases rds_list_tags_for_resource
 rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -12902,6 +13078,8 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname rds_modify_activity_stream
+#'
+#' @aliases rds_modify_activity_stream
 rds_modify_activity_stream <- function(ResourceArn = NULL, AuditPolicyState = NULL) {
   op <- new_operation(
     name = "ModifyActivityStream",
@@ -13003,6 +13181,8 @@ rds_modify_activity_stream <- function(ResourceArn = NULL, AuditPolicyState = NU
 #' @keywords internal
 #'
 #' @rdname rds_modify_certificates
+#'
+#' @aliases rds_modify_certificates
 rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomerOverride = NULL) {
   op <- new_operation(
     name = "ModifyCertificates",
@@ -13114,6 +13294,8 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 #' @keywords internal
 #'
 #' @rdname rds_modify_current_db_cluster_capacity
+#'
+#' @aliases rds_modify_current_db_cluster_capacity
 rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity = NULL, SecondsBeforeTimeout = NULL, TimeoutAction = NULL) {
   op <- new_operation(
     name = "ModifyCurrentDBClusterCapacity",
@@ -13270,6 +13452,8 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 #' @keywords internal
 #'
 #' @rdname rds_modify_custom_db_engine_version
+#'
+#' @aliases rds_modify_custom_db_engine_version
 rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Description = NULL, Status = NULL) {
   op <- new_operation(
     name = "ModifyCustomDBEngineVersion",
@@ -13917,6 +14101,8 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_cluster
+#'
+#' @aliases rds_modify_db_cluster
 rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
@@ -13992,6 +14178,8 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_cluster_endpoint
+#'
+#' @aliases rds_modify_db_cluster_endpoint
 rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, EndpointType = NULL, StaticMembers = NULL, ExcludedMembers = NULL) {
   op <- new_operation(
     name = "ModifyDBClusterEndpoint",
@@ -14098,6 +14286,8 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_cluster_parameter_group
+#'
+#' @aliases rds_modify_db_cluster_parameter_group
 rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Parameters) {
   op <- new_operation(
     name = "ModifyDBClusterParameterGroup",
@@ -14215,6 +14405,8 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_cluster_snapshot_attribute
+#'
+#' @aliases rds_modify_db_cluster_snapshot_attribute
 rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier, AttributeName, ValuesToAdd = NULL, ValuesToRemove = NULL) {
   op <- new_operation(
     name = "ModifyDBClusterSnapshotAttribute",
@@ -15216,6 +15408,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_instance
+#'
+#' @aliases rds_modify_db_instance
 rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, CloudwatchLogsExportConfiguration = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, CertificateRotationRestart = NULL, ReplicaMode = NULL, EnableCustomerOwnedIp = NULL, AwsBackupRecoveryPointArn = NULL, AutomationMode = NULL, ResumeFullAutomationModeMinutes = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
@@ -15322,6 +15516,8 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_parameter_group
+#'
+#' @aliases rds_modify_db_parameter_group
 rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
   op <- new_operation(
     name = "ModifyDBParameterGroup",
@@ -15438,6 +15634,8 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_proxy
+#'
+#' @aliases rds_modify_db_proxy
 rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, Auth = NULL, RequireTLS = NULL, IdleClientTimeout = NULL, DebugLogging = NULL, RoleArn = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "ModifyDBProxy",
@@ -15513,6 +15711,8 @@ rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, Auth = NULL,
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_proxy_endpoint
+#'
+#' @aliases rds_modify_db_proxy_endpoint
 rds_modify_db_proxy_endpoint <- function(DBProxyEndpointName, NewDBProxyEndpointName = NULL, VpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "ModifyDBProxyEndpoint",
@@ -15597,6 +15797,8 @@ rds_modify_db_proxy_endpoint <- function(DBProxyEndpointName, NewDBProxyEndpoint
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_proxy_target_group
+#'
+#' @aliases rds_modify_db_proxy_target_group
 rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, ConnectionPoolConfig = NULL, NewName = NULL) {
   op <- new_operation(
     name = "ModifyDBProxyTargetGroup",
@@ -15726,6 +15928,8 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_snapshot
+#'
+#' @aliases rds_modify_db_snapshot
 rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, OptionGroupName = NULL) {
   op <- new_operation(
     name = "ModifyDBSnapshot",
@@ -15841,6 +16045,8 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_snapshot_attribute
+#'
+#' @aliases rds_modify_db_snapshot_attribute
 rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName, ValuesToAdd = NULL, ValuesToRemove = NULL) {
   op <- new_operation(
     name = "ModifyDBSnapshotAttribute",
@@ -15921,6 +16127,8 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_subnet_group
+#'
+#' @aliases rds_modify_db_subnet_group
 rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescription = NULL, SubnetIds) {
   op <- new_operation(
     name = "ModifyDBSubnetGroup",
@@ -16017,6 +16225,8 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 #' @keywords internal
 #'
 #' @rdname rds_modify_event_subscription
+#'
+#' @aliases rds_modify_event_subscription
 rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, SourceType = NULL, EventCategories = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "ModifyEventSubscription",
@@ -16150,6 +16360,8 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname rds_modify_global_cluster
+#'
+#' @aliases rds_modify_global_cluster
 rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL) {
   op <- new_operation(
     name = "ModifyGlobalCluster",
@@ -16280,6 +16492,8 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 #' @keywords internal
 #'
 #' @rdname rds_modify_option_group
+#'
+#' @aliases rds_modify_option_group
 rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, OptionsToRemove = NULL, ApplyImmediately = NULL) {
   op <- new_operation(
     name = "ModifyOptionGroup",
@@ -16583,6 +16797,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 #' @keywords internal
 #'
 #' @rdname rds_promote_read_replica
+#'
+#' @aliases rds_promote_read_replica
 rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL) {
   op <- new_operation(
     name = "PromoteReadReplica",
@@ -16780,6 +16996,8 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 #' @keywords internal
 #'
 #' @rdname rds_promote_read_replica_db_cluster
+#'
+#' @aliases rds_promote_read_replica_db_cluster
 rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "PromoteReadReplicaDBCluster",
@@ -16868,6 +17086,8 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_purchase_reserved_db_instances_offering
+#'
+#' @aliases rds_purchase_reserved_db_instances_offering
 rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOfferingId, ReservedDBInstanceId = NULL, DBInstanceCount = NULL, Tags = NULL) {
   op <- new_operation(
     name = "PurchaseReservedDBInstancesOffering",
@@ -17078,6 +17298,8 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #' @keywords internal
 #'
 #' @rdname rds_reboot_db_cluster
+#'
+#' @aliases rds_reboot_db_cluster
 rds_reboot_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "RebootDBCluster",
@@ -17359,6 +17581,8 @@ rds_reboot_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_reboot_db_instance
+#'
+#' @aliases rds_reboot_db_instance
 rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
   op <- new_operation(
     name = "RebootDBInstance",
@@ -17433,6 +17657,8 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #' @keywords internal
 #'
 #' @rdname rds_register_db_proxy_targets
+#'
+#' @aliases rds_register_db_proxy_targets
 rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, DBInstanceIdentifiers = NULL, DBClusterIdentifiers = NULL) {
   op <- new_operation(
     name = "RegisterDBProxyTargets",
@@ -17514,6 +17740,8 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
 #' @keywords internal
 #'
 #' @rdname rds_remove_from_global_cluster
+#'
+#' @aliases rds_remove_from_global_cluster
 rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClusterIdentifier = NULL) {
   op <- new_operation(
     name = "RemoveFromGlobalCluster",
@@ -17574,6 +17802,8 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClu
 #' @keywords internal
 #'
 #' @rdname rds_remove_role_from_db_cluster
+#'
+#' @aliases rds_remove_role_from_db_cluster
 rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName = NULL) {
   op <- new_operation(
     name = "RemoveRoleFromDBCluster",
@@ -17624,6 +17854,8 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Featur
 #' @keywords internal
 #'
 #' @rdname rds_remove_role_from_db_instance
+#'
+#' @aliases rds_remove_role_from_db_instance
 rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureName) {
   op <- new_operation(
     name = "RemoveRoleFromDBInstance",
@@ -17692,6 +17924,8 @@ rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, Feat
 #' @keywords internal
 #'
 #' @rdname rds_remove_source_identifier_from_subscription
+#'
+#' @aliases rds_remove_source_identifier_from_subscription
 rds_remove_source_identifier_from_subscription <- function(SubscriptionName, SourceIdentifier) {
   op <- new_operation(
     name = "RemoveSourceIdentifierFromSubscription",
@@ -17745,6 +17979,8 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
 #' @keywords internal
 #'
 #' @rdname rds_remove_tags_from_resource
+#'
+#' @aliases rds_remove_tags_from_resource
 rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -17837,6 +18073,8 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname rds_reset_db_cluster_parameter_group
+#'
+#' @aliases rds_reset_db_cluster_parameter_group
 rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, ResetAllParameters = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ResetDBClusterParameterGroup",
@@ -17940,6 +18178,8 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' @keywords internal
 #'
 #' @rdname rds_reset_db_parameter_group
+#'
+#' @aliases rds_reset_db_parameter_group
 rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameters = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ResetDBParameterGroup",
@@ -18406,6 +18646,8 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_from_s3
+#'
+#' @aliases rds_restore_db_cluster_from_s3
 rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromS3",
@@ -18979,6 +19221,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_from_snapshot
+#'
+#' @aliases rds_restore_db_cluster_from_snapshot
 rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, DBClusterInstanceClass = NULL, StorageType = NULL, Iops = NULL, PubliclyAccessible = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
@@ -19527,6 +19771,8 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_to_point_in_time
+#'
+#' @aliases rds_restore_db_cluster_to_point_in_time
 rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, EngineMode = NULL, DBClusterInstanceClass = NULL, StorageType = NULL, PubliclyAccessible = NULL, Iops = NULL, ServerlessV2ScalingConfiguration = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
@@ -20150,6 +20396,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_instance_from_db_snapshot
+#'
+#' @aliases rds_restore_db_instance_from_db_snapshot
 rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSnapshotIdentifier, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceFromDBSnapshot",
@@ -20775,6 +21023,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_instance_from_s3
+#'
+#' @aliases rds_restore_db_instance_from_s3
 rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, PubliclyAccessible = NULL, Tags = NULL, StorageType = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnableIAMDatabaseAuthentication = NULL, SourceEngine, SourceEngineVersion, S3BucketName, S3Prefix = NULL, S3IngestionRoleArn, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DeletionProtection = NULL, MaxAllocatedStorage = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceFromS3",
@@ -21411,6 +21661,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_instance_to_point_in_time
+#'
+#' @aliases rds_restore_db_instance_to_point_in_time
 rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier = NULL, TargetDBInstanceIdentifier, RestoreTime = NULL, UseLatestRestorableTime = NULL, DBInstanceClass = NULL, Port = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, MultiAZ = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, DBName = NULL, Engine = NULL, Iops = NULL, OptionGroupName = NULL, CopyTagsToSnapshot = NULL, Tags = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, VpcSecurityGroupIds = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, ProcessorFeatures = NULL, UseDefaultProcessorFeatures = NULL, DBParameterGroupName = NULL, DeletionProtection = NULL, SourceDbiResourceId = NULL, MaxAllocatedStorage = NULL, SourceDBInstanceAutomatedBackupsArn = NULL, EnableCustomerOwnedIp = NULL, CustomIamInstanceProfile = NULL, BackupTarget = NULL, NetworkType = NULL) {
   op <- new_operation(
     name = "RestoreDBInstanceToPointInTime",
@@ -21503,6 +21755,8 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 #' @keywords internal
 #'
 #' @rdname rds_revoke_db_security_group_ingress
+#'
+#' @aliases rds_revoke_db_security_group_ingress
 rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = NULL, EC2SecurityGroupName = NULL, EC2SecurityGroupId = NULL, EC2SecurityGroupOwnerId = NULL) {
   op <- new_operation(
     name = "RevokeDBSecurityGroupIngress",
@@ -21573,6 +21827,8 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
 #' @keywords internal
 #'
 #' @rdname rds_start_activity_stream
+#'
+#' @aliases rds_start_activity_stream
 rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediately = NULL, EngineNativeAuditFieldsIncluded = NULL) {
   op <- new_operation(
     name = "StartActivityStream",
@@ -21774,6 +22030,8 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 #' @keywords internal
 #'
 #' @rdname rds_start_db_cluster
+#'
+#' @aliases rds_start_db_cluster
 rds_start_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "StartDBCluster",
@@ -22039,6 +22297,8 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_start_db_instance
+#'
+#' @aliases rds_start_db_instance
 rds_start_db_instance <- function(DBInstanceIdentifier) {
   op <- new_operation(
     name = "StartDBInstance",
@@ -22170,6 +22430,8 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_start_db_instance_automated_backups_replication
+#'
+#' @aliases rds_start_db_instance_automated_backups_replication
 rds_start_db_instance_automated_backups_replication <- function(SourceDBInstanceArn, BackupRetentionPeriod = NULL, KmsKeyId = NULL, PreSignedUrl = NULL) {
   op <- new_operation(
     name = "StartDBInstanceAutomatedBackupsReplication",
@@ -22297,6 +22559,8 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 #' @keywords internal
 #'
 #' @rdname rds_start_export_task
+#'
+#' @aliases rds_start_export_task
 rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName, IamRoleArn, KmsKeyId, S3Prefix = NULL, ExportOnly = NULL) {
   op <- new_operation(
     name = "StartExportTask",
@@ -22357,6 +22621,8 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
 #' @keywords internal
 #'
 #' @rdname rds_stop_activity_stream
+#'
+#' @aliases rds_stop_activity_stream
 rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
   op <- new_operation(
     name = "StopActivityStream",
@@ -22557,6 +22823,8 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 #' @keywords internal
 #'
 #' @rdname rds_stop_db_cluster
+#'
+#' @aliases rds_stop_db_cluster
 rds_stop_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "StopDBCluster",
@@ -22823,6 +23091,8 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname rds_stop_db_instance
+#'
+#' @aliases rds_stop_db_instance
 rds_stop_db_instance <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "StopDBInstance",
@@ -22919,6 +23189,8 @@ rds_stop_db_instance <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NU
 #' @keywords internal
 #'
 #' @rdname rds_stop_db_instance_automated_backups_replication
+#'
+#' @aliases rds_stop_db_instance_automated_backups_replication
 rds_stop_db_instance_automated_backups_replication <- function(SourceDBInstanceArn) {
   op <- new_operation(
     name = "StopDBInstanceAutomatedBackupsReplication",

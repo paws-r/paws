@@ -57,6 +57,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_associate_user
+#'
+#' @aliases licensemanagerusersubscriptions_associate_user
 licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, IdentityProvider, InstanceId, Username) {
   op <- new_operation(
     name = "AssociateUser",
@@ -120,6 +122,8 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_deregister_identity_provider
+#'
+#' @aliases licensemanagerusersubscriptions_deregister_identity_provider
 licensemanagerusersubscriptions_deregister_identity_provider <- function(IdentityProvider, Product) {
   op <- new_operation(
     name = "DeregisterIdentityProvider",
@@ -191,6 +195,8 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_disassociate_user
+#'
+#' @aliases licensemanagerusersubscriptions_disassociate_user
 licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, IdentityProvider, InstanceId, Username) {
   op <- new_operation(
     name = "DisassociateUser",
@@ -251,6 +257,8 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_list_identity_providers
+#'
+#' @aliases licensemanagerusersubscriptions_list_identity_providers
 licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListIdentityProviders",
@@ -319,6 +327,8 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_list_instances
+#'
+#' @aliases licensemanagerusersubscriptions_list_instances
 licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInstances",
@@ -402,6 +412,8 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_list_product_subscriptions
+#'
+#' @aliases licensemanagerusersubscriptions_list_product_subscriptions
 licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters = NULL, IdentityProvider, MaxResults = NULL, NextToken = NULL, Product) {
   op <- new_operation(
     name = "ListProductSubscriptions",
@@ -483,6 +495,8 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_list_user_associations
+#'
+#' @aliases licensemanagerusersubscriptions_list_user_associations
 licensemanagerusersubscriptions_list_user_associations <- function(Filters = NULL, IdentityProvider, InstanceId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListUserAssociations",
@@ -544,6 +558,8 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_register_identity_provider
+#'
+#' @aliases licensemanagerusersubscriptions_register_identity_provider
 licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product) {
   op <- new_operation(
     name = "RegisterIdentityProvider",
@@ -615,6 +631,8 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_start_product_subscription
+#'
+#' @aliases licensemanagerusersubscriptions_start_product_subscription
 licensemanagerusersubscriptions_start_product_subscription <- function(Domain = NULL, IdentityProvider, Product, Username) {
   op <- new_operation(
     name = "StartProductSubscription",
@@ -686,6 +704,8 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
 #' @keywords internal
 #'
 #' @rdname licensemanagerusersubscriptions_stop_product_subscription
+#'
+#' @aliases licensemanagerusersubscriptions_stop_product_subscription
 licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = NULL, IdentityProvider, Product, Username) {
   op <- new_operation(
     name = "StopProductSubscription",

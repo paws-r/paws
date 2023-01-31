@@ -82,6 +82,8 @@ test_that("make_operation", {
     #' @keywords internal
     #'
     #' @rdname api_operation
+    #'
+    #' @aliases api_operation
     api_operation <- function(Input1 = NULL, Input2 = NULL, Input3 = NULL) {
       op <- new_operation(
         name = \"Operation\",

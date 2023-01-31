@@ -49,6 +49,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_accept_portfolio_share
+#'
+#' @aliases servicecatalog_accept_portfolio_share
 servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, PortfolioShareType = NULL) {
   op <- new_operation(
     name = "AcceptPortfolioShare",
@@ -91,6 +93,8 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @keywords internal
 #'
 #' @rdname servicecatalog_associate_budget_with_resource
+#'
+#' @aliases servicecatalog_associate_budget_with_resource
 servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId) {
   op <- new_operation(
     name = "AssociateBudgetWithResource",
@@ -144,6 +148,8 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' @keywords internal
 #'
 #' @rdname servicecatalog_associate_principal_with_portfolio
+#'
+#' @aliases servicecatalog_associate_principal_with_portfolio
 servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PrincipalARN, PrincipalType) {
   op <- new_operation(
     name = "AssociatePrincipalWithPortfolio",
@@ -199,6 +205,8 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #' @keywords internal
 #'
 #' @rdname servicecatalog_associate_product_with_portfolio
+#'
+#' @aliases servicecatalog_associate_product_with_portfolio
 servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NULL, ProductId, PortfolioId, SourcePortfolioId = NULL) {
   op <- new_operation(
     name = "AssociateProductWithPortfolio",
@@ -252,7 +260,9 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #'
 #' @keywords internal
 #'
-#' @rdname servicecatalog_associate_service_action_with_provisioning_artifact
+#' @rdname servicecatalog_associ_servic_action_with_provis_artifa
+#'
+#' @aliases servicecatalog_associate_service_action_with_provisioning_artifact
 servicecatalog_associate_service_action_with_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "AssociateServiceActionWithProvisioningArtifact",
@@ -298,6 +308,8 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
 #' @keywords internal
 #'
 #' @rdname servicecatalog_associate_tag_option_with_resource
+#'
+#' @aliases servicecatalog_associate_tag_option_with_resource
 servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOptionId) {
   op <- new_operation(
     name = "AssociateTagOptionWithResource",
@@ -366,7 +378,9 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #'
 #' @keywords internal
 #'
-#' @rdname servicecatalog_batch_associate_service_action_with_provisioning_artifact
+#' @rdname servicecatalog_batch_assoc_servi_actio_with_provi_artif
+#'
+#' @aliases servicecatalog_batch_associate_service_action_with_provisioning_artifact
 servicecatalog_batch_associate_service_action_with_provisioning_artifact <- function(ServiceActionAssociations, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "BatchAssociateServiceActionWithProvisioningArtifact",
@@ -437,7 +451,9 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #'
 #' @keywords internal
 #'
-#' @rdname servicecatalog_batch_disassociate_service_action_from_provisioning_artifact
+#' @rdname servicecatalog_batch_disas_servi_actio_from_provi_artif
+#'
+#' @aliases servicecatalog_batch_disassociate_service_action_from_provisioning_artifact
 servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- function(ServiceActionAssociations, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "BatchDisassociateServiceActionFromProvisioningArtifact",
@@ -525,6 +541,8 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' @keywords internal
 #'
 #' @rdname servicecatalog_copy_product
+#'
+#' @aliases servicecatalog_copy_product
 servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn, TargetProductId = NULL, TargetProductName = NULL, SourceProvisioningArtifactIdentifiers = NULL, CopyOptions = NULL, IdempotencyToken) {
   op <- new_operation(
     name = "CopyProduct",
@@ -675,6 +693,8 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_constraint
+#'
+#' @aliases servicecatalog_create_constraint
 servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId, ProductId, Parameters, Type, Description = NULL, IdempotencyToken) {
   op <- new_operation(
     name = "CreateConstraint",
@@ -761,6 +781,8 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_portfolio
+#'
+#' @aliases servicecatalog_create_portfolio
 servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, Description = NULL, ProviderName, Tags = NULL, IdempotencyToken) {
   op <- new_operation(
     name = "CreatePortfolio",
@@ -850,6 +872,8 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_portfolio_share
+#'
+#' @aliases servicecatalog_create_portfolio_share
 servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL) {
   op <- new_operation(
     name = "CreatePortfolioShare",
@@ -985,6 +1009,8 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_product
+#'
+#' @aliases servicecatalog_create_product
 servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, ProductType, Tags = NULL, ProvisioningArtifactParameters, IdempotencyToken) {
   op <- new_operation(
     name = "CreateProduct",
@@ -1099,6 +1125,8 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_provisioned_product_plan
+#'
+#' @aliases servicecatalog_create_provisioned_product_plan
 servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL, PlanName, PlanType, NotificationArns = NULL, PathId = NULL, ProductId, ProvisionedProductName, ProvisioningArtifactId, ProvisioningParameters = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateProvisionedProductPlan",
@@ -1191,6 +1219,8 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_provisioning_artifact
+#'
+#' @aliases servicecatalog_create_provisioning_artifact
 servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, Parameters, IdempotencyToken) {
   op <- new_operation(
     name = "CreateProvisioningArtifact",
@@ -1296,6 +1326,8 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_service_action
+#'
+#' @aliases servicecatalog_create_service_action
 servicecatalog_create_service_action <- function(Name, DefinitionType, Definition, Description = NULL, AcceptLanguage = NULL, IdempotencyToken) {
   op <- new_operation(
     name = "CreateServiceAction",
@@ -1349,6 +1381,8 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
 #' @keywords internal
 #'
 #' @rdname servicecatalog_create_tag_option
+#'
+#' @aliases servicecatalog_create_tag_option
 servicecatalog_create_tag_option <- function(Key, Value) {
   op <- new_operation(
     name = "CreateTagOption",
@@ -1399,6 +1433,8 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_constraint
+#'
+#' @aliases servicecatalog_delete_constraint
 servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
   op <- new_operation(
     name = "DeleteConstraint",
@@ -1452,6 +1488,8 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_portfolio
+#'
+#' @aliases servicecatalog_delete_portfolio
 servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
   op <- new_operation(
     name = "DeletePortfolio",
@@ -1520,6 +1558,8 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_portfolio_share
+#'
+#' @aliases servicecatalog_delete_portfolio_share
 servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL) {
   op <- new_operation(
     name = "DeletePortfolioShare",
@@ -1573,6 +1613,8 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_product
+#'
+#' @aliases servicecatalog_delete_product
 servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
   op <- new_operation(
     name = "DeleteProduct",
@@ -1625,6 +1667,8 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_provisioned_product_plan
+#'
+#' @aliases servicecatalog_delete_provisioned_product_plan
 servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL, PlanId, IgnoreErrors = NULL) {
   op <- new_operation(
     name = "DeleteProvisionedProductPlan",
@@ -1683,6 +1727,8 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_provisioning_artifact
+#'
+#' @aliases servicecatalog_delete_provisioning_artifact
 servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId) {
   op <- new_operation(
     name = "DeleteProvisioningArtifact",
@@ -1731,6 +1777,8 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_service_action
+#'
+#' @aliases servicecatalog_delete_service_action
 servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "DeleteServiceAction",
@@ -1774,6 +1822,8 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_delete_tag_option
+#'
+#' @aliases servicecatalog_delete_tag_option
 servicecatalog_delete_tag_option <- function(Id) {
   op <- new_operation(
     name = "DeleteTagOption",
@@ -1836,6 +1886,8 @@ servicecatalog_delete_tag_option <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_constraint
+#'
+#' @aliases servicecatalog_describe_constraint
 servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
   op <- new_operation(
     name = "DescribeConstraint",
@@ -1893,6 +1945,8 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_copy_product_status
+#'
+#' @aliases servicecatalog_describe_copy_product_status
 servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, CopyProductToken) {
   op <- new_operation(
     name = "DescribeCopyProductStatus",
@@ -1977,6 +2031,8 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_portfolio
+#'
+#' @aliases servicecatalog_describe_portfolio
 servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
   op <- new_operation(
     name = "DescribePortfolio",
@@ -2042,6 +2098,8 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_portfolio_share_status
+#'
+#' @aliases servicecatalog_describe_portfolio_share_status
 servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) {
   op <- new_operation(
     name = "DescribePortfolioShareStatus",
@@ -2124,6 +2182,8 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_portfolio_shares
+#'
+#' @aliases servicecatalog_describe_portfolio_shares
 servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribePortfolioShares",
@@ -2213,6 +2273,8 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_product
+#'
+#' @aliases servicecatalog_describe_product
 servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Name = NULL) {
   op <- new_operation(
     name = "DescribeProduct",
@@ -2331,6 +2393,8 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_product_as_admin
+#'
+#' @aliases servicecatalog_describe_product_as_admin
 servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id = NULL, Name = NULL, SourcePortfolioId = NULL) {
   op <- new_operation(
     name = "DescribeProductAsAdmin",
@@ -2407,6 +2471,8 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_product_view
+#'
+#' @aliases servicecatalog_describe_product_view
 servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
   op <- new_operation(
     name = "DescribeProductView",
@@ -2492,6 +2558,8 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_provisioned_product
+#'
+#' @aliases servicecatalog_describe_provisioned_product
 servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, Id = NULL, Name = NULL) {
   op <- new_operation(
     name = "DescribeProvisionedProduct",
@@ -2608,6 +2676,8 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_provisioned_product_plan
+#'
+#' @aliases servicecatalog_describe_provisioned_product_plan
 servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NULL, PlanId, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "DescribeProvisionedProductPlan",
@@ -2687,6 +2757,8 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_provisioning_artifact
+#'
+#' @aliases servicecatalog_describe_provisioning_artifact
 servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL, ProvisioningArtifactId = NULL, ProductId = NULL, ProvisioningArtifactName = NULL, ProductName = NULL, Verbose = NULL) {
   op <- new_operation(
     name = "DescribeProvisioningArtifact",
@@ -2829,6 +2901,8 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_provisioning_parameters
+#'
+#' @aliases servicecatalog_describe_provisioning_parameters
 servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NULL, ProductId = NULL, ProductName = NULL, ProvisioningArtifactId = NULL, ProvisioningArtifactName = NULL, PathId = NULL, PathName = NULL) {
   op <- new_operation(
     name = "DescribeProvisioningParameters",
@@ -2939,6 +3013,8 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_record
+#'
+#' @aliases servicecatalog_describe_record
 servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "DescribeRecord",
@@ -3002,6 +3078,8 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_service_action
+#'
+#' @aliases servicecatalog_describe_service_action
 servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "DescribeServiceAction",
@@ -3070,6 +3148,8 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_service_action_execution_parameters
+#'
+#' @aliases servicecatalog_describe_service_action_execution_parameters
 servicecatalog_describe_service_action_execution_parameters <- function(ProvisionedProductId, ServiceActionId, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "DescribeServiceActionExecutionParameters",
@@ -3121,6 +3201,8 @@ servicecatalog_describe_service_action_execution_parameters <- function(Provisio
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_tag_option
+#'
+#' @aliases servicecatalog_describe_tag_option
 servicecatalog_describe_tag_option <- function(Id) {
   op <- new_operation(
     name = "DescribeTagOption",
@@ -3168,6 +3250,8 @@ servicecatalog_describe_tag_option <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disable_aws_organizations_access
+#'
+#' @aliases servicecatalog_disable_aws_organizations_access
 servicecatalog_disable_aws_organizations_access <- function() {
   op <- new_operation(
     name = "DisableAWSOrganizationsAccess",
@@ -3211,6 +3295,8 @@ servicecatalog_disable_aws_organizations_access <- function() {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disassociate_budget_from_resource
+#'
+#' @aliases servicecatalog_disassociate_budget_from_resource
 servicecatalog_disassociate_budget_from_resource <- function(BudgetName, ResourceId) {
   op <- new_operation(
     name = "DisassociateBudgetFromResource",
@@ -3264,6 +3350,8 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disassociate_principal_from_portfolio
+#'
+#' @aliases servicecatalog_disassociate_principal_from_portfolio
 servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PrincipalARN) {
   op <- new_operation(
     name = "DisassociatePrincipalFromPortfolio",
@@ -3317,6 +3405,8 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disassociate_product_from_portfolio
+#'
+#' @aliases servicecatalog_disassociate_product_from_portfolio
 servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = NULL, ProductId, PortfolioId) {
   op <- new_operation(
     name = "DisassociateProductFromPortfolio",
@@ -3372,7 +3462,9 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #'
 #' @keywords internal
 #'
-#' @rdname servicecatalog_disassociate_service_action_from_provisioning_artifact
+#' @rdname servicecatalog_disass_servic_action_from_provis_artifa
+#'
+#' @aliases servicecatalog_disassociate_service_action_from_provisioning_artifact
 servicecatalog_disassociate_service_action_from_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, ServiceActionId, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "DisassociateServiceActionFromProvisioningArtifact",
@@ -3416,6 +3508,8 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
 #' @keywords internal
 #'
 #' @rdname servicecatalog_disassociate_tag_option_from_resource
+#'
+#' @aliases servicecatalog_disassociate_tag_option_from_resource
 servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, TagOptionId) {
   op <- new_operation(
     name = "DisassociateTagOptionFromResource",
@@ -3462,6 +3556,8 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #' @keywords internal
 #'
 #' @rdname servicecatalog_enable_aws_organizations_access
+#'
+#' @aliases servicecatalog_enable_aws_organizations_access
 servicecatalog_enable_aws_organizations_access <- function() {
   op <- new_operation(
     name = "EnableAWSOrganizationsAccess",
@@ -3551,6 +3647,8 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_execute_provisioned_product_plan
+#'
+#' @aliases servicecatalog_execute_provisioned_product_plan
 servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NULL, PlanId, IdempotencyToken) {
   op <- new_operation(
     name = "ExecuteProvisionedProductPlan",
@@ -3650,6 +3748,8 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_execute_provisioned_product_service_action
+#'
+#' @aliases servicecatalog_execute_provisioned_product_service_action
 servicecatalog_execute_provisioned_product_service_action <- function(ProvisionedProductId, ServiceActionId, ExecuteToken, AcceptLanguage = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ExecuteProvisionedProductServiceAction",
@@ -3693,6 +3793,8 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 #' @keywords internal
 #'
 #' @rdname servicecatalog_get_aws_organizations_access_status
+#'
+#' @aliases servicecatalog_get_aws_organizations_access_status
 servicecatalog_get_aws_organizations_access_status <- function() {
   op <- new_operation(
     name = "GetAWSOrganizationsAccessStatus",
@@ -3773,6 +3875,8 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' @keywords internal
 #'
 #' @rdname servicecatalog_get_provisioned_product_outputs
+#'
+#' @aliases servicecatalog_get_provisioned_product_outputs
 servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL, ProvisionedProductId = NULL, ProvisionedProductName = NULL, OutputKeys = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "GetProvisionedProductOutputs",
@@ -3890,6 +3994,8 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_import_as_provisioned_product
+#'
+#' @aliases servicecatalog_import_as_provisioned_product
 servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId, ProvisionedProductName, PhysicalId, IdempotencyToken) {
   op <- new_operation(
     name = "ImportAsProvisionedProduct",
@@ -3975,6 +4081,8 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_accepted_portfolio_shares
+#'
+#' @aliases servicecatalog_list_accepted_portfolio_shares
 servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL, PageToken = NULL, PageSize = NULL, PortfolioShareType = NULL) {
   op <- new_operation(
     name = "ListAcceptedPortfolioShares",
@@ -4039,6 +4147,8 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_budgets_for_resource
+#'
+#' @aliases servicecatalog_list_budgets_for_resource
 servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, ResourceId, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListBudgetsForResource",
@@ -4110,6 +4220,8 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_constraints_for_portfolio
+#'
+#' @aliases servicecatalog_list_constraints_for_portfolio
 servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL, PortfolioId, ProductId = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListConstraintsForPortfolio",
@@ -4189,6 +4301,8 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_launch_paths
+#'
+#' @aliases servicecatalog_list_launch_paths
 servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListLaunchPaths",
@@ -4269,6 +4383,8 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_organization_portfolio_access
+#'
+#' @aliases servicecatalog_list_organization_portfolio_access
 servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = NULL, PortfolioId, OrganizationNodeType, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListOrganizationPortfolioAccess",
@@ -4339,6 +4455,8 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_portfolio_access
+#'
+#' @aliases servicecatalog_list_portfolio_access
 servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, PortfolioId, OrganizationParentId = NULL, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListPortfolioAccess",
@@ -4407,6 +4525,8 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_portfolios
+#'
+#' @aliases servicecatalog_list_portfolios
 servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListPortfolios",
@@ -4478,6 +4598,8 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_portfolios_for_product
+#'
+#' @aliases servicecatalog_list_portfolios_for_product
 servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, ProductId, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListPortfoliosForProduct",
@@ -4543,6 +4665,8 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_principals_for_portfolio
+#'
+#' @aliases servicecatalog_list_principals_for_portfolio
 servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListPrincipalsForPortfolio",
@@ -4619,6 +4743,8 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_provisioned_product_plans
+#'
+#' @aliases servicecatalog_list_provisioned_product_plans
 servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL, ProvisionProductId = NULL, PageSize = NULL, PageToken = NULL, AccessLevelFilter = NULL) {
   op <- new_operation(
     name = "ListProvisionedProductPlans",
@@ -4687,6 +4813,8 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_provisioning_artifacts
+#'
+#' @aliases servicecatalog_list_provisioning_artifacts
 servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, ProductId) {
   op <- new_operation(
     name = "ListProvisioningArtifacts",
@@ -4773,7 +4901,9 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #'
 #' @keywords internal
 #'
-#' @rdname servicecatalog_list_provisioning_artifacts_for_service_action
+#' @rdname servicecatalog_list_provis_artifa_for_servic_action
+#'
+#' @aliases servicecatalog_list_provisioning_artifacts_for_service_action
 servicecatalog_list_provisioning_artifacts_for_service_action <- function(ServiceActionId, PageSize = NULL, PageToken = NULL, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "ListProvisioningArtifactsForServiceAction",
@@ -4873,6 +5003,8 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_record_history
+#'
+#' @aliases servicecatalog_list_record_history
 servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLevelFilter = NULL, SearchFilter = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListRecordHistory",
@@ -4941,6 +5073,8 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_resources_for_tag_option
+#'
+#' @aliases servicecatalog_list_resources_for_tag_option
 servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceType = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListResourcesForTagOption",
@@ -5005,6 +5139,8 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_service_actions
+#'
+#' @aliases servicecatalog_list_service_actions
 servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListServiceActions",
@@ -5076,7 +5212,9 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #'
 #' @keywords internal
 #'
-#' @rdname servicecatalog_list_service_actions_for_provisioning_artifact
+#' @rdname servicecatalog_list_servic_action_for_provis_artifa
+#'
+#' @aliases servicecatalog_list_service_actions_for_provisioning_artifact
 servicecatalog_list_service_actions_for_provisioning_artifact <- function(ProductId, ProvisioningArtifactId, PageSize = NULL, PageToken = NULL, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "ListServiceActionsForProvisioningArtifact",
@@ -5147,6 +5285,8 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_stack_instances_for_provisioned_product
+#'
+#' @aliases servicecatalog_list_stack_instances_for_provisioned_product
 servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLanguage = NULL, ProvisionedProductId, PageToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListStackInstancesForProvisionedProduct",
@@ -5211,6 +5351,8 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
 #' @keywords internal
 #'
 #' @rdname servicecatalog_list_tag_options
+#'
+#' @aliases servicecatalog_list_tag_options
 servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ListTagOptions",
@@ -5363,6 +5505,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' @keywords internal
 #'
 #' @rdname servicecatalog_provision_product
+#'
+#' @aliases servicecatalog_provision_product
 servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = NULL, ProductName = NULL, ProvisioningArtifactId = NULL, ProvisioningArtifactName = NULL, PathId = NULL, PathName = NULL, ProvisionedProductName, ProvisioningParameters = NULL, ProvisioningPreferences = NULL, Tags = NULL, NotificationArns = NULL, ProvisionToken) {
   op <- new_operation(
     name = "ProvisionProduct",
@@ -5426,6 +5570,8 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_reject_portfolio_share
+#'
+#' @aliases servicecatalog_reject_portfolio_share
 servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, PortfolioShareType = NULL) {
   op <- new_operation(
     name = "RejectPortfolioShare",
@@ -5511,6 +5657,8 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @keywords internal
 #'
 #' @rdname servicecatalog_scan_provisioned_products
+#'
+#' @aliases servicecatalog_scan_provisioned_products
 servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, AccessLevelFilter = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "ScanProvisionedProducts",
@@ -5602,6 +5750,8 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' @keywords internal
 #'
 #' @rdname servicecatalog_search_products
+#'
+#' @aliases servicecatalog_search_products
 servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL, PageSize = NULL, SortBy = NULL, SortOrder = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "SearchProducts",
@@ -5698,6 +5848,8 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_search_products_as_admin
+#'
+#' @aliases servicecatalog_search_products_as_admin
 servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, PortfolioId = NULL, Filters = NULL, SortBy = NULL, SortOrder = NULL, PageToken = NULL, PageSize = NULL, ProductSource = NULL) {
   op <- new_operation(
     name = "SearchProductsAsAdmin",
@@ -5813,6 +5965,8 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' @keywords internal
 #'
 #' @rdname servicecatalog_search_provisioned_products
+#'
+#' @aliases servicecatalog_search_provisioned_products
 servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, AccessLevelFilter = NULL, Filters = NULL, SortBy = NULL, SortOrder = NULL, PageSize = NULL, PageToken = NULL) {
   op <- new_operation(
     name = "SearchProvisionedProducts",
@@ -5922,6 +6076,8 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' @keywords internal
 #'
 #' @rdname servicecatalog_terminate_provisioned_product
+#'
+#' @aliases servicecatalog_terminate_provisioned_product
 servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName = NULL, ProvisionedProductId = NULL, TerminateToken, IgnoreErrors = NULL, AcceptLanguage = NULL, RetainPhysicalResources = NULL) {
   op <- new_operation(
     name = "TerminateProvisionedProduct",
@@ -6052,6 +6208,8 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_constraint
+#'
+#' @aliases servicecatalog_update_constraint
 servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Description = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "UpdateConstraint",
@@ -6140,6 +6298,8 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_portfolio
+#'
+#' @aliases servicecatalog_update_portfolio
 servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayName = NULL, Description = NULL, ProviderName = NULL, AddTags = NULL, RemoveTags = NULL) {
   op <- new_operation(
     name = "UpdatePortfolio",
@@ -6227,6 +6387,8 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_portfolio_share
+#'
+#' @aliases servicecatalog_update_portfolio_share
 servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL) {
   op <- new_operation(
     name = "UpdatePortfolioShare",
@@ -6332,6 +6494,8 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_product
+#'
+#' @aliases servicecatalog_update_product
 servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL, Owner = NULL, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL, RemoveTags = NULL) {
   op <- new_operation(
     name = "UpdateProduct",
@@ -6482,6 +6646,8 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioned_product
+#'
+#' @aliases servicecatalog_update_provisioned_product
 servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, ProvisionedProductName = NULL, ProvisionedProductId = NULL, ProductId = NULL, ProductName = NULL, ProvisioningArtifactId = NULL, ProvisioningArtifactName = NULL, PathId = NULL, PathName = NULL, ProvisioningParameters = NULL, ProvisioningPreferences = NULL, Tags = NULL, UpdateToken) {
   op <- new_operation(
     name = "UpdateProvisionedProduct",
@@ -6582,6 +6748,8 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioned_product_properties
+#'
+#' @aliases servicecatalog_update_provisioned_product_properties
 servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage = NULL, ProvisionedProductId, ProvisionedProductProperties, IdempotencyToken) {
   op <- new_operation(
     name = "UpdateProvisionedProductProperties",
@@ -6677,6 +6845,8 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_provisioning_artifact
+#'
+#' @aliases servicecatalog_update_provisioning_artifact
 servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, ProductId, ProvisioningArtifactId, Name = NULL, Description = NULL, Active = NULL, Guidance = NULL) {
   op <- new_operation(
     name = "UpdateProvisioningArtifact",
@@ -6749,6 +6919,8 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_service_action
+#'
+#' @aliases servicecatalog_update_service_action
 servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = NULL, Description = NULL, AcceptLanguage = NULL) {
   op <- new_operation(
     name = "UpdateServiceAction",
@@ -6804,6 +6976,8 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
 #' @keywords internal
 #'
 #' @rdname servicecatalog_update_tag_option
+#'
+#' @aliases servicecatalog_update_tag_option
 servicecatalog_update_tag_option <- function(Id, Value = NULL, Active = NULL) {
   op <- new_operation(
     name = "UpdateTagOption",

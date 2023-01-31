@@ -70,6 +70,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pricing_describe_services
+#'
+#' @aliases pricing_describe_services
 pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeServices",
@@ -146,6 +148,8 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' @keywords internal
 #'
 #' @rdname pricing_get_attribute_values
+#'
+#' @aliases pricing_get_attribute_values
 pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetAttributeValues",
@@ -214,6 +218,8 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' @keywords internal
 #'
 #' @rdname pricing_get_products
+#'
+#' @aliases pricing_get_products
 pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetProducts",

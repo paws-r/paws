@@ -185,6 +185,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname fis_create_experiment_template
+#'
+#' @aliases fis_create_experiment_template
 fis_create_experiment_template <- function(clientToken, description, stopConditions, targets = NULL, actions, roleArn, tags = NULL, logConfiguration = NULL) {
   op <- new_operation(
     name = "CreateExperimentTemplate",
@@ -297,6 +299,8 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
 #' @keywords internal
 #'
 #' @rdname fis_delete_experiment_template
+#'
+#' @aliases fis_delete_experiment_template
 fis_delete_experiment_template <- function(id) {
   op <- new_operation(
     name = "DeleteExperimentTemplate",
@@ -359,6 +363,8 @@ fis_delete_experiment_template <- function(id) {
 #' @keywords internal
 #'
 #' @rdname fis_get_action
+#'
+#' @aliases fis_get_action
 fis_get_action <- function(id) {
   op <- new_operation(
     name = "GetAction",
@@ -488,6 +494,8 @@ fis_get_action <- function(id) {
 #' @keywords internal
 #'
 #' @rdname fis_get_experiment
+#'
+#' @aliases fis_get_experiment
 fis_get_experiment <- function(id) {
   op <- new_operation(
     name = "GetExperiment",
@@ -600,6 +608,8 @@ fis_get_experiment <- function(id) {
 #' @keywords internal
 #'
 #' @rdname fis_get_experiment_template
+#'
+#' @aliases fis_get_experiment_template
 fis_get_experiment_template <- function(id) {
   op <- new_operation(
     name = "GetExperimentTemplate",
@@ -654,6 +664,8 @@ fis_get_experiment_template <- function(id) {
 #' @keywords internal
 #'
 #' @rdname fis_get_target_resource_type
+#'
+#' @aliases fis_get_target_resource_type
 fis_get_target_resource_type <- function(resourceType) {
   op <- new_operation(
     name = "GetTargetResourceType",
@@ -717,6 +729,8 @@ fis_get_target_resource_type <- function(resourceType) {
 #' @keywords internal
 #'
 #' @rdname fis_list_actions
+#'
+#' @aliases fis_list_actions
 fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListActions",
@@ -781,6 +795,8 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname fis_list_experiment_templates
+#'
+#' @aliases fis_list_experiment_templates
 fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListExperimentTemplates",
@@ -846,6 +862,8 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname fis_list_experiments
+#'
+#' @aliases fis_list_experiments
 fis_list_experiments <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListExperiments",
@@ -893,6 +911,8 @@ fis_list_experiments <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname fis_list_tags_for_resource
+#'
+#' @aliases fis_list_tags_for_resource
 fis_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -948,6 +968,8 @@ fis_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname fis_list_target_resource_types
+#'
+#' @aliases fis_list_target_resource_types
 fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListTargetResourceTypes",
@@ -1084,6 +1106,8 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
 #' @keywords internal
 #'
 #' @rdname fis_start_experiment
+#'
+#' @aliases fis_start_experiment
 fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL) {
   op <- new_operation(
     name = "StartExperiment",
@@ -1213,6 +1237,8 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, tags = NULL)
 #' @keywords internal
 #'
 #' @rdname fis_stop_experiment
+#'
+#' @aliases fis_stop_experiment
 fis_stop_experiment <- function(id) {
   op <- new_operation(
     name = "StopExperiment",
@@ -1257,6 +1283,8 @@ fis_stop_experiment <- function(id) {
 #' @keywords internal
 #'
 #' @rdname fis_tag_resource
+#'
+#' @aliases fis_tag_resource
 fis_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1301,6 +1329,8 @@ fis_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname fis_untag_resource
+#'
+#' @aliases fis_untag_resource
 fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
   op <- new_operation(
     name = "UntagResource",
@@ -1477,6 +1507,8 @@ fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
 #' @keywords internal
 #'
 #' @rdname fis_update_experiment_template
+#'
+#' @aliases fis_update_experiment_template
 fis_update_experiment_template <- function(id, description = NULL, stopConditions = NULL, targets = NULL, actions = NULL, roleArn = NULL, logConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateExperimentTemplate",

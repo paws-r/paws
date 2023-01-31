@@ -61,6 +61,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_add_custom_routing_endpoints
+#'
+#' @aliases globalaccelerator_add_custom_routing_endpoints
 globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfigurations, EndpointGroupArn) {
   op <- new_operation(
     name = "AddCustomRoutingEndpoints",
@@ -132,6 +134,8 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_advertise_byoip_cidr
+#'
+#' @aliases globalaccelerator_advertise_byoip_cidr
 globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
   op <- new_operation(
     name = "AdvertiseByoipCidr",
@@ -220,6 +224,8 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_allow_custom_routing_traffic
+#'
+#' @aliases globalaccelerator_allow_custom_routing_traffic
 globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, EndpointId, DestinationAddresses = NULL, DestinationPorts = NULL, AllowAllTrafficToEndpoint = NULL) {
   op <- new_operation(
     name = "AllowCustomRoutingTraffic",
@@ -356,6 +362,8 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_accelerator
+#'
+#' @aliases globalaccelerator_create_accelerator
 globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpAddresses = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateAccelerator",
@@ -490,6 +498,8 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_custom_routing_accelerator
+#'
+#' @aliases globalaccelerator_create_custom_routing_accelerator
 globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressType = NULL, IpAddresses = NULL, Enabled = NULL, IdempotencyToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateCustomRoutingAccelerator",
@@ -575,6 +585,8 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_custom_routing_endpoint_group
+#'
+#' @aliases globalaccelerator_create_custom_routing_endpoint_group
 globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, EndpointGroupRegion, DestinationConfigurations, IdempotencyToken) {
   op <- new_operation(
     name = "CreateCustomRoutingEndpointGroup",
@@ -648,6 +660,8 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_custom_routing_listener
+#'
+#' @aliases globalaccelerator_create_custom_routing_listener
 globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, PortRanges, IdempotencyToken) {
   op <- new_operation(
     name = "CreateCustomRoutingListener",
@@ -781,6 +795,8 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_endpoint_group
+#'
+#' @aliases globalaccelerator_create_endpoint_group
 globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRegion, EndpointConfigurations = NULL, TrafficDialPercentage = NULL, HealthCheckPort = NULL, HealthCheckProtocol = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, ThresholdCount = NULL, IdempotencyToken, PortOverrides = NULL) {
   op <- new_operation(
     name = "CreateEndpointGroup",
@@ -875,6 +891,8 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_create_listener
+#'
+#' @aliases globalaccelerator_create_listener
 globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protocol, ClientAffinity = NULL, IdempotencyToken) {
   op <- new_operation(
     name = "CreateListener",
@@ -935,6 +953,8 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_delete_accelerator
+#'
+#' @aliases globalaccelerator_delete_accelerator
 globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DeleteAccelerator",
@@ -994,6 +1014,8 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_delete_custom_routing_accelerator
+#'
+#' @aliases globalaccelerator_delete_custom_routing_accelerator
 globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DeleteCustomRoutingAccelerator",
@@ -1036,6 +1058,8 @@ globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) 
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_delete_custom_routing_endpoint_group
+#'
+#' @aliases globalaccelerator_delete_custom_routing_endpoint_group
 globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroupArn) {
   op <- new_operation(
     name = "DeleteCustomRoutingEndpointGroup",
@@ -1076,6 +1100,8 @@ globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroup
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_delete_custom_routing_listener
+#'
+#' @aliases globalaccelerator_delete_custom_routing_listener
 globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
   op <- new_operation(
     name = "DeleteCustomRoutingListener",
@@ -1116,6 +1142,8 @@ globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_delete_endpoint_group
+#'
+#' @aliases globalaccelerator_delete_endpoint_group
 globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
   op <- new_operation(
     name = "DeleteEndpointGroup",
@@ -1156,6 +1184,8 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_delete_listener
+#'
+#' @aliases globalaccelerator_delete_listener
 globalaccelerator_delete_listener <- function(ListenerArn) {
   op <- new_operation(
     name = "DeleteListener",
@@ -1240,6 +1270,8 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_deny_custom_routing_traffic
+#'
+#' @aliases globalaccelerator_deny_custom_routing_traffic
 globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, EndpointId, DestinationAddresses = NULL, DestinationPorts = NULL, DenyAllTrafficToEndpoint = NULL) {
   op <- new_operation(
     name = "DenyCustomRoutingTraffic",
@@ -1310,6 +1342,8 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_deprovision_byoip_cidr
+#'
+#' @aliases globalaccelerator_deprovision_byoip_cidr
 globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
   op <- new_operation(
     name = "DeprovisionByoipCidr",
@@ -1386,6 +1420,8 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_accelerator
+#'
+#' @aliases globalaccelerator_describe_accelerator
 globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DescribeAccelerator",
@@ -1436,6 +1472,8 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_accelerator_attributes
+#'
+#' @aliases globalaccelerator_describe_accelerator_attributes
 globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DescribeAcceleratorAttributes",
@@ -1503,6 +1541,8 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_custom_routing_accelerator
+#'
+#' @aliases globalaccelerator_describe_custom_routing_accelerator
 globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DescribeCustomRoutingAccelerator",
@@ -1553,7 +1593,9 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
 #'
 #' @keywords internal
 #'
-#' @rdname globalaccelerator_describe_custom_routing_accelerator_attributes
+#' @rdname globalaccelerator_descri_custom_routin_accele_attrib
+#'
+#' @aliases globalaccelerator_describe_custom_routing_accelerator_attributes
 globalaccelerator_describe_custom_routing_accelerator_attributes <- function(AcceleratorArn) {
   op <- new_operation(
     name = "DescribeCustomRoutingAcceleratorAttributes",
@@ -1617,6 +1659,8 @@ globalaccelerator_describe_custom_routing_accelerator_attributes <- function(Acc
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_custom_routing_endpoint_group
+#'
+#' @aliases globalaccelerator_describe_custom_routing_endpoint_group
 globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGroupArn) {
   op <- new_operation(
     name = "DescribeCustomRoutingEndpointGroup",
@@ -1670,6 +1714,8 @@ globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGro
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_custom_routing_listener
+#'
+#' @aliases globalaccelerator_describe_custom_routing_listener
 globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
   op <- new_operation(
     name = "DescribeCustomRoutingListener",
@@ -1739,6 +1785,8 @@ globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_endpoint_group
+#'
+#' @aliases globalaccelerator_describe_endpoint_group
 globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
   op <- new_operation(
     name = "DescribeEndpointGroup",
@@ -1794,6 +1842,8 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_describe_listener
+#'
+#' @aliases globalaccelerator_describe_listener
 globalaccelerator_describe_listener <- function(ListenerArn) {
   op <- new_operation(
     name = "DescribeListener",
@@ -1877,6 +1927,8 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_accelerators
+#'
+#' @aliases globalaccelerator_list_accelerators
 globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccelerators",
@@ -1944,6 +1996,8 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_byoip_cidrs
+#'
+#' @aliases globalaccelerator_list_byoip_cidrs
 globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListByoipCidrs",
@@ -2019,6 +2073,8 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_custom_routing_accelerators
+#'
+#' @aliases globalaccelerator_list_custom_routing_accelerators
 globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomRoutingAccelerators",
@@ -2094,6 +2150,8 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_custom_routing_endpoint_groups
+#'
+#' @aliases globalaccelerator_list_custom_routing_endpoint_groups
 globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomRoutingEndpointGroups",
@@ -2157,6 +2215,8 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_custom_routing_listeners
+#'
+#' @aliases globalaccelerator_list_custom_routing_listeners
 globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomRoutingListeners",
@@ -2246,6 +2306,8 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_custom_routing_port_mappings
+#'
+#' @aliases globalaccelerator_list_custom_routing_port_mappings
 globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, EndpointGroupArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomRoutingPortMappings",
@@ -2326,7 +2388,9 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #'
 #' @keywords internal
 #'
-#' @rdname globalaccelerator_list_custom_routing_port_mappings_by_destination
+#' @rdname globalaccelerator_list_custo_routi_port_mappi_by_desti
+#'
+#' @aliases globalaccelerator_list_custom_routing_port_mappings_by_destination
 globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(EndpointId, DestinationAddress, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomRoutingPortMappingsByDestination",
@@ -2406,6 +2470,8 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_endpoint_groups
+#'
+#' @aliases globalaccelerator_list_endpoint_groups
 globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListEndpointGroups",
@@ -2471,6 +2537,8 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_listeners
+#'
+#' @aliases globalaccelerator_list_listeners
 globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListListeners",
@@ -2526,6 +2594,8 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_list_tags_for_resource
+#'
+#' @aliases globalaccelerator_list_tags_for_resource
 globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2601,6 +2671,8 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_provision_byoip_cidr
+#'
+#' @aliases globalaccelerator_provision_byoip_cidr
 globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext) {
   op <- new_operation(
     name = "ProvisionByoipCidr",
@@ -2648,6 +2720,8 @@ globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContex
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_remove_custom_routing_endpoints
+#'
+#' @aliases globalaccelerator_remove_custom_routing_endpoints
 globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, EndpointGroupArn) {
   op <- new_operation(
     name = "RemoveCustomRoutingEndpoints",
@@ -2701,6 +2775,8 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_tag_resource
+#'
+#' @aliases globalaccelerator_tag_resource
 globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2753,6 +2829,8 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_untag_resource
+#'
+#' @aliases globalaccelerator_untag_resource
 globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2848,6 +2926,8 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_accelerator
+#'
+#' @aliases globalaccelerator_update_accelerator
 globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, IpAddressType = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "UpdateAccelerator",
@@ -2920,6 +3000,8 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_accelerator_attributes
+#'
+#' @aliases globalaccelerator_update_accelerator_attributes
 globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, FlowLogsEnabled = NULL, FlowLogsS3Bucket = NULL, FlowLogsS3Prefix = NULL) {
   op <- new_operation(
     name = "UpdateAcceleratorAttributes",
@@ -3001,6 +3083,8 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_custom_routing_accelerator
+#'
+#' @aliases globalaccelerator_update_custom_routing_accelerator
 globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, Name = NULL, IpAddressType = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "UpdateCustomRoutingAccelerator",
@@ -3074,7 +3158,9 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 #'
 #' @keywords internal
 #'
-#' @rdname globalaccelerator_update_custom_routing_accelerator_attributes
+#' @rdname globalaccelerator_update_custom_routin_accele_attrib
+#'
+#' @aliases globalaccelerator_update_custom_routing_accelerator_attributes
 globalaccelerator_update_custom_routing_accelerator_attributes <- function(AcceleratorArn, FlowLogsEnabled = NULL, FlowLogsS3Bucket = NULL, FlowLogsS3Prefix = NULL) {
   op <- new_operation(
     name = "UpdateCustomRoutingAcceleratorAttributes",
@@ -3142,6 +3228,8 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_custom_routing_listener
+#'
+#' @aliases globalaccelerator_update_custom_routing_listener
 globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRanges) {
   op <- new_operation(
     name = "UpdateCustomRoutingListener",
@@ -3268,6 +3356,8 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_endpoint_group
+#'
+#' @aliases globalaccelerator_update_endpoint_group
 globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointConfigurations = NULL, TrafficDialPercentage = NULL, HealthCheckPort = NULL, HealthCheckProtocol = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, ThresholdCount = NULL, PortOverrides = NULL) {
   op <- new_operation(
     name = "UpdateEndpointGroup",
@@ -3357,6 +3447,8 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_update_listener
+#'
+#' @aliases globalaccelerator_update_listener
 globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Protocol = NULL, ClientAffinity = NULL) {
   op <- new_operation(
     name = "UpdateListener",
@@ -3423,6 +3515,8 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' @keywords internal
 #'
 #' @rdname globalaccelerator_withdraw_byoip_cidr
+#'
+#' @aliases globalaccelerator_withdraw_byoip_cidr
 globalaccelerator_withdraw_byoip_cidr <- function(Cidr) {
   op <- new_operation(
     name = "WithdrawByoipCidr",

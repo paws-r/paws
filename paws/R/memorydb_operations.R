@@ -119,6 +119,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname memorydb_batch_update_cluster
+#'
+#' @aliases memorydb_batch_update_cluster
 memorydb_batch_update_cluster <- function(ClusterNames, ServiceUpdate = NULL) {
   op <- new_operation(
     name = "BatchUpdateCluster",
@@ -220,6 +222,8 @@ memorydb_batch_update_cluster <- function(ClusterNames, ServiceUpdate = NULL) {
 #' @keywords internal
 #'
 #' @rdname memorydb_copy_snapshot
+#'
+#' @aliases memorydb_copy_snapshot
 memorydb_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, TargetBucket = NULL, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CopySnapshot",
@@ -298,6 +302,8 @@ memorydb_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Targe
 #' @keywords internal
 #'
 #' @rdname memorydb_create_acl
+#'
+#' @aliases memorydb_create_acl
 memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateACL",
@@ -491,6 +497,8 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname memorydb_create_cluster
+#'
+#' @aliases memorydb_create_cluster
 memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -559,6 +567,8 @@ memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = 
 #' @keywords internal
 #'
 #' @rdname memorydb_create_parameter_group
+#'
+#' @aliases memorydb_create_parameter_group
 memorydb_create_parameter_group <- function(ParameterGroupName, Family, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateParameterGroup",
@@ -650,6 +660,8 @@ memorydb_create_parameter_group <- function(ParameterGroupName, Family, Descript
 #' @keywords internal
 #'
 #' @rdname memorydb_create_snapshot
+#'
+#' @aliases memorydb_create_snapshot
 memorydb_create_snapshot <- function(ClusterName, SnapshotName, KmsKeyId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -730,6 +742,8 @@ memorydb_create_snapshot <- function(ClusterName, SnapshotName, KmsKeyId = NULL,
 #' @keywords internal
 #'
 #' @rdname memorydb_create_subnet_group
+#'
+#' @aliases memorydb_create_subnet_group
 memorydb_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateSubnetGroup",
@@ -809,6 +823,8 @@ memorydb_create_subnet_group <- function(SubnetGroupName, Description = NULL, Su
 #' @keywords internal
 #'
 #' @rdname memorydb_create_user
+#'
+#' @aliases memorydb_create_user
 memorydb_create_user <- function(UserName, AuthenticationMode, AccessString, Tags = NULL) {
   op <- new_operation(
     name = "CreateUser",
@@ -876,6 +892,8 @@ memorydb_create_user <- function(UserName, AuthenticationMode, AccessString, Tag
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_acl
+#'
+#' @aliases memorydb_delete_acl
 memorydb_delete_acl <- function(ACLName) {
   op <- new_operation(
     name = "DeleteACL",
@@ -996,6 +1014,8 @@ memorydb_delete_acl <- function(ACLName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_cluster
+#'
+#' @aliases memorydb_delete_cluster
 memorydb_delete_cluster <- function(ClusterName, FinalSnapshotName = NULL) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -1048,6 +1068,8 @@ memorydb_delete_cluster <- function(ClusterName, FinalSnapshotName = NULL) {
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_parameter_group
+#'
+#' @aliases memorydb_delete_parameter_group
 memorydb_delete_parameter_group <- function(ParameterGroupName) {
   op <- new_operation(
     name = "DeleteParameterGroup",
@@ -1129,6 +1151,8 @@ memorydb_delete_parameter_group <- function(ParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_snapshot
+#'
+#' @aliases memorydb_delete_snapshot
 memorydb_delete_snapshot <- function(SnapshotName) {
   op <- new_operation(
     name = "DeleteSnapshot",
@@ -1188,6 +1212,8 @@ memorydb_delete_snapshot <- function(SnapshotName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_subnet_group
+#'
+#' @aliases memorydb_delete_subnet_group
 memorydb_delete_subnet_group <- function(SubnetGroupName) {
   op <- new_operation(
     name = "DeleteSubnetGroup",
@@ -1247,6 +1273,8 @@ memorydb_delete_subnet_group <- function(SubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_delete_user
+#'
+#' @aliases memorydb_delete_user
 memorydb_delete_user <- function(UserName) {
   op <- new_operation(
     name = "DeleteUser",
@@ -1324,6 +1352,8 @@ memorydb_delete_user <- function(UserName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_ac_ls
+#'
+#' @aliases memorydb_describe_ac_ls
 memorydb_describe_ac_ls <- function(ACLName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeACLs",
@@ -1460,6 +1490,8 @@ memorydb_describe_ac_ls <- function(ACLName = NULL, MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_clusters
+#'
+#' @aliases memorydb_describe_clusters
 memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, NextToken = NULL, ShowShardDetails = NULL) {
   op <- new_operation(
     name = "DescribeClusters",
@@ -1528,6 +1560,8 @@ memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, Ne
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_engine_versions
+#'
+#' @aliases memorydb_describe_engine_versions
 memorydb_describe_engine_versions <- function(EngineVersion = NULL, ParameterGroupFamily = NULL, MaxResults = NULL, NextToken = NULL, DefaultOnly = NULL) {
   op <- new_operation(
     name = "DescribeEngineVersions",
@@ -1615,6 +1649,8 @@ memorydb_describe_engine_versions <- function(EngineVersion = NULL, ParameterGro
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_events
+#'
+#' @aliases memorydb_describe_events
 memorydb_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -1681,6 +1717,8 @@ memorydb_describe_events <- function(SourceName = NULL, SourceType = NULL, Start
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_parameter_groups
+#'
+#' @aliases memorydb_describe_parameter_groups
 memorydb_describe_parameter_groups <- function(ParameterGroupName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeParameterGroups",
@@ -1746,6 +1784,8 @@ memorydb_describe_parameter_groups <- function(ParameterGroupName = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_parameters
+#'
+#' @aliases memorydb_describe_parameters
 memorydb_describe_parameters <- function(ParameterGroupName, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeParameters",
@@ -1826,6 +1866,8 @@ memorydb_describe_parameters <- function(ParameterGroupName, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_service_updates
+#'
+#' @aliases memorydb_describe_service_updates
 memorydb_describe_service_updates <- function(ServiceUpdateName = NULL, ClusterNames = NULL, Status = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeServiceUpdates",
@@ -1934,6 +1976,8 @@ memorydb_describe_service_updates <- function(ServiceUpdateName = NULL, ClusterN
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_snapshots
+#'
+#' @aliases memorydb_describe_snapshots
 memorydb_describe_snapshots <- function(ClusterName = NULL, SnapshotName = NULL, Source = NULL, NextToken = NULL, MaxResults = NULL, ShowDetail = NULL) {
   op <- new_operation(
     name = "DescribeSnapshots",
@@ -2006,6 +2050,8 @@ memorydb_describe_snapshots <- function(ClusterName = NULL, SnapshotName = NULL,
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_subnet_groups
+#'
+#' @aliases memorydb_describe_subnet_groups
 memorydb_describe_subnet_groups <- function(SubnetGroupName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeSubnetGroups",
@@ -2086,6 +2132,8 @@ memorydb_describe_subnet_groups <- function(SubnetGroupName = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname memorydb_describe_users
+#'
+#' @aliases memorydb_describe_users
 memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeUsers",
@@ -2203,6 +2251,8 @@ memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname memorydb_failover_shard
+#'
+#' @aliases memorydb_failover_shard
 memorydb_failover_shard <- function(ClusterName, ShardName) {
   op <- new_operation(
     name = "FailoverShard",
@@ -2259,6 +2309,8 @@ memorydb_failover_shard <- function(ClusterName, ShardName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_list_allowed_node_type_updates
+#'
+#' @aliases memorydb_list_allowed_node_type_updates
 memorydb_list_allowed_node_type_updates <- function(ClusterName) {
   op <- new_operation(
     name = "ListAllowedNodeTypeUpdates",
@@ -2314,6 +2366,8 @@ memorydb_list_allowed_node_type_updates <- function(ClusterName) {
 #' @keywords internal
 #'
 #' @rdname memorydb_list_tags
+#'
+#' @aliases memorydb_list_tags
 memorydb_list_tags <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTags",
@@ -2379,6 +2433,8 @@ memorydb_list_tags <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname memorydb_reset_parameter_group
+#'
+#' @aliases memorydb_reset_parameter_group
 memorydb_reset_parameter_group <- function(ParameterGroupName, AllParameters = NULL, ParameterNames = NULL) {
   op <- new_operation(
     name = "ResetParameterGroup",
@@ -2452,6 +2508,8 @@ memorydb_reset_parameter_group <- function(ParameterGroupName, AllParameters = N
 #' @keywords internal
 #'
 #' @rdname memorydb_tag_resource
+#'
+#' @aliases memorydb_tag_resource
 memorydb_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2507,6 +2565,8 @@ memorydb_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname memorydb_untag_resource
+#'
+#' @aliases memorydb_untag_resource
 memorydb_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2579,6 +2639,8 @@ memorydb_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname memorydb_update_acl
+#'
+#' @aliases memorydb_update_acl
 memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemove = NULL) {
   op <- new_operation(
     name = "UpdateACL",
@@ -2740,6 +2802,8 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #' @keywords internal
 #'
 #' @rdname memorydb_update_cluster
+#'
+#' @aliases memorydb_update_cluster
 memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, SnsTopicArn = NULL, SnsTopicStatus = NULL, ParameterGroupName = NULL, SnapshotWindow = NULL, SnapshotRetentionLimit = NULL, NodeType = NULL, EngineVersion = NULL, ReplicaConfiguration = NULL, ShardConfiguration = NULL, ACLName = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
@@ -2801,6 +2865,8 @@ memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGro
 #' @keywords internal
 #'
 #' @rdname memorydb_update_parameter_group
+#'
+#' @aliases memorydb_update_parameter_group
 memorydb_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) {
   op <- new_operation(
     name = "UpdateParameterGroup",
@@ -2866,6 +2932,8 @@ memorydb_update_parameter_group <- function(ParameterGroupName, ParameterNameVal
 #' @keywords internal
 #'
 #' @rdname memorydb_update_subnet_group
+#'
+#' @aliases memorydb_update_subnet_group
 memorydb_update_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetIds = NULL) {
   op <- new_operation(
     name = "UpdateSubnetGroup",
@@ -2934,6 +3002,8 @@ memorydb_update_subnet_group <- function(SubnetGroupName, Description = NULL, Su
 #' @keywords internal
 #'
 #' @rdname memorydb_update_user
+#'
+#' @aliases memorydb_update_user
 memorydb_update_user <- function(UserName, AuthenticationMode = NULL, AccessString = NULL) {
   op <- new_operation(
     name = "UpdateUser",

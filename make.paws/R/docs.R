@@ -11,6 +11,7 @@ make_docs_long <- function(operation, api) {
   request <- make_doc_request(operation, api)
   examples <- make_doc_examples(operation, api)
   rdname <- make_doc_rdname(operation, api)
+  alias <- make_doc_alias(operation, api)
   docs <- glue::glue_collapse(
     c(title,
       description,
@@ -20,7 +21,8 @@ make_docs_long <- function(operation, api) {
       request,
       examples,
       "#' @keywords internal",
-      rdname),
+      rdname,
+      alias),
     sep = "\n#'\n"
   )
   return(as.character(docs))
@@ -230,10 +232,20 @@ make_doc_examples <- function(operation, api) {
   return(result)
 }
 
-make_doc_rdname <- function(operation, api) {
+make_doc_rdname <- function(operation, api, len = 60) {
   svc_name <- package_name(api)
   op_name <- get_operation_name(operation)
-  result <- sprintf("#' @rdname %s_%s", svc_name, op_name)
+  rd_name <- sprintf("%s_%s", svc_name, op_name)
+  if (nchar(rd_name) > len) {
+    rd_name <- shorten_rdname(svc_name, op_name, len)
+  }
+  sprintf("#' @rdname %s", rd_name)
+}
+
+make_doc_alias <- function(operation, api) {
+  svc_name <- package_name(api)
+  op_name <- get_operation_name(operation)
+  result <- sprintf("#' @aliases %s_%s", svc_name, op_name)
 }
 
 #-------------------------------------------------------------------------------
@@ -711,4 +723,15 @@ get_links <- function(api) {
     )
   }
   return(links)
+}
+
+shorten_rdname <- function(svc_name, op_name, len) {
+  prts <- strsplit(op_name, "_")[[1]]
+  len_svc <- nchar(svc_name) + len %/% length(prts)
+  cut_off <- floor((len - len_svc) / length(prts))
+  op_name <- paste(
+    paste0(substr(prts, 1, cut_off)),
+    collapse = "_"
+  )
+  return(sprintf("%s_%s", svc_name, op_name))
 }

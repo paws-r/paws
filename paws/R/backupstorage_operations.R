@@ -28,6 +28,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname backupstorage_delete_object
+#'
+#' @aliases backupstorage_delete_object
 backupstorage_delete_object <- function(BackupJobId, ObjectName) {
   op <- new_operation(
     name = "DeleteObject",
@@ -78,6 +80,8 @@ backupstorage_delete_object <- function(BackupJobId, ObjectName) {
 #' @keywords internal
 #'
 #' @rdname backupstorage_get_chunk
+#'
+#' @aliases backupstorage_get_chunk
 backupstorage_get_chunk <- function(StorageJobId, ChunkToken) {
   op <- new_operation(
     name = "GetChunk",
@@ -129,6 +133,8 @@ backupstorage_get_chunk <- function(StorageJobId, ChunkToken) {
 #' @keywords internal
 #'
 #' @rdname backupstorage_get_object_metadata
+#'
+#' @aliases backupstorage_get_object_metadata
 backupstorage_get_object_metadata <- function(StorageJobId, ObjectToken) {
   op <- new_operation(
     name = "GetObjectMetadata",
@@ -190,6 +196,8 @@ backupstorage_get_object_metadata <- function(StorageJobId, ObjectToken) {
 #' @keywords internal
 #'
 #' @rdname backupstorage_list_chunks
+#'
+#' @aliases backupstorage_list_chunks
 backupstorage_list_chunks <- function(StorageJobId, ObjectToken, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListChunks",
@@ -265,6 +273,8 @@ backupstorage_list_chunks <- function(StorageJobId, ObjectToken, MaxResults = NU
 #' @keywords internal
 #'
 #' @rdname backupstorage_list_objects
+#'
+#' @aliases backupstorage_list_objects
 backupstorage_list_objects <- function(StorageJobId, StartingObjectName = NULL, StartingObjectPrefix = NULL, MaxResults = NULL, NextToken = NULL, CreatedBefore = NULL, CreatedAfter = NULL) {
   op <- new_operation(
     name = "ListObjects",
@@ -330,6 +340,8 @@ backupstorage_list_objects <- function(StorageJobId, StartingObjectName = NULL, 
 #' @keywords internal
 #'
 #' @rdname backupstorage_notify_object_complete
+#'
+#' @aliases backupstorage_notify_object_complete
 backupstorage_notify_object_complete <- function(BackupJobId, UploadId, ObjectChecksum, ObjectChecksumAlgorithm, MetadataString = NULL, MetadataBlob = NULL, MetadataBlobLength = NULL, MetadataBlobChecksum = NULL, MetadataBlobChecksumAlgorithm = NULL) {
   op <- new_operation(
     name = "NotifyObjectComplete",
@@ -389,6 +401,8 @@ backupstorage_notify_object_complete <- function(BackupJobId, UploadId, ObjectCh
 #' @keywords internal
 #'
 #' @rdname backupstorage_put_chunk
+#'
+#' @aliases backupstorage_put_chunk
 backupstorage_put_chunk <- function(BackupJobId, UploadId, ChunkIndex, Data, Length, Checksum, ChecksumAlgorithm) {
   op <- new_operation(
     name = "PutChunk",
@@ -461,6 +475,8 @@ backupstorage_put_chunk <- function(BackupJobId, UploadId, ChunkIndex, Data, Len
 #' @keywords internal
 #'
 #' @rdname backupstorage_put_object
+#'
+#' @aliases backupstorage_put_object
 backupstorage_put_object <- function(BackupJobId, ObjectName, MetadataString = NULL, InlineChunk = NULL, InlineChunkLength = NULL, InlineChunkChecksum = NULL, InlineChunkChecksumAlgorithm = NULL, ObjectChecksum = NULL, ObjectChecksumAlgorithm = NULL, ThrowOnDuplicate = NULL) {
   op <- new_operation(
     name = "PutObject",
@@ -510,6 +526,8 @@ backupstorage_put_object <- function(BackupJobId, ObjectName, MetadataString = N
 #' @keywords internal
 #'
 #' @rdname backupstorage_start_object
+#'
+#' @aliases backupstorage_start_object
 backupstorage_start_object <- function(BackupJobId, ObjectName, ThrowOnDuplicate = NULL) {
   op <- new_operation(
     name = "StartObject",

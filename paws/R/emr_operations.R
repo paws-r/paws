@@ -91,6 +91,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname emr_add_instance_fleet
+#'
+#' @aliases emr_add_instance_fleet
 emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
   op <- new_operation(
     name = "AddInstanceFleet",
@@ -213,6 +215,8 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 #' @keywords internal
 #'
 #' @rdname emr_add_instance_groups
+#'
+#' @aliases emr_add_instance_groups
 emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
   op <- new_operation(
     name = "AddInstanceGroups",
@@ -317,6 +321,8 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' @keywords internal
 #'
 #' @rdname emr_add_job_flow_steps
+#'
+#' @aliases emr_add_job_flow_steps
 emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
   op <- new_operation(
     name = "AddJobFlowSteps",
@@ -373,6 +379,8 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_add_tags
+#'
+#' @aliases emr_add_tags
 emr_add_tags <- function(ResourceId, Tags) {
   op <- new_operation(
     name = "AddTags",
@@ -441,6 +449,8 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' @keywords internal
 #'
 #' @rdname emr_cancel_steps
+#'
+#' @aliases emr_cancel_steps
 emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) {
   op <- new_operation(
     name = "CancelSteps",
@@ -496,6 +506,8 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
 #' @keywords internal
 #'
 #' @rdname emr_create_security_configuration
+#'
+#' @aliases emr_create_security_configuration
 emr_create_security_configuration <- function(Name, SecurityConfiguration) {
   op <- new_operation(
     name = "CreateSecurityConfiguration",
@@ -602,6 +614,8 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @keywords internal
 #'
 #' @rdname emr_create_studio
+#'
+#' @aliases emr_create_studio
 emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetIds, ServiceRole, UserRole = NULL, WorkspaceSecurityGroupId, EngineSecurityGroupId, DefaultS3Location, IdpAuthUrl = NULL, IdpRelayStateParameterName = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateStudio",
@@ -677,6 +691,8 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #' @keywords internal
 #'
 #' @rdname emr_create_studio_session_mapping
+#'
+#' @aliases emr_create_studio_session_mapping
 emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, IdentityName = NULL, IdentityType, SessionPolicyArn) {
   op <- new_operation(
     name = "CreateStudioSessionMapping",
@@ -717,6 +733,8 @@ emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #' @keywords internal
 #'
 #' @rdname emr_delete_security_configuration
+#'
+#' @aliases emr_delete_security_configuration
 emr_delete_security_configuration <- function(Name) {
   op <- new_operation(
     name = "DeleteSecurityConfiguration",
@@ -757,6 +775,8 @@ emr_delete_security_configuration <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname emr_delete_studio
+#'
+#' @aliases emr_delete_studio
 emr_delete_studio <- function(StudioId) {
   op <- new_operation(
     name = "DeleteStudio",
@@ -817,6 +837,8 @@ emr_delete_studio <- function(StudioId) {
 #' @keywords internal
 #'
 #' @rdname emr_delete_studio_session_mapping
+#'
+#' @aliases emr_delete_studio_session_mapping
 emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, IdentityName = NULL, IdentityType) {
   op <- new_operation(
     name = "DeleteStudioSessionMapping",
@@ -968,6 +990,8 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #' @keywords internal
 #'
 #' @rdname emr_describe_cluster
+#'
+#' @aliases emr_describe_cluster
 emr_describe_cluster <- function(ClusterId) {
   op <- new_operation(
     name = "DescribeCluster",
@@ -1175,6 +1199,8 @@ emr_describe_cluster <- function(ClusterId) {
 #' @keywords internal
 #'
 #' @rdname emr_describe_job_flows
+#'
+#' @aliases emr_describe_job_flows
 emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, JobFlowIds = NULL, JobFlowStates = NULL) {
   op <- new_operation(
     name = "DescribeJobFlows",
@@ -1247,6 +1273,8 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
 #' @keywords internal
 #'
 #' @rdname emr_describe_notebook_execution
+#'
+#' @aliases emr_describe_notebook_execution
 emr_describe_notebook_execution <- function(NotebookExecutionId) {
   op <- new_operation(
     name = "DescribeNotebookExecution",
@@ -1313,6 +1341,8 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
 #' @keywords internal
 #'
 #' @rdname emr_describe_release_label
+#'
+#' @aliases emr_describe_release_label
 emr_describe_release_label <- function(ReleaseLabel = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeReleaseLabel",
@@ -1364,6 +1394,8 @@ emr_describe_release_label <- function(ReleaseLabel = NULL, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname emr_describe_security_configuration
+#'
+#' @aliases emr_describe_security_configuration
 emr_describe_security_configuration <- function(Name) {
   op <- new_operation(
     name = "DescribeSecurityConfiguration",
@@ -1449,6 +1481,8 @@ emr_describe_security_configuration <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname emr_describe_step
+#'
+#' @aliases emr_describe_step
 emr_describe_step <- function(ClusterId, StepId) {
   op <- new_operation(
     name = "DescribeStep",
@@ -1523,6 +1557,8 @@ emr_describe_step <- function(ClusterId, StepId) {
 #' @keywords internal
 #'
 #' @rdname emr_describe_studio
+#'
+#' @aliases emr_describe_studio
 emr_describe_studio <- function(StudioId) {
   op <- new_operation(
     name = "DescribeStudio",
@@ -1571,6 +1607,8 @@ emr_describe_studio <- function(StudioId) {
 #' @keywords internal
 #'
 #' @rdname emr_get_auto_termination_policy
+#'
+#' @aliases emr_get_auto_termination_policy
 emr_get_auto_termination_policy <- function(ClusterId) {
   op <- new_operation(
     name = "GetAutoTerminationPolicy",
@@ -1631,6 +1669,8 @@ emr_get_auto_termination_policy <- function(ClusterId) {
 #' @keywords internal
 #'
 #' @rdname emr_get_block_public_access_configuration
+#'
+#' @aliases emr_get_block_public_access_configuration
 emr_get_block_public_access_configuration <- function() {
   op <- new_operation(
     name = "GetBlockPublicAccessConfiguration",
@@ -1685,6 +1725,8 @@ emr_get_block_public_access_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname emr_get_managed_scaling_policy
+#'
+#' @aliases emr_get_managed_scaling_policy
 emr_get_managed_scaling_policy <- function(ClusterId) {
   op <- new_operation(
     name = "GetManagedScalingPolicy",
@@ -1762,6 +1804,8 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 #' @keywords internal
 #'
 #' @rdname emr_get_studio_session_mapping
+#'
+#' @aliases emr_get_studio_session_mapping
 emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, IdentityName = NULL, IdentityType) {
   op <- new_operation(
     name = "GetStudioSessionMapping",
@@ -1820,6 +1864,8 @@ emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, Identity
 #' @keywords internal
 #'
 #' @rdname emr_list_bootstrap_actions
+#'
+#' @aliases emr_list_bootstrap_actions
 emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
   op <- new_operation(
     name = "ListBootstrapActions",
@@ -1912,6 +1958,8 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_list_clusters
+#'
+#' @aliases emr_list_clusters
 emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, ClusterStates = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListClusters",
@@ -2037,6 +2085,8 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #' @keywords internal
 #'
 #' @rdname emr_list_instance_fleets
+#'
+#' @aliases emr_list_instance_fleets
 emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
   op <- new_operation(
     name = "ListInstanceFleets",
@@ -2204,6 +2254,8 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_list_instance_groups
+#'
+#' @aliases emr_list_instance_groups
 emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
   op <- new_operation(
     name = "ListInstanceGroups",
@@ -2309,6 +2361,8 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_list_instances
+#'
+#' @aliases emr_list_instances
 emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupTypes = NULL, InstanceFleetId = NULL, InstanceFleetType = NULL, InstanceStates = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListInstances",
@@ -2418,6 +2472,8 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 #' @keywords internal
 #'
 #' @rdname emr_list_notebook_executions
+#'
+#' @aliases emr_list_notebook_executions
 emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = NULL, To = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListNotebookExecutions",
@@ -2485,6 +2541,8 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
 #' @keywords internal
 #'
 #' @rdname emr_list_release_labels
+#'
+#' @aliases emr_list_release_labels
 emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListReleaseLabels",
@@ -2543,6 +2601,8 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname emr_list_security_configurations
+#'
+#' @aliases emr_list_security_configurations
 emr_list_security_configurations <- function(Marker = NULL) {
   op <- new_operation(
     name = "ListSecurityConfigurations",
@@ -2650,6 +2710,8 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_list_steps
+#'
+#' @aliases emr_list_steps
 emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListSteps",
@@ -2715,6 +2777,8 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 #' @keywords internal
 #'
 #' @rdname emr_list_studio_session_mappings
+#'
+#' @aliases emr_list_studio_session_mappings
 emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NULL, Marker = NULL) {
   op <- new_operation(
     name = "ListStudioSessionMappings",
@@ -2776,6 +2840,8 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 #' @keywords internal
 #'
 #' @rdname emr_list_studios
+#'
+#' @aliases emr_list_studios
 emr_list_studios <- function(Marker = NULL) {
   op <- new_operation(
     name = "ListStudios",
@@ -2829,6 +2895,8 @@ emr_list_studios <- function(Marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_modify_cluster
+#'
+#' @aliases emr_modify_cluster
 emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
   op <- new_operation(
     name = "ModifyCluster",
@@ -2882,6 +2950,8 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #' @keywords internal
 #'
 #' @rdname emr_modify_instance_fleet
+#'
+#' @aliases emr_modify_instance_fleet
 emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
   op <- new_operation(
     name = "ModifyInstanceFleet",
@@ -2958,6 +3028,8 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #' @keywords internal
 #'
 #' @rdname emr_modify_instance_groups
+#'
+#' @aliases emr_modify_instance_groups
 emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) {
   op <- new_operation(
     name = "ModifyInstanceGroups",
@@ -3098,6 +3170,8 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
 #' @keywords internal
 #'
 #' @rdname emr_put_auto_scaling_policy
+#'
+#' @aliases emr_put_auto_scaling_policy
 emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingPolicy) {
   op <- new_operation(
     name = "PutAutoScalingPolicy",
@@ -3151,6 +3225,8 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #' @keywords internal
 #'
 #' @rdname emr_put_auto_termination_policy
+#'
+#' @aliases emr_put_auto_termination_policy
 emr_put_auto_termination_policy <- function(ClusterId, AutoTerminationPolicy = NULL) {
   op <- new_operation(
     name = "PutAutoTerminationPolicy",
@@ -3221,6 +3297,8 @@ emr_put_auto_termination_policy <- function(ClusterId, AutoTerminationPolicy = N
 #' @keywords internal
 #'
 #' @rdname emr_put_block_public_access_configuration
+#'
+#' @aliases emr_put_block_public_access_configuration
 emr_put_block_public_access_configuration <- function(BlockPublicAccessConfiguration) {
   op <- new_operation(
     name = "PutBlockPublicAccessConfiguration",
@@ -3276,6 +3354,8 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
 #' @keywords internal
 #'
 #' @rdname emr_put_managed_scaling_policy
+#'
+#' @aliases emr_put_managed_scaling_policy
 emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
   op <- new_operation(
     name = "PutManagedScalingPolicy",
@@ -3322,6 +3402,8 @@ emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
 #' @keywords internal
 #'
 #' @rdname emr_remove_auto_scaling_policy
+#'
+#' @aliases emr_remove_auto_scaling_policy
 emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
   op <- new_operation(
     name = "RemoveAutoScalingPolicy",
@@ -3363,6 +3445,8 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 #' @keywords internal
 #'
 #' @rdname emr_remove_auto_termination_policy
+#'
+#' @aliases emr_remove_auto_termination_policy
 emr_remove_auto_termination_policy <- function(ClusterId) {
   op <- new_operation(
     name = "RemoveAutoTerminationPolicy",
@@ -3404,6 +3488,8 @@ emr_remove_auto_termination_policy <- function(ClusterId) {
 #' @keywords internal
 #'
 #' @rdname emr_remove_managed_scaling_policy
+#'
+#' @aliases emr_remove_managed_scaling_policy
 emr_remove_managed_scaling_policy <- function(ClusterId) {
   op <- new_operation(
     name = "RemoveManagedScalingPolicy",
@@ -3457,6 +3543,8 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 #' @keywords internal
 #'
 #' @rdname emr_remove_tags
+#'
+#' @aliases emr_remove_tags
 emr_remove_tags <- function(ResourceId, TagKeys) {
   op <- new_operation(
     name = "RemoveTags",
@@ -3955,6 +4043,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
+#'
+#' @aliases emr_run_job_flow
 emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
@@ -4026,6 +4116,8 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
 #' @keywords internal
 #'
 #' @rdname emr_set_termination_protection
+#'
+#' @aliases emr_set_termination_protection
 emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
   op <- new_operation(
     name = "SetTerminationProtection",
@@ -4092,6 +4184,8 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' @keywords internal
 #'
 #' @rdname emr_set_visible_to_all_users
+#'
+#' @aliases emr_set_visible_to_all_users
 emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
   op <- new_operation(
     name = "SetVisibleToAllUsers",
@@ -4176,6 +4270,8 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
 #' @keywords internal
 #'
 #' @rdname emr_start_notebook_execution
+#'
+#' @aliases emr_start_notebook_execution
 emr_start_notebook_execution <- function(EditorId, RelativePath, NotebookExecutionName = NULL, NotebookParams = NULL, ExecutionEngine, ServiceRole, NotebookInstanceSecurityGroupId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "StartNotebookExecution",
@@ -4216,6 +4312,8 @@ emr_start_notebook_execution <- function(EditorId, RelativePath, NotebookExecuti
 #' @keywords internal
 #'
 #' @rdname emr_stop_notebook_execution
+#'
+#' @aliases emr_stop_notebook_execution
 emr_stop_notebook_execution <- function(NotebookExecutionId) {
   op <- new_operation(
     name = "StopNotebookExecution",
@@ -4268,6 +4366,8 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
 #' @keywords internal
 #'
 #' @rdname emr_terminate_job_flows
+#'
+#' @aliases emr_terminate_job_flows
 emr_terminate_job_flows <- function(JobFlowIds) {
   op <- new_operation(
     name = "TerminateJobFlows",
@@ -4326,6 +4426,8 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' @keywords internal
 #'
 #' @rdname emr_update_studio
+#'
+#' @aliases emr_update_studio
 emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetIds = NULL, DefaultS3Location = NULL) {
   op <- new_operation(
     name = "UpdateStudio",
@@ -4389,6 +4491,8 @@ emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetI
 #' @keywords internal
 #'
 #' @rdname emr_update_studio_session_mapping
+#'
+#' @aliases emr_update_studio_session_mapping
 emr_update_studio_session_mapping <- function(StudioId, IdentityId = NULL, IdentityName = NULL, IdentityType, SessionPolicyArn) {
   op <- new_operation(
     name = "UpdateStudioSessionMapping",

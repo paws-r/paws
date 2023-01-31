@@ -396,6 +396,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname appmesh_create_gateway_route
+#'
+#' @aliases appmesh_create_gateway_route
 appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, meshName, meshOwner = NULL, spec, tags = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "CreateGatewayRoute",
@@ -500,6 +502,8 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #' @keywords internal
 #'
 #' @rdname appmesh_create_mesh
+#'
+#' @aliases appmesh_create_mesh
 appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateMesh",
@@ -1015,6 +1019,8 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #' @keywords internal
 #'
 #' @rdname appmesh_create_route
+#'
+#' @aliases appmesh_create_route
 appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL, routeName, spec, tags = NULL, virtualRouterName) {
   op <- new_operation(
     name = "CreateRoute",
@@ -1337,6 +1343,8 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_gateway
+#'
+#' @aliases appmesh_create_virtual_gateway
 appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "CreateVirtualGateway",
@@ -1914,6 +1922,8 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_node
+#'
+#' @aliases appmesh_create_virtual_node
 appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualNodeName) {
   op <- new_operation(
     name = "CreateVirtualNode",
@@ -2034,6 +2044,8 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_router
+#'
+#' @aliases appmesh_create_virtual_router
 appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualRouterName) {
   op <- new_operation(
     name = "CreateVirtualRouter",
@@ -2154,6 +2166,8 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' @keywords internal
 #'
 #' @rdname appmesh_create_virtual_service
+#'
+#' @aliases appmesh_create_virtual_service
 appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, tags = NULL, virtualServiceName) {
   op <- new_operation(
     name = "CreateVirtualService",
@@ -2384,6 +2398,8 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_gateway_route
+#'
+#' @aliases appmesh_delete_gateway_route
 appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "DeleteGatewayRoute",
@@ -2459,6 +2475,8 @@ appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner =
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_mesh
+#'
+#' @aliases appmesh_delete_mesh
 appmesh_delete_mesh <- function(meshName) {
   op <- new_operation(
     name = "DeleteMesh",
@@ -2741,6 +2759,8 @@ appmesh_delete_mesh <- function(meshName) {
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_route
+#'
+#' @aliases appmesh_delete_route
 appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualRouterName) {
   op <- new_operation(
     name = "DeleteRoute",
@@ -2925,6 +2945,8 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_gateway
+#'
+#' @aliases appmesh_delete_virtual_gateway
 appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "DeleteVirtualGateway",
@@ -3228,6 +3250,8 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_node
+#'
+#' @aliases appmesh_delete_virtual_node
 appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeName) {
   op <- new_operation(
     name = "DeleteVirtualNode",
@@ -3313,6 +3337,8 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_router
+#'
+#' @aliases appmesh_delete_virtual_router
 appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRouterName) {
   op <- new_operation(
     name = "DeleteVirtualRouter",
@@ -3395,6 +3421,8 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
 #' @keywords internal
 #'
 #' @rdname appmesh_delete_virtual_service
+#'
+#' @aliases appmesh_delete_virtual_service
 appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualServiceName) {
   op <- new_operation(
     name = "DeleteVirtualService",
@@ -3626,6 +3654,8 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_gateway_route
+#'
+#' @aliases appmesh_describe_gateway_route
 appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "DescribeGatewayRoute",
@@ -3703,6 +3733,8 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_mesh
+#'
+#' @aliases appmesh_describe_mesh
 appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
   op <- new_operation(
     name = "DescribeMesh",
@@ -3986,6 +4018,8 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_route
+#'
+#' @aliases appmesh_describe_route
 appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtualRouterName) {
   op <- new_operation(
     name = "DescribeRoute",
@@ -4170,6 +4204,8 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_gateway
+#'
+#' @aliases appmesh_describe_virtual_gateway
 appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "DescribeVirtualGateway",
@@ -4470,6 +4506,8 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_node
+#'
+#' @aliases appmesh_describe_virtual_node
 appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeName) {
   op <- new_operation(
     name = "DescribeVirtualNode",
@@ -4552,6 +4590,8 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_router
+#'
+#' @aliases appmesh_describe_virtual_router
 appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualRouterName) {
   op <- new_operation(
     name = "DescribeVirtualRouter",
@@ -4635,6 +4675,8 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
 #' @keywords internal
 #'
 #' @rdname appmesh_describe_virtual_service
+#'
+#' @aliases appmesh_describe_virtual_service
 appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtualServiceName) {
   op <- new_operation(
     name = "DescribeVirtualService",
@@ -4726,6 +4768,8 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' @keywords internal
 #'
 #' @rdname appmesh_list_gateway_routes
+#'
+#' @aliases appmesh_list_gateway_routes
 appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL, virtualGatewayName) {
   op <- new_operation(
     name = "ListGatewayRoutes",
@@ -4804,6 +4848,8 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
 #' @keywords internal
 #'
 #' @rdname appmesh_list_meshes
+#'
+#' @aliases appmesh_list_meshes
 appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListMeshes",
@@ -4891,6 +4937,8 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname appmesh_list_routes
+#'
+#' @aliases appmesh_list_routes
 appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL, virtualRouterName) {
   op <- new_operation(
     name = "ListRoutes",
@@ -4962,6 +5010,8 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
 #' @keywords internal
 #'
 #' @rdname appmesh_list_tags_for_resource
+#'
+#' @aliases appmesh_list_tags_for_resource
 appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -5047,6 +5097,8 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_gateways
+#'
+#' @aliases appmesh_list_virtual_gateways
 appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualGateways",
@@ -5132,6 +5184,8 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_nodes
+#'
+#' @aliases appmesh_list_virtual_nodes
 appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualNodes",
@@ -5217,6 +5271,8 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_routers
+#'
+#' @aliases appmesh_list_virtual_routers
 appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualRouters",
@@ -5302,6 +5358,8 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 #' @keywords internal
 #'
 #' @rdname appmesh_list_virtual_services
+#'
+#' @aliases appmesh_list_virtual_services
 appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListVirtualServices",
@@ -5355,6 +5413,8 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
 #' @keywords internal
 #'
 #' @rdname appmesh_tag_resource
+#'
+#' @aliases appmesh_tag_resource
 appmesh_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5399,6 +5459,8 @@ appmesh_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname appmesh_untag_resource
+#'
+#' @aliases appmesh_untag_resource
 appmesh_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5792,6 +5854,8 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname appmesh_update_gateway_route
+#'
+#' @aliases appmesh_update_gateway_route
 appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, meshName, meshOwner = NULL, spec, virtualGatewayName) {
   op <- new_operation(
     name = "UpdateGatewayRoute",
@@ -5876,6 +5940,8 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 #' @keywords internal
 #'
 #' @rdname appmesh_update_mesh
+#'
+#' @aliases appmesh_update_mesh
 appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
   op <- new_operation(
     name = "UpdateMesh",
@@ -6373,6 +6439,8 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' @keywords internal
 #'
 #' @rdname appmesh_update_route
+#'
+#' @aliases appmesh_update_route
 appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL, routeName, spec, virtualRouterName) {
   op <- new_operation(
     name = "UpdateRoute",
@@ -6674,6 +6742,8 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_gateway
+#'
+#' @aliases appmesh_update_virtual_gateway
 appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualGatewayName) {
   op <- new_operation(
     name = "UpdateVirtualGateway",
@@ -7209,6 +7279,8 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_node
+#'
+#' @aliases appmesh_update_virtual_node
 appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualNodeName) {
   op <- new_operation(
     name = "UpdateVirtualNode",
@@ -7308,6 +7380,8 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_router
+#'
+#' @aliases appmesh_update_virtual_router
 appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualRouterName) {
   op <- new_operation(
     name = "UpdateVirtualRouter",
@@ -7407,6 +7481,8 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 #' @keywords internal
 #'
 #' @rdname appmesh_update_virtual_service
+#'
+#' @aliases appmesh_update_virtual_service
 appmesh_update_virtual_service <- function(clientToken = NULL, meshName, meshOwner = NULL, spec, virtualServiceName) {
   op <- new_operation(
     name = "UpdateVirtualService",

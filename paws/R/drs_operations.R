@@ -128,6 +128,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname drs_create_extended_source_server
+#'
+#' @aliases drs_create_extended_source_server
 drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
   op <- new_operation(
     name = "CreateExtendedSourceServer",
@@ -254,6 +256,8 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_create_replication_configuration_template
+#'
+#' @aliases drs_create_replication_configuration_template
 drs_create_replication_configuration_template <- function(associateDefaultSecurityGroup, bandwidthThrottling, createPublicIP, dataPlaneRouting, defaultLargeStagingDiskType, ebsEncryption, ebsEncryptionKeyArn = NULL, pitPolicy, replicationServerInstanceType, replicationServersSecurityGroupsIDs, stagingAreaSubnetId, stagingAreaTags, tags = NULL, useDedicatedReplicationServer) {
   op <- new_operation(
     name = "CreateReplicationConfigurationTemplate",
@@ -294,6 +298,8 @@ drs_create_replication_configuration_template <- function(associateDefaultSecuri
 #' @keywords internal
 #'
 #' @rdname drs_delete_job
+#'
+#' @aliases drs_delete_job
 drs_delete_job <- function(jobID) {
   op <- new_operation(
     name = "DeleteJob",
@@ -336,6 +342,8 @@ drs_delete_job <- function(jobID) {
 #' @keywords internal
 #'
 #' @rdname drs_delete_recovery_instance
+#'
+#' @aliases drs_delete_recovery_instance
 drs_delete_recovery_instance <- function(recoveryInstanceID) {
   op <- new_operation(
     name = "DeleteRecoveryInstance",
@@ -377,6 +385,8 @@ drs_delete_recovery_instance <- function(recoveryInstanceID) {
 #' @keywords internal
 #'
 #' @rdname drs_delete_replication_configuration_template
+#'
+#' @aliases drs_delete_replication_configuration_template
 drs_delete_replication_configuration_template <- function(replicationConfigurationTemplateID) {
   op <- new_operation(
     name = "DeleteReplicationConfigurationTemplate",
@@ -418,6 +428,8 @@ drs_delete_replication_configuration_template <- function(replicationConfigurati
 #' @keywords internal
 #'
 #' @rdname drs_delete_source_server
+#'
+#' @aliases drs_delete_source_server
 drs_delete_source_server <- function(sourceServerID) {
   op <- new_operation(
     name = "DeleteSourceServer",
@@ -492,6 +504,8 @@ drs_delete_source_server <- function(sourceServerID) {
 #' @keywords internal
 #'
 #' @rdname drs_describe_job_log_items
+#'
+#' @aliases drs_describe_job_log_items
 drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeJobLogItems",
@@ -574,6 +588,8 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname drs_describe_jobs
+#'
+#' @aliases drs_describe_jobs
 drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeJobs",
@@ -718,6 +734,8 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname drs_describe_recovery_instances
+#'
+#' @aliases drs_describe_recovery_instances
 drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeRecoveryInstances",
@@ -786,6 +804,8 @@ drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname drs_describe_recovery_snapshots
+#'
+#' @aliases drs_describe_recovery_snapshots
 drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, nextToken = NULL, order = NULL, sourceServerID) {
   op <- new_operation(
     name = "DescribeRecoverySnapshots",
@@ -875,6 +895,8 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname drs_describe_replication_configuration_templates
+#'
+#' @aliases drs_describe_replication_configuration_templates
 drs_describe_replication_configuration_templates <- function(maxResults = NULL, nextToken = NULL, replicationConfigurationTemplateIDs = NULL) {
   op <- new_operation(
     name = "DescribeReplicationConfigurationTemplates",
@@ -1025,6 +1047,8 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname drs_describe_source_servers
+#'
+#' @aliases drs_describe_source_servers
 drs_describe_source_servers <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeSourceServers",
@@ -1077,6 +1101,8 @@ drs_describe_source_servers <- function(filters = NULL, maxResults = NULL, nextT
 #' @keywords internal
 #'
 #' @rdname drs_disconnect_recovery_instance
+#'
+#' @aliases drs_disconnect_recovery_instance
 drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
   op <- new_operation(
     name = "DisconnectRecoveryInstance",
@@ -1223,6 +1249,8 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #' @keywords internal
 #'
 #' @rdname drs_disconnect_source_server
+#'
+#' @aliases drs_disconnect_source_server
 drs_disconnect_source_server <- function(sourceServerID) {
   op <- new_operation(
     name = "DisconnectSourceServer",
@@ -1274,6 +1302,8 @@ drs_disconnect_source_server <- function(sourceServerID) {
 #' @keywords internal
 #'
 #' @rdname drs_get_failback_replication_configuration
+#'
+#' @aliases drs_get_failback_replication_configuration
 drs_get_failback_replication_configuration <- function(recoveryInstanceID) {
   op <- new_operation(
     name = "GetFailbackReplicationConfiguration",
@@ -1329,6 +1359,8 @@ drs_get_failback_replication_configuration <- function(recoveryInstanceID) {
 #' @keywords internal
 #'
 #' @rdname drs_get_launch_configuration
+#'
+#' @aliases drs_get_launch_configuration
 drs_get_launch_configuration <- function(sourceServerID) {
   op <- new_operation(
     name = "GetLaunchConfiguration",
@@ -1410,6 +1442,8 @@ drs_get_launch_configuration <- function(sourceServerID) {
 #' @keywords internal
 #'
 #' @rdname drs_get_replication_configuration
+#'
+#' @aliases drs_get_replication_configuration
 drs_get_replication_configuration <- function(sourceServerID) {
   op <- new_operation(
     name = "GetReplicationConfiguration",
@@ -1446,6 +1480,8 @@ drs_get_replication_configuration <- function(sourceServerID) {
 #' @keywords internal
 #'
 #' @rdname drs_initialize_service
+#'
+#' @aliases drs_initialize_service
 drs_initialize_service <- function() {
   op <- new_operation(
     name = "InitializeService",
@@ -1510,6 +1546,8 @@ drs_initialize_service <- function() {
 #' @keywords internal
 #'
 #' @rdname drs_list_extensible_source_servers
+#'
+#' @aliases drs_list_extensible_source_servers
 drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NULL, stagingAccountID) {
   op <- new_operation(
     name = "ListExtensibleSourceServers",
@@ -1564,6 +1602,8 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname drs_list_staging_accounts
+#'
+#' @aliases drs_list_staging_accounts
 drs_list_staging_accounts <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStagingAccounts",
@@ -1611,6 +1651,8 @@ drs_list_staging_accounts <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_list_tags_for_resource
+#'
+#' @aliases drs_list_tags_for_resource
 drs_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1749,6 +1791,8 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname drs_retry_data_replication
+#'
+#' @aliases drs_retry_data_replication
 drs_retry_data_replication <- function(sourceServerID) {
   op <- new_operation(
     name = "RetryDataReplication",
@@ -1823,6 +1867,8 @@ drs_retry_data_replication <- function(sourceServerID) {
 #' @keywords internal
 #'
 #' @rdname drs_start_failback_launch
+#'
+#' @aliases drs_start_failback_launch
 drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
   op <- new_operation(
     name = "StartFailbackLaunch",
@@ -1899,6 +1945,8 @@ drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_start_recovery
+#'
+#' @aliases drs_start_recovery
 drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
   op <- new_operation(
     name = "StartRecovery",
@@ -1941,6 +1989,8 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_stop_failback
+#'
+#' @aliases drs_stop_failback
 drs_stop_failback <- function(recoveryInstanceID) {
   op <- new_operation(
     name = "StopFailback",
@@ -1990,6 +2040,8 @@ drs_stop_failback <- function(recoveryInstanceID) {
 #' @keywords internal
 #'
 #' @rdname drs_tag_resource
+#'
+#' @aliases drs_tag_resource
 drs_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2059,6 +2111,8 @@ drs_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname drs_terminate_recovery_instances
+#'
+#' @aliases drs_terminate_recovery_instances
 drs_terminate_recovery_instances <- function(recoveryInstanceIDs) {
   op <- new_operation(
     name = "TerminateRecoveryInstances",
@@ -2105,6 +2159,8 @@ drs_terminate_recovery_instances <- function(recoveryInstanceIDs) {
 #' @keywords internal
 #'
 #' @rdname drs_untag_resource
+#'
+#' @aliases drs_untag_resource
 drs_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2156,6 +2212,8 @@ drs_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname drs_update_failback_replication_configuration
+#'
+#' @aliases drs_update_failback_replication_configuration
 drs_update_failback_replication_configuration <- function(bandwidthThrottling = NULL, name = NULL, recoveryInstanceID, usePrivateIP = NULL) {
   op <- new_operation(
     name = "UpdateFailbackReplicationConfiguration",
@@ -2231,6 +2289,8 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #' @keywords internal
 #'
 #' @rdname drs_update_launch_configuration
+#'
+#' @aliases drs_update_launch_configuration
 drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, name = NULL, sourceServerID, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfiguration",
@@ -2374,6 +2434,8 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @keywords internal
 #'
 #' @rdname drs_update_replication_configuration
+#'
+#' @aliases drs_update_replication_configuration
 drs_update_replication_configuration <- function(associateDefaultSecurityGroup = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, name = NULL, pitPolicy = NULL, replicatedDisks = NULL, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, sourceServerID, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfiguration",
@@ -2499,6 +2561,8 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' @keywords internal
 #'
 #' @rdname drs_update_replication_configuration_template
+#'
+#' @aliases drs_update_replication_configuration_template
 drs_update_replication_configuration_template <- function(arn = NULL, associateDefaultSecurityGroup = NULL, bandwidthThrottling = NULL, createPublicIP = NULL, dataPlaneRouting = NULL, defaultLargeStagingDiskType = NULL, ebsEncryption = NULL, ebsEncryptionKeyArn = NULL, pitPolicy = NULL, replicationConfigurationTemplateID, replicationServerInstanceType = NULL, replicationServersSecurityGroupsIDs = NULL, stagingAreaSubnetId = NULL, stagingAreaTags = NULL, useDedicatedReplicationServer = NULL) {
   op <- new_operation(
     name = "UpdateReplicationConfigurationTemplate",

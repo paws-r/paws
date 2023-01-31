@@ -52,6 +52,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname iam_add_client_id_to_open_id_connect_provider
+#'
+#' @aliases iam_add_client_id_to_open_id_connect_provider
 iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderArn, ClientID) {
   op <- new_operation(
     name = "AddClientIDToOpenIDConnectProvider",
@@ -132,6 +134,8 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' @keywords internal
 #'
 #' @rdname iam_add_role_to_instance_profile
+#'
+#' @aliases iam_add_role_to_instance_profile
 iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
   op <- new_operation(
     name = "AddRoleToInstanceProfile",
@@ -194,6 +198,8 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 #' @keywords internal
 #'
 #' @rdname iam_add_user_to_group
+#'
+#' @aliases iam_add_user_to_group
 iam_add_user_to_group <- function(GroupName, UserName) {
   op <- new_operation(
     name = "AddUserToGroup",
@@ -268,6 +274,8 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' @keywords internal
 #'
 #' @rdname iam_attach_group_policy
+#'
+#' @aliases iam_attach_group_policy
 iam_attach_group_policy <- function(GroupName, PolicyArn) {
   op <- new_operation(
     name = "AttachGroupPolicy",
@@ -347,6 +355,8 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_attach_role_policy
+#'
+#' @aliases iam_attach_role_policy
 iam_attach_role_policy <- function(RoleName, PolicyArn) {
   op <- new_operation(
     name = "AttachRolePolicy",
@@ -422,6 +432,8 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_attach_user_policy
+#'
+#' @aliases iam_attach_user_policy
 iam_attach_user_policy <- function(UserName, PolicyArn) {
   op <- new_operation(
     name = "AttachUserPolicy",
@@ -495,6 +507,8 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_change_password
+#'
+#' @aliases iam_change_password
 iam_change_password <- function(OldPassword, NewPassword) {
   op <- new_operation(
     name = "ChangePassword",
@@ -583,6 +597,8 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' @keywords internal
 #'
 #' @rdname iam_create_access_key
+#'
+#' @aliases iam_create_access_key
 iam_create_access_key <- function(UserName = NULL) {
   op <- new_operation(
     name = "CreateAccessKey",
@@ -641,6 +657,8 @@ iam_create_access_key <- function(UserName = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_create_account_alias
+#'
+#' @aliases iam_create_account_alias
 iam_create_account_alias <- function(AccountAlias) {
   op <- new_operation(
     name = "CreateAccountAlias",
@@ -726,6 +744,8 @@ iam_create_account_alias <- function(AccountAlias) {
 #' @keywords internal
 #'
 #' @rdname iam_create_group
+#'
+#' @aliases iam_create_group
 iam_create_group <- function(Path = NULL, GroupName) {
   op <- new_operation(
     name = "CreateGroup",
@@ -871,6 +891,8 @@ iam_create_group <- function(Path = NULL, GroupName) {
 #' @keywords internal
 #'
 #' @rdname iam_create_instance_profile
+#'
+#' @aliases iam_create_instance_profile
 iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateInstanceProfile",
@@ -966,6 +988,8 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
 #' @keywords internal
 #'
 #' @rdname iam_create_login_profile
+#'
+#' @aliases iam_create_login_profile
 iam_create_login_profile <- function(UserName, Password, PasswordResetRequired = NULL) {
   op <- new_operation(
     name = "CreateLoginProfile",
@@ -1141,6 +1165,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' @keywords internal
 #'
 #' @rdname iam_create_open_id_connect_provider
+#'
+#' @aliases iam_create_open_id_connect_provider
 iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, ThumbprintList, Tags = NULL) {
   op <- new_operation(
     name = "CreateOpenIDConnectProvider",
@@ -1302,6 +1328,8 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' @keywords internal
 #'
 #' @rdname iam_create_policy
+#'
+#' @aliases iam_create_policy
 iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePolicy",
@@ -1411,6 +1439,8 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' @keywords internal
 #'
 #' @rdname iam_create_policy_version
+#'
+#' @aliases iam_create_policy_version
 iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = NULL) {
   op <- new_operation(
     name = "CreatePolicyVersion",
@@ -1582,6 +1612,8 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' @keywords internal
 #'
 #' @rdname iam_create_role
+#'
+#' @aliases iam_create_role
 iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Description = NULL, MaxSessionDuration = NULL, PermissionsBoundary = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateRole",
@@ -1690,6 +1722,8 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' @keywords internal
 #'
 #' @rdname iam_create_saml_provider
+#'
+#' @aliases iam_create_saml_provider
 iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateSAMLProvider",
@@ -1798,6 +1832,8 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_create_service_linked_role
+#'
+#' @aliases iam_create_service_linked_role
 iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, CustomSuffix = NULL) {
   op <- new_operation(
     name = "CreateServiceLinkedRole",
@@ -1884,6 +1920,8 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' @keywords internal
 #'
 #' @rdname iam_create_service_specific_credential
+#'
+#' @aliases iam_create_service_specific_credential
 iam_create_service_specific_credential <- function(UserName, ServiceName) {
   op <- new_operation(
     name = "CreateServiceSpecificCredential",
@@ -2001,6 +2039,8 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 #' @keywords internal
 #'
 #' @rdname iam_create_user
+#'
+#' @aliases iam_create_user
 iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateUser",
@@ -2136,6 +2176,8 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 #' @keywords internal
 #'
 #' @rdname iam_create_virtual_mfa_device
+#'
+#' @aliases iam_create_virtual_mfa_device
 iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tags = NULL) {
   op <- new_operation(
     name = "CreateVirtualMFADevice",
@@ -2196,6 +2238,8 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tag
 #' @keywords internal
 #'
 #' @rdname iam_deactivate_mfa_device
+#'
+#' @aliases iam_deactivate_mfa_device
 iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
   op <- new_operation(
     name = "DeactivateMFADevice",
@@ -2265,6 +2309,8 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_access_key
+#'
+#' @aliases iam_delete_access_key
 iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
   op <- new_operation(
     name = "DeleteAccessKey",
@@ -2323,6 +2369,8 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_account_alias
+#'
+#' @aliases iam_delete_account_alias
 iam_delete_account_alias <- function(AccountAlias) {
   op <- new_operation(
     name = "DeleteAccountAlias",
@@ -2366,6 +2414,8 @@ iam_delete_account_alias <- function(AccountAlias) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_account_password_policy
+#'
+#' @aliases iam_delete_account_password_policy
 iam_delete_account_password_policy <- function() {
   op <- new_operation(
     name = "DeleteAccountPasswordPolicy",
@@ -2412,6 +2462,8 @@ iam_delete_account_password_policy <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_delete_group
+#'
+#' @aliases iam_delete_group
 iam_delete_group <- function(GroupName) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -2484,6 +2536,8 @@ iam_delete_group <- function(GroupName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_group_policy
+#'
+#' @aliases iam_delete_group_policy
 iam_delete_group_policy <- function(GroupName, PolicyName) {
   op <- new_operation(
     name = "DeleteGroupPolicy",
@@ -2547,6 +2601,8 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_instance_profile
+#'
+#' @aliases iam_delete_instance_profile
 iam_delete_instance_profile <- function(InstanceProfileName) {
   op <- new_operation(
     name = "DeleteInstanceProfile",
@@ -2617,6 +2673,8 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_login_profile
+#'
+#' @aliases iam_delete_login_profile
 iam_delete_login_profile <- function(UserName) {
   op <- new_operation(
     name = "DeleteLoginProfile",
@@ -2669,6 +2727,8 @@ iam_delete_login_profile <- function(UserName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_open_id_connect_provider
+#'
+#' @aliases iam_delete_open_id_connect_provider
 iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
   op <- new_operation(
     name = "DeleteOpenIDConnectProvider",
@@ -2741,6 +2801,8 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_policy
+#'
+#' @aliases iam_delete_policy
 iam_delete_policy <- function(PolicyArn) {
   op <- new_operation(
     name = "DeletePolicy",
@@ -2810,6 +2872,8 @@ iam_delete_policy <- function(PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_policy_version
+#'
+#' @aliases iam_delete_policy_version
 iam_delete_policy_version <- function(PolicyArn, VersionId) {
   op <- new_operation(
     name = "DeletePolicyVersion",
@@ -2870,6 +2934,8 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_role
+#'
+#' @aliases iam_delete_role
 iam_delete_role <- function(RoleName) {
   op <- new_operation(
     name = "DeleteRole",
@@ -2915,6 +2981,8 @@ iam_delete_role <- function(RoleName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_role_permissions_boundary
+#'
+#' @aliases iam_delete_role_permissions_boundary
 iam_delete_role_permissions_boundary <- function(RoleName) {
   op <- new_operation(
     name = "DeleteRolePermissionsBoundary",
@@ -2987,6 +3055,8 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_role_policy
+#'
+#' @aliases iam_delete_role_policy
 iam_delete_role_policy <- function(RoleName, PolicyName) {
   op <- new_operation(
     name = "DeleteRolePolicy",
@@ -3035,6 +3105,8 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_saml_provider
+#'
+#' @aliases iam_delete_saml_provider
 iam_delete_saml_provider <- function(SAMLProviderArn) {
   op <- new_operation(
     name = "DeleteSAMLProvider",
@@ -3093,6 +3165,8 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_ssh_public_key
+#'
+#' @aliases iam_delete_ssh_public_key
 iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
   op <- new_operation(
     name = "DeleteSSHPublicKey",
@@ -3156,6 +3230,8 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_server_certificate
+#'
+#' @aliases iam_delete_server_certificate
 iam_delete_server_certificate <- function(ServerCertificateName) {
   op <- new_operation(
     name = "DeleteServerCertificate",
@@ -3225,6 +3301,8 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_service_linked_role
+#'
+#' @aliases iam_delete_service_linked_role
 iam_delete_service_linked_role <- function(RoleName) {
   op <- new_operation(
     name = "DeleteServiceLinkedRole",
@@ -3281,6 +3359,8 @@ iam_delete_service_linked_role <- function(RoleName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_service_specific_credential
+#'
+#' @aliases iam_delete_service_specific_credential
 iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpecificCredentialId) {
   op <- new_operation(
     name = "DeleteServiceSpecificCredential",
@@ -3349,6 +3429,8 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @keywords internal
 #'
 #' @rdname iam_delete_signing_certificate
+#'
+#' @aliases iam_delete_signing_certificate
 iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
   op <- new_operation(
     name = "DeleteSigningCertificate",
@@ -3433,6 +3515,8 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_user
+#'
+#' @aliases iam_delete_user
 iam_delete_user <- function(UserName) {
   op <- new_operation(
     name = "DeleteUser",
@@ -3478,6 +3562,8 @@ iam_delete_user <- function(UserName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_user_permissions_boundary
+#'
+#' @aliases iam_delete_user_permissions_boundary
 iam_delete_user_permissions_boundary <- function(UserName) {
   op <- new_operation(
     name = "DeleteUserPermissionsBoundary",
@@ -3550,6 +3636,8 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_user_policy
+#'
+#' @aliases iam_delete_user_policy
 iam_delete_user_policy <- function(UserName, PolicyName) {
   op <- new_operation(
     name = "DeleteUserPolicy",
@@ -3609,6 +3697,8 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname iam_delete_virtual_mfa_device
+#'
+#' @aliases iam_delete_virtual_mfa_device
 iam_delete_virtual_mfa_device <- function(SerialNumber) {
   op <- new_operation(
     name = "DeleteVirtualMFADevice",
@@ -3667,6 +3757,8 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' @keywords internal
 #'
 #' @rdname iam_detach_group_policy
+#'
+#' @aliases iam_detach_group_policy
 iam_detach_group_policy <- function(GroupName, PolicyArn) {
   op <- new_operation(
     name = "DetachGroupPolicy",
@@ -3725,6 +3817,8 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_detach_role_policy
+#'
+#' @aliases iam_detach_role_policy
 iam_detach_role_policy <- function(RoleName, PolicyArn) {
   op <- new_operation(
     name = "DetachRolePolicy",
@@ -3783,6 +3877,8 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_detach_user_policy
+#'
+#' @aliases iam_detach_user_policy
 iam_detach_user_policy <- function(UserName, PolicyArn) {
   op <- new_operation(
     name = "DetachUserPolicy",
@@ -3864,6 +3960,8 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_enable_mfa_device
+#'
+#' @aliases iam_enable_mfa_device
 iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, AuthenticationCode2) {
   op <- new_operation(
     name = "EnableMFADevice",
@@ -3908,6 +4006,8 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' @keywords internal
 #'
 #' @rdname iam_generate_credential_report
+#'
+#' @aliases iam_generate_credential_report
 iam_generate_credential_report <- function() {
   op <- new_operation(
     name = "GenerateCredentialReport",
@@ -4104,6 +4204,8 @@ iam_generate_credential_report <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_generate_organizations_access_report
+#'
+#' @aliases iam_generate_organizations_access_report
 iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPolicyId = NULL) {
   op <- new_operation(
     name = "GenerateOrganizationsAccessReport",
@@ -4232,6 +4334,8 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' @keywords internal
 #'
 #' @rdname iam_generate_service_last_accessed_details
+#'
+#' @aliases iam_generate_service_last_accessed_details
 iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) {
   op <- new_operation(
     name = "GenerateServiceLastAccessedDetails",
@@ -4291,6 +4395,8 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
 #' @keywords internal
 #'
 #' @rdname iam_get_access_key_last_used
+#'
+#' @aliases iam_get_access_key_last_used
 iam_get_access_key_last_used <- function(AccessKeyId) {
   op <- new_operation(
     name = "GetAccessKeyLastUsed",
@@ -4551,6 +4657,8 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' @keywords internal
 #'
 #' @rdname iam_get_account_authorization_details
+#'
+#' @aliases iam_get_account_authorization_details
 iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetAccountAuthorizationDetails",
@@ -4613,6 +4721,8 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
 #' @keywords internal
 #'
 #' @rdname iam_get_account_password_policy
+#'
+#' @aliases iam_get_account_password_policy
 iam_get_account_password_policy <- function() {
   op <- new_operation(
     name = "GetAccountPasswordPolicy",
@@ -4668,6 +4778,8 @@ iam_get_account_password_policy <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_get_account_summary
+#'
+#' @aliases iam_get_account_summary
 iam_get_account_summary <- function() {
   op <- new_operation(
     name = "GetAccountSummary",
@@ -4746,6 +4858,8 @@ iam_get_account_summary <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_get_context_keys_for_custom_policy
+#'
+#' @aliases iam_get_context_keys_for_custom_policy
 iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
   op <- new_operation(
     name = "GetContextKeysForCustomPolicy",
@@ -4848,6 +4962,8 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' @keywords internal
 #'
 #' @rdname iam_get_context_keys_for_principal_policy
+#'
+#' @aliases iam_get_context_keys_for_principal_policy
 iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInputList = NULL) {
   op <- new_operation(
     name = "GetContextKeysForPrincipalPolicy",
@@ -4895,6 +5011,8 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
 #' @keywords internal
 #'
 #' @rdname iam_get_credential_report
+#'
+#' @aliases iam_get_credential_report
 iam_get_credential_report <- function() {
   op <- new_operation(
     name = "GetCredentialReport",
@@ -4995,6 +5113,8 @@ iam_get_credential_report <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_get_group
+#'
+#' @aliases iam_get_group
 iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "GetGroup",
@@ -5073,6 +5193,8 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_get_group_policy
+#'
+#' @aliases iam_get_group_policy
 iam_get_group_policy <- function(GroupName, PolicyName) {
   op <- new_operation(
     name = "GetGroupPolicy",
@@ -5181,6 +5303,8 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname iam_get_instance_profile
+#'
+#' @aliases iam_get_instance_profile
 iam_get_instance_profile <- function(InstanceProfileName) {
   op <- new_operation(
     name = "GetInstanceProfile",
@@ -5259,6 +5383,8 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' @keywords internal
 #'
 #' @rdname iam_get_login_profile
+#'
+#' @aliases iam_get_login_profile
 iam_get_login_profile <- function(UserName) {
   op <- new_operation(
     name = "GetLoginProfile",
@@ -5329,6 +5455,8 @@ iam_get_login_profile <- function(UserName) {
 #' @keywords internal
 #'
 #' @rdname iam_get_open_id_connect_provider
+#'
+#' @aliases iam_get_open_id_connect_provider
 iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
   op <- new_operation(
     name = "GetOpenIDConnectProvider",
@@ -5457,6 +5585,8 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' @keywords internal
 #'
 #' @rdname iam_get_organizations_access_report
+#'
+#' @aliases iam_get_organizations_access_report
 iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker = NULL, SortKey = NULL) {
   op <- new_operation(
     name = "GetOrganizationsAccessReport",
@@ -5548,6 +5678,8 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' @keywords internal
 #'
 #' @rdname iam_get_policy
+#'
+#' @aliases iam_get_policy
 iam_get_policy <- function(PolicyArn) {
   op <- new_operation(
     name = "GetPolicy",
@@ -5641,6 +5773,8 @@ iam_get_policy <- function(PolicyArn) {
 #' @keywords internal
 #'
 #' @rdname iam_get_policy_version
+#'
+#' @aliases iam_get_policy_version
 iam_get_policy_version <- function(PolicyArn, VersionId) {
   op <- new_operation(
     name = "GetPolicyVersion",
@@ -5738,6 +5872,8 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' @keywords internal
 #'
 #' @rdname iam_get_role
+#'
+#' @aliases iam_get_role
 iam_get_role <- function(RoleName) {
   op <- new_operation(
     name = "GetRole",
@@ -5820,6 +5956,8 @@ iam_get_role <- function(RoleName) {
 #' @keywords internal
 #'
 #' @rdname iam_get_role_policy
+#'
+#' @aliases iam_get_role_policy
 iam_get_role_policy <- function(RoleName, PolicyName) {
   op <- new_operation(
     name = "GetRolePolicy",
@@ -5887,6 +6025,8 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname iam_get_saml_provider
+#'
+#' @aliases iam_get_saml_provider
 iam_get_saml_provider <- function(SAMLProviderArn) {
   op <- new_operation(
     name = "GetSAMLProvider",
@@ -5964,6 +6104,8 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 #' @keywords internal
 #'
 #' @rdname iam_get_ssh_public_key
+#'
+#' @aliases iam_get_ssh_public_key
 iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
   op <- new_operation(
     name = "GetSSHPublicKey",
@@ -6045,6 +6187,8 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #' @keywords internal
 #'
 #' @rdname iam_get_server_certificate
+#'
+#' @aliases iam_get_server_certificate
 iam_get_server_certificate <- function(ServerCertificateName) {
   op <- new_operation(
     name = "GetServerCertificate",
@@ -6207,6 +6351,8 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' @keywords internal
 #'
 #' @rdname iam_get_service_last_accessed_details
+#'
+#' @aliases iam_get_service_last_accessed_details
 iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetServiceLastAccessedDetails",
@@ -6346,6 +6492,8 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' @keywords internal
 #'
 #' @rdname iam_get_service_last_accessed_details_with_entities
+#'
+#' @aliases iam_get_service_last_accessed_details_with_entities
 iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNamespace, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetServiceLastAccessedDetailsWithEntities",
@@ -6412,6 +6560,8 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
 #' @keywords internal
 #'
 #' @rdname iam_get_service_linked_role_deletion_status
+#'
+#' @aliases iam_get_service_linked_role_deletion_status
 iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
   op <- new_operation(
     name = "GetServiceLinkedRoleDeletionStatus",
@@ -6498,6 +6648,8 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' @keywords internal
 #'
 #' @rdname iam_get_user
+#'
+#' @aliases iam_get_user
 iam_get_user <- function(UserName = NULL) {
   op <- new_operation(
     name = "GetUser",
@@ -6576,6 +6728,8 @@ iam_get_user <- function(UserName = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_get_user_policy
+#'
+#' @aliases iam_get_user_policy
 iam_get_user_policy <- function(UserName, PolicyName) {
   op <- new_operation(
     name = "GetUserPolicy",
@@ -6677,6 +6831,8 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname iam_list_access_keys
+#'
+#' @aliases iam_list_access_keys
 iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListAccessKeys",
@@ -6751,6 +6907,8 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' @keywords internal
 #'
 #' @rdname iam_list_account_aliases
+#'
+#' @aliases iam_list_account_aliases
 iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListAccountAliases",
@@ -6849,6 +7007,8 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_attached_group_policies
+#'
+#' @aliases iam_list_attached_group_policies
 iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListAttachedGroupPolicies",
@@ -6946,6 +7106,8 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 #' @keywords internal
 #'
 #' @rdname iam_list_attached_role_policies
+#'
+#' @aliases iam_list_attached_role_policies
 iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListAttachedRolePolicies",
@@ -7043,6 +7205,8 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 #' @keywords internal
 #'
 #' @rdname iam_list_attached_user_policies
+#'
+#' @aliases iam_list_attached_user_policies
 iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListAttachedUserPolicies",
@@ -7167,6 +7331,8 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' @keywords internal
 #'
 #' @rdname iam_list_entities_for_policy
+#'
+#' @aliases iam_list_entities_for_policy
 iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPrefix = NULL, PolicyUsageFilter = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListEntitiesForPolicy",
@@ -7258,6 +7424,8 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' @keywords internal
 #'
 #' @rdname iam_list_group_policies
+#'
+#' @aliases iam_list_group_policies
 iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListGroupPolicies",
@@ -7350,6 +7518,8 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_groups
+#'
+#' @aliases iam_list_groups
 iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListGroups",
@@ -7439,6 +7609,8 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_groups_for_user
+#'
+#' @aliases iam_list_groups_for_user
 iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListGroupsForUser",
@@ -7515,6 +7687,8 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_instance_profile_tags
+#'
+#' @aliases iam_list_instance_profile_tags
 iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListInstanceProfileTags",
@@ -7646,6 +7820,8 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
 #' @keywords internal
 #'
 #' @rdname iam_list_instance_profiles
+#'
+#' @aliases iam_list_instance_profiles
 iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListInstanceProfiles",
@@ -7765,6 +7941,8 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #' @keywords internal
 #'
 #' @rdname iam_list_instance_profiles_for_role
+#'
+#' @aliases iam_list_instance_profiles_for_role
 iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListInstanceProfilesForRole",
@@ -7844,6 +8022,8 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 #' @keywords internal
 #'
 #' @rdname iam_list_mfa_device_tags
+#'
+#' @aliases iam_list_mfa_device_tags
 iam_list_mfa_device_tags <- function(SerialNumber, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListMFADeviceTags",
@@ -7926,6 +8106,8 @@ iam_list_mfa_device_tags <- function(SerialNumber, Marker = NULL, MaxItems = NUL
 #' @keywords internal
 #'
 #' @rdname iam_list_mfa_devices
+#'
+#' @aliases iam_list_mfa_devices
 iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListMFADevices",
@@ -8008,6 +8190,8 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' @keywords internal
 #'
 #' @rdname iam_list_open_id_connect_provider_tags
+#'
+#' @aliases iam_list_open_id_connect_provider_tags
 iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListOpenIDConnectProviderTags",
@@ -8061,6 +8245,8 @@ iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Mar
 #' @keywords internal
 #'
 #' @rdname iam_list_open_id_connect_providers
+#'
+#' @aliases iam_list_open_id_connect_providers
 iam_list_open_id_connect_providers <- function() {
   op <- new_operation(
     name = "ListOpenIDConnectProviders",
@@ -8206,6 +8392,8 @@ iam_list_open_id_connect_providers <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_list_policies
+#'
+#' @aliases iam_list_policies
 iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NULL, PolicyUsageFilter = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListPolicies",
@@ -8339,6 +8527,8 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' @keywords internal
 #'
 #' @rdname iam_list_policies_granting_service_access
+#'
+#' @aliases iam_list_policies_granting_service_access
 iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, ServiceNamespaces) {
   op <- new_operation(
     name = "ListPoliciesGrantingServiceAccess",
@@ -8416,6 +8606,8 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
 #' @keywords internal
 #'
 #' @rdname iam_list_policy_tags
+#'
+#' @aliases iam_list_policy_tags
 iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListPolicyTags",
@@ -8501,6 +8693,8 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_policy_versions
+#'
+#' @aliases iam_list_policy_versions
 iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListPolicyVersions",
@@ -8583,6 +8777,8 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' @keywords internal
 #'
 #' @rdname iam_list_role_policies
+#'
+#' @aliases iam_list_role_policies
 iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListRolePolicies",
@@ -8667,6 +8863,8 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_role_tags
+#'
+#' @aliases iam_list_role_tags
 iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListRoleTags",
@@ -8780,6 +8978,8 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_roles
+#'
+#' @aliases iam_list_roles
 iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListRoles",
@@ -8861,6 +9061,8 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_saml_provider_tags
+#'
+#' @aliases iam_list_saml_provider_tags
 iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListSAMLProviderTags",
@@ -8920,6 +9122,8 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
 #' @keywords internal
 #'
 #' @rdname iam_list_saml_providers
+#'
+#' @aliases iam_list_saml_providers
 iam_list_saml_providers <- function() {
   op <- new_operation(
     name = "ListSAMLProviders",
@@ -9010,6 +9214,8 @@ iam_list_saml_providers <- function() {
 #' @keywords internal
 #'
 #' @rdname iam_list_ssh_public_keys
+#'
+#' @aliases iam_list_ssh_public_keys
 iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListSSHPublicKeys",
@@ -9094,6 +9300,8 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #' @keywords internal
 #'
 #' @rdname iam_list_server_certificate_tags
+#'
+#' @aliases iam_list_server_certificate_tags
 iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListServerCertificateTags",
@@ -9198,6 +9406,8 @@ iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NUL
 #' @keywords internal
 #'
 #' @rdname iam_list_server_certificates
+#'
+#' @aliases iam_list_server_certificates
 iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListServerCertificates",
@@ -9274,6 +9484,8 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' @keywords internal
 #'
 #' @rdname iam_list_service_specific_credentials
+#'
+#' @aliases iam_list_service_specific_credentials
 iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName = NULL) {
   op <- new_operation(
     name = "ListServiceSpecificCredentials",
@@ -9373,6 +9585,8 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' @keywords internal
 #'
 #' @rdname iam_list_signing_certificates
+#'
+#' @aliases iam_list_signing_certificates
 iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListSigningCertificates",
@@ -9455,6 +9669,8 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' @keywords internal
 #'
 #' @rdname iam_list_user_policies
+#'
+#' @aliases iam_list_user_policies
 iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListUserPolicies",
@@ -9539,6 +9755,8 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_user_tags
+#'
+#' @aliases iam_list_user_tags
 iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListUserTags",
@@ -9652,6 +9870,8 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_users
+#'
+#' @aliases iam_list_users
 iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListUsers",
@@ -9773,6 +9993,8 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_list_virtual_mfa_devices
+#'
+#' @aliases iam_list_virtual_mfa_devices
 iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListVirtualMFADevices",
@@ -9877,6 +10099,8 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' @keywords internal
 #'
 #' @rdname iam_put_group_policy
+#'
+#' @aliases iam_put_group_policy
 iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
   op <- new_operation(
     name = "PutGroupPolicy",
@@ -9936,6 +10160,8 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #' @keywords internal
 #'
 #' @rdname iam_put_role_permissions_boundary
+#'
+#' @aliases iam_put_role_permissions_boundary
 iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
   op <- new_operation(
     name = "PutRolePermissionsBoundary",
@@ -10049,6 +10275,8 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' @keywords internal
 #'
 #' @rdname iam_put_role_policy
+#'
+#' @aliases iam_put_role_policy
 iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
   op <- new_operation(
     name = "PutRolePolicy",
@@ -10106,6 +10334,8 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #' @keywords internal
 #'
 #' @rdname iam_put_user_permissions_boundary
+#'
+#' @aliases iam_put_user_permissions_boundary
 iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
   op <- new_operation(
     name = "PutUserPermissionsBoundary",
@@ -10209,6 +10439,8 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' @keywords internal
 #'
 #' @rdname iam_put_user_policy
+#'
+#' @aliases iam_put_user_policy
 iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
   op <- new_operation(
     name = "PutUserPolicy",
@@ -10269,6 +10501,8 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' @keywords internal
 #'
 #' @rdname iam_remove_client_id_from_open_id_connect_provider
+#'
+#' @aliases iam_remove_client_id_from_open_id_connect_provider
 iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProviderArn, ClientID) {
   op <- new_operation(
     name = "RemoveClientIDFromOpenIDConnectProvider",
@@ -10341,6 +10575,8 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' @keywords internal
 #'
 #' @rdname iam_remove_role_from_instance_profile
+#'
+#' @aliases iam_remove_role_from_instance_profile
 iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName) {
   op <- new_operation(
     name = "RemoveRoleFromInstanceProfile",
@@ -10403,6 +10639,8 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 #' @keywords internal
 #'
 #' @rdname iam_remove_user_from_group
+#'
+#' @aliases iam_remove_user_from_group
 iam_remove_user_from_group <- function(GroupName, UserName) {
   op <- new_operation(
     name = "RemoveUserFromGroup",
@@ -10475,6 +10713,8 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 #' @keywords internal
 #'
 #' @rdname iam_reset_service_specific_credential
+#'
+#' @aliases iam_reset_service_specific_credential
 iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecificCredentialId) {
   op <- new_operation(
     name = "ResetServiceSpecificCredential",
@@ -10543,6 +10783,8 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #' @keywords internal
 #'
 #' @rdname iam_resync_mfa_device
+#'
+#' @aliases iam_resync_mfa_device
 iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, AuthenticationCode2) {
   op <- new_operation(
     name = "ResyncMFADevice",
@@ -10606,6 +10848,8 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' @keywords internal
 #'
 #' @rdname iam_set_default_policy_version
+#'
+#' @aliases iam_set_default_policy_version
 iam_set_default_policy_version <- function(PolicyArn, VersionId) {
   op <- new_operation(
     name = "SetDefaultPolicyVersion",
@@ -10692,6 +10936,8 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #' @keywords internal
 #'
 #' @rdname iam_set_security_token_service_preferences
+#'
+#' @aliases iam_set_security_token_service_preferences
 iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersion) {
   op <- new_operation(
     name = "SetSecurityTokenServicePreferences",
@@ -11040,6 +11286,8 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' @keywords internal
 #'
 #' @rdname iam_simulate_custom_policy
+#'
+#' @aliases iam_simulate_custom_policy
 iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "SimulateCustomPolicy",
@@ -11407,6 +11655,8 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' @keywords internal
 #'
 #' @rdname iam_simulate_principal_policy
+#'
+#' @aliases iam_simulate_principal_policy
 iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NULL, PermissionsBoundaryPolicyInputList = NULL, ActionNames, ResourceArns = NULL, ResourcePolicy = NULL, ResourceOwner = NULL, CallerArn = NULL, ContextEntries = NULL, ResourceHandlingOption = NULL, MaxItems = NULL, Marker = NULL) {
   op <- new_operation(
     name = "SimulatePrincipalPolicy",
@@ -11492,6 +11742,8 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #' @keywords internal
 #'
 #' @rdname iam_tag_instance_profile
+#'
+#' @aliases iam_tag_instance_profile
 iam_tag_instance_profile <- function(InstanceProfileName, Tags) {
   op <- new_operation(
     name = "TagInstanceProfile",
@@ -11580,6 +11832,8 @@ iam_tag_instance_profile <- function(InstanceProfileName, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_mfa_device
+#'
+#' @aliases iam_tag_mfa_device
 iam_tag_mfa_device <- function(SerialNumber, Tags) {
   op <- new_operation(
     name = "TagMFADevice",
@@ -11670,6 +11924,8 @@ iam_tag_mfa_device <- function(SerialNumber, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_open_id_connect_provider
+#'
+#' @aliases iam_tag_open_id_connect_provider
 iam_tag_open_id_connect_provider <- function(OpenIDConnectProviderArn, Tags) {
   op <- new_operation(
     name = "TagOpenIDConnectProvider",
@@ -11756,6 +12012,8 @@ iam_tag_open_id_connect_provider <- function(OpenIDConnectProviderArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_policy
+#'
+#' @aliases iam_tag_policy
 iam_tag_policy <- function(PolicyArn, Tags) {
   op <- new_operation(
     name = "TagPolicy",
@@ -11867,6 +12125,8 @@ iam_tag_policy <- function(PolicyArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_role
+#'
+#' @aliases iam_tag_role
 iam_tag_role <- function(RoleName, Tags) {
   op <- new_operation(
     name = "TagRole",
@@ -11957,6 +12217,8 @@ iam_tag_role <- function(RoleName, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_saml_provider
+#'
+#' @aliases iam_tag_saml_provider
 iam_tag_saml_provider <- function(SAMLProviderArn, Tags) {
   op <- new_operation(
     name = "TagSAMLProvider",
@@ -12052,6 +12314,8 @@ iam_tag_saml_provider <- function(SAMLProviderArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_server_certificate
+#'
+#' @aliases iam_tag_server_certificate
 iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
   op <- new_operation(
     name = "TagServerCertificate",
@@ -12162,6 +12426,8 @@ iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_tag_user
+#'
+#' @aliases iam_tag_user
 iam_tag_user <- function(UserName, Tags) {
   op <- new_operation(
     name = "TagUser",
@@ -12215,6 +12481,8 @@ iam_tag_user <- function(UserName, Tags) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_instance_profile
+#'
+#' @aliases iam_untag_instance_profile
 iam_untag_instance_profile <- function(InstanceProfileName, TagKeys) {
   op <- new_operation(
     name = "UntagInstanceProfile",
@@ -12272,6 +12540,8 @@ iam_untag_instance_profile <- function(InstanceProfileName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_mfa_device
+#'
+#' @aliases iam_untag_mfa_device
 iam_untag_mfa_device <- function(SerialNumber, TagKeys) {
   op <- new_operation(
     name = "UntagMFADevice",
@@ -12329,6 +12599,8 @@ iam_untag_mfa_device <- function(SerialNumber, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_open_id_connect_provider
+#'
+#' @aliases iam_untag_open_id_connect_provider
 iam_untag_open_id_connect_provider <- function(OpenIDConnectProviderArn, TagKeys) {
   op <- new_operation(
     name = "UntagOpenIDConnectProvider",
@@ -12383,6 +12655,8 @@ iam_untag_open_id_connect_provider <- function(OpenIDConnectProviderArn, TagKeys
 #' @keywords internal
 #'
 #' @rdname iam_untag_policy
+#'
+#' @aliases iam_untag_policy
 iam_untag_policy <- function(PolicyArn, TagKeys) {
   op <- new_operation(
     name = "UntagPolicy",
@@ -12448,6 +12722,8 @@ iam_untag_policy <- function(PolicyArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_role
+#'
+#' @aliases iam_untag_role
 iam_untag_role <- function(RoleName, TagKeys) {
   op <- new_operation(
     name = "UntagRole",
@@ -12506,6 +12782,8 @@ iam_untag_role <- function(RoleName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_saml_provider
+#'
+#' @aliases iam_untag_saml_provider
 iam_untag_saml_provider <- function(SAMLProviderArn, TagKeys) {
   op <- new_operation(
     name = "UntagSAMLProvider",
@@ -12567,6 +12845,8 @@ iam_untag_saml_provider <- function(SAMLProviderArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_server_certificate
+#'
+#' @aliases iam_untag_server_certificate
 iam_untag_server_certificate <- function(ServerCertificateName, TagKeys) {
   op <- new_operation(
     name = "UntagServerCertificate",
@@ -12632,6 +12912,8 @@ iam_untag_server_certificate <- function(ServerCertificateName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_untag_user
+#'
+#' @aliases iam_untag_user
 iam_untag_user <- function(UserName, TagKeys) {
   op <- new_operation(
     name = "UntagUser",
@@ -12712,6 +12994,8 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname iam_update_access_key
+#'
+#' @aliases iam_update_access_key
 iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
   op <- new_operation(
     name = "UpdateAccessKey",
@@ -12856,6 +13140,8 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @keywords internal
 #'
 #' @rdname iam_update_account_password_policy
+#'
+#' @aliases iam_update_account_password_policy
 iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, RequireSymbols = NULL, RequireNumbers = NULL, RequireUppercaseCharacters = NULL, RequireLowercaseCharacters = NULL, AllowUsersToChangePassword = NULL, MaxPasswordAge = NULL, PasswordReusePrevention = NULL, HardExpiry = NULL) {
   op <- new_operation(
     name = "UpdateAccountPasswordPolicy",
@@ -12935,6 +13221,8 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' @keywords internal
 #'
 #' @rdname iam_update_assume_role_policy
+#'
+#' @aliases iam_update_assume_role_policy
 iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
   op <- new_operation(
     name = "UpdateAssumeRolePolicy",
@@ -13022,6 +13310,8 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 #' @keywords internal
 #'
 #' @rdname iam_update_group
+#'
+#' @aliases iam_update_group
 iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
@@ -13109,6 +13399,8 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_update_login_profile
+#'
+#' @aliases iam_update_login_profile
 iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetRequired = NULL) {
   op <- new_operation(
     name = "UpdateLoginProfile",
@@ -13191,6 +13483,8 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' @keywords internal
 #'
 #' @rdname iam_update_open_id_connect_provider_thumbprint
+#'
+#' @aliases iam_update_open_id_connect_provider_thumbprint
 iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProviderArn, ThumbprintList) {
   op <- new_operation(
     name = "UpdateOpenIDConnectProviderThumbprint",
@@ -13250,6 +13544,8 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 #' @keywords internal
 #'
 #' @rdname iam_update_role
+#'
+#' @aliases iam_update_role
 iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = NULL) {
   op <- new_operation(
     name = "UpdateRole",
@@ -13328,6 +13624,8 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
 #' @keywords internal
 #'
 #' @rdname iam_update_role_description
+#'
+#' @aliases iam_update_role_description
 iam_update_role_description <- function(RoleName, Description) {
   op <- new_operation(
     name = "UpdateRoleDescription",
@@ -13389,6 +13687,8 @@ iam_update_role_description <- function(RoleName, Description) {
 #' @keywords internal
 #'
 #' @rdname iam_update_saml_provider
+#'
+#' @aliases iam_update_saml_provider
 iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
   op <- new_operation(
     name = "UpdateSAMLProvider",
@@ -13454,6 +13754,8 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 #' @keywords internal
 #'
 #' @rdname iam_update_ssh_public_key
+#'
+#' @aliases iam_update_ssh_public_key
 iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
   op <- new_operation(
     name = "UpdateSSHPublicKey",
@@ -13544,6 +13846,8 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' @keywords internal
 #'
 #' @rdname iam_update_server_certificate
+#'
+#' @aliases iam_update_server_certificate
 iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL, NewServerCertificateName = NULL) {
   op <- new_operation(
     name = "UpdateServerCertificate",
@@ -13604,6 +13908,8 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 #' @keywords internal
 #'
 #' @rdname iam_update_service_specific_credential
+#'
+#' @aliases iam_update_service_specific_credential
 iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpecificCredentialId, Status) {
   op <- new_operation(
     name = "UpdateServiceSpecificCredential",
@@ -13680,6 +13986,8 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' @keywords internal
 #'
 #' @rdname iam_update_signing_certificate
+#'
+#' @aliases iam_update_signing_certificate
 iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Status) {
   op <- new_operation(
     name = "UpdateSigningCertificate",
@@ -13768,6 +14076,8 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 #' @keywords internal
 #'
 #' @rdname iam_update_user
+#'
+#' @aliases iam_update_user
 iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
   op <- new_operation(
     name = "UpdateUser",
@@ -13852,6 +14162,8 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' @keywords internal
 #'
 #' @rdname iam_upload_ssh_public_key
+#'
+#' @aliases iam_upload_ssh_public_key
 iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
   op <- new_operation(
     name = "UploadSSHPublicKey",
@@ -14048,6 +14360,8 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' @keywords internal
 #'
 #' @rdname iam_upload_server_certificate
+#'
+#' @aliases iam_upload_server_certificate
 iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, CertificateBody, PrivateKey, CertificateChain = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UploadServerCertificate",
@@ -14158,6 +14472,8 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' @keywords internal
 #'
 #' @rdname iam_upload_signing_certificate
+#'
+#' @aliases iam_upload_signing_certificate
 iam_upload_signing_certificate <- function(UserName = NULL, CertificateBody) {
   op <- new_operation(
     name = "UploadSigningCertificate",

@@ -46,6 +46,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname machinelearning_add_tags
+#'
+#' @aliases machinelearning_add_tags
 machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
   op <- new_operation(
     name = "AddTags",
@@ -128,6 +130,8 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_batch_prediction
+#'
+#' @aliases machinelearning_create_batch_prediction
 machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPredictionName = NULL, MLModelId, BatchPredictionDataSourceId, OutputUri) {
   op <- new_operation(
     name = "CreateBatchPrediction",
@@ -279,6 +283,8 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_data_source_from_rds
+#'
+#' @aliases machinelearning_create_data_source_from_rds
 machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSourceName = NULL, RDSData, RoleARN, ComputeStatistics = NULL) {
   op <- new_operation(
     name = "CreateDataSourceFromRDS",
@@ -433,6 +439,8 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_data_source_from_redshift
+#'
+#' @aliases machinelearning_create_data_source_from_redshift
 machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataSourceName = NULL, DataSpec, RoleARN, ComputeStatistics = NULL) {
   op <- new_operation(
     name = "CreateDataSourceFromRedshift",
@@ -546,6 +554,8 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_data_source_from_s3
+#'
+#' @aliases machinelearning_create_data_source_from_s3
 machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceName = NULL, DataSpec, ComputeStatistics = NULL) {
   op <- new_operation(
     name = "CreateDataSourceFromS3",
@@ -621,6 +631,8 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_evaluation
+#'
+#' @aliases machinelearning_create_evaluation
 machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NULL, MLModelId, EvaluationDataSourceId) {
   op <- new_operation(
     name = "CreateEvaluation",
@@ -763,6 +775,8 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_ml_model
+#'
+#' @aliases machinelearning_create_ml_model
 machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLModelType, Parameters = NULL, TrainingDataSourceId, Recipe = NULL, RecipeUri = NULL) {
   op <- new_operation(
     name = "CreateMLModel",
@@ -818,6 +832,8 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
 #' @keywords internal
 #'
 #' @rdname machinelearning_create_realtime_endpoint
+#'
+#' @aliases machinelearning_create_realtime_endpoint
 machinelearning_create_realtime_endpoint <- function(MLModelId) {
   op <- new_operation(
     name = "CreateRealtimeEndpoint",
@@ -874,6 +890,8 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_delete_batch_prediction
+#'
+#' @aliases machinelearning_delete_batch_prediction
 machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
   op <- new_operation(
     name = "DeleteBatchPrediction",
@@ -929,6 +947,8 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_delete_data_source
+#'
+#' @aliases machinelearning_delete_data_source
 machinelearning_delete_data_source <- function(DataSourceId) {
   op <- new_operation(
     name = "DeleteDataSource",
@@ -983,6 +1003,8 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_delete_evaluation
+#'
+#' @aliases machinelearning_delete_evaluation
 machinelearning_delete_evaluation <- function(EvaluationId) {
   op <- new_operation(
     name = "DeleteEvaluation",
@@ -1037,6 +1059,8 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_delete_ml_model
+#'
+#' @aliases machinelearning_delete_ml_model
 machinelearning_delete_ml_model <- function(MLModelId) {
   op <- new_operation(
     name = "DeleteMLModel",
@@ -1090,6 +1114,8 @@ machinelearning_delete_ml_model <- function(MLModelId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_delete_realtime_endpoint
+#'
+#' @aliases machinelearning_delete_realtime_endpoint
 machinelearning_delete_realtime_endpoint <- function(MLModelId) {
   op <- new_operation(
     name = "DeleteRealtimeEndpoint",
@@ -1145,6 +1171,8 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_delete_tags
+#'
+#' @aliases machinelearning_delete_tags
 machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
   op <- new_operation(
     name = "DeleteTags",
@@ -1294,6 +1322,8 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_describe_batch_predictions
+#'
+#' @aliases machinelearning_describe_batch_predictions
 machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ = NULL, GT = NULL, LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL, SortOrder = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeBatchPredictions",
@@ -1454,6 +1484,8 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' @keywords internal
 #'
 #' @rdname machinelearning_describe_data_sources
+#'
+#' @aliases machinelearning_describe_data_sources
 machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NULL, GT = NULL, LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL, SortOrder = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeDataSources",
@@ -1605,6 +1637,8 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' @keywords internal
 #'
 #' @rdname machinelearning_describe_evaluations
+#'
+#' @aliases machinelearning_describe_evaluations
 machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NULL, GT = NULL, LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL, SortOrder = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeEvaluations",
@@ -1769,6 +1803,8 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' @keywords internal
 #'
 #' @rdname machinelearning_describe_ml_models
+#'
+#' @aliases machinelearning_describe_ml_models
 machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL, GT = NULL, LT = NULL, GE = NULL, LE = NULL, NE = NULL, Prefix = NULL, SortOrder = NULL, NextToken = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeMLModels",
@@ -1823,6 +1859,8 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
 #' @keywords internal
 #'
 #' @rdname machinelearning_describe_tags
+#'
+#' @aliases machinelearning_describe_tags
 machinelearning_describe_tags <- function(ResourceId, ResourceType) {
   op <- new_operation(
     name = "DescribeTags",
@@ -1894,6 +1932,8 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_get_batch_prediction
+#'
+#' @aliases machinelearning_get_batch_prediction
 machinelearning_get_batch_prediction <- function(BatchPredictionId) {
   op <- new_operation(
     name = "GetBatchPrediction",
@@ -1997,6 +2037,8 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_get_data_source
+#'
+#' @aliases machinelearning_get_data_source
 machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
   op <- new_operation(
     name = "GetDataSource",
@@ -2072,6 +2114,8 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_get_evaluation
+#'
+#' @aliases machinelearning_get_evaluation
 machinelearning_get_evaluation <- function(EvaluationId) {
   op <- new_operation(
     name = "GetEvaluation",
@@ -2168,6 +2212,8 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_get_ml_model
+#'
+#' @aliases machinelearning_get_ml_model
 machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
   op <- new_operation(
     name = "GetMLModel",
@@ -2232,6 +2278,8 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_predict
+#'
+#' @aliases machinelearning_predict
 machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
   op <- new_operation(
     name = "Predict",
@@ -2284,6 +2332,8 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_update_batch_prediction
+#'
+#' @aliases machinelearning_update_batch_prediction
 machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPredictionName) {
   op <- new_operation(
     name = "UpdateBatchPrediction",
@@ -2335,6 +2385,8 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @keywords internal
 #'
 #' @rdname machinelearning_update_data_source
+#'
+#' @aliases machinelearning_update_data_source
 machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
   op <- new_operation(
     name = "UpdateDataSource",
@@ -2386,6 +2438,8 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_update_evaluation
+#'
+#' @aliases machinelearning_update_evaluation
 machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
   op <- new_operation(
     name = "UpdateEvaluation",
@@ -2444,6 +2498,8 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 #' @keywords internal
 #'
 #' @rdname machinelearning_update_ml_model
+#'
+#' @aliases machinelearning_update_ml_model
 machinelearning_update_ml_model <- function(MLModelId, MLModelName = NULL, ScoreThreshold = NULL) {
   op <- new_operation(
     name = "UpdateMLModel",

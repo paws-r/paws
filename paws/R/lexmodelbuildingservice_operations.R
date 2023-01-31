@@ -97,6 +97,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_create_bot_version
+#'
+#' @aliases lexmodelbuildingservice_create_bot_version
 lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
   op <- new_operation(
     name = "CreateBotVersion",
@@ -294,6 +296,8 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_create_intent_version
+#'
+#' @aliases lexmodelbuildingservice_create_intent_version
 lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL) {
   op <- new_operation(
     name = "CreateIntentVersion",
@@ -389,6 +393,8 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_create_slot_type_version
+#'
+#' @aliases lexmodelbuildingservice_create_slot_type_version
 lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NULL) {
   op <- new_operation(
     name = "CreateSlotTypeVersion",
@@ -450,6 +456,8 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_bot
+#'
+#' @aliases lexmodelbuildingservice_delete_bot
 lexmodelbuildingservice_delete_bot <- function(name) {
   op <- new_operation(
     name = "DeleteBot",
@@ -502,6 +510,8 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_bot_alias
+#'
+#' @aliases lexmodelbuildingservice_delete_bot_alias
 lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
   op <- new_operation(
     name = "DeleteBotAlias",
@@ -553,6 +563,8 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_bot_channel_association
+#'
+#' @aliases lexmodelbuildingservice_delete_bot_channel_association
 lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName, botAlias) {
   op <- new_operation(
     name = "DeleteBotChannelAssociation",
@@ -601,6 +613,8 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_bot_version
+#'
+#' @aliases lexmodelbuildingservice_delete_bot_version
 lexmodelbuildingservice_delete_bot_version <- function(name, version) {
   op <- new_operation(
     name = "DeleteBotVersion",
@@ -657,6 +671,8 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_intent
+#'
+#' @aliases lexmodelbuildingservice_delete_intent
 lexmodelbuildingservice_delete_intent <- function(name) {
   op <- new_operation(
     name = "DeleteIntent",
@@ -706,6 +722,8 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_intent_version
+#'
+#' @aliases lexmodelbuildingservice_delete_intent_version
 lexmodelbuildingservice_delete_intent_version <- function(name, version) {
   op <- new_operation(
     name = "DeleteIntentVersion",
@@ -764,6 +782,8 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_slot_type
+#'
+#' @aliases lexmodelbuildingservice_delete_slot_type
 lexmodelbuildingservice_delete_slot_type <- function(name) {
   op <- new_operation(
     name = "DeleteSlotType",
@@ -815,6 +835,8 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_slot_type_version
+#'
+#' @aliases lexmodelbuildingservice_delete_slot_type_version
 lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
   op <- new_operation(
     name = "DeleteSlotTypeVersion",
@@ -880,6 +902,8 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_delete_utterances
+#'
+#' @aliases lexmodelbuildingservice_delete_utterances
 lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
   op <- new_operation(
     name = "DeleteUtterances",
@@ -984,6 +1008,8 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bot
+#'
+#' @aliases lexmodelbuildingservice_get_bot
 lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
   op <- new_operation(
     name = "GetBot",
@@ -1056,6 +1082,8 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bot_alias
+#'
+#' @aliases lexmodelbuildingservice_get_bot_alias
 lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
   op <- new_operation(
     name = "GetBotAlias",
@@ -1143,6 +1171,8 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bot_aliases
+#'
+#' @aliases lexmodelbuildingservice_get_bot_aliases
 lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, maxResults = NULL, nameContains = NULL) {
   op <- new_operation(
     name = "GetBotAliases",
@@ -1212,6 +1242,8 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bot_channel_association
+#'
+#' @aliases lexmodelbuildingservice_get_bot_channel_association
 lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, botAlias) {
   op <- new_operation(
     name = "GetBotChannelAssociation",
@@ -1296,6 +1328,8 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bot_channel_associations
+#'
+#' @aliases lexmodelbuildingservice_get_bot_channel_associations
 lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAlias, nextToken = NULL, maxResults = NULL, nameContains = NULL) {
   op <- new_operation(
     name = "GetBotChannelAssociations",
@@ -1375,6 +1409,8 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bot_versions
+#'
+#' @aliases lexmodelbuildingservice_get_bot_versions
 lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetBotVersions",
@@ -1462,6 +1498,8 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_bots
+#'
+#' @aliases lexmodelbuildingservice_get_bots
 lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL, nameContains = NULL) {
   op <- new_operation(
     name = "GetBots",
@@ -1521,6 +1559,8 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_builtin_intent
+#'
+#' @aliases lexmodelbuildingservice_get_builtin_intent
 lexmodelbuildingservice_get_builtin_intent <- function(signature) {
   op <- new_operation(
     name = "GetBuiltinIntent",
@@ -1593,6 +1633,8 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_builtin_intents
+#'
+#' @aliases lexmodelbuildingservice_get_builtin_intents
 lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signatureContains = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetBuiltinIntents",
@@ -1666,6 +1708,8 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_builtin_slot_types
+#'
+#' @aliases lexmodelbuildingservice_get_builtin_slot_types
 lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signatureContains = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetBuiltinSlotTypes",
@@ -1724,6 +1768,8 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_export
+#'
+#' @aliases lexmodelbuildingservice_get_export
 lexmodelbuildingservice_get_export <- function(name, version, resourceType, exportType) {
   op <- new_operation(
     name = "GetExport",
@@ -1781,6 +1827,8 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_import
+#'
+#' @aliases lexmodelbuildingservice_get_import
 lexmodelbuildingservice_get_import <- function(importId) {
   op <- new_operation(
     name = "GetImport",
@@ -1969,6 +2017,8 @@ lexmodelbuildingservice_get_import <- function(importId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_intent
+#'
+#' @aliases lexmodelbuildingservice_get_intent
 lexmodelbuildingservice_get_intent <- function(name, version) {
   op <- new_operation(
     name = "GetIntent",
@@ -2048,6 +2098,8 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_intent_versions
+#'
+#' @aliases lexmodelbuildingservice_get_intent_versions
 lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetIntentVersions",
@@ -2134,6 +2186,8 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_intents
+#'
+#' @aliases lexmodelbuildingservice_get_intents
 lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = NULL, nameContains = NULL) {
   op <- new_operation(
     name = "GetIntents",
@@ -2205,6 +2259,8 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_migration
+#'
+#' @aliases lexmodelbuildingservice_get_migration
 lexmodelbuildingservice_get_migration <- function(migrationId) {
   op <- new_operation(
     name = "GetMigration",
@@ -2282,6 +2338,8 @@ lexmodelbuildingservice_get_migration <- function(migrationId) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_migrations
+#'
+#' @aliases lexmodelbuildingservice_get_migrations
 lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortByOrder = NULL, v1BotNameContains = NULL, migrationStatusEquals = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetMigrations",
@@ -2368,6 +2426,8 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_slot_type
+#'
+#' @aliases lexmodelbuildingservice_get_slot_type
 lexmodelbuildingservice_get_slot_type <- function(name, version) {
   op <- new_operation(
     name = "GetSlotType",
@@ -2450,6 +2510,8 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_slot_type_versions
+#'
+#' @aliases lexmodelbuildingservice_get_slot_type_versions
 lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetSlotTypeVersions",
@@ -2537,6 +2599,8 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_slot_types
+#'
+#' @aliases lexmodelbuildingservice_get_slot_types
 lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults = NULL, nameContains = NULL) {
   op <- new_operation(
     name = "GetSlotTypes",
@@ -2640,6 +2704,8 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_get_utterances_view
+#'
+#' @aliases lexmodelbuildingservice_get_utterances_view
 lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, statusType) {
   op <- new_operation(
     name = "GetUtterancesView",
@@ -2692,6 +2758,8 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_list_tags_for_resource
+#'
+#' @aliases lexmodelbuildingservice_list_tags_for_resource
 lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3096,6 +3164,8 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot
+#'
+#' @aliases lexmodelbuildingservice_put_bot
 lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, enableModelImprovements = NULL, nluIntentConfidenceThreshold = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, detectSentiment = NULL, createVersion = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutBot",
@@ -3216,6 +3286,8 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot_alias
+#'
+#' @aliases lexmodelbuildingservice_put_bot_alias
 lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botVersion, botName, checksum = NULL, conversationLogs = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutBotAlias",
@@ -3808,6 +3880,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_intent
+#'
+#' @aliases lexmodelbuildingservice_put_intent
 lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots = NULL, sampleUtterances = NULL, confirmationPrompt = NULL, rejectionStatement = NULL, followUpPrompt = NULL, conclusionStatement = NULL, dialogCodeHook = NULL, fulfillmentActivity = NULL, parentIntentSignature = NULL, checksum = NULL, createVersion = NULL, kendraConfiguration = NULL, inputContexts = NULL, outputContexts = NULL) {
   op <- new_operation(
     name = "PutIntent",
@@ -3993,6 +4067,8 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_slot_type
+#'
+#' @aliases lexmodelbuildingservice_put_slot_type
 lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enumerationValues = NULL, checksum = NULL, valueSelectionStrategy = NULL, createVersion = NULL, parentSlotTypeSignature = NULL, slotTypeConfigurations = NULL) {
   op <- new_operation(
     name = "PutSlotType",
@@ -4083,6 +4159,8 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_start_import
+#'
+#' @aliases lexmodelbuildingservice_start_import
 lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStrategy, tags = NULL) {
   op <- new_operation(
     name = "StartImport",
@@ -4169,6 +4247,8 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_start_migration
+#'
+#' @aliases lexmodelbuildingservice_start_migration
 lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2BotName, v2BotRole, migrationStrategy) {
   op <- new_operation(
     name = "StartMigration",
@@ -4219,6 +4299,8 @@ lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2B
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_tag_resource
+#'
+#' @aliases lexmodelbuildingservice_tag_resource
 lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4264,6 +4346,8 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_untag_resource
+#'
+#' @aliases lexmodelbuildingservice_untag_resource
 lexmodelbuildingservice_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",

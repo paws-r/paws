@@ -74,6 +74,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname eks_associate_encryption_config
+#'
+#' @aliases eks_associate_encryption_config
 eks_associate_encryption_config <- function(clusterName, encryptionConfig, clientRequestToken = NULL) {
   op <- new_operation(
     name = "AssociateEncryptionConfig",
@@ -178,6 +180,8 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #' @keywords internal
 #'
 #' @rdname eks_associate_identity_provider_config
+#'
+#' @aliases eks_associate_identity_provider_config
 eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "AssociateIdentityProviderConfig",
@@ -295,6 +299,8 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' @keywords internal
 #'
 #' @rdname eks_create_addon
+#'
+#' @aliases eks_create_addon
 eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAddon",
@@ -538,6 +544,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @keywords internal
 #'
 #' @rdname eks_create_cluster
+#'
+#' @aliases eks_create_cluster
 eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig, kubernetesNetworkConfig = NULL, logging = NULL, clientRequestToken = NULL, tags = NULL, encryptionConfig = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -683,6 +691,8 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' @keywords internal
 #'
 #' @rdname eks_create_fargate_profile
+#'
+#' @aliases eks_create_fargate_profile
 eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecutionRoleArn, subnets = NULL, selectors = NULL, clientRequestToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateFargateProfile",
@@ -970,6 +980,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' @keywords internal
 #'
 #' @rdname eks_create_nodegroup
+#'
+#' @aliases eks_create_nodegroup
 eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NULL, diskSize = NULL, subnets, instanceTypes = NULL, amiType = NULL, remoteAccess = NULL, nodeRole, labels = NULL, taints = NULL, tags = NULL, clientRequestToken = NULL, launchTemplate = NULL, updateConfig = NULL, capacityType = NULL, version = NULL, releaseVersion = NULL) {
   op <- new_operation(
     name = "CreateNodegroup",
@@ -1054,6 +1066,8 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @keywords internal
 #'
 #' @rdname eks_delete_addon
+#'
+#' @aliases eks_delete_addon
 eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
   op <- new_operation(
     name = "DeleteAddon",
@@ -1193,6 +1207,8 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
 #' @keywords internal
 #'
 #' @rdname eks_delete_cluster
+#'
+#' @aliases eks_delete_cluster
 eks_delete_cluster <- function(name) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -1274,6 +1290,8 @@ eks_delete_cluster <- function(name) {
 #' @keywords internal
 #'
 #' @rdname eks_delete_fargate_profile
+#'
+#' @aliases eks_delete_fargate_profile
 eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
   op <- new_operation(
     name = "DeleteFargateProfile",
@@ -1397,6 +1415,8 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 #' @keywords internal
 #'
 #' @rdname eks_delete_nodegroup
+#'
+#' @aliases eks_delete_nodegroup
 eks_delete_nodegroup <- function(clusterName, nodegroupName) {
   op <- new_operation(
     name = "DeleteNodegroup",
@@ -1516,6 +1536,8 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #' @keywords internal
 #'
 #' @rdname eks_deregister_cluster
+#'
+#' @aliases eks_deregister_cluster
 eks_deregister_cluster <- function(name) {
   op <- new_operation(
     name = "DeregisterCluster",
@@ -1592,6 +1614,8 @@ eks_deregister_cluster <- function(name) {
 #' @keywords internal
 #'
 #' @rdname eks_describe_addon
+#'
+#' @aliases eks_describe_addon
 eks_describe_addon <- function(clusterName, addonName) {
   op <- new_operation(
     name = "DescribeAddon",
@@ -1676,6 +1700,8 @@ eks_describe_addon <- function(clusterName, addonName) {
 #' @keywords internal
 #'
 #' @rdname eks_describe_addon_versions
+#'
+#' @aliases eks_describe_addon_versions
 eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = NULL, nextToken = NULL, addonName = NULL) {
   op <- new_operation(
     name = "DescribeAddonVersions",
@@ -1811,6 +1837,8 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname eks_describe_cluster
+#'
+#' @aliases eks_describe_cluster
 eks_describe_cluster <- function(name) {
   op <- new_operation(
     name = "DescribeCluster",
@@ -1881,6 +1909,8 @@ eks_describe_cluster <- function(name) {
 #' @keywords internal
 #'
 #' @rdname eks_describe_fargate_profile
+#'
+#' @aliases eks_describe_fargate_profile
 eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
   op <- new_operation(
     name = "DescribeFargateProfile",
@@ -1953,6 +1983,8 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 #' @keywords internal
 #'
 #' @rdname eks_describe_identity_provider_config
+#'
+#' @aliases eks_describe_identity_provider_config
 eks_describe_identity_provider_config <- function(clusterName, identityProviderConfig) {
   op <- new_operation(
     name = "DescribeIdentityProviderConfig",
@@ -2075,6 +2107,8 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
 #' @keywords internal
 #'
 #' @rdname eks_describe_nodegroup
+#'
+#' @aliases eks_describe_nodegroup
 eks_describe_nodegroup <- function(clusterName, nodegroupName) {
   op <- new_operation(
     name = "DescribeNodegroup",
@@ -2157,6 +2191,8 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #' @keywords internal
 #'
 #' @rdname eks_describe_update
+#'
+#' @aliases eks_describe_update
 eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName = NULL) {
   op <- new_operation(
     name = "DescribeUpdate",
@@ -2236,6 +2272,8 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 #' @keywords internal
 #'
 #' @rdname eks_disassociate_identity_provider_config
+#'
+#' @aliases eks_disassociate_identity_provider_config
 eks_disassociate_identity_provider_config <- function(clusterName, identityProviderConfig, clientRequestToken = NULL) {
   op <- new_operation(
     name = "DisassociateIdentityProviderConfig",
@@ -2302,6 +2340,8 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 #' @keywords internal
 #'
 #' @rdname eks_list_addons
+#'
+#' @aliases eks_list_addons
 eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAddons",
@@ -2383,6 +2423,8 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname eks_list_clusters
+#'
+#' @aliases eks_list_clusters
 eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NULL) {
   op <- new_operation(
     name = "ListClusters",
@@ -2452,6 +2494,8 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
 #' @keywords internal
 #'
 #' @rdname eks_list_fargate_profiles
+#'
+#' @aliases eks_list_fargate_profiles
 eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListFargateProfiles",
@@ -2522,6 +2566,8 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' @keywords internal
 #'
 #' @rdname eks_list_identity_provider_configs
+#'
+#' @aliases eks_list_identity_provider_configs
 eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListIdentityProviderConfigs",
@@ -2591,6 +2637,8 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
 #' @keywords internal
 #'
 #' @rdname eks_list_nodegroups
+#'
+#' @aliases eks_list_nodegroups
 eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListNodegroups",
@@ -2648,6 +2696,8 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #' @keywords internal
 #'
 #' @rdname eks_list_tags_for_resource
+#'
+#' @aliases eks_list_tags_for_resource
 eks_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2718,6 +2768,8 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname eks_list_updates
+#'
+#' @aliases eks_list_updates
 eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListUpdates",
@@ -2869,6 +2921,8 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #' @keywords internal
 #'
 #' @rdname eks_register_cluster
+#'
+#' @aliases eks_register_cluster
 eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "RegisterCluster",
@@ -2923,6 +2977,8 @@ eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NUL
 #' @keywords internal
 #'
 #' @rdname eks_tag_resource
+#'
+#' @aliases eks_tag_resource
 eks_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2969,6 +3025,8 @@ eks_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname eks_untag_resource
+#'
+#' @aliases eks_untag_resource
 eks_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3066,6 +3124,8 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname eks_update_addon
+#'
+#' @aliases eks_update_addon
 eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, serviceAccountRoleArn = NULL, resolveConflicts = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateAddon",
@@ -3200,6 +3260,8 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_config
+#'
+#' @aliases eks_update_cluster_config
 eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateClusterConfig",
@@ -3285,6 +3347,8 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' @keywords internal
 #'
 #' @rdname eks_update_cluster_version
+#'
+#' @aliases eks_update_cluster_version
 eks_update_cluster_version <- function(name, version, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateClusterVersion",
@@ -3405,6 +3469,8 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 #' @keywords internal
 #'
 #' @rdname eks_update_nodegroup_config
+#'
+#' @aliases eks_update_nodegroup_config
 eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NULL, taints = NULL, scalingConfig = NULL, updateConfig = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupConfig",
@@ -3543,6 +3609,8 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' @keywords internal
 #'
 #' @rdname eks_update_nodegroup_version
+#'
+#' @aliases eks_update_nodegroup_version
 eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = NULL, releaseVersion = NULL, launchTemplate = NULL, force = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "UpdateNodegroupVersion",

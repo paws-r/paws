@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname kinesis_add_tags_to_stream
+#'
+#' @aliases kinesis_add_tags_to_stream
 kinesis_add_tags_to_stream <- function(StreamName, Tags) {
   op <- new_operation(
     name = "AddTagsToStream",
@@ -139,6 +141,8 @@ kinesis_add_tags_to_stream <- function(StreamName, Tags) {
 #' @keywords internal
 #'
 #' @rdname kinesis_create_stream
+#'
+#' @aliases kinesis_create_stream
 kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL) {
   op <- new_operation(
     name = "CreateStream",
@@ -191,6 +195,8 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
 #' @keywords internal
 #'
 #' @rdname kinesis_decrease_stream_retention_period
+#'
+#' @aliases kinesis_decrease_stream_retention_period
 kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriodHours) {
   op <- new_operation(
     name = "DecreaseStreamRetentionPeriod",
@@ -260,6 +266,8 @@ kinesis_decrease_stream_retention_period <- function(StreamName, RetentionPeriod
 #' @keywords internal
 #'
 #' @rdname kinesis_delete_stream
+#'
+#' @aliases kinesis_delete_stream
 kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
   op <- new_operation(
     name = "DeleteStream",
@@ -322,6 +330,8 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #' @keywords internal
 #'
 #' @rdname kinesis_deregister_stream_consumer
+#'
+#' @aliases kinesis_deregister_stream_consumer
 kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = NULL, ConsumerARN = NULL) {
   op <- new_operation(
     name = "DeregisterStreamConsumer",
@@ -371,6 +381,8 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
 #' @keywords internal
 #'
 #' @rdname kinesis_describe_limits
+#'
+#' @aliases kinesis_describe_limits
 kinesis_describe_limits <- function() {
   op <- new_operation(
     name = "DescribeLimits",
@@ -491,6 +503,8 @@ kinesis_describe_limits <- function() {
 #' @keywords internal
 #'
 #' @rdname kinesis_describe_stream
+#'
+#' @aliases kinesis_describe_stream
 kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShardId = NULL) {
   op <- new_operation(
     name = "DescribeStream",
@@ -563,6 +577,8 @@ kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShar
 #' @keywords internal
 #'
 #' @rdname kinesis_describe_stream_consumer
+#'
+#' @aliases kinesis_describe_stream_consumer
 kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NULL, ConsumerARN = NULL) {
   op <- new_operation(
     name = "DescribeStreamConsumer",
@@ -639,6 +655,8 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
 #' @keywords internal
 #'
 #' @rdname kinesis_describe_stream_summary
+#'
+#' @aliases kinesis_describe_stream_summary
 kinesis_describe_stream_summary <- function(StreamName) {
   op <- new_operation(
     name = "DescribeStreamSummary",
@@ -719,6 +737,8 @@ kinesis_describe_stream_summary <- function(StreamName) {
 #' @keywords internal
 #'
 #' @rdname kinesis_disable_enhanced_monitoring
+#'
+#' @aliases kinesis_disable_enhanced_monitoring
 kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
   op <- new_operation(
     name = "DisableEnhancedMonitoring",
@@ -798,6 +818,8 @@ kinesis_disable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' @keywords internal
 #'
 #' @rdname kinesis_enable_enhanced_monitoring
+#'
+#' @aliases kinesis_enable_enhanced_monitoring
 kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
   op <- new_operation(
     name = "EnableEnhancedMonitoring",
@@ -946,6 +968,8 @@ kinesis_enable_enhanced_monitoring <- function(StreamName, ShardLevelMetrics) {
 #' @keywords internal
 #'
 #' @rdname kinesis_get_records
+#'
+#' @aliases kinesis_get_records
 kinesis_get_records <- function(ShardIterator, Limit = NULL) {
   op <- new_operation(
     name = "GetRecords",
@@ -1082,6 +1106,8 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname kinesis_get_shard_iterator
+#'
+#' @aliases kinesis_get_shard_iterator
 kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, StartingSequenceNumber = NULL, Timestamp = NULL) {
   op <- new_operation(
     name = "GetShardIterator",
@@ -1139,6 +1165,8 @@ kinesis_get_shard_iterator <- function(StreamName, ShardId, ShardIteratorType, S
 #' @keywords internal
 #'
 #' @rdname kinesis_increase_stream_retention_period
+#'
+#' @aliases kinesis_increase_stream_retention_period
 kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriodHours) {
   op <- new_operation(
     name = "IncreaseStreamRetentionPeriod",
@@ -1300,6 +1328,8 @@ kinesis_increase_stream_retention_period <- function(StreamName, RetentionPeriod
 #' @keywords internal
 #'
 #' @rdname kinesis_list_shards
+#'
+#' @aliases kinesis_list_shards
 kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveStartShardId = NULL, MaxResults = NULL, StreamCreationTimestamp = NULL, ShardFilter = NULL) {
   op <- new_operation(
     name = "ListShards",
@@ -1405,6 +1435,8 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' @keywords internal
 #'
 #' @rdname kinesis_list_stream_consumers
+#'
+#' @aliases kinesis_list_stream_consumers
 kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResults = NULL, StreamCreationTimestamp = NULL) {
   op <- new_operation(
     name = "ListStreamConsumers",
@@ -1475,6 +1507,8 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname kinesis_list_streams
+#'
+#' @aliases kinesis_list_streams
 kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) {
   op <- new_operation(
     name = "ListStreams",
@@ -1536,6 +1570,8 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL) 
 #' @keywords internal
 #'
 #' @rdname kinesis_list_tags_for_stream
+#'
+#' @aliases kinesis_list_tags_for_stream
 kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTagsForStream",
@@ -1632,6 +1668,8 @@ kinesis_list_tags_for_stream <- function(StreamName, ExclusiveStartTagKey = NULL
 #' @keywords internal
 #'
 #' @rdname kinesis_merge_shards
+#'
+#' @aliases kinesis_merge_shards
 kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge) {
   op <- new_operation(
     name = "MergeShards",
@@ -1758,6 +1796,8 @@ kinesis_merge_shards <- function(StreamName, ShardToMerge, AdjacentShardToMerge)
 #' @keywords internal
 #'
 #' @rdname kinesis_put_record
+#'
+#' @aliases kinesis_put_record
 kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL) {
   op <- new_operation(
     name = "PutRecord",
@@ -1899,6 +1939,8 @@ kinesis_put_record <- function(StreamName, Data, PartitionKey, ExplicitHashKey =
 #' @keywords internal
 #'
 #' @rdname kinesis_put_records
+#'
+#' @aliases kinesis_put_records
 kinesis_put_records <- function(Records, StreamName) {
   op <- new_operation(
     name = "PutRecords",
@@ -1974,6 +2016,8 @@ kinesis_put_records <- function(Records, StreamName) {
 #' @keywords internal
 #'
 #' @rdname kinesis_register_stream_consumer
+#'
+#' @aliases kinesis_register_stream_consumer
 kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
   op <- new_operation(
     name = "RegisterStreamConsumer",
@@ -2025,6 +2069,8 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
 #' @keywords internal
 #'
 #' @rdname kinesis_remove_tags_from_stream
+#'
+#' @aliases kinesis_remove_tags_from_stream
 kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromStream",
@@ -2137,6 +2183,8 @@ kinesis_remove_tags_from_stream <- function(StreamName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname kinesis_split_shard
+#'
+#' @aliases kinesis_split_shard
 kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
   op <- new_operation(
     name = "SplitShard",
@@ -2218,6 +2266,8 @@ kinesis_split_shard <- function(StreamName, ShardToSplit, NewStartingHashKey) {
 #' @keywords internal
 #'
 #' @rdname kinesis_start_stream_encryption
+#'
+#' @aliases kinesis_start_stream_encryption
 kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
   op <- new_operation(
     name = "StartStreamEncryption",
@@ -2299,6 +2349,8 @@ kinesis_start_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' @keywords internal
 #'
 #' @rdname kinesis_stop_stream_encryption
+#'
+#' @aliases kinesis_stop_stream_encryption
 kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
   op <- new_operation(
     name = "StopStreamEncryption",
@@ -2406,6 +2458,8 @@ kinesis_stop_stream_encryption <- function(StreamName, EncryptionType, KeyId) {
 #' @keywords internal
 #'
 #' @rdname kinesis_update_shard_count
+#'
+#' @aliases kinesis_update_shard_count
 kinesis_update_shard_count <- function(StreamName, TargetShardCount, ScalingType) {
   op <- new_operation(
     name = "UpdateShardCount",
@@ -2456,6 +2510,8 @@ kinesis_update_shard_count <- function(StreamName, TargetShardCount, ScalingType
 #' @keywords internal
 #'
 #' @rdname kinesis_update_stream_mode
+#'
+#' @aliases kinesis_update_stream_mode
 kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails) {
   op <- new_operation(
     name = "UpdateStreamMode",

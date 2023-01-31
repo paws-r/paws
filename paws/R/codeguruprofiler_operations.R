@@ -52,6 +52,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_add_notification_channels
+#'
+#' @aliases codeguruprofiler_add_notification_channels
 codeguruprofiler_add_notification_channels <- function(channels, profilingGroupName) {
   op <- new_operation(
     name = "AddNotificationChannels",
@@ -180,6 +182,8 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_batch_get_frame_metric_data
+#'
+#' @aliases codeguruprofiler_batch_get_frame_metric_data
 codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMetrics = NULL, period = NULL, profilingGroupName, startTime = NULL, targetResolution = NULL) {
   op <- new_operation(
     name = "BatchGetFrameMetricData",
@@ -273,6 +277,8 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_configure_agent
+#'
+#' @aliases codeguruprofiler_configure_agent
 codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = NULL, profilingGroupName) {
   op <- new_operation(
     name = "ConfigureAgent",
@@ -368,6 +374,8 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_create_profiling_group
+#'
+#' @aliases codeguruprofiler_create_profiling_group
 codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = NULL, clientToken, computePlatform = NULL, profilingGroupName, tags = NULL) {
   op <- new_operation(
     name = "CreateProfilingGroup",
@@ -408,6 +416,8 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_delete_profiling_group
+#'
+#' @aliases codeguruprofiler_delete_profiling_group
 codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
   op <- new_operation(
     name = "DeleteProfilingGroup",
@@ -486,6 +496,8 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_describe_profiling_group
+#'
+#' @aliases codeguruprofiler_describe_profiling_group
 codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
   op <- new_operation(
     name = "DescribeProfilingGroup",
@@ -572,6 +584,8 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_get_findings_report_account_summary
+#'
+#' @aliases codeguruprofiler_get_findings_report_account_summary
 codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnly = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "GetFindingsReportAccountSummary",
@@ -630,6 +644,8 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_get_notification_configuration
+#'
+#' @aliases codeguruprofiler_get_notification_configuration
 codeguruprofiler_get_notification_configuration <- function(profilingGroupName) {
   op <- new_operation(
     name = "GetNotificationConfiguration",
@@ -676,6 +692,8 @@ codeguruprofiler_get_notification_configuration <- function(profilingGroupName) 
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_get_policy
+#'
+#' @aliases codeguruprofiler_get_policy
 codeguruprofiler_get_policy <- function(profilingGroupName) {
   op <- new_operation(
     name = "GetPolicy",
@@ -764,6 +782,8 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_get_profile
+#'
+#' @aliases codeguruprofiler_get_profile
 codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth = NULL, period = NULL, profilingGroupName, startTime = NULL) {
   op <- new_operation(
     name = "GetProfile",
@@ -922,6 +942,8 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_get_recommendations
+#'
+#' @aliases codeguruprofiler_get_recommendations
 codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profilingGroupName, startTime) {
   op <- new_operation(
     name = "GetRecommendations",
@@ -1019,6 +1041,8 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_list_findings_reports
+#'
+#' @aliases codeguruprofiler_list_findings_reports
 codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endTime, maxResults = NULL, nextToken = NULL, profilingGroupName, startTime) {
   op <- new_operation(
     name = "ListFindingsReports",
@@ -1117,6 +1141,8 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_list_profile_times
+#'
+#' @aliases codeguruprofiler_list_profile_times
 codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, nextToken = NULL, orderBy = NULL, period, profilingGroupName, startTime) {
   op <- new_operation(
     name = "ListProfileTimes",
@@ -1225,6 +1251,8 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_list_profiling_groups
+#'
+#' @aliases codeguruprofiler_list_profiling_groups
 codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListProfilingGroups",
@@ -1273,6 +1301,8 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_list_tags_for_resource
+#'
+#' @aliases codeguruprofiler_list_tags_for_resource
 codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1330,6 +1360,8 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_post_agent_profile
+#'
+#' @aliases codeguruprofiler_post_agent_profile
 codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profileToken = NULL, profilingGroupName) {
   op <- new_operation(
     name = "PostAgentProfile",
@@ -1400,6 +1432,8 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_put_permission
+#'
+#' @aliases codeguruprofiler_put_permission
 codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGroupName, revisionId = NULL) {
   op <- new_operation(
     name = "PutPermission",
@@ -1459,6 +1493,8 @@ codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGr
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_remove_notification_channel
+#'
+#' @aliases codeguruprofiler_remove_notification_channel
 codeguruprofiler_remove_notification_channel <- function(channelId, profilingGroupName) {
   op <- new_operation(
     name = "RemoveNotificationChannel",
@@ -1527,6 +1563,8 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_remove_permission
+#'
+#' @aliases codeguruprofiler_remove_permission
 codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, revisionId) {
   op <- new_operation(
     name = "RemovePermission",
@@ -1579,6 +1617,8 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_submit_feedback
+#'
+#' @aliases codeguruprofiler_submit_feedback
 codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, profilingGroupName, type) {
   op <- new_operation(
     name = "SubmitFeedback",
@@ -1624,6 +1664,8 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_tag_resource
+#'
+#' @aliases codeguruprofiler_tag_resource
 codeguruprofiler_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1670,6 +1712,8 @@ codeguruprofiler_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_untag_resource
+#'
+#' @aliases codeguruprofiler_untag_resource
 codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1751,6 +1795,8 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname codeguruprofiler_update_profiling_group
+#'
+#' @aliases codeguruprofiler_update_profiling_group
 codeguruprofiler_update_profiling_group <- function(agentOrchestrationConfig, profilingGroupName) {
   op <- new_operation(
     name = "UpdateProfilingGroup",

@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_create_cluster
+#'
+#' @aliases route53recoverycontrolconfig_create_cluster
 route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, ClusterName, Tags = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -123,6 +125,8 @@ route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, Clus
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_create_control_panel
+#'
+#' @aliases route53recoverycontrolconfig_create_control_panel
 route53recoverycontrolconfig_create_control_panel <- function(ClientToken = NULL, ClusterArn, ControlPanelName, Tags = NULL) {
   op <- new_operation(
     name = "CreateControlPanel",
@@ -192,6 +196,8 @@ route53recoverycontrolconfig_create_control_panel <- function(ClientToken = NULL
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_create_routing_control
+#'
+#' @aliases route53recoverycontrolconfig_create_routing_control
 route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NULL, ClusterArn, ControlPanelArn = NULL, RoutingControlName) {
   op <- new_operation(
     name = "CreateRoutingControl",
@@ -326,6 +332,8 @@ route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NU
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_create_safety_rule
+#'
+#' @aliases route53recoverycontrolconfig_create_safety_rule
 route53recoverycontrolconfig_create_safety_rule <- function(AssertionRule = NULL, ClientToken = NULL, GatingRule = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateSafetyRule",
@@ -366,6 +374,8 @@ route53recoverycontrolconfig_create_safety_rule <- function(AssertionRule = NULL
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_delete_cluster
+#'
+#' @aliases route53recoverycontrolconfig_delete_cluster
 route53recoverycontrolconfig_delete_cluster <- function(ClusterArn) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -406,6 +416,8 @@ route53recoverycontrolconfig_delete_cluster <- function(ClusterArn) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_delete_control_panel
+#'
+#' @aliases route53recoverycontrolconfig_delete_control_panel
 route53recoverycontrolconfig_delete_control_panel <- function(ControlPanelArn) {
   op <- new_operation(
     name = "DeleteControlPanel",
@@ -447,6 +459,8 @@ route53recoverycontrolconfig_delete_control_panel <- function(ControlPanelArn) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_delete_routing_control
+#'
+#' @aliases route53recoverycontrolconfig_delete_routing_control
 route53recoverycontrolconfig_delete_routing_control <- function(RoutingControlArn) {
   op <- new_operation(
     name = "DeleteRoutingControl",
@@ -489,6 +503,8 @@ route53recoverycontrolconfig_delete_routing_control <- function(RoutingControlAr
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_delete_safety_rule
+#'
+#' @aliases route53recoverycontrolconfig_delete_safety_rule
 route53recoverycontrolconfig_delete_safety_rule <- function(SafetyRuleArn) {
   op <- new_operation(
     name = "DeleteSafetyRule",
@@ -545,6 +561,8 @@ route53recoverycontrolconfig_delete_safety_rule <- function(SafetyRuleArn) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_describe_cluster
+#'
+#' @aliases route53recoverycontrolconfig_describe_cluster
 route53recoverycontrolconfig_describe_cluster <- function(ClusterArn) {
   op <- new_operation(
     name = "DescribeCluster",
@@ -597,6 +615,8 @@ route53recoverycontrolconfig_describe_cluster <- function(ClusterArn) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_describe_control_panel
+#'
+#' @aliases route53recoverycontrolconfig_describe_control_panel
 route53recoverycontrolconfig_describe_control_panel <- function(ControlPanelArn) {
   op <- new_operation(
     name = "DescribeControlPanel",
@@ -654,6 +674,8 @@ route53recoverycontrolconfig_describe_control_panel <- function(ControlPanelArn)
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_describe_routing_control
+#'
+#' @aliases route53recoverycontrolconfig_describe_routing_control
 route53recoverycontrolconfig_describe_routing_control <- function(RoutingControlArn) {
   op <- new_operation(
     name = "DescribeRoutingControl",
@@ -731,6 +753,8 @@ route53recoverycontrolconfig_describe_routing_control <- function(RoutingControl
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_describe_safety_rule
+#'
+#' @aliases route53recoverycontrolconfig_describe_safety_rule
 route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
   op <- new_operation(
     name = "DescribeSafetyRule",
@@ -785,7 +809,9 @@ route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
 #'
 #' @keywords internal
 #'
-#' @rdname route53recoverycontrolconfig_list_associated_route_53_health_checks
+#' @rdname route53recoverycontrolconfig_lis_ass_rou_53_hea_che
+#'
+#' @aliases route53recoverycontrolconfig_list_associated_route_53_health_checks
 route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(MaxResults = NULL, NextToken = NULL, RoutingControlArn) {
   op <- new_operation(
     name = "ListAssociatedRoute53HealthChecks",
@@ -846,6 +872,8 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_list_clusters
+#'
+#' @aliases route53recoverycontrolconfig_list_clusters
 route53recoverycontrolconfig_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListClusters",
@@ -906,6 +934,8 @@ route53recoverycontrolconfig_list_clusters <- function(MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_list_control_panels
+#'
+#' @aliases route53recoverycontrolconfig_list_control_panels
 route53recoverycontrolconfig_list_control_panels <- function(ClusterArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListControlPanels",
@@ -968,6 +998,8 @@ route53recoverycontrolconfig_list_control_panels <- function(ClusterArn = NULL, 
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_list_routing_controls
+#'
+#' @aliases route53recoverycontrolconfig_list_routing_controls
 route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListRoutingControls",
@@ -1057,6 +1089,8 @@ route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, 
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_list_safety_rules
+#'
+#' @aliases route53recoverycontrolconfig_list_safety_rules
 route53recoverycontrolconfig_list_safety_rules <- function(ControlPanelArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSafetyRules",
@@ -1104,6 +1138,8 @@ route53recoverycontrolconfig_list_safety_rules <- function(ControlPanelArn, MaxR
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_list_tags_for_resource
+#'
+#' @aliases route53recoverycontrolconfig_list_tags_for_resource
 route53recoverycontrolconfig_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1148,6 +1184,8 @@ route53recoverycontrolconfig_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_tag_resource
+#'
+#' @aliases route53recoverycontrolconfig_tag_resource
 route53recoverycontrolconfig_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1192,6 +1230,8 @@ route53recoverycontrolconfig_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_untag_resource
+#'
+#' @aliases route53recoverycontrolconfig_untag_resource
 route53recoverycontrolconfig_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1248,6 +1288,8 @@ route53recoverycontrolconfig_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_update_control_panel
+#'
+#' @aliases route53recoverycontrolconfig_update_control_panel
 route53recoverycontrolconfig_update_control_panel <- function(ControlPanelArn, ControlPanelName) {
   op <- new_operation(
     name = "UpdateControlPanel",
@@ -1304,6 +1346,8 @@ route53recoverycontrolconfig_update_control_panel <- function(ControlPanelArn, C
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_update_routing_control
+#'
+#' @aliases route53recoverycontrolconfig_update_routing_control
 route53recoverycontrolconfig_update_routing_control <- function(RoutingControlArn, RoutingControlName) {
   op <- new_operation(
     name = "UpdateRoutingControl",
@@ -1394,6 +1438,8 @@ route53recoverycontrolconfig_update_routing_control <- function(RoutingControlAr
 #' @keywords internal
 #'
 #' @rdname route53recoverycontrolconfig_update_safety_rule
+#'
+#' @aliases route53recoverycontrolconfig_update_safety_rule
 route53recoverycontrolconfig_update_safety_rule <- function(AssertionRuleUpdate = NULL, GatingRuleUpdate = NULL) {
   op <- new_operation(
     name = "UpdateSafetyRule",

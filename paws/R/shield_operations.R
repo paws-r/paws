@@ -38,6 +38,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname shield_associate_drt_log_bucket
+#'
+#' @aliases shield_associate_drt_log_bucket
 shield_associate_drt_log_bucket <- function(LogBucket) {
   op <- new_operation(
     name = "AssociateDRTLogBucket",
@@ -124,6 +126,8 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' @keywords internal
 #'
 #' @rdname shield_associate_drt_role
+#'
+#' @aliases shield_associate_drt_role
 shield_associate_drt_role <- function(RoleArn) {
   op <- new_operation(
     name = "AssociateDRTRole",
@@ -178,6 +182,8 @@ shield_associate_drt_role <- function(RoleArn) {
 #' @keywords internal
 #'
 #' @rdname shield_associate_health_check
+#'
+#' @aliases shield_associate_health_check
 shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
   op <- new_operation(
     name = "AssociateHealthCheck",
@@ -253,6 +259,8 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' @keywords internal
 #'
 #' @rdname shield_associate_proactive_engagement_details
+#'
+#' @aliases shield_associate_proactive_engagement_details
 shield_associate_proactive_engagement_details <- function(EmergencyContactList) {
   op <- new_operation(
     name = "AssociateProactiveEngagementDetails",
@@ -341,6 +349,8 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' @keywords internal
 #'
 #' @rdname shield_create_protection
+#'
+#' @aliases shield_create_protection
 shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
   op <- new_operation(
     name = "CreateProtection",
@@ -427,6 +437,8 @@ shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname shield_create_protection_group
+#'
+#' @aliases shield_create_protection_group
 shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateProtectionGroup",
@@ -472,6 +484,8 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @keywords internal
 #'
 #' @rdname shield_create_subscription
+#'
+#' @aliases shield_create_subscription
 shield_create_subscription <- function() {
   op <- new_operation(
     name = "CreateSubscription",
@@ -512,6 +526,8 @@ shield_create_subscription <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_delete_protection
+#'
+#' @aliases shield_delete_protection
 shield_delete_protection <- function(ProtectionId) {
   op <- new_operation(
     name = "DeleteProtection",
@@ -554,6 +570,8 @@ shield_delete_protection <- function(ProtectionId) {
 #' @keywords internal
 #'
 #' @rdname shield_delete_protection_group
+#'
+#' @aliases shield_delete_protection_group
 shield_delete_protection_group <- function(ProtectionGroupId) {
   op <- new_operation(
     name = "DeleteProtectionGroup",
@@ -592,6 +610,8 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 #' @keywords internal
 #'
 #' @rdname shield_delete_subscription
+#'
+#' @aliases shield_delete_subscription
 shield_delete_subscription <- function() {
   op <- new_operation(
     name = "DeleteSubscription",
@@ -706,6 +726,8 @@ shield_delete_subscription <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_describe_attack
+#'
+#' @aliases shield_describe_attack
 shield_describe_attack <- function(AttackId) {
   op <- new_operation(
     name = "DescribeAttack",
@@ -785,6 +807,8 @@ shield_describe_attack <- function(AttackId) {
 #' @keywords internal
 #'
 #' @rdname shield_describe_attack_statistics
+#'
+#' @aliases shield_describe_attack_statistics
 shield_describe_attack_statistics <- function() {
   op <- new_operation(
     name = "DescribeAttackStatistics",
@@ -833,6 +857,8 @@ shield_describe_attack_statistics <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_describe_drt_access
+#'
+#' @aliases shield_describe_drt_access
 shield_describe_drt_access <- function() {
   op <- new_operation(
     name = "DescribeDRTAccess",
@@ -886,6 +912,8 @@ shield_describe_drt_access <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_describe_emergency_contact_settings
+#'
+#' @aliases shield_describe_emergency_contact_settings
 shield_describe_emergency_contact_settings <- function() {
   op <- new_operation(
     name = "DescribeEmergencyContactSettings",
@@ -952,6 +980,8 @@ shield_describe_emergency_contact_settings <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_describe_protection
+#'
+#' @aliases shield_describe_protection
 shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) {
   op <- new_operation(
     name = "DescribeProtection",
@@ -1008,6 +1038,8 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 #' @keywords internal
 #'
 #' @rdname shield_describe_protection_group
+#'
+#' @aliases shield_describe_protection_group
 shield_describe_protection_group <- function(ProtectionGroupId) {
   op <- new_operation(
     name = "DescribeProtectionGroup",
@@ -1084,6 +1116,8 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #' @keywords internal
 #'
 #' @rdname shield_describe_subscription
+#'
+#' @aliases shield_describe_subscription
 shield_describe_subscription <- function() {
   op <- new_operation(
     name = "DescribeSubscription",
@@ -1128,6 +1162,8 @@ shield_describe_subscription <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_disable_application_layer_automatic_response
+#'
+#' @aliases shield_disable_application_layer_automatic_response
 shield_disable_application_layer_automatic_response <- function(ResourceArn) {
   op <- new_operation(
     name = "DisableApplicationLayerAutomaticResponse",
@@ -1168,6 +1204,8 @@ shield_disable_application_layer_automatic_response <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname shield_disable_proactive_engagement
+#'
+#' @aliases shield_disable_proactive_engagement
 shield_disable_proactive_engagement <- function() {
   op <- new_operation(
     name = "DisableProactiveEngagement",
@@ -1210,6 +1248,8 @@ shield_disable_proactive_engagement <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_disassociate_drt_log_bucket
+#'
+#' @aliases shield_disassociate_drt_log_bucket
 shield_disassociate_drt_log_bucket <- function(LogBucket) {
   op <- new_operation(
     name = "DisassociateDRTLogBucket",
@@ -1248,6 +1288,8 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #' @keywords internal
 #'
 #' @rdname shield_disassociate_drt_role
+#'
+#' @aliases shield_disassociate_drt_role
 shield_disassociate_drt_role <- function() {
   op <- new_operation(
     name = "DisassociateDRTRole",
@@ -1302,6 +1344,8 @@ shield_disassociate_drt_role <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_disassociate_health_check
+#'
+#' @aliases shield_disassociate_health_check
 shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
   op <- new_operation(
     name = "DisassociateHealthCheck",
@@ -1382,6 +1426,8 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' @keywords internal
 #'
 #' @rdname shield_enable_application_layer_automatic_response
+#'
+#' @aliases shield_enable_application_layer_automatic_response
 shield_enable_application_layer_automatic_response <- function(ResourceArn, Action) {
   op <- new_operation(
     name = "EnableApplicationLayerAutomaticResponse",
@@ -1422,6 +1468,8 @@ shield_enable_application_layer_automatic_response <- function(ResourceArn, Acti
 #' @keywords internal
 #'
 #' @rdname shield_enable_proactive_engagement
+#'
+#' @aliases shield_enable_proactive_engagement
 shield_enable_proactive_engagement <- function() {
   op <- new_operation(
     name = "EnableProactiveEngagement",
@@ -1463,6 +1511,8 @@ shield_enable_proactive_engagement <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_get_subscription_state
+#'
+#' @aliases shield_get_subscription_state
 shield_get_subscription_state <- function() {
   op <- new_operation(
     name = "GetSubscriptionState",
@@ -1582,6 +1632,8 @@ shield_get_subscription_state <- function() {
 #' @keywords internal
 #'
 #' @rdname shield_list_attacks
+#'
+#' @aliases shield_list_attacks
 shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAttacks",
@@ -1683,6 +1735,8 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #' @keywords internal
 #'
 #' @rdname shield_list_protection_groups
+#'
+#' @aliases shield_list_protection_groups
 shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, InclusionFilters = NULL) {
   op <- new_operation(
     name = "ListProtectionGroups",
@@ -1787,6 +1841,8 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
 #' @keywords internal
 #'
 #' @rdname shield_list_protections
+#'
+#' @aliases shield_list_protections
 shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, InclusionFilters = NULL) {
   op <- new_operation(
     name = "ListProtections",
@@ -1862,6 +1918,8 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
 #' @keywords internal
 #'
 #' @rdname shield_list_resources_in_protection_group
+#'
+#' @aliases shield_list_resources_in_protection_group
 shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListResourcesInProtectionGroup",
@@ -1914,6 +1972,8 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
 #' @keywords internal
 #'
 #' @rdname shield_list_tags_for_resource
+#'
+#' @aliases shield_list_tags_for_resource
 shield_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1962,6 +2022,8 @@ shield_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname shield_tag_resource
+#'
+#' @aliases shield_tag_resource
 shield_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2007,6 +2069,8 @@ shield_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname shield_untag_resource
+#'
+#' @aliases shield_untag_resource
 shield_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2060,6 +2124,8 @@ shield_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname shield_update_application_layer_automatic_response
+#'
+#' @aliases shield_update_application_layer_automatic_response
 shield_update_application_layer_automatic_response <- function(ResourceArn, Action) {
   op <- new_operation(
     name = "UpdateApplicationLayerAutomaticResponse",
@@ -2118,6 +2184,8 @@ shield_update_application_layer_automatic_response <- function(ResourceArn, Acti
 #' @keywords internal
 #'
 #' @rdname shield_update_emergency_contact_settings
+#'
+#' @aliases shield_update_emergency_contact_settings
 shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL) {
   op <- new_operation(
     name = "UpdateEmergencyContactSettings",
@@ -2196,6 +2264,8 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #' @keywords internal
 #'
 #' @rdname shield_update_protection_group
+#'
+#' @aliases shield_update_protection_group
 shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL) {
   op <- new_operation(
     name = "UpdateProtectionGroup",
@@ -2247,6 +2317,8 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 #' @keywords internal
 #'
 #' @rdname shield_update_subscription
+#'
+#' @aliases shield_update_subscription
 shield_update_subscription <- function(AutoRenew = NULL) {
   op <- new_operation(
     name = "UpdateSubscription",

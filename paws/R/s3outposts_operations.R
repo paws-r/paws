@@ -56,6 +56,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname s3outposts_create_endpoint
+#'
+#' @aliases s3outposts_create_endpoint
 s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId, AccessType = NULL, CustomerOwnedIpv4Pool = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
@@ -106,6 +108,8 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId, Acc
 #' @keywords internal
 #'
 #' @rdname s3outposts_delete_endpoint
+#'
+#' @aliases s3outposts_delete_endpoint
 s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
   op <- new_operation(
     name = "DeleteEndpoint",
@@ -181,6 +185,8 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
 #' @keywords internal
 #'
 #' @rdname s3outposts_list_endpoints
+#'
+#' @aliases s3outposts_list_endpoints
 s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEndpoints",
@@ -260,6 +266,8 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname s3outposts_list_shared_endpoints
+#'
+#' @aliases s3outposts_list_shared_endpoints
 s3outposts_list_shared_endpoints <- function(NextToken = NULL, MaxResults = NULL, OutpostId) {
   op <- new_operation(
     name = "ListSharedEndpoints",

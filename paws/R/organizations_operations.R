@@ -103,6 +103,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname organizations_accept_handshake
+#'
+#' @aliases organizations_accept_handshake
 organizations_accept_handshake <- function(HandshakeId) {
   op <- new_operation(
     name = "AcceptHandshake",
@@ -202,6 +204,8 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' @keywords internal
 #'
 #' @rdname organizations_attach_policy
+#'
+#' @aliases organizations_attach_policy
 organizations_attach_policy <- function(PolicyId, TargetId) {
   op <- new_operation(
     name = "AttachPolicy",
@@ -300,6 +304,8 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 #' @keywords internal
 #'
 #' @rdname organizations_cancel_handshake
+#'
+#' @aliases organizations_cancel_handshake
 organizations_cancel_handshake <- function(HandshakeId) {
   op <- new_operation(
     name = "CancelHandshake",
@@ -387,6 +393,8 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' @keywords internal
 #'
 #' @rdname organizations_close_account
+#'
+#' @aliases organizations_close_account
 organizations_close_account <- function(AccountId) {
   op <- new_operation(
     name = "CloseAccount",
@@ -633,6 +641,8 @@ organizations_close_account <- function(AccountId) {
 #' @keywords internal
 #'
 #' @rdname organizations_create_account
+#'
+#' @aliases organizations_create_account
 organizations_create_account <- function(Email, AccountName, RoleName = NULL, IamUserAccessToBilling = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAccount",
@@ -926,6 +936,8 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' @keywords internal
 #'
 #' @rdname organizations_create_gov_cloud_account
+#'
+#' @aliases organizations_create_gov_cloud_account
 organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName = NULL, IamUserAccessToBilling = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGovCloudAccount",
@@ -1038,6 +1050,8 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #' @keywords internal
 #'
 #' @rdname organizations_create_organization
+#'
+#' @aliases organizations_create_organization
 organizations_create_organization <- function(FeatureSet = NULL) {
   op <- new_operation(
     name = "CreateOrganization",
@@ -1142,6 +1156,8 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' @keywords internal
 #'
 #' @rdname organizations_create_organizational_unit
+#'
+#' @aliases organizations_create_organizational_unit
 organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateOrganizationalUnit",
@@ -1264,6 +1280,8 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' @keywords internal
 #'
 #' @rdname organizations_create_policy
+#'
+#' @aliases organizations_create_policy
 organizations_create_policy <- function(Content, Description, Name, Type, Tags = NULL) {
   op <- new_operation(
     name = "CreatePolicy",
@@ -1360,6 +1378,8 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
 #' @keywords internal
 #'
 #' @rdname organizations_decline_handshake
+#'
+#' @aliases organizations_decline_handshake
 organizations_decline_handshake <- function(HandshakeId) {
   op <- new_operation(
     name = "DeclineHandshake",
@@ -1397,6 +1417,8 @@ organizations_decline_handshake <- function(HandshakeId) {
 #' @keywords internal
 #'
 #' @rdname organizations_delete_organization
+#'
+#' @aliases organizations_delete_organization
 organizations_delete_organization <- function() {
   op <- new_operation(
     name = "DeleteOrganization",
@@ -1462,6 +1484,8 @@ organizations_delete_organization <- function() {
 #' @keywords internal
 #'
 #' @rdname organizations_delete_organizational_unit
+#'
+#' @aliases organizations_delete_organizational_unit
 organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
   op <- new_operation(
     name = "DeleteOrganizationalUnit",
@@ -1526,6 +1550,8 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' @keywords internal
 #'
 #' @rdname organizations_delete_policy
+#'
+#' @aliases organizations_delete_policy
 organizations_delete_policy <- function(PolicyId) {
   op <- new_operation(
     name = "DeletePolicy",
@@ -1594,6 +1620,8 @@ organizations_delete_policy <- function(PolicyId) {
 #' @keywords internal
 #'
 #' @rdname organizations_deregister_delegated_administrator
+#'
+#' @aliases organizations_deregister_delegated_administrator
 organizations_deregister_delegated_administrator <- function(AccountId, ServicePrincipal) {
   op <- new_operation(
     name = "DeregisterDelegatedAdministrator",
@@ -1669,6 +1697,8 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
 #' @keywords internal
 #'
 #' @rdname organizations_describe_account
+#'
+#' @aliases organizations_describe_account
 organizations_describe_account <- function(AccountId) {
   op <- new_operation(
     name = "DescribeAccount",
@@ -1754,6 +1784,8 @@ organizations_describe_account <- function(AccountId) {
 #' @keywords internal
 #'
 #' @rdname organizations_describe_create_account_status
+#'
+#' @aliases organizations_describe_create_account_status
 organizations_describe_create_account_status <- function(CreateAccountRequestId) {
   op <- new_operation(
     name = "DescribeCreateAccountStatus",
@@ -1833,6 +1865,8 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @keywords internal
 #'
 #' @rdname organizations_describe_effective_policy
+#'
+#' @aliases organizations_describe_effective_policy
 organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL) {
   op <- new_operation(
     name = "DescribeEffectivePolicy",
@@ -1932,6 +1966,8 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 #' @keywords internal
 #'
 #' @rdname organizations_describe_handshake
+#'
+#' @aliases organizations_describe_handshake
 organizations_describe_handshake <- function(HandshakeId) {
   op <- new_operation(
     name = "DescribeHandshake",
@@ -2002,6 +2038,8 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' @keywords internal
 #'
 #' @rdname organizations_describe_organization
+#'
+#' @aliases organizations_describe_organization
 organizations_describe_organization <- function() {
   op <- new_operation(
     name = "DescribeOrganization",
@@ -2072,6 +2110,8 @@ organizations_describe_organization <- function() {
 #' @keywords internal
 #'
 #' @rdname organizations_describe_organizational_unit
+#'
+#' @aliases organizations_describe_organizational_unit
 organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
   op <- new_operation(
     name = "DescribeOrganizationalUnit",
@@ -2148,6 +2188,8 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #' @keywords internal
 #'
 #' @rdname organizations_describe_policy
+#'
+#' @aliases organizations_describe_policy
 organizations_describe_policy <- function(PolicyId) {
   op <- new_operation(
     name = "DescribePolicy",
@@ -2244,6 +2286,8 @@ organizations_describe_policy <- function(PolicyId) {
 #' @keywords internal
 #'
 #' @rdname organizations_detach_policy
+#'
+#' @aliases organizations_detach_policy
 organizations_detach_policy <- function(PolicyId, TargetId) {
   op <- new_operation(
     name = "DetachPolicy",
@@ -2355,6 +2399,8 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' @keywords internal
 #'
 #' @rdname organizations_disable_aws_service_access
+#'
+#' @aliases organizations_disable_aws_service_access
 organizations_disable_aws_service_access <- function(ServicePrincipal) {
   op <- new_operation(
     name = "DisableAWSServiceAccess",
@@ -2457,6 +2503,8 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' @keywords internal
 #'
 #' @rdname organizations_disable_policy_type
+#'
+#' @aliases organizations_disable_policy_type
 organizations_disable_policy_type <- function(RootId, PolicyType) {
   op <- new_operation(
     name = "DisablePolicyType",
@@ -2524,6 +2572,8 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' @keywords internal
 #'
 #' @rdname organizations_enable_aws_service_access
+#'
+#' @aliases organizations_enable_aws_service_access
 organizations_enable_aws_service_access <- function(ServicePrincipal) {
   op <- new_operation(
     name = "EnableAWSServiceAccess",
@@ -2637,6 +2687,8 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' @keywords internal
 #'
 #' @rdname organizations_enable_all_features
+#'
+#' @aliases organizations_enable_all_features
 organizations_enable_all_features <- function() {
   op <- new_operation(
     name = "EnableAllFeatures",
@@ -2737,6 +2789,8 @@ organizations_enable_all_features <- function() {
 #' @keywords internal
 #'
 #' @rdname organizations_enable_policy_type
+#'
+#' @aliases organizations_enable_policy_type
 organizations_enable_policy_type <- function(RootId, PolicyType) {
   op <- new_operation(
     name = "EnablePolicyType",
@@ -2894,6 +2948,8 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' @keywords internal
 #'
 #' @rdname organizations_invite_account_to_organization
+#'
+#' @aliases organizations_invite_account_to_organization
 organizations_invite_account_to_organization <- function(Target, Notes = NULL, Tags = NULL) {
   op <- new_operation(
     name = "InviteAccountToOrganization",
@@ -2994,6 +3050,8 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' @keywords internal
 #'
 #' @rdname organizations_leave_organization
+#'
+#' @aliases organizations_leave_organization
 organizations_leave_organization <- function() {
   op <- new_operation(
     name = "LeaveOrganization",
@@ -3078,6 +3136,8 @@ organizations_leave_organization <- function() {
 #' @keywords internal
 #'
 #' @rdname organizations_list_aws_service_access_for_organization
+#'
+#' @aliases organizations_list_aws_service_access_for_organization
 organizations_list_aws_service_access_for_organization <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAWSServiceAccessForOrganization",
@@ -3171,6 +3231,8 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 #' @keywords internal
 #'
 #' @rdname organizations_list_accounts
+#'
+#' @aliases organizations_list_accounts
 organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccounts",
@@ -3272,6 +3334,8 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname organizations_list_accounts_for_parent
+#'
+#' @aliases organizations_list_accounts_for_parent
 organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAccountsForParent",
@@ -3378,6 +3442,8 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname organizations_list_children
+#'
+#' @aliases organizations_list_children
 organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListChildren",
@@ -3490,6 +3556,8 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname organizations_list_create_account_status
+#'
+#' @aliases organizations_list_create_account_status
 organizations_list_create_account_status <- function(States = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCreateAccountStatus",
@@ -3579,6 +3647,8 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname organizations_list_delegated_administrators
+#'
+#' @aliases organizations_list_delegated_administrators
 organizations_list_delegated_administrators <- function(ServicePrincipal = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDelegatedAdministrators",
@@ -3657,6 +3727,8 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' @keywords internal
 #'
 #' @rdname organizations_list_delegated_services_for_account
+#'
+#' @aliases organizations_list_delegated_services_for_account
 organizations_list_delegated_services_for_account <- function(AccountId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDelegatedServicesForAccount",
@@ -3777,6 +3849,8 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' @keywords internal
 #'
 #' @rdname organizations_list_handshakes_for_account
+#'
+#' @aliases organizations_list_handshakes_for_account
 organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHandshakesForAccount",
@@ -3902,6 +3976,8 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname organizations_list_handshakes_for_organization
+#'
+#' @aliases organizations_list_handshakes_for_organization
 organizations_list_handshakes_for_organization <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHandshakesForOrganization",
@@ -4005,6 +4081,8 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname organizations_list_organizational_units_for_parent
+#'
+#' @aliases organizations_list_organizational_units_for_parent
 organizations_list_organizational_units_for_parent <- function(ParentId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListOrganizationalUnitsForParent",
@@ -4109,6 +4187,8 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' @keywords internal
 #'
 #' @rdname organizations_list_parents
+#'
+#' @aliases organizations_list_parents
 organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListParents",
@@ -4211,6 +4291,8 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname organizations_list_policies
+#'
+#' @aliases organizations_list_policies
 organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPolicies",
@@ -4335,6 +4417,8 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname organizations_list_policies_for_target
+#'
+#' @aliases organizations_list_policies_for_target
 organizations_list_policies_for_target <- function(TargetId, Filter, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPoliciesForTarget",
@@ -4432,6 +4516,8 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #' @keywords internal
 #'
 #' @rdname organizations_list_roots
+#'
+#' @aliases organizations_list_roots
 organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRoots",
@@ -4516,6 +4602,8 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname organizations_list_tags_for_resource
+#'
+#' @aliases organizations_list_tags_for_resource
 organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4612,6 +4700,8 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname organizations_list_targets_for_policy
+#'
+#' @aliases organizations_list_targets_for_policy
 organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTargetsForPolicy",
@@ -4700,6 +4790,8 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname organizations_move_account
+#'
+#' @aliases organizations_move_account
 organizations_move_account <- function(AccountId, SourceParentId, DestinationParentId) {
   op <- new_operation(
     name = "MoveAccount",
@@ -4760,6 +4852,8 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' @keywords internal
 #'
 #' @rdname organizations_register_delegated_administrator
+#'
+#' @aliases organizations_register_delegated_administrator
 organizations_register_delegated_administrator <- function(AccountId, ServicePrincipal) {
   op <- new_operation(
     name = "RegisterDelegatedAdministrator",
@@ -4851,6 +4945,8 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #' @keywords internal
 #'
 #' @rdname organizations_remove_account_from_organization
+#'
+#' @aliases organizations_remove_account_from_organization
 organizations_remove_account_from_organization <- function(AccountId) {
   op <- new_operation(
     name = "RemoveAccountFromOrganization",
@@ -4931,6 +5027,8 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' @keywords internal
 #'
 #' @rdname organizations_tag_resource
+#'
+#' @aliases organizations_tag_resource
 organizations_tag_resource <- function(ResourceId, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5001,6 +5099,8 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 #' @keywords internal
 #'
 #' @rdname organizations_untag_resource
+#'
+#' @aliases organizations_untag_resource
 organizations_untag_resource <- function(ResourceId, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5080,6 +5180,8 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname organizations_update_organizational_unit
+#'
+#' @aliases organizations_update_organizational_unit
 organizations_update_organizational_unit <- function(OrganizationalUnitId, Name = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationalUnit",
@@ -5178,6 +5280,8 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @keywords internal
 #'
 #' @rdname organizations_update_policy
+#'
+#' @aliases organizations_update_policy
 organizations_update_policy <- function(PolicyId, Name = NULL, Description = NULL, Content = NULL) {
   op <- new_operation(
     name = "UpdatePolicy",

@@ -46,6 +46,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_add_custom_attributes
+#'
+#' @aliases cognitoidentityprovider_add_custom_attributes
 cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttributes) {
   op <- new_operation(
     name = "AddCustomAttributes",
@@ -93,6 +95,8 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_add_user_to_group
+#'
+#' @aliases cognitoidentityprovider_admin_add_user_to_group
 cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username, GroupName) {
   op <- new_operation(
     name = "AdminAddUserToGroup",
@@ -171,6 +175,8 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_confirm_sign_up
+#'
+#' @aliases cognitoidentityprovider_admin_confirm_sign_up
 cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, ClientMetadata = NULL) {
   op <- new_operation(
     name = "AdminConfirmSignUp",
@@ -412,6 +418,8 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_create_user
+#'
+#' @aliases cognitoidentityprovider_admin_create_user
 cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, UserAttributes = NULL, ValidationData = NULL, TemporaryPassword = NULL, ForceAliasCreation = NULL, MessageAction = NULL, DesiredDeliveryMediums = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "AdminCreateUser",
@@ -456,6 +464,8 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_delete_user
+#'
+#' @aliases cognitoidentityprovider_admin_delete_user
 cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
   op <- new_operation(
     name = "AdminDeleteUser",
@@ -512,6 +522,8 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_delete_user_attributes
+#'
+#' @aliases cognitoidentityprovider_admin_delete_user_attributes
 cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Username, UserAttributeNames) {
   op <- new_operation(
     name = "AdminDeleteUserAttributes",
@@ -593,6 +605,8 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_disable_provider_for_user
+#'
+#' @aliases cognitoidentityprovider_admin_disable_provider_for_user
 cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, User) {
   op <- new_operation(
     name = "AdminDisableProviderForUser",
@@ -637,6 +651,8 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_disable_user
+#'
+#' @aliases cognitoidentityprovider_admin_disable_user
 cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
   op <- new_operation(
     name = "AdminDisableUser",
@@ -681,6 +697,8 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_enable_user
+#'
+#' @aliases cognitoidentityprovider_admin_enable_user
 cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
   op <- new_operation(
     name = "AdminEnableUser",
@@ -728,6 +746,8 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_forget_device
+#'
+#' @aliases cognitoidentityprovider_admin_forget_device
 cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, DeviceKey) {
   op <- new_operation(
     name = "AdminForgetDevice",
@@ -797,6 +817,8 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_get_device
+#'
+#' @aliases cognitoidentityprovider_admin_get_device
 cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, Username) {
   op <- new_operation(
     name = "AdminGetDevice",
@@ -872,6 +894,8 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_get_user
+#'
+#' @aliases cognitoidentityprovider_admin_get_user
 cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
   op <- new_operation(
     name = "AdminGetUser",
@@ -1093,6 +1117,8 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_initiate_auth
+#'
+#' @aliases cognitoidentityprovider_admin_initiate_auth
 cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, AuthFlow, AuthParameters = NULL, ClientMetadata = NULL, AnalyticsMetadata = NULL, ContextData = NULL) {
   op <- new_operation(
     name = "AdminInitiateAuth",
@@ -1204,6 +1230,8 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_link_provider_for_user
+#'
+#' @aliases cognitoidentityprovider_admin_link_provider_for_user
 cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, DestinationUser, SourceUser) {
   op <- new_operation(
     name = "AdminLinkProviderForUser",
@@ -1278,6 +1306,8 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_list_devices
+#'
+#' @aliases cognitoidentityprovider_admin_list_devices
 cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Limit = NULL, PaginationToken = NULL) {
   op <- new_operation(
     name = "AdminListDevices",
@@ -1349,6 +1379,8 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_list_groups_for_user
+#'
+#' @aliases cognitoidentityprovider_admin_list_groups_for_user
 cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoolId, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "AdminListGroupsForUser",
@@ -1438,6 +1470,8 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_list_user_auth_events
+#'
+#' @aliases cognitoidentityprovider_admin_list_user_auth_events
 cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, Username, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "AdminListUserAuthEvents",
@@ -1485,6 +1519,8 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_remove_user_from_group
+#'
+#' @aliases cognitoidentityprovider_admin_remove_user_from_group
 cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Username, GroupName) {
   op <- new_operation(
     name = "AdminRemoveUserFromGroup",
@@ -1594,6 +1630,8 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_reset_user_password
+#'
+#' @aliases cognitoidentityprovider_admin_reset_user_password
 cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Username, ClientMetadata = NULL) {
   op <- new_operation(
     name = "AdminResetUserPassword",
@@ -1814,6 +1852,8 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_respond_to_auth_challenge
+#'
+#' @aliases cognitoidentityprovider_admin_respond_to_auth_challenge
 cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, ClientId, ChallengeName, ChallengeResponses = NULL, Session = NULL, AnalyticsMetadata = NULL, ContextData = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "AdminRespondToAuthChallenge",
@@ -1873,6 +1913,8 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_set_user_mfa_preference
+#'
+#' @aliases cognitoidentityprovider_admin_set_user_mfa_preference
 cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings = NULL, SoftwareTokenMfaSettings = NULL, Username, UserPoolId) {
   op <- new_operation(
     name = "AdminSetUserMFAPreference",
@@ -1932,6 +1974,8 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_set_user_password
+#'
+#' @aliases cognitoidentityprovider_admin_set_user_password
 cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username, Password, Permanent = NULL) {
   op <- new_operation(
     name = "AdminSetUserPassword",
@@ -1988,6 +2032,8 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_set_user_settings
+#'
+#' @aliases cognitoidentityprovider_admin_set_user_settings
 cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username, MFAOptions) {
   op <- new_operation(
     name = "AdminSetUserSettings",
@@ -2038,6 +2084,8 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_update_auth_event_feedback
+#'
+#' @aliases cognitoidentityprovider_admin_update_auth_event_feedback
 cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId, Username, EventId, FeedbackValue) {
   op <- new_operation(
     name = "AdminUpdateAuthEventFeedback",
@@ -2087,6 +2135,8 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_update_device_status
+#'
+#' @aliases cognitoidentityprovider_admin_update_device_status
 cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Username, DeviceKey, DeviceRememberedStatus = NULL) {
   op <- new_operation(
     name = "AdminUpdateDeviceStatus",
@@ -2218,6 +2268,8 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_update_user_attributes
+#'
+#' @aliases cognitoidentityprovider_admin_update_user_attributes
 cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Username, UserAttributes, ClientMetadata = NULL) {
   op <- new_operation(
     name = "AdminUpdateUserAttributes",
@@ -2269,6 +2321,8 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_admin_user_global_sign_out
+#'
+#' @aliases cognitoidentityprovider_admin_user_global_sign_out
 cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Username) {
   op <- new_operation(
     name = "AdminUserGlobalSignOut",
@@ -2343,6 +2397,8 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_associate_software_token
+#'
+#' @aliases cognitoidentityprovider_associate_software_token
 cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL, Session = NULL) {
   op <- new_operation(
     name = "AssociateSoftwareToken",
@@ -2389,6 +2445,8 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_change_password
+#'
+#' @aliases cognitoidentityprovider_change_password
 cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPassword, AccessToken) {
   op <- new_operation(
     name = "ChangePassword",
@@ -2446,6 +2504,8 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_confirm_device
+#'
+#' @aliases cognitoidentityprovider_confirm_device
 cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, DeviceSecretVerifierConfig = NULL, DeviceName = NULL) {
   op <- new_operation(
     name = "ConfirmDevice",
@@ -2548,6 +2608,8 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_confirm_forgot_password
+#'
+#' @aliases cognitoidentityprovider_confirm_forgot_password
 cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash = NULL, Username, ConfirmationCode, Password, AnalyticsMetadata = NULL, UserContextData = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "ConfirmForgotPassword",
@@ -2650,6 +2712,8 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_confirm_sign_up
+#'
+#' @aliases cognitoidentityprovider_confirm_sign_up
 cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL, Username, ConfirmationCode, ForceAliasCreation = NULL, AnalyticsMetadata = NULL, UserContextData = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "ConfirmSignUp",
@@ -2734,6 +2798,8 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_group
+#'
+#' @aliases cognitoidentityprovider_create_group
 cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Description = NULL, RoleArn = NULL, Precedence = NULL) {
   op <- new_operation(
     name = "CreateGroup",
@@ -2881,6 +2947,8 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_identity_provider
+#'
+#' @aliases cognitoidentityprovider_create_identity_provider
 cognitoidentityprovider_create_identity_provider <- function(UserPoolId, ProviderName, ProviderType, ProviderDetails, AttributeMapping = NULL, IdpIdentifiers = NULL) {
   op <- new_operation(
     name = "CreateIdentityProvider",
@@ -2952,6 +3020,8 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_resource_server
+#'
+#' @aliases cognitoidentityprovider_create_resource_server
 cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifier, Name, Scopes = NULL) {
   op <- new_operation(
     name = "CreateResourceServer",
@@ -3024,6 +3094,8 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_user_import_job
+#'
+#' @aliases cognitoidentityprovider_create_user_import_job
 cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, CloudWatchLogsRoleArn) {
   op <- new_operation(
     name = "CreateUserImportJob",
@@ -3427,6 +3499,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_user_pool
+#'
+#' @aliases cognitoidentityprovider_create_user_pool
 cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, UserAttributeUpdateSettings = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, UsernameConfiguration = NULL, AccountRecoverySetting = NULL) {
   op <- new_operation(
     name = "CreateUserPool",
@@ -3776,6 +3850,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_user_pool_client
+#'
+#' @aliases cognitoidentityprovider_create_user_pool_client
 cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientName, GenerateSecret = NULL, RefreshTokenValidity = NULL, AccessTokenValidity = NULL, IdTokenValidity = NULL, TokenValidityUnits = NULL, ReadAttributes = NULL, WriteAttributes = NULL, ExplicitAuthFlows = NULL, SupportedIdentityProviders = NULL, CallbackURLs = NULL, LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL, AnalyticsConfiguration = NULL, PreventUserExistenceErrors = NULL, EnableTokenRevocation = NULL, EnablePropagateAdditionalUserContextData = NULL) {
   op <- new_operation(
     name = "CreateUserPoolClient",
@@ -3839,6 +3915,8 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_create_user_pool_domain
+#'
+#' @aliases cognitoidentityprovider_create_user_pool_domain
 cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, CustomDomainConfig = NULL) {
   op <- new_operation(
     name = "CreateUserPoolDomain",
@@ -3883,6 +3961,8 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_group
+#'
+#' @aliases cognitoidentityprovider_delete_group
 cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -3926,6 +4006,8 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_identity_provider
+#'
+#' @aliases cognitoidentityprovider_delete_identity_provider
 cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, ProviderName) {
   op <- new_operation(
     name = "DeleteIdentityProvider",
@@ -3968,6 +4050,8 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_resource_server
+#'
+#' @aliases cognitoidentityprovider_delete_resource_server
 cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifier) {
   op <- new_operation(
     name = "DeleteResourceServer",
@@ -4009,6 +4093,8 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_user
+#'
+#' @aliases cognitoidentityprovider_delete_user
 cognitoidentityprovider_delete_user <- function(AccessToken) {
   op <- new_operation(
     name = "DeleteUser",
@@ -4059,6 +4145,8 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_user_attributes
+#'
+#' @aliases cognitoidentityprovider_delete_user_attributes
 cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, AccessToken) {
   op <- new_operation(
     name = "DeleteUserAttributes",
@@ -4099,6 +4187,8 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_user_pool
+#'
+#' @aliases cognitoidentityprovider_delete_user_pool
 cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
   op <- new_operation(
     name = "DeleteUserPool",
@@ -4141,6 +4231,8 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_user_pool_client
+#'
+#' @aliases cognitoidentityprovider_delete_user_pool_client
 cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId) {
   op <- new_operation(
     name = "DeleteUserPoolClient",
@@ -4185,6 +4277,8 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_delete_user_pool_domain
+#'
+#' @aliases cognitoidentityprovider_delete_user_pool_domain
 cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) {
   op <- new_operation(
     name = "DeleteUserPoolDomain",
@@ -4252,6 +4346,8 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_identity_provider
+#'
+#' @aliases cognitoidentityprovider_describe_identity_provider
 cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, ProviderName) {
   op <- new_operation(
     name = "DescribeIdentityProvider",
@@ -4309,6 +4405,8 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_resource_server
+#'
+#' @aliases cognitoidentityprovider_describe_resource_server
 cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identifier) {
   op <- new_operation(
     name = "DescribeResourceServer",
@@ -4415,6 +4513,8 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_risk_configuration
+#'
+#' @aliases cognitoidentityprovider_describe_risk_configuration
 cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, ClientId = NULL) {
   op <- new_operation(
     name = "DescribeRiskConfiguration",
@@ -4483,6 +4583,8 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_user_import_job
+#'
+#' @aliases cognitoidentityprovider_describe_user_import_job
 cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) {
   op <- new_operation(
     name = "DescribeUserImportJob",
@@ -4663,6 +4765,8 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_user_pool
+#'
+#' @aliases cognitoidentityprovider_describe_user_pool
 cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
   op <- new_operation(
     name = "DescribeUserPool",
@@ -4767,6 +4871,8 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_user_pool_client
+#'
+#' @aliases cognitoidentityprovider_describe_user_pool_client
 cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, ClientId) {
   op <- new_operation(
     name = "DescribeUserPoolClient",
@@ -4825,6 +4931,8 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_describe_user_pool_domain
+#'
+#' @aliases cognitoidentityprovider_describe_user_pool_domain
 cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
   op <- new_operation(
     name = "DescribeUserPoolDomain",
@@ -4868,6 +4976,8 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_forget_device
+#'
+#' @aliases cognitoidentityprovider_forget_device
 cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey) {
   op <- new_operation(
     name = "ForgetDevice",
@@ -5002,6 +5112,8 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_forgot_password
+#'
+#' @aliases cognitoidentityprovider_forgot_password
 cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL, UserContextData = NULL, Username, AnalyticsMetadata = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "ForgotPassword",
@@ -5053,6 +5165,8 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_csv_header
+#'
+#' @aliases cognitoidentityprovider_get_csv_header
 cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
   op <- new_operation(
     name = "GetCSVHeader",
@@ -5118,6 +5232,8 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_device
+#'
+#' @aliases cognitoidentityprovider_get_device
 cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
   op <- new_operation(
     name = "GetDevice",
@@ -5179,6 +5295,8 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_group
+#'
+#' @aliases cognitoidentityprovider_get_group
 cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
   op <- new_operation(
     name = "GetGroup",
@@ -5246,6 +5364,8 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_identity_provider_by_identifier
+#'
+#' @aliases cognitoidentityprovider_get_identity_provider_by_identifier
 cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPoolId, IdpIdentifier) {
   op <- new_operation(
     name = "GetIdentityProviderByIdentifier",
@@ -5291,6 +5411,8 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_signing_certificate
+#'
+#' @aliases cognitoidentityprovider_get_signing_certificate
 cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
   op <- new_operation(
     name = "GetSigningCertificate",
@@ -5355,6 +5477,8 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_ui_customization
+#'
+#' @aliases cognitoidentityprovider_get_ui_customization
 cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = NULL) {
   op <- new_operation(
     name = "GetUICustomization",
@@ -5417,6 +5541,8 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_user
+#'
+#' @aliases cognitoidentityprovider_get_user
 cognitoidentityprovider_get_user <- function(AccessToken) {
   op <- new_operation(
     name = "GetUser",
@@ -5527,6 +5653,8 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_user_attribute_verification_code
+#'
+#' @aliases cognitoidentityprovider_get_user_attribute_verification_code
 cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessToken, AttributeName, ClientMetadata = NULL) {
   op <- new_operation(
     name = "GetUserAttributeVerificationCode",
@@ -5583,6 +5711,8 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_get_user_pool_mfa_config
+#'
+#' @aliases cognitoidentityprovider_get_user_pool_mfa_config
 cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
   op <- new_operation(
     name = "GetUserPoolMfaConfig",
@@ -5629,6 +5759,8 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_global_sign_out
+#'
+#' @aliases cognitoidentityprovider_global_sign_out
 cognitoidentityprovider_global_sign_out <- function(AccessToken) {
   op <- new_operation(
     name = "GlobalSignOut",
@@ -5833,6 +5965,8 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_initiate_auth
+#'
+#' @aliases cognitoidentityprovider_initiate_auth
 cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NULL, ClientMetadata = NULL, ClientId, AnalyticsMetadata = NULL, UserContextData = NULL) {
   op <- new_operation(
     name = "InitiateAuth",
@@ -5906,6 +6040,8 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_devices
+#'
+#' @aliases cognitoidentityprovider_list_devices
 cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, PaginationToken = NULL) {
   op <- new_operation(
     name = "ListDevices",
@@ -5974,6 +6110,8 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_groups
+#'
+#' @aliases cognitoidentityprovider_list_groups
 cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGroups",
@@ -6036,6 +6174,8 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_identity_providers
+#'
+#' @aliases cognitoidentityprovider_list_identity_providers
 cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListIdentityProviders",
@@ -6099,6 +6239,8 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_resource_servers
+#'
+#' @aliases cognitoidentityprovider_list_resource_servers
 cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListResourceServers",
@@ -6153,6 +6295,8 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_tags_for_resource
+#'
+#' @aliases cognitoidentityprovider_list_tags_for_resource
 cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -6229,6 +6373,8 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_user_import_jobs
+#'
+#' @aliases cognitoidentityprovider_list_user_import_jobs
 cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults, PaginationToken = NULL) {
   op <- new_operation(
     name = "ListUserImportJobs",
@@ -6290,6 +6436,8 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_user_pool_clients
+#'
+#' @aliases cognitoidentityprovider_list_user_pool_clients
 cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListUserPoolClients",
@@ -6374,6 +6522,8 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_user_pools
+#'
+#' @aliases cognitoidentityprovider_list_user_pools
 cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults) {
   op <- new_operation(
     name = "ListUserPools",
@@ -6523,6 +6673,8 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_users
+#'
+#' @aliases cognitoidentityprovider_list_users
 cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NULL, Limit = NULL, PaginationToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListUsers",
@@ -6604,6 +6756,8 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_list_users_in_group
+#'
+#' @aliases cognitoidentityprovider_list_users_in_group
 cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, Limit = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListUsersInGroup",
@@ -6730,6 +6884,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_resend_confirmation_code
+#'
+#' @aliases cognitoidentityprovider_resend_confirmation_code
 cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHash = NULL, UserContextData = NULL, Username, AnalyticsMetadata = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "ResendConfirmationCode",
@@ -6923,6 +7079,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_respond_to_auth_challenge
+#'
+#' @aliases cognitoidentityprovider_respond_to_auth_challenge
 cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, ChallengeName, Session = NULL, ChallengeResponses = NULL, AnalyticsMetadata = NULL, UserContextData = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "RespondToAuthChallenge",
@@ -6971,6 +7129,8 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_revoke_token
+#'
+#' @aliases cognitoidentityprovider_revoke_token
 cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret = NULL) {
   op <- new_operation(
     name = "RevokeToken",
@@ -7144,6 +7304,8 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_set_risk_configuration
+#'
+#' @aliases cognitoidentityprovider_set_risk_configuration
 cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId = NULL, CompromisedCredentialsRiskConfiguration = NULL, AccountTakeoverRiskConfiguration = NULL, RiskExceptionConfiguration = NULL) {
   op <- new_operation(
     name = "SetRiskConfiguration",
@@ -7221,6 +7383,8 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_set_ui_customization
+#'
+#' @aliases cognitoidentityprovider_set_ui_customization
 cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = NULL, CSS = NULL, ImageFile = NULL) {
   op <- new_operation(
     name = "SetUICustomization",
@@ -7284,6 +7448,8 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_set_user_mfa_preference
+#'
+#' @aliases cognitoidentityprovider_set_user_mfa_preference
 cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NULL, SoftwareTokenMfaSettings = NULL, AccessToken) {
   op <- new_operation(
     name = "SetUserMFAPreference",
@@ -7387,6 +7553,8 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_set_user_pool_mfa_config
+#'
+#' @aliases cognitoidentityprovider_set_user_pool_mfa_config
 cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaConfiguration = NULL, SoftwareTokenMfaConfiguration = NULL, MfaConfiguration = NULL) {
   op <- new_operation(
     name = "SetUserPoolMfaConfig",
@@ -7440,6 +7608,8 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_set_user_settings
+#'
+#' @aliases cognitoidentityprovider_set_user_settings
 cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
   op <- new_operation(
     name = "SetUserSettings",
@@ -7586,6 +7756,8 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_sign_up
+#'
+#' @aliases cognitoidentityprovider_sign_up
 cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Username, Password, UserAttributes = NULL, ValidationData = NULL, AnalyticsMetadata = NULL, UserContextData = NULL, ClientMetadata = NULL) {
   op <- new_operation(
     name = "SignUp",
@@ -7654,6 +7826,8 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_start_user_import_job
+#'
+#' @aliases cognitoidentityprovider_start_user_import_job
 cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
   op <- new_operation(
     name = "StartUserImportJob",
@@ -7722,6 +7896,8 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_stop_user_import_job
+#'
+#' @aliases cognitoidentityprovider_stop_user_import_job
 cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
   op <- new_operation(
     name = "StopUserImportJob",
@@ -7784,6 +7960,8 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_tag_resource
+#'
+#' @aliases cognitoidentityprovider_tag_resource
 cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -7830,6 +8008,8 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_untag_resource
+#'
+#' @aliases cognitoidentityprovider_untag_resource
 cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -7883,6 +8063,8 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_auth_event_feedback
+#'
+#' @aliases cognitoidentityprovider_update_auth_event_feedback
 cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Username, EventId, FeedbackToken, FeedbackValue) {
   op <- new_operation(
     name = "UpdateAuthEventFeedback",
@@ -7929,6 +8111,8 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_device_status
+#'
+#' @aliases cognitoidentityprovider_update_device_status
 cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey, DeviceRememberedStatus = NULL) {
   op <- new_operation(
     name = "UpdateDeviceStatus",
@@ -8000,6 +8184,8 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_group
+#'
+#' @aliases cognitoidentityprovider_update_group
 cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Description = NULL, RoleArn = NULL, Precedence = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
@@ -8079,6 +8265,8 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_identity_provider
+#'
+#' @aliases cognitoidentityprovider_update_identity_provider
 cognitoidentityprovider_update_identity_provider <- function(UserPoolId, ProviderName, ProviderDetails = NULL, AttributeMapping = NULL, IdpIdentifiers = NULL) {
   op <- new_operation(
     name = "UpdateIdentityProvider",
@@ -8150,6 +8338,8 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_resource_server
+#'
+#' @aliases cognitoidentityprovider_update_resource_server
 cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifier, Name, Scopes = NULL) {
   op <- new_operation(
     name = "UpdateResourceServer",
@@ -8272,6 +8462,8 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_user_attributes
+#'
+#' @aliases cognitoidentityprovider_update_user_attributes
 cognitoidentityprovider_update_user_attributes <- function(UserAttributes, AccessToken, ClientMetadata = NULL) {
   op <- new_operation(
     name = "UpdateUserAttributes",
@@ -8495,6 +8687,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_user_pool
+#'
+#' @aliases cognitoidentityprovider_update_user_pool
 cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, UserAttributeUpdateSettings = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, UserPoolAddOns = NULL, AccountRecoverySetting = NULL) {
   op <- new_operation(
     name = "UpdateUserPool",
@@ -8822,6 +9016,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_user_pool_client
+#'
+#' @aliases cognitoidentityprovider_update_user_pool_client
 cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId, ClientName = NULL, RefreshTokenValidity = NULL, AccessTokenValidity = NULL, IdTokenValidity = NULL, TokenValidityUnits = NULL, ReadAttributes = NULL, WriteAttributes = NULL, ExplicitAuthFlows = NULL, SupportedIdentityProviders = NULL, CallbackURLs = NULL, LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL, AnalyticsConfiguration = NULL, PreventUserExistenceErrors = NULL, EnableTokenRevocation = NULL, EnablePropagateAdditionalUserContextData = NULL) {
   op <- new_operation(
     name = "UpdateUserPoolClient",
@@ -8913,6 +9109,8 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_update_user_pool_domain
+#'
+#' @aliases cognitoidentityprovider_update_user_pool_domain
 cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, CustomDomainConfig) {
   op <- new_operation(
     name = "UpdateUserPoolDomain",
@@ -8974,6 +9172,8 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_verify_software_token
+#'
+#' @aliases cognitoidentityprovider_verify_software_token
 cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Session = NULL, UserCode, FriendlyDeviceName = NULL) {
   op <- new_operation(
     name = "VerifySoftwareToken",
@@ -9025,6 +9225,8 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
 #' @keywords internal
 #'
 #' @rdname cognitoidentityprovider_verify_user_attribute
+#'
+#' @aliases cognitoidentityprovider_verify_user_attribute
 cognitoidentityprovider_verify_user_attribute <- function(AccessToken, AttributeName, Code) {
   op <- new_operation(
     name = "VerifyUserAttribute",

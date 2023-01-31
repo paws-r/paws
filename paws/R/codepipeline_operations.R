@@ -39,6 +39,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codepipeline_acknowledge_job
+#'
+#' @aliases codepipeline_acknowledge_job
 codepipeline_acknowledge_job <- function(jobId, nonce) {
   op <- new_operation(
     name = "AcknowledgeJob",
@@ -95,6 +97,8 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_acknowledge_third_party_job
+#'
+#' @aliases codepipeline_acknowledge_third_party_job
 codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) {
   op <- new_operation(
     name = "AcknowledgeThirdPartyJob",
@@ -231,6 +235,8 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' @keywords internal
 #'
 #' @rdname codepipeline_create_custom_action_type
+#'
+#' @aliases codepipeline_create_custom_action_type
 codepipeline_create_custom_action_type <- function(category, provider, version, settings = NULL, configurationProperties = NULL, inputArtifactDetails, outputArtifactDetails, tags = NULL) {
   op <- new_operation(
     name = "CreateCustomActionType",
@@ -417,6 +423,8 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #' @keywords internal
 #'
 #' @rdname codepipeline_create_pipeline
+#'
+#' @aliases codepipeline_create_pipeline
 codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
   op <- new_operation(
     name = "CreatePipeline",
@@ -472,6 +480,8 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_delete_custom_action_type
+#'
+#' @aliases codepipeline_delete_custom_action_type
 codepipeline_delete_custom_action_type <- function(category, provider, version) {
   op <- new_operation(
     name = "DeleteCustomActionType",
@@ -512,6 +522,8 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
 #' @keywords internal
 #'
 #' @rdname codepipeline_delete_pipeline
+#'
+#' @aliases codepipeline_delete_pipeline
 codepipeline_delete_pipeline <- function(name) {
   op <- new_operation(
     name = "DeletePipeline",
@@ -556,6 +568,8 @@ codepipeline_delete_pipeline <- function(name) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_delete_webhook
+#'
+#' @aliases codepipeline_delete_webhook
 codepipeline_delete_webhook <- function(name) {
   op <- new_operation(
     name = "DeleteWebhook",
@@ -599,6 +613,8 @@ codepipeline_delete_webhook <- function(name) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_deregister_webhook_with_third_party
+#'
+#' @aliases codepipeline_deregister_webhook_with_third_party
 codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL) {
   op <- new_operation(
     name = "DeregisterWebhookWithThirdParty",
@@ -655,6 +671,8 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' @keywords internal
 #'
 #' @rdname codepipeline_disable_stage_transition
+#'
+#' @aliases codepipeline_disable_stage_transition
 codepipeline_disable_stage_transition <- function(pipelineName, stageName, transitionType, reason) {
   op <- new_operation(
     name = "DisableStageTransition",
@@ -706,6 +724,8 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 #' @keywords internal
 #'
 #' @rdname codepipeline_enable_stage_transition
+#'
+#' @aliases codepipeline_enable_stage_transition
 codepipeline_enable_stage_transition <- function(pipelineName, stageName, transitionType) {
   op <- new_operation(
     name = "EnableStageTransition",
@@ -832,6 +852,8 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' @keywords internal
 #'
 #' @rdname codepipeline_get_action_type
+#'
+#' @aliases codepipeline_get_action_type
 codepipeline_get_action_type <- function(category, owner, provider, version) {
   op <- new_operation(
     name = "GetActionType",
@@ -946,6 +968,8 @@ codepipeline_get_action_type <- function(category, owner, provider, version) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_get_job_details
+#'
+#' @aliases codepipeline_get_job_details
 codepipeline_get_job_details <- function(jobId) {
   op <- new_operation(
     name = "GetJobDetails",
@@ -1068,6 +1092,8 @@ codepipeline_get_job_details <- function(jobId) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_get_pipeline
+#'
+#' @aliases codepipeline_get_pipeline
 codepipeline_get_pipeline <- function(name, version = NULL) {
   op <- new_operation(
     name = "GetPipeline",
@@ -1138,6 +1164,8 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_get_pipeline_execution
+#'
+#' @aliases codepipeline_get_pipeline_execution
 codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionId) {
   op <- new_operation(
     name = "GetPipelineExecution",
@@ -1248,6 +1276,8 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #' @keywords internal
 #'
 #' @rdname codepipeline_get_pipeline_state
+#'
+#' @aliases codepipeline_get_pipeline_state
 codepipeline_get_pipeline_state <- function(name) {
   op <- new_operation(
     name = "GetPipelineState",
@@ -1367,6 +1397,8 @@ codepipeline_get_pipeline_state <- function(name) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_get_third_party_job_details
+#'
+#' @aliases codepipeline_get_third_party_job_details
 codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
   op <- new_operation(
     name = "GetThirdPartyJobDetails",
@@ -1492,6 +1524,8 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_action_executions
+#'
+#' @aliases codepipeline_list_action_executions
 codepipeline_list_action_executions <- function(pipelineName, filter = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListActionExecutions",
@@ -1581,6 +1615,8 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_action_types
+#'
+#' @aliases codepipeline_list_action_types
 codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken = NULL, regionFilter = NULL) {
   op <- new_operation(
     name = "ListActionTypes",
@@ -1665,6 +1701,8 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_pipeline_executions
+#'
+#' @aliases codepipeline_list_pipeline_executions
 codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPipelineExecutions",
@@ -1728,6 +1766,8 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_pipelines
+#'
+#' @aliases codepipeline_list_pipelines
 codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPipelines",
@@ -1787,6 +1827,8 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_tags_for_resource
+#'
+#' @aliases codepipeline_list_tags_for_resource
 codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1872,6 +1914,8 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 #' @keywords internal
 #'
 #' @rdname codepipeline_list_webhooks
+#'
+#' @aliases codepipeline_list_webhooks
 codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListWebhooks",
@@ -2008,6 +2052,8 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_poll_for_jobs
+#'
+#' @aliases codepipeline_poll_for_jobs
 codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryParam = NULL) {
   op <- new_operation(
     name = "PollForJobs",
@@ -2071,6 +2117,8 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' @keywords internal
 #'
 #' @rdname codepipeline_poll_for_third_party_jobs
+#'
+#' @aliases codepipeline_poll_for_third_party_jobs
 codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = NULL) {
   op <- new_operation(
     name = "PollForThirdPartyJobs",
@@ -2133,6 +2181,8 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_action_revision
+#'
+#' @aliases codepipeline_put_action_revision
 codepipeline_put_action_revision <- function(pipelineName, stageName, actionName, actionRevision) {
   op <- new_operation(
     name = "PutActionRevision",
@@ -2197,6 +2247,8 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_approval_result
+#'
+#' @aliases codepipeline_put_approval_result
 codepipeline_put_approval_result <- function(pipelineName, stageName, actionName, result, token) {
   op <- new_operation(
     name = "PutApprovalResult",
@@ -2246,6 +2298,8 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_job_failure_result
+#'
+#' @aliases codepipeline_put_job_failure_result
 codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
   op <- new_operation(
     name = "PutJobFailureResult",
@@ -2320,6 +2374,8 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_job_success_result
+#'
+#' @aliases codepipeline_put_job_success_result
 codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, continuationToken = NULL, executionDetails = NULL, outputVariables = NULL) {
   op <- new_operation(
     name = "PutJobSuccessResult",
@@ -2374,6 +2430,8 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_third_party_job_failure_result
+#'
+#' @aliases codepipeline_put_third_party_job_failure_result
 codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, failureDetails) {
   op <- new_operation(
     name = "PutThirdPartyJobFailureResult",
@@ -2446,6 +2504,8 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_third_party_job_success_result
+#'
+#' @aliases codepipeline_put_third_party_job_success_result
 codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, currentRevision = NULL, continuationToken = NULL, executionDetails = NULL) {
   op <- new_operation(
     name = "PutThirdPartyJobSuccessResult",
@@ -2556,6 +2616,8 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' @keywords internal
 #'
 #' @rdname codepipeline_put_webhook
+#'
+#' @aliases codepipeline_put_webhook
 codepipeline_put_webhook <- function(webhook, tags = NULL) {
   op <- new_operation(
     name = "PutWebhook",
@@ -2599,6 +2661,8 @@ codepipeline_put_webhook <- function(webhook, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_register_webhook_with_third_party
+#'
+#' @aliases codepipeline_register_webhook_with_third_party
 codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
   op <- new_operation(
     name = "RegisterWebhookWithThirdParty",
@@ -2658,6 +2722,8 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_retry_stage_execution
+#'
+#' @aliases codepipeline_retry_stage_execution
 codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipelineExecutionId, retryMode) {
   op <- new_operation(
     name = "RetryStageExecution",
@@ -2707,6 +2773,8 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' @keywords internal
 #'
 #' @rdname codepipeline_start_pipeline_execution
+#'
+#' @aliases codepipeline_start_pipeline_execution
 codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
@@ -2770,6 +2838,8 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 #' @keywords internal
 #'
 #' @rdname codepipeline_stop_pipeline_execution
+#'
+#' @aliases codepipeline_stop_pipeline_execution
 codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecutionId, abandon = NULL, reason = NULL) {
   op <- new_operation(
     name = "StopPipelineExecution",
@@ -2818,6 +2888,8 @@ codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecution
 #' @keywords internal
 #'
 #' @rdname codepipeline_tag_resource
+#'
+#' @aliases codepipeline_tag_resource
 codepipeline_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2862,6 +2934,8 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_untag_resource
+#'
+#' @aliases codepipeline_untag_resource
 codepipeline_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2963,6 +3037,8 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_update_action_type
+#'
+#' @aliases codepipeline_update_action_type
 codepipeline_update_action_type <- function(actionType) {
   op <- new_operation(
     name = "UpdateActionType",
@@ -3134,6 +3210,8 @@ codepipeline_update_action_type <- function(actionType) {
 #' @keywords internal
 #'
 #' @rdname codepipeline_update_pipeline
+#'
+#' @aliases codepipeline_update_pipeline
 codepipeline_update_pipeline <- function(pipeline) {
   op <- new_operation(
     name = "UpdatePipeline",

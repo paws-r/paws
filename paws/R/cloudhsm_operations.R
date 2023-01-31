@@ -55,6 +55,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloudhsm_add_tags_to_resource
+#'
+#' @aliases cloudhsm_add_tags_to_resource
 cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -115,6 +117,8 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_create_hapg
+#'
+#' @aliases cloudhsm_create_hapg
 cloudhsm_create_hapg <- function(Label) {
   op <- new_operation(
     name = "CreateHapg",
@@ -206,6 +210,8 @@ cloudhsm_create_hapg <- function(Label) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_create_hsm
+#'
+#' @aliases cloudhsm_create_hsm
 cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, ExternalId = NULL, SubscriptionType, ClientToken = NULL, SyslogIp = NULL) {
   op <- new_operation(
     name = "CreateHsm",
@@ -267,6 +273,8 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
 #' @keywords internal
 #'
 #' @rdname cloudhsm_create_luna_client
+#'
+#' @aliases cloudhsm_create_luna_client
 cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
   op <- new_operation(
     name = "CreateLunaClient",
@@ -325,6 +333,8 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_delete_hapg
+#'
+#' @aliases cloudhsm_delete_hapg
 cloudhsm_delete_hapg <- function(HapgArn) {
   op <- new_operation(
     name = "DeleteHapg",
@@ -384,6 +394,8 @@ cloudhsm_delete_hapg <- function(HapgArn) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_delete_hsm
+#'
+#' @aliases cloudhsm_delete_hsm
 cloudhsm_delete_hsm <- function(HsmArn) {
   op <- new_operation(
     name = "DeleteHsm",
@@ -442,6 +454,8 @@ cloudhsm_delete_hsm <- function(HsmArn) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_delete_luna_client
+#'
+#' @aliases cloudhsm_delete_luna_client
 cloudhsm_delete_luna_client <- function(ClientArn) {
   op <- new_operation(
     name = "DeleteLunaClient",
@@ -516,6 +530,8 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_describe_hapg
+#'
+#' @aliases cloudhsm_describe_hapg
 cloudhsm_describe_hapg <- function(HapgArn) {
   op <- new_operation(
     name = "DescribeHapg",
@@ -601,6 +617,8 @@ cloudhsm_describe_hapg <- function(HapgArn) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_describe_hsm
+#'
+#' @aliases cloudhsm_describe_hsm
 cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
   op <- new_operation(
     name = "DescribeHsm",
@@ -665,6 +683,8 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_describe_luna_client
+#'
+#' @aliases cloudhsm_describe_luna_client
 cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerprint = NULL) {
   op <- new_operation(
     name = "DescribeLunaClient",
@@ -733,6 +753,8 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
 #' @keywords internal
 #'
 #' @rdname cloudhsm_get_config
+#'
+#' @aliases cloudhsm_get_config
 cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
   op <- new_operation(
     name = "GetConfig",
@@ -789,6 +811,8 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_list_available_zones
+#'
+#' @aliases cloudhsm_list_available_zones
 cloudhsm_list_available_zones <- function() {
   op <- new_operation(
     name = "ListAvailableZones",
@@ -857,6 +881,8 @@ cloudhsm_list_available_zones <- function() {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_list_hapgs
+#'
+#' @aliases cloudhsm_list_hapgs
 cloudhsm_list_hapgs <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListHapgs",
@@ -925,6 +951,8 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_list_hsms
+#'
+#' @aliases cloudhsm_list_hsms
 cloudhsm_list_hsms <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListHsms",
@@ -994,6 +1022,8 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_list_luna_clients
+#'
+#' @aliases cloudhsm_list_luna_clients
 cloudhsm_list_luna_clients <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListLunaClients",
@@ -1057,6 +1087,8 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_list_tags_for_resource
+#'
+#' @aliases cloudhsm_list_tags_for_resource
 cloudhsm_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1122,6 +1154,8 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_modify_hapg
+#'
+#' @aliases cloudhsm_modify_hapg
 cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NULL) {
   op <- new_operation(
     name = "ModifyHapg",
@@ -1204,6 +1238,8 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #' @keywords internal
 #'
 #' @rdname cloudhsm_modify_hsm
+#'
+#' @aliases cloudhsm_modify_hsm
 cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleArn = NULL, ExternalId = NULL, SyslogIp = NULL) {
   op <- new_operation(
     name = "ModifyHsm",
@@ -1267,6 +1303,8 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
 #' @keywords internal
 #'
 #' @rdname cloudhsm_modify_luna_client
+#'
+#' @aliases cloudhsm_modify_luna_client
 cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
   op <- new_operation(
     name = "ModifyLunaClient",
@@ -1337,6 +1375,8 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' @keywords internal
 #'
 #' @rdname cloudhsm_remove_tags_from_resource
+#'
+#' @aliases cloudhsm_remove_tags_from_resource
 cloudhsm_remove_tags_from_resource <- function(ResourceArn, TagKeyList) {
   op <- new_operation(
     name = "RemoveTagsFromResource",

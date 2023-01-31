@@ -62,6 +62,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname route53recoverycluster_get_routing_control_state
+#'
+#' @aliases route53recoverycluster_get_routing_control_state
 route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) {
   op <- new_operation(
     name = "GetRoutingControlState",
@@ -156,6 +158,8 @@ route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) 
 #' @keywords internal
 #'
 #' @rdname route53recoverycluster_list_routing_controls
+#'
+#' @aliases route53recoverycluster_list_routing_controls
 route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRoutingControls",
@@ -244,6 +248,8 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
 #' @keywords internal
 #'
 #' @rdname route53recoverycluster_update_routing_control_state
+#'
+#' @aliases route53recoverycluster_update_routing_control_state
 route53recoverycluster_update_routing_control_state <- function(RoutingControlArn, RoutingControlState, SafetyRulesToOverride = NULL) {
   op <- new_operation(
     name = "UpdateRoutingControlState",
@@ -334,6 +340,8 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
 #' @keywords internal
 #'
 #' @rdname route53recoverycluster_update_routing_control_states
+#'
+#' @aliases route53recoverycluster_update_routing_control_states
 route53recoverycluster_update_routing_control_states <- function(UpdateRoutingControlStateEntries, SafetyRulesToOverride = NULL) {
   op <- new_operation(
     name = "UpdateRoutingControlStates",

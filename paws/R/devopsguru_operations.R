@@ -59,6 +59,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname devopsguru_add_notification_channel
+#'
+#' @aliases devopsguru_add_notification_channel
 devopsguru_add_notification_channel <- function(Config) {
   op <- new_operation(
     name = "AddNotificationChannel",
@@ -101,6 +103,8 @@ devopsguru_add_notification_channel <- function(Config) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_delete_insight
+#'
+#' @aliases devopsguru_delete_insight
 devopsguru_delete_insight <- function(Id) {
   op <- new_operation(
     name = "DeleteInsight",
@@ -150,6 +154,8 @@ devopsguru_delete_insight <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_account_health
+#'
+#' @aliases devopsguru_describe_account_health
 devopsguru_describe_account_health <- function() {
   op <- new_operation(
     name = "DescribeAccountHealth",
@@ -214,6 +220,8 @@ devopsguru_describe_account_health <- function() {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_account_overview
+#'
+#' @aliases devopsguru_describe_account_overview
 devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
   op <- new_operation(
     name = "DescribeAccountOverview",
@@ -535,6 +543,8 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_anomaly
+#'
+#' @aliases devopsguru_describe_anomaly
 devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeAnomaly",
@@ -585,6 +595,8 @@ devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_event_sources_config
+#'
+#' @aliases devopsguru_describe_event_sources_config
 devopsguru_describe_event_sources_config <- function() {
   op <- new_operation(
     name = "DescribeEventSourcesConfig",
@@ -635,6 +647,8 @@ devopsguru_describe_event_sources_config <- function() {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_feedback
+#'
+#' @aliases devopsguru_describe_feedback
 devopsguru_describe_feedback <- function(InsightId = NULL) {
   op <- new_operation(
     name = "DescribeFeedback",
@@ -751,6 +765,8 @@ devopsguru_describe_feedback <- function(InsightId = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_insight
+#'
+#' @aliases devopsguru_describe_insight
 devopsguru_describe_insight <- function(Id, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeInsight",
@@ -808,6 +824,8 @@ devopsguru_describe_insight <- function(Id, AccountId = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_organization_health
+#'
+#' @aliases devopsguru_describe_organization_health
 devopsguru_describe_organization_health <- function(AccountIds = NULL, OrganizationalUnitIds = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationHealth",
@@ -877,6 +895,8 @@ devopsguru_describe_organization_health <- function(AccountIds = NULL, Organizat
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_organization_overview
+#'
+#' @aliases devopsguru_describe_organization_overview
 devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, AccountIds = NULL, OrganizationalUnitIds = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationOverview",
@@ -987,6 +1007,8 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_organization_resource_collection_health
+#'
+#' @aliases devopsguru_describe_organization_resource_collection_health
 devopsguru_describe_organization_resource_collection_health <- function(OrganizationResourceCollectionType, AccountIds = NULL, OrganizationalUnitIds = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeOrganizationResourceCollectionHealth",
@@ -1084,6 +1106,8 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_resource_collection_health
+#'
+#' @aliases devopsguru_describe_resource_collection_health
 devopsguru_describe_resource_collection_health <- function(ResourceCollectionType, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeResourceCollectionHealth",
@@ -1136,6 +1160,8 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #' @keywords internal
 #'
 #' @rdname devopsguru_describe_service_integration
+#'
+#' @aliases devopsguru_describe_service_integration
 devopsguru_describe_service_integration <- function() {
   op <- new_operation(
     name = "DescribeServiceIntegration",
@@ -1222,6 +1248,8 @@ devopsguru_describe_service_integration <- function() {
 #' @keywords internal
 #'
 #' @rdname devopsguru_get_cost_estimation
+#'
+#' @aliases devopsguru_get_cost_estimation
 devopsguru_get_cost_estimation <- function(NextToken = NULL) {
   op <- new_operation(
     name = "GetCostEstimation",
@@ -1295,6 +1323,8 @@ devopsguru_get_cost_estimation <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_get_resource_collection
+#'
+#' @aliases devopsguru_get_resource_collection
 devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken = NULL) {
   op <- new_operation(
     name = "GetResourceCollection",
@@ -1641,6 +1671,8 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_anomalies_for_insight
+#'
+#' @aliases devopsguru_list_anomalies_for_insight
 devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListAnomaliesForInsight",
@@ -1723,6 +1755,8 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_anomalous_log_groups
+#'
+#' @aliases devopsguru_list_anomalous_log_groups
 devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAnomalousLogGroups",
@@ -1842,6 +1876,8 @@ devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_events
+#'
+#' @aliases devopsguru_list_events
 devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListEvents",
@@ -2009,6 +2045,8 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_insights
+#'
+#' @aliases devopsguru_list_insights
 devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInsights",
@@ -2076,6 +2114,8 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_monitored_resources
+#'
+#' @aliases devopsguru_list_monitored_resources
 devopsguru_list_monitored_resources <- function(Filters, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMonitoredResources",
@@ -2136,6 +2176,8 @@ devopsguru_list_monitored_resources <- function(Filters, MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_notification_channels
+#'
+#' @aliases devopsguru_list_notification_channels
 devopsguru_list_notification_channels <- function(NextToken = NULL) {
   op <- new_operation(
     name = "ListNotificationChannels",
@@ -2307,6 +2349,8 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_organization_insights
+#'
+#' @aliases devopsguru_list_organization_insights
 devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NULL, AccountIds = NULL, OrganizationalUnitIds = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListOrganizationInsights",
@@ -2402,6 +2446,8 @@ devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname devopsguru_list_recommendations
+#'
+#' @aliases devopsguru_list_recommendations
 devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListRecommendations",
@@ -2446,6 +2492,8 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale 
 #' @keywords internal
 #'
 #' @rdname devopsguru_put_feedback
+#'
+#' @aliases devopsguru_put_feedback
 devopsguru_put_feedback <- function(InsightFeedback = NULL) {
   op <- new_operation(
     name = "PutFeedback",
@@ -2488,6 +2536,8 @@ devopsguru_put_feedback <- function(InsightFeedback = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_remove_notification_channel
+#'
+#' @aliases devopsguru_remove_notification_channel
 devopsguru_remove_notification_channel <- function(Id) {
   op <- new_operation(
     name = "RemoveNotificationChannel",
@@ -2674,6 +2724,8 @@ devopsguru_remove_notification_channel <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_search_insights
+#'
+#' @aliases devopsguru_search_insights
 devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResults = NULL, NextToken = NULL, Type) {
   op <- new_operation(
     name = "SearchInsights",
@@ -2863,6 +2915,8 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname devopsguru_search_organization_insights
+#'
+#' @aliases devopsguru_search_organization_insights
 devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, Filters = NULL, MaxResults = NULL, NextToken = NULL, Type) {
   op <- new_operation(
     name = "SearchOrganizationInsights",
@@ -2922,6 +2976,8 @@ devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, 
 #' @keywords internal
 #'
 #' @rdname devopsguru_start_cost_estimation
+#'
+#' @aliases devopsguru_start_cost_estimation
 devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = NULL) {
   op <- new_operation(
     name = "StartCostEstimation",
@@ -2971,6 +3027,8 @@ devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = N
 #' @keywords internal
 #'
 #' @rdname devopsguru_update_event_sources_config
+#'
+#' @aliases devopsguru_update_event_sources_config
 devopsguru_update_event_sources_config <- function(EventSources = NULL) {
   op <- new_operation(
     name = "UpdateEventSourcesConfig",
@@ -3035,6 +3093,8 @@ devopsguru_update_event_sources_config <- function(EventSources = NULL) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_update_resource_collection
+#'
+#' @aliases devopsguru_update_resource_collection
 devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
   op <- new_operation(
     name = "UpdateResourceCollection",
@@ -3088,6 +3148,8 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
 #' @keywords internal
 #'
 #' @rdname devopsguru_update_service_integration
+#'
+#' @aliases devopsguru_update_service_integration
 devopsguru_update_service_integration <- function(ServiceIntegration) {
   op <- new_operation(
     name = "UpdateServiceIntegration",

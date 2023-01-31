@@ -62,6 +62,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname docdb_add_source_identifier_to_subscription
+#'
+#' @aliases docdb_add_source_identifier_to_subscription
 docdb_add_source_identifier_to_subscription <- function(SubscriptionName, SourceIdentifier) {
   op <- new_operation(
     name = "AddSourceIdentifierToSubscription",
@@ -113,6 +115,8 @@ docdb_add_source_identifier_to_subscription <- function(SubscriptionName, Source
 #' @keywords internal
 #'
 #' @rdname docdb_add_tags_to_resource
+#'
+#' @aliases docdb_add_tags_to_resource
 docdb_add_tags_to_resource <- function(ResourceName, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -197,6 +201,8 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @keywords internal
 #'
 #' @rdname docdb_apply_pending_maintenance_action
+#'
+#' @aliases docdb_apply_pending_maintenance_action
 docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction, OptInType) {
   op <- new_operation(
     name = "ApplyPendingMaintenanceAction",
@@ -288,6 +294,8 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' @keywords internal
 #'
 #' @rdname docdb_copy_db_cluster_parameter_group
+#'
+#' @aliases docdb_copy_db_cluster_parameter_group
 docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBClusterParameterGroup",
@@ -462,6 +470,8 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' @keywords internal
 #'
 #' @rdname docdb_copy_db_cluster_snapshot
+#'
+#' @aliases docdb_copy_db_cluster_snapshot
 docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier, KmsKeyId = NULL, PreSignedUrl = NULL, CopyTags = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBClusterSnapshot",
@@ -714,6 +724,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster
+#'
+#' @aliases docdb_create_db_cluster
 docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
@@ -801,6 +813,8 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster_parameter_group
+#'
+#' @aliases docdb_create_db_cluster_parameter_group
 docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, DBParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterParameterGroup",
@@ -898,6 +912,8 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster_snapshot
+#'
+#' @aliases docdb_create_db_cluster_snapshot
 docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClusterIdentifier, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterSnapshot",
@@ -1110,6 +1126,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_instance
+#'
+#' @aliases docdb_create_db_instance
 docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
@@ -1192,6 +1210,8 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_subnet_group
+#'
+#' @aliases docdb_create_db_subnet_group
 docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescription, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBSubnetGroup",
@@ -1328,6 +1348,8 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' @keywords internal
 #'
 #' @rdname docdb_create_event_subscription
+#'
+#' @aliases docdb_create_event_subscription
 docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceType = NULL, EventCategories = NULL, SourceIds = NULL, Enabled = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventSubscription",
@@ -1423,6 +1445,8 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
 #' @keywords internal
 #'
 #' @rdname docdb_create_global_cluster
+#'
+#' @aliases docdb_create_global_cluster
 docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, DatabaseName = NULL, StorageEncrypted = NULL) {
   op <- new_operation(
     name = "CreateGlobalCluster",
@@ -1562,6 +1586,8 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #' @keywords internal
 #'
 #' @rdname docdb_delete_db_cluster
+#'
+#' @aliases docdb_delete_db_cluster
 docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteDBCluster",
@@ -1611,6 +1637,8 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' @keywords internal
 #'
 #' @rdname docdb_delete_db_cluster_parameter_group
+#'
+#' @aliases docdb_delete_db_cluster_parameter_group
 docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
   op <- new_operation(
     name = "DeleteDBClusterParameterGroup",
@@ -1686,6 +1714,8 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 #' @keywords internal
 #'
 #' @rdname docdb_delete_db_cluster_snapshot
+#'
+#' @aliases docdb_delete_db_cluster_snapshot
 docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
   op <- new_operation(
     name = "DeleteDBClusterSnapshot",
@@ -1823,6 +1853,8 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @keywords internal
 #'
 #' @rdname docdb_delete_db_instance
+#'
+#' @aliases docdb_delete_db_instance
 docdb_delete_db_instance <- function(DBInstanceIdentifier) {
   op <- new_operation(
     name = "DeleteDBInstance",
@@ -1874,6 +1906,8 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 #' @keywords internal
 #'
 #' @rdname docdb_delete_db_subnet_group
+#'
+#' @aliases docdb_delete_db_subnet_group
 docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
   op <- new_operation(
     name = "DeleteDBSubnetGroup",
@@ -1935,6 +1969,8 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname docdb_delete_event_subscription
+#'
+#' @aliases docdb_delete_event_subscription
 docdb_delete_event_subscription <- function(SubscriptionName) {
   op <- new_operation(
     name = "DeleteEventSubscription",
@@ -2003,6 +2039,8 @@ docdb_delete_event_subscription <- function(SubscriptionName) {
 #' @keywords internal
 #'
 #' @rdname docdb_delete_global_cluster
+#'
+#' @aliases docdb_delete_global_cluster
 docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
   op <- new_operation(
     name = "DeleteGlobalCluster",
@@ -2099,6 +2137,8 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname docdb_describe_certificates
+#'
+#' @aliases docdb_describe_certificates
 docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeCertificates",
@@ -2182,6 +2222,8 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_cluster_parameter_groups
+#'
+#' @aliases docdb_describe_db_cluster_parameter_groups
 docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterParameterGroups",
@@ -2275,6 +2317,8 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_cluster_parameters
+#'
+#' @aliases docdb_describe_db_cluster_parameters
 docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Source = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterParameters",
@@ -2341,6 +2385,8 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_cluster_snapshot_attributes
+#'
+#' @aliases docdb_describe_db_cluster_snapshot_attributes
 docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentifier) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshotAttributes",
@@ -2492,6 +2538,8 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_cluster_snapshots
+#'
+#' @aliases docdb_describe_db_cluster_snapshots
 docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClusterSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshots",
@@ -2642,6 +2690,8 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_clusters
+#'
+#' @aliases docdb_describe_db_clusters
 docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusters",
@@ -2756,6 +2806,8 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_engine_versions
+#'
+#' @aliases docdb_describe_db_engine_versions
 docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL, DBParameterGroupFamily = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, DefaultOnly = NULL, ListSupportedCharacterSets = NULL, ListSupportedTimezones = NULL) {
   op <- new_operation(
     name = "DescribeDBEngineVersions",
@@ -2932,6 +2984,8 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_instances
+#'
+#' @aliases docdb_describe_db_instances
 docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBInstances",
@@ -3020,6 +3074,8 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 #' @keywords internal
 #'
 #' @rdname docdb_describe_db_subnet_groups
+#'
+#' @aliases docdb_describe_db_subnet_groups
 docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBSubnetGroups",
@@ -3108,6 +3164,8 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #' @keywords internal
 #'
 #' @rdname docdb_describe_engine_default_cluster_parameters
+#'
+#' @aliases docdb_describe_engine_default_cluster_parameters
 docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamily, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEngineDefaultClusterParameters",
@@ -3173,6 +3231,8 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
 #' @keywords internal
 #'
 #' @rdname docdb_describe_event_categories
+#'
+#' @aliases docdb_describe_event_categories
 docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeEventCategories",
@@ -3266,6 +3326,8 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname docdb_describe_event_subscriptions
+#'
+#' @aliases docdb_describe_event_subscriptions
 docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEventSubscriptions",
@@ -3399,6 +3461,8 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
 #' @keywords internal
 #'
 #' @rdname docdb_describe_events
+#'
+#' @aliases docdb_describe_events
 docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, EventCategories = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -3495,6 +3559,8 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 #' @keywords internal
 #'
 #' @rdname docdb_describe_global_clusters
+#'
+#' @aliases docdb_describe_global_clusters
 docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeGlobalClusters",
@@ -3589,6 +3655,8 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
 #' @keywords internal
 #'
 #' @rdname docdb_describe_orderable_db_instance_options
+#'
+#' @aliases docdb_describe_orderable_db_instance_options
 docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion = NULL, DBInstanceClass = NULL, LicenseModel = NULL, Vpc = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeOrderableDBInstanceOptions",
@@ -3691,6 +3759,8 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' @keywords internal
 #'
 #' @rdname docdb_describe_pending_maintenance_actions
+#'
+#' @aliases docdb_describe_pending_maintenance_actions
 docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribePendingMaintenanceActions",
@@ -3818,6 +3888,8 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #' @keywords internal
 #'
 #' @rdname docdb_failover_db_cluster
+#'
+#' @aliases docdb_failover_db_cluster
 docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstanceIdentifier = NULL) {
   op <- new_operation(
     name = "FailoverDBCluster",
@@ -3878,6 +3950,8 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #' @keywords internal
 #'
 #' @rdname docdb_list_tags_for_resource
+#'
+#' @aliases docdb_list_tags_for_resource
 docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4103,6 +4177,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_cluster
+#'
+#' @aliases docdb_modify_db_cluster
 docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
@@ -4180,6 +4256,8 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_cluster_parameter_group
+#'
+#' @aliases docdb_modify_db_cluster_parameter_group
 docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Parameters) {
   op <- new_operation(
     name = "ModifyDBClusterParameterGroup",
@@ -4281,6 +4359,8 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_cluster_snapshot_attribute
+#'
+#' @aliases docdb_modify_db_cluster_snapshot_attribute
 docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier, AttributeName, ValuesToAdd = NULL, ValuesToRemove = NULL) {
   op <- new_operation(
     name = "ModifyDBClusterSnapshotAttribute",
@@ -4506,6 +4586,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_instance
+#'
+#' @aliases docdb_modify_db_instance
 docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
@@ -4581,6 +4663,8 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_subnet_group
+#'
+#' @aliases docdb_modify_db_subnet_group
 docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescription = NULL, SubnetIds) {
   op <- new_operation(
     name = "ModifyDBSubnetGroup",
@@ -4660,6 +4744,8 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' @keywords internal
 #'
 #' @rdname docdb_modify_event_subscription
+#'
+#' @aliases docdb_modify_event_subscription
 docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, SourceType = NULL, EventCategories = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "ModifyEventSubscription",
@@ -4749,6 +4835,8 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
 #' @keywords internal
 #'
 #' @rdname docdb_modify_global_cluster
+#'
+#' @aliases docdb_modify_global_cluster
 docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "ModifyGlobalCluster",
@@ -4897,6 +4985,8 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
 #' @keywords internal
 #'
 #' @rdname docdb_reboot_db_instance
+#'
+#' @aliases docdb_reboot_db_instance
 docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
   op <- new_operation(
     name = "RebootDBInstance",
@@ -4971,6 +5061,8 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
 #' @keywords internal
 #'
 #' @rdname docdb_remove_from_global_cluster
+#'
+#' @aliases docdb_remove_from_global_cluster
 docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterIdentifier) {
   op <- new_operation(
     name = "RemoveFromGlobalCluster",
@@ -5038,6 +5130,8 @@ docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterI
 #' @keywords internal
 #'
 #' @rdname docdb_remove_source_identifier_from_subscription
+#'
+#' @aliases docdb_remove_source_identifier_from_subscription
 docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, SourceIdentifier) {
   op <- new_operation(
     name = "RemoveSourceIdentifierFromSubscription",
@@ -5083,6 +5177,8 @@ docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, S
 #' @keywords internal
 #'
 #' @rdname docdb_remove_tags_from_resource
+#'
+#' @aliases docdb_remove_tags_from_resource
 docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -5160,6 +5256,8 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname docdb_reset_db_cluster_parameter_group
+#'
+#' @aliases docdb_reset_db_cluster_parameter_group
 docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, ResetAllParameters = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ResetDBClusterParameterGroup",
@@ -5367,6 +5465,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_from_snapshot
+#'
+#' @aliases docdb_restore_db_cluster_from_snapshot
 docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
@@ -5599,6 +5699,8 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_to_point_in_time
+#'
+#' @aliases docdb_restore_db_cluster_to_point_in_time
 docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
@@ -5709,6 +5811,8 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
 #' @keywords internal
 #'
 #' @rdname docdb_start_db_cluster
+#'
+#' @aliases docdb_start_db_cluster
 docdb_start_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "StartDBCluster",
@@ -5820,6 +5924,8 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname docdb_stop_db_cluster
+#'
+#' @aliases docdb_stop_db_cluster
 docdb_stop_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "StopDBCluster",

@@ -87,6 +87,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sfn_create_activity
+#'
+#' @aliases sfn_create_activity
 sfn_create_activity <- function(name, tags = NULL) {
   op <- new_operation(
     name = "CreateActivity",
@@ -220,6 +222,8 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_create_state_machine
+#'
+#' @aliases sfn_create_state_machine
 sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, loggingConfiguration = NULL, tags = NULL, tracingConfiguration = NULL) {
   op <- new_operation(
     name = "CreateStateMachine",
@@ -260,6 +264,8 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
 #' @keywords internal
 #'
 #' @rdname sfn_delete_activity
+#'
+#' @aliases sfn_delete_activity
 sfn_delete_activity <- function(activityArn) {
   op <- new_operation(
     name = "DeleteActivity",
@@ -305,6 +311,8 @@ sfn_delete_activity <- function(activityArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_delete_state_machine
+#'
+#' @aliases sfn_delete_state_machine
 sfn_delete_state_machine <- function(stateMachineArn) {
   op <- new_operation(
     name = "DeleteStateMachine",
@@ -357,6 +365,8 @@ sfn_delete_state_machine <- function(stateMachineArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_describe_activity
+#'
+#' @aliases sfn_describe_activity
 sfn_describe_activity <- function(activityArn) {
   op <- new_operation(
     name = "DescribeActivity",
@@ -425,6 +435,8 @@ sfn_describe_activity <- function(activityArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_describe_execution
+#'
+#' @aliases sfn_describe_execution
 sfn_describe_execution <- function(executionArn) {
   op <- new_operation(
     name = "DescribeExecution",
@@ -495,6 +507,8 @@ sfn_describe_execution <- function(executionArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_describe_state_machine
+#'
+#' @aliases sfn_describe_state_machine
 sfn_describe_state_machine <- function(stateMachineArn) {
   op <- new_operation(
     name = "DescribeStateMachine",
@@ -566,6 +580,8 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_describe_state_machine_for_execution
+#'
+#' @aliases sfn_describe_state_machine_for_execution
 sfn_describe_state_machine_for_execution <- function(executionArn) {
   op <- new_operation(
     name = "DescribeStateMachineForExecution",
@@ -635,6 +651,8 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_get_activity_task
+#'
+#' @aliases sfn_get_activity_task
 sfn_get_activity_task <- function(activityArn, workerName = NULL) {
   op <- new_operation(
     name = "GetActivityTask",
@@ -892,6 +910,8 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_get_execution_history
+#'
+#' @aliases sfn_get_execution_history
 sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOrder = NULL, nextToken = NULL, includeExecutionData = NULL) {
   op <- new_operation(
     name = "GetExecutionHistory",
@@ -968,6 +988,8 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
 #' @keywords internal
 #'
 #' @rdname sfn_list_activities
+#'
+#' @aliases sfn_list_activities
 sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListActivities",
@@ -1060,6 +1082,8 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_list_executions
+#'
+#' @aliases sfn_list_executions
 sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListExecutions",
@@ -1137,6 +1161,8 @@ sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults
 #' @keywords internal
 #'
 #' @rdname sfn_list_state_machines
+#'
+#' @aliases sfn_list_state_machines
 sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListStateMachines",
@@ -1191,6 +1217,8 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_list_tags_for_resource
+#'
+#' @aliases sfn_list_tags_for_resource
 sfn_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1242,6 +1270,8 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname sfn_send_task_failure
+#'
+#' @aliases sfn_send_task_failure
 sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
   op <- new_operation(
     name = "SendTaskFailure",
@@ -1307,6 +1337,8 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_send_task_heartbeat
+#'
+#' @aliases sfn_send_task_heartbeat
 sfn_send_task_heartbeat <- function(taskToken) {
   op <- new_operation(
     name = "SendTaskHeartbeat",
@@ -1358,6 +1390,8 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #' @keywords internal
 #'
 #' @rdname sfn_send_task_success
+#'
+#' @aliases sfn_send_task_success
 sfn_send_task_success <- function(taskToken, output) {
   op <- new_operation(
     name = "SendTaskSuccess",
@@ -1448,6 +1482,8 @@ sfn_send_task_success <- function(taskToken, output) {
 #' @keywords internal
 #'
 #' @rdname sfn_start_execution
+#'
+#' @aliases sfn_start_execution
 sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, traceHeader = NULL) {
   op <- new_operation(
     name = "StartExecution",
@@ -1533,6 +1569,8 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 #' @keywords internal
 #'
 #' @rdname sfn_start_sync_execution
+#'
+#' @aliases sfn_start_sync_execution
 sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL, traceHeader = NULL) {
   op <- new_operation(
     name = "StartSyncExecution",
@@ -1586,6 +1624,8 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
 #' @keywords internal
 #'
 #' @rdname sfn_stop_execution
+#'
+#' @aliases sfn_stop_execution
 sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
   op <- new_operation(
     name = "StopExecution",
@@ -1647,6 +1687,8 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 #' @keywords internal
 #'
 #' @rdname sfn_tag_resource
+#'
+#' @aliases sfn_tag_resource
 sfn_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1692,6 +1734,8 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname sfn_untag_resource
+#'
+#' @aliases sfn_untag_resource
 sfn_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1774,6 +1818,8 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname sfn_update_state_machine
+#'
+#' @aliases sfn_update_state_machine
 sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn = NULL, loggingConfiguration = NULL, tracingConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateStateMachine",

@@ -38,7 +38,9 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_attach_customer_managed_policy_reference_to_permission_set
+#' @rdname ssoadmin_attac_custo_manag_polic_refer_to_permi_set
+#'
+#' @aliases ssoadmin_attach_customer_managed_policy_reference_to_permission_set
 ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(InstanceArn, PermissionSetArn, CustomerManagedPolicyReference) {
   op <- new_operation(
     name = "AttachCustomerManagedPolicyReferenceToPermissionSet",
@@ -96,6 +98,8 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #' @keywords internal
 #'
 #' @rdname ssoadmin_attach_managed_policy_to_permission_set
+#'
+#' @aliases ssoadmin_attach_managed_policy_to_permission_set
 ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, PermissionSetArn, ManagedPolicyArn) {
   op <- new_operation(
     name = "AttachManagedPolicyToPermissionSet",
@@ -189,6 +193,8 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Permis
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_account_assignment
+#'
+#' @aliases ssoadmin_create_account_assignment
 ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType, PermissionSetArn, PrincipalType, PrincipalId) {
   op <- new_operation(
     name = "CreateAccountAssignment",
@@ -254,7 +260,9 @@ ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_create_instance_access_control_attribute_configuration
+#' @rdname ssoadmin_create_instanc_access_control_attribu_configu
+#'
+#' @aliases ssoadmin_create_instance_access_control_attribute_configuration
 ssoadmin_create_instance_access_control_attribute_configuration <- function(InstanceArn, InstanceAccessControlAttributeConfiguration) {
   op <- new_operation(
     name = "CreateInstanceAccessControlAttributeConfiguration",
@@ -336,6 +344,8 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' @keywords internal
 #'
 #' @rdname ssoadmin_create_permission_set
+#'
+#' @aliases ssoadmin_create_permission_set
 ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn, SessionDuration = NULL, RelayState = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePermissionSet",
@@ -414,6 +424,8 @@ ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn
 #' @keywords internal
 #'
 #' @rdname ssoadmin_delete_account_assignment
+#'
+#' @aliases ssoadmin_delete_account_assignment
 ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType, PermissionSetArn, PrincipalType, PrincipalId) {
   op <- new_operation(
     name = "DeleteAccountAssignment",
@@ -460,6 +472,8 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' @keywords internal
 #'
 #' @rdname ssoadmin_delete_inline_policy_from_permission_set
+#'
+#' @aliases ssoadmin_delete_inline_policy_from_permission_set
 ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, PermissionSetArn) {
   op <- new_operation(
     name = "DeleteInlinePolicyFromPermissionSet",
@@ -509,7 +523,9 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_delete_instance_access_control_attribute_configuration
+#' @rdname ssoadmin_delete_instanc_access_control_attribu_configu
+#'
+#' @aliases ssoadmin_delete_instance_access_control_attribute_configuration
 ssoadmin_delete_instance_access_control_attribute_configuration <- function(InstanceArn) {
   op <- new_operation(
     name = "DeleteInstanceAccessControlAttributeConfiguration",
@@ -555,6 +571,8 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
 #' @keywords internal
 #'
 #' @rdname ssoadmin_delete_permission_set
+#'
+#' @aliases ssoadmin_delete_permission_set
 ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
   op <- new_operation(
     name = "DeletePermissionSet",
@@ -599,6 +617,8 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' @keywords internal
 #'
 #' @rdname ssoadmin_delete_permissions_boundary_from_permission_set
+#'
+#' @aliases ssoadmin_delete_permissions_boundary_from_permission_set
 ssoadmin_delete_permissions_boundary_from_permission_set <- function(InstanceArn, PermissionSetArn) {
   op <- new_operation(
     name = "DeletePermissionsBoundaryFromPermissionSet",
@@ -662,6 +682,8 @@ ssoadmin_delete_permissions_boundary_from_permission_set <- function(InstanceArn
 #' @keywords internal
 #'
 #' @rdname ssoadmin_describe_account_assignment_creation_status
+#'
+#' @aliases ssoadmin_describe_account_assignment_creation_status
 ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, AccountAssignmentCreationRequestId) {
   op <- new_operation(
     name = "DescribeAccountAssignmentCreationStatus",
@@ -725,6 +747,8 @@ ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, Ac
 #' @keywords internal
 #'
 #' @rdname ssoadmin_describe_account_assignment_deletion_status
+#'
+#' @aliases ssoadmin_describe_account_assignment_deletion_status
 ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, AccountAssignmentDeletionRequestId) {
   op <- new_operation(
     name = "DescribeAccountAssignmentDeletionStatus",
@@ -791,7 +815,9 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_describe_instance_access_control_attribute_configuration
+#' @rdname ssoadmin_describ_instanc_access_control_attribu_configu
+#'
+#' @aliases ssoadmin_describe_instance_access_control_attribute_configuration
 ssoadmin_describe_instance_access_control_attribute_configuration <- function(InstanceArn) {
   op <- new_operation(
     name = "DescribeInstanceAccessControlAttributeConfiguration",
@@ -851,6 +877,8 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 #' @keywords internal
 #'
 #' @rdname ssoadmin_describe_permission_set
+#'
+#' @aliases ssoadmin_describe_permission_set
 ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
   op <- new_operation(
     name = "DescribePermissionSet",
@@ -913,6 +941,8 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' @keywords internal
 #'
 #' @rdname ssoadmin_describe_permission_set_provisioning_status
+#'
+#' @aliases ssoadmin_describe_permission_set_provisioning_status
 ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, ProvisionPermissionSetRequestId) {
   op <- new_operation(
     name = "DescribePermissionSetProvisioningStatus",
@@ -965,7 +995,9 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_detach_customer_managed_policy_reference_from_permission_set
+#' @rdname ssoadmin_detac_custo_manag_polic_refer_from_permi_set
+#'
+#' @aliases ssoadmin_detach_customer_managed_policy_reference_from_permission_set
 ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- function(InstanceArn, PermissionSetArn, CustomerManagedPolicyReference) {
   op <- new_operation(
     name = "DetachCustomerManagedPolicyReferenceFromPermissionSet",
@@ -1017,6 +1049,8 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 #' @keywords internal
 #'
 #' @rdname ssoadmin_detach_managed_policy_from_permission_set
+#'
+#' @aliases ssoadmin_detach_managed_policy_from_permission_set
 ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, PermissionSetArn, ManagedPolicyArn) {
   op <- new_operation(
     name = "DetachManagedPolicyFromPermissionSet",
@@ -1068,6 +1102,8 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Perm
 #' @keywords internal
 #'
 #' @rdname ssoadmin_get_inline_policy_for_permission_set
+#'
+#' @aliases ssoadmin_get_inline_policy_for_permission_set
 ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, PermissionSetArn) {
   op <- new_operation(
     name = "GetInlinePolicyForPermissionSet",
@@ -1123,6 +1159,8 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
 #' @keywords internal
 #'
 #' @rdname ssoadmin_get_permissions_boundary_for_permission_set
+#'
+#' @aliases ssoadmin_get_permissions_boundary_for_permission_set
 ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, PermissionSetArn) {
   op <- new_operation(
     name = "GetPermissionsBoundaryForPermissionSet",
@@ -1192,6 +1230,8 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignment_creation_status
+#'
+#' @aliases ssoadmin_list_account_assignment_creation_status
 ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentCreationStatus",
@@ -1261,6 +1301,8 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignment_deletion_status
+#'
+#' @aliases ssoadmin_list_account_assignment_deletion_status
 ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListAccountAssignmentDeletionStatus",
@@ -1330,6 +1372,8 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_account_assignments
+#'
+#' @aliases ssoadmin_list_account_assignments
 ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountAssignments",
@@ -1395,6 +1439,8 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_accounts_for_provisioned_permission_set
+#'
+#' @aliases ssoadmin_list_accounts_for_provisioned_permission_set
 ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, PermissionSetArn, ProvisioningStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAccountsForProvisionedPermissionSet",
@@ -1456,7 +1502,9 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_list_customer_managed_policy_references_in_permission_set
+#' @rdname ssoadmin_list_custo_manag_polic_refer_in_permi_set
+#'
+#' @aliases ssoadmin_list_customer_managed_policy_references_in_permission_set
 ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(InstanceArn, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListCustomerManagedPolicyReferencesInPermissionSet",
@@ -1513,6 +1561,8 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_instances
+#'
+#' @aliases ssoadmin_list_instances
 ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListInstances",
@@ -1577,6 +1627,8 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_managed_policies_in_permission_set
+#'
+#' @aliases ssoadmin_list_managed_policies_in_permission_set
 ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, PermissionSetArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListManagedPoliciesInPermissionSet",
@@ -1646,6 +1698,8 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_permission_set_provisioning_status
+#'
+#' @aliases ssoadmin_list_permission_set_provisioning_status
 ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxResults = NULL, NextToken = NULL, Filter = NULL) {
   op <- new_operation(
     name = "ListPermissionSetProvisioningStatus",
@@ -1702,6 +1756,8 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_permission_sets
+#'
+#' @aliases ssoadmin_list_permission_sets
 ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPermissionSets",
@@ -1766,6 +1822,8 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_permission_sets_provisioned_to_account
+#'
+#' @aliases ssoadmin_list_permission_sets_provisioned_to_account
 ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, AccountId, ProvisioningStatus = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPermissionSetsProvisionedToAccount",
@@ -1825,6 +1883,8 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
 #' @keywords internal
 #'
 #' @rdname ssoadmin_list_tags_for_resource
+#'
+#' @aliases ssoadmin_list_tags_for_resource
 ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1892,6 +1952,8 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
 #' @keywords internal
 #'
 #' @rdname ssoadmin_provision_permission_set
+#'
+#' @aliases ssoadmin_provision_permission_set
 ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, TargetId = NULL, TargetType) {
   op <- new_operation(
     name = "ProvisionPermissionSet",
@@ -1946,6 +2008,8 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' @keywords internal
 #'
 #' @rdname ssoadmin_put_inline_policy_to_permission_set
+#'
+#' @aliases ssoadmin_put_inline_policy_to_permission_set
 ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, PermissionSetArn, InlinePolicy) {
   op <- new_operation(
     name = "PutInlinePolicyToPermissionSet",
@@ -2000,6 +2064,8 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, Permission
 #' @keywords internal
 #'
 #' @rdname ssoadmin_put_permissions_boundary_to_permission_set
+#'
+#' @aliases ssoadmin_put_permissions_boundary_to_permission_set
 ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, PermissionSetArn, PermissionsBoundary) {
   op <- new_operation(
     name = "PutPermissionsBoundaryToPermissionSet",
@@ -2052,6 +2118,8 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
 #' @keywords internal
 #'
 #' @rdname ssoadmin_tag_resource
+#'
+#' @aliases ssoadmin_tag_resource
 ssoadmin_tag_resource <- function(InstanceArn, ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2101,6 +2169,8 @@ ssoadmin_tag_resource <- function(InstanceArn, ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname ssoadmin_untag_resource
+#'
+#' @aliases ssoadmin_untag_resource
 ssoadmin_untag_resource <- function(InstanceArn, ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2166,7 +2236,9 @@ ssoadmin_untag_resource <- function(InstanceArn, ResourceArn, TagKeys) {
 #'
 #' @keywords internal
 #'
-#' @rdname ssoadmin_update_instance_access_control_attribute_configuration
+#' @rdname ssoadmin_update_instanc_access_control_attribu_configu
+#'
+#' @aliases ssoadmin_update_instance_access_control_attribute_configuration
 ssoadmin_update_instance_access_control_attribute_configuration <- function(InstanceArn, InstanceAccessControlAttributeConfiguration) {
   op <- new_operation(
     name = "UpdateInstanceAccessControlAttributeConfiguration",
@@ -2221,6 +2293,8 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' @keywords internal
 #'
 #' @rdname ssoadmin_update_permission_set
+#'
+#' @aliases ssoadmin_update_permission_set
 ssoadmin_update_permission_set <- function(InstanceArn, PermissionSetArn, Description = NULL, SessionDuration = NULL, RelayState = NULL) {
   op <- new_operation(
     name = "UpdatePermissionSet",

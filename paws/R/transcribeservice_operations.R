@@ -226,6 +226,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_call_analytics_category
+#'
+#' @aliases transcribeservice_create_call_analytics_category
 transcribeservice_create_call_analytics_category <- function(CategoryName, Rules) {
   op <- new_operation(
     name = "CreateCallAnalyticsCategory",
@@ -352,6 +354,8 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_language_model
+#'
+#' @aliases transcribeservice_create_language_model
 transcribeservice_create_language_model <- function(LanguageCode, BaseModelName, ModelName, InputDataConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateLanguageModel",
@@ -446,6 +450,8 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_medical_vocabulary
+#'
+#' @aliases transcribeservice_create_medical_vocabulary
 transcribeservice_create_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri, Tags = NULL) {
   op <- new_operation(
     name = "CreateMedicalVocabulary",
@@ -568,6 +574,8 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_vocabulary
+#'
+#' @aliases transcribeservice_create_vocabulary
 transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateVocabulary",
@@ -689,6 +697,8 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @keywords internal
 #'
 #' @rdname transcribeservice_create_vocabulary_filter
+#'
+#' @aliases transcribeservice_create_vocabulary_filter
 transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, LanguageCode, Words = NULL, VocabularyFilterFileUri = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateVocabularyFilter",
@@ -732,6 +742,8 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_call_analytics_category
+#'
+#' @aliases transcribeservice_delete_call_analytics_category
 transcribeservice_delete_call_analytics_category <- function(CategoryName) {
   op <- new_operation(
     name = "DeleteCallAnalyticsCategory",
@@ -775,6 +787,8 @@ transcribeservice_delete_call_analytics_category <- function(CategoryName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_call_analytics_job
+#'
+#' @aliases transcribeservice_delete_call_analytics_job
 transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
   op <- new_operation(
     name = "DeleteCallAnalyticsJob",
@@ -818,6 +832,8 @@ transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_language_model
+#'
+#' @aliases transcribeservice_delete_language_model
 transcribeservice_delete_language_model <- function(ModelName) {
   op <- new_operation(
     name = "DeleteLanguageModel",
@@ -862,6 +878,8 @@ transcribeservice_delete_language_model <- function(ModelName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_medical_transcription_job
+#'
+#' @aliases transcribeservice_delete_medical_transcription_job
 transcribeservice_delete_medical_transcription_job <- function(MedicalTranscriptionJobName) {
   op <- new_operation(
     name = "DeleteMedicalTranscriptionJob",
@@ -905,6 +923,8 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_medical_vocabulary
+#'
+#' @aliases transcribeservice_delete_medical_vocabulary
 transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
   op <- new_operation(
     name = "DeleteMedicalVocabulary",
@@ -948,6 +968,8 @@ transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_transcription_job
+#'
+#' @aliases transcribeservice_delete_transcription_job
 transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
   op <- new_operation(
     name = "DeleteTranscriptionJob",
@@ -991,6 +1013,8 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_vocabulary
+#'
+#' @aliases transcribeservice_delete_vocabulary
 transcribeservice_delete_vocabulary <- function(VocabularyName) {
   op <- new_operation(
     name = "DeleteVocabulary",
@@ -1034,6 +1058,8 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_delete_vocabulary_filter
+#'
+#' @aliases transcribeservice_delete_vocabulary_filter
 transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
   op <- new_operation(
     name = "DeleteVocabularyFilter",
@@ -1110,6 +1136,8 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_describe_language_model
+#'
+#' @aliases transcribeservice_describe_language_model
 transcribeservice_describe_language_model <- function(ModelName) {
   op <- new_operation(
     name = "DescribeLanguageModel",
@@ -1242,6 +1270,8 @@ transcribeservice_describe_language_model <- function(ModelName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_call_analytics_category
+#'
+#' @aliases transcribeservice_get_call_analytics_category
 transcribeservice_get_call_analytics_category <- function(CategoryName) {
   op <- new_operation(
     name = "GetCallAnalyticsCategory",
@@ -1358,6 +1388,8 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_call_analytics_job
+#'
+#' @aliases transcribeservice_get_call_analytics_job
 transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
   op <- new_operation(
     name = "GetCallAnalyticsJob",
@@ -1453,6 +1485,8 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_medical_transcription_job
+#'
+#' @aliases transcribeservice_get_medical_transcription_job
 transcribeservice_get_medical_transcription_job <- function(MedicalTranscriptionJobName) {
   op <- new_operation(
     name = "GetMedicalTranscriptionJob",
@@ -1513,6 +1547,8 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_medical_vocabulary
+#'
+#' @aliases transcribeservice_get_medical_vocabulary
 transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
   op <- new_operation(
     name = "GetMedicalVocabulary",
@@ -1652,6 +1688,8 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_transcription_job
+#'
+#' @aliases transcribeservice_get_transcription_job
 transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
   op <- new_operation(
     name = "GetTranscriptionJob",
@@ -1712,6 +1750,8 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_vocabulary
+#'
+#' @aliases transcribeservice_get_vocabulary
 transcribeservice_get_vocabulary <- function(VocabularyName) {
   op <- new_operation(
     name = "GetVocabulary",
@@ -1770,6 +1810,8 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_get_vocabulary_filter
+#'
+#' @aliases transcribeservice_get_vocabulary_filter
 transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
   op <- new_operation(
     name = "GetVocabularyFilter",
@@ -1918,6 +1960,8 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_call_analytics_categories
+#'
+#' @aliases transcribeservice_list_call_analytics_categories
 transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCallAnalyticsCategories",
@@ -2005,6 +2049,8 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_call_analytics_jobs
+#'
+#' @aliases transcribeservice_list_call_analytics_jobs
 transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCallAnalyticsJobs",
@@ -2095,6 +2141,8 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_language_models
+#'
+#' @aliases transcribeservice_list_language_models
 transcribeservice_list_language_models <- function(StatusEquals = NULL, NameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLanguageModels",
@@ -2187,6 +2235,8 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_medical_transcription_jobs
+#'
+#' @aliases transcribeservice_list_medical_transcription_jobs
 transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, JobNameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMedicalTranscriptionJobs",
@@ -2269,6 +2319,8 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_medical_vocabularies
+#'
+#' @aliases transcribeservice_list_medical_vocabularies
 transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxResults = NULL, StateEquals = NULL, NameContains = NULL) {
   op <- new_operation(
     name = "ListMedicalVocabularies",
@@ -2334,6 +2386,8 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_tags_for_resource
+#'
+#' @aliases transcribeservice_list_tags_for_resource
 transcribeservice_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2440,6 +2494,8 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_transcription_jobs
+#'
+#' @aliases transcribeservice_list_transcription_jobs
 transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameContains = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTranscriptionJobs",
@@ -2520,6 +2576,8 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_vocabularies
+#'
+#' @aliases transcribeservice_list_vocabularies
 transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = NULL, StateEquals = NULL, NameContains = NULL) {
   op <- new_operation(
     name = "ListVocabularies",
@@ -2595,6 +2653,8 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' @keywords internal
 #'
 #' @rdname transcribeservice_list_vocabulary_filters
+#'
+#' @aliases transcribeservice_list_vocabulary_filters
 transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResults = NULL, NameContains = NULL) {
   op <- new_operation(
     name = "ListVocabularyFilters",
@@ -2861,6 +2921,8 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_call_analytics_job
+#'
+#' @aliases transcribeservice_start_call_analytics_job
 transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Media, OutputLocation = NULL, OutputEncryptionKMSKeyId = NULL, DataAccessRoleArn = NULL, Settings = NULL, ChannelDefinitions = NULL) {
   op <- new_operation(
     name = "StartCallAnalyticsJob",
@@ -3162,6 +3224,8 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_medical_transcription_job
+#'
+#' @aliases transcribeservice_start_medical_transcription_job
 transcribeservice_start_medical_transcription_job <- function(MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ContentIdentificationType = NULL, Specialty, Type, Tags = NULL) {
   op <- new_operation(
     name = "StartMedicalTranscriptionJob",
@@ -3632,6 +3696,8 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_transcription_job
+#'
+#' @aliases transcribeservice_start_transcription_job
 transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, IdentifyMultipleLanguages = NULL, LanguageOptions = NULL, Subtitles = NULL, Tags = NULL, LanguageIdSettings = NULL) {
   op <- new_operation(
     name = "StartTranscriptionJob",
@@ -3697,6 +3763,8 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' @keywords internal
 #'
 #' @rdname transcribeservice_tag_resource
+#'
+#' @aliases transcribeservice_tag_resource
 transcribeservice_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3755,6 +3823,8 @@ transcribeservice_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_untag_resource
+#'
+#' @aliases transcribeservice_untag_resource
 transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3970,6 +4040,8 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname transcribeservice_update_call_analytics_category
+#'
+#' @aliases transcribeservice_update_call_analytics_category
 transcribeservice_update_call_analytics_category <- function(CategoryName, Rules) {
   op <- new_operation(
     name = "UpdateCallAnalyticsCategory",
@@ -4034,6 +4106,8 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' @keywords internal
 #'
 #' @rdname transcribeservice_update_medical_vocabulary
+#'
+#' @aliases transcribeservice_update_medical_vocabulary
 transcribeservice_update_medical_vocabulary <- function(VocabularyName, LanguageCode, VocabularyFileUri) {
   op <- new_operation(
     name = "UpdateMedicalVocabulary",
@@ -4128,6 +4202,8 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' @keywords internal
 #'
 #' @rdname transcribeservice_update_vocabulary
+#'
+#' @aliases transcribeservice_update_vocabulary
 transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Phrases = NULL, VocabularyFileUri = NULL) {
   op <- new_operation(
     name = "UpdateVocabulary",
@@ -4209,6 +4285,8 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @keywords internal
 #'
 #' @rdname transcribeservice_update_vocabulary_filter
+#'
+#' @aliases transcribeservice_update_vocabulary_filter
 transcribeservice_update_vocabulary_filter <- function(VocabularyFilterName, Words = NULL, VocabularyFilterFileUri = NULL) {
   op <- new_operation(
     name = "UpdateVocabularyFilter",

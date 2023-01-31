@@ -73,6 +73,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sagemakerfeaturestoreruntime_batch_get_record
+#'
+#' @aliases sagemakerfeaturestoreruntime_batch_get_record
 sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
   op <- new_operation(
     name = "BatchGetRecord",
@@ -124,6 +126,8 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers) {
 #' @keywords internal
 #'
 #' @rdname sagemakerfeaturestoreruntime_delete_record
+#'
+#' @aliases sagemakerfeaturestoreruntime_delete_record
 sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordIdentifierValueAsString, EventTime) {
   op <- new_operation(
     name = "DeleteRecord",
@@ -185,6 +189,8 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #' @keywords internal
 #'
 #' @rdname sagemakerfeaturestoreruntime_get_record
+#'
+#' @aliases sagemakerfeaturestoreruntime_get_record
 sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIdentifierValueAsString, FeatureNames = NULL) {
   op <- new_operation(
     name = "GetRecord",
@@ -247,6 +253,8 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' @keywords internal
 #'
 #' @rdname sagemakerfeaturestoreruntime_put_record
+#'
+#' @aliases sagemakerfeaturestoreruntime_put_record
 sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record) {
   op <- new_operation(
     name = "PutRecord",

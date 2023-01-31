@@ -33,6 +33,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connect_associate_approved_origin
+#'
+#' @aliases connect_associate_approved_origin
 connect_associate_approved_origin <- function(InstanceId, Origin) {
   op <- new_operation(
     name = "AssociateApprovedOrigin",
@@ -88,6 +90,8 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #' @keywords internal
 #'
 #' @rdname connect_associate_bot
+#'
+#' @aliases connect_associate_bot
 connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
   op <- new_operation(
     name = "AssociateBot",
@@ -139,6 +143,8 @@ connect_associate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
 #' @keywords internal
 #'
 #' @rdname connect_associate_default_vocabulary
+#'
+#' @aliases connect_associate_default_vocabulary
 connect_associate_default_vocabulary <- function(InstanceId, LanguageCode, VocabularyId = NULL) {
   op <- new_operation(
     name = "AssociateDefaultVocabulary",
@@ -227,6 +233,8 @@ connect_associate_default_vocabulary <- function(InstanceId, LanguageCode, Vocab
 #' @keywords internal
 #'
 #' @rdname connect_associate_instance_storage_config
+#'
+#' @aliases connect_associate_instance_storage_config
 connect_associate_instance_storage_config <- function(InstanceId, ResourceType, StorageConfig) {
   op <- new_operation(
     name = "AssociateInstanceStorageConfig",
@@ -276,6 +284,8 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' @keywords internal
 #'
 #' @rdname connect_associate_lambda_function
+#'
+#' @aliases connect_associate_lambda_function
 connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
   op <- new_operation(
     name = "AssociateLambdaFunction",
@@ -327,6 +337,8 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
 #' @keywords internal
 #'
 #' @rdname connect_associate_lex_bot
+#'
+#' @aliases connect_associate_lex_bot
 connect_associate_lex_bot <- function(InstanceId, LexBot) {
   op <- new_operation(
     name = "AssociateLexBot",
@@ -375,6 +387,8 @@ connect_associate_lex_bot <- function(InstanceId, LexBot) {
 #' @keywords internal
 #'
 #' @rdname connect_associate_phone_number_contact_flow
+#'
+#' @aliases connect_associate_phone_number_contact_flow
 connect_associate_phone_number_contact_flow <- function(PhoneNumberId, InstanceId, ContactFlowId) {
   op <- new_operation(
     name = "AssociatePhoneNumberContactFlow",
@@ -427,6 +441,8 @@ connect_associate_phone_number_contact_flow <- function(PhoneNumberId, InstanceI
 #' @keywords internal
 #'
 #' @rdname connect_associate_queue_quick_connects
+#'
+#' @aliases connect_associate_queue_quick_connects
 connect_associate_queue_quick_connects <- function(InstanceId, QueueId, QuickConnectIds) {
   op <- new_operation(
     name = "AssociateQueueQuickConnects",
@@ -482,6 +498,8 @@ connect_associate_queue_quick_connects <- function(InstanceId, QueueId, QuickCon
 #' @keywords internal
 #'
 #' @rdname connect_associate_routing_profile_queues
+#'
+#' @aliases connect_associate_routing_profile_queues
 connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileId, QueueConfigs) {
   op <- new_operation(
     name = "AssociateRoutingProfileQueues",
@@ -534,6 +552,8 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' @keywords internal
 #'
 #' @rdname connect_associate_security_key
+#'
+#' @aliases connect_associate_security_key
 connect_associate_security_key <- function(InstanceId, Key) {
   op <- new_operation(
     name = "AssociateSecurityKey",
@@ -594,6 +614,8 @@ connect_associate_security_key <- function(InstanceId, Key) {
 #' @keywords internal
 #'
 #' @rdname connect_claim_phone_number
+#'
+#' @aliases connect_claim_phone_number
 connect_claim_phone_number <- function(TargetArn, PhoneNumber, PhoneNumberDescription = NULL, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "ClaimPhoneNumber",
@@ -658,6 +680,8 @@ connect_claim_phone_number <- function(TargetArn, PhoneNumber, PhoneNumberDescri
 #' @keywords internal
 #'
 #' @rdname connect_create_agent_status
+#'
+#' @aliases connect_create_agent_status
 connect_create_agent_status <- function(InstanceId, Name, Description = NULL, State, DisplayOrder = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAgentStatus",
@@ -724,6 +748,8 @@ connect_create_agent_status <- function(InstanceId, Name, Description = NULL, St
 #' @keywords internal
 #'
 #' @rdname connect_create_contact_flow
+#'
+#' @aliases connect_create_contact_flow
 connect_create_contact_flow <- function(InstanceId, Name, Type, Description = NULL, Content, Tags = NULL) {
   op <- new_operation(
     name = "CreateContactFlow",
@@ -785,6 +811,8 @@ connect_create_contact_flow <- function(InstanceId, Name, Type, Description = NU
 #' @keywords internal
 #'
 #' @rdname connect_create_contact_flow_module
+#'
+#' @aliases connect_create_contact_flow_module
 connect_create_contact_flow_module <- function(InstanceId, Name, Description = NULL, Content, Tags = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateContactFlowModule",
@@ -862,6 +890,8 @@ connect_create_contact_flow_module <- function(InstanceId, Name, Description = N
 #' @keywords internal
 #'
 #' @rdname connect_create_hours_of_operation
+#'
+#' @aliases connect_create_hours_of_operation
 connect_create_hours_of_operation <- function(InstanceId, Name, Description = NULL, TimeZone, Config, Tags = NULL) {
   op <- new_operation(
     name = "CreateHoursOfOperation",
@@ -932,6 +962,8 @@ connect_create_hours_of_operation <- function(InstanceId, Name, Description = NU
 #' @keywords internal
 #'
 #' @rdname connect_create_instance
+#'
+#' @aliases connect_create_instance
 connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, InstanceAlias = NULL, DirectoryId = NULL, InboundCallsEnabled, OutboundCallsEnabled) {
   op <- new_operation(
     name = "CreateInstance",
@@ -1000,6 +1032,8 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
 #' @keywords internal
 #'
 #' @rdname connect_create_integration_association
+#'
+#' @aliases connect_create_integration_association
 connect_create_integration_association <- function(InstanceId, IntegrationType, IntegrationArn, SourceApplicationUrl = NULL, SourceApplicationName = NULL, SourceType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateIntegrationAssociation",
@@ -1076,6 +1110,8 @@ connect_create_integration_association <- function(InstanceId, IntegrationType, 
 #' @keywords internal
 #'
 #' @rdname connect_create_queue
+#'
+#' @aliases connect_create_queue
 connect_create_queue <- function(InstanceId, Name, Description = NULL, OutboundCallerConfig = NULL, HoursOfOperationId, MaxContacts = NULL, QuickConnectIds = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateQueue",
@@ -1147,6 +1183,8 @@ connect_create_queue <- function(InstanceId, Name, Description = NULL, OutboundC
 #' @keywords internal
 #'
 #' @rdname connect_create_quick_connect
+#'
+#' @aliases connect_create_quick_connect
 connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, QuickConnectConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateQuickConnect",
@@ -1226,6 +1264,8 @@ connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, Q
 #' @keywords internal
 #'
 #' @rdname connect_create_routing_profile
+#'
+#' @aliases connect_create_routing_profile
 connect_create_routing_profile <- function(InstanceId, Name, Description, DefaultOutboundQueueId, QueueConfigs = NULL, MediaConcurrencies, Tags = NULL) {
   op <- new_operation(
     name = "CreateRoutingProfile",
@@ -1290,6 +1330,8 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #' @keywords internal
 #'
 #' @rdname connect_create_security_profile
+#'
+#' @aliases connect_create_security_profile
 connect_create_security_profile <- function(SecurityProfileName, Description = NULL, Permissions = NULL, InstanceId, Tags = NULL) {
   op <- new_operation(
     name = "CreateSecurityProfile",
@@ -1402,6 +1444,8 @@ connect_create_security_profile <- function(SecurityProfileName, Description = N
 #' @keywords internal
 #'
 #' @rdname connect_create_task_template
+#'
+#' @aliases connect_create_task_template
 connect_create_task_template <- function(InstanceId, Name, Description = NULL, ContactFlowId = NULL, Constraints = NULL, Defaults = NULL, Status = NULL, Fields, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateTaskTemplate",
@@ -1459,6 +1503,8 @@ connect_create_task_template <- function(InstanceId, Name, Description = NULL, C
 #' @keywords internal
 #'
 #' @rdname connect_create_use_case
+#'
+#' @aliases connect_create_use_case
 connect_create_use_case <- function(InstanceId, IntegrationAssociationId, UseCaseType, Tags = NULL) {
   op <- new_operation(
     name = "CreateUseCase",
@@ -1559,6 +1605,8 @@ connect_create_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 #' @keywords internal
 #'
 #' @rdname connect_create_user
+#'
+#' @aliases connect_create_user
 connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, PhoneConfig, DirectoryUserId = NULL, SecurityProfileIds, RoutingProfileId, HierarchyGroupId = NULL, InstanceId, Tags = NULL) {
   op <- new_operation(
     name = "CreateUser",
@@ -1617,6 +1665,8 @@ connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, 
 #' @keywords internal
 #'
 #' @rdname connect_create_user_hierarchy_group
+#'
+#' @aliases connect_create_user_hierarchy_group
 connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, InstanceId, Tags = NULL) {
   op <- new_operation(
     name = "CreateUserHierarchyGroup",
@@ -1692,6 +1742,8 @@ connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, Inst
 #' @keywords internal
 #'
 #' @rdname connect_create_vocabulary
+#'
+#' @aliases connect_create_vocabulary
 connect_create_vocabulary <- function(ClientToken = NULL, InstanceId, VocabularyName, LanguageCode, Content, Tags = NULL) {
   op <- new_operation(
     name = "CreateVocabulary",
@@ -1735,6 +1787,8 @@ connect_create_vocabulary <- function(ClientToken = NULL, InstanceId, Vocabulary
 #' @keywords internal
 #'
 #' @rdname connect_delete_contact_flow
+#'
+#' @aliases connect_delete_contact_flow
 connect_delete_contact_flow <- function(InstanceId, ContactFlowId) {
   op <- new_operation(
     name = "DeleteContactFlow",
@@ -1778,6 +1832,8 @@ connect_delete_contact_flow <- function(InstanceId, ContactFlowId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_contact_flow_module
+#'
+#' @aliases connect_delete_contact_flow_module
 connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) {
   op <- new_operation(
     name = "DeleteContactFlowModule",
@@ -1825,6 +1881,8 @@ connect_delete_contact_flow_module <- function(InstanceId, ContactFlowModuleId) 
 #' @keywords internal
 #'
 #' @rdname connect_delete_hours_of_operation
+#'
+#' @aliases connect_delete_hours_of_operation
 connect_delete_hours_of_operation <- function(InstanceId, HoursOfOperationId) {
   op <- new_operation(
     name = "DeleteHoursOfOperation",
@@ -1876,6 +1934,8 @@ connect_delete_hours_of_operation <- function(InstanceId, HoursOfOperationId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_instance
+#'
+#' @aliases connect_delete_instance
 connect_delete_instance <- function(InstanceId) {
   op <- new_operation(
     name = "DeleteInstance",
@@ -1923,6 +1983,8 @@ connect_delete_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_integration_association
+#'
+#' @aliases connect_delete_integration_association
 connect_delete_integration_association <- function(InstanceId, IntegrationAssociationId) {
   op <- new_operation(
     name = "DeleteIntegrationAssociation",
@@ -1966,6 +2028,8 @@ connect_delete_integration_association <- function(InstanceId, IntegrationAssoci
 #' @keywords internal
 #'
 #' @rdname connect_delete_quick_connect
+#'
+#' @aliases connect_delete_quick_connect
 connect_delete_quick_connect <- function(InstanceId, QuickConnectId) {
   op <- new_operation(
     name = "DeleteQuickConnect",
@@ -2013,6 +2077,8 @@ connect_delete_quick_connect <- function(InstanceId, QuickConnectId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_security_profile
+#'
+#' @aliases connect_delete_security_profile
 connect_delete_security_profile <- function(InstanceId, SecurityProfileId) {
   op <- new_operation(
     name = "DeleteSecurityProfile",
@@ -2056,6 +2122,8 @@ connect_delete_security_profile <- function(InstanceId, SecurityProfileId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_task_template
+#'
+#' @aliases connect_delete_task_template
 connect_delete_task_template <- function(InstanceId, TaskTemplateId) {
   op <- new_operation(
     name = "DeleteTaskTemplate",
@@ -2101,6 +2169,8 @@ connect_delete_task_template <- function(InstanceId, TaskTemplateId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_use_case
+#'
+#' @aliases connect_delete_use_case
 connect_delete_use_case <- function(InstanceId, IntegrationAssociationId, UseCaseId) {
   op <- new_operation(
     name = "DeleteUseCase",
@@ -2149,6 +2219,8 @@ connect_delete_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 #' @keywords internal
 #'
 #' @rdname connect_delete_user
+#'
+#' @aliases connect_delete_user
 connect_delete_user <- function(InstanceId, UserId) {
   op <- new_operation(
     name = "DeleteUser",
@@ -2193,6 +2265,8 @@ connect_delete_user <- function(InstanceId, UserId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_user_hierarchy_group
+#'
+#' @aliases connect_delete_user_hierarchy_group
 connect_delete_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) {
   op <- new_operation(
     name = "DeleteUserHierarchyGroup",
@@ -2243,6 +2317,8 @@ connect_delete_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_delete_vocabulary
+#'
+#' @aliases connect_delete_vocabulary
 connect_delete_vocabulary <- function(InstanceId, VocabularyId) {
   op <- new_operation(
     name = "DeleteVocabulary",
@@ -2306,6 +2382,8 @@ connect_delete_vocabulary <- function(InstanceId, VocabularyId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_agent_status
+#'
+#' @aliases connect_describe_agent_status
 connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
   op <- new_operation(
     name = "DescribeAgentStatus",
@@ -2394,6 +2472,8 @@ connect_describe_agent_status <- function(InstanceId, AgentStatusId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_contact
+#'
+#' @aliases connect_describe_contact
 connect_describe_contact <- function(InstanceId, ContactId) {
   op <- new_operation(
     name = "DescribeContact",
@@ -2456,6 +2536,8 @@ connect_describe_contact <- function(InstanceId, ContactId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_contact_flow
+#'
+#' @aliases connect_describe_contact_flow
 connect_describe_contact_flow <- function(InstanceId, ContactFlowId) {
   op <- new_operation(
     name = "DescribeContactFlow",
@@ -2515,6 +2597,8 @@ connect_describe_contact_flow <- function(InstanceId, ContactFlowId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_contact_flow_module
+#'
+#' @aliases connect_describe_contact_flow_module
 connect_describe_contact_flow_module <- function(InstanceId, ContactFlowModuleId) {
   op <- new_operation(
     name = "DescribeContactFlowModule",
@@ -2589,6 +2673,8 @@ connect_describe_contact_flow_module <- function(InstanceId, ContactFlowModuleId
 #' @keywords internal
 #'
 #' @rdname connect_describe_hours_of_operation
+#'
+#' @aliases connect_describe_hours_of_operation
 connect_describe_hours_of_operation <- function(InstanceId, HoursOfOperationId) {
   op <- new_operation(
     name = "DescribeHoursOfOperation",
@@ -2661,6 +2747,8 @@ connect_describe_hours_of_operation <- function(InstanceId, HoursOfOperationId) 
 #' @keywords internal
 #'
 #' @rdname connect_describe_instance
+#'
+#' @aliases connect_describe_instance
 connect_describe_instance <- function(InstanceId) {
   op <- new_operation(
     name = "DescribeInstance",
@@ -2716,6 +2804,8 @@ connect_describe_instance <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_instance_attribute
+#'
+#' @aliases connect_describe_instance_attribute
 connect_describe_instance_attribute <- function(InstanceId, AttributeType) {
   op <- new_operation(
     name = "DescribeInstanceAttribute",
@@ -2798,6 +2888,8 @@ connect_describe_instance_attribute <- function(InstanceId, AttributeType) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_instance_storage_config
+#'
+#' @aliases connect_describe_instance_storage_config
 connect_describe_instance_storage_config <- function(InstanceId, AssociationId, ResourceType) {
   op <- new_operation(
     name = "DescribeInstanceStorageConfig",
@@ -2860,6 +2952,8 @@ connect_describe_instance_storage_config <- function(InstanceId, AssociationId, 
 #' @keywords internal
 #'
 #' @rdname connect_describe_phone_number
+#'
+#' @aliases connect_describe_phone_number
 connect_describe_phone_number <- function(PhoneNumberId) {
   op <- new_operation(
     name = "DescribePhoneNumber",
@@ -2928,6 +3022,8 @@ connect_describe_phone_number <- function(PhoneNumberId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_queue
+#'
+#' @aliases connect_describe_queue
 connect_describe_queue <- function(InstanceId, QueueId) {
   op <- new_operation(
     name = "DescribeQueue",
@@ -2998,6 +3094,8 @@ connect_describe_queue <- function(InstanceId, QueueId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_quick_connect
+#'
+#' @aliases connect_describe_quick_connect
 connect_describe_quick_connect <- function(InstanceId, QuickConnectId) {
   op <- new_operation(
     name = "DescribeQuickConnect",
@@ -3062,6 +3160,8 @@ connect_describe_quick_connect <- function(InstanceId, QuickConnectId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_routing_profile
+#'
+#' @aliases connect_describe_routing_profile
 connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
   op <- new_operation(
     name = "DescribeRoutingProfile",
@@ -3123,6 +3223,8 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_security_profile
+#'
+#' @aliases connect_describe_security_profile
 connect_describe_security_profile <- function(SecurityProfileId, InstanceId) {
   op <- new_operation(
     name = "DescribeSecurityProfile",
@@ -3198,6 +3300,8 @@ connect_describe_security_profile <- function(SecurityProfileId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_user
+#'
+#' @aliases connect_describe_user
 connect_describe_user <- function(UserId, InstanceId) {
   op <- new_operation(
     name = "DescribeUser",
@@ -3281,6 +3385,8 @@ connect_describe_user <- function(UserId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_user_hierarchy_group
+#'
+#' @aliases connect_describe_user_hierarchy_group
 connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) {
   op <- new_operation(
     name = "DescribeUserHierarchyGroup",
@@ -3355,6 +3461,8 @@ connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) 
 #' @keywords internal
 #'
 #' @rdname connect_describe_user_hierarchy_structure
+#'
+#' @aliases connect_describe_user_hierarchy_structure
 connect_describe_user_hierarchy_structure <- function(InstanceId) {
   op <- new_operation(
     name = "DescribeUserHierarchyStructure",
@@ -3417,6 +3525,8 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_describe_vocabulary
+#'
+#' @aliases connect_describe_vocabulary
 connect_describe_vocabulary <- function(InstanceId, VocabularyId) {
   op <- new_operation(
     name = "DescribeVocabulary",
@@ -3464,6 +3574,8 @@ connect_describe_vocabulary <- function(InstanceId, VocabularyId) {
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_approved_origin
+#'
+#' @aliases connect_disassociate_approved_origin
 connect_disassociate_approved_origin <- function(InstanceId, Origin) {
   op <- new_operation(
     name = "DisassociateApprovedOrigin",
@@ -3519,6 +3631,8 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_bot
+#'
+#' @aliases connect_disassociate_bot
 connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL) {
   op <- new_operation(
     name = "DisassociateBot",
@@ -3571,6 +3685,8 @@ connect_disassociate_bot <- function(InstanceId, LexBot = NULL, LexV2Bot = NULL)
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_instance_storage_config
+#'
+#' @aliases connect_disassociate_instance_storage_config
 connect_disassociate_instance_storage_config <- function(InstanceId, AssociationId, ResourceType) {
   op <- new_operation(
     name = "DisassociateInstanceStorageConfig",
@@ -3620,6 +3736,8 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_lambda_function
+#'
+#' @aliases connect_disassociate_lambda_function
 connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
   op <- new_operation(
     name = "DisassociateLambdaFunction",
@@ -3670,6 +3788,8 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_lex_bot
+#'
+#' @aliases connect_disassociate_lex_bot
 connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
   op <- new_operation(
     name = "DisassociateLexBot",
@@ -3716,6 +3836,8 @@ connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_phone_number_contact_flow
+#'
+#' @aliases connect_disassociate_phone_number_contact_flow
 connect_disassociate_phone_number_contact_flow <- function(PhoneNumberId, InstanceId) {
   op <- new_operation(
     name = "DisassociatePhoneNumberContactFlow",
@@ -3768,6 +3890,8 @@ connect_disassociate_phone_number_contact_flow <- function(PhoneNumberId, Instan
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_queue_quick_connects
+#'
+#' @aliases connect_disassociate_queue_quick_connects
 connect_disassociate_queue_quick_connects <- function(InstanceId, QueueId, QuickConnectIds) {
   op <- new_operation(
     name = "DisassociateQueueQuickConnects",
@@ -3819,6 +3943,8 @@ connect_disassociate_queue_quick_connects <- function(InstanceId, QueueId, Quick
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_routing_profile_queues
+#'
+#' @aliases connect_disassociate_routing_profile_queues
 connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfileId, QueueReferences) {
   op <- new_operation(
     name = "DisassociateRoutingProfileQueues",
@@ -3867,6 +3993,8 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' @keywords internal
 #'
 #' @rdname connect_disassociate_security_key
+#'
+#' @aliases connect_disassociate_security_key
 connect_disassociate_security_key <- function(InstanceId, AssociationId) {
   op <- new_operation(
     name = "DisassociateSecurityKey",
@@ -3916,6 +4044,8 @@ connect_disassociate_security_key <- function(InstanceId, AssociationId) {
 #' @keywords internal
 #'
 #' @rdname connect_get_contact_attributes
+#'
+#' @aliases connect_get_contact_attributes
 connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
   op <- new_operation(
     name = "GetContactAttributes",
@@ -4137,6 +4267,8 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' @keywords internal
 #'
 #' @rdname connect_get_current_metric_data
+#'
+#' @aliases connect_get_current_metric_data
 connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NULL, CurrentMetrics, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetCurrentMetricData",
@@ -4272,6 +4404,8 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 #' @keywords internal
 #'
 #' @rdname connect_get_current_user_data
+#'
+#' @aliases connect_get_current_user_data
 connect_get_current_user_data <- function(InstanceId, Filters, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetCurrentUserData",
@@ -4333,6 +4467,8 @@ connect_get_current_user_data <- function(InstanceId, Filters, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname connect_get_federation_token
+#'
+#' @aliases connect_get_federation_token
 connect_get_federation_token <- function(InstanceId) {
   op <- new_operation(
     name = "GetFederationToken",
@@ -4636,6 +4772,8 @@ connect_get_federation_token <- function(InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_get_metric_data
+#'
+#' @aliases connect_get_metric_data
 connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Groupings = NULL, HistoricalMetrics, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetMetricData",
@@ -4749,6 +4887,8 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' @keywords internal
 #'
 #' @rdname connect_get_task_template
+#'
+#' @aliases connect_get_task_template
 connect_get_task_template <- function(InstanceId, TaskTemplateId, SnapshotVersion = NULL) {
   op <- new_operation(
     name = "GetTaskTemplate",
@@ -4818,6 +4958,8 @@ connect_get_task_template <- function(InstanceId, TaskTemplateId, SnapshotVersio
 #' @keywords internal
 #'
 #' @rdname connect_list_agent_statuses
+#'
+#' @aliases connect_list_agent_statuses
 connect_list_agent_statuses <- function(InstanceId, NextToken = NULL, MaxResults = NULL, AgentStatusTypes = NULL) {
   op <- new_operation(
     name = "ListAgentStatuses",
@@ -4878,6 +5020,8 @@ connect_list_agent_statuses <- function(InstanceId, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname connect_list_approved_origins
+#'
+#' @aliases connect_list_approved_origins
 connect_list_approved_origins <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListApprovedOrigins",
@@ -4948,6 +5092,8 @@ connect_list_approved_origins <- function(InstanceId, NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname connect_list_bots
+#'
+#' @aliases connect_list_bots
 connect_list_bots <- function(InstanceId, NextToken = NULL, MaxResults = NULL, LexVersion) {
   op <- new_operation(
     name = "ListBots",
@@ -5013,6 +5159,8 @@ connect_list_bots <- function(InstanceId, NextToken = NULL, MaxResults = NULL, L
 #' @keywords internal
 #'
 #' @rdname connect_list_contact_flow_modules
+#'
+#' @aliases connect_list_contact_flow_modules
 connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxResults = NULL, ContactFlowModuleState = NULL) {
   op <- new_operation(
     name = "ListContactFlowModules",
@@ -5089,6 +5237,8 @@ connect_list_contact_flow_modules <- function(InstanceId, NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname connect_list_contact_flows
+#'
+#' @aliases connect_list_contact_flows
 connect_list_contact_flows <- function(InstanceId, ContactFlowTypes = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListContactFlows",
@@ -5183,6 +5333,8 @@ connect_list_contact_flows <- function(InstanceId, ContactFlowTypes = NULL, Next
 #' @keywords internal
 #'
 #' @rdname connect_list_contact_references
+#'
+#' @aliases connect_list_contact_references
 connect_list_contact_references <- function(InstanceId, ContactId, ReferenceTypes, NextToken = NULL) {
   op <- new_operation(
     name = "ListContactReferences",
@@ -5249,6 +5401,8 @@ connect_list_contact_references <- function(InstanceId, ContactId, ReferenceType
 #' @keywords internal
 #'
 #' @rdname connect_list_default_vocabularies
+#'
+#' @aliases connect_list_default_vocabularies
 connect_list_default_vocabularies <- function(InstanceId, LanguageCode = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListDefaultVocabularies",
@@ -5315,6 +5469,8 @@ connect_list_default_vocabularies <- function(InstanceId, LanguageCode = NULL, M
 #' @keywords internal
 #'
 #' @rdname connect_list_hours_of_operations
+#'
+#' @aliases connect_list_hours_of_operations
 connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListHoursOfOperations",
@@ -5377,6 +5533,8 @@ connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname connect_list_instance_attributes
+#'
+#' @aliases connect_list_instance_attributes
 connect_list_instance_attributes <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInstanceAttributes",
@@ -5465,6 +5623,8 @@ connect_list_instance_attributes <- function(InstanceId, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname connect_list_instance_storage_configs
+#'
+#' @aliases connect_list_instance_storage_configs
 connect_list_instance_storage_configs <- function(InstanceId, ResourceType, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInstanceStorageConfigs",
@@ -5536,6 +5696,8 @@ connect_list_instance_storage_configs <- function(InstanceId, ResourceType, Next
 #' @keywords internal
 #'
 #' @rdname connect_list_instances
+#'
+#' @aliases connect_list_instances
 connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInstances",
@@ -5605,6 +5767,8 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname connect_list_integration_associations
+#'
+#' @aliases connect_list_integration_associations
 connect_list_integration_associations <- function(InstanceId, IntegrationType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListIntegrationAssociations",
@@ -5665,6 +5829,8 @@ connect_list_integration_associations <- function(InstanceId, IntegrationType = 
 #' @keywords internal
 #'
 #' @rdname connect_list_lambda_functions
+#'
+#' @aliases connect_list_lambda_functions
 connect_list_lambda_functions <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLambdaFunctions",
@@ -5729,6 +5895,8 @@ connect_list_lambda_functions <- function(InstanceId, NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname connect_list_lex_bots
+#'
+#' @aliases connect_list_lex_bots
 connect_list_lex_bots <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListLexBots",
@@ -5806,6 +5974,8 @@ connect_list_lex_bots <- function(InstanceId, NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname connect_list_phone_numbers
+#'
+#' @aliases connect_list_phone_numbers
 connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, PhoneNumberCountryCodes = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPhoneNumbers",
@@ -5887,6 +6057,8 @@ connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, Phon
 #' @keywords internal
 #'
 #' @rdname connect_list_phone_numbers_v2
+#'
+#' @aliases connect_list_phone_numbers_v2
 connect_list_phone_numbers_v2 <- function(TargetArn = NULL, MaxResults = NULL, NextToken = NULL, PhoneNumberCountryCodes = NULL, PhoneNumberTypes = NULL, PhoneNumberPrefix = NULL) {
   op <- new_operation(
     name = "ListPhoneNumbersV2",
@@ -5947,6 +6119,8 @@ connect_list_phone_numbers_v2 <- function(TargetArn = NULL, MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname connect_list_prompts
+#'
+#' @aliases connect_list_prompts
 connect_list_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPrompts",
@@ -6014,6 +6188,8 @@ connect_list_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname connect_list_queue_quick_connects
+#'
+#' @aliases connect_list_queue_quick_connects
 connect_list_queue_quick_connects <- function(InstanceId, QueueId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQueueQuickConnects",
@@ -6089,6 +6265,8 @@ connect_list_queue_quick_connects <- function(InstanceId, QueueId, NextToken = N
 #' @keywords internal
 #'
 #' @rdname connect_list_queues
+#'
+#' @aliases connect_list_queues
 connect_list_queues <- function(InstanceId, QueueTypes = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQueues",
@@ -6158,6 +6336,8 @@ connect_list_queues <- function(InstanceId, QueueTypes = NULL, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname connect_list_quick_connects
+#'
+#' @aliases connect_list_quick_connects
 connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults = NULL, QuickConnectTypes = NULL) {
   op <- new_operation(
     name = "ListQuickConnects",
@@ -6223,6 +6403,8 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname connect_list_routing_profile_queues
+#'
+#' @aliases connect_list_routing_profile_queues
 connect_list_routing_profile_queues <- function(InstanceId, RoutingProfileId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRoutingProfileQueues",
@@ -6290,6 +6472,8 @@ connect_list_routing_profile_queues <- function(InstanceId, RoutingProfileId, Ne
 #' @keywords internal
 #'
 #' @rdname connect_list_routing_profiles
+#'
+#' @aliases connect_list_routing_profiles
 connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListRoutingProfiles",
@@ -6356,6 +6540,8 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname connect_list_security_keys
+#'
+#' @aliases connect_list_security_keys
 connect_list_security_keys <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSecurityKeys",
@@ -6418,6 +6604,8 @@ connect_list_security_keys <- function(InstanceId, NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname connect_list_security_profile_permissions
+#'
+#' @aliases connect_list_security_profile_permissions
 connect_list_security_profile_permissions <- function(SecurityProfileId, InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSecurityProfilePermissions",
@@ -6483,6 +6671,8 @@ connect_list_security_profile_permissions <- function(SecurityProfileId, Instanc
 #' @keywords internal
 #'
 #' @rdname connect_list_security_profiles
+#'
+#' @aliases connect_list_security_profiles
 connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListSecurityProfiles",
@@ -6535,6 +6725,8 @@ connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname connect_list_tags_for_resource
+#'
+#' @aliases connect_list_tags_for_resource
 connect_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -6615,6 +6807,8 @@ connect_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname connect_list_task_templates
+#'
+#' @aliases connect_list_task_templates
 connect_list_task_templates <- function(InstanceId, NextToken = NULL, MaxResults = NULL, Status = NULL, Name = NULL) {
   op <- new_operation(
     name = "ListTaskTemplates",
@@ -6677,6 +6871,8 @@ connect_list_task_templates <- function(InstanceId, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname connect_list_use_cases
+#'
+#' @aliases connect_list_use_cases
 connect_list_use_cases <- function(InstanceId, IntegrationAssociationId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListUseCases",
@@ -6742,6 +6938,8 @@ connect_list_use_cases <- function(InstanceId, IntegrationAssociationId, NextTok
 #' @keywords internal
 #'
 #' @rdname connect_list_user_hierarchy_groups
+#'
+#' @aliases connect_list_user_hierarchy_groups
 connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListUserHierarchyGroups",
@@ -6803,6 +7001,8 @@ connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, Max
 #' @keywords internal
 #'
 #' @rdname connect_list_users
+#'
+#' @aliases connect_list_users
 connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListUsers",
@@ -6856,6 +7056,8 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 #' @keywords internal
 #'
 #' @rdname connect_put_user_status
+#'
+#' @aliases connect_put_user_status
 connect_put_user_status <- function(UserId, InstanceId, AgentStatusId) {
   op <- new_operation(
     name = "PutUserStatus",
@@ -6900,6 +7102,8 @@ connect_put_user_status <- function(UserId, InstanceId, AgentStatusId) {
 #' @keywords internal
 #'
 #' @rdname connect_release_phone_number
+#'
+#' @aliases connect_release_phone_number
 connect_release_phone_number <- function(PhoneNumberId, ClientToken = NULL) {
   op <- new_operation(
     name = "ReleasePhoneNumber",
@@ -6951,6 +7155,8 @@ connect_release_phone_number <- function(PhoneNumberId, ClientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname connect_resume_contact_recording
+#'
+#' @aliases connect_resume_contact_recording
 connect_resume_contact_recording <- function(InstanceId, ContactId, InitialContactId) {
   op <- new_operation(
     name = "ResumeContactRecording",
@@ -7021,6 +7227,8 @@ connect_resume_contact_recording <- function(InstanceId, ContactId, InitialConta
 #' @keywords internal
 #'
 #' @rdname connect_search_available_phone_numbers
+#'
+#' @aliases connect_search_available_phone_numbers
 connect_search_available_phone_numbers <- function(TargetArn, PhoneNumberCountryCode, PhoneNumberType, PhoneNumberPrefix = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "SearchAvailablePhoneNumbers",
@@ -7142,6 +7350,8 @@ connect_search_available_phone_numbers <- function(TargetArn, PhoneNumberCountry
 #' @keywords internal
 #'
 #' @rdname connect_search_users
+#'
+#' @aliases connect_search_users
 connect_search_users <- function(InstanceId = NULL, NextToken = NULL, MaxResults = NULL, SearchFilter = NULL, SearchCriteria = NULL) {
   op <- new_operation(
     name = "SearchUsers",
@@ -7218,6 +7428,8 @@ connect_search_users <- function(InstanceId = NULL, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname connect_search_vocabularies
+#'
+#' @aliases connect_search_vocabularies
 connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken = NULL, State = NULL, NameStartsWith = NULL, LanguageCode = NULL) {
   op <- new_operation(
     name = "SearchVocabularies",
@@ -7336,6 +7548,8 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname connect_start_chat_contact
+#'
+#' @aliases connect_start_chat_contact
 connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = NULL, ParticipantDetails, InitialMessage = NULL, ClientToken = NULL, ChatDurationInMinutes = NULL, SupportedMessagingContentTypes = NULL) {
   op <- new_operation(
     name = "StartChatContact",
@@ -7407,6 +7621,8 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
 #' @keywords internal
 #'
 #' @rdname connect_start_contact_recording
+#'
+#' @aliases connect_start_contact_recording
 connect_start_contact_recording <- function(InstanceId, ContactId, InitialContactId, VoiceRecordingConfiguration) {
   op <- new_operation(
     name = "StartContactRecording",
@@ -7469,6 +7685,8 @@ connect_start_contact_recording <- function(InstanceId, ContactId, InitialContac
 #' @keywords internal
 #'
 #' @rdname connect_start_contact_streaming
+#'
+#' @aliases connect_start_contact_streaming
 connect_start_contact_streaming <- function(InstanceId, ContactId, ChatStreamingConfiguration, ClientToken) {
   op <- new_operation(
     name = "StartContactStreaming",
@@ -7586,6 +7804,8 @@ connect_start_contact_streaming <- function(InstanceId, ContactId, ChatStreaming
 #' @keywords internal
 #'
 #' @rdname connect_start_outbound_voice_contact
+#'
+#' @aliases connect_start_outbound_voice_contact
 connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, ContactFlowId, InstanceId, ClientToken = NULL, SourcePhoneNumber = NULL, QueueId = NULL, Attributes = NULL, AnswerMachineDetectionConfig = NULL, CampaignId = NULL, TrafficType = NULL) {
   op <- new_operation(
     name = "StartOutboundVoiceContact",
@@ -7682,6 +7902,8 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 #' @keywords internal
 #'
 #' @rdname connect_start_task_contact
+#'
+#' @aliases connect_start_task_contact
 connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, ContactFlowId = NULL, Attributes = NULL, Name, References = NULL, Description = NULL, ClientToken = NULL, ScheduledTime = NULL, TaskTemplateId = NULL, QuickConnectId = NULL) {
   op <- new_operation(
     name = "StartTaskContact",
@@ -7732,6 +7954,8 @@ connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, Con
 #' @keywords internal
 #'
 #' @rdname connect_stop_contact
+#'
+#' @aliases connect_stop_contact
 connect_stop_contact <- function(ContactId, InstanceId) {
   op <- new_operation(
     name = "StopContact",
@@ -7786,6 +8010,8 @@ connect_stop_contact <- function(ContactId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_stop_contact_recording
+#'
+#' @aliases connect_stop_contact_recording
 connect_stop_contact_recording <- function(InstanceId, ContactId, InitialContactId) {
   op <- new_operation(
     name = "StopContactRecording",
@@ -7834,6 +8060,8 @@ connect_stop_contact_recording <- function(InstanceId, ContactId, InitialContact
 #' @keywords internal
 #'
 #' @rdname connect_stop_contact_streaming
+#'
+#' @aliases connect_stop_contact_streaming
 connect_stop_contact_streaming <- function(InstanceId, ContactId, StreamingId) {
   op <- new_operation(
     name = "StopContactStreaming",
@@ -7889,6 +8117,8 @@ connect_stop_contact_streaming <- function(InstanceId, ContactId, StreamingId) {
 #' @keywords internal
 #'
 #' @rdname connect_suspend_contact_recording
+#'
+#' @aliases connect_suspend_contact_recording
 connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialContactId) {
   op <- new_operation(
     name = "SuspendContactRecording",
@@ -7943,6 +8173,8 @@ connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialCont
 #' @keywords internal
 #'
 #' @rdname connect_tag_resource
+#'
+#' @aliases connect_tag_resource
 connect_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -8022,6 +8254,8 @@ connect_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname connect_transfer_contact
+#'
+#' @aliases connect_transfer_contact
 connect_transfer_contact <- function(InstanceId, ContactId, QueueId = NULL, UserId = NULL, ContactFlowId, ClientToken = NULL) {
   op <- new_operation(
     name = "TransferContact",
@@ -8066,6 +8300,8 @@ connect_transfer_contact <- function(InstanceId, ContactId, QueueId = NULL, User
 #' @keywords internal
 #'
 #' @rdname connect_untag_resource
+#'
+#' @aliases connect_untag_resource
 connect_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -8124,6 +8360,8 @@ connect_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname connect_update_agent_status
+#'
+#' @aliases connect_update_agent_status
 connect_update_agent_status <- function(InstanceId, AgentStatusId, Name = NULL, Description = NULL, State = NULL, DisplayOrder = NULL, ResetOrderNumber = NULL) {
   op <- new_operation(
     name = "UpdateAgentStatus",
@@ -8190,6 +8428,8 @@ connect_update_agent_status <- function(InstanceId, AgentStatusId, Name = NULL, 
 #' @keywords internal
 #'
 #' @rdname connect_update_contact
+#'
+#' @aliases connect_update_contact
 connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Description = NULL, References = NULL) {
   op <- new_operation(
     name = "UpdateContact",
@@ -8271,6 +8511,8 @@ connect_update_contact <- function(InstanceId, ContactId, Name = NULL, Descripti
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_attributes
+#'
+#' @aliases connect_update_contact_attributes
 connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attributes) {
   op <- new_operation(
     name = "UpdateContactAttributes",
@@ -8322,6 +8564,8 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_flow_content
+#'
+#' @aliases connect_update_contact_flow_content
 connect_update_contact_flow_content <- function(InstanceId, ContactFlowId, Content) {
   op <- new_operation(
     name = "UpdateContactFlowContent",
@@ -8372,6 +8616,8 @@ connect_update_contact_flow_content <- function(InstanceId, ContactFlowId, Conte
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_flow_metadata
+#'
+#' @aliases connect_update_contact_flow_metadata
 connect_update_contact_flow_metadata <- function(InstanceId, ContactFlowId, Name = NULL, Description = NULL, ContactFlowState = NULL) {
   op <- new_operation(
     name = "UpdateContactFlowMetadata",
@@ -8420,6 +8666,8 @@ connect_update_contact_flow_metadata <- function(InstanceId, ContactFlowId, Name
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_flow_module_content
+#'
+#' @aliases connect_update_contact_flow_module_content
 connect_update_contact_flow_module_content <- function(InstanceId, ContactFlowModuleId, Content) {
   op <- new_operation(
     name = "UpdateContactFlowModuleContent",
@@ -8470,6 +8718,8 @@ connect_update_contact_flow_module_content <- function(InstanceId, ContactFlowMo
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_flow_module_metadata
+#'
+#' @aliases connect_update_contact_flow_module_metadata
 connect_update_contact_flow_module_metadata <- function(InstanceId, ContactFlowModuleId, Name = NULL, Description = NULL, State = NULL) {
   op <- new_operation(
     name = "UpdateContactFlowModuleMetadata",
@@ -8521,6 +8771,8 @@ connect_update_contact_flow_module_metadata <- function(InstanceId, ContactFlowM
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_flow_name
+#'
+#' @aliases connect_update_contact_flow_name
 connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateContactFlowName",
@@ -8570,6 +8822,8 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #' @keywords internal
 #'
 #' @rdname connect_update_contact_schedule
+#'
+#' @aliases connect_update_contact_schedule
 connect_update_contact_schedule <- function(InstanceId, ContactId, ScheduledTime) {
   op <- new_operation(
     name = "UpdateContactSchedule",
@@ -8638,6 +8892,8 @@ connect_update_contact_schedule <- function(InstanceId, ContactId, ScheduledTime
 #' @keywords internal
 #'
 #' @rdname connect_update_hours_of_operation
+#'
+#' @aliases connect_update_hours_of_operation
 connect_update_hours_of_operation <- function(InstanceId, HoursOfOperationId, Name = NULL, Description = NULL, TimeZone = NULL, Config = NULL) {
   op <- new_operation(
     name = "UpdateHoursOfOperation",
@@ -8690,6 +8946,8 @@ connect_update_hours_of_operation <- function(InstanceId, HoursOfOperationId, Na
 #' @keywords internal
 #'
 #' @rdname connect_update_instance_attribute
+#'
+#' @aliases connect_update_instance_attribute
 connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) {
   op <- new_operation(
     name = "UpdateInstanceAttribute",
@@ -8769,6 +9027,8 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #' @keywords internal
 #'
 #' @rdname connect_update_instance_storage_config
+#'
+#' @aliases connect_update_instance_storage_config
 connect_update_instance_storage_config <- function(InstanceId, AssociationId, ResourceType, StorageConfig) {
   op <- new_operation(
     name = "UpdateInstanceStorageConfig",
@@ -8823,6 +9083,8 @@ connect_update_instance_storage_config <- function(InstanceId, AssociationId, Re
 #' @keywords internal
 #'
 #' @rdname connect_update_phone_number
+#'
+#' @aliases connect_update_phone_number
 connect_update_phone_number <- function(PhoneNumberId, TargetArn, ClientToken = NULL) {
   op <- new_operation(
     name = "UpdatePhoneNumber",
@@ -8873,6 +9135,8 @@ connect_update_phone_number <- function(PhoneNumberId, TargetArn, ClientToken = 
 #' @keywords internal
 #'
 #' @rdname connect_update_queue_hours_of_operation
+#'
+#' @aliases connect_update_queue_hours_of_operation
 connect_update_queue_hours_of_operation <- function(InstanceId, QueueId, HoursOfOperationId) {
   op <- new_operation(
     name = "UpdateQueueHoursOfOperation",
@@ -8924,6 +9188,8 @@ connect_update_queue_hours_of_operation <- function(InstanceId, QueueId, HoursOf
 #' @keywords internal
 #'
 #' @rdname connect_update_queue_max_contacts
+#'
+#' @aliases connect_update_queue_max_contacts
 connect_update_queue_max_contacts <- function(InstanceId, QueueId, MaxContacts = NULL) {
   op <- new_operation(
     name = "UpdateQueueMaxContacts",
@@ -8976,6 +9242,8 @@ connect_update_queue_max_contacts <- function(InstanceId, QueueId, MaxContacts =
 #' @keywords internal
 #'
 #' @rdname connect_update_queue_name
+#'
+#' @aliases connect_update_queue_name
 connect_update_queue_name <- function(InstanceId, QueueId, Name = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateQueueName",
@@ -9031,6 +9299,8 @@ connect_update_queue_name <- function(InstanceId, QueueId, Name = NULL, Descript
 #' @keywords internal
 #'
 #' @rdname connect_update_queue_outbound_caller_config
+#'
+#' @aliases connect_update_queue_outbound_caller_config
 connect_update_queue_outbound_caller_config <- function(InstanceId, QueueId, OutboundCallerConfig) {
   op <- new_operation(
     name = "UpdateQueueOutboundCallerConfig",
@@ -9080,6 +9350,8 @@ connect_update_queue_outbound_caller_config <- function(InstanceId, QueueId, Out
 #' @keywords internal
 #'
 #' @rdname connect_update_queue_status
+#'
+#' @aliases connect_update_queue_status
 connect_update_queue_status <- function(InstanceId, QueueId, Status) {
   op <- new_operation(
     name = "UpdateQueueStatus",
@@ -9139,6 +9411,8 @@ connect_update_queue_status <- function(InstanceId, QueueId, Status) {
 #' @keywords internal
 #'
 #' @rdname connect_update_quick_connect_config
+#'
+#' @aliases connect_update_quick_connect_config
 connect_update_quick_connect_config <- function(InstanceId, QuickConnectId, QuickConnectConfig) {
   op <- new_operation(
     name = "UpdateQuickConnectConfig",
@@ -9189,6 +9463,8 @@ connect_update_quick_connect_config <- function(InstanceId, QuickConnectId, Quic
 #' @keywords internal
 #'
 #' @rdname connect_update_quick_connect_name
+#'
+#' @aliases connect_update_quick_connect_name
 connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateQuickConnectName",
@@ -9242,6 +9518,8 @@ connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name =
 #' @keywords internal
 #'
 #' @rdname connect_update_routing_profile_concurrency
+#'
+#' @aliases connect_update_routing_profile_concurrency
 connect_update_routing_profile_concurrency <- function(InstanceId, RoutingProfileId, MediaConcurrencies) {
   op <- new_operation(
     name = "UpdateRoutingProfileConcurrency",
@@ -9288,6 +9566,8 @@ connect_update_routing_profile_concurrency <- function(InstanceId, RoutingProfil
 #' @keywords internal
 #'
 #' @rdname connect_update_routing_profile_default_outbound_queue
+#'
+#' @aliases connect_update_routing_profile_default_outbound_queue
 connect_update_routing_profile_default_outbound_queue <- function(InstanceId, RoutingProfileId, DefaultOutboundQueueId) {
   op <- new_operation(
     name = "UpdateRoutingProfileDefaultOutboundQueue",
@@ -9339,6 +9619,8 @@ connect_update_routing_profile_default_outbound_queue <- function(InstanceId, Ro
 #' @keywords internal
 #'
 #' @rdname connect_update_routing_profile_name
+#'
+#' @aliases connect_update_routing_profile_name
 connect_update_routing_profile_name <- function(InstanceId, RoutingProfileId, Name = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateRoutingProfileName",
@@ -9398,6 +9680,8 @@ connect_update_routing_profile_name <- function(InstanceId, RoutingProfileId, Na
 #' @keywords internal
 #'
 #' @rdname connect_update_routing_profile_queues
+#'
+#' @aliases connect_update_routing_profile_queues
 connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, QueueConfigs) {
   op <- new_operation(
     name = "UpdateRoutingProfileQueues",
@@ -9452,6 +9736,8 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 #' @keywords internal
 #'
 #' @rdname connect_update_security_profile
+#'
+#' @aliases connect_update_security_profile
 connect_update_security_profile <- function(Description = NULL, Permissions = NULL, SecurityProfileId, InstanceId) {
   op <- new_operation(
     name = "UpdateSecurityProfile",
@@ -9622,6 +9908,8 @@ connect_update_security_profile <- function(Description = NULL, Permissions = NU
 #' @keywords internal
 #'
 #' @rdname connect_update_task_template
+#'
+#' @aliases connect_update_task_template
 connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL, Description = NULL, ContactFlowId = NULL, Constraints = NULL, Defaults = NULL, Status = NULL, Fields = NULL) {
   op <- new_operation(
     name = "UpdateTaskTemplate",
@@ -9667,6 +9955,8 @@ connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL
 #' @keywords internal
 #'
 #' @rdname connect_update_user_hierarchy
+#'
+#' @aliases connect_update_user_hierarchy
 connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, InstanceId) {
   op <- new_operation(
     name = "UpdateUserHierarchy",
@@ -9713,6 +10003,8 @@ connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, Insta
 #' @keywords internal
 #'
 #' @rdname connect_update_user_hierarchy_group_name
+#'
+#' @aliases connect_update_user_hierarchy_group_name
 connect_update_user_hierarchy_group_name <- function(Name, HierarchyGroupId, InstanceId) {
   op <- new_operation(
     name = "UpdateUserHierarchyGroupName",
@@ -9774,6 +10066,8 @@ connect_update_user_hierarchy_group_name <- function(Name, HierarchyGroupId, Ins
 #' @keywords internal
 #'
 #' @rdname connect_update_user_hierarchy_structure
+#'
+#' @aliases connect_update_user_hierarchy_structure
 connect_update_user_hierarchy_structure <- function(HierarchyStructure, InstanceId) {
   op <- new_operation(
     name = "UpdateUserHierarchyStructure",
@@ -9833,6 +10127,8 @@ connect_update_user_hierarchy_structure <- function(HierarchyStructure, Instance
 #' @keywords internal
 #'
 #' @rdname connect_update_user_identity_info
+#'
+#' @aliases connect_update_user_identity_info
 connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) {
   op <- new_operation(
     name = "UpdateUserIdentityInfo",
@@ -9883,6 +10179,8 @@ connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) 
 #' @keywords internal
 #'
 #' @rdname connect_update_user_phone_config
+#'
+#' @aliases connect_update_user_phone_config
 connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
   op <- new_operation(
     name = "UpdateUserPhoneConfig",
@@ -9929,6 +10227,8 @@ connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
 #' @keywords internal
 #'
 #' @rdname connect_update_user_routing_profile
+#'
+#' @aliases connect_update_user_routing_profile
 connect_update_user_routing_profile <- function(RoutingProfileId, UserId, InstanceId) {
   op <- new_operation(
     name = "UpdateUserRoutingProfile",
@@ -9977,6 +10277,8 @@ connect_update_user_routing_profile <- function(RoutingProfileId, UserId, Instan
 #' @keywords internal
 #'
 #' @rdname connect_update_user_security_profiles
+#'
+#' @aliases connect_update_user_security_profiles
 connect_update_user_security_profiles <- function(SecurityProfileIds, UserId, InstanceId) {
   op <- new_operation(
     name = "UpdateUserSecurityProfiles",

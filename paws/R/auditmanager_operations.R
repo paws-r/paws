@@ -31,6 +31,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname auditmanager_associate_assessment_report_evidence_folder
+#'
+#' @aliases auditmanager_associate_assessment_report_evidence_folder
 auditmanager_associate_assessment_report_evidence_folder <- function(assessmentId, evidenceFolderId) {
   op <- new_operation(
     name = "AssociateAssessmentReportEvidenceFolder",
@@ -94,6 +96,8 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
 #' @keywords internal
 #'
 #' @rdname auditmanager_batch_associate_assessment_report_evidence
+#'
+#' @aliases auditmanager_batch_associate_assessment_report_evidence
 auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId, evidenceFolderId, evidenceIds) {
   op <- new_operation(
     name = "BatchAssociateAssessmentReportEvidence",
@@ -179,6 +183,8 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
 #' @keywords internal
 #'
 #' @rdname auditmanager_batch_create_delegation_by_assessment
+#'
+#' @aliases auditmanager_batch_create_delegation_by_assessment
 auditmanager_batch_create_delegation_by_assessment <- function(createDelegationRequests, assessmentId) {
   op <- new_operation(
     name = "BatchCreateDelegationByAssessment",
@@ -235,6 +241,8 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
 #' @keywords internal
 #'
 #' @rdname auditmanager_batch_delete_delegation_by_assessment
+#'
+#' @aliases auditmanager_batch_delete_delegation_by_assessment
 auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, assessmentId) {
   op <- new_operation(
     name = "BatchDeleteDelegationByAssessment",
@@ -298,6 +306,8 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
 #' @keywords internal
 #'
 #' @rdname auditmanager_batch_disassociate_assessment_report_evidence
+#'
+#' @aliases auditmanager_batch_disassociate_assessment_report_evidence
 auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmentId, evidenceFolderId, evidenceIds) {
   op <- new_operation(
     name = "BatchDisassociateAssessmentReportEvidence",
@@ -364,6 +374,8 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #' @keywords internal
 #'
 #' @rdname auditmanager_batch_import_evidence_to_assessment_control
+#'
+#' @aliases auditmanager_batch_import_evidence_to_assessment_control
 auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentId, controlSetId, controlId, manualEvidence) {
   op <- new_operation(
     name = "BatchImportEvidenceToAssessmentControl",
@@ -580,6 +592,8 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_assessment
+#'
+#' @aliases auditmanager_create_assessment
 auditmanager_create_assessment <- function(name, description = NULL, assessmentReportsDestination, scope, roles, frameworkId, tags = NULL) {
   op <- new_operation(
     name = "CreateAssessment",
@@ -711,6 +725,8 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_assessment_framework
+#'
+#' @aliases auditmanager_create_assessment_framework
 auditmanager_create_assessment_framework <- function(name, description = NULL, complianceType = NULL, controlSets, tags = NULL) {
   op <- new_operation(
     name = "CreateAssessmentFramework",
@@ -772,6 +788,8 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_assessment_report
+#'
+#' @aliases auditmanager_create_assessment_report
 auditmanager_create_assessment_report <- function(name, description = NULL, assessmentId) {
   op <- new_operation(
     name = "CreateAssessmentReport",
@@ -881,6 +899,8 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 #' @keywords internal
 #'
 #' @rdname auditmanager_create_control
+#'
+#' @aliases auditmanager_create_control
 auditmanager_create_control <- function(name, description = NULL, testingInformation = NULL, actionPlanTitle = NULL, actionPlanInstructions = NULL, controlMappingSources, tags = NULL) {
   op <- new_operation(
     name = "CreateControl",
@@ -921,6 +941,8 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
 #' @keywords internal
 #'
 #' @rdname auditmanager_delete_assessment
+#'
+#' @aliases auditmanager_delete_assessment
 auditmanager_delete_assessment <- function(assessmentId) {
   op <- new_operation(
     name = "DeleteAssessment",
@@ -961,6 +983,8 @@ auditmanager_delete_assessment <- function(assessmentId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_delete_assessment_framework
+#'
+#' @aliases auditmanager_delete_assessment_framework
 auditmanager_delete_assessment_framework <- function(frameworkId) {
   op <- new_operation(
     name = "DeleteAssessmentFramework",
@@ -1004,6 +1028,8 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_delete_assessment_framework_share
+#'
+#' @aliases auditmanager_delete_assessment_framework_share
 auditmanager_delete_assessment_framework_share <- function(requestId, requestType) {
   op <- new_operation(
     name = "DeleteAssessmentFrameworkShare",
@@ -1074,6 +1100,8 @@ auditmanager_delete_assessment_framework_share <- function(requestId, requestTyp
 #' @keywords internal
 #'
 #' @rdname auditmanager_delete_assessment_report
+#'
+#' @aliases auditmanager_delete_assessment_report
 auditmanager_delete_assessment_report <- function(assessmentId, assessmentReportId) {
   op <- new_operation(
     name = "DeleteAssessmentReport",
@@ -1114,6 +1142,8 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
 #' @keywords internal
 #'
 #' @rdname auditmanager_delete_control
+#'
+#' @aliases auditmanager_delete_control
 auditmanager_delete_control <- function(controlId) {
   op <- new_operation(
     name = "DeleteControl",
@@ -1192,6 +1222,8 @@ auditmanager_delete_control <- function(controlId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_deregister_account
+#'
+#' @aliases auditmanager_deregister_account
 auditmanager_deregister_account <- function() {
   op <- new_operation(
     name = "DeregisterAccount",
@@ -1279,6 +1311,8 @@ auditmanager_deregister_account <- function() {
 #' @keywords internal
 #'
 #' @rdname auditmanager_deregister_organization_admin_account
+#'
+#' @aliases auditmanager_deregister_organization_admin_account
 auditmanager_deregister_organization_admin_account <- function(adminAccountId = NULL) {
   op <- new_operation(
     name = "DeregisterOrganizationAdminAccount",
@@ -1324,6 +1358,8 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
 #' @keywords internal
 #'
 #' @rdname auditmanager_disassociate_assessment_report_evidence_folder
+#'
+#' @aliases auditmanager_disassociate_assessment_report_evidence_folder
 auditmanager_disassociate_assessment_report_evidence_folder <- function(assessmentId, evidenceFolderId) {
   op <- new_operation(
     name = "DisassociateAssessmentReportEvidenceFolder",
@@ -1365,6 +1401,8 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_account_status
+#'
+#' @aliases auditmanager_get_account_status
 auditmanager_get_account_status <- function() {
   op <- new_operation(
     name = "GetAccountStatus",
@@ -1547,6 +1585,8 @@ auditmanager_get_account_status <- function() {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_assessment
+#'
+#' @aliases auditmanager_get_assessment
 auditmanager_get_assessment <- function(assessmentId) {
   op <- new_operation(
     name = "GetAssessment",
@@ -1657,6 +1697,8 @@ auditmanager_get_assessment <- function(assessmentId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_assessment_framework
+#'
+#' @aliases auditmanager_get_assessment_framework
 auditmanager_get_assessment_framework <- function(frameworkId) {
   op <- new_operation(
     name = "GetAssessmentFramework",
@@ -1707,6 +1749,8 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_assessment_report_url
+#'
+#' @aliases auditmanager_get_assessment_report_url
 auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmentId) {
   op <- new_operation(
     name = "GetAssessmentReportUrl",
@@ -1773,6 +1817,8 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_change_logs
+#'
+#' @aliases auditmanager_get_change_logs
 auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, controlId = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetChangeLogs",
@@ -1854,6 +1900,8 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_control
+#'
+#' @aliases auditmanager_get_control
 auditmanager_get_control <- function(controlId) {
   op <- new_operation(
     name = "GetControl",
@@ -1915,6 +1963,8 @@ auditmanager_get_control <- function(controlId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_delegations
+#'
+#' @aliases auditmanager_get_delegations
 auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetDelegations",
@@ -1992,6 +2042,8 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_evidence
+#'
+#' @aliases auditmanager_get_evidence
 auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolderId, evidenceId) {
   op <- new_operation(
     name = "GetEvidence",
@@ -2075,6 +2127,8 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_evidence_by_evidence_folder
+#'
+#' @aliases auditmanager_get_evidence_by_evidence_folder
 auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSetId, evidenceFolderId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetEvidenceByEvidenceFolder",
@@ -2148,6 +2202,8 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_evidence_folder
+#'
+#' @aliases auditmanager_get_evidence_folder
 auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenceFolderId) {
   op <- new_operation(
     name = "GetEvidenceFolder",
@@ -2225,6 +2281,8 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_evidence_folders_by_assessment
+#'
+#' @aliases auditmanager_get_evidence_folders_by_assessment
 auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetEvidenceFoldersByAssessment",
@@ -2306,6 +2364,8 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_evidence_folders_by_assessment_control
+#'
+#' @aliases auditmanager_get_evidence_folders_by_assessment_control
 auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId, controlSetId, controlId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetEvidenceFoldersByAssessmentControl",
@@ -2357,6 +2417,8 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_insights
+#'
+#' @aliases auditmanager_get_insights
 auditmanager_get_insights <- function() {
   op <- new_operation(
     name = "GetInsights",
@@ -2411,6 +2473,8 @@ auditmanager_get_insights <- function() {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_insights_by_assessment
+#'
+#' @aliases auditmanager_get_insights_by_assessment
 auditmanager_get_insights_by_assessment <- function(assessmentId) {
   op <- new_operation(
     name = "GetInsightsByAssessment",
@@ -2455,6 +2519,8 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_organization_admin_account
+#'
+#' @aliases auditmanager_get_organization_admin_account
 auditmanager_get_organization_admin_account <- function() {
   op <- new_operation(
     name = "GetOrganizationAdminAccount",
@@ -2505,6 +2571,8 @@ auditmanager_get_organization_admin_account <- function() {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_services_in_scope
+#'
+#' @aliases auditmanager_get_services_in_scope
 auditmanager_get_services_in_scope <- function() {
   op <- new_operation(
     name = "GetServicesInScope",
@@ -2564,6 +2632,8 @@ auditmanager_get_services_in_scope <- function() {
 #' @keywords internal
 #'
 #' @rdname auditmanager_get_settings
+#'
+#' @aliases auditmanager_get_settings
 auditmanager_get_settings <- function(attribute) {
   op <- new_operation(
     name = "GetSettings",
@@ -2639,7 +2709,9 @@ auditmanager_get_settings <- function(attribute) {
 #'
 #' @keywords internal
 #'
-#' @rdname auditmanager_list_assessment_control_insights_by_control_domain
+#' @rdname auditmanager_list_asses_contr_insig_by_contr_domai
+#'
+#' @aliases auditmanager_list_assessment_control_insights_by_control_domain
 auditmanager_list_assessment_control_insights_by_control_domain <- function(controlDomainId, assessmentId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentControlInsightsByControlDomain",
@@ -2719,6 +2791,8 @@ auditmanager_list_assessment_control_insights_by_control_domain <- function(cont
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_assessment_framework_share_requests
+#'
+#' @aliases auditmanager_list_assessment_framework_share_requests
 auditmanager_list_assessment_framework_share_requests <- function(requestType, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentFrameworkShareRequests",
@@ -2792,6 +2866,8 @@ auditmanager_list_assessment_framework_share_requests <- function(requestType, n
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_assessment_frameworks
+#'
+#' @aliases auditmanager_list_assessment_frameworks
 auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentFrameworks",
@@ -2854,6 +2930,8 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_assessment_reports
+#'
+#' @aliases auditmanager_list_assessment_reports
 auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessmentReports",
@@ -2943,6 +3021,8 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_assessments
+#'
+#' @aliases auditmanager_list_assessments
 auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListAssessments",
@@ -3014,6 +3094,8 @@ auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxRe
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_control_domain_insights
+#'
+#' @aliases auditmanager_list_control_domain_insights
 auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListControlDomainInsights",
@@ -3088,6 +3170,8 @@ auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResul
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_control_domain_insights_by_assessment
+#'
+#' @aliases auditmanager_list_control_domain_insights_by_assessment
 auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListControlDomainInsightsByAssessment",
@@ -3160,6 +3244,8 @@ auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_control_insights_by_control_domain
+#'
+#' @aliases auditmanager_list_control_insights_by_control_domain
 auditmanager_list_control_insights_by_control_domain <- function(controlDomainId, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListControlInsightsByControlDomain",
@@ -3224,6 +3310,8 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_controls
+#'
+#' @aliases auditmanager_list_controls
 auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListControls",
@@ -3280,6 +3368,8 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_keywords_for_data_source
+#'
+#' @aliases auditmanager_list_keywords_for_data_source
 auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListKeywordsForDataSource",
@@ -3342,6 +3432,8 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_notifications
+#'
+#' @aliases auditmanager_list_notifications
 auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListNotifications",
@@ -3389,6 +3481,8 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
 #' @keywords internal
 #'
 #' @rdname auditmanager_list_tags_for_resource
+#'
+#' @aliases auditmanager_list_tags_for_resource
 auditmanager_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3436,6 +3530,8 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_register_account
+#'
+#' @aliases auditmanager_register_account
 auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount = NULL) {
   op <- new_operation(
     name = "RegisterAccount",
@@ -3484,6 +3580,8 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
 #' @keywords internal
 #'
 #' @rdname auditmanager_register_organization_admin_account
+#'
+#' @aliases auditmanager_register_organization_admin_account
 auditmanager_register_organization_admin_account <- function(adminAccountId) {
   op <- new_operation(
     name = "RegisterOrganizationAdminAccount",
@@ -3601,6 +3699,8 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_start_assessment_framework_share
+#'
+#' @aliases auditmanager_start_assessment_framework_share
 auditmanager_start_assessment_framework_share <- function(frameworkId, destinationAccount, destinationRegion, comment = NULL) {
   op <- new_operation(
     name = "StartAssessmentFrameworkShare",
@@ -3645,6 +3745,8 @@ auditmanager_start_assessment_framework_share <- function(frameworkId, destinati
 #' @keywords internal
 #'
 #' @rdname auditmanager_tag_resource
+#'
+#' @aliases auditmanager_tag_resource
 auditmanager_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3689,6 +3791,8 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_untag_resource
+#'
+#' @aliases auditmanager_untag_resource
 auditmanager_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3900,6 +4004,8 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_assessment
+#'
+#' @aliases auditmanager_update_assessment
 auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, assessmentDescription = NULL, scope, assessmentReportsDestination = NULL, roles = NULL) {
   op <- new_operation(
     name = "UpdateAssessment",
@@ -3974,6 +4080,8 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_assessment_control
+#'
+#' @aliases auditmanager_update_assessment_control
 auditmanager_update_assessment_control <- function(assessmentId, controlSetId, controlId, controlStatus = NULL, commentBody = NULL) {
   op <- new_operation(
     name = "UpdateAssessmentControl",
@@ -4080,6 +4188,8 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_assessment_control_set_status
+#'
+#' @aliases auditmanager_update_assessment_control_set_status
 auditmanager_update_assessment_control_set_status <- function(assessmentId, controlSetId, status, comment) {
   op <- new_operation(
     name = "UpdateAssessmentControlSetStatus",
@@ -4210,6 +4320,8 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_assessment_framework
+#'
+#' @aliases auditmanager_update_assessment_framework
 auditmanager_update_assessment_framework <- function(frameworkId, name, description = NULL, complianceType = NULL, controlSets) {
   op <- new_operation(
     name = "UpdateAssessmentFramework",
@@ -4283,6 +4395,8 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_assessment_framework_share
+#'
+#' @aliases auditmanager_update_assessment_framework_share
 auditmanager_update_assessment_framework_share <- function(requestId, requestType, action) {
   op <- new_operation(
     name = "UpdateAssessmentFrameworkShare",
@@ -4463,6 +4577,8 @@ auditmanager_update_assessment_framework_share <- function(requestId, requestTyp
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_assessment_status
+#'
+#' @aliases auditmanager_update_assessment_status
 auditmanager_update_assessment_status <- function(assessmentId, status) {
   op <- new_operation(
     name = "UpdateAssessmentStatus",
@@ -4572,6 +4688,8 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_control
+#'
+#' @aliases auditmanager_update_control
 auditmanager_update_control <- function(controlId, name, description = NULL, testingInformation = NULL, actionPlanTitle = NULL, actionPlanInstructions = NULL, controlMappingSources) {
   op <- new_operation(
     name = "UpdateControl",
@@ -4647,6 +4765,8 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 #' @keywords internal
 #'
 #' @rdname auditmanager_update_settings
+#'
+#' @aliases auditmanager_update_settings
 auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentReportsDestination = NULL, defaultProcessOwners = NULL, kmsKey = NULL) {
   op <- new_operation(
     name = "UpdateSettings",
@@ -4699,6 +4819,8 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
 #' @keywords internal
 #'
 #' @rdname auditmanager_validate_assessment_report_integrity
+#'
+#' @aliases auditmanager_validate_assessment_report_integrity
 auditmanager_validate_assessment_report_integrity <- function(s3RelativePath) {
   op <- new_operation(
     name = "ValidateAssessmentReportIntegrity",

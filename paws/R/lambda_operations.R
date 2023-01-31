@@ -63,6 +63,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lambda_add_layer_version_permission
+#'
+#' @aliases lambda_add_layer_version_permission
 lambda_add_layer_version_permission <- function(LayerName, VersionNumber, StatementId, Action, Principal, OrganizationId = NULL, RevisionId = NULL) {
   op <- new_operation(
     name = "AddLayerVersionPermission",
@@ -189,6 +191,8 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 #' @keywords internal
 #'
 #' @rdname lambda_add_permission
+#'
+#' @aliases lambda_add_permission
 lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, SourceArn = NULL, SourceAccount = NULL, EventSourceToken = NULL, Qualifier = NULL, RevisionId = NULL, PrincipalOrgID = NULL, FunctionUrlAuthType = NULL) {
   op <- new_operation(
     name = "AddPermission",
@@ -277,6 +281,8 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' @keywords internal
 #'
 #' @rdname lambda_create_alias
+#'
+#' @aliases lambda_create_alias
 lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description = NULL, RoutingConfig = NULL) {
   op <- new_operation(
     name = "CreateAlias",
@@ -350,6 +356,8 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @keywords internal
 #'
 #' @rdname lambda_create_code_signing_config
+#'
+#' @aliases lambda_create_code_signing_config
 lambda_create_code_signing_config <- function(Description = NULL, AllowedPublishers, CodeSigningPolicies = NULL) {
   op <- new_operation(
     name = "CreateCodeSigningConfig",
@@ -655,6 +663,8 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
+#'
+#' @aliases lambda_create_event_source_mapping
 lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
@@ -993,6 +1003,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' @keywords internal
 #'
 #' @rdname lambda_create_function
+#'
+#' @aliases lambda_create_function
 lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL, Architectures = NULL, EphemeralStorage = NULL) {
   op <- new_operation(
     name = "CreateFunction",
@@ -1101,6 +1113,8 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 #' @keywords internal
 #'
 #' @rdname lambda_create_function_url_config
+#'
+#' @aliases lambda_create_function_url_config
 lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, AuthType, Cors = NULL) {
   op <- new_operation(
     name = "CreateFunctionUrlConfig",
@@ -1156,6 +1170,8 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
 #' @keywords internal
 #'
 #' @rdname lambda_delete_alias
+#'
+#' @aliases lambda_delete_alias
 lambda_delete_alias <- function(FunctionName, Name) {
   op <- new_operation(
     name = "DeleteAlias",
@@ -1197,6 +1213,8 @@ lambda_delete_alias <- function(FunctionName, Name) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_code_signing_config
+#'
+#' @aliases lambda_delete_code_signing_config
 lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
   op <- new_operation(
     name = "DeleteCodeSigningConfig",
@@ -1304,6 +1322,8 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_event_source_mapping
+#'
+#' @aliases lambda_delete_event_source_mapping
 lambda_delete_event_source_mapping <- function(UUID) {
   op <- new_operation(
     name = "DeleteEventSourceMapping",
@@ -1369,6 +1389,8 @@ lambda_delete_event_source_mapping <- function(UUID) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_function
+#'
+#' @aliases lambda_delete_function
 lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "DeleteFunction",
@@ -1421,6 +1443,8 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_function_code_signing_config
+#'
+#' @aliases lambda_delete_function_code_signing_config
 lambda_delete_function_code_signing_config <- function(FunctionName) {
   op <- new_operation(
     name = "DeleteFunctionCodeSigningConfig",
@@ -1473,6 +1497,8 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_function_concurrency
+#'
+#' @aliases lambda_delete_function_concurrency
 lambda_delete_function_concurrency <- function(FunctionName) {
   op <- new_operation(
     name = "DeleteFunctionConcurrency",
@@ -1534,6 +1560,8 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_function_event_invoke_config
+#'
+#' @aliases lambda_delete_function_event_invoke_config
 lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "DeleteFunctionEventInvokeConfig",
@@ -1590,6 +1618,8 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' @keywords internal
 #'
 #' @rdname lambda_delete_function_url_config
+#'
+#' @aliases lambda_delete_function_url_config
 lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "DeleteFunctionUrlConfig",
@@ -1636,6 +1666,8 @@ lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_layer_version
+#'
+#' @aliases lambda_delete_layer_version
 lambda_delete_layer_version <- function(LayerName, VersionNumber) {
   op <- new_operation(
     name = "DeleteLayerVersion",
@@ -1690,6 +1722,8 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 #' @keywords internal
 #'
 #' @rdname lambda_delete_provisioned_concurrency_config
+#'
+#' @aliases lambda_delete_provisioned_concurrency_config
 lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
   op <- new_operation(
     name = "DeleteProvisionedConcurrencyConfig",
@@ -1744,6 +1778,8 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #' @keywords internal
 #'
 #' @rdname lambda_get_account_settings
+#'
+#' @aliases lambda_get_account_settings
 lambda_get_account_settings <- function() {
   op <- new_operation(
     name = "GetAccountSettings",
@@ -1813,6 +1849,8 @@ lambda_get_account_settings <- function() {
 #' @keywords internal
 #'
 #' @rdname lambda_get_alias
+#'
+#' @aliases lambda_get_alias
 lambda_get_alias <- function(FunctionName, Name) {
   op <- new_operation(
     name = "GetAlias",
@@ -1871,6 +1909,8 @@ lambda_get_alias <- function(FunctionName, Name) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_code_signing_config
+#'
+#' @aliases lambda_get_code_signing_config
 lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
   op <- new_operation(
     name = "GetCodeSigningConfig",
@@ -1974,6 +2014,8 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_event_source_mapping
+#'
+#' @aliases lambda_get_event_source_mapping
 lambda_get_event_source_mapping <- function(UUID) {
   op <- new_operation(
     name = "GetEventSourceMapping",
@@ -2136,6 +2178,8 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_function
+#'
+#' @aliases lambda_get_function
 lambda_get_function <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "GetFunction",
@@ -2194,6 +2238,8 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_code_signing_config
+#'
+#' @aliases lambda_get_function_code_signing_config
 lambda_get_function_code_signing_config <- function(FunctionName) {
   op <- new_operation(
     name = "GetFunctionCodeSigningConfig",
@@ -2254,6 +2300,8 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_concurrency
+#'
+#' @aliases lambda_get_function_concurrency
 lambda_get_function_concurrency <- function(FunctionName) {
   op <- new_operation(
     name = "GetFunctionConcurrency",
@@ -2404,6 +2452,8 @@ lambda_get_function_concurrency <- function(FunctionName) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_configuration
+#'
+#' @aliases lambda_get_function_configuration
 lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "GetFunctionConfiguration",
@@ -2483,6 +2533,8 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_event_invoke_config
+#'
+#' @aliases lambda_get_function_event_invoke_config
 lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "GetFunctionEventInvokeConfig",
@@ -2562,6 +2614,8 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @keywords internal
 #'
 #' @rdname lambda_get_function_url_config
+#'
+#' @aliases lambda_get_function_url_config
 lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "GetFunctionUrlConfig",
@@ -2630,6 +2684,8 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_layer_version
+#'
+#' @aliases lambda_get_layer_version
 lambda_get_layer_version <- function(LayerName, VersionNumber) {
   op <- new_operation(
     name = "GetLayerVersion",
@@ -2696,6 +2752,8 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_layer_version_by_arn
+#'
+#' @aliases lambda_get_layer_version_by_arn
 lambda_get_layer_version_by_arn <- function(Arn) {
   op <- new_operation(
     name = "GetLayerVersionByArn",
@@ -2747,6 +2805,8 @@ lambda_get_layer_version_by_arn <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_layer_version_policy
+#'
+#' @aliases lambda_get_layer_version_policy
 lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
   op <- new_operation(
     name = "GetLayerVersionPolicy",
@@ -2811,6 +2871,8 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_policy
+#'
+#' @aliases lambda_get_policy
 lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
   op <- new_operation(
     name = "GetPolicy",
@@ -2877,6 +2939,8 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_get_provisioned_concurrency_config
+#'
+#' @aliases lambda_get_provisioned_concurrency_config
 lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
   op <- new_operation(
     name = "GetProvisionedConcurrencyConfig",
@@ -3016,6 +3080,8 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' @keywords internal
 #'
 #' @rdname lambda_invoke
+#'
+#' @aliases lambda_invoke
 lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, ClientContext = NULL, Payload = NULL, Qualifier = NULL) {
   op <- new_operation(
     name = "Invoke",
@@ -3077,6 +3143,8 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 #' @keywords internal
 #'
 #' @rdname lambda_invoke_async
+#'
+#' @aliases lambda_invoke_async
 lambda_invoke_async <- function(FunctionName, InvokeArgs) {
   op <- new_operation(
     name = "InvokeAsync",
@@ -3158,6 +3226,8 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' @keywords internal
 #'
 #' @rdname lambda_list_aliases
+#'
+#' @aliases lambda_list_aliases
 lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListAliases",
@@ -3225,6 +3295,8 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #' @keywords internal
 #'
 #' @rdname lambda_list_code_signing_configs
+#'
+#' @aliases lambda_list_code_signing_configs
 lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListCodeSigningConfigs",
@@ -3366,6 +3438,8 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname lambda_list_event_source_mappings
+#'
+#' @aliases lambda_list_event_source_mappings
 lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionName = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListEventSourceMappings",
@@ -3452,6 +3526,8 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' @keywords internal
 #'
 #' @rdname lambda_list_function_event_invoke_configs
+#'
+#' @aliases lambda_list_function_event_invoke_configs
 lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListFunctionEventInvokeConfigs",
@@ -3542,6 +3618,8 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' @keywords internal
 #'
 #' @rdname lambda_list_function_url_configs
+#'
+#' @aliases lambda_list_function_url_configs
 lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListFunctionUrlConfigs",
@@ -3699,6 +3777,8 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
 #' @keywords internal
 #'
 #' @rdname lambda_list_functions
+#'
+#' @aliases lambda_list_functions
 lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListFunctions",
@@ -3755,6 +3835,8 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #' @keywords internal
 #'
 #' @rdname lambda_list_functions_by_code_signing_config
+#'
+#' @aliases lambda_list_functions_by_code_signing_config
 lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListFunctionsByCodeSigningConfig",
@@ -3831,6 +3913,8 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 #' @keywords internal
 #'
 #' @rdname lambda_list_layer_versions
+#'
+#' @aliases lambda_list_layer_versions
 lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Marker = NULL, MaxItems = NULL, CompatibleArchitecture = NULL) {
   op <- new_operation(
     name = "ListLayerVersions",
@@ -3912,6 +3996,8 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @keywords internal
 #'
 #' @rdname lambda_list_layers
+#'
+#' @aliases lambda_list_layers
 lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems = NULL, CompatibleArchitecture = NULL) {
   op <- new_operation(
     name = "ListLayers",
@@ -3988,6 +4074,8 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' @keywords internal
 #'
 #' @rdname lambda_list_provisioned_concurrency_configs
+#'
+#' @aliases lambda_list_provisioned_concurrency_configs
 lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListProvisionedConcurrencyConfigs",
@@ -4038,6 +4126,8 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 #' @keywords internal
 #'
 #' @rdname lambda_list_tags
+#'
+#' @aliases lambda_list_tags
 lambda_list_tags <- function(Resource) {
   op <- new_operation(
     name = "ListTags",
@@ -4194,6 +4284,8 @@ lambda_list_tags <- function(Resource) {
 #' @keywords internal
 #'
 #' @rdname lambda_list_versions_by_function
+#'
+#' @aliases lambda_list_versions_by_function
 lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListVersionsByFunction",
@@ -4297,6 +4389,8 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #' @keywords internal
 #'
 #' @rdname lambda_publish_layer_version
+#'
+#' @aliases lambda_publish_layer_version
 lambda_publish_layer_version <- function(LayerName, Description = NULL, Content, CompatibleRuntimes = NULL, LicenseInfo = NULL, CompatibleArchitectures = NULL) {
   op <- new_operation(
     name = "PublishLayerVersion",
@@ -4463,6 +4557,8 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' @keywords internal
 #'
 #' @rdname lambda_publish_version
+#'
+#' @aliases lambda_publish_version
 lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description = NULL, RevisionId = NULL) {
   op <- new_operation(
     name = "PublishVersion",
@@ -4526,6 +4622,8 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' @keywords internal
 #'
 #' @rdname lambda_put_function_code_signing_config
+#'
+#' @aliases lambda_put_function_code_signing_config
 lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, FunctionName) {
   op <- new_operation(
     name = "PutFunctionCodeSigningConfig",
@@ -4602,6 +4700,8 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' @keywords internal
 #'
 #' @rdname lambda_put_function_concurrency
+#'
+#' @aliases lambda_put_function_concurrency
 lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExecutions) {
   op <- new_operation(
     name = "PutFunctionConcurrency",
@@ -4724,6 +4824,8 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' @keywords internal
 #'
 #' @rdname lambda_put_function_event_invoke_config
+#'
+#' @aliases lambda_put_function_event_invoke_config
 lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NULL, MaximumRetryAttempts = NULL, MaximumEventAgeInSeconds = NULL, DestinationConfig = NULL) {
   op <- new_operation(
     name = "PutFunctionEventInvokeConfig",
@@ -4794,6 +4896,8 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' @keywords internal
 #'
 #' @rdname lambda_put_provisioned_concurrency_config
+#'
+#' @aliases lambda_put_provisioned_concurrency_config
 lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, ProvisionedConcurrentExecutions) {
   op <- new_operation(
     name = "PutProvisionedConcurrencyConfig",
@@ -4848,6 +4952,8 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #' @keywords internal
 #'
 #' @rdname lambda_remove_layer_version_permission
+#'
+#' @aliases lambda_remove_layer_version_permission
 lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, StatementId, RevisionId = NULL) {
   op <- new_operation(
     name = "RemoveLayerVersionPermission",
@@ -4915,6 +5021,8 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 #' @keywords internal
 #'
 #' @rdname lambda_remove_permission
+#'
+#' @aliases lambda_remove_permission
 lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL, RevisionId = NULL) {
   op <- new_operation(
     name = "RemovePermission",
@@ -4961,6 +5069,8 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 #' @keywords internal
 #'
 #' @rdname lambda_tag_resource
+#'
+#' @aliases lambda_tag_resource
 lambda_tag_resource <- function(Resource, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -5007,6 +5117,8 @@ lambda_tag_resource <- function(Resource, Tags) {
 #' @keywords internal
 #'
 #' @rdname lambda_untag_resource
+#'
+#' @aliases lambda_untag_resource
 lambda_untag_resource <- function(Resource, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -5093,6 +5205,8 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname lambda_update_alias
+#'
+#' @aliases lambda_update_alias
 lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Description = NULL, RoutingConfig = NULL, RevisionId = NULL) {
   op <- new_operation(
     name = "UpdateAlias",
@@ -5166,6 +5280,8 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname lambda_update_code_signing_config
+#'
+#' @aliases lambda_update_code_signing_config
 lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description = NULL, AllowedPublishers = NULL, CodeSigningPolicies = NULL) {
   op <- new_operation(
     name = "UpdateCodeSigningConfig",
@@ -5435,6 +5551,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
+#'
+#' @aliases lambda_update_event_source_mapping
 lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, FilterCriteria = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
@@ -5635,6 +5753,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_code
+#'
+#' @aliases lambda_update_function_code
 lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL, Architectures = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
@@ -5895,6 +6015,8 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_configuration
+#'
+#' @aliases lambda_update_function_configuration
 lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, EphemeralStorage = NULL) {
   op <- new_operation(
     name = "UpdateFunctionConfiguration",
@@ -6000,6 +6122,8 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_event_invoke_config
+#'
+#' @aliases lambda_update_function_event_invoke_config
 lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier = NULL, MaximumRetryAttempts = NULL, MaximumEventAgeInSeconds = NULL, DestinationConfig = NULL) {
   op <- new_operation(
     name = "UpdateFunctionEventInvokeConfig",
@@ -6106,6 +6230,8 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_url_config
+#'
+#' @aliases lambda_update_function_url_config
 lambda_update_function_url_config <- function(FunctionName, Qualifier = NULL, AuthType = NULL, Cors = NULL) {
   op <- new_operation(
     name = "UpdateFunctionUrlConfig",

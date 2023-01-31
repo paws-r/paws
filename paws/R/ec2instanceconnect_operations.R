@@ -58,6 +58,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ec2instanceconnect_send_ssh_public_key
+#'
+#' @aliases ec2instanceconnect_send_ssh_public_key
 ec2instanceconnect_send_ssh_public_key <- function(InstanceId, InstanceOSUser, SSHPublicKey, AvailabilityZone = NULL) {
   op <- new_operation(
     name = "SendSSHPublicKey",
@@ -120,6 +122,8 @@ ec2instanceconnect_send_ssh_public_key <- function(InstanceId, InstanceOSUser, S
 #' @keywords internal
 #'
 #' @rdname ec2instanceconnect_send_serial_console_ssh_public_key
+#'
+#' @aliases ec2instanceconnect_send_serial_console_ssh_public_key
 ec2instanceconnect_send_serial_console_ssh_public_key <- function(InstanceId, SerialPort = NULL, SSHPublicKey) {
   op <- new_operation(
     name = "SendSerialConsoleSSHPublicKey",

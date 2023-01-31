@@ -206,81 +206,81 @@ Asynchronous idempotent delete APIs:
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.compute.p2:proton_accept_environment_account_connection]{accept_environment_account_connection} \tab In a management account, an environment account connection request is accepted\cr
-\link[paws.compute.p2:proton_cancel_component_deployment]{cancel_component_deployment} \tab Attempts to cancel a component deployment (for a component that is in the IN_PROGRESS deployment status)\cr
-\link[paws.compute.p2:proton_cancel_environment_deployment]{cancel_environment_deployment} \tab Attempts to cancel an environment deployment on an UpdateEnvironment action, if the deployment is IN_PROGRESS\cr
-\link[paws.compute.p2:proton_cancel_service_instance_deployment]{cancel_service_instance_deployment} \tab Attempts to cancel a service instance deployment on an UpdateServiceInstance action, if the deployment is IN_PROGRESS\cr
-\link[paws.compute.p2:proton_cancel_service_pipeline_deployment]{cancel_service_pipeline_deployment} \tab Attempts to cancel a service pipeline deployment on an UpdateServicePipeline action, if the deployment is IN_PROGRESS\cr
-\link[paws.compute.p2:proton_create_component]{create_component} \tab Create an Proton component\cr
-\link[paws.compute.p2:proton_create_environment]{create_environment} \tab Deploy a new environment\cr
-\link[paws.compute.p2:proton_create_environment_account_connection]{create_environment_account_connection} \tab Create an environment account connection in an environment account so that environment infrastructure resources can be provisioned in the environment account from a management account\cr
-\link[paws.compute.p2:proton_create_environment_template]{create_environment_template} \tab Create an environment template for Proton\cr
-\link[paws.compute.p2:proton_create_environment_template_version]{create_environment_template_version} \tab Create a new major or minor version of an environment template\cr
-\link[paws.compute.p2:proton_create_repository]{create_repository} \tab Create and register a link to a repository that can be used with self-managed provisioning (infrastructure or pipelines) or for template sync configurations\cr
-\link[paws.compute.p2:proton_create_service]{create_service} \tab Create an Proton service\cr
-\link[paws.compute.p2:proton_create_service_template]{create_service_template} \tab Create a service template\cr
-\link[paws.compute.p2:proton_create_service_template_version]{create_service_template_version} \tab Create a new major or minor version of a service template\cr
-\link[paws.compute.p2:proton_create_template_sync_config]{create_template_sync_config} \tab Set up a template to create new template versions automatically\cr
-\link[paws.compute.p2:proton_delete_component]{delete_component} \tab Delete an Proton component resource\cr
-\link[paws.compute.p2:proton_delete_environment]{delete_environment} \tab Delete an environment\cr
-\link[paws.compute.p2:proton_delete_environment_account_connection]{delete_environment_account_connection} \tab In an environment account, delete an environment account connection\cr
-\link[paws.compute.p2:proton_delete_environment_template]{delete_environment_template} \tab If no other major or minor versions of an environment template exist, delete the environment template\cr
-\link[paws.compute.p2:proton_delete_environment_template_version]{delete_environment_template_version} \tab If no other minor versions of an environment template exist, delete a major version of the environment template if it's not the Recommended version\cr
-\link[paws.compute.p2:proton_delete_repository]{delete_repository} \tab De-register and unlink your repository\cr
-\link[paws.compute.p2:proton_delete_service]{delete_service} \tab Delete a service, with its instances and pipeline\cr
-\link[paws.compute.p2:proton_delete_service_template]{delete_service_template} \tab If no other major or minor versions of the service template exist, delete the service template\cr
-\link[paws.compute.p2:proton_delete_service_template_version]{delete_service_template_version} \tab If no other minor versions of a service template exist, delete a major version of the service template if it's not the Recommended version\cr
-\link[paws.compute.p2:proton_delete_template_sync_config]{delete_template_sync_config} \tab Delete a template sync configuration\cr
-\link[paws.compute.p2:proton_get_account_settings]{get_account_settings} \tab Get detail data for the Proton pipeline service role\cr
-\link[paws.compute.p2:proton_get_component]{get_component} \tab Get detailed data for a component\cr
-\link[paws.compute.p2:proton_get_environment]{get_environment} \tab Get detailed data for an environment\cr
-\link[paws.compute.p2:proton_get_environment_account_connection]{get_environment_account_connection} \tab In an environment account, get the detailed data for an environment account connection\cr
-\link[paws.compute.p2:proton_get_environment_template]{get_environment_template} \tab Get detailed data for an environment template\cr
-\link[paws.compute.p2:proton_get_environment_template_version]{get_environment_template_version} \tab Get detailed data for a major or minor version of an environment template\cr
-\link[paws.compute.p2:proton_get_repository]{get_repository} \tab Get detail data for a repository\cr
-\link[paws.compute.p2:proton_get_repository_sync_status]{get_repository_sync_status} \tab Get the sync status of a repository used for Proton template sync\cr
-\link[paws.compute.p2:proton_get_service]{get_service} \tab Get detailed data for a service\cr
-\link[paws.compute.p2:proton_get_service_instance]{get_service_instance} \tab Get detailed data for a service instance\cr
-\link[paws.compute.p2:proton_get_service_template]{get_service_template} \tab Get detailed data for a service template\cr
-\link[paws.compute.p2:proton_get_service_template_version]{get_service_template_version} \tab Get detailed data for a major or minor version of a service template\cr
-\link[paws.compute.p2:proton_get_template_sync_config]{get_template_sync_config} \tab Get detail data for a template sync configuration\cr
-\link[paws.compute.p2:proton_get_template_sync_status]{get_template_sync_status} \tab Get the status of a template sync\cr
-\link[paws.compute.p2:proton_list_component_outputs]{list_component_outputs} \tab Get a list of component Infrastructure as Code (IaC) outputs\cr
-\link[paws.compute.p2:proton_list_component_provisioned_resources]{list_component_provisioned_resources} \tab List provisioned resources for a component with details\cr
-\link[paws.compute.p2:proton_list_components]{list_components} \tab List components with summary data\cr
-\link[paws.compute.p2:proton_list_environment_account_connections]{list_environment_account_connections} \tab View a list of environment account connections\cr
-\link[paws.compute.p2:proton_list_environment_outputs]{list_environment_outputs} \tab List the infrastructure as code outputs for your environment\cr
-\link[paws.compute.p2:proton_list_environment_provisioned_resources]{list_environment_provisioned_resources} \tab List the provisioned resources for your environment\cr
-\link[paws.compute.p2:proton_list_environments]{list_environments} \tab List environments with detail data summaries\cr
-\link[paws.compute.p2:proton_list_environment_templates]{list_environment_templates} \tab List environment templates\cr
-\link[paws.compute.p2:proton_list_environment_template_versions]{list_environment_template_versions} \tab List major or minor versions of an environment template with detail data\cr
-\link[paws.compute.p2:proton_list_repositories]{list_repositories} \tab List repositories with detail data\cr
-\link[paws.compute.p2:proton_list_repository_sync_definitions]{list_repository_sync_definitions} \tab List repository sync definitions with detail data\cr
-\link[paws.compute.p2:proton_list_service_instance_outputs]{list_service_instance_outputs} \tab Get a list service of instance Infrastructure as Code (IaC) outputs\cr
-\link[paws.compute.p2:proton_list_service_instance_provisioned_resources]{list_service_instance_provisioned_resources} \tab List provisioned resources for a service instance with details\cr
-\link[paws.compute.p2:proton_list_service_instances]{list_service_instances} \tab List service instances with summary data\cr
-\link[paws.compute.p2:proton_list_service_pipeline_outputs]{list_service_pipeline_outputs} \tab Get a list of service pipeline Infrastructure as Code (IaC) outputs\cr
-\link[paws.compute.p2:proton_list_service_pipeline_provisioned_resources]{list_service_pipeline_provisioned_resources} \tab List provisioned resources for a service and pipeline with details\cr
-\link[paws.compute.p2:proton_list_services]{list_services} \tab List services with summaries of detail data\cr
-\link[paws.compute.p2:proton_list_service_templates]{list_service_templates} \tab List service templates with detail data\cr
-\link[paws.compute.p2:proton_list_service_template_versions]{list_service_template_versions} \tab List major or minor versions of a service template with detail data\cr
-\link[paws.compute.p2:proton_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a resource\cr
-\link[paws.compute.p2:proton_notify_resource_deployment_status_change]{notify_resource_deployment_status_change} \tab Notify Proton of status changes to a provisioned resource when you use self-managed provisioning\cr
-\link[paws.compute.p2:proton_reject_environment_account_connection]{reject_environment_account_connection} \tab In a management account, reject an environment account connection from another environment account\cr
-\link[paws.compute.p2:proton_tag_resource]{tag_resource} \tab Tag a resource\cr
-\link[paws.compute.p2:proton_untag_resource]{untag_resource} \tab Remove a customer tag from a resource\cr
-\link[paws.compute.p2:proton_update_account_settings]{update_account_settings} \tab Update the Proton service pipeline role or repository settings\cr
-\link[paws.compute.p2:proton_update_component]{update_component} \tab Update a component\cr
-\link[paws.compute.p2:proton_update_environment]{update_environment} \tab Update an environment\cr
-\link[paws.compute.p2:proton_update_environment_account_connection]{update_environment_account_connection} \tab In an environment account, update an environment account connection to use a new IAM role\cr
-\link[paws.compute.p2:proton_update_environment_template]{update_environment_template} \tab Update an environment template\cr
-\link[paws.compute.p2:proton_update_environment_template_version]{update_environment_template_version} \tab Update a major or minor version of an environment template\cr
-\link[paws.compute.p2:proton_update_service]{update_service} \tab Edit a service description or use a spec to add and delete service instances\cr
-\link[paws.compute.p2:proton_update_service_instance]{update_service_instance} \tab Update a service instance\cr
-\link[paws.compute.p2:proton_update_service_pipeline]{update_service_pipeline} \tab Update the service pipeline\cr
-\link[paws.compute.p2:proton_update_service_template]{update_service_template} \tab Update a service template\cr
-\link[paws.compute.p2:proton_update_service_template_version]{update_service_template_version} \tab Update a major or minor version of a service template\cr
-\link[paws.compute.p2:proton_update_template_sync_config]{update_template_sync_config} \tab Update template sync configuration parameters, except for the templateName and templateType
+\link[paws.compute:proton_accept_environment_account_connection]{accept_environment_account_connection} \tab In a management account, an environment account connection request is accepted\cr
+\link[paws.compute:proton_cancel_component_deployment]{cancel_component_deployment} \tab Attempts to cancel a component deployment (for a component that is in the IN_PROGRESS deployment status)\cr
+\link[paws.compute:proton_cancel_environment_deployment]{cancel_environment_deployment} \tab Attempts to cancel an environment deployment on an UpdateEnvironment action, if the deployment is IN_PROGRESS\cr
+\link[paws.compute:proton_cancel_service_instance_deployment]{cancel_service_instance_deployment} \tab Attempts to cancel a service instance deployment on an UpdateServiceInstance action, if the deployment is IN_PROGRESS\cr
+\link[paws.compute:proton_cancel_service_pipeline_deployment]{cancel_service_pipeline_deployment} \tab Attempts to cancel a service pipeline deployment on an UpdateServicePipeline action, if the deployment is IN_PROGRESS\cr
+\link[paws.compute:proton_create_component]{create_component} \tab Create an Proton component\cr
+\link[paws.compute:proton_create_environment]{create_environment} \tab Deploy a new environment\cr
+\link[paws.compute:proton_create_environment_account_connection]{create_environment_account_connection} \tab Create an environment account connection in an environment account so that environment infrastructure resources can be provisioned in the environment account from a management account\cr
+\link[paws.compute:proton_create_environment_template]{create_environment_template} \tab Create an environment template for Proton\cr
+\link[paws.compute:proton_create_environment_template_version]{create_environment_template_version} \tab Create a new major or minor version of an environment template\cr
+\link[paws.compute:proton_create_repository]{create_repository} \tab Create and register a link to a repository that can be used with self-managed provisioning (infrastructure or pipelines) or for template sync configurations\cr
+\link[paws.compute:proton_create_service]{create_service} \tab Create an Proton service\cr
+\link[paws.compute:proton_create_service_template]{create_service_template} \tab Create a service template\cr
+\link[paws.compute:proton_create_service_template_version]{create_service_template_version} \tab Create a new major or minor version of a service template\cr
+\link[paws.compute:proton_create_template_sync_config]{create_template_sync_config} \tab Set up a template to create new template versions automatically\cr
+\link[paws.compute:proton_delete_component]{delete_component} \tab Delete an Proton component resource\cr
+\link[paws.compute:proton_delete_environment]{delete_environment} \tab Delete an environment\cr
+\link[paws.compute:proton_delete_environment_account_connection]{delete_environment_account_connection} \tab In an environment account, delete an environment account connection\cr
+\link[paws.compute:proton_delete_environment_template]{delete_environment_template} \tab If no other major or minor versions of an environment template exist, delete the environment template\cr
+\link[paws.compute:proton_delete_environment_template_version]{delete_environment_template_version} \tab If no other minor versions of an environment template exist, delete a major version of the environment template if it's not the Recommended version\cr
+\link[paws.compute:proton_delete_repository]{delete_repository} \tab De-register and unlink your repository\cr
+\link[paws.compute:proton_delete_service]{delete_service} \tab Delete a service, with its instances and pipeline\cr
+\link[paws.compute:proton_delete_service_template]{delete_service_template} \tab If no other major or minor versions of the service template exist, delete the service template\cr
+\link[paws.compute:proton_delete_service_template_version]{delete_service_template_version} \tab If no other minor versions of a service template exist, delete a major version of the service template if it's not the Recommended version\cr
+\link[paws.compute:proton_delete_template_sync_config]{delete_template_sync_config} \tab Delete a template sync configuration\cr
+\link[paws.compute:proton_get_account_settings]{get_account_settings} \tab Get detail data for the Proton pipeline service role\cr
+\link[paws.compute:proton_get_component]{get_component} \tab Get detailed data for a component\cr
+\link[paws.compute:proton_get_environment]{get_environment} \tab Get detailed data for an environment\cr
+\link[paws.compute:proton_get_environment_account_connection]{get_environment_account_connection} \tab In an environment account, get the detailed data for an environment account connection\cr
+\link[paws.compute:proton_get_environment_template]{get_environment_template} \tab Get detailed data for an environment template\cr
+\link[paws.compute:proton_get_environment_template_version]{get_environment_template_version} \tab Get detailed data for a major or minor version of an environment template\cr
+\link[paws.compute:proton_get_repository]{get_repository} \tab Get detail data for a repository\cr
+\link[paws.compute:proton_get_repository_sync_status]{get_repository_sync_status} \tab Get the sync status of a repository used for Proton template sync\cr
+\link[paws.compute:proton_get_service]{get_service} \tab Get detailed data for a service\cr
+\link[paws.compute:proton_get_service_instance]{get_service_instance} \tab Get detailed data for a service instance\cr
+\link[paws.compute:proton_get_service_template]{get_service_template} \tab Get detailed data for a service template\cr
+\link[paws.compute:proton_get_service_template_version]{get_service_template_version} \tab Get detailed data for a major or minor version of a service template\cr
+\link[paws.compute:proton_get_template_sync_config]{get_template_sync_config} \tab Get detail data for a template sync configuration\cr
+\link[paws.compute:proton_get_template_sync_status]{get_template_sync_status} \tab Get the status of a template sync\cr
+\link[paws.compute:proton_list_component_outputs]{list_component_outputs} \tab Get a list of component Infrastructure as Code (IaC) outputs\cr
+\link[paws.compute:proton_list_component_provisioned_resources]{list_component_provisioned_resources} \tab List provisioned resources for a component with details\cr
+\link[paws.compute:proton_list_components]{list_components} \tab List components with summary data\cr
+\link[paws.compute:proton_list_environment_account_connections]{list_environment_account_connections} \tab View a list of environment account connections\cr
+\link[paws.compute:proton_list_environment_outputs]{list_environment_outputs} \tab List the infrastructure as code outputs for your environment\cr
+\link[paws.compute:proton_list_environment_provisioned_resources]{list_environment_provisioned_resources} \tab List the provisioned resources for your environment\cr
+\link[paws.compute:proton_list_environments]{list_environments} \tab List environments with detail data summaries\cr
+\link[paws.compute:proton_list_environment_templates]{list_environment_templates} \tab List environment templates\cr
+\link[paws.compute:proton_list_environment_template_versions]{list_environment_template_versions} \tab List major or minor versions of an environment template with detail data\cr
+\link[paws.compute:proton_list_repositories]{list_repositories} \tab List repositories with detail data\cr
+\link[paws.compute:proton_list_repository_sync_definitions]{list_repository_sync_definitions} \tab List repository sync definitions with detail data\cr
+\link[paws.compute:proton_list_service_instance_outputs]{list_service_instance_outputs} \tab Get a list service of instance Infrastructure as Code (IaC) outputs\cr
+\link[paws.compute:proton_list_service_instance_provisioned_resources]{list_service_instance_provisioned_resources} \tab List provisioned resources for a service instance with details\cr
+\link[paws.compute:proton_list_service_instances]{list_service_instances} \tab List service instances with summary data\cr
+\link[paws.compute:proton_list_service_pipeline_outputs]{list_service_pipeline_outputs} \tab Get a list of service pipeline Infrastructure as Code (IaC) outputs\cr
+\link[paws.compute:proton_list_service_pipeline_provisioned_resources]{list_service_pipeline_provisioned_resources} \tab List provisioned resources for a service and pipeline with details\cr
+\link[paws.compute:proton_list_services]{list_services} \tab List services with summaries of detail data\cr
+\link[paws.compute:proton_list_service_templates]{list_service_templates} \tab List service templates with detail data\cr
+\link[paws.compute:proton_list_service_template_versions]{list_service_template_versions} \tab List major or minor versions of a service template with detail data\cr
+\link[paws.compute:proton_list_tags_for_resource]{list_tags_for_resource} \tab List tags for a resource\cr
+\link[paws.compute:proton_notify_resource_deployment_status_change]{notify_resource_deployment_status_change} \tab Notify Proton of status changes to a provisioned resource when you use self-managed provisioning\cr
+\link[paws.compute:proton_reject_environment_account_connection]{reject_environment_account_connection} \tab In a management account, reject an environment account connection from another environment account\cr
+\link[paws.compute:proton_tag_resource]{tag_resource} \tab Tag a resource\cr
+\link[paws.compute:proton_untag_resource]{untag_resource} \tab Remove a customer tag from a resource\cr
+\link[paws.compute:proton_update_account_settings]{update_account_settings} \tab Update the Proton service pipeline role or repository settings\cr
+\link[paws.compute:proton_update_component]{update_component} \tab Update a component\cr
+\link[paws.compute:proton_update_environment]{update_environment} \tab Update an environment\cr
+\link[paws.compute:proton_update_environment_account_connection]{update_environment_account_connection} \tab In an environment account, update an environment account connection to use a new IAM role\cr
+\link[paws.compute:proton_update_environment_template]{update_environment_template} \tab Update an environment template\cr
+\link[paws.compute:proton_update_environment_template_version]{update_environment_template_version} \tab Update a major or minor version of an environment template\cr
+\link[paws.compute:proton_update_service]{update_service} \tab Edit a service description or use a spec to add and delete service instances\cr
+\link[paws.compute:proton_update_service_instance]{update_service_instance} \tab Update a service instance\cr
+\link[paws.compute:proton_update_service_pipeline]{update_service_pipeline} \tab Update the service pipeline\cr
+\link[paws.compute:proton_update_service_template]{update_service_template} \tab Update a service template\cr
+\link[paws.compute:proton_update_service_template_version]{update_service_template_version} \tab Update a major or minor version of a service template\cr
+\link[paws.compute:proton_update_template_sync_config]{update_template_sync_config} \tab Update template sync configuration parameters, except for the templateName and templateType
 }
 }
 

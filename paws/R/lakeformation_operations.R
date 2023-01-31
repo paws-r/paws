@@ -114,6 +114,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lakeformation_add_lf_tags_to_resource
+#'
+#' @aliases lakeformation_add_lf_tags_to_resource
 lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LFTags) {
   op <- new_operation(
     name = "AddLFTagsToResource",
@@ -307,6 +309,8 @@ lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LF
 #' @keywords internal
 #'
 #' @rdname lakeformation_batch_grant_permissions
+#'
+#' @aliases lakeformation_batch_grant_permissions
 lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
   op <- new_operation(
     name = "BatchGrantPermissions",
@@ -500,6 +504,8 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_batch_revoke_permissions
+#'
+#' @aliases lakeformation_batch_revoke_permissions
 lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
   op <- new_operation(
     name = "BatchRevokePermissions",
@@ -541,6 +547,8 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_cancel_transaction
+#'
+#' @aliases lakeformation_cancel_transaction
 lakeformation_cancel_transaction <- function(TransactionId) {
   op <- new_operation(
     name = "CancelTransaction",
@@ -588,6 +596,8 @@ lakeformation_cancel_transaction <- function(TransactionId) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_commit_transaction
+#'
+#' @aliases lakeformation_commit_transaction
 lakeformation_commit_transaction <- function(TransactionId) {
   op <- new_operation(
     name = "CommitTransaction",
@@ -648,6 +658,8 @@ lakeformation_commit_transaction <- function(TransactionId) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_create_data_cells_filter
+#'
+#' @aliases lakeformation_create_data_cells_filter
 lakeformation_create_data_cells_filter <- function(TableData) {
   op <- new_operation(
     name = "CreateDataCellsFilter",
@@ -697,6 +709,8 @@ lakeformation_create_data_cells_filter <- function(TableData) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_create_lf_tag
+#'
+#' @aliases lakeformation_create_lf_tag
 lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
   op <- new_operation(
     name = "CreateLFTag",
@@ -744,6 +758,8 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_delete_data_cells_filter
+#'
+#' @aliases lakeformation_delete_data_cells_filter
 lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, DatabaseName = NULL, TableName = NULL, Name = NULL) {
   op <- new_operation(
     name = "DeleteDataCellsFilter",
@@ -795,6 +811,8 @@ lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, Databa
 #' @keywords internal
 #'
 #' @rdname lakeformation_delete_lf_tag
+#'
+#' @aliases lakeformation_delete_lf_tag
 lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
   op <- new_operation(
     name = "DeleteLFTag",
@@ -863,6 +881,8 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_delete_objects_on_cancel
+#'
+#' @aliases lakeformation_delete_objects_on_cancel
 lakeformation_delete_objects_on_cancel <- function(CatalogId = NULL, DatabaseName, TableName, TransactionId, Objects) {
   op <- new_operation(
     name = "DeleteObjectsOnCancel",
@@ -907,6 +927,8 @@ lakeformation_delete_objects_on_cancel <- function(CatalogId = NULL, DatabaseNam
 #' @keywords internal
 #'
 #' @rdname lakeformation_deregister_resource
+#'
+#' @aliases lakeformation_deregister_resource
 lakeformation_deregister_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "DeregisterResource",
@@ -960,6 +982,8 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_describe_resource
+#'
+#' @aliases lakeformation_describe_resource
 lakeformation_describe_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "DescribeResource",
@@ -1014,6 +1038,8 @@ lakeformation_describe_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_describe_transaction
+#'
+#' @aliases lakeformation_describe_transaction
 lakeformation_describe_transaction <- function(TransactionId) {
   op <- new_operation(
     name = "DescribeTransaction",
@@ -1059,6 +1085,8 @@ lakeformation_describe_transaction <- function(TransactionId) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_extend_transaction
+#'
+#' @aliases lakeformation_extend_transaction
 lakeformation_extend_transaction <- function(TransactionId = NULL) {
   op <- new_operation(
     name = "ExtendTransaction",
@@ -1147,6 +1175,8 @@ lakeformation_extend_transaction <- function(TransactionId = NULL) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_data_lake_settings
+#'
+#' @aliases lakeformation_get_data_lake_settings
 lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
   op <- new_operation(
     name = "GetDataLakeSettings",
@@ -1281,6 +1311,8 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_effective_permissions_for_path
+#'
+#' @aliases lakeformation_get_effective_permissions_for_path
 lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, ResourceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetEffectivePermissionsForPath",
@@ -1335,6 +1367,8 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_lf_tag
+#'
+#' @aliases lakeformation_get_lf_tag
 lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
   op <- new_operation(
     name = "GetLFTag",
@@ -1385,6 +1419,8 @@ lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_query_state
+#'
+#' @aliases lakeformation_get_query_state
 lakeformation_get_query_state <- function(QueryId) {
   op <- new_operation(
     name = "GetQueryState",
@@ -1443,6 +1479,8 @@ lakeformation_get_query_state <- function(QueryId) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_query_statistics
+#'
+#' @aliases lakeformation_get_query_statistics
 lakeformation_get_query_statistics <- function(QueryId) {
   op <- new_operation(
     name = "GetQueryStatistics",
@@ -1582,6 +1620,8 @@ lakeformation_get_query_statistics <- function(QueryId) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_resource_lf_tags
+#'
+#' @aliases lakeformation_get_resource_lf_tags
 lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowAssignedLFTags = NULL) {
   op <- new_operation(
     name = "GetResourceLFTags",
@@ -1677,6 +1717,8 @@ lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowA
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_table_objects
+#'
+#' @aliases lakeformation_get_table_objects
 lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, TableName, TransactionId = NULL, QueryAsOfTime = NULL, PartitionPredicate = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTableObjects",
@@ -1758,6 +1800,8 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_temporary_glue_partition_credentials
+#'
+#' @aliases lakeformation_get_temporary_glue_partition_credentials
 lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Partition, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes) {
   op <- new_operation(
     name = "GetTemporaryGluePartitionCredentials",
@@ -1833,6 +1877,8 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_temporary_glue_table_credentials
+#'
+#' @aliases lakeformation_get_temporary_glue_table_credentials
 lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permissions = NULL, DurationSeconds = NULL, AuditContext = NULL, SupportedPermissionTypes) {
   op <- new_operation(
     name = "GetTemporaryGlueTableCredentials",
@@ -1887,6 +1933,8 @@ lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permiss
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_work_unit_results
+#'
+#' @aliases lakeformation_get_work_unit_results
 lakeformation_get_work_unit_results <- function(QueryId, WorkUnitId, WorkUnitToken) {
   op <- new_operation(
     name = "GetWorkUnitResults",
@@ -1949,6 +1997,8 @@ lakeformation_get_work_unit_results <- function(QueryId, WorkUnitId, WorkUnitTok
 #' @keywords internal
 #'
 #' @rdname lakeformation_get_work_units
+#'
+#' @aliases lakeformation_get_work_units
 lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, QueryId) {
   op <- new_operation(
     name = "GetWorkUnits",
@@ -2079,6 +2129,8 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
 #' @keywords internal
 #'
 #' @rdname lakeformation_grant_permissions
+#'
+#' @aliases lakeformation_grant_permissions
 lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resource, Permissions, PermissionsWithGrantOption = NULL) {
   op <- new_operation(
     name = "GrantPermissions",
@@ -2153,6 +2205,8 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #' @keywords internal
 #'
 #' @rdname lakeformation_list_data_cells_filter
+#'
+#' @aliases lakeformation_list_data_cells_filter
 lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDataCellsFilter",
@@ -2222,6 +2276,8 @@ lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname lakeformation_list_lf_tags
+#'
+#' @aliases lakeformation_list_lf_tags
 lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListLFTags",
@@ -2427,6 +2483,8 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #' @keywords internal
 #'
 #' @rdname lakeformation_list_permissions
+#'
+#' @aliases lakeformation_list_permissions
 lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, ResourceType = NULL, Resource = NULL, NextToken = NULL, MaxResults = NULL, IncludeRelated = NULL) {
   op <- new_operation(
     name = "ListPermissions",
@@ -2495,6 +2553,8 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #' @keywords internal
 #'
 #' @rdname lakeformation_list_resources
+#'
+#' @aliases lakeformation_list_resources
 lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListResources",
@@ -2565,6 +2625,8 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname lakeformation_list_table_storage_optimizers
+#'
+#' @aliases lakeformation_list_table_storage_optimizers
 lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, DatabaseName, TableName, StorageOptimizerType = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTableStorageOptimizers",
@@ -2637,6 +2699,8 @@ lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, Databa
 #' @keywords internal
 #'
 #' @rdname lakeformation_list_transactions
+#'
+#' @aliases lakeformation_list_transactions
 lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTransactions",
@@ -2729,6 +2793,8 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
 #' @keywords internal
 #'
 #' @rdname lakeformation_put_data_lake_settings
+#'
+#' @aliases lakeformation_put_data_lake_settings
 lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSettings) {
   op <- new_operation(
     name = "PutDataLakeSettings",
@@ -2798,6 +2864,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @keywords internal
 #'
 #' @rdname lakeformation_register_resource
+#'
+#' @aliases lakeformation_register_resource
 lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL) {
   op <- new_operation(
     name = "RegisterResource",
@@ -2929,6 +2997,8 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #' @keywords internal
 #'
 #' @rdname lakeformation_remove_lf_tags_from_resource
+#'
+#' @aliases lakeformation_remove_lf_tags_from_resource
 lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resource, LFTags) {
   op <- new_operation(
     name = "RemoveLFTagsFromResource",
@@ -3046,6 +3116,8 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
 #' @keywords internal
 #'
 #' @rdname lakeformation_revoke_permissions
+#'
+#' @aliases lakeformation_revoke_permissions
 lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resource, Permissions, PermissionsWithGrantOption = NULL) {
   op <- new_operation(
     name = "RevokePermissions",
@@ -3132,6 +3204,8 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
 #' @keywords internal
 #'
 #' @rdname lakeformation_search_databases_by_lf_tags
+#'
+#' @aliases lakeformation_search_databases_by_lf_tags
 lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResults = NULL, CatalogId = NULL, Expression) {
   op <- new_operation(
     name = "SearchDatabasesByLFTags",
@@ -3243,6 +3317,8 @@ lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname lakeformation_search_tables_by_lf_tags
+#'
+#' @aliases lakeformation_search_tables_by_lf_tags
 lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults = NULL, CatalogId = NULL, Expression) {
   op <- new_operation(
     name = "SearchTablesByLFTags",
@@ -3304,6 +3380,8 @@ lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname lakeformation_start_query_planning
+#'
+#' @aliases lakeformation_start_query_planning
 lakeformation_start_query_planning <- function(QueryPlanningContext, QueryString) {
   op <- new_operation(
     name = "StartQueryPlanning",
@@ -3352,6 +3430,8 @@ lakeformation_start_query_planning <- function(QueryPlanningContext, QueryString
 #' @keywords internal
 #'
 #' @rdname lakeformation_start_transaction
+#'
+#' @aliases lakeformation_start_transaction
 lakeformation_start_transaction <- function(TransactionType = NULL) {
   op <- new_operation(
     name = "StartTransaction",
@@ -3411,6 +3491,8 @@ lakeformation_start_transaction <- function(TransactionType = NULL) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_update_lf_tag
+#'
+#' @aliases lakeformation_update_lf_tag
 lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDelete = NULL, TagValuesToAdd = NULL) {
   op <- new_operation(
     name = "UpdateLFTag",
@@ -3455,6 +3537,8 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' @keywords internal
 #'
 #' @rdname lakeformation_update_resource
+#'
+#' @aliases lakeformation_update_resource
 lakeformation_update_resource <- function(RoleArn, ResourceArn) {
   op <- new_operation(
     name = "UpdateResource",
@@ -3526,6 +3610,8 @@ lakeformation_update_resource <- function(RoleArn, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname lakeformation_update_table_objects
+#'
+#' @aliases lakeformation_update_table_objects
 lakeformation_update_table_objects <- function(CatalogId = NULL, DatabaseName, TableName, TransactionId = NULL, WriteOperations) {
   op <- new_operation(
     name = "UpdateTableObjects",
@@ -3582,6 +3668,8 @@ lakeformation_update_table_objects <- function(CatalogId = NULL, DatabaseName, T
 #' @keywords internal
 #'
 #' @rdname lakeformation_update_table_storage_optimizer
+#'
+#' @aliases lakeformation_update_table_storage_optimizer
 lakeformation_update_table_storage_optimizer <- function(CatalogId = NULL, DatabaseName, TableName, StorageOptimizerConfig) {
   op <- new_operation(
     name = "UpdateTableStorageOptimizer",

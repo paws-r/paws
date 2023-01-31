@@ -36,6 +36,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname detective_accept_invitation
+#'
+#' @aliases detective_accept_invitation
 detective_accept_invitation <- function(GraphArn) {
   op <- new_operation(
     name = "AcceptInvitation",
@@ -106,6 +108,8 @@ detective_accept_invitation <- function(GraphArn) {
 #' @keywords internal
 #'
 #' @rdname detective_batch_get_graph_member_datasources
+#'
+#' @aliases detective_batch_get_graph_member_datasources
 detective_batch_get_graph_member_datasources <- function(GraphArn, AccountIds) {
   op <- new_operation(
     name = "BatchGetGraphMemberDatasources",
@@ -173,6 +177,8 @@ detective_batch_get_graph_member_datasources <- function(GraphArn, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname detective_batch_get_membership_datasources
+#'
+#' @aliases detective_batch_get_membership_datasources
 detective_batch_get_membership_datasources <- function(GraphArns) {
   op <- new_operation(
     name = "BatchGetMembershipDatasources",
@@ -245,6 +251,8 @@ detective_batch_get_membership_datasources <- function(GraphArns) {
 #' @keywords internal
 #'
 #' @rdname detective_create_graph
+#'
+#' @aliases detective_create_graph
 detective_create_graph <- function(Tags = NULL) {
   op <- new_operation(
     name = "CreateGraph",
@@ -387,6 +395,8 @@ detective_create_graph <- function(Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname detective_create_members
+#'
+#' @aliases detective_create_members
 detective_create_members <- function(GraphArn, Message = NULL, DisableEmailNotification = NULL, Accounts) {
   op <- new_operation(
     name = "CreateMembers",
@@ -432,6 +442,8 @@ detective_create_members <- function(GraphArn, Message = NULL, DisableEmailNotif
 #' @keywords internal
 #'
 #' @rdname detective_delete_graph
+#'
+#' @aliases detective_delete_graph
 detective_delete_graph <- function(GraphArn) {
   op <- new_operation(
     name = "DeleteGraph",
@@ -510,6 +522,8 @@ detective_delete_graph <- function(GraphArn) {
 #' @keywords internal
 #'
 #' @rdname detective_delete_members
+#'
+#' @aliases detective_delete_members
 detective_delete_members <- function(GraphArn, AccountIds) {
   op <- new_operation(
     name = "DeleteMembers",
@@ -561,6 +575,8 @@ detective_delete_members <- function(GraphArn, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname detective_describe_organization_configuration
+#'
+#' @aliases detective_describe_organization_configuration
 detective_describe_organization_configuration <- function(GraphArn) {
   op <- new_operation(
     name = "DescribeOrganizationConfiguration",
@@ -608,6 +624,8 @@ detective_describe_organization_configuration <- function(GraphArn) {
 #' @keywords internal
 #'
 #' @rdname detective_disable_organization_admin_account
+#'
+#' @aliases detective_disable_organization_admin_account
 detective_disable_organization_admin_account <- function() {
   op <- new_operation(
     name = "DisableOrganizationAdminAccount",
@@ -659,6 +677,8 @@ detective_disable_organization_admin_account <- function() {
 #' @keywords internal
 #'
 #' @rdname detective_disassociate_membership
+#'
+#' @aliases detective_disassociate_membership
 detective_disassociate_membership <- function(GraphArn) {
   op <- new_operation(
     name = "DisassociateMembership",
@@ -719,6 +739,8 @@ detective_disassociate_membership <- function(GraphArn) {
 #' @keywords internal
 #'
 #' @rdname detective_enable_organization_admin_account
+#'
+#' @aliases detective_enable_organization_admin_account
 detective_enable_organization_admin_account <- function(AccountId) {
   op <- new_operation(
     name = "EnableOrganizationAdminAccount",
@@ -818,6 +840,8 @@ detective_enable_organization_admin_account <- function(AccountId) {
 #' @keywords internal
 #'
 #' @rdname detective_get_members
+#'
+#' @aliases detective_get_members
 detective_get_members <- function(GraphArn, AccountIds) {
   op <- new_operation(
     name = "GetMembers",
@@ -881,6 +905,8 @@ detective_get_members <- function(GraphArn, AccountIds) {
 #' @keywords internal
 #'
 #' @rdname detective_list_datasource_packages
+#'
+#' @aliases detective_list_datasource_packages
 detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDatasourcePackages",
@@ -947,6 +973,8 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname detective_list_graphs
+#'
+#' @aliases detective_list_graphs
 detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListGraphs",
@@ -1045,6 +1073,8 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname detective_list_invitations
+#'
+#' @aliases detective_list_invitations
 detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListInvitations",
@@ -1143,6 +1173,8 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname detective_list_members
+#'
+#' @aliases detective_list_members
 detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListMembers",
@@ -1203,6 +1235,8 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname detective_list_organization_admin_accounts
+#'
+#' @aliases detective_list_organization_admin_accounts
 detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListOrganizationAdminAccounts",
@@ -1250,6 +1284,8 @@ detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname detective_list_tags_for_resource
+#'
+#' @aliases detective_list_tags_for_resource
 detective_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1300,6 +1336,8 @@ detective_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname detective_reject_invitation
+#'
+#' @aliases detective_reject_invitation
 detective_reject_invitation <- function(GraphArn) {
   op <- new_operation(
     name = "RejectInvitation",
@@ -1355,6 +1393,8 @@ detective_reject_invitation <- function(GraphArn) {
 #' @keywords internal
 #'
 #' @rdname detective_start_monitoring_member
+#'
+#' @aliases detective_start_monitoring_member
 detective_start_monitoring_member <- function(GraphArn, AccountId) {
   op <- new_operation(
     name = "StartMonitoringMember",
@@ -1402,6 +1442,8 @@ detective_start_monitoring_member <- function(GraphArn, AccountId) {
 #' @keywords internal
 #'
 #' @rdname detective_tag_resource
+#'
+#' @aliases detective_tag_resource
 detective_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1447,6 +1489,8 @@ detective_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname detective_untag_resource
+#'
+#' @aliases detective_untag_resource
 detective_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1491,6 +1535,8 @@ detective_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname detective_update_datasource_packages
+#'
+#' @aliases detective_update_datasource_packages
 detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
   op <- new_operation(
     name = "UpdateDatasourcePackages",
@@ -1537,6 +1583,8 @@ detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
 #' @keywords internal
 #'
 #' @rdname detective_update_organization_configuration
+#'
+#' @aliases detective_update_organization_configuration
 detective_update_organization_configuration <- function(GraphArn, AutoEnable = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",

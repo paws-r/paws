@@ -56,6 +56,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_create_dataset
+#'
+#' @aliases lookoutequipment_create_dataset
 lookoutequipment_create_dataset <- function(DatasetName, DatasetSchema = NULL, ServerSideKmsKeyId = NULL, ClientToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateDataset",
@@ -170,6 +172,8 @@ lookoutequipment_create_dataset <- function(DatasetName, DatasetSchema = NULL, S
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_create_inference_scheduler
+#'
+#' @aliases lookoutequipment_create_inference_scheduler
 lookoutequipment_create_inference_scheduler <- function(ModelName, InferenceSchedulerName, DataDelayOffsetInMinutes = NULL, DataUploadFrequency, DataInputConfiguration, DataOutputConfiguration, RoleArn, ServerSideKmsKeyId = NULL, ClientToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateInferenceScheduler",
@@ -299,6 +303,8 @@ lookoutequipment_create_inference_scheduler <- function(ModelName, InferenceSche
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_create_model
+#'
+#' @aliases lookoutequipment_create_model
 lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema = NULL, LabelsInputConfiguration = NULL, ClientToken, TrainingDataStartTime = NULL, TrainingDataEndTime = NULL, EvaluationDataStartTime = NULL, EvaluationDataEndTime = NULL, RoleArn = NULL, DataPreProcessingConfiguration = NULL, ServerSideKmsKeyId = NULL, Tags = NULL, OffCondition = NULL) {
   op <- new_operation(
     name = "CreateModel",
@@ -344,6 +350,8 @@ lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema 
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_delete_dataset
+#'
+#' @aliases lookoutequipment_delete_dataset
 lookoutequipment_delete_dataset <- function(DatasetName) {
   op <- new_operation(
     name = "DeleteDataset",
@@ -385,6 +393,8 @@ lookoutequipment_delete_dataset <- function(DatasetName) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_delete_inference_scheduler
+#'
+#' @aliases lookoutequipment_delete_inference_scheduler
 lookoutequipment_delete_inference_scheduler <- function(InferenceSchedulerName) {
   op <- new_operation(
     name = "DeleteInferenceScheduler",
@@ -427,6 +437,8 @@ lookoutequipment_delete_inference_scheduler <- function(InferenceSchedulerName) 
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_delete_model
+#'
+#' @aliases lookoutequipment_delete_model
 lookoutequipment_delete_model <- function(ModelName) {
   op <- new_operation(
     name = "DeleteModel",
@@ -530,6 +542,8 @@ lookoutequipment_delete_model <- function(ModelName) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_describe_data_ingestion_job
+#'
+#' @aliases lookoutequipment_describe_data_ingestion_job
 lookoutequipment_describe_data_ingestion_job <- function(JobId) {
   op <- new_operation(
     name = "DescribeDataIngestionJob",
@@ -635,6 +649,8 @@ lookoutequipment_describe_data_ingestion_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_describe_dataset
+#'
+#' @aliases lookoutequipment_describe_dataset
 lookoutequipment_describe_dataset <- function(DatasetName) {
   op <- new_operation(
     name = "DescribeDataset",
@@ -714,6 +730,8 @@ lookoutequipment_describe_dataset <- function(DatasetName) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_describe_inference_scheduler
+#'
+#' @aliases lookoutequipment_describe_inference_scheduler
 lookoutequipment_describe_inference_scheduler <- function(InferenceSchedulerName) {
   op <- new_operation(
     name = "DescribeInferenceScheduler",
@@ -806,6 +824,8 @@ lookoutequipment_describe_inference_scheduler <- function(InferenceSchedulerName
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_describe_model
+#'
+#' @aliases lookoutequipment_describe_model
 lookoutequipment_describe_model <- function(ModelName) {
   op <- new_operation(
     name = "DescribeModel",
@@ -876,6 +896,8 @@ lookoutequipment_describe_model <- function(ModelName) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_data_ingestion_jobs
+#'
+#' @aliases lookoutequipment_list_data_ingestion_jobs
 lookoutequipment_list_data_ingestion_jobs <- function(DatasetName = NULL, NextToken = NULL, MaxResults = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListDataIngestionJobs",
@@ -939,6 +961,8 @@ lookoutequipment_list_data_ingestion_jobs <- function(DatasetName = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_datasets
+#'
+#' @aliases lookoutequipment_list_datasets
 lookoutequipment_list_datasets <- function(NextToken = NULL, MaxResults = NULL, DatasetNameBeginsWith = NULL) {
   op <- new_operation(
     name = "ListDatasets",
@@ -1016,6 +1040,8 @@ lookoutequipment_list_datasets <- function(NextToken = NULL, MaxResults = NULL, 
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_inference_events
+#'
+#' @aliases lookoutequipment_list_inference_events
 lookoutequipment_list_inference_events <- function(NextToken = NULL, MaxResults = NULL, InferenceSchedulerName, IntervalStartTime, IntervalEndTime) {
   op <- new_operation(
     name = "ListInferenceEvents",
@@ -1122,6 +1148,8 @@ lookoutequipment_list_inference_events <- function(NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_inference_executions
+#'
+#' @aliases lookoutequipment_list_inference_executions
 lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResults = NULL, InferenceSchedulerName, DataStartTimeAfter = NULL, DataEndTimeBefore = NULL, Status = NULL) {
   op <- new_operation(
     name = "ListInferenceExecutions",
@@ -1188,6 +1216,8 @@ lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_inference_schedulers
+#'
+#' @aliases lookoutequipment_list_inference_schedulers
 lookoutequipment_list_inference_schedulers <- function(NextToken = NULL, MaxResults = NULL, InferenceSchedulerNameBeginsWith = NULL, ModelName = NULL) {
   op <- new_operation(
     name = "ListInferenceSchedulers",
@@ -1257,6 +1287,8 @@ lookoutequipment_list_inference_schedulers <- function(NextToken = NULL, MaxResu
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_models
+#'
+#' @aliases lookoutequipment_list_models
 lookoutequipment_list_models <- function(NextToken = NULL, MaxResults = NULL, Status = NULL, ModelNameBeginsWith = NULL, DatasetNameBeginsWith = NULL) {
   op <- new_operation(
     name = "ListModels",
@@ -1361,6 +1393,8 @@ lookoutequipment_list_models <- function(NextToken = NULL, MaxResults = NULL, St
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_sensor_statistics
+#'
+#' @aliases lookoutequipment_list_sensor_statistics
 lookoutequipment_list_sensor_statistics <- function(DatasetName, IngestionJobId = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListSensorStatistics",
@@ -1414,6 +1448,8 @@ lookoutequipment_list_sensor_statistics <- function(DatasetName, IngestionJobId 
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_list_tags_for_resource
+#'
+#' @aliases lookoutequipment_list_tags_for_resource
 lookoutequipment_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1477,6 +1513,8 @@ lookoutequipment_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_start_data_ingestion_job
+#'
+#' @aliases lookoutequipment_start_data_ingestion_job
 lookoutequipment_start_data_ingestion_job <- function(DatasetName, IngestionInputConfiguration, RoleArn, ClientToken) {
   op <- new_operation(
     name = "StartDataIngestionJob",
@@ -1526,6 +1564,8 @@ lookoutequipment_start_data_ingestion_job <- function(DatasetName, IngestionInpu
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_start_inference_scheduler
+#'
+#' @aliases lookoutequipment_start_inference_scheduler
 lookoutequipment_start_inference_scheduler <- function(InferenceSchedulerName) {
   op <- new_operation(
     name = "StartInferenceScheduler",
@@ -1575,6 +1615,8 @@ lookoutequipment_start_inference_scheduler <- function(InferenceSchedulerName) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_stop_inference_scheduler
+#'
+#' @aliases lookoutequipment_stop_inference_scheduler
 lookoutequipment_stop_inference_scheduler <- function(InferenceSchedulerName) {
   op <- new_operation(
     name = "StopInferenceScheduler",
@@ -1629,6 +1671,8 @@ lookoutequipment_stop_inference_scheduler <- function(InferenceSchedulerName) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_tag_resource
+#'
+#' @aliases lookoutequipment_tag_resource
 lookoutequipment_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1675,6 +1719,8 @@ lookoutequipment_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_untag_resource
+#'
+#' @aliases lookoutequipment_untag_resource
 lookoutequipment_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1760,6 +1806,8 @@ lookoutequipment_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname lookoutequipment_update_inference_scheduler
+#'
+#' @aliases lookoutequipment_update_inference_scheduler
 lookoutequipment_update_inference_scheduler <- function(InferenceSchedulerName, DataDelayOffsetInMinutes = NULL, DataUploadFrequency = NULL, DataInputConfiguration = NULL, DataOutputConfiguration = NULL, RoleArn = NULL) {
   op <- new_operation(
     name = "UpdateInferenceScheduler",

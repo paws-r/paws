@@ -44,6 +44,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname route53_activate_key_signing_key
+#'
+#' @aliases route53_activate_key_signing_key
 route53_activate_key_signing_key <- function(HostedZoneId, Name) {
   op <- new_operation(
     name = "ActivateKeySigningKey",
@@ -151,6 +153,8 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' @keywords internal
 #'
 #' @rdname route53_associate_vpc_with_hosted_zone
+#'
+#' @aliases route53_associate_vpc_with_hosted_zone
 route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = NULL) {
   op <- new_operation(
     name = "AssociateVPCWithHostedZone",
@@ -243,6 +247,8 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' @keywords internal
 #'
 #' @rdname route53_change_cidr_collection
+#'
+#' @aliases route53_change_cidr_collection
 route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes) {
   op <- new_operation(
     name = "ChangeCidrCollection",
@@ -900,6 +906,8 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #' @keywords internal
 #'
 #' @rdname route53_change_resource_record_sets
+#'
+#' @aliases route53_change_resource_record_sets
 route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
   op <- new_operation(
     name = "ChangeResourceRecordSets",
@@ -993,6 +1001,8 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' @keywords internal
 #'
 #' @rdname route53_change_tags_for_resource
+#'
+#' @aliases route53_change_tags_for_resource
 route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags = NULL, RemoveTagKeys = NULL) {
   op <- new_operation(
     name = "ChangeTagsForResource",
@@ -1049,6 +1059,8 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #' @keywords internal
 #'
 #' @rdname route53_create_cidr_collection
+#'
+#' @aliases route53_create_cidr_collection
 route53_create_cidr_collection <- function(Name, CallerReference) {
   op <- new_operation(
     name = "CreateCidrCollection",
@@ -1230,6 +1242,8 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #' @keywords internal
 #'
 #' @rdname route53_create_health_check
+#'
+#' @aliases route53_create_health_check
 route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
   op <- new_operation(
     name = "CreateHealthCheck",
@@ -1422,6 +1436,8 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' @keywords internal
 #'
 #' @rdname route53_create_hosted_zone
+#'
+#' @aliases route53_create_hosted_zone
 route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, HostedZoneConfig = NULL, DelegationSetId = NULL) {
   op <- new_operation(
     name = "CreateHostedZone",
@@ -1547,6 +1563,8 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' @keywords internal
 #'
 #' @rdname route53_create_key_signing_key
+#'
+#' @aliases route53_create_key_signing_key
 route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyManagementServiceArn, Name, Status) {
   op <- new_operation(
     name = "CreateKeySigningKey",
@@ -1745,6 +1763,8 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' @keywords internal
 #'
 #' @rdname route53_create_query_logging_config
+#'
+#' @aliases route53_create_query_logging_config
 route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogGroupArn) {
   op <- new_operation(
     name = "CreateQueryLoggingConfig",
@@ -1860,6 +1880,8 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' @keywords internal
 #'
 #' @rdname route53_create_reusable_delegation_set
+#'
+#' @aliases route53_create_reusable_delegation_set
 route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId = NULL) {
   op <- new_operation(
     name = "CreateReusableDelegationSet",
@@ -1923,6 +1945,8 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #' @keywords internal
 #'
 #' @rdname route53_create_traffic_policy
+#'
+#' @aliases route53_create_traffic_policy
 route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
   op <- new_operation(
     name = "CreateTrafficPolicy",
@@ -2004,6 +2028,8 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' @keywords internal
 #'
 #' @rdname route53_create_traffic_policy_instance
+#'
+#' @aliases route53_create_traffic_policy_instance
 route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, TrafficPolicyId, TrafficPolicyVersion) {
   op <- new_operation(
     name = "CreateTrafficPolicyInstance",
@@ -2074,6 +2100,8 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #' @keywords internal
 #'
 #' @rdname route53_create_traffic_policy_version
+#'
+#' @aliases route53_create_traffic_policy_version
 route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) {
   op <- new_operation(
     name = "CreateTrafficPolicyVersion",
@@ -2146,6 +2174,8 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' @keywords internal
 #'
 #' @rdname route53_create_vpc_association_authorization
+#'
+#' @aliases route53_create_vpc_association_authorization
 route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
   op <- new_operation(
     name = "CreateVPCAssociationAuthorization",
@@ -2202,6 +2232,8 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' @keywords internal
 #'
 #' @rdname route53_deactivate_key_signing_key
+#'
+#' @aliases route53_deactivate_key_signing_key
 route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
   op <- new_operation(
     name = "DeactivateKeySigningKey",
@@ -2243,6 +2275,8 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_cidr_collection
+#'
+#' @aliases route53_delete_cidr_collection
 route53_delete_cidr_collection <- function(Id) {
   op <- new_operation(
     name = "DeleteCidrCollection",
@@ -2300,6 +2334,8 @@ route53_delete_cidr_collection <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_health_check
+#'
+#' @aliases route53_delete_health_check
 route53_delete_health_check <- function(HealthCheckId) {
   op <- new_operation(
     name = "DeleteHealthCheck",
@@ -2403,6 +2439,8 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_hosted_zone
+#'
+#' @aliases route53_delete_hosted_zone
 route53_delete_hosted_zone <- function(Id) {
   op <- new_operation(
     name = "DeleteHostedZone",
@@ -2466,6 +2504,8 @@ route53_delete_hosted_zone <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_key_signing_key
+#'
+#' @aliases route53_delete_key_signing_key
 route53_delete_key_signing_key <- function(HostedZoneId, Name) {
   op <- new_operation(
     name = "DeleteKeySigningKey",
@@ -2512,6 +2552,8 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_query_logging_config
+#'
+#' @aliases route53_delete_query_logging_config
 route53_delete_query_logging_config <- function(Id) {
   op <- new_operation(
     name = "DeleteQueryLoggingConfig",
@@ -2561,6 +2603,8 @@ route53_delete_query_logging_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_reusable_delegation_set
+#'
+#' @aliases route53_delete_reusable_delegation_set
 route53_delete_reusable_delegation_set <- function(Id) {
   op <- new_operation(
     name = "DeleteReusableDelegationSet",
@@ -2616,6 +2660,8 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_traffic_policy
+#'
+#' @aliases route53_delete_traffic_policy
 route53_delete_traffic_policy <- function(Id, Version) {
   op <- new_operation(
     name = "DeleteTrafficPolicy",
@@ -2665,6 +2711,8 @@ route53_delete_traffic_policy <- function(Id, Version) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_traffic_policy_instance
+#'
+#' @aliases route53_delete_traffic_policy_instance
 route53_delete_traffic_policy_instance <- function(Id) {
   op <- new_operation(
     name = "DeleteTrafficPolicyInstance",
@@ -2732,6 +2780,8 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_delete_vpc_association_authorization
+#'
+#' @aliases route53_delete_vpc_association_authorization
 route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
   op <- new_operation(
     name = "DeleteVPCAssociationAuthorization",
@@ -2786,6 +2836,8 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' @keywords internal
 #'
 #' @rdname route53_disable_hosted_zone_dnssec
+#'
+#' @aliases route53_disable_hosted_zone_dnssec
 route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
   op <- new_operation(
     name = "DisableHostedZoneDNSSEC",
@@ -2889,6 +2941,8 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' @keywords internal
 #'
 #' @rdname route53_disassociate_vpc_from_hosted_zone
+#'
+#' @aliases route53_disassociate_vpc_from_hosted_zone
 route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment = NULL) {
   op <- new_operation(
     name = "DisassociateVPCFromHostedZone",
@@ -2941,6 +2995,8 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 #' @keywords internal
 #'
 #' @rdname route53_enable_hosted_zone_dnssec
+#'
+#' @aliases route53_enable_hosted_zone_dnssec
 route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
   op <- new_operation(
     name = "EnableHostedZoneDNSSEC",
@@ -3021,6 +3077,8 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_account_limit
+#'
+#' @aliases route53_get_account_limit
 route53_get_account_limit <- function(Type) {
   op <- new_operation(
     name = "GetAccountLimit",
@@ -3084,6 +3142,8 @@ route53_get_account_limit <- function(Type) {
 #' @keywords internal
 #'
 #' @rdname route53_get_change
+#'
+#' @aliases route53_get_change
 route53_get_change <- function(Id) {
   op <- new_operation(
     name = "GetChange",
@@ -3136,6 +3196,8 @@ route53_get_change <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_get_checker_ip_ranges
+#'
+#' @aliases route53_get_checker_ip_ranges
 route53_get_checker_ip_ranges <- function() {
   op <- new_operation(
     name = "GetCheckerIpRanges",
@@ -3210,6 +3272,8 @@ route53_get_checker_ip_ranges <- function() {
 #' @keywords internal
 #'
 #' @rdname route53_get_dnssec
+#'
+#' @aliases route53_get_dnssec
 route53_get_dnssec <- function(HostedZoneId) {
   op <- new_operation(
     name = "GetDNSSEC",
@@ -3308,6 +3372,8 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_geo_location
+#'
+#' @aliases route53_get_geo_location
 route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, SubdivisionCode = NULL) {
   op <- new_operation(
     name = "GetGeoLocation",
@@ -3406,6 +3472,8 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #' @keywords internal
 #'
 #' @rdname route53_get_health_check
+#'
+#' @aliases route53_get_health_check
 route53_get_health_check <- function(HealthCheckId) {
   op <- new_operation(
     name = "GetHealthCheck",
@@ -3449,6 +3517,8 @@ route53_get_health_check <- function(HealthCheckId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_health_check_count
+#'
+#' @aliases route53_get_health_check_count
 route53_get_health_check_count <- function() {
   op <- new_operation(
     name = "GetHealthCheckCount",
@@ -3514,6 +3584,8 @@ route53_get_health_check_count <- function() {
 #' @keywords internal
 #'
 #' @rdname route53_get_health_check_last_failure_reason
+#'
+#' @aliases route53_get_health_check_last_failure_reason
 route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
   op <- new_operation(
     name = "GetHealthCheckLastFailureReason",
@@ -3582,6 +3654,8 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_health_check_status
+#'
+#' @aliases route53_get_health_check_status
 route53_get_health_check_status <- function(HealthCheckId) {
   op <- new_operation(
     name = "GetHealthCheckStatus",
@@ -3664,6 +3738,8 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_hosted_zone
+#'
+#' @aliases route53_get_hosted_zone
 route53_get_hosted_zone <- function(Id) {
   op <- new_operation(
     name = "GetHostedZone",
@@ -3707,6 +3783,8 @@ route53_get_hosted_zone <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_get_hosted_zone_count
+#'
+#' @aliases route53_get_hosted_zone_count
 route53_get_hosted_zone_count <- function() {
   op <- new_operation(
     name = "GetHostedZoneCount",
@@ -3771,6 +3849,8 @@ route53_get_hosted_zone_count <- function() {
 #' @keywords internal
 #'
 #' @rdname route53_get_hosted_zone_limit
+#'
+#' @aliases route53_get_hosted_zone_limit
 route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
   op <- new_operation(
     name = "GetHostedZoneLimit",
@@ -3826,6 +3906,8 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_query_logging_config
+#'
+#' @aliases route53_get_query_logging_config
 route53_get_query_logging_config <- function(Id) {
   op <- new_operation(
     name = "GetQueryLoggingConfig",
@@ -3880,6 +3962,8 @@ route53_get_query_logging_config <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_get_reusable_delegation_set
+#'
+#' @aliases route53_get_reusable_delegation_set
 route53_get_reusable_delegation_set <- function(Id) {
   op <- new_operation(
     name = "GetReusableDelegationSet",
@@ -3940,6 +4024,8 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_get_reusable_delegation_set_limit
+#'
+#' @aliases route53_get_reusable_delegation_set_limit
 route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
   op <- new_operation(
     name = "GetReusableDelegationSetLimit",
@@ -3999,6 +4085,8 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #' @keywords internal
 #'
 #' @rdname route53_get_traffic_policy
+#'
+#' @aliases route53_get_traffic_policy
 route53_get_traffic_policy <- function(Id, Version) {
   op <- new_operation(
     name = "GetTrafficPolicy",
@@ -4066,6 +4154,8 @@ route53_get_traffic_policy <- function(Id, Version) {
 #' @keywords internal
 #'
 #' @rdname route53_get_traffic_policy_instance
+#'
+#' @aliases route53_get_traffic_policy_instance
 route53_get_traffic_policy_instance <- function(Id) {
   op <- new_operation(
     name = "GetTrafficPolicyInstance",
@@ -4109,6 +4199,8 @@ route53_get_traffic_policy_instance <- function(Id) {
 #' @keywords internal
 #'
 #' @rdname route53_get_traffic_policy_instance_count
+#'
+#' @aliases route53_get_traffic_policy_instance_count
 route53_get_traffic_policy_instance_count <- function() {
   op <- new_operation(
     name = "GetTrafficPolicyInstanceCount",
@@ -4168,6 +4260,8 @@ route53_get_traffic_policy_instance_count <- function() {
 #' @keywords internal
 #'
 #' @rdname route53_list_cidr_blocks
+#'
+#' @aliases route53_list_cidr_blocks
 route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCidrBlocks",
@@ -4229,6 +4323,8 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
 #' @keywords internal
 #'
 #' @rdname route53_list_cidr_collections
+#'
+#' @aliases route53_list_cidr_collections
 route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCidrCollections",
@@ -4290,6 +4386,8 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname route53_list_cidr_locations
+#'
+#' @aliases route53_list_cidr_locations
 route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCidrLocations",
@@ -4391,6 +4489,8 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
 #' @keywords internal
 #'
 #' @rdname route53_list_geo_locations
+#'
+#' @aliases route53_list_geo_locations
 route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCode = NULL, StartSubdivisionCode = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListGeoLocations",
@@ -4509,6 +4609,8 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' @keywords internal
 #'
 #' @rdname route53_list_health_checks
+#'
+#' @aliases route53_list_health_checks
 route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListHealthChecks",
@@ -4599,6 +4701,8 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #' @keywords internal
 #'
 #' @rdname route53_list_hosted_zones
+#'
+#' @aliases route53_list_hosted_zones
 route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, DelegationSetId = NULL) {
   op <- new_operation(
     name = "ListHostedZones",
@@ -4749,6 +4853,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' @keywords internal
 #'
 #' @rdname route53_list_hosted_zones_by_name
+#'
+#' @aliases route53_list_hosted_zones_by_name
 route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListHostedZonesByName",
@@ -4857,6 +4963,8 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' @keywords internal
 #'
 #' @rdname route53_list_hosted_zones_by_vpc
+#'
+#' @aliases route53_list_hosted_zones_by_vpc
 route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListHostedZonesByVPC",
@@ -4948,6 +5056,8 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' @keywords internal
 #'
 #' @rdname route53_list_query_logging_configs
+#'
+#' @aliases route53_list_query_logging_configs
 route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQueryLoggingConfigs",
@@ -5151,6 +5261,8 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' @keywords internal
 #'
 #' @rdname route53_list_resource_record_sets
+#'
+#' @aliases route53_list_resource_record_sets
 route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NULL, StartRecordType = NULL, StartRecordIdentifier = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListResourceRecordSets",
@@ -5224,6 +5336,8 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #' @keywords internal
 #'
 #' @rdname route53_list_reusable_delegation_sets
+#'
+#' @aliases route53_list_reusable_delegation_sets
 route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListReusableDelegationSets",
@@ -5289,6 +5403,8 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #' @keywords internal
 #'
 #' @rdname route53_list_tags_for_resource
+#'
+#' @aliases route53_list_tags_for_resource
 route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -5359,6 +5475,8 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' @keywords internal
 #'
 #' @rdname route53_list_tags_for_resources
+#'
+#' @aliases route53_list_tags_for_resources
 route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
   op <- new_operation(
     name = "ListTagsForResources",
@@ -5439,6 +5557,8 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policies
+#'
+#' @aliases route53_list_traffic_policies
 route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListTrafficPolicies",
@@ -5558,6 +5678,8 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_instances
+#'
+#' @aliases route53_list_traffic_policy_instances
 route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, TrafficPolicyInstanceNameMarker = NULL, TrafficPolicyInstanceTypeMarker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListTrafficPolicyInstances",
@@ -5668,6 +5790,8 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_instances_by_hosted_zone
+#'
+#' @aliases route53_list_traffic_policy_instances_by_hosted_zone
 route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, TrafficPolicyInstanceNameMarker = NULL, TrafficPolicyInstanceTypeMarker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListTrafficPolicyInstancesByHostedZone",
@@ -5802,6 +5926,8 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_instances_by_policy
+#'
+#' @aliases route53_list_traffic_policy_instances_by_policy
 route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, TrafficPolicyVersion, HostedZoneIdMarker = NULL, TrafficPolicyInstanceNameMarker = NULL, TrafficPolicyInstanceTypeMarker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListTrafficPolicyInstancesByPolicy",
@@ -5885,6 +6011,8 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #' @keywords internal
 #'
 #' @rdname route53_list_traffic_policy_versions
+#'
+#' @aliases route53_list_traffic_policy_versions
 route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListTrafficPolicyVersions",
@@ -5959,6 +6087,8 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' @keywords internal
 #'
 #' @rdname route53_list_vpc_association_authorizations
+#'
+#' @aliases route53_list_vpc_association_authorizations
 route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListVPCAssociationAuthorizations",
@@ -6048,6 +6178,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' @keywords internal
 #'
 #' @rdname route53_test_dns_answer
+#'
+#' @aliases route53_test_dns_answer
 route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, ResolverIP = NULL, EDNS0ClientSubnetIP = NULL, EDNS0ClientSubnetMask = NULL) {
   op <- new_operation(
     name = "TestDNSAnswer",
@@ -6445,6 +6577,8 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' @keywords internal
 #'
 #' @rdname route53_update_health_check
+#'
+#' @aliases route53_update_health_check
 route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL, IPAddress = NULL, Port = NULL, ResourcePath = NULL, FullyQualifiedDomainName = NULL, SearchString = NULL, FailureThreshold = NULL, Inverted = NULL, Disabled = NULL, HealthThreshold = NULL, ChildHealthChecks = NULL, EnableSNI = NULL, Regions = NULL, AlarmIdentifier = NULL, InsufficientDataHealthStatus = NULL, ResetElements = NULL) {
   op <- new_operation(
     name = "UpdateHealthCheck",
@@ -6507,6 +6641,8 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
 #' @keywords internal
 #'
 #' @rdname route53_update_hosted_zone_comment
+#'
+#' @aliases route53_update_hosted_zone_comment
 route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
   op <- new_operation(
     name = "UpdateHostedZoneComment",
@@ -6565,6 +6701,8 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 #' @keywords internal
 #'
 #' @rdname route53_update_traffic_policy_comment
+#'
+#' @aliases route53_update_traffic_policy_comment
 route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
   op <- new_operation(
     name = "UpdateTrafficPolicyComment",
@@ -6650,6 +6788,8 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #' @keywords internal
 #'
 #' @rdname route53_update_traffic_policy_instance
+#'
+#' @aliases route53_update_traffic_policy_instance
 route53_update_traffic_policy_instance <- function(Id, TTL, TrafficPolicyId, TrafficPolicyVersion) {
   op <- new_operation(
     name = "UpdateTrafficPolicyInstance",

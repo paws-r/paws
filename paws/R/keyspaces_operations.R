@@ -52,6 +52,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname keyspaces_create_keyspace
+#'
+#' @aliases keyspaces_create_keyspace
 keyspaces_create_keyspace <- function(keyspaceName, tags = NULL) {
   op <- new_operation(
     name = "CreateKeyspace",
@@ -262,6 +264,8 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_create_table
+#'
+#' @aliases keyspaces_create_table
 keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, comment = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateTable",
@@ -303,6 +307,8 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
 #' @keywords internal
 #'
 #' @rdname keyspaces_delete_keyspace
+#'
+#' @aliases keyspaces_delete_keyspace
 keyspaces_delete_keyspace <- function(keyspaceName) {
   op <- new_operation(
     name = "DeleteKeyspace",
@@ -353,6 +359,8 @@ keyspaces_delete_keyspace <- function(keyspaceName) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_delete_table
+#'
+#' @aliases keyspaces_delete_table
 keyspaces_delete_table <- function(keyspaceName, tableName) {
   op <- new_operation(
     name = "DeleteTable",
@@ -401,6 +409,8 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_get_keyspace
+#'
+#' @aliases keyspaces_get_keyspace
 keyspaces_get_keyspace <- function(keyspaceName) {
   op <- new_operation(
     name = "GetKeyspace",
@@ -509,6 +519,8 @@ keyspaces_get_keyspace <- function(keyspaceName) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_get_table
+#'
+#' @aliases keyspaces_get_table
 keyspaces_get_table <- function(keyspaceName, tableName) {
   op <- new_operation(
     name = "GetTable",
@@ -566,6 +578,8 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_list_keyspaces
+#'
+#' @aliases keyspaces_list_keyspaces
 keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListKeyspaces",
@@ -626,6 +640,8 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_list_tables
+#'
+#' @aliases keyspaces_list_tables
 keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceName) {
   op <- new_operation(
     name = "ListTables",
@@ -687,6 +703,8 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
 #' @keywords internal
 #'
 #' @rdname keyspaces_list_tags_for_resource
+#'
+#' @aliases keyspaces_list_tags_for_resource
 keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -854,6 +872,8 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' @keywords internal
 #'
 #' @rdname keyspaces_restore_table
+#'
+#' @aliases keyspaces_restore_table
 keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetKeyspaceName, targetTableName, restoreTimestamp = NULL, capacitySpecificationOverride = NULL, encryptionSpecificationOverride = NULL, pointInTimeRecoveryOverride = NULL, tagsOverride = NULL) {
   op <- new_operation(
     name = "RestoreTable",
@@ -911,6 +931,8 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
 #' @keywords internal
 #'
 #' @rdname keyspaces_tag_resource
+#'
+#' @aliases keyspaces_tag_resource
 keyspaces_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -960,6 +982,8 @@ keyspaces_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_untag_resource
+#'
+#' @aliases keyspaces_untag_resource
 keyspaces_untag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "UntagResource",
@@ -1102,6 +1126,8 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname keyspaces_update_table
+#'
+#' @aliases keyspaces_update_table
 keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, capacitySpecification = NULL, encryptionSpecification = NULL, pointInTimeRecovery = NULL, ttl = NULL, defaultTimeToLive = NULL) {
   op <- new_operation(
     name = "UpdateTable",

@@ -111,6 +111,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_create_scaling_plan
+#'
+#' @aliases autoscalingplans_create_scaling_plan
 autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSource, ScalingInstructions) {
   op <- new_operation(
     name = "CreateScalingPlan",
@@ -161,6 +163,8 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_delete_scaling_plan
+#'
+#' @aliases autoscalingplans_delete_scaling_plan
 autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVersion) {
   op <- new_operation(
     name = "DeleteScalingPlan",
@@ -255,6 +259,8 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_describe_scaling_plan_resources
+#'
+#' @aliases autoscalingplans_describe_scaling_plan_resources
 autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, ScalingPlanVersion, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalingPlanResources",
@@ -411,6 +417,8 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_describe_scaling_plans
+#'
+#' @aliases autoscalingplans_describe_scaling_plans
 autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, ScalingPlanVersion = NULL, ApplicationSources = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeScalingPlans",
@@ -512,6 +520,8 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_get_scaling_plan_resource_forecast_data
+#'
+#' @aliases autoscalingplans_get_scaling_plan_resource_forecast_data
 autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlanName, ScalingPlanVersion, ServiceNamespace, ResourceId, ScalableDimension, ForecastDataType, StartTime, EndTime) {
   op <- new_operation(
     name = "GetScalingPlanResourceForecastData",
@@ -636,6 +646,8 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 #' @keywords internal
 #'
 #' @rdname autoscalingplans_update_scaling_plan
+#'
+#' @aliases autoscalingplans_update_scaling_plan
 autoscalingplans_update_scaling_plan <- function(ScalingPlanName, ScalingPlanVersion, ApplicationSource = NULL, ScalingInstructions = NULL) {
   op <- new_operation(
     name = "UpdateScalingPlan",

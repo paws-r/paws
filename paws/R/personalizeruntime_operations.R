@@ -82,6 +82,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_personalized_ranking
+#'
+#' @aliases personalizeruntime_get_personalized_ranking
 personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, userId, context = NULL, filterArn = NULL, filterValues = NULL) {
   op <- new_operation(
     name = "GetPersonalizedRanking",
@@ -195,6 +197,8 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_recommendations
+#'
+#' @aliases personalizeruntime_get_recommendations
 personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL, recommenderArn = NULL) {
   op <- new_operation(
     name = "GetRecommendations",

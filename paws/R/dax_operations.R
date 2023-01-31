@@ -190,6 +190,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname dax_create_cluster
+#'
+#' @aliases dax_create_cluster
 dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, ReplicationFactor, AvailabilityZones = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, IamRoleArn, ParameterGroupName = NULL, Tags = NULL, SSESpecification = NULL, ClusterEndpointEncryptionType = NULL) {
   op <- new_operation(
     name = "CreateCluster",
@@ -242,6 +244,8 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
 #' @keywords internal
 #'
 #' @rdname dax_create_parameter_group
+#'
+#' @aliases dax_create_parameter_group
 dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
   op <- new_operation(
     name = "CreateParameterGroup",
@@ -303,6 +307,8 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 #' @keywords internal
 #'
 #' @rdname dax_create_subnet_group
+#'
+#' @aliases dax_create_subnet_group
 dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetIds) {
   op <- new_operation(
     name = "CreateSubnetGroup",
@@ -420,6 +426,8 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 #' @keywords internal
 #'
 #' @rdname dax_decrease_replication_factor
+#'
+#' @aliases dax_decrease_replication_factor
 dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, AvailabilityZones = NULL, NodeIdsToRemove = NULL) {
   op <- new_operation(
     name = "DecreaseReplicationFactor",
@@ -524,6 +532,8 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' @keywords internal
 #'
 #' @rdname dax_delete_cluster
+#'
+#' @aliases dax_delete_cluster
 dax_delete_cluster <- function(ClusterName) {
   op <- new_operation(
     name = "DeleteCluster",
@@ -570,6 +580,8 @@ dax_delete_cluster <- function(ClusterName) {
 #' @keywords internal
 #'
 #' @rdname dax_delete_parameter_group
+#'
+#' @aliases dax_delete_parameter_group
 dax_delete_parameter_group <- function(ParameterGroupName) {
   op <- new_operation(
     name = "DeleteParameterGroup",
@@ -618,6 +630,8 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname dax_delete_subnet_group
+#'
+#' @aliases dax_delete_subnet_group
 dax_delete_subnet_group <- function(SubnetGroupName) {
   op <- new_operation(
     name = "DeleteSubnetGroup",
@@ -753,6 +767,8 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname dax_describe_clusters
+#'
+#' @aliases dax_describe_clusters
 dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeClusters",
@@ -828,6 +844,8 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname dax_describe_default_parameters
+#'
+#' @aliases dax_describe_default_parameters
 dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDefaultParameters",
@@ -917,6 +935,8 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 #' @keywords internal
 #'
 #' @rdname dax_describe_events
+#'
+#' @aliases dax_describe_events
 dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -984,6 +1004,8 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 #' @keywords internal
 #'
 #' @rdname dax_describe_parameter_groups
+#'
+#' @aliases dax_describe_parameter_groups
 dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeParameterGroups",
@@ -1063,6 +1085,8 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname dax_describe_parameters
+#'
+#' @aliases dax_describe_parameters
 dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeParameters",
@@ -1135,6 +1159,8 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 #' @keywords internal
 #'
 #' @rdname dax_describe_subnet_groups
+#'
+#' @aliases dax_describe_subnet_groups
 dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeSubnetGroups",
@@ -1246,6 +1272,8 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname dax_increase_replication_factor
+#'
+#' @aliases dax_increase_replication_factor
 dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, AvailabilityZones = NULL) {
   op <- new_operation(
     name = "IncreaseReplicationFactor",
@@ -1302,6 +1330,8 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 #' @keywords internal
 #'
 #' @rdname dax_list_tags
+#'
+#' @aliases dax_list_tags
 dax_list_tags <- function(ResourceName, NextToken = NULL) {
   op <- new_operation(
     name = "ListTags",
@@ -1410,6 +1440,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname dax_reboot_node
+#'
+#' @aliases dax_reboot_node
 dax_reboot_node <- function(ClusterName, NodeId) {
   op <- new_operation(
     name = "RebootNode",
@@ -1469,6 +1501,8 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 #' @keywords internal
 #'
 #' @rdname dax_tag_resource
+#'
+#' @aliases dax_tag_resource
 dax_tag_resource <- function(ResourceName, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1526,6 +1560,8 @@ dax_tag_resource <- function(ResourceName, Tags) {
 #' @keywords internal
 #'
 #' @rdname dax_untag_resource
+#'
+#' @aliases dax_untag_resource
 dax_untag_resource <- function(ResourceName, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1652,6 +1688,8 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname dax_update_cluster
+#'
+#' @aliases dax_update_cluster
 dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMaintenanceWindow = NULL, NotificationTopicArn = NULL, NotificationTopicStatus = NULL, ParameterGroupName = NULL, SecurityGroupIds = NULL) {
   op <- new_operation(
     name = "UpdateCluster",
@@ -1714,6 +1752,8 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 #' @keywords internal
 #'
 #' @rdname dax_update_parameter_group
+#'
+#' @aliases dax_update_parameter_group
 dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) {
   op <- new_operation(
     name = "UpdateParameterGroup",
@@ -1775,6 +1815,8 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 #' @keywords internal
 #'
 #' @rdname dax_update_subnet_group
+#'
+#' @aliases dax_update_subnet_group
 dax_update_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetIds = NULL) {
   op <- new_operation(
     name = "UpdateSubnetGroup",

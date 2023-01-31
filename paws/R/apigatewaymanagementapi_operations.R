@@ -26,6 +26,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname apigatewaymanagementapi_delete_connection
+#'
+#' @aliases apigatewaymanagementapi_delete_connection
 apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -80,6 +82,8 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname apigatewaymanagementapi_get_connection
+#'
+#' @aliases apigatewaymanagementapi_get_connection
 apigatewaymanagementapi_get_connection <- function(ConnectionId) {
   op <- new_operation(
     name = "GetConnection",
@@ -122,6 +126,8 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
 #' @keywords internal
 #'
 #' @rdname apigatewaymanagementapi_post_to_connection
+#'
+#' @aliases apigatewaymanagementapi_post_to_connection
 apigatewaymanagementapi_post_to_connection <- function(Data, ConnectionId) {
   op <- new_operation(
     name = "PostToConnection",

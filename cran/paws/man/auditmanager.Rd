@@ -86,67 +86,67 @@ If you're new to Audit Manager, we recommend that you review the \href{https://d
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.management.p1:auditmanager_associate_assessment_report_evidence_folder]{associate_assessment_report_evidence_folder} \tab Associates an evidence folder to an assessment report in a Audit Manager assessment\cr
-\link[paws.management.p1:auditmanager_batch_associate_assessment_report_evidence]{batch_associate_assessment_report_evidence} \tab Associates a list of evidence to an assessment report in an Audit Manager assessment\cr
-\link[paws.management.p1:auditmanager_batch_create_delegation_by_assessment]{batch_create_delegation_by_assessment} \tab Creates a batch of delegations for an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_batch_delete_delegation_by_assessment]{batch_delete_delegation_by_assessment} \tab Deletes a batch of delegations for an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_batch_disassociate_assessment_report_evidence]{batch_disassociate_assessment_report_evidence} \tab Disassociates a list of evidence from an assessment report in Audit Manager\cr
-\link[paws.management.p1:auditmanager_batch_import_evidence_to_assessment_control]{batch_import_evidence_to_assessment_control} \tab Uploads one or more pieces of evidence to a control in an Audit Manager assessment\cr
-\link[paws.management.p1:auditmanager_create_assessment]{create_assessment} \tab Creates an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_create_assessment_framework]{create_assessment_framework} \tab Creates a custom framework in Audit Manager\cr
-\link[paws.management.p1:auditmanager_create_assessment_report]{create_assessment_report} \tab Creates an assessment report for the specified assessment\cr
-\link[paws.management.p1:auditmanager_create_control]{create_control} \tab Creates a new custom control in Audit Manager\cr
-\link[paws.management.p1:auditmanager_delete_assessment]{delete_assessment} \tab Deletes an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_delete_assessment_framework]{delete_assessment_framework} \tab Deletes a custom framework in Audit Manager\cr
-\link[paws.management.p1:auditmanager_delete_assessment_framework_share]{delete_assessment_framework_share} \tab Deletes a share request for a custom framework in Audit Manager\cr
-\link[paws.management.p1:auditmanager_delete_assessment_report]{delete_assessment_report} \tab Deletes an assessment report in Audit Manager\cr
-\link[paws.management.p1:auditmanager_delete_control]{delete_control} \tab Deletes a custom control in Audit Manager\cr
-\link[paws.management.p1:auditmanager_deregister_account]{deregister_account} \tab Deregisters an account in Audit Manager\cr
-\link[paws.management.p1:auditmanager_deregister_organization_admin_account]{deregister_organization_admin_account} \tab Removes the specified Amazon Web Services account as a delegated administrator for Audit Manager\cr
-\link[paws.management.p1:auditmanager_disassociate_assessment_report_evidence_folder]{disassociate_assessment_report_evidence_folder} \tab Disassociates an evidence folder from the specified assessment report in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_account_status]{get_account_status} \tab Returns the registration status of an account in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_assessment]{get_assessment} \tab Returns an assessment from Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_assessment_framework]{get_assessment_framework} \tab Returns a framework from Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_assessment_report_url]{get_assessment_report_url} \tab Returns the URL of an assessment report in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_change_logs]{get_change_logs} \tab Returns a list of changelogs from Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_control]{get_control} \tab Returns a control from Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_delegations]{get_delegations} \tab Returns a list of delegations from an audit owner to a delegate\cr
-\link[paws.management.p1:auditmanager_get_evidence]{get_evidence} \tab Returns evidence from Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_evidence_by_evidence_folder]{get_evidence_by_evidence_folder} \tab Returns all evidence from a specified evidence folder in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_evidence_folder]{get_evidence_folder} \tab Returns an evidence folder from the specified assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_evidence_folders_by_assessment]{get_evidence_folders_by_assessment} \tab Returns the evidence folders from a specified assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_evidence_folders_by_assessment_control]{get_evidence_folders_by_assessment_control} \tab Returns a list of evidence folders that are associated with a specified control of an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_get_insights]{get_insights} \tab Gets the latest analytics data for all your current active assessments\cr
-\link[paws.management.p1:auditmanager_get_insights_by_assessment]{get_insights_by_assessment} \tab Gets the latest analytics data for a specific active assessment\cr
-\link[paws.management.p1:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Returns the name of the delegated Amazon Web Services administrator account for the organization\cr
-\link[paws.management.p1:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Returns a list of the in-scope Amazon Web Services for the specified assessment\cr
-\link[paws.management.p1:auditmanager_get_settings]{get_settings} \tab Returns the settings for the specified Amazon Web Services account\cr
-\link[paws.management.p1:auditmanager_list_assessment_control_insights_by_control_domain]{list_assessment_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain and a specific active assessment\cr
-\link[paws.management.p1:auditmanager_list_assessment_frameworks]{list_assessment_frameworks} \tab Returns a list of the frameworks that are available in the Audit Manager framework library\cr
-\link[paws.management.p1:auditmanager_list_assessment_framework_share_requests]{list_assessment_framework_share_requests} \tab Returns a list of sent or received share requests for custom frameworks in Audit Manager\cr
-\link[paws.management.p1:auditmanager_list_assessment_reports]{list_assessment_reports} \tab Returns a list of assessment reports created in Audit Manager\cr
-\link[paws.management.p1:auditmanager_list_assessments]{list_assessments} \tab Returns a list of current and past assessments from Audit Manager\cr
-\link[paws.management.p1:auditmanager_list_control_domain_insights]{list_control_domain_insights} \tab Lists the latest analytics data for control domains across all of your active assessments\cr
-\link[paws.management.p1:auditmanager_list_control_domain_insights_by_assessment]{list_control_domain_insights_by_assessment} \tab Lists analytics data for control domains within a specified active assessment\cr
-\link[paws.management.p1:auditmanager_list_control_insights_by_control_domain]{list_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain across all active assessments\cr
-\link[paws.management.p1:auditmanager_list_controls]{list_controls} \tab Returns a list of controls from Audit Manager\cr
-\link[paws.management.p1:auditmanager_list_keywords_for_data_source]{list_keywords_for_data_source} \tab Returns a list of keywords that are pre-mapped to the specified control data source\cr
-\link[paws.management.p1:auditmanager_list_notifications]{list_notifications} \tab Returns a list of all Audit Manager notifications\cr
-\link[paws.management.p1:auditmanager_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the specified resource in Audit Manager\cr
-\link[paws.management.p1:auditmanager_register_account]{register_account} \tab Enables Audit Manager for the specified Amazon Web Services account\cr
-\link[paws.management.p1:auditmanager_register_organization_admin_account]{register_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the delegated administrator for Audit Manager\cr
-\link[paws.management.p1:auditmanager_start_assessment_framework_share]{start_assessment_framework_share} \tab Creates a share request for a custom framework in Audit Manager\cr
-\link[paws.management.p1:auditmanager_tag_resource]{tag_resource} \tab Tags the specified resource in Audit Manager\cr
-\link[paws.management.p1:auditmanager_untag_resource]{untag_resource} \tab Removes a tag from a resource in Audit Manager\cr
-\link[paws.management.p1:auditmanager_update_assessment]{update_assessment} \tab Edits an Audit Manager assessment\cr
-\link[paws.management.p1:auditmanager_update_assessment_control]{update_assessment_control} \tab Updates a control within an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_update_assessment_control_set_status]{update_assessment_control_set_status} \tab Updates the status of a control set in an Audit Manager assessment\cr
-\link[paws.management.p1:auditmanager_update_assessment_framework]{update_assessment_framework} \tab Updates a custom framework in Audit Manager\cr
-\link[paws.management.p1:auditmanager_update_assessment_framework_share]{update_assessment_framework_share} \tab Updates a share request for a custom framework in Audit Manager\cr
-\link[paws.management.p1:auditmanager_update_assessment_status]{update_assessment_status} \tab Updates the status of an assessment in Audit Manager\cr
-\link[paws.management.p1:auditmanager_update_control]{update_control} \tab Updates a custom control in Audit Manager\cr
-\link[paws.management.p1:auditmanager_update_settings]{update_settings} \tab Updates Audit Manager settings for the current user account\cr
-\link[paws.management.p1:auditmanager_validate_assessment_report_integrity]{validate_assessment_report_integrity} \tab Validates the integrity of an assessment report in Audit Manager
+\link[paws.management:auditmanager_associate_assessment_report_evidence_folder]{associate_assessment_report_evidence_folder} \tab Associates an evidence folder to an assessment report in a Audit Manager assessment\cr
+\link[paws.management:auditmanager_batch_associate_assessment_report_evidence]{batch_associate_assessment_report_evidence} \tab Associates a list of evidence to an assessment report in an Audit Manager assessment\cr
+\link[paws.management:auditmanager_batch_create_delegation_by_assessment]{batch_create_delegation_by_assessment} \tab Creates a batch of delegations for an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_batch_delete_delegation_by_assessment]{batch_delete_delegation_by_assessment} \tab Deletes a batch of delegations for an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_batch_disassociate_assessment_report_evidence]{batch_disassociate_assessment_report_evidence} \tab Disassociates a list of evidence from an assessment report in Audit Manager\cr
+\link[paws.management:auditmanager_batch_import_evidence_to_assessment_control]{batch_import_evidence_to_assessment_control} \tab Uploads one or more pieces of evidence to a control in an Audit Manager assessment\cr
+\link[paws.management:auditmanager_create_assessment]{create_assessment} \tab Creates an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_create_assessment_framework]{create_assessment_framework} \tab Creates a custom framework in Audit Manager\cr
+\link[paws.management:auditmanager_create_assessment_report]{create_assessment_report} \tab Creates an assessment report for the specified assessment\cr
+\link[paws.management:auditmanager_create_control]{create_control} \tab Creates a new custom control in Audit Manager\cr
+\link[paws.management:auditmanager_delete_assessment]{delete_assessment} \tab Deletes an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_delete_assessment_framework]{delete_assessment_framework} \tab Deletes a custom framework in Audit Manager\cr
+\link[paws.management:auditmanager_delete_assessment_framework_share]{delete_assessment_framework_share} \tab Deletes a share request for a custom framework in Audit Manager\cr
+\link[paws.management:auditmanager_delete_assessment_report]{delete_assessment_report} \tab Deletes an assessment report in Audit Manager\cr
+\link[paws.management:auditmanager_delete_control]{delete_control} \tab Deletes a custom control in Audit Manager\cr
+\link[paws.management:auditmanager_deregister_account]{deregister_account} \tab Deregisters an account in Audit Manager\cr
+\link[paws.management:auditmanager_deregister_organization_admin_account]{deregister_organization_admin_account} \tab Removes the specified Amazon Web Services account as a delegated administrator for Audit Manager\cr
+\link[paws.management:auditmanager_disassociate_assessment_report_evidence_folder]{disassociate_assessment_report_evidence_folder} \tab Disassociates an evidence folder from the specified assessment report in Audit Manager\cr
+\link[paws.management:auditmanager_get_account_status]{get_account_status} \tab Returns the registration status of an account in Audit Manager\cr
+\link[paws.management:auditmanager_get_assessment]{get_assessment} \tab Returns an assessment from Audit Manager\cr
+\link[paws.management:auditmanager_get_assessment_framework]{get_assessment_framework} \tab Returns a framework from Audit Manager\cr
+\link[paws.management:auditmanager_get_assessment_report_url]{get_assessment_report_url} \tab Returns the URL of an assessment report in Audit Manager\cr
+\link[paws.management:auditmanager_get_change_logs]{get_change_logs} \tab Returns a list of changelogs from Audit Manager\cr
+\link[paws.management:auditmanager_get_control]{get_control} \tab Returns a control from Audit Manager\cr
+\link[paws.management:auditmanager_get_delegations]{get_delegations} \tab Returns a list of delegations from an audit owner to a delegate\cr
+\link[paws.management:auditmanager_get_evidence]{get_evidence} \tab Returns evidence from Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_by_evidence_folder]{get_evidence_by_evidence_folder} \tab Returns all evidence from a specified evidence folder in Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_folder]{get_evidence_folder} \tab Returns an evidence folder from the specified assessment in Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_folders_by_assessment]{get_evidence_folders_by_assessment} \tab Returns the evidence folders from a specified assessment in Audit Manager\cr
+\link[paws.management:auditmanager_get_evidence_folders_by_assessment_control]{get_evidence_folders_by_assessment_control} \tab Returns a list of evidence folders that are associated with a specified control of an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_get_insights]{get_insights} \tab Gets the latest analytics data for all your current active assessments\cr
+\link[paws.management:auditmanager_get_insights_by_assessment]{get_insights_by_assessment} \tab Gets the latest analytics data for a specific active assessment\cr
+\link[paws.management:auditmanager_get_organization_admin_account]{get_organization_admin_account} \tab Returns the name of the delegated Amazon Web Services administrator account for the organization\cr
+\link[paws.management:auditmanager_get_services_in_scope]{get_services_in_scope} \tab Returns a list of the in-scope Amazon Web Services for the specified assessment\cr
+\link[paws.management:auditmanager_get_settings]{get_settings} \tab Returns the settings for the specified Amazon Web Services account\cr
+\link[paws.management:auditmanager_list_assessment_control_insights_by_control_domain]{list_assessment_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain and a specific active assessment\cr
+\link[paws.management:auditmanager_list_assessment_frameworks]{list_assessment_frameworks} \tab Returns a list of the frameworks that are available in the Audit Manager framework library\cr
+\link[paws.management:auditmanager_list_assessment_framework_share_requests]{list_assessment_framework_share_requests} \tab Returns a list of sent or received share requests for custom frameworks in Audit Manager\cr
+\link[paws.management:auditmanager_list_assessment_reports]{list_assessment_reports} \tab Returns a list of assessment reports created in Audit Manager\cr
+\link[paws.management:auditmanager_list_assessments]{list_assessments} \tab Returns a list of current and past assessments from Audit Manager\cr
+\link[paws.management:auditmanager_list_control_domain_insights]{list_control_domain_insights} \tab Lists the latest analytics data for control domains across all of your active assessments\cr
+\link[paws.management:auditmanager_list_control_domain_insights_by_assessment]{list_control_domain_insights_by_assessment} \tab Lists analytics data for control domains within a specified active assessment\cr
+\link[paws.management:auditmanager_list_control_insights_by_control_domain]{list_control_insights_by_control_domain} \tab Lists the latest analytics data for controls within a specific control domain across all active assessments\cr
+\link[paws.management:auditmanager_list_controls]{list_controls} \tab Returns a list of controls from Audit Manager\cr
+\link[paws.management:auditmanager_list_keywords_for_data_source]{list_keywords_for_data_source} \tab Returns a list of keywords that are pre-mapped to the specified control data source\cr
+\link[paws.management:auditmanager_list_notifications]{list_notifications} \tab Returns a list of all Audit Manager notifications\cr
+\link[paws.management:auditmanager_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the specified resource in Audit Manager\cr
+\link[paws.management:auditmanager_register_account]{register_account} \tab Enables Audit Manager for the specified Amazon Web Services account\cr
+\link[paws.management:auditmanager_register_organization_admin_account]{register_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the delegated administrator for Audit Manager\cr
+\link[paws.management:auditmanager_start_assessment_framework_share]{start_assessment_framework_share} \tab Creates a share request for a custom framework in Audit Manager\cr
+\link[paws.management:auditmanager_tag_resource]{tag_resource} \tab Tags the specified resource in Audit Manager\cr
+\link[paws.management:auditmanager_untag_resource]{untag_resource} \tab Removes a tag from a resource in Audit Manager\cr
+\link[paws.management:auditmanager_update_assessment]{update_assessment} \tab Edits an Audit Manager assessment\cr
+\link[paws.management:auditmanager_update_assessment_control]{update_assessment_control} \tab Updates a control within an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_update_assessment_control_set_status]{update_assessment_control_set_status} \tab Updates the status of a control set in an Audit Manager assessment\cr
+\link[paws.management:auditmanager_update_assessment_framework]{update_assessment_framework} \tab Updates a custom framework in Audit Manager\cr
+\link[paws.management:auditmanager_update_assessment_framework_share]{update_assessment_framework_share} \tab Updates a share request for a custom framework in Audit Manager\cr
+\link[paws.management:auditmanager_update_assessment_status]{update_assessment_status} \tab Updates the status of an assessment in Audit Manager\cr
+\link[paws.management:auditmanager_update_control]{update_control} \tab Updates a custom control in Audit Manager\cr
+\link[paws.management:auditmanager_update_settings]{update_settings} \tab Updates Audit Manager settings for the current user account\cr
+\link[paws.management:auditmanager_validate_assessment_report_integrity]{validate_assessment_report_integrity} \tab Validates the integrity of an assessment report in Audit Manager
 }
 }
 

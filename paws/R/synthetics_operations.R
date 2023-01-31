@@ -34,6 +34,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname synthetics_associate_resource
+#'
+#' @aliases synthetics_associate_resource
 synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
   op <- new_operation(
     name = "AssociateResource",
@@ -273,6 +275,8 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname synthetics_create_canary
+#'
+#' @aliases synthetics_create_canary
 synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRoleArn, Schedule, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, RuntimeVersion, VpcConfig = NULL, Tags = NULL, ArtifactConfig = NULL) {
   op <- new_operation(
     name = "CreateCanary",
@@ -363,6 +367,8 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 #' @keywords internal
 #'
 #' @rdname synthetics_create_group
+#'
+#' @aliases synthetics_create_group
 synthetics_create_group <- function(Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateGroup",
@@ -434,6 +440,8 @@ synthetics_create_group <- function(Name, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname synthetics_delete_canary
+#'
+#' @aliases synthetics_delete_canary
 synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
   op <- new_operation(
     name = "DeleteCanary",
@@ -481,6 +489,8 @@ synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
 #' @keywords internal
 #'
 #' @rdname synthetics_delete_group
+#'
+#' @aliases synthetics_delete_group
 synthetics_delete_group <- function(GroupIdentifier) {
   op <- new_operation(
     name = "DeleteGroup",
@@ -635,6 +645,8 @@ synthetics_delete_group <- function(GroupIdentifier) {
 #' @keywords internal
 #'
 #' @rdname synthetics_describe_canaries
+#'
+#' @aliases synthetics_describe_canaries
 synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Names = NULL) {
   op <- new_operation(
     name = "DescribeCanaries",
@@ -740,6 +752,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
 #' @keywords internal
 #'
 #' @rdname synthetics_describe_canaries_last_run
+#'
+#' @aliases synthetics_describe_canaries_last_run
 synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults = NULL, Names = NULL) {
   op <- new_operation(
     name = "DescribeCanariesLastRun",
@@ -807,6 +821,8 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname synthetics_describe_runtime_versions
+#'
+#' @aliases synthetics_describe_runtime_versions
 synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeRuntimeVersions",
@@ -851,6 +867,8 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname synthetics_disassociate_resource
+#'
+#' @aliases synthetics_disassociate_resource
 synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
   op <- new_operation(
     name = "DisassociateResource",
@@ -968,6 +986,8 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname synthetics_get_canary
+#'
+#' @aliases synthetics_get_canary
 synthetics_get_canary <- function(Name) {
   op <- new_operation(
     name = "GetCanary",
@@ -1042,6 +1062,8 @@ synthetics_get_canary <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname synthetics_get_canary_runs
+#'
+#' @aliases synthetics_get_canary_runs
 synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetCanaryRuns",
@@ -1102,6 +1124,8 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
 #' @keywords internal
 #'
 #' @rdname synthetics_get_group
+#'
+#' @aliases synthetics_get_group
 synthetics_get_group <- function(GroupIdentifier) {
   op <- new_operation(
     name = "GetGroup",
@@ -1165,6 +1189,8 @@ synthetics_get_group <- function(GroupIdentifier) {
 #' @keywords internal
 #'
 #' @rdname synthetics_list_associated_groups
+#'
+#' @aliases synthetics_list_associated_groups
 synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NULL, ResourceArn) {
   op <- new_operation(
     name = "ListAssociatedGroups",
@@ -1225,6 +1251,8 @@ synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname synthetics_list_group_resources
+#'
+#' @aliases synthetics_list_group_resources
 synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL, GroupIdentifier) {
   op <- new_operation(
     name = "ListGroupResources",
@@ -1285,6 +1313,8 @@ synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname synthetics_list_groups
+#'
+#' @aliases synthetics_list_groups
 synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListGroups",
@@ -1338,6 +1368,8 @@ synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname synthetics_list_tags_for_resource
+#'
+#' @aliases synthetics_list_tags_for_resource
 synthetics_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1382,6 +1414,8 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname synthetics_start_canary
+#'
+#' @aliases synthetics_start_canary
 synthetics_start_canary <- function(Name) {
   op <- new_operation(
     name = "StartCanary",
@@ -1431,6 +1465,8 @@ synthetics_start_canary <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname synthetics_stop_canary
+#'
+#' @aliases synthetics_stop_canary
 synthetics_stop_canary <- function(Name) {
   op <- new_operation(
     name = "StopCanary",
@@ -1499,6 +1535,8 @@ synthetics_stop_canary <- function(Name) {
 #' @keywords internal
 #'
 #' @rdname synthetics_tag_resource
+#'
+#' @aliases synthetics_tag_resource
 synthetics_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1549,6 +1587,8 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname synthetics_untag_resource
+#'
+#' @aliases synthetics_untag_resource
 synthetics_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1702,6 +1742,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname synthetics_update_canary
+#'
+#' @aliases synthetics_update_canary
 synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL, RuntimeVersion = NULL, Schedule = NULL, RunConfig = NULL, SuccessRetentionPeriodInDays = NULL, FailureRetentionPeriodInDays = NULL, VpcConfig = NULL, VisualReference = NULL, ArtifactS3Location = NULL, ArtifactConfig = NULL) {
   op <- new_operation(
     name = "UpdateCanary",

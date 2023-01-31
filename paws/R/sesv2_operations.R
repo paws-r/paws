@@ -73,6 +73,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sesv2_create_configuration_set
+#'
+#' @aliases sesv2_create_configuration_set
 sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions = NULL, DeliveryOptions = NULL, ReputationOptions = NULL, SendingOptions = NULL, Tags = NULL, SuppressionOptions = NULL) {
   op <- new_operation(
     name = "CreateConfigurationSet",
@@ -150,6 +152,8 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
 #' @keywords internal
 #'
 #' @rdname sesv2_create_configuration_set_event_destination
+#'
+#' @aliases sesv2_create_configuration_set_event_destination
 sesv2_create_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName, EventDestination) {
   op <- new_operation(
     name = "CreateConfigurationSetEventDestination",
@@ -207,6 +211,8 @@ sesv2_create_configuration_set_event_destination <- function(ConfigurationSetNam
 #' @keywords internal
 #'
 #' @rdname sesv2_create_contact
+#'
+#' @aliases sesv2_create_contact
 sesv2_create_contact <- function(ContactListName, EmailAddress, TopicPreferences = NULL, UnsubscribeAll = NULL, AttributesData = NULL) {
   op <- new_operation(
     name = "CreateContact",
@@ -266,6 +272,8 @@ sesv2_create_contact <- function(ContactListName, EmailAddress, TopicPreferences
 #' @keywords internal
 #'
 #' @rdname sesv2_create_contact_list
+#'
+#' @aliases sesv2_create_contact_list
 sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Description = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateContactList",
@@ -332,6 +340,8 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @keywords internal
 #'
 #' @rdname sesv2_create_custom_verification_email_template
+#'
+#' @aliases sesv2_create_custom_verification_email_template
 sesv2_create_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, SuccessRedirectionURL, FailureRedirectionURL) {
   op <- new_operation(
     name = "CreateCustomVerificationEmailTemplate",
@@ -384,6 +394,8 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 #' @keywords internal
 #'
 #' @rdname sesv2_create_dedicated_ip_pool
+#'
+#' @aliases sesv2_create_dedicated_ip_pool
 sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
   op <- new_operation(
     name = "CreateDedicatedIpPool",
@@ -480,6 +492,8 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_create_deliverability_test_report
+#'
+#' @aliases sesv2_create_deliverability_test_report
 sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmailAddress, Content, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliverabilityTestReport",
@@ -600,6 +614,8 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' @keywords internal
 #'
 #' @rdname sesv2_create_email_identity
+#'
+#' @aliases sesv2_create_email_identity
 sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningAttributes = NULL, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "CreateEmailIdentity",
@@ -663,6 +679,8 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' @keywords internal
 #'
 #' @rdname sesv2_create_email_identity_policy
+#'
+#' @aliases sesv2_create_email_identity_policy
 sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy) {
   op <- new_operation(
     name = "CreateEmailIdentityPolicy",
@@ -715,6 +733,8 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' @keywords internal
 #'
 #' @rdname sesv2_create_email_template
+#'
+#' @aliases sesv2_create_email_template
 sesv2_create_email_template <- function(TemplateName, TemplateContent) {
   op <- new_operation(
     name = "CreateEmailTemplate",
@@ -773,6 +793,8 @@ sesv2_create_email_template <- function(TemplateName, TemplateContent) {
 #' @keywords internal
 #'
 #' @rdname sesv2_create_import_job
+#'
+#' @aliases sesv2_create_import_job
 sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
   op <- new_operation(
     name = "CreateImportJob",
@@ -819,6 +841,8 @@ sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_configuration_set
+#'
+#' @aliases sesv2_delete_configuration_set
 sesv2_delete_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "DeleteConfigurationSet",
@@ -870,6 +894,8 @@ sesv2_delete_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_configuration_set_event_destination
+#'
+#' @aliases sesv2_delete_configuration_set_event_destination
 sesv2_delete_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName) {
   op <- new_operation(
     name = "DeleteConfigurationSetEventDestination",
@@ -912,6 +938,8 @@ sesv2_delete_configuration_set_event_destination <- function(ConfigurationSetNam
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_contact
+#'
+#' @aliases sesv2_delete_contact
 sesv2_delete_contact <- function(ContactListName, EmailAddress) {
   op <- new_operation(
     name = "DeleteContact",
@@ -952,6 +980,8 @@ sesv2_delete_contact <- function(ContactListName, EmailAddress) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_contact_list
+#'
+#' @aliases sesv2_delete_contact_list
 sesv2_delete_contact_list <- function(ContactListName) {
   op <- new_operation(
     name = "DeleteContactList",
@@ -1000,6 +1030,8 @@ sesv2_delete_contact_list <- function(ContactListName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_custom_verification_email_template
+#'
+#' @aliases sesv2_delete_custom_verification_email_template
 sesv2_delete_custom_verification_email_template <- function(TemplateName) {
   op <- new_operation(
     name = "DeleteCustomVerificationEmailTemplate",
@@ -1040,6 +1072,8 @@ sesv2_delete_custom_verification_email_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_dedicated_ip_pool
+#'
+#' @aliases sesv2_delete_dedicated_ip_pool
 sesv2_delete_dedicated_ip_pool <- function(PoolName) {
   op <- new_operation(
     name = "DeleteDedicatedIpPool",
@@ -1081,6 +1115,8 @@ sesv2_delete_dedicated_ip_pool <- function(PoolName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_email_identity
+#'
+#' @aliases sesv2_delete_email_identity
 sesv2_delete_email_identity <- function(EmailIdentity) {
   op <- new_operation(
     name = "DeleteEmailIdentity",
@@ -1139,6 +1175,8 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_email_identity_policy
+#'
+#' @aliases sesv2_delete_email_identity_policy
 sesv2_delete_email_identity_policy <- function(EmailIdentity, PolicyName) {
   op <- new_operation(
     name = "DeleteEmailIdentityPolicy",
@@ -1181,6 +1219,8 @@ sesv2_delete_email_identity_policy <- function(EmailIdentity, PolicyName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_email_template
+#'
+#' @aliases sesv2_delete_email_template
 sesv2_delete_email_template <- function(TemplateName) {
   op <- new_operation(
     name = "DeleteEmailTemplate",
@@ -1222,6 +1262,8 @@ sesv2_delete_email_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_delete_suppressed_destination
+#'
+#' @aliases sesv2_delete_suppressed_destination
 sesv2_delete_suppressed_destination <- function(EmailAddress) {
   op <- new_operation(
     name = "DeleteSuppressedDestination",
@@ -1291,6 +1333,8 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_account
+#'
+#' @aliases sesv2_get_account
 sesv2_get_account <- function() {
   op <- new_operation(
     name = "GetAccount",
@@ -1352,6 +1396,8 @@ sesv2_get_account <- function() {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_blacklist_reports
+#'
+#' @aliases sesv2_get_blacklist_reports
 sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
   op <- new_operation(
     name = "GetBlacklistReports",
@@ -1434,6 +1480,8 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_configuration_set
+#'
+#' @aliases sesv2_get_configuration_set
 sesv2_get_configuration_set <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "GetConfigurationSet",
@@ -1515,6 +1563,8 @@ sesv2_get_configuration_set <- function(ConfigurationSetName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_configuration_set_event_destinations
+#'
+#' @aliases sesv2_get_configuration_set_event_destinations
 sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName) {
   op <- new_operation(
     name = "GetConfigurationSetEventDestinations",
@@ -1583,6 +1633,8 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
 #' @keywords internal
 #'
 #' @rdname sesv2_get_contact
+#'
+#' @aliases sesv2_get_contact
 sesv2_get_contact <- function(ContactListName, EmailAddress) {
   op <- new_operation(
     name = "GetContact",
@@ -1650,6 +1702,8 @@ sesv2_get_contact <- function(ContactListName, EmailAddress) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_contact_list
+#'
+#' @aliases sesv2_get_contact_list
 sesv2_get_contact_list <- function(ContactListName) {
   op <- new_operation(
     name = "GetContactList",
@@ -1710,6 +1764,8 @@ sesv2_get_contact_list <- function(ContactListName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_custom_verification_email_template
+#'
+#' @aliases sesv2_get_custom_verification_email_template
 sesv2_get_custom_verification_email_template <- function(TemplateName) {
   op <- new_operation(
     name = "GetCustomVerificationEmailTemplate",
@@ -1766,6 +1822,8 @@ sesv2_get_custom_verification_email_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_dedicated_ip
+#'
+#' @aliases sesv2_get_dedicated_ip
 sesv2_get_dedicated_ip <- function(Ip) {
   op <- new_operation(
     name = "GetDedicatedIp",
@@ -1831,6 +1889,8 @@ sesv2_get_dedicated_ip <- function(Ip) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_dedicated_ips
+#'
+#' @aliases sesv2_get_dedicated_ips
 sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "GetDedicatedIps",
@@ -1916,6 +1976,8 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' @keywords internal
 #'
 #' @rdname sesv2_get_deliverability_dashboard_options
+#'
+#' @aliases sesv2_get_deliverability_dashboard_options
 sesv2_get_deliverability_dashboard_options <- function() {
   op <- new_operation(
     name = "GetDeliverabilityDashboardOptions",
@@ -1996,6 +2058,8 @@ sesv2_get_deliverability_dashboard_options <- function() {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_deliverability_test_report
+#'
+#' @aliases sesv2_get_deliverability_test_report
 sesv2_get_deliverability_test_report <- function(ReportId) {
   op <- new_operation(
     name = "GetDeliverabilityTestReport",
@@ -2067,6 +2131,8 @@ sesv2_get_deliverability_test_report <- function(ReportId) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_domain_deliverability_campaign
+#'
+#' @aliases sesv2_get_domain_deliverability_campaign
 sesv2_get_domain_deliverability_campaign <- function(CampaignId) {
   op <- new_operation(
     name = "GetDomainDeliverabilityCampaign",
@@ -2164,6 +2230,8 @@ sesv2_get_domain_deliverability_campaign <- function(CampaignId) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_domain_statistics_report
+#'
+#' @aliases sesv2_get_domain_statistics_report
 sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
   op <- new_operation(
     name = "GetDomainStatisticsReport",
@@ -2243,6 +2311,8 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_email_identity
+#'
+#' @aliases sesv2_get_email_identity
 sesv2_get_email_identity <- function(EmailIdentity) {
   op <- new_operation(
     name = "GetEmailIdentity",
@@ -2304,6 +2374,8 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_email_identity_policies
+#'
+#' @aliases sesv2_get_email_identity_policies
 sesv2_get_email_identity_policies <- function(EmailIdentity) {
   op <- new_operation(
     name = "GetEmailIdentityPolicies",
@@ -2358,6 +2430,8 @@ sesv2_get_email_identity_policies <- function(EmailIdentity) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_email_template
+#'
+#' @aliases sesv2_get_email_template
 sesv2_get_email_template <- function(TemplateName) {
   op <- new_operation(
     name = "GetEmailTemplate",
@@ -2429,6 +2503,8 @@ sesv2_get_email_template <- function(TemplateName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_import_job
+#'
+#' @aliases sesv2_get_import_job
 sesv2_get_import_job <- function(JobId) {
   op <- new_operation(
     name = "GetImportJob",
@@ -2486,6 +2562,8 @@ sesv2_get_import_job <- function(JobId) {
 #' @keywords internal
 #'
 #' @rdname sesv2_get_suppressed_destination
+#'
+#' @aliases sesv2_get_suppressed_destination
 sesv2_get_suppressed_destination <- function(EmailAddress) {
   op <- new_operation(
     name = "GetSuppressedDestination",
@@ -2550,6 +2628,8 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
 #' @keywords internal
 #'
 #' @rdname sesv2_list_configuration_sets
+#'
+#' @aliases sesv2_list_configuration_sets
 sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListConfigurationSets",
@@ -2611,6 +2691,8 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_list_contact_lists
+#'
+#' @aliases sesv2_list_contact_lists
 sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListContactLists",
@@ -2697,6 +2779,8 @@ sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_list_contacts
+#'
+#' @aliases sesv2_list_contacts
 sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListContacts",
@@ -2771,6 +2855,8 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 #' @keywords internal
 #'
 #' @rdname sesv2_list_custom_verification_email_templates
+#'
+#' @aliases sesv2_list_custom_verification_email_templates
 sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListCustomVerificationEmailTemplates",
@@ -2829,6 +2915,8 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
 #' @keywords internal
 #'
 #' @rdname sesv2_list_dedicated_ip_pools
+#'
+#' @aliases sesv2_list_dedicated_ip_pools
 sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListDedicatedIpPools",
@@ -2903,6 +2991,8 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_list_deliverability_test_reports
+#'
+#' @aliases sesv2_list_deliverability_test_reports
 sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListDeliverabilityTestReports",
@@ -3002,6 +3092,8 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
 #' @keywords internal
 #'
 #' @rdname sesv2_list_domain_deliverability_campaigns
+#'
+#' @aliases sesv2_list_domain_deliverability_campaigns
 sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, SubscribedDomain, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListDomainDeliverabilityCampaigns",
@@ -3070,6 +3162,8 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 #' @keywords internal
 #'
 #' @rdname sesv2_list_email_identities
+#'
+#' @aliases sesv2_list_email_identities
 sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListEmailIdentities",
@@ -3137,6 +3231,8 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_list_email_templates
+#'
+#' @aliases sesv2_list_email_templates
 sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListEmailTemplates",
@@ -3212,6 +3308,8 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_list_import_jobs
+#'
+#' @aliases sesv2_list_import_jobs
 sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListImportJobs",
@@ -3293,6 +3391,8 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname sesv2_list_suppressed_destinations
+#'
+#' @aliases sesv2_list_suppressed_destinations
 sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL, EndDate = NULL, NextToken = NULL, PageSize = NULL) {
   op <- new_operation(
     name = "ListSuppressedDestinations",
@@ -3350,6 +3450,8 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
 #' @keywords internal
 #'
 #' @rdname sesv2_list_tags_for_resource
+#'
+#' @aliases sesv2_list_tags_for_resource
 sesv2_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3395,6 +3497,8 @@ sesv2_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname sesv2_put_account_dedicated_ip_warmup_attributes
+#'
+#' @aliases sesv2_put_account_dedicated_ip_warmup_attributes
 sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled = NULL) {
   op <- new_operation(
     name = "PutAccountDedicatedIpWarmupAttributes",
@@ -3463,6 +3567,8 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 #' @keywords internal
 #'
 #' @rdname sesv2_put_account_details
+#'
+#' @aliases sesv2_put_account_details
 sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NULL, UseCaseDescription, AdditionalContactEmailAddresses = NULL, ProductionAccessEnabled = NULL) {
   op <- new_operation(
     name = "PutAccountDetails",
@@ -3507,6 +3613,8 @@ sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NU
 #' @keywords internal
 #'
 #' @rdname sesv2_put_account_sending_attributes
+#'
+#' @aliases sesv2_put_account_sending_attributes
 sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
   op <- new_operation(
     name = "PutAccountSendingAttributes",
@@ -3559,6 +3667,8 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_put_account_suppression_attributes
+#'
+#' @aliases sesv2_put_account_suppression_attributes
 sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
   op <- new_operation(
     name = "PutAccountSuppressionAttributes",
@@ -3611,6 +3721,8 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_delivery_options
+#'
+#' @aliases sesv2_put_configuration_set_delivery_options
 sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, TlsPolicy = NULL, SendingPoolName = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetDeliveryOptions",
@@ -3660,6 +3772,8 @@ sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, T
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_reputation_options
+#'
+#' @aliases sesv2_put_configuration_set_reputation_options
 sesv2_put_configuration_set_reputation_options <- function(ConfigurationSetName, ReputationMetricsEnabled = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetReputationOptions",
@@ -3707,6 +3821,8 @@ sesv2_put_configuration_set_reputation_options <- function(ConfigurationSetName,
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_sending_options
+#'
+#' @aliases sesv2_put_configuration_set_sending_options
 sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, SendingEnabled = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetSendingOptions",
@@ -3764,6 +3880,8 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_suppression_options
+#'
+#' @aliases sesv2_put_configuration_set_suppression_options
 sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName, SuppressedReasons = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetSuppressionOptions",
@@ -3809,6 +3927,8 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
 #' @keywords internal
 #'
 #' @rdname sesv2_put_configuration_set_tracking_options
+#'
+#' @aliases sesv2_put_configuration_set_tracking_options
 sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, CustomRedirectDomain = NULL) {
   op <- new_operation(
     name = "PutConfigurationSetTrackingOptions",
@@ -3861,6 +3981,8 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 #' @keywords internal
 #'
 #' @rdname sesv2_put_dedicated_ip_in_pool
+#'
+#' @aliases sesv2_put_dedicated_ip_in_pool
 sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
   op <- new_operation(
     name = "PutDedicatedIpInPool",
@@ -3905,6 +4027,8 @@ sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #' @keywords internal
 #'
 #' @rdname sesv2_put_dedicated_ip_warmup_attributes
+#'
+#' @aliases sesv2_put_dedicated_ip_warmup_attributes
 sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
   op <- new_operation(
     name = "PutDedicatedIpWarmupAttributes",
@@ -3973,6 +4097,8 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
 #' @keywords internal
 #'
 #' @rdname sesv2_put_deliverability_dashboard_option
+#'
+#' @aliases sesv2_put_deliverability_dashboard_option
 sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, SubscribedDomains = NULL) {
   op <- new_operation(
     name = "PutDeliverabilityDashboardOption",
@@ -4016,6 +4142,8 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
 #' @keywords internal
 #'
 #' @rdname sesv2_put_email_identity_configuration_set_attributes
+#'
+#' @aliases sesv2_put_email_identity_configuration_set_attributes
 sesv2_put_email_identity_configuration_set_attributes <- function(EmailIdentity, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityConfigurationSetAttributes",
@@ -4062,6 +4190,8 @@ sesv2_put_email_identity_configuration_set_attributes <- function(EmailIdentity,
 #' @keywords internal
 #'
 #' @rdname sesv2_put_email_identity_dkim_attributes
+#'
+#' @aliases sesv2_put_email_identity_dkim_attributes
 sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabled = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityDkimAttributes",
@@ -4146,6 +4276,8 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' @keywords internal
 #'
 #' @rdname sesv2_put_email_identity_dkim_signing_attributes
+#'
+#' @aliases sesv2_put_email_identity_dkim_signing_attributes
 sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, SigningAttributesOrigin, SigningAttributes = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityDkimSigningAttributes",
@@ -4211,6 +4343,8 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
 #' @keywords internal
 #'
 #' @rdname sesv2_put_email_identity_feedback_attributes
+#'
+#' @aliases sesv2_put_email_identity_feedback_attributes
 sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailForwardingEnabled = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityFeedbackAttributes",
@@ -4274,6 +4408,8 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' @keywords internal
 #'
 #' @rdname sesv2_put_email_identity_mail_from_attributes
+#'
+#' @aliases sesv2_put_email_identity_mail_from_attributes
 sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFromDomain = NULL, BehaviorOnMxFailure = NULL) {
   op <- new_operation(
     name = "PutEmailIdentityMailFromAttributes",
@@ -4318,6 +4454,8 @@ sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFro
 #' @keywords internal
 #'
 #' @rdname sesv2_put_suppressed_destination
+#'
+#' @aliases sesv2_put_suppressed_destination
 sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
   op <- new_operation(
     name = "PutSuppressedDestination",
@@ -4461,6 +4599,8 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #' @keywords internal
 #'
 #' @rdname sesv2_send_bulk_email
+#'
+#' @aliases sesv2_send_bulk_email
 sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "SendBulkEmail",
@@ -4525,6 +4665,8 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
 #' @keywords internal
 #'
 #' @rdname sesv2_send_custom_verification_email
+#'
+#' @aliases sesv2_send_custom_verification_email
 sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, ConfigurationSetName = NULL) {
   op <- new_operation(
     name = "SendCustomVerificationEmail",
@@ -4691,6 +4833,8 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' @keywords internal
 #'
 #' @rdname sesv2_send_email
+#'
+#' @aliases sesv2_send_email
 sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, ListManagementOptions = NULL) {
   op <- new_operation(
     name = "SendEmail",
@@ -4751,6 +4895,8 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
 #' @keywords internal
 #'
 #' @rdname sesv2_tag_resource
+#'
+#' @aliases sesv2_tag_resource
 sesv2_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4804,6 +4950,8 @@ sesv2_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname sesv2_test_render_email_template
+#'
+#' @aliases sesv2_test_render_email_template
 sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
   op <- new_operation(
     name = "TestRenderEmailTemplate",
@@ -4856,6 +5004,8 @@ sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
 #' @keywords internal
 #'
 #' @rdname sesv2_untag_resource
+#'
+#' @aliases sesv2_untag_resource
 sesv2_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4934,6 +5084,8 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname sesv2_update_configuration_set_event_destination
+#'
+#' @aliases sesv2_update_configuration_set_event_destination
 sesv2_update_configuration_set_event_destination <- function(ConfigurationSetName, EventDestinationName, EventDestination) {
   op <- new_operation(
     name = "UpdateConfigurationSetEventDestination",
@@ -4991,6 +5143,8 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
 #' @keywords internal
 #'
 #' @rdname sesv2_update_contact
+#'
+#' @aliases sesv2_update_contact
 sesv2_update_contact <- function(ContactListName, EmailAddress, TopicPreferences = NULL, UnsubscribeAll = NULL, AttributesData = NULL) {
   op <- new_operation(
     name = "UpdateContact",
@@ -5044,6 +5198,8 @@ sesv2_update_contact <- function(ContactListName, EmailAddress, TopicPreferences
 #' @keywords internal
 #'
 #' @rdname sesv2_update_contact_list
+#'
+#' @aliases sesv2_update_contact_list
 sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateContactList",
@@ -5111,6 +5267,8 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 #' @keywords internal
 #'
 #' @rdname sesv2_update_custom_verification_email_template
+#'
+#' @aliases sesv2_update_custom_verification_email_template
 sesv2_update_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, SuccessRedirectionURL, FailureRedirectionURL) {
   op <- new_operation(
     name = "UpdateCustomVerificationEmailTemplate",
@@ -5175,6 +5333,8 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' @keywords internal
 #'
 #' @rdname sesv2_update_email_identity_policy
+#'
+#' @aliases sesv2_update_email_identity_policy
 sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy) {
   op <- new_operation(
     name = "UpdateEmailIdentityPolicy",
@@ -5227,6 +5387,8 @@ sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 #' @keywords internal
 #'
 #' @rdname sesv2_update_email_template
+#'
+#' @aliases sesv2_update_email_template
 sesv2_update_email_template <- function(TemplateName, TemplateContent) {
   op <- new_operation(
     name = "UpdateEmailTemplate",

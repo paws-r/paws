@@ -37,6 +37,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname neptune_add_role_to_db_cluster
+#'
+#' @aliases neptune_add_role_to_db_cluster
 neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName = NULL) {
   op <- new_operation(
     name = "AddRoleToDBCluster",
@@ -115,6 +117,8 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
 #' @keywords internal
 #'
 #' @rdname neptune_add_source_identifier_to_subscription
+#'
+#' @aliases neptune_add_source_identifier_to_subscription
 neptune_add_source_identifier_to_subscription <- function(SubscriptionName, SourceIdentifier) {
   op <- new_operation(
     name = "AddSourceIdentifierToSubscription",
@@ -168,6 +172,8 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
 #' @keywords internal
 #'
 #' @rdname neptune_add_tags_to_resource
+#'
+#' @aliases neptune_add_tags_to_resource
 neptune_add_tags_to_resource <- function(ResourceName, Tags) {
   op <- new_operation(
     name = "AddTagsToResource",
@@ -254,6 +260,8 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @keywords internal
 #'
 #' @rdname neptune_apply_pending_maintenance_action
+#'
+#' @aliases neptune_apply_pending_maintenance_action
 neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction, OptInType) {
   op <- new_operation(
     name = "ApplyPendingMaintenanceAction",
@@ -346,6 +354,8 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' @keywords internal
 #'
 #' @rdname neptune_copy_db_cluster_parameter_group
+#'
+#' @aliases neptune_copy_db_cluster_parameter_group
 neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBClusterParameterGroup",
@@ -479,6 +489,8 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' @keywords internal
 #'
 #' @rdname neptune_copy_db_cluster_snapshot
+#'
+#' @aliases neptune_copy_db_cluster_snapshot
 neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier, KmsKeyId = NULL, PreSignedUrl = NULL, CopyTags = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBClusterSnapshot",
@@ -563,6 +575,8 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #' @keywords internal
 #'
 #' @rdname neptune_copy_db_parameter_group
+#'
+#' @aliases neptune_copy_db_parameter_group
 neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription, Tags = NULL) {
   op <- new_operation(
     name = "CopyDBParameterGroup",
@@ -873,6 +887,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_cluster
+#'
+#' @aliases neptune_create_db_cluster
 neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, CopyTagsToSnapshot = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
@@ -959,6 +975,8 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_cluster_endpoint
+#'
+#' @aliases neptune_create_db_cluster_endpoint
 neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpointIdentifier, EndpointType, StaticMembers = NULL, ExcludedMembers = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterEndpoint",
@@ -1060,6 +1078,8 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_cluster_parameter_group
+#'
+#' @aliases neptune_create_db_cluster_parameter_group
 neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, DBParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterParameterGroup",
@@ -1160,6 +1180,8 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_cluster_snapshot
+#'
+#' @aliases neptune_create_db_cluster_snapshot
 neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClusterIdentifier, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBClusterSnapshot",
@@ -1596,6 +1618,8 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_instance
+#'
+#' @aliases neptune_create_db_instance
 neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass, Engine, MasterUsername = NULL, MasterUserPassword = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, AvailabilityZone = NULL, DBSubnetGroupName = NULL, PreferredMaintenanceWindow = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, Port = NULL, MultiAZ = NULL, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, CharacterSetName = NULL, PubliclyAccessible = NULL, Tags = NULL, DBClusterIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, Timezone = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
@@ -1692,6 +1716,8 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_parameter_group
+#'
+#' @aliases neptune_create_db_parameter_group
 neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroupFamily, Description, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBParameterGroup",
@@ -1773,6 +1799,8 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 #' @keywords internal
 #'
 #' @rdname neptune_create_db_subnet_group
+#'
+#' @aliases neptune_create_db_subnet_group
 neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescription, SubnetIds, Tags = NULL) {
   op <- new_operation(
     name = "CreateDBSubnetGroup",
@@ -1908,6 +1936,8 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' @keywords internal
 #'
 #' @rdname neptune_create_event_subscription
+#'
+#' @aliases neptune_create_event_subscription
 neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceType = NULL, EventCategories = NULL, SourceIds = NULL, Enabled = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateEventSubscription",
@@ -1998,6 +2028,8 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 #' @keywords internal
 #'
 #' @rdname neptune_create_global_cluster
+#'
+#' @aliases neptune_create_global_cluster
 neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterIdentifier = NULL, Engine = NULL, EngineVersion = NULL, DeletionProtection = NULL, StorageEncrypted = NULL) {
   op <- new_operation(
     name = "CreateGlobalCluster",
@@ -2158,6 +2190,8 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_cluster
+#'
+#' @aliases neptune_delete_db_cluster
 neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteDBCluster",
@@ -2219,6 +2253,8 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_cluster_endpoint
+#'
+#' @aliases neptune_delete_db_cluster_endpoint
 neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
   op <- new_operation(
     name = "DeleteDBClusterEndpoint",
@@ -2268,6 +2304,8 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_cluster_parameter_group
+#'
+#' @aliases neptune_delete_db_cluster_parameter_group
 neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
   op <- new_operation(
     name = "DeleteDBClusterParameterGroup",
@@ -2346,6 +2384,8 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_cluster_snapshot
+#'
+#' @aliases neptune_delete_db_cluster_snapshot
 neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
   op <- new_operation(
     name = "DeleteDBClusterSnapshot",
@@ -2584,6 +2624,8 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_instance
+#'
+#' @aliases neptune_delete_db_instance
 neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL) {
   op <- new_operation(
     name = "DeleteDBInstance",
@@ -2633,6 +2675,8 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_parameter_group
+#'
+#' @aliases neptune_delete_db_parameter_group
 neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
   op <- new_operation(
     name = "DeleteDBParameterGroup",
@@ -2685,6 +2729,8 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
 #' @keywords internal
 #'
 #' @rdname neptune_delete_db_subnet_group
+#'
+#' @aliases neptune_delete_db_subnet_group
 neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
   op <- new_operation(
     name = "DeleteDBSubnetGroup",
@@ -2745,6 +2791,8 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' @keywords internal
 #'
 #' @rdname neptune_delete_event_subscription
+#'
+#' @aliases neptune_delete_event_subscription
 neptune_delete_event_subscription <- function(SubscriptionName) {
   op <- new_operation(
     name = "DeleteEventSubscription",
@@ -2809,6 +2857,8 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 #' @keywords internal
 #'
 #' @rdname neptune_delete_global_cluster
+#'
+#' @aliases neptune_delete_global_cluster
 neptune_delete_global_cluster <- function(GlobalClusterIdentifier) {
   op <- new_operation(
     name = "DeleteGlobalCluster",
@@ -2913,6 +2963,8 @@ neptune_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_cluster_endpoints
+#'
+#' @aliases neptune_describe_db_cluster_endpoints
 neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClusterEndpointIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterEndpoints",
@@ -2998,6 +3050,8 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_cluster_parameter_groups
+#'
+#' @aliases neptune_describe_db_cluster_parameter_groups
 neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterParameterGroups",
@@ -3092,6 +3146,8 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_cluster_parameters
+#'
+#' @aliases neptune_describe_db_cluster_parameters
 neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Source = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterParameters",
@@ -3165,6 +3221,8 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_cluster_snapshot_attributes
+#'
+#' @aliases neptune_describe_db_cluster_snapshot_attributes
 neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentifier) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshotAttributes",
@@ -3329,6 +3387,8 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_cluster_snapshots
+#'
+#' @aliases neptune_describe_db_cluster_snapshots
 neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClusterSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshots",
@@ -3503,6 +3563,8 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_clusters
+#'
+#' @aliases neptune_describe_db_clusters
 neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBClusters",
@@ -3635,6 +3697,8 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_engine_versions
+#'
+#' @aliases neptune_describe_db_engine_versions
 neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL, DBParameterGroupFamily = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, DefaultOnly = NULL, ListSupportedCharacterSets = NULL, ListSupportedTimezones = NULL) {
   op <- new_operation(
     name = "DescribeDBEngineVersions",
@@ -3870,6 +3934,8 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_instances
+#'
+#' @aliases neptune_describe_db_instances
 neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBInstances",
@@ -3954,6 +4020,8 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_parameter_groups
+#'
+#' @aliases neptune_describe_db_parameter_groups
 neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBParameterGroups",
@@ -4047,6 +4115,8 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_parameters
+#'
+#' @aliases neptune_describe_db_parameters
 neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBParameters",
@@ -4139,6 +4209,8 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
 #' @keywords internal
 #'
 #' @rdname neptune_describe_db_subnet_groups
+#'
+#' @aliases neptune_describe_db_subnet_groups
 neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeDBSubnetGroups",
@@ -4228,6 +4300,8 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
 #' @keywords internal
 #'
 #' @rdname neptune_describe_engine_default_cluster_parameters
+#'
+#' @aliases neptune_describe_engine_default_cluster_parameters
 neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamily, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEngineDefaultClusterParameters",
@@ -4316,6 +4390,8 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
 #' @keywords internal
 #'
 #' @rdname neptune_describe_engine_default_parameters
+#'
+#' @aliases neptune_describe_engine_default_parameters
 neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEngineDefaultParameters",
@@ -4382,6 +4458,8 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
 #' @keywords internal
 #'
 #' @rdname neptune_describe_event_categories
+#'
+#' @aliases neptune_describe_event_categories
 neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeEventCategories",
@@ -4474,6 +4552,8 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
 #' @keywords internal
 #'
 #' @rdname neptune_describe_event_subscriptions
+#'
+#' @aliases neptune_describe_event_subscriptions
 neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEventSubscriptions",
@@ -4608,6 +4688,8 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #' @keywords internal
 #'
 #' @rdname neptune_describe_events
+#'
+#' @aliases neptune_describe_events
 neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, StartTime = NULL, EndTime = NULL, Duration = NULL, EventCategories = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -4694,6 +4776,8 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 #' @keywords internal
 #'
 #' @rdname neptune_describe_global_clusters
+#'
+#' @aliases neptune_describe_global_clusters
 neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeGlobalClusters",
@@ -4805,6 +4889,8 @@ neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Max
 #' @keywords internal
 #'
 #' @rdname neptune_describe_orderable_db_instance_options
+#'
+#' @aliases neptune_describe_orderable_db_instance_options
 neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion = NULL, DBInstanceClass = NULL, LicenseModel = NULL, Vpc = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeOrderableDBInstanceOptions",
@@ -4910,6 +4996,8 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #' @keywords internal
 #'
 #' @rdname neptune_describe_pending_maintenance_actions
+#'
+#' @aliases neptune_describe_pending_maintenance_actions
 neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, Filters = NULL, Marker = NULL, MaxRecords = NULL) {
   op <- new_operation(
     name = "DescribePendingMaintenanceActions",
@@ -4986,6 +5074,8 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
 #' @keywords internal
 #'
 #' @rdname neptune_describe_valid_db_instance_modifications
+#'
+#' @aliases neptune_describe_valid_db_instance_modifications
 neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
   op <- new_operation(
     name = "DescribeValidDBInstanceModifications",
@@ -5131,6 +5221,8 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 #' @keywords internal
 #'
 #' @rdname neptune_failover_db_cluster
+#'
+#' @aliases neptune_failover_db_cluster
 neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstanceIdentifier = NULL) {
   op <- new_operation(
     name = "FailoverDBCluster",
@@ -5217,6 +5309,8 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 #' @keywords internal
 #'
 #' @rdname neptune_failover_global_cluster
+#'
+#' @aliases neptune_failover_global_cluster
 neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
   op <- new_operation(
     name = "FailoverGlobalCluster",
@@ -5279,6 +5373,8 @@ neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
 #' @keywords internal
 #'
 #' @rdname neptune_list_tags_for_resource
+#'
+#' @aliases neptune_list_tags_for_resource
 neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -5553,6 +5649,8 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_cluster
+#'
+#' @aliases neptune_modify_db_cluster
 neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
@@ -5626,6 +5724,8 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_cluster_endpoint
+#'
+#' @aliases neptune_modify_db_cluster_endpoint
 neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, EndpointType = NULL, StaticMembers = NULL, ExcludedMembers = NULL) {
   op <- new_operation(
     name = "ModifyDBClusterEndpoint",
@@ -5707,6 +5807,8 @@ neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endp
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_cluster_parameter_group
+#'
+#' @aliases neptune_modify_db_cluster_parameter_group
 neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Parameters) {
   op <- new_operation(
     name = "ModifyDBClusterParameterGroup",
@@ -5814,6 +5916,8 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_cluster_snapshot_attribute
+#'
+#' @aliases neptune_modify_db_cluster_snapshot_attribute
 neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier, AttributeName, ValuesToAdd = NULL, ValuesToRemove = NULL) {
   op <- new_operation(
     name = "ModifyDBClusterSnapshotAttribute",
@@ -6268,6 +6372,8 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_instance
+#'
+#' @aliases neptune_modify_db_instance
 neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL, DBInstanceClass = NULL, DBSubnetGroupName = NULL, DBSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ApplyImmediately = NULL, MasterUserPassword = NULL, DBParameterGroupName = NULL, BackupRetentionPeriod = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, MultiAZ = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, AutoMinorVersionUpgrade = NULL, LicenseModel = NULL, Iops = NULL, OptionGroupName = NULL, NewDBInstanceIdentifier = NULL, StorageType = NULL, TdeCredentialArn = NULL, TdeCredentialPassword = NULL, CACertificateIdentifier = NULL, Domain = NULL, CopyTagsToSnapshot = NULL, MonitoringInterval = NULL, DBPortNumber = NULL, PubliclyAccessible = NULL, MonitoringRoleArn = NULL, DomainIAMRoleName = NULL, PromotionTier = NULL, EnableIAMDatabaseAuthentication = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, CloudwatchLogsExportConfiguration = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
@@ -6360,6 +6466,8 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_parameter_group
+#'
+#' @aliases neptune_modify_db_parameter_group
 neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
   op <- new_operation(
     name = "ModifyDBParameterGroup",
@@ -6434,6 +6542,8 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
 #' @keywords internal
 #'
 #' @rdname neptune_modify_db_subnet_group
+#'
+#' @aliases neptune_modify_db_subnet_group
 neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescription = NULL, SubnetIds) {
   op <- new_operation(
     name = "ModifyDBSubnetGroup",
@@ -6524,6 +6634,8 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' @keywords internal
 #'
 #' @rdname neptune_modify_event_subscription
+#'
+#' @aliases neptune_modify_event_subscription
 neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, SourceType = NULL, EventCategories = NULL, Enabled = NULL) {
   op <- new_operation(
     name = "ModifyEventSubscription",
@@ -6630,6 +6742,8 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 #' @keywords internal
 #'
 #' @rdname neptune_modify_global_cluster
+#'
+#' @aliases neptune_modify_global_cluster
 neptune_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClusterIdentifier = NULL, DeletionProtection = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL) {
   op <- new_operation(
     name = "ModifyGlobalCluster",
@@ -6753,6 +6867,8 @@ neptune_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClus
 #' @keywords internal
 #'
 #' @rdname neptune_promote_read_replica_db_cluster
+#'
+#' @aliases neptune_promote_read_replica_db_cluster
 neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "PromoteReadReplicaDBCluster",
@@ -6955,6 +7071,8 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname neptune_reboot_db_instance
+#'
+#' @aliases neptune_reboot_db_instance
 neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
   op <- new_operation(
     name = "RebootDBInstance",
@@ -7026,6 +7144,8 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #' @keywords internal
 #'
 #' @rdname neptune_remove_from_global_cluster
+#'
+#' @aliases neptune_remove_from_global_cluster
 neptune_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterIdentifier) {
   op <- new_operation(
     name = "RemoveFromGlobalCluster",
@@ -7077,6 +7197,8 @@ neptune_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbCluste
 #' @keywords internal
 #'
 #' @rdname neptune_remove_role_from_db_cluster
+#'
+#' @aliases neptune_remove_role_from_db_cluster
 neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName = NULL) {
   op <- new_operation(
     name = "RemoveRoleFromDBCluster",
@@ -7145,6 +7267,8 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Fe
 #' @keywords internal
 #'
 #' @rdname neptune_remove_source_identifier_from_subscription
+#'
+#' @aliases neptune_remove_source_identifier_from_subscription
 neptune_remove_source_identifier_from_subscription <- function(SubscriptionName, SourceIdentifier) {
   op <- new_operation(
     name = "RemoveSourceIdentifierFromSubscription",
@@ -7192,6 +7316,8 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
 #' @keywords internal
 #'
 #' @rdname neptune_remove_tags_from_resource
+#'
+#' @aliases neptune_remove_tags_from_resource
 neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
   op <- new_operation(
     name = "RemoveTagsFromResource",
@@ -7273,6 +7399,8 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname neptune_reset_db_cluster_parameter_group
+#'
+#' @aliases neptune_reset_db_cluster_parameter_group
 neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, ResetAllParameters = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ResetDBClusterParameterGroup",
@@ -7356,6 +7484,8 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #' @keywords internal
 #'
 #' @rdname neptune_reset_db_parameter_group
+#'
+#' @aliases neptune_reset_db_parameter_group
 neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameters = NULL, Parameters = NULL) {
   op <- new_operation(
     name = "ResetDBParameterGroup",
@@ -7600,6 +7730,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_from_snapshot
+#'
+#' @aliases neptune_restore_db_cluster_from_snapshot
 neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, DatabaseName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
@@ -7871,6 +8003,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' @keywords internal
 #'
 #' @rdname neptune_restore_db_cluster_to_point_in_time
+#'
+#' @aliases neptune_restore_db_cluster_to_point_in_time
 neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
@@ -7999,6 +8133,8 @@ neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Res
 #' @keywords internal
 #'
 #' @rdname neptune_start_db_cluster
+#'
+#' @aliases neptune_start_db_cluster
 neptune_start_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "StartDBCluster",
@@ -8128,6 +8264,8 @@ neptune_start_db_cluster <- function(DBClusterIdentifier) {
 #' @keywords internal
 #'
 #' @rdname neptune_stop_db_cluster
+#'
+#' @aliases neptune_stop_db_cluster
 neptune_stop_db_cluster <- function(DBClusterIdentifier) {
   op <- new_operation(
     name = "StopDBCluster",

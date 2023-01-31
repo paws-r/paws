@@ -78,6 +78,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ram_accept_resource_share_invitation
+#'
+#' @aliases ram_accept_resource_share_invitation
 ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, clientToken = NULL) {
   op <- new_operation(
     name = "AcceptResourceShareInvitation",
@@ -197,6 +199,8 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' @keywords internal
 #'
 #' @rdname ram_associate_resource_share
+#'
+#' @aliases ram_associate_resource_share
 ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "AssociateResourceShare",
@@ -286,6 +290,8 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #' @keywords internal
 #'
 #' @rdname ram_associate_resource_share_permission
+#'
+#' @aliases ram_associate_resource_share_permission
 ram_associate_resource_share_permission <- function(resourceShareArn, permissionArn, replace = NULL, clientToken = NULL, permissionVersion = NULL) {
   op <- new_operation(
     name = "AssociateResourceSharePermission",
@@ -432,6 +438,8 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' @keywords internal
 #'
 #' @rdname ram_create_resource_share
+#'
+#' @aliases ram_create_resource_share
 ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL) {
   op <- new_operation(
     name = "CreateResourceShare",
@@ -494,6 +502,8 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 #' @keywords internal
 #'
 #' @rdname ram_delete_resource_share
+#'
+#' @aliases ram_delete_resource_share
 ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
   op <- new_operation(
     name = "DeleteResourceShare",
@@ -608,6 +618,8 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname ram_disassociate_resource_share
+#'
+#' @aliases ram_disassociate_resource_share
 ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "DisassociateResourceShare",
@@ -676,6 +688,8 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 #' @keywords internal
 #'
 #' @rdname ram_disassociate_resource_share_permission
+#'
+#' @aliases ram_disassociate_resource_share_permission
 ram_disassociate_resource_share_permission <- function(resourceShareArn, permissionArn, clientToken = NULL) {
   op <- new_operation(
     name = "DisassociateResourceSharePermission",
@@ -727,6 +741,8 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 #' @keywords internal
 #'
 #' @rdname ram_enable_sharing_with_aws_organization
+#'
+#' @aliases ram_enable_sharing_with_aws_organization
 ram_enable_sharing_with_aws_organization <- function() {
   op <- new_operation(
     name = "EnableSharingWithAwsOrganization",
@@ -796,6 +812,8 @@ ram_enable_sharing_with_aws_organization <- function() {
 #' @keywords internal
 #'
 #' @rdname ram_get_permission
+#'
+#' @aliases ram_get_permission
 ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
   op <- new_operation(
     name = "GetPermission",
@@ -870,6 +888,8 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
 #' @keywords internal
 #'
 #' @rdname ram_get_resource_policies
+#'
+#' @aliases ram_get_resource_policies
 ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetResourcePolicies",
@@ -982,6 +1002,8 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' @keywords internal
 #'
 #' @rdname ram_get_resource_share_associations
+#'
+#' @aliases ram_get_resource_share_associations
 ram_get_resource_share_associations <- function(associationType, resourceShareArns = NULL, resourceArn = NULL, principal = NULL, associationStatus = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetResourceShareAssociations",
@@ -1088,6 +1110,8 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 #' @keywords internal
 #'
 #' @rdname ram_get_resource_share_invitations
+#'
+#' @aliases ram_get_resource_share_invitations
 ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NULL, resourceShareArns = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetResourceShareInvitations",
@@ -1209,6 +1233,8 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' @keywords internal
 #'
 #' @rdname ram_get_resource_shares
+#'
+#' @aliases ram_get_resource_shares
 ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatus = NULL, resourceOwner, name = NULL, tagFilters = NULL, nextToken = NULL, maxResults = NULL, permissionArn = NULL) {
   op <- new_operation(
     name = "GetResourceShares",
@@ -1310,6 +1336,8 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' @keywords internal
 #'
 #' @rdname ram_list_pending_invitation_resources
+#'
+#' @aliases ram_list_pending_invitation_resources
 ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, nextToken = NULL, maxResults = NULL, resourceRegionScope = NULL) {
   op <- new_operation(
     name = "ListPendingInvitationResources",
@@ -1394,6 +1422,8 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 #' @keywords internal
 #'
 #' @rdname ram_list_permission_versions
+#'
+#' @aliases ram_list_permission_versions
 ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPermissionVersions",
@@ -1479,6 +1509,8 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname ram_list_permissions
+#'
+#' @aliases ram_list_permissions
 ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPermissions",
@@ -1608,6 +1640,8 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @keywords internal
 #'
 #' @rdname ram_list_principals
+#'
+#' @aliases ram_list_principals
 ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = NULL, resourceType = NULL, resourceShareArns = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListPrincipals",
@@ -1691,6 +1725,8 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #' @keywords internal
 #'
 #' @rdname ram_list_resource_share_permissions
+#'
+#' @aliases ram_list_resource_share_permissions
 ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListResourceSharePermissions",
@@ -1772,6 +1808,8 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname ram_list_resource_types
+#'
+#' @aliases ram_list_resource_types
 ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourceRegionScope = NULL) {
   op <- new_operation(
     name = "ListResourceTypes",
@@ -1895,6 +1933,8 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
 #' @keywords internal
 #'
 #' @rdname ram_list_resources
+#'
+#' @aliases ram_list_resources
 ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = NULL, resourceArns = NULL, resourceShareArns = NULL, nextToken = NULL, maxResults = NULL, resourceRegionScope = NULL) {
   op <- new_operation(
     name = "ListResources",
@@ -1951,6 +1991,8 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 #' @keywords internal
 #'
 #' @rdname ram_promote_resource_share_created_from_policy
+#'
+#' @aliases ram_promote_resource_share_created_from_policy
 ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
   op <- new_operation(
     name = "PromoteResourceShareCreatedFromPolicy",
@@ -2041,6 +2083,8 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
 #' @keywords internal
 #'
 #' @rdname ram_reject_resource_share_invitation
+#'
+#' @aliases ram_reject_resource_share_invitation
 ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, clientToken = NULL) {
   op <- new_operation(
     name = "RejectResourceShareInvitation",
@@ -2094,6 +2138,8 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' @keywords internal
 #'
 #' @rdname ram_tag_resource
+#'
+#' @aliases ram_tag_resource
 ram_tag_resource <- function(resourceShareArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2144,6 +2190,8 @@ ram_tag_resource <- function(resourceShareArn, tags) {
 #' @keywords internal
 #'
 #' @rdname ram_untag_resource
+#'
+#' @aliases ram_untag_resource
 ram_untag_resource <- function(resourceShareArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2230,6 +2278,8 @@ ram_untag_resource <- function(resourceShareArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname ram_update_resource_share
+#'
+#' @aliases ram_update_resource_share
 ram_update_resource_share <- function(resourceShareArn, name = NULL, allowExternalPrincipals = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "UpdateResourceShare",

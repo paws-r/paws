@@ -77,6 +77,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_create_notification_rule
+#'
+#' @aliases codestarnotifications_create_notification_rule
 codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, Resource, Targets, DetailType, ClientRequestToken = NULL, Tags = NULL, Status = NULL) {
   op <- new_operation(
     name = "CreateNotificationRule",
@@ -123,6 +125,8 @@ codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, R
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_delete_notification_rule
+#'
+#' @aliases codestarnotifications_delete_notification_rule
 codestarnotifications_delete_notification_rule <- function(Arn) {
   op <- new_operation(
     name = "DeleteNotificationRule",
@@ -168,6 +172,8 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_delete_target
+#'
+#' @aliases codestarnotifications_delete_target
 codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeAll = NULL) {
   op <- new_operation(
     name = "DeleteTarget",
@@ -242,6 +248,8 @@ codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeA
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_describe_notification_rule
+#'
+#' @aliases codestarnotifications_describe_notification_rule
 codestarnotifications_describe_notification_rule <- function(Arn) {
   op <- new_operation(
     name = "DescribeNotificationRule",
@@ -309,6 +317,8 @@ codestarnotifications_describe_notification_rule <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_list_event_types
+#'
+#' @aliases codestarnotifications_list_event_types
 codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListEventTypes",
@@ -377,6 +387,8 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_list_notification_rules
+#'
+#' @aliases codestarnotifications_list_notification_rules
 codestarnotifications_list_notification_rules <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListNotificationRules",
@@ -424,6 +436,8 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_list_tags_for_resource
+#'
+#' @aliases codestarnotifications_list_tags_for_resource
 codestarnotifications_list_tags_for_resource <- function(Arn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -492,6 +506,8 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_list_targets
+#'
+#' @aliases codestarnotifications_list_targets
 codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListTargets",
@@ -550,6 +566,8 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_subscribe
+#'
+#' @aliases codestarnotifications_subscribe
 codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "Subscribe",
@@ -602,6 +620,8 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_tag_resource
+#'
+#' @aliases codestarnotifications_tag_resource
 codestarnotifications_tag_resource <- function(Arn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -653,6 +673,8 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_unsubscribe
+#'
+#' @aliases codestarnotifications_unsubscribe
 codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
   op <- new_operation(
     name = "Unsubscribe",
@@ -700,6 +722,8 @@ codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_untag_resource
+#'
+#' @aliases codestarnotifications_untag_resource
 codestarnotifications_untag_resource <- function(Arn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -770,6 +794,8 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname codestarnotifications_update_notification_rule
+#'
+#' @aliases codestarnotifications_update_notification_rule
 codestarnotifications_update_notification_rule <- function(Arn, Name = NULL, Status = NULL, EventTypeIds = NULL, Targets = NULL, DetailType = NULL) {
   op <- new_operation(
     name = "UpdateNotificationRule",

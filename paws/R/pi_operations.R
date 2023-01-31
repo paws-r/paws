@@ -176,6 +176,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname pi_describe_dimension_keys
+#'
+#' @aliases pi_describe_dimension_keys
 pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTime, Metric, PeriodInSeconds = NULL, GroupBy, AdditionalMetrics = NULL, PartitionBy = NULL, Filter = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeDimensionKeys",
@@ -272,6 +274,8 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' @keywords internal
 #'
 #' @rdname pi_get_dimension_key_details
+#'
+#' @aliases pi_get_dimension_key_details
 pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupIdentifier, RequestedDimensions = NULL) {
   op <- new_operation(
     name = "GetDimensionKeyDetails",
@@ -331,6 +335,8 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
 #' @keywords internal
 #'
 #' @rdname pi_get_resource_metadata
+#'
+#' @aliases pi_get_resource_metadata
 pi_get_resource_metadata <- function(ServiceType, Identifier) {
   op <- new_operation(
     name = "GetResourceMetadata",
@@ -485,6 +491,8 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' @keywords internal
 #'
 #' @rdname pi_get_resource_metrics
+#'
+#' @aliases pi_get_resource_metrics
 pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, StartTime, EndTime, PeriodInSeconds = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetResourceMetrics",
@@ -568,6 +576,8 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
 #' @keywords internal
 #'
 #' @rdname pi_list_available_resource_dimensions
+#'
+#' @aliases pi_list_available_resource_dimensions
 pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metrics, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAvailableResourceDimensions",
@@ -653,6 +663,8 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
 #' @keywords internal
 #'
 #' @rdname pi_list_available_resource_metrics
+#'
+#' @aliases pi_list_available_resource_metrics
 pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTypes, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListAvailableResourceMetrics",

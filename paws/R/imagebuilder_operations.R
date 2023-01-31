@@ -40,6 +40,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname imagebuilder_cancel_image_creation
+#'
+#' @aliases imagebuilder_cancel_image_creation
 imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken) {
   op <- new_operation(
     name = "CancelImageCreation",
@@ -149,6 +151,8 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_component
+#'
+#' @aliases imagebuilder_create_component
 imagebuilder_create_component <- function(name, semanticVersion, description = NULL, changeDescription = NULL, platform, supportedOsVersions = NULL, data = NULL, uri = NULL, kmsKeyId = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateComponent",
@@ -285,6 +289,8 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_container_recipe
+#'
+#' @aliases imagebuilder_create_container_recipe
 imagebuilder_create_container_recipe <- function(containerType, name, description = NULL, semanticVersion, components, instanceConfiguration = NULL, dockerfileTemplateData = NULL, dockerfileTemplateUri = NULL, platformOverride = NULL, imageOsVersionOverride = NULL, parentImage, tags = NULL, workingDirectory = NULL, targetRepository, kmsKeyId = NULL, clientToken) {
   op <- new_operation(
     name = "CreateContainerRecipe",
@@ -414,6 +420,8 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_distribution_configuration
+#'
+#' @aliases imagebuilder_create_distribution_configuration
 imagebuilder_create_distribution_configuration <- function(name, description = NULL, distributions, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateDistributionConfiguration",
@@ -493,6 +501,8 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image
+#'
+#' @aliases imagebuilder_create_image
 imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn = NULL, distributionConfigurationArn = NULL, infrastructureConfigurationArn, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImage",
@@ -583,6 +593,8 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_pipeline
+#'
+#' @aliases imagebuilder_create_image_pipeline
 imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImagePipeline",
@@ -708,6 +720,8 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_image_recipe
+#'
+#' @aliases imagebuilder_create_image_recipe
 imagebuilder_create_image_recipe <- function(name, description = NULL, semanticVersion, components, parentImage, blockDeviceMappings = NULL, tags = NULL, workingDirectory = NULL, additionalInstanceConfiguration = NULL, clientToken) {
   op <- new_operation(
     name = "CreateImageRecipe",
@@ -818,6 +832,8 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @keywords internal
 #'
 #' @rdname imagebuilder_create_infrastructure_configuration
+#'
+#' @aliases imagebuilder_create_infrastructure_configuration
 imagebuilder_create_infrastructure_configuration <- function(name, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, resourceTags = NULL, instanceMetadataOptions = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "CreateInfrastructureConfiguration",
@@ -864,6 +880,8 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_component
+#'
+#' @aliases imagebuilder_delete_component
 imagebuilder_delete_component <- function(componentBuildVersionArn) {
   op <- new_operation(
     name = "DeleteComponent",
@@ -910,6 +928,8 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_container_recipe
+#'
+#' @aliases imagebuilder_delete_container_recipe
 imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
   op <- new_operation(
     name = "DeleteContainerRecipe",
@@ -958,6 +978,8 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_distribution_configuration
+#'
+#' @aliases imagebuilder_delete_distribution_configuration
 imagebuilder_delete_distribution_configuration <- function(distributionConfigurationArn) {
   op <- new_operation(
     name = "DeleteDistributionConfiguration",
@@ -1020,6 +1042,8 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_image
+#'
+#' @aliases imagebuilder_delete_image
 imagebuilder_delete_image <- function(imageBuildVersionArn) {
   op <- new_operation(
     name = "DeleteImage",
@@ -1066,6 +1090,8 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_image_pipeline
+#'
+#' @aliases imagebuilder_delete_image_pipeline
 imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
   op <- new_operation(
     name = "DeleteImagePipeline",
@@ -1112,6 +1138,8 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_image_recipe
+#'
+#' @aliases imagebuilder_delete_image_recipe
 imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
   op <- new_operation(
     name = "DeleteImageRecipe",
@@ -1160,6 +1188,8 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_delete_infrastructure_configuration
+#'
+#' @aliases imagebuilder_delete_infrastructure_configuration
 imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfigurationArn) {
   op <- new_operation(
     name = "DeleteInfrastructureConfiguration",
@@ -1240,6 +1270,8 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_component
+#'
+#' @aliases imagebuilder_get_component
 imagebuilder_get_component <- function(componentBuildVersionArn) {
   op <- new_operation(
     name = "GetComponent",
@@ -1287,6 +1319,8 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_component_policy
+#'
+#' @aliases imagebuilder_get_component_policy
 imagebuilder_get_component_policy <- function(componentArn) {
   op <- new_operation(
     name = "GetComponentPolicy",
@@ -1387,6 +1421,8 @@ imagebuilder_get_component_policy <- function(componentArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_container_recipe
+#'
+#' @aliases imagebuilder_get_container_recipe
 imagebuilder_get_container_recipe <- function(containerRecipeArn) {
   op <- new_operation(
     name = "GetContainerRecipe",
@@ -1434,6 +1470,8 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_container_recipe_policy
+#'
+#' @aliases imagebuilder_get_container_recipe_policy
 imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
   op <- new_operation(
     name = "GetContainerRecipePolicy",
@@ -1563,6 +1601,8 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_distribution_configuration
+#'
+#' @aliases imagebuilder_get_distribution_configuration
 imagebuilder_get_distribution_configuration <- function(distributionConfigurationArn) {
   op <- new_operation(
     name = "GetDistributionConfiguration",
@@ -1877,6 +1917,8 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_image
+#'
+#' @aliases imagebuilder_get_image
 imagebuilder_get_image <- function(imageBuildVersionArn) {
   op <- new_operation(
     name = "GetImage",
@@ -1951,6 +1993,8 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_image_pipeline
+#'
+#' @aliases imagebuilder_get_image_pipeline
 imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
   op <- new_operation(
     name = "GetImagePipeline",
@@ -1998,6 +2042,8 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_image_policy
+#'
+#' @aliases imagebuilder_get_image_policy
 imagebuilder_get_image_policy <- function(imageArn) {
   op <- new_operation(
     name = "GetImagePolicy",
@@ -2095,6 +2141,8 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_image_recipe
+#'
+#' @aliases imagebuilder_get_image_recipe
 imagebuilder_get_image_recipe <- function(imageRecipeArn) {
   op <- new_operation(
     name = "GetImageRecipe",
@@ -2142,6 +2190,8 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_image_recipe_policy
+#'
+#' @aliases imagebuilder_get_image_recipe_policy
 imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
   op <- new_operation(
     name = "GetImageRecipePolicy",
@@ -2223,6 +2273,8 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_get_infrastructure_configuration
+#'
+#' @aliases imagebuilder_get_infrastructure_configuration
 imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigurationArn) {
   op <- new_operation(
     name = "GetInfrastructureConfiguration",
@@ -2315,6 +2367,8 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 #' @keywords internal
 #'
 #' @rdname imagebuilder_import_component
+#'
+#' @aliases imagebuilder_import_component
 imagebuilder_import_component <- function(name, semanticVersion, description = NULL, changeDescription = NULL, type, format, platform, data = NULL, uri = NULL, kmsKeyId = NULL, tags = NULL, clientToken) {
   op <- new_operation(
     name = "ImportComponent",
@@ -2413,6 +2467,8 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_import_vm_image
+#'
+#' @aliases imagebuilder_import_vm_image
 imagebuilder_import_vm_image <- function(name, semanticVersion, description = NULL, platform, osVersion = NULL, vmImportTaskId, tags = NULL, clientToken) {
   op <- new_operation(
     name = "ImportVmImage",
@@ -2501,6 +2557,8 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_component_build_versions
+#'
+#' @aliases imagebuilder_list_component_build_versions
 imagebuilder_list_component_build_versions <- function(componentVersionArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponentBuildVersions",
@@ -2607,6 +2665,8 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_components
+#'
+#' @aliases imagebuilder_list_components
 imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponents",
@@ -2693,6 +2753,8 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_container_recipes
+#'
+#' @aliases imagebuilder_list_container_recipes
 imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListContainerRecipes",
@@ -2767,6 +2829,8 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_distribution_configurations
+#'
+#' @aliases imagebuilder_list_distribution_configurations
 imagebuilder_list_distribution_configurations <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDistributionConfigurations",
@@ -2882,6 +2946,8 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_image_build_versions
+#'
+#' @aliases imagebuilder_list_image_build_versions
 imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListImageBuildVersions",
@@ -2946,6 +3012,8 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_image_packages
+#'
+#' @aliases imagebuilder_list_image_packages
 imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListImagePackages",
@@ -3055,6 +3123,8 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_image_pipeline_images
+#'
+#' @aliases imagebuilder_list_image_pipeline_images
 imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListImagePipelineImages",
@@ -3155,6 +3225,8 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_image_pipelines
+#'
+#' @aliases imagebuilder_list_image_pipelines
 imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListImagePipelines",
@@ -3238,6 +3310,8 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_image_recipes
+#'
+#' @aliases imagebuilder_list_image_recipes
 imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListImageRecipes",
@@ -3330,6 +3404,8 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_images
+#'
+#' @aliases imagebuilder_list_images
 imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL, maxResults = NULL, nextToken = NULL, includeDeprecated = NULL) {
   op <- new_operation(
     name = "ListImages",
@@ -3408,6 +3484,8 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_infrastructure_configurations
+#'
+#' @aliases imagebuilder_list_infrastructure_configurations
 imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListInfrastructureConfigurations",
@@ -3456,6 +3534,8 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
 #' @keywords internal
 #'
 #' @rdname imagebuilder_list_tags_for_resource
+#'
+#' @aliases imagebuilder_list_tags_for_resource
 imagebuilder_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3512,6 +3592,8 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_put_component_policy
+#'
+#' @aliases imagebuilder_put_component_policy
 imagebuilder_put_component_policy <- function(componentArn, policy) {
   op <- new_operation(
     name = "PutComponentPolicy",
@@ -3569,6 +3651,8 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_put_container_recipe_policy
+#'
+#' @aliases imagebuilder_put_container_recipe_policy
 imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy) {
   op <- new_operation(
     name = "PutContainerRecipePolicy",
@@ -3625,6 +3709,8 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 #' @keywords internal
 #'
 #' @rdname imagebuilder_put_image_policy
+#'
+#' @aliases imagebuilder_put_image_policy
 imagebuilder_put_image_policy <- function(imageArn, policy) {
   op <- new_operation(
     name = "PutImagePolicy",
@@ -3682,6 +3768,8 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_put_image_recipe_policy
+#'
+#' @aliases imagebuilder_put_image_recipe_policy
 imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
   op <- new_operation(
     name = "PutImageRecipePolicy",
@@ -3733,6 +3821,8 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_start_image_pipeline_execution
+#'
+#' @aliases imagebuilder_start_image_pipeline_execution
 imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, clientToken) {
   op <- new_operation(
     name = "StartImagePipelineExecution",
@@ -3777,6 +3867,8 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #' @keywords internal
 #'
 #' @rdname imagebuilder_tag_resource
+#'
+#' @aliases imagebuilder_tag_resource
 imagebuilder_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -3821,6 +3913,8 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_untag_resource
+#'
+#' @aliases imagebuilder_untag_resource
 imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -3947,6 +4041,8 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname imagebuilder_update_distribution_configuration
+#'
+#' @aliases imagebuilder_update_distribution_configuration
 imagebuilder_update_distribution_configuration <- function(distributionConfigurationArn, description = NULL, distributions, clientToken) {
   op <- new_operation(
     name = "UpdateDistributionConfiguration",
@@ -4037,6 +4133,8 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @keywords internal
 #'
 #' @rdname imagebuilder_update_image_pipeline
+#'
+#' @aliases imagebuilder_update_image_pipeline
 imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken) {
   op <- new_operation(
     name = "UpdateImagePipeline",
@@ -4155,6 +4253,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' @keywords internal
 #'
 #' @rdname imagebuilder_update_infrastructure_configuration
+#'
+#' @aliases imagebuilder_update_infrastructure_configuration
 imagebuilder_update_infrastructure_configuration <- function(infrastructureConfigurationArn, description = NULL, instanceTypes = NULL, instanceProfileName, securityGroupIds = NULL, subnetId = NULL, logging = NULL, keyPair = NULL, terminateInstanceOnFailure = NULL, snsTopicArn = NULL, clientToken, resourceTags = NULL, instanceMetadataOptions = NULL) {
   op <- new_operation(
     name = "UpdateInfrastructureConfiguration",

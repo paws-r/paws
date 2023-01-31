@@ -37,6 +37,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname workdocs_abort_document_version_upload
+#'
+#' @aliases workdocs_abort_document_version_upload
 workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, DocumentId, VersionId) {
   op <- new_operation(
     name = "AbortDocumentVersionUpload",
@@ -112,6 +114,8 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
 #' @keywords internal
 #'
 #' @rdname workdocs_activate_user
+#'
+#' @aliases workdocs_activate_user
 workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
   op <- new_operation(
     name = "ActivateUser",
@@ -185,6 +189,8 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname workdocs_add_resource_permissions
+#'
+#' @aliases workdocs_add_resource_permissions
 workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, ResourceId, Principals, NotificationOptions = NULL) {
   op <- new_operation(
     name = "AddResourcePermissions",
@@ -288,6 +294,8 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
 #' @keywords internal
 #'
 #' @rdname workdocs_create_comment
+#'
+#' @aliases workdocs_create_comment
 workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, VersionId, ParentId = NULL, ThreadId = NULL, Text, Visibility = NULL, NotifyCollaborators = NULL) {
   op <- new_operation(
     name = "CreateComment",
@@ -341,6 +349,8 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' @keywords internal
 #'
 #' @rdname workdocs_create_custom_metadata
+#'
+#' @aliases workdocs_create_custom_metadata
 workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, ResourceId, VersionId = NULL, CustomMetadata) {
   op <- new_operation(
     name = "CreateCustomMetadata",
@@ -409,6 +419,8 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @keywords internal
 #'
 #' @rdname workdocs_create_folder
+#'
+#' @aliases workdocs_create_folder
 workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, ParentFolderId) {
   op <- new_operation(
     name = "CreateFolder",
@@ -458,6 +470,8 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
 #' @keywords internal
 #'
 #' @rdname workdocs_create_labels
+#'
+#' @aliases workdocs_create_labels
 workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NULL) {
   op <- new_operation(
     name = "CreateLabels",
@@ -521,6 +535,8 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
 #' @keywords internal
 #'
 #' @rdname workdocs_create_notification_subscription
+#'
+#' @aliases workdocs_create_notification_subscription
 workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, Protocol, SubscriptionType) {
   op <- new_operation(
     name = "CreateNotificationSubscription",
@@ -614,6 +630,8 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
 #' @keywords internal
 #'
 #' @rdname workdocs_create_user
+#'
+#' @aliases workdocs_create_user
 workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress = NULL, GivenName, Surname, Password, TimeZoneId = NULL, StorageRule = NULL, AuthenticationToken = NULL) {
   op <- new_operation(
     name = "CreateUser",
@@ -659,6 +677,8 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
 #' @keywords internal
 #'
 #' @rdname workdocs_deactivate_user
+#'
+#' @aliases workdocs_deactivate_user
 workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
   op <- new_operation(
     name = "DeactivateUser",
@@ -707,6 +727,8 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_comment
+#'
+#' @aliases workdocs_delete_comment
 workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, VersionId, CommentId) {
   op <- new_operation(
     name = "DeleteComment",
@@ -761,6 +783,8 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_custom_metadata
+#'
+#' @aliases workdocs_delete_custom_metadata
 workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, ResourceId, VersionId = NULL, Keys = NULL, DeleteAll = NULL) {
   op <- new_operation(
     name = "DeleteCustomMetadata",
@@ -804,6 +828,8 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_document
+#'
+#' @aliases workdocs_delete_document
 workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
   op <- new_operation(
     name = "DeleteDocument",
@@ -847,6 +873,8 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_folder
+#'
+#' @aliases workdocs_delete_folder
 workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
   op <- new_operation(
     name = "DeleteFolder",
@@ -890,6 +918,8 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_folder_contents
+#'
+#' @aliases workdocs_delete_folder_contents
 workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId) {
   op <- new_operation(
     name = "DeleteFolderContents",
@@ -940,6 +970,8 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_labels
+#'
+#' @aliases workdocs_delete_labels
 workdocs_delete_labels <- function(ResourceId, AuthenticationToken = NULL, Labels = NULL, DeleteAll = NULL) {
   op <- new_operation(
     name = "DeleteLabels",
@@ -983,6 +1015,8 @@ workdocs_delete_labels <- function(ResourceId, AuthenticationToken = NULL, Label
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_notification_subscription
+#'
+#' @aliases workdocs_delete_notification_subscription
 workdocs_delete_notification_subscription <- function(SubscriptionId, OrganizationId) {
   op <- new_operation(
     name = "DeleteNotificationSubscription",
@@ -1027,6 +1061,8 @@ workdocs_delete_notification_subscription <- function(SubscriptionId, Organizati
 #' @keywords internal
 #'
 #' @rdname workdocs_delete_user
+#'
+#' @aliases workdocs_delete_user
 workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
   op <- new_operation(
     name = "DeleteUser",
@@ -1207,6 +1243,8 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_activities
+#'
+#' @aliases workdocs_describe_activities
 workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime = NULL, EndTime = NULL, OrganizationId = NULL, ActivityTypes = NULL, ResourceId = NULL, UserId = NULL, IncludeIndirectActivities = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeActivities",
@@ -1304,6 +1342,8 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_comments
+#'
+#' @aliases workdocs_describe_comments
 workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, VersionId, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeComments",
@@ -1395,6 +1435,8 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_document_versions
+#'
+#' @aliases workdocs_describe_document_versions
 workdocs_describe_document_versions <- function(AuthenticationToken = NULL, DocumentId, Marker = NULL, Limit = NULL, Include = NULL, Fields = NULL) {
   op <- new_operation(
     name = "DescribeDocumentVersions",
@@ -1530,6 +1572,8 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_folder_contents
+#'
+#' @aliases workdocs_describe_folder_contents
 workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, FolderId, Sort = NULL, Order = NULL, Limit = NULL, Marker = NULL, Type = NULL, Include = NULL) {
   op <- new_operation(
     name = "DescribeFolderContents",
@@ -1593,6 +1637,8 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_groups
+#'
+#' @aliases workdocs_describe_groups
 workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, OrganizationId = NULL, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeGroups",
@@ -1651,6 +1697,8 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_notification_subscriptions
+#'
+#' @aliases workdocs_describe_notification_subscriptions
 workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker = NULL, Limit = NULL) {
   op <- new_operation(
     name = "DescribeNotificationSubscriptions",
@@ -1719,6 +1767,8 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_resource_permissions
+#'
+#' @aliases workdocs_describe_resource_permissions
 workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, ResourceId, PrincipalId = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeResourcePermissions",
@@ -1800,6 +1850,8 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_root_folders
+#'
+#' @aliases workdocs_describe_root_folders
 workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "DescribeRootFolders",
@@ -1902,6 +1954,8 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' @keywords internal
 #'
 #' @rdname workdocs_describe_users
+#'
+#' @aliases workdocs_describe_users
 workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId = NULL, UserIds = NULL, Query = NULL, Include = NULL, Order = NULL, Sort = NULL, Marker = NULL, Limit = NULL, Fields = NULL) {
   op <- new_operation(
     name = "DescribeUsers",
@@ -1982,6 +2036,8 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
 #' @keywords internal
 #'
 #' @rdname workdocs_get_current_user
+#'
+#' @aliases workdocs_get_current_user
 workdocs_get_current_user <- function(AuthenticationToken) {
   op <- new_operation(
     name = "GetCurrentUser",
@@ -2077,6 +2133,8 @@ workdocs_get_current_user <- function(AuthenticationToken) {
 #' @keywords internal
 #'
 #' @rdname workdocs_get_document
+#'
+#' @aliases workdocs_get_document
 workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, IncludeCustomMetadata = NULL) {
   op <- new_operation(
     name = "GetDocument",
@@ -2147,6 +2205,8 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
 #' @keywords internal
 #'
 #' @rdname workdocs_get_document_path
+#'
+#' @aliases workdocs_get_document_path
 workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, Limit = NULL, Fields = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetDocumentPath",
@@ -2232,6 +2292,8 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
 #' @keywords internal
 #'
 #' @rdname workdocs_get_document_version
+#'
+#' @aliases workdocs_get_document_version
 workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId, VersionId, Fields = NULL, IncludeCustomMetadata = NULL) {
   op <- new_operation(
     name = "GetDocumentVersion",
@@ -2304,6 +2366,8 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
 #' @keywords internal
 #'
 #' @rdname workdocs_get_folder
+#'
+#' @aliases workdocs_get_folder
 workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCustomMetadata = NULL) {
   op <- new_operation(
     name = "GetFolder",
@@ -2374,6 +2438,8 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
 #' @keywords internal
 #'
 #' @rdname workdocs_get_folder_path
+#'
+#' @aliases workdocs_get_folder_path
 workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit = NULL, Fields = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetFolderPath",
@@ -2497,6 +2563,8 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
 #' @keywords internal
 #'
 #' @rdname workdocs_get_resources
+#'
+#' @aliases workdocs_get_resources
 workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, CollectionType = NULL, Limit = NULL, Marker = NULL) {
   op <- new_operation(
     name = "GetResources",
@@ -2619,6 +2687,8 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
 #' @keywords internal
 #'
 #' @rdname workdocs_initiate_document_version_upload
+#'
+#' @aliases workdocs_initiate_document_version_upload
 workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL, Id = NULL, Name = NULL, ContentCreatedTimestamp = NULL, ContentModifiedTimestamp = NULL, ContentType = NULL, DocumentSizeInBytes = NULL, ParentFolderId) {
   op <- new_operation(
     name = "InitiateDocumentVersionUpload",
@@ -2663,6 +2733,8 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
 #' @keywords internal
 #'
 #' @rdname workdocs_remove_all_resource_permissions
+#'
+#' @aliases workdocs_remove_all_resource_permissions
 workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL, ResourceId) {
   op <- new_operation(
     name = "RemoveAllResourcePermissions",
@@ -2713,6 +2785,8 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
 #' @keywords internal
 #'
 #' @rdname workdocs_remove_resource_permission
+#'
+#' @aliases workdocs_remove_resource_permission
 workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, ResourceId, PrincipalId, PrincipalType = NULL) {
   op <- new_operation(
     name = "RemoveResourcePermission",
@@ -2765,6 +2839,8 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
 #' @keywords internal
 #'
 #' @rdname workdocs_update_document
+#'
+#' @aliases workdocs_update_document
 workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Name = NULL, ParentFolderId = NULL, ResourceState = NULL) {
   op <- new_operation(
     name = "UpdateDocument",
@@ -2818,6 +2894,8 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
 #' @keywords internal
 #'
 #' @rdname workdocs_update_document_version
+#'
+#' @aliases workdocs_update_document_version
 workdocs_update_document_version <- function(AuthenticationToken = NULL, DocumentId, VersionId, VersionStatus = NULL) {
   op <- new_operation(
     name = "UpdateDocumentVersion",
@@ -2870,6 +2948,8 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
 #' @keywords internal
 #'
 #' @rdname workdocs_update_folder
+#'
+#' @aliases workdocs_update_folder
 workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = NULL, ParentFolderId = NULL, ResourceState = NULL) {
   op <- new_operation(
     name = "UpdateFolder",
@@ -2965,6 +3045,8 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
 #' @keywords internal
 #'
 #' @rdname workdocs_update_user
+#'
+#' @aliases workdocs_update_user
 workdocs_update_user <- function(AuthenticationToken = NULL, UserId, GivenName = NULL, Surname = NULL, Type = NULL, StorageRule = NULL, TimeZoneId = NULL, Locale = NULL, GrantPoweruserPrivileges = NULL) {
   op <- new_operation(
     name = "UpdateUser",

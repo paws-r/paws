@@ -67,6 +67,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_convert_recovery_point_to_snapshot
+#'
+#' @aliases redshiftserverless_convert_recovery_point_to_snapshot
 redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointId, retentionPeriod = NULL, snapshotName) {
   op <- new_operation(
     name = "ConvertRecoveryPointToSnapshot",
@@ -160,6 +162,8 @@ redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointI
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_endpoint_access
+#'
+#' @aliases redshiftserverless_create_endpoint_access
 redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, vpcSecurityGroupIds = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateEndpointAccess",
@@ -255,6 +259,8 @@ redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, v
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_namespace
+#'
+#' @aliases redshiftserverless_create_namespace
 redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminUsername = NULL, dbName = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, namespaceName, tags = NULL) {
   op <- new_operation(
     name = "CreateNamespace",
@@ -336,6 +342,8 @@ redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminU
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_snapshot
+#'
+#' @aliases redshiftserverless_create_snapshot
 redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = NULL, snapshotName) {
   op <- new_operation(
     name = "CreateSnapshot",
@@ -408,6 +416,8 @@ redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_usage_limit
+#'
+#' @aliases redshiftserverless_create_usage_limit
 redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, period = NULL, resourceArn, usageType) {
   op <- new_operation(
     name = "CreateUsageLimit",
@@ -533,6 +543,8 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_workgroup
+#'
+#' @aliases redshiftserverless_create_workgroup
 redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, namespaceName, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
@@ -609,6 +621,8 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_delete_endpoint_access
+#'
+#' @aliases redshiftserverless_delete_endpoint_access
 redshiftserverless_delete_endpoint_access <- function(endpointName) {
   op <- new_operation(
     name = "DeleteEndpointAccess",
@@ -679,6 +693,8 @@ redshiftserverless_delete_endpoint_access <- function(endpointName) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_delete_namespace
+#'
+#' @aliases redshiftserverless_delete_namespace
 redshiftserverless_delete_namespace <- function(finalSnapshotName = NULL, finalSnapshotRetentionPeriod = NULL, namespaceName) {
   op <- new_operation(
     name = "DeleteNamespace",
@@ -719,6 +735,8 @@ redshiftserverless_delete_namespace <- function(finalSnapshotName = NULL, finalS
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_delete_resource_policy
+#'
+#' @aliases redshiftserverless_delete_resource_policy
 redshiftserverless_delete_resource_policy <- function(resourceArn) {
   op <- new_operation(
     name = "DeleteResourcePolicy",
@@ -793,6 +811,8 @@ redshiftserverless_delete_resource_policy <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_delete_snapshot
+#'
+#' @aliases redshiftserverless_delete_snapshot
 redshiftserverless_delete_snapshot <- function(snapshotName) {
   op <- new_operation(
     name = "DeleteSnapshot",
@@ -846,6 +866,8 @@ redshiftserverless_delete_snapshot <- function(snapshotName) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_delete_usage_limit
+#'
+#' @aliases redshiftserverless_delete_usage_limit
 redshiftserverless_delete_usage_limit <- function(usageLimitId) {
   op <- new_operation(
     name = "DeleteUsageLimit",
@@ -933,6 +955,8 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_delete_workgroup
+#'
+#' @aliases redshiftserverless_delete_workgroup
 redshiftserverless_delete_workgroup <- function(workgroupName) {
   op <- new_operation(
     name = "DeleteWorkgroup",
@@ -1015,6 +1039,8 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_credentials
+#'
+#' @aliases redshiftserverless_get_credentials
 redshiftserverless_get_credentials <- function(dbName = NULL, durationSeconds = NULL, workgroupName) {
   op <- new_operation(
     name = "GetCredentials",
@@ -1091,6 +1117,8 @@ redshiftserverless_get_credentials <- function(dbName = NULL, durationSeconds = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_endpoint_access
+#'
+#' @aliases redshiftserverless_get_endpoint_access
 redshiftserverless_get_endpoint_access <- function(endpointName) {
   op <- new_operation(
     name = "GetEndpointAccess",
@@ -1154,6 +1182,8 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_namespace
+#'
+#' @aliases redshiftserverless_get_namespace
 redshiftserverless_get_namespace <- function(namespaceName) {
   op <- new_operation(
     name = "GetNamespace",
@@ -1207,6 +1237,8 @@ redshiftserverless_get_namespace <- function(namespaceName) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_recovery_point
+#'
+#' @aliases redshiftserverless_get_recovery_point
 redshiftserverless_get_recovery_point <- function(recoveryPointId) {
   op <- new_operation(
     name = "GetRecoveryPoint",
@@ -1255,6 +1287,8 @@ redshiftserverless_get_recovery_point <- function(recoveryPointId) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_resource_policy
+#'
+#' @aliases redshiftserverless_get_resource_policy
 redshiftserverless_get_resource_policy <- function(resourceArn) {
   op <- new_operation(
     name = "GetResourcePolicy",
@@ -1334,6 +1368,8 @@ redshiftserverless_get_resource_policy <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_snapshot
+#'
+#' @aliases redshiftserverless_get_snapshot
 redshiftserverless_get_snapshot <- function(ownerAccount = NULL, snapshotArn = NULL, snapshotName = NULL) {
   op <- new_operation(
     name = "GetSnapshot",
@@ -1387,6 +1423,8 @@ redshiftserverless_get_snapshot <- function(ownerAccount = NULL, snapshotArn = N
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_usage_limit
+#'
+#' @aliases redshiftserverless_get_usage_limit
 redshiftserverless_get_usage_limit <- function(usageLimitId) {
   op <- new_operation(
     name = "GetUsageLimit",
@@ -1474,6 +1512,8 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_workgroup
+#'
+#' @aliases redshiftserverless_get_workgroup
 redshiftserverless_get_workgroup <- function(workgroupName) {
   op <- new_operation(
     name = "GetWorkgroup",
@@ -1567,6 +1607,8 @@ redshiftserverless_get_workgroup <- function(workgroupName) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_endpoint_access
+#'
+#' @aliases redshiftserverless_list_endpoint_access
 redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken = NULL, vpcId = NULL, workgroupName = NULL) {
   op <- new_operation(
     name = "ListEndpointAccess",
@@ -1640,6 +1682,8 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_namespaces
+#'
+#' @aliases redshiftserverless_list_namespaces
 redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListNamespaces",
@@ -1715,6 +1759,8 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_recovery_points
+#'
+#' @aliases redshiftserverless_list_recovery_points
 redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults = NULL, namespaceName = NULL, nextToken = NULL, startTime = NULL) {
   op <- new_operation(
     name = "ListRecoveryPoints",
@@ -1813,6 +1859,8 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_snapshots
+#'
+#' @aliases redshiftserverless_list_snapshots
 redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL, namespaceArn = NULL, namespaceName = NULL, nextToken = NULL, ownerAccount = NULL, startTime = NULL) {
   op <- new_operation(
     name = "ListSnapshots",
@@ -1863,6 +1911,8 @@ redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_tags_for_resource
+#'
+#' @aliases redshiftserverless_list_tags_for_resource
 redshiftserverless_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1933,6 +1983,8 @@ redshiftserverless_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_usage_limits
+#'
+#' @aliases redshiftserverless_list_usage_limits
 redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = NULL, resourceArn = NULL, usageType = NULL) {
   op <- new_operation(
     name = "ListUsageLimits",
@@ -2028,6 +2080,8 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_list_workgroups
+#'
+#' @aliases redshiftserverless_list_workgroups
 redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListWorkgroups",
@@ -2083,6 +2137,8 @@ redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NU
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_put_resource_policy
+#'
+#' @aliases redshiftserverless_put_resource_policy
 redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
   op <- new_operation(
     name = "PutResourcePolicy",
@@ -2152,6 +2208,8 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_restore_from_recovery_point
+#'
+#' @aliases redshiftserverless_restore_from_recovery_point
 redshiftserverless_restore_from_recovery_point <- function(namespaceName, recoveryPointId, workgroupName) {
   op <- new_operation(
     name = "RestoreFromRecoveryPoint",
@@ -2226,6 +2284,8 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_restore_from_snapshot
+#'
+#' @aliases redshiftserverless_restore_from_snapshot
 redshiftserverless_restore_from_snapshot <- function(namespaceName, ownerAccount = NULL, snapshotArn = NULL, snapshotName = NULL, workgroupName) {
   op <- new_operation(
     name = "RestoreFromSnapshot",
@@ -2273,6 +2333,8 @@ redshiftserverless_restore_from_snapshot <- function(namespaceName, ownerAccount
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_tag_resource
+#'
+#' @aliases redshiftserverless_tag_resource
 redshiftserverless_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2317,6 +2379,8 @@ redshiftserverless_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_untag_resource
+#'
+#' @aliases redshiftserverless_untag_resource
 redshiftserverless_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2399,6 +2463,8 @@ redshiftserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_endpoint_access
+#'
+#' @aliases redshiftserverless_update_endpoint_access
 redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityGroupIds = NULL) {
   op <- new_operation(
     name = "UpdateEndpointAccess",
@@ -2484,6 +2550,8 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_namespace
+#'
+#' @aliases redshiftserverless_update_namespace
 redshiftserverless_update_namespace <- function(adminUserPassword = NULL, adminUsername = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, namespaceName) {
   op <- new_operation(
     name = "UpdateNamespace",
@@ -2560,6 +2628,8 @@ redshiftserverless_update_namespace <- function(adminUserPassword = NULL, adminU
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_snapshot
+#'
+#' @aliases redshiftserverless_update_snapshot
 redshiftserverless_update_snapshot <- function(retentionPeriod = NULL, snapshotName) {
   op <- new_operation(
     name = "UpdateSnapshot",
@@ -2620,6 +2690,8 @@ redshiftserverless_update_snapshot <- function(retentionPeriod = NULL, snapshotN
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_usage_limit
+#'
+#' @aliases redshiftserverless_update_usage_limit
 redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = NULL, usageLimitId) {
   op <- new_operation(
     name = "UpdateUsageLimit",
@@ -2736,6 +2808,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_workgroup
+#'
+#' @aliases redshiftserverless_update_workgroup
 redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",

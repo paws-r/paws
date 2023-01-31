@@ -75,6 +75,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname codeartifact_associate_external_connection
+#'
+#' @aliases codeartifact_associate_external_connection
 codeartifact_associate_external_connection <- function(domain, domainOwner = NULL, repository, externalConnection) {
   op <- new_operation(
     name = "AssociateExternalConnection",
@@ -191,6 +193,8 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' @keywords internal
 #'
 #' @rdname codeartifact_copy_package_versions
+#'
+#' @aliases codeartifact_copy_package_versions
 codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourceRepository, destinationRepository, format, namespace = NULL, package, versions = NULL, versionRevisions = NULL, allowOverwrite = NULL, includeFromUpstream = NULL) {
   op <- new_operation(
     name = "CopyPackageVersions",
@@ -286,6 +290,8 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' @keywords internal
 #'
 #' @rdname codeartifact_create_domain
+#'
+#' @aliases codeartifact_create_domain
 codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
@@ -375,6 +381,8 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 #' @keywords internal
 #'
 #' @rdname codeartifact_create_repository
+#'
+#' @aliases codeartifact_create_repository
 codeartifact_create_repository <- function(domain, domainOwner = NULL, repository, description = NULL, upstreams = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
@@ -437,6 +445,8 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
 #' @keywords internal
 #'
 #' @rdname codeartifact_delete_domain
+#'
+#' @aliases codeartifact_delete_domain
 codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
   op <- new_operation(
     name = "DeleteDomain",
@@ -495,6 +505,8 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_delete_domain_permissions_policy
+#'
+#' @aliases codeartifact_delete_domain_permissions_policy
 codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = NULL, policyRevision = NULL) {
   op <- new_operation(
     name = "DeleteDomainPermissionsPolicy",
@@ -586,6 +598,8 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' @keywords internal
 #'
 #' @rdname codeartifact_delete_package_versions
+#'
+#' @aliases codeartifact_delete_package_versions
 codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, versions, expectedStatus = NULL) {
   op <- new_operation(
     name = "DeletePackageVersions",
@@ -655,6 +669,8 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #' @keywords internal
 #'
 #' @rdname codeartifact_delete_repository
+#'
+#' @aliases codeartifact_delete_repository
 codeartifact_delete_repository <- function(domain, domainOwner = NULL, repository) {
   op <- new_operation(
     name = "DeleteRepository",
@@ -726,6 +742,8 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #' @keywords internal
 #'
 #' @rdname codeartifact_delete_repository_permissions_policy
+#'
+#' @aliases codeartifact_delete_repository_permissions_policy
 codeartifact_delete_repository_permissions_policy <- function(domain, domainOwner = NULL, repository, policyRevision = NULL) {
   op <- new_operation(
     name = "DeleteRepositoryPermissionsPolicy",
@@ -789,6 +807,8 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
 #' @keywords internal
 #'
 #' @rdname codeartifact_describe_domain
+#'
+#' @aliases codeartifact_describe_domain
 codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
   op <- new_operation(
     name = "DescribeDomain",
@@ -869,6 +889,8 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_describe_package
+#'
+#' @aliases codeartifact_describe_package
 codeartifact_describe_package <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package) {
   op <- new_operation(
     name = "DescribePackage",
@@ -968,6 +990,8 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #' @keywords internal
 #'
 #' @rdname codeartifact_describe_package_version
+#'
+#' @aliases codeartifact_describe_package_version
 codeartifact_describe_package_version <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, packageVersion) {
   op <- new_operation(
     name = "DescribePackageVersion",
@@ -1039,6 +1063,8 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #' @keywords internal
 #'
 #' @rdname codeartifact_describe_repository
+#'
+#' @aliases codeartifact_describe_repository
 codeartifact_describe_repository <- function(domain, domainOwner = NULL, repository) {
   op <- new_operation(
     name = "DescribeRepository",
@@ -1113,6 +1139,8 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #' @keywords internal
 #'
 #' @rdname codeartifact_disassociate_external_connection
+#'
+#' @aliases codeartifact_disassociate_external_connection
 codeartifact_disassociate_external_connection <- function(domain, domainOwner = NULL, repository, externalConnection) {
   op <- new_operation(
     name = "DisassociateExternalConnection",
@@ -1215,6 +1243,8 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' @keywords internal
 #'
 #' @rdname codeartifact_dispose_package_versions
+#'
+#' @aliases codeartifact_dispose_package_versions
 codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, versions, versionRevisions = NULL, expectedStatus = NULL) {
   op <- new_operation(
     name = "DisposePackageVersions",
@@ -1301,6 +1331,8 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' @keywords internal
 #'
 #' @rdname codeartifact_get_authorization_token
+#'
+#' @aliases codeartifact_get_authorization_token
 codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, durationSeconds = NULL) {
   op <- new_operation(
     name = "GetAuthorizationToken",
@@ -1358,6 +1390,8 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
 #' @keywords internal
 #'
 #' @rdname codeartifact_get_domain_permissions_policy
+#'
+#' @aliases codeartifact_get_domain_permissions_policy
 codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NULL) {
   op <- new_operation(
     name = "GetDomainPermissionsPolicy",
@@ -1443,6 +1477,8 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @keywords internal
 #'
 #' @rdname codeartifact_get_package_version_asset
+#'
+#' @aliases codeartifact_get_package_version_asset
 codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, packageVersion, asset, packageVersionRevision = NULL) {
   op <- new_operation(
     name = "GetPackageVersionAsset",
@@ -1525,6 +1561,8 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' @keywords internal
 #'
 #' @rdname codeartifact_get_package_version_readme
+#'
+#' @aliases codeartifact_get_package_version_readme
 codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, packageVersion) {
   op <- new_operation(
     name = "GetPackageVersionReadme",
@@ -1589,6 +1627,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' @keywords internal
 #'
 #' @rdname codeartifact_get_repository_endpoint
+#'
+#' @aliases codeartifact_get_repository_endpoint
 codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, repository, format) {
   op <- new_operation(
     name = "GetRepositoryEndpoint",
@@ -1646,6 +1686,8 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
 #' @keywords internal
 #'
 #' @rdname codeartifact_get_repository_permissions_policy
+#'
+#' @aliases codeartifact_get_repository_permissions_policy
 codeartifact_get_repository_permissions_policy <- function(domain, domainOwner = NULL, repository) {
   op <- new_operation(
     name = "GetRepositoryPermissionsPolicy",
@@ -1712,6 +1754,8 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_domains
+#'
+#' @aliases codeartifact_list_domains
 codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListDomains",
@@ -1808,6 +1852,8 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_package_version_assets
+#'
+#' @aliases codeartifact_list_package_version_assets
 codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, packageVersion, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListPackageVersionAssets",
@@ -1902,6 +1948,8 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_package_version_dependencies
+#'
+#' @aliases codeartifact_list_package_version_dependencies
 codeartifact_list_package_version_dependencies <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, packageVersion, nextToken = NULL) {
   op <- new_operation(
     name = "ListPackageVersionDependencies",
@@ -2005,6 +2053,8 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_package_versions
+#'
+#' @aliases codeartifact_list_package_versions
 codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, status = NULL, sortBy = NULL, maxResults = NULL, nextToken = NULL, originType = NULL) {
   op <- new_operation(
     name = "ListPackageVersions",
@@ -2106,6 +2156,8 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_packages
+#'
+#' @aliases codeartifact_list_packages
 codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, format = NULL, namespace = NULL, packagePrefix = NULL, maxResults = NULL, nextToken = NULL, publish = NULL, upstream = NULL) {
   op <- new_operation(
     name = "ListPackages",
@@ -2172,6 +2224,8 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_repositories
+#'
+#' @aliases codeartifact_list_repositories
 codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRepositories",
@@ -2247,6 +2301,8 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_repositories_in_domain
+#'
+#' @aliases codeartifact_list_repositories_in_domain
 codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL, administratorAccount = NULL, repositoryPrefix = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRepositoriesInDomain",
@@ -2299,6 +2355,8 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 #' @keywords internal
 #'
 #' @rdname codeartifact_list_tags_for_resource
+#'
+#' @aliases codeartifact_list_tags_for_resource
 codeartifact_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2368,6 +2426,8 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_put_domain_permissions_policy
+#'
+#' @aliases codeartifact_put_domain_permissions_policy
 codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NULL, policyRevision = NULL, policyDocument) {
   op <- new_operation(
     name = "PutDomainPermissionsPolicy",
@@ -2472,6 +2532,8 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @keywords internal
 #'
 #' @rdname codeartifact_put_package_origin_configuration
+#'
+#' @aliases codeartifact_put_package_origin_configuration
 codeartifact_put_package_origin_configuration <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, restrictions) {
   op <- new_operation(
     name = "PutPackageOriginConfiguration",
@@ -2545,6 +2607,8 @@ codeartifact_put_package_origin_configuration <- function(domain, domainOwner = 
 #' @keywords internal
 #'
 #' @rdname codeartifact_put_repository_permissions_policy
+#'
+#' @aliases codeartifact_put_repository_permissions_policy
 codeartifact_put_repository_permissions_policy <- function(domain, domainOwner = NULL, repository, policyRevision = NULL, policyDocument) {
   op <- new_operation(
     name = "PutRepositoryPermissionsPolicy",
@@ -2593,6 +2657,8 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #' @keywords internal
 #'
 #' @rdname codeartifact_tag_resource
+#'
+#' @aliases codeartifact_tag_resource
 codeartifact_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2638,6 +2704,8 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_untag_resource
+#'
+#' @aliases codeartifact_untag_resource
 codeartifact_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2743,6 +2811,8 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname codeartifact_update_package_versions_status
+#'
+#' @aliases codeartifact_update_package_versions_status
 codeartifact_update_package_versions_status <- function(domain, domainOwner = NULL, repository, format, namespace = NULL, package, versions, versionRevisions = NULL, expectedStatus = NULL, targetStatus) {
   op <- new_operation(
     name = "UpdatePackageVersionsStatus",
@@ -2825,6 +2895,8 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #' @keywords internal
 #'
 #' @rdname codeartifact_update_repository
+#'
+#' @aliases codeartifact_update_repository
 codeartifact_update_repository <- function(domain, domainOwner = NULL, repository, description = NULL, upstreams = NULL) {
   op <- new_operation(
     name = "UpdateRepository",

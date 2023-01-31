@@ -54,6 +54,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname proton_accept_environment_account_connection
+#'
+#' @aliases proton_accept_environment_account_connection
 proton_accept_environment_account_connection <- function(id) {
   op <- new_operation(
     name = "AcceptEnvironmentAccountConnection",
@@ -127,6 +129,8 @@ proton_accept_environment_account_connection <- function(id) {
 #' @keywords internal
 #'
 #' @rdname proton_cancel_component_deployment
+#'
+#' @aliases proton_cancel_component_deployment
 proton_cancel_component_deployment <- function(componentName) {
   op <- new_operation(
     name = "CancelComponentDeployment",
@@ -220,6 +224,8 @@ proton_cancel_component_deployment <- function(componentName) {
 #' @keywords internal
 #'
 #' @rdname proton_cancel_environment_deployment
+#'
+#' @aliases proton_cancel_environment_deployment
 proton_cancel_environment_deployment <- function(environmentName) {
   op <- new_operation(
     name = "CancelEnvironmentDeployment",
@@ -309,6 +315,8 @@ proton_cancel_environment_deployment <- function(environmentName) {
 #' @keywords internal
 #'
 #' @rdname proton_cancel_service_instance_deployment
+#'
+#' @aliases proton_cancel_service_instance_deployment
 proton_cancel_service_instance_deployment <- function(serviceInstanceName, serviceName) {
   op <- new_operation(
     name = "CancelServiceInstanceDeployment",
@@ -392,6 +400,8 @@ proton_cancel_service_instance_deployment <- function(serviceInstanceName, servi
 #' @keywords internal
 #'
 #' @rdname proton_cancel_service_pipeline_deployment
+#'
+#' @aliases proton_cancel_service_pipeline_deployment
 proton_cancel_service_pipeline_deployment <- function(serviceName) {
   op <- new_operation(
     name = "CancelServicePipelineDeployment",
@@ -509,6 +519,8 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #' @keywords internal
 #'
 #' @rdname proton_create_component
+#'
+#' @aliases proton_create_component
 proton_create_component <- function(description = NULL, environmentName = NULL, manifest, name, serviceInstanceName = NULL, serviceName = NULL, serviceSpec = NULL, tags = NULL, templateFile) {
   op <- new_operation(
     name = "CreateComponent",
@@ -675,6 +687,8 @@ proton_create_component <- function(description = NULL, environmentName = NULL, 
 #' @keywords internal
 #'
 #' @rdname proton_create_environment
+#'
+#' @aliases proton_create_environment
 proton_create_environment <- function(componentRoleArn = NULL, description = NULL, environmentAccountConnectionId = NULL, name, protonServiceRoleArn = NULL, provisioningRepository = NULL, spec, tags = NULL, templateMajorVersion, templateMinorVersion = NULL, templateName) {
   op <- new_operation(
     name = "CreateEnvironment",
@@ -787,6 +801,8 @@ proton_create_environment <- function(componentRoleArn = NULL, description = NUL
 #' @keywords internal
 #'
 #' @rdname proton_create_environment_account_connection
+#'
+#' @aliases proton_create_environment_account_connection
 proton_create_environment_account_connection <- function(clientToken = NULL, componentRoleArn = NULL, environmentName, managementAccountId, roleArn, tags = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentAccountConnection",
@@ -888,6 +904,8 @@ proton_create_environment_account_connection <- function(clientToken = NULL, com
 #' @keywords internal
 #'
 #' @rdname proton_create_environment_template
+#'
+#' @aliases proton_create_environment_template
 proton_create_environment_template <- function(description = NULL, displayName = NULL, encryptionKey = NULL, name, provisioning = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentTemplate",
@@ -987,6 +1005,8 @@ proton_create_environment_template <- function(description = NULL, displayName =
 #' @keywords internal
 #'
 #' @rdname proton_create_environment_template_version
+#'
+#' @aliases proton_create_environment_template_version
 proton_create_environment_template_version <- function(clientToken = NULL, description = NULL, majorVersion = NULL, source, tags = NULL, templateName) {
   op <- new_operation(
     name = "CreateEnvironmentTemplateVersion",
@@ -1078,6 +1098,8 @@ proton_create_environment_template_version <- function(clientToken = NULL, descr
 #' @keywords internal
 #'
 #' @rdname proton_create_repository
+#'
+#' @aliases proton_create_repository
 proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, provider, tags = NULL) {
   op <- new_operation(
     name = "CreateRepository",
@@ -1214,6 +1236,8 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
 #' @keywords internal
 #'
 #' @rdname proton_create_service
+#'
+#' @aliases proton_create_service
 proton_create_service <- function(branchName = NULL, description = NULL, name, repositoryConnectionArn = NULL, repositoryId = NULL, spec, tags = NULL, templateMajorVersion, templateMinorVersion = NULL, templateName) {
   op <- new_operation(
     name = "CreateService",
@@ -1310,6 +1334,8 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
 #' @keywords internal
 #'
 #' @rdname proton_create_service_template
+#'
+#' @aliases proton_create_service_template
 proton_create_service_template <- function(description = NULL, displayName = NULL, encryptionKey = NULL, name, pipelineProvisioning = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateServiceTemplate",
@@ -1438,6 +1464,8 @@ proton_create_service_template <- function(description = NULL, displayName = NUL
 #' @keywords internal
 #'
 #' @rdname proton_create_service_template_version
+#'
+#' @aliases proton_create_service_template_version
 proton_create_service_template_version <- function(clientToken = NULL, compatibleEnvironmentTemplates, description = NULL, majorVersion = NULL, source, supportedComponentSources = NULL, tags = NULL, templateName) {
   op <- new_operation(
     name = "CreateServiceTemplateVersion",
@@ -1511,6 +1539,8 @@ proton_create_service_template_version <- function(clientToken = NULL, compatibl
 #' @keywords internal
 #'
 #' @rdname proton_create_template_sync_config
+#'
+#' @aliases proton_create_template_sync_config
 proton_create_template_sync_config <- function(branch, repositoryName, repositoryProvider, subdirectory = NULL, templateName, templateType) {
   op <- new_operation(
     name = "CreateTemplateSyncConfig",
@@ -1582,6 +1612,8 @@ proton_create_template_sync_config <- function(branch, repositoryName, repositor
 #' @keywords internal
 #'
 #' @rdname proton_delete_component
+#'
+#' @aliases proton_delete_component
 proton_delete_component <- function(name) {
   op <- new_operation(
     name = "DeleteComponent",
@@ -1657,6 +1689,8 @@ proton_delete_component <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_environment
+#'
+#' @aliases proton_delete_environment
 proton_delete_environment <- function(name) {
   op <- new_operation(
     name = "DeleteEnvironment",
@@ -1728,6 +1762,8 @@ proton_delete_environment <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_environment_account_connection
+#'
+#' @aliases proton_delete_environment_account_connection
 proton_delete_environment_account_connection <- function(id) {
   op <- new_operation(
     name = "DeleteEnvironmentAccountConnection",
@@ -1789,6 +1825,8 @@ proton_delete_environment_account_connection <- function(id) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_environment_template
+#'
+#' @aliases proton_delete_environment_template
 proton_delete_environment_template <- function(name) {
   op <- new_operation(
     name = "DeleteEnvironmentTemplate",
@@ -1868,6 +1906,8 @@ proton_delete_environment_template <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_environment_template_version
+#'
+#' @aliases proton_delete_environment_template_version
 proton_delete_environment_template_version <- function(majorVersion, minorVersion, templateName) {
   op <- new_operation(
     name = "DeleteEnvironmentTemplateVersion",
@@ -1921,6 +1961,8 @@ proton_delete_environment_template_version <- function(majorVersion, minorVersio
 #' @keywords internal
 #'
 #' @rdname proton_delete_repository
+#'
+#' @aliases proton_delete_repository
 proton_delete_repository <- function(name, provider) {
   op <- new_operation(
     name = "DeleteRepository",
@@ -2008,6 +2050,8 @@ proton_delete_repository <- function(name, provider) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_service
+#'
+#' @aliases proton_delete_service
 proton_delete_service <- function(name) {
   op <- new_operation(
     name = "DeleteService",
@@ -2069,6 +2113,8 @@ proton_delete_service <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_service_template
+#'
+#' @aliases proton_delete_service_template
 proton_delete_service_template <- function(name) {
   op <- new_operation(
     name = "DeleteServiceTemplate",
@@ -2156,6 +2202,8 @@ proton_delete_service_template <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_delete_service_template_version
+#'
+#' @aliases proton_delete_service_template_version
 proton_delete_service_template_version <- function(majorVersion, minorVersion, templateName) {
   op <- new_operation(
     name = "DeleteServiceTemplateVersion",
@@ -2210,6 +2258,8 @@ proton_delete_service_template_version <- function(majorVersion, minorVersion, t
 #' @keywords internal
 #'
 #' @rdname proton_delete_template_sync_config
+#'
+#' @aliases proton_delete_template_sync_config
 proton_delete_template_sync_config <- function(templateName, templateType) {
   op <- new_operation(
     name = "DeleteTemplateSyncConfig",
@@ -2259,6 +2309,8 @@ proton_delete_template_sync_config <- function(templateName, templateType) {
 #' @keywords internal
 #'
 #' @rdname proton_get_account_settings
+#'
+#' @aliases proton_get_account_settings
 proton_get_account_settings <- function() {
   op <- new_operation(
     name = "GetAccountSettings",
@@ -2330,6 +2382,8 @@ proton_get_account_settings <- function() {
 #' @keywords internal
 #'
 #' @rdname proton_get_component
+#'
+#' @aliases proton_get_component
 proton_get_component <- function(name) {
   op <- new_operation(
     name = "GetComponent",
@@ -2405,6 +2459,8 @@ proton_get_component <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_get_environment
+#'
+#' @aliases proton_get_environment
 proton_get_environment <- function(name) {
   op <- new_operation(
     name = "GetEnvironment",
@@ -2472,6 +2528,8 @@ proton_get_environment <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_get_environment_account_connection
+#'
+#' @aliases proton_get_environment_account_connection
 proton_get_environment_account_connection <- function(id) {
   op <- new_operation(
     name = "GetEnvironmentAccountConnection",
@@ -2532,6 +2590,8 @@ proton_get_environment_account_connection <- function(id) {
 #' @keywords internal
 #'
 #' @rdname proton_get_environment_template
+#'
+#' @aliases proton_get_environment_template
 proton_get_environment_template <- function(name) {
   op <- new_operation(
     name = "GetEnvironmentTemplate",
@@ -2603,6 +2663,8 @@ proton_get_environment_template <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_get_environment_template_version
+#'
+#' @aliases proton_get_environment_template_version
 proton_get_environment_template_version <- function(majorVersion, minorVersion, templateName) {
   op <- new_operation(
     name = "GetEnvironmentTemplateVersion",
@@ -2656,6 +2718,8 @@ proton_get_environment_template_version <- function(majorVersion, minorVersion, 
 #' @keywords internal
 #'
 #' @rdname proton_get_repository
+#'
+#' @aliases proton_get_repository
 proton_get_repository <- function(name, provider) {
   op <- new_operation(
     name = "GetRepository",
@@ -2734,6 +2798,8 @@ proton_get_repository <- function(name, provider) {
 #' @keywords internal
 #'
 #' @rdname proton_get_repository_sync_status
+#'
+#' @aliases proton_get_repository_sync_status
 proton_get_repository_sync_status <- function(branch, repositoryName, repositoryProvider, syncType) {
   op <- new_operation(
     name = "GetRepositorySyncStatus",
@@ -2814,6 +2880,8 @@ proton_get_repository_sync_status <- function(branch, repositoryName, repository
 #' @keywords internal
 #'
 #' @rdname proton_get_service
+#'
+#' @aliases proton_get_service
 proton_get_service <- function(name) {
   op <- new_operation(
     name = "GetService",
@@ -2883,6 +2951,8 @@ proton_get_service <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_get_service_instance
+#'
+#' @aliases proton_get_service_instance
 proton_get_service_instance <- function(name, serviceName) {
   op <- new_operation(
     name = "GetServiceInstance",
@@ -2942,6 +3012,8 @@ proton_get_service_instance <- function(name, serviceName) {
 #' @keywords internal
 #'
 #' @rdname proton_get_service_template
+#'
+#' @aliases proton_get_service_template
 proton_get_service_template <- function(name) {
   op <- new_operation(
     name = "GetServiceTemplate",
@@ -3020,6 +3092,8 @@ proton_get_service_template <- function(name) {
 #' @keywords internal
 #'
 #' @rdname proton_get_service_template_version
+#'
+#' @aliases proton_get_service_template_version
 proton_get_service_template_version <- function(majorVersion, minorVersion, templateName) {
   op <- new_operation(
     name = "GetServiceTemplateVersion",
@@ -3074,6 +3148,8 @@ proton_get_service_template_version <- function(majorVersion, minorVersion, temp
 #' @keywords internal
 #'
 #' @rdname proton_get_template_sync_config
+#'
+#' @aliases proton_get_template_sync_config
 proton_get_template_sync_config <- function(templateName, templateType) {
   op <- new_operation(
     name = "GetTemplateSyncConfig",
@@ -3192,6 +3268,8 @@ proton_get_template_sync_config <- function(templateName, templateType) {
 #' @keywords internal
 #'
 #' @rdname proton_get_template_sync_status
+#'
+#' @aliases proton_get_template_sync_status
 proton_get_template_sync_status <- function(templateName, templateType, templateVersion) {
   op <- new_operation(
     name = "GetTemplateSyncStatus",
@@ -3250,6 +3328,8 @@ proton_get_template_sync_status <- function(templateName, templateType, template
 #' @keywords internal
 #'
 #' @rdname proton_list_component_outputs
+#'
+#' @aliases proton_list_component_outputs
 proton_list_component_outputs <- function(componentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponentOutputs",
@@ -3310,6 +3390,8 @@ proton_list_component_outputs <- function(componentName, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_list_component_provisioned_resources
+#'
+#' @aliases proton_list_component_provisioned_resources
 proton_list_component_provisioned_resources <- function(componentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponentProvisionedResources",
@@ -3398,6 +3480,8 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
 #' @keywords internal
 #'
 #' @rdname proton_list_components
+#'
+#' @aliases proton_list_components
 proton_list_components <- function(environmentName = NULL, maxResults = NULL, nextToken = NULL, serviceInstanceName = NULL, serviceName = NULL) {
   op <- new_operation(
     name = "ListComponents",
@@ -3481,6 +3565,8 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_account_connections
+#'
+#' @aliases proton_list_environment_account_connections
 proton_list_environment_account_connections <- function(environmentName = NULL, maxResults = NULL, nextToken = NULL, requestedBy, statuses = NULL) {
   op <- new_operation(
     name = "ListEnvironmentAccountConnections",
@@ -3536,6 +3622,8 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_outputs
+#'
+#' @aliases proton_list_environment_outputs
 proton_list_environment_outputs <- function(environmentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironmentOutputs",
@@ -3593,6 +3681,8 @@ proton_list_environment_outputs <- function(environmentName, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_provisioned_resources
+#'
+#' @aliases proton_list_environment_provisioned_resources
 proton_list_environment_provisioned_resources <- function(environmentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironmentProvisionedResources",
@@ -3671,6 +3761,8 @@ proton_list_environment_provisioned_resources <- function(environmentName, nextT
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_template_versions
+#'
+#' @aliases proton_list_environment_template_versions
 proton_list_environment_template_versions <- function(majorVersion = NULL, maxResults = NULL, nextToken = NULL, templateName) {
   op <- new_operation(
     name = "ListEnvironmentTemplateVersions",
@@ -3736,6 +3828,8 @@ proton_list_environment_template_versions <- function(majorVersion = NULL, maxRe
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_templates
+#'
+#' @aliases proton_list_environment_templates
 proton_list_environment_templates <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironmentTemplates",
@@ -3818,6 +3912,8 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
 #' @keywords internal
 #'
 #' @rdname proton_list_environments
+#'
+#' @aliases proton_list_environments
 proton_list_environments <- function(environmentTemplates = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironments",
@@ -3873,6 +3969,8 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname proton_list_repositories
+#'
+#' @aliases proton_list_repositories
 proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRepositories",
@@ -3935,6 +4033,8 @@ proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_list_repository_sync_definitions
+#'
+#' @aliases proton_list_repository_sync_definitions
 proton_list_repository_sync_definitions <- function(nextToken = NULL, repositoryName, repositoryProvider, syncType) {
   op <- new_operation(
     name = "ListRepositorySyncDefinitions",
@@ -3992,6 +4092,8 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' @keywords internal
 #'
 #' @rdname proton_list_service_instance_outputs
+#'
+#' @aliases proton_list_service_instance_outputs
 proton_list_service_instance_outputs <- function(nextToken = NULL, serviceInstanceName, serviceName) {
   op <- new_operation(
     name = "ListServiceInstanceOutputs",
@@ -4051,6 +4153,8 @@ proton_list_service_instance_outputs <- function(nextToken = NULL, serviceInstan
 #' @keywords internal
 #'
 #' @rdname proton_list_service_instance_provisioned_resources
+#'
+#' @aliases proton_list_service_instance_provisioned_resources
 proton_list_service_instance_provisioned_resources <- function(nextToken = NULL, serviceInstanceName, serviceName) {
   op <- new_operation(
     name = "ListServiceInstanceProvisionedResources",
@@ -4124,6 +4228,8 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname proton_list_service_instances
+#'
+#' @aliases proton_list_service_instances
 proton_list_service_instances <- function(maxResults = NULL, nextToken = NULL, serviceName = NULL) {
   op <- new_operation(
     name = "ListServiceInstances",
@@ -4178,6 +4284,8 @@ proton_list_service_instances <- function(maxResults = NULL, nextToken = NULL, s
 #' @keywords internal
 #'
 #' @rdname proton_list_service_pipeline_outputs
+#'
+#' @aliases proton_list_service_pipeline_outputs
 proton_list_service_pipeline_outputs <- function(nextToken = NULL, serviceName) {
   op <- new_operation(
     name = "ListServicePipelineOutputs",
@@ -4235,6 +4343,8 @@ proton_list_service_pipeline_outputs <- function(nextToken = NULL, serviceName) 
 #' @keywords internal
 #'
 #' @rdname proton_list_service_pipeline_provisioned_resources
+#'
+#' @aliases proton_list_service_pipeline_provisioned_resources
 proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL, serviceName) {
   op <- new_operation(
     name = "ListServicePipelineProvisionedResources",
@@ -4312,6 +4422,8 @@ proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname proton_list_service_template_versions
+#'
+#' @aliases proton_list_service_template_versions
 proton_list_service_template_versions <- function(majorVersion = NULL, maxResults = NULL, nextToken = NULL, templateName) {
   op <- new_operation(
     name = "ListServiceTemplateVersions",
@@ -4377,6 +4489,8 @@ proton_list_service_template_versions <- function(majorVersion = NULL, maxResult
 #' @keywords internal
 #'
 #' @rdname proton_list_service_templates
+#'
+#' @aliases proton_list_service_templates
 proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListServiceTemplates",
@@ -4441,6 +4555,8 @@ proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_list_services
+#'
+#' @aliases proton_list_services
 proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListServices",
@@ -4502,6 +4618,8 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_list_tags_for_resource
+#'
+#' @aliases proton_list_tags_for_resource
 proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4563,6 +4681,8 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
 #' @keywords internal
 #'
 #' @rdname proton_notify_resource_deployment_status_change
+#'
+#' @aliases proton_notify_resource_deployment_status_change
 proton_notify_resource_deployment_status_change <- function(deploymentId = NULL, outputs = NULL, resourceArn, status, statusMessage = NULL) {
   op <- new_operation(
     name = "NotifyResourceDeploymentStatusChange",
@@ -4635,6 +4755,8 @@ proton_notify_resource_deployment_status_change <- function(deploymentId = NULL,
 #' @keywords internal
 #'
 #' @rdname proton_reject_environment_account_connection
+#'
+#' @aliases proton_reject_environment_account_connection
 proton_reject_environment_account_connection <- function(id) {
   op <- new_operation(
     name = "RejectEnvironmentAccountConnection",
@@ -4690,6 +4812,8 @@ proton_reject_environment_account_connection <- function(id) {
 #' @keywords internal
 #'
 #' @rdname proton_tag_resource
+#'
+#' @aliases proton_tag_resource
 proton_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4743,6 +4867,8 @@ proton_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname proton_untag_resource
+#'
+#' @aliases proton_untag_resource
 proton_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4808,6 +4934,8 @@ proton_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname proton_update_account_settings
+#'
+#' @aliases proton_update_account_settings
 proton_update_account_settings <- function(pipelineProvisioningRepository = NULL, pipelineServiceRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateAccountSettings",
@@ -4929,6 +5057,8 @@ proton_update_account_settings <- function(pipelineProvisioningRepository = NULL
 #' @keywords internal
 #'
 #' @rdname proton_update_component
+#'
+#' @aliases proton_update_component
 proton_update_component <- function(deploymentType, description = NULL, name, serviceInstanceName = NULL, serviceName = NULL, serviceSpec = NULL, templateFile = NULL) {
   op <- new_operation(
     name = "UpdateComponent",
@@ -5148,6 +5278,8 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' @keywords internal
 #'
 #' @rdname proton_update_environment
+#'
+#' @aliases proton_update_environment
 proton_update_environment <- function(componentRoleArn = NULL, deploymentType, description = NULL, environmentAccountConnectionId = NULL, name, protonServiceRoleArn = NULL, provisioningRepository = NULL, spec = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
@@ -5231,6 +5363,8 @@ proton_update_environment <- function(componentRoleArn = NULL, deploymentType, d
 #' @keywords internal
 #'
 #' @rdname proton_update_environment_account_connection
+#'
+#' @aliases proton_update_environment_account_connection
 proton_update_environment_account_connection <- function(componentRoleArn = NULL, id, roleArn = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentAccountConnection",
@@ -5295,6 +5429,8 @@ proton_update_environment_account_connection <- function(componentRoleArn = NULL
 #' @keywords internal
 #'
 #' @rdname proton_update_environment_template
+#'
+#' @aliases proton_update_environment_template
 proton_update_environment_template <- function(description = NULL, displayName = NULL, name) {
   op <- new_operation(
     name = "UpdateEnvironmentTemplate",
@@ -5367,6 +5503,8 @@ proton_update_environment_template <- function(description = NULL, displayName =
 #' @keywords internal
 #'
 #' @rdname proton_update_environment_template_version
+#'
+#' @aliases proton_update_environment_template_version
 proton_update_environment_template_version <- function(description = NULL, majorVersion, minorVersion, status = NULL, templateName) {
   op <- new_operation(
     name = "UpdateEnvironmentTemplateVersion",
@@ -5473,6 +5611,8 @@ proton_update_environment_template_version <- function(description = NULL, major
 #' @keywords internal
 #'
 #' @rdname proton_update_service
+#'
+#' @aliases proton_update_service
 proton_update_service <- function(description = NULL, name, spec = NULL) {
   op <- new_operation(
     name = "UpdateService",
@@ -5594,6 +5734,8 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_update_service_instance
+#'
+#' @aliases proton_update_service_instance
 proton_update_service_instance <- function(deploymentType, name, serviceName, spec = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
   op <- new_operation(
     name = "UpdateServiceInstance",
@@ -5741,6 +5883,8 @@ proton_update_service_instance <- function(deploymentType, name, serviceName, sp
 #' @keywords internal
 #'
 #' @rdname proton_update_service_pipeline
+#'
+#' @aliases proton_update_service_pipeline
 proton_update_service_pipeline <- function(deploymentType, serviceName, spec, templateMajorVersion = NULL, templateMinorVersion = NULL) {
   op <- new_operation(
     name = "UpdateServicePipeline",
@@ -5805,6 +5949,8 @@ proton_update_service_pipeline <- function(deploymentType, serviceName, spec, te
 #' @keywords internal
 #'
 #' @rdname proton_update_service_template
+#'
+#' @aliases proton_update_service_template
 proton_update_service_template <- function(description = NULL, displayName = NULL, name) {
   op <- new_operation(
     name = "UpdateServiceTemplate",
@@ -5909,6 +6055,8 @@ proton_update_service_template <- function(description = NULL, displayName = NUL
 #' @keywords internal
 #'
 #' @rdname proton_update_service_template_version
+#'
+#' @aliases proton_update_service_template_version
 proton_update_service_template_version <- function(compatibleEnvironmentTemplates = NULL, description = NULL, majorVersion, minorVersion, status = NULL, supportedComponentSources = NULL, templateName) {
   op <- new_operation(
     name = "UpdateServiceTemplateVersion",
@@ -5975,6 +6123,8 @@ proton_update_service_template_version <- function(compatibleEnvironmentTemplate
 #' @keywords internal
 #'
 #' @rdname proton_update_template_sync_config
+#'
+#' @aliases proton_update_template_sync_config
 proton_update_template_sync_config <- function(branch, repositoryName, repositoryProvider, subdirectory = NULL, templateName, templateType) {
   op <- new_operation(
     name = "UpdateTemplateSyncConfig",

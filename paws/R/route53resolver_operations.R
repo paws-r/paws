@@ -84,6 +84,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname route53resolver_associate_firewall_rule_group
+#'
+#' @aliases route53resolver_associate_firewall_rule_group
 route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, FirewallRuleGroupId, VpcId, Priority, Name, MutationProtection = NULL, Tags = NULL) {
   op <- new_operation(
     name = "AssociateFirewallRuleGroup",
@@ -160,6 +162,8 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
 #' @keywords internal
 #'
 #' @rdname route53resolver_associate_resolver_endpoint_ip_address
+#'
+#' @aliases route53resolver_associate_resolver_endpoint_ip_address
 route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpointId, IpAddress) {
   op <- new_operation(
     name = "AssociateResolverEndpointIpAddress",
@@ -231,6 +235,8 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
 #' @keywords internal
 #'
 #' @rdname route53resolver_associate_resolver_query_log_config
+#'
+#' @aliases route53resolver_associate_resolver_query_log_config
 route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLogConfigId, ResourceId) {
   op <- new_operation(
     name = "AssociateResolverQueryLogConfig",
@@ -295,6 +301,8 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
 #' @keywords internal
 #'
 #' @rdname route53resolver_associate_resolver_rule
+#'
+#' @aliases route53resolver_associate_resolver_rule
 route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL, VPCId) {
   op <- new_operation(
     name = "AssociateResolverRule",
@@ -369,6 +377,8 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_firewall_domain_list
+#'
+#' @aliases route53resolver_create_firewall_domain_list
 route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateFirewallDomainList",
@@ -494,6 +504,8 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_firewall_rule
+#'
+#' @aliases route53resolver_create_firewall_rule
 route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleGroupId, FirewallDomainListId, Priority, Action, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name) {
   op <- new_operation(
     name = "CreateFirewallRule",
@@ -566,6 +578,8 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_firewall_rule_group
+#'
+#' @aliases route53resolver_create_firewall_rule_group
 route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, Tags = NULL) {
   op <- new_operation(
     name = "CreateFirewallRuleGroup",
@@ -674,6 +688,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_endpoint
+#'
+#' @aliases route53resolver_create_resolver_endpoint
 route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
@@ -780,6 +796,8 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_query_log_config
+#'
+#' @aliases route53resolver_create_resolver_query_log_config
 route53resolver_create_resolver_query_log_config <- function(Name, DestinationArn, CreatorRequestId, Tags = NULL) {
   op <- new_operation(
     name = "CreateResolverQueryLogConfig",
@@ -901,6 +919,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_rule
+#'
+#' @aliases route53resolver_create_resolver_rule
 route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, RuleType, DomainName, TargetIps = NULL, ResolverEndpointId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateResolverRule",
@@ -957,6 +977,8 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_firewall_domain_list
+#'
+#' @aliases route53resolver_delete_firewall_domain_list
 route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
   op <- new_operation(
     name = "DeleteFirewallDomainList",
@@ -1019,6 +1041,8 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_firewall_rule
+#'
+#' @aliases route53resolver_delete_firewall_rule
 route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId) {
   op <- new_operation(
     name = "DeleteFirewallRule",
@@ -1077,6 +1101,8 @@ route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_firewall_rule_group
+#'
+#' @aliases route53resolver_delete_firewall_rule_group
 route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
   op <- new_operation(
     name = "DeleteFirewallRuleGroup",
@@ -1144,6 +1170,8 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_resolver_endpoint
+#'
+#' @aliases route53resolver_delete_resolver_endpoint
 route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
   op <- new_operation(
     name = "DeleteResolverEndpoint",
@@ -1218,6 +1246,8 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_resolver_query_log_config
+#'
+#' @aliases route53resolver_delete_resolver_query_log_config
 route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogConfigId) {
   op <- new_operation(
     name = "DeleteResolverQueryLogConfig",
@@ -1286,6 +1316,8 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #' @keywords internal
 #'
 #' @rdname route53resolver_delete_resolver_rule
+#'
+#' @aliases route53resolver_delete_resolver_rule
 route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
   op <- new_operation(
     name = "DeleteResolverRule",
@@ -1348,6 +1380,8 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_disassociate_firewall_rule_group
+#'
+#' @aliases route53resolver_disassociate_firewall_rule_group
 route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAssociationId) {
   op <- new_operation(
     name = "DisassociateFirewallRuleGroup",
@@ -1422,6 +1456,8 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
 #' @keywords internal
 #'
 #' @rdname route53resolver_disassociate_resolver_endpoint_ip_address
+#'
+#' @aliases route53resolver_disassociate_resolver_endpoint_ip_address
 route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEndpointId, IpAddress) {
   op <- new_operation(
     name = "DisassociateResolverEndpointIpAddress",
@@ -1491,6 +1527,8 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 #' @keywords internal
 #'
 #' @rdname route53resolver_disassociate_resolver_query_log_config
+#'
+#' @aliases route53resolver_disassociate_resolver_query_log_config
 route53resolver_disassociate_resolver_query_log_config <- function(ResolverQueryLogConfigId, ResourceId) {
   op <- new_operation(
     name = "DisassociateResolverQueryLogConfig",
@@ -1552,6 +1590,8 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
 #' @keywords internal
 #'
 #' @rdname route53resolver_disassociate_resolver_rule
+#'
+#' @aliases route53resolver_disassociate_resolver_rule
 route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
   op <- new_operation(
     name = "DisassociateResolverRule",
@@ -1605,6 +1645,8 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_firewall_config
+#'
+#' @aliases route53resolver_get_firewall_config
 route53resolver_get_firewall_config <- function(ResourceId) {
   op <- new_operation(
     name = "GetFirewallConfig",
@@ -1661,6 +1703,8 @@ route53resolver_get_firewall_config <- function(ResourceId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_firewall_domain_list
+#'
+#' @aliases route53resolver_get_firewall_domain_list
 route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
   op <- new_operation(
     name = "GetFirewallDomainList",
@@ -1718,6 +1762,8 @@ route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_firewall_rule_group
+#'
+#' @aliases route53resolver_get_firewall_rule_group
 route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
   op <- new_operation(
     name = "GetFirewallRuleGroup",
@@ -1782,6 +1828,8 @@ route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_firewall_rule_group_association
+#'
+#' @aliases route53resolver_get_firewall_rule_group_association
 route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGroupAssociationId) {
   op <- new_operation(
     name = "GetFirewallRuleGroupAssociation",
@@ -1830,6 +1878,8 @@ route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGrou
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_firewall_rule_group_policy
+#'
+#' @aliases route53resolver_get_firewall_rule_group_policy
 route53resolver_get_firewall_rule_group_policy <- function(Arn) {
   op <- new_operation(
     name = "GetFirewallRuleGroupPolicy",
@@ -1882,6 +1932,8 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_config
+#'
+#' @aliases route53resolver_get_resolver_config
 route53resolver_get_resolver_config <- function(ResourceId) {
   op <- new_operation(
     name = "GetResolverConfig",
@@ -1933,6 +1985,8 @@ route53resolver_get_resolver_config <- function(ResourceId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_dnssec_config
+#'
+#' @aliases route53resolver_get_resolver_dnssec_config
 route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
   op <- new_operation(
     name = "GetResolverDnssecConfig",
@@ -1997,6 +2051,8 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_endpoint
+#'
+#' @aliases route53resolver_get_resolver_endpoint
 route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
   op <- new_operation(
     name = "GetResolverEndpoint",
@@ -2058,6 +2114,8 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_query_log_config
+#'
+#' @aliases route53resolver_get_resolver_query_log_config
 route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfigId) {
   op <- new_operation(
     name = "GetResolverQueryLogConfig",
@@ -2117,6 +2175,8 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_query_log_config_association
+#'
+#' @aliases route53resolver_get_resolver_query_log_config_association
 route53resolver_get_resolver_query_log_config_association <- function(ResolverQueryLogConfigAssociationId) {
   op <- new_operation(
     name = "GetResolverQueryLogConfigAssociation",
@@ -2165,6 +2225,8 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_query_log_config_policy
+#'
+#' @aliases route53resolver_get_resolver_query_log_config_policy
 route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
   op <- new_operation(
     name = "GetResolverQueryLogConfigPolicy",
@@ -2234,6 +2296,8 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_rule
+#'
+#' @aliases route53resolver_get_resolver_rule
 route53resolver_get_resolver_rule <- function(ResolverRuleId) {
   op <- new_operation(
     name = "GetResolverRule",
@@ -2290,6 +2354,8 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_rule_association
+#'
+#' @aliases route53resolver_get_resolver_rule_association
 route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociationId) {
   op <- new_operation(
     name = "GetResolverRuleAssociation",
@@ -2339,6 +2405,8 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
 #' @keywords internal
 #'
 #' @rdname route53resolver_get_resolver_rule_policy
+#'
+#' @aliases route53resolver_get_resolver_rule_policy
 route53resolver_get_resolver_rule_policy <- function(Arn) {
   op <- new_operation(
     name = "GetResolverRulePolicy",
@@ -2412,6 +2480,8 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_import_firewall_domains
+#'
+#' @aliases route53resolver_import_firewall_domains
 route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operation, DomainFileUrl) {
   op <- new_operation(
     name = "ImportFirewallDomains",
@@ -2484,6 +2554,8 @@ route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operat
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_firewall_configs
+#'
+#' @aliases route53resolver_list_firewall_configs
 route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFirewallConfigs",
@@ -2558,6 +2630,8 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_firewall_domain_lists
+#'
+#' @aliases route53resolver_list_firewall_domain_lists
 route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFirewallDomainLists",
@@ -2628,6 +2702,8 @@ route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextTo
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_firewall_domains
+#'
+#' @aliases route53resolver_list_firewall_domains
 route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFirewallDomains",
@@ -2725,6 +2801,8 @@ route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResul
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_firewall_rule_group_associations
+#'
+#' @aliases route53resolver_list_firewall_rule_group_associations
 route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGroupId = NULL, VpcId = NULL, Priority = NULL, Status = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFirewallRuleGroupAssociations",
@@ -2799,6 +2877,8 @@ route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGr
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_firewall_rule_groups
+#'
+#' @aliases route53resolver_list_firewall_rule_groups
 route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFirewallRuleGroups",
@@ -2903,6 +2983,8 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_firewall_rules
+#'
+#' @aliases route53resolver_list_firewall_rules
 route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = NULL, Action = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListFirewallRules",
@@ -2974,6 +3056,8 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_configs
+#'
+#' @aliases route53resolver_list_resolver_configs
 route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListResolverConfigs",
@@ -3054,6 +3138,8 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_dnssec_configs
+#'
+#' @aliases route53resolver_list_resolver_dnssec_configs
 route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResolverDnssecConfigs",
@@ -3128,6 +3214,8 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_endpoint_ip_addresses
+#'
+#' @aliases route53resolver_list_resolver_endpoint_ip_addresses
 route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpointId, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListResolverEndpointIpAddresses",
@@ -3223,6 +3311,8 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_endpoints
+#'
+#' @aliases route53resolver_list_resolver_endpoints
 route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResolverEndpoints",
@@ -3372,6 +3462,8 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_query_log_config_associations
+#'
+#' @aliases route53resolver_list_resolver_query_log_config_associations
 route53resolver_list_resolver_query_log_config_associations <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListResolverQueryLogConfigAssociations",
@@ -3529,6 +3621,8 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_query_log_configs
+#'
+#' @aliases route53resolver_list_resolver_query_log_configs
 route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListResolverQueryLogConfigs",
@@ -3614,6 +3708,8 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_rule_associations
+#'
+#' @aliases route53resolver_list_resolver_rule_associations
 route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResolverRuleAssociations",
@@ -3713,6 +3809,8 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_resolver_rules
+#'
+#' @aliases route53resolver_list_resolver_rules
 route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResolverRules",
@@ -3780,6 +3878,8 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
 #' @keywords internal
 #'
 #' @rdname route53resolver_list_tags_for_resource
+#'
+#' @aliases route53resolver_list_tags_for_resource
 route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3833,6 +3933,8 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
 #' @keywords internal
 #'
 #' @rdname route53resolver_put_firewall_rule_group_policy
+#'
+#' @aliases route53resolver_put_firewall_rule_group_policy
 route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGroupPolicy) {
   op <- new_operation(
     name = "PutFirewallRuleGroupPolicy",
@@ -3904,6 +4006,8 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
 #' @keywords internal
 #'
 #' @rdname route53resolver_put_resolver_query_log_config_policy
+#'
+#' @aliases route53resolver_put_resolver_query_log_config_policy
 route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQueryLogConfigPolicy) {
   op <- new_operation(
     name = "PutResolverQueryLogConfigPolicy",
@@ -3976,6 +4080,8 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
 #' @keywords internal
 #'
 #' @rdname route53resolver_put_resolver_rule_policy
+#'
+#' @aliases route53resolver_put_resolver_rule_policy
 route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
   op <- new_operation(
     name = "PutResolverRulePolicy",
@@ -4037,6 +4143,8 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_tag_resource
+#'
+#' @aliases route53resolver_tag_resource
 route53resolver_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -4095,6 +4203,8 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_untag_resource
+#'
+#' @aliases route53resolver_untag_resource
 route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4163,6 +4273,8 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_firewall_config
+#'
+#' @aliases route53resolver_update_firewall_config
 route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen) {
   op <- new_operation(
     name = "UpdateFirewallConfig",
@@ -4238,6 +4350,8 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_firewall_domains
+#'
+#' @aliases route53resolver_update_firewall_domains
 route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operation, Domains) {
   op <- new_operation(
     name = "UpdateFirewallDomains",
@@ -4346,6 +4460,8 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_firewall_rule
+#'
+#' @aliases route53resolver_update_firewall_rule
 route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDomainListId, Priority = NULL, Action = NULL, BlockResponse = NULL, BlockOverrideDomain = NULL, BlockOverrideDnsType = NULL, BlockOverrideTtl = NULL, Name = NULL) {
   op <- new_operation(
     name = "UpdateFirewallRule",
@@ -4424,6 +4540,8 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_firewall_rule_group_association
+#'
+#' @aliases route53resolver_update_firewall_rule_group_association
 route53resolver_update_firewall_rule_group_association <- function(FirewallRuleGroupAssociationId, Priority = NULL, MutationProtection = NULL, Name = NULL) {
   op <- new_operation(
     name = "UpdateFirewallRuleGroupAssociation",
@@ -4487,6 +4605,8 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_config
+#'
+#' @aliases route53resolver_update_resolver_config
 route53resolver_update_resolver_config <- function(ResourceId, AutodefinedReverseFlag) {
   op <- new_operation(
     name = "UpdateResolverConfig",
@@ -4543,6 +4663,8 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_dnssec_config
+#'
+#' @aliases route53resolver_update_resolver_dnssec_config
 route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation) {
   op <- new_operation(
     name = "UpdateResolverDnssecConfig",
@@ -4605,6 +4727,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_endpoint
+#'
+#' @aliases route53resolver_update_resolver_endpoint
 route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL) {
   op <- new_operation(
     name = "UpdateResolverEndpoint",
@@ -4683,6 +4807,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_rule
+#'
+#' @aliases route53resolver_update_resolver_rule
 route53resolver_update_resolver_rule <- function(ResolverRuleId, Config) {
   op <- new_operation(
     name = "UpdateResolverRule",

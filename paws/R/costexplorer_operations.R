@@ -109,6 +109,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname costexplorer_create_anomaly_monitor
+#'
+#' @aliases costexplorer_create_anomaly_monitor
 costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateAnomalyMonitor",
@@ -205,6 +207,8 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 #' @keywords internal
 #'
 #' @rdname costexplorer_create_anomaly_subscription
+#'
+#' @aliases costexplorer_create_anomaly_subscription
 costexplorer_create_anomaly_subscription <- function(AnomalySubscription, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateAnomalySubscription",
@@ -355,6 +359,8 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' @keywords internal
 #'
 #' @rdname costexplorer_create_cost_category_definition
+#'
+#' @aliases costexplorer_create_cost_category_definition
 costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateCostCategoryDefinition",
@@ -396,6 +402,8 @@ costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rule
 #' @keywords internal
 #'
 #' @rdname costexplorer_delete_anomaly_monitor
+#'
+#' @aliases costexplorer_delete_anomaly_monitor
 costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
   op <- new_operation(
     name = "DeleteAnomalyMonitor",
@@ -437,6 +445,8 @@ costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_delete_anomaly_subscription
+#'
+#' @aliases costexplorer_delete_anomaly_subscription
 costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
   op <- new_operation(
     name = "DeleteAnomalySubscription",
@@ -484,6 +494,8 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_delete_cost_category_definition
+#'
+#' @aliases costexplorer_delete_cost_category_definition
 costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
   op <- new_operation(
     name = "DeleteCostCategoryDefinition",
@@ -615,6 +627,8 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_describe_cost_category_definition
+#'
+#' @aliases costexplorer_describe_cost_category_definition
 costexplorer_describe_cost_category_definition <- function(CostCategoryArn, EffectiveOn = NULL) {
   op <- new_operation(
     name = "DescribeCostCategoryDefinition",
@@ -713,6 +727,8 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_anomalies
+#'
+#' @aliases costexplorer_get_anomalies
 costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback = NULL, TotalImpact = NULL, NextPageToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetAnomalies",
@@ -817,6 +833,8 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_anomaly_monitors
+#'
+#' @aliases costexplorer_get_anomaly_monitors
 costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetAnomalyMonitors",
@@ -894,6 +912,8 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_anomaly_subscriptions
+#'
+#' @aliases costexplorer_get_anomaly_subscriptions
 costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, MonitorArn = NULL, NextPageToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetAnomalySubscriptions",
@@ -1096,6 +1116,8 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_and_usage
+#'
+#' @aliases costexplorer_get_cost_and_usage
 costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NULL, Metrics, GroupBy = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsage",
@@ -1302,6 +1324,8 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_and_usage_with_resources
+#'
+#' @aliases costexplorer_get_cost_and_usage_with_resources
 costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granularity, Filter, Metrics = NULL, GroupBy = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostAndUsageWithResources",
@@ -1453,6 +1477,8 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_categories
+#'
+#' @aliases costexplorer_get_cost_categories
 costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, CostCategoryName = NULL, Filter = NULL, SortBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetCostCategories",
@@ -1637,6 +1663,8 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_cost_forecast
+#'
+#' @aliases costexplorer_get_cost_forecast
 costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, PredictionIntervalLevel = NULL) {
   op <- new_operation(
     name = "GetCostForecast",
@@ -1937,6 +1965,8 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_dimension_values
+#'
+#' @aliases costexplorer_get_dimension_values
 costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, Dimension, Context = NULL, Filter = NULL, SortBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetDimensionValues",
@@ -2252,6 +2282,8 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_reservation_coverage
+#'
+#' @aliases costexplorer_get_reservation_coverage
 costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Granularity = NULL, Filter = NULL, Metrics = NULL, NextPageToken = NULL, SortBy = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetReservationCoverage",
@@ -2475,6 +2507,8 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_reservation_purchase_recommendation
+#'
+#' @aliases costexplorer_get_reservation_purchase_recommendation
 costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NULL, Service, Filter = NULL, AccountScope = NULL, LookbackPeriodInDays = NULL, TermInYears = NULL, PaymentOption = NULL, ServiceSpecification = NULL, PageSize = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetReservationPurchaseRecommendation",
@@ -2743,6 +2777,8 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_reservation_utilization
+#'
+#' @aliases costexplorer_get_reservation_utilization
 costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL, Granularity = NULL, Filter = NULL, SortBy = NULL, NextPageToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "GetReservationUtilization",
@@ -2993,6 +3029,8 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_rightsizing_recommendation
+#'
+#' @aliases costexplorer_get_rightsizing_recommendation
 costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configuration = NULL, Service, PageSize = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetRightsizingRecommendation",
@@ -3183,6 +3221,8 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_savings_plans_coverage
+#'
+#' @aliases costexplorer_get_savings_plans_coverage
 costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, Granularity = NULL, Filter = NULL, Metrics = NULL, NextToken = NULL, MaxResults = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetSavingsPlansCoverage",
@@ -3349,6 +3389,8 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_savings_plans_purchase_recommendation
+#'
+#' @aliases costexplorer_get_savings_plans_purchase_recommendation
 costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansType, TermInYears, PaymentOption, AccountScope = NULL, NextPageToken = NULL, PageSize = NULL, LookbackPeriodInDays, Filter = NULL) {
   op <- new_operation(
     name = "GetSavingsPlansPurchaseRecommendation",
@@ -3530,6 +3572,8 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_savings_plans_utilization
+#'
+#' @aliases costexplorer_get_savings_plans_utilization
 costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity = NULL, Filter = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetSavingsPlansUtilization",
@@ -3725,6 +3769,8 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_savings_plans_utilization_details
+#'
+#' @aliases costexplorer_get_savings_plans_utilization_details
 costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filter = NULL, DataType = NULL, NextToken = NULL, MaxResults = NULL, SortBy = NULL) {
   op <- new_operation(
     name = "GetSavingsPlansUtilizationDetails",
@@ -3866,6 +3912,8 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_tags
+#'
+#' @aliases costexplorer_get_tags
 costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL, Filter = NULL, SortBy = NULL, MaxResults = NULL, NextPageToken = NULL) {
   op <- new_operation(
     name = "GetTags",
@@ -4047,6 +4095,8 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' @keywords internal
 #'
 #' @rdname costexplorer_get_usage_forecast
+#'
+#' @aliases costexplorer_get_usage_forecast
 costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Filter = NULL, PredictionIntervalLevel = NULL) {
   op <- new_operation(
     name = "GetUsageForecast",
@@ -4119,6 +4169,8 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #' @keywords internal
 #'
 #' @rdname costexplorer_list_cost_allocation_tags
+#'
+#' @aliases costexplorer_list_cost_allocation_tags
 costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL, Type = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCostAllocationTags",
@@ -4200,6 +4252,8 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
 #' @keywords internal
 #'
 #' @rdname costexplorer_list_cost_category_definitions
+#'
+#' @aliases costexplorer_list_cost_category_definitions
 costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListCostCategoryDefinitions",
@@ -4254,6 +4308,8 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 #' @keywords internal
 #'
 #' @rdname costexplorer_list_tags_for_resource
+#'
+#' @aliases costexplorer_list_tags_for_resource
 costexplorer_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -4302,6 +4358,8 @@ costexplorer_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_provide_anomaly_feedback
+#'
+#' @aliases costexplorer_provide_anomaly_feedback
 costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
   op <- new_operation(
     name = "ProvideAnomalyFeedback",
@@ -4384,6 +4442,8 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_tag_resource
+#'
+#' @aliases costexplorer_tag_resource
 costexplorer_tag_resource <- function(ResourceArn, ResourceTags) {
   op <- new_operation(
     name = "TagResource",
@@ -4434,6 +4494,8 @@ costexplorer_tag_resource <- function(ResourceArn, ResourceTags) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_untag_resource
+#'
+#' @aliases costexplorer_untag_resource
 costexplorer_untag_resource <- function(ResourceArn, ResourceTagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -4482,6 +4544,8 @@ costexplorer_untag_resource <- function(ResourceArn, ResourceTagKeys) {
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_anomaly_monitor
+#'
+#' @aliases costexplorer_update_anomaly_monitor
 costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) {
   op <- new_operation(
     name = "UpdateAnomalyMonitor",
@@ -4547,6 +4611,8 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_anomaly_subscription
+#'
+#' @aliases costexplorer_update_anomaly_subscription
 costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold = NULL, Frequency = NULL, MonitorArnList = NULL, Subscribers = NULL, SubscriptionName = NULL) {
   op <- new_operation(
     name = "UpdateAnomalySubscription",
@@ -4609,6 +4675,8 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_cost_allocation_tags_status
+#'
+#' @aliases costexplorer_update_cost_allocation_tags_status
 costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsStatus) {
   op <- new_operation(
     name = "UpdateCostAllocationTagsStatus",
@@ -4731,6 +4799,8 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_cost_category_definition
+#'
+#' @aliases costexplorer_update_cost_category_definition
 costexplorer_update_cost_category_definition <- function(CostCategoryArn, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL) {
   op <- new_operation(
     name = "UpdateCostCategoryDefinition",

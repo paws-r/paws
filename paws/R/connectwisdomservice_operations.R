@@ -60,6 +60,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_create_assistant
+#'
+#' @aliases connectwisdomservice_create_assistant
 connectwisdomservice_create_assistant <- function(clientToken = NULL, description = NULL, name, serverSideEncryptionConfiguration = NULL, tags = NULL, type) {
   op <- new_operation(
     name = "CreateAssistant",
@@ -138,6 +140,8 @@ connectwisdomservice_create_assistant <- function(clientToken = NULL, descriptio
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_create_assistant_association
+#'
+#' @aliases connectwisdomservice_create_assistant_association
 connectwisdomservice_create_assistant_association <- function(assistantId, association, associationType, clientToken = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateAssistantAssociation",
@@ -236,6 +240,8 @@ connectwisdomservice_create_assistant_association <- function(assistantId, assoc
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_create_content
+#'
+#' @aliases connectwisdomservice_create_content
 connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBaseId, metadata = NULL, name, overrideLinkOutUri = NULL, tags = NULL, title = NULL, uploadId) {
   op <- new_operation(
     name = "CreateContent",
@@ -348,6 +354,8 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_create_knowledge_base
+#'
+#' @aliases connectwisdomservice_create_knowledge_base
 connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, description = NULL, knowledgeBaseType, name, renderingConfiguration = NULL, serverSideEncryptionConfiguration = NULL, sourceConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateKnowledgeBase",
@@ -416,6 +424,8 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_create_session
+#'
+#' @aliases connectwisdomservice_create_session
 connectwisdomservice_create_session <- function(assistantId, clientToken = NULL, description = NULL, name, tags = NULL) {
   op <- new_operation(
     name = "CreateSession",
@@ -457,6 +467,8 @@ connectwisdomservice_create_session <- function(assistantId, clientToken = NULL,
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_delete_assistant
+#'
+#' @aliases connectwisdomservice_delete_assistant
 connectwisdomservice_delete_assistant <- function(assistantId) {
   op <- new_operation(
     name = "DeleteAssistant",
@@ -502,6 +514,8 @@ connectwisdomservice_delete_assistant <- function(assistantId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_delete_assistant_association
+#'
+#' @aliases connectwisdomservice_delete_assistant_association
 connectwisdomservice_delete_assistant_association <- function(assistantAssociationId, assistantId) {
   op <- new_operation(
     name = "DeleteAssistantAssociation",
@@ -546,6 +560,8 @@ connectwisdomservice_delete_assistant_association <- function(assistantAssociati
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_delete_content
+#'
+#' @aliases connectwisdomservice_delete_content
 connectwisdomservice_delete_content <- function(contentId, knowledgeBaseId) {
   op <- new_operation(
     name = "DeleteContent",
@@ -598,6 +614,8 @@ connectwisdomservice_delete_content <- function(contentId, knowledgeBaseId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_delete_knowledge_base
+#'
+#' @aliases connectwisdomservice_delete_knowledge_base
 connectwisdomservice_delete_knowledge_base <- function(knowledgeBaseId) {
   op <- new_operation(
     name = "DeleteKnowledgeBase",
@@ -657,6 +675,8 @@ connectwisdomservice_delete_knowledge_base <- function(knowledgeBaseId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_assistant
+#'
+#' @aliases connectwisdomservice_get_assistant
 connectwisdomservice_get_assistant <- function(assistantId) {
   op <- new_operation(
     name = "GetAssistant",
@@ -722,6 +742,8 @@ connectwisdomservice_get_assistant <- function(assistantId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_assistant_association
+#'
+#' @aliases connectwisdomservice_get_assistant_association
 connectwisdomservice_get_assistant_association <- function(assistantAssociationId, assistantId) {
   op <- new_operation(
     name = "GetAssistantAssociation",
@@ -792,6 +814,8 @@ connectwisdomservice_get_assistant_association <- function(assistantAssociationI
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_content
+#'
+#' @aliases connectwisdomservice_get_content
 connectwisdomservice_get_content <- function(contentId, knowledgeBaseId) {
   op <- new_operation(
     name = "GetContent",
@@ -857,6 +881,8 @@ connectwisdomservice_get_content <- function(contentId, knowledgeBaseId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_content_summary
+#'
+#' @aliases connectwisdomservice_get_content_summary
 connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId) {
   op <- new_operation(
     name = "GetContentSummary",
@@ -930,6 +956,8 @@ connectwisdomservice_get_content_summary <- function(contentId, knowledgeBaseId)
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_knowledge_base
+#'
+#' @aliases connectwisdomservice_get_knowledge_base
 connectwisdomservice_get_knowledge_base <- function(knowledgeBaseId) {
   op <- new_operation(
     name = "GetKnowledgeBase",
@@ -1043,6 +1071,8 @@ connectwisdomservice_get_knowledge_base <- function(knowledgeBaseId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_recommendations
+#'
+#' @aliases connectwisdomservice_get_recommendations
 connectwisdomservice_get_recommendations <- function(assistantId, maxResults = NULL, sessionId, waitTimeSeconds = NULL) {
   op <- new_operation(
     name = "GetRecommendations",
@@ -1100,6 +1130,8 @@ connectwisdomservice_get_recommendations <- function(assistantId, maxResults = N
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_get_session
+#'
+#' @aliases connectwisdomservice_get_session
 connectwisdomservice_get_session <- function(assistantId, sessionId) {
   op <- new_operation(
     name = "GetSession",
@@ -1171,6 +1203,8 @@ connectwisdomservice_get_session <- function(assistantId, sessionId) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_list_assistant_associations
+#'
+#' @aliases connectwisdomservice_list_assistant_associations
 connectwisdomservice_list_assistant_associations <- function(assistantId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAssistantAssociations",
@@ -1236,6 +1270,8 @@ connectwisdomservice_list_assistant_associations <- function(assistantId, maxRes
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_list_assistants
+#'
+#' @aliases connectwisdomservice_list_assistants
 connectwisdomservice_list_assistants <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListAssistants",
@@ -1308,6 +1344,8 @@ connectwisdomservice_list_assistants <- function(maxResults = NULL, nextToken = 
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_list_contents
+#'
+#' @aliases connectwisdomservice_list_contents
 connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListContents",
@@ -1384,6 +1422,8 @@ connectwisdomservice_list_contents <- function(knowledgeBaseId, maxResults = NUL
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_list_knowledge_bases
+#'
+#' @aliases connectwisdomservice_list_knowledge_bases
 connectwisdomservice_list_knowledge_bases <- function(maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListKnowledgeBases",
@@ -1431,6 +1471,8 @@ connectwisdomservice_list_knowledge_bases <- function(maxResults = NULL, nextTok
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_list_tags_for_resource
+#'
+#' @aliases connectwisdomservice_list_tags_for_resource
 connectwisdomservice_list_tags_for_resource <- function(resourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1499,6 +1541,8 @@ connectwisdomservice_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_notify_recommendations_received
+#'
+#' @aliases connectwisdomservice_notify_recommendations_received
 connectwisdomservice_notify_recommendations_received <- function(assistantId, recommendationIds, sessionId) {
   op <- new_operation(
     name = "NotifyRecommendationsReceived",
@@ -1588,6 +1632,8 @@ connectwisdomservice_notify_recommendations_received <- function(assistantId, re
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_query_assistant
+#'
+#' @aliases connectwisdomservice_query_assistant
 connectwisdomservice_query_assistant <- function(assistantId, maxResults = NULL, nextToken = NULL, queryText) {
   op <- new_operation(
     name = "QueryAssistant",
@@ -1629,6 +1675,8 @@ connectwisdomservice_query_assistant <- function(assistantId, maxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_remove_knowledge_base_template_uri
+#'
+#' @aliases connectwisdomservice_remove_knowledge_base_template_uri
 connectwisdomservice_remove_knowledge_base_template_uri <- function(knowledgeBaseId) {
   op <- new_operation(
     name = "RemoveKnowledgeBaseTemplateUri",
@@ -1712,6 +1760,8 @@ connectwisdomservice_remove_knowledge_base_template_uri <- function(knowledgeBas
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_search_content
+#'
+#' @aliases connectwisdomservice_search_content
 connectwisdomservice_search_content <- function(knowledgeBaseId, maxResults = NULL, nextToken = NULL, searchExpression) {
   op <- new_operation(
     name = "SearchContent",
@@ -1783,6 +1833,8 @@ connectwisdomservice_search_content <- function(knowledgeBaseId, maxResults = NU
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_search_sessions
+#'
+#' @aliases connectwisdomservice_search_sessions
 connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL, nextToken = NULL, searchExpression) {
   op <- new_operation(
     name = "SearchSessions",
@@ -1845,6 +1897,8 @@ connectwisdomservice_search_sessions <- function(assistantId, maxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_start_content_upload
+#'
+#' @aliases connectwisdomservice_start_content_upload
 connectwisdomservice_start_content_upload <- function(contentType, knowledgeBaseId) {
   op <- new_operation(
     name = "StartContentUpload",
@@ -1889,6 +1943,8 @@ connectwisdomservice_start_content_upload <- function(contentType, knowledgeBase
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_tag_resource
+#'
+#' @aliases connectwisdomservice_tag_resource
 connectwisdomservice_tag_resource <- function(resourceArn, tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1933,6 +1989,8 @@ connectwisdomservice_tag_resource <- function(resourceArn, tags) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_untag_resource
+#'
+#' @aliases connectwisdomservice_untag_resource
 connectwisdomservice_untag_resource <- function(resourceArn, tagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2032,6 +2090,8 @@ connectwisdomservice_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_update_content
+#'
+#' @aliases connectwisdomservice_update_content
 connectwisdomservice_update_content <- function(contentId, knowledgeBaseId, metadata = NULL, overrideLinkOutUri = NULL, removeOverrideLinkOutUri = NULL, revisionId = NULL, title = NULL, uploadId = NULL) {
   op <- new_operation(
     name = "UpdateContent",
@@ -2113,6 +2173,8 @@ connectwisdomservice_update_content <- function(contentId, knowledgeBaseId, meta
 #' @keywords internal
 #'
 #' @rdname connectwisdomservice_update_knowledge_base_template_uri
+#'
+#' @aliases connectwisdomservice_update_knowledge_base_template_uri
 connectwisdomservice_update_knowledge_base_template_uri <- function(knowledgeBaseId, templateUri) {
   op <- new_operation(
     name = "UpdateKnowledgeBaseTemplateUri",

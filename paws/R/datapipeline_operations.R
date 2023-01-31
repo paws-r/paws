@@ -47,6 +47,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname datapipeline_activate_pipeline
+#'
+#' @aliases datapipeline_activate_pipeline
 datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, startTimestamp = NULL) {
   op <- new_operation(
     name = "ActivatePipeline",
@@ -94,6 +96,8 @@ datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, s
 #' @keywords internal
 #'
 #' @rdname datapipeline_add_tags
+#'
+#' @aliases datapipeline_add_tags
 datapipeline_add_tags <- function(pipelineId, tags) {
   op <- new_operation(
     name = "AddTags",
@@ -172,6 +176,8 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_create_pipeline
+#'
+#' @aliases datapipeline_create_pipeline
 datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreatePipeline",
@@ -222,6 +228,8 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
 #' @keywords internal
 #'
 #' @rdname datapipeline_deactivate_pipeline
+#'
+#' @aliases datapipeline_deactivate_pipeline
 datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
   op <- new_operation(
     name = "DeactivatePipeline",
@@ -270,6 +278,8 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_delete_pipeline
+#'
+#' @aliases datapipeline_delete_pipeline
 datapipeline_delete_pipeline <- function(pipelineId) {
   op <- new_operation(
     name = "DeletePipeline",
@@ -347,6 +357,8 @@ datapipeline_delete_pipeline <- function(pipelineId) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_describe_objects
+#'
+#' @aliases datapipeline_describe_objects
 datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpressions = NULL, marker = NULL) {
   op <- new_operation(
     name = "DescribeObjects",
@@ -425,6 +437,8 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
 #' @keywords internal
 #'
 #' @rdname datapipeline_describe_pipelines
+#'
+#' @aliases datapipeline_describe_pipelines
 datapipeline_describe_pipelines <- function(pipelineIds) {
   op <- new_operation(
     name = "DescribePipelines",
@@ -478,6 +492,8 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_evaluate_expression
+#'
+#' @aliases datapipeline_evaluate_expression
 datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
   op <- new_operation(
     name = "EvaluateExpression",
@@ -559,6 +575,8 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_get_pipeline_definition
+#'
+#' @aliases datapipeline_get_pipeline_definition
 datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
   op <- new_operation(
     name = "GetPipelineDefinition",
@@ -616,6 +634,8 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_list_pipelines
+#'
+#' @aliases datapipeline_list_pipelines
 datapipeline_list_pipelines <- function(marker = NULL) {
   op <- new_operation(
     name = "ListPipelines",
@@ -717,6 +737,8 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_poll_for_task
+#'
+#' @aliases datapipeline_poll_for_task
 datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIdentity = NULL) {
   op <- new_operation(
     name = "PollForTask",
@@ -833,6 +855,8 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
 #' @keywords internal
 #'
 #' @rdname datapipeline_put_pipeline_definition
+#'
+#' @aliases datapipeline_put_pipeline_definition
 datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, parameterObjects = NULL, parameterValues = NULL) {
   op <- new_operation(
     name = "PutPipelineDefinition",
@@ -913,6 +937,8 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
 #' @keywords internal
 #'
 #' @rdname datapipeline_query_objects
+#'
+#' @aliases datapipeline_query_objects
 datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker = NULL, limit = NULL) {
   op <- new_operation(
     name = "QueryObjects",
@@ -957,6 +983,8 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
 #' @keywords internal
 #'
 #' @rdname datapipeline_remove_tags
+#'
+#' @aliases datapipeline_remove_tags
 datapipeline_remove_tags <- function(pipelineId, tagKeys) {
   op <- new_operation(
     name = "RemoveTags",
@@ -1028,6 +1056,8 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_report_task_progress
+#'
+#' @aliases datapipeline_report_task_progress
 datapipeline_report_task_progress <- function(taskId, fields = NULL) {
   op <- new_operation(
     name = "ReportTaskProgress",
@@ -1093,6 +1123,8 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_report_task_runner_heartbeat
+#'
+#' @aliases datapipeline_report_task_runner_heartbeat
 datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup = NULL, hostname = NULL) {
   op <- new_operation(
     name = "ReportTaskRunnerHeartbeat",
@@ -1148,6 +1180,8 @@ datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup 
 #' @keywords internal
 #'
 #' @rdname datapipeline_set_status
+#'
+#' @aliases datapipeline_set_status
 datapipeline_set_status <- function(pipelineId, objectIds, status) {
   op <- new_operation(
     name = "SetStatus",
@@ -1215,6 +1249,8 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #' @keywords internal
 #'
 #' @rdname datapipeline_set_task_status
+#'
+#' @aliases datapipeline_set_task_status
 datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, errorMessage = NULL, errorStackTrace = NULL) {
   op <- new_operation(
     name = "SetTaskStatus",
@@ -1313,6 +1349,8 @@ datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, err
 #' @keywords internal
 #'
 #' @rdname datapipeline_validate_pipeline_definition
+#'
+#' @aliases datapipeline_validate_pipeline_definition
 datapipeline_validate_pipeline_definition <- function(pipelineId, pipelineObjects, parameterObjects = NULL, parameterValues = NULL) {
   op <- new_operation(
     name = "ValidatePipelineDefinition",

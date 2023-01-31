@@ -59,6 +59,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_accept_page
+#'
+#' @aliases ssmcontacts_accept_page
 ssmcontacts_accept_page <- function(PageId, ContactChannelId = NULL, AcceptType, Note = NULL, AcceptCode, AcceptCodeValidation = NULL) {
   op <- new_operation(
     name = "AcceptPage",
@@ -112,6 +114,8 @@ ssmcontacts_accept_page <- function(PageId, ContactChannelId = NULL, AcceptType,
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_activate_contact_channel
+#'
+#' @aliases ssmcontacts_activate_contact_channel
 ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCode) {
   op <- new_operation(
     name = "ActivateContactChannel",
@@ -218,6 +222,8 @@ ssmcontacts_activate_contact_channel <- function(ContactChannelId, ActivationCod
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_create_contact
+#'
+#' @aliases ssmcontacts_create_contact
 ssmcontacts_create_contact <- function(Alias, DisplayName = NULL, Type, Plan, Tags = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "CreateContact",
@@ -310,6 +316,8 @@ ssmcontacts_create_contact <- function(Alias, DisplayName = NULL, Type, Plan, Ta
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_create_contact_channel
+#'
+#' @aliases ssmcontacts_create_contact_channel
 ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAddress, DeferActivation = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "CreateContactChannel",
@@ -365,6 +373,8 @@ ssmcontacts_create_contact_channel <- function(ContactId, Name, Type, DeliveryAd
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_deactivate_contact_channel
+#'
+#' @aliases ssmcontacts_deactivate_contact_channel
 ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
   op <- new_operation(
     name = "DeactivateContactChannel",
@@ -418,6 +428,8 @@ ssmcontacts_deactivate_contact_channel <- function(ContactChannelId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_delete_contact
+#'
+#' @aliases ssmcontacts_delete_contact
 ssmcontacts_delete_contact <- function(ContactId) {
   op <- new_operation(
     name = "DeleteContact",
@@ -473,6 +485,8 @@ ssmcontacts_delete_contact <- function(ContactId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_delete_contact_channel
+#'
+#' @aliases ssmcontacts_delete_contact_channel
 ssmcontacts_delete_contact_channel <- function(ContactChannelId) {
   op <- new_operation(
     name = "DeleteContactChannel",
@@ -545,6 +559,8 @@ ssmcontacts_delete_contact_channel <- function(ContactChannelId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_describe_engagement
+#'
+#' @aliases ssmcontacts_describe_engagement
 ssmcontacts_describe_engagement <- function(EngagementId) {
   op <- new_operation(
     name = "DescribeEngagement",
@@ -616,6 +632,8 @@ ssmcontacts_describe_engagement <- function(EngagementId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_describe_page
+#'
+#' @aliases ssmcontacts_describe_page
 ssmcontacts_describe_page <- function(PageId) {
   op <- new_operation(
     name = "DescribePage",
@@ -696,6 +714,8 @@ ssmcontacts_describe_page <- function(PageId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact
+#'
+#' @aliases ssmcontacts_get_contact
 ssmcontacts_get_contact <- function(ContactId) {
   op <- new_operation(
     name = "GetContact",
@@ -758,6 +778,8 @@ ssmcontacts_get_contact <- function(ContactId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact_channel
+#'
+#' @aliases ssmcontacts_get_contact_channel
 ssmcontacts_get_contact_channel <- function(ContactChannelId) {
   op <- new_operation(
     name = "GetContactChannel",
@@ -815,6 +837,8 @@ ssmcontacts_get_contact_channel <- function(ContactChannelId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_get_contact_policy
+#'
+#' @aliases ssmcontacts_get_contact_policy
 ssmcontacts_get_contact_policy <- function(ContactArn) {
   op <- new_operation(
     name = "GetContactPolicy",
@@ -885,6 +909,8 @@ ssmcontacts_get_contact_policy <- function(ContactArn) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_contact_channels
+#'
+#' @aliases ssmcontacts_list_contact_channels
 ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListContactChannels",
@@ -953,6 +979,8 @@ ssmcontacts_list_contact_channels <- function(ContactId, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_contacts
+#'
+#' @aliases ssmcontacts_list_contacts
 ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, AliasPrefix = NULL, Type = NULL) {
   op <- new_operation(
     name = "ListContacts",
@@ -1034,6 +1062,8 @@ ssmcontacts_list_contacts <- function(NextToken = NULL, MaxResults = NULL, Alias
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_engagements
+#'
+#' @aliases ssmcontacts_list_engagements
 ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, IncidentId = NULL, TimeRangeValue = NULL) {
   op <- new_operation(
     name = "ListEngagements",
@@ -1105,6 +1135,8 @@ ssmcontacts_list_engagements <- function(NextToken = NULL, MaxResults = NULL, In
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_page_receipts
+#'
+#' @aliases ssmcontacts_list_page_receipts
 ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPageReceipts",
@@ -1183,6 +1215,8 @@ ssmcontacts_list_page_receipts <- function(PageId, NextToken = NULL, MaxResults 
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_pages_by_contact
+#'
+#' @aliases ssmcontacts_list_pages_by_contact
 ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPagesByContact",
@@ -1263,6 +1297,8 @@ ssmcontacts_list_pages_by_contact <- function(ContactId, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_pages_by_engagement
+#'
+#' @aliases ssmcontacts_list_pages_by_engagement
 ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListPagesByEngagement",
@@ -1322,6 +1358,8 @@ ssmcontacts_list_pages_by_engagement <- function(EngagementId, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_list_tags_for_resource
+#'
+#' @aliases ssmcontacts_list_tags_for_resource
 ssmcontacts_list_tags_for_resource <- function(ResourceARN) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -1379,6 +1417,8 @@ ssmcontacts_list_tags_for_resource <- function(ResourceARN) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_put_contact_policy
+#'
+#' @aliases ssmcontacts_put_contact_policy
 ssmcontacts_put_contact_policy <- function(ContactArn, Policy) {
   op <- new_operation(
     name = "PutContactPolicy",
@@ -1431,6 +1471,8 @@ ssmcontacts_put_contact_policy <- function(ContactArn, Policy) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_send_activation_code
+#'
+#' @aliases ssmcontacts_send_activation_code
 ssmcontacts_send_activation_code <- function(ContactChannelId) {
   op <- new_operation(
     name = "SendActivationCode",
@@ -1526,6 +1568,8 @@ ssmcontacts_send_activation_code <- function(ContactChannelId) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_start_engagement
+#'
+#' @aliases ssmcontacts_start_engagement
 ssmcontacts_start_engagement <- function(ContactId, Sender, Subject, Content, PublicSubject = NULL, PublicContent = NULL, IncidentId = NULL, IdempotencyToken = NULL) {
   op <- new_operation(
     name = "StartEngagement",
@@ -1579,6 +1623,8 @@ ssmcontacts_start_engagement <- function(ContactId, Sender, Subject, Content, Pu
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_stop_engagement
+#'
+#' @aliases ssmcontacts_stop_engagement
 ssmcontacts_stop_engagement <- function(EngagementId, Reason = NULL) {
   op <- new_operation(
     name = "StopEngagement",
@@ -1642,6 +1688,8 @@ ssmcontacts_stop_engagement <- function(EngagementId, Reason = NULL) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_tag_resource
+#'
+#' @aliases ssmcontacts_tag_resource
 ssmcontacts_tag_resource <- function(ResourceARN, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -1698,6 +1746,8 @@ ssmcontacts_tag_resource <- function(ResourceARN, Tags) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_untag_resource
+#'
+#' @aliases ssmcontacts_untag_resource
 ssmcontacts_untag_resource <- function(ResourceARN, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -1810,6 +1860,8 @@ ssmcontacts_untag_resource <- function(ResourceARN, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_update_contact
+#'
+#' @aliases ssmcontacts_update_contact
 ssmcontacts_update_contact <- function(ContactId, DisplayName = NULL, Plan = NULL) {
   op <- new_operation(
     name = "UpdateContact",
@@ -1872,6 +1924,8 @@ ssmcontacts_update_contact <- function(ContactId, DisplayName = NULL, Plan = NUL
 #' @keywords internal
 #'
 #' @rdname ssmcontacts_update_contact_channel
+#'
+#' @aliases ssmcontacts_update_contact_channel
 ssmcontacts_update_contact_channel <- function(ContactChannelId, Name = NULL, DeliveryAddress = NULL) {
   op <- new_operation(
     name = "UpdateContactChannel",

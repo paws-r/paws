@@ -70,6 +70,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname apprunner_associate_custom_domain
+#'
+#' @aliases apprunner_associate_custom_domain
 apprunner_associate_custom_domain <- function(ServiceArn, DomainName, EnableWWWSubdomain = NULL) {
   op <- new_operation(
     name = "AssociateCustomDomain",
@@ -194,6 +196,8 @@ apprunner_associate_custom_domain <- function(ServiceArn, DomainName, EnableWWWS
 #' @keywords internal
 #'
 #' @rdname apprunner_create_auto_scaling_configuration
+#'
+#' @aliases apprunner_create_auto_scaling_configuration
 apprunner_create_auto_scaling_configuration <- function(AutoScalingConfigurationName, MaxConcurrency = NULL, MinSize = NULL, MaxSize = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAutoScalingConfiguration",
@@ -266,6 +270,8 @@ apprunner_create_auto_scaling_configuration <- function(AutoScalingConfiguration
 #' @keywords internal
 #'
 #' @rdname apprunner_create_connection
+#'
+#' @aliases apprunner_create_connection
 apprunner_create_connection <- function(ConnectionName, ProviderType, Tags = NULL) {
   op <- new_operation(
     name = "CreateConnection",
@@ -369,6 +375,8 @@ apprunner_create_connection <- function(ConnectionName, ProviderType, Tags = NUL
 #' @keywords internal
 #'
 #' @rdname apprunner_create_observability_configuration
+#'
+#' @aliases apprunner_create_observability_configuration
 apprunner_create_observability_configuration <- function(ObservabilityConfigurationName, TraceConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateObservabilityConfiguration",
@@ -603,6 +611,8 @@ apprunner_create_observability_configuration <- function(ObservabilityConfigurat
 #' @keywords internal
 #'
 #' @rdname apprunner_create_service
+#'
+#' @aliases apprunner_create_service
 apprunner_create_service <- function(ServiceName, SourceConfiguration, InstanceConfiguration = NULL, Tags = NULL, EncryptionConfiguration = NULL, HealthCheckConfiguration = NULL, AutoScalingConfigurationArn = NULL, NetworkConfiguration = NULL, ObservabilityConfiguration = NULL) {
   op <- new_operation(
     name = "CreateService",
@@ -692,6 +702,8 @@ apprunner_create_service <- function(ServiceName, SourceConfiguration, InstanceC
 #' @keywords internal
 #'
 #' @rdname apprunner_create_vpc_connector
+#'
+#' @aliases apprunner_create_vpc_connector
 apprunner_create_vpc_connector <- function(VpcConnectorName, Subnets, SecurityGroups = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateVpcConnector",
@@ -759,6 +771,8 @@ apprunner_create_vpc_connector <- function(VpcConnectorName, Subnets, SecurityGr
 #' @keywords internal
 #'
 #' @rdname apprunner_delete_auto_scaling_configuration
+#'
+#' @aliases apprunner_delete_auto_scaling_configuration
 apprunner_delete_auto_scaling_configuration <- function(AutoScalingConfigurationArn) {
   op <- new_operation(
     name = "DeleteAutoScalingConfiguration",
@@ -815,6 +829,8 @@ apprunner_delete_auto_scaling_configuration <- function(AutoScalingConfiguration
 #' @keywords internal
 #'
 #' @rdname apprunner_delete_connection
+#'
+#' @aliases apprunner_delete_connection
 apprunner_delete_connection <- function(ConnectionArn) {
   op <- new_operation(
     name = "DeleteConnection",
@@ -883,6 +899,8 @@ apprunner_delete_connection <- function(ConnectionArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_delete_observability_configuration
+#'
+#' @aliases apprunner_delete_observability_configuration
 apprunner_delete_observability_configuration <- function(ObservabilityConfigurationArn) {
   op <- new_operation(
     name = "DeleteObservabilityConfiguration",
@@ -1018,6 +1036,8 @@ apprunner_delete_observability_configuration <- function(ObservabilityConfigurat
 #' @keywords internal
 #'
 #' @rdname apprunner_delete_service
+#'
+#' @aliases apprunner_delete_service
 apprunner_delete_service <- function(ServiceArn) {
   op <- new_operation(
     name = "DeleteService",
@@ -1084,6 +1104,8 @@ apprunner_delete_service <- function(ServiceArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_delete_vpc_connector
+#'
+#' @aliases apprunner_delete_vpc_connector
 apprunner_delete_vpc_connector <- function(VpcConnectorArn) {
   op <- new_operation(
     name = "DeleteVpcConnector",
@@ -1152,6 +1174,8 @@ apprunner_delete_vpc_connector <- function(VpcConnectorArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_describe_auto_scaling_configuration
+#'
+#' @aliases apprunner_describe_auto_scaling_configuration
 apprunner_describe_auto_scaling_configuration <- function(AutoScalingConfigurationArn) {
   op <- new_operation(
     name = "DescribeAutoScalingConfiguration",
@@ -1230,6 +1254,8 @@ apprunner_describe_auto_scaling_configuration <- function(AutoScalingConfigurati
 #' @keywords internal
 #'
 #' @rdname apprunner_describe_custom_domains
+#'
+#' @aliases apprunner_describe_custom_domains
 apprunner_describe_custom_domains <- function(ServiceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeCustomDomains",
@@ -1298,6 +1324,8 @@ apprunner_describe_custom_domains <- function(ServiceArn, NextToken = NULL, MaxR
 #' @keywords internal
 #'
 #' @rdname apprunner_describe_observability_configuration
+#'
+#' @aliases apprunner_describe_observability_configuration
 apprunner_describe_observability_configuration <- function(ObservabilityConfigurationArn) {
   op <- new_operation(
     name = "DescribeObservabilityConfiguration",
@@ -1427,6 +1455,8 @@ apprunner_describe_observability_configuration <- function(ObservabilityConfigur
 #' @keywords internal
 #'
 #' @rdname apprunner_describe_service
+#'
+#' @aliases apprunner_describe_service
 apprunner_describe_service <- function(ServiceArn) {
   op <- new_operation(
     name = "DescribeService",
@@ -1492,6 +1522,8 @@ apprunner_describe_service <- function(ServiceArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_describe_vpc_connector
+#'
+#' @aliases apprunner_describe_vpc_connector
 apprunner_describe_vpc_connector <- function(VpcConnectorArn) {
   op <- new_operation(
     name = "DescribeVpcConnector",
@@ -1562,6 +1594,8 @@ apprunner_describe_vpc_connector <- function(VpcConnectorArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_disassociate_custom_domain
+#'
+#' @aliases apprunner_disassociate_custom_domain
 apprunner_disassociate_custom_domain <- function(ServiceArn, DomainName) {
   op <- new_operation(
     name = "DisassociateCustomDomain",
@@ -1648,6 +1682,8 @@ apprunner_disassociate_custom_domain <- function(ServiceArn, DomainName) {
 #' @keywords internal
 #'
 #' @rdname apprunner_list_auto_scaling_configurations
+#'
+#' @aliases apprunner_list_auto_scaling_configurations
 apprunner_list_auto_scaling_configurations <- function(AutoScalingConfigurationName = NULL, LatestOnly = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListAutoScalingConfigurations",
@@ -1720,6 +1756,8 @@ apprunner_list_auto_scaling_configurations <- function(AutoScalingConfigurationN
 #' @keywords internal
 #'
 #' @rdname apprunner_list_connections
+#'
+#' @aliases apprunner_list_connections
 apprunner_list_connections <- function(ConnectionName = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListConnections",
@@ -1806,6 +1844,8 @@ apprunner_list_connections <- function(ConnectionName = NULL, MaxResults = NULL,
 #' @keywords internal
 #'
 #' @rdname apprunner_list_observability_configurations
+#'
+#' @aliases apprunner_list_observability_configurations
 apprunner_list_observability_configurations <- function(ObservabilityConfigurationName = NULL, LatestOnly = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListObservabilityConfigurations",
@@ -1886,6 +1926,8 @@ apprunner_list_observability_configurations <- function(ObservabilityConfigurati
 #' @keywords internal
 #'
 #' @rdname apprunner_list_operations
+#'
+#' @aliases apprunner_list_operations
 apprunner_list_operations <- function(ServiceArn, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListOperations",
@@ -1959,6 +2001,8 @@ apprunner_list_operations <- function(ServiceArn, NextToken = NULL, MaxResults =
 #' @keywords internal
 #'
 #' @rdname apprunner_list_services
+#'
+#' @aliases apprunner_list_services
 apprunner_list_services <- function(NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListServices",
@@ -2013,6 +2057,8 @@ apprunner_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname apprunner_list_tags_for_resource
+#'
+#' @aliases apprunner_list_tags_for_resource
 apprunner_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -2091,6 +2137,8 @@ apprunner_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_list_vpc_connectors
+#'
+#' @aliases apprunner_list_vpc_connectors
 apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListVpcConnectors",
@@ -2228,6 +2276,8 @@ apprunner_list_vpc_connectors <- function(MaxResults = NULL, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname apprunner_pause_service
+#'
+#' @aliases apprunner_pause_service
 apprunner_pause_service <- function(ServiceArn) {
   op <- new_operation(
     name = "PauseService",
@@ -2364,6 +2414,8 @@ apprunner_pause_service <- function(ServiceArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_resume_service
+#'
+#' @aliases apprunner_resume_service
 apprunner_resume_service <- function(ServiceArn) {
   op <- new_operation(
     name = "ResumeService",
@@ -2424,6 +2476,8 @@ apprunner_resume_service <- function(ServiceArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_start_deployment
+#'
+#' @aliases apprunner_start_deployment
 apprunner_start_deployment <- function(ServiceArn) {
   op <- new_operation(
     name = "StartDeployment",
@@ -2477,6 +2531,8 @@ apprunner_start_deployment <- function(ServiceArn) {
 #' @keywords internal
 #'
 #' @rdname apprunner_tag_resource
+#'
+#' @aliases apprunner_tag_resource
 apprunner_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -2524,6 +2580,8 @@ apprunner_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname apprunner_untag_resource
+#'
+#' @aliases apprunner_untag_resource
 apprunner_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -2752,6 +2810,8 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname apprunner_update_service
+#'
+#' @aliases apprunner_update_service
 apprunner_update_service <- function(ServiceArn, SourceConfiguration = NULL, InstanceConfiguration = NULL, AutoScalingConfigurationArn = NULL, HealthCheckConfiguration = NULL, NetworkConfiguration = NULL, ObservabilityConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateService",

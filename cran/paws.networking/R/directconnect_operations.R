@@ -24,7 +24,7 @@ NULL
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_accept_direct_connect_gateway_association_proposal
+#' @rdname directconnect_accept_direct_connec_gatewa_associ_propos
 directconnect_accept_direct_connect_gateway_association_proposal <- function(directConnectGatewayId, proposalId, associatedGatewayOwnerAccount, overrideAllowedPrefixesToDirectConnectGateway = NULL) {
   op <- new_operation(
     name = "AcceptDirectConnectGatewayAssociationProposal",
@@ -696,7 +696,7 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_create_direct_connect_gateway_association_proposal
+#' @rdname directconnect_create_direct_connec_gatewa_associ_propos
 directconnect_create_direct_connect_gateway_association_proposal <- function(directConnectGatewayId, directConnectGatewayOwnerAccount, gatewayId, addAllowedPrefixesToDirectConnectGateway = NULL, removeAllowedPrefixesToDirectConnectGateway = NULL) {
   op <- new_operation(
     name = "CreateDirectConnectGatewayAssociationProposal",
@@ -1022,7 +1022,7 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_delete_direct_connect_gateway_association_proposal
+#' @rdname directconnect_delete_direct_connec_gatewa_associ_propos
 directconnect_delete_direct_connect_gateway_association_proposal <- function(proposalId) {
   op <- new_operation(
     name = "DeleteDirectConnectGatewayAssociationProposal",
@@ -1272,7 +1272,7 @@ directconnect_describe_customer_metadata <- function() {
 #'
 #' @keywords internal
 #'
-#' @rdname directconnect_describe_direct_connect_gateway_association_proposals
+#' @rdname directconnect_descri_direct_connec_gatewa_associ_propos
 directconnect_describe_direct_connect_gateway_association_proposals <- function(directConnectGatewayId = NULL, proposalId = NULL, associatedGatewayId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "DescribeDirectConnectGatewayAssociationProposals",

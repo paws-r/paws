@@ -42,6 +42,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_abort_environment_update
+#'
+#' @aliases elasticbeanstalk_abort_environment_update
 elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, EnvironmentName = NULL) {
   op <- new_operation(
     name = "AbortEnvironmentUpdate",
@@ -98,6 +100,8 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_apply_environment_managed_action
+#'
+#' @aliases elasticbeanstalk_apply_environment_managed_action
 elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = NULL, EnvironmentId = NULL, ActionId) {
   op <- new_operation(
     name = "ApplyEnvironmentManagedAction",
@@ -147,6 +151,8 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_associate_environment_operations_role
+#'
+#' @aliases elasticbeanstalk_associate_environment_operations_role
 elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentName, OperationsRole) {
   op <- new_operation(
     name = "AssociateEnvironmentOperationsRole",
@@ -202,6 +208,8 @@ elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentNa
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_check_dns_availability
+#'
+#' @aliases elasticbeanstalk_check_dns_availability
 elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
   op <- new_operation(
     name = "CheckDNSAvailability",
@@ -321,6 +329,8 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_compose_environments
+#'
+#' @aliases elasticbeanstalk_compose_environments
 elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupName = NULL, VersionLabels = NULL) {
   op <- new_operation(
     name = "ComposeEnvironments",
@@ -438,6 +448,8 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_application
+#'
+#' @aliases elasticbeanstalk_create_application
 elasticbeanstalk_create_application <- function(ApplicationName, Description = NULL, ResourceLifecycleConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplication",
@@ -607,6 +619,8 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_application_version
+#'
+#' @aliases elasticbeanstalk_create_application_version
 elasticbeanstalk_create_application_version <- function(ApplicationName, VersionLabel, Description = NULL, SourceBuildInformation = NULL, SourceBundle = NULL, BuildConfiguration = NULL, AutoCreateApplication = NULL, Process = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateApplicationVersion",
@@ -774,6 +788,8 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_configuration_template
+#'
+#' @aliases elasticbeanstalk_create_configuration_template
 elasticbeanstalk_create_configuration_template <- function(ApplicationName, TemplateName, SolutionStackName = NULL, PlatformArn = NULL, SourceConfiguration = NULL, EnvironmentId = NULL, Description = NULL, OptionSettings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfigurationTemplate",
@@ -981,6 +997,8 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_environment
+#'
+#' @aliases elasticbeanstalk_create_environment
 elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName = NULL, GroupName = NULL, Description = NULL, CNAMEPrefix = NULL, Tier = NULL, Tags = NULL, VersionLabel = NULL, TemplateName = NULL, SolutionStackName = NULL, PlatformArn = NULL, OptionSettings = NULL, OptionsToRemove = NULL, OperationsRole = NULL) {
   op <- new_operation(
     name = "CreateEnvironment",
@@ -1076,6 +1094,8 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_platform_version
+#'
+#' @aliases elasticbeanstalk_create_platform_version
 elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersion, PlatformDefinitionBundle, EnvironmentName = NULL, OptionSettings = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePlatformVersion",
@@ -1129,6 +1149,8 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_create_storage_location
+#'
+#' @aliases elasticbeanstalk_create_storage_location
 elasticbeanstalk_create_storage_location <- function() {
   op <- new_operation(
     name = "CreateStorageLocation",
@@ -1186,6 +1208,8 @@ elasticbeanstalk_create_storage_location <- function() {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_delete_application
+#'
+#' @aliases elasticbeanstalk_delete_application
 elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByForce = NULL) {
   op <- new_operation(
     name = "DeleteApplication",
@@ -1247,6 +1271,8 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_delete_application_version
+#'
+#' @aliases elasticbeanstalk_delete_application_version
 elasticbeanstalk_delete_application_version <- function(ApplicationName, VersionLabel, DeleteSourceBundle = NULL) {
   op <- new_operation(
     name = "DeleteApplicationVersion",
@@ -1305,6 +1331,8 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_delete_configuration_template
+#'
+#' @aliases elasticbeanstalk_delete_configuration_template
 elasticbeanstalk_delete_configuration_template <- function(ApplicationName, TemplateName) {
   op <- new_operation(
     name = "DeleteConfigurationTemplate",
@@ -1366,6 +1394,8 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_delete_environment_configuration
+#'
+#' @aliases elasticbeanstalk_delete_environment_configuration
 elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, EnvironmentName) {
   op <- new_operation(
     name = "DeleteEnvironmentConfiguration",
@@ -1428,6 +1458,8 @@ elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, E
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_delete_platform_version
+#'
+#' @aliases elasticbeanstalk_delete_platform_version
 elasticbeanstalk_delete_platform_version <- function(PlatformArn = NULL) {
   op <- new_operation(
     name = "DeletePlatformVersion",
@@ -1488,6 +1520,8 @@ elasticbeanstalk_delete_platform_version <- function(PlatformArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_account_attributes
+#'
+#' @aliases elasticbeanstalk_describe_account_attributes
 elasticbeanstalk_describe_account_attributes <- function() {
   op <- new_operation(
     name = "DescribeAccountAttributes",
@@ -1588,6 +1622,8 @@ elasticbeanstalk_describe_account_attributes <- function() {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_application_versions
+#'
+#' @aliases elasticbeanstalk_describe_application_versions
 elasticbeanstalk_describe_application_versions <- function(ApplicationName = NULL, VersionLabels = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeApplicationVersions",
@@ -1676,6 +1712,8 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_applications
+#'
+#' @aliases elasticbeanstalk_describe_applications
 elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
   op <- new_operation(
     name = "DescribeApplications",
@@ -1781,6 +1819,8 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_configuration_options
+#'
+#' @aliases elasticbeanstalk_describe_configuration_options
 elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NULL, TemplateName = NULL, EnvironmentName = NULL, SolutionStackName = NULL, PlatformArn = NULL, Options = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationOptions",
@@ -1890,6 +1930,8 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_configuration_settings
+#'
+#' @aliases elasticbeanstalk_describe_configuration_settings
 elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, TemplateName = NULL, EnvironmentName = NULL) {
   op <- new_operation(
     name = "DescribeConfigurationSettings",
@@ -2002,6 +2044,8 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_environment_health
+#'
+#' @aliases elasticbeanstalk_describe_environment_health
 elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL, EnvironmentId = NULL, AttributeNames = NULL) {
   op <- new_operation(
     name = "DescribeEnvironmentHealth",
@@ -2070,6 +2114,8 @@ elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL,
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_environment_managed_action_history
+#'
+#' @aliases elasticbeanstalk_describe_environment_managed_action_history
 elasticbeanstalk_describe_environment_managed_action_history <- function(EnvironmentId = NULL, EnvironmentName = NULL, NextToken = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "DescribeEnvironmentManagedActionHistory",
@@ -2130,6 +2176,8 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_environment_managed_actions
+#'
+#' @aliases elasticbeanstalk_describe_environment_managed_actions
 elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentName = NULL, EnvironmentId = NULL, Status = NULL) {
   op <- new_operation(
     name = "DescribeEnvironmentManagedActions",
@@ -2233,6 +2281,8 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_environment_resources
+#'
+#' @aliases elasticbeanstalk_describe_environment_resources
 elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL, EnvironmentName = NULL) {
   op <- new_operation(
     name = "DescribeEnvironmentResources",
@@ -2378,6 +2428,8 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_environments
+#'
+#' @aliases elasticbeanstalk_describe_environments
 elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, VersionLabel = NULL, EnvironmentIds = NULL, EnvironmentNames = NULL, IncludeDeleted = NULL, IncludedDeletedBackTo = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeEnvironments",
@@ -2493,6 +2545,8 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_events
+#'
+#' @aliases elasticbeanstalk_describe_events
 elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabel = NULL, TemplateName = NULL, EnvironmentId = NULL, EnvironmentName = NULL, PlatformArn = NULL, RequestId = NULL, Severity = NULL, StartTime = NULL, EndTime = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeEvents",
@@ -2625,6 +2679,8 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_instances_health
+#'
+#' @aliases elasticbeanstalk_describe_instances_health
 elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, EnvironmentId = NULL, AttributeNames = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeInstancesHealth",
@@ -2721,6 +2777,8 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_describe_platform_version
+#'
+#' @aliases elasticbeanstalk_describe_platform_version
 elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
   op <- new_operation(
     name = "DescribePlatformVersion",
@@ -2768,6 +2826,8 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_disassociate_environment_operations_role
+#'
+#' @aliases elasticbeanstalk_disassociate_environment_operations_role
 elasticbeanstalk_disassociate_environment_operations_role <- function(EnvironmentName) {
   op <- new_operation(
     name = "DisassociateEnvironmentOperationsRole",
@@ -2828,6 +2888,8 @@ elasticbeanstalk_disassociate_environment_operations_role <- function(Environmen
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_list_available_solution_stacks
+#'
+#' @aliases elasticbeanstalk_list_available_solution_stacks
 elasticbeanstalk_list_available_solution_stacks <- function() {
   op <- new_operation(
     name = "ListAvailableSolutionStacks",
@@ -2938,6 +3000,8 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_list_platform_branches
+#'
+#' @aliases elasticbeanstalk_list_platform_branches
 elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPlatformBranches",
@@ -3028,6 +3092,8 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_list_platform_versions
+#'
+#' @aliases elasticbeanstalk_list_platform_versions
 elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListPlatformVersions",
@@ -3087,6 +3153,8 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_list_tags_for_resource
+#'
+#' @aliases elasticbeanstalk_list_tags_for_resource
 elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
   op <- new_operation(
     name = "ListTagsForResource",
@@ -3149,6 +3217,8 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_rebuild_environment
+#'
+#' @aliases elasticbeanstalk_rebuild_environment
 elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, EnvironmentName = NULL) {
   op <- new_operation(
     name = "RebuildEnvironment",
@@ -3237,6 +3307,8 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_request_environment_info
+#'
+#' @aliases elasticbeanstalk_request_environment_info
 elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, EnvironmentName = NULL, InfoType) {
   op <- new_operation(
     name = "RequestEnvironmentInfo",
@@ -3298,6 +3370,8 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_restart_app_server
+#'
+#' @aliases elasticbeanstalk_restart_app_server
 elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, EnvironmentName = NULL) {
   op <- new_operation(
     name = "RestartAppServer",
@@ -3387,6 +3461,8 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_retrieve_environment_info
+#'
+#' @aliases elasticbeanstalk_retrieve_environment_info
 elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, EnvironmentName = NULL, InfoType) {
   op <- new_operation(
     name = "RetrieveEnvironmentInfo",
@@ -3463,6 +3539,8 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_swap_environment_cnam_es
+#'
+#' @aliases elasticbeanstalk_swap_environment_cnam_es
 elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL, SourceEnvironmentName = NULL, DestinationEnvironmentId = NULL, DestinationEnvironmentName = NULL) {
   op <- new_operation(
     name = "SwapEnvironmentCNAMEs",
@@ -3592,6 +3670,8 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_terminate_environment
+#'
+#' @aliases elasticbeanstalk_terminate_environment
 elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, EnvironmentName = NULL, TerminateResources = NULL, ForceTerminate = NULL) {
   op <- new_operation(
     name = "TerminateEnvironment",
@@ -3688,6 +3768,8 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_application
+#'
+#' @aliases elasticbeanstalk_update_application
 elasticbeanstalk_update_application <- function(ApplicationName, Description = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
@@ -3765,6 +3847,8 @@ elasticbeanstalk_update_application <- function(ApplicationName, Description = N
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_application_resource_lifecycle
+#'
+#' @aliases elasticbeanstalk_update_application_resource_lifecycle
 elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationName, ResourceLifecycleConfig) {
   op <- new_operation(
     name = "UpdateApplicationResourceLifecycle",
@@ -3861,6 +3945,8 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_application_version
+#'
+#' @aliases elasticbeanstalk_update_application_version
 elasticbeanstalk_update_application_version <- function(ApplicationName, VersionLabel, Description = NULL) {
   op <- new_operation(
     name = "UpdateApplicationVersion",
@@ -3987,6 +4073,8 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_configuration_template
+#'
+#' @aliases elasticbeanstalk_update_configuration_template
 elasticbeanstalk_update_configuration_template <- function(ApplicationName, TemplateName, Description = NULL, OptionSettings = NULL, OptionsToRemove = NULL) {
   op <- new_operation(
     name = "UpdateConfigurationTemplate",
@@ -4202,6 +4290,8 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_environment
+#'
+#' @aliases elasticbeanstalk_update_environment
 elasticbeanstalk_update_environment <- function(ApplicationName = NULL, EnvironmentId = NULL, EnvironmentName = NULL, GroupName = NULL, Description = NULL, Tier = NULL, VersionLabel = NULL, TemplateName = NULL, SolutionStackName = NULL, PlatformArn = NULL, OptionSettings = NULL, OptionsToRemove = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
@@ -4288,6 +4378,8 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_update_tags_for_resource
+#'
+#' @aliases elasticbeanstalk_update_tags_for_resource
 elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = NULL, TagsToRemove = NULL) {
   op <- new_operation(
     name = "UpdateTagsForResource",
@@ -4382,6 +4474,8 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
 #' @keywords internal
 #'
 #' @rdname elasticbeanstalk_validate_configuration_settings
+#'
+#' @aliases elasticbeanstalk_validate_configuration_settings
 elasticbeanstalk_validate_configuration_settings <- function(ApplicationName, TemplateName = NULL, EnvironmentName = NULL, OptionSettings) {
   op <- new_operation(
     name = "ValidateConfigurationSettings",

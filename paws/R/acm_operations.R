@@ -60,6 +60,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname acm_add_tags_to_certificate
+#'
+#' @aliases acm_add_tags_to_certificate
 acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
   op <- new_operation(
     name = "AddTagsToCertificate",
@@ -116,6 +118,8 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname acm_delete_certificate
+#'
+#' @aliases acm_delete_certificate
 acm_delete_certificate <- function(CertificateArn) {
   op <- new_operation(
     name = "DeleteCertificate",
@@ -258,6 +262,8 @@ acm_delete_certificate <- function(CertificateArn) {
 #' @keywords internal
 #'
 #' @rdname acm_describe_certificate
+#'
+#' @aliases acm_describe_certificate
 acm_describe_certificate <- function(CertificateArn) {
   op <- new_operation(
     name = "DescribeCertificate",
@@ -323,6 +329,8 @@ acm_describe_certificate <- function(CertificateArn) {
 #' @keywords internal
 #'
 #' @rdname acm_export_certificate
+#'
+#' @aliases acm_export_certificate
 acm_export_certificate <- function(CertificateArn, Passphrase) {
   op <- new_operation(
     name = "ExportCertificate",
@@ -367,6 +375,8 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 #' @keywords internal
 #'
 #' @rdname acm_get_account_configuration
+#'
+#' @aliases acm_get_account_configuration
 acm_get_account_configuration <- function() {
   op <- new_operation(
     name = "GetAccountConfiguration",
@@ -423,6 +433,8 @@ acm_get_account_configuration <- function() {
 #' @keywords internal
 #'
 #' @rdname acm_get_certificate
+#'
+#' @aliases acm_get_certificate
 acm_get_certificate <- function(CertificateArn) {
   op <- new_operation(
     name = "GetCertificate",
@@ -550,6 +562,8 @@ acm_get_certificate <- function(CertificateArn) {
 #' @keywords internal
 #'
 #' @rdname acm_import_certificate
+#'
+#' @aliases acm_import_certificate
 acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKey, CertificateChain = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportCertificate",
@@ -630,6 +644,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 #' @keywords internal
 #'
 #' @rdname acm_list_certificates
+#'
+#' @aliases acm_list_certificates
 acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, NextToken = NULL, MaxItems = NULL) {
   op <- new_operation(
     name = "ListCertificates",
@@ -692,6 +708,8 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' @keywords internal
 #'
 #' @rdname acm_list_tags_for_certificate
+#'
+#' @aliases acm_list_tags_for_certificate
 acm_list_tags_for_certificate <- function(CertificateArn) {
   op <- new_operation(
     name = "ListTagsForCertificate",
@@ -748,6 +766,8 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 #' @keywords internal
 #'
 #' @rdname acm_put_account_configuration
+#'
+#' @aliases acm_put_account_configuration
 acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken) {
   op <- new_operation(
     name = "PutAccountConfiguration",
@@ -811,6 +831,8 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #' @keywords internal
 #'
 #' @rdname acm_remove_tags_from_certificate
+#'
+#' @aliases acm_remove_tags_from_certificate
 acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
   op <- new_operation(
     name = "RemoveTagsFromCertificate",
@@ -864,6 +886,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname acm_renew_certificate
+#'
+#' @aliases acm_renew_certificate
 acm_renew_certificate <- function(CertificateArn) {
   op <- new_operation(
     name = "RenewCertificate",
@@ -1019,6 +1043,8 @@ acm_renew_certificate <- function(CertificateArn) {
 #' @keywords internal
 #'
 #' @rdname acm_request_certificate
+#'
+#' @aliases acm_request_certificate
 acm_request_certificate <- function(DomainName, ValidationMethod = NULL, SubjectAlternativeNames = NULL, IdempotencyToken = NULL, DomainValidationOptions = NULL, Options = NULL, CertificateAuthorityArn = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RequestCertificate",
@@ -1098,6 +1124,8 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' @keywords internal
 #'
 #' @rdname acm_resend_validation_email
+#'
+#' @aliases acm_resend_validation_email
 acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain) {
   op <- new_operation(
     name = "ResendValidationEmail",
@@ -1153,6 +1181,8 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 #' @keywords internal
 #'
 #' @rdname acm_update_certificate_options
+#'
+#' @aliases acm_update_certificate_options
 acm_update_certificate_options <- function(CertificateArn, Options) {
   op <- new_operation(
     name = "UpdateCertificateOptions",

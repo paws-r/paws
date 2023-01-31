@@ -135,6 +135,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_execute_statement
+#'
+#' @aliases dynamodb_batch_execute_statement
 dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "BatchExecuteStatement",
@@ -484,6 +486,8 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_get_item
+#'
+#' @aliases dynamodb_batch_get_item
 dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "BatchGetItem",
@@ -888,6 +892,8 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' @keywords internal
 #'
 #' @rdname dynamodb_batch_write_item
+#'
+#' @aliases dynamodb_batch_write_item
 dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL) {
   op <- new_operation(
     name = "BatchWriteItem",
@@ -979,6 +985,8 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_backup
+#'
+#' @aliases dynamodb_create_backup
 dynamodb_create_backup <- function(TableName, BackupName) {
   op <- new_operation(
     name = "CreateBackup",
@@ -1111,6 +1119,8 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_global_table
+#'
+#' @aliases dynamodb_create_global_table
 dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
   op <- new_operation(
     name = "CreateGlobalTable",
@@ -1601,6 +1611,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_create_table
+#'
+#' @aliases dynamodb_create_table
 dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, LocalSecondaryIndexes = NULL, GlobalSecondaryIndexes = NULL, BillingMode = NULL, ProvisionedThroughput = NULL, StreamSpecification = NULL, SSESpecification = NULL, Tags = NULL, TableClass = NULL) {
   op <- new_operation(
     name = "CreateTable",
@@ -1740,6 +1752,8 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 #' @keywords internal
 #'
 #' @rdname dynamodb_delete_backup
+#'
+#' @aliases dynamodb_delete_backup
 dynamodb_delete_backup <- function(BackupArn) {
   op <- new_operation(
     name = "DeleteBackup",
@@ -2113,6 +2127,8 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_delete_item
+#'
+#' @aliases dynamodb_delete_item
 dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOperator = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
   op <- new_operation(
     name = "DeleteItem",
@@ -2343,6 +2359,8 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 #' @keywords internal
 #'
 #' @rdname dynamodb_delete_table
+#'
+#' @aliases dynamodb_delete_table
 dynamodb_delete_table <- function(TableName) {
   op <- new_operation(
     name = "DeleteTable",
@@ -2482,6 +2500,8 @@ dynamodb_delete_table <- function(TableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_backup
+#'
+#' @aliases dynamodb_describe_backup
 dynamodb_describe_backup <- function(BackupArn) {
   op <- new_operation(
     name = "DescribeBackup",
@@ -2555,6 +2575,8 @@ dynamodb_describe_backup <- function(BackupArn) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_continuous_backups
+#'
+#' @aliases dynamodb_describe_continuous_backups
 dynamodb_describe_continuous_backups <- function(TableName) {
   op <- new_operation(
     name = "DescribeContinuousBackups",
@@ -2616,6 +2638,8 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_contributor_insights
+#'
+#' @aliases dynamodb_describe_contributor_insights
 dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) {
   op <- new_operation(
     name = "DescribeContributorInsights",
@@ -2662,6 +2686,8 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_endpoints
+#'
+#' @aliases dynamodb_describe_endpoints
 dynamodb_describe_endpoints <- function() {
   op <- new_operation(
     name = "DescribeEndpoints",
@@ -2733,6 +2759,8 @@ dynamodb_describe_endpoints <- function() {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_export
+#'
+#' @aliases dynamodb_describe_export
 dynamodb_describe_export <- function(ExportArn) {
   op <- new_operation(
     name = "DescribeExport",
@@ -2820,6 +2848,8 @@ dynamodb_describe_export <- function(ExportArn) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_global_table
+#'
+#' @aliases dynamodb_describe_global_table
 dynamodb_describe_global_table <- function(GlobalTableName) {
   op <- new_operation(
     name = "DescribeGlobalTable",
@@ -2965,6 +2995,8 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_global_table_settings
+#'
+#' @aliases dynamodb_describe_global_table_settings
 dynamodb_describe_global_table_settings <- function(GlobalTableName) {
   op <- new_operation(
     name = "DescribeGlobalTableSettings",
@@ -3017,6 +3049,8 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_kinesis_streaming_destination
+#'
+#' @aliases dynamodb_describe_kinesis_streaming_destination
 dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
   op <- new_operation(
     name = "DescribeKinesisStreamingDestination",
@@ -3140,6 +3174,8 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_limits
+#'
+#' @aliases dynamodb_describe_limits
 dynamodb_describe_limits <- function() {
   op <- new_operation(
     name = "DescribeLimits",
@@ -3362,6 +3398,8 @@ dynamodb_describe_limits <- function() {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_table
+#'
+#' @aliases dynamodb_describe_table
 dynamodb_describe_table <- function(TableName) {
   op <- new_operation(
     name = "DescribeTable",
@@ -3496,6 +3534,8 @@ dynamodb_describe_table <- function(TableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_table_replica_auto_scaling
+#'
+#' @aliases dynamodb_describe_table_replica_auto_scaling
 dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
   op <- new_operation(
     name = "DescribeTableReplicaAutoScaling",
@@ -3546,6 +3586,8 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_describe_time_to_live
+#'
+#' @aliases dynamodb_describe_time_to_live
 dynamodb_describe_time_to_live <- function(TableName) {
   op <- new_operation(
     name = "DescribeTimeToLive",
@@ -3596,6 +3638,8 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_disable_kinesis_streaming_destination
+#'
+#' @aliases dynamodb_disable_kinesis_streaming_destination
 dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn) {
   op <- new_operation(
     name = "DisableKinesisStreamingDestination",
@@ -3649,6 +3693,8 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' @keywords internal
 #'
 #' @rdname dynamodb_enable_kinesis_streaming_destination
+#'
+#' @aliases dynamodb_enable_kinesis_streaming_destination
 dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) {
   op <- new_operation(
     name = "EnableKinesisStreamingDestination",
@@ -3829,6 +3875,8 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_statement
+#'
+#' @aliases dynamodb_execute_statement
 dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL, ReturnConsumedCapacity = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ExecuteStatement",
@@ -3973,6 +4021,8 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #' @keywords internal
 #'
 #' @rdname dynamodb_execute_transaction
+#'
+#' @aliases dynamodb_execute_transaction
 dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken = NULL, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "ExecuteTransaction",
@@ -4089,6 +4139,8 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' @keywords internal
 #'
 #' @rdname dynamodb_export_table_to_point_in_time
+#'
+#' @aliases dynamodb_export_table_to_point_in_time
 dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, ClientToken = NULL, S3Bucket, S3BucketOwner = NULL, S3Prefix = NULL, S3SseAlgorithm = NULL, S3SseKmsKeyId = NULL, ExportFormat = NULL) {
   op <- new_operation(
     name = "ExportTableToPointInTime",
@@ -4307,6 +4359,8 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' @keywords internal
 #'
 #' @rdname dynamodb_get_item
+#'
+#' @aliases dynamodb_get_item
 dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, ConsistentRead = NULL, ReturnConsumedCapacity = NULL, ProjectionExpression = NULL, ExpressionAttributeNames = NULL) {
   op <- new_operation(
     name = "GetItem",
@@ -4412,6 +4466,8 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' @keywords internal
 #'
 #' @rdname dynamodb_list_backups
+#'
+#' @aliases dynamodb_list_backups
 dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLowerBound = NULL, TimeRangeUpperBound = NULL, ExclusiveStartBackupArn = NULL, BackupType = NULL) {
   op <- new_operation(
     name = "ListBackups",
@@ -4470,6 +4526,8 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #' @keywords internal
 #'
 #' @rdname dynamodb_list_contributor_insights
+#'
+#' @aliases dynamodb_list_contributor_insights
 dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListContributorInsights",
@@ -4527,6 +4585,8 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 #' @keywords internal
 #'
 #' @rdname dynamodb_list_exports
+#'
+#' @aliases dynamodb_list_exports
 dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListExports",
@@ -4598,6 +4658,8 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 #' @keywords internal
 #'
 #' @rdname dynamodb_list_global_tables
+#'
+#' @aliases dynamodb_list_global_tables
 dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Limit = NULL, RegionName = NULL) {
   op <- new_operation(
     name = "ListGlobalTables",
@@ -4661,6 +4723,8 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #' @keywords internal
 #'
 #' @rdname dynamodb_list_tables
+#'
+#' @aliases dynamodb_list_tables
 dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
   op <- new_operation(
     name = "ListTables",
@@ -4722,6 +4786,8 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_list_tags_of_resource
+#'
+#' @aliases dynamodb_list_tags_of_resource
 dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
   op <- new_operation(
     name = "ListTagsOfResource",
@@ -5134,6 +5200,8 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_put_item
+#'
+#' @aliases dynamodb_put_item
 dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ConditionalOperator = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
   op <- new_operation(
     name = "PutItem",
@@ -5722,6 +5790,8 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' @keywords internal
 #'
 #' @rdname dynamodb_query
+#'
+#' @aliases dynamodb_query
 dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, AttributesToGet = NULL, Limit = NULL, ConsistentRead = NULL, KeyConditions = NULL, QueryFilter = NULL, ConditionalOperator = NULL, ScanIndexForward = NULL, ExclusiveStartKey = NULL, ReturnConsumedCapacity = NULL, ProjectionExpression = NULL, FilterExpression = NULL, KeyConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
   op <- new_operation(
     name = "Query",
@@ -6006,6 +6076,8 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' @keywords internal
 #'
 #' @rdname dynamodb_restore_table_from_backup
+#'
+#' @aliases dynamodb_restore_table_from_backup
 dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, SSESpecificationOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableFromBackup",
@@ -6321,6 +6393,8 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' @keywords internal
 #'
 #' @rdname dynamodb_restore_table_to_point_in_time
+#'
+#' @aliases dynamodb_restore_table_to_point_in_time
 dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, SourceTableName = NULL, TargetTableName, UseLatestRestorableTime = NULL, RestoreDateTime = NULL, BillingModeOverride = NULL, GlobalSecondaryIndexOverride = NULL, LocalSecondaryIndexOverride = NULL, ProvisionedThroughputOverride = NULL, SSESpecificationOverride = NULL) {
   op <- new_operation(
     name = "RestoreTableToPointInTime",
@@ -6810,6 +6884,8 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' @keywords internal
 #'
 #' @rdname dynamodb_scan
+#'
+#' @aliases dynamodb_scan
 dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, Limit = NULL, Select = NULL, ScanFilter = NULL, ConditionalOperator = NULL, ExclusiveStartKey = NULL, ReturnConsumedCapacity = NULL, TotalSegments = NULL, Segment = NULL, ProjectionExpression = NULL, FilterExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL, ConsistentRead = NULL) {
   op <- new_operation(
     name = "Scan",
@@ -6865,6 +6941,8 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 #' @keywords internal
 #'
 #' @rdname dynamodb_tag_resource
+#'
+#' @aliases dynamodb_tag_resource
 dynamodb_tag_resource <- function(ResourceArn, Tags) {
   op <- new_operation(
     name = "TagResource",
@@ -7030,6 +7108,8 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_transact_get_items
+#'
+#' @aliases dynamodb_transact_get_items
 dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = NULL) {
   op <- new_operation(
     name = "TransactGetItems",
@@ -7458,6 +7538,8 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' @keywords internal
 #'
 #' @rdname dynamodb_transact_write_items
+#'
+#' @aliases dynamodb_transact_write_items
 dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, ClientRequestToken = NULL) {
   op <- new_operation(
     name = "TransactWriteItems",
@@ -7510,6 +7592,8 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 #' @keywords internal
 #'
 #' @rdname dynamodb_untag_resource
+#'
+#' @aliases dynamodb_untag_resource
 dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
@@ -7586,6 +7670,8 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_continuous_backups
+#'
+#' @aliases dynamodb_update_continuous_backups
 dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpecification) {
   op <- new_operation(
     name = "UpdateContinuousBackups",
@@ -7646,6 +7732,8 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_contributor_insights
+#'
+#' @aliases dynamodb_update_contributor_insights
 dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, ContributorInsightsAction) {
   op <- new_operation(
     name = "UpdateContributorInsights",
@@ -7758,6 +7846,8 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_global_table
+#'
+#' @aliases dynamodb_update_global_table
 dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
   op <- new_operation(
     name = "UpdateGlobalTable",
@@ -8003,6 +8093,8 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_global_table_settings
+#'
+#' @aliases dynamodb_update_global_table_settings
 dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBillingMode = NULL, GlobalTableProvisionedWriteCapacityUnits = NULL, GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = NULL, GlobalTableGlobalSecondaryIndexSettingsUpdate = NULL, ReplicaSettingsUpdate = NULL) {
   op <- new_operation(
     name = "UpdateGlobalTableSettings",
@@ -8511,6 +8603,8 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_item
+#'
+#' @aliases dynamodb_update_item
 dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expected = NULL, ConditionalOperator = NULL, ReturnValues = NULL, ReturnConsumedCapacity = NULL, ReturnItemCollectionMetrics = NULL, UpdateExpression = NULL, ConditionExpression = NULL, ExpressionAttributeNames = NULL, ExpressionAttributeValues = NULL) {
   op <- new_operation(
     name = "UpdateItem",
@@ -8890,6 +8984,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table
+#'
+#' @aliases dynamodb_update_table
 dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, BillingMode = NULL, ProvisionedThroughput = NULL, GlobalSecondaryIndexUpdates = NULL, StreamSpecification = NULL, SSESpecification = NULL, ReplicaUpdates = NULL, TableClass = NULL) {
   op <- new_operation(
     name = "UpdateTable",
@@ -9103,6 +9199,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_table_replica_auto_scaling
+#'
+#' @aliases dynamodb_update_table_replica_auto_scaling
 dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdates = NULL, TableName, ProvisionedWriteCapacityAutoScalingUpdate = NULL, ReplicaUpdates = NULL) {
   op <- new_operation(
     name = "UpdateTableReplicaAutoScaling",
@@ -9188,6 +9286,8 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
 #' @keywords internal
 #'
 #' @rdname dynamodb_update_time_to_live
+#'
+#' @aliases dynamodb_update_time_to_live
 dynamodb_update_time_to_live <- function(TableName, TimeToLiveSpecification) {
   op <- new_operation(
     name = "UpdateTimeToLive",

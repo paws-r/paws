@@ -97,6 +97,8 @@ NULL
 #' @keywords internal
 #'
 #' @rdname sqs_add_permission
+#'
+#' @aliases sqs_add_permission
 sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
   op <- new_operation(
     name = "AddPermission",
@@ -206,6 +208,8 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' @keywords internal
 #'
 #' @rdname sqs_change_message_visibility
+#'
+#' @aliases sqs_change_message_visibility
 sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTimeout) {
   op <- new_operation(
     name = "ChangeMessageVisibility",
@@ -292,6 +296,8 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #' @keywords internal
 #'
 #' @rdname sqs_change_message_visibility_batch
+#'
+#' @aliases sqs_change_message_visibility_batch
 sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
   op <- new_operation(
     name = "ChangeMessageVisibilityBatch",
@@ -596,6 +602,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' @keywords internal
 #'
 #' @rdname sqs_create_queue
+#'
+#' @aliases sqs_create_queue
 sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateQueue",
@@ -661,6 +669,8 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname sqs_delete_message
+#'
+#' @aliases sqs_delete_message
 sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
   op <- new_operation(
     name = "DeleteMessage",
@@ -741,6 +751,8 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #' @keywords internal
 #'
 #' @rdname sqs_delete_message_batch
+#'
+#' @aliases sqs_delete_message_batch
 sqs_delete_message_batch <- function(QueueUrl, Entries) {
   op <- new_operation(
     name = "DeleteMessageBatch",
@@ -802,6 +814,8 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' @keywords internal
 #'
 #' @rdname sqs_delete_queue
+#'
+#' @aliases sqs_delete_queue
 sqs_delete_queue <- function(QueueUrl) {
   op <- new_operation(
     name = "DeleteQueue",
@@ -1002,6 +1016,8 @@ sqs_delete_queue <- function(QueueUrl) {
 #' @keywords internal
 #'
 #' @rdname sqs_get_queue_attributes
+#'
+#' @aliases sqs_get_queue_attributes
 sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
   op <- new_operation(
     name = "GetQueueAttributes",
@@ -1063,6 +1079,8 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #' @keywords internal
 #'
 #' @rdname sqs_get_queue_url
+#'
+#' @aliases sqs_get_queue_url
 sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
   op <- new_operation(
     name = "GetQueueUrl",
@@ -1137,6 +1155,8 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' @keywords internal
 #'
 #' @rdname sqs_list_dead_letter_source_queues
+#'
+#' @aliases sqs_list_dead_letter_source_queues
 sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListDeadLetterSourceQueues",
@@ -1192,6 +1212,8 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
 #' @keywords internal
 #'
 #' @rdname sqs_list_queue_tags
+#'
+#' @aliases sqs_list_queue_tags
 sqs_list_queue_tags <- function(QueueUrl) {
   op <- new_operation(
     name = "ListQueueTags",
@@ -1265,6 +1287,8 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #' @keywords internal
 #'
 #' @rdname sqs_list_queues
+#'
+#' @aliases sqs_list_queues
 sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListQueues",
@@ -1322,6 +1346,8 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 #' @keywords internal
 #'
 #' @rdname sqs_purge_queue
+#'
+#' @aliases sqs_purge_queue
 sqs_purge_queue <- function(QueueUrl) {
   op <- new_operation(
     name = "PurgeQueue",
@@ -1601,6 +1627,8 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @keywords internal
 #'
 #' @rdname sqs_receive_message
+#'
+#' @aliases sqs_receive_message
 sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttributeNames = NULL, MaxNumberOfMessages = NULL, VisibilityTimeout = NULL, WaitTimeSeconds = NULL, ReceiveRequestAttemptId = NULL) {
   op <- new_operation(
     name = "ReceiveMessage",
@@ -1662,6 +1690,8 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' @keywords internal
 #'
 #' @rdname sqs_remove_permission
+#'
+#' @aliases sqs_remove_permission
 sqs_remove_permission <- function(QueueUrl, Label) {
   op <- new_operation(
     name = "RemovePermission",
@@ -1872,6 +1902,8 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' @keywords internal
 #'
 #' @rdname sqs_send_message
+#'
+#' @aliases sqs_send_message
 sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, MessageAttributes = NULL, MessageSystemAttributes = NULL, MessageDeduplicationId = NULL, MessageGroupId = NULL) {
   op <- new_operation(
     name = "SendMessage",
@@ -2004,6 +2036,8 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 #' @keywords internal
 #'
 #' @rdname sqs_send_message_batch
+#'
+#' @aliases sqs_send_message_batch
 sqs_send_message_batch <- function(QueueUrl, Entries) {
   op <- new_operation(
     name = "SendMessageBatch",
@@ -2220,6 +2254,8 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' @keywords internal
 #'
 #' @rdname sqs_set_queue_attributes
+#'
+#' @aliases sqs_set_queue_attributes
 sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
   op <- new_operation(
     name = "SetQueueAttributes",
@@ -2288,6 +2324,8 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #' @keywords internal
 #'
 #' @rdname sqs_tag_queue
+#'
+#' @aliases sqs_tag_queue
 sqs_tag_queue <- function(QueueUrl, Tags) {
   op <- new_operation(
     name = "TagQueue",
@@ -2340,6 +2378,8 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 #' @keywords internal
 #'
 #' @rdname sqs_untag_queue
+#'
+#' @aliases sqs_untag_queue
 sqs_untag_queue <- function(QueueUrl, TagKeys) {
   op <- new_operation(
     name = "UntagQueue",
