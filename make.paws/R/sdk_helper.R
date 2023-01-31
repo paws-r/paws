@@ -190,7 +190,7 @@ paws_check_pkg_size <- function(in_dir = "../cran",
     quiet = TRUE
   )
   dir_info <- fs::dir_info(tmp)
-  dir_info$package <- basename(pkgs)
+  dir_info$package <- gsub("_.*", "", basename(dir_info$path))
   dir_info <- dir_info[, c("package", "size")]
   setDT(dir_info)
 
@@ -203,6 +203,7 @@ paws_check_pkg_size <- function(in_dir = "../cran",
       paste(round(as.numeric(get("size")/ threshold) * 100, 2), "%")
     )
   ]
+
   return(dir_info[order(-get("size"))])
 }
 
