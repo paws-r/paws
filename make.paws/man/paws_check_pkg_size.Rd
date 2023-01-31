@@ -19,7 +19,7 @@ paws_check_pkg_size(
 \item{pkg_list}{list of packages check locally, check all packages by default}
 }
 \value{
-A data.frame with packages exceeding the threshold.
+A data.table with package status size and percentage.
 }
 \description{
 Check paws sdk package size after being tarball.

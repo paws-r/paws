@@ -268,6 +268,132 @@ paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
   }
 }
 
+cran_comment_template <- "## Test environments
+
+* local macOS install, R 4.2.1
+* R-hub (devel and release)
+* win-builder
+
+## R CMD check results
+
+%s
+
+Maintainer Notes: tarball package size: %s
+
+## Downstream dependencies
+
+%s"
+
+#' @title Method to build cran comments
+#' @param in_dir Directory containing paws sdk packages.
+#' @param cache_path yaml file created by `paws_check_local`
+#' @param refresh re-write any cran-comments.md that already exists.
+#' @name paws_build_cran_comments
+#' @export
+paws_build_cran_comments <- function(in_dir = "../cran",
+                                     cache_path = NULL,
+                                     refresh = FALSE) {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+  deps <- desc::desc_get_deps(file.path(in_dir, "paws"))
+  current_deps <- deps[deps$type == "Imports","package"]
+  all_cats <-  list_paws_pkgs() |> basename()
+  pkgs_release <- sapply(
+    current_deps, \(x) all_cats[grepl(x, all_cats)], USE.NAMES = F
+  ) |> unlist()
+  pkgs_release <- c(pkgs_release, "paws")
+  log_info(
+    "Running local checks for: ['%s']",
+    paste(pkgs_release, collapse = "', '")
+  )
+  dir_info <- paws_check_pkg_size(in_dir, pkg_list = pkgs_release)
+  if(is.null(cache_path)){
+    results_local <- paws_check_local(
+      pkg_list = pkgs_release,
+      keep_notes = T
+    )
+    log_info("Completed local checks.")
+  } else {
+    result_local <- yaml::read_yaml(cache_path)
+    log_info("Retrieved local check results from cache.")
+  }
+  result_dt <- suppressWarnings(
+    rbindlist(results_local, fill = T, idcol = "package", use.names = T)
+  )
+
+  dir_info[
+    result_dt,
+    `:=`(
+      "errors"=get("errors"),
+      "warnings"=get("warnings"),
+      "notes"=get("notes")
+    ),
+    on = "package"
+  ]
+
+  dir_info[,
+    "cran_comment" := fcase(
+     is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
+     "There were no ERRORs, WARNINGs, or Notes."
+     ,
+     is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")
+     ),
+     is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
+       get("warnings"), get("notes")
+     ),
+     is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
+     sprintf(
+       "There were no ERRORs or Notes.\nWarnings:%s", warnings
+     ),
+     !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
+       get("errors"), get("warnings"), get("notes")
+     ),
+     !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
+     sprintf(
+       "There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")
+     ),
+     !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
+     sprintf(
+       "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
+       get("errors"), get("notes")
+     ),
+     !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "There was no NOTES.\nErrors:\n%s\nNotes:\n%s",
+       get("errors"), get("warnings")
+     )
+    )
+  ]
+
+  dir_info[,
+     "downstream_info" := fifelse(
+       grepl("paws[.].*$", get("package")),
+       "All downstream dependencies ('paws') pass R CMD check.",
+       "All downstream dependencies pass R CMD check."
+     )
+  ]
+  cran_comments <- sprintf(
+    cran_comment_template,
+    dir_info$cran_comment,
+    dir_info$size,
+    dir_info$downstream_info
+  )
+  names(cran_comments) <- dir_info$package
+
+  for (pkg in pkgs_release) {
+    comment_file <- file.path(in_dir, pkg, "cran-comments.md")
+    if (!file.exists(comment_file) || refresh) {
+      writeLines(cran_comments[[pkg]], con = comment_file)
+      log_info("Updated cran-comments.md: %s", pkg)
+    }
+  }
+}
+
 ##### helper functions #####
 check_pkgs <- function(pkgs, keep_notes = FALSE){
   temp_file <- tempfile()
@@ -276,6 +402,7 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
   # Check package locally
   checks <- list()
   sink(temp_file)
+  print(pkgs)
   for (pkg in pkgs) {
     checks[[basename(pkg)]] <- devtools::check(pkg, cran = TRUE)
   }
@@ -295,11 +422,14 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
       results[[pkg]] <- c(results[[pkg]], notes = notes)
     }
   }
-  packages_not_ok <- results[
-    sapply(results, function(x) {
+  packages_not_ok <- list()
+  if (length(results) > 1) {
+    not_ok <- sapply(results, function(x) {
       !is.null(x$errors) | !is.null(x$warnings) | !is.null(x$notes)
     })
-  ]
+
+    packages_not_ok <- results[not_ok]
+  }
 
   return(packages_not_ok)
 }
