@@ -313,7 +313,7 @@ paws_build_cran_comments <- function(in_dir = "../cran",
     )
     log_info("Completed local checks.")
   } else {
-    result_local <- yaml::read_yaml(cache_path)
+    results_local <- yaml::read_yaml(cache_path)
     log_info("Retrieved local check results from cache.")
   }
   result_dt <- suppressWarnings(
