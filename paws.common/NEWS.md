@@ -1,4 +1,4 @@
-# paws.common 0.5.4.9000
+# paws.common 0.5.5
 * Support [SSO token provider configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-configure-profile-token) (#583)
 
 # paws.common 0.5.4
