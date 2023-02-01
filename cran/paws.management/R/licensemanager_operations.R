@@ -263,23 +263,23 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @param LicenseCount Number of licenses managed by the license configuration.
 #' @param LicenseCountHardLimit Indicates whether hard or soft license enforcement is used. Exceeding a
 #' hard limit blocks the launch of new instances.
-#' @param LicenseRules License rules. The syntax is \#name=value (for example,
-#' \#allowedTenancy=EC2-DedicatedHost). The available rules vary by
+#' @param LicenseRules License rules. The syntax is #name=value (for example,
+#' #allowedTenancy=EC2-DedicatedHost). The available rules vary by
 #' dimension, as follows.
-#' 
+#'
 #' -   `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |
 #'     `maximumCores` | `minimumCores`
-#' 
+#'
 #' -   `Instances` dimension: `allowedTenancy` | `maximumCores` |
 #'     `minimumCores` | `maximumSockets` | `minimumSockets` |
 #'     `maximumVcpus` | `minimumVcpus`
-#' 
+#'
 #' -   `Sockets` dimension: `allowedTenancy` | `licenseAffinityToHost` |
 #'     `maximumSockets` | `minimumSockets`
-#' 
+#'
 #' -   `vCPUs` dimension: `allowedTenancy` | `honorVcpuOptimization` |
 #'     `maximumVcpus` | `minimumVcpus`
-#' 
+#'
 #' The unit for `licenseAffinityToHost` is days and the range is 1 to 180.
 #' The possible values for `allowedTenancy` are `EC2-Default`,
 #' `EC2-DedicatedHost`, and `EC2-DedicatedInstance`. The possible values
@@ -357,10 +357,10 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
 #'
 #' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
 #' @param Type &#91;required&#93; Type of reports to generate. The following report types an be generated:
-#' 
+#'
 #' -   License configuration report - Reports the number and details of
 #'     consumed licenses for a license configuration.
-#' 
+#'
 #' -   Resource report - Reports the tracked licenses and resource
 #'     consumption for a license configuration.
 #' @param ReportContext &#91;required&#93; Defines the type of license configuration the report generator tracks.
@@ -925,15 +925,15 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #'
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
-#' 
+#'
 #' -   `LicenseArn`
-#' 
+#'
 #' -   `GrantStatus`
-#' 
+#'
 #' -   `GranteePrincipalARN`
-#' 
+#'
 #' -   `ProductSKU`
-#' 
+#'
 #' -   `LicenseIssuerName`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1001,15 +1001,15 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @param NextToken Token for the next set of results.
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
-#' 
+#'
 #' -   `licenseCountingType` - The dimension for which licenses are
 #'     counted. Possible values are `vCPU` | `Instance` | `Core` |
 #'     `Socket`. Logical operators are `EQUALS` | `NOT_EQUALS`.
-#' 
+#'
 #' -   `enforceLicenseCount` - A Boolean value that indicates whether hard
 #'     license enforcement is used. Logical operators are `EQUALS` |
 #'     `NOT_EQUALS`.
-#' 
+#'
 #' -   `usagelimitExceeded` - A Boolean value that indicates whether the
 #'     available licenses have been exceeded. Logical operators are
 #'     `EQUALS` | `NOT_EQUALS`.
@@ -1074,7 +1074,7 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
 #' See [https://paws-r.github.io/docs/licensemanager/list_license_manager_report_generators.html](https://paws-r.github.io/docs/licensemanager/list_license_manager_report_generators.html) for full documentation.
 #'
 #' @param Filters Filters to scope the results. The following filters are supported:
-#' 
+#'
 #' -   `LicenseConfigurationArn`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1171,13 +1171,13 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #'
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
-#' 
+#'
 #' -   `Beneficiary`
-#' 
+#'
 #' -   `ProductSKU`
-#' 
+#'
 #' -   `Fingerprint`
-#' 
+#'
 #' -   `Status`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1211,15 +1211,15 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #'
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
-#' 
+#'
 #' -   `ProductSKU`
-#' 
+#'
 #' -   `LicenseIssuerName`
-#' 
+#'
 #' -   `LicenseArn`
-#' 
+#'
 #' -   `GrantStatus`
-#' 
+#'
 #' -   `GranterAccountId`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1253,15 +1253,15 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #'
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
-#' 
+#'
 #' -   `ProductSKU`
-#' 
+#'
 #' -   `Status`
-#' 
+#'
 #' -   `Fingerprint`
-#' 
+#'
 #' -   `IssuerName`
-#' 
+#'
 #' -   `Beneficiary`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1297,24 +1297,24 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' @param NextToken Token for the next set of results.
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
-#' 
+#'
 #' -   `account_id` - The ID of the Amazon Web Services account that owns
 #'     the resource. Logical operators are `EQUALS` | `NOT_EQUALS`.
-#' 
+#'
 #' -   `application_name` - The name of the application. Logical operators
 #'     are `EQUALS` | `BEGINS_WITH`.
-#' 
+#'
 #' -   `license_included` - The type of license included. Logical operators
 #'     are `EQUALS` | `NOT_EQUALS`. Possible values are
 #'     `sql-server-enterprise` | `sql-server-standard` | `sql-server-web` |
 #'     `windows-server-datacenter`.
-#' 
+#'
 #' -   `platform` - The platform of the resource. Logical operators are
 #'     `EQUALS` | `BEGINS_WITH`.
-#' 
+#'
 #' -   `resource_id` - The ID of the resource. Logical operators are
 #'     `EQUALS` | `NOT_EQUALS`.
-#' 
+#'
 #' -   `tag:<key>` - The key/value combination of a tag assigned to the
 #'     resource. Logical operators are `EQUALS` (single account) or
 #'     `EQUALS` | `NOT_EQUALS` (cross account).
@@ -1377,7 +1377,7 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' @param TokenIds Token IDs.
 #' @param Filters Filters to scope the results. The following filter is supported:
-#' 
+#'
 #' -   `LicenseArns`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1415,14 +1415,14 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' @param NextToken Token for the next set of results.
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
-#' 
+#'
 #' -   `resourceArn` - The ARN of the license configuration resource.
 #'     Logical operators are `EQUALS` | `NOT_EQUALS`.
-#' 
+#'
 #' -   `resourceType` - The resource type (`EC2_INSTANCE` | `EC2_HOST` |
 #'     `EC2_AMI` | `SYSTEMS_MANAGER_MANAGED_INSTANCE`). Logical operators
 #'     are `EQUALS` | `NOT_EQUALS`.
-#' 
+#'
 #' -   `resourceAccount` - The ID of the account that owns the resource.
 #'     Logical operators are `EQUALS` | `NOT_EQUALS`.
 #'
@@ -1583,10 +1583,10 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to update.
 #' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
 #' @param Type &#91;required&#93; Type of reports to generate. The following report types are supported:
-#' 
+#'
 #' -   License configuration report - Reports the number and details of
 #'     consumed licenses for a license configuration.
-#' 
+#'
 #' -   Resource report - Reports the tracked licenses and resource
 #'     consumption for a license configuration.
 #' @param ReportContext &#91;required&#93; The report context.
