@@ -18,7 +18,7 @@ alphanumeric characters, dashes, and underscores.}
 \item{Policy}{[required] The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
-the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html}{Amazon SES Developer Guide}.}
+the \href{https://docs.aws.amazon.com/ses/latest/dg/}{Amazon SES Developer Guide}.}
 }
 \description{
 Updates the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist.

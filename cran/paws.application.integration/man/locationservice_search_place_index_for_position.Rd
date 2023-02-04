@@ -15,8 +15,7 @@ locationservice_search_place_index_for_position(
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
-\href{https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47}{BCP 47}
-language tag, for example, \code{en} for English.
+BCP 47 language tag, for example, \code{en} for English.
 
 This setting affects the languages used in the results, but not the
 results themselves. If no language is specified, or not supported for a
@@ -28,7 +27,7 @@ around Athens, Greece, with the \code{language} parameter set to \code{en}. The
 \code{city} in the results will most likely be returned as \code{Athens}.
 
 If you set the \code{language} parameter to \code{el}, for Greek, then the \code{city}
-in the results will more likely be returned as \code{Αθήνα}.
+in the results will more likely be returned as ``.
 
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}

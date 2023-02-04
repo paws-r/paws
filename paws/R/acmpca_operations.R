@@ -1377,9 +1377,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' Certificate validity is the period of time during which a certificate is
 #' valid. Validity can be expressed as an explicit date and time when the
 #' certificate expires, or as a span of time after issuance, stated in
-#' days, months, or years. For more information, see
-#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
-#' in RFC 5280.
+#' days, months, or years. For more information, see Validity in RFC 5280.
 #' 
 #' This value is unaffected when `ValidityNotBefore` is also specified. For
 #' example, if `Validity` is set to 20 days in the future, the certificate
@@ -1402,9 +1400,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' 
 #' The `ValidityNotBefore` value is expressed as an explicit date and time,
 #' using the `Validity` type value `ABSOLUTE`. For more information, see
-#' Validity in this API reference and
-#' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
-#' in RFC 5280.
+#' Validity in this API reference and Validity in RFC 5280.
 #' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
 #' **IssueCertificate** action. Idempotency tokens for **IssueCertificate**
 #' time out after one minute. Therefore, if you call **IssueCertificate**

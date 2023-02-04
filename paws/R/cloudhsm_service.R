@@ -9,9 +9,8 @@ NULL
 #' 
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
