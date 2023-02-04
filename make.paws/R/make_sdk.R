@@ -117,9 +117,13 @@ use_description <- function(path, version = "0.0.1") {
   contents <- list(
     Package = "paws",
     Version = version,
-    Title = "Paws Amazon Web Services SDK",
+    Title = "Amazon Web Services Software Development Kit",
     `Authors@R` = make_authors(),
-    Description = "An Amazon Web Services SDK for R.",
+    Description = paste0(
+      "Interface to Amazon Web Services <https://aws.amazon.com>, ",
+     "including storage, database, and compute services, such as 'Simple ",
+     "Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda' ",
+     "functions-as-a-service."),
     License = "Apache License (>= 2.0)",
     Encoding = "UTF-8",
     ByteCompile = "false"
