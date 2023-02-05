@@ -22622,9 +22622,8 @@ clouddirectory <- function(config = list()) {
 #' 
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -27001,8 +27000,8 @@ sfn <- function(config = list()) {
 #' 
 #' For information on the permissions you need to use this API, see
 #' [Identity and access management in Amazon
-#' SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html)
-#' in the *Amazon SNS Developer Guide.*
+#' SNS](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
+#' Developer Guide.*
 #' 
 #' We also provide SDKs that enable you to access Amazon SNS from your
 #' preferred programming language. The SDKs contain functionality that

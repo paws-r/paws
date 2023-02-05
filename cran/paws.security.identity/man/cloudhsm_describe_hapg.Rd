@@ -10,7 +10,7 @@ cloudhsm_describe_hapg(HapgArn)
 \item{HapgArn}{[required] The ARN of the high-availability partition group to describe.}
 }
 \description{
-This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide}, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
+This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
 See \url{https://paws-r.github.io/docs/cloudhsm/describe_hapg.html} for full documentation.
 }

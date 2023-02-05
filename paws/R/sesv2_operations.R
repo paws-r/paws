@@ -662,7 +662,7 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/).
 #'
 #' @return
 #' An empty list.
@@ -5316,7 +5316,7 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/).
 #'
 #' @return
 #' An empty list.

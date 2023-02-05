@@ -537,7 +537,18 @@ clean_markdown <- function(markdown) {
   result <- gsub("\\\\([a-zA-Z])", "\\\\\\\\\\1", result)
 
   # Remove certain characters not allowed by LaTeX.
-  result <- gsub("\U2028", "", result)
+  # TODO: Translate these into valid alternatives.
+  invalid_chars <- c(
+    "\U2028",
+    "\U0391",
+    "\U03AE",
+    "\U03B1",
+    "\U03B8",
+    "\U03BD"
+  )
+  for (char in invalid_chars) {
+    result <- gsub(char, "", result)
+  }
 
   # @ symbol, escaped for Roxygen.
   # See http://r-pkgs.had.co.nz/man.html#roxygen-comments.

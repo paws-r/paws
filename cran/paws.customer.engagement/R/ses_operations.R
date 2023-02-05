@@ -1389,7 +1389,7 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
 #' 
 #' For information about the syntax of sending authorization policies, see
 #' the [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization-policies.html).
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/).
 #'
 #' @keywords internal
 #'
