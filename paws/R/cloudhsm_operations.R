@@ -8,9 +8,8 @@ NULL
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -79,9 +78,8 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -141,9 +139,8 @@ cloudhsm_create_hapg <- function(Label) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -234,9 +231,8 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -297,9 +293,8 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -357,9 +352,8 @@ cloudhsm_delete_hapg <- function(HapgArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -418,9 +412,8 @@ cloudhsm_delete_hsm <- function(HsmArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -478,9 +471,8 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -554,9 +546,8 @@ cloudhsm_describe_hapg <- function(HapgArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -641,9 +632,8 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -707,9 +697,8 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -777,9 +766,8 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -835,9 +823,8 @@ cloudhsm_list_available_zones <- function() {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -905,9 +892,8 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -975,9 +961,8 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -1046,9 +1031,8 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -1111,9 +1095,8 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -1178,9 +1161,8 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -1262,9 +1244,8 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
@@ -1327,9 +1308,8 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
 #' @description
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
-#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the [AWS CloudHSM Classic
-#' User Guide](https://docs.aws.amazon.com/cloudhsm/classic/userguide/),
-#' and the [AWS CloudHSM Classic API
+#' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
+#' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
 #' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS

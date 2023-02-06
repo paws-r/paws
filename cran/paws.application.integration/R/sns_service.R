@@ -16,8 +16,8 @@ NULL
 #' 
 #' For information on the permissions you need to use this API, see
 #' [Identity and access management in Amazon
-#' SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html)
-#' in the *Amazon SNS Developer Guide.*
+#' SNS](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
+#' Developer Guide.*
 #' 
 #' We also provide SDKs that enable you to access Amazon SNS from your
 #' preferred programming language. The SDKs contain functionality that

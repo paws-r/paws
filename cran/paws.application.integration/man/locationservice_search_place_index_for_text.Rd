@@ -71,7 +71,7 @@ For an example, we'll use the Greek language. You search for
 found will most likely be returned as \code{Athens}.
 
 If you set the \code{language} parameter to \code{el}, for Greek, then the result
-found will more likely be returned as \code{Αθήνα}.
+found will more likely be returned as ``.
 
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}

@@ -1845,9 +1845,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #'
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
 #' @param Language The preferred language used to return results. The value must be a valid
-#' [BCP
-#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
-#' language tag, for example, `en` for English.
+#' BCP 47 language tag, for example, `en` for English.
 #' 
 #' This setting affects the languages used in the results, but not the
 #' results themselves. If no language is specified, or not supported for a
@@ -1859,7 +1857,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' `city` in the results will most likely be returned as `Athens`.
 #' 
 #' If you set the `language` parameter to `el`, for Greek, then the `city`
-#' in the results will more likely be returned as `Αθήνα`.
+#' in the results will more likely be returned as ``.
 #' 
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
@@ -1955,7 +1953,7 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #' `Athens, Greece`.
 #' 
 #' If you set the `language` parameter to `el`, for Greek, then the result
-#' found will more likely be returned as `Αθήνα, Ελλάδα`.
+#' found will more likely be returned as `, Ελλάδ`.
 #' 
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
@@ -2046,7 +2044,7 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #' found will most likely be returned as `Athens`.
 #' 
 #' If you set the `language` parameter to `el`, for Greek, then the result
-#' found will more likely be returned as `Αθήνα`.
+#' found will more likely be returned as ``.
 #' 
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.

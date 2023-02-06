@@ -36,8 +36,8 @@ information about this product see the \href{https://aws.amazon.com/sns/}{Amazon
 Amazon SNS features and their associated API calls, see the \href{https://docs.aws.amazon.com/sns/latest/dg/}{Amazon SNS Developer Guide}.
 
 For information on the permissions you need to use this API, see
-\href{https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html}{Identity and access management in Amazon SNS}
-in the \emph{Amazon SNS Developer Guide.}
+\href{https://docs.aws.amazon.com/sns/latest/dg/}{Identity and access management in Amazon SNS} in the \emph{Amazon SNS
+Developer Guide.}
 
 We also provide SDKs that enable you to access Amazon SNS from your
 preferred programming language. The SDKs contain functionality that

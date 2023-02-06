@@ -3033,9 +3033,8 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' 
 #' Note that Amazon Transcribe must have permission to use the specified
 #' location. You can change Amazon S3 permissions using the [Amazon Web
-#' Services Management
-#' Console](https://us-east-1.console.aws.amazon.com/s3/home). See also
-#' [Permissions Required for IAM User
+#' Services Management Console](https://console.aws.amazon.com/s3/home).
+#' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
 #' If you don't specify `OutputBucketName`, your transcript is placed in a
@@ -3342,9 +3341,8 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' Note that Amazon Transcribe must have permission to use the specified
 #' location. You can change Amazon S3 permissions using the [Amazon Web
-#' Services Management
-#' Console](https://us-east-1.console.aws.amazon.com/s3/home). See also
-#' [Permissions Required for IAM User
+#' Services Management Console](https://console.aws.amazon.com/s3/home).
+#' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
 #' If you don't specify `OutputBucketName`, your transcript is placed in a

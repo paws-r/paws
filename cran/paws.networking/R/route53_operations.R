@@ -2730,8 +2730,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
 #'     Space](https://www.rfc-editor.org/rfc/rfc6598)
 #' 
-#' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://www.rfc-editor.org/rfc/rfc5156)
+#' -   RFC 5156, Special-Use IPv6 Addresses
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 
