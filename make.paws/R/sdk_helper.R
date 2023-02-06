@@ -395,7 +395,7 @@ paws_build_cran_comments <- function(in_dir = "../cran",
   }
 }
 
-# TODO: add this helper function the make build/rebuild functionality
+# TODO: add this helper function into make build/rebuild command
 # This function un-escapes any special characters after build.
 paws_unescape_latex_post_build <- function(
     root = "..",
