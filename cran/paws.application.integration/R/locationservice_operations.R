@@ -14,7 +14,7 @@ NULL
 #' @param ConsumerArn &#91;required&#93; The Amazon Resource Name (ARN) for the geofence collection to be
 #' associated to tracker resource. Used when you need to specify a resource
 #' across all AWS.
-#' 
+#'
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer`
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be associated with a geofence
@@ -49,7 +49,7 @@ locationservice_associate_tracker_consumer <- function(ConsumerArn, TrackerName)
 #' See [https://paws-r.github.io/docs/locationservice/batch_delete_device_position_history.html](https://paws-r.github.io/docs/locationservice/batch_delete_device_position_history.html) for full documentation.
 #'
 #' @param DeviceIds &#91;required&#93; Devices whose position history you want to delete.
-#' 
+#'
 #' -   For example, for two devices: `“DeviceIds” : [DeviceId1,DeviceId2]`
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to delete the device position history
 #' from.
@@ -145,7 +145,7 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 #' See [https://paws-r.github.io/docs/locationservice/batch_get_device_position.html](https://paws-r.github.io/docs/locationservice/batch_get_device_position.html) for full documentation.
 #'
 #' @param DeviceIds &#91;required&#93; Devices whose position you want to retrieve.
-#' 
+#'
 #' -   For example, for two devices:
 #'     `device-ids=DeviceId1&device-ids=DeviceId2`
 #' @param TrackerName &#91;required&#93; The tracker resource retrieving the device position.
@@ -245,36 +245,36 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' calculate the route.
 #' @param CarModeOptions Specifies route preferences when traveling by `Car`, such as avoiding
 #' routes that use ferries or tolls.
-#' 
+#'
 #' Requirements: `TravelMode` must be specified as `Car`.
 #' @param DepartNow Sets the time of departure as the current time. Uses the current time to
 #' calculate a route. Otherwise, the best time of day to travel with the
 #' best traffic conditions is used to calculate the route.
-#' 
+#'
 #' Default Value: `false`
-#' 
+#'
 #' Valid Values: `false` | `true`
 #' @param DeparturePosition &#91;required&#93; The start position for the route. Defined in [World Geodetic System (WGS
 #' 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
 #' format: `[longitude, latitude]`.
-#' 
+#'
 #' -   For example, `[-123.115, 49.285]`
-#' 
+#'
 #' If you specify a departure that's not located on a road, Amazon Location
 #' [moves the position to the nearest
 #' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
 #' If Esri is the provider for your route calculator, specifying a route
 #' that is longer than 400 km returns a `400 RoutesValidationException`
 #' error.
-#' 
+#'
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DepartureTime Specifies the desired time of departure. Uses the given time to
 #' calculate the route. Otherwise, the best time of day to travel with the
 #' best traffic conditions is used to calculate the route.
-#' 
+#'
 #' Setting a departure time in the past returns a `400 ValidationException`
 #' error.
-#' 
+#'
 #' -   In [ISO
 #'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
 #'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
@@ -282,58 +282,58 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 #' @param DestinationPosition &#91;required&#93; The finish position for the route. Defined in [World Geodetic System
 #' (WGS 84)](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84)
 #' format: `[longitude, latitude]`.
-#' 
+#'
 #' -   For example, `[-122.339, 47.615]`
-#' 
+#'
 #' If you specify a destination that's not located on a road, Amazon
 #' Location [moves the position to the nearest
 #' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
-#' 
+#'
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DistanceUnit Set the unit system to specify the distance.
-#' 
+#'
 #' Default Value: `Kilometers`
 #' @param IncludeLegGeometry Set to include the geometry details in the result for each path between
 #' a pair of positions.
-#' 
+#'
 #' Default Value: `false`
-#' 
+#'
 #' Valid Values: `false` | `true`
 #' @param TravelMode Specifies the mode of transport when calculating a route. Used in
 #' estimating the speed of travel and road compatibility. You can choose
 #' `Car`, `Truck`, or `Walking` as options for the `TravelMode`.
-#' 
+#'
 #' The `TravelMode` you specify also determines how you specify route
 #' preferences:
-#' 
+#'
 #' -   If traveling by `Car` use the `CarModeOptions` parameter.
-#' 
+#'
 #' -   If traveling by `Truck` use the `TruckModeOptions` parameter.
-#' 
+#'
 #' Default Value: `Car`
 #' @param TruckModeOptions Specifies route preferences when traveling by `Truck`, such as avoiding
 #' routes that use ferries or tolls, and truck specifications to consider
 #' when choosing an optimal road.
-#' 
+#'
 #' Requirements: `TravelMode` must be specified as `Truck`.
 #' @param WaypointPositions Specifies an ordered list of up to 23 intermediate positions to include
 #' along a route between the departure position and destination position.
-#' 
+#'
 #' -   For example, from the `DeparturePosition` `[-123.115, 49.285]`, the
 #'     route follows the order that the waypoint positions are given
 #'     `[[-122.757, 49.0021],[-122.349, 47.620]]`
-#' 
+#'
 #' If you specify a waypoint position that's not located on a road, Amazon
 #' Location [moves the position to the nearest
 #' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
-#' 
+#'
 #' Specifying more than 23 waypoints returns a `400 ValidationException`
 #' error.
-#' 
+#'
 #' If Esri is the provider for your route calculator, specifying a route
 #' that is longer than 400 km returns a `400 RoutesValidationException`
 #' error.
-#' 
+#'
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #'
 #' @keywords internal
@@ -368,43 +368,43 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' calculate the route matrix.
 #' @param CarModeOptions Specifies route preferences when traveling by `Car`, such as avoiding
 #' routes that use ferries or tolls.
-#' 
+#'
 #' Requirements: `TravelMode` must be specified as `Car`.
 #' @param DepartNow Sets the time of departure as the current time. Uses the current time to
 #' calculate the route matrix. You can't set both `DepartureTime` and
 #' `DepartNow`. If neither is set, the best time of day to travel with the
 #' best traffic conditions is used to calculate the route matrix.
-#' 
+#'
 #' Default Value: `false`
-#' 
+#'
 #' Valid Values: `false` | `true`
 #' @param DeparturePositions &#91;required&#93; The list of departure (origin) positions for the route matrix. An array
 #' of points, each of which is itself a 2-value array defined in [WGS
 #' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
 #' `[longitude, latitude]`. For example, `[-123.115, 49.285]`.
-#' 
+#'
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
 #' [Position
 #' restrictions](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
 #' in the *Amazon Location Service Developer Guide*.
-#' 
+#'
 #' For route calculators that use Esri as the data provider, if you specify
 #' a departure that's not located on a road, Amazon Location [moves the
 #' position to the nearest
 #' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
 #' The snapped value is available in the result in
 #' `SnappedDeparturePositions`.
-#' 
+#'
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DepartureTime Specifies the desired time of departure. Uses the given time to
 #' calculate the route matrix. You can't set both `DepartureTime` and
 #' `DepartNow`. If neither is set, the best time of day to travel with the
 #' best traffic conditions is used to calculate the route matrix.
-#' 
+#'
 #' Setting a departure time in the past returns a `400 ValidationException`
 #' error.
-#' 
+#'
 #' -   In [ISO
 #'     8601](https://www.iso.org/iso-8601-date-and-time-format.html)
 #'     format: `YYYY-MM-DDThh:mm:ss.sssZ`. For example,
@@ -413,39 +413,39 @@ locationservice_calculate_route <- function(CalculatorName, CarModeOptions = NUL
 #' points, each of which is itself a 2-value array defined in [WGS
 #' 84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) format:
 #' `[longitude, latitude]`. For example, `[-122.339, 47.615]`
-#' 
+#'
 #' Depending on the data provider selected in the route calculator resource
 #' there may be additional restrictions on the inputs you can choose. See
 #' [Position
 #' restrictions](https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html#matrix-routing-position-limits)
 #' in the *Amazon Location Service Developer Guide*.
-#' 
+#'
 #' For route calculators that use Esri as the data provider, if you specify
 #' a destination that's not located on a road, Amazon Location [moves the
 #' position to the nearest
 #' road](https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html).
 #' The snapped value is available in the result in
 #' `SnappedDestinationPositions`.
-#' 
+#'
 #' Valid Values: `[-180 to 180,-90 to 90]`
 #' @param DistanceUnit Set the unit system to specify the distance.
-#' 
+#'
 #' Default Value: `Kilometers`
 #' @param TravelMode Specifies the mode of transport when calculating a route. Used in
 #' estimating the speed of travel and road compatibility.
-#' 
+#'
 #' The `TravelMode` you specify also determines how you specify route
 #' preferences:
-#' 
+#'
 #' -   If traveling by `Car` use the `CarModeOptions` parameter.
-#' 
+#'
 #' -   If traveling by `Truck` use the `TruckModeOptions` parameter.
-#' 
+#'
 #' Default Value: `Car`
 #' @param TruckModeOptions Specifies route preferences when traveling by `Truck`, such as avoiding
 #' routes that use ferries or tolls, and truck specifications to consider
 #' when choosing an optimal road.
-#' 
+#'
 #' Requirements: `TravelMode` must be specified as `Truck`.
 #'
 #' @keywords internal
@@ -476,14 +476,14 @@ locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOption
 #' See [https://paws-r.github.io/docs/locationservice/create_geofence_collection.html](https://paws-r.github.io/docs/locationservice/create_geofence_collection.html) for full documentation.
 #'
 #' @param CollectionName &#91;required&#93; A custom name for the geofence collection.
-#' 
+#'
 #' Requirements:
-#' 
+#'
 #' -   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
 #'     periods (.), and underscores (_).
-#' 
+#'
 #' -   Must be a unique geofence collection name.
-#' 
+#'
 #' -   No spaces allowed. For example, `ExampleGeofenceCollection`.
 #' @param Description An optional description for the geofence collection.
 #' @param KmsKeyId A key identifier for an [AWS KMS customer managed
@@ -495,22 +495,22 @@ locationservice_calculate_route_matrix <- function(CalculatorName, CarModeOption
 #' @param Tags Applies one or more tags to the geofence collection. A tag is a
 #' key-value pair helps manage, identify, search, and filter your resources
 #' by labelling them.
-#' 
+#'
 #' Format: `"key" : "value"`
-#' 
+#'
 #' Restrictions:
-#' 
+#'
 #' -   Maximum 50 tags per resource
-#' 
+#'
 #' -   Each resource tag must be unique with a maximum of one value.
-#' 
+#'
 #' -   Maximum key length: 128 Unicode characters in UTF-8
-#' 
+#'
 #' -   Maximum value length: 256 Unicode characters in UTF-8
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
 #'     characters: + - = . _ : / @@.
-#' 
+#'
 #' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @keywords internal
@@ -544,36 +544,36 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' @param Configuration &#91;required&#93; Specifies the map style selected from an available data provider.
 #' @param Description An optional description for the map resource.
 #' @param MapName &#91;required&#93; The name for the map resource.
-#' 
+#'
 #' Requirements:
-#' 
+#'
 #' -   Must contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens
 #'     (-), periods (.), and underscores (_).
-#' 
+#'
 #' -   Must be a unique map resource name.
-#' 
+#'
 #' -   No spaces allowed. For example, `ExampleMap`.
 #' @param PricingPlan No longer used. If included, the only allowed value is
 #' `RequestBasedUsage`.
 #' @param Tags Applies one or more tags to the map resource. A tag is a key-value pair
 #' helps manage, identify, search, and filter your resources by labelling
 #' them.
-#' 
+#'
 #' Format: `"key" : "value"`
-#' 
+#'
 #' Restrictions:
-#' 
+#'
 #' -   Maximum 50 tags per resource
-#' 
+#'
 #' -   Each resource tag must be unique with a maximum of one value.
-#' 
+#'
 #' -   Maximum key length: 128 Unicode characters in UTF-8
-#' 
+#'
 #' -   Maximum value length: 256 Unicode characters in UTF-8
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
 #'     characters: + - = . _ : / @@.
-#' 
+#'
 #' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @keywords internal
@@ -604,66 +604,66 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #' See [https://paws-r.github.io/docs/locationservice/create_place_index.html](https://paws-r.github.io/docs/locationservice/create_place_index.html) for full documentation.
 #'
 #' @param DataSource &#91;required&#93; Specifies the geospatial data provider for the new place index.
-#' 
+#'
 #' This field is case-sensitive. Enter the valid values as shown. For
 #' example, entering `HERE` returns an error.
-#' 
+#'
 #' Valid values include:
-#' 
+#'
 #' -   `Esri` – For additional information about
 #'     [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)'s
 #'     coverage in your region of interest, see [Esri details on geocoding
 #'     coverage](https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm).
-#' 
+#'
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
 #'     coverage in your region of interest, see HERE details on goecoding
 #'     coverage.
-#' 
+#'
 #'     If you specify HERE Technologies (`Here`) as the data provider, you
 #'     may not [store
 #'     results](https://docs.aws.amazon.com/location/latest/APIReference/API_DataSourceConfiguration.html)
 #'     for locations in Japan. For more information, see the [AWS Service
 #'     Terms](https://aws.amazon.com/service-terms/) for Amazon Location
 #'     Service.
-#' 
+#'
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
 #' on the *Amazon Location Service Developer Guide*.
 #' @param DataSourceConfiguration Specifies the data storage option requesting Places.
 #' @param Description The optional description for the place index resource.
 #' @param IndexName &#91;required&#93; The name of the place index resource.
-#' 
+#'
 #' Requirements:
-#' 
+#'
 #' -   Contain only alphanumeric characters (A–Z, a–z, 0–9), hyphens (-),
 #'     periods (.), and underscores (_).
-#' 
+#'
 #' -   Must be a unique place index resource name.
-#' 
+#'
 #' -   No spaces allowed. For example, `ExamplePlaceIndex`.
 #' @param PricingPlan No longer used. If included, the only allowed value is
 #' `RequestBasedUsage`.
 #' @param Tags Applies one or more tags to the place index resource. A tag is a
 #' key-value pair that helps you manage, identify, search, and filter your
 #' resources.
-#' 
+#'
 #' Format: `"key" : "value"`
-#' 
+#'
 #' Restrictions:
-#' 
+#'
 #' -   Maximum 50 tags per resource.
-#' 
+#'
 #' -   Each tag key must be unique and must have exactly one associated
 #'     value.
-#' 
+#'
 #' -   Maximum key length: 128 Unicode characters in UTF-8.
-#' 
+#'
 #' -   Maximum value length: 256 Unicode characters in UTF-8.
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
 #'     characters: + - = . _ : / @@
-#' 
+#'
 #' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @keywords internal
@@ -694,35 +694,35 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' See [https://paws-r.github.io/docs/locationservice/create_route_calculator.html](https://paws-r.github.io/docs/locationservice/create_route_calculator.html) for full documentation.
 #'
 #' @param CalculatorName &#91;required&#93; The name of the route calculator resource.
-#' 
+#'
 #' Requirements:
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-),
 #'     periods (.), and underscores (_).
-#' 
+#'
 #' -   Must be a unique Route calculator resource name.
-#' 
+#'
 #' -   No spaces allowed. For example, `ExampleRouteCalculator`.
 #' @param DataSource &#91;required&#93; Specifies the data provider of traffic and road network data.
-#' 
+#'
 #' This field is case-sensitive. Enter the valid values as shown. For
 #' example, entering `HERE` returns an error. Route calculators that use
 #' Esri as a data source only calculate routes that are shorter than 400
 #' km.
-#' 
+#'
 #' Valid values include:
-#' 
+#'
 #' -   `Esri` – For additional information about
 #'     [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)'s
 #'     coverage in your region of interest, see [Esri details on street
 #'     networks and traffic
 #'     coverage](https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm).
-#' 
+#'
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
 #'     coverage in your region of interest, see HERE car routing coverage
 #'     and HERE truck routing coverage.
-#' 
+#'
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
 #' on the *Amazon Location Service Developer Guide*.
@@ -732,24 +732,24 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' @param Tags Applies one or more tags to the route calculator resource. A tag is a
 #' key-value pair helps manage, identify, search, and filter your resources
 #' by labelling them.
-#' 
+#'
 #' -   For example: \{ `"tag1" : "value1"`, `"tag2" : "value2"`\}
-#' 
+#'
 #' Format: `"key" : "value"`
-#' 
+#'
 #' Restrictions:
-#' 
+#'
 #' -   Maximum 50 tags per resource
-#' 
+#'
 #' -   Each resource tag must be unique with a maximum of one value.
-#' 
+#'
 #' -   Maximum key length: 128 Unicode characters in UTF-8
-#' 
+#'
 #' -   Maximum value length: 256 Unicode characters in UTF-8
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
 #'     characters: + - = . _ : / @@.
-#' 
+#'
 #' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @keywords internal
@@ -785,14 +785,14 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 #' Enter a key ID, key ARN, alias name, or alias ARN.
 #' @param PositionFiltering Specifies the position filtering for the tracker resource.
-#' 
+#'
 #' Valid values:
-#' 
+#'
 #' -   `TimeBased` - Location updates are evaluated against linked geofence
 #'     collections, but not every location update is stored. If your update
 #'     frequency is more often than 30 seconds, only one update per 30
 #'     seconds is stored for each unique device ID.
-#' 
+#'
 #' -   `DistanceBased` - If the device has moved less than 30 m (98.4 ft),
 #'     location updates are ignored. Location updates within this area are
 #'     neither evaluated against linked geofence collections, nor stored.
@@ -800,7 +800,7 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #'     evaluations and historical device positions to paginate through.
 #'     Distance-based filtering can also reduce the effects of GPS noise
 #'     when displaying device trajectories on a map.
-#' 
+#'
 #' -   `AccuracyBased` - If the device has moved less than the measured
 #'     accuracy, location updates are ignored. For example, if two
 #'     consecutive updates from a device have a horizontal accuracy of 5 m
@@ -810,7 +810,7 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #'     of GPS noise when displaying device trajectories on a map, and can
 #'     help control your costs by reducing the number of geofence
 #'     evaluations.
-#' 
+#'
 #' This field is optional. If not specified, the default value is
 #' `TimeBased`.
 #' @param PricingPlan No longer used. If included, the only allowed value is
@@ -819,32 +819,32 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' @param Tags Applies one or more tags to the tracker resource. A tag is a key-value
 #' pair helps manage, identify, search, and filter your resources by
 #' labelling them.
-#' 
+#'
 #' Format: `"key" : "value"`
-#' 
+#'
 #' Restrictions:
-#' 
+#'
 #' -   Maximum 50 tags per resource
-#' 
+#'
 #' -   Each resource tag must be unique with a maximum of one value.
-#' 
+#'
 #' -   Maximum key length: 128 Unicode characters in UTF-8
-#' 
+#'
 #' -   Maximum value length: 256 Unicode characters in UTF-8
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
 #'     characters: + - = . _ : / @@.
-#' 
+#'
 #' -   Cannot use "aws:" as a prefix for a key.
 #' @param TrackerName &#91;required&#93; The name for the tracker resource.
-#' 
+#'
 #' Requirements:
-#' 
+#'
 #' -   Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
 #'     periods (.), and underscores (_).
-#' 
+#'
 #' -   Must be a unique tracker resource name.
-#' 
+#'
 #' -   No spaces allowed. For example, `ExampleTracker`.
 #'
 #' @keywords internal
@@ -1168,7 +1168,7 @@ locationservice_describe_tracker <- function(TrackerName) {
 #' @param ConsumerArn &#91;required&#93; The Amazon Resource Name (ARN) for the geofence collection to be
 #' disassociated from the tracker resource. Used when you need to specify a
 #' resource across all AWS.
-#' 
+#'
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer`
 #' @param TrackerName &#91;required&#93; The name of the tracker resource to be dissociated from the consumer.
@@ -1236,26 +1236,26 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
 #' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be the time that
 #' the request is made.
-#' 
+#'
 #' Requirement:
-#' 
+#'
 #' -   The time specified for `EndTimeExclusive` must be after the time for
 #'     `StartTimeInclusive`.
 #' @param MaxResults An optional limit for the number of device positions returned in a
 #' single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #' @param StartTimeInclusive Specify the start time for the position history in [ISO
 #' 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format:
 #' `YYYY-MM-DDThh:mm:ss.sssZ`. By default, the value will be 24 hours prior
 #' to the time that the request is made.
-#' 
+#'
 #' Requirement:
-#' 
+#'
 #' -   The time specified for `StartTimeInclusive` must be before
 #'     `EndTimeExclusive`.
 #' @param TrackerName &#91;required&#93; The tracker resource receiving the request for the device position
@@ -1320,32 +1320,32 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #'
 #' @param FontStack &#91;required&#93; A comma-separated list of fonts to load glyphs from in order of
 #' preference. For example, `Noto Sans Regular, Arial Unicode`.
-#' 
+#'
 #' Valid fonts stacks for
 #' [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)
 #' styles:
-#' 
+#'
 #' -   VectorEsriDarkGrayCanvas – `Ubuntu Medium Italic` | `Ubuntu Medium`
 #'     | `Ubuntu Italic` | `Ubuntu Regular` | `Ubuntu Bold`
-#' 
+#'
 #' -   VectorEsriLightGrayCanvas – `Ubuntu Italic` | `Ubuntu Regular` |
 #'     `Ubuntu Light` | `Ubuntu Bold`
-#' 
+#'
 #' -   VectorEsriTopographic – `Noto Sans Italic` | `Noto Sans Regular` |
 #'     `Noto Sans Bold` | `Noto Serif Regular` |
 #'     `Roboto Condensed Light Italic`
-#' 
+#'
 #' -   VectorEsriStreets – `Arial Regular` | `Arial Italic` | `Arial Bold`
-#' 
+#'
 #' -   VectorEsriNavigation – `Arial Regular` | `Arial Italic` |
 #'     `Arial Bold`
-#' 
+#'
 #' Valid font stacks for [HERE
 #' Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)
 #' styles:
-#' 
+#'
 #' -   VectorHereContrast – `Fira GO Regular` | `Fira GO Bold`
-#' 
+#'
 #' -   VectorHereExplore, VectorHereExploreTruck – `Firo GO Italic` |
 #'     `Fira GO Map` | `Fira GO Map Bold` | `Noto Sans CJK JP Bold` |
 #'     `Noto Sans CJK JP Light` | `Noto Sans CJK JP Regular`
@@ -1383,16 +1383,16 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName)
 #'
 #' @param FileName &#91;required&#93; The name of the sprite ﬁle. Use the following ﬁle names for the sprite
 #' sheet:
-#' 
+#'
 #' -   `sprites.png`
-#' 
+#'
 #' -   `sprites@@2x.png` for high pixel density displays
-#' 
+#'
 #' For the JSON document contain image offsets. Use the following ﬁle
 #' names:
-#' 
+#'
 #' -   `sprites.json`
-#' 
+#'
 #' -   `sprites@@2x.json` for high pixel density displays
 #' @param MapName &#91;required&#93; The map resource associated with the sprite ﬁle.
 #'
@@ -1485,11 +1485,11 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 #' See [https://paws-r.github.io/docs/locationservice/list_device_positions.html](https://paws-r.github.io/docs/locationservice/list_device_positions.html) for full documentation.
 #'
 #' @param MaxResults An optional limit for the number of entries returned in a single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #' @param TrackerName &#91;required&#93; The tracker resource containing the requested devices.
 #'
@@ -1521,11 +1521,11 @@ locationservice_list_device_positions <- function(MaxResults = NULL, NextToken =
 #' See [https://paws-r.github.io/docs/locationservice/list_geofence_collections.html](https://paws-r.github.io/docs/locationservice/list_geofence_collections.html) for full documentation.
 #'
 #' @param MaxResults An optional limit for the number of resources returned in a single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #'
 #' @keywords internal
@@ -1557,11 +1557,11 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 #'
 #' @param CollectionName &#91;required&#93; The name of the geofence collection storing the list of geofences.
 #' @param MaxResults An optional limit for the number of geofences returned in a single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #'
 #' @keywords internal
@@ -1592,11 +1592,11 @@ locationservice_list_geofences <- function(CollectionName, MaxResults = NULL, Ne
 #' See [https://paws-r.github.io/docs/locationservice/list_maps.html](https://paws-r.github.io/docs/locationservice/list_maps.html) for full documentation.
 #'
 #' @param MaxResults An optional limit for the number of resources returned in a single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #'
 #' @keywords internal
@@ -1628,11 +1628,11 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' @param MaxResults An optional limit for the maximum number of results returned in a single
 #' call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #'
 #' @keywords internal
@@ -1663,11 +1663,11 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
 #' See [https://paws-r.github.io/docs/locationservice/list_route_calculators.html](https://paws-r.github.io/docs/locationservice/list_route_calculators.html) for full documentation.
 #'
 #' @param MaxResults An optional maximum number of results returned in a single call.
-#' 
+#'
 #' Default Value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default Value: `null`
 #'
 #' @keywords internal
@@ -1700,7 +1700,7 @@ locationservice_list_route_calculators <- function(MaxResults = NULL, NextToken 
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
 #' retrieve.
-#' 
+#'
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:resourcetype/ExampleResource`
 #'
@@ -1733,11 +1733,11 @@ locationservice_list_tags_for_resource <- function(ResourceArn) {
 #' See [https://paws-r.github.io/docs/locationservice/list_tracker_consumers.html](https://paws-r.github.io/docs/locationservice/list_tracker_consumers.html) for full documentation.
 #'
 #' @param MaxResults An optional limit for the number of resources returned in a single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #' @param TrackerName &#91;required&#93; The tracker resource whose associated geofence collections you want to
 #' list.
@@ -1770,11 +1770,11 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 #' See [https://paws-r.github.io/docs/locationservice/list_trackers.html](https://paws-r.github.io/docs/locationservice/list_trackers.html) for full documentation.
 #'
 #' @param MaxResults An optional limit for the number of resources returned in a single call.
-#' 
+#'
 #' Default value: `100`
 #' @param NextToken The pagination token specifying which page of results to return in the
 #' response. If no token is provided, the default page is the first page.
-#' 
+#'
 #' Default value: `null`
 #'
 #' @keywords internal
@@ -1811,7 +1811,7 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param Geometry &#91;required&#93; Contains the details to specify the position of the geofence. Can be
 #' either a polygon or a circle. Including both will return a validation
 #' error.
-#' 
+#'
 #' Each [geofence
 #' polygon](https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html)
 #' can have a maximum of 1,000 vertices.
@@ -1846,31 +1846,31 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
 #' @param Language The preferred language used to return results. The value must be a valid
 #' BCP 47 language tag, for example, `en` for English.
-#' 
+#'
 #' This setting affects the languages used in the results, but not the
 #' results themselves. If no language is specified, or not supported for a
 #' particular result, the partner automatically chooses a language for the
 #' result.
-#' 
+#'
 #' For an example, we'll use the Greek language. You search for a location
 #' around Athens, Greece, with the `language` parameter set to `en`. The
 #' `city` in the results will most likely be returned as `Athens`.
-#' 
+#'
 #' If you set the `language` parameter to `el`, for Greek, then the `city`
-#' in the results will more likely be returned as ``.
-#' 
+#' in the results will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
+#'
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.
-#' 
+#'
 #' Default value: `50`
 #' @param Position &#91;required&#93; Specifies the longitude and latitude of the position to query.
-#' 
+#'
 #' This parameter must contain a pair of numbers. The first number
 #' represents the X coordinate, or longitude; the second number represents
 #' the Y coordinate, or latitude.
-#' 
+#'
 #' For example, `[-123.1174, 49.2847]` represents a position with longitude
 #' `-123.1174` and latitude `49.2847`.
 #'
@@ -1904,36 +1904,36 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'
 #' @param BiasPosition An optional parameter that indicates a preference for place suggestions
 #' that are closer to a specified position.
-#' 
+#'
 #' If provided, this parameter must contain a pair of numbers. The first
 #' number represents the X coordinate, or longitude; the second number
 #' represents the Y coordinate, or latitude.
-#' 
+#'
 #' For example, `[-123.1174, 49.2847]` represents the position with
 #' longitude `-123.1174` and latitude `49.2847`.
-#' 
+#'
 #' `BiasPosition` and `FilterBBox` are mutually exclusive. Specifying both
 #' options results in an error.
 #' @param FilterBBox An optional parameter that limits the search results by returning only
 #' suggestions within a specified bounding box.
-#' 
+#'
 #' If provided, this parameter must contain a total of four consecutive
 #' numbers in two pairs. The first pair of numbers represents the X and Y
 #' coordinates (longitude and latitude, respectively) of the southwest
 #' corner of the bounding box; the second pair of numbers represents the X
 #' and Y coordinates (longitude and latitude, respectively) of the
 #' northeast corner of the bounding box.
-#' 
+#'
 #' For example, `[-12.7935, -37.4835, -12.0684, -36.9542]` represents a
 #' bounding box where the southwest corner has longitude `-12.7935` and
 #' latitude `-37.4835`, and the northeast corner has longitude `-12.0684`
 #' and latitude `-36.9542`.
-#' 
+#'
 #' `FilterBBox` and `BiasPosition` are mutually exclusive. Specifying both
 #' options results in an error.
 #' @param FilterCountries An optional parameter that limits the search results by returning only
 #' suggestions within the provided list of countries.
-#' 
+#'
 #' -   Use the [ISO 3166](https://www.iso.org/iso-3166-country-codes.html)
 #'     3-digit country code. For example, Australia uses three upper-case
 #'     characters: `AUS`.
@@ -1942,24 +1942,24 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #' [BCP
 #' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
 #' language tag, for example, `en` for English.
-#' 
+#'
 #' This setting affects the languages used in the results. If no language
 #' is specified, or not supported for a particular result, the partner
 #' automatically chooses a language for the result.
-#' 
+#'
 #' For an example, we'll use the Greek language. You search for
 #' `Athens, Gr` to get suggestions with the `language` parameter set to
 #' `en`. The results found will most likely be returned as
 #' `Athens, Greece`.
-#' 
+#'
 #' If you set the `language` parameter to `el`, for Greek, then the result
-#' found will more likely be returned as `, Ελλάδ`.
-#' 
+#' found will more likely be returned as \eqn{A\Theta\eta\nu\sigma, E\lambda\lambda\alpha\delta}.
+#'
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.
-#' 
+#'
 #' The default: `5`
 #' @param Text &#91;required&#93; The free-form partial text to use to generate place suggestions. For
 #' example, `eiffel tow`.
@@ -1994,36 +1994,36 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'
 #' @param BiasPosition An optional parameter that indicates a preference for places that are
 #' closer to a specified position.
-#' 
+#'
 #' If provided, this parameter must contain a pair of numbers. The first
 #' number represents the X coordinate, or longitude; the second number
 #' represents the Y coordinate, or latitude.
-#' 
+#'
 #' For example, `[-123.1174, 49.2847]` represents the position with
 #' longitude `-123.1174` and latitude `49.2847`.
-#' 
+#'
 #' `BiasPosition` and `FilterBBox` are mutually exclusive. Specifying both
 #' options results in an error.
 #' @param FilterBBox An optional parameter that limits the search results by returning only
 #' places that are within the provided bounding box.
-#' 
+#'
 #' If provided, this parameter must contain a total of four consecutive
 #' numbers in two pairs. The first pair of numbers represents the X and Y
 #' coordinates (longitude and latitude, respectively) of the southwest
 #' corner of the bounding box; the second pair of numbers represents the X
 #' and Y coordinates (longitude and latitude, respectively) of the
 #' northeast corner of the bounding box.
-#' 
+#'
 #' For example, `[-12.7935, -37.4835, -12.0684, -36.9542]` represents a
 #' bounding box where the southwest corner has longitude `-12.7935` and
 #' latitude `-37.4835`, and the northeast corner has longitude `-12.0684`
 #' and latitude `-36.9542`.
-#' 
+#'
 #' `FilterBBox` and `BiasPosition` are mutually exclusive. Specifying both
 #' options results in an error.
 #' @param FilterCountries An optional parameter that limits the search results by returning only
 #' places that are in a specified list of countries.
-#' 
+#'
 #' -   Valid values include [ISO
 #'     3166](https://www.iso.org/iso-3166-country-codes.html) 3-digit
 #'     country codes. For example, Australia uses three upper-case
@@ -2033,24 +2033,24 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #' [BCP
 #' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
 #' language tag, for example, `en` for English.
-#' 
+#'
 #' This setting affects the languages used in the results, but not the
 #' results themselves. If no language is specified, or not supported for a
 #' particular result, the partner automatically chooses a language for the
 #' result.
-#' 
+#'
 #' For an example, we'll use the Greek language. You search for
 #' `Athens, Greece`, with the `language` parameter set to `en`. The result
 #' found will most likely be returned as `Athens`.
-#' 
+#'
 #' If you set the `language` parameter to `el`, for Greek, then the result
-#' found will more likely be returned as ``.
-#' 
+#' found will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
+#'
 #' If the data provider does not have a value for Greek, the result will be
 #' in a language that the provider does support.
 #' @param MaxResults An optional parameter. The maximum number of results returned per
 #' request.
-#' 
+#'
 #' The default: `50`
 #' @param Text &#91;required&#93; The address, name, city, or region to be used in the search in free-form
 #' text format. For example, `123 Any Street`.
@@ -2085,28 +2085,28 @@ locationservice_search_place_index_for_text <- function(BiasPosition = NULL, Fil
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
 #' update.
-#' 
+#'
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:resourcetype/ExampleResource`
 #' @param Tags &#91;required&#93; Applies one or more tags to specific resource. A tag is a key-value pair
 #' that helps you manage, identify, search, and filter your resources.
-#' 
+#'
 #' Format: `"key" : "value"`
-#' 
+#'
 #' Restrictions:
-#' 
+#'
 #' -   Maximum 50 tags per resource.
-#' 
+#'
 #' -   Each tag key must be unique and must have exactly one associated
 #'     value.
-#' 
+#'
 #' -   Maximum key length: 128 Unicode characters in UTF-8.
-#' 
+#'
 #' -   Maximum value length: 256 Unicode characters in UTF-8.
-#' 
+#'
 #' -   Can use alphanumeric characters (A–Z, a–z, 0–9), and the following
 #'     characters: + - = . _ : / @@
-#' 
+#'
 #' -   Cannot use "aws:" as a prefix for a key.
 #'
 #' @keywords internal
@@ -2138,7 +2138,7 @@ locationservice_tag_resource <- function(ResourceArn, Tags) {
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which you want to
 #' remove tags.
-#' 
+#'
 #' -   Format example:
 #'     `arn:aws:geo:region:account-id:resourcetype/ExampleResource`
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the specified resource.
@@ -2302,14 +2302,14 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #'
 #' @param Description Updates the description for the tracker resource.
 #' @param PositionFiltering Updates the position filtering for the tracker resource.
-#' 
+#'
 #' Valid values:
-#' 
+#'
 #' -   `TimeBased` - Location updates are evaluated against linked geofence
 #'     collections, but not every location update is stored. If your update
 #'     frequency is more often than 30 seconds, only one update per 30
 #'     seconds is stored for each unique device ID.
-#' 
+#'
 #' -   `DistanceBased` - If the device has moved less than 30 m (98.4 ft),
 #'     location updates are ignored. Location updates within this distance
 #'     are neither evaluated against linked geofence collections, nor
@@ -2317,7 +2317,7 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #'     evaluations and historical device positions to paginate through.
 #'     Distance-based filtering can also reduce the effects of GPS noise
 #'     when displaying device trajectories on a map.
-#' 
+#'
 #' -   `AccuracyBased` - If the device has moved less than the measured
 #'     accuracy, location updates are ignored. For example, if two
 #'     consecutive updates from a device have a horizontal accuracy of 5 m

@@ -27,7 +27,7 @@ around Athens, Greece, with the \code{language} parameter set to \code{en}. The
 \code{city} in the results will most likely be returned as \code{Athens}.
 
 If you set the \code{language} parameter to \code{el}, for Greek, then the \code{city}
-in the results will more likely be returned as ``.
+in the results will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
 
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}
