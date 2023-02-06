@@ -395,6 +395,49 @@ paws_build_cran_comments <- function(in_dir = "../cran",
   }
 }
 
+# TODO: add this helper function the make build/rebuild functionality
+# This function un-escapes any special characters after build.
+paws_unescape_latex_post_build <- function(
+    root = "..",
+    special_characters = c("#", "$", "_")
+  ) {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+
+  paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
+  cran_pkg <- fs::dir_ls(file.path(root, "cran"))
+  cran_r <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+  )
+  cran_rd <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+  )
+
+  remove_esaped_latex <- function(files) {
+    for (file in files) {
+      result <- readLines(file)
+      result <- vapply(result, \(line){
+        for (char in special_characters) {
+          line <- gsub(sprintf("\\%s", char), char, line, perl = T)
+        }
+        return(line)
+      }, FUN.VALUE = character(1))
+      writeLines(result, file)
+    }
+  }
+
+  remove_esaped_latex(paws_r)
+  log_info(
+    "Removed escaped latex scripts from paws directory."
+  )
+
+  for (pkg in cran_pkg) {
+    remove_esaped_latex(cran_r[[pkg]])
+    remove_esaped_latex(cran_rd[[pkg]])
+    log_info("Removed escaped latex: %s", pkg)
+  }
+}
+
+
 ##### helper functions #####
 check_pkgs <- function(pkgs, keep_notes = FALSE){
   temp_file <- tempfile()
