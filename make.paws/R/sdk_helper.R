@@ -415,12 +415,9 @@ paws_unescape_latex_post_build <- function(
   remove_esaped_latex <- function(files) {
     for (file in files) {
       result <- readLines(file)
-      result <- vapply(result, \(line){
-        for (char in special_characters) {
-          line <- gsub(sprintf("\\%s", char), char, line, perl = T)
-        }
-        return(line)
-      }, FUN.VALUE = character(1))
+      for (char in special_characters) {
+        result <- gsub(sprintf(r"(\\[%s])", char), char, result, perl = T)
+      }
       writeLines(result, file)
     }
   }
