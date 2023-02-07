@@ -89,26 +89,31 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages check through rhub, check all packages by default
 #' @param email address to notify, defaults to the maintainer address in the package.
+#' @param interactive whether to show the status of the build interactively. R-hub
+#' will send an email to the package maintainer's email address, regardless of
+#' whether the check is interactive or not.
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub <- function(in_dir = "../cran",
                             pkg_list = list(),
-                            email = NULL){
-  paws_check_rhub_sub_cat(in_dir, pkg_list, email)
-  paws_check_rhub_cat(in_dir, pkg_list, email)
+                            email = NULL,
+                            interactive = TRUE){
+  paws_check_rhub_sub_cat(in_dir, pkg_list, email, interactive)
+  paws_check_rhub_cat(in_dir, pkg_list, email, interactive)
   pkg <- file.path(in_dir, "paws")
-  devtools::check_rhub(pkg, email = email)
+  devtools::check_rhub(pkg, email = email, interactive = interactive)
 }
 
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub_cat <- function(in_dir = "../cran",
                                 pkg_list = list(),
-                                email = NULL){
+                                email = NULL,
+                                interactive = TRUE){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   for (pkg in pkgs){
-    devtools::check_rhub(pkg, email = email)
+    devtools::check_rhub(pkg, email = email, interactive = interactive)
   }
 }
 
@@ -116,12 +121,13 @@ paws_check_rhub_cat <- function(in_dir = "../cran",
 #' @export
 paws_check_rhub_sub_cat <- function(in_dir = "../cran",
                                     pkg_list = list(),
-                                    email = NULL){
+                                    email = NULL,
+                                    interactive = TRUE){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
     for (pkg in pkgs){
-      devtools::check_rhub(pkg, email = email)
+      devtools::check_rhub(pkg, email = email, interactive = interactive)
     }
   } else {
     warning("No sub-categories released.")
