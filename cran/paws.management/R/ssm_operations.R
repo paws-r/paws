@@ -11,20 +11,20 @@ NULL
 #' See [https://paws-r.github.io/docs/ssm/add_tags_to_resource.html](https://paws-r.github.io/docs/ssm/add_tags_to_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; Specifies the type of resource you are tagging.
-#' 
+#'
 #' The `ManagedInstance` type for this API operation is for on-premises
 #' managed nodes. You must specify the name of the managed node in the
 #' following format: `mi-ID_number `. For example, `mi-1a2b3c4d5e6f`.
 #' @param ResourceId &#91;required&#93; The resource ID you want to tag.
-#' 
+#'
 #' Use the ID of the resource. Here are some examples:
-#' 
+#'
 #' `MaintenanceWindow`: `mw-012345abcde`
-#' 
+#'
 #' `PatchBaseline`: `pb-012345abcde`
-#' 
+#'
 #' `Automation`: `example-c160-4567-8519-012345abcde`
-#' 
+#'
 #' `OpsMetadata` object: `ResourceID` for tagging is created from the
 #' Amazon Resource Name (ARN) for the object. Specifically, `ResourceID` is
 #' created from the strings that come after the word `opsmetadata` in the
@@ -32,17 +32,17 @@ NULL
 #' `arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager`
 #' has a `ResourceID` of either `aws/ssm/MyGroup/appmanager` or
 #' `/aws/ssm/MyGroup/appmanager`.
-#' 
+#'
 #' For the `Document` and `Parameter` values, use the name of the resource.
-#' 
+#'
 #' `ManagedInstance`: `mi-012345abcde`
-#' 
+#'
 #' The `ManagedInstance` type for this API operation is only for
 #' on-premises managed nodes. You must specify the name of the managed node
 #' in the following format: `mi-ID_number `. For example,
 #' `mi-1a2b3c4d5e6f`.
 #' @param Tags &#91;required&#93; One or more tags. The value parameter is required.
-#' 
+#'
 #' Don't enter personally identifiable information in this field.
 #'
 #' @keywords internal
@@ -79,9 +79,9 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 #' types.
 #' @param ResourceType &#91;required&#93; The type of resource that you want to associate with an OpsItem.
 #' OpsCenter supports the following types:
-#' 
+#'
 #' `AWS::SSMIncidents::IncidentRecord`: an Incident Manager incident.
-#' 
+#'
 #' `AWS::SSM::Document`: a Systems Manager (SSM) document.
 #' @param ResourceUri &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource that
 #' you want to associate with the OpsItem.
@@ -179,12 +179,12 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #'
 #' @param Description A user-defined description of the resource that you want to register
 #' with Systems Manager.
-#' 
+#'
 #' Don't enter personally identifiable information in this field.
 #' @param DefaultInstanceName The name of the registered, managed node as it will appear in the Amazon
 #' Web Services Systems Manager console or when you use the Amazon Web
 #' Services command line tools to list Systems Manager resources.
-#' 
+#'
 #' Don't enter personally identifiable information in this field.
 #' @param IamRole &#91;required&#93; The name of the Identity and Access Management (IAM) role that you want
 #' to assign to the managed node. This IAM role must provide AssumeRole
@@ -205,16 +205,16 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' identify which servers or virtual machines (VMs) in your on-premises
 #' environment you intend to activate. In this case, you could specify the
 #' following key-value pairs:
-#' 
+#'
 #' -   `Key=OS,Value=Windows`
-#' 
+#'
 #' -   `Key=Environment,Value=Production`
-#' 
+#'
 #' When you install SSM Agent on your on-premises servers and VMs, you
 #' specify an activation ID and code. When you specify the activation ID
 #' and code, tags assigned to the activation are automatically applied to
 #' the on-premises servers or VMs.
-#' 
+#'
 #' You can't add tags to or delete tags from an existing activation. You
 #' can tag your on-premises servers, edge devices, and VMs after they
 #' connect to Systems Manager for the first time and are assigned a managed
@@ -256,26 +256,26 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #'
 #' @param Name &#91;required&#93; The name of the SSM Command document or Automation runbook that contains
 #' the configuration information for the managed node.
-#' 
+#'
 #' You can specify Amazon Web Services-predefined documents, documents you
 #' created, or a document that is shared with you from another account.
-#' 
+#'
 #' For Systems Manager documents (SSM documents) that are shared with you
 #' from other Amazon Web Services accounts, you must specify the complete
 #' SSM document ARN, in the following format:
-#' 
+#'
 #' `arn:partition:ssm:region:account-id:document/document-name `
-#' 
+#'
 #' For example:
-#' 
+#'
 #' `arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document`
-#' 
+#'
 #' For Amazon Web Services-predefined documents and SSM documents you
 #' created in your account, you only need to specify the document name. For
 #' example, `AWS-ApplyPatchBaseline` or `My-Document`.
 #' @param DocumentVersion The document version you want to associate with the target(s). Can be a
 #' specific version or the default version.
-#' 
+#'
 #' State Manager doesn't support running associations that use a new
 #' version of a document if that document is shared from another account.
 #' State Manager always runs the `default` version of a document if shared
@@ -284,7 +284,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' new version of a document shared form another account, you must set the
 #' document version to `default`.
 #' @param InstanceId The managed node ID.
-#' 
+#'
 #' `InstanceId` has been deprecated. To specify a managed node ID for an
 #' association, use the `Targets` parameter. Requests that include the
 #' parameter `InstanceID` with Systems Manager documents (SSM documents)
@@ -320,7 +320,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' is returned. If you run an association on 50 managed nodes and set
 #' `MaxError` to 10%, then the system stops sending the request when the
 #' sixth error is received.
-#' 
+#'
 #' Executions that are already running an association when `MaxErrors` is
 #' reached are allowed to complete, but some of these executions may fail
 #' as well. If you need to ensure that there won't be more than max-errors
@@ -330,7 +330,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' time. You can specify a number, for example 10, or a percentage of the
 #' target set, for example 10%. The default value is 100%, which means all
 #' targets run the association at the same time.
-#' 
+#'
 #' If a new managed node starts and attempts to run an association while
 #' Systems Manager is running `MaxConcurrency` associations, the
 #' association is allowed to run. During the next association interval, the
@@ -343,13 +343,13 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' association execution runs successfully, then the association is
 #' `COMPLIANT`. If the association execution doesn't run successfully, the
 #' association is `NON-COMPLIANT`.
-#' 
+#'
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
 #' for the [`put_compliance_items`][ssm_put_compliance_items] API
 #' operation. In this case, compliance data isn't managed by State Manager.
 #' It is managed by your direct call to the
 #' [`put_compliance_items`][ssm_put_compliance_items] API operation.
-#' 
+#'
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you create a new association, the system runs it
 #' immediately after it is created and then according to the schedule you
@@ -373,7 +373,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' and rate expressions for Systems
 #' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' To use offsets, you must specify the `ApplyOnlyAtCronInterval`
 #' parameter. This option tells the system not to run an association
 #' immediately after you create it.
@@ -440,16 +440,16 @@ ssm_create_association_batch <- function(Entries) {
 #' @param Content &#91;required&#93; The content for the new SSM document in JSON or YAML format. We
 #' recommend storing the contents for your new document in an external JSON
 #' or YAML file and referencing the file in a command.
-#' 
+#'
 #' For examples, see the following topics in the *Amazon Web Services
 #' Systems Manager User Guide*.
-#' 
+#'
 #' -   [Create an SSM document (Amazon Web Services
 #'     API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
-#' 
+#'
 #' -   [Create an SSM document (Amazon Web Services
 #'     CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
-#' 
+#'
 #' -   [Create an SSM document
 #'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
 #' @param Requires A list of SSM documents required by a document. This parameter is used
@@ -463,14 +463,14 @@ ssm_create_association_batch <- function(Entries) {
 #' @param Attachments A list of key-value pairs that describe attachments to a version of a
 #' document.
 #' @param Name &#91;required&#93; A name for the SSM document.
-#' 
+#'
 #' You can't use the following strings as document name prefixes. These are
 #' reserved by Amazon Web Services for use as document name prefixes:
-#' 
+#'
 #' -   `aws-`
-#' 
+#'
 #' -   `amazon`
-#' 
+#'
 #' -   `amzn`
 #' @param DisplayName An optional field where you can specify a friendly name for the SSM
 #' document. This value can differ for each version of the document. You
@@ -480,7 +480,7 @@ ssm_create_association_batch <- function(Entries) {
 #' creating with the document. For example, `Release12.1`. This value is
 #' unique across all versions of a document, and can't be changed.
 #' @param DocumentType The type of document to create.
-#' 
+#'
 #' The `DeploymentStrategy` document type is an internal-use-only document
 #' type reserved for AppConfig.
 #' @param DocumentFormat Specify the document format for the request. The document format can be
@@ -498,11 +498,11 @@ ssm_create_association_batch <- function(Entries) {
 #' environment. For example, you might want to tag an SSM document to
 #' identify the types of targets or the environment where it will run. In
 #' this case, you could specify the following key-value pairs:
-#' 
+#'
 #' -   `Key=OS,Value=Windows`
-#' 
+#'
 #' -   `Key=Environment,Value=Production`
-#' 
+#'
 #' To add tags to an existing SSM document, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
@@ -552,12 +552,12 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' website.
 #' @param ScheduleOffset The number of days to wait after the date and time specified by a cron
 #' expression before running the maintenance window.
-#' 
+#'
 #' For example, the following cron expression schedules a maintenance
 #' window to run on the third Tuesday of every month at 11:30 PM.
-#' 
+#'
 #' `cron(30 23 ? * TUE#3 *)`
-#' 
+#'
 #' If the schedule offset is `2`, the maintenance window won't run until
 #' two days later.
 #' @param Duration &#91;required&#93; The duration of the maintenance window in hours.
@@ -567,7 +567,7 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' haven't registered those nodes as targets. If enabled, then you must
 #' specify the unregistered managed nodes (by node ID) when you register a
 #' task with the maintenance window.
-#' 
+#'
 #' If you don't enable this option, then you must specify
 #' previously-registered targets when you register a task with the
 #' maintenance window.
@@ -578,13 +578,13 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' identify the type of tasks it will run, the types of targets, and the
 #' environment it will run in. In this case, you could specify the
 #' following key-value pairs:
-#' 
+#'
 #' -   `Key=TaskType,Value=AgentUpdate`
-#' 
+#'
 #' -   `Key=OS,Value=Windows`
-#' 
+#'
 #' -   `Key=Environment,Value=Production`
-#' 
+#'
 #' To add tags to an existing maintenance window, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
@@ -623,10 +623,10 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' strings, license keys, troubleshooting tips, or other relevant data. You
 #' enter operational data as key-value pairs. The key has a maximum length
 #' of 128 characters. The value has a maximum size of 20 KB.
-#' 
+#'
 #' Operational data keys *can't* begin with the following: `amazon`, `aws`,
 #' `amzn`, `ssm`, `/amazon`, `/aws`, `/amzn`, `/ssm`.
-#' 
+#'
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
@@ -634,7 +634,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' and search on the specified data. Operational data that isn't searchable
 #' is only viewable by users who have access to the OpsItem (as provided by
 #' the [`get_ops_item`][ssm_get_ops_item] API operation).
-#' 
+#'
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
 #' OperationalData to associate an Automation runbook with the OpsItem. To
@@ -651,7 +651,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' similar error messages, impacted resources, or statuses for the impacted
 #' resource.
 #' @param Source &#91;required&#93; The origin of the OpsItem, such as Amazon EC2 or Systems Manager.
-#' 
+#'
 #' The source name can't contain the following strings: `aws`, `amazon`,
 #' and `amzn`.
 #' @param Title &#91;required&#93; A short heading that describes the nature of the OpsItem and the
@@ -661,11 +661,11 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' information, see [Getting started with
 #' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' Tags use a key-value pair. For example:
-#' 
+#'
 #' `Key=Department,Value=Finance`
-#' 
+#'
 #' To add tags to a new OpsItem, a user must have IAM permissions for both
 #' the `ssm:CreateOpsItems` operation and the `ssm:AddTagsToResource`
 #' operation. To add tags to an existing OpsItem, use the
@@ -718,9 +718,9 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' environment. For example, you might want to tag an OpsMetadata object to
 #' identify an environment or target Amazon Web Services Region. In this
 #' case, you could specify the following key-value pairs:
-#' 
+#'
 #' -   `Key=Environment,Value=Production`
-#' 
+#'
 #' -   `Key=Region,Value=us-east-2`
 #'
 #' @keywords internal
@@ -756,7 +756,7 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @param GlobalFilters A set of global filters used to include patches in the baseline.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
 #' @param ApprovedPatches A list of explicitly approved patches for the baseline.
-#' 
+#'
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
@@ -769,7 +769,7 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' updates that should be applied to the managed nodes. The default value
 #' is `false`. Applies to Linux managed nodes only.
 #' @param RejectedPatches A list of explicitly rejected patches for the baseline.
-#' 
+#'
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
@@ -777,13 +777,13 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' `RejectedPackages` list.
-#' 
+#'
 #' -   **`ALLOW_AS_DEPENDENCY`** : A package in the `Rejected` patches list
 #'     is installed only if it is a dependency of another package. It is
 #'     considered compliant with the patch baseline, and its status is
 #'     reported as `InstalledOther`. This is the default action if no
 #'     option is specified.
-#' 
+#'
 #' -   **`BLOCK`** : Packages in the `RejectedPatches` list, and packages
 #'     that include them as dependencies, aren't installed under any
 #'     circumstances. If a package was installed before it was added to the
@@ -800,11 +800,11 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' identify the severity level of patches it specifies and the operating
 #' system family it applies to. In this case, you could specify the
 #' following key-value pairs:
-#' 
+#'
 #' -   `Key=PatchSeverity,Value=Critical`
-#' 
+#'
 #' -   `Key=OS,Value=Windows`
-#' 
+#'
 #' To add tags to an existing patch baseline, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
@@ -909,7 +909,7 @@ ssm_delete_activation <- function(ActivationId) {
 #'
 #' @param Name The name of the SSM document.
 #' @param InstanceId The managed node ID.
-#' 
+#'
 #' `InstanceId` has been deprecated. To specify a managed node ID for an
 #' association, use the `Targets` parameter. Requests that include the
 #' parameter `InstanceID` with Systems Manager documents (SSM documents)
@@ -993,13 +993,13 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' If you don't choose this option, the system only deletes existing
 #' inventory data associated with the custom inventory type. Choose one of
 #' the following options:
-#' 
+#'
 #' DisableSchema: If you choose this option, the system ignores all
 #' inventory data for the specified version, and any earlier versions. To
 #' enable this schema again, you must call the
 #' [`put_inventory`][ssm_put_inventory] operation for a version greater
 #' than the disabled version.
-#' 
+#'
 #' DeleteSchema: This option deletes the specified custom type from the
 #' Inventory service. You can recreate the schema later, if you want.
 #' @param DryRun Use this option to view a summary of the deletion request without
@@ -1416,11 +1416,11 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #' @param ExecutionId &#91;required&#93; The execution ID for which you want to view details.
 #' @param Filters Filters for the request. You can specify the following filters and
 #' values.
-#' 
+#'
 #' Status (EQUAL)
-#' 
+#'
 #' ResourceId (EQUAL)
-#' 
+#'
 #' ResourceType (EQUAL)
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
@@ -1458,11 +1458,11 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 #' @param AssociationId &#91;required&#93; The association ID for which you want to view execution history details.
 #' @param Filters Filters for the request. You can specify the following filters and
 #' values.
-#' 
+#'
 #' ExecutionId (EQUAL)
-#' 
+#'
 #' Status (EQUAL)
-#' 
+#'
 #' CreatedTime (EQUAL, GREATER_THAN, LESS_THAN)
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
@@ -1572,94 +1572,94 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' See [https://paws-r.github.io/docs/ssm/describe_available_patches.html](https://paws-r.github.io/docs/ssm/describe_available_patches.html) for full documentation.
 #'
 #' @param Filters Each element in the array is a structure containing a key-value pair.
-#' 
+#'
 #' **Windows Server**
-#' 
+#'
 #' Supported keys for Windows Server managed node patches include the
 #' following:
-#' 
+#'
 #' -   **`PATCH_SET`**
-#' 
+#'
 #'     Sample values: `OS` | `APPLICATION`
-#' 
+#'
 #' -   **`PRODUCT`**
-#' 
+#'
 #'     Sample values: `WindowsServer2012` | `Office 2010` |
 #'     `MicrosoftDefenderAntivirus`
-#' 
+#'
 #' -   **`PRODUCT_FAMILY`**
-#' 
+#'
 #'     Sample values: `Windows` | `Office`
-#' 
+#'
 #' -   **`MSRC_SEVERITY`**
-#' 
+#'
 #'     Sample values: `ServicePacks` | `Important` | `Moderate`
-#' 
+#'
 #' -   **`CLASSIFICATION`**
-#' 
+#'
 #'     Sample values: `ServicePacks` | `SecurityUpdates` |
 #'     `DefinitionUpdates`
-#' 
+#'
 #' -   **`PATCH_ID`**
-#' 
+#'
 #'     Sample values: `KB123456` | `KB4516046`
-#' 
+#'
 #' **Linux**
-#' 
+#'
 #' When specifying filters for Linux patches, you must specify a key-pair
 #' for `PRODUCT`. For example, using the Command Line Interface (CLI), the
 #' following command fails:
-#' 
+#'
 #' `aws ssm describe-available-patches --filters Key=CVE_ID,Values=CVE-2018-3615`
-#' 
+#'
 #' However, the following command succeeds:
-#' 
+#'
 #' `aws ssm describe-available-patches --filters Key=PRODUCT,Values=AmazonLinux2018.03 Key=CVE_ID,Values=CVE-2018-3615`
-#' 
+#'
 #' Supported keys for Linux managed node patches include the following:
-#' 
+#'
 #' -   **`PRODUCT`**
-#' 
+#'
 #'     Sample values: `AmazonLinux2018.03` | `AmazonLinux2.0`
-#' 
+#'
 #' -   **`NAME`**
-#' 
+#'
 #'     Sample values: `kernel-headers` | `samba-python` | `php`
-#' 
+#'
 #' -   **`SEVERITY`**
-#' 
+#'
 #'     Sample values: `Critical` | `Important` | `Medium` | `Low`
-#' 
+#'
 #' -   **`EPOCH`**
-#' 
+#'
 #'     Sample values: `0` | `1`
-#' 
+#'
 #' -   **`VERSION`**
-#' 
+#'
 #'     Sample values: `78.6.1` | `4.10.16`
-#' 
+#'
 #' -   **`RELEASE`**
-#' 
+#'
 #'     Sample values: `9.56.amzn1` | `1.amzn2`
-#' 
+#'
 #' -   **`ARCH`**
-#' 
+#'
 #'     Sample values: `i686` | `x86_64`
-#' 
+#'
 #' -   **`REPOSITORY`**
-#' 
+#'
 #'     Sample values: `Core` | `Updates`
-#' 
+#'
 #' -   **`ADVISORY_ID`**
-#' 
+#'
 #'     Sample values: `ALAS-2018-1058` | `ALAS2-2021-1594`
-#' 
+#'
 #' -   **`CVE_ID`**
-#' 
+#'
 #'     Sample values: `CVE-2018-3615` | `CVE-2020-1472`
-#' 
+#'
 #' -   **`BUGZILLA_ID`**
-#' 
+#'
 #'     Sample values: `1463241`
 #' @param MaxResults The maximum number of patches to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -1870,7 +1870,7 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #' @param InstanceInformationFilterList This is a legacy method. We recommend that you don't use this method.
 #' Instead, use the `Filters` data type. `Filters` enables you to return
 #' node information by filtering based on tags applied to managed nodes.
-#' 
+#'
 #' Attempting to use `InstanceInformationFilterList` and `Filters` leads to
 #' an exception error.
 #' @param Filters One or more filters. Use a filter to return a more specific list of
@@ -1947,11 +1947,11 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #' @param PatchGroup &#91;required&#93; The name of the patch group for which the patch state information should
 #' be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
-#' 
+#'
 #' -   Key (string between 1 and 200 characters)
-#' 
+#'
 #' -   Values (array containing a single string)
-#' 
+#'
 #' -   Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
@@ -1988,25 +1988,25 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' @param InstanceId &#91;required&#93; The ID of the managed node whose patch state information should be
 #' retrieved.
 #' @param Filters Each element in the array is a structure containing a key-value pair.
-#' 
+#'
 #' Supported keys for
 #' [`describe_instance_patches`][ssm_describe_instance_patches]include the
 #' following:
-#' 
+#'
 #' -   **`Classification`**
-#' 
+#'
 #'     Sample values: `Security` | `SecurityUpdates`
-#' 
+#'
 #' -   **`KBId`**
-#' 
+#'
 #'     Sample values: `KB4480056` | `java-1.7.0-openjdk.x86_64`
-#' 
+#'
 #' -   **`Severity`**
-#' 
+#'
 #'     Sample values: `Important` | `Medium` | `Low`
-#' 
+#'
 #' -   **`State`**
-#' 
+#'
 #'     Sample values: `Installed` | `InstalledOther` |
 #'     `InstalledPendingReboot`
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -2158,10 +2158,10 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose executions should be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
-#' 
+#'
 #' -   Key. A string between 1 and 128 characters. Supported keys include
 #'     `ExecutedBefore` and `ExecutedAfter`.
-#' 
+#'
 #' -   Values. An array of strings, each between 1 and 256 characters.
 #'     Supported values are date/time strings in a valid ISO 8601 date/time
 #'     format, such as `2021-11-04T05:00:00Z`.
@@ -2386,63 +2386,63 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' See [https://paws-r.github.io/docs/ssm/describe_ops_items.html](https://paws-r.github.io/docs/ssm/describe_ops_items.html) for full documentation.
 #'
 #' @param OpsItemFilters One or more filters to limit the response.
-#' 
+#'
 #' -   Key: CreatedTime
-#' 
+#'
 #'     Operations: GreaterThan, LessThan
-#' 
+#'
 #' -   Key: LastModifiedBy
-#' 
+#'
 #'     Operations: Contains, Equals
-#' 
+#'
 #' -   Key: LastModifiedTime
-#' 
+#'
 #'     Operations: GreaterThan, LessThan
-#' 
+#'
 #' -   Key: Priority
-#' 
+#'
 #'     Operations: Equals
-#' 
+#'
 #' -   Key: Source
-#' 
+#'
 #'     Operations: Contains, Equals
-#' 
+#'
 #' -   Key: Status
-#' 
+#'
 #'     Operations: Equals
-#' 
+#'
 #' -   Key: Title*
-#' 
+#'
 #'     Operations: Equals,Contains
-#' 
+#'
 #' -   Key: OperationalData**
-#' 
+#'
 #'     Operations: Equals
-#' 
+#'
 #' -   Key: OperationalDataKey
-#' 
+#'
 #'     Operations: Equals
-#' 
+#'
 #' -   Key: OperationalDataValue
-#' 
+#'
 #'     Operations: Equals, Contains
-#' 
+#'
 #' -   Key: OpsItemId
-#' 
+#'
 #'     Operations: Equals
-#' 
+#'
 #' -   Key: ResourceId
-#' 
+#'
 #'     Operations: Contains
-#' 
+#'
 #' -   Key: AutomationId
-#' 
+#'
 #'     Operations: Equals
-#' 
+#'
 #' *The Equals operator for Title matches the first 100 characters. If you
 #' specify more than 100 characters, they system returns an error that the
 #' filter value exceeds the length limit.
-#' 
+#'
 #' **If you filter the response by using the OperationalData operator,
 #' specify a key-value pair by using the following JSON format:
 #' \{"key":"key_name","value":"a_value"\}
@@ -2515,21 +2515,21 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 #' See [https://paws-r.github.io/docs/ssm/describe_patch_baselines.html](https://paws-r.github.io/docs/ssm/describe_patch_baselines.html) for full documentation.
 #'
 #' @param Filters Each element in the array is a structure containing a key-value pair.
-#' 
+#'
 #' Supported keys for
 #' [`describe_patch_baselines`][ssm_describe_patch_baselines] include the
 #' following:
-#' 
+#'
 #' -   **`NAME_PREFIX`**
-#' 
+#'
 #'     Sample values: `AWS-` | `My-`
-#' 
+#'
 #' -   **`OWNER`**
-#' 
+#'
 #'     Sample values: `AWS` | `Self`
-#' 
+#'
 #' -   **`OPERATING_SYSTEM`**
-#' 
+#'
 #'     Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
 #' @param MaxResults The maximum number of patch baselines to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -2594,16 +2594,16 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #'
 #' @param MaxResults The maximum number of patch groups to return (per page).
 #' @param Filters Each element in the array is a structure containing a key-value pair.
-#' 
+#'
 #' Supported keys for [`describe_patch_groups`][ssm_describe_patch_groups]
 #' include the following:
-#' 
+#'
 #' -   **`NAME_PREFIX`**
-#' 
+#'
 #'     Sample values: `AWS-` | `My-`.
-#' 
+#'
 #' -   **`OPERATING_SYSTEM`**
-#' 
+#'
 #'     Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
@@ -2824,7 +2824,7 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' the name of the step for which you want to view details. Be sure to
 #' specify the name of the step, not the name of a plugin like
 #' `aws:RunShellScript`.
-#' 
+#'
 #' To find the `PluginName`, check the document content and find the name
 #' of the step you want details for. Alternatively, use
 #' [`list_command_invocations`][ssm_list_command_invocations] with the
@@ -3326,7 +3326,7 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' See [https://paws-r.github.io/docs/ssm/get_parameter.html](https://paws-r.github.io/docs/ssm/get_parameter.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter you want to query.
-#' 
+#'
 #' To query by parameter label, use `"Name": "name:label"`. To query by
 #' parameter version, use `"Name": "name:version"`.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
@@ -3397,7 +3397,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #' See [https://paws-r.github.io/docs/ssm/get_parameters.html](https://paws-r.github.io/docs/ssm/get_parameters.html) for full documentation.
 #'
 #' @param Names &#91;required&#93; Names of the parameters for which you want to query information.
-#' 
+#'
 #' To query by parameter label, use `"Name": "name:label"`. To query by
 #' parameter version, use `"Name": "name:version"`.
 #' @param WithDecryption Return decrypted secure string value. Return decrypted values for secure
@@ -3439,18 +3439,18 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' of 15 levels. Here is an example of a hierarchy:
 #' `/Finance/Prod/IAD/WinServ2016/license33 `
 #' @param Recursive Retrieve all parameters within a hierarchy.
-#' 
+#'
 #' If a user has access to a path, then the user can access all levels of
 #' that path. For example, if a user has permission to access path `/a`,
 #' then the user can also access `/a/b`. Even if a user has explicitly been
 #' denied access in IAM for parameter `/a/b`, they can still call the
 #' GetParametersByPath API operation recursively for `/a` and view `/a/b`.
 #' @param ParameterFilters Filters to limit the request results.
-#' 
+#'
 #' The following `Key` values are supported for
 #' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `Type`, `KeyId`,
 #' and `Label`.
-#' 
+#'
 #' The following `Key` values aren't supported for
 #' [`get_parameters_by_path`][ssm_get_parameters_by_path]: `tag`,
 #' `DataType`, `Name`, `Path`, and `Tier`.
@@ -3489,7 +3489,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 #' See [https://paws-r.github.io/docs/ssm/get_patch_baseline.html](https://paws-r.github.io/docs/ssm/get_patch_baseline.html) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to retrieve.
-#' 
+#'
 #' To retrieve information about an Amazon Web Services managed patch
 #' baseline, specify the full Amazon Resource Name (ARN) of the baseline.
 #' For example, for the baseline `AWS-AmazonLinuxDefaultPatchBaseline`,
@@ -3559,19 +3559,19 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #'
 #' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be one of the
 #' following.
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-destination`
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-group-name`
-#' 
+#'
 #' -   `/ssm/documents/console/public-sharing-permission`
-#' 
+#'
 #' -   `/ssm/managed-instance/activation-tier`
-#' 
+#'
 #' -   `/ssm/opsinsights/opscenter`
-#' 
+#'
 #' -   `/ssm/parameter-store/default-parameter-tier`
-#' 
+#'
 #' -   `/ssm/parameter-store/high-throughput-enabled`
 #'
 #' @keywords internal
@@ -3672,7 +3672,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #'
 #' @param AssociationFilterList One or more filters. Use a filter to return a more specific list of
 #' results.
-#' 
+#'
 #' Filtering associations using the `InstanceID` attribute only returns
 #' legacy associations created using the `InstanceID` attribute.
 #' Associations targeting the managed node that are part of the Target
@@ -3751,7 +3751,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 #'
 #' @param CommandId (Optional) If provided, lists only the specified command.
 #' @param InstanceId (Optional) Lists commands issued against this managed node ID.
-#' 
+#'
 #' You can't specify a managed node ID in the same command that you specify
 #' `Status` = `Pending`. This is because the command hasn't reached the
 #' managed node yet.
@@ -3947,7 +3947,7 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #' `TargetType`. For example, to return documents you own use
 #' `Key=Owner,Values=Self`. To specify a custom key-value pair, use the
 #' format `Key=tag:tagName,Values=valueName`.
-#' 
+#'
 #' This API operation only supports filtering documents by using a single
 #' tag key and one or more tag values. For example:
 #' `Key=tag:tagName,Values=valueName1,valueName2`
@@ -4295,12 +4295,12 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' `PARTIAL`. In `COMPLETE` mode, the system overwrites all existing
 #' compliance information for the resource. You must provide a full list of
 #' compliance items each time you send the request.
-#' 
+#'
 #' In `PARTIAL` mode, the system overwrites compliance information for a
 #' specific association. The association must be configured with
 #' `SyncCompliance` set to `MANUAL`. By default, all requests use
 #' `COMPLETE` mode.
-#' 
+#'
 #' This attribute is only valid for association compliance.
 #'
 #' @keywords internal
@@ -4365,33 +4365,33 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' parameter path and name. For parameters in a hierarchy, you must include
 #' a leading forward slash character (/) when you create or reference a
 #' parameter. For example: `/Dev/DBServer/MySQL/db-string13`
-#' 
+#'
 #' Naming Constraints:
-#' 
+#'
 #' -   Parameter names are case sensitive.
-#' 
+#'
 #' -   A parameter name must be unique within an Amazon Web Services Region
-#' 
+#'
 #' -   A parameter name can't be prefixed with "`aws`" or "`ssm`"
 #'     (case-insensitive).
-#' 
+#'
 #' -   Parameter names can include only the following symbols and letters:
 #'     `a-zA-Z0-9_.-`
-#' 
+#'
 #'     In addition, the slash character ( / ) is used to delineate
 #'     hierarchies in parameter names. For example:
 #'     `/Dev/Production/East/Project-ABC/MyParameter`
-#' 
+#'
 #' -   A parameter name can't include spaces.
-#' 
+#'
 #' -   Parameter hierarchies are limited to a maximum depth of fifteen
 #'     levels.
-#' 
+#'
 #' For additional information about valid values for parameter names, see
 #' [Creating Systems Manager
 #' parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' The maximum length constraint of 2048 characters listed below includes
 #' 1037 characters reserved for internal use by Systems Manager. The
 #' maximum length for a parameter name that you create is 1011 characters.
@@ -4399,38 +4399,38 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' specify, such as `arn:aws:ssm:us-east-2:111122223333:parameter/`.
 #' @param Description Information about the parameter that you want to add to the system.
 #' Optional but recommended.
-#' 
+#'
 #' Don't enter personally identifiable information in this field.
 #' @param Value &#91;required&#93; The parameter value that you want to add to the system. Standard
 #' parameters have a value limit of 4 KB. Advanced parameters have a value
 #' limit of 8 KB.
-#' 
+#'
 #' Parameters can't be referenced or nested in the values of other
 #' parameters. You can't include `{{}}` or `{{ssm:parameter-name}}` in a
 #' parameter value.
 #' @param Type The type of parameter that you want to add to the system.
-#' 
+#'
 #' `SecureString` isn't currently supported for CloudFormation templates.
-#' 
+#'
 #' Items in a `StringList` must be separated by a comma (,). You can't use
 #' other punctuation or special character to escape items in the list. If
 #' you have a parameter value that requires a comma, then use the `String`
 #' data type.
-#' 
+#'
 #' Specifying a parameter type isn't required when updating a parameter.
 #' You must specify a parameter type when creating a parameter.
 #' @param KeyId The Key Management Service (KMS) ID that you want to use to encrypt a
 #' parameter. Either the default KMS key automatically assigned to your
 #' Amazon Web Services account or a custom key. Required for parameters
 #' that use the `SecureString` data type.
-#' 
+#'
 #' If you don't specify a key ID, the system uses the default key
 #' associated with your Amazon Web Services account.
-#' 
+#'
 #' -   To use your default KMS key, choose the `SecureString` data type,
 #'     and do *not* specify the `Key ID` when you create the parameter. The
 #'     system automatically populates `Key ID` with your default KMS key.
-#' 
+#'
 #' -   To use a custom KMS key, choose the `SecureString` data type with
 #'     the `Key ID` parameter.
 #' @param Overwrite Overwrite an existing parameter. The default value is `false`.
@@ -4444,23 +4444,23 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' environment, or the type of configuration data referenced by the
 #' parameter. In this case, you could specify the following key-value
 #' pairs:
-#' 
+#'
 #' -   `Key=Resource,Value=S3bucket`
-#' 
+#'
 #' -   `Key=OS,Value=Windows`
-#' 
+#'
 #' -   `Key=ParameterType,Value=LicenseKey`
-#' 
+#'
 #' To add tags to an existing Systems Manager parameter, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #' @param Tier The parameter tier to assign to a parameter.
-#' 
+#'
 #' Parameter Store offers a standard tier and an advanced tier for
 #' parameters. Standard parameters have a content size limit of 4 KB and
 #' can't be configured to use parameter policies. You can create a maximum
 #' of 10,000 standard parameters for each Region in an Amazon Web Services
 #' account. Standard parameters are offered at no additional cost.
-#' 
+#'
 #' Advanced parameters have a content size limit of 8 KB and can be
 #' configured to use parameter policies. You can create a maximum of
 #' 100,000 advanced parameters for each Region in an Amazon Web Services
@@ -4468,7 +4468,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' [Standard and advanced parameter
 #' tiers](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-advanced-parameters.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' You can change a standard parameter to an advanced parameter any time.
 #' But you can't revert an advanced parameter to a standard parameter.
 #' Reverting an advanced parameter to a standard parameter would result in
@@ -4476,49 +4476,49 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' from 8 KB to 4 KB. Reverting would also remove any policies attached to
 #' the parameter. Lastly, advanced parameters use a different form of
 #' encryption than standard parameters.
-#' 
+#'
 #' If you no longer need an advanced parameter, or if you no longer want to
 #' incur charges for an advanced parameter, you must delete it and recreate
 #' it as a new standard parameter.
-#' 
+#'
 #' **Using the Default Tier Configuration**
-#' 
+#'
 #' In [`put_parameter`][ssm_put_parameter] requests, you can specify the
 #' tier to create the parameter in. Whenever you specify a tier in the
 #' request, Parameter Store creates or updates the parameter according to
 #' that request. However, if you don't specify a tier in a request,
 #' Parameter Store assigns the tier based on the current Parameter Store
 #' default tier configuration.
-#' 
+#'
 #' The default tier when you begin using Parameter Store is the
 #' standard-parameter tier. If you use the advanced-parameter tier, you can
 #' specify one of the following as the default:
-#' 
+#'
 #' -   **Advanced**: With this option, Parameter Store evaluates all
 #'     requests as advanced parameters.
-#' 
+#'
 #' -   **Intelligent-Tiering**: With this option, Parameter Store evaluates
 #'     each request to determine if the parameter is standard or advanced.
-#' 
+#'
 #'     If the request doesn't include any options that require an advanced
 #'     parameter, the parameter is created in the standard-parameter tier.
 #'     If one or more options requiring an advanced parameter are included
 #'     in the request, Parameter Store create a parameter in the
 #'     advanced-parameter tier.
-#' 
+#'
 #'     This approach helps control your parameter-related costs by always
 #'     creating standard parameters unless an advanced parameter is
 #'     necessary.
-#' 
+#'
 #' Options that require an advanced parameter include the following:
-#' 
+#'
 #' -   The content size of the parameter is more than 4 KB.
-#' 
+#'
 #' -   The parameter uses a parameter policy.
-#' 
+#'
 #' -   More than 10,000 parameters already exist in your Amazon Web
 #'     Services account in the current Amazon Web Services Region.
-#' 
+#'
 #' For more information about configuring the default tier option, see
 #' [Specifying a default parameter
 #' tier](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in
@@ -4526,38 +4526,38 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' @param Policies One or more policies to apply to a parameter. This operation takes a
 #' JSON array. Parameter Store, a capability of Amazon Web Services Systems
 #' Manager supports the following policy types:
-#' 
+#'
 #' Expiration: This policy deletes the parameter after it expires. When you
 #' create the policy, you specify the expiration date. You can update the
 #' expiration date and time by updating the policy. Updating the
 #' *parameter* doesn't affect the expiration date and time. When the
 #' expiration time is reached, Parameter Store deletes the parameter.
-#' 
+#'
 #' ExpirationNotification: This policy initiates an event in Amazon
 #' CloudWatch Events that notifies you about the expiration. By using this
 #' policy, you can receive notification before or after the expiration time
 #' is reached, in units of days or hours.
-#' 
+#'
 #' NoChangeNotification: This policy initiates a CloudWatch Events event if
 #' a parameter hasn't been modified for a specified period of time. This
 #' policy type is useful when, for example, a secret needs to be changed
 #' within a period of time, but it hasn't been changed.
-#' 
+#'
 #' All existing policies are preserved until you send new policies or an
 #' empty policy. For more information about parameter policies, see
 #' [Assigning parameter
 #' policies](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html).
 #' @param DataType The data type for a `String` parameter. Supported data types include
 #' plain text and Amazon Machine Image (AMI) IDs.
-#' 
+#'
 #' **The following data type values are supported.**
-#' 
+#'
 #' -   `text`
-#' 
+#'
 #' -   `aws:ec2:image`
-#' 
+#'
 #' -   `aws:ssm:integration`
-#' 
+#'
 #' When you create a `String` parameter and specify `aws:ec2:image`, Amazon
 #' Web Services Systems Manager validates the parameter value is in the
 #' required format, such as `ami-12345abcdeEXAMPLE`, and that the specified
@@ -4657,40 +4657,40 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' @param ResourceType &#91;required&#93; The type of target being registered with the maintenance window.
 #' @param Targets &#91;required&#93; The targets to register with the maintenance window. In other words, the
 #' managed nodes to run commands on when the maintenance window runs.
-#' 
+#'
 #' If a single maintenance window task is registered with multiple targets,
 #' its task invocations occur sequentially and not in parallel. If your
 #' task must run on multiple targets at the same time, register a task for
 #' each target individually and assign each task the same priority level.
-#' 
+#'
 #' You can specify targets using managed node IDs, resource group names, or
 #' tags that have been applied to managed nodes.
-#' 
+#'
 #' **Example 1**: Specify managed node IDs
-#' 
+#'
 #' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>,<instance-id-3>`
-#' 
+#'
 #' **Example 2**: Use tag key-pairs applied to managed nodes
-#' 
+#'
 #' `Key=tag:<my-tag-key>,Values=<my-tag-value-1>,<my-tag-value-2>`
-#' 
+#'
 #' **Example 3**: Use tag-keys applied to managed nodes
-#' 
+#'
 #' `Key=tag-key,Values=<my-tag-key-1>,<my-tag-key-2>`
-#' 
+#'
 #' **Example 4**: Use resource group names
-#' 
+#'
 #' `Key=resource-groups:Name,Values=<resource-group-name>`
-#' 
+#'
 #' **Example 5**: Use filters for resource group types
-#' 
+#'
 #' `Key=resource-groups:ResourceTypeFilters,Values=<resource-type-1>,<resource-type-2>`
-#' 
+#'
 #' For `Key=resource-groups:ResourceTypeFilters`, specify resource types in
 #' the following format
-#' 
+#'
 #' `Key=resource-groups:ResourceTypeFilters,Values=AWS::EC2::INSTANCE,AWS::EC2::VPC`
-#' 
+#'
 #' For more information about these examples formats, including the best
 #' use case for each one, see [Examples: Register targets with a
 #' maintenance
@@ -4732,7 +4732,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be added to.
 #' @param Targets The targets (either managed nodes or maintenance window targets).
-#' 
+#'
 #' One or more targets must be specified for maintenance window Run
 #' Command-type tasks. Depending on the task, targets are optional for
 #' other maintenance window task types (Automation, Lambda, and Step
@@ -4740,13 +4740,13 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' targets, see [Registering maintenance window tasks without
 #' targets](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' Specify managed nodes using the following format:
-#' 
+#'
 #' `Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>`
-#' 
+#'
 #' Specify maintenance window targets using the following format:
-#' 
+#'
 #' `Key=WindowTargetIds,Values=<window-target-id-1>,<window-target-id-2>`
 #' @param TaskArn &#91;required&#93; The ARN of the task to run.
 #' @param ServiceRoleArn The Amazon Resource Name (ARN) of the IAM service role for Amazon Web
@@ -4755,19 +4755,19 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' your account's service-linked role. If no service-linked role for
 #' Systems Manager exists in your account, it is created when you run
 #' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
-#' 
+#'
 #' For more information, see the following topics in the in the *Amazon Web
 #' Services Systems Manager User Guide*:
-#' 
+#'
 #' -   [Using service-linked roles for Systems
 #'     Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
-#' 
+#'
 #' -   [Should I use a service-linked role or a custom service role to run
 #'     maintenance window
 #'     tasks?](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
 #' @param TaskType &#91;required&#93; The type of task being registered.
 #' @param TaskParameters The parameters that should be passed to the task when it is run.
-#' 
+#'
 #' `TaskParameters` has been deprecated. To specify parameters to pass to a
 #' task when it runs, instead use the `Parameters` option in the
 #' `TaskInvocationParameters` structure. For information about how Systems
@@ -4780,31 +4780,31 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' priority order with tasks that have the same priority scheduled in
 #' parallel.
 #' @param MaxConcurrency The maximum number of targets this task can be run for, in parallel.
-#' 
+#'
 #' Although this element is listed as "Required: No", a value can be
 #' omitted only when you are registering or updating a [targetless
 #' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' You must provide a value in all other cases.
-#' 
+#'
 #' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
 #' placeholder value of `1`. This value doesn't affect the running of your
 #' task.
 #' @param MaxErrors The maximum number of errors allowed before this task stops being
 #' scheduled.
-#' 
+#'
 #' Although this element is listed as "Required: No", a value can be
 #' omitted only when you are registering or updating a [targetless
 #' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' You must provide a value in all other cases.
-#' 
+#'
 #' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
 #' placeholder value of `1`. This value doesn't affect the running of your
 #' task.
 #' @param LoggingInfo A structure containing information about an Amazon Simple Storage
 #' Service (Amazon S3) bucket to write managed node-level logs to.
-#' 
+#'
 #' `LoggingInfo` has been deprecated. To specify an Amazon Simple Storage
 #' Service (Amazon S3) bucket to contain logs, instead use the
 #' `OutputS3BucketName` and `OutputS3KeyPrefix` options in the
@@ -4817,22 +4817,22 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @param ClientToken User-provided idempotency token.
 #' @param CutoffBehavior Indicates whether tasks should continue to run after the cutoff time
 #' specified in the maintenance windows is reached.
-#' 
+#'
 #' -   `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
 #'     running continue. The default value.
-#' 
+#'
 #' -   `CANCEL_TASK`:
-#' 
+#'
 #'     -   For Automation, Lambda, Step Functions tasks: When the cutoff
 #'         time is reached, any task invocations that are already running
 #'         continue, but no new task invocations are started.
-#' 
+#'
 #'     -   For Run Command tasks: When the cutoff time is reached, the
 #'         system sends a [`cancel_command`][ssm_cancel_command] operation
 #'         that attempts to cancel the command associated with the task.
 #'         However, there is no guarantee that the command will be
 #'         terminated and the underlying process stopped.
-#' 
+#'
 #'     The status for tasks that are not completed is `TIMED_OUT`.
 #'
 #' @keywords internal
@@ -4863,20 +4863,20 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' See [https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html](https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of resource from which you want to remove a tag.
-#' 
+#'
 #' The `ManagedInstance` type for this API operation is only for
 #' on-premises managed nodes. Specify the name of the managed node in the
 #' following format: `mi-ID_number `. For example, `mi-1a2b3c4d5e6f`.
 #' @param ResourceId &#91;required&#93; The ID of the resource from which you want to remove tags. For example:
-#' 
+#'
 #' ManagedInstance: mi-012345abcde
-#' 
+#'
 #' MaintenanceWindow: mw-012345abcde
-#' 
+#'
 #' `Automation`: `example-c160-4567-8519-012345abcde`
-#' 
+#'
 #' PatchBaseline: pb-012345abcde
-#' 
+#'
 #' OpsMetadata object: `ResourceID` for tagging is created from the Amazon
 #' Resource Name (ARN) for the object. Specifically, `ResourceID` is
 #' created from the strings that come after the word `opsmetadata` in the
@@ -4884,9 +4884,9 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' `arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager`
 #' has a `ResourceID` of either `aws/ssm/MyGroup/appmanager` or
 #' `/aws/ssm/MyGroup/appmanager`.
-#' 
+#'
 #' For the Document and Parameter values, use the name of the resource.
-#' 
+#'
 #' The `ManagedInstance` type for this API operation is only for
 #' on-premises managed nodes. Specify the name of the managed node in the
 #' following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
@@ -4922,19 +4922,19 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #'
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. The
 #' setting ID can be one of the following.
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-destination`
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-group-name`
-#' 
+#'
 #' -   `/ssm/documents/console/public-sharing-permission`
-#' 
+#'
 #' -   `/ssm/managed-instance/activation-tier`
-#' 
+#'
 #' -   `/ssm/opsinsights/opscenter`
-#' 
+#'
 #' -   `/ssm/parameter-store/default-parameter-tier`
-#' 
+#'
 #' -   `/ssm/parameter-store/high-throughput-enabled`
 #'
 #' @keywords internal
@@ -4999,20 +4999,20 @@ ssm_resume_session <- function(SessionId) {
 #' @param SignalType &#91;required&#93; The type of signal to send to an Automation execution.
 #' @param Payload The data sent with the signal. The data schema depends on the type of
 #' signal used in the request.
-#' 
+#'
 #' For `Approve` and `Reject` signal types, the payload is an optional
 #' comment that you can send with the signal type. For example:
-#' 
+#'
 #' `Comment="Looks good"`
-#' 
+#'
 #' For `StartStep` and `Resume` signal types, you must send the name of the
 #' Automation step to start or resume as the payload. For example:
-#' 
+#'
 #' `StepName="step1"`
-#' 
+#'
 #' For the `StopStep` signal type, you must send the step execution ID as
 #' the payload. For example:
-#' 
+#'
 #' `StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"`
 #'
 #' @keywords internal
@@ -5045,13 +5045,13 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' @param InstanceIds The IDs of the managed nodes where the command should run. Specifying
 #' managed node IDs is most useful when you are targeting a limited number
 #' of managed nodes, though you can specify up to 50 IDs.
-#' 
+#'
 #' To target a larger number of managed nodes, or if you prefer not to list
 #' individual node IDs, we recommend using the `Targets` option instead.
 #' Using `Targets`, which accepts tag key-value pairs to identify the
 #' managed nodes to send commands to, you can a send command to tens,
 #' hundreds, or thousands of nodes at once.
-#' 
+#'
 #' For more information about how to use targets, see [Using targets and
 #' rate controls to send commands to a
 #' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
@@ -5062,10 +5062,10 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' nodes at once. Using `Targets`, which accepts tag key-value pairs to
 #' identify managed nodes, you can send a command to tens, hundreds, or
 #' thousands of nodes at once.
-#' 
+#'
 #' To send a command to a smaller number of managed nodes, you can use the
 #' `InstanceIds` option instead.
-#' 
+#'
 #' For more information about how to use targets, see [Sending commands to
 #' a
 #' fleet](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
@@ -5077,7 +5077,7 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' documents, see [Using shared SSM
 #' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' If you specify a document name or ARN that hasn't been shared with your
 #' account, you receive an `InvalidDocument` error.
 #' @param DocumentVersion The SSM document version to use in the request. You can specify
@@ -5085,18 +5085,18 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' using the Command Line Interface (Amazon Web Services CLI), then you
 #' must escape the first two options by using a backslash. If you specify a
 #' version number, then you don't need to use the backslash. For example:
-#' 
-#' --document-version "\\$DEFAULT"
-#' 
-#' --document-version "\\$LATEST"
-#' 
+#'
+#' --document-version "$DEFAULT"
+#'
+#' --document-version "$LATEST"
+#'
 #' --document-version "3"
 #' @param DocumentHash The Sha256 or Sha1 hash created by the system when the document was
 #' created.
-#' 
+#'
 #' Sha1 hashes have been deprecated.
 #' @param DocumentHashType Sha256 or Sha1.
-#' 
+#'
 #' Sha1 hashes have been deprecated.
 #' @param TimeoutSeconds If this time is reached and the command hasn't already started running,
 #' it won't run.
@@ -5219,7 +5219,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' first error result is returned. If you run an automation on 50 resources
 #' and set max-errors to 10%, then the system stops running the automation
 #' on additional targets when the sixth error is received.
-#' 
+#'
 #' Executions that are already running an automation when max-errors is
 #' reached are allowed to complete, but some of these executions may fail
 #' as well. If you need to ensure that there won't be more than max-errors
@@ -5239,11 +5239,11 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' For example, you might want to tag an automation to identify an
 #' environment or operating system. In this case, you could specify the
 #' following key-value pairs:
-#' 
+#'
 #' -   `Key=environment,Value=test`
-#' 
+#'
 #' -   `Key=OS,Value=Windows`
-#' 
+#'
 #' To add tags to an existing automation, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
 #'
@@ -5276,7 +5276,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #'
 #' @param ScheduledTime The date and time specified in the change request to run the Automation
 #' runbooks.
-#' 
+#'
 #' The Automation runbooks specified for the runbook workflow can't run
 #' until all required approvals for the change request have been received.
 #' @param DocumentName &#91;required&#93; The name of the change template document to run during the runbook
@@ -5291,12 +5291,12 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' insensitive, enforces the UUID format, and can't be reused.
 #' @param AutoApprove Indicates whether the change request can be approved automatically
 #' without the need for manual approvals.
-#' 
+#'
 #' If `AutoApprovable` is enabled in a change template, then setting
 #' `AutoApprove` to `true` in
 #' [`start_change_request_execution`][ssm_start_change_request_execution]
 #' creates a change request that bypasses approver review.
-#' 
+#'
 #' Change Calendar restrictions are not bypassed in this scenario. If the
 #' state of an associated calendar is `CLOSED`, change freeze approvers
 #' must still grant permission for this change request to run. If they
@@ -5304,7 +5304,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' `OPEN`.
 #' @param Runbooks &#91;required&#93; Information about the Automation runbooks that are run during the
 #' runbook workflow.
-#' 
+#'
 #' The Automation runbooks specified for the runbook workflow can't run
 #' until all required approvals for the change request have been received.
 #' @param Tags Optional metadata that you assign to a resource. You can specify a
@@ -5313,9 +5313,9 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' For example, you might want to tag a change request to identify an
 #' environment or target Amazon Web Services Region. In this case, you
 #' could specify the following key-value pairs:
-#' 
+#'
 #' -   `Key=Environment,Value=Production`
-#' 
+#'
 #' -   `Key=Region,Value=us-east-2`
 #' @param ScheduledEndTime The time that the requester expects the runbook workflow related to the
 #' change request to complete. The time is an estimate only that the
@@ -5495,7 +5495,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' Systems Manager, you can reference the parameter using
 #' `{{ssm:parameter-name}}`.
 #' @param DocumentVersion The document version you want update for the association.
-#' 
+#'
 #' State Manager doesn't support running associations that use a new
 #' version of a document if that document is shared from another account.
 #' State Manager always runs the `default` version of a document if shared
@@ -5508,20 +5508,20 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @param OutputLocation An S3 bucket where you want to store the results of this request.
 #' @param Name The name of the SSM Command document or Automation runbook that contains
 #' the configuration information for the managed node.
-#' 
+#'
 #' You can specify Amazon Web Services-predefined documents, documents you
 #' created, or a document that is shared with you from another account.
-#' 
+#'
 #' For Systems Manager document (SSM document) that are shared with you
 #' from other Amazon Web Services accounts, you must specify the complete
 #' SSM document ARN, in the following format:
-#' 
+#'
 #' `arn:aws:ssm:region:account-id:document/document-name `
-#' 
+#'
 #' For example:
-#' 
+#'
 #' `arn:aws:ssm:us-east-2:12345678912:document/My-Shared-Document`
-#' 
+#'
 #' For Amazon Web Services-predefined documents and SSM documents you
 #' created in your account, you only need to specify the document name. For
 #' example, `AWS-ApplyPatchBaseline` or `My-Document`.
@@ -5544,7 +5544,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' is returned. If you run an association on 50 managed nodes and set
 #' `MaxError` to 10%, then the system stops sending the request when the
 #' sixth error is received.
-#' 
+#'
 #' Executions that are already running an association when `MaxErrors` is
 #' reached are allowed to complete, but some of these executions may fail
 #' as well. If you need to ensure that there won't be more than max-errors
@@ -5554,7 +5554,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' time. You can specify a number, for example 10, or a percentage of the
 #' target set, for example 10%. The default value is 100%, which means all
 #' targets run the association at the same time.
-#' 
+#'
 #' If a new managed node starts and attempts to run an association while
 #' Systems Manager is running `MaxConcurrency` associations, the
 #' association is allowed to run. During the next association interval, the
@@ -5567,21 +5567,21 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' association execution runs successfully, then the association is
 #' `COMPLIANT`. If the association execution doesn't run successfully, the
 #' association is `NON-COMPLIANT`.
-#' 
+#'
 #' In `MANUAL` mode, you must specify the `AssociationId` as a parameter
 #' for the [`put_compliance_items`][ssm_put_compliance_items] API
 #' operation. In this case, compliance data isn't managed by State Manager,
 #' a capability of Amazon Web Services Systems Manager. It is managed by
 #' your direct call to the
 #' [`put_compliance_items`][ssm_put_compliance_items] API operation.
-#' 
+#'
 #' By default, all associations use `AUTO` mode.
 #' @param ApplyOnlyAtCronInterval By default, when you update an association, the system runs it
 #' immediately after it is updated and then according to the schedule you
 #' specified. Specify this option if you don't want an association to run
 #' immediately after you update it. This parameter isn't supported for rate
 #' expressions.
-#' 
+#'
 #' If you chose this option when you created an association and later you
 #' edit that association or you make changes to the SSM document on which
 #' that association is based (by using the Documents page in the console),
@@ -5592,7 +5592,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' Manager applies the association at the next specified cron interval if
 #' you previously selected this option. If this option wasn't selected,
 #' State Manager immediately runs the association.
-#' 
+#'
 #' You can reset this option. To do so, specify the
 #' `no-apply-only-at-cron-interval` parameter when you update the
 #' association from the command line. This parameter forces the association
@@ -5615,7 +5615,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' and rate expressions for Systems
 #' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
-#' 
+#'
 #' To use offsets, you must specify the `ApplyOnlyAtCronInterval`
 #' parameter. This option tells the system not to run an association
 #' immediately after you create it.
@@ -5696,7 +5696,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' Manager supports updating only the latest version of the document. You
 #' can specify the version number of the latest version or use the
 #' `$LATEST` variable.
-#' 
+#'
 #' If you change a document version for a State Manager association,
 #' Systems Manager immediately runs the association unless you previously
 #' specifed the `apply-only-at-cron-interval` parameter.
@@ -5815,12 +5815,12 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' website.
 #' @param ScheduleOffset The number of days to wait after the date and time specified by a cron
 #' expression before running the maintenance window.
-#' 
+#'
 #' For example, the following cron expression schedules a maintenance
 #' window to run the third Tuesday of every month at 11:30 PM.
-#' 
+#'
 #' `cron(30 23 ? * TUE#3 *)`
-#' 
+#'
 #' If the schedule offset is `2`, the maintenance window won't run until
 #' two days later.
 #' @param Duration The duration of the maintenance window in hours.
@@ -5907,7 +5907,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' specified using the format
 #' `Key=instanceids,Values=instanceID_1,instanceID_2`. Tags are specified
 #' using the format ` Key=tag_name,Values=tag_value`.
-#' 
+#'
 #' One or more targets must be specified for maintenance window Run
 #' Command-type tasks. Depending on the task, targets are optional for
 #' other maintenance window task types (Automation, Lambda, and Step
@@ -5922,32 +5922,32 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' your account's service-linked role. If no service-linked role for
 #' Systems Manager exists in your account, it is created when you run
 #' [`register_task_with_maintenance_window`][ssm_register_task_with_maintenance_window].
-#' 
+#'
 #' For more information, see the following topics in the in the *Amazon Web
 #' Services Systems Manager User Guide*:
-#' 
+#'
 #' -   [Using service-linked roles for Systems
 #'     Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions)
-#' 
+#'
 #' -   [Should I use a service-linked role or a custom service role to run
 #'     maintenance window
 #'     tasks?](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role)
 #' @param TaskParameters The parameters to modify.
-#' 
+#'
 #' `TaskParameters` has been deprecated. To specify parameters to pass to a
 #' task when it runs, instead use the `Parameters` option in the
 #' `TaskInvocationParameters` structure. For information about how Systems
 #' Manager handles these options for the supported maintenance window task
 #' types, see MaintenanceWindowTaskInvocationParameters.
-#' 
+#'
 #' The map has the following format:
-#' 
+#'
 #' Key: string, between 1 and 255 characters
-#' 
+#'
 #' Value: an array of strings, each string is between 1 and 255 characters
 #' @param TaskInvocationParameters The parameters that the task should use during execution. Populate only
 #' the fields that match the task type. All other fields should be empty.
-#' 
+#'
 #' When you update a maintenance window task that has options specified in
 #' `TaskInvocationParameters`, you must provide again all the
 #' `TaskInvocationParameters` values that you want to retain. The values
@@ -5961,30 +5961,30 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' priority. Tasks that have the same priority are scheduled in parallel.
 #' @param MaxConcurrency The new `MaxConcurrency` value you want to specify. `MaxConcurrency` is
 #' the number of targets that are allowed to run this task, in parallel.
-#' 
+#'
 #' Although this element is listed as "Required: No", a value can be
 #' omitted only when you are registering or updating a [targetless
 #' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' You must provide a value in all other cases.
-#' 
+#'
 #' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
 #' placeholder value of `1`. This value doesn't affect the running of your
 #' task.
 #' @param MaxErrors The new `MaxErrors` value to specify. `MaxErrors` is the maximum number
 #' of errors that are allowed before the task stops being scheduled.
-#' 
+#'
 #' Although this element is listed as "Required: No", a value can be
 #' omitted only when you are registering or updating a [targetless
 #' task](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html)
 #' You must provide a value in all other cases.
-#' 
+#'
 #' For maintenance window tasks without a target specified, you can't
 #' supply a value for this option. Instead, the system inserts a
 #' placeholder value of `1`. This value doesn't affect the running of your
 #' task.
 #' @param LoggingInfo The new logging location in Amazon S3 to specify.
-#' 
+#'
 #' `LoggingInfo` has been deprecated. To specify an Amazon Simple Storage
 #' Service (Amazon S3) bucket to contain logs, instead use the
 #' `OutputS3BucketName` and `OutputS3KeyPrefix` options in the
@@ -6000,22 +6000,22 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' aren't specified are set to null.
 #' @param CutoffBehavior Indicates whether tasks should continue to run after the cutoff time
 #' specified in the maintenance windows is reached.
-#' 
+#'
 #' -   `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
 #'     running continue. The default value.
-#' 
+#'
 #' -   `CANCEL_TASK`:
-#' 
+#'
 #'     -   For Automation, Lambda, Step Functions tasks: When the cutoff
 #'         time is reached, any task invocations that are already running
 #'         continue, but no new task invocations are started.
-#' 
+#'
 #'     -   For Run Command tasks: When the cutoff time is reached, the
 #'         system sends a [`cancel_command`][ssm_cancel_command] operation
 #'         that attempts to cancel the command associated with the task.
 #'         However, there is no guarantee that the command will be
 #'         terminated and the underlying process stopped.
-#' 
+#'
 #'     The status for tasks that are not completed is `TIMED_OUT`.
 #'
 #' @keywords internal
@@ -6080,16 +6080,16 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' that users reading this OpsItem for the first time understand the issue.
 #' @param OperationalData Add new keys or edit existing key-value pairs of the OperationalData map
 #' in the OpsItem object.
-#' 
+#'
 #' Operational data is custom data that provides useful reference details
 #' about the OpsItem. For example, you can specify log files, error
 #' strings, license keys, troubleshooting tips, or other relevant data. You
 #' enter operational data as key-value pairs. The key has a maximum length
 #' of 128 characters. The value has a maximum size of 20 KB.
-#' 
+#'
 #' Operational data keys *can't* begin with the following: `amazon`, `aws`,
 #' `amzn`, `ssm`, `/amazon`, `/aws`, `/amzn`, `/ssm`.
-#' 
+#'
 #' You can choose to make the data searchable by other users in the account
 #' or you can restrict search access. Searchable data means that all users
 #' with access to the OpsItem Overview page (as provided by the
@@ -6097,7 +6097,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' and search on the specified data. Operational data that isn't searchable
 #' is only viewable by users who have access to the OpsItem (as provided by
 #' the [`get_ops_item`][ssm_get_ops_item] API operation).
-#' 
+#'
 #' Use the `/aws/resources` key in OperationalData to specify a related
 #' resource in the request. Use the `/aws/automations` key in
 #' OperationalData to associate an Automation runbook with the OpsItem. To
@@ -6196,7 +6196,7 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @param GlobalFilters A set of global filters used to include patches in the baseline.
 #' @param ApprovalRules A set of rules used to include patches in the baseline.
 #' @param ApprovedPatches A list of explicitly approved patches for the baseline.
-#' 
+#'
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
@@ -6207,7 +6207,7 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' updates that should be applied to the managed nodes. The default value
 #' is `false`. Applies to Linux managed nodes only.
 #' @param RejectedPatches A list of explicitly rejected patches for the baseline.
-#' 
+#'
 #' For information about accepted formats for lists of approved patches and
 #' rejected patches, see [About package name formats for approved and
 #' rejected patch
@@ -6215,13 +6215,13 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param RejectedPatchesAction The action for Patch Manager to take on patches included in the
 #' `RejectedPackages` list.
-#' 
+#'
 #' -   **`ALLOW_AS_DEPENDENCY`** : A package in the `Rejected` patches list
 #'     is installed only if it is a dependency of another package. It is
 #'     considered compliant with the patch baseline, and its status is
 #'     reported as `InstalledOther`. This is the default action if no
 #'     option is specified.
-#' 
+#'
 #' -   **`BLOCK`** : Packages in the `RejectedPatches` list, and packages
 #'     that include them as dependencies, aren't installed under any
 #'     circumstances. If a package was installed before it was added to the
@@ -6300,38 +6300,38 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' example,
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
 #' The setting ID can be one of the following.
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-destination`
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-group-name`
-#' 
+#'
 #' -   `/ssm/documents/console/public-sharing-permission`
-#' 
+#'
 #' -   `/ssm/managed-instance/activation-tier`
-#' 
+#'
 #' -   `/ssm/opsinsights/opscenter`
-#' 
+#'
 #' -   `/ssm/parameter-store/default-parameter-tier`
-#' 
+#'
 #' -   `/ssm/parameter-store/high-throughput-enabled`
 #' @param SettingValue &#91;required&#93; The new value to specify for the service setting. The following list
 #' specifies the available values for each setting.
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-destination`: `CloudWatch`
-#' 
+#'
 #' -   `/ssm/automation/customer-script-log-group-name`: the name of an
 #'     Amazon CloudWatch Logs log group
-#' 
+#'
 #' -   `/ssm/documents/console/public-sharing-permission`: `Enable` or
 #'     `Disable`
-#' 
+#'
 #' -   `/ssm/managed-instance/activation-tier`: `standard` or `advanced`
-#' 
+#'
 #' -   `/ssm/opsinsights/opscenter`: `Enabled` or `Disabled`
-#' 
+#'
 #' -   `/ssm/parameter-store/default-parameter-tier`: `Standard`,
 #'     `Advanced`, `Intelligent-Tiering`
-#' 
+#'
 #' -   `/ssm/parameter-store/high-throughput-enabled`: `true` or `false`
 #'
 #' @keywords internal

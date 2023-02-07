@@ -1,0 +1,14 @@
+paws:
+  errors: ~
+  warnings: ~
+  notes: ~
+paws.cat1:
+  errors: ~
+  warnings: |-
+    this is a dummy warning
+  notes: ~
+paws.cat2:
+  errors: ~
+  warnings: ~
+  notes: |-
+    this is a dummy note

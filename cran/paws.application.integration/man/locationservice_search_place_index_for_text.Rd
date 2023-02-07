@@ -50,9 +50,8 @@ options results in an error.}
 \item{FilterCountries}{An optional parameter that limits the search results by returning only
 places that are in a specified list of countries.
 \itemize{
-\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit
-country codes. For example, Australia uses three upper-case
-characters: \code{AUS}.
+\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit country
+codes. For example, Australia uses three upper-case characters: \code{AUS}.
 }}
 
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}
@@ -71,7 +70,7 @@ For an example, we'll use the Greek language. You search for
 found will most likely be returned as \code{Athens}.
 
 If you set the \code{language} parameter to \code{el}, for Greek, then the result
-found will more likely be returned as ``.
+found will more likely be returned as \eqn{A\Theta\eta\nu\alpha}.
 
 If the data provider does not have a value for Greek, the result will be
 in a language that the provider does support.}

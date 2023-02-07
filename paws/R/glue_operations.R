@@ -16522,7 +16522,7 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #' comparing string values, such as when `Key=Name`, a fuzzy match
 #' algorithm is used. The `Key` field (for example, the value of the `Name`
 #' field) is split on certain punctuation characters, for example, -, :,
-#' \#, etc. into tokens. Then each token is exact-match compared with the
+#' #, etc. into tokens. Then each token is exact-match compared with the
 #' `Value` member of `PropertyPredicate`. For example, if `Key=Name` and
 #' `Value=link`, tables named `customer-link` and `xx-link-yy` are
 #' returned, but `xxlinkyy` is not returned.

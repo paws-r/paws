@@ -1,6 +1,7 @@
 export(list_aws_services)
 export(category_service_ops_count)
 export(make_sdk)
+export(paws_build_cran_comments)
 export(paws_check_local_sub_cat)
 export(paws_check_local_cat)
 export(paws_check_local)

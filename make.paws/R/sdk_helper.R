@@ -5,7 +5,7 @@
 #' @importFrom utils installed.packages remove.packages
 
 #' @title Check paws sdk
-#' @description Check paws sdk locally using \code{devtools::check}
+#' @description Check paws sdk locally using \code{devtools::check_built}
 #' @param in_dir Directory containing paws sdk packages.
 #' @param path Path to output paws sdk check results.
 #' @param pkg_list list of packages check locally, check all packages by default
@@ -89,26 +89,31 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
 #' @param in_dir Directory containing paws sdk packages.
 #' @param pkg_list list of packages check through rhub, check all packages by default
 #' @param email address to notify, defaults to the maintainer address in the package.
+#' @param interactive whether to show the status of the build interactively. R-hub
+#' will send an email to the package maintainer's email address, regardless of
+#' whether the check is interactive or not.
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub <- function(in_dir = "../cran",
                             pkg_list = list(),
-                            email = NULL){
-  paws_check_rhub_sub_cat(in_dir, pkg_list, email)
-  paws_check_rhub_cat(in_dir, pkg_list, email)
+                            email = NULL,
+                            interactive = TRUE){
+  paws_check_rhub_sub_cat(in_dir, pkg_list, email, interactive)
+  paws_check_rhub_cat(in_dir, pkg_list, email, interactive)
   pkg <- file.path(in_dir, "paws")
-  devtools::check_rhub(pkg, email = email)
+  devtools::check_rhub(pkg, email = email, interactive = interactive)
 }
 
 #' @name paws_check_rhub
 #' @export
 paws_check_rhub_cat <- function(in_dir = "../cran",
                                 pkg_list = list(),
-                                email = NULL){
+                                email = NULL,
+                                interactive = TRUE){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   for (pkg in pkgs){
-    devtools::check_rhub(pkg, email = email)
+    devtools::check_rhub(pkg, email = email, interactive = interactive)
   }
 }
 
@@ -116,12 +121,13 @@ paws_check_rhub_cat <- function(in_dir = "../cran",
 #' @export
 paws_check_rhub_sub_cat <- function(in_dir = "../cran",
                                     pkg_list = list(),
-                                    email = NULL){
+                                    email = NULL,
+                                    interactive = TRUE){
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
     for (pkg in pkgs){
-      devtools::check_rhub(pkg, email = email)
+      devtools::check_rhub(pkg, email = email, interactive = interactive)
     }
   } else {
     warning("No sub-categories released.")
@@ -190,11 +196,11 @@ paws_check_pkg_size <- function(in_dir = "../cran",
     quiet = TRUE
   )
   dir_info <- fs::dir_info(tmp)
-  dir_info$package <- basename(pkgs)
+  dir_info$package <- gsub("_.*", "", basename(dir_info$path))
   dir_info <- dir_info[, c("package", "size")]
   setDT(dir_info)
 
-  dir_info[, c("status", "percentage") := .(
+  dir_info[, c("status", "percentage") := list(
       fcase(
         get("size") > threshold, "ERROR",
         get("size") > threshold *.75, "WARNING",
@@ -203,6 +209,7 @@ paws_check_pkg_size <- function(in_dir = "../cran",
       paste(round(as.numeric(get("size")/ threshold) * 100, 2), "%")
     )
   ]
+
   return(dir_info[order(-get("size"))])
 }
 
@@ -268,6 +275,166 @@ paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
   }
 }
 
+cran_comment_template <- "## Test environments
+
+* local macOS install, R 4.2.1
+* R-hub (devel and release)
+* win-builder
+
+## R CMD check results
+
+%s
+
+Maintainer Notes: tarball package size: %s
+
+## Downstream dependencies
+
+%s"
+
+#' @title Method to build cran comments
+#' @param in_dir Directory containing paws sdk packages.
+#' @param cache_path yaml file created by `paws_check_local`
+#' @param refresh re-write any cran-comments.md that already exists.
+#' @name paws_build_cran_comments
+#' @export
+paws_build_cran_comments <- function(in_dir = "../cran",
+                                     cache_path = NULL,
+                                     refresh = FALSE) {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+  all_cats <-  basename(list_paws_pkgs(in_dir))
+  log_info(
+    "Running local checks for: ['%s']",
+    paste(all_cats, collapse = "', '")
+  )
+  dir_info <- paws_check_pkg_size(in_dir, pkg_list = all_cats)
+  if(is.null(cache_path)){
+    results_local <- paws_check_local(
+      pkg_list = all_cats,
+      keep_notes = T
+    )
+    log_info("Completed local checks.")
+  } else {
+    results_local <- yaml::read_yaml(cache_path)
+    log_info("Retrieved local check results from cache.")
+  }
+  result_dt <- suppressWarnings(
+    rbindlist(results_local, fill = T, idcol = "package", use.names = T)
+  )
+
+  dir_info[
+    result_dt,
+    `:=`(
+      "errors"=get("errors"),
+      "warnings"=get("warnings"),
+      "notes"=get("notes")
+    ),
+    on = "package"
+  ]
+
+  dir_info[,
+    "cran_comment" := fcase(
+     is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
+     "There were no ERRORs, WARNINGs, or Notes."
+     ,
+     is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")
+     ),
+     is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
+       get("warnings"), get("notes")
+     ),
+     is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
+     sprintf(
+       "There were no ERRORs or Notes.\nWarnings:%s", warnings
+     ),
+     !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
+       get("errors"), get("warnings"), get("notes")
+     ),
+     !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
+     sprintf(
+       "There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")
+     ),
+     !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
+     sprintf(
+       "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
+       get("errors"), get("notes")
+     ),
+     !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+     sprintf(
+       "There was no NOTES.\nErrors:\n%s\nNotes:\n%s",
+       get("errors"), get("warnings")
+     )
+    )
+  ]
+
+  dir_info[,
+     "downstream_info" := fifelse(
+       grepl("paws[.].*$", get("package")),
+       "All downstream dependencies ('paws') pass R CMD check.",
+       "All downstream dependencies pass R CMD check."
+     )
+  ]
+  cran_comments <- sprintf(
+    cran_comment_template,
+    dir_info$cran_comment,
+    dir_info$size,
+    dir_info$downstream_info
+  )
+  names(cran_comments) <- dir_info$package
+
+  for (pkg in all_cats) {
+    comment_file <- file.path(in_dir, pkg, "cran-comments.md")
+    if (!file.exists(comment_file) || refresh) {
+      writeLines(cran_comments[[pkg]], con = comment_file)
+      log_info("Updated cran-comments.md: %s", pkg)
+    }
+  }
+}
+
+# TODO: add this helper function into make build/rebuild command
+# This function un-escapes any special characters after build.
+paws_unescape_latex_post_build <- function(
+    root = "..",
+    special_characters = c("#", "$", "_")
+  ) {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+
+  paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
+  cran_pkg <- fs::dir_ls(file.path(root, "cran"))
+  cran_r <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+  )
+  cran_rd <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+  )
+
+  remove_esaped_latex <- function(files) {
+    for (file in files) {
+      result <- readLines(file)
+      for (char in special_characters) {
+        result <- gsub(sprintf(r"(\\[%s])", char), char, result, perl = T)
+      }
+      writeLines(result, file)
+    }
+  }
+
+  remove_esaped_latex(paws_r)
+  log_info(
+    "Removed escaped latex scripts from paws directory."
+  )
+
+  for (pkg in cran_pkg) {
+    remove_esaped_latex(cran_r[[pkg]])
+    remove_esaped_latex(cran_rd[[pkg]])
+    log_info("Removed escaped latex: %s", pkg)
+  }
+}
+
+
 ##### helper functions #####
 check_pkgs <- function(pkgs, keep_notes = FALSE){
   temp_file <- tempfile()
@@ -276,8 +443,9 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
   # Check package locally
   checks <- list()
   sink(temp_file)
+  print(pkgs)
   for (pkg in pkgs) {
-    checks[[basename(pkg)]] <- devtools::check(pkg, cran = TRUE)
+    checks[[basename(pkg)]] <- devtools::check_built(pkg, cran = TRUE)
   }
   sink()
 
@@ -295,11 +463,14 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
       results[[pkg]] <- c(results[[pkg]], notes = notes)
     }
   }
-  packages_not_ok <- results[
-    sapply(results, function(x) {
+  packages_not_ok <- list()
+  if (length(results) > 1) {
+    not_ok <- sapply(results, function(x) {
       !is.null(x$errors) | !is.null(x$warnings) | !is.null(x$notes)
     })
-  ]
+
+    packages_not_ok <- results[not_ok]
+  }
 
   return(packages_not_ok)
 }
