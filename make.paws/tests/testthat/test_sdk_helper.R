@@ -310,7 +310,8 @@ test_that("check paws_check_pkg_size", {
   mock_devtools_build <- mock2()
   mock_dir_info <- mock2(
     data.table(
-      "size" = fs::as_fs_bytes(c("1MB", "4MB", "6MB"))
+      "size" = fs::as_fs_bytes(c("1MB", "4MB", "6MB")),
+      "path" = paste0(c("paws", "paws.cat1", "paws.cat2"), "_123.tar.gz")
     )
   )
   mockery::stub(paws_check_pkg_size, 'list_paws_pkgs', mock_list_paws_pkgs)
