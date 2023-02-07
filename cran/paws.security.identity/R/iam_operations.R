@@ -317,7 +317,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #' Creates an alias for your Amazon Web Services account
 #'
 #' @description
-#' Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see [Using an alias for your Amazon Web Services account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html) in the *IAM User Guide*.
+#' Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see [Using an alias for your Amazon Web Services account ID](https://docs.aws.amazon.com/signin/latest/userguide/user-types-list.html) in the *IAM User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/iam/create_account_alias.html](https://paws-r.github.io/docs/iam/create_account_alias.html) for full documentation.
 #'
@@ -1197,7 +1197,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' Deletes the specified Amazon Web Services account alias
 #'
 #' @description
-#' Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see [Using an alias for your Amazon Web Services account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html) in the *IAM User Guide*.
+#' Deletes the specified Amazon Web Services account alias. For information about using an Amazon Web Services account alias, see [Using an alias for your Amazon Web Services account ID](https://docs.aws.amazon.com/signin/latest/userguide/user-types-list.html) in the *IAM User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/iam/delete_account_alias.html](https://paws-r.github.io/docs/iam/delete_account_alias.html) for full documentation.
 #'
@@ -3319,7 +3319,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' (Note: you can have only one)
 #'
 #' @description
-#' Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see [Using an alias for your Amazon Web Services account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html) in the *IAM User Guide*.
+#' Lists the account alias associated with the Amazon Web Services account (Note: you can have only one). For information about using an Amazon Web Services account alias, see [Using an alias for your Amazon Web Services account ID](https://docs.aws.amazon.com/signin/latest/userguide/user-types-list.html) in the *IAM User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/iam/list_account_aliases.html](https://paws-r.github.io/docs/iam/list_account_aliases.html) for full documentation.
 #'
