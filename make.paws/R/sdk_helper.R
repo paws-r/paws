@@ -5,7 +5,7 @@
 #' @importFrom utils installed.packages remove.packages
 
 #' @title Check paws sdk
-#' @description Check paws sdk locally using \code{devtools::check}
+#' @description Check paws sdk locally using \code{devtools::check_built}
 #' @param in_dir Directory containing paws sdk packages.
 #' @param path Path to output paws sdk check results.
 #' @param pkg_list list of packages check locally, check all packages by default
@@ -301,21 +301,15 @@ paws_build_cran_comments <- function(in_dir = "../cran",
                                      cache_path = NULL,
                                      refresh = FALSE) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
-  deps <- desc::desc_get_deps(file.path(in_dir, "paws"))
-  current_deps <- deps[deps$type == "Imports","package"]
-  all_cats <-  list_paws_pkgs() |> basename()
-  pkgs_release <- sapply(
-    current_deps, \(x) all_cats[grepl(x, all_cats)], USE.NAMES = F
-  ) |> unlist()
-  pkgs_release <- c(pkgs_release, "paws")
+  all_cats <-  basename(list_paws_pkgs(in_dir))
   log_info(
     "Running local checks for: ['%s']",
-    paste(pkgs_release, collapse = "', '")
+    paste(all_cats, collapse = "', '")
   )
-  dir_info <- paws_check_pkg_size(in_dir, pkg_list = pkgs_release)
+  dir_info <- paws_check_pkg_size(in_dir, pkg_list = all_cats)
   if(is.null(cache_path)){
     results_local <- paws_check_local(
-      pkg_list = pkgs_release,
+      pkg_list = all_cats,
       keep_notes = T
     )
     log_info("Completed local checks.")
@@ -392,7 +386,7 @@ paws_build_cran_comments <- function(in_dir = "../cran",
   )
   names(cran_comments) <- dir_info$package
 
-  for (pkg in pkgs_release) {
+  for (pkg in all_cats) {
     comment_file <- file.path(in_dir, pkg, "cran-comments.md")
     if (!file.exists(comment_file) || refresh) {
       writeLines(cran_comments[[pkg]], con = comment_file)
@@ -451,7 +445,7 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
   sink(temp_file)
   print(pkgs)
   for (pkg in pkgs) {
-    checks[[basename(pkg)]] <- devtools::check(pkg, cran = TRUE)
+    checks[[basename(pkg)]] <- devtools::check_built(pkg, cran = TRUE)
   }
   sink()
 

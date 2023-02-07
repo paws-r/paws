@@ -51,13 +51,13 @@ test_that("check list paws sub category packages", {
 })
 
 test_that("check local check_pkgs remove notes", {
-  mock_devtools_check <- mock2(
+  mock_devtools_check_built <- mock2(
     list(errors = "foo", warnings = "bar"),
     list(errors = "foo", warnings = "bar", notes = "cho"),
     list(notes = "baz"),
     cycle = T
   )
-  mockery::stub(check_pkgs, 'devtools::check', mock_devtools_check)
+  mockery::stub(check_pkgs, 'devtools::check_built', mock_devtools_check_built)
 
   check <- check_pkgs(c("paws", "paws.cat1", "paws.cat2"))
 
@@ -68,13 +68,13 @@ test_that("check local check_pkgs remove notes", {
 })
 
 test_that("check local check_pkgs keep notes", {
-  mock_devtools_check <- mock2(
+  mock_devtools_check_built <- mock2(
     list(errors = "foo", warnings = "bar"),
     list(errors = "foo", warnings = "bar", notes = "cho"),
     list(notes = "baz"),
     cycle = T
   )
-  mockery::stub(check_pkgs, 'devtools::check', mock_devtools_check)
+  mockery::stub(check_pkgs, 'devtools::check_built', mock_devtools_check_built)
 
   check <- check_pkgs(c("paws", "paws.cat1", "paws.cat2"), keep_notes = T)
 
@@ -368,9 +368,6 @@ test_that("check paws_build_cran_comments", {
   )
   mock_write_line <- mock2()
   mockery::stub(
-    paws_build_cran_comments, 'desc::desc_get_deps', mock_desc_get_deps
-  )
-  mockery::stub(
     paws_build_cran_comments, 'list_paws_pkgs', mock_list_paws_pkgs
   )
   mockery::stub(
@@ -389,13 +386,13 @@ test_that("check paws_build_cran_comments", {
     mock_arg(mock_paws_check_pkg_size),
     list(
       "made_up",
-      "pkg_list" = c("paws.cat1", "paws.cat2", "paws")
+      "pkg_list" = c("paws.cat1", "paws.cat2")
     )
   )
   expect_equal(
     mock_arg(mock_paws_check_local),
     list(
-      pkg_list = c("paws.cat1", "paws.cat2", "paws"),
+      pkg_list = c("paws.cat1", "paws.cat2"),
       keep_notes = TRUE
     )
   )
@@ -409,10 +406,6 @@ test_that("check paws_build_cran_comments", {
       list(
         "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, or WARNINGs.\nNotes:\nthis is a dummy note\n\nMaintainer Notes: tarball package size: 789K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
         con = "made_up/paws.cat2/cran-comments.md"
-      ),
-      list(
-        "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, WARNINGs, or Notes.\n\nMaintainer Notes: tarball package size: 123K\n\n## Downstream dependencies\n\nAll downstream dependencies pass R CMD check.",
-        con = "made_up/paws/cran-comments.md"
       )
     )
   )
@@ -456,7 +449,7 @@ test_that("check paws_build_cran_comments from cache", {
     mock_arg(mock_paws_check_pkg_size),
     list(
       "made_up",
-      "pkg_list" = c("paws.cat1", "paws.cat2", "paws")
+      "pkg_list" = c("paws.cat1", "paws.cat2")
     )
   )
   expect_equal(
@@ -469,10 +462,6 @@ test_that("check paws_build_cran_comments from cache", {
       list(
         "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, or WARNINGs.\nNotes:\nthis is a dummy note\n\nMaintainer Notes: tarball package size: 789K\n\n## Downstream dependencies\n\nAll downstream dependencies ('paws') pass R CMD check.",
         con = "made_up/paws.cat2/cran-comments.md"
-      ),
-      list(
-        "## Test environments\n\n* local macOS install, R 4.2.1\n* R-hub (devel and release)\n* win-builder\n\n## R CMD check results\n\nThere were no ERRORs, WARNINGs, or Notes.\n\nMaintainer Notes: tarball package size: 123K\n\n## Downstream dependencies\n\nAll downstream dependencies pass R CMD check.",
-        con = "made_up/paws/cran-comments.md"
       )
     )
   )
