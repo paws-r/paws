@@ -64,7 +64,9 @@ jobs:
         shell: Rscript {0}
 
       - name: Style
-        run: styler::style_pkg()
+        run: |
+          styler::style_pkg(pkg = 'paws.common')
+          styler::style_pkg(pkg = 'make.paws')
         shell: Rscript {0}
 
       - name: commit
