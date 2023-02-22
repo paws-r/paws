@@ -30,7 +30,8 @@ jobs:
           needs: pr-document
 
       - name: Document
-        run: roxygen2::roxygenise()
+        run: |
+          roxygen2::roxygenise(package.dir = 'paws.common')
         shell: Rscript {0}
 
       - name: commit
