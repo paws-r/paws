@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.5.5
+Version: 0.5.5.9000
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -40,6 +40,7 @@ Collate:
     'RcppExports.R'
     'struct.R'
     'handlers.R'
+    'logging.R'
     'iniutil.R'
     'dateutil.R'
     'credential_sso.R'
@@ -68,7 +69,6 @@ Collate:
     'handlers_restxml.R'
     'idempotency.R'
     'jsonutil.R'
-    'logging.R'
     'onLoad.R'
     'populate.R'
     'populateutil.R'
