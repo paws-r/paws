@@ -489,5 +489,12 @@ iam_credentials_provider <- function() {
 }
 
 no_credentials <- function() {
-  stop("No credentials provided", call. = FALSE)
+  message <- (
+    if (isTRUE(getOption('paws.log_level') <= 2L)) {
+      'No compatible credentials provided. Use `options("paws.log_level" = 3L)` for more information.'
+    } else {
+      "No compatible credentials provided."
+    }
+  )
+  stop(message, call. = FALSE)
 }
