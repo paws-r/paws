@@ -48,7 +48,7 @@ env_provider <- function() {
 credentials_file_provider <- function(profile = "") {
   credentials_path <- get_credentials_file_path()
   if (is.null(credentials_path)) {
-    log_info("Unable to location credentials file")
+    log_info("Unable to locate credentials file")
     return(NULL)
   }
 
