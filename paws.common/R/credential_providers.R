@@ -67,7 +67,7 @@ credentials_file_provider <- function(profile = "") {
 
   if (is.null(access_key_id) || is.null(secret_access_key)) {
     log_info(
-      "Unable to location aws_access_key_id or aws_secret_access_key in credentials file profile '%s'.",
+      "Unable to locate aws_access_key_id or aws_secret_access_key in credentials file profile '%s'.",
       aws_profile
     )
     return(NULL)
