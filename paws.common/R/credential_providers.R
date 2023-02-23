@@ -95,7 +95,7 @@ credentials_file_provider <- function(profile = "") {
 config_file_provider <- function(profile = "") {
   config_path <- get_config_file_path()
   if (is.null(config_path)) {
-    log_info("Unable to location config file")
+    log_info("Unable to locate config file")
     return(NULL)
   }
 
