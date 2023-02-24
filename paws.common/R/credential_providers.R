@@ -3,6 +3,7 @@
 #' @include credential_sso.R
 #' @include dateutil.R
 #' @include iniutil.R
+#' @include logging.R
 NULL
 
 Creds <- struct(
@@ -47,6 +48,7 @@ env_provider <- function() {
 credentials_file_provider <- function(profile = "") {
   credentials_path <- get_credentials_file_path()
   if (is.null(credentials_path)) {
+    log_info("Unable to locate credentials file")
     return(NULL)
   }
 
@@ -55,6 +57,7 @@ credentials_file_provider <- function(profile = "") {
   credentials <- read_ini(credentials_path)
 
   if (is.null(credentials[[aws_profile]])) {
+    log_info("Profile '%s' not found in '%s'", aws_profile, credentials_path)
     return(NULL)
   }
 
@@ -63,6 +66,10 @@ credentials_file_provider <- function(profile = "") {
   session_token <- credentials[[aws_profile]]$aws_session_token
 
   if (is.null(access_key_id) || is.null(secret_access_key)) {
+    log_info(
+      "Unable to locate aws_access_key_id or aws_secret_access_key in credentials file profile '%s'.",
+      aws_profile
+    )
     return(NULL)
   }
 
@@ -78,6 +85,7 @@ credentials_file_provider <- function(profile = "") {
       expiration = Inf
     )
   } else {
+    log_info("Unable to get credentials from credentials file.")
     creds <- NULL
   }
   return(creds)
@@ -87,6 +95,7 @@ credentials_file_provider <- function(profile = "") {
 config_file_provider <- function(profile = "") {
   config_path <- get_config_file_path()
   if (is.null(config_path)) {
+    log_info("Unable to locate config file")
     return(NULL)
   }
 
@@ -95,6 +104,7 @@ config_file_provider <- function(profile = "") {
   profile_name <- get_profile_name(profile)
   if (profile_name != "default") profile_name <- paste("profile", profile_name)
   if (is.null(config[[profile_name]])) {
+    log_info("Profile '%s' not found in '%s'", profile_name, config_path)
     return(NULL)
   }
   profile <- config[[profile_name]]
@@ -155,7 +165,7 @@ config_file_provider <- function(profile = "") {
       }
     }
   }
-
+  log_info("Unable to get credentials from config file.")
   return(NULL)
 }
 
@@ -363,6 +373,9 @@ container_credentials_provider <- function() {
   # return credential
   if (is.null(access_key_id) || is.null(secret_access_key) ||
     is.null(session_token)) {
+    log_info(
+      "Unable to obtain access_key_id, secret_access_key or session_token"
+    )
     return(NULL)
   }
 
@@ -375,6 +388,7 @@ container_credentials_provider <- function() {
       expiration = expiration
     )
   } else {
+    log_info("Unable to obtain credentials from container.")
     creds <- NULL
   }
   return(creds)
@@ -431,6 +445,7 @@ get_container_credentials_eks <- function() {
 iam_credentials_provider <- function() {
   iam_role <- get_iam_role()
   if (is.null(iam_role)) {
+    log_info("Unable to obtain iam role")
     return(NULL)
   }
 
@@ -439,6 +454,7 @@ iam_credentials_provider <- function() {
   credentials_response <- get_instance_metadata(credentials_url)
 
   if (is.null(credentials_response)) {
+    log_info("Unable credentials from iam role")
     return(NULL)
   }
 
@@ -451,6 +467,9 @@ iam_credentials_provider <- function() {
 
   if (is.null(access_key_id) || is.null(secret_access_key) ||
     is.null(session_token)) {
+    log_info(
+      "Unable to obtain access_key_id, secret_access_key or session_token"
+    )
     return(NULL)
   }
 
@@ -463,11 +482,19 @@ iam_credentials_provider <- function() {
       expiration = expiration
     )
   } else {
+    log_info("Unable to obtain credentials from iam role.")
     creds <- NULL
   }
   return(creds)
 }
 
 no_credentials <- function() {
-  stop("No credentials provided")
+  message <- (
+    if (isTRUE(getOption('paws.log_level') <= 2L)) {
+      'No compatible credentials provided. Use `options("paws.log_level" = 3L)` for more information.'
+    } else {
+      "No compatible credentials provided."
+    }
+  )
+  stop(message, call. = FALSE)
 }
