@@ -6,7 +6,7 @@
 # Levels: 4 = DEBUG, 3 = INFO/MSG, 2 = WARNING, 1 = ERROR
 
 #' @importFrom httr config with_config
-#' @importFrom utils modifyList
+#' @importFrom utils modifyList flush.console
 
 #' @title paws logging system
 #' @description Ability to configure paws logging system, through the use of paws
@@ -105,6 +105,7 @@ log_msg <- function(lvl, msg) {
     file = log_file,
     append = TRUE
   )
+  on.exit(flush.console())
 }
 
 log_color <- function(lvl) {
