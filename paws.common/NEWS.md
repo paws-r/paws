@@ -1,3 +1,6 @@
+# paws.common 0.5.5.9000
+* add logging to credentials
+
 # paws.common 0.5.5
 * Support [SSO token provider configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#sso-configure-profile-token) (#583)
 
