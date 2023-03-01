@@ -4,7 +4,10 @@ on:
   schedule:
     # At 12:00, on day 1 of the month, every 4 months
     - cron:  '0 12 1 */4 *'
-  workflow_dispatch
+  workflow_dispatch:
+      inputs:
+      text_to_print:
+        description: 'Manual re-build'
 
 jobs:
   regen:
