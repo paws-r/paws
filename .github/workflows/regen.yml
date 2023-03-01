@@ -30,6 +30,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+          sudo apt install -y gh
 
       - name: Install dependencies
         run: |
@@ -60,7 +61,9 @@ jobs:
         run: |
           git add .
           git commit -m "Regenerate Paws"
+          git push origin regen_paws
 
-      - uses: r-lib/actions/pr-push@v2
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: Create Github Pr
+        run: |
+          gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
+          gh pr create --title "Regenerate Paws: $(date +'%Y-%m-%d')" --body "Regenerate Paws SDK"
