@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     name: regen-paws
 
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - uses: actions/checkout@v3
 
