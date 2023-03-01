@@ -63,7 +63,7 @@ jobs:
           git commit -m "Regenerate Paws"
           git push origin regen_paws
 
-      - uses: Create Github Pr
+      - name: Create Github Pr
         run: |
           gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
           gh pr create --title "Regenerate Paws: $(date +'%Y-%m-%d')" --body "Regenerate Paws SDK"
