@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     name: regen-paws
 
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
       - uses: actions/checkout@v3
 
@@ -30,7 +27,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
-          sudo apt install -y gh
 
       - name: Install dependencies
         run: |
@@ -64,6 +60,7 @@ jobs:
           git push origin regen_paws
 
       - name: Create Github Pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
-          gh pr create --title "Regenerate Paws: $(date +'%Y-%m-%d')" --body "Regenerate Paws SDK"
+          gh pr create --title "Regenerate Paws" --body "Regenerate Paws SDK"
