@@ -1356,7 +1356,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Creates a new OpsItem. You must have permission in Identity and Access
 #' Management (IAM) to create a new OpsItem. For more information, see
 #' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -1398,7 +1398,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
 #' [Creating OpsItems
-#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
+#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
@@ -1417,7 +1417,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' @param Tags Optional metadata that you assign to a resource. You can restrict access
 #' to OpsItems by using an inline IAM policy that specifies tags. For more
 #' information, see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions)
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-getting-started-user-permissions)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Tags use a key-value pair. For example:
@@ -5135,7 +5135,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' Query a set of OpsItems. You must have permission in Identity and Access
 #' Management (IAM) to query a list of OpsItems. For more information, see
 #' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -7205,7 +7205,7 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' Get information about an OpsItem by using the ID. You must have
 #' permission in Identity and Access Management (IAM) to view information
 #' about an OpsItem. For more information, see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -11034,9 +11034,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' must escape the first two options by using a backslash. If you specify a
 #' version number, then you don't need to use the backslash. For example:
 #' 
-#' --document-version "$DEFAULT"
+#' --document-version "\$DEFAULT"
 #' 
-#' --document-version "$LATEST"
+#' --document-version "\$LATEST"
 #' 
 #' --document-version "3"
 #' @param DocumentHash The Sha256 or Sha1 hash created by the system when the document was
@@ -13195,7 +13195,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Edit or change an OpsItem. You must have permission in Identity and
 #' Access Management (IAM) to update an OpsItem. For more information, see
 #' [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html)
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' Operations engineers and IT professionals use Amazon Web Services
@@ -13238,7 +13238,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
 #' [Creating OpsItems
-#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
+#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OperationalDataToDelete Keys that you want to remove from the OperationalData map.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are

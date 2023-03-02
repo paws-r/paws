@@ -932,7 +932,7 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 #' You can use IAM policies with Global Accelerator to limit the users who
 #' have permissions to delete an accelerator. For more information, see
 #' [Identity and access
-#' management](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
+#' management](https://docs.aws.amazon.com/global-accelerator/latest/dg/)
 #' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage
@@ -992,7 +992,7 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 #' You can use IAM policies with Global Accelerator to limit the users who
 #' have permissions to delete an accelerator. For more information, see
 #' [Identity and access
-#' management](https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html)
+#' management](https://docs.aws.amazon.com/global-accelerator/latest/dg/)
 #' in the *Global Accelerator Developer Guide*.
 #'
 #' @usage

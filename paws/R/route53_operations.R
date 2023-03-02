@@ -4739,7 +4739,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes the domain name using the escaped or Punycoded value, which
 #' is the format that Amazon Route 53 saves in its database. For example,
-#' to create a hosted zone for exämple.com, you specify ex\344mple.com for
+#' to create a hosted zone for exämple.com, you specify ex\\344mple.com for
 #' the domain name.
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes it as:
@@ -6283,13 +6283,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' more information about IP addresses for which you can't create health
 #' checks, see the following documents:
 #' 
-#' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://www.rfc-editor.org/rfc/rfc5735)
+#' -   RFC 5735, Special Use IPv4 Addresses
 #' 
 #' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
 #'     Space](https://www.rfc-editor.org/rfc/rfc6598)
 #' 
-#' -   RFC 5156, Special-Use IPv6 Addresses
+#' -   [RFC 5156, Special-Use IPv6
+#'     Addresses](https://www.rfc-editor.org/rfc/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 

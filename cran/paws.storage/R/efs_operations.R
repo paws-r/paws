@@ -947,7 +947,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' policy definition. EFS file system policies have a 20,000 character
 #' limit. To find out more about the elements that make up a file system
 #' policy, see [EFS Resource-based
-#' Policies](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies).
+#' Policies](https://docs.aws.amazon.com/efs/latest/ug/#access-control-manage-access-intro-resource-policies).
 #' @param BypassPolicyLockoutSafetyCheck (Optional) A boolean that specifies whether or not to bypass the
 #' `FileSystemPolicy` lockout safety check. The lockout safety check
 #' determines whether the policy in the request will lock out, or prevent,

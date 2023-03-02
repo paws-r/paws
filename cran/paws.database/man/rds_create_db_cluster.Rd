@@ -433,7 +433,7 @@ Guide}:
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.requirements.html}{Requirements for Aurora Serverless v2}
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-mysql-parallel-query.html#aurora-mysql-parallel-query-limitations}{Limitations of Parallel Query}
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations}{Limitations of Aurora Global Databases}
-\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations}{Limitations of Multi-Master Clusters}
+\item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Replication.html#aurora-multi-master-limitations}{Limitations of Multi-Master Clusters}
 }
 
 Valid for: Aurora DB clusters only}

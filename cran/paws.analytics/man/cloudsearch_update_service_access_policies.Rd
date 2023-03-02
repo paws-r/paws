@@ -14,7 +14,7 @@ cloudsearch_update_service_access_policies(DomainName, AccessPolicies)
 rules.}
 }
 \description{
-Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for an Amazon CloudSearch Domain</a>.
+Configures the access rules that control access to the domain's document and search endpoints. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">}}Configuring Access for an Amazon CloudSearch Domain\if{html}{\out{</a>}}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/update_service_access_policies.html} for full documentation.
 }

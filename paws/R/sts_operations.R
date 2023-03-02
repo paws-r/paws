@@ -192,8 +192,8 @@ NULL
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
 #' and session tags into a packed binary format that has a separate limit.
@@ -659,8 +659,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
 #' and session tags into a packed binary format that has a separate limit.
@@ -789,11 +789,9 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' can also supply the user with a consistent identity throughout the
 #' lifetime of an application.
 #' 
-#' To learn more about Amazon Cognito, see [Amazon Cognito
-#' Overview](https://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/#d0e840)
-#' in *Amazon Web Services SDK for Android Developer Guide* and Amazon
-#' Cognito Overview in the *Amazon Web Services SDK for iOS Developer
-#' Guide*.
+#' To learn more about Amazon Cognito, see Amazon Cognito Overview in
+#' *Amazon Web Services SDK for Android Developer Guide* and Amazon Cognito
+#' Overview in the *Amazon Web Services SDK for iOS Developer Guide*.
 #' 
 #' Calling
 #' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
@@ -1027,8 +1025,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
 #' and session tags into a packed binary format that has a separate limit.
@@ -1545,8 +1543,8 @@ sts_get_caller_identity <- function() {
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (`U+0020` through `U+00FF`). It can also include the tab
-#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
+#' character list (\`U+0020` through \`U+00FF`). It can also include the tab
+#' (\`U+0009`), linefeed (\`U+000A`), and carriage return (\`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
 #' and session tags into a packed binary format that has a separate limit.

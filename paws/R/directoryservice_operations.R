@@ -3692,8 +3692,8 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #' extension.
 #' @param LdifContent &#91;required&#93; The LDIF file represented as a string. To construct the LdifContent
 #' string, precede each line as it would be formatted in an ldif file with
-#' \\n. See the example request below for more details. The file size can be
-#' no larger than 1MB.
+#' \\n. See the example request below for more details. The file size can
+#' be no larger than 1MB.
 #' @param Description &#91;required&#93; A description of the schema extension.
 #'
 #' @return

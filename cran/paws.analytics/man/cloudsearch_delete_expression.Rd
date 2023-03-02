@@ -12,7 +12,7 @@ cloudsearch_delete_expression(DomainName, ExpressionName)
 \item{ExpressionName}{[required] The name of the \code{Expression} to delete.}
 }
 \description{
-Removes an \code{Expression} from the search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Removes an \code{Expression} from the search domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">}}Configuring Expressions\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/delete_expression.html} for full documentation.
 }

@@ -13,7 +13,7 @@ a letter or number and be at least 3 and no more than 28 characters
 long.}
 }
 \description{
-Creates a new search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Creates a new search domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">}}Creating a Search Domain\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/create_domain.html} for full documentation.
 }

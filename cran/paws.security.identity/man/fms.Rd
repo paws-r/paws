@@ -34,7 +34,7 @@ actions, data types, and errors. For detailed information about Firewall
 Manager features, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html}{Firewall Manager Developer Guide}.
 
 Some API actions require explicit resource permissions. For information,
-see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html}{Firewall Manager required permissions for API actions}.
+see the developer guide topic \href{https://docs.aws.amazon.com/waf/latest/developerguide/}{Firewall Manager required permissions for API actions}.
 }
 \section{Service syntax}{
 

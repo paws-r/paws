@@ -48,9 +48,9 @@ change to reduce password strength.
 GuardDuty informs you of the status of your Amazon Web Services
 environment by producing security findings that you can view in the
 GuardDuty console or through Amazon CloudWatch events. For more
-information, see the \emph{<span
-href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon
-GuardDuty User Guide</span>} .
+information, see the \emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">}}Amazon
+GuardDuty User Guide\if{html}{\out{</span>}}} .
 }
 \section{Service syntax}{
 

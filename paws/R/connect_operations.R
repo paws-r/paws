@@ -7476,7 +7476,7 @@ connect_search_vocabularies <- function(InstanceId, MaxResults = NULL, NextToken
 #' durations. For more information, contact Amazon Web Services Support.
 #' 
 #' For more information about chat, see
-#' [Chat](https://docs.aws.amazon.com/connect/latest/adminguide/chat.html)
+#' [Chat](https://docs.aws.amazon.com/connect/latest/adminguide/web-and-mobile-chat.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage

@@ -23,7 +23,7 @@ NULL
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Working with
 #' Archives in Amazon S3
@@ -288,7 +288,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Uploading Large
 #' Archives in Parts (Multipart
@@ -476,7 +476,7 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Creating a
 #' Vault in Amazon
@@ -567,7 +567,7 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Deleting an
 #' Archive in Amazon
@@ -654,7 +654,7 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Deleting a
 #' Vault in Amazon
@@ -798,7 +798,7 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Configuring
 #' Vault Notifications in Amazon S3
@@ -885,7 +885,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For more information about using this operation, see the documentation
 #' for the underlying REST API [Describe
@@ -1055,7 +1055,7 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Retrieving
 #' Vault Metadata in Amazon S3
@@ -1242,7 +1242,7 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and the underlying REST API, see [Downloading
 #' a Vault
@@ -1538,7 +1538,7 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Configuring
 #' Vault Notifications in Amazon S3
@@ -1791,7 +1791,7 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Uploading Large
 #' Archives in Parts (Multipart
@@ -2211,7 +2211,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and the underlying REST API, see [Working
 #' with Archives in Amazon S3
@@ -2322,7 +2322,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and the underlying REST API, see [Working
 #' with Archives in Amazon S3
@@ -2566,7 +2566,7 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Retrieving
 #' Vault Metadata in Amazon S3
@@ -2968,7 +2968,7 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Configuring
 #' Vault Notifications in Amazon S3
@@ -3082,7 +3082,7 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Uploading an
 #' Archive in Amazon
@@ -3206,7 +3206,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' permissions by default. You must grant them explicit permission to
 #' perform specific actions. For more information, see [Access Control
 #' Using AWS Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/auth-and-access-control.html).
+#' (IAM)](https://docs.aws.amazon.com/amazonglacier/latest/dev/security-iam.html).
 #' 
 #' For conceptual information and underlying REST API, see [Uploading Large
 #' Archives in Parts (Multipart

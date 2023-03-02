@@ -3692,7 +3692,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' the cluster, regardless of the IAM permissions policies attached to
 #' other IAM principals. For more information, see [Understanding the EMR
 #' Cluster VisibleToAllUsers
-#' Setting](https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users)
+#' Setting](https://docs.aws.amazon.com/emr/latest/ManagementGuide/#security_set_visible_to_all_users)
 #' in the *Amazon EMRManagement Guide*.
 #' @param JobFlowRole Also called instance profile and EC2 role. An IAM role for an EMR
 #' cluster. The EC2 instances of the cluster assume this role. The default
@@ -4155,7 +4155,7 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' 
 #' For more information, see [Understanding the EMR Cluster
 #' VisibleToAllUsers
-#' Setting](https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users)
+#' Setting](https://docs.aws.amazon.com/emr/latest/ManagementGuide/#security_set_visible_to_all_users)
 #' in the *Amazon EMRManagement Guide*.
 #'
 #' @usage

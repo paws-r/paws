@@ -38,9 +38,9 @@ The guide also contains \href{https://docs.aws.amazon.com/opensearch-service/lat
 
 The endpoint for configuration service requests is region-specific:
 es.\emph{region}.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
-a current list of supported regions and endpoints, see <a
+a current list of supported regions and endpoints, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/general/latest/gr/rande.html#service-regions"
-target="_blank">Regions and Endpoints</a>.
+target="_blank">}}Regions and Endpoints\if{html}{\out{</a>}}.
 }
 \section{Service syntax}{
 

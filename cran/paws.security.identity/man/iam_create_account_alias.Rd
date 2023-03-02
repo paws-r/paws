@@ -14,7 +14,7 @@ consisting of lowercase letters, digits, and dashes. You cannot start or
 finish with a dash, nor can you have two dashes in a row.}
 }
 \description{
-Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see \href{https://docs.aws.amazon.com/signin/latest/userguide/user-types-list.html}{Using an alias for your Amazon Web Services account ID} in the \emph{IAM User Guide}.
+Creates an alias for your Amazon Web Services account. For information about using an Amazon Web Services account alias, see Using an alias for your Amazon Web Services account ID in the \emph{IAM User Guide}.
 
 See \url{https://paws-r.github.io/docs/iam/create_account_alias.html} for full documentation.
 }

@@ -124,7 +124,7 @@ command.
 When set to \code{false}, only the IAM principal that created the cluster and
 the Amazon Web Services account root user can perform EMR actions for
 the cluster, regardless of the IAM permissions policies attached to
-other IAM principals. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/security_iam_emr-with-iam.html#security_set_visible_to_all_users}{Understanding the EMR Cluster VisibleToAllUsers Setting}
+other IAM principals. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/#security_set_visible_to_all_users}{Understanding the EMR Cluster VisibleToAllUsers Setting}
 in the \emph{Amazon EMRManagement Guide}.}
 
 \item{JobFlowRole}{Also called instance profile and EC2 role. An IAM role for an EMR

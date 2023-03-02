@@ -13,7 +13,7 @@ cloudsearch_describe_availability_options(DomainName, Deployed = NULL)
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \description{
-Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">}}Configuring Availability Options\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/describe_availability_options.html} for full documentation.
 }

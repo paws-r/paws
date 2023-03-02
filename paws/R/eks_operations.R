@@ -581,14 +581,12 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 #' 
 #' When you create a Fargate profile, you must specify a pod execution role
 #' to use with the pods that are scheduled with the profile. This role is
-#' added to the cluster's Kubernetes [Role Based Access
-#' Control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
-#' (RBAC) for authorization so that the `kubelet` that is running on the
-#' Fargate infrastructure can register with your Amazon EKS cluster so that
-#' it can appear in your cluster as a node. The pod execution role also
-#' provides IAM permissions to the Fargate infrastructure to allow read
-#' access to Amazon ECR image repositories. For more information, see [Pod
-#' Execution
+#' added to the cluster's Kubernetes Role Based Access Control (RBAC) for
+#' authorization so that the `kubelet` that is running on the Fargate
+#' infrastructure can register with your Amazon EKS cluster so that it can
+#' appear in your cluster as a node. The pod execution role also provides
+#' IAM permissions to the Fargate infrastructure to allow read access to
+#' Amazon ECR image repositories. For more information, see [Pod Execution
 #' Role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
 #' in the *Amazon EKS User Guide*.
 #' 
