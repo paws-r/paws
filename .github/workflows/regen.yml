@@ -27,27 +27,26 @@ jobs:
         with:
           pandoc-version: '2.17.1'
 
-      - name: Install system dependencies
+      - name: Install System Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
           sudo apt-get install -y libharfbuzz-dev libfribidi-dev
 
-      - name: Install dependencies
+      - name: Install Paws Dependencies
         run: |
           install.packages('remotes')
           remotes::install_deps('paws.common', dependencies = TRUE)
           remotes::install_deps('make.paws', dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
-      - name: Install paws packages
+      - name: Install Paws Packages
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
         shell: Rscript {0}
 
-      - name: create branch
+      - name: Create Branch
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
@@ -59,13 +58,13 @@ jobs:
           make deps
           make build
 
-      - name: Commit message
+      - name: Create Commit Message
         run: |
           git add .
           git commit -m "Regenerate Paws"
           git push origin regen_paws
 
-      - name: Create Github Pr
+      - name: Create Github Pull Request
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
