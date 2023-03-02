@@ -1,0 +1,71 @@
+name: Regenerate Paws
+
+on:
+  schedule:
+    # At 12:00, on day 1 of the month, every 4 months
+    - cron:  '0 12 1 */4 *'
+  workflow_dispatch:
+      inputs:
+      text_to_print:
+        description: 'Manual re-build'
+
+jobs:
+  regenerate-paws:
+    runs-on: ubuntu-latest
+    name: regenerate-paws
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: '2.17.1'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+
+      - name: Install Paws Dependencies
+        run: |
+          install.packages('remotes')
+          remotes::install_deps('paws.common', dependencies = TRUE)
+          remotes::install_deps('make.paws', dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install Paws Packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Create Branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b regen_paws
+
+      - name: Regenerate Paws
+        run: |
+          make update-deps
+          make deps
+          make build
+
+      - name: Create Commit Message
+        run: |
+          git add .
+          git commit -m "Regenerate Paws"
+          git push origin regen_paws
+
+      - name: Create Github Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --title "Regenerate Paws" --body "Regenerate Paws SDK"
