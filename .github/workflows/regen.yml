@@ -10,9 +10,9 @@ on:
         description: 'Manual re-build'
 
 jobs:
-  regen:
+  regenerate-paws:
     runs-on: ubuntu-latest
-    name: regen-paws
+    name: regenerate-paws
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
