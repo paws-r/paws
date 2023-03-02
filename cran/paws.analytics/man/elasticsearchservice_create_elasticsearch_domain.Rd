@@ -30,9 +30,9 @@ Domain names must start with a lowercase letter and can contain the
 following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
 \item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg.
-"1.5" or "2.3". For more information, see <a
+"1.5" or "2.3". For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains"
-target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon
+target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon
 Elasticsearch Service Developer Guide}.}
 
 \item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the
@@ -47,15 +47,15 @@ volumes.}
 Default value is 0 hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For
-more information, see <a
+more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
-target="_blank">Creating a VPC</a> in \emph{VPC Endpoints for Amazon
+target="_blank">}}Creating a VPC\if{html}{\out{</a>}} in \emph{VPC Endpoints for Amazon
 Elasticsearch Service Domains}}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana
-authentication. For more information, see <a
+authentication. For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-target="_blank">Amazon Cognito Authentication for Kibana</a>.}
+target="_blank">}}Amazon Cognito Authentication for Kibana\if{html}{\out{</a>}}.}
 
 \item{EncryptionAtRestOptions}{Specifies the Encryption At Rest Options.}
 
@@ -63,9 +63,9 @@ target="_blank">Amazon Cognito Authentication for Kibana</a>.}
 
 \item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be
 \code{false} when configuring access to individual sub-resources. By default,
-the value is \code{true}. See <a
+the value is \code{true}. See \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
-target="_blank">Configuration Advanced Options</a> for more information.}
+target="_blank">}}Configuration Advanced Options\if{html}{\out{</a>}} for more information.}
 
 \item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to
 publish a given type of Elasticsearch log.}
@@ -80,7 +80,7 @@ endpoint.}
 \item{TagList}{A list of \code{Tag} added during domain creation.}
 }
 \description{
-Creates a new Elasticsearch domain. For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the \emph{Amazon Elasticsearch Service Developer Guide}.
+Creates a new Elasticsearch domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html} for full documentation.
 }

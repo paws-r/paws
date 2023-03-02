@@ -28,7 +28,7 @@ billing group Arn.}
 \item{NextToken}{The pagination token used on subsequent calls to retrieve accounts.}
 }
 \description{
-\emph{Amazon Web Services Billing Conductor is in beta release and is subject to change. Your use of Amazon Web Services Billing Conductor is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).}
+\emph{Amazon Web Services Billing Conductor is in beta release and is subject to change. Your use of Amazon Web Services Billing Conductor is subject to the Beta Service Participation terms of the \if{html}{\out{<span href="https://aws.amazon.com/service-terms/">}}Amazon Web Services Service Terms\if{html}{\out{</span>}} (Section 1.10).}
 
 See \url{https://paws-r.github.io/docs/billingconductor/list_account_associations.html} for full documentation.
 }

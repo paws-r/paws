@@ -13,8 +13,7 @@ NULL
 #' 
 #' Some API actions require explicit resource permissions. For information,
 #' see the developer guide topic [Firewall Manager required permissions for
-#' API
-#' actions](https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html).
+#' API actions](https://docs.aws.amazon.com/waf/latest/developerguide/).
 #'
 #' @param
 #' config

@@ -19,7 +19,7 @@ cloudsearch_describe_analysis_schemes(
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \description{
-Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a \code{text} field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a \code{text} field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">}}Configuring Analysis Schemes\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/describe_analysis_schemes.html} for full documentation.
 }

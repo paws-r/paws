@@ -33,7 +33,7 @@ opsworks_update_layer(
 name, which is used internally by AWS OpsWorks Stacks and by Chef. The
 short name is also used as the name for the directory where your app
 files are installed. It can have a maximum of 200 characters and must be
-in the following format: /A[a-z0-9-_.]+Z/.
+in the following format: /\\A[a-z0-9\\-\_\\.]+\\Z/.
 
 The built-in layers' short names are defined by AWS OpsWorks Stacks. For
 more information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer Reference}}

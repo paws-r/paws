@@ -2082,7 +2082,7 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #'     Databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
 #' 
 #' -   [Limitations of Multi-Master
-#'     Clusters](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-limitations)
+#'     Clusters](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Replication.html#aurora-multi-master-limitations)
 #' 
 #' Valid for: Aurora DB clusters only
 #' @param ScalingConfiguration For DB clusters in `serverless` DB engine mode, the scaling properties

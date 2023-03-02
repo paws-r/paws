@@ -2162,8 +2162,8 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 #' SNS topic to allow the Firewall Manager role `AWSServiceRoleForFMS` to
 #' publish SNS logs. For more information, see [Firewall Manager required
 #' permissions for API
-#' actions](https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html)
-#' in the *Firewall Manager Developer Guide*.
+#' actions](https://docs.aws.amazon.com/waf/latest/developerguide/) in the
+#' *Firewall Manager Developer Guide*.
 #'
 #' @usage
 #' fms_put_notification_channel(SnsTopicArn, SnsRoleName)

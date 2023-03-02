@@ -50,8 +50,9 @@ options results in an error.}
 \item{FilterCountries}{An optional parameter that limits the search results by returning only
 places that are in a specified list of countries.
 \itemize{
-\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit country
-codes. For example, Australia uses three upper-case characters: \code{AUS}.
+\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit
+country codes. For example, Australia uses three upper-case
+characters: \code{AUS}.
 }}
 
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}

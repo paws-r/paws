@@ -31,10 +31,10 @@ the following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
 \item{EngineVersion}{String of format Elasticsearch_X.Y or OpenSearch_X.Y to specify the
 engine version for the Amazon OpenSearch Service domain. For example,
-"OpenSearch_1.0" or "Elasticsearch_7.9". For more information, see <a
+"OpenSearch_1.0" or "Elasticsearch_7.9". For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains"
-target="_blank">Creating and managing Amazon OpenSearch Service
-domains</a> .}
+target="_blank">}}Creating and managing Amazon OpenSearch Service
+domains\if{html}{\out{</a>}} .}
 
 \item{ClusterConfig}{Configuration options for a domain. Specifies the instance type and
 number of instances in the domain.}
@@ -48,16 +48,16 @@ volumes.}
 Default value is 0 hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for a VPC endpoint.
-For more information, see <a
+For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html"
-target="_blank">Launching your Amazon OpenSearch Service domains using a
-VPC</a> .}
+target="_blank">}}Launching your Amazon OpenSearch Service domains using a
+VPC\if{html}{\out{</a>}} .}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for OpenSearch
-Dashboards authentication. For more information, see <a
+Dashboards authentication. For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-target="_blank">Configuring Amazon Cognito authentication for OpenSearch
-Dashboards</a>.}
+target="_blank">}}Configuring Amazon Cognito authentication for OpenSearch
+Dashboards\if{html}{\out{</a>}}.}
 
 \item{EncryptionAtRestOptions}{Options for encryption of data at rest.}
 
@@ -65,9 +65,9 @@ Dashboards</a>.}
 
 \item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be
 \code{false} when configuring access to individual sub-resources. By default,
-the value is \code{true}. See <a
+the value is \code{true}. See \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options"
-target="_blank">Advanced cluster parameters</a> for more information.}
+target="_blank">}}Advanced cluster parameters\if{html}{\out{</a>}} for more information.}
 
 \item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to
 publish a given type of OpenSearch log.}
@@ -82,7 +82,7 @@ endpoint.}
 \item{AutoTuneOptions}{Specifies Auto-Tune options.}
 }
 \description{
-Creates a new Amazon OpenSearch Service domain. For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html" target="_blank">Creating and managing Amazon OpenSearch Service domains</a> in the \emph{Amazon OpenSearch Service Developer Guide}.
+Creates a new Amazon OpenSearch Service domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html" target="_blank">}}Creating and managing Amazon OpenSearch Service domains\if{html}{\out{</a>}} in the \emph{Amazon OpenSearch Service Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/create_domain.html} for full documentation.
 }

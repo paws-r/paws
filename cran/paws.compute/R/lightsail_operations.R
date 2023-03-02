@@ -1434,7 +1434,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #'     For more information about reserved words in MySQL, see the Keywords
 #'     and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/5.6/en/keywords.html), [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/8.0/en/keywords.html), [MySQL
 #'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and
 #'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
@@ -1478,7 +1478,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #'     For more information about reserved words in MySQL 5.6 or 5.7, see
 #'     the Keywords and Reserved Words articles for [MySQL
-#'     5.6](https://dev.mysql.com/doc/refman/5.6/en/keywords.html), [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/8.0/en/keywords.html), [MySQL
 #'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or
 #'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 

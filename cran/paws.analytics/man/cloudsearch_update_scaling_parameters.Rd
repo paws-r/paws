@@ -12,7 +12,7 @@ cloudsearch_update_scaling_parameters(DomainName, ScalingParameters)
 \item{ScalingParameters}{[required]}
 }
 \description{
-Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these values control the resources used per Availability Zone. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these values control the resources used per Availability Zone. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">}}Configuring Scaling Options\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/update_scaling_parameters.html} for full documentation.
 }

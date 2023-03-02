@@ -10,7 +10,7 @@ ssm_get_ops_item(OpsItemId)
 \item{OpsItemId}{[required] The ID of the OpsItem that you want to get.}
 }
 \description{
-Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 See \url{https://paws-r.github.io/docs/ssm/get_ops_item.html} for full documentation.
 }

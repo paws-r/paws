@@ -21,7 +21,7 @@ are shown.}
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \description{
-Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">}}Configuring Expressions\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/describe_expressions.html} for full documentation.
 }

@@ -29,7 +29,9 @@ mappings.}
 
 \item{resourceNames}{The names of the resources to remove from the resource mappings.}
 
-\item{terraformSourceNames}{</p>}
+\item{terraformSourceNames}{\if{html}{\out{
+</p>
+}}}
 }
 \description{
 Removes resource mappings from a draft application version.

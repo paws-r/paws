@@ -39,9 +39,9 @@ such as Apache Maven, Gradle, and more. You can also fully customize
 build environments in CodeBuild to use your own build tools. CodeBuild
 scales automatically to meet peak build requests. You pay only for the
 build time you consume. For more information about CodeBuild, see the
-\emph{<span
-href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">CodeBuild
-User Guide</span>.}
+\emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">}}CodeBuild
+User Guide\if{html}{\out{</span>}}.}
 }
 \section{Service syntax}{
 

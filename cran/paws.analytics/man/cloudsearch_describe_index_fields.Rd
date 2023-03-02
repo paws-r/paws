@@ -20,7 +20,7 @@ information is returned for all configured index fields.}
 pending changes (\code{false}). Defaults to \code{false}.}
 }
 \description{
-Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Domain Information</a> in the \emph{Amazon CloudSearch Developer Guide}.
+Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the \code{Deployed} option to \code{true} to show the active configuration and exclude pending changes. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">}}Getting Domain Information\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
 See \url{https://paws-r.github.io/docs/cloudsearch/describe_index_fields.html} for full documentation.
 }

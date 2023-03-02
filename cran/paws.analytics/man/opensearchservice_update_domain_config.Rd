@@ -34,22 +34,22 @@ opensearchservice_update_domain_config(
 Default value is \code{0} hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for the VPC endpoint.
-For more information, see <a
+For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html"
-target="_blank">Launching your Amazon OpenSearch Service domains using a
-VPC</a> .}
+target="_blank">}}Launching your Amazon OpenSearch Service domains using a
+VPC\if{html}{\out{</a>}} .}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for OpenSearch
-Dashboards authentication. For more information, see <a
+Dashboards authentication. For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-target="_blank">Configuring Amazon Cognito authentication for OpenSearch
-Dashboards</a>.}
+target="_blank">}}Configuring Amazon Cognito authentication for OpenSearch
+Dashboards\if{html}{\out{</a>}}.}
 
 \item{AdvancedOptions}{Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be \code{false} when configuring access to individual
-sub-resources. By default, the value is \code{true}. See <a
+sub-resources. By default, the value is \code{true}. See \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options"
-target="_blank">Advanced options</a> for more information.}
+target="_blank">}}Advanced options\if{html}{\out{</a>}} for more information.}
 
 \item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
 

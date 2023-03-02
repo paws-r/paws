@@ -34,21 +34,21 @@ elasticsearchservice_update_elasticsearch_domain_config(
 Default value is \code{0} hours.}
 
 \item{VPCOptions}{Options to specify the subnets and security groups for VPC endpoint. For
-more information, see <a
+more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-creating-vpc"
-target="_blank">Creating a VPC</a> in \emph{VPC Endpoints for Amazon
+target="_blank">}}Creating a VPC\if{html}{\out{</a>}} in \emph{VPC Endpoints for Amazon
 Elasticsearch Service Domains}}
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana
-authentication. For more information, see <a
+authentication. For more information, see \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-target="_blank">Amazon Cognito Authentication for Kibana</a>.}
+target="_blank">}}Amazon Cognito Authentication for Kibana\if{html}{\out{</a>}}.}
 
 \item{AdvancedOptions}{Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be \code{false} when configuring access to individual
-sub-resources. By default, the value is \code{true}. See <a
+sub-resources. By default, the value is \code{true}. See \if{html}{\out{<a
 href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options"
-target="_blank">Configuration Advanced Options</a> for more information.}
+target="_blank">}}Configuration Advanced Options\if{html}{\out{</a>}} for more information.}
 
 \item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
 

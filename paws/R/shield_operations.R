@@ -291,8 +291,9 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' You can add protection to only a single resource with each
 #' [`create_protection`][shield_create_protection] request. You can add
 #' protection to multiple resources at once through the Shield Advanced
-#' console at <https://console.aws.amazon.com/wafv2/shieldv2#/>. For more
-#' information see [Getting Started with Shield
+#' console at
+#' [https://console.aws.amazon.com/wafv2/shieldv2#/](https://us-east-1.console.aws.amazon.com/wafv2/shieldv2#/).
+#' For more information see [Getting Started with Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Adding Shield Advanced protection to Amazon Web Services
 #' resources](https://docs.aws.amazon.com/waf/latest/developerguide/).
@@ -1388,8 +1389,9 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' To use this feature, you must associate a web ACL with the protected
 #' resource. The web ACL must be created using the latest version of WAF
 #' (v2). You can associate the web ACL through the Shield Advanced console
-#' at <https://console.aws.amazon.com/wafv2/shieldv2#/>. For more
-#' information, see [Getting Started with Shield
+#' at
+#' [https://console.aws.amazon.com/wafv2/shieldv2#/](https://us-east-1.console.aws.amazon.com/wafv2/shieldv2#/).
+#' For more information, see [Getting Started with Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html).
 #' You can also associate the web ACL to the resource through the WAF
 #' console or the WAF API, but you must manage Shield Advanced automatic

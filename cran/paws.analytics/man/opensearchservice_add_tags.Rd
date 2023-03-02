@@ -12,7 +12,7 @@ opensearchservice_add_tags(ARN, TagList)
 \item{TagList}{[required] List of \code{Tag} to add to the domain.}
 }
 \description{
-Attaches tags to an existing domain. Tags are a set of case-sensitive key value pairs. An domain can have up to 10 tags. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging" target="_blank">Tagging Amazon OpenSearch Service domains</a> for more information.
+Attaches tags to an existing domain. Tags are a set of case-sensitive key value pairs. An domain can have up to 10 tags. See \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging" target="_blank">}}Tagging Amazon OpenSearch Service domains\if{html}{\out{</a>}} for more information.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/add_tags.html} for full documentation.
 }
