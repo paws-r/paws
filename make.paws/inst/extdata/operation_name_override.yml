@@ -1,3 +1,7 @@
 ---
 - name: UploadPartCopy
   override: CopyPart
+- name: ListParts
+  override: ListPartsRequest
+- name: ListMultipartUploads
+  override: ListMultipartUploadsRequest
