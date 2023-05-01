@@ -25,9 +25,9 @@ or YAML file and referencing the file in a command.
 For examples, see the following topics in the \emph{Amazon Web Services
 Systems Manager User Guide}.
 \itemize{
-\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html}{Create an SSM document (Amazon Web Services API)}
-\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html}{Create an SSM document (Amazon Web Services CLI)}
-\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html}{Create an SSM document (API)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html}{Create an SSM document (Amazon Web Services API)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html}{Create an SSM document (Amazon Web Services CLI)}
+\item \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html}{Create an SSM document (API)}
 }}
 
 \item{Requires}{A list of SSM documents required by a document. This parameter is used
@@ -90,7 +90,7 @@ To add tags to an existing SSM document, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
 }
 \description{
-Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html}{Amazon Web Services Systems Manager Documents} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents.html}{Amazon Web Services Systems Manager Documents} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 See \url{https://paws-r.github.io/docs/ssm/create_document.html} for full documentation.
 }

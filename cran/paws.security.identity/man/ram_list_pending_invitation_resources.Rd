@@ -13,7 +13,7 @@ ram_list_pending_invitation_resources(
 )
 }
 \arguments{
-\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the invitation. You can use
 \code{\link[=ram_get_resource_share_invitations]{get_resource_share_invitations}}
 to find the ARN of the invitation.}

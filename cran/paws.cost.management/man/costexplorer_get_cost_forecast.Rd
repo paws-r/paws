@@ -20,7 +20,7 @@ must be equal to or no later than the current date to avoid a validation
 error.}
 
 \item{Metric}{[required] Which metric Cost Explorer uses to create your forecast. For more
-information about blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+information about blended and unblended rates, see \href{https://repost.aws/knowledge-center/blended-rates-intro}{Why does the "blended" annotation appear on some line items in my bill?}.
 
 Valid values for a \code{\link[=costexplorer_get_cost_forecast]{get_cost_forecast}}
 call are the following:

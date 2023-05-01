@@ -10752,7 +10752,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
 #' in the *Amazon Elastic Compute Cloud User Guide* and [Security groups
 #' for your
-#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' When you create a security group, you specify a friendly name of your
@@ -11981,8 +11981,9 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 #' Valid values are 1-32766.
 #' @param VirtualNetworkId The VXLAN ID for the Traffic Mirror session. For more information about
 #' the VXLAN protocol, see [RFC
-#' 7348](https://www.rfc-editor.org/rfc/rfc7348). If you do not specify a
-#' `VirtualNetworkId`, an account-wide unique id is chosen at random.
+#' 7348](https://datatracker.ietf.org/doc/html/rfc7348). If you do not
+#' specify a `VirtualNetworkId`, an account-wide unique id is chosen at
+#' random.
 #' @param Description The description of the Traffic Mirror session.
 #' @param TagSpecifications The tags to assign to a Traffic Mirror session.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -31785,7 +31786,7 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
 #' groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
 #' in the *Amazon Elastic Compute Cloud User Guide* and [Security groups
 #' for your
-#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+#' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' 
 #' We are retiring EC2-Classic on August 15, 2022. We recommend that you

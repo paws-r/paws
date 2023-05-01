@@ -155,7 +155,7 @@ NULL
 #' session policies can't exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
@@ -622,7 +622,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' session policies can't exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
@@ -988,7 +988,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' session policies can't exceed 2,048 characters. For more information
 #' about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
 #' An Amazon Web Services conversion compresses the passed session policies
@@ -1564,7 +1564,7 @@ sts_get_caller_identity <- function() {
 #' inline and managed session policies can't exceed 2,048 characters. You
 #' can provide up to 10 managed policy ARNs. For more information about
 #' ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the Amazon Web Services General Reference.
 #' 
 #' This parameter is optional. However, if you do not pass any session

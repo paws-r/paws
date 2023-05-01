@@ -96,7 +96,7 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group. For more information about ways to use tags, see [Tagging
 #' Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
@@ -192,7 +192,7 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray sampling rule. For more information about ways to use tags, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
@@ -2178,7 +2178,7 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' @param Tags &#91;required&#93; A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group or sampling rule. For more information about ways to use
 #' tags, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:

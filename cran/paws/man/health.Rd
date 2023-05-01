@@ -50,7 +50,7 @@ the API. For more information, see \href{https://docs.aws.amazon.com/health/late
 in the \emph{Health User Guide}.
 }
 
-For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If your Amazon Web Services account is part of Organizations, you can
 use the Health organizational view feature. This feature provides a

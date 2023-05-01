@@ -8,7 +8,7 @@ resource share}
 ram_untag_resource(resourceShareArn, tagKeys)
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the resource share that you want to remove tags from. The tags are
 removed from the resource share, not the resources in the resource
 share.}

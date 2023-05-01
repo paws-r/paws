@@ -36,9 +36,9 @@ embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{\if{html}
 href="https://docs.aws.amazon.com/general/latest/gr/">}}Amazon Web
 Services General Reference\if{html}{\out{</span>}}} for the following:
 \itemize{
-\item For a list of service name strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces}{Amazon Web Services Service Namespaces}.
-\item For resource type strings, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax}{Example ARNs}.
-\item For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.
+\item For a list of service name strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services Service Namespaces}.
+\item For resource type strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax}{Example ARNs}.
+\item For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.
 }
 
 You can specify multiple resource types by using a comma separated

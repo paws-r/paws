@@ -1066,7 +1066,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' @param SecurityGroups A list that contains the security group IDs to assign to the instances
 #' in the Auto Scaling group. For more information, see [Control traffic to
 #' resources using security
-#' groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+#' groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
 #' @param ClassicLinkVPCId *EC2-Classic retires on August 15, 2022. This property is not supported
 #' after that date.*

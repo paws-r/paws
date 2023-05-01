@@ -17,7 +17,7 @@ ram_get_resource_shares(
 )
 }
 \arguments{
-\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of individual resource shares that you want information about.}
 
 \item{resourceShareStatus}{Specifies that you want to retrieve details of only those resource
@@ -56,7 +56,7 @@ should check \code{NextToken} after every operation to ensure that you
 receive all of the results.}
 
 \item{permissionArn}{Specifies that you want to retrieve details of only those resource
-shares that use the RAM permission with this \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}.}
+shares that use the RAM permission with this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}.}
 }
 \description{
 Retrieves details about the resource shares that you own or that are shared with you.

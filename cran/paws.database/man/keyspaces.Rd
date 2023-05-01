@@ -51,8 +51,8 @@ in the \emph{Amazon Keyspaces Developer Guide}.
 
 For more information about Amazon Web Services APIs, for example how to
 implement retry logic or how to sign Amazon Web Services API requests,
-see \href{https://docs.aws.amazon.com/general/latest/gr/aws-apis.html}{Amazon Web Services APIs} in
-the \emph{General Reference}.
+see \href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services APIs} in the \emph{General
+Reference}.
 }
 \section{Service syntax}{
 

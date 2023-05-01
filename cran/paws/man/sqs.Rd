@@ -53,7 +53,7 @@ the following automatically:
 \item \href{https://aws.amazon.com/sqs/}{Amazon SQS Product Page}
 \item \emph{Amazon SQS Developer Guide}
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html}{Making API Requests}
+\item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html}{Making API Requests}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }

@@ -7,7 +7,7 @@
 ram_delete_resource_share(resourceShareArn, clientToken = NULL)
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the resource share to delete.}
 
 \item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure

@@ -975,7 +975,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' @param Metrics &#91;required&#93; Which metrics are returned in the query. For more information about
 #' blended and unblended rates, see [Why does the "blended" annotation
 #' appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' bill?](https://repost.aws/knowledge-center/blended-rates-intro).
 #' 
 #' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`,
 #' `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and
@@ -1191,7 +1191,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' @param Metrics Which metrics are returned in the query. For more information about
 #' blended and unblended rates, see [Why does the "blended" annotation
 #' appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' bill?](https://repost.aws/knowledge-center/blended-rates-intro).
 #' 
 #' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`,
 #' `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and
@@ -1515,7 +1515,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' @param Metric &#91;required&#93; Which metric Cost Explorer uses to create your forecast. For more
 #' information about blended and unblended rates, see [Why does the
 #' "blended" annotation appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' bill?](https://repost.aws/knowledge-center/blended-rates-intro).
 #' 
 #' Valid values for a [`get_cost_forecast`][costexplorer_get_cost_forecast]
 #' call are the following:

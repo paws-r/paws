@@ -111,7 +111,8 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @param Entitlements &#91;required&#93; License entitlements. Partial checkouts are not supported.
 #' @param DigitalSignatureMethod &#91;required&#93; Digital signature method. The possible value is JSON Web Signature (JWS)
 #' algorithm PS384. For more information, see [RFC 7518 Digital Signature
-#' with RSASSA-PSS](https://www.rfc-editor.org/rfc/rfc7518#section-3.5).
+#' with
+#' RSASSA-PSS](https://datatracker.ietf.org/doc/html/rfc7518#section-3.5).
 #' @param NodeId Node ID.
 #' @param CheckoutMetadata Information about constraints.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the

@@ -25,7 +25,7 @@ provisioning artifact ID. For more information, see \href{https://docs.aws.amazo
 
 \item{Tags}{An array of key-value pairs that you want to use to organize and track
 your Amazon Web Services resource costs. For more information, see
-\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{

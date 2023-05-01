@@ -2107,7 +2107,7 @@ imagebuilder <- function(config = list()) {
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
 #' information, see [Signature Version 4 signing
-#' process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html)
+#' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference.*.
 #' 
 #' **CA certificates**
@@ -5110,8 +5110,8 @@ elasticache <- function(config = list()) {
 #' For more information about Amazon Web Services APIs, for example how to
 #' implement retry logic or how to sign Amazon Web Services API requests,
 #' see [Amazon Web Services
-#' APIs](https://docs.aws.amazon.com/general/latest/gr/aws-apis.html) in
-#' the *General Reference*.
+#' APIs](https://docs.aws.amazon.com/general/latest/gr/) in the *General
+#' Reference*.
 #'
 #' @param
 #' config
@@ -8156,7 +8156,7 @@ globalaccelerator <- function(config = list()) {
 #'     calculating signatures, handling request retries, and error
 #'     handling. For general information about using the Amazon Web
 #'     Services REST APIs, see [Amazon Web Services
-#'     APIs](https://docs.aws.amazon.com/general/latest/gr/aws-apis.html).
+#'     APIs](https://docs.aws.amazon.com/general/latest/gr/).
 #' 
 #'     To access Network Firewall using the REST API endpoint:
 #'     `https://network-firewall.<region>.amazonaws.com `
@@ -13137,7 +13137,7 @@ cloudtrail <- function(config = list()) {
 #' manage Config. The Config API uses the Signature Version 4 protocol for
 #' signing requests. For more information about how to sign a request with
 #' this protocol, see [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' For detailed information about Config features and their associated
 #' actions or commands, as well as how to work with Amazon Web Services
 #' Management Console, see [What Is
@@ -13750,7 +13750,7 @@ managedgrafana <- function(config = list()) {
 #' 
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a
@@ -16241,7 +16241,7 @@ ssmincidents <- function(config = list()) {
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' See [About the Amazon Web Services Support
 #' API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html)
@@ -20795,7 +20795,7 @@ healthlake <- function(config = list()) {
 #' resource. A tag comprises a *key* and a *value*, both set by you. For
 #' example, you might set a tag as `topic:nature` to label a particular
 #' video category. See [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' for more information, including restrictions that apply to tags.
 #' 
 #' Tags can help you identify and organize your Amazon Web Services
@@ -24344,7 +24344,7 @@ inspector2 <- function(config = list()) {
 #' sign requests.
 #' 
 #' All KMS operations require [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -24363,7 +24363,7 @@ inspector2 <- function(config = list()) {
 #' following:
 #' 
 #' -   [Amazon Web Services Security
-#'     Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) -
+#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
 #'     This topic provides general information about the types of
 #'     credentials used to access Amazon Web Services.
 #' 
@@ -24373,7 +24373,7 @@ inspector2 <- function(config = list()) {
 #'     temporary security credentials.
 #' 
 #' -   [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html) -
+#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
 #' 
@@ -25580,7 +25580,7 @@ ssoadmin <- function(config = list()) {
 #' 
 #' -   The Amazon Web Services SSO OIDC service currently implements only
 #'     the portions of the OAuth 2.0 Device Authorization Grant standard
-#'     ([https://tools.ietf.org/html/rfc8628](https://www.rfc-editor.org/rfc/rfc8628))
+#'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
 #'     that are necessary to enable single sign-on authentication with the
 #'     AWS CLI. Support for other OIDC flows frequently needed for native
 #'     applications, such as Authorization Code Flow (+ PKCE), will be
@@ -27143,7 +27143,7 @@ sns <- function(config = list()) {
 #' -   *Amazon SQS Developer Guide*
 #' 
 #'     -   [Making API
-#'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html)
+#'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html)
 #' 
 #'     -   [Amazon SQS Message
 #'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)

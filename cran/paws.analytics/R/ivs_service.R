@@ -65,7 +65,7 @@ NULL
 #' resource. A tag comprises a *key* and a *value*, both set by you. For
 #' example, you might set a tag as `topic:nature` to label a particular
 #' video category. See [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' for more information, including restrictions that apply to tags.
 #' 
 #' Tags can help you identify and organize your Amazon Web Services

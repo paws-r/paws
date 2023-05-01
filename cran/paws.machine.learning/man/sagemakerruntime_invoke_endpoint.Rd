@@ -40,8 +40,8 @@ information is an opaque value that is forwarded verbatim. You could use
 this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
 programmed to process. The value must consist of no more than 1024
-visible US-ASCII characters as specified in \href{https://www.rfc-editor.org/rfc/rfc7230#section-3.2.6}{Section 3.3.6. Field Value Components} of the
-Hypertext Transfer Protocol (HTTP/1.1).
+visible US-ASCII characters as specified in \href{https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6}{Section 3.3.6. Field Value Components}
+of the Hypertext Transfer Protocol (HTTP/1.1).
 
 The code in your model is responsible for setting or updating any custom
 attributes in the response. If your code does not set this value in the

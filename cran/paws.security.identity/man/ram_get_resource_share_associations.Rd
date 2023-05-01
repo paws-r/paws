@@ -25,10 +25,10 @@ specified resource share.
 specified resource share.
 }}
 
-\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 of the resource share whose associations you want to retrieve.}
 
-\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the resource whose resource shares you want to retrieve.
 
 You cannot specify this parameter if the association type is
@@ -36,7 +36,7 @@ You cannot specify this parameter if the association type is
 
 \item{principal}{Specifies the ID of the principal whose resource shares you want to
 retrieve. This can be an Amazon Web Services account ID, an organization
-ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of an individual IAM user or role.
 
 You cannot specify this parameter if the association type is \code{RESOURCE}.}

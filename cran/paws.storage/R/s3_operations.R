@@ -2740,7 +2740,7 @@ s3_list_buckets <- function() {
 #' @rdname s3_list_multipart_uploads
 s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
-    name = "ListMultipartUploads",
+    name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{Bucket}?uploads",
     paginator = list()
@@ -3002,7 +3002,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' @rdname s3_list_parts
 s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
-    name = "ListParts",
+    name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{Bucket}/{Key+}",
     paginator = list()

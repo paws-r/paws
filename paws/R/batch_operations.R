@@ -225,7 +225,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' categorize and organize your resources. Each tag consists of a key and
 #' an optional value. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in *Amazon Web Services General Reference*.
 #' 
 #' These tags can be updated or removed using the
@@ -546,7 +546,7 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
 #' @param tags The tags that you apply to the scheduling policy to help you categorize
 #' and organize your resources. Each tag consists of a key and an optional
 #' value. For more information, see [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in *Amazon Web Services General Reference*.
 #' 
 #' These tags can be updated or removed using the
@@ -2686,7 +2686,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 #' @param tags The tags that you apply to the job request to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
 #' value. For more information, see [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in *Amazon Web Services General Reference*.
 #'
 #' @return
@@ -2843,7 +2843,7 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
 #' @param tags &#91;required&#93; The tags that you apply to the resource to help you categorize and
 #' organize your resources. Each tag consists of a key and an optional
 #' value. For more information, see [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in *Amazon Web Services General Reference*.
 #'
 #' @return

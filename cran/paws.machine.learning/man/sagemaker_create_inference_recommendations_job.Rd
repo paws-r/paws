@@ -40,7 +40,7 @@ for Amazon S3 server-side encryption.}
 
 \item{Tags}{The metadata that you apply to Amazon Web Services resources to help you
 categorize and organize them. Each tag consists of a key and a value,
-both of which you define. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+both of which you define. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 in the Amazon Web Services General Reference.}
 }
 \description{

@@ -14,10 +14,10 @@ ram_associate_resource_share_permission(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the resource share to which you want to add or replace permissions.}
 
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the RAM permission to associate with the resource share. To find the
 ARN for a permission, use either the
 \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the

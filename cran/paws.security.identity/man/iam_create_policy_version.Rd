@@ -10,7 +10,7 @@ iam_create_policy_version(PolicyArn, PolicyDocument, SetAsDefault = NULL)
 \item{PolicyArn}{[required] The Amazon Resource Name (ARN) of the IAM policy to which you want to
 add a new version.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyDocument}{[required] The JSON policy document that you want to use as the content for this

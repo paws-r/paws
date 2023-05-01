@@ -1602,9 +1602,9 @@ quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' Any ingestions operating on tagged datasets inherit the same tags
 #' automatically for use in access control. For an example, see [How do I
 #' create an IAM policy to control access to Amazon EC2 resources using
-#' tags?](https://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/)
-#' in the Amazon Web Services Knowledge Center. Tags are visible on the
-#' tagged dataset, but not on the ingestion resource.
+#' tags?](https://repost.aws/knowledge-center/iam-ec2-resource-tags) in the
+#' Amazon Web Services Knowledge Center. Tags are visible on the tagged
+#' dataset, but not on the ingestion resource.
 #'
 #' @usage
 #' quicksight_create_ingestion(DataSetId, IngestionId, AwsAccountId,
@@ -3144,8 +3144,7 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #'     -   Use [command line
 #'         options](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html).
 #' 
-#'     -   Use [named
-#'         profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html).
+#'     -   Use named profiles.
 #' 
 #'     -   Run `aws configure` to change your default Amazon Web Services
 #'         Region. Use Enter to key the same settings for your keys. For

@@ -35,7 +35,7 @@ actions, data types, and errors.
 \item The REST API requires you to handle connection details, such as
 calculating signatures, handling request retries, and error
 handling. For general information about using the Amazon Web
-Services REST APIs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-apis.html}{Amazon Web Services APIs}.
+Services REST APIs, see \href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services APIs}.
 
 To access Network Firewall using the REST API endpoint:
 \verb{https://network-firewall.<region>.amazonaws.com }

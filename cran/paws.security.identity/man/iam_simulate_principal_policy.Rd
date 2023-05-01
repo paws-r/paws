@@ -32,7 +32,7 @@ The maximum length of the policy document that you can pass in this
 operation, including whitespace, is listed below. To view the maximum
 character counts of a managed policy with no whitespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length}{IAM and STS character quotas}.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policy documents to include in the
@@ -97,7 +97,7 @@ specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 \code{ResourcePolicy} parameter.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
@@ -148,7 +148,7 @@ of an assumed role, federated user, or a service principal.
 that the resource-based policy's \code{Principal} element has a value to use
 in evaluating the policy.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ContextEntries}{A list of context keys and corresponding values for the simulation to

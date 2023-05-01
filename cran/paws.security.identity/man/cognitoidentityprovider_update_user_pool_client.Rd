@@ -117,7 +117,7 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
 
 Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 testing purposes only.
@@ -135,7 +135,7 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
 
 Amazon Cognito requires HTTPS over HTTP except for \verb{http://localhost}
 for testing purposes only.

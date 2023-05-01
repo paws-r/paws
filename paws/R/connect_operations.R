@@ -5923,7 +5923,7 @@ connect_list_lex_bots <- function(InstanceId, NextToken = NULL, MaxResults = NUL
 #' 
 #' For more information about phone numbers, see [Set Up Phone Numbers for
 #' Your Contact
-#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html)
+#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/ag-overview-numbers.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage
@@ -6000,7 +6000,7 @@ connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, Phon
 #' 
 #' For more information about phone numbers, see [Set Up Phone Numbers for
 #' Your Contact
-#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html)
+#' Center](https://docs.aws.amazon.com/connect/latest/adminguide/ag-overview-numbers.html)
 #' in the *Amazon Connect Administrator Guide*.
 #'
 #' @usage

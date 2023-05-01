@@ -31,8 +31,8 @@ NULL
 #' request or to provide other metadata that a service endpoint was
 #' programmed to process. The value must consist of no more than 1024
 #' visible US-ASCII characters as specified in [Section 3.3.6. Field Value
-#' Components](https://www.rfc-editor.org/rfc/rfc7230#section-3.2.6) of the
-#' Hypertext Transfer Protocol (HTTP/1.1).
+#' Components](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6)
+#' of the Hypertext Transfer Protocol (HTTP/1.1).
 #' 
 #' The code in your model is responsible for setting or updating any custom
 #' attributes in the response. If your code does not set this value in the

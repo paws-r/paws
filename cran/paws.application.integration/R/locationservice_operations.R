@@ -1939,9 +1939,7 @@ locationservice_search_place_index_for_position <- function(IndexName, Language 
 #'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
 #' @param Language The preferred language used to return results. The value must be a valid
-#' [BCP
-#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
-#' language tag, for example, `en` for English.
+#' BCP 47 language tag, for example, `en` for English.
 #' 
 #' This setting affects the languages used in the results. If no language
 #' is specified, or not supported for a particular result, the partner
@@ -2030,9 +2028,7 @@ locationservice_search_place_index_for_suggestions <- function(BiasPosition = NU
 #'     characters: `AUS`.
 #' @param IndexName &#91;required&#93; The name of the place index resource you want to use for the search.
 #' @param Language The preferred language used to return results. The value must be a valid
-#' [BCP
-#' 47](https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47)
-#' language tag, for example, `en` for English.
+#' BCP 47 language tag, for example, `en` for English.
 #' 
 #' This setting affects the languages used in the results, but not the
 #' results themselves. If no language is specified, or not supported for a

@@ -609,8 +609,8 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' This request is asynchronous, meaning that you might receive a response
 #' before the command has completed. When this request provides a response,
@@ -1381,8 +1381,8 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' This request is asynchronous, meaning that you might receive a response
 #' before the command has completed. When this request provides a response,
@@ -1886,8 +1886,7 @@ s3control_describe_job <- function(AccountId, JobId) {
 #' Retrieves the status of an asynchronous request to manage a Multi-Region
 #' Access Point. For more information about managing Multi-Region Access
 #' Points and how asynchronous requests work, see [Managing Multi-Region
-#' Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
+#' Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to
@@ -3025,8 +3024,8 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to
 #' [`get_multi_region_access_point`][s3control_get_multi_region_access_point]:
@@ -3119,8 +3118,8 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to
 #' [`get_multi_region_access_point_policy`][s3control_get_multi_region_access_point_policy]:
@@ -3196,8 +3195,8 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to
 #' [`get_multi_region_access_point_policy_status`][s3control_get_multi_region_access_point_policy_status]:
@@ -3805,8 +3804,8 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to `ListMultiRegionAccessPoint`:
 #' 
@@ -4732,8 +4731,8 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
 #' This action will always be routed to the US West (Oregon) Region. For
 #' more information about the restrictions around managing Multi-Region
 #' Access Points, see [Managing Multi-Region Access
-#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManagingMultiRegionAccessPoints.html)
-#' in the *Amazon S3 User Guide*.
+#' Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the
+#' *Amazon S3 User Guide*.
 #' 
 #' The following actions are related to
 #' [`put_multi_region_access_point_policy`][s3control_put_multi_region_access_point_policy]:

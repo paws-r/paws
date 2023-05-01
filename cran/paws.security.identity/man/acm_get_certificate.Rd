@@ -11,10 +11,10 @@ acm_get_certificate(CertificateArn)
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
-Retrieves an Amazon-issued certificate and its certificate chain. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use \href{https://wiki.openssl.org/index.php/Command_Line_Utilities}{OpenSSL} to decode the certificates and inspect individual fields.
+Retrieves an Amazon-issued certificate and its certificate chain. The chain consists of the certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. All of the certificates are base64 encoded. You can use OpenSSL to decode the certificates and inspect individual fields.
 
 See \url{https://paws-r.github.io/docs/acm/get_certificate.html} for full documentation.
 }

@@ -50,7 +50,7 @@ primary key and other replicas of that primary key, but in the same
 Amazon Web Services partition. KMS must be available in the replica
 Region. If the Region is not enabled by default, the Amazon Web Services
 account must be enabled in the Region. For information about Amazon Web
-Services partitions, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+Services partitions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}. For information about
 enabling and disabling Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable}{Enabling a Region}
 and \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-disable}{Disabling a Region}

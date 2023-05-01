@@ -8,7 +8,7 @@ kinesis_register_stream_consumer(StreamARN, ConsumerName)
 }
 \arguments{
 \item{StreamARN}{[required] The ARN of the Kinesis data stream that you want to register the
-consumer with. For more info, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
+consumer with. For more info, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{ConsumerName}{[required] For a given Kinesis data stream, each consumer must have a unique name.
 However, consumer names don't have to be unique across data streams.}

@@ -18,7 +18,7 @@ alphanumeric characters, hyphens (\code{-}), and underscores (\verb{_}).}
 \item{AWSAccountIds}{[required] The Amazon Web Services account numbers of the
 \href{https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P}{principals}
 who are to receive permission. For information about locating the Amazon
-Web Services account identification, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html#sqs-api-request-authentication}{Your Amazon Web Services Identifiers}
+Web Services account identification, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html#sqs-api-request-authentication}{Your Amazon Web Services Identifiers}
 in the \emph{Amazon SQS Developer Guide}.}
 
 \item{Actions}{[required] The action the client wants to allow for the specified principal. Valid

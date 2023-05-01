@@ -94,7 +94,7 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
-#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
@@ -1325,7 +1325,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
-#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
@@ -2899,7 +2899,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
-#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
@@ -4906,7 +4906,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
-#' Management](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @usage
@@ -6283,13 +6283,14 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' more information about IP addresses for which you can't create health
 #' checks, see the following documents:
 #' 
-#' -   RFC 5735, Special Use IPv4 Addresses
+#' -   [RFC 5735, Special Use IPv4
+#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
 #' 
 #' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://www.rfc-editor.org/rfc/rfc6598)
+#'     Space](https://datatracker.ietf.org/doc/html/rfc6598)
 #' 
 #' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://www.rfc-editor.org/rfc/rfc5156)
+#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 

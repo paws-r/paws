@@ -15,7 +15,7 @@ NULL
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param resourceMappings &#91;required&#93; Mappings used to map logical resources from the template to physical
 #' resources. You can use the mapping type `CFN_STACK` if the application
@@ -119,7 +119,7 @@ resiliencehub_add_draft_app_version_resource_mappings <- function(appArn, resour
 #' this ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:resiliency-policy/`policy-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param tags The tags assigned to the resource. A tag is a label that you assign to
 #' an Amazon Web Services resource. Each tag consists of a key/value pair.
@@ -202,7 +202,7 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param bucketName The name of the Amazon S3 bucket that will contain the recommendation
 #' template.
@@ -421,7 +421,7 @@ resiliencehub_create_resiliency_policy <- function(clientToken = NULL, dataLocat
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param clientToken Used for an idempotency token. A client token is a unique,
 #' case-sensitive string of up to 64 ASCII characters. You should not reuse
@@ -480,7 +480,7 @@ resiliencehub_delete_app <- function(appArn, clientToken = NULL, forceDelete = N
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param clientToken Used for an idempotency token. A client token is a unique,
 #' case-sensitive string of up to 64 ASCII characters. You should not reuse
@@ -595,7 +595,7 @@ resiliencehub_delete_recommendation_template <- function(clientToken = NULL, rec
 #' this ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:resiliency-policy/`policy-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -647,7 +647,7 @@ resiliencehub_delete_resiliency_policy <- function(clientToken = NULL, policyArn
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -720,7 +720,7 @@ resiliencehub_describe_app <- function(appArn) {
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -848,7 +848,7 @@ resiliencehub_describe_app_assessment <- function(assessmentArn) {
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #' @param resolutionId The identifier for a specific resolution.
@@ -907,7 +907,7 @@ resiliencehub_describe_app_version_resources_resolution_status <- function(appAr
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #'
@@ -962,7 +962,7 @@ resiliencehub_describe_app_version_template <- function(appArn, appVersion) {
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -1024,7 +1024,7 @@ resiliencehub_describe_draft_app_version_resources_import_status <- function(app
 #' this ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:resiliency-policy/`policy-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -1099,7 +1099,7 @@ resiliencehub_describe_resiliency_policy <- function(policyArn) {
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param sourceArns The Amazon Resource Names (ARNs) for the resources that you want to
 #' import.
@@ -1173,7 +1173,7 @@ resiliencehub_import_resources_to_draft_app_version <- function(appArn, sourceAr
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1252,7 +1252,7 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
 #' @param appArn The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param assessmentName The name for the assessment.
 #' @param assessmentStatus The current status of the assessment for the resiliency policy.
@@ -1349,7 +1349,7 @@ resiliencehub_list_app_assessments <- function(appArn = NULL, assessmentName = N
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1440,7 +1440,7 @@ resiliencehub_list_app_component_compliances <- function(assessmentArn, maxResul
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1548,7 +1548,7 @@ resiliencehub_list_app_component_recommendations <- function(assessmentArn, maxR
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #' @param maxResults The maximum number of results to include in the response. If more
@@ -1624,7 +1624,7 @@ resiliencehub_list_app_version_resource_mappings <- function(appArn, appVersion,
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #' @param maxResults The maximum number of results to include in the response. If more
@@ -1710,7 +1710,7 @@ resiliencehub_list_app_version_resources <- function(appArn, appVersion, maxResu
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1772,7 +1772,7 @@ resiliencehub_list_app_versions <- function(appArn, maxResults = NULL, nextToken
 #' @param appArn The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -1846,7 +1846,7 @@ resiliencehub_list_apps <- function(appArn = NULL, maxResults = NULL, name = NUL
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -2025,7 +2025,7 @@ resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken 
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -2228,7 +2228,7 @@ resiliencehub_list_tags_for_resource <- function(resourceArn) {
 #' ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:app-assessment/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param maxResults The maximum number of results to include in the response. If more
 #' results exist than the specified `MaxResults` value, a token is included
@@ -2313,7 +2313,7 @@ resiliencehub_list_test_recommendations <- function(assessmentArn, maxResults = 
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #' @param maxResults The maximum number of results to include in the response. If more
@@ -2392,7 +2392,7 @@ resiliencehub_list_unsupported_app_version_resources <- function(appArn, appVers
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -2446,7 +2446,7 @@ resiliencehub_publish_app_version <- function(appArn) {
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appTemplateBody &#91;required&#93; A JSON string that contains the body of the app template.
 #'
@@ -2502,7 +2502,7 @@ resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appRegistryAppNames The names of the registered applications to remove from the resource
 #' mappings.
@@ -2576,7 +2576,7 @@ resiliencehub_remove_draft_app_version_resource_mappings <- function(appArn, app
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #'
@@ -2633,7 +2633,7 @@ resiliencehub_resolve_app_version_resources <- function(appArn, appVersion) {
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param appVersion &#91;required&#93; The version of the application.
 #' @param assessmentName &#91;required&#93; The name for the assessment.
@@ -2864,7 +2864,7 @@ resiliencehub_untag_resource <- function(resourceArn, tagKeys) {
 #' @param appArn &#91;required&#93; The Amazon Resource Name (ARN) of the application. The format for this
 #' ARN is: arn:`partition`:resiliencehub:`region`:`account`:app/`app-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param assessmentSchedule Assessment execution schedule with 'Daily' or 'Disabled' values.
 #' @param clearResiliencyPolicyArn Specifies if the resiliency policy ARN should be cleared.
@@ -2873,7 +2873,7 @@ resiliencehub_untag_resource <- function(resourceArn, tagKeys) {
 #' this ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:resiliency-policy/`policy-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #'
 #' @return
@@ -2955,7 +2955,7 @@ resiliencehub_update_app <- function(appArn, assessmentSchedule = NULL, clearRes
 #' this ARN is:
 #' arn:`partition`:resiliencehub:`region`:`account`:resiliency-policy/`policy-id`.
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
 #' @param policyDescription The description for the policy.
 #' @param policyName The name of the policy

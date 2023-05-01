@@ -32,7 +32,7 @@ NULL
 #' 
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a

@@ -116,7 +116,7 @@ mwaa_create_cli_token <- function(Name) {
 #' @param Tags The key-value tag pairs you want to associate to your environment. For
 #' example, `"Environment": "Staging"`. To learn more, see [Tagging Amazon
 #' Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param WebserverAccessMode The Apache Airflow *Web server* access mode. To learn more, see [Apache
 #' Airflow access
 #' modes](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
@@ -348,7 +348,7 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
 #' @param Tags &#91;required&#93; The key-value tag pairs you want to associate to your environment. For
 #' example, `"Environment": "Staging"`. To learn more, see [Tagging Amazon
 #' Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @keywords internal
 #'

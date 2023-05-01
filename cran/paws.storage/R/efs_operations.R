@@ -15,7 +15,7 @@ NULL
 #' @param Tags Creates tags associated with the access point. Each tag is a key-value
 #' pair, each key must be unique. For more information, see [Tagging Amazon
 #' Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that the access point provides access to.
 #' @param PosixUser The operating system user and group applied to all file system requests
@@ -146,7 +146,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' is a user-defined key-value pair. Name your file system on creation by
 #' including a `"Key":"Name","Value":"{value}"` key-value pair. Each key
 #' must be unique. For more information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @keywords internal

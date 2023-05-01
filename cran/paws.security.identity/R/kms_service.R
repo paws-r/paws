@@ -56,7 +56,7 @@ NULL
 #' sign requests.
 #' 
 #' All KMS operations require [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -75,7 +75,7 @@ NULL
 #' following:
 #' 
 #' -   [Amazon Web Services Security
-#'     Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) -
+#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
 #'     This topic provides general information about the types of
 #'     credentials used to access Amazon Web Services.
 #' 
@@ -85,7 +85,7 @@ NULL
 #'     temporary security credentials.
 #' 
 #' -   [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html) -
+#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
 #' 

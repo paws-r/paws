@@ -95,7 +95,7 @@ If you include a \code{ResourcePolicy}, then it must be applicable to all of
 the resources included in the simulation or you receive an invalid input
 error.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a

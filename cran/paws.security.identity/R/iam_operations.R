@@ -136,7 +136,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -175,7 +175,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -215,7 +215,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -693,7 +693,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' add a new version.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param PolicyDocument &#91;required&#93; The JSON policy document that you want to use as the content for this
 #' new version of the policy.
@@ -1446,7 +1446,7 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to delete.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -1480,7 +1480,7 @@ iam_delete_policy <- function(PolicyArn) {
 #' delete a version.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param VersionId &#91;required&#93; The policy version to delete.
 #' 
@@ -1993,7 +1993,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -2033,7 +2033,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -2073,7 +2073,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 #' @param PolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -2473,7 +2473,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' encoded to be included as a part of a real HTML request.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param PolicyInputList An optional list of additional policies for which you want the list of
 #' context keys that are referenced.
@@ -2712,7 +2712,7 @@ iam_get_login_profile <- function(UserName) {
 #' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -2797,7 +2797,7 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' information about.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -2832,7 +2832,7 @@ iam_get_policy <- function(PolicyArn) {
 #' information about.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param VersionId &#91;required&#93; Identifies the policy version to retrieve.
 #' 
@@ -2951,7 +2951,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' IAM to get information about.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -3122,7 +3122,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' for that service. In the first paragraph, find the service prefix. For
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [Amazon Web Services service
-#' namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
@@ -3543,7 +3543,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' versions.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param EntityFilter The entity type to use for filtering the results.
 #' 
@@ -4173,7 +4173,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' for that service. In the first paragraph, find the service prefix. For
 #' example, `(service prefix: a4b)`. For more information about service
 #' namespaces, see [Amazon Web Services service
-#' namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
+#' namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -4257,7 +4257,7 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
 #' versions.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param Marker Use this parameter only when paginating results and only after you
 #' receive a response indicating that the results are truncated. Set it to
@@ -5211,7 +5211,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ClientID &#91;required&#93; The client ID (also known as audience) to remove from the IAM OIDC
 #' provider resource. For more information about client IDs, see
@@ -5417,7 +5417,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' you want to set.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param VersionId &#91;required&#93; The version of the policy to set as the default (operative) version.
 #' 
@@ -5574,7 +5574,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' error.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourcePolicy A resource-based policy to include in the simulation provided as a
 #' string. Each resource in the simulation is treated as if it had this
@@ -5722,7 +5722,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' quotas](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-quotas-entity-length).
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param PolicyInputList An optional list of additional policy documents to include in the
 #' simulation. Each document is specified as a string containing the
@@ -5789,7 +5789,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' `ResourcePolicy` parameter.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ResourcePolicy A resource-based policy to include in the simulation provided as a
 #' string. Each resource in the simulation is treated as if it had this
@@ -5841,7 +5841,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' in evaluating the policy.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ContextEntries A list of context keys and corresponding values for the simulation to
 #' use. Whenever a context key is evaluated in one of the simulated IAM
@@ -6828,7 +6828,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' operation.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param ThumbprintList &#91;required&#93; A list of certificate thumbprints that are associated with the specified
 #' IAM OpenID Connect provider. For more information, see
@@ -6947,7 +6947,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' @param SAMLProviderArn &#91;required&#93; The Amazon Resource Name (ARN) of the SAML provider to update.
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal

@@ -7,7 +7,7 @@
 ram_tag_resource(resourceShareArn, tags)
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the resource share that you want to add tags to.}
 
 \item{tags}{[required] A list of one or more tag key and value pairs. The tag key must be

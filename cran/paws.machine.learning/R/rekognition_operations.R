@@ -2234,7 +2234,7 @@ rekognition_stop_stream_processor <- function(Name) {
 #' stream processor, or Custom Labels model
 #'
 #' @description
-#' Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see [Tagging AWS Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see [Tagging AWS Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' See [https://paws-r.github.io/docs/rekognition/tag_resource.html](https://paws-r.github.io/docs/rekognition/tag_resource.html) for full documentation.
 #'

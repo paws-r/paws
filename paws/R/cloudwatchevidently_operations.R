@@ -2717,7 +2717,7 @@ cloudwatchevidently_stop_launch <- function(desiredState = NULL, launch, project
 #' You can associate as many as 50 tags with a resource.
 #' 
 #' For more information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @usage
 #' cloudwatchevidently_tag_resource(resourceArn, tags)

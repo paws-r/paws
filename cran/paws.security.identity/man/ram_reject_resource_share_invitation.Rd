@@ -11,7 +11,7 @@ ram_reject_resource_share_invitation(
 )
 }
 \arguments{
-\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareInvitationArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the invitation that you want to reject.}
 
 \item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure

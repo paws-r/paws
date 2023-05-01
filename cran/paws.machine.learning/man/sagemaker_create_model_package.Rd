@@ -65,7 +65,7 @@ This parameter is optional for unversioned models, and does not apply to
 versioned models.}
 
 \item{Tags}{A list of key value pairs associated with the model. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
 
 \item{ModelApprovalStatus}{Whether the model is approved for deployment.

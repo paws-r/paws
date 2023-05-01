@@ -32,8 +32,8 @@ NULL
 #' For more information about Amazon Web Services APIs, for example how to
 #' implement retry logic or how to sign Amazon Web Services API requests,
 #' see [Amazon Web Services
-#' APIs](https://docs.aws.amazon.com/general/latest/gr/aws-apis.html) in
-#' the *General Reference*.
+#' APIs](https://docs.aws.amazon.com/general/latest/gr/) in the *General
+#' Reference*.
 #'
 #' @param
 #' config

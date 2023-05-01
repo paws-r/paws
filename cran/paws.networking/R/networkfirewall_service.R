@@ -13,7 +13,7 @@ NULL
 #'     calculating signatures, handling request retries, and error
 #'     handling. For general information about using the Amazon Web
 #'     Services REST APIs, see [Amazon Web Services
-#'     APIs](https://docs.aws.amazon.com/general/latest/gr/aws-apis.html).
+#'     APIs](https://docs.aws.amazon.com/general/latest/gr/).
 #' 
 #'     To access Network Firewall using the REST API endpoint:
 #'     `https://network-firewall.<region>.amazonaws.com `

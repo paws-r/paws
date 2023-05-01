@@ -101,7 +101,7 @@ EFS is available.}
 \item{Tags}{Use to create one or more tags associated with the file system. Each tag
 is a user-defined key-value pair. Name your file system on creation by
 including a \verb{"Key":"Name","Value":"\{value\}"} key-value pair. Each key
-must be unique. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+must be unique. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{

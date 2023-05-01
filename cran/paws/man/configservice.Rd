@@ -47,7 +47,7 @@ SDKs for Config. This reference guide contains documentation for the
 Config API and the Amazon Web Services CLI commands that you can use to
 manage Config. The Config API uses the Signature Version 4 protocol for
 signing requests. For more information about how to sign a request with
-this protocol, see \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+this protocol, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 For detailed information about Config features and their associated
 actions or commands, as well as how to work with Amazon Web Services
 Management Console, see \href{https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html}{What Is Config}

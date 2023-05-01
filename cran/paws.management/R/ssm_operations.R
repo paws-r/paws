@@ -433,7 +433,7 @@ ssm_create_association_batch <- function(Entries) {
 #' Creates a Amazon Web Services Systems Manager (SSM document)
 #'
 #' @description
-#' Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see [Amazon Web Services Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html) in the *Amazon Web Services Systems Manager User Guide*.
+#' Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see [Amazon Web Services Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/ssm/create_document.html](https://paws-r.github.io/docs/ssm/create_document.html) for full documentation.
 #'
@@ -445,13 +445,13 @@ ssm_create_association_batch <- function(Entries) {
 #' Systems Manager User Guide*.
 #' 
 #' -   [Create an SSM document (Amazon Web Services
-#'     API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
+#'     API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html)
 #' 
 #' -   [Create an SSM document (Amazon Web Services
-#'     CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
+#'     CLI)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html)
 #' 
 #' -   [Create an SSM document
-#'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
+#'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html)
 #' @param Requires A list of SSM documents required by a document. This parameter is used
 #' exclusively by AppConfig. When a user creates an AppConfig configuration
 #' in an SSM document, the user must also specify a required document for
@@ -5075,7 +5075,7 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' run a shared document belonging to another account, specify the document
 #' Amazon Resource Name (ARN). For more information about how to use shared
 #' documents, see [Using shared SSM
-#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' If you specify a document name or ARN that hasn't been shared with your
@@ -5192,7 +5192,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' custom document. To run a shared document belonging to another account,
 #' specify the document ARN. For more information about how to use shared
 #' documents, see [Using shared SSM
-#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+#' documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param DocumentVersion The version of the Automation runbook to use for this execution.
 #' @param Parameters A key-value map of execution parameters, which match the declared

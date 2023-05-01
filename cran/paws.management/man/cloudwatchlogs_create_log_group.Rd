@@ -10,7 +10,7 @@ cloudwatchlogs_create_log_group(logGroupName, kmsKeyId = NULL, tags = NULL)
 \item{logGroupName}{[required] The name of the log group.}
 
 \item{kmsKeyId}{The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-data. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - Key Management Service}.}
+data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names - Key Management Service}.}
 
 \item{tags}{The key-value pairs to use for the tags.
 

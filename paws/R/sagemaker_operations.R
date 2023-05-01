@@ -115,7 +115,7 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -456,7 +456,7 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1097,7 +1097,7 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1228,7 +1228,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2141,7 +2141,7 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2264,7 +2264,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
 #' Service key that SageMaker uses to encrypt data on the storage volume
 #' attached to the ML compute instance that hosts the endpoint.
@@ -2885,7 +2885,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' 
 #' Tags that you specify for the tuning job are also added to all training
 #' jobs that the tuning job launches.
@@ -3404,7 +3404,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #' categorize and organize them. Each tag consists of a key and a value,
 #' both of which you define. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the Amazon Web Services General Reference.
 #'
 #' @return
@@ -3866,7 +3866,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param VpcConfig A VpcConfig object that specifies the VPC that you want your model to
 #' connect to. Control access to and from your model container by
 #' configuring the VPC. `VpcConfig` is used in hosting services and in
@@ -4313,7 +4313,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' versioned models.
 #' @param Tags A list of key value pairs associated with the model. For more
 #' information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #' @param ModelApprovalStatus Whether the model is approved for deployment.
 #' 
@@ -4642,7 +4642,7 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
 #' @param ModelPackageGroupDescription A description for the model group.
 #' @param Tags A list of key value pairs associated with the model group. For more
 #' information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @return
@@ -5059,7 +5059,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
@@ -5695,7 +5695,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @param Tags An array of key-value pairs that you want to use to organize and track
 #' your Amazon Web Services resource costs. For more information, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @return
@@ -5956,7 +5956,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' @param EnableNetworkIsolation Isolates the training container. No inbound or outbound network calls
 #' can be made, except for calls between peers within a training cluster
 #' for distributed training. If you enable network isolation for training
@@ -24932,7 +24932,7 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #' In addition, the project must have tag update constraints set in order
 #' to include this parameter in the request. For more information, see
 #' [Amazon Web Services Service Catalog Tag Update

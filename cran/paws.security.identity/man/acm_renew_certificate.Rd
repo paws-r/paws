@@ -12,7 +12,7 @@ must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
 Renews an eligible ACM certificate. At this time, only exported private certificates can be renewed with this operation. In order to renew your ACM PCA certificates with ACM, you must first \href{https://docs.aws.amazon.com/privateca/latest/userguide/}{grant the ACM service principal permission to do so}. For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Testing Managed Renewal} in the ACM User Guide.

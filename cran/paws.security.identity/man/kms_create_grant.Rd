@@ -33,22 +33,22 @@ To get the key ID and key ARN for a KMS key, use
 
 \item{GranteePrincipal}{[required] The identity that gets the permissions specified in the grant.
 
-To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+To specify the principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an Amazon Web Services principal. Valid Amazon Web Services
 principals include Amazon Web Services accounts (root), IAM users, IAM
 roles, federated users, and assumed role users. For examples of the ARN
-syntax to use for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
+syntax to use for specifying a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
 in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 
 \item{RetiringPrincipal}{The principal that has permission to use the
 \code{\link[=kms_retire_grant]{retire_grant}} operation to retire the grant.
 
-To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+To specify the principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an Amazon Web Services principal. Valid Amazon Web Services
 principals include Amazon Web Services accounts (root), IAM users,
 federated users, and assumed role users. For examples of the ARN syntax
-to use for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
+to use for specifying a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
 in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.
 

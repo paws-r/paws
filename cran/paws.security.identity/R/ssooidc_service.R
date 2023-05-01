@@ -26,7 +26,7 @@ NULL
 #' 
 #' -   The Amazon Web Services SSO OIDC service currently implements only
 #'     the portions of the OAuth 2.0 Device Authorization Grant standard
-#'     ([https://tools.ietf.org/html/rfc8628](https://www.rfc-editor.org/rfc/rfc8628))
+#'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
 #'     that are necessary to enable single sign-on authentication with the
 #'     AWS CLI. Support for other OIDC flows frequently needed for native
 #'     applications, such as Authorization Code Flow (+ PKCE), will be

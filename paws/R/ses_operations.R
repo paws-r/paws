@@ -3313,18 +3313,18 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' [RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason, the
-#' *local part* of a source email address (the part of the email address
-#' that precedes the @@ sign) may only contain [7-bit ASCII
+#' [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
+#' reason, the *local part* of a source email address (the part of the
+#' email address that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
-#' name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
+#' sender name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in [RFC
-#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
-#' uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
+#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 #' @param SourceArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to send for the email address specified in the `Source`
@@ -3587,18 +3587,18 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' [RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason, the
-#' *local part* of a source email address (the part of the email address
-#' that precedes the @@ sign) may only contain [7-bit ASCII
+#' [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
+#' reason, the *local part* of a source email address (the part of the
+#' email address that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
-#' name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
+#' sender name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in [RFC
-#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
-#' uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
+#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 #' @param Destination &#91;required&#93; The destination for this email, composed of To:, CC:, and BCC: fields.
 #' @param Message &#91;required&#93; The message to be sent.
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies
@@ -3869,18 +3869,18 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' message. (You can also specify both.)
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described
-#' in[RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason,
-#' the *local part* of a source email address (the part of the email
-#' address that precedes the @@ sign) may only contain [7-bit ASCII
+#' in[RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
+#' reason, the *local part* of a source email address (the part of the
+#' email address that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
-#' name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
+#' sender name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in [RFC
-#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
-#' uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
+#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 #' 
 #' If you specify the `Source` parameter and have feedback forwarding
 #' enabled, then bounces and complaints will be sent to this email address.
@@ -3912,9 +3912,9 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'     in the *Amazon SES Developer Guide*.
 #' 
 #' -   Per [RFC
-#'     5321](https://www.rfc-editor.org/rfc/rfc5321#section-4.5.3.1.6), the
-#'     maximum length of each line of text, including the \<CRLF\>, must
-#'     not exceed 1,000 characters.
+#'     5321](https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.6),
+#'     the maximum length of each line of text, including the \<CRLF\>,
+#'     must not exceed 1,000 characters.
 #' @param FromArn This parameter is used only for sending authorization. It is the ARN of
 #' the identity that is associated with the sending authorization policy
 #' that permits you to specify a particular "From" address in the header of
@@ -4117,18 +4117,18 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
 #' Amazon SES does not support the SMTPUTF8 extension, as described in
-#' [RFC6531](https://www.rfc-editor.org/rfc/rfc6531). For this reason, the
-#' *local part* of a source email address (the part of the email address
-#' that precedes the @@ sign) may only contain [7-bit ASCII
+#' [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this
+#' reason, the *local part* of a source email address (the part of the
+#' email address that precedes the @@ sign) may only contain [7-bit ASCII
 #' characters](https://en.wikipedia.org/wiki/Email_address#Local-part). If
 #' the *domain part* of an address (the part after the @@ sign) contains
 #' non-ASCII characters, they must be encoded using Punycode, as described
-#' in [RFC3492](https://www.rfc-editor.org/rfc/rfc3492.html). The sender
-#' name (also known as the *friendly name*) may contain non-ASCII
+#' in [RFC3492](https://datatracker.ietf.org/doc/html/rfc3492.html). The
+#' sender name (also known as the *friendly name*) may contain non-ASCII
 #' characters. These characters must be encoded using MIME encoded-word
 #' syntax, as described in[RFC
-#' 2047](https://www.rfc-editor.org/rfc/rfc2047). MIME encoded-word syntax
-#' uses the following form: `=?charset?encoding?encoded-text?=`.
+#' 2047](https://datatracker.ietf.org/doc/html/rfc2047). MIME encoded-word
+#' syntax uses the following form: `=?charset?encoding?encoded-text?=`.
 #' @param Destination &#91;required&#93; The destination for this email, composed of To:, CC:, and BCC: fields. A
 #' Destination can include up to 50 recipients across these three fields.
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies

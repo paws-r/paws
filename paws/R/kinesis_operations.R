@@ -306,7 +306,7 @@ kinesis_delete_stream <- function(StreamName, EnforceConsumerDeletion = NULL) {
 #' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with.
 #' For more information, see [Amazon Resource Names (ARNs) and Amazon Web
 #' Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the
 #' consumer. If you don't know the ARN of the consumer that you want to
@@ -544,7 +544,7 @@ kinesis_describe_stream <- function(StreamName, Limit = NULL, ExclusiveStartShar
 #' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with.
 #' For more information, see [Amazon Resource Names (ARNs) and Amazon Web
 #' Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the
 #' consumer.
@@ -1363,7 +1363,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream for which you want to list the
 #' registered consumers. For more information, see [Amazon Resource Names
 #' (ARNs) and Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param NextToken When the number of consumers that are registered with the data stream is
 #' greater than the default value for the `MaxResults` parameter, or if you
 #' explicitly specify a value for `MaxResults` that is less than the number
@@ -1986,7 +1986,7 @@ kinesis_put_records <- function(Records, StreamName) {
 #' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream that you want to register the
 #' consumer with. For more info, see [Amazon Resource Names (ARNs) and
 #' Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
 #' @param ConsumerName &#91;required&#93; For a given Kinesis data stream, each consumer must have a unique name.
 #' However, consumer names don't have to be unique across data streams.
 #'

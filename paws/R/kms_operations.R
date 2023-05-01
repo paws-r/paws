@@ -574,26 +574,26 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' @param GranteePrincipal &#91;required&#93; The identity that gets the permissions specified in the grant.
 #' 
 #' To specify the principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an Amazon Web Services principal. Valid Amazon Web Services
 #' principals include Amazon Web Services accounts (root), IAM users, IAM
 #' roles, federated users, and assumed role users. For examples of the ARN
 #' syntax to use for specifying a principal, see [Amazon Web Services
 #' Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+#' (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
 #' @param RetiringPrincipal The principal that has permission to use the
 #' [`retire_grant`][kms_retire_grant] operation to retire the grant.
 #' 
 #' To specify the principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an Amazon Web Services principal. Valid Amazon Web Services
 #' principals include Amazon Web Services accounts (root), IAM users,
 #' federated users, and assumed role users. For examples of the ARN syntax
 #' to use for specifying a principal, see [Amazon Web Services Identity and
 #' Access Management
-#' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+#' (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
 #' 
@@ -3225,9 +3225,10 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' data key pair for each request. The bytes in the keys are random; they
 #' are not related to the caller or the KMS key that is used to encrypt the
 #' private key. The public key is a DER-encoded X.509 SubjectPublicKeyInfo,
-#' as specified in [RFC 5280](https://www.rfc-editor.org/rfc/rfc5280). The
-#' private key is a DER-encoded PKCS8 PrivateKeyInfo, as specified in [RFC
-#' 5958](https://www.rfc-editor.org/rfc/rfc5958).
+#' as specified in [RFC
+#' 5280](https://datatracker.ietf.org/doc/html/rfc5280). The private key is
+#' a DER-encoded PKCS8 PrivateKeyInfo, as specified in [RFC
+#' 5958](https://datatracker.ietf.org/doc/html/rfc5958).
 #' 
 #' You can use an optional encryption context to add additional security to
 #' the encryption operation. If you specify an `EncryptionContext`, you
@@ -3419,7 +3420,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' returns a unique data key pair for each request. The bytes in the key
 #' are not related to the caller or KMS key that is used to encrypt the
 #' private key. The public key is a DER-encoded X.509 SubjectPublicKeyInfo,
-#' as specified in [RFC 5280](https://www.rfc-editor.org/rfc/rfc5280).
+#' as specified in [RFC
+#' 5280](https://datatracker.ietf.org/doc/html/rfc5280).
 #' 
 #' You can use an optional encryption context to add additional security to
 #' the encryption operation. If you specify an `EncryptionContext`, you
@@ -5148,7 +5150,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 #' 
 #' For general information about tags, including the format and syntax, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*. For information about
 #' using tags in KMS, see [Tagging
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
@@ -5309,13 +5311,13 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' your Amazon Web Services account.
 #' 
 #' To specify the retiring principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an Amazon Web Services principal. Valid Amazon Web Services
 #' principals include Amazon Web Services accounts (root), IAM users,
 #' federated users, and assumed role users. For examples of the ARN syntax
 #' for specifying a principal, see [Amazon Web Services Identity and Access
 #' Management
-#' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+#' (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
 #'
@@ -5977,7 +5979,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' Region. If the Region is not enabled by default, the Amazon Web Services
 #' account must be enabled in the Region. For information about Amazon Web
 #' Services partitions, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*. For information about
 #' enabling and disabling Regions, see [Enabling a
 #' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable)
@@ -6762,7 +6764,7 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #' For general information about tags, including the format and syntax, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The KMS key that you use for this operation must be in a compatible key
@@ -6886,7 +6888,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
 #' For general information about tags, including the format and syntax, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The KMS key that you use for this operation must be in a compatible key

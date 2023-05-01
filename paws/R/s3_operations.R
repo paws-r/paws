@@ -5237,7 +5237,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' then, S3 returns 304 Not Modified response code.
 #' 
 #' For more information about conditional requests, see [RFC
-#' 7232](https://www.rfc-editor.org/rfc/rfc7232).
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' 
 #' The following operations are related to [`get_object`][s3_get_object]:
 #' 
@@ -5631,7 +5631,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #'     -   `If-Modified-Since` condition evaluates to `true`.
 #' 
 #' For more information about conditional requests, see [RFC
-#' 7232](https://www.rfc-editor.org/rfc/rfc7232).
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' 
 #' **Permissions**
 #' 
@@ -6497,7 +6497,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'     Then Amazon S3 returns the `304 Not Modified` response code.
 #' 
 #' For more information about conditional requests, see [RFC
-#' 7232](https://www.rfc-editor.org/rfc/rfc7232).
+#' 7232](https://datatracker.ietf.org/doc/html/rfc7232).
 #' 
 #' **Permissions**
 #' 
@@ -7414,7 +7414,7 @@ s3_list_buckets <- function() {
 #' @aliases s3_list_multipart_uploads
 s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL) {
   op <- new_operation(
-    name = "ListMultipartUploads",
+    name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{Bucket}?uploads",
     paginator = list()
@@ -8091,7 +8091,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' @aliases s3_list_parts
 s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL, UploadId, RequestPayer = NULL, ExpectedBucketOwner = NULL, SSECustomerAlgorithm = NULL, SSECustomerKey = NULL, SSECustomerKeyMD5 = NULL) {
   op <- new_operation(
-    name = "ListParts",
+    name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{Bucket}/{Key+}",
     paginator = list()
@@ -12572,7 +12572,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' 
 #' For more information about using SQL with S3 Glacier Select restore, see
 #' [SQL Reference for Amazon S3 Select and S3 Glacier
-#' Select](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html)
+#' Select](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-select-sql-reference.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' When making a select request, you can also do the following:
@@ -12726,7 +12726,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' -   [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration]
 #' 
 #' -   [SQL Reference for Amazon S3 Select and S3 Glacier
-#'     Select](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html)
+#'     Select](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-select-sql-reference.html)
 #'     in the *Amazon S3 User Guide*
 #'
 #' @usage
@@ -12929,12 +12929,12 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' For more information about Amazon S3 Select, see [Selecting Content from
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/selecting-content-from-objects.html)
 #' and [SELECT
-#' Command](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference-select.html)
+#' Command](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-select-sql-reference-select.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' For more information about using SQL with Amazon S3 Select, see [SQL
 #' Reference for Amazon S3 Select and S3 Glacier
-#' Select](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-glacier-select-sql-reference.html)
+#' Select](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-select-sql-reference.html)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' **Permissions**

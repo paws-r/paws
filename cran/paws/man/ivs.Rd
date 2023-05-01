@@ -81,7 +81,7 @@ Recording Configuration endpoints for more information.
 A \emph{tag} is a metadata label that you assign to an Amazon Web Services
 resource. A tag comprises a \emph{key} and a \emph{value}, both set by you. For
 example, you might set a tag as \code{topic:nature} to label a particular
-video category. See \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+video category. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 for more information, including restrictions that apply to tags.
 
 Tags can help you identify and organize your Amazon Web Services

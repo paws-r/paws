@@ -55,7 +55,7 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.}
 document) to run. This can be a public document or a custom document. To
 run a shared document belonging to another account, specify the document
 Amazon Resource Name (ARN). For more information about how to use shared
-documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Using shared SSM documents}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 If you specify a document name or ARN that hasn't been shared with your

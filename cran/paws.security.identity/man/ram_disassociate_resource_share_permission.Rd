@@ -11,10 +11,10 @@ ram_disassociate_resource_share_permission(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the resource share from which you want to disassociate a permission.}
 
-\item{permissionArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{permissionArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the permission to disassociate from the resource share. Changes to
 permissions take effect immediately.}
 

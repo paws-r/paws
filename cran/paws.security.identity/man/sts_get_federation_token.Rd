@@ -73,7 +73,7 @@ an inline session policy. You can also specify up to 10 managed policies
 to use as managed session policies. The plaintext that you use for both
 inline and managed session policies can't exceed 2,048 characters. You
 can provide up to 10 managed policy ARNs. For more information about
-ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
 in the Amazon Web Services General Reference.
 
 This parameter is optional. However, if you do not pass any session

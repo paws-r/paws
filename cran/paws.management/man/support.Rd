@@ -94,7 +94,7 @@ reports the refresh status of one or more checks.
 }
 
 For authentication of requests, Amazon Web Services Support uses
-\href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 See \href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}
 in the \emph{Amazon Web Services Support User Guide} for information about

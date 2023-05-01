@@ -40,7 +40,7 @@ If you specify \code{InstanceId}, an \code{ImageId} is not required.}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{SecurityGroups}{A list that contains the security group IDs to assign to the instances
-in the Auto Scaling group. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html}{Control traffic to resources using security groups}
+in the Auto Scaling group. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html}{Control traffic to resources using security groups}
 in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{ClassicLinkVPCId}{\emph{EC2-Classic retires on August 15, 2022. This property is not supported

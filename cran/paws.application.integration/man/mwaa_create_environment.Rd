@@ -104,7 +104,7 @@ code and supporting files are stored. For example,
 \code{arn:aws:s3:::my-airflow-bucket-unique-name}. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html}{Create an Amazon S3 bucket for Amazon MWAA}.}
 
 \item{Tags}{The key-value tag pairs you want to associate to your environment. For
-example, \code{"Environment": "Staging"}. To learn more, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}.}
+example, \code{"Environment": "Staging"}. To learn more, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 
 \item{WebserverAccessMode}{The Apache Airflow \emph{Web server} access mode. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html}{Apache Airflow access modes}.}
 

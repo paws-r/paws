@@ -18,7 +18,7 @@ NULL
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' Amazon Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; A list of tags to be added to this resource. A tag is a key-value pair.
 #' A tag key must be accompanied by a tag value, although null is accepted.
 #'
@@ -2744,7 +2744,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' Amazon Web Services Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -3557,7 +3557,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' 
 #' For more information about ARNs, see [Amazon Resource Names (ARNs) and
 #' Amazon Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param TagKeys &#91;required&#93; A list of `TagKeys` identifying the tags you want removed from the named
 #' resource.
 #'

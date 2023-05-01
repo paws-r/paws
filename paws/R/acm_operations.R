@@ -38,7 +38,7 @@ NULL
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @return
@@ -103,7 +103,7 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' An empty list.
@@ -151,7 +151,7 @@ acm_delete_certificate <- function(CertificateArn) {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -400,9 +400,8 @@ acm_get_account_configuration <- function() {
 #' Retrieves an Amazon-issued certificate and its certificate chain. The
 #' chain consists of the certificate of the issuing CA and the intermediate
 #' certificates of any other subordinate CAs. All of the certificates are
-#' base64 encoded. You can use
-#' [OpenSSL](https://wiki.openssl.org/index.php/Command_Line_Utilities) to
-#' decode the certificates and inspect individual fields.
+#' base64 encoded. You can use OpenSSL to decode the certificates and
+#' inspect individual fields.
 #'
 #' @usage
 #' acm_get_certificate(CertificateArn)
@@ -412,7 +411,7 @@ acm_get_account_configuration <- function() {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -517,7 +516,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'     type is RSA, then the certificate key type must also be RSA.
 #' 
 #' This operation returns the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the imported certificate.
 #'
 #' @usage
@@ -525,7 +524,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'   CertificateChain, Tags)
 #'
 #' @param CertificateArn The [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an imported certificate to replace. To import a new certificate, omit
 #' this field.
 #' @param Certificate &#91;required&#93; The certificate to import.
@@ -683,7 +682,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -809,7 +808,7 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @return
@@ -871,7 +870,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
 #' For more information about ARNs, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @return
 #' An empty list.
@@ -925,7 +924,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' after receiving approval from the domain owner.
 #' 
 #' ACM behavior differs from the
-#' [https://tools.ietf.org/html/rfc6125#appendix-B.2](https://www.rfc-editor.org/rfc/rfc6125#appendix-B.2)RFC
+#' [https://tools.ietf.org/html/rfc6125#appendix-B.2](https://datatracker.ietf.org/doc/html/rfc6125#appendix-B.2)RFC
 #' 6125 specification of the certificate validation process. first checks
 #' for a subject alternative name, and, if it finds one, ignores the common
 #' name (CN)

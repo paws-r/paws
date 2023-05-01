@@ -15,7 +15,7 @@ array and multi-node parallel (MNP) jobs are not supported.}
 
 \item{tags}{[required] The tags that you apply to the resource to help you categorize and
 organize your resources. Each tag consists of a key and an optional
-value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+value. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 in \emph{Amazon Web Services General Reference}.}
 }
 \description{

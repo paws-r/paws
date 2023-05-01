@@ -210,26 +210,26 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' @param GranteePrincipal &#91;required&#93; The identity that gets the permissions specified in the grant.
 #' 
 #' To specify the principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an Amazon Web Services principal. Valid Amazon Web Services
 #' principals include Amazon Web Services accounts (root), IAM users, IAM
 #' roles, federated users, and assumed role users. For examples of the ARN
 #' syntax to use for specifying a principal, see [Amazon Web Services
 #' Identity and Access Management
-#' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+#' (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
 #' @param RetiringPrincipal The principal that has permission to use the
 #' [`retire_grant`][kms_retire_grant] operation to retire the grant.
 #' 
 #' To specify the principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an Amazon Web Services principal. Valid Amazon Web Services
 #' principals include Amazon Web Services accounts (root), IAM users,
 #' federated users, and assumed role users. For examples of the ARN syntax
 #' to use for specifying a principal, see [Amazon Web Services Identity and
 #' Access Management
-#' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+#' (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
 #' 
@@ -2200,13 +2200,13 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' your Amazon Web Services account.
 #' 
 #' To specify the retiring principal, use the [Amazon Resource Name
-#' (ARN)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of an Amazon Web Services principal. Valid Amazon Web Services
 #' principals include Amazon Web Services accounts (root), IAM users,
 #' federated users, and assumed role users. For examples of the ARN syntax
 #' for specifying a principal, see [Amazon Web Services Identity and Access
 #' Management
-#' (IAM)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam)
+#' (IAM)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-iam)
 #' in the Example ARNs section of the *Amazon Web Services General
 #' Reference*.
 #'
@@ -2518,7 +2518,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' Region. If the Region is not enabled by default, the Amazon Web Services
 #' account must be enabled in the Region. For information about Amazon Web
 #' Services partitions, see [Amazon Resource Names
-#' (ARNs)](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*. For information about
 #' enabling and disabling Regions, see [Enabling a
 #' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable)

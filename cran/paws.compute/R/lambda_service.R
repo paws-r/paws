@@ -35,7 +35,7 @@ NULL
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
 #' information, see [Signature Version 4 signing
-#' process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html)
+#' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference.*.
 #' 
 #' **CA certificates**

@@ -15,7 +15,7 @@ NULL
 #' @param kmsKeyId &#91;required&#93; The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 #' data. This must be a symmetric CMK. For more information, see [Amazon
 #' Resource Names - Key Management
-#' Service](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms)
+#' Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms)
 #' and [Using Symmetric and Asymmetric
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html).
 #'
@@ -121,7 +121,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' @param logGroupName &#91;required&#93; The name of the log group.
 #' @param kmsKeyId The Amazon Resource Name (ARN) of the CMK to use when encrypting log
 #' data. For more information, see [Amazon Resource Names - Key Management
-#' Service](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms).
+#' Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms).
 #' @param tags The key-value pairs to use for the tags.
 #' 
 #' CloudWatch Logs doesn’t support IAM policies that prevent users from

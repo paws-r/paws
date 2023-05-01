@@ -11,7 +11,7 @@ ram_accept_resource_share_invitation(
 )
 }
 \arguments{
-\item{resourceShareInvitationArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareInvitationArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the invitation that you want to accept.}
 
 \item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure

@@ -7,7 +7,7 @@
 ram_get_permission(permissionArn, permissionVersion = NULL)
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resoure Name (ARN)}
 of the permission whose contents you want to retrieve. To find the ARN
 for a permission, use either the
 \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the
