@@ -60,7 +60,7 @@ make_sdk <- function(
     }
   })
 
-  make_categories(temp_dir, out_sdk_dir, categories, api_names)
+  make_categories(temp_dir, out_sdk_dir, categories, api_names, refresh = TRUE)
 
   # Identify sub-categories
   found <- find_sub_categories(categories)
@@ -71,11 +71,11 @@ make_sdk <- function(
 
     # Build categories from sub-categories
     for(cat in names(grp_sub_cats)){
-      make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
+      make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names,  refresh = TRUE)
     }
   }
 
-  make_collection(temp_dir, out_sdk_dir, categories, api_names)
+  make_collection(temp_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)
 }
 
 # Clear out files from the output directory.
@@ -141,7 +141,7 @@ use_package_doc <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/package.R", package = package)
   to <- file.path(path, "R", paste0(basename(path), "_package.R"))
-  file.copy(template, to)
+  fs::file_copy(template, to, overwrite = T)
 }
 
 # Create a dummy NAMESPACE file.
@@ -149,7 +149,7 @@ use_namespace <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/NAMESPACE", package = package)
   to <- file.path(path, "NAMESPACE")
-  file.copy(template, to)
+  fs::file_copy(template, to, overwrite = T)
 }
 
 # Return the authors from this package.

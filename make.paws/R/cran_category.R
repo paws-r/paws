@@ -2,14 +2,14 @@
 NULL
 
 # Make all category-level packages.
-make_categories <- function(sdk_dir, out_dir, categories, service_names) {
+make_categories <- function(sdk_dir, out_dir, categories, service_names, refresh) {
   for (category in categories) {
-    make_category(category, service_names, sdk_dir, out_dir)
+    make_category(category, service_names, sdk_dir, out_dir, refresh)
   }
 }
 
 # Make a package for the given AWS service category (e.g. compute, storage).
-make_category <- function(category, service_names, sdk_dir, out_dir) {
+make_category <- function(category, service_names, sdk_dir, out_dir, refresh) {
   name <- get_category_package_name(category)
   services <- category$services
   title <- category$title
@@ -24,7 +24,7 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
   if (length(services) == 0) return()
 
   package_dir <- file.path(out_dir, name)
-  write_skeleton_category(package_dir)
+  write_skeleton_category(package_dir, refresh)
   write_description_category(package_dir, name, title, description,
                              version, imports)
   for (service in services) {
@@ -76,6 +76,6 @@ copy_files <- function(name, from, to) {
       warning(sprintf("No %s files found for %s\n", r$dir, name))
       next
     }
-    file.copy(copy, file.path(to, r$dir))
+    fs::file_copy(copy, file.path(to, r$dir), overwrite = TRUE)
   }
 }
