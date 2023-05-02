@@ -1,5 +1,15 @@
 #' @include cran_category.R cran_collection.R cran_sub_category.R
 
+#' @export
+github_api_list function(in_dir = "./vendor/aws-sdk-js", n = 3) {
+  apis <- list_apis(file.path(in_dir, "apis"))
+  apis_chunks <- split(apis, cut(seq_along(apis), n, F))
+  fs::dir_create("apis")
+  for(i in seq_along(apis_chunks)) {
+    writeLines(apis_chunks[[i]], sprintf("apis/api_chunk_%s.txt", i))
+  }
+} 
+
 # #' @title Make the AWS SDK R package
 # #'
 # #' @param in_dir Directory containing AWS API input files.
