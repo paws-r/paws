@@ -1,7 +1,7 @@
 #' @include cran_category.R cran_collection.R cran_sub_category.R
 
 #' @export
-github_api_list function(in_dir = "./vendor/aws-sdk-js", n = 3) {
+github_api_list <- function(in_dir = "./vendor/aws-sdk-js", n = 3) {
   apis <- list_apis(file.path(in_dir, "apis"))
   apis_chunks <- split(apis, cut(seq_along(apis), n, F))
   fs::dir_create("apis")
