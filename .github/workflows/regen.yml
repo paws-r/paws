@@ -10,9 +10,9 @@ on:
       description: "Manual re-build"
 
 jobs:
-  regenerate-paws:
+  update-deps:
     runs-on: ubuntu-latest
-    name: regenerate-paws
+    name: update-deps
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -52,16 +52,143 @@ jobs:
           git config user.email github-actions@github.com
           git checkout -b regen_paws
 
-      - name: Regenerate Paws
+      - name: Update dependencies
         run: |
           make deps
           make update-deps
-          make build
+
+      - name: clear down paws
+        run: |
+          rm -rf cran
+          rm -rf paws
 
       - name: Create Commit Message
         run: |
           git add .
-          git commit -m "Regenerate Paws"
+          git commit -m "update dependencies"
+          git push origin regen_paws
+
+  build-apis:
+    needs: update-deps
+
+    runs-on: ubuntu-latest
+    name: build-apis
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: "2.17.1"
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+
+      - name: Install Paws Dependencies
+        run: |
+          install.packages('remotes')
+          remotes::install_deps('paws.common', dependencies = TRUE)
+          remotes::install_deps('make.paws', dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install Paws Packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Change Branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin
+          git switch regen_paws
+          git pull
+
+      - name: Get dependencies
+        run: |
+          make deps
+
+      - name: Build Apis
+        run: |
+          make.paws:::build_apis()
+        shell: Rscript {0}
+
+      - name: Git Commit
+        run: |
+          git add .
+          git commit -m "Update Apis"
+          git push origin regen_paws
+
+  collect:
+    needs: build-apis
+
+    runs-on: ubuntu-latest
+    name: collect
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: "2.17.1"
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+
+      - name: Install Paws Dependencies
+        run: |
+          install.packages('remotes')
+          remotes::install_deps('paws.common', dependencies = TRUE)
+          remotes::install_deps('make.paws', dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install Paws Packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Change Branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin
+          git switch regen_paws
+          git pull
+
+      - name: Get dependencies
+        run: |
+          make deps
+
+      - name: Build Apis
+        run: |
+          make.paws:::github_make_category_collection()
+          make.paws:::github_make_collection()
+        shell: Rscript {0}
+
+      - name: Git Commit
+        run: |
+          git add .
+          git commit -m "Make category collections"
           git push origin regen_paws
 
       - name: Create Github Pull Request
