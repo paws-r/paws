@@ -31,7 +31,8 @@ Imports:
     digest,
     waldo,
     urlchecker,
-    stats
+    stats,
+    fs
 Suggests: 
     covr,
     formatR,
@@ -66,3 +67,4 @@ Collate:
     'aws_services.R'
     'sdk_helper.R'
     'cran_sub_category.R'
+    'make_sdk_github_actions.R'

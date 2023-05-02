@@ -10,8 +10,8 @@
 # #' @param cache_dir Directory to store cached artifacts. Providing a non-`NULL`
 # #'   value will greatly speed up subsequent runs that use the same value.
 # #' @name make_sdk
-# #' @export
-build_apis <- function(
+#' @export
+github_build_apis <- function(
     in_dir = "./vendor/aws-sdk-js",
     out_sdk_dir = "./cran",
     out_doc_dir = "./paws",
@@ -61,7 +61,7 @@ build_apis <- function(
   make_categories(temp_dir, out_sdk_dir, categories, api_names, refresh = FALSE)
 }
 
-
+#' @export
 github_make_category_collection <- function(
     out_sdk_dir = "./cran",
     out_doc_dir = "./paws") {
@@ -83,6 +83,7 @@ github_make_category_collection <- function(
   }
 }
 
+#' @export
 github_make_collection <- function(out_sdk_dir = "./cran",
                                    out_doc_dir = "./paws") {
   make_collection(temp_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)

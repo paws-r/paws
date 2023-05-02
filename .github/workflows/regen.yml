@@ -120,7 +120,7 @@ jobs:
 
       - name: Build Apis
         run: |
-          make.paws:::build_apis()
+          make.paws::github_build_apis()
         shell: Rscript {0}
 
       - name: Git Commit
@@ -181,8 +181,8 @@ jobs:
 
       - name: Build Apis
         run: |
-          make.paws:::github_make_category_collection()
-          make.paws:::github_make_collection()
+          make.paws::github_make_category_collection()
+          make.paws::github_make_collection()
         shell: Rscript {0}
 
       - name: Git Commit
