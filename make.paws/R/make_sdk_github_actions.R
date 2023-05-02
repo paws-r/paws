@@ -96,5 +96,5 @@ github_make_category_collection <- function(
 #' @export
 github_make_collection <- function(out_sdk_dir = "./cran",
                                    out_doc_dir = "./paws") {
-  make_collection(temp_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)
+  make_collection(out_doc_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)
 }
