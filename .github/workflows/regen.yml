@@ -200,7 +200,7 @@ jobs:
           
       - uses: actions/download-artifact@v3
         with:
-          name: apis_list
+          name: api_list
           path: apis
           
       - name: Build Apis
@@ -268,7 +268,7 @@ jobs:
           
       - uses: actions/download-artifact@v3
         with:
-          name: apis_list
+          name: api_list
           path: apis
           
       - name: Build Apis
