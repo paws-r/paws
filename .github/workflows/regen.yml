@@ -64,7 +64,7 @@ jobs:
         
       - uses: actions/upload-artifact@v3
         with:
-          name: apis
+          name: api_list
           path: |
             apis/
 
@@ -132,12 +132,12 @@ jobs:
           
       - uses: actions/download-artifact@v3
         with:
-          name: apis
+          name: api_list
           path: .
           
       - name: Build Apis
         run: |
-          apis <- readLines("apis/api_chunk_1.txt")
+          apis <- readLines("./apis/api_chunk_1.txt")
           make.paws::github_build_apis(apis = apis)
         shell: Rscript {0}
 
@@ -200,12 +200,12 @@ jobs:
           
       - uses: actions/download-artifact@v3
         with:
-          name: apis
+          name: apis_list
           path: .
           
       - name: Build Apis
         run: |
-          apis <- readLines("apis/api_chunk_2.txt")
+          apis <- readLines("./apis/api_chunk_2.txt")
           make.paws::github_build_apis(apis = apis)
         shell: Rscript {0}
 
@@ -268,12 +268,12 @@ jobs:
           
       - uses: actions/download-artifact@v3
         with:
-          name: apis
+          name: apis_list
           path: .
           
       - name: Build Apis
         run: |
-          apis <- readLines("apis/api_chunk_3.txt")
+          apis <- readLines("./apis/api_chunk_3.txt")
           make.paws::github_build_apis(apis = apis)
         shell: Rscript {0}
 
