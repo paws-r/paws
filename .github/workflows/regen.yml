@@ -133,7 +133,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: api_list
-          path: .
+          path: apis
           
       - name: Build Apis
         run: |
@@ -201,7 +201,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: apis_list
-          path: .
+          path: apis
           
       - name: Build Apis
         run: |
@@ -269,7 +269,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: apis_list
-          path: .
+          path: apis
           
       - name: Build Apis
         run: |
