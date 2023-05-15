@@ -15,13 +15,10 @@ github_api_list <- function(in_dir = "./vendor/aws-sdk-js", n = 3) {
   # split apis equally by number of operations
   apis <- data.frame(
     apis = names(apis),
-    total = lengths(apis,use.names = F)
+    total = lengths(apis, use.names = F)
   )
-  apis$cumsum <- cumsum(apis$total)
-  total <- sum(apis$total)
-  splits <- c(seq(1, total, ceiling(total/n)), total)
-  apis$id <- cut(apis$cumsum, splits, labels = F)
-
+  apis <- apis[order(apis$total, decreasing = T), ]
+  apis$id <- rep_len(1:n, nrow(apis))
   apis_chunks <- split(apis$apis, apis$id)
   fs::dir_create("apis")
   for(i in seq_along(apis_chunks)) {
