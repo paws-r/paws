@@ -56,12 +56,12 @@ jobs:
         run: |
           make deps
           make update-deps
-          
+
       - name: List Apis
         run: |
           make.paws::github_api_list()
         shell: Rscript {0}
-        
+
       - uses: actions/upload-artifact@v3
         with:
           name: api_list
@@ -129,25 +129,25 @@ jobs:
       - name: Get dependencies
         run: |
           make deps
-          
+
       - uses: actions/download-artifact@v3
         with:
           name: api_list
           path: apis
-          
+
       - name: Build Apis
         run: |
           apis <- readLines("./apis/api_chunk_1.txt")
-          make.paws::github_build_apis(apis = apis)
+          make.paws::github_build_apis(apis = apis, out_sdk_dir = "./cran_1", out_doc_dir = "./paws_1")
         shell: Rscript {0}
 
-      - name: Git Commit
-        run: |
-          rm -rf apis
-          git add .
-          git commit -m "Update Apis Chunk 1"
-          git push origin regen_paws
-          
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build_1
+          path: |
+            cran_1/
+            paws_1/
+
   build-apis-2:
     needs: update-deps
 
@@ -197,25 +197,25 @@ jobs:
       - name: Get dependencies
         run: |
           make deps
-          
+
       - uses: actions/download-artifact@v3
         with:
           name: api_list
           path: apis
-          
+
       - name: Build Apis
         run: |
           apis <- readLines("./apis/api_chunk_2.txt")
-          make.paws::github_build_apis(apis = apis)
+          make.paws::github_build_apis(apis = apis, out_sdk_dir = "./cran_2", out_doc_dir = "./paws_2")
         shell: Rscript {0}
 
-      - name: Git Commit
-        run: |
-          rm -rf apis
-          git add .
-          git commit -m "Update Apis Chunk 2"
-          git push origin regen_paws
-  
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build_2
+          path: |
+            cran_2/
+            paws_2/
+
   build-apis-3:
     needs: update-deps
 
@@ -265,27 +265,105 @@ jobs:
       - name: Get dependencies
         run: |
           make deps
-          
+
       - uses: actions/download-artifact@v3
         with:
           name: api_list
           path: apis
-          
+
       - name: Build Apis
         run: |
           apis <- readLines("./apis/api_chunk_3.txt")
-          make.paws::github_build_apis(apis = apis)
+          make.paws::github_build_apis(apis = apis, out_sdk_dir = "./cran_3", out_doc_dir = "./paws_3")
         shell: Rscript {0}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build_3
+          path: |
+            cran_3/
+            paws_3/
+
+  merge:
+    needs: [build-apis-1, build-apis-2, build-apis-3]
+
+    runs-on: ubuntu-latest
+    name: collect
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install R
+        uses: r-lib/actions/setup-r@v2
+
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: "2.17.1"
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libgit2-dev
+          sudo apt-get install -y libharfbuzz-dev libfribidi-dev
+
+      - name: Install Paws Dependencies
+        run: |
+          install.packages('remotes')
+          remotes::install_deps('paws.common', dependencies = TRUE)
+          remotes::install_deps('make.paws', dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install Paws Packages
+        run: |
+          remotes::install_local('paws.common', force = TRUE)
+          remotes::install_local('make.paws', force = TRUE)
+        shell: Rscript {0}
+
+      - name: Change Branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git fetch origin
+          git switch regen_paws
+          git pull
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: build_1
+          path: .
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: build_2
+          path: .
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: build_3
+          path: .
+
+      - name: merge builds
+        run: |
+          for(src_path in c("paws_1", "paws_2", "paws_3")){fs::dir_copy(src_path, "paws", overwrite = T)}
+          for(src_path in c("cran_1", "cran_2", "cran_3")){fs::dir_copy(src_path, "cran", overwrite = T)}
+        shell: Rscript {0}
+
+      - name: clear down
+        run: |
+          rm -rf paws_1 paws_2 paws_3
+          rm -rf cran_1 cran_2 cran_3
 
       - name: Git Commit
         run: |
-          rm -rf apis
           git add .
-          git commit -m "Update Apis Chunk 3"
+          git commit -m "Build Cran and Paws directories"
           git push origin regen_paws
 
   collect:
-    needs: [build-apis-1, build-apis-2, build-apis-3]
+    needs: [merge]
 
     runs-on: ubuntu-latest
     name: collect
