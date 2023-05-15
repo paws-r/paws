@@ -2,13 +2,32 @@
 
 #' @export
 github_api_list <- function(in_dir = "./vendor/aws-sdk-js", n = 3) {
-  apis <- list_apis(file.path(in_dir, "apis"))
-  apis_chunks <- split(apis, cut(seq_along(apis), n, F))
+  api_path <- file.path(in_dir, "apis")
+  apis <- make.paws:::list_apis(api_path)
+
+  apis <- sapply(apis, function(api){
+    version <- make.paws:::get_latest_api_version(api, api_path)
+    files <- make.paws:::get_api_files(version, api_path)
+    api <- jsonlite::read_json(files$normal)
+    names(api$operations)
+  }, simplify = F
+  )
+  # split apis equally by number of operations
+  apis <- data.frame(
+    apis = names(apis),
+    total = lengths(apis,use.names = F)
+  )
+  apis$cumsum <- cumsum(apis$total)
+  total <- sum(apis$total)
+  splits <- c(seq(1, total, ceiling(total/n)), total)
+  apis$id <- cut(apis$cumsum, splits, labels = F)
+
+  apis_chunks <- split(apis$apis, apis$id)
   fs::dir_create("apis")
   for(i in seq_along(apis_chunks)) {
     writeLines(apis_chunks[[i]], sprintf("apis/api_chunk_%s.txt", i))
   }
-} 
+}
 
 # #' @title Make the AWS SDK R package
 # #'
