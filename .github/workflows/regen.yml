@@ -288,7 +288,7 @@ jobs:
     needs: [build-apis-1, build-apis-2, build-apis-3]
 
     runs-on: ubuntu-latest
-    name: collect
+    name: merge-builds
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
