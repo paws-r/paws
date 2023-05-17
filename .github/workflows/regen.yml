@@ -413,10 +413,26 @@ jobs:
         run: |
           make deps
 
+      - uses: actions/download-artifact@v3
+        with:
+          name: build_1
+          path: temp1
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: build_2
+          path: temp2
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: build_3
+          path: temp3
+
       - name: Build Apis
         run: |
-          make.paws::github_make_category_collection()
-          make.paws::github_make_collection()
+          apis <- fs::path(c("temp1", "temp2", "temp3"), "api_names.RDS")
+          make.paws::github_make_category_collection(api_names = apis)
+          make.paws::github_make_collection(api_names = apis)
         shell: Rscript {0}
 
       - name: Git Commit

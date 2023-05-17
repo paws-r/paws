@@ -84,16 +84,23 @@ github_build_apis <- function(
       api_names[[api]] <- result$name
     }
   })
+
+  saveRDS(api_names, "api_names.RDS")
   make_categories(temp_dir, out_sdk_dir, categories, api_names, refresh = FALSE)
 }
 
 #' @export
 github_make_category_collection <- function(
     out_sdk_dir = "./cran",
-    out_doc_dir = "./paws") {
+    out_doc_dir = "./paws"
+    api_names = "") {
   # Get the category-level packages that the SDK is separated into.
   # The SDK is separated into categories to fit in CRAN's package size limit.
   categories <- get_categories()
+
+  if (all(fs::path_file(api_names))) {
+    api_names <- unlist(lapply(api_names, readRDS), recursive = F)
+  }
 
   # Identify sub-categories
   found <- find_sub_categories(categories)
@@ -110,7 +117,13 @@ github_make_category_collection <- function(
 }
 
 #' @export
-github_make_collection <- function(out_sdk_dir = "./cran",
-                                   out_doc_dir = "./paws") {
+github_make_collection <- function(
+    out_sdk_dir = "./cran",
+    out_doc_dir = "./paws",
+    api_names = "") {
+  categories <- get_categories()
+  if (all(fs::path_file(api_names))) {
+    api_names <- unlist(lapply(api_names, readRDS), recursive = F)
+  }
   make_collection(out_doc_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)
 }
