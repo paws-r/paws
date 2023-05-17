@@ -138,15 +138,15 @@ jobs:
       - name: Build Apis
         run: |
           apis <- readLines("./apis/api_chunk_1.txt")
-          make.paws::github_build_apis(apis = apis, out_sdk_dir = "./cran_1", out_doc_dir = "./paws_1")
+          make.paws::github_build_apis(apis = apis)
         shell: Rscript {0}
 
       - uses: actions/upload-artifact@v3
         with:
           name: build_1
           path: |
-            cran_1/
-            paws_1/
+            cran/
+            paws/
 
   build-apis-2:
     needs: update-deps
@@ -206,15 +206,15 @@ jobs:
       - name: Build Apis
         run: |
           apis <- readLines("./apis/api_chunk_2.txt")
-          make.paws::github_build_apis(apis = apis, out_sdk_dir = "./cran_2", out_doc_dir = "./paws_2")
+          make.paws::github_build_apis(apis = apis)
         shell: Rscript {0}
 
       - uses: actions/upload-artifact@v3
         with:
           name: build_2
           path: |
-            cran_2/
-            paws_2/
+            cran/
+            paws/
 
   build-apis-3:
     needs: update-deps
@@ -274,15 +274,15 @@ jobs:
       - name: Build Apis
         run: |
           apis <- readLines("./apis/api_chunk_3.txt")
-          make.paws::github_build_apis(apis = apis, out_sdk_dir = "./cran_3", out_doc_dir = "./paws_3")
+          make.paws::github_build_apis(apis = apis)
         shell: Rscript {0}
 
       - uses: actions/upload-artifact@v3
         with:
           name: build_3
           path: |
-            cran_3/
-            paws_3/
+            cran/
+            paws/
 
   merge:
     needs: [build-apis-1, build-apis-2, build-apis-3]
@@ -333,28 +333,29 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: build_1
-          path: .
+          path: temp1
 
       - uses: actions/download-artifact@v3
         with:
           name: build_2
-          path: .
+          path: temp2
 
       - uses: actions/download-artifact@v3
         with:
           name: build_3
-          path: .
+          path: temp3
 
       - name: merge builds
         run: |
-          for(src_path in c("paws_1", "paws_2", "paws_3")){fs::dir_copy(src_path, "paws", overwrite = T)}
-          for(src_path in c("cran_1", "cran_2", "cran_3")){fs::dir_copy(src_path, "cran", overwrite = T)}
+          src_paws <- fs::path(c("temp1", "temp2", "temp3"), "paws")
+          src_cran <- fs::path(c("temp1", "temp2", "temp3"), "paws")
+          for(src in src_paws){fs::dir_copy(src, "paws", overwrite = T)}
+          for(src in src_cran){fs::dir_copy(src, "cran", overwrite = T)}
         shell: Rscript {0}
 
       - name: clear down
         run: |
-          rm -rf paws_1 paws_2 paws_3
-          rm -rf cran_1 cran_2 cran_3
+          rm -rf temp1 temp2 temp3
 
       - name: Git Commit
         run: |
