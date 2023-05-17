@@ -94,7 +94,7 @@ github_build_apis <- function(
 #' @export
 github_make_category_collection <- function(
     out_sdk_dir = "./cran",
-    out_doc_dir = "./paws"
+    out_doc_dir = "./paws",
     api_names = "") {
   # Get the category-level packages that the SDK is separated into.
   # The SDK is separated into categories to fit in CRAN's package size limit.
