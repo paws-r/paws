@@ -12,14 +12,16 @@ github_api_list <- function(in_dir = "./vendor/aws-sdk-js", n = 3) {
     names(api$operations)
   }, simplify = F
   )
+  apis$quicksight <- NULL
   # split apis equally by number of operations
   apis <- data.frame(
     apis = names(apis),
     total = lengths(apis, use.names = F)
   )
   apis <- apis[order(apis$total, decreasing = T), ]
-  apis$id <- rep_len(1:n, nrow(apis))
+  apis$id <- rep_len(c(1:n-1), nrow(apis))
   apis_chunks <- split(apis$apis, apis$id)
+  apis_chunks[[3]] <- "quicksight"
   fs::dir_create("apis")
   for(i in seq_along(apis_chunks)) {
     writeLines(apis_chunks[[i]], sprintf("apis/api_chunk_%s.txt", i))
