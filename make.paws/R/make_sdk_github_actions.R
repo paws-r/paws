@@ -100,7 +100,7 @@ github_make_category_collection <- function(
   # The SDK is separated into categories to fit in CRAN's package size limit.
   categories <- get_categories()
 
-  if (all(fs::path_file(api_names))) {
+  if (all(fs::file_exists(api_names))) {
     api_names <- unlist(lapply(api_names, readRDS), recursive = F)
   }
 
@@ -124,7 +124,7 @@ github_make_collection <- function(
     out_doc_dir = "./paws",
     api_names = "") {
   categories <- get_categories()
-  if (all(fs::path_file(api_names))) {
+  if (all(fs::file_exists(api_names))) {
     api_names <- unlist(lapply(api_names, readRDS), recursive = F)
   }
   make_collection(out_doc_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)
