@@ -147,6 +147,7 @@ jobs:
           path: |
             cran/
             paws/
+            api_names.RDS
 
   build-apis-2:
     needs: update-deps
@@ -215,6 +216,7 @@ jobs:
           path: |
             cran/
             paws/
+            api_names.RDS
 
   build-apis-3:
     needs: update-deps
@@ -283,6 +285,7 @@ jobs:
           path: |
             cran/
             paws/
+            api_names.RDS
 
   merge:
     needs: [build-apis-1, build-apis-2, build-apis-3]
@@ -348,9 +351,9 @@ jobs:
       - name: merge builds
         run: |
           src_paws <- fs::path(c("temp1", "temp2", "temp3"), "paws")
-          src_cran <- fs::path(c("temp1", "temp2", "temp3"), "paws")
-          for(src in src_paws){fs::dir_copy(src, "paws", overwrite = T)}
-          for(src in src_cran){fs::dir_copy(src, "cran", overwrite = T)}
+          src_cran <- fs::path(c("temp1", "temp2", "temp3"), "cran")
+          for(src in src_paws){fs::dir_copy(src, "temp_paws", overwrite = T)}
+          for(src in src_cran){fs::dir_copy(src, "temp_cran", overwrite = T)}
         shell: Rscript {0}
 
       - name: clear down
@@ -434,6 +437,10 @@ jobs:
           make.paws::github_make_category_collection(api_names = apis)
           make.paws::github_make_collection(api_names = apis)
         shell: Rscript {0}
+
+      - name: clear down
+        run: |
+          rm -rf temp1 temp2 temp3
 
       - name: Git Commit
         run: |
