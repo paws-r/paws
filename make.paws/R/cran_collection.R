@@ -2,11 +2,11 @@
 NULL
 
 # Make the main paws package, which collects all the category packages.
-make_collection <- function(sdk_dir, out_dir, categories, service_names, refresh) {
+make_collection <- function(sdk_dir, out_dir, categories, service_names) {
   package <- "paws"
   version <- get_version(sdk_dir)
   package_dir <- file.path(out_dir, package)
-  write_skeleton_category(package_dir, refresh)
+  write_skeleton_category(package_dir)
   write_description_category(
     package_dir,
     package,
