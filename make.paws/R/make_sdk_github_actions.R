@@ -5,13 +5,12 @@ github_api_list <- function(in_dir = "./vendor/aws-sdk-js", n = 3) {
   api_path <- file.path(in_dir, "apis")
   apis <- make.paws:::list_apis(api_path)
 
-  apis <- sapply(apis, function(api){
+  apis <- sapply(apis, function(api) {
     version <- make.paws:::get_latest_api_version(api, api_path)
     files <- make.paws:::get_api_files(version, api_path)
     api <- jsonlite::read_json(files$normal)
     names(api$operations)
-  }, simplify = F
-  )
+  }, simplify = F)
   apis$quicksight <- NULL
   # split apis equally by number of operations
   apis <- data.frame(
@@ -19,11 +18,11 @@ github_api_list <- function(in_dir = "./vendor/aws-sdk-js", n = 3) {
     total = lengths(apis, use.names = F)
   )
   apis <- apis[order(apis$total, decreasing = T), ]
-  apis$id <- rep_len(c(1:n-1), nrow(apis))
+  apis$id <- rep_len(c(1:n - 1), nrow(apis))
   apis_chunks <- split(apis$apis, apis$id)
   apis_chunks[[3]] <- "quicksight"
   fs::dir_create("apis")
-  for(i in seq_along(apis_chunks)) {
+  for (i in seq_along(apis_chunks)) {
     writeLines(apis_chunks[[i]], sprintf("apis/api_chunk_%s.txt", i))
   }
 }
@@ -46,7 +45,6 @@ github_build_apis <- function(
     apis = character(0),
     only_cran = TRUE,
     cache_dir = "./cache") {
-
   if (length(apis) == 0) {
     apis <- list_apis(file.path(in_dir, "apis"))
   }
@@ -73,7 +71,9 @@ github_build_apis <- function(
     clear_dir(temp_dir)
     version <- tryCatch(
       get_version(out_doc_dir),
-      error = function(e) return("0.0.1")
+      error = function(e) {
+        return("0.0.1")
+      }
     )
     write_skeleton(temp_dir, version)
     write_skeleton(out_doc_dir, version)
@@ -88,7 +88,7 @@ github_build_apis <- function(
   })
 
   saveRDS(api_names, "api_names.RDS")
-  make_categories(temp_dir, out_sdk_dir, categories, api_names, refresh = FALSE)
+  make_categories(temp_dir, out_sdk_dir, categories, api_names)
 }
 
 #' @export
@@ -107,13 +107,13 @@ github_make_category_collection <- function(
   # Identify sub-categories
   found <- find_sub_categories(categories)
 
-  if (any(found)){
+  if (any(found)) {
     # Group categories
     grp_sub_cats <- group_categories(categories[found])
 
     # Build categories from sub-categories
-    for(cat in names(grp_sub_cats)){
-      make_category_collection(out_doc_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names,  refresh = TRUE)
+    for (cat in names(grp_sub_cats)) {
+      make_category_collection(out_doc_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
     }
   }
 }
@@ -127,5 +127,5 @@ github_make_collection <- function(
   if (all(fs::file_exists(api_names))) {
     api_names <- unlist(lapply(api_names, readRDS), recursive = F)
   }
-  make_collection(out_doc_dir, out_sdk_dir, categories, api_names,  refresh = TRUE)
+  make_collection(out_doc_dir, out_sdk_dir, categories, api_names)
 }
