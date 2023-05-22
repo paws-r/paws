@@ -352,8 +352,8 @@ jobs:
         run: |
           src_paws <- fs::path(c("temp1", "temp2", "temp3"), "paws")
           src_cran <- fs::path(c("temp1", "temp2", "temp3"), "cran")
-          for(src in src_paws){fs::dir_copy(src, "temp_paws", overwrite = T)}
-          for(src in src_cran){fs::dir_copy(src, "temp_cran", overwrite = T)}
+          for(src in src_paws){fs::dir_copy(src, "paws", overwrite = T)}
+          for(src in src_cran){fs::dir_copy(src, "cran", overwrite = T)}
         shell: Rscript {0}
 
       - name: clear down
