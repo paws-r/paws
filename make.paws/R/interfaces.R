@@ -38,7 +38,9 @@ interface_template <- template(
 # shape.
 make_interface <- function(name, shape_data, api) {
   shape_name <- shape_data$shape
-  if (is.null(shape_name)) return(make_empty_interface(name))
+  if (is.null(shape_name)) {
+    return(make_empty_interface(name))
+  }
   shape <- make_shape(list(shape = shape_name), api)
   shape <- tag_del(shape, c("enum", "min", "max", "pattern"))
   for (key in names(shape_data)) {
@@ -87,14 +89,12 @@ make_empty_interface <- function(name) {
 # Make an API shape, including metadata about types and names.
 # Usage: `make_shape(list(shape = SHAPE), api)`
 make_shape <- function(x, api, path = character(0)) {
-
   shape <- api$shapes[[x$shape]]
 
   loop <- x$shape %in% path
   path <- c(path, x$shape)
 
-  maker <- switch(
-    shape$type,
+  maker <- switch(shape$type,
     structure = make_shape_structure,
     list = make_shape_list,
     map = make_shape_map,
@@ -113,13 +113,13 @@ make_shape <- function(x, api, path = character(0)) {
 }
 
 make_shape_structure <- function(shape, api, path) {
-  proto <- list()
   members <- shape$members
-  for (member_name in names(members)) {
+  member_names <- names(members)
+  proto <- lapply(member_names, \(member_name){
     member <- members[[member_name]]
-    interface <- make_shape(member, api, path)
-    proto[[member_name]] <- interface
-  }
+    make_shape(member, api, path)
+  })
+  if (!rlang::is_empty(member_names)) names(proto) <- member_names
   return(proto)
 }
 
@@ -164,7 +164,7 @@ make_tags <- function(shape) {
   if ("enum" %in% names(shape)) {
     shape$enum <- unlist(shape$enum)
   }
-  taggable <- sapply(shape, is.atomic)
+  taggable <- vapply(shape, is.atomic, FUN.VALUE = logical(1))
   ignore <- c("documentation", "shape")
   keep <- !(names(shape) %in% ignore)
   tags <- shape[taggable & keep]

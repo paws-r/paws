@@ -650,7 +650,6 @@ add_example_values <- function(shape) {
 
 # Format examples
 clean_example <- function(s) {
-
   # If empty return an empty string
   if (!nchar(s)) return("")
 
@@ -665,10 +664,9 @@ clean_example <- function(s) {
   tab_string <- paste0(rep(" ", num_spaces), collapse = "")
 
   # The output string
-  cleaned <- ""
+  cleaned <- vector("character",nchar(s))
 
-  for (i in 1:nchar(s)) {
-
+  for (i in 1:nchar(s)){
     # Get the next character
     prev_character <- substr(s, i - 1, i - 1)
     current_character <- substr(s, i, i)
@@ -681,12 +679,12 @@ clean_example <- function(s) {
         # Check for end quotes
         open_quotes <- FALSE
       }
-      cleaned <- paste0(cleaned, current_character)
+      cleaned[[i]] <- current_character
 
     } else if (current_character == '"') {
       # If there is a quotation mark format next characters normally
       open_quotes <- TRUE
-      cleaned <- paste0(cleaned, current_character)
+      cleaned[[i]] <- current_character
 
     } else if (current_character == "(" & next_character != ")") {
       # Start a new line after each open peren and increase indent
@@ -694,7 +692,7 @@ clean_example <- function(s) {
       # For open perens, add to stack and indent next line
       open_perens <- c(open_perens, "(")
       indents <- paste0(rep(tab_string, length(open_perens)), collapse = "")
-      cleaned <- paste0(cleaned, "(\n", indents)
+      cleaned[[i]] <- paste0("(\n", indents)
 
     } else if (current_character == ")" & prev_character != "(") {
       # Reduce tab and start new line after each closing peren
@@ -706,24 +704,22 @@ clean_example <- function(s) {
         open_perens <- c()
       }
       indents <- paste0(rep(tab_string, length(open_perens)), collapse = "")
-      cleaned <- paste0(cleaned, "\n", indents, ")")
+      cleaned[[i]] <- paste0("\n", indents, ")")
 
     } else if (current_character == ",") {
       # Add new line after every comma
 
       indents <- paste0(rep(tab_string, max(length(open_perens) - 1, 0)), collapse = "")
-      space_number <- ifelse(substr(s, i + 1, i + 1) == " ",
-                             num_spaces - 1, num_spaces)
+      space_number <- (if(substr(s, i + 1, i + 1) == " ") num_spaces - 1 else num_spaces)
       final_tab = paste0(rep(" ", space_number), collapse = "")
-      cleaned <- paste0(cleaned, ",\n", indents, final_tab)
+      cleaned[[i]] <- paste0(",\n", indents, final_tab)
 
     } else {
       # Add other characters to new output string
-      cleaned <- paste0(cleaned, current_character)
+      cleaned[[i]] <- current_character
     }
   }
-
-  cleaned
+  paste(cleaned, collapse = "")
 }
 
 # Create a list of an API's operations and the corresponding R function names.
