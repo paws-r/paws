@@ -112,7 +112,7 @@ make_doc_params <- function(operation, api) {
     shapes <- api$shapes
     shape <- shapes[[operation$input$shape]]
     inputs <- get_inputs(shape)
-    params <- sapply(inputs, function(input) {
+    params <- lapply(inputs, function(input) {
       param <- input$member_name
       required <- input$required
       documentation <- convert(input$documentation, package_name(api), links = get_links(api))
