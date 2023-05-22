@@ -25,6 +25,7 @@ export(github_make_category_collection)
 export(github_make_collection)
 
 import(data.table)
+import(fs)
 importFrom(paws.common,is_empty)
 importFrom(paws.common,tag_add)
 importFrom(paws.common,tag_del)
