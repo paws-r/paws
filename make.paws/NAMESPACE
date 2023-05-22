@@ -18,12 +18,6 @@ export(paws_install)
 export(paws_release_sub_cat)
 export(paws_release_cat)
 export(paws_release)
-
-export(github_api_list)
-export(github_build_apis)
-export(github_make_category_collection)
-export(github_make_collection)
-
 import(data.table)
 import(fs)
 importFrom(paws.common,is_empty)
