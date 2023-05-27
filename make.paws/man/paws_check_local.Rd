@@ -40,5 +40,5 @@ paws_check_local_sub_cat(
 A list of any warnings, errors and notes within paws sdk.
 }
 \description{
-Check paws sdk locally using \code{devtools::check}
+Check paws sdk locally using \code{devtools::check_built}
 }

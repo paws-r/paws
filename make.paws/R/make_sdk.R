@@ -18,7 +18,6 @@ make_sdk <- function(
     apis = character(0),
     only_cran = TRUE,
     cache_dir = "./cache") {
-
   if (length(apis) == 0) {
     apis <- list_apis(file.path(in_dir, "apis"))
   }
@@ -46,7 +45,9 @@ make_sdk <- function(
     clear_dir(out_doc_dir)
     version <- tryCatch(
       get_version(out_doc_dir),
-      error = function(e) return("0.0.1")
+      error = function(e) {
+        return("0.0.1")
+      }
     )
     write_skeleton(temp_dir, version)
     write_skeleton(out_doc_dir, version)
@@ -65,12 +66,12 @@ make_sdk <- function(
   # Identify sub-categories
   found <- find_sub_categories(categories)
 
-  if (any(found)){
+  if (any(found)) {
     # Group categories
     grp_sub_cats <- group_categories(categories[found])
 
     # Build categories from sub-categories
-    for(cat in names(grp_sub_cats)){
+    for (cat in names(grp_sub_cats)) {
       make_category_collection(temp_dir, out_sdk_dir, grp_sub_cats[[cat]], cat, api_names)
     }
   }
@@ -111,7 +112,9 @@ use_r_dir <- function(path) {
 # Create a dummy DESCRIPTION file if it doesn't already exist.
 use_description <- function(path, version = "0.0.1") {
   file <- file.path(path, "DESCRIPTION")
-  if (file.exists(file)) return()
+  if (file.exists(file)) {
+    return()
+  }
   file.create(file)
   description <- desc::desc(file)
   contents <- list(
@@ -121,9 +124,10 @@ use_description <- function(path, version = "0.0.1") {
     `Authors@R` = make_authors(),
     Description = paste0(
       "Interface to Amazon Web Services <https://aws.amazon.com>, ",
-     "including storage, database, and compute services, such as 'Simple ",
-     "Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda' ",
-     "functions-as-a-service."),
+      "including storage, database, and compute services, such as 'Simple ",
+      "Storage Service' ('S3'), 'DynamoDB' 'NoSQL' database, and 'Lambda' ",
+      "functions-as-a-service."
+    ),
     License = "Apache License (>= 2.0)",
     Encoding = "UTF-8",
     ByteCompile = "false"
@@ -141,7 +145,7 @@ use_package_doc <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/package.R", package = package)
   to <- file.path(path, "R", paste0(basename(path), "_package.R"))
-  file.copy(template, to)
+  fs::file_copy(template, to, overwrite = T)
 }
 
 # Create a dummy NAMESPACE file.
@@ -149,7 +153,7 @@ use_namespace <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/NAMESPACE", package = package)
   to <- file.path(path, "NAMESPACE")
-  file.copy(template, to)
+  fs::file_copy(template, to, overwrite = T)
 }
 
 # Return the authors from this package.

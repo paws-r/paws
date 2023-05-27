@@ -1,14 +1,16 @@
-
 # Create the skeleton for category package.
 write_skeleton_category <- function(path) {
-  if (!dir.exists(path)) dir.create(path, recursive = TRUE)
-  else clear_files(path, keep = c("cran-comments.md", "NEWS.md"))
+  if (!dir.exists(path)) {
+    dir.create(path, recursive = TRUE)
+  } else {
+    clear_files(path, keep = c("cran-comments.md", "NEWS.md"))
+  }
   for (dir in c("man", "R", "tests/testthat")) {
     dir.create(file.path(path, dir), recursive = TRUE)
   }
   package <- methods::getPackageName()
   rbuildignore <- system_file("templates/Rbuildignore", package = package)
-  file.copy(rbuildignore, file.path(path, ".Rbuildignore"))
+  fs::file_copy(rbuildignore, file.path(path, ".Rbuildignore"), overwrite = T)
 }
 
 # Write the DESCRIPTION file for a category package.

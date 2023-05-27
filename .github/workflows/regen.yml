@@ -52,10 +52,13 @@ jobs:
           git config user.email github-actions@github.com
           git checkout -b regen_paws
 
+      - name: Update Vendor Dependencies
+        run: |
+          make deps
+          make update-deps
+
       - name: Regenerate Paws
         run: |
-          make update-deps
-          make deps
           make build
 
       - name: Create Commit Message

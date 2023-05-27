@@ -67,18 +67,23 @@ make_operation <- function(operation, api, doc_maker) {
 }
 
 # Override operation name from extdata/operation_name_override.yml
-operation_name_override <- function(operation_name){
+operation_name_override <- function(operation_name) {
   path <- system_file(
-    "extdata/operation_name_override.yml", package = methods::getPackageName()
+    "extdata/operation_name_override.yml",
+    package = methods::getPackageName()
   )
   out <- yaml::read_yaml(path)
   found <- vapply(
-    out, function(x) {x$name == operation_name}, FUN.VALUE = logical(1)
+    out, function(x) {
+      x$name == operation_name
+    },
+    FUN.VALUE = logical(1)
   )
   override <- NULL
-  if(any(found))
+  if (any(found)) {
     override <- out[[which(found)]]$override
-  operation_name <- if(!is.null(override)) override else operation_name
+  }
+  operation_name <- if (!is.null(override)) override else operation_name
   return(quoted(operation_name))
 }
 
@@ -124,13 +129,17 @@ get_inputs <- function(input) {
 # Make the list of params that will go in the operation's function signature.
 get_operation_params <- function(shape) {
   if (!is.null(shape)) {
-    params <- c()
-    for (el in get_inputs(shape)) {
-      name <- el$member_name
-      required <- el$required
-      if (required) param <- name
-      else param <- sprintf("%s = NULL", name)
-      params <- c(params, param)
+    elements <- get_inputs(shape)
+    params <- character(length(elements))
+    for (i in seq_along(elements)) {
+      name <- elements[[i]]$member_name
+      required <- elements[[i]]$required
+      if (required) {
+        param <- name
+      } else {
+        param <- sprintf("%s = NULL", name)
+      }
+      params[[i]] <- param
     }
     result <- paste(params, collapse = ", ")
   } else {

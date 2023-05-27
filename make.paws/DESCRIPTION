@@ -31,15 +31,15 @@ Imports:
     digest,
     waldo,
     urlchecker,
-    stats
+    stats,
+    fs
 Suggests: 
     covr,
     formatR,
     testthat,
     paws.storage,
     withr,
-    mockery,
-    fs
+    mockery
 Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org

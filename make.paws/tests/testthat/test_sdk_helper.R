@@ -1,7 +1,7 @@
 test_that("check list paws packages", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   expect_equal(
     list_paws_pkgs(tmp_dir),
@@ -13,7 +13,7 @@ test_that("check list paws packages", {
 test_that("check list paws packages restrict package", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   expect_equal(
     list_paws_pkgs(tmp_dir, "paws.cat1"),
@@ -25,7 +25,7 @@ test_that("check list paws packages restrict package", {
 test_that("check list paws category packages", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   pkgs_list <- list_paws_pkgs(tmp_dir)
 
@@ -39,7 +39,7 @@ test_that("check list paws category packages", {
 test_that("check list paws sub category packages", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   pkgs_list <- list_paws_pkgs(tmp_dir)
 
@@ -88,7 +88,7 @@ test_that("check local check_pkgs keep notes", {
 test_that("check paws_check_local_sub_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_check_pkgs <- mock2(list(paws = list(errors="foo", warnings="bar")))
   mockery::stub(paws_check_local_sub_cat, 'check_pkgs', mock_check_pkgs)
@@ -106,7 +106,7 @@ test_that("check paws_check_local_sub_cat", {
 test_that("check paws_check_local_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_check_pkgs <- mock2(list(paws.cat1 = list(errors="foo", warnings="bar")))
   mockery::stub(paws_check_local_cat, 'check_pkgs', mock_check_pkgs)
@@ -124,7 +124,7 @@ test_that("check paws_check_local_cat", {
 test_that("check paws_check_local", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat2", "paws.cat1.p1")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_paws_check_local_sub_cat <- mock2(list("paws.cat1" = list(errors="foo", warnings="bar")))
   mock_paws_check_local_cat <- mock2(list())
@@ -142,7 +142,7 @@ test_that("check paws_check_local", {
 test_that("check paws_check_url", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat2")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_url_check <- mock2(
     "foo",
@@ -163,7 +163,7 @@ test_that("check paws_check_url", {
 test_that("check paws_check_rhub_sub_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_check_rhub <- mock2()
   mockery::stub(paws_check_rhub_sub_cat, 'devtools::check_rhub', mock_check_rhub)
@@ -180,7 +180,7 @@ test_that("check paws_check_rhub_sub_cat", {
 test_that("check paws_check_rhub_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_check_rhub <- mock2()
   mockery::stub(paws_check_rhub_cat, 'devtools::check_rhub', mock_check_rhub)
@@ -197,7 +197,7 @@ test_that("check paws_check_rhub_cat", {
 test_that("check paws_check_win_devel_sub_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_check_rhub <- mock2()
   mockery::stub(paws_check_win_devel_sub_cat, 'devtools::check_win_devel', mock_check_rhub)
@@ -214,7 +214,7 @@ test_that("check paws_check_win_devel_sub_cat", {
 test_that("check paws_check_win_devel_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_check_rhub <- mock2()
   mockery::stub(paws_check_win_devel_cat, 'devtools::check_win_devel', mock_check_rhub)
@@ -231,7 +231,7 @@ test_that("check paws_check_win_devel_cat", {
 test_that("check paws_release_sub_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_release <- mock2()
   mockery::stub(paws_release_sub_cat, 'devtools::submit_cran', mock_release)
@@ -248,7 +248,7 @@ test_that("check paws_release_sub_cat", {
 test_that("check paws_release_cat", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_release <- mock2()
   mockery::stub(paws_release_cat, 'devtools::submit_cran', mock_release)
@@ -265,7 +265,7 @@ test_that("check paws_release_cat", {
 test_that("check paws_install", {
   tmp_dir <- tempdir()
   dir_list <- c("paws", "paws.cat1", "paws.cat1.p1", "paws.cat1.p2", "fake")
-  sapply(file.path(tmp_dir, dir_list), dir.create)
+  sapply(file.path(tmp_dir, dir_list), dir.create, showWarnings = F)
 
   mock_install_local <- mock2()
   mock_install_local_pkg_list <- mock2()

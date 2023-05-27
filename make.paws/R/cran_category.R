@@ -21,12 +21,16 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
     stop("missing name, title, or description")
   }
 
-  if (length(services) == 0) return()
+  if (length(services) == 0) {
+    return()
+  }
 
   package_dir <- file.path(out_dir, name)
   write_skeleton_category(package_dir)
-  write_description_category(package_dir, name, title, description,
-                             version, imports)
+  write_description_category(
+    package_dir, name, title, description,
+    version, imports
+  )
   for (service in services) {
     copy_files(service_names[[service]], from = sdk_dir, to = package_dir)
   }
@@ -53,10 +57,11 @@ get_category_packages <- function(categories, get_parents = FALSE) {
   packages <- c()
   for (category in categories) {
     if (length(category$services) > 0) {
-      if (get_parents && !is.null(category$parent))
+      if (get_parents && !is.null(category$parent)) {
         package <- get_package_name(category$parent)
-      else
+      } else {
         package <- get_package_name(category$name)
+      }
       packages <- c(packages, package)
     }
   }
@@ -65,7 +70,9 @@ get_category_packages <- function(categories, get_parents = FALSE) {
 
 # Copy all files for the API given in name.
 copy_files <- function(name, from, to) {
-  if (length(name) == 0) return()
+  if (length(name) == 0) {
+    return()
+  }
   resources <- list(
     list(dir = "R", pattern = "^%s_"),
     list(dir = "tests/testthat", pattern = "^test_%s.R$")
@@ -76,6 +83,6 @@ copy_files <- function(name, from, to) {
       warning(sprintf("No %s files found for %s\n", r$dir, name))
       next
     }
-    file.copy(copy, file.path(to, r$dir))
+    fs::file_copy(copy, file.path(to, r$dir), overwrite = TRUE)
   }
 }
