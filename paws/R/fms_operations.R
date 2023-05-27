@@ -3,24 +3,29 @@
 #' @include fms_service.R
 NULL
 
-#' Sets the Firewall Manager administrator account
+#' Sets a Firewall Manager default administrator account
 #'
 #' @description
-#' Sets the Firewall Manager administrator account. The account must be a
-#' member of the organization in Organizations whose resources you want to
-#' protect. Firewall Manager sets the permissions that allow the account to
-#' administer your Firewall Manager policies.
+#' Sets a Firewall Manager default administrator account. The Firewall
+#' Manager default administrator account can manage third-party firewalls
+#' and has full administrative scope that allows administration of all
+#' policy types, accounts, organizational units, and Regions. This account
+#' must be a member account of the organization in Organizations whose
+#' resources you want to protect.
 #' 
-#' The account that you associate with Firewall Manager is called the
-#' Firewall Manager administrator account.
+#' For information about working with Firewall Manager administrator
+#' accounts, see [Managing Firewall Manager
+#' administrators](https://docs.aws.amazon.com/organizations/latest/userguide/)
+#' in the *Firewall Manager Developer Guide*.
 #'
 #' @usage
 #' fms_associate_admin_account(AdminAccount)
 #'
 #' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to associate with Firewall Manager as
-#' the Firewall Manager administrator account. This must be an
-#' Organizations member account. For more information about Organizations,
-#' see [Managing the Amazon Web Services Accounts in Your
+#' the Firewall Manager default administrator account. This account must be
+#' a member account of the organization in Organizations whose resources
+#' you want to protect. For more information about Organizations, see
+#' [Managing the Amazon Web Services Accounts in Your
 #' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
 #'
 #' @return
@@ -80,7 +85,7 @@ fms_associate_admin_account <- function(AdminAccount) {
 #' @section Request syntax:
 #' ```
 #' svc$associate_third_party_firewall(
-#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"
+#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"|"FORTIGATE_CLOUD_NATIVE_FIREWALL"
 #' )
 #' ```
 #'
@@ -105,6 +110,126 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
   return(response)
 }
 .fms$operations$associate_third_party_firewall <- fms_associate_third_party_firewall
+
+#' Associate resources to a Firewall Manager resource set
+#'
+#' @description
+#' Associate resources to a Firewall Manager resource set.
+#'
+#' @usage
+#' fms_batch_associate_resource(ResourceSetIdentifier, Items)
+#'
+#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#' @param Items &#91;required&#93; The uniform resource identifiers (URIs) of resources that should be
+#' associated to the resource set. The URIs must be Amazon Resource Names
+#' (ARNs).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceSetIdentifier = "string",
+#'   FailedItems = list(
+#'     list(
+#'       URI = "string",
+#'       Reason = "NOT_VALID_ARN"|"NOT_VALID_PARTITION"|"NOT_VALID_REGION"|"NOT_VALID_SERVICE"|"NOT_VALID_RESOURCE_TYPE"|"NOT_VALID_ACCOUNT_ID"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_associate_resource(
+#'   ResourceSetIdentifier = "string",
+#'   Items = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_batch_associate_resource
+#'
+#' @aliases fms_batch_associate_resource
+fms_batch_associate_resource <- function(ResourceSetIdentifier, Items) {
+  op <- new_operation(
+    name = "BatchAssociateResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$batch_associate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
+  output <- .fms$batch_associate_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$batch_associate_resource <- fms_batch_associate_resource
+
+#' Disassociates resources from a Firewall Manager resource set
+#'
+#' @description
+#' Disassociates resources from a Firewall Manager resource set.
+#'
+#' @usage
+#' fms_batch_disassociate_resource(ResourceSetIdentifier, Items)
+#'
+#' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#' @param Items &#91;required&#93; The uniform resource identifiers (URI) of resources that should be
+#' disassociated from the resource set. The URIs must be Amazon Resource
+#' Names (ARNs).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceSetIdentifier = "string",
+#'   FailedItems = list(
+#'     list(
+#'       URI = "string",
+#'       Reason = "NOT_VALID_ARN"|"NOT_VALID_PARTITION"|"NOT_VALID_REGION"|"NOT_VALID_SERVICE"|"NOT_VALID_RESOURCE_TYPE"|"NOT_VALID_ACCOUNT_ID"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_disassociate_resource(
+#'   ResourceSetIdentifier = "string",
+#'   Items = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_batch_disassociate_resource
+#'
+#' @aliases fms_batch_disassociate_resource
+fms_batch_disassociate_resource <- function(ResourceSetIdentifier, Items) {
+  op <- new_operation(
+    name = "BatchDisassociateResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$batch_disassociate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
+  output <- .fms$batch_disassociate_resource_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$batch_disassociate_resource <- fms_batch_disassociate_resource
 
 #' Permanently deletes an Firewall Manager applications list
 #'
@@ -310,14 +435,62 @@ fms_delete_protocols_list <- function(ListId) {
 }
 .fms$operations$delete_protocols_list <- fms_delete_protocols_list
 
-#' Disassociates the account that has been set as the Firewall Manager
-#' administrator account
+#' Deletes the specified ResourceSet
 #'
 #' @description
-#' Disassociates the account that has been set as the Firewall Manager
-#' administrator account. To set a different account as the administrator
-#' account, you must submit an
+#' Deletes the specified ResourceSet.
+#'
+#' @usage
+#' fms_delete_resource_set(Identifier)
+#'
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_set(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_delete_resource_set
+#'
+#' @aliases fms_delete_resource_set
+fms_delete_resource_set <- function(Identifier) {
+  op <- new_operation(
+    name = "DeleteResourceSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$delete_resource_set_input(Identifier = Identifier)
+  output <- .fms$delete_resource_set_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$delete_resource_set <- fms_delete_resource_set
+
+#' Disassociates an Firewall Manager administrator account
+#'
+#' @description
+#' Disassociates an Firewall Manager administrator account. To set a
+#' different account as an Firewall Manager administrator, submit a
+#' [`put_admin_account`][fms_put_admin_account] request. To set an account
+#' as a default administrator account, you must submit an
 #' [`associate_admin_account`][fms_associate_admin_account] request.
+#' 
+#' Disassociation of the default administrator account follows the first
+#' in, last out principle. If you are the default administrator, all
+#' Firewall Manager administrators within the organization must first
+#' disassociate their accounts before you can disassociate your account.
 #'
 #' @usage
 #' fms_disassociate_admin_account()
@@ -378,7 +551,7 @@ fms_disassociate_admin_account <- function() {
 #' @section Request syntax:
 #' ```
 #' svc$disassociate_third_party_firewall(
-#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"
+#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"|"FORTIGATE_CLOUD_NATIVE_FIREWALL"
 #' )
 #' ```
 #'
@@ -405,11 +578,11 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
 .fms$operations$disassociate_third_party_firewall <- fms_disassociate_third_party_firewall
 
 #' Returns the Organizations account that is associated with Firewall
-#' Manager as the Firewall Manager administrator
+#' Manager as the Firewall Manager default administrator
 #'
 #' @description
 #' Returns the Organizations account that is associated with Firewall
-#' Manager as the Firewall Manager administrator.
+#' Manager as the Firewall Manager default administrator.
 #'
 #' @usage
 #' fms_get_admin_account()
@@ -449,6 +622,83 @@ fms_get_admin_account <- function() {
   return(response)
 }
 .fms$operations$get_admin_account <- fms_get_admin_account
+
+#' Returns information about the specified account's administrative scope
+#'
+#' @description
+#' Returns information about the specified account's administrative scope.
+#' The admistrative scope defines the resources that an Firewall Manager
+#' administrator can manage.
+#'
+#' @usage
+#' fms_get_admin_scope(AdminAccount)
+#'
+#' @param AdminAccount &#91;required&#93; The administator account that you want to get the details for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdminScope = list(
+#'     AccountScope = list(
+#'       Accounts = list(
+#'         "string"
+#'       ),
+#'       AllAccountsEnabled = TRUE|FALSE,
+#'       ExcludeSpecifiedAccounts = TRUE|FALSE
+#'     ),
+#'     OrganizationalUnitScope = list(
+#'       OrganizationalUnits = list(
+#'         "string"
+#'       ),
+#'       AllOrganizationalUnitsEnabled = TRUE|FALSE,
+#'       ExcludeSpecifiedOrganizationalUnits = TRUE|FALSE
+#'     ),
+#'     RegionScope = list(
+#'       Regions = list(
+#'         "string"
+#'       ),
+#'       AllRegionsEnabled = TRUE|FALSE
+#'     ),
+#'     PolicyTypeScope = list(
+#'       PolicyTypes = list(
+#'         "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"
+#'       ),
+#'       AllPolicyTypesEnabled = TRUE|FALSE
+#'     )
+#'   ),
+#'   Status = "ONBOARDING"|"ONBOARDING_COMPLETE"|"OFFBOARDING"|"OFFBOARDING_COMPLETE"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_admin_scope(
+#'   AdminAccount = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_admin_scope
+#'
+#' @aliases fms_get_admin_scope
+fms_get_admin_scope <- function(AdminAccount) {
+  op <- new_operation(
+    name = "GetAdminScope",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_admin_scope_input(AdminAccount = AdminAccount)
+  output <- .fms$get_admin_scope_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_admin_scope <- fms_get_admin_scope
 
 #' Returns information about the specified Firewall Manager applications
 #' list
@@ -689,7 +939,7 @@ fms_get_notification_channel <- function() {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
 #'       ManagedServiceData = "string",
 #'       PolicyOption = list(
 #'         NetworkFirewallPolicy = list(
@@ -722,7 +972,12 @@ fms_get_notification_channel <- function() {
 #'       list(
 #'         "string"
 #'       )
-#'     )
+#'     ),
+#'     ResourceSetIds = list(
+#'       "string"
+#'     ),
+#'     PolicyDescription = "string",
+#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
 #'   ),
 #'   PolicyArn = "string"
 #' )
@@ -797,7 +1052,7 @@ fms_get_policy <- function(PolicyId) {
 #' ```
 #' list(
 #'   AdminAccountId = "string",
-#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL",
+#'   ServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
 #'   Data = "string",
 #'   NextToken = "string"
 #' )
@@ -911,6 +1166,67 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 }
 .fms$operations$get_protocols_list <- fms_get_protocols_list
 
+#' Gets information about a specific resource set
+#'
+#' @description
+#' Gets information about a specific resource set.
+#'
+#' @usage
+#' fms_get_resource_set(Identifier)
+#'
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceSet = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     UpdateToken = "string",
+#'     ResourceTypeList = list(
+#'       "string"
+#'     ),
+#'     LastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResourceSetStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'   ),
+#'   ResourceSetArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_set(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_resource_set
+#'
+#' @aliases fms_get_resource_set
+fms_get_resource_set <- function(Identifier) {
+  op <- new_operation(
+    name = "GetResourceSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_resource_set_input(Identifier = Identifier)
+  output <- .fms$get_resource_set_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_resource_set <- fms_get_resource_set
+
 #' The onboarding status of a Firewall Manager admin account to third-party
 #' firewall vendor tenant
 #'
@@ -935,7 +1251,7 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$get_third_party_firewall_association_status(
-#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"
+#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"|"FORTIGATE_CLOUD_NATIVE_FIREWALL"
 #' )
 #' ```
 #'
@@ -1080,7 +1396,10 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'               list(
 #'                 RuleGroupName = "string",
 #'                 ResourceId = "string",
-#'                 Priority = 123
+#'                 Priority = 123,
+#'                 Override = list(
+#'                   Action = "DROP_TO_ALERT"
+#'                 )
 #'               )
 #'             ),
 #'             StatefulDefaultActions = list(
@@ -1111,7 +1430,10 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'               list(
 #'                 RuleGroupName = "string",
 #'                 ResourceId = "string",
-#'                 Priority = 123
+#'                 Priority = 123,
+#'                 Override = list(
+#'                   Action = "DROP_TO_ALERT"
+#'                 )
 #'               )
 #'             ),
 #'             StatefulDefaultActions = list(
@@ -1546,6 +1868,140 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
 }
 .fms$operations$get_violation_details <- fms_get_violation_details
 
+#' Returns a AdminAccounts object that lists the Firewall Manager
+#' administrators within the organization that are onboarded to Firewall
+#' Manager by AssociateAdminAccount
+#'
+#' @description
+#' Returns a `AdminAccounts` object that lists the Firewall Manager
+#' administrators within the organization that are onboarded to Firewall
+#' Manager by [`associate_admin_account`][fms_associate_admin_account].
+#' 
+#' This operation can be called only from the organization's management
+#' account.
+#'
+#' @usage
+#' fms_list_admin_accounts_for_organization(NextToken, MaxResults)
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdminAccounts = list(
+#'     list(
+#'       AdminAccount = "string",
+#'       DefaultAdmin = TRUE|FALSE,
+#'       Status = "ONBOARDING"|"ONBOARDING_COMPLETE"|"OFFBOARDING"|"OFFBOARDING_COMPLETE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_admin_accounts_for_organization(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_admin_accounts_for_organization
+#'
+#' @aliases fms_list_admin_accounts_for_organization
+fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAdminAccountsForOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_admin_accounts_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_admin_accounts_for_organization_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_admin_accounts_for_organization <- fms_list_admin_accounts_for_organization
+
+#' Lists the accounts that are managing the specified Organizations member
+#' account
+#'
+#' @description
+#' Lists the accounts that are managing the specified Organizations member
+#' account. This is useful for any member account so that they can view the
+#' accounts who are managing their account. This operation only returns the
+#' managing administrators that have the requested account within their
+#' AdminScope.
+#'
+#' @usage
+#' fms_list_admins_managing_account(NextToken, MaxResults)
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   AdminAccounts = list(
+#'     "string"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_admins_managing_account(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_admins_managing_account
+#'
+#' @aliases fms_list_admins_managing_account
+fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAdminsManagingAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_admins_managing_account_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_admins_managing_account_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_admins_managing_account <- fms_list_admins_managing_account
+
 #' Returns an array of AppsListDataSummary objects
 #'
 #' @description
@@ -1707,6 +2163,81 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 }
 .fms$operations$list_compliance_status <- fms_list_compliance_status
 
+#' Returns an array of resources in the organization's accounts that are
+#' available to be associated with a resource set
+#'
+#' @description
+#' Returns an array of resources in the organization's accounts that are
+#' available to be associated with a resource set.
+#'
+#' @usage
+#' fms_list_discovered_resources(MemberAccountIds, ResourceType,
+#'   MaxResults, NextToken)
+#'
+#' @param MemberAccountIds &#91;required&#93; The Amazon Web Services account IDs to discover resources in. Only one
+#' account is supported per request. The account must be a member of your
+#' organization.
+#' @param ResourceType &#91;required&#93; The type of resources to discover.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       URI = "string",
+#'       AccountId = "string",
+#'       Type = "string",
+#'       Name = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_discovered_resources(
+#'   MemberAccountIds = list(
+#'     "string"
+#'   ),
+#'   ResourceType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_discovered_resources
+#'
+#' @aliases fms_list_discovered_resources
+fms_list_discovered_resources <- function(MemberAccountIds, ResourceType, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDiscoveredResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_discovered_resources_input(MemberAccountIds = MemberAccountIds, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fms$list_discovered_resources_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_discovered_resources <- fms_list_discovered_resources
+
 #' Returns a MemberAccounts object that lists the member accounts in the
 #' administrator's Amazon Web Services organization
 #'
@@ -1714,8 +2245,8 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #' Returns a `MemberAccounts` object that lists the member accounts in the
 #' administrator's Amazon Web Services organization.
 #' 
-#' The [`list_member_accounts`][fms_list_member_accounts] must be submitted
-#' by the account that is set as the Firewall Manager administrator.
+#' Either an Firewall Manager administrator or the organization's
+#' management account can make this request.
 #'
 #' @usage
 #' fms_list_member_accounts(NextToken, MaxResults)
@@ -1805,9 +2336,10 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #'       PolicyId = "string",
 #'       PolicyName = "string",
 #'       ResourceType = "string",
-#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL",
+#'       SecurityServiceType = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
 #'       RemediationEnabled = TRUE|FALSE,
-#'       DeleteUnusedFMManagedResources = TRUE|FALSE
+#'       DeleteUnusedFMManagedResources = TRUE|FALSE,
+#'       PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1916,6 +2448,140 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 }
 .fms$operations$list_protocols_lists <- fms_list_protocols_lists
 
+#' Returns an array of resources that are currently associated to a
+#' resource set
+#'
+#' @description
+#' Returns an array of resources that are currently associated to a
+#' resource set.
+#'
+#' @usage
+#' fms_list_resource_set_resources(Identifier, MaxResults, NextToken)
+#'
+#' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
+#' the resource set.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Items = list(
+#'     list(
+#'       URI = "string",
+#'       AccountId = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_set_resources(
+#'   Identifier = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_resource_set_resources
+#'
+#' @aliases fms_list_resource_set_resources
+fms_list_resource_set_resources <- function(Identifier, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceSetResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_resource_set_resources_input(Identifier = Identifier, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .fms$list_resource_set_resources_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_resource_set_resources <- fms_list_resource_set_resources
+
+#' Returns an array of ResourceSetSummary objects
+#'
+#' @description
+#' Returns an array of `ResourceSetSummary` objects.
+#'
+#' @usage
+#' fms_list_resource_sets(NextToken, MaxResults)
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Firewall Manager returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Firewall Manager to return
+#' for this request. If more objects are available, in the response,
+#' Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceSets = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       LastUpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceSetStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resource_sets(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_resource_sets
+#'
+#' @aliases fms_list_resource_sets
+fms_list_resource_sets <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourceSets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_resource_sets_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_resource_sets_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_resource_sets <- fms_list_resource_sets
+
 #' Retrieves the list of tags for the specified Amazon Web Services
 #' resource
 #'
@@ -2016,7 +2682,7 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$list_third_party_firewall_firewall_policies(
-#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW",
+#'   ThirdPartyFirewall = "PALO_ALTO_NETWORKS_CLOUD_NGFW"|"FORTIGATE_CLOUD_NATIVE_FIREWALL",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -2043,6 +2709,99 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
   return(response)
 }
 .fms$operations$list_third_party_firewall_firewall_policies <- fms_list_third_party_firewall_firewall_policies
+
+#' Creates or updates an Firewall Manager administrator account
+#'
+#' @description
+#' Creates or updates an Firewall Manager administrator account. The
+#' account must be a member of the organization that was onboarded to
+#' Firewall Manager by
+#' [`associate_admin_account`][fms_associate_admin_account]. Only the
+#' organization's management account can create an Firewall Manager
+#' administrator account. When you create an Firewall Manager administrator
+#' account, the service checks to see if the account is already a delegated
+#' administrator within Organizations. If the account isn't a delegated
+#' administrator, Firewall Manager calls Organizations to delegate the
+#' account within Organizations. For more information about administrator
+#' accounts within Organizations, see [Managing the Amazon Web Services
+#' Accounts in Your
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#'
+#' @usage
+#' fms_put_admin_account(AdminAccount, AdminScope)
+#'
+#' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to add as an Firewall Manager
+#' administrator account. The account must be a member of the organization
+#' that was onboarded to Firewall Manager by
+#' [`associate_admin_account`][fms_associate_admin_account]. For more
+#' information about Organizations, see [Managing the Amazon Web Services
+#' Accounts in Your
+#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
+#' @param AdminScope Configures the resources that the specified Firewall Manager
+#' administrator can manage. As a best practice, set the administrative
+#' scope according to the principles of least privilege. Only grant the
+#' administrator the specific resources or permissions that they need to
+#' perform the duties of their role.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_admin_account(
+#'   AdminAccount = "string",
+#'   AdminScope = list(
+#'     AccountScope = list(
+#'       Accounts = list(
+#'         "string"
+#'       ),
+#'       AllAccountsEnabled = TRUE|FALSE,
+#'       ExcludeSpecifiedAccounts = TRUE|FALSE
+#'     ),
+#'     OrganizationalUnitScope = list(
+#'       OrganizationalUnits = list(
+#'         "string"
+#'       ),
+#'       AllOrganizationalUnitsEnabled = TRUE|FALSE,
+#'       ExcludeSpecifiedOrganizationalUnits = TRUE|FALSE
+#'     ),
+#'     RegionScope = list(
+#'       Regions = list(
+#'         "string"
+#'       ),
+#'       AllRegionsEnabled = TRUE|FALSE
+#'     ),
+#'     PolicyTypeScope = list(
+#'       PolicyTypes = list(
+#'         "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL"
+#'       ),
+#'       AllPolicyTypesEnabled = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_put_admin_account
+#'
+#' @aliases fms_put_admin_account
+fms_put_admin_account <- function(AdminAccount, AdminScope = NULL) {
+  op <- new_operation(
+    name = "PutAdminAccount",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$put_admin_account_input(AdminAccount = AdminAccount, AdminScope = AdminScope)
+  output <- .fms$put_admin_account_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$put_admin_account <- fms_put_admin_account
 
 #' Creates an Firewall Manager applications list
 #'
@@ -2158,12 +2917,15 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
 #' topic that Firewall Manager uses to record SNS logs.
 #' 
-#' To perform this action outside of the console, you must configure the
-#' SNS topic to allow the Firewall Manager role `AWSServiceRoleForFMS` to
-#' publish SNS logs. For more information, see [Firewall Manager required
-#' permissions for API
-#' actions](https://docs.aws.amazon.com/waf/latest/developerguide/) in the
-#' *Firewall Manager Developer Guide*.
+#' To perform this action outside of the console, you must first configure
+#' the SNS topic's access policy to allow the `SnsRoleName` to publish SNS
+#' logs. If the `SnsRoleName` provided is a role other than the
+#' `AWSServiceRoleForFMS` service-linked role, this role must have a trust
+#' relationship configured to allow the Firewall Manager service principal
+#' `fms.amazonaws.com` to assume this role. For information about
+#' configuring an SNS access policy, see [Service roles for Firewall
+#' Manager](https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service)
+#' in the *Firewall Manager Developer Guide*.
 #'
 #' @usage
 #' fms_put_notification_channel(SnsTopicArn, SnsRoleName)
@@ -2254,7 +3016,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
 #'       ManagedServiceData = "string",
 #'       PolicyOption = list(
 #'         NetworkFirewallPolicy = list(
@@ -2287,7 +3049,12 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'       list(
 #'         "string"
 #'       )
-#'     )
+#'     ),
+#'     ResourceSetIds = list(
+#'       "string"
+#'     ),
+#'     PolicyDescription = "string",
+#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
 #'   ),
 #'   PolicyArn = "string"
 #' )
@@ -2301,7 +3068,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL"|"DNS_FIREWALL"|"THIRD_PARTY_FIREWALL"|"IMPORT_NETWORK_FIREWALL",
 #'       ManagedServiceData = "string",
 #'       PolicyOption = list(
 #'         NetworkFirewallPolicy = list(
@@ -2334,7 +3101,12 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'       list(
 #'         "string"
 #'       )
-#'     )
+#'     ),
+#'     ResourceSetIds = list(
+#'       "string"
+#'     ),
+#'     PolicyDescription = "string",
+#'     PolicyStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
 #'   ),
 #'   TagList = list(
 #'     list(
@@ -2457,6 +3229,93 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
   return(response)
 }
 .fms$operations$put_protocols_list <- fms_put_protocols_list
+
+#' Creates the resource set
+#'
+#' @description
+#' Creates the resource set.
+#' 
+#' An Firewall Manager resource set defines the resources to import into an
+#' Firewall Manager policy from another Amazon Web Services service.
+#'
+#' @usage
+#' fms_put_resource_set(ResourceSet, TagList)
+#'
+#' @param ResourceSet &#91;required&#93; Details about the resource set to be created or updated.\>
+#' @param TagList Retrieves the tags associated with the specified resource set. Tags are
+#' key:value pairs that you can use to categorize and manage your
+#' resources, for purposes like billing. For example, you might set the tag
+#' key to "customer" and the value to the customer name or ID. You can
+#' specify one or more tags to add to each Amazon Web Services resource, up
+#' to 50 tags for a resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceSet = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     UpdateToken = "string",
+#'     ResourceTypeList = list(
+#'       "string"
+#'     ),
+#'     LastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResourceSetStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'   ),
+#'   ResourceSetArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_set(
+#'   ResourceSet = list(
+#'     Id = "string",
+#'     Name = "string",
+#'     Description = "string",
+#'     UpdateToken = "string",
+#'     ResourceTypeList = list(
+#'       "string"
+#'     ),
+#'     LastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResourceSetStatus = "ACTIVE"|"OUT_OF_ADMIN_SCOPE"
+#'   ),
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_put_resource_set
+#'
+#' @aliases fms_put_resource_set
+fms_put_resource_set <- function(ResourceSet, TagList = NULL) {
+  op <- new_operation(
+    name = "PutResourceSet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$put_resource_set_input(ResourceSet = ResourceSet, TagList = TagList)
+  output <- .fms$put_resource_set_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$put_resource_set <- fms_put_resource_set
 
 #' Adds one or more tags to an Amazon Web Services resource
 #'

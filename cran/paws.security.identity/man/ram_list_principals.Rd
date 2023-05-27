@@ -25,7 +25,7 @@ your account
 }}
 
 \item{resourceArn}{Specifies that you want to list principal information for the resource
-share with the specified \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}.}
+share with the specified \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}.}
 
 \item{principals}{Specifies that you want to list information for only the listed
 principals.
@@ -33,7 +33,7 @@ principals.
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an organization in Organizations, for example:
 \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example:
@@ -55,7 +55,7 @@ For a list of valid values, query the
 \code{\link[=ram_list_resource_types]{list_resource_types}} operation.}
 
 \item{resourceShareArns}{Specifies that you want to list information for only principals
-associated with the resource shares specified by a list the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+associated with the resource shares specified by a list the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only
 if you received a \code{NextToken} response in the previous request. If you

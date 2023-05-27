@@ -75,7 +75,7 @@ NULL
 
 .sns$create_topic_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DataProtectionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -125,6 +125,18 @@ NULL
 
 .sns$delete_topic_output <- function(...) {
   list()
+}
+
+.sns$get_data_protection_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sns$get_data_protection_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DataProtectionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", resultWrapper = "GetDataProtectionPolicyResult"))
+  return(populate(args, shape))
 }
 
 .sns$get_endpoint_attributes_input <- function(...) {
@@ -341,6 +353,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Successful = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string")), SequenceNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Failed = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), Code = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), SenderFault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "PublishBatchResult"))
   return(populate(args, shape))
+}
+
+.sns$put_data_protection_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), DataProtectionPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sns$put_data_protection_policy_output <- function(...) {
+  list()
 }
 
 .sns$remove_permission_input <- function(...) {

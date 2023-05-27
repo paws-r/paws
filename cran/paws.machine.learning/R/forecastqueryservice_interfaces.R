@@ -14,3 +14,15 @@ NULL
   shape <- structure(list(Forecast = structure(list(Predictions = structure(list(structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
+
+.forecastqueryservice$query_what_if_forecast_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastArn = structure(logical(0), tags = list(type = "string")), StartDate = structure(logical(0), tags = list(type = "string")), EndDate = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastqueryservice$query_what_if_forecast_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Forecast = structure(list(Predictions = structure(list(structure(list(structure(list(Timestamp = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}

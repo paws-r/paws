@@ -4,15 +4,15 @@
 \alias{accessanalyzer_delete_archive_rule}
 \title{Deletes the specified archive rule}
 \usage{
-accessanalyzer_delete_archive_rule(analyzerName, clientToken = NULL, ruleName)
+accessanalyzer_delete_archive_rule(analyzerName, ruleName, clientToken = NULL)
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer that associated with the archive rule to
 delete.}
 
-\item{clientToken}{A client token.}
-
 \item{ruleName}{[required] The name of the rule to delete.}
+
+\item{clientToken}{A client token.}
 }
 \description{
 Deletes the specified archive rule.

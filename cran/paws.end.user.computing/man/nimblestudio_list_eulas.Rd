@@ -2,17 +2,18 @@
 % Please edit documentation in R/nimblestudio_operations.R
 \name{nimblestudio_list_eulas}
 \alias{nimblestudio_list_eulas}
-\title{List Eulas}
+\title{List EULAs}
 \usage{
 nimblestudio_list_eulas(eulaIds = NULL, nextToken = NULL)
 }
 \arguments{
 \item{eulaIds}{The list of EULA IDs that should be returned}
 
-\item{nextToken}{The token to request the next page of results.}
+\item{nextToken}{The token for the next set of results, or null if there are no more
+results.}
 }
 \description{
-List Eulas.
+List EULAs.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/list_eulas.html} for full documentation.
 }

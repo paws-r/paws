@@ -28,11 +28,11 @@ is the key ARN, key ID, alias ARN, or alias name for the KMS key.}
 soon as possible, regardless of the maintenance window for the database.}
 
 \item{EngineNativeAuditFieldsIncluded}{Specifies whether the database activity stream includes engine-native
-audit fields. This option only applies to an Oracle DB instance. By
-default, no engine-native audit fields are included.}
+audit fields. This option applies to an Oracle or Microsoft SQL Server
+DB instance. By default, no engine-native audit fields are included.}
 }
 \description{
-Starts a database activity stream to monitor activity on the database. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html}{Database Activity Streams} in the \emph{Amazon Aurora User Guide}.
+Starts a database activity stream to monitor activity on the database. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html}{Monitoring Amazon Aurora with Database Activity Streams} in the \emph{Amazon Aurora User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html}{Monitoring Amazon RDS with Database Activity Streams} in the \emph{Amazon RDS User Guide}.
 
 See \url{https://paws-r.github.io/docs/rds/start_activity_stream.html} for full documentation.
 }

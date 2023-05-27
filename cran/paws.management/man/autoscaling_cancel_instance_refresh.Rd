@@ -2,7 +2,7 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_cancel_instance_refresh}
 \alias{autoscaling_cancel_instance_refresh}
-\title{Cancels an instance refresh operation in progress}
+\title{Cancels an instance refresh or rollback that is in progress}
 \usage{
 autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 }
@@ -10,7 +10,7 @@ autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \description{
-Cancels an instance refresh operation in progress. Cancellation does not roll back any replacements that have already been completed, but it prevents new replacements from being started.
+Cancels an instance refresh or rollback that is in progress. If an instance refresh or rollback is not in progress, an \code{ActiveInstanceRefreshNotFound} error occurs.
 
 See \url{https://paws-r.github.io/docs/autoscaling/cancel_instance_refresh.html} for full documentation.
 }

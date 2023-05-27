@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_update_lens_review}
 \alias{wellarchitected_update_lens_review}
-\title{Update lens review}
+\title{Update lens review for a particular workload}
 \usage{
 wellarchitected_update_lens_review(
   WorkloadId,
@@ -21,7 +21,7 @@ wellarchitected_update_lens_review(
 \item{PillarNotes}{}
 }
 \description{
-Update lens review.
+Update lens review for a particular workload.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/update_lens_review.html} for full documentation.
 }

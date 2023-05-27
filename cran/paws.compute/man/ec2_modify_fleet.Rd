@@ -21,7 +21,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ExcessCapacityTerminationPolicy}{Indicates whether running instances should be terminated if the total
 target capacity of the EC2 Fleet is decreased below the current size of
-the EC2 Fleet.}
+the EC2 Fleet.
+
+Supported only for fleets of type \code{maintain}.}
 
 \item{LaunchTemplateConfigs}{The launch template and overrides.}
 

@@ -6,7 +6,7 @@
 \usage{
 ec2_modify_private_dns_name_options(
   DryRun = NULL,
-  InstanceId = NULL,
+  InstanceId,
   PrivateDnsHostnameType = NULL,
   EnableResourceNameDnsARecord = NULL,
   EnableResourceNameDnsAAAARecord = NULL
@@ -18,7 +18,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InstanceId}{The ID of the instance.}
+\item{InstanceId}{[required] The ID of the instance.}
 
 \item{PrivateDnsHostnameType}{The type of hostname for EC2 instances. For IPv4 only subnets, an
 instance DNS name must be based on the instance IPv4 address. For IPv6

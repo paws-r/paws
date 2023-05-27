@@ -25,7 +25,10 @@ value of NextToken from the previous response to continue listing data.}
 
 \item{OnlyAssociated}{Specifies whether to only return associated members or to return all
 members (including members who haven't been invited yet or have been
-disassociated).}
+disassociated). Member accounts must have been previously associated
+with the GuardDuty administrator account using
+\href{https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html}{\verb{Create Members}}
+.}
 }
 \description{
 Lists details about all member accounts for the current GuardDuty administrator account.

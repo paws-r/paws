@@ -92,6 +92,7 @@ NULL
 #'  \link[=cloudwatch_get_metric_stream]{get_metric_stream} \tab Returns information about the metric stream that you specify\cr
 #'  \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image\cr
 #'  \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account\cr
+#'  \link[=cloudwatch_list_managed_insight_rules]{list_managed_insight_rules} \tab Returns a list that contains the number of managed Contributor Insights rules in your account\cr
 #'  \link[=cloudwatch_list_metrics]{list_metrics} \tab List the specified metrics\cr
 #'  \link[=cloudwatch_list_metric_streams]{list_metric_streams} \tab Returns a list of metric streams in this account\cr
 #'  \link[=cloudwatch_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a CloudWatch resource\cr
@@ -99,7 +100,8 @@ NULL
 #'  \link[=cloudwatch_put_composite_alarm]{put_composite_alarm} \tab Creates or updates a composite alarm\cr
 #'  \link[=cloudwatch_put_dashboard]{put_dashboard} \tab Creates a dashboard if it does not already exist, or updates an existing dashboard\cr
 #'  \link[=cloudwatch_put_insight_rule]{put_insight_rule} \tab Creates a Contributor Insights rule\cr
-#'  \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model\cr
+#'  \link[=cloudwatch_put_managed_insight_rules]{put_managed_insight_rules} \tab Creates a managed Contributor Insights rule for a specified Amazon Web Services resource\cr
+#'  \link[=cloudwatch_put_metric_alarm]{put_metric_alarm} \tab Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query\cr
 #'  \link[=cloudwatch_put_metric_data]{put_metric_data} \tab Publishes metric data points to Amazon CloudWatch\cr
 #'  \link[=cloudwatch_put_metric_stream]{put_metric_stream} \tab Creates or updates a metric stream\cr
 #'  \link[=cloudwatch_set_alarm_state]{set_alarm_state} \tab Temporarily sets the state of an alarm for testing purposes\cr

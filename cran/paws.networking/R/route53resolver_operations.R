@@ -343,18 +343,21 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #' endpoints). The subnet ID uniquely identifies a VPC.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
+#' @param ResolverEndpointType For the endpoint type you can choose either IPv4, IPv6. or dual-stack. A
+#' dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
+#' This endpoint type is applied to all IP addresses.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_create_resolver_endpoint
-route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL) {
+route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL, ResolverEndpointType = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags)
+  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags, ResolverEndpointType = ResolverEndpointType)
   output <- .route53resolver$create_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -935,11 +938,11 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
 }
 .route53resolver$operations$get_firewall_rule_group_policy <- route53resolver_get_firewall_rule_group_policy
 
-#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
+#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud
 #'
 #' @description
-#' Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
+#' Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 #'
 #' See [https://paws-r.github.io/docs/route53resolver/get_resolver_config.html](https://paws-r.github.io/docs/route53resolver/get_resolver_config.html) for full documentation.
 #'
@@ -1541,7 +1544,7 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
 #' Retrieves the Resolver configurations that you have defined
 #'
 #' @description
-#' Retrieves the Resolver configurations that you have defined. Route 53 Resolver uses the configurations to manage DNS resolution behavior for your VPCs.
+#' Retrieves the Resolver configurations that you have defined. Route 53 Resolver uses the configurations to manage DNS resolution behavior for your VPCs.
 #'
 #' See [https://paws-r.github.io/docs/route53resolver/list_resolver_configs.html](https://paws-r.github.io/docs/route53resolver/list_resolver_configs.html) for full documentation.
 #'
@@ -2364,6 +2367,8 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
 #'     you are providing.
 #' @param Domains &#91;required&#93; A list of domains to use in the update operation.
 #' 
+#' There is a limit of 1000 domains per request.
+#' 
 #' Each domain specification in your domain list must satisfy the following
 #' requirements:
 #' 
@@ -2506,11 +2511,11 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 }
 .route53resolver$operations$update_firewall_rule_group_association <- route53resolver_update_firewall_rule_group_association
 
-#' Updates the behavior configuration of Route 53 Resolver behavior for a
+#' Updates the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud
 #'
 #' @description
-#' Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
+#' Updates the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 #'
 #' See [https://paws-r.github.io/docs/route53resolver/update_resolver_config.html](https://paws-r.github.io/docs/route53resolver/update_resolver_config.html) for full documentation.
 #'
@@ -2522,6 +2527,14 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #' information, see
 #' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 #' in the *Amazon EC2 guide*.
+#' 
+#' We are retiring EC2-Classic on August 15, 2022. We recommend that you
+#' migrate from EC2-Classic to a VPC. For more information, see [Migrate
+#' from EC2-Classic to a
+#' VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html)
+#' in the *Amazon EC2 guide* and the blog [EC2-Classic Networking is
+#' Retiring – Here’s How to
+#' Prepare](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).
 #' 
 #' It can take some time for the status change to be completed.
 #'
@@ -2578,27 +2591,31 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 }
 .route53resolver$operations$update_resolver_dnssec_config <- route53resolver_update_resolver_dnssec_config
 
-#' Updates the name of an inbound or an outbound Resolver endpoint
+#' Updates the name, or enpoint type for an inbound or an outbound Resolver
+#' endpoint
 #'
 #' @description
-#' Updates the name of an inbound or an outbound Resolver endpoint.
+#' Updates the name, or enpoint type for an inbound or an outbound Resolver endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint type can't be updated to other type.
 #'
 #' See [https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html](https://paws-r.github.io/docs/route53resolver/update_resolver_endpoint.html) for full documentation.
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
 #' @param Name The name of the Resolver endpoint that you want to update.
+#' @param ResolverEndpointType Specifies the endpoint type for what type of IP address the endpoint
+#' uses to forward DNS queries.
+#' @param UpdateIpAddresses Updates the Resolver endpoint type to IpV4, Ipv6, or dual-stack.
 #'
 #' @keywords internal
 #'
 #' @rdname route53resolver_update_resolver_endpoint
-route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL) {
+route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL) {
   op <- new_operation(
     name = "UpdateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name)
+  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses)
   output <- .route53resolver$update_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)

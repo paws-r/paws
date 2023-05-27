@@ -142,7 +142,8 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'     StatusMessage = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -154,7 +155,8 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
 #'   IpAddress = list(
 #'     IpId = "string",
 #'     SubnetId = "string",
-#'     Ip = "string"
+#'     Ip = "string",
+#'     Ipv6 = "string"
 #'   )
 #' )
 #' ```
@@ -611,7 +613,7 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #'
 #' @usage
 #' route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
-#'   SecurityGroupIds, Direction, IpAddresses, Tags)
+#'   SecurityGroupIds, Direction, IpAddresses, Tags, ResolverEndpointType)
 #'
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
@@ -637,6 +639,9 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #' endpoints). The subnet ID uniquely identifies a VPC.
 #' @param Tags A list of the tag keys and values that you want to associate with the
 #' endpoint.
+#' @param ResolverEndpointType For the endpoint type you can choose either IPv4, IPv6. or dual-stack. A
+#' dual-stack endpoint means that it will resolve via both IPv4 and IPv6.
+#' This endpoint type is applied to all IP addresses.
 #'
 #' @return
 #' A list with the following syntax:
@@ -656,7 +661,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'     StatusMessage = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -673,7 +679,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #'   IpAddresses = list(
 #'     list(
 #'       SubnetId = "string",
-#'       Ip = "string"
+#'       Ip = "string",
+#'       Ipv6 = "string"
 #'     )
 #'   ),
 #'   Tags = list(
@@ -681,7 +688,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #' )
 #' ```
 #'
@@ -690,14 +698,14 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #' @rdname route53resolver_create_resolver_endpoint
 #'
 #' @aliases route53resolver_create_resolver_endpoint
-route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL) {
+route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NULL, SecurityGroupIds, Direction, IpAddresses, Tags = NULL, ResolverEndpointType = NULL) {
   op <- new_operation(
     name = "CreateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags)
+  input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, Tags = Tags, ResolverEndpointType = ResolverEndpointType)
   output <- .route53resolver$create_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -881,7 +889,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #'     TargetIps = list(
 #'       list(
 #'         Ip = "string",
-#'         Port = 123
+#'         Port = 123,
+#'         Ipv6 = "string"
 #'       )
 #'     ),
 #'     ResolverEndpointId = "string",
@@ -903,7 +912,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
 #'   TargetIps = list(
 #'     list(
 #'       Ip = "string",
-#'       Port = 123
+#'       Port = 123,
+#'       Ipv6 = "string"
 #'     )
 #'   ),
 #'   ResolverEndpointId = "string",
@@ -1155,7 +1165,8 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'     StatusMessage = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -1294,7 +1305,8 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
 #'     TargetIps = list(
 #'       list(
 #'         Ip = "string",
-#'         Port = 123
+#'         Port = 123,
+#'         Ipv6 = "string"
 #'       )
 #'     ),
 #'     ResolverEndpointId = "string",
@@ -1436,7 +1448,8 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'     StatusMessage = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -1448,7 +1461,8 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
 #'   IpAddress = list(
 #'     IpId = "string",
 #'     SubnetId = "string",
-#'     Ip = "string"
+#'     Ip = "string",
+#'     Ipv6 = "string"
 #'   )
 #' )
 #' ```
@@ -1630,7 +1644,7 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
 #'     Id = "string",
 #'     ResourceId = "string",
 #'     OwnerId = "string",
-#'     FirewallFailOpen = "ENABLED"|"DISABLED"
+#'     FirewallFailOpen = "ENABLED"|"DISABLED"|"USE_LOCAL_RESOURCE_SETTING"
 #'   )
 #' )
 #' ```
@@ -1897,11 +1911,11 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
 }
 .route53resolver$operations$get_firewall_rule_group_policy <- route53resolver_get_firewall_rule_group_policy
 
-#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
+#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud
 #'
 #' @description
-#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
+#' Retrieves the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud.
 #'
 #' @usage
@@ -1917,7 +1931,7 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
 #'     Id = "string",
 #'     ResourceId = "string",
 #'     OwnerId = "string",
-#'     AutodefinedReverse = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     AutodefinedReverse = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"|"USE_LOCAL_RESOURCE_SETTING"
 #'   )
 #' )
 #' ```
@@ -1970,7 +1984,7 @@ route53resolver_get_resolver_config <- function(ResourceId) {
 #'     Id = "string",
 #'     OwnerId = "string",
 #'     ResourceId = "string",
-#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"|"USE_LOCAL_RESOURCE_SETTING"
 #'   )
 #' )
 #' ```
@@ -2036,7 +2050,8 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'     StatusMessage = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -2274,7 +2289,8 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
 #'     TargetIps = list(
 #'       list(
 #'         Ip = "string",
-#'         Port = 123
+#'         Port = 123,
+#'         Ipv6 = "string"
 #'       )
 #'     ),
 #'     ResolverEndpointId = "string",
@@ -2537,7 +2553,7 @@ route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operat
 #'       Id = "string",
 #'       ResourceId = "string",
 #'       OwnerId = "string",
-#'       FirewallFailOpen = "ENABLED"|"DISABLED"
+#'       FirewallFailOpen = "ENABLED"|"DISABLED"|"USE_LOCAL_RESOURCE_SETTING"
 #'     )
 #'   )
 #' )
@@ -3005,7 +3021,7 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
 #' Retrieves the Resolver configurations that you have defined
 #'
 #' @description
-#' Retrieves the Resolver configurations that you have defined. Route 53
+#' Retrieves the Resolver configurations that you have defined. Route 53
 #' Resolver uses the configurations to manage DNS resolution behavior for
 #' your VPCs.
 #'
@@ -3039,7 +3055,7 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
 #'       Id = "string",
 #'       ResourceId = "string",
 #'       OwnerId = "string",
-#'       AutodefinedReverse = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'       AutodefinedReverse = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"|"USE_LOCAL_RESOURCE_SETTING"
 #'     )
 #'   )
 #' )
@@ -3113,7 +3129,7 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
 #'       Id = "string",
 #'       OwnerId = "string",
 #'       ResourceId = "string",
-#'       ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'       ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"|"USE_LOCAL_RESOURCE_SETTING"
 #'     )
 #'   )
 #' )
@@ -3193,7 +3209,8 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
 #'       IpId = "string",
 #'       SubnetId = "string",
 #'       Ip = "string",
-#'       Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED",
+#'       Ipv6 = "string",
+#'       Status = "CREATING"|"FAILED_CREATION"|"ATTACHING"|"ATTACHED"|"REMAP_DETACHING"|"REMAP_ATTACHING"|"DETACHING"|"FAILED_RESOURCE_GONE"|"DELETING"|"DELETE_FAILED_FAS_EXPIRED"|"UPDATING",
 #'       StatusMessage = "string",
 #'       CreationTime = "string",
 #'       ModificationTime = "string"
@@ -3286,7 +3303,8 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
 #'       Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'       StatusMessage = "string",
 #'       CreationTime = "string",
-#'       ModificationTime = "string"
+#'       ModificationTime = "string",
+#'       ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'     )
 #'   )
 #' )
@@ -3777,7 +3795,8 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
 #'       TargetIps = list(
 #'         list(
 #'           Ip = "string",
-#'           Port = 123
+#'           Port = 123,
+#'           Ipv6 = "string"
 #'         )
 #'       ),
 #'       ResolverEndpointId = "string",
@@ -4257,7 +4276,7 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #'     Id = "string",
 #'     ResourceId = "string",
 #'     OwnerId = "string",
-#'     FirewallFailOpen = "ENABLED"|"DISABLED"
+#'     FirewallFailOpen = "ENABLED"|"DISABLED"|"USE_LOCAL_RESOURCE_SETTING"
 #'   )
 #' )
 #' ```
@@ -4266,7 +4285,7 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #' ```
 #' svc$update_firewall_config(
 #'   ResourceId = "string",
-#'   FirewallFailOpen = "ENABLED"|"DISABLED"
+#'   FirewallFailOpen = "ENABLED"|"DISABLED"|"USE_LOCAL_RESOURCE_SETTING"
 #' )
 #' ```
 #'
@@ -4314,6 +4333,8 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
 #' -   `REPLACE` - Update the domain list to exactly match the list that
 #'     you are providing.
 #' @param Domains &#91;required&#93; A list of domains to use in the update operation.
+#' 
+#' There is a limit of 1000 domains per request.
 #' 
 #' Each domain specification in your domain list must satisfy the following
 #' requirements:
@@ -4559,11 +4580,11 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 }
 .route53resolver$operations$update_firewall_rule_group_association <- route53resolver_update_firewall_rule_group_association
 
-#' Updates the behavior configuration of Route 53 Resolver behavior for a
+#' Updates the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud
 #'
 #' @description
-#' Updates the behavior configuration of Route 53 Resolver behavior for a
+#' Updates the behavior configuration of Route 53 Resolver behavior for a
 #' single VPC from Amazon Virtual Private Cloud.
 #'
 #' @usage
@@ -4579,6 +4600,14 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 #' in the *Amazon EC2 guide*.
 #' 
+#' We are retiring EC2-Classic on August 15, 2022. We recommend that you
+#' migrate from EC2-Classic to a VPC. For more information, see [Migrate
+#' from EC2-Classic to a
+#' VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html)
+#' in the *Amazon EC2 guide* and the blog [EC2-Classic Networking is
+#' Retiring – Here’s How to
+#' Prepare](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).
+#' 
 #' It can take some time for the status change to be completed.
 #'
 #' @return
@@ -4589,7 +4618,7 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #'     Id = "string",
 #'     ResourceId = "string",
 #'     OwnerId = "string",
-#'     AutodefinedReverse = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     AutodefinedReverse = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"|"USE_LOCAL_RESOURCE_SETTING"
 #'   )
 #' )
 #' ```
@@ -4598,7 +4627,7 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #' ```
 #' svc$update_resolver_config(
 #'   ResourceId = "string",
-#'   AutodefinedReverseFlag = "ENABLE"|"DISABLE"
+#'   AutodefinedReverseFlag = "ENABLE"|"DISABLE"|"USE_LOCAL_RESOURCE_SETTING"
 #' )
 #' ```
 #'
@@ -4647,7 +4676,7 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
 #'     Id = "string",
 #'     OwnerId = "string",
 #'     ResourceId = "string",
-#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"
+#'     ValidationStatus = "ENABLING"|"ENABLED"|"DISABLING"|"DISABLED"|"UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"|"USE_LOCAL_RESOURCE_SETTING"
 #'   )
 #' )
 #' ```
@@ -4656,7 +4685,7 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
 #' ```
 #' svc$update_resolver_dnssec_config(
 #'   ResourceId = "string",
-#'   Validation = "ENABLE"|"DISABLE"
+#'   Validation = "ENABLE"|"DISABLE"|"USE_LOCAL_RESOURCE_SETTING"
 #' )
 #' ```
 #'
@@ -4682,16 +4711,23 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 }
 .route53resolver$operations$update_resolver_dnssec_config <- route53resolver_update_resolver_dnssec_config
 
-#' Updates the name of an inbound or an outbound Resolver endpoint
+#' Updates the name, or enpoint type for an inbound or an outbound Resolver
+#' endpoint
 #'
 #' @description
-#' Updates the name of an inbound or an outbound Resolver endpoint.
+#' Updates the name, or enpoint type for an inbound or an outbound Resolver
+#' endpoint. You can only update between IPV4 and DUALSTACK, IPV6 endpoint
+#' type can't be updated to other type.
 #'
 #' @usage
-#' route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
+#' route53resolver_update_resolver_endpoint(ResolverEndpointId, Name,
+#'   ResolverEndpointType, UpdateIpAddresses)
 #'
 #' @param ResolverEndpointId &#91;required&#93; The ID of the Resolver endpoint that you want to update.
 #' @param Name The name of the Resolver endpoint that you want to update.
+#' @param ResolverEndpointType Specifies the endpoint type for what type of IP address the endpoint
+#' uses to forward DNS queries.
+#' @param UpdateIpAddresses Updates the Resolver endpoint type to IpV4, Ipv6, or dual-stack.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4711,7 +4747,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #'     Status = "CREATING"|"OPERATIONAL"|"UPDATING"|"AUTO_RECOVERING"|"ACTION_NEEDED"|"DELETING",
 #'     StatusMessage = "string",
 #'     CreationTime = "string",
-#'     ModificationTime = "string"
+#'     ModificationTime = "string",
+#'     ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK"
 #'   )
 #' )
 #' ```
@@ -4720,7 +4757,14 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' ```
 #' svc$update_resolver_endpoint(
 #'   ResolverEndpointId = "string",
-#'   Name = "string"
+#'   Name = "string",
+#'   ResolverEndpointType = "IPV6"|"IPV4"|"DUALSTACK",
+#'   UpdateIpAddresses = list(
+#'     list(
+#'       IpId = "string",
+#'       Ipv6 = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4729,14 +4773,14 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' @rdname route53resolver_update_resolver_endpoint
 #'
 #' @aliases route53resolver_update_resolver_endpoint
-route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL) {
+route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = NULL, ResolverEndpointType = NULL, UpdateIpAddresses = NULL) {
   op <- new_operation(
     name = "UpdateResolverEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name)
+  input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses)
   output <- .route53resolver$update_resolver_endpoint_output()
   config <- get_config()
   svc <- .route53resolver$service(config)
@@ -4775,7 +4819,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #'     TargetIps = list(
 #'       list(
 #'         Ip = "string",
-#'         Port = 123
+#'         Port = 123,
+#'         Ipv6 = "string"
 #'       )
 #'     ),
 #'     ResolverEndpointId = "string",
@@ -4796,7 +4841,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
 #'     TargetIps = list(
 #'       list(
 #'         Ip = "string",
-#'         Port = 123
+#'         Port = 123,
+#'         Ipv6 = "string"
 #'       )
 #'     ),
 #'     ResolverEndpointId = "string"

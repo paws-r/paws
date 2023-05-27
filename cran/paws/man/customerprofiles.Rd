@@ -28,20 +28,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Welcome to the Amazon Connect Customer Profiles API Reference. This
-guide provides information about the Amazon Connect Customer Profiles
-API, including supported operations, data types, parameters, and
-schemas.
-
 Amazon Connect Customer Profiles is a unified customer profile for your
 contact center that has pre-built connectors powered by AppFlow that
 make it easy to combine customer information from third party
 applications, such as Salesforce (CRM), ServiceNow (ITSM), and your
 enterprise resource planning (ERP), with contact history from your
-Amazon Connect contact center.
-
-If you're new to Amazon Connect , you might find it helpful to also
-review the \href{https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html}{Amazon Connect Administrator Guide}.
+Amazon Connect contact center. If you're new to Amazon Connect, you
+might find it helpful to review the \href{https://docs.aws.amazon.com/connect/latest/adminguide/}{Amazon Connect Administrator Guide}.
 }
 \section{Service syntax}{
 
@@ -70,7 +63,7 @@ review the \href{https://docs.aws.amazon.com/connect/latest/adminguide/what-is-a
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.customer.engagement:customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Trace Record (CTR) ContactId\cr
+\link[paws.customer.engagement:customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
 \link[paws.customer.engagement:customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
 \link[paws.customer.engagement:customerprofiles_create_integration_workflow]{create_integration_workflow} \tab Creates an integration workflow\cr
 \link[paws.customer.engagement:customerprofiles_create_profile]{create_profile} \tab Creates a standard profile\cr
@@ -103,7 +96,7 @@ review the \href{https://docs.aws.amazon.com/connect/latest/adminguide/what-is-a
 \link[paws.customer.engagement:customerprofiles_put_integration]{put_integration} \tab Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect\cr
 \link[paws.customer.engagement:customerprofiles_put_profile_object]{put_profile_object} \tab Adds additional objects to customer profiles of a given ObjectType\cr
 \link[paws.customer.engagement:customerprofiles_put_profile_object_type]{put_profile_object_type} \tab Defines a ProfileObjectType\cr
-\link[paws.customer.engagement:customerprofiles_search_profiles]{search_profiles} \tab Searches for profiles within a specific domain name using name, phone number, email address, account number, or a custom defined index\cr
+\link[paws.customer.engagement:customerprofiles_search_profiles]{search_profiles} \tab Searches for profiles within a specific domain using one or more predefined search keys (e\cr
 \link[paws.customer.engagement:customerprofiles_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource\cr
 \link[paws.customer.engagement:customerprofiles_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Connect Customer Profiles resource\cr
 \link[paws.customer.engagement:customerprofiles_update_domain]{update_domain} \tab Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key\cr

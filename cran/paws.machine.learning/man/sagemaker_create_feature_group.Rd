@@ -72,11 +72,12 @@ Valid feature \code{FeatureType}s are \code{Integral}, \code{Fractional} and \co
 You can create up to 2,500 \code{FeatureDefinition}s per \code{FeatureGroup}.}
 
 \item{OnlineStoreConfig}{You can turn the \code{OnlineStore} on or off by specifying \code{True} for the
-\code{EnableOnlineStore} flag in \code{OnlineStoreConfig}; the default value is
-\code{False}.
+\code{EnableOnlineStore} flag in \code{OnlineStoreConfig}.
 
 You can also include an Amazon Web Services KMS key ID (\code{KMSKeyId}) for
-at-rest encryption of the \code{OnlineStore}.}
+at-rest encryption of the \code{OnlineStore}.
+
+The default value is \code{False}.}
 
 \item{OfflineStoreConfig}{Use this to configure an \code{OfflineFeatureStore}. This parameter allows
 you to specify:
@@ -91,9 +92,12 @@ we encrypt all data at rest using Amazon Web Services KMS key. By
 defining your \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{bucket-level key}
 for SSE, you can reduce Amazon Web Services KMS requests costs by up
 to 99 percent.
+\item Format for the offline store table. Supported formats are Glue
+(Default) and \href{https://iceberg.apache.org/}{Apache Iceberg}.
 }
 
-To learn more about this parameter, see OfflineStoreConfig.}
+To learn more about this parameter, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html}{OfflineStoreConfig}.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of the IAM execution role used to persist
 data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}

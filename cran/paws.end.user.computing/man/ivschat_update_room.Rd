@@ -6,6 +6,7 @@
 \usage{
 ivschat_update_room(
   identifier,
+  loggingConfigurationIdentifiers = NULL,
   maximumMessageLength = NULL,
   maximumMessageRatePerSecond = NULL,
   messageReviewHandler = NULL,
@@ -14,6 +15,8 @@ ivschat_update_room(
 }
 \arguments{
 \item{identifier}{[required] Identifier of the room to be updated. Currently this must be an ARN.}
+
+\item{loggingConfigurationIdentifiers}{Array of logging-configuration identifiers attached to the room.}
 
 \item{maximumMessageLength}{The maximum number of characters in a single message. Messages are
 expected to be UTF-8 encoded and this limit applies specifically to

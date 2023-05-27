@@ -90,6 +90,9 @@ get the alias name and alias ARN, use
 
 \item{DestinationEncryptionContext}{Specifies that encryption context to use when the reencrypting the data.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 A destination encryption context is valid only when the destination KMS
 key is a symmetric encryption KMS key. The standard ciphertext format
 for asymmetric KMS keys does not include fields for metadata.

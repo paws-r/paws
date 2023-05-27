@@ -28,31 +28,31 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS CodeDeploy is a deployment service that automates application
+CodeDeploy is a deployment service that automates application
 deployments to Amazon EC2 instances, on-premises instances running in
-your own facility, serverless AWS Lambda functions, or applications in
-an Amazon ECS service.
+your own facility, serverless Lambda functions, or applications in an
+Amazon ECS service.
 
 You can deploy a nearly unlimited variety of application content, such
 as an updated Lambda function, updated applications in an Amazon ECS
 service, code, web and configuration files, executables, packages,
-scripts, multimedia files, and so on. AWS CodeDeploy can deploy
-application content stored in Amazon S3 buckets, GitHub repositories, or
-Bitbucket repositories. You do not need to make changes to your existing
-code before you can use AWS CodeDeploy.
+scripts, multimedia files, and so on. CodeDeploy can deploy application
+content stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
+repositories. You do not need to make changes to your existing code
+before you can use CodeDeploy.
 
-AWS CodeDeploy makes it easier for you to rapidly release new features,
+CodeDeploy makes it easier for you to rapidly release new features,
 helps you avoid downtime during application deployment, and handles the
 complexity of updating your applications, without many of the risks
 associated with error-prone manual deployments.
 
-\strong{AWS CodeDeploy Components}
+\strong{CodeDeploy Components}
 
 Use the information in this guide to help you work with the following
-AWS CodeDeploy components:
+CodeDeploy components:
 \itemize{
 \item \strong{Application}: A name that uniquely identifies the application you
-want to deploy. AWS CodeDeploy uses this name, which functions as a
+want to deploy. CodeDeploy uses this name, which functions as a
 container, to ensure the correct combination of revision, deployment
 configuration, and deployment group are referenced during a
 deployment.
@@ -62,17 +62,18 @@ and network details. A Lambda deployment group specifies how to
 route traffic to a new version of a Lambda function. An Amazon ECS
 deployment group specifies the service created in Amazon ECS to
 deploy, a load balancer, and a listener to reroute production
-traffic to an updated containerized application. An EC2/On-premises
-deployment group contains individually tagged instances, Amazon EC2
-instances in Amazon EC2 Auto Scaling groups, or both. All deployment
-groups can specify optional trigger, alarm, and rollback settings.
+traffic to an updated containerized application. An Amazon
+EC2/On-premises deployment group contains individually tagged
+instances, Amazon EC2 instances in Amazon EC2 Auto Scaling groups,
+or both. All deployment groups can specify optional trigger, alarm,
+and rollback settings.
 \item \strong{Deployment configuration}: A set of deployment rules and
-deployment success and failure conditions used by AWS CodeDeploy
-during a deployment.
+deployment success and failure conditions used by CodeDeploy during
+a deployment.
 \item \strong{Deployment}: The process and the components used when updating a
 Lambda function, a containerized application in an Amazon ECS
 service, or of installing content on one or more instances.
-\item \strong{Application revisions}: For an AWS Lambda deployment, this is an
+\item \strong{Application revisions}: For an Lambda deployment, this is an
 AppSpec file that specifies the Lambda function to be updated and
 one or more functions to validate deployment lifecycle events. For
 an Amazon ECS deployment, this is an AppSpec file that specifies the
@@ -88,15 +89,15 @@ uniquely identified by its commit ID.
 
 This guide also contains information to help you get details about the
 instances in your deployments, to make on-premises instances available
-for AWS CodeDeploy deployments, to get details about a Lambda function
+for CodeDeploy deployments, to get details about a Lambda function
 deployment, and to get details about Amazon ECS service deployments.
 
-\strong{AWS CodeDeploy Information Resources}
+\strong{CodeDeploy Information Resources}
 \itemize{
-\item \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/}{AWS CodeDeploy User Guide}
-\item \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/}{AWS CodeDeploy API Reference Guide}
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html}{AWS CLI Reference for AWS CodeDeploy}
-\item \href{https://repost.aws/tags/TAP_gx1EAgRJuXWqSRorbHIw?forumID=179}{AWS CodeDeploy Developer Forum}
+\item \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/}{CodeDeploy User Guide}
+\item \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/}{CodeDeploy API Reference Guide}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html}{CLI Reference for CodeDeploy}
+\item CodeDeploy Developer Forum
 }
 }
 \section{Service syntax}{
@@ -154,17 +155,17 @@ deployment, and to get details about Amazon ECS service deployments.
 \link[paws.developer.tools:codedeploy_get_deployment_target]{get_deployment_target} \tab Returns information about a deployment target\cr
 \link[paws.developer.tools:codedeploy_get_on_premises_instance]{get_on_premises_instance} \tab Gets information about an on-premises instance\cr
 \link[paws.developer.tools:codedeploy_list_application_revisions]{list_application_revisions} \tab Lists information about revisions for an application\cr
-\link[paws.developer.tools:codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or AWS account\cr
-\link[paws.developer.tools:codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or AWS account\cr
-\link[paws.developer.tools:codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or AWS account\cr
+\link[paws.developer.tools:codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or Amazon Web Services account\cr
+\link[paws.developer.tools:codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or Amazon Web Services account\cr
+\link[paws.developer.tools:codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or Amazon Web Services account\cr
 \link[paws.developer.tools:codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types\cr
-\link[paws.developer.tools:codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or AWS account\cr
+\link[paws.developer.tools:codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or Amazon Web Services account\cr
 \link[paws.developer.tools:codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment\cr
 \link[paws.developer.tools:codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts\cr
 \link[paws.developer.tools:codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances\cr
 \link[paws.developer.tools:codedeploy_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for the resource identified by a specified Amazon Resource Name (ARN)\cr
 \link[paws.developer.tools:codedeploy_put_lifecycle_event_hook_execution_status]{put_lifecycle_event_hook_execution_status} \tab Sets the result of a Lambda validation function\cr
-\link[paws.developer.tools:codedeploy_register_application_revision]{register_application_revision} \tab Registers with AWS CodeDeploy a revision for the specified application\cr
+\link[paws.developer.tools:codedeploy_register_application_revision]{register_application_revision} \tab Registers with CodeDeploy a revision for the specified application\cr
 \link[paws.developer.tools:codedeploy_register_on_premises_instance]{register_on_premises_instance} \tab Registers an on-premises instance\cr
 \link[paws.developer.tools:codedeploy_remove_tags_from_on_premises_instances]{remove_tags_from_on_premises_instances} \tab Removes one or more tags from one or more on-premises instances\cr
 \link[paws.developer.tools:codedeploy_skip_wait_time_for_instance_termination]{skip_wait_time_for_instance_termination} \tab In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete\cr

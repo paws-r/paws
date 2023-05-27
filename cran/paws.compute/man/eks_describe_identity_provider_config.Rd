@@ -10,7 +10,7 @@ eks_describe_identity_provider_config(clusterName, identityProviderConfig)
 \item{clusterName}{[required] The cluster name that the identity provider configuration is associated
 to.}
 
-\item{identityProviderConfig}{[required] An object that represents an identity provider configuration.}
+\item{identityProviderConfig}{[required] An object representing an identity provider configuration.}
 }
 \description{
 Returns descriptive information about an identity provider configuration.

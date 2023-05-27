@@ -2,20 +2,20 @@
 % Please edit documentation in R/iamrolesanywhere_operations.R
 \name{iamrolesanywhere_list_crls}
 \alias{iamrolesanywhere_list_crls}
-\title{Lists all Crls in the authenticated account and Amazon Web Services
-Region}
+\title{Lists all certificate revocation lists (CRL) in the authenticated
+account and Amazon Web Services Region}
 \usage{
 iamrolesanywhere_list_crls(nextToken = NULL, pageSize = NULL)
 }
 \arguments{
 \item{nextToken}{A token that indicates where the output should continue from, if a
-previous operation did not show all results. To get the next results,
-call the operation again with this value.}
+previous request did not show all results. To get the next results, make
+the request again with this value.}
 
 \item{pageSize}{The number of resources in the paginated list.}
 }
 \description{
-Lists all Crls in the authenticated account and Amazon Web Services Region.
+Lists all certificate revocation lists (CRL) in the authenticated account and Amazon Web Services Region.
 
 See \url{https://paws-r.github.io/docs/iamrolesanywhere/list_crls.html} for full documentation.
 }

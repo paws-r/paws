@@ -8,11 +8,11 @@ redshiftserverless_list_workgroups(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
 \item{maxResults}{An optional parameter that specifies the maximum number of results to
-return. You can use \code{nextToken} to get the next page of results.}
+return. You can use \code{nextToken} to display the next page of results.}
 
 \item{nextToken}{If your initial ListWorkgroups operation returns a \code{nextToken}, you can
-include the returned \code{nextToken} in subsequent ListNamespaces
-operations, which returns results in the next page.}
+include the returned \code{nextToken} in following ListNamespaces operations,
+which returns results in the next page.}
 }
 \description{
 Returns information about a list of specified workgroups.

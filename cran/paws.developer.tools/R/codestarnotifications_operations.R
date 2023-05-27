@@ -6,37 +6,39 @@ NULL
 #' Creates a notification rule for a resource
 #'
 #' @description
-#' Creates a notification rule for a resource. The rule specifies the events you want notifications about and the targets (such as SNS topics) where you want to receive them.
+#' Creates a notification rule for a resource. The rule specifies the events you want notifications about and the targets (such as Chatbot topics or Chatbot clients configured for Slack) where you want to receive them.
 #'
 #' See [https://paws-r.github.io/docs/codestarnotifications/create_notification_rule.html](https://paws-r.github.io/docs/codestarnotifications/create_notification_rule.html) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name for the notification rule. Notifictaion rule names must be
-#' unique in your AWS account.
+#' @param Name &#91;required&#93; The name for the notification rule. Notification rule names must be
+#' unique in your Amazon Web Services account.
 #' @param EventTypeIds &#91;required&#93; A list of event types associated with this notification rule. For a list
 #' of allowed events, see EventTypeSummary.
 #' @param Resource &#91;required&#93; The Amazon Resource Name (ARN) of the resource to associate with the
-#' notification rule. Supported resources include pipelines in AWS
-#' CodePipeline, repositories in AWS CodeCommit, and build projects in AWS
+#' notification rule. Supported resources include pipelines in
+#' CodePipeline, repositories in CodeCommit, and build projects in
 #' CodeBuild.
-#' @param Targets &#91;required&#93; A list of Amazon Resource Names (ARNs) of SNS topics to associate with
-#' the notification rule.
+#' @param Targets &#91;required&#93; A list of Amazon Resource Names (ARNs) of Amazon Simple Notification
+#' Service topics and Chatbot clients to associate with the notification
+#' rule.
 #' @param DetailType &#91;required&#93; The level of detail to include in the notifications for this resource.
-#' BASIC will include only the contents of the event as it would appear in
-#' AWS CloudWatch. FULL will include any supplemental information provided
-#' by AWS CodeStar Notifications and/or the service for the resource for
-#' which the notification is created.
+#' `BASIC` will include only the contents of the event as it would appear
+#' in Amazon CloudWatch. `FULL` will include any supplemental information
+#' provided by AWS CodeStar Notifications and/or the service for the
+#' resource for which the notification is created.
 #' @param ClientRequestToken A unique, client-generated idempotency token that, when provided in a
 #' request, ensures the request cannot be repeated with a changed
 #' parameter. If a request with the same parameters is received and a token
 #' is included, the request returns information about the initial request
 #' that used that token.
 #' 
-#' The AWS SDKs prepopulate client request tokens. If you are using an AWS
-#' SDK, an idempotency token is created for you.
+#' The Amazon Web Services SDKs prepopulate client request tokens. If you
+#' are using an Amazon Web Services SDK, an idempotency token is created
+#' for you.
 #' @param Tags A list of tags to apply to this notification rule. Key names cannot
-#' start with "aws".
-#' @param Status The status of the notification rule. The default value is ENABLED. If
-#' the status is set to DISABLED, notifications aren't sent for the
+#' start with "`aws`".
+#' @param Status The status of the notification rule. The default value is `ENABLED`. If
+#' the status is set to `DISABLED`, notifications aren't sent for the
 #' notification rule.
 #'
 #' @keywords internal
@@ -96,11 +98,12 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
 #'
 #' See [https://paws-r.github.io/docs/codestarnotifications/delete_target.html](https://paws-r.github.io/docs/codestarnotifications/delete_target.html) for full documentation.
 #'
-#' @param TargetAddress &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic to delete.
+#' @param TargetAddress &#91;required&#93; The Amazon Resource Name (ARN) of the Chatbot topic or Chatbot client to
+#' delete.
 #' @param ForceUnsubscribeAll A Boolean value that can be used to delete all associations with this
-#' SNS topic. The default value is FALSE. If set to TRUE, all associations
-#' between that target and every notification rule in your AWS account are
-#' deleted.
+#' Chatbot topic. The default value is FALSE. If set to TRUE, all
+#' associations between that target and every notification rule in your
+#' Amazon Web Services account are deleted.
 #'
 #' @keywords internal
 #'
@@ -186,10 +189,11 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
 }
 .codestarnotifications$operations$list_event_types <- codestarnotifications_list_event_types
 
-#' Returns a list of the notification rules for an AWS account
+#' Returns a list of the notification rules for an Amazon Web Services
+#' account
 #'
 #' @description
-#' Returns a list of the notification rules for an AWS account.
+#' Returns a list of the notification rules for an Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/codestarnotifications/list_notification_rules.html](https://paws-r.github.io/docs/codestarnotifications/list_notification_rules.html) for full documentation.
 #'
@@ -253,10 +257,11 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
 }
 .codestarnotifications$operations$list_tags_for_resource <- codestarnotifications_list_tags_for_resource
 
-#' Returns a list of the notification rule targets for an AWS account
+#' Returns a list of the notification rule targets for an Amazon Web
+#' Services account
 #'
 #' @description
-#' Returns a list of the notification rule targets for an AWS account.
+#' Returns a list of the notification rule targets for an Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/codestarnotifications/list_targets.html](https://paws-r.github.io/docs/codestarnotifications/list_targets.html) for full documentation.
 #'
@@ -291,12 +296,12 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
 }
 .codestarnotifications$operations$list_targets <- codestarnotifications_list_targets
 
-#' Creates an association between a notification rule and an SNS topic so
-#' that the associated target can receive notifications when the events
-#' described in the rule are triggered
+#' Creates an association between a notification rule and an Chatbot topic
+#' or Chatbot client so that the associated target can receive
+#' notifications when the events described in the rule are triggered
 #'
 #' @description
-#' Creates an association between a notification rule and an SNS topic so that the associated target can receive notifications when the events described in the rule are triggered.
+#' Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered.
 #'
 #' See [https://paws-r.github.io/docs/codestarnotifications/subscribe.html](https://paws-r.github.io/docs/codestarnotifications/subscribe.html) for full documentation.
 #'
@@ -335,7 +340,7 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule to tag.
 #' @param Tags &#91;required&#93; The list of tags to associate with the resource. Tag key names cannot
-#' start with "aws".
+#' start with "`aws`".
 #'
 #' @keywords internal
 #'
@@ -357,17 +362,17 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
 }
 .codestarnotifications$operations$tag_resource <- codestarnotifications_tag_resource
 
-#' Removes an association between a notification rule and an Amazon SNS
-#' topic so that subscribers to that topic stop receiving notifications
-#' when the events described in the rule are triggered
+#' Removes an association between a notification rule and an Chatbot topic
+#' so that subscribers to that topic stop receiving notifications when the
+#' events described in the rule are triggered
 #'
 #' @description
-#' Removes an association between a notification rule and an Amazon SNS topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
+#' Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered.
 #'
 #' See [https://paws-r.github.io/docs/codestarnotifications/unsubscribe.html](https://paws-r.github.io/docs/codestarnotifications/unsubscribe.html) for full documentation.
 #'
 #' @param Arn &#91;required&#93; The Amazon Resource Name (ARN) of the notification rule.
-#' @param TargetAddress &#91;required&#93; The ARN of the SNS topic to unsubscribe from the notification rule.
+#' @param TargetAddress &#91;required&#93; The ARN of the Chatbot topic to unsubscribe from the notification rule.
 #'
 #' @keywords internal
 #'
@@ -408,7 +413,7 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
   op <- new_operation(
     name = "UntagResource",
     http_method = "POST",
-    http_path = "/untagResource",
+    http_path = "/untagResource/{resourceArn}",
     paginator = list()
   )
   input <- .codestarnotifications$untag_resource_input(Arn = Arn, TagKeys = TagKeys)
@@ -432,14 +437,17 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 #' @param Name The name of the notification rule.
 #' @param Status The status of the notification rule. Valid statuses include enabled
 #' (sending notifications) or disabled (not sending notifications).
-#' @param EventTypeIds A list of event types associated with this notification rule.
+#' @param EventTypeIds A list of event types associated with this notification rule. For a
+#' complete list of event types and IDs, see [Notification
+#' concepts](https://docs.aws.amazon.com/dtconsole/latest/userguide/concepts.html#concepts-api)
+#' in the *Developer Tools Console User Guide*.
 #' @param Targets The address and type of the targets to receive notifications from this
 #' notification rule.
 #' @param DetailType The level of detail to include in the notifications for this resource.
 #' BASIC will include only the contents of the event as it would appear in
-#' AWS CloudWatch. FULL will include any supplemental information provided
-#' by AWS CodeStar Notifications and/or the service for the resource for
-#' which the notification is created.
+#' Amazon CloudWatch. FULL will include any supplemental information
+#' provided by AWS CodeStar Notifications and/or the service for the
+#' resource for which the notification is created.
 #'
 #' @keywords internal
 #'

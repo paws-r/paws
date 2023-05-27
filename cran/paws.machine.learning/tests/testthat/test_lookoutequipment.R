@@ -24,6 +24,14 @@ test_that("list_inference_schedulers", {
   expect_error(svc$list_inference_schedulers(MaxResults = 20), NA)
 })
 
+test_that("list_label_groups", {
+  expect_error(svc$list_label_groups(), NA)
+})
+
+test_that("list_label_groups", {
+  expect_error(svc$list_label_groups(MaxResults = 20), NA)
+})
+
 test_that("list_models", {
   expect_error(svc$list_models(), NA)
 })

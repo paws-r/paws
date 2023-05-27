@@ -6,18 +6,25 @@
 into a single shard to reduce the stream's capacity to ingest and
 transport data}
 \usage{
-kinesis_merge_shards(StreamName, ShardToMerge, AdjacentShardToMerge)
+kinesis_merge_shards(
+  StreamName = NULL,
+  ShardToMerge,
+  AdjacentShardToMerge,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream for the merge.}
+\item{StreamName}{The name of the stream for the merge.}
 
 \item{ShardToMerge}{[required] The shard ID of the shard to combine with the adjacent shard for the
 merge.}
 
 \item{AdjacentShardToMerge}{[required] The shard ID of the adjacent shard for the merge.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
-Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data. Two shards are considered adjacent if the union of the hash key ranges for the two shards form a contiguous set with no gaps. For example, if you have two shards, one with a hash key range of 276...381 and the other with a hash key range of 382...454, then you could merge these two shards into a single shard that would have a hash key range of 276...454. After the merge, the single child shard receives data for all hash key values covered by the two parent shards.
+Merges two adjacent shards in a Kinesis data stream and combines them into a single shard to reduce the stream's capacity to ingest and transport data. This API is only supported for the data streams with the provisioned capacity mode. Two shards are considered adjacent if the union of the hash key ranges for the two shards form a contiguous set with no gaps. For example, if you have two shards, one with a hash key range of 276...381 and the other with a hash key range of 382...454, then you could merge these two shards into a single shard that would have a hash key range of 276...454. After the merge, the single child shard receives data for all hash key values covered by the two parent shards.
 
 See \url{https://paws-r.github.io/docs/kinesis/merge_shards.html} for full documentation.
 }

@@ -38,9 +38,9 @@ also be wildcards.}
 \item{description}{The description of the component. Describes the contents of the
 component.}
 
-\item{changeDescription}{The change description of the component. Describes what change has been
-made in this version, or what makes this version different from other
-versions of this component.}
+\item{changeDescription}{The change description of the component. This description indicates the
+change that has been made in this version, or what makes this version
+different from other versions of this component.}
 
 \item{type}{[required] The type of the component denotes whether the component is used to build
 the image, or only to test it.}

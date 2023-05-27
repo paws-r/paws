@@ -2,20 +2,26 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_tag_resource}
 \alias{ram_tag_resource}
-\title{Adds the specified tag keys and values to the specified resource share}
+\title{Adds the specified tag keys and values to a resource share or managed
+permission}
 \usage{
-ram_tag_resource(resourceShareArn, tags)
+ram_tag_resource(resourceShareArn = NULL, tags, resourceArn = NULL)
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
-of the resource share that you want to add tags to.}
+\item{resourceShareArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of the resource share that you want to add tags to. You must specify
+\emph{either} \code{resourceShareArn}, or \code{resourceArn}, but not both.}
 
 \item{tags}{[required] A list of one or more tag key and value pairs. The tag key must be
 present and not be an empty string. The tag value must be present but
 can be an empty string.}
+
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of the managed permission that you want to add tags to. You must specify
+\emph{either} \code{resourceArn}, or \code{resourceShareArn}, but not both.}
 }
 \description{
-Adds the specified tag keys and values to the specified resource share. The tags are attached only to the resource share, not to the resources that are in the resource share.
+Adds the specified tag keys and values to a resource share or managed permission. If you choose a resource share, the tags are attached to only the resource share, not to the resources that are in the resource share.
 
 See \url{https://paws-r.github.io/docs/ram/tag_resource.html} for full documentation.
 }

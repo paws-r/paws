@@ -10,7 +10,11 @@ ivs_create_stream_key(channelArn, tags = NULL)
 \arguments{
 \item{channelArn}{[required] ARN of the channel for which to create the stream key.}
 
-\item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}.}
+\item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
+for more information, including restrictions that apply to tags and "Tag
+naming limits and requirements"; Amazon IVS has no service-specific
+constraints beyond what is documented there.}
 }
 \description{
 Creates a stream key, used to initiate a stream, for the specified channel ARN.

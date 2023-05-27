@@ -41,7 +41,7 @@ pull request notifications and source code access.
 \item \strong{Disassociated}: CodeGuru Reviewer successfully disassociated the
 repository. You can create a new association with this repository if
 you want to review source code in it later. You can control access
-to code reviews created in an associated repository with tags after
+to code reviews created in anassociated repository with tags after
 it has been disassociated. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html}{Using tags to control access to associated repositories}
 in the \emph{Amazon CodeGuru Reviewer User Guide}.
 }}
@@ -77,7 +77,7 @@ Treat this token as an opaque identifier that is only used to retrieve
 the next items in a list and not for other programmatic purposes.}
 }
 \description{
-Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html}{\code{RepositoryAssociationSummary}} objects that contain summary information about a repository association. You can filter the returned list by \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType}{\code{ProviderType}} , \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name}{\code{Name}} , \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State}{\code{State}} , and \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner}{\code{Owner}} .
+Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html}{RepositoryAssociationSummary} objects that contain summary information about a repository association. You can filter the returned list by \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType}{ProviderType}, \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name}{Name}, \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State}{State}, and \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner}{Owner}.
 
 See \url{https://paws-r.github.io/docs/codegurureviewer/list_repository_associations.html} for full documentation.
 }

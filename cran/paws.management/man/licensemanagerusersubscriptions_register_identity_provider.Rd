@@ -6,13 +6,17 @@
 \usage{
 licensemanagerusersubscriptions_register_identity_provider(
   IdentityProvider,
-  Product
+  Product,
+  Settings = NULL
 )
 }
 \arguments{
 \item{IdentityProvider}{[required] An object that specifies details for the identity provider.}
 
 \item{Product}{[required] The name of the user-based subscription product.}
+
+\item{Settings}{The registered identity provider’s product related configuration
+settings such as the subnets to provision VPC endpoints.}
 }
 \description{
 Registers an identity provider for user-based subscriptions.

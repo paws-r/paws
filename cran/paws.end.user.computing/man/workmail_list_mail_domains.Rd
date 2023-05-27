@@ -2,12 +2,12 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_list_mail_domains}
 \alias{workmail_list_mail_domains}
-\title{Lists the mail domains in a given Amazon WorkMail organization}
+\title{Lists the mail domains in a given WorkMail organization}
 \usage{
 workmail_list_mail_domains(OrganizationId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which to list domains.}
+\item{OrganizationId}{[required] The WorkMail organization for which to list domains.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
 
@@ -15,7 +15,7 @@ workmail_list_mail_domains(OrganizationId, MaxResults = NULL, NextToken = NULL)
 does not require a token.}
 }
 \description{
-Lists the mail domains in a given Amazon WorkMail organization.
+Lists the mail domains in a given WorkMail organization.
 
 See \url{https://paws-r.github.io/docs/workmail/list_mail_domains.html} for full documentation.
 }

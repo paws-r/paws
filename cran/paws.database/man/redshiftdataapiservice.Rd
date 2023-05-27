@@ -34,7 +34,7 @@ statement succeeds.
 
 For more information about the Amazon Redshift Data API and CLI usage
 examples, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html}{Using the Amazon Redshift Data API} in
-the \emph{Amazon Redshift Cluster Management Guide}.
+the \emph{Amazon Redshift Management Guide}.
 }
 \section{Service syntax}{
 

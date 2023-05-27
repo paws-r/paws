@@ -7,7 +7,7 @@
 nimblestudio_create_streaming_session(
   clientToken = NULL,
   ec2InstanceType = NULL,
-  launchProfileId = NULL,
+  launchProfileId,
   ownedBy = NULL,
   streamingImageId = NULL,
   studioId,
@@ -16,13 +16,14 @@ nimblestudio_create_streaming_session(
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{ec2InstanceType}{The EC2 Instance type used for the streaming session.}
 
-\item{launchProfileId}{The launch profile ID.}
+\item{launchProfileId}{[required] The ID of the launch profile used to control access from the streaming
+session.}
 
 \item{ownedBy}{The user ID of the user that owns the streaming session. The user that
 owns the session will be logging into the session and interacting with
@@ -32,7 +33,7 @@ the virtual workstation.}
 
 \item{studioId}{[required] The studio ID.}
 
-\item{tags}{A collection of labels, in the form of key:value pairs, that apply to
+\item{tags}{A collection of labels, in the form of key-value pairs, that apply to
 this resource.}
 }
 \description{

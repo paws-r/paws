@@ -16,8 +16,7 @@ imagebuilder_list_image_packages(
 \item{imageBuildVersionArn}{[required] Filter results for the ListImagePackages request by the Image Build
 Version ARN}
 
-\item{maxResults}{The maxiumum number of results to return from the ListImagePackages
-request.}
+\item{maxResults}{The maximum items to return in a request.}
 
 \item{nextToken}{A token to specify where to start paginating. This is the NextToken from
 a previously truncated response.}

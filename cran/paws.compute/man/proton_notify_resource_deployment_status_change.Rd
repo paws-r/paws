@@ -9,7 +9,7 @@ proton_notify_resource_deployment_status_change(
   deploymentId = NULL,
   outputs = NULL,
   resourceArn,
-  status,
+  status = NULL,
   statusMessage = NULL
 )
 }
@@ -21,7 +21,7 @@ Proton.}
 
 \item{resourceArn}{[required] The provisioned resource Amazon Resource Name (ARN).}
 
-\item{status}{[required] The status of your provisioned resource.}
+\item{status}{The status of your provisioned resource.}
 
 \item{statusMessage}{The deployment status message for your provisioned resource.}
 }

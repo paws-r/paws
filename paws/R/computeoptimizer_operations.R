@@ -36,10 +36,6 @@ NULL
 #' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
 #' in the *Compute Optimizer User Guide*.
 #' @param recommendationPreferenceNames &#91;required&#93; The name of the recommendation preference to delete.
-#' 
-#' Enhanced infrastructure metrics (`EnhancedInfrastructureMetrics`) is the
-#' only feature that can be activated through preferences. Therefore, it is
-#' also the only recommendation preference that can be deleted.
 #'
 #' @return
 #' An empty list.
@@ -47,13 +43,13 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$delete_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
 #'   ),
 #'   recommendationPreferenceNames = list(
-#'     "EnhancedInfrastructureMetrics"|"InferredWorkloadTypes"
+#'     "EnhancedInfrastructureMetrics"|"InferredWorkloadTypes"|"ExternalMetricsPreference"
 #'   )
 #' )
 #' ```
@@ -129,7 +125,7 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
 #'           metadataKey = "string"
 #'         )
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
 #'       status = "Queued"|"InProgress"|"Complete"|"Failed",
 #'       creationTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -284,7 +280,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #'   ),
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType"|"InferredWorkloadTypes",
 #'       values = list(
 #'         "string"
 #'       )
@@ -420,7 +416,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"
+#'     "AccountId"|"VolumeArn"|"Finding"|"UtilizationMetricsVolumeReadOpsPerSecondMaximum"|"UtilizationMetricsVolumeWriteOpsPerSecondMaximum"|"UtilizationMetricsVolumeReadBytesPerSecondMaximum"|"UtilizationMetricsVolumeWriteBytesPerSecondMaximum"|"LookbackPeriodInDays"|"CurrentConfigurationVolumeType"|"CurrentConfigurationVolumeBaselineIOPS"|"CurrentConfigurationVolumeBaselineThroughput"|"CurrentConfigurationVolumeBurstIOPS"|"CurrentConfigurationVolumeBurstThroughput"|"CurrentConfigurationVolumeSize"|"CurrentMonthlyPrice"|"RecommendationOptionsConfigurationVolumeType"|"RecommendationOptionsConfigurationVolumeBaselineIOPS"|"RecommendationOptionsConfigurationVolumeBaselineThroughput"|"RecommendationOptionsConfigurationVolumeBurstIOPS"|"RecommendationOptionsConfigurationVolumeBurstThroughput"|"RecommendationOptionsConfigurationVolumeSize"|"RecommendationOptionsMonthlyPrice"|"RecommendationOptionsPerformanceRisk"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RootVolume"|"Tags"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -549,14 +545,14 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
 #'   ),
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType"|"InferredWorkloadTypes",
 #'       values = list(
 #'         "string"
 #'       )
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"FindingReasonCodes"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPlatformDifferences"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"
+#'     "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"FindingReasonCodes"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"UtilizationMetricsDiskReadOpsPerSecondMaximum"|"UtilizationMetricsDiskWriteOpsPerSecondMaximum"|"UtilizationMetricsDiskReadBytesPerSecondMaximum"|"UtilizationMetricsDiskWriteBytesPerSecondMaximum"|"UtilizationMetricsNetworkInBytesPerSecondMaximum"|"UtilizationMetricsNetworkOutBytesPerSecondMaximum"|"UtilizationMetricsNetworkPacketsInPerSecondMaximum"|"UtilizationMetricsNetworkPacketsOutPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPlatformDifferences"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"EffectiveRecommendationPreferencesCpuVendorArchitectures"|"EffectiveRecommendationPreferencesEnhancedInfrastructureMetrics"|"EffectiveRecommendationPreferencesInferredWorkloadTypes"|"InferredWorkloadTypes"|"RecommendationOptionsMigrationEffort"|"EffectiveRecommendationPreferencesExternalMetricsSource"|"InstanceState"|"Tags"|"ExternalMetricStatusCode"|"ExternalMetricStatusReason"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -593,6 +589,127 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
   return(response)
 }
 .computeoptimizer$operations$export_ec2_instance_recommendations <- computeoptimizer_export_ec2_instance_recommendations
+
+#' Exports optimization recommendations for Amazon ECS services on Fargate
+#'
+#' @description
+#' Exports optimization recommendations for Amazon ECS services on Fargate.
+#' 
+#' Recommendations are exported in a CSV file, and its metadata in a JSON
+#' file, to an existing Amazon Simple Storage Service (Amazon S3) bucket
+#' that you specify. For more information, see [Exporting
+#' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' You can only have one Amazon ECS service export job in progress per
+#' Amazon Web Services Region.
+#'
+#' @usage
+#' computeoptimizer_export_ecs_service_recommendations(accountIds, filters,
+#'   fieldsToExport, s3DestinationConfig, fileFormat, includeMemberAccounts)
+#'
+#' @param accountIds The Amazon Web Services account IDs for the export Amazon ECS service
+#' recommendations.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to specify the member account you
+#' want to export recommendations to.
+#' 
+#' This parameter can't be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' If this parameter or the include member accounts parameter is omitted,
+#' the recommendations for member accounts aren't included in the export.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of Amazon ECS service recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file.
+#' 
+#' The CSV file is the only export file format currently supported.
+#' @param includeMemberAccounts If your account is the management account or the delegated administrator
+#' of an organization, this parameter indicates whether to include
+#' recommendations for resources in all member accounts of the
+#' organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' If this parameter is omitted, recommendations for member accounts of the
+#' organization aren't included in the export file.
+#' 
+#' If this parameter or the account ID parameter is omitted,
+#' recommendations for member accounts aren't included in the export.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_ecs_service_recommendations(
+#'   accountIds = list(
+#'     "string"
+#'   ),
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"FindingReasonCode",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   fieldsToExport = list(
+#'     "AccountId"|"ServiceArn"|"LookbackPeriodInDays"|"LastRefreshTimestamp"|"LaunchType"|"CurrentPerformanceRisk"|"CurrentServiceConfigurationMemory"|"CurrentServiceConfigurationCpu"|"CurrentServiceConfigurationTaskDefinitionArn"|"CurrentServiceConfigurationAutoScalingConfiguration"|"CurrentServiceContainerConfigurations"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"Finding"|"FindingReasonCodes"|"RecommendationOptionsMemory"|"RecommendationOptionsCpu"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"RecommendationOptionsContainerRecommendations"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"Tags"
+#'   ),
+#'   s3DestinationConfig = list(
+#'     bucket = "string",
+#'     keyPrefix = "string"
+#'   ),
+#'   fileFormat = "Csv",
+#'   includeMemberAccounts = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_ecs_service_recommendations
+#'
+#' @aliases computeoptimizer_export_ecs_service_recommendations
+computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+  op <- new_operation(
+    name = "ExportECSServiceRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$export_ecs_service_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_ecs_service_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_ecs_service_recommendations <- computeoptimizer_export_ecs_service_recommendations
 
 #' Exports optimization recommendations for Lambda functions
 #'
@@ -686,7 +803,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #'     )
 #'   ),
 #'   fieldsToExport = list(
-#'     "AccountId"|"FunctionArn"|"FunctionVersion"|"Finding"|"FindingReasonCodes"|"NumberOfInvocations"|"UtilizationMetricsDurationMaximum"|"UtilizationMetricsDurationAverage"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsMemoryAverage"|"LookbackPeriodInDays"|"CurrentConfigurationMemorySize"|"CurrentConfigurationTimeout"|"CurrentCostTotal"|"CurrentCostAverage"|"RecommendationOptionsConfigurationMemorySize"|"RecommendationOptionsCostLow"|"RecommendationOptionsCostHigh"|"RecommendationOptionsProjectedUtilizationMetricsDurationLowerBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationUpperBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationExpected"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"
+#'     "AccountId"|"FunctionArn"|"FunctionVersion"|"Finding"|"FindingReasonCodes"|"NumberOfInvocations"|"UtilizationMetricsDurationMaximum"|"UtilizationMetricsDurationAverage"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsMemoryAverage"|"LookbackPeriodInDays"|"CurrentConfigurationMemorySize"|"CurrentConfigurationTimeout"|"CurrentCostTotal"|"CurrentCostAverage"|"RecommendationOptionsConfigurationMemorySize"|"RecommendationOptionsCostLow"|"RecommendationOptionsCostHigh"|"RecommendationOptionsProjectedUtilizationMetricsDurationLowerBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationUpperBound"|"RecommendationOptionsProjectedUtilizationMetricsDurationExpected"|"LastRefreshTimestamp"|"CurrentPerformanceRisk"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"Tags"
 #'   ),
 #'   s3DestinationConfig = list(
 #'     bucket = "string",
@@ -818,10 +935,13 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
 #'           "AWS_ARM64"|"CURRENT"
 #'         ),
 #'         enhancedInfrastructureMetrics = "Active"|"Inactive",
-#'         inferredWorkloadTypes = "Active"|"Inactive"
+#'         inferredWorkloadTypes = "Active"|"Inactive",
+#'         externalMetricsPreference = list(
+#'           source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'         )
 #'       ),
 #'       inferredWorkloadTypes = list(
-#'         "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"
+#'         "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"|"Kafka"|"SQLServer"
 #'       )
 #'     )
 #'   ),
@@ -848,7 +968,7 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
 #'   maxResults = 123,
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType"|"InferredWorkloadTypes",
 #'       values = list(
 #'         "string"
 #'       )
@@ -933,7 +1053,8 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'         volumeBaselineIOPS = 123,
 #'         volumeBurstIOPS = 123,
 #'         volumeBaselineThroughput = 123,
-#'         volumeBurstThroughput = 123
+#'         volumeBurstThroughput = 123,
+#'         rootVolume = TRUE|FALSE
 #'       ),
 #'       finding = "Optimized"|"NotOptimized",
 #'       utilizationMetrics = list(
@@ -952,7 +1073,8 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'             volumeBaselineIOPS = 123,
 #'             volumeBurstIOPS = 123,
 #'             volumeBaselineThroughput = 123,
-#'             volumeBurstThroughput = 123
+#'             volumeBurstThroughput = 123,
+#'             rootVolume = TRUE|FALSE
 #'           ),
 #'           performanceRisk = 123.0,
 #'           rank = 123,
@@ -968,7 +1090,13 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #'       lastRefreshTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High"
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   errors = list(
@@ -1112,7 +1240,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'       recommendationSources = list(
 #'         list(
 #'           recommendationSourceArn = "string",
-#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"
+#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"
 #'         )
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
@@ -1124,10 +1252,24 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'           "AWS_ARM64"|"CURRENT"
 #'         ),
 #'         enhancedInfrastructureMetrics = "Active"|"Inactive",
-#'         inferredWorkloadTypes = "Active"|"Inactive"
+#'         inferredWorkloadTypes = "Active"|"Inactive",
+#'         externalMetricsPreference = list(
+#'           source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'         )
 #'       ),
 #'       inferredWorkloadTypes = list(
-#'         "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"
+#'         "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"|"Kafka"|"SQLServer"
+#'       ),
+#'       instanceState = "pending"|"running"|"shutting-down"|"terminated"|"stopping"|"stopped",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       ),
+#'       externalMetricStatus = list(
+#'         statusCode = "NO_EXTERNAL_METRIC_SET"|"INTEGRATION_SUCCESS"|"DATADOG_INTEGRATION_ERROR"|"DYNATRACE_INTEGRATION_ERROR"|"NEWRELIC_INTEGRATION_ERROR"|"INSTANA_INTEGRATION_ERROR"|"INSUFFICIENT_DATADOG_METRICS"|"INSUFFICIENT_DYNATRACE_METRICS"|"INSUFFICIENT_NEWRELIC_METRICS"|"INSUFFICIENT_INSTANA_METRICS",
+#'         statusReason = "string"
 #'       )
 #'     )
 #'   ),
@@ -1151,7 +1293,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'   maxResults = 123,
 #'   filters = list(
 #'     list(
-#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType",
+#'       name = "Finding"|"FindingReasonCodes"|"RecommendationSourceType"|"InferredWorkloadTypes",
 #'       values = list(
 #'         "string"
 #'       )
@@ -1285,6 +1427,264 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 }
 .computeoptimizer$operations$get_ec2_recommendation_projected_metrics <- computeoptimizer_get_ec2_recommendation_projected_metrics
 
+#' Returns the projected metrics of Amazon ECS service recommendations
+#'
+#' @description
+#' Returns the projected metrics of Amazon ECS service recommendations.
+#'
+#' @usage
+#' computeoptimizer_get_ecs_service_recommendation_projected_metrics(
+#'   serviceArn, stat, period, startTime, endTime)
+#'
+#' @param serviceArn &#91;required&#93; The ARN that identifies the Amazon ECS service.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name`
+#' @param stat &#91;required&#93; The statistic of the projected metrics.
+#' @param period &#91;required&#93; The granularity, in seconds, of the projected metrics data points.
+#' @param startTime &#91;required&#93; The timestamp of the first projected metrics data point to return.
+#' @param endTime &#91;required&#93; The timestamp of the last projected metrics data point to return.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   recommendedOptionProjectedMetrics = list(
+#'     list(
+#'       recommendedCpuUnits = 123,
+#'       recommendedMemorySize = 123,
+#'       projectedMetrics = list(
+#'         list(
+#'           name = "Cpu"|"Memory",
+#'           timestamps = list(
+#'             as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           ),
+#'           upperBoundValues = list(
+#'             123.0
+#'           ),
+#'           lowerBoundValues = list(
+#'             123.0
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ecs_service_recommendation_projected_metrics(
+#'   serviceArn = "string",
+#'   stat = "Maximum"|"Average",
+#'   period = 123,
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_ecs_servi_recom_proje_metri
+#'
+#' @aliases computeoptimizer_get_ecs_service_recommendation_projected_metrics
+computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(serviceArn, stat, period, startTime, endTime) {
+  op <- new_operation(
+    name = "GetECSServiceRecommendationProjectedMetrics",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_input(serviceArn = serviceArn, stat = stat, period = period, startTime = startTime, endTime = endTime)
+  output <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_ecs_service_recommendation_projected_metrics <- computeoptimizer_get_ecs_service_recommendation_projected_metrics
+
+#' Returns Amazon ECS service recommendations
+#'
+#' @description
+#' Returns Amazon ECS service recommendations.
+#' 
+#' Compute Optimizer generates recommendations for Amazon ECS services on
+#' Fargate that meet a specific set of requirements. For more information,
+#' see the [Supported resources and
+#' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
+#' in the *Compute Optimizer User Guide*.
+#'
+#' @usage
+#' computeoptimizer_get_ecs_service_recommendations(serviceArns, nextToken,
+#'   maxResults, filters, accountIds)
+#'
+#' @param serviceArns The ARN that identifies the Amazon ECS service.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name`
+#' @param nextToken The token to advance to the next page of Amazon ECS service
+#' recommendations.
+#' @param maxResults The maximum number of Amazon ECS service recommendations to return with
+#' a single request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of Amazon ECS service recommendations.
+#' @param accountIds Return the Amazon ECS service recommendations to the specified Amazon
+#' Web Services account IDs.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to return the Amazon ECS service
+#' recommendations to specific member accounts.
+#' 
+#' You can only specify one account ID per request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   ecsServiceRecommendations = list(
+#'     list(
+#'       serviceArn = "string",
+#'       accountId = "string",
+#'       currentServiceConfiguration = list(
+#'         memory = 123,
+#'         cpu = 123,
+#'         containerConfigurations = list(
+#'           list(
+#'             containerName = "string",
+#'             memorySizeConfiguration = list(
+#'               memory = 123,
+#'               memoryReservation = 123
+#'             ),
+#'             cpu = 123
+#'           )
+#'         ),
+#'         autoScalingConfiguration = "TargetTrackingScalingCpu"|"TargetTrackingScalingMemory",
+#'         taskDefinitionArn = "string"
+#'       ),
+#'       utilizationMetrics = list(
+#'         list(
+#'           name = "Cpu"|"Memory",
+#'           statistic = "Maximum"|"Average",
+#'           value = 123.0
+#'         )
+#'       ),
+#'       lookbackPeriodInDays = 123.0,
+#'       launchType = "EC2"|"Fargate",
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       finding = "Optimized"|"Underprovisioned"|"Overprovisioned",
+#'       findingReasonCodes = list(
+#'         "MemoryOverprovisioned"|"MemoryUnderprovisioned"|"CPUOverprovisioned"|"CPUUnderprovisioned"
+#'       ),
+#'       serviceRecommendationOptions = list(
+#'         list(
+#'           memory = 123,
+#'           cpu = 123,
+#'           savingsOpportunity = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
+#'           ),
+#'           projectedUtilizationMetrics = list(
+#'             list(
+#'               name = "Cpu"|"Memory",
+#'               statistic = "Maximum"|"Average",
+#'               lowerBoundValue = 123.0,
+#'               upperBoundValue = 123.0
+#'             )
+#'           ),
+#'           containerRecommendations = list(
+#'             list(
+#'               containerName = "string",
+#'               memorySizeConfiguration = list(
+#'                 memory = 123,
+#'                 memoryReservation = 123
+#'               ),
+#'               cpu = 123
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       identifier = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_ecs_service_recommendations(
+#'   serviceArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"FindingReasonCode",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   accountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_ecs_service_recommendations
+#'
+#' @aliases computeoptimizer_get_ecs_service_recommendations
+computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL) {
+  op <- new_operation(
+    name = "GetECSServiceRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_ecs_service_recommendations_input(serviceArns = serviceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
+  output <- .computeoptimizer$get_ecs_service_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_ecs_service_recommendations <- computeoptimizer_get_ecs_service_recommendations
+
 #' Returns the recommendation preferences that are in effect for a given
 #' resource, such as enhanced infrastructure metrics
 #'
@@ -1309,7 +1709,10 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   enhancedInfrastructureMetrics = "Active"|"Inactive"
+#'   enhancedInfrastructureMetrics = "Active"|"Inactive",
+#'   externalMetricsPreference = list(
+#'     source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'   )
 #' )
 #' ```
 #'
@@ -1571,7 +1974,13 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #'           )
 #'         )
 #'       ),
-#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High"
+#'       currentPerformanceRisk = "VeryLow"|"Low"|"Medium"|"High",
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1677,9 +2086,12 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #'         name = "Organization"|"AccountId"|"ResourceArn",
 #'         value = "string"
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
 #'       enhancedInfrastructureMetrics = "Active"|"Inactive",
-#'       inferredWorkloadTypes = "Active"|"Inactive"
+#'       inferredWorkloadTypes = "Active"|"Inactive",
+#'       externalMetricsPreference = list(
+#'         source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1688,7 +2100,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' @section Request syntax:
 #' ```
 #' svc$get_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -1738,6 +2150,9 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' 
 #' -   Lambda functions in an account that are `NotOptimized`, or
 #'     `Optimized`.
+#' 
+#' -   Amazon ECS services in an account that are `Underprovisioned`,
+#'     `Overprovisioned`, or `Optimized`.
 #'
 #' @usage
 #' computeoptimizer_get_recommendation_summaries(accountIds, nextToken,
@@ -1777,7 +2192,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #'           )
 #'         )
 #'       ),
-#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction",
+#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService",
 #'       accountId = "string",
 #'       savingsOpportunity = list(
 #'         savingsOpportunityPercentage = 123.0,
@@ -1791,6 +2206,17 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #'         medium = 123,
 #'         low = 123,
 #'         veryLow = 123
+#'       ),
+#'       inferredWorkloadSavings = list(
+#'         list(
+#'           inferredWorkloadTypes = list(
+#'             "AmazonEmr"|"ApacheCassandra"|"ApacheHadoop"|"Memcached"|"Nginx"|"PostgreSql"|"Redis"|"Kafka"|"SQLServer"
+#'           ),
+#'           estimatedMonthlySavings = list(
+#'             currency = "USD"|"CNY",
+#'             value = 123.0
+#'           )
+#'         )
 #'       )
 #'     )
 #'   )
@@ -1843,7 +2269,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #'
 #' @usage
 #' computeoptimizer_put_recommendation_preferences(resourceType, scope,
-#'   enhancedInfrastructureMetrics, inferredWorkloadTypes)
+#'   enhancedInfrastructureMetrics, inferredWorkloadTypes,
+#'   externalMetricsPreference)
 #'
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to create.
 #' 
@@ -1894,6 +2321,19 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' For more information, see [Inferred workload
 #' types](https://docs.aws.amazon.com/compute-optimizer/latest/ug/) in the
 #' *Compute Optimizer User Guide*.
+#' @param externalMetricsPreference The provider of the external metrics recommendation preference to create
+#' or update.
+#' 
+#' Specify a valid provider in the `source` field to activate the
+#' preference. To delete this preference, see the
+#' [`delete_recommendation_preferences`][computeoptimizer_delete_recommendation_preferences]
+#' action.
+#' 
+#' This preference can only be set for the `Ec2Instance` resource type.
+#' 
+#' For more information, see [External metrics
+#' ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @return
 #' An empty list.
@@ -1901,13 +2341,16 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @section Request syntax:
 #' ```
 #' svc$put_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
 #'   ),
 #'   enhancedInfrastructureMetrics = "Active"|"Inactive",
-#'   inferredWorkloadTypes = "Active"|"Inactive"
+#'   inferredWorkloadTypes = "Active"|"Inactive",
+#'   externalMetricsPreference = list(
+#'     source = "Datadog"|"Dynatrace"|"NewRelic"|"Instana"
+#'   )
 #' )
 #' ```
 #'
@@ -1916,14 +2359,14 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @rdname computeoptimizer_put_recommendation_preferences
 #'
 #' @aliases computeoptimizer_put_recommendation_preferences
-computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL) {
+computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL, externalMetricsPreference = NULL) {
   op <- new_operation(
     name = "PutRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes)
+  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference)
   output <- .computeoptimizer$put_recommendation_preferences_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)

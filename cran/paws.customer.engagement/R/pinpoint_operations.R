@@ -2311,9 +2311,9 @@ pinpoint_get_journey_date_range_kpi <- function(ApplicationId, EndTime = NULL, J
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyActivityId &#91;required&#93; The unique identifier for the journey activity.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
-#' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is not supported for application, campaign, and
-#' journey metrics.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -2349,9 +2349,9 @@ pinpoint_get_journey_execution_activity_metrics <- function(ApplicationId, Journ
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
 #' @param JourneyId &#91;required&#93; The unique identifier for the journey.
-#' @param NextToken The string that specifies which page of results to return in a paginated
-#' response. This parameter is not supported for application, campaign, and
-#' journey metrics.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
 #' @param PageSize The maximum number of items to include in each page of a paginated
 #' response. This parameter is not supported for application, campaign, and
 #' journey metrics.
@@ -2375,6 +2375,121 @@ pinpoint_get_journey_execution_metrics <- function(ApplicationId, JourneyId, Nex
   return(response)
 }
 .pinpoint$operations$get_journey_execution_metrics <- pinpoint_get_journey_execution_metrics
+
+#' Retrieves (queries) pre-aggregated data for a standard run execution
+#' metric that applies to a journey activity
+#'
+#' @description
+#' Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey activity.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_activity_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_activity_metrics.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyActivityId &#91;required&#93; The unique identifier for the journey activity.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param RunId &#91;required&#93; The unique identifier for the journey run.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_journey_run_execution_activity_metrics
+pinpoint_get_journey_run_execution_activity_metrics <- function(ApplicationId, JourneyActivityId, JourneyId, NextToken = NULL, PageSize = NULL, RunId) {
+  op <- new_operation(
+    name = "GetJourneyRunExecutionActivityMetrics",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/activities/{journey-activity-id}/execution-metrics",
+    paginator = list()
+  )
+  input <- .pinpoint$get_journey_run_execution_activity_metrics_input(ApplicationId = ApplicationId, JourneyActivityId = JourneyActivityId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize, RunId = RunId)
+  output <- .pinpoint$get_journey_run_execution_activity_metrics_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_journey_run_execution_activity_metrics <- pinpoint_get_journey_run_execution_activity_metrics
+
+#' Retrieves (queries) pre-aggregated data for a standard run execution
+#' metric that applies to a journey
+#'
+#' @description
+#' Retrieves (queries) pre-aggregated data for a standard run execution metric that applies to a journey.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_metrics.html](https://paws-r.github.io/docs/pinpoint/get_journey_run_execution_metrics.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#' @param NextToken The `` string that specifies which page of results to return in a
+#' paginated response. This parameter is not supported for application,
+#' campaign, and journey metrics.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param RunId &#91;required&#93; The unique identifier for the journey run.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_journey_run_execution_metrics
+pinpoint_get_journey_run_execution_metrics <- function(ApplicationId, JourneyId, NextToken = NULL, PageSize = NULL, RunId) {
+  op <- new_operation(
+    name = "GetJourneyRunExecutionMetrics",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/execution-metrics",
+    paginator = list()
+  )
+  input <- .pinpoint$get_journey_run_execution_metrics_input(ApplicationId = ApplicationId, JourneyId = JourneyId, NextToken = NextToken, PageSize = PageSize, RunId = RunId)
+  output <- .pinpoint$get_journey_run_execution_metrics_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_journey_run_execution_metrics <- pinpoint_get_journey_run_execution_metrics
+
+#' Provides information about the runs of a journey
+#'
+#' @description
+#' Provides information about the runs of a journey.
+#'
+#' See [https://paws-r.github.io/docs/pinpoint/get_journey_runs.html](https://paws-r.github.io/docs/pinpoint/get_journey_runs.html) for full documentation.
+#'
+#' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
+#' as the **Project ID** on the Amazon Pinpoint console.
+#' @param JourneyId &#91;required&#93; The unique identifier for the journey.
+#' @param PageSize The maximum number of items to include in each page of a paginated
+#' response. This parameter is not supported for application, campaign, and
+#' journey metrics.
+#' @param Token The NextToken string that specifies which page of results to return in a
+#' paginated response.
+#'
+#' @keywords internal
+#'
+#' @rdname pinpoint_get_journey_runs
+pinpoint_get_journey_runs <- function(ApplicationId, JourneyId, PageSize = NULL, Token = NULL) {
+  op <- new_operation(
+    name = "GetJourneyRuns",
+    http_method = "GET",
+    http_path = "/v1/apps/{application-id}/journeys/{journey-id}/runs",
+    paginator = list()
+  )
+  input <- .pinpoint$get_journey_runs_input(ApplicationId = ApplicationId, JourneyId = JourneyId, PageSize = PageSize, Token = Token)
+  output <- .pinpoint$get_journey_runs_output()
+  config <- get_config()
+  svc <- .pinpoint$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pinpoint$operations$get_journey_runs <- pinpoint_get_journey_runs
 
 #' Retrieves the content and settings of a message template for messages
 #' that are sent through a push notification channel

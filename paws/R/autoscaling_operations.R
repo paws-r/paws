@@ -75,9 +75,22 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 }
 .autoscaling$operations$attach_instances <- autoscaling_attach_instances
 
-#' Attaches one or more target groups to the specified Auto Scaling group
+#' This API operation is superseded by AttachTrafficSources, which can
+#' attach multiple traffic sources types
 #'
 #' @description
+#' This API operation is superseded by
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources], which
+#' can attach multiple traffic sources types. We recommend using
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources] to
+#' simplify how you manage traffic sources. However, we continue to support
+#' [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups].
+#' You can use both the original
+#' [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups]
+#' API operation and
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources] on the
+#' same Auto Scaling group.
+#' 
 #' Attaches one or more target groups to the specified Auto Scaling group.
 #' 
 #' This operation is used with the following load balancer types:
@@ -109,9 +122,9 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #'   TargetGroupARNs)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
-#' @param TargetGroupARNs &#91;required&#93; The Amazon Resource Names (ARN) of the target groups. You can specify up
-#' to 10 target groups. To get the ARN of a target group, use the Elastic
-#' Load Balancing
+#' @param TargetGroupARNs &#91;required&#93; The Amazon Resource Names (ARNs) of the target groups. You can specify
+#' up to 10 target groups. To get the ARN of a target group, use the
+#' Elastic Load Balancing
 #' [DescribeTargetGroups](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html)
 #' API operation.
 #'
@@ -162,15 +175,21 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 }
 .autoscaling$operations$attach_load_balancer_target_groups <- autoscaling_attach_load_balancer_target_groups
 
-#' To attach an Application Load Balancer, Network Load Balancer, or
-#' Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
-#' operation instead
+#' This API operation is superseded by AttachTrafficSources, which can
+#' attach multiple traffic sources types
 #'
 #' @description
-#' To attach an Application Load Balancer, Network Load Balancer, or
-#' Gateway Load Balancer, use the
-#' [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups]
-#' API operation instead.
+#' This API operation is superseded by
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources], which
+#' can attach multiple traffic sources types. We recommend using
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources] to
+#' simplify how you manage traffic sources. However, we continue to support
+#' [`attach_load_balancers`][autoscaling_attach_load_balancers]. You can
+#' use both the original
+#' [`attach_load_balancers`][autoscaling_attach_load_balancers] API
+#' operation and
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources] on the
+#' same Auto Scaling group.
 #' 
 #' Attaches one or more Classic Load Balancers to the specified Auto
 #' Scaling group. Amazon EC2 Auto Scaling registers the running instances
@@ -243,6 +262,94 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
   return(response)
 }
 .autoscaling$operations$attach_load_balancers <- autoscaling_attach_load_balancers
+
+#' Attaches one or more traffic sources to the specified Auto Scaling group
+#'
+#' @description
+#' Attaches one or more traffic sources to the specified Auto Scaling
+#' group.
+#' 
+#' You can use any of the following as traffic sources for an Auto Scaling
+#' group:
+#' 
+#' -   Application Load Balancer
+#' 
+#' -   Classic Load Balancer
+#' 
+#' -   Gateway Load Balancer
+#' 
+#' -   Network Load Balancer
+#' 
+#' -   VPC Lattice
+#' 
+#' This operation is additive and does not detach existing traffic sources
+#' from the Auto Scaling group.
+#' 
+#' After the operation completes, use the
+#' [`describe_traffic_sources`][autoscaling_describe_traffic_sources] API
+#' to return details about the state of the attachments between traffic
+#' sources and your Auto Scaling group. To detach a traffic source from the
+#' Auto Scaling group, call the
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] API.
+#'
+#' @usage
+#' autoscaling_attach_traffic_sources(AutoScalingGroupName, TrafficSources)
+#'
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#' @param TrafficSources &#91;required&#93; The unique identifiers of one or more traffic sources. You can specify
+#' up to 10 traffic sources.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$attach_traffic_sources(
+#'   AutoScalingGroupName = "string",
+#'   TrafficSources = list(
+#'     list(
+#'       Identifier = "string",
+#'       Type = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example attaches the specified target group to the specified Auto
+#' # Scaling group.
+#' svc$attach_traffic_sources(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   TrafficSources = list(
+#'     list(
+#'       Identifier = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
+#'     )
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_attach_traffic_sources
+#'
+#' @aliases autoscaling_attach_traffic_sources
+autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSources) {
+  op <- new_operation(
+    name = "AttachTrafficSources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$attach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
+  output <- .autoscaling$attach_traffic_sources_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$attach_traffic_sources <- autoscaling_attach_traffic_sources
 
 #' Deletes one or more scheduled actions for the specified Auto Scaling
 #' group
@@ -378,17 +485,22 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 }
 .autoscaling$operations$batch_put_scheduled_update_group_action <- autoscaling_batch_put_scheduled_update_group_action
 
-#' Cancels an instance refresh operation in progress
+#' Cancels an instance refresh or rollback that is in progress
 #'
 #' @description
-#' Cancels an instance refresh operation in progress. Cancellation does not
-#' roll back any replacements that have already been completed, but it
-#' prevents new replacements from being started.
+#' Cancels an instance refresh or rollback that is in progress. If an
+#' instance refresh or rollback is not in progress, an
+#' `ActiveInstanceRefreshNotFound` error occurs.
 #' 
 #' This operation is part of the [instance refresh
 #' feature](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
 #' in Amazon EC2 Auto Scaling, which helps you update instances in your
 #' Auto Scaling group after you make configuration changes.
+#' 
+#' When you cancel an instance refresh, this does not roll back any changes
+#' that it made. Use the
+#' [`rollback_instance_refresh`][autoscaling_rollback_instance_refresh] API
+#' to roll back instead.
 #'
 #' @usage
 #' autoscaling_cancel_instance_refresh(AutoScalingGroupName)
@@ -586,10 +698,15 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   TerminationPolicies, NewInstancesProtectedFromScaleIn,
 #'   CapacityRebalance, LifecycleHookSpecificationList, Tags,
 #'   ServiceLinkedRoleARN, MaxInstanceLifetime, Context, DesiredCapacityType,
-#'   DefaultInstanceWarmup)
+#'   DefaultInstanceWarmup, TrafficSources)
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group. This name must be unique per Region
 #' per account.
+#' 
+#' The name can contain any ASCII character 33 to 126 including most
+#' punctuation characters, digits, and upper and lowercased letters.
+#' 
+#' You cannot use a colon (:) in the name.
 #' @param LaunchConfigurationName The name of the launch configuration to use to launch instances.
 #' 
 #' Conditional: You must specify either a launch template (`LaunchTemplate`
@@ -607,10 +724,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' template for an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
-#' @param MixedInstancesPolicy An embedded object that specifies a mixed instances policy.
-#' 
-#' For more information, see [Auto Scaling groups with multiple instance
-#' types and purchase
+#' @param MixedInstancesPolicy The mixed instances policy. For more information, see [Auto Scaling
+#' groups with multiple instance types and purchase
 #' options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param InstanceId The ID of the instance used to base the launch configuration on. If
@@ -654,29 +769,31 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' is specified in a launch template.
 #' @param LoadBalancerNames A list of Classic Load Balancers associated with this Auto Scaling
 #' group. For Application Load Balancers, Network Load Balancers, and
-#' Gateway Load Balancer, specify the `TargetGroupARNs` property instead.
-#' @param TargetGroupARNs The Amazon Resource Names (ARN) of the target groups to associate with
-#' the Auto Scaling group. Instances are registered as targets with the
-#' target groups. The target groups receive incoming traffic and route
-#' requests to one or more registered targets. For more information, see
-#' [Use Elastic Load Balancing to distribute traffic across the instances
-#' in your Auto Scaling
+#' Gateway Load Balancers, specify the `TargetGroupARNs` property instead.
+#' @param TargetGroupARNs The Amazon Resource Names (ARN) of the Elastic Load Balancing target
+#' groups to associate with the Auto Scaling group. Instances are
+#' registered as targets with the target groups. The target groups receive
+#' incoming traffic and route requests to one or more registered targets.
+#' For more information, see [Use Elastic Load Balancing to distribute
+#' traffic across the instances in your Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
-#' @param HealthCheckType The service to use for the health checks. The valid values are `EC2`
-#' (default) and `ELB`. If you configure an Auto Scaling group to use load
-#' balancer (ELB) health checks, it considers the instance unhealthy if it
-#' fails either the EC2 status checks or the load balancer health checks.
-#' For more information, see [Health checks for Auto Scaling
+#' @param HealthCheckType A comma-separated value string of one or more health check types.
+#' 
+#' The valid values are `EC2`, `ELB`, and `VPC_LATTICE`. `EC2` is the
+#' default health check and cannot be disabled. For more information, see
+#' [Health checks for Auto Scaling
 #' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Only specify `EC2` if you must clear a value that was previously set.
 #' @param HealthCheckGracePeriod The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 #' before checking the health status of an EC2 instance that has come into
-#' service and marking it unhealthy due to a failed Elastic Load Balancing
-#' or custom health check. This is useful if your instances do not
-#' immediately pass these health checks after they enter the `InService`
-#' state. For more information, see [Health check grace
-#' period](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html#health-check-grace-period)
+#' service and marking it unhealthy due to a failed health check. This is
+#' useful if your instances do not immediately pass their health checks
+#' after they enter the `InService` state. For more information, see [Set
+#' the health check grace period for an Auto Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' Default: `0` seconds
@@ -755,27 +872,32 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' into number of instances.
 #' 
 #' Valid values: `units` | `vcpu` | `memory-mib`
-#' @param DefaultInstanceWarmup The amount of time, in seconds, until a newly launched instance can
-#' contribute to the Amazon CloudWatch metrics. This delay lets an instance
-#' finish initializing before Amazon EC2 Auto Scaling aggregates instance
-#' metrics, resulting in more reliable usage data. Set this value equal to
-#' the amount of time that it takes for resource consumption to become
-#' stable after an instance reaches the `InService` state. For more
-#' information, see [Set the default instance warmup for an Auto Scaling
+#' @param DefaultInstanceWarmup The amount of time, in seconds, until a new instance is considered to
+#' have finished initializing and resource consumption to become stable
+#' after it enters the `InService` state.
+#' 
+#' During an instance refresh, Amazon EC2 Auto Scaling waits for the
+#' warm-up period after it replaces an instance before it moves on to
+#' replacing the next instance. Amazon EC2 Auto Scaling also waits for the
+#' warm-up period before aggregating the metrics for new instances with
+#' existing instances in the Amazon CloudWatch metrics that are used for
+#' scaling, resulting in more reliable usage data. For more information,
+#' see [Set the default instance warmup for an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
-#' To manage your warm-up settings at the group level, we recommend that
-#' you set the default instance warmup, *even if its value is set to 0
-#' seconds*. This also optimizes the performance of scaling policies that
-#' scale continuously, such as target tracking and step scaling policies.
-#' 
-#' If you need to remove a value that you previously set, include the
-#' property but specify `-1` for the value. However, we strongly recommend
-#' keeping the default instance warmup enabled by specifying a minimum
-#' value of `0`.
+#' To manage various warm-up settings at the group level, we recommend that
+#' you set the default instance warmup, *even if it is set to 0 seconds*.
+#' To remove a value that you previously set, include the property but
+#' specify `-1` for the value. However, we strongly recommend keeping the
+#' default instance warmup enabled by specifying a value of `0` or other
+#' nominal value.
 #' 
 #' Default: None
+#' @param TrafficSources The list of traffic sources to attach to this Auto Scaling group. You
+#' can use any of the following as traffic sources for an Auto Scaling
+#' group: Classic Load Balancer, Application Load Balancer, Gateway Load
+#' Balancer, Network Load Balancer, and VPC Lattice.
 #'
 #' @return
 #' An empty list.
@@ -865,6 +987,13 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'             AcceleratorTotalMemoryMiB = list(
 #'               Min = 123,
 #'               Max = 123
+#'             ),
+#'             NetworkBandwidthGbps = list(
+#'               Min = 123.0,
+#'               Max = 123.0
+#'             ),
+#'             AllowedInstanceTypes = list(
+#'               "string"
 #'             )
 #'           )
 #'         )
@@ -926,7 +1055,13 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   MaxInstanceLifetime = 123,
 #'   Context = "string",
 #'   DesiredCapacityType = "string",
-#'   DefaultInstanceWarmup = 123
+#'   DefaultInstanceWarmup = 123,
+#'   TrafficSources = list(
+#'     list(
+#'       Identifier = "string",
+#'       Type = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1009,14 +1144,14 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @rdname autoscaling_create_auto_scaling_group
 #'
 #' @aliases autoscaling_create_auto_scaling_group
-autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL) {
+autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchConfigurationName = NULL, LaunchTemplate = NULL, MixedInstancesPolicy = NULL, InstanceId = NULL, MinSize, MaxSize, DesiredCapacity = NULL, DefaultCooldown = NULL, AvailabilityZones = NULL, LoadBalancerNames = NULL, TargetGroupARNs = NULL, HealthCheckType = NULL, HealthCheckGracePeriod = NULL, PlacementGroup = NULL, VPCZoneIdentifier = NULL, TerminationPolicies = NULL, NewInstancesProtectedFromScaleIn = NULL, CapacityRebalance = NULL, LifecycleHookSpecificationList = NULL, Tags = NULL, ServiceLinkedRoleARN = NULL, MaxInstanceLifetime = NULL, Context = NULL, DesiredCapacityType = NULL, DefaultInstanceWarmup = NULL, TrafficSources = NULL) {
   op <- new_operation(
     name = "CreateAutoScalingGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup)
+  input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources)
   output <- .autoscaling$create_auto_scaling_group_output()
   config <- get_config()
   svc <- .autoscaling$service(config)
@@ -1042,6 +1177,14 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' For more information, see [Launch
 #' configurations](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Amazon EC2 Auto Scaling configures instances launched as part of an Auto
+#' Scaling group using either a launch template or a launch configuration.
+#' We strongly recommend that you do not use launch configurations. They do
+#' not provide full functionality for Amazon EC2 Auto Scaling or Amazon
+#' EC2. For information about using launch templates, see [Launch
+#' templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-templates.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_create_launch_configuration(LaunchConfigurationName,
@@ -1066,23 +1209,10 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' @param SecurityGroups A list that contains the security group IDs to assign to the instances
 #' in the Auto Scaling group. For more information, see [Control traffic to
 #' resources using security
-#' groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+#' groups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html)
 #' in the *Amazon Virtual Private Cloud User Guide*.
-#' @param ClassicLinkVPCId *EC2-Classic retires on August 15, 2022. This property is not supported
-#' after that date.*
-#' 
-#' The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
-#' to. For more information, see
-#' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
-#' in the *Amazon EC2 User Guide for Linux Instances*.
-#' @param ClassicLinkVPCSecurityGroups *EC2-Classic retires on August 15, 2022. This property is not supported
-#' after that date.*
-#' 
-#' The IDs of one or more security groups for the specified
-#' ClassicLink-enabled VPC.
-#' 
-#' If you specify the `ClassicLinkVPCId` property, you must specify
-#' `ClassicLinkVPCSecurityGroups`.
+#' @param ClassicLinkVPCId Available for backward compatibility.
+#' @param ClassicLinkVPCSecurityGroups Available for backward compatibility.
 #' @param UserData The user data to make available to the launched EC2 instances. For more
 #' information, see [Instance metadata and user
 #' data](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
@@ -1377,11 +1507,10 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' Deletes the specified Auto Scaling group.
 #' 
 #' If the group has instances or scaling activities in progress, you must
-#' specify the option to force the deletion in order for it to succeed.
-#' 
-#' If the group has policies, deleting the group deletes the policies, the
-#' underlying alarm actions, and any alarm that no longer has an associated
-#' action.
+#' specify the option to force the deletion in order for it to succeed. The
+#' force delete operation will also terminate the EC2 instances. If the
+#' group has a warm pool, the force delete option also deletes the warm
+#' pool.
 #' 
 #' To remove instances from the Auto Scaling group before deleting it, call
 #' the [`detach_instances`][autoscaling_detach_instances] API with the list
@@ -1393,6 +1522,14 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' the [`update_auto_scaling_group`][autoscaling_update_auto_scaling_group]
 #' API and set the minimum size and desired capacity of the Auto Scaling
 #' group to zero.
+#' 
+#' If the group has scaling policies, deleting the group deletes the
+#' policies, the underlying alarm actions, and any alarm that no longer has
+#' an associated action.
+#' 
+#' For more information, see [Delete your Auto Scaling
+#' infrastructure](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-process-shutdown.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
 #'
 #' @usage
 #' autoscaling_delete_auto_scaling_group(AutoScalingGroupName, ForceDelete)
@@ -2095,6 +2232,13 @@ autoscaling_describe_adjustment_types <- function() {
 #'                 AcceleratorTotalMemoryMiB = list(
 #'                   Min = 123,
 #'                   Max = 123
+#'                 ),
+#'                 NetworkBandwidthGbps = list(
+#'                   Min = 123.0,
+#'                   Max = 123.0
+#'                 ),
+#'                 AllowedInstanceTypes = list(
+#'                   "string"
 #'                 )
 #'               )
 #'             )
@@ -2188,7 +2332,13 @@ autoscaling_describe_adjustment_types <- function() {
 #'       WarmPoolSize = 123,
 #'       Context = "string",
 #'       DesiredCapacityType = "string",
-#'       DefaultInstanceWarmup = 123
+#'       DefaultInstanceWarmup = 123,
+#'       TrafficSources = list(
+#'         list(
+#'           Identifier = "string",
+#'           Type = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2400,29 +2550,14 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' in Amazon EC2 Auto Scaling, which helps you update instances in your
 #' Auto Scaling group after you make configuration changes.
 #' 
-#' To help you determine the status of an instance refresh, this operation
-#' returns information about the instance refreshes you previously
-#' initiated, including their status, end time, the percentage of the
-#' instance refresh that is complete, and the number of instances remaining
-#' to update before the instance refresh is complete.
-#' 
-#' The following are the possible statuses:
-#' 
-#' -   `Pending` - The request was created, but the operation has not
-#'     started.
-#' 
-#' -   `InProgress` - The operation is in progress.
-#' 
-#' -   `Successful` - The operation completed successfully.
-#' 
-#' -   `Failed` - The operation failed to complete. You can troubleshoot
-#'     using the status reason and the scaling activities.
-#' 
-#' -   `Cancelling` - An ongoing operation is being cancelled. Cancellation
-#'     does not roll back any replacements that have already been
-#'     completed, but it prevents new replacements from being started.
-#' 
-#' -   `Cancelled` - The operation is cancelled.
+#' To help you determine the status of an instance refresh, Amazon EC2 Auto
+#' Scaling returns information about the instance refreshes you previously
+#' initiated, including their status, start time, end time, the percentage
+#' of the instance refresh that is complete, and the number of instances
+#' remaining to update before the instance refresh is complete. If a
+#' rollback is initiated while an instance refresh is in progress, Amazon
+#' EC2 Auto Scaling also returns information about the rollback of the
+#' instance refresh.
 #'
 #' @usage
 #' autoscaling_describe_instance_refreshes(AutoScalingGroupName,
@@ -2443,7 +2578,7 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'     list(
 #'       InstanceRefreshId = "string",
 #'       AutoScalingGroupName = "string",
-#'       Status = "Pending"|"InProgress"|"Successful"|"Failed"|"Cancelling"|"Cancelled",
+#'       Status = "Pending"|"InProgress"|"Successful"|"Failed"|"Cancelling"|"Cancelled"|"RollbackInProgress"|"RollbackFailed"|"RollbackSuccessful",
 #'       StatusReason = "string",
 #'       StartTime = as.POSIXct(
 #'         "2015-01-01"
@@ -2470,7 +2605,10 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'           123
 #'         ),
 #'         CheckpointDelay = 123,
-#'         SkipMatching = TRUE|FALSE
+#'         SkipMatching = TRUE|FALSE,
+#'         AutoRollback = TRUE|FALSE,
+#'         ScaleInProtectedInstances = "Refresh"|"Ignore"|"Wait",
+#'         StandbyInstances = "Terminate"|"Ignore"|"Wait"
 #'       ),
 #'       DesiredConfiguration = list(
 #'         LaunchTemplate = list(
@@ -2553,6 +2691,13 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'                   AcceleratorTotalMemoryMiB = list(
 #'                     Min = 123,
 #'                     Max = 123
+#'                   ),
+#'                   NetworkBandwidthGbps = list(
+#'                     Min = 123.0,
+#'                     Max = 123.0
+#'                   ),
+#'                   AllowedInstanceTypes = list(
+#'                     "string"
 #'                   )
 #'                 )
 #'               )
@@ -2565,6 +2710,24 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'             SpotAllocationStrategy = "string",
 #'             SpotInstancePools = 123,
 #'             SpotMaxPrice = "string"
+#'           )
+#'         )
+#'       ),
+#'       RollbackDetails = list(
+#'         RollbackReason = "string",
+#'         RollbackStartTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         PercentageCompleteOnRollback = 123,
+#'         InstancesToUpdateOnRollback = 123,
+#'         ProgressDetailsOnRollback = list(
+#'           LivePoolProgress = list(
+#'             PercentageComplete = 123,
+#'             InstancesToUpdate = 123
+#'           ),
+#'           WarmPoolProgress = list(
+#'             PercentageComplete = 123,
+#'             InstancesToUpdate = 123
 #'           )
 #'         )
 #'       )
@@ -2871,10 +3034,22 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 }
 .autoscaling$operations$describe_lifecycle_hooks <- autoscaling_describe_lifecycle_hooks
 
-#' Gets information about the Elastic Load Balancing target groups for the
-#' specified Auto Scaling group
+#' This API operation is superseded by DescribeTrafficSources, which can
+#' describe multiple traffic sources types
 #'
 #' @description
+#' This API operation is superseded by
+#' [`describe_traffic_sources`][autoscaling_describe_traffic_sources],
+#' which can describe multiple traffic sources types. We recommend using
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] to
+#' simplify how you manage traffic sources. However, we continue to support
+#' [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups].
+#' You can use both the original
+#' [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups]
+#' API operation and
+#' [`describe_traffic_sources`][autoscaling_describe_traffic_sources] on
+#' the same Auto Scaling group.
+#' 
 #' Gets information about the Elastic Load Balancing target groups for the
 #' specified Auto Scaling group.
 #' 
@@ -2905,6 +3080,12 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 #' in your Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' You can use this operation to describe target groups that were attached
+#' by using
+#' [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups],
+#' but not for target groups that were attached by using
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources].
 #'
 #' @usage
 #' autoscaling_describe_load_balancer_target_groups(AutoScalingGroupName,
@@ -2970,16 +3151,28 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 }
 .autoscaling$operations$describe_load_balancer_target_groups <- autoscaling_describe_load_balancer_target_groups
 
-#' Gets information about the load balancers for the specified Auto Scaling
-#' group
+#' This API operation is superseded by DescribeTrafficSources, which can
+#' describe multiple traffic sources types
 #'
 #' @description
+#' This API operation is superseded by
+#' [`describe_traffic_sources`][autoscaling_describe_traffic_sources],
+#' which can describe multiple traffic sources types. We recommend using
+#' [`describe_traffic_sources`][autoscaling_describe_traffic_sources] to
+#' simplify how you manage traffic sources. However, we continue to support
+#' [`describe_load_balancers`][autoscaling_describe_load_balancers]. You
+#' can use both the original
+#' [`describe_load_balancers`][autoscaling_describe_load_balancers] API
+#' operation and
+#' [`describe_traffic_sources`][autoscaling_describe_traffic_sources] on
+#' the same Auto Scaling group.
+#' 
 #' Gets information about the load balancers for the specified Auto Scaling
 #' group.
 #' 
 #' This operation describes only Classic Load Balancers. If you have
 #' Application Load Balancers, Network Load Balancers, or Gateway Load
-#' Balancer, use the
+#' Balancers, use the
 #' [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups]
 #' API instead.
 #' 
@@ -3276,7 +3469,29 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #'             )
 #'           ),
 #'           Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'           Unit = "string"
+#'           Unit = "string",
+#'           Metrics = list(
+#'             list(
+#'               Id = "string",
+#'               Expression = "string",
+#'               MetricStat = list(
+#'                 Metric = list(
+#'                   Namespace = "string",
+#'                   MetricName = "string",
+#'                   Dimensions = list(
+#'                     list(
+#'                       Name = "string",
+#'                       Value = "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Stat = "string",
+#'                 Unit = "string"
+#'               ),
+#'               Label = "string",
+#'               ReturnData = TRUE|FALSE
+#'             )
+#'           )
 #'         ),
 #'         TargetValue = 123.0,
 #'         DisableScaleIn = TRUE|FALSE
@@ -3483,7 +3698,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #'       EndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled"|"WaitingForConnectionDraining",
 #'       StatusMessage = "string",
 #'       Progress = 123,
 #'       Details = "string",
@@ -3855,6 +4070,97 @@ autoscaling_describe_termination_policy_types <- function() {
 }
 .autoscaling$operations$describe_termination_policy_types <- autoscaling_describe_termination_policy_types
 
+#' Gets information about the traffic sources for the specified Auto
+#' Scaling group
+#'
+#' @description
+#' Gets information about the traffic sources for the specified Auto
+#' Scaling group.
+#' 
+#' You can optionally provide a traffic source type. If you provide a
+#' traffic source type, then the results only include that traffic source
+#' type.
+#' 
+#' If you do not provide a traffic source type, then the results include
+#' all the traffic sources for the specified Auto Scaling group.
+#'
+#' @usage
+#' autoscaling_describe_traffic_sources(AutoScalingGroupName,
+#'   TrafficSourceType, NextToken, MaxRecords)
+#'
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#' @param TrafficSourceType The traffic source type that you want to describe.
+#' 
+#' The following lists the valid values:
+#' 
+#' -   `elb` if the traffic source is a Classic Load Balancer.
+#' 
+#' -   `elbv2` if the traffic source is a Application Load Balancer,
+#'     Gateway Load Balancer, or Network Load Balancer.
+#' 
+#' -   `vpc-lattice` if the traffic source is VPC Lattice.
+#' @param NextToken The token for the next set of items to return. (You received this token
+#' from a previous call.)
+#' @param MaxRecords The maximum number of items to return with this call. The maximum value
+#' is `50`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TrafficSources = list(
+#'     list(
+#'       TrafficSource = "string",
+#'       State = "string",
+#'       Identifier = "string",
+#'       Type = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_traffic_sources(
+#'   AutoScalingGroupName = "string",
+#'   TrafficSourceType = "string",
+#'   NextToken = "string",
+#'   MaxRecords = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example describes the target groups attached to the specified Auto
+#' # Scaling group.
+#' svc$describe_traffic_sources(
+#'   AutoScalingGroupName = "my-auto-scaling-group"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_describe_traffic_sources
+#'
+#' @aliases autoscaling_describe_traffic_sources
+autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSourceType = NULL, NextToken = NULL, MaxRecords = NULL) {
+  op <- new_operation(
+    name = "DescribeTrafficSources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)
+  output <- .autoscaling$describe_traffic_sources_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$describe_traffic_sources <- autoscaling_describe_traffic_sources
+
 #' Gets information about a warm pool and its instances
 #'
 #' @description
@@ -3985,7 +4291,7 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
 #'       EndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled"|"WaitingForConnectionDraining",
 #'       StatusMessage = "string",
 #'       Progress = 123,
 #'       Details = "string",
@@ -4042,9 +4348,22 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 }
 .autoscaling$operations$detach_instances <- autoscaling_detach_instances
 
-#' Detaches one or more target groups from the specified Auto Scaling group
+#' This API operation is superseded by DetachTrafficSources, which can
+#' detach multiple traffic sources types
 #'
 #' @description
+#' This API operation is superseded by
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources], which
+#' can detach multiple traffic sources types. We recommend using
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] to
+#' simplify how you manage traffic sources. However, we continue to support
+#' [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups].
+#' You can use both the original
+#' [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups]
+#' API operation and
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] on the
+#' same Auto Scaling group.
+#' 
 #' Detaches one or more target groups from the specified Auto Scaling
 #' group.
 #' 
@@ -4053,6 +4372,12 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' deregistered, then you can no longer describe the target group using the
 #' [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups]
 #' API call. The instances remain running.
+#' 
+#' You can use this operation to detach target groups that were attached by
+#' using
+#' [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups],
+#' but not for target groups that were attached by using
+#' [`attach_traffic_sources`][autoscaling_attach_traffic_sources].
 #'
 #' @usage
 #' autoscaling_detach_load_balancer_target_groups(AutoScalingGroupName,
@@ -4109,16 +4434,28 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 }
 .autoscaling$operations$detach_load_balancer_target_groups <- autoscaling_detach_load_balancer_target_groups
 
-#' Detaches one or more Classic Load Balancers from the specified Auto
-#' Scaling group
+#' This API operation is superseded by DetachTrafficSources, which can
+#' detach multiple traffic sources types
 #'
 #' @description
+#' This API operation is superseded by
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources], which
+#' can detach multiple traffic sources types. We recommend using
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] to
+#' simplify how you manage traffic sources. However, we continue to support
+#' [`detach_load_balancers`][autoscaling_detach_load_balancers]. You can
+#' use both the original
+#' [`detach_load_balancers`][autoscaling_detach_load_balancers] API
+#' operation and
+#' [`detach_traffic_sources`][autoscaling_detach_traffic_sources] on the
+#' same Auto Scaling group.
+#' 
 #' Detaches one or more Classic Load Balancers from the specified Auto
 #' Scaling group.
 #' 
 #' This operation detaches only Classic Load Balancers. If you have
 #' Application Load Balancers, Network Load Balancers, or Gateway Load
-#' Balancer, use the
+#' Balancers, use the
 #' [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups]
 #' API instead.
 #' 
@@ -4182,6 +4519,78 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
   return(response)
 }
 .autoscaling$operations$detach_load_balancers <- autoscaling_detach_load_balancers
+
+#' Detaches one or more traffic sources from the specified Auto Scaling
+#' group
+#'
+#' @description
+#' Detaches one or more traffic sources from the specified Auto Scaling
+#' group.
+#' 
+#' When you detach a taffic, it enters the `Removing` state while
+#' deregistering the instances in the group. When all instances are
+#' deregistered, then you can no longer describe the traffic source using
+#' the [`describe_traffic_sources`][autoscaling_describe_traffic_sources]
+#' API call. The instances continue to run.
+#'
+#' @usage
+#' autoscaling_detach_traffic_sources(AutoScalingGroupName, TrafficSources)
+#'
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
+#' @param TrafficSources &#91;required&#93; The unique identifiers of one or more traffic sources. You can specify
+#' up to 10 traffic sources.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detach_traffic_sources(
+#'   AutoScalingGroupName = "string",
+#'   TrafficSources = list(
+#'     list(
+#'       Identifier = "string",
+#'       Type = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # This example detaches the specified target group from the specified Auto
+#' # Scaling group.
+#' svc$detach_traffic_sources(
+#'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   TrafficSources = list(
+#'     list(
+#'       Identifier = "arn:aws:elasticloadbalancing:us-west-2:123456789012:tar..."
+#'     )
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_detach_traffic_sources
+#'
+#' @aliases autoscaling_detach_traffic_sources
+autoscaling_detach_traffic_sources <- function(AutoScalingGroupName, TrafficSources) {
+  op <- new_operation(
+    name = "DetachTrafficSources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$detach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
+  output <- .autoscaling$detach_traffic_sources_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$detach_traffic_sources <- autoscaling_detach_traffic_sources
 
 #' Disables group metrics collection for the specified Auto Scaling group
 #'
@@ -4450,7 +4859,7 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #'       EndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled"|"WaitingForConnectionDraining",
 #'       StatusMessage = "string",
 #'       Progress = 123,
 #'       Details = "string",
@@ -4623,7 +5032,7 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #'       EndTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'       StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled"|"WaitingForConnectionDraining",
 #'       StatusMessage = "string",
 #'       Progress = 123,
 #'       Details = "string",
@@ -5296,7 +5705,29 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #'         )
 #'       ),
 #'       Statistic = "Average"|"Minimum"|"Maximum"|"SampleCount"|"Sum",
-#'       Unit = "string"
+#'       Unit = "string",
+#'       Metrics = list(
+#'         list(
+#'           Id = "string",
+#'           Expression = "string",
+#'           MetricStat = list(
+#'             Metric = list(
+#'               Namespace = "string",
+#'               MetricName = "string",
+#'               Dimensions = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             ),
+#'             Stat = "string",
+#'             Unit = "string"
+#'           ),
+#'           Label = "string",
+#'           ReturnData = TRUE|FALSE
+#'         )
+#'       )
 #'     ),
 #'     TargetValue = 123.0,
 #'     DisableScaleIn = TRUE|FALSE
@@ -5854,6 +6285,81 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 }
 .autoscaling$operations$resume_processes <- autoscaling_resume_processes
 
+#' Cancels an instance refresh that is in progress and rolls back any
+#' changes that it made
+#'
+#' @description
+#' Cancels an instance refresh that is in progress and rolls back any
+#' changes that it made. Amazon EC2 Auto Scaling replaces any instances
+#' that were replaced during the instance refresh. This restores your Auto
+#' Scaling group to the configuration that it was using before the start of
+#' the instance refresh.
+#' 
+#' This operation is part of the [instance refresh
+#' feature](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+#' in Amazon EC2 Auto Scaling, which helps you update instances in your
+#' Auto Scaling group after you make configuration changes.
+#' 
+#' A rollback is not supported in the following situations:
+#' 
+#' -   There is no desired configuration specified for the instance
+#'     refresh.
+#' 
+#' -   The Auto Scaling group has a launch template that uses an Amazon Web
+#'     Services Systems Manager parameter instead of an AMI ID for the
+#'     `ImageId` property.
+#' 
+#' -   The Auto Scaling group uses the launch template's `$Latest` or
+#'     `$Default` version.
+#' 
+#' When you receive a successful response from this operation, Amazon EC2
+#' Auto Scaling immediately begins replacing instances. You can check the
+#' status of this operation through the
+#' [`describe_instance_refreshes`][autoscaling_describe_instance_refreshes]
+#' API operation.
+#'
+#' @usage
+#' autoscaling_rollback_instance_refresh(AutoScalingGroupName)
+#'
+#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   InstanceRefreshId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$rollback_instance_refresh(
+#'   AutoScalingGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname autoscaling_rollback_instance_refresh
+#'
+#' @aliases autoscaling_rollback_instance_refresh
+autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName = NULL) {
+  op <- new_operation(
+    name = "RollbackInstanceRefresh",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .autoscaling$rollback_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName)
+  output <- .autoscaling$rollback_instance_refresh_output()
+  config <- get_config()
+  svc <- .autoscaling$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.autoscaling$operations$rollback_instance_refresh <- autoscaling_rollback_instance_refresh
+
 #' Sets the size of the specified Auto Scaling group
 #'
 #' @description
@@ -6076,12 +6582,12 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 }
 .autoscaling$operations$set_instance_protection <- autoscaling_set_instance_protection
 
-#' Starts a new instance refresh operation
+#' Starts an instance refresh
 #'
 #' @description
-#' Starts a new instance refresh operation. An instance refresh performs a
-#' rolling replacement of all or some instances in an Auto Scaling group.
-#' Each instance is terminated first and then replaced, which temporarily
+#' Starts an instance refresh. During an instance refresh, Amazon EC2 Auto
+#' Scaling performs a rolling update of instances in an Auto Scaling group.
+#' Instances are terminated first and then replaced, which temporarily
 #' reduces the capacity available within your Auto Scaling group.
 #' 
 #' This operation is part of the [instance refresh
@@ -6093,14 +6599,30 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' start an instance refresh to immediately begin the process of updating
 #' instances in the group.
 #' 
-#' If the call succeeds, it creates a new instance refresh request with a
-#' unique ID that you can use to track its progress. To query its status,
+#' If successful, the request's response contains a unique ID that you can
+#' use to track the progress of the instance refresh. To query its status,
 #' call the
 #' [`describe_instance_refreshes`][autoscaling_describe_instance_refreshes]
 #' API. To describe the instance refreshes that have already run, call the
 #' [`describe_instance_refreshes`][autoscaling_describe_instance_refreshes]
-#' API. To cancel an instance refresh operation in progress, use the
+#' API. To cancel an instance refresh that is in progress, use the
 #' [`cancel_instance_refresh`][autoscaling_cancel_instance_refresh] API.
+#' 
+#' An instance refresh might fail for several reasons, such as EC2 launch
+#' failures, misconfigured health checks, or not ignoring or allowing the
+#' termination of instances that are in `Standby` state or protected from
+#' scale in. You can monitor for failed EC2 launches using the scaling
+#' activities. To find the scaling activities, call the
+#' [`describe_scaling_activities`][autoscaling_describe_scaling_activities]
+#' API.
+#' 
+#' If you enable auto rollback, your Auto Scaling group will be rolled back
+#' automatically when the instance refresh fails. You can enable this
+#' feature before starting an instance refresh by specifying the
+#' `AutoRollback` property in the instance refresh preferences. Otherwise,
+#' to roll back an instance refresh before it finishes, use the
+#' [`rollback_instance_refresh`][autoscaling_rollback_instance_refresh]
+#' API.
 #'
 #' @usage
 #' autoscaling_start_instance_refresh(AutoScalingGroupName, Strategy,
@@ -6109,12 +6631,6 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param Strategy The strategy to use for the instance refresh. The only valid value is
 #' `Rolling`.
-#' 
-#' A rolling update helps you update your instances gradually. A rolling
-#' update can fail due to failed health checks or if instances are on
-#' standby or are protected from scale in. If the rolling update process
-#' fails, any instances that are replaced are not rolled back to their
-#' previous configuration.
 #' @param DesiredConfiguration The desired configuration. For example, the desired configuration can
 #' specify a new launch template or a new version of the current launch
 #' template.
@@ -6127,10 +6643,20 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' launch template for your desired configuration, consider enabling the
 #' `SkipMatching` property in preferences. If it's enabled, Amazon EC2 Auto
 #' Scaling skips replacing instances that already use the specified launch
-#' template and version. This can help you reduce the number of
+#' template and instance types. This can help you reduce the number of
 #' replacements that are required to apply updates.
-#' @param Preferences Set of preferences associated with the instance refresh request. If not
-#' provided, the default values are used.
+#' @param Preferences Sets your preferences for the instance refresh so that it performs as
+#' expected when you start it. Includes the instance warmup time, the
+#' minimum healthy percentage, and the behaviors that you want Amazon EC2
+#' Auto Scaling to use if instances that are in `Standby` state or
+#' protected from scale in are found. You can also choose to enable
+#' additional features, such as the following:
+#' 
+#' -   Auto rollback
+#' 
+#' -   Checkpoints
+#' 
+#' -   Skip matching
 #'
 #' @return
 #' A list with the following syntax:
@@ -6226,6 +6752,13 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'               AcceleratorTotalMemoryMiB = list(
 #'                 Min = 123,
 #'                 Max = 123
+#'               ),
+#'               NetworkBandwidthGbps = list(
+#'                 Min = 123.0,
+#'                 Max = 123.0
+#'               ),
+#'               AllowedInstanceTypes = list(
+#'                 "string"
 #'               )
 #'             )
 #'           )
@@ -6248,7 +6781,10 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'       123
 #'     ),
 #'     CheckpointDelay = 123,
-#'     SkipMatching = TRUE|FALSE
+#'     SkipMatching = TRUE|FALSE,
+#'     AutoRollback = TRUE|FALSE,
+#'     ScaleInProtectedInstances = "Refresh"|"Ignore"|"Wait",
+#'     StandbyInstances = "Terminate"|"Ignore"|"Wait"
 #'   )
 #' )
 #' ```
@@ -6432,7 +6968,7 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #'     EndTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled",
+#'     StatusCode = "PendingSpotBidPlacement"|"WaitingForSpotInstanceRequestId"|"WaitingForSpotInstanceId"|"WaitingForInstanceId"|"PreInService"|"InProgress"|"WaitingForELBConnectionDraining"|"MidLifecycleAction"|"WaitingForInstanceWarmup"|"Successful"|"Failed"|"Cancelled"|"WaitingForConnectionDraining",
 #'     StatusMessage = "string",
 #'     Progress = 123,
 #'     Details = "string",
@@ -6554,9 +7090,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @param LaunchTemplate The launch template and version to use to specify the updates. If you
 #' specify `LaunchTemplate` in your update request, you can't specify
 #' `LaunchConfigurationName` or `MixedInstancesPolicy`.
-#' @param MixedInstancesPolicy An embedded object that specifies a mixed instances policy. For more
-#' information, see [Auto Scaling groups with multiple instance types and
-#' purchase
+#' @param MixedInstancesPolicy The mixed instances policy. For more information, see [Auto Scaling
+#' groups with multiple instance types and purchase
 #' options](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param MinSize The minimum size of the Auto Scaling group.
@@ -6580,17 +7115,22 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param AvailabilityZones One or more Availability Zones for the group.
-#' @param HealthCheckType The service to use for the health checks. The valid values are `EC2` and
-#' `ELB`. If you configure an Auto Scaling group to use `ELB` health
-#' checks, it considers the instance unhealthy if it fails either the EC2
-#' status checks or the load balancer health checks.
+#' @param HealthCheckType A comma-separated value string of one or more health check types.
+#' 
+#' The valid values are `EC2`, `ELB`, and `VPC_LATTICE`. `EC2` is the
+#' default health check and cannot be disabled. For more information, see
+#' [Health checks for Auto Scaling
+#' instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
+#' in the *Amazon EC2 Auto Scaling User Guide*.
+#' 
+#' Only specify `EC2` if you must clear a value that was previously set.
 #' @param HealthCheckGracePeriod The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 #' before checking the health status of an EC2 instance that has come into
-#' service and marking it unhealthy due to a failed Elastic Load Balancing
-#' or custom health check. This is useful if your instances do not
-#' immediately pass these health checks after they enter the `InService`
-#' state. For more information, see [Health check grace
-#' period](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html#health-check-grace-period)
+#' service and marking it unhealthy due to a failed health check. This is
+#' useful if your instances do not immediately pass their health checks
+#' after they enter the `InService` state. For more information, see [Set
+#' the health check grace period for an Auto Scaling
+#' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-check-grace-period.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' @param PlacementGroup The name of an existing placement group into which to launch your
 #' instances. For more information, see [Placement
@@ -6647,25 +7187,26 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' into number of instances.
 #' 
 #' Valid values: `units` | `vcpu` | `memory-mib`
-#' @param DefaultInstanceWarmup The amount of time, in seconds, until a newly launched instance can
-#' contribute to the Amazon CloudWatch metrics. This delay lets an instance
-#' finish initializing before Amazon EC2 Auto Scaling aggregates instance
-#' metrics, resulting in more reliable usage data. Set this value equal to
-#' the amount of time that it takes for resource consumption to become
-#' stable after an instance reaches the `InService` state. For more
-#' information, see [Set the default instance warmup for an Auto Scaling
+#' @param DefaultInstanceWarmup The amount of time, in seconds, until a new instance is considered to
+#' have finished initializing and resource consumption to become stable
+#' after it enters the `InService` state.
+#' 
+#' During an instance refresh, Amazon EC2 Auto Scaling waits for the
+#' warm-up period after it replaces an instance before it moves on to
+#' replacing the next instance. Amazon EC2 Auto Scaling also waits for the
+#' warm-up period before aggregating the metrics for new instances with
+#' existing instances in the Amazon CloudWatch metrics that are used for
+#' scaling, resulting in more reliable usage data. For more information,
+#' see [Set the default instance warmup for an Auto Scaling
 #' group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
-#' To manage your warm-up settings at the group level, we recommend that
-#' you set the default instance warmup, *even if its value is set to 0
-#' seconds*. This also optimizes the performance of scaling policies that
-#' scale continuously, such as target tracking and step scaling policies.
-#' 
-#' If you need to remove a value that you previously set, include the
-#' property but specify `-1` for the value. However, we strongly recommend
-#' keeping the default instance warmup enabled by specifying a minimum
-#' value of `0`.
+#' To manage various warm-up settings at the group level, we recommend that
+#' you set the default instance warmup, *even if it is set to 0 seconds*.
+#' To remove a value that you previously set, include the property but
+#' specify `-1` for the value. However, we strongly recommend keeping the
+#' default instance warmup enabled by specifying a value of `0` or other
+#' nominal value.
 #'
 #' @return
 #' An empty list.
@@ -6755,6 +7296,13 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #'             AcceleratorTotalMemoryMiB = list(
 #'               Min = 123,
 #'               Max = 123
+#'             ),
+#'             NetworkBandwidthGbps = list(
+#'               Min = 123.0,
+#'               Max = 123.0
+#'             ),
+#'             AllowedInstanceTypes = list(
+#'               "string"
 #'             )
 #'           )
 #'         )

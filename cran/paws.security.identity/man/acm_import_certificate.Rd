@@ -2,8 +2,8 @@
 % Please edit documentation in R/acm_operations.R
 \name{acm_import_certificate}
 \alias{acm_import_certificate}
-\title{Imports a certificate into Amazon Web Services Certificate Manager (ACM)
-to use with services that are integrated with ACM}
+\title{Imports a certificate into Certificate Manager (ACM) to use with
+services that are integrated with ACM}
 \usage{
 acm_import_certificate(
   CertificateArn = NULL,
@@ -14,7 +14,7 @@ acm_import_certificate(
 )
 }
 \arguments{
-\item{CertificateArn}{The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
+\item{CertificateArn}{The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of an imported certificate to replace. To import a new certificate, omit
 this field.}
 
@@ -29,7 +29,7 @@ this field.}
 Note: You cannot apply tags when reimporting a certificate.}
 }
 \description{
-Imports a certificate into Amazon Web Services Certificate Manager (ACM) to use with services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services} allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates} in the \emph{Amazon Web Services Certificate Manager User Guide}.
+Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services} allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates} in the \emph{Certificate Manager User Guide}.
 
 See \url{https://paws-r.github.io/docs/acm/import_certificate.html} for full documentation.
 }

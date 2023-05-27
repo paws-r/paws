@@ -3,17 +3,17 @@
 \name{ssoadmin_delete_instance_access_control_attribute_configuration}
 \alias{ssoadmin_delete_instance_access_control_attribute_configuration}
 \title{Disables the attributes-based access control (ABAC) feature for the
-specified Amazon Web Services SSO instance and deletes all of the
-attribute mappings that have been configured}
+specified IAM Identity Center instance and deletes all of the attribute
+mappings that have been configured}
 \usage{
 ssoadmin_delete_instance_access_control_attribute_configuration(InstanceArn)
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 }
 \description{
-Disables the attributes-based access control (ABAC) feature for the specified Amazon Web Services SSO instance and deletes all of the attribute mappings that have been configured. Once deleted, any attributes that are received from an identity source and any custom attributes you have previously configured will not be passed. For more information about ABAC, see Attribute-Based Access Control in the \emph{Amazon Web Services SSO User Guide}.
+Disables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance and deletes all of the attribute mappings that have been configured. Once deleted, any attributes that are received from an identity source and any custom attributes you have previously configured will not be passed. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/delete_instance_access_control_attribute_configuration.html} for full documentation.
 }

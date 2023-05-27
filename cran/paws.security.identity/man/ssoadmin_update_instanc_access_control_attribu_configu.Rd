@@ -2,9 +2,9 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_update_instance_access_control_attribute_configuration}
 \alias{ssoadmin_update_instance_access_control_attribute_configuration}
-\title{Updates the Amazon Web Services SSO identity store attributes that you
-can use with the Amazon Web Services SSO instance for attributes-based
-access control (ABAC)}
+\title{Updates the IAM Identity Center identity store attributes that you can
+use with the IAM Identity Center instance for attributes-based access
+control (ABAC)}
 \usage{
 ssoadmin_update_instance_access_control_attribute_configuration(
   InstanceArn,
@@ -12,13 +12,13 @@ ssoadmin_update_instance_access_control_attribute_configuration(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed.}
 
 \item{InstanceAccessControlAttributeConfiguration}{[required] Updates the attributes for your ABAC configuration.}
 }
 \description{
-Updates the Amazon Web Services SSO identity store attributes that you can use with the Amazon Web Services SSO instance for attributes-based access control (ABAC). When using an external identity provider as an identity source, you can pass attributes through the SAML assertion as an alternative to configuring attributes from the Amazon Web Services SSO identity store. If a SAML assertion passes any of these attributes, Amazon Web Services SSO replaces the attribute value with the value from the Amazon Web Services SSO identity store. For more information about ABAC, see Attribute-Based Access Control in the \emph{Amazon Web Services SSO User Guide}.
+Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC). When using an external identity provider as an identity source, you can pass attributes through the SAML assertion as an alternative to configuring attributes from the IAM Identity Center identity store. If a SAML assertion passes any of these attributes, IAM Identity Center replaces the attribute value with the value from the IAM Identity Center identity store. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/update_instance_access_control_attribute_configuration.html} for full documentation.
 }

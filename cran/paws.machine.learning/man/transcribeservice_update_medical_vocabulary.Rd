@@ -11,8 +11,8 @@ transcribeservice_update_medical_vocabulary(
 )
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the custom medical vocabulary you want to update. Vocabulary
-names are case sensitive.}
+\item{VocabularyName}{[required] The name of the custom medical vocabulary you want to update. Custom
+medical vocabulary names are case sensitive.}
 
 \item{LanguageCode}{[required] The language code that represents the language of the entries in the
 custom vocabulary you want to update. US English (\code{en-US}) is the only
@@ -25,7 +25,7 @@ Services Region as the resource you're calling.
 Here's an example URI path: \verb{s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt}}
 }
 \description{
-Updates an existing custom medical vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing vocabulary.
+Updates an existing custom medical vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing custom vocabulary.
 
 See \url{https://paws-r.github.io/docs/transcribeservice/update_medical_vocabulary.html} for full documentation.
 }

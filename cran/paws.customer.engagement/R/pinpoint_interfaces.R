@@ -563,7 +563,7 @@ NULL
 
 .pinpoint$get_campaign_activities_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ActivitiesResponse = structure(list(Item = structure(list(structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), CampaignId = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Result = structure(logical(0), tags = list(type = "string")), ScheduledStart = structure(logical(0), tags = list(type = "string")), Start = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), SuccessfulEndpointCount = structure(logical(0), tags = list(type = "integer")), TimezonesCompletedCount = structure(logical(0), tags = list(type = "integer")), TimezonesTotalCount = structure(logical(0), tags = list(type = "integer")), TotalEndpointCount = structure(logical(0), tags = list(type = "integer")), TreatmentId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "ActivitiesResponse"))
+  shape <- structure(list(ActivitiesResponse = structure(list(Item = structure(list(structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), CampaignId = structure(logical(0), tags = list(type = "string")), End = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Result = structure(logical(0), tags = list(type = "string")), ScheduledStart = structure(logical(0), tags = list(type = "string")), Start = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), SuccessfulEndpointCount = structure(logical(0), tags = list(type = "integer")), TimezonesCompletedCount = structure(logical(0), tags = list(type = "integer")), TimezonesTotalCount = structure(logical(0), tags = list(type = "integer")), TotalEndpointCount = structure(logical(0), tags = list(type = "integer")), TreatmentId = structure(logical(0), tags = list(type = "string")), ExecutionMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "ActivitiesResponse"))
   return(populate(args, shape))
 }
 
@@ -804,6 +804,42 @@ NULL
 .pinpoint$get_journey_execution_metrics_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JourneyExecutionMetricsResponse = structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), JourneyId = structure(logical(0), tags = list(type = "string")), LastEvaluatedTime = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "JourneyExecutionMetricsResponse"))
+  return(populate(args, shape))
+}
+
+.pinpoint$get_journey_run_execution_activity_metrics_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "application-id", type = "string")), JourneyActivityId = structure(logical(0), tags = list(location = "uri", locationName = "journey-activity-id", type = "string")), JourneyId = structure(logical(0), tags = list(location = "uri", locationName = "journey-id", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "page-size", type = "string")), RunId = structure(logical(0), tags = list(location = "uri", locationName = "run-id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpoint$get_journey_run_execution_activity_metrics_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JourneyRunExecutionActivityMetricsResponse = structure(list(ActivityType = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), JourneyActivityId = structure(logical(0), tags = list(type = "string")), JourneyId = structure(logical(0), tags = list(type = "string")), LastEvaluatedTime = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), RunId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "JourneyRunExecutionActivityMetricsResponse"))
+  return(populate(args, shape))
+}
+
+.pinpoint$get_journey_run_execution_metrics_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "application-id", type = "string")), JourneyId = structure(logical(0), tags = list(location = "uri", locationName = "journey-id", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "next-token", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "page-size", type = "string")), RunId = structure(logical(0), tags = list(location = "uri", locationName = "run-id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpoint$get_journey_run_execution_metrics_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JourneyRunExecutionMetricsResponse = structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), JourneyId = structure(logical(0), tags = list(type = "string")), LastEvaluatedTime = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), RunId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "JourneyRunExecutionMetricsResponse"))
+  return(populate(args, shape))
+}
+
+.pinpoint$get_journey_runs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationId = structure(logical(0), tags = list(location = "uri", locationName = "application-id", type = "string")), JourneyId = structure(logical(0), tags = list(location = "uri", locationName = "journey-id", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "page-size", type = "string")), Token = structure(logical(0), tags = list(location = "querystring", locationName = "token", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.pinpoint$get_journey_runs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JourneyRunsResponse = structure(list(Item = structure(list(structure(list(CreationTime = structure(logical(0), tags = list(type = "string")), LastUpdateTime = structure(logical(0), tags = list(type = "string")), RunId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", payload = "JourneyRunsResponse"))
   return(populate(args, shape))
 }
 

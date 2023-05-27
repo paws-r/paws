@@ -90,18 +90,22 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
 #' @param instanceName &#91;required&#93; The name of the Lightsail instance where you want to utilize the storage
 #' disk.
 #' @param diskPath &#91;required&#93; The disk path to expose to the instance (e.g., `/dev/xvdf`).
+#' @param autoMounting A Boolean value used to determine the automatic mounting of a storage
+#' volume to a virtual computer. The default value is `False`.
+#' 
+#' This value only applies to Lightsail for Research resources.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_attach_disk
-lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
+lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting = NULL) {
   op <- new_operation(
     name = "AttachDisk",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$attach_disk_input(diskName = diskName, instanceName = instanceName, diskPath = diskPath)
+  input <- .lightsail$attach_disk_input(diskName = diskName, instanceName = instanceName, diskPath = diskPath, autoMounting = autoMounting)
   output <- .lightsail$attach_disk_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -553,8 +557,9 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' typically
 #' `https://<ServiceName>.<RandomGUID>.<AWSRegion>.cs.amazonlightsail.com`.
 #' If the name of your container service is `container-service-1`, and it's
-#' located in the US East (Ohio) AWS region (`us-east-2`), then the domain
-#' for your container service will be like the following example:
+#' located in the US East (Ohio) Amazon Web Services Region (`us-east-2`),
+#' then the domain for your container service will be like the following
+#' example:
 #' `https://container-service-1.ur4EXAMPLE2uq.us-east-2.cs.amazonlightsail.com`
 #' 
 #' The following are the requirements for container service names:
@@ -956,11 +961,6 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #' See [https://paws-r.github.io/docs/lightsail/create_domain.html](https://paws-r.github.io/docs/lightsail/create_domain.html) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name to manage (e.g., `example.com`).
-#' 
-#' You cannot register a new domain name using Lightsail. You must register
-#' a domain name using Amazon Route 53 or another domain name registrar. If
-#' you have already registered your domain, you can enter its name in this
-#' parameter to manage the DNS records for that domain using Lightsail.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
@@ -1020,6 +1020,36 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
   return(response)
 }
 .lightsail$operations$create_domain_entry <- lightsail_create_domain_entry
+
+#' Creates two URLs that are used to access a virtual computer’s graphical
+#' user interface (GUI) session
+#'
+#' @description
+#' Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session. The primary URL initiates a web-based NICE DCV session to the virtual computer's application. The secondary URL initiates a web-based NICE DCV session to the virtual computer's operating session.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/create_gui_session_access_details.html](https://paws-r.github.io/docs/lightsail/create_gui_session_access_details.html) for full documentation.
+#'
+#' @param resourceName &#91;required&#93; The resource name.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_gui_session_access_details
+lightsail_create_gui_session_access_details <- function(resourceName) {
+  op <- new_operation(
+    name = "CreateGUISessionAccessDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_gui_session_access_details_input(resourceName = resourceName)
+  output <- .lightsail$create_gui_session_access_details_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_gui_session_access_details <- lightsail_create_gui_session_access_details
 
 #' Creates a snapshot of a specific virtual private server, or instance
 #'
@@ -1521,8 +1551,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' preferred backup window time blocks for each region, see the [Working
 #' With
 #' Backups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
-#' guide in the Amazon Relational Database Service (Amazon RDS)
-#' documentation.
+#' guide in the Amazon Relational Database Service documentation.
 #' 
 #' Constraints:
 #' 
@@ -2000,8 +2029,7 @@ lightsail_delete_container_service <- function(serviceName) {
 #' See [https://paws-r.github.io/docs/lightsail/delete_disk.html](https://paws-r.github.io/docs/lightsail/delete_disk.html) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique name of the disk you want to delete (e.g., `my-disk`).
-#' @param forceDeleteAddOns A Boolean value to indicate whether to delete the enabled add-ons for
-#' the disk.
+#' @param forceDeleteAddOns A Boolean value to indicate whether to delete all add-ons for the disk.
 #'
 #' @keywords internal
 #'
@@ -2154,8 +2182,8 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #' See [https://paws-r.github.io/docs/lightsail/delete_instance.html](https://paws-r.github.io/docs/lightsail/delete_instance.html) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to delete.
-#' @param forceDeleteAddOns A Boolean value to indicate whether to delete the enabled add-ons for
-#' the disk.
+#' @param forceDeleteAddOns A Boolean value to indicate whether to delete all add-ons for the
+#' instance.
 #'
 #' @keywords internal
 #'
@@ -2777,18 +2805,22 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 #' [`get_blueprints`][lightsail_get_blueprints] request. If your results
 #' are paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
+#' @param appCategory Returns a list of blueprints that are specific to Lightsail for
+#' Research.
+#' 
+#' You must use this parameter to view Lightsail for Research blueprints.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_blueprints
-lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL) {
+lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL, appCategory = NULL) {
   op <- new_operation(
     name = "GetBlueprints",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$get_blueprints_input(includeInactive = includeInactive, pageToken = pageToken)
+  input <- .lightsail$get_blueprints_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_blueprints_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -3005,18 +3037,21 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
 #' [`get_bundles`][lightsail_get_bundles] request. If your results are
 #' paginated, the response will return a next page token that you can
 #' specify as the page token in a subsequent request.
+#' @param appCategory Returns a list of bundles that are specific to Lightsail for Research.
+#' 
+#' You must use this parameter to view Lightsail for Research bundles.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_bundles
-lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
+lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appCategory = NULL) {
   op <- new_operation(
     name = "GetBundles",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$get_bundles_input(includeInactive = includeInactive, pageToken = pageToken)
+  input <- .lightsail$get_bundles_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_bundles_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -3454,6 +3489,61 @@ lightsail_get_container_services <- function(serviceName = NULL) {
   return(response)
 }
 .lightsail$operations$get_container_services <- lightsail_get_container_services
+
+#' Retrieves information about the cost estimate for a specified resource
+#'
+#' @description
+#' Retrieves information about the cost estimate for a specified resource. A cost estimate will not generate for a resource that has been deleted.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/get_cost_estimate.html](https://paws-r.github.io/docs/lightsail/get_cost_estimate.html) for full documentation.
+#'
+#' @param resourceName &#91;required&#93; The resource name.
+#' @param startTime &#91;required&#93; The cost estimate start time.
+#' 
+#' Constraints:
+#' 
+#' -   Specified in Coordinated Universal Time (UTC).
+#' 
+#' -   Specified in the Unix time format.
+#' 
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, specify `1538424000` as the start time.
+#' 
+#' You can convert a human-friendly time to Unix time format using a
+#' converter like [Epoch converter](https://www.epochconverter.com/).
+#' @param endTime &#91;required&#93; The cost estimate end time.
+#' 
+#' Constraints:
+#' 
+#' -   Specified in Coordinated Universal Time (UTC).
+#' 
+#' -   Specified in the Unix time format.
+#' 
+#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     PM UTC, specify `1538427600` as the end time.
+#' 
+#' You can convert a human-friendly time to Unix time format using a
+#' converter like [Epoch converter](https://www.epochconverter.com/).
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_cost_estimate
+lightsail_get_cost_estimate <- function(resourceName, startTime, endTime) {
+  op <- new_operation(
+    name = "GetCostEstimate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_cost_estimate_input(resourceName = resourceName, startTime = startTime, endTime = endTime)
+  output <- .lightsail$get_cost_estimate_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_cost_estimate <- lightsail_get_cost_estimate
 
 #' Returns information about a specific block storage disk
 #'
@@ -4092,6 +4182,17 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #'     or failed the system status check. This metric can be either 0
 #'     (passed) or 1 (failed). This metric data is available in 1-minute
 #'     (60 seconds) granularity.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `Count`.
+#' 
+#' -   **`MetadataNoToken`** - Reports the number of times that the
+#'     instance metadata service was successfully accessed without a token.
+#'     This metric determines if there are any processes accessing instance
+#'     metadata by using Instance Metadata Service Version 1, which doesn't
+#'     use a token. If all requests use token-backed sessions, such as
+#'     Instance Metadata Service Version 2, then the value is 0.
 #' 
 #'     `Statistics`: The most useful statistic is `Sum`.
 #' 
@@ -6004,6 +6105,36 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
 }
 .lightsail$operations$set_resource_access_for_bucket <- lightsail_set_resource_access_for_bucket
 
+#' Initiates a graphical user interface (GUI) session that’s used to access
+#' a virtual computer’s operating system and application
+#'
+#' @description
+#' Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application. The session will be active for 1 hour. Use this action to resume the session after it expires.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/start_gui_session.html](https://paws-r.github.io/docs/lightsail/start_gui_session.html) for full documentation.
+#'
+#' @param resourceName &#91;required&#93; The resource name.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_start_gui_session
+lightsail_start_gui_session <- function(resourceName) {
+  op <- new_operation(
+    name = "StartGUISession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$start_gui_session_input(resourceName = resourceName)
+  output <- .lightsail$start_gui_session_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$start_gui_session <- lightsail_start_gui_session
+
 #' Starts a specific Amazon Lightsail instance from a stopped state
 #'
 #' @description
@@ -6061,6 +6192,36 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
   return(response)
 }
 .lightsail$operations$start_relational_database <- lightsail_start_relational_database
+
+#' Terminates a web-based NICE DCV session that’s used to access a virtual
+#' computer’s operating system or application
+#'
+#' @description
+#' Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application. The session will close and any unsaved data will be lost.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/stop_gui_session.html](https://paws-r.github.io/docs/lightsail/stop_gui_session.html) for full documentation.
+#'
+#' @param resourceName &#91;required&#93; The resource name.
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_stop_gui_session
+lightsail_stop_gui_session <- function(resourceName) {
+  op <- new_operation(
+    name = "StopGUISession",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$stop_gui_session_input(resourceName = resourceName)
+  output <- .lightsail$stop_gui_session_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$stop_gui_session <- lightsail_stop_gui_session
 
 #' Stops a specific Amazon Lightsail instance that is currently running
 #'
@@ -6531,6 +6692,63 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 }
 .lightsail$operations$update_domain_entry <- lightsail_update_domain_entry
 
+#' Modifies the Amazon Lightsail instance metadata parameters on a running
+#' or stopped instance
+#'
+#' @description
+#' Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance. When you modify the parameters on a running instance, the [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API operation initially responds with a state of `pending`. After the parameter modifications are successfully applied, the state changes to `applied` in subsequent [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API calls. For more information, see Use IMDSv2 with an Amazon Lightsail instance in the *Amazon Lightsail Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/lightsail/update_instance_metadata_options.html](https://paws-r.github.io/docs/lightsail/update_instance_metadata_options.html) for full documentation.
+#'
+#' @param instanceName &#91;required&#93; The name of the instance for which to update metadata parameters.
+#' @param httpTokens The state of token usage for your instance metadata requests. If the
+#' parameter is not specified in the request, the default state is
+#' `optional`.
+#' 
+#' If the state is `optional`, you can choose whether to retrieve instance
+#' metadata with a signed token header on your request. If you retrieve the
+#' IAM role credentials without a token, the version 1.0 role credentials
+#' are returned. If you retrieve the IAM role credentials by using a valid
+#' signed token, the version 2.0 role credentials are returned.
+#' 
+#' If the state is `required`, you must send a signed token header with all
+#' instance metadata retrieval requests. In this state, retrieving the IAM
+#' role credential always returns the version 2.0 credentials. The version
+#' 1.0 credentials are not available.
+#' @param httpEndpoint Enables or disables the HTTP metadata endpoint on your instances. If
+#' this parameter is not specified, the existing state is maintained.
+#' 
+#' If you specify a value of `disabled`, you cannot access your instance
+#' metadata.
+#' @param httpPutResponseHopLimit The desired HTTP PUT response hop limit for instance metadata requests.
+#' A larger number means that the instance metadata requests can travel
+#' farther. If no parameter is specified, the existing state is maintained.
+#' @param httpProtocolIpv6 Enables or disables the IPv6 endpoint for the instance metadata service.
+#' This setting applies only when the HTTP metadata endpoint is enabled.
+#' 
+#' This parameter is available only for instances in the Europe (Stockholm)
+#' Amazon Web Services Region (`eu-north-1`).
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_update_instance_metadata_options
+lightsail_update_instance_metadata_options <- function(instanceName, httpTokens = NULL, httpEndpoint = NULL, httpPutResponseHopLimit = NULL, httpProtocolIpv6 = NULL) {
+  op <- new_operation(
+    name = "UpdateInstanceMetadataOptions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$update_instance_metadata_options_input(instanceName = instanceName, httpTokens = httpTokens, httpEndpoint = httpEndpoint, httpPutResponseHopLimit = httpPutResponseHopLimit, httpProtocolIpv6 = httpProtocolIpv6)
+  output <- .lightsail$update_instance_metadata_options_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$update_instance_metadata_options <- lightsail_update_instance_metadata_options
+
 #' Updates the specified attribute for a load balancer
 #'
 #' @description
@@ -6635,8 +6853,8 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' database.
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
-#' block of time for each AWS Region, occurring on a random day of the
-#' week.
+#' block of time for each Amazon Web Services Region, occurring on a random
+#' day of the week.
 #' 
 #' Constraints:
 #' 

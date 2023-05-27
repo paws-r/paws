@@ -18,7 +18,7 @@ previous page call.}
 \item{MaxResults}{The maximum number of results (rows) to return in this request.}
 }
 \description{
-Streams the results of a single query execution specified by \code{QueryExecutionId} from the Athena query results location in Amazon S3. For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Query Results} in the \emph{Amazon Athena User Guide}. This request does not execute the query but returns results. Use \code{\link[=athena_start_query_execution]{start_query_execution}} to run a query.
+Streams the results of a single query execution specified by \code{QueryExecutionId} from the Athena query results location in Amazon S3. For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Working with query results, recent queries, and output files} in the \emph{Amazon Athena User Guide}. This request does not execute the query but returns results. Use \code{\link[=athena_start_query_execution]{start_query_execution}} to run a query.
 
 See \url{https://paws-r.github.io/docs/athena/get_query_results.html} for full documentation.
 }

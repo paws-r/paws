@@ -7,7 +7,7 @@
 auditmanager_get_settings(attribute)
 }
 \arguments{
-\item{attribute}{[required] The list of \code{SettingAttribute} enum values.}
+\item{attribute}{[required] The list of setting attribute enum values.}
 }
 \description{
 Returns the settings for the specified Amazon Web Services account.

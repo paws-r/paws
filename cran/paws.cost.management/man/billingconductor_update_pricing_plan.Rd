@@ -7,12 +7,12 @@
 billingconductor_update_pricing_plan(Arn, Name = NULL, Description = NULL)
 }
 \arguments{
-\item{Arn}{[required] The Amazon Resource Name (ARN) of the pricing plan you're updating.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the pricing plan that you're updating.}
 
 \item{Name}{The name of the pricing plan. The name must be unique to each pricing
 plan.}
 
-\item{Description}{The pricing plan description.}
+\item{Description}{The description of the pricing plan.}
 }
 \description{
 This updates an existing pricing plan.

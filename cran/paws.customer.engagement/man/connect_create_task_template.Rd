@@ -17,8 +17,8 @@ connect_create_task_template(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Name}{[required] The name of the task template.}
 
@@ -40,7 +40,9 @@ created.}
 \item{Fields}{[required] Fields that are part of the template.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
 Creates a new task template in the specified Amazon Connect instance.

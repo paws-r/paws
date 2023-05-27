@@ -17,9 +17,10 @@ billingconductor_create_pricing_plan(
 \item{ClientToken}{The token that is needed to support idempotency. Idempotency isn't
 currently supported, but will be implemented in a future update.}
 
-\item{Name}{[required] The pricing plan name. The names must be unique to each pricing plan.}
+\item{Name}{[required] The name of the pricing plan. The names must be unique to each pricing
+plan.}
 
-\item{Description}{The pricing plan description.}
+\item{Description}{The description of the pricing plan.}
 
 \item{PricingRuleArns}{A list of Amazon Resource Names (ARNs) that define the pricing plan
 parameters.}

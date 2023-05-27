@@ -22,13 +22,13 @@ page of results, copy this string and repeat your request, including
 view all your results.}
 
 \item{MaxResults}{The maximum number of custom medical vocabularies to return in each page
-of results. If there are fewer results than the value you specify, only
-the actual results are returned. If you don't specify a value, a default
-of 5 is used.}
+of results. If there are fewer results than the value that you specify,
+only the actual results are returned. If you don't specify a value, a
+default of 5 is used.}
 
 \item{StateEquals}{Returns only custom medical vocabularies with the specified state.
-Vocabularies are ordered by creation date, with the newest vocabulary
-first. If you don't include \code{StateEquals}, all custom medical
+Custom vocabularies are ordered by creation date, with the newest
+vocabulary first. If you don't include \code{StateEquals}, all custom medical
 vocabularies are returned.}
 
 \item{NameContains}{Returns only the custom medical vocabularies that contain the specified

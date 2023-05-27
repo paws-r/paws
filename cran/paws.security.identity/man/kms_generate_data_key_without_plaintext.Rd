@@ -40,6 +40,9 @@ get the alias name and alias ARN, use
 \item{EncryptionContext}{Specifies the encryption context that will be used when encrypting the
 data key.
 
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
+
 An \emph{encryption context} is a collection of non-secret key-value pairs
 that represent additional authenticated data. When you use an encryption
 context to encrypt data, you must specify the same (an exact

@@ -7,11 +7,12 @@
 rds_create_custom_db_engine_version(
   Engine,
   EngineVersion,
-  DatabaseInstallationFilesS3BucketName,
+  DatabaseInstallationFilesS3BucketName = NULL,
   DatabaseInstallationFilesS3Prefix = NULL,
-  KMSKeyId,
+  ImageId = NULL,
+  KMSKeyId = NULL,
   Description = NULL,
-  Manifest,
+  Manifest = NULL,
   Tags = NULL
 )
 }
@@ -19,12 +20,12 @@ rds_create_custom_db_engine_version(
 \item{Engine}{[required] The database engine to use for your custom engine version (CEV). The
 only supported value is \code{custom-oracle-ee}.}
 
-\item{EngineVersion}{[required] The name of your CEV. The name format is \verb{19.customized_string }. For
-example, a valid name is \verb{19.my_cev1}. This setting is required for RDS
-Custom for Oracle, but optional for Amazon RDS. The combination of
+\item{EngineVersion}{[required] The name of your CEV. The name format is 19.\emph{customized_string}. For
+example, a valid CEV name is \verb{19.my_cev1}. This setting is required for
+RDS Custom for Oracle, but optional for Amazon RDS. The combination of
 \code{Engine} and \code{EngineVersion} is unique per customer per Region.}
 
-\item{DatabaseInstallationFilesS3BucketName}{[required] The name of an Amazon S3 bucket that contains database installation
+\item{DatabaseInstallationFilesS3BucketName}{The name of an Amazon S3 bucket that contains database installation
 files for your CEV. For example, a valid bucket name is
 \code{my-custom-installation-files}.}
 
@@ -32,22 +33,30 @@ files for your CEV. For example, a valid bucket name is
 for your CEV. For example, a valid bucket name is \code{123456789012/cev1}.
 If this setting isn't specified, no prefix is assumed.}
 
-\item{KMSKeyId}{[required] The Amazon Web Services KMS key identifier for an encrypted CEV. A
-symmetric KMS key is required for RDS Custom, but optional for Amazon
-RDS.
+\item{ImageId}{The ID of the Amazon Machine Image (AMI). For RDS Custom for SQL Server,
+an AMI ID is required to create a CEV. For RDS Custom for Oracle, the
+default is the most recent AMI available, but you can specify an AMI ID
+that was used in a different Oracle CEV. Find the AMIs used by your CEVs
+by calling the
+\code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}
+operation.}
 
-If you have an existing symmetric KMS key in your account, you can use
-it with RDS Custom. No further action is necessary. If you don't already
-have a symmetric KMS key in your account, follow the instructions in
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-symmetric-cmk}{Creating symmetric KMS keys}
+\item{KMSKeyId}{The Amazon Web Services KMS key identifier for an encrypted CEV. A
+symmetric encryption KMS key is required for RDS Custom, but optional
+for Amazon RDS.
+
+If you have an existing symmetric encryption KMS key in your account,
+you can use it with RDS Custom. No further action is necessary. If you
+don't already have a symmetric encryption KMS key in your account,
+follow the instructions in \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-symmetric-cmk}{Creating a symmetric encryption KMS key}
 in the \emph{Amazon Web Services Key Management Service Developer Guide}.
 
-You can choose the same symmetric key when you create a CEV and a DB
-instance, or choose different keys.}
+You can choose the same symmetric encryption key when you create a CEV
+and a DB instance, or choose different keys.}
 
 \item{Description}{An optional description of your CEV.}
 
-\item{Manifest}{[required] The CEV manifest, which is a JSON document that describes the
+\item{Manifest}{The CEV manifest, which is a JSON document that describes the
 installation .zip files stored in Amazon S3. Specify the name/value
 pairs in a file or a quoted string. RDS Custom applies the patches in
 the order in which they are listed.
@@ -81,7 +90,7 @@ in the \emph{Amazon RDS User Guide}.}
 \item{Tags}{}
 }
 \description{
-Creates a custom DB engine version (CEV). A CEV is a binary volume snapshot of a database engine and specific AMI. The supported engines are the following:
+Creates a custom DB engine version (CEV).
 
 See \url{https://paws-r.github.io/docs/rds/create_custom_db_engine_version.html} for full documentation.
 }

@@ -57,23 +57,23 @@ For a summary of notable documentation changes in each release, see
 The following resources contain information about your IVS live stream
 (see \href{https://docs.aws.amazon.com/ivs/latest/userguide/getting-started.html}{Getting Started with Amazon IVS}):
 \itemize{
-\item Channel — Stores configuration data related to your live stream. You
-first create a channel and then use the channel’s stream key to
+\item \strong{Channel} — Stores configuration data related to your live stream.
+You first create a channel and then use the channel’s stream key to
 start your live stream. See the Channel endpoints for more
 information.
-\item Stream key — An identifier assigned by Amazon IVS when you create a
-channel, which is then used to authorize streaming. See the
+\item \strong{Stream key} — An identifier assigned by Amazon IVS when you
+create a channel, which is then used to authorize streaming. See the
 StreamKey endpoints for more information. \emph{Treat the stream key like
 a secret, since it allows anyone to stream to the channel.}
-\item Playback key pair — Video playback may be restricted using
+\item \strong{Playback key pair} — Video playback may be restricted using
 playback-authorization tokens, which use public-key encryption. A
 playback key pair is the public-private pair of keys used to sign
 and validate the playback-authorization token. See the
 PlaybackKeyPair endpoints for more information.
-\item Recording configuration — Stores configuration related to recording
-a live stream and where to store the recorded content. Multiple
-channels can reference the same recording configuration. See the
-Recording Configuration endpoints for more information.
+\item \strong{Recording configuration} — Stores configuration related to
+recording a live stream and where to store the recorded content.
+Multiple channels can reference the same recording configuration.
+See the Recording Configuration endpoints for more information.
 }
 
 \strong{Tagging}
@@ -81,8 +81,10 @@ Recording Configuration endpoints for more information.
 A \emph{tag} is a metadata label that you assign to an Amazon Web Services
 resource. A tag comprises a \emph{key} and a \emph{value}, both set by you. For
 example, you might set a tag as \code{topic:nature} to label a particular
-video category. See \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
-for more information, including restrictions that apply to tags.
+video category. See \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
+for more information, including restrictions that apply to tags and "Tag
+naming limits and requirements"; Amazon IVS has no service-specific
+constraints beyond what is documented there.
 
 Tags can help you identify and organize your Amazon Web Services
 resources. For example, you can use the same tag for different resources
@@ -104,8 +106,9 @@ Note the differences between these concepts:
 \itemize{
 \item \emph{Authentication} is about verifying identity. You need to be
 authenticated to sign Amazon IVS API requests.
-\item \emph{Authorization} is about granting permissions. You need to be
-authorized to view \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Amazon IVS private channels}.
+\item \emph{Authorization} is about granting permissions. Your IAM roles need
+to have permissions for Amazon IVS API requests. In addition,
+authorization is needed to view \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Amazon IVS private channels}.
 (Private channels are channels that are enabled for "playback
 authorization.")
 }
@@ -120,8 +123,8 @@ responsibility to sign the requests.
 
 You generate a signature using valid Amazon Web Services credentials
 that have permission to perform the requested action. For example, you
-must sign PutMetadata requests with a signature generated from an IAM
-user account that has the \code{ivs:PutMetadata} permission.
+must sign PutMetadata requests with a signature generated from a user
+account that has the \code{ivs:PutMetadata} permission.
 
 For more information:
 \itemize{
@@ -131,12 +134,19 @@ in the \emph{Amazon Web Services General Reference}.
 on the Security page of the \emph{Amazon IVS User Guide}.
 }
 
+\strong{Amazon Resource Names (ARNs)}
+
+ARNs uniquely identify AWS resources. An ARN is required when you need
+to specify a resource unambiguously across all of AWS, such as in IAM
+policies and API calls. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names}
+in the \emph{AWS General Reference}.
+
 \strong{Channel Endpoints}
 \itemize{
 \item \code{create_channel} — Creates a new channel and
 an associated stream key to start streaming.
 \item \code{get_channel} — Gets the channel configuration
-for the specified channel ARN (Amazon Resource Name).
+for the specified channel ARN.
 \item \code{batch_get_channel} — Performs
 \code{get_channel} on multiple ARNs simultaneously.
 \item \code{list_channels} — Gets summary information

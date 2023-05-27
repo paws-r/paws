@@ -12,7 +12,7 @@ appregistry_update_attribute_group(
 )
 }
 \arguments{
-\item{attributeGroup}{[required] The name or ID of the attribute group that holds the attributes to
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
 describe the application.}
 
 \item{name}{Deprecated: The new name of the attribute group. The name must be unique

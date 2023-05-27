@@ -2,7 +2,8 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_put_image}
 \alias{ecrpublic_put_image}
-\title{Creates or updates the image manifest and tags associated with an image}
+\title{Creates or updates the image manifest and tags that are associated with
+an image}
 \usage{
 ecrpublic_put_image(
   registryId = NULL,
@@ -14,26 +15,27 @@ ecrpublic_put_image(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry that contains the
-repository in which to put the image. If you do not specify a registry,
-the default public registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID, or registry alias, that's associated
+with the public registry that contains the repository where the image is
+put. If you do not specify a registry, the default public registry is
+assumed.}
 
-\item{repositoryName}{[required] The name of the repository in which to put the image.}
+\item{repositoryName}{[required] The name of the repository where the image is put.}
 
-\item{imageManifest}{[required] The image manifest corresponding to the image to be uploaded.}
+\item{imageManifest}{[required] The image manifest that corresponds to the image to be uploaded.}
 
 \item{imageManifestMediaType}{The media type of the image manifest. If you push an image manifest that
-does not contain the \code{mediaType} field, you must specify the
+doesn't contain the \code{mediaType} field, you must specify the
 \code{imageManifestMediaType} in the request.}
 
 \item{imageTag}{The tag to associate with the image. This parameter is required for
 images that use the Docker Image Manifest V2 Schema 2 or Open Container
 Initiative (OCI) formats.}
 
-\item{imageDigest}{The image digest of the image manifest corresponding to the image.}
+\item{imageDigest}{The image digest of the image manifest that corresponds to the image.}
 }
 \description{
-Creates or updates the image manifest and tags associated with an image.
+Creates or updates the image manifest and tags that are associated with an image.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/put_image.html} for full documentation.
 }

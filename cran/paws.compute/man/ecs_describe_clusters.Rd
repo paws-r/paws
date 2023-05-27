@@ -16,7 +16,8 @@ in the response. If this field is omitted, this information isn't
 included.
 
 If \code{ATTACHMENTS} is specified, the attachments for the container
-instances or tasks within the cluster are included.
+instances or tasks within the cluster are included, for example the
+capacity providers.
 
 If \code{SETTINGS} is specified, the settings for the cluster are included.
 

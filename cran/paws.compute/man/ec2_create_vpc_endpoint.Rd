@@ -30,25 +30,24 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Default: Gateway}
 
-\item{VpcId}{[required] The ID of the VPC in which the endpoint will be used.}
+\item{VpcId}{[required] The ID of the VPC for the endpoint.}
 
-\item{ServiceName}{[required] The service name. To get a list of available services, use the
-\code{\link[=ec2_describe_vpc_endpoint_services]{describe_vpc_endpoint_services}}
-request, or get the name from the service provider.}
+\item{ServiceName}{[required] The service name.}
 
 \item{PolicyDocument}{(Interface and gateway endpoints) A policy to attach to the endpoint
 that controls access to the service. The policy must be in valid JSON
 format. If this parameter is not specified, we attach a default policy
 that allows full access to the service.}
 
-\item{RouteTableIds}{(Gateway endpoint) One or more route table IDs.}
+\item{RouteTableIds}{(Gateway endpoint) The route table IDs.}
 
-\item{SubnetIds}{(Interface and Gateway Load Balancer endpoints) The ID of one or more
-subnets in which to create an endpoint network interface. For a Gateway
-Load Balancer endpoint, you can specify one subnet only.}
+\item{SubnetIds}{(Interface and Gateway Load Balancer endpoints) The IDs of the subnets
+in which to create an endpoint network interface. For a Gateway Load
+Balancer endpoint, you can specify only one subnet.}
 
-\item{SecurityGroupIds}{(Interface endpoint) The ID of one or more security groups to associate
-with the endpoint network interface.}
+\item{SecurityGroupIds}{(Interface endpoint) The IDs of the security groups to associate with
+the endpoint network interface. If this parameter is not specified, we
+use the default security group for the VPC.}
 
 \item{IpAddressType}{The IP address type for the endpoint.}
 

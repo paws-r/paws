@@ -5,11 +5,24 @@
 \title{Returns information about the account selected as the delegated
 administrator for GuardDuty}
 \usage{
-guardduty_describe_organization_configuration(DetectorId)
+guardduty_describe_organization_configuration(
+  DetectorId,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to retrieve information about the delegated
 administrator from.}
+
+\item{MaxResults}{You can use this parameter to indicate the maximum number of items that
+you want in the response.}
+
+\item{NextToken}{You can use this parameter when paginating results. Set the value of
+this parameter to null on your first call to the list action. For
+subsequent calls to the action, fill \code{nextToken} in the request with the
+value of \code{NextToken} from the previous response to continue listing
+data.}
 }
 \description{
 Returns information about the account selected as the delegated administrator for GuardDuty.

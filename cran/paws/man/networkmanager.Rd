@@ -132,7 +132,7 @@ Amazon Web Services accounts, Regions, and on-premises locations.
 \link[paws.networking:networkmanager_register_transit_gateway]{register_transit_gateway} \tab Registers a transit gateway in your global network\cr
 \link[paws.networking:networkmanager_reject_attachment]{reject_attachment} \tab Rejects a core network attachment request\cr
 \link[paws.networking:networkmanager_restore_core_network_policy_version]{restore_core_network_policy_version} \tab Restores a previous policy version as a new, immutable version of a core network policy\cr
-\link[paws.networking:networkmanager_start_organization_service_access_update]{start_organization_service_access_update} \tab Enables for the Network Manager service for an Amazon Web Services Organization\cr
+\link[paws.networking:networkmanager_start_organization_service_access_update]{start_organization_service_access_update} \tab Enables the Network Manager service for an Amazon Web Services Organization\cr
 \link[paws.networking:networkmanager_start_route_analysis]{start_route_analysis} \tab Starts analyzing the routing path between the specified source and destination\cr
 \link[paws.networking:networkmanager_tag_resource]{tag_resource} \tab Tags a specified resource\cr
 \link[paws.networking:networkmanager_untag_resource]{untag_resource} \tab Removes tags from a specified resource\cr

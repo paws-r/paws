@@ -17,7 +17,7 @@ cloudfront_update_response_headers_policy(
 
 \item{IfMatch}{The version of the response headers policy that you are updating.
 
-The version is returned in the cache policy’s \code{ETag} field in the
+The version is returned in the cache policy's \code{ETag} field in the
 response to
 \code{\link[=cloudfront_get_response_headers_policy_config]{get_response_headers_policy_config}}.}
 }

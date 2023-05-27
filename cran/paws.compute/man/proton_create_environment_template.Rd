@@ -28,11 +28,11 @@ provisioned and managed infrastructure.}
 \item{tags}{An optional list of metadata items that you can associate with the
 Proton environment template. A tag is a key-value pair.
 
-For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide}
-or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
+in the \emph{Proton User Guide}.}
 }
 \description{
-Create an environment template for Proton. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html}{Environment Templates} in the \emph{Proton Administrator Guide}.
+Create an environment template for Proton. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html}{Environment Templates} in the \emph{Proton User Guide}.
 
 See \url{https://paws-r.github.io/docs/proton/create_environment_template.html} for full documentation.
 }

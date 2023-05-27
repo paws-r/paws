@@ -37,23 +37,16 @@ for \code{io-performance}: \code{normal} | \code{degraded} | \code{severely-degr
 | \code{warning} | \code{insufficient-data}).
 }}
 
-\item{MaxResults}{The maximum number of volume results returned by
-\code{\link[=ec2_describe_volume_status]{describe_volume_status}} in paginated
-output. When this parameter is used, the request only returns
-\code{MaxResults} results in a single page along with a \code{NextToken} response
-element. The remaining results of the initial request can be seen by
-sending another request with the returned \code{NextToken} value. This value
-can be between 5 and 1,000; if \code{MaxResults} is given a value larger than
-1,000, only 1,000 results are returned. If this parameter is not used,
-then \code{\link[=ec2_describe_volume_status]{describe_volume_status}} returns all
-results. You cannot specify this parameter and the volume IDs parameter
-in the same request.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. This value can be between 5 and 1,000; if the value is larger
+than 1,000, only 1,000 results are returned. If this parameter is not
+used, then all items are returned. You cannot specify this parameter and
+the volume IDs parameter in the same request. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The \code{NextToken} value to include in a future
-\code{\link[=ec2_describe_volume_status]{describe_volume_status}} request. When the
-results of the request exceed \code{MaxResults}, this value can be used to
-retrieve the next page of results. This value is \code{null} when there are
-no more results to return.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{VolumeIds}{The IDs of the volumes.
 

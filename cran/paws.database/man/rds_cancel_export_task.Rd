@@ -2,16 +2,16 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_cancel_export_task}
 \alias{rds_cancel_export_task}
-\title{Cancels an export task in progress that is exporting a snapshot to
-Amazon S3}
+\title{Cancels an export task in progress that is exporting a snapshot or
+cluster to Amazon S3}
 \usage{
 rds_cancel_export_task(ExportTaskIdentifier)
 }
 \arguments{
-\item{ExportTaskIdentifier}{[required] The identifier of the snapshot export task to cancel.}
+\item{ExportTaskIdentifier}{[required] The identifier of the snapshot or cluster export task to cancel.}
 }
 \description{
-Cancels an export task in progress that is exporting a snapshot to Amazon S3. Any data that has already been written to the S3 bucket isn't removed.
+Cancels an export task in progress that is exporting a snapshot or cluster to Amazon S3. Any data that has already been written to the S3 bucket isn't removed.
 
 See \url{https://paws-r.github.io/docs/rds/cancel_export_task.html} for full documentation.
 }

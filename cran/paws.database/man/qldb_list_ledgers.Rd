@@ -2,8 +2,8 @@
 % Please edit documentation in R/qldb_operations.R
 \name{qldb_list_ledgers}
 \alias{qldb_list_ledgers}
-\title{Returns an array of ledger summaries that are associated with the
-current Amazon Web Services account and Region}
+\title{Returns all ledgers that are associated with the current Amazon Web
+Services account and Region}
 \usage{
 qldb_list_ledgers(MaxResults = NULL, NextToken = NULL)
 }
@@ -18,7 +18,7 @@ a previous \code{\link[=qldb_list_ledgers]{list_ledgers}} call, then you should 
 that value as input here.}
 }
 \description{
-Returns an array of ledger summaries that are associated with the current Amazon Web Services account and Region.
+Returns all ledgers that are associated with the current Amazon Web Services account and Region.
 
 See \url{https://paws-r.github.io/docs/qldb/list_ledgers.html} for full documentation.
 }

@@ -13,12 +13,25 @@ connect_get_current_user_data(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Filters}{[required] Filters up to 100 \code{Queues}, or up to 9 \code{ContactStates}. The user data is
-retrieved only for those users who are associated with the queues and
-have contacts that are in the specified \code{ContactState}.}
+\item{Filters}{[required] The filters to apply to returned user data. You can filter up to the
+following limits:
+\itemize{
+\item Queues: 100
+\item Routing profiles: 100
+\item Agents: 100
+\item Contact states: 9
+\item User hierarchy groups: 1
+}
+
+The user data is retrieved for only the specified values/resources in
+the filter. A maximum of one filter can be passed from queues, routing
+profiles, agents, and user hierarchy groups.
+
+Currently tagging is only supported on the resources that are passed in
+the filter.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

@@ -5,7 +5,8 @@
 \title{Lists log events from the specified log group}
 \usage{
 cloudwatchlogs_filter_log_events(
-  logGroupName,
+  logGroupName = NULL,
+  logGroupIdentifier = NULL,
   logStreamNames = NULL,
   logStreamNamePrefix = NULL,
   startTime = NULL,
@@ -13,11 +14,22 @@ cloudwatchlogs_filter_log_events(
   filterPattern = NULL,
   nextToken = NULL,
   limit = NULL,
-  interleaved = NULL
+  interleaved = NULL,
+  unmask = NULL
 )
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group to search.}
+\item{logGroupName}{The name of the log group to search.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
+
+\item{logGroupIdentifier}{Specify either the name or ARN of the log group to view log events from.
+If the log group is in a source account and you are using a monitoring
+account, you must use the log group ARN.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
 
 \item{logStreamNames}{Filters the results to only logs from the log streams in this list.
 
@@ -34,11 +46,11 @@ any log stream names specified in \code{logStreamNames}, the action returns
 an \code{InvalidParameterException} error.}
 
 \item{startTime}{The start of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time
-are not returned.}
+after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp before this
+time are not returned.}
 
 \item{endTime}{The end of the time range, expressed as the number of milliseconds after
-Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
+\verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp later than this time
 are not returned.}
 
 \item{filterPattern}{The filter pattern to use. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html}{Filter and Pattern Syntax}.
@@ -50,15 +62,21 @@ from a previous call.)}
 
 \item{limit}{The maximum number of events to return. The default is 10,000 events.}
 
-\item{interleaved}{If the value is true, the operation makes a best effort to provide
-responses that contain events from multiple log streams within the log
-group, interleaved in a single response. If the value is false, all the
-matched log events in the first log stream are searched first, then
-those in the next log stream, and so on. The default is false.
+\item{interleaved}{If the value is true, the operation attempts to provide responses that
+contain events from multiple log streams within the log group,
+interleaved in a single response. If the value is false, all the matched
+log events in the first log stream are searched first, then those in the
+next log stream, and so on.
 
-\strong{Important:} Starting on June 17, 2019, this parameter is ignored and
-the value is assumed to be true. The response from this operation always
+\strong{Important} As of June 17, 2019, this parameter is ignored and the
+value is assumed to be true. The response from this operation always
 interleaves events from multiple log streams within a log group.}
+
+\item{unmask}{Specify \code{true} to display the log event fields with all sensitive data
+unmasked and visible. The default is \code{false}.
+
+To use this operation with this parameter, you must be signed into an
+account with the \code{logs:Unmask} permission.}
 }
 \description{
 Lists log events from the specified log group. You can list all the log events or filter the results using a filter pattern, a time range, and the name of the log stream.

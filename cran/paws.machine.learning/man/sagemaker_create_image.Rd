@@ -20,8 +20,8 @@ displayed.}
 
 \item{ImageName}{[required] The name of the image. Must be unique to your account.}
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role that enables Amazon
-SageMaker to perform tasks on your behalf.}
+\item{RoleArn}{[required] The ARN of an IAM role that enables Amazon SageMaker to perform tasks on
+your behalf.}
 
 \item{Tags}{A list of tags to apply to the image.}
 }

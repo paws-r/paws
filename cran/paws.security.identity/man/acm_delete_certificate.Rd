@@ -12,7 +12,7 @@ must be of the form:
 
 \code{arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012}
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}.}
 }
 \description{
 Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the \code{\link[=acm_list_certificates]{list_certificates}} action or be retrieved by calling the \code{\link[=acm_get_certificate]{get_certificate}} action. The certificate will not be available for use by Amazon Web Services services integrated with ACM.

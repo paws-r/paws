@@ -11,7 +11,8 @@ licensemanager_create_grant_version(
   AllowedOperations = NULL,
   Status = NULL,
   StatusReason = NULL,
-  SourceVersion = NULL
+  SourceVersion = NULL,
+  Options = NULL
 )
 }
 \arguments{
@@ -29,9 +30,11 @@ idempotency of the request.}
 \item{StatusReason}{Grant status reason.}
 
 \item{SourceVersion}{Current version of the grant.}
+
+\item{Options}{The options specified for the grant.}
 }
 \description{
-Creates a new version of the specified grant.
+Creates a new version of the specified grant. For more information, see \href{https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html}{Granted licenses in License Manager} in the \emph{License Manager User Guide}.
 
 See \url{https://paws-r.github.io/docs/licensemanager/create_grant_version.html} for full documentation.
 }

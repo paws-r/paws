@@ -4,16 +4,45 @@
 \alias{kms_generate_random}
 \title{Returns a random byte string that is cryptographically secure}
 \usage{
-kms_generate_random(NumberOfBytes = NULL, CustomKeyStoreId = NULL)
+kms_generate_random(
+  NumberOfBytes = NULL,
+  CustomKeyStoreId = NULL,
+  Recipient = NULL
+)
 }
 \arguments{
 \item{NumberOfBytes}{The length of the random byte string. This parameter is required.}
 
 \item{CustomKeyStoreId}{Generates the random byte string in the CloudHSM cluster that is
-associated with the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
-To find the ID of a custom key store, use the
+associated with the specified CloudHSM key store. To find the ID of a
+custom key store, use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
-operation.}
+operation.
+
+External key store IDs are not valid for this parameter. If you specify
+the ID of an external key store,
+\code{\link[=kms_generate_random]{generate_random}} throws an
+\code{UnsupportedOperationException}.}
+
+\item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document}
+from an Amazon Web Services Nitro enclave and the encryption algorithm
+to use with the enclave's public key. The only valid encryption
+algorithm is \code{RSAES_OAEP_SHA_256}.
+
+This parameter only supports attestation documents for Amazon Web
+Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
+or any Amazon Web Services SDK.
+
+When you use this parameter, instead of returning plaintext bytes, KMS
+encrypts the plaintext bytes under the public key in the attestation
+document, and returns the resulting ciphertext in the
+\code{CiphertextForRecipient} field in the response. This ciphertext can be
+decrypted only with the private key in the enclave. The \code{Plaintext}
+field in the response is null or empty.
+
+For information about the interaction between KMS and Amazon Web
+Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Returns a random byte string that is cryptographically secure.

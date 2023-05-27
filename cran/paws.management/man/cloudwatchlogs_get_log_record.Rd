@@ -4,7 +4,7 @@
 \alias{cloudwatchlogs_get_log_record}
 \title{Retrieves all of the fields and values of a single log event}
 \usage{
-cloudwatchlogs_get_log_record(logRecordPointer)
+cloudwatchlogs_get_log_record(logRecordPointer, unmask = NULL)
 }
 \arguments{
 \item{logRecordPointer}{[required] The pointer corresponding to the log event record you want to retrieve.
@@ -13,6 +13,12 @@ You get this from the response of a
 that response, the value of the \verb{@ptr} field for a log event is the
 value to use as \code{logRecordPointer} to retrieve that complete log event
 record.}
+
+\item{unmask}{Specify \code{true} to display the log event fields with all sensitive data
+unmasked and visible. The default is \code{false}.
+
+To use this operation with this parameter, you must be signed into an
+account with the \code{logs:Unmask} permission.}
 }
 \description{
 Retrieves all of the fields and values of a single log event. All fields are retrieved, even if the original query that produced the \code{logRecordPointer} retrieved only a subset of fields. Fields are returned as field name/field value pairs.

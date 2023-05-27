@@ -33,24 +33,20 @@ To get the key ID and key ARN for a KMS key, use
 
 \item{GranteePrincipal}{[required] The identity that gets the permissions specified in the grant.
 
-To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
-of an Amazon Web Services principal. Valid Amazon Web Services
-principals include Amazon Web Services accounts (root), IAM users, IAM
-roles, federated users, and assumed role users. For examples of the ARN
-syntax to use for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
-in the Example ARNs section of the \emph{Amazon Web Services General
-Reference}.}
+To specify the grantee principal, use the Amazon Resource Name (ARN) of
+an Amazon Web Services principal. Valid principals include Amazon Web
+Services accounts, IAM users, IAM roles, federated users, and assumed
+role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs}
+in the \emph{Identity and Access Management User Guide} .}
 
 \item{RetiringPrincipal}{The principal that has permission to use the
 \code{\link[=kms_retire_grant]{retire_grant}} operation to retire the grant.
 
-To specify the principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
-of an Amazon Web Services principal. Valid Amazon Web Services
-principals include Amazon Web Services accounts (root), IAM users,
-federated users, and assumed role users. For examples of the ARN syntax
-to use for specifying a principal, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam}{Amazon Web Services Identity and Access Management (IAM)}
-in the Example ARNs section of the \emph{Amazon Web Services General
-Reference}.
+To specify the principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of an Amazon Web Services principal. Valid principals include Amazon Web
+Services accounts, IAM users, IAM roles, federated users, and assumed
+role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs}
+in the \emph{Identity and Access Management User Guide} .
 
 The grant determines the retiring principal. Other principals might have
 permission to retire the grant or revoke the grant. For details, see
@@ -70,19 +66,14 @@ in the \emph{Key Management Service Developer Guide}.}
 
 \item{Constraints}{Specifies a grant constraint.
 
-KMS supports the \code{EncryptionContextEquals} and \code{EncryptionContextSubset}
-grant constraints. Each constraint value can include up to 8 encryption
-context pairs. The encryption context value in each constraint cannot
-exceed 384 characters. For information about grant constraints, see
-\href{https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints}{Using grant constraints}
-in the \emph{Key Management Service Developer Guide}. For more information
-about encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
-in the \emph{Key Management Service Developer Guide} .
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
 
-The encryption context grant constraints allow the permissions in the
-grant only when the encryption context in the request matches
+KMS supports the \code{EncryptionContextEquals} and \code{EncryptionContextSubset}
+grant constraints, which allow the permissions in the grant only when
+the encryption context in the request matches
 (\code{EncryptionContextEquals}) or includes (\code{EncryptionContextSubset}) the
-encryption context specified in this structure.
+encryption context specified in the constraint.
 
 The encryption context grant constraints are supported only on \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations}{grant operations}
 that include an \code{EncryptionContext} parameter, such as cryptographic
@@ -96,8 +87,15 @@ constraint requires that any grants created with the
 stricter encryption context constraint.
 
 You cannot use an encryption context grant constraint for cryptographic
-operations with asymmetric KMS keys or HMAC KMS keys. These keys don't
-support an encryption context.}
+operations with asymmetric KMS keys or HMAC KMS keys. Operations with
+these keys don't support an encryption context.
+
+Each constraint value can include up to 8 encryption context pairs. The
+encryption context value in each constraint cannot exceed 384
+characters. For information about grant constraints, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints}{Using grant constraints}
+in the \emph{Key Management Service Developer Guide}. For more information
+about encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption context}
+in the \emph{Key Management Service Developer Guide} .}
 
 \item{GrantTokens}{A list of grant tokens.
 
@@ -109,6 +107,9 @@ in the \emph{Key Management Service Developer Guide}.}
 
 \item{Name}{A friendly name for the grant. Use this value to prevent the unintended
 creation of duplicate grants when retrying this request.
+
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
 
 When this value is absent, all \code{\link[=kms_create_grant]{create_grant}}
 requests result in a new grant with a unique \code{GrantId} even if all the

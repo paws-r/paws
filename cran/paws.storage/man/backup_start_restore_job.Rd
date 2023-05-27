@@ -9,7 +9,8 @@ backup_start_restore_job(
   Metadata,
   IamRoleArn = NULL,
   IdempotencyToken = NULL,
-  ResourceType = NULL
+  ResourceType = NULL,
+  CopySourceTagsToRestoredResource = NULL
 )
 }
 \arguments{
@@ -52,7 +53,7 @@ optional. For example, \verb{"itemsToRestore":"[\\"/my.test\\"]"}.
 }}
 
 \item{IamRoleArn}{The Amazon Resource Name (ARN) of the IAM role that Backup uses to
-create the target recovery point; for example,
+create the target resource; for example:
 \verb{arn:aws:iam::123456789012:role/S3Access}.}
 
 \item{IdempotencyToken}{A customer-chosen string that you can use to distinguish between
@@ -66,6 +67,7 @@ resources:
 \itemize{
 \item \code{Aurora} for Amazon Aurora
 \item \code{DocumentDB} for Amazon DocumentDB (with MongoDB compatibility)
+\item \code{CloudFormation} for CloudFormation
 \item \code{DynamoDB} for Amazon DynamoDB
 \item \code{EBS} for Amazon Elastic Block Store
 \item \code{EC2} for Amazon Elastic Compute Cloud
@@ -73,10 +75,17 @@ resources:
 \item \code{FSx} for Amazon FSx
 \item \code{Neptune} for Amazon Neptune
 \item \code{RDS} for Amazon Relational Database Service
+\item \code{Redshift} for Amazon Redshift
 \item \verb{Storage Gateway} for Storage Gateway
 \item \code{S3} for Amazon S3
+\item \code{Timestream} for Amazon Timestream
 \item \code{VirtualMachine} for virtual machines
 }}
+
+\item{CopySourceTagsToRestoredResource}{This is an optional parameter. If this equals \code{True}, tags included in
+the backup will be copied to the restored resource.
+
+This can only be applied to backups created through Backup.}
 }
 \description{
 Recovers the saved resource identified by an Amazon Resource Name (ARN).

@@ -41,7 +41,7 @@ before a specified time.}
 specified string.}
 
 \item{StatusEquals}{A filter that retrieves model compilation jobs with a specific
-DescribeCompilationJobResponse$CompilationJobStatus status.}
+\code{CompilationJobStatus} status.}
 
 \item{SortBy}{The field by which to sort results. The default is \code{CreationTime}.}
 

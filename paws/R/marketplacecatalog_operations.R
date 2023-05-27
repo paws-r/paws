@@ -59,6 +59,51 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 }
 .marketplacecatalog$operations$cancel_change_set <- marketplacecatalog_cancel_change_set
 
+#' Deletes a resource-based policy on an Entity that is identified by its
+#' resource ARN
+#'
+#' @description
+#' Deletes a resource-based policy on an Entity that is identified by its
+#' resource ARN.
+#'
+#' @usage
+#' marketplacecatalog_delete_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
+#' with the resource policy.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_delete_resource_policy
+#'
+#' @aliases marketplacecatalog_delete_resource_policy
+marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "DELETE",
+    http_path = "/DeleteResourcePolicy",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .marketplacecatalog$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$delete_resource_policy <- marketplacecatalog_delete_resource_policy
+
 #' Provides information about a given change set
 #'
 #' @description
@@ -189,6 +234,56 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 }
 .marketplacecatalog$operations$describe_entity <- marketplacecatalog_describe_entity
 
+#' Gets a resource-based policy of an Entity that is identified by its
+#' resource ARN
+#'
+#' @description
+#' Gets a resource-based policy of an Entity that is identified by its
+#' resource ARN.
+#'
+#' @usage
+#' marketplacecatalog_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
+#' with the resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_get_resource_policy
+#'
+#' @aliases marketplacecatalog_get_resource_policy
+marketplacecatalog_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/GetResourcePolicy",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .marketplacecatalog$get_resource_policy_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$get_resource_policy <- marketplacecatalog_get_resource_policy
+
 #' Returns the list of change sets owned by the account being used to make
 #' the call
 #'
@@ -286,7 +381,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'
 #' @usage
 #' marketplacecatalog_list_entities(Catalog, EntityType, FilterList, Sort,
-#'   NextToken, MaxResults)
+#'   NextToken, MaxResults, OwnershipType)
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param EntityType &#91;required&#93; The type of entities to retrieve.
@@ -297,6 +392,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' results.
 #' @param MaxResults Specifies the upper limit of the elements on a single page. If a value
 #' isn't provided, the default value is 20.
+#' @param OwnershipType 
 #'
 #' @return
 #' A list with the following syntax:
@@ -334,7 +430,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #'     SortOrder = "ASCENDING"|"DESCENDING"
 #'   ),
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   OwnershipType = "SELF"|"SHARED"
 #' )
 #' ```
 #'
@@ -343,14 +440,14 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' @rdname marketplacecatalog_list_entities
 #'
 #' @aliases marketplacecatalog_list_entities
-marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL) {
+marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = NULL, Sort = NULL, NextToken = NULL, MaxResults = NULL, OwnershipType = NULL) {
   op <- new_operation(
     name = "ListEntities",
     http_method = "POST",
     http_path = "/ListEntities",
     paginator = list()
   )
-  input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType)
   output <- .marketplacecatalog$list_entities_output()
   config <- get_config()
   svc <- .marketplacecatalog$service(config)
@@ -360,35 +457,147 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 }
 .marketplacecatalog$operations$list_entities <- marketplacecatalog_list_entities
 
-#' This operation allows you to request changes for your entities
+#' Lists all tags that have been added to a resource (either an entity or
+#' change set)
 #'
 #' @description
-#' This operation allows you to request changes for your entities. Within a
-#' single ChangeSet, you cannot start the same change type against the same
-#' entity multiple times. Additionally, when a ChangeSet is running, all
+#' Lists all tags that have been added to a resource (either an
+#' [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities)
+#' or [change
+#' set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#'
+#' @usage
+#' marketplacecatalog_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; Required. The Amazon Resource Name (ARN) associated with the resource
+#' you want to list tags on.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_list_tags_for_resource
+#'
+#' @aliases marketplacecatalog_list_tags_for_resource
+marketplacecatalog_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/ListTagsForResource",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .marketplacecatalog$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$list_tags_for_resource <- marketplacecatalog_list_tags_for_resource
+
+#' Attaches a resource-based policy to an Entity
+#'
+#' @description
+#' Attaches a resource-based policy to an Entity. Examples of an entity
+#' include: `AmiProduct` and `ContainerProduct`.
+#'
+#' @usage
+#' marketplacecatalog_put_resource_policy(ResourceArn, Policy)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource you want to
+#' associate with a resource policy.
+#' @param Policy &#91;required&#93; The policy document to set; formatted in JSON.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_put_resource_policy
+#'
+#' @aliases marketplacecatalog_put_resource_policy
+marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/PutResourcePolicy",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .marketplacecatalog$put_resource_policy_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$put_resource_policy <- marketplacecatalog_put_resource_policy
+
+#' Allows you to request changes for your entities
+#'
+#' @description
+#' Allows you to request changes for your entities. Within a single
+#' `ChangeSet`, you can't start the same change type against the same
+#' entity multiple times. Additionally, when a `ChangeSet` is running, all
 #' the entities targeted by the different changes are locked until the
-#' ChangeSet has completed (either succeeded, cancelled, or failed). If you
-#' try to start a ChangeSet containing a change against an entity that is
-#' already locked, you will receive a `ResourceInUseException`.
+#' change set has completed (either succeeded, cancelled, or failed). If
+#' you try to start a change set containing a change against an entity that
+#' is already locked, you will receive a `ResourceInUseException` error.
 #' 
-#' For example, you cannot start the ChangeSet described in the
+#' For example, you can't start the `ChangeSet` described in the
 #' [example](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples)
-#' later in this topic, because it contains two changes to execute the same
-#' change type (`AddRevisions`) against the same entity (`entity-id@@1)`.
+#' later in this topic because it contains two changes to run the same
+#' change type (`AddRevisions`) against the same entity (`entity-id@@1`).
 #' 
 #' For more information about working with change sets, see [Working with
 #' change
 #' sets](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
+#' For information on change types for single-AMI products, see [Working
+#' with single-AMI
+#' products](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#working-with-single-AMI-products).
+#' Als, for more information on change types available for container-based
+#' products, see [Working with container
+#' products](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products).
 #'
 #' @usage
 #' marketplacecatalog_start_change_set(Catalog, ChangeSet, ChangeSetName,
-#'   ClientRequestToken)
+#'   ClientRequestToken, ChangeSetTags)
 #'
 #' @param Catalog &#91;required&#93; The catalog related to the request. Fixed value: `AWSMarketplace`
 #' @param ChangeSet &#91;required&#93; Array of `change` object.
 #' @param ChangeSetName Optional case sensitive string of up to 100 ASCII characters. The change
 #' set name can be used to filter the list of change sets.
 #' @param ClientRequestToken A unique token to identify the request to ensure idempotency.
+#' @param ChangeSetTags A list of objects specifying each key name and value for the
+#' `ChangeSetTags` property.
 #'
 #' @return
 #' A list with the following syntax:
@@ -410,12 +619,24 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #'         Type = "string",
 #'         Identifier = "string"
 #'       ),
+#'       EntityTags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       ),
 #'       Details = "string",
 #'       ChangeName = "string"
 #'     )
 #'   ),
 #'   ChangeSetName = "string",
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   ChangeSetTags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -424,14 +645,14 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' @rdname marketplacecatalog_start_change_set
 #'
 #' @aliases marketplacecatalog_start_change_set
-marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL) {
+marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetName = NULL, ClientRequestToken = NULL, ChangeSetTags = NULL) {
   op <- new_operation(
     name = "StartChangeSet",
     http_method = "POST",
     http_path = "/StartChangeSet",
     paginator = list()
   )
-  input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken)
+  input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags)
   output <- .marketplacecatalog$start_change_set_output()
   config <- get_config()
   svc <- .marketplacecatalog$service(config)
@@ -440,3 +661,109 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
   return(response)
 }
 .marketplacecatalog$operations$start_change_set <- marketplacecatalog_start_change_set
+
+#' Tags a resource (either an entity or change set)
+#'
+#' @description
+#' Tags a resource (either an
+#' [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities)
+#' or [change
+#' set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#'
+#' @usage
+#' marketplacecatalog_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; Required. The Amazon Resource Name (ARN) associated with the resource
+#' you want to tag.
+#' @param Tags &#91;required&#93; Required. A list of objects specifying each key name and value. Number
+#' of objects allowed: 1-50.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_tag_resource
+#'
+#' @aliases marketplacecatalog_tag_resource
+marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/TagResource",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .marketplacecatalog$tag_resource_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$tag_resource <- marketplacecatalog_tag_resource
+
+#' Removes a tag or list of tags from a resource (either an entity or
+#' change set)
+#'
+#' @description
+#' Removes a tag or list of tags from a resource (either an
+#' [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities)
+#' or [change
+#' set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#'
+#' @usage
+#' marketplacecatalog_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; Required. The Amazon Resource Name (ARN) associated with the resource
+#' you want to remove the tag from.
+#' @param TagKeys &#91;required&#93; Required. A list of key names of tags to be removed. Number of strings
+#' allowed: 0-256.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname marketplacecatalog_untag_resource
+#'
+#' @aliases marketplacecatalog_untag_resource
+marketplacecatalog_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/UntagResource",
+    paginator = list()
+  )
+  input <- .marketplacecatalog$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .marketplacecatalog$untag_resource_output()
+  config <- get_config()
+  svc <- .marketplacecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.marketplacecatalog$operations$untag_resource <- marketplacecatalog_untag_resource

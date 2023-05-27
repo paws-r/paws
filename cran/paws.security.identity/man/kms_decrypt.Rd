@@ -10,7 +10,8 @@ kms_decrypt(
   EncryptionContext = NULL,
   GrantTokens = NULL,
   KeyId = NULL,
-  EncryptionAlgorithm = NULL
+  EncryptionAlgorithm = NULL,
+  Recipient = NULL
 )
 }
 \arguments{
@@ -81,6 +82,26 @@ This parameter is required only when the ciphertext was encrypted under
 an asymmetric KMS key. The default value, \code{SYMMETRIC_DEFAULT},
 represents the only supported algorithm that is valid for symmetric
 encryption KMS keys.}
+
+\item{Recipient}{A signed \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#term-attestdoc}{attestation document}
+from an Amazon Web Services Nitro enclave and the encryption algorithm
+to use with the enclave's public key. The only valid encryption
+algorithm is \code{RSAES_OAEP_SHA_256}.
+
+This parameter only supports attestation documents for Amazon Web
+Services Nitro Enclaves. To include this parameter, use the \href{https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk}{Amazon Web Services Nitro Enclaves SDK}
+or any Amazon Web Services SDK.
+
+When you use this parameter, instead of returning the plaintext data,
+KMS encrypts the plaintext data with the public key in the attestation
+document, and returns the resulting ciphertext in the
+\code{CiphertextForRecipient} field in the response. This ciphertext can be
+decrypted only with the private key in the enclave. The \code{Plaintext}
+field in the response is null or empty.
+
+For information about the interaction between KMS and Amazon Web
+Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:

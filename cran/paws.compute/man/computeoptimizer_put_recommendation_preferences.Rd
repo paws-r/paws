@@ -9,7 +9,8 @@ computeoptimizer_put_recommendation_preferences(
   resourceType,
   scope = NULL,
   enhancedInfrastructureMetrics = NULL,
-  inferredWorkloadTypes = NULL
+  inferredWorkloadTypes = NULL,
+  externalMetricsPreference = NULL
 )
 }
 \arguments{
@@ -61,6 +62,19 @@ Specify the \code{Inactive} status to deactivate the feature, or specify
 
 For more information, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{Inferred workload types} in the
 \emph{Compute Optimizer User Guide}.}
+
+\item{externalMetricsPreference}{The provider of the external metrics recommendation preference to create
+or update.
+
+Specify a valid provider in the \code{source} field to activate the
+preference. To delete this preference, see the
+\code{\link[=computeoptimizer_delete_recommendation_preferences]{delete_recommendation_preferences}}
+action.
+
+This preference can only be set for the \code{Ec2Instance} resource type.
+
+For more information, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html}{External metrics ingestion}
+in the \emph{Compute Optimizer User Guide}.}
 }
 \description{
 Creates a new recommendation preference or updates an existing recommendation preference, such as enhanced infrastructure metrics.

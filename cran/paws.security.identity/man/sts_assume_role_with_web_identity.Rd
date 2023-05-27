@@ -55,15 +55,15 @@ same account as the role.
 This parameter is optional. You can provide up to 10 managed policy
 ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
-about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
+about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}
 in the Amazon Web Services General Reference.
 
-An Amazon Web Services conversion compresses the passed session policies
-and session tags into a packed binary format that has a separate limit.
-Your request can fail for this limit even if your plaintext meets the
-other requirements. The \code{PackedPolicySize} response element indicates by
-percentage how close the policies and tags for your request are to the
-upper size limit.
+An Amazon Web Services conversion compresses the passed inline session
+policy, managed policy ARNs, and session tags into a packed binary
+format that has a separate limit. Your request can fail for this limit
+even if your plaintext meets the other requirements. The
+\code{PackedPolicySize} response element indicates by percentage how close
+the policies and tags for your request are to the upper size limit.
 
 Passing policies to this operation returns new temporary credentials.
 The resulting session's permissions are the intersection of the role's
@@ -94,12 +94,12 @@ ASCII character from the space character to the end of the valid
 character list (\\code{U+0020} through \\verb{U+00FF}). It can also include the tab
 (\\code{U+0009}), linefeed (\\verb{U+000A}), and carriage return (\\verb{U+000D}) characters.
 
-An Amazon Web Services conversion compresses the passed session policies
-and session tags into a packed binary format that has a separate limit.
-Your request can fail for this limit even if your plaintext meets the
-other requirements. The \code{PackedPolicySize} response element indicates by
-percentage how close the policies and tags for your request are to the
-upper size limit.}
+An Amazon Web Services conversion compresses the passed inline session
+policy, managed policy ARNs, and session tags into a packed binary
+format that has a separate limit. Your request can fail for this limit
+even if your plaintext meets the other requirements. The
+\code{PackedPolicySize} response element indicates by percentage how close
+the policies and tags for your request are to the upper size limit.}
 
 \item{DurationSeconds}{The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) up to the maximum session duration setting for

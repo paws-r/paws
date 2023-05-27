@@ -2,8 +2,9 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_import_image}
 \alias{ec2_import_image}
-\title{Import single or multi-volume disk images or EBS snapshots into an
-Amazon Machine Image (AMI)}
+\title{To import your virtual machines (VMs) with a console-based experience,
+you can use the Import virtual machine images to Amazon Web Services
+template in the Migration Hub Orchestrator console}
 \usage{
 ec2_import_image(
   Architecture = NULL,
@@ -89,10 +90,12 @@ Amazon EBS does not support asymmetric KMS keys.}
 \item{LicenseType}{The license type to be used for the Amazon Machine Image (AMI) after
 importing.
 
-By default, we detect the source-system operating system (OS) and apply
-the appropriate license. Specify \code{AWS} to replace the source-system
-license with an Amazon Web Services license, if appropriate. Specify
-\code{BYOL} to retain the source-system license, if appropriate.
+Specify \code{AWS} to replace the source-system license with an Amazon Web
+Services license or \code{BYOL} to retain the source-system license. Leaving
+this parameter undefined is the same as choosing \code{AWS} when importing a
+Windows Server operating system, and the same as choosing \code{BYOL} when
+importing a Windows client operating system (such as Windows 10) or a
+Linux operating system.
 
 To use \code{BYOL}, you must have existing licenses with rights to use these
 licenses in a third party cloud, such as Amazon Web Services. For more
@@ -116,7 +119,7 @@ in the \emph{VM Import/Export User Guide}.}
 \item{BootMode}{The boot mode of the virtual machine.}
 }
 \description{
-Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI).
+To import your virtual machines (VMs) with a console-based experience, you can use the \emph{Import virtual machine images to Amazon Web Services} template in the Migration Hub Orchestrator console. For more information, see the \href{https://docs.aws.amazon.com/migrationhub-orchestrator/latest/userguide/import-vm-images.html}{\emph{Migration Hub Orchestrator User Guide}} .
 
 See \url{https://paws-r.github.io/docs/ec2/import_image.html} for full documentation.
 }

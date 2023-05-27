@@ -2,7 +2,7 @@
 % Please edit documentation in R/billingconductor_operations.R
 \name{billingconductor_list_pricing_plans_associated_with_pricing_rule}
 \alias{billingconductor_list_pricing_plans_associated_with_pricing_rule}
-\title{A list of the pricing plans associated with a pricing rule}
+\title{A list of the pricing plans that are associated with a pricing rule}
 \usage{
 billingconductor_list_pricing_plans_associated_with_pricing_rule(
   BillingPeriod = NULL,
@@ -22,7 +22,7 @@ be listed.}
 \item{NextToken}{The optional pagination token returned by a previous call.}
 }
 \description{
-A list of the pricing plans associated with a pricing rule.
+A list of the pricing plans that are associated with a pricing rule.
 
 See \url{https://paws-r.github.io/docs/billingconductor/list_pricing_plans_associated_with_pricing_rule.html} for full documentation.
 }

@@ -73,10 +73,12 @@ delete a trail.}
 
 \item{CloudWatchLogsLogGroupArn}{Specifies a log group name using an Amazon Resource Name (ARN), a unique
 identifier that represents the log group to which CloudTrail logs are
-delivered. Not required unless you specify \code{CloudWatchLogsRoleArn}.}
+delivered. You must use a log group that exists in your account.
+
+Not required unless you specify \code{CloudWatchLogsRoleArn}.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
-to a user's log group.}
+to a user's log group. You must use a role that exists in your account.}
 
 \item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the logs delivered by
 CloudTrail. The value can be an alias name prefixed by "alias/", a fully
@@ -99,12 +101,13 @@ Examples:
 organization in Organizations, or only for the current Amazon Web
 Services account. The default is false, and cannot be true unless the
 call is made on behalf of an Amazon Web Services account that is the
-management account for an organization in Organizations. If the trail is
-not an organization trail and this is set to \code{true}, the trail will be
-created in all Amazon Web Services accounts that belong to the
-organization. If the trail is an organization trail and this is set to
-\code{false}, the trail will remain in the current Amazon Web Services
-account but be deleted from all member accounts in the organization.}
+management account or delegated administrator account for an
+organization in Organizations. If the trail is not an organization trail
+and this is set to \code{true}, the trail will be created in all Amazon Web
+Services accounts that belong to the organization. If the trail is an
+organization trail and this is set to \code{false}, the trail will remain in
+the current Amazon Web Services account but be deleted from all member
+accounts in the organization.}
 }
 \description{
 Updates trail settings that control what events you are logging, and how to handle log files. Changes to a trail do not require stopping the CloudTrail service. Use this action to designate an existing bucket for log delivery. If the existing bucket has previously been a target for CloudTrail log files, an IAM policy exists for the bucket. \code{\link[=cloudtrail_update_trail]{update_trail}} must be called from the region in which the trail was created; otherwise, an \code{InvalidHomeRegionException} is thrown.

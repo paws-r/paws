@@ -5,14 +5,14 @@
 \title{Gets event data results of a query}
 \usage{
 cloudtrail_get_query_results(
-  EventDataStore,
+  EventDataStore = NULL,
   QueryId,
   NextToken = NULL,
   MaxQueryResults = NULL
 )
 }
 \arguments{
-\item{EventDataStore}{[required] The ARN (or ID suffix of the ARN) of the event data store against which
+\item{EventDataStore}{The ARN (or ID suffix of the ARN) of the event data store against which
 the query was run.}
 
 \item{QueryId}{[required] The ID of the query for which you want to get results.}

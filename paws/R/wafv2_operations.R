@@ -9,14 +9,16 @@ NULL
 #' @description
 #' Associates a web ACL with a regional application resource, to protect
 #' the resource. A regional application can be an Application Load Balancer
-#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an
-#' Amazon Cognito user pool.
+#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon
+#' Cognito user pool, an App Runner service, or an Amazon Web Services
+#' Verified Access instance.
 #' 
 #' For Amazon CloudFront, don't use this call. Instead, use your CloudFront
 #' distribution configuration. To associate a web ACL, in the CloudFront
 #' call `UpdateDistribution`, set the web ACL ID to the Amazon Resource
 #' Name (ARN) of the web ACL. For information, see
-#' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
+#' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
+#' in the *Amazon CloudFront Developer Guide*.
 #' 
 #' When you make changes to web ACLs or web ACL components, like rules and
 #' rule groups, WAF propagates the changes everywhere that the web ACL and
@@ -43,16 +45,22 @@ NULL
 #' The ARN must be in one of the following formats:
 #' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
 #' -   For an Amazon API Gateway REST API:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
-#'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
+#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
 #' -   For an Amazon Cognito user pool:
-#'     `arn:aws:cognito-idp:region:account-id:userpool/user-pool-id `
+#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' 
+#' -   For an App Runner service:
+#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' 
+#' -   For an Amazon Web Services Verified Access instance:
+#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #'
 #' @return
 #' An empty list.
@@ -101,7 +109,10 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' each rule. Simple rules that cost little to run use fewer WCUs than more
 #' complex rules that use more processing power. Rule group capacity is
 #' fixed at creation, which helps users plan their web ACL WCU usage when
-#' they use a rule group. The WCU limit for web ACLs is 1,500.
+#' they use a rule group. For more information, see [WAF web ACL capacity
+#' units
+#' (WCU)](https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html)
+#' in the *WAF Developer Guide*.
 #'
 #' @usage
 #' wafv2_check_capacity(Scope, Rules)
@@ -109,7 +120,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -398,6 +410,65 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             list(
 #'               Name = "string"
 #'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
@@ -471,11 +542,56 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'           ScopeDownStatement = list(),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
 #'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           CustomKeys = list(
+#'             list(
+#'               Header = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               Cookie = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryArgument = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryString = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               HTTPMethod = list(),
+#'               ForwardedIP = list(),
+#'               IP = list(),
+#'               LabelNamespace = list(
+#'                 Namespace = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         AndStatement = list(
@@ -510,6 +626,116 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               ),
 #'               PasswordField = list(
 #'                 Identifier = "string"
+#'               ),
+#'               AWSManagedRulesBotControlRuleSet = list(
+#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'               ),
+#'               AWSManagedRulesATPRuleSet = list(
+#'                 LoginPath = "string",
+#'                 RequestInspection = list(
+#'                   PayloadType = "JSON"|"FORM_ENCODED",
+#'                   UsernameField = list(
+#'                     Identifier = "string"
+#'                   ),
+#'                   PasswordField = list(
+#'                     Identifier = "string"
+#'                   )
+#'                 ),
+#'                 ResponseInspection = list(
+#'                   StatusCode = list(
+#'                     SuccessCodes = list(
+#'                       123
+#'                     ),
+#'                     FailureCodes = list(
+#'                       123
+#'                     )
+#'                   ),
+#'                   Header = list(
+#'                     Name = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   BodyContains = list(
+#'                     SuccessStrings = list(
+#'                       "string"
+#'                     ),
+#'                     FailureStrings = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   Json = list(
+#'                     Identifier = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -622,6 +848,16 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Challenge = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -648,6 +884,11 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'         MetricName = "string"
 #'       ),
 #'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
+#'       ),
+#'       ChallengeConfig = list(
 #'         ImmunityTimeProperty = list(
 #'           ImmunityTime = 123
 #'         )
@@ -679,6 +920,85 @@ wafv2_check_capacity <- function(Scope, Rules) {
 }
 .wafv2$operations$check_capacity <- wafv2_check_capacity
 
+#' Creates an API key that contains a set of token domains
+#'
+#' @description
+#' Creates an API key that contains a set of token domains.
+#' 
+#' API keys are required for the integration of the CAPTCHA API in your
+#' JavaScript client applications. The API lets you customize the placement
+#' and characteristics of the CAPTCHA puzzle for your end users. For more
+#' information about the CAPTCHA JavaScript integration, see [WAF client
+#' application
+#' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
+#' in the *WAF Developer Guide*.
+#' 
+#' You can use a single key for up to 5 domains. After you generate a key,
+#' you can copy it for use in your JavaScript integration.
+#'
+#' @usage
+#' wafv2_create_api_key(Scope, TokenDomains)
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param TokenDomains &#91;required&#93; The client application domains that you want to use this API key for.
+#' 
+#' Example JSON: `"TokenDomains": ["abc.com", "store.abc.com"]`
+#' 
+#' Public suffixes aren't allowed. For example, you can't use `usa.gov` or
+#' `co.uk` as token domains.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   APIKey = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_api_key(
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   TokenDomains = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_create_api_key
+#'
+#' @aliases wafv2_create_api_key
+wafv2_create_api_key <- function(Scope, TokenDomains) {
+  op <- new_operation(
+    name = "CreateAPIKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$create_api_key_input(Scope = Scope, TokenDomains = TokenDomains)
+  output <- .wafv2$create_api_key_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$create_api_key <- wafv2_create_api_key
+
 #' Creates an IPSet, which you use to identify web requests that originate
 #' from specific IP addresses or ranges of IP addresses
 #'
@@ -698,7 +1018,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -710,8 +1031,9 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' @param Description A description of the IP set that helps with identification.
 #' @param IPAddressVersion &#91;required&#93; The version of the IP addresses, either `IPV4` or `IPV6`.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-#' notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
+#' blocks of IP addresses. All addresses must be specified using Classless
+#' Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
+#' CIDR ranges except for `/0`.
 #' 
 #' Example address strings:
 #' 
@@ -820,7 +1142,8 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -909,7 +1232,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -931,7 +1255,10 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' each rule. Simple rules that cost little to run use fewer WCUs than more
 #' complex rules that use more processing power. Rule group capacity is
 #' fixed at creation, which helps users plan their web ACL WCU usage when
-#' they use a rule group. The WCU limit for web ACLs is 1,500.
+#' they use a rule group. For more information, see [WAF web ACL capacity
+#' units
+#' (WCU)](https://docs.aws.amazon.com/waf/latest/developerguide/aws-waf-capacity-units.html)
+#' in the *WAF Developer Guide*.
 #' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
 #' allow, block, or count. Each rule includes one top-level statement that
@@ -948,14 +1275,12 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' For information about customizing web requests and responses, see
 #' [Customizing web requests and responses in
 #' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request
 #' and response settings, see [WAF
 #' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1243,6 +1568,65 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             list(
 #'               Name = "string"
 #'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
@@ -1316,11 +1700,56 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'           ScopeDownStatement = list(),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
 #'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           CustomKeys = list(
+#'             list(
+#'               Header = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               Cookie = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryArgument = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryString = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               HTTPMethod = list(),
+#'               ForwardedIP = list(),
+#'               IP = list(),
+#'               LabelNamespace = list(
+#'                 Namespace = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         AndStatement = list(
@@ -1355,6 +1784,116 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               ),
 #'               PasswordField = list(
 #'                 Identifier = "string"
+#'               ),
+#'               AWSManagedRulesBotControlRuleSet = list(
+#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'               ),
+#'               AWSManagedRulesATPRuleSet = list(
+#'                 LoginPath = "string",
+#'                 RequestInspection = list(
+#'                   PayloadType = "JSON"|"FORM_ENCODED",
+#'                   UsernameField = list(
+#'                     Identifier = "string"
+#'                   ),
+#'                   PasswordField = list(
+#'                     Identifier = "string"
+#'                   )
+#'                 ),
+#'                 ResponseInspection = list(
+#'                   StatusCode = list(
+#'                     SuccessCodes = list(
+#'                       123
+#'                     ),
+#'                     FailureCodes = list(
+#'                       123
+#'                     )
+#'                   ),
+#'                   Header = list(
+#'                     Name = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   BodyContains = list(
+#'                     SuccessStrings = list(
+#'                       "string"
+#'                     ),
+#'                     FailureStrings = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   Json = list(
+#'                     Identifier = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -1467,6 +2006,16 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Challenge = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -1493,6 +2042,11 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'         MetricName = "string"
 #'       ),
 #'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
+#'       ),
+#'       ChallengeConfig = list(
 #'         ImmunityTimeProperty = list(
 #'           ImmunityTime = 123
 #'         )
@@ -1555,18 +2109,21 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' a web ACL with one or more Amazon Web Services resources to protect. The
 #' resources can be an Amazon CloudFront distribution, an Amazon API
 #' Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
-#'   VisibilityConfig, Tags, CustomResponseBodies, CaptchaConfig)
+#'   VisibilityConfig, Tags, CustomResponseBodies, CaptchaConfig,
+#'   ChallengeConfig, TokenDomains, AssociationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -1593,17 +2150,42 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' For information about customizing web requests and responses, see
 #' [Customizing web requests and responses in
 #' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request
 #' and response settings, see [WAF
 #' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that
 #' don't have their own `CaptchaConfig` settings. If you don't specify
 #' this, WAF uses its default settings for `CaptchaConfig`.
+#' @param ChallengeConfig Specifies how WAF should handle challenge evaluations for rules that
+#' don't have their own `ChallengeConfig` settings. If you don't specify
+#' this, WAF uses its default settings for `ChallengeConfig`.
+#' @param TokenDomains Specifies the domains that WAF should accept in a web request token.
+#' This enables the use of tokens across multiple protected websites. When
+#' WAF provides a token, it uses the domain of the Amazon Web Services
+#' resource that the web ACL is protecting. If you don't specify a list of
+#' token domains, WAF accepts tokens only for the domain of the protected
+#' resource. With a token domain list, WAF accepts the resource's host
+#' domain plus all domains in the token domain list, including their
+#' prefixed subdomains.
+#' 
+#' Example JSON:
+#' `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
+#' 
+#' Public suffixes aren't allowed. For example, you can't use `usa.gov` or
+#' `co.uk` as token domains.
+#' @param AssociationConfig Specifies custom configurations for the associations between the web ACL
+#' and protected resources.
+#' 
+#' Use this to customize the maximum size of the request body that your
+#' protected CloudFront distributions forward to WAF for inspection. The
+#' default is 16 KB (16,384 kilobytes).
+#' 
+#' You are charged additional fees when your protected resources forward
+#' body sizes that are larger than the default. For more information, see
+#' [WAF Pricing](https://aws.amazon.com/waf/pricing/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1914,6 +2496,65 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             list(
 #'               Name = "string"
 #'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
@@ -1987,11 +2628,56 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'           ScopeDownStatement = list(),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
 #'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           CustomKeys = list(
+#'             list(
+#'               Header = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               Cookie = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryArgument = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryString = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               HTTPMethod = list(),
+#'               ForwardedIP = list(),
+#'               IP = list(),
+#'               LabelNamespace = list(
+#'                 Namespace = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         AndStatement = list(
@@ -2026,6 +2712,116 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               ),
 #'               PasswordField = list(
 #'                 Identifier = "string"
+#'               ),
+#'               AWSManagedRulesBotControlRuleSet = list(
+#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'               ),
+#'               AWSManagedRulesATPRuleSet = list(
+#'                 LoginPath = "string",
+#'                 RequestInspection = list(
+#'                   PayloadType = "JSON"|"FORM_ENCODED",
+#'                   UsernameField = list(
+#'                     Identifier = "string"
+#'                   ),
+#'                   PasswordField = list(
+#'                     Identifier = "string"
+#'                   )
+#'                 ),
+#'                 ResponseInspection = list(
+#'                   StatusCode = list(
+#'                     SuccessCodes = list(
+#'                       123
+#'                     ),
+#'                     FailureCodes = list(
+#'                       123
+#'                     )
+#'                   ),
+#'                   Header = list(
+#'                     Name = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   BodyContains = list(
+#'                     SuccessStrings = list(
+#'                       "string"
+#'                     ),
+#'                     FailureStrings = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   Json = list(
+#'                     Identifier = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -2138,6 +2934,16 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Challenge = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -2167,6 +2973,11 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'         ImmunityTimeProperty = list(
 #'           ImmunityTime = 123
 #'         )
+#'       ),
+#'       ChallengeConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2191,6 +3002,21 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'     ImmunityTimeProperty = list(
 #'       ImmunityTime = 123
 #'     )
+#'   ),
+#'   ChallengeConfig = list(
+#'     ImmunityTimeProperty = list(
+#'       ImmunityTime = 123
+#'     )
+#'   ),
+#'   TokenDomains = list(
+#'     "string"
+#'   ),
+#'   AssociationConfig = list(
+#'     RequestBody = list(
+#'       list(
+#'         DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2200,14 +3026,14 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' @rdname wafv2_create_web_acl
 #'
 #' @aliases wafv2_create_web_acl
-wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL) {
+wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, Tags = NULL, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
   op <- new_operation(
     name = "CreateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig)
+  input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$create_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config)
@@ -2291,7 +3117,8 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2450,7 +3277,8 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2519,7 +3347,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2593,7 +3422,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' 
 #'     -   For Amazon CloudFront distributions, use the CloudFront call
 #'         `ListDistributionsByWebACLId`. For information, see
-#'         [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html).
+#'         [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html)
+#'         in the *Amazon CloudFront API Reference*.
 #' 
 #' -   To disassociate a resource from a web ACL, use the following calls:
 #' 
@@ -2603,7 +3433,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #'     -   For Amazon CloudFront distributions, provide an empty web ACL ID
 #'         in the CloudFront call `UpdateDistribution`. For information,
 #'         see
-#'         [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
+#'         [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
+#'         in the *Amazon CloudFront API Reference*.
 #'
 #' @usage
 #' wafv2_delete_web_acl(Name, Scope, Id, LockToken)
@@ -2613,7 +3444,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2686,7 +3518,8 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -2743,6 +3576,16 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #'           )
 #'         ),
 #'         Captcha = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         Challenge = list(
 #'           CustomRequestHandling = list(
 #'             InsertHeaders = list(
 #'               list(
@@ -2808,14 +3651,16 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' Disassociates the specified regional application resource from any
 #' existing web ACL association. A resource can have at most one web ACL
 #' association. A regional application can be an Application Load Balancer
-#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an
-#' Amazon Cognito user pool.
+#' (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon
+#' Cognito user pool, an App Runner service, or an Amazon Web Services
+#' Verified Access instance.
 #' 
 #' For Amazon CloudFront, don't use this call. Instead, use your CloudFront
 #' distribution configuration. To disassociate a web ACL, provide an empty
 #' web ACL ID in the CloudFront call `UpdateDistribution`. For information,
 #' see
-#' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html).
+#' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
+#' in the *Amazon CloudFront API Reference*.
 #'
 #' @usage
 #' wafv2_disassociate_web_acl(ResourceArn)
@@ -2826,16 +3671,22 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' The ARN must be in one of the following formats:
 #' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
 #' -   For an Amazon API Gateway REST API:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
-#'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
+#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
 #' -   For an Amazon Cognito user pool:
-#'     `arn:aws:cognito-idp:region:account-id:userpool/user-pool-id `
+#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' 
+#' -   For an App Runner service:
+#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' 
+#' -   For an Amazon Web Services Verified Access instance:
+#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #'
 #' @return
 #' An empty list.
@@ -2877,9 +3728,9 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' mobile SDK.
 #' 
 #' The mobile SDK is not generally available. Customers who have access to
-#' the mobile SDK can use it to establish and manage Security Token Service
-#' (STS) security tokens for use in HTTP(S) requests from a mobile device
-#' to WAF. For more information, see [WAF client application
+#' the mobile SDK can use it to establish and manage WAF tokens for use in
+#' HTTP(S) requests from a mobile device to WAF. For more information, see
+#' [WAF client application
 #' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
 #' in the *WAF Developer Guide*.
 #'
@@ -2927,6 +3778,81 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 }
 .wafv2$operations$generate_mobile_sdk_release_url <- wafv2_generate_mobile_sdk_release_url
 
+#' Returns your API key in decrypted form
+#'
+#' @description
+#' Returns your API key in decrypted form. Use this to check the token
+#' domains that you have defined for the key.
+#' 
+#' API keys are required for the integration of the CAPTCHA API in your
+#' JavaScript client applications. The API lets you customize the placement
+#' and characteristics of the CAPTCHA puzzle for your end users. For more
+#' information about the CAPTCHA JavaScript integration, see [WAF client
+#' application
+#' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
+#' in the *WAF Developer Guide*.
+#'
+#' @usage
+#' wafv2_get_decrypted_api_key(Scope, APIKey)
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param APIKey &#91;required&#93; The encrypted API key.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TokenDomains = list(
+#'     "string"
+#'   ),
+#'   CreationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_decrypted_api_key(
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   APIKey = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_get_decrypted_api_key
+#'
+#' @aliases wafv2_get_decrypted_api_key
+wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
+  op <- new_operation(
+    name = "GetDecryptedAPIKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$get_decrypted_api_key_input(Scope = Scope, APIKey = APIKey)
+  output <- .wafv2$get_decrypted_api_key_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$get_decrypted_api_key <- wafv2_get_decrypted_api_key
+
 #' Retrieves the specified IPSet
 #'
 #' @description
@@ -2940,7 +3866,8 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3085,7 +4012,7 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'           Conditions = list(
 #'             list(
 #'               ActionCondition = list(
-#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
 #'               ),
 #'               LabelNameCondition = list(
 #'                 LabelName = "string"
@@ -3157,7 +4084,8 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3241,9 +4169,9 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
 #' release notes and tags.
 #' 
 #' The mobile SDK is not generally available. Customers who have access to
-#' the mobile SDK can use it to establish and manage Security Token Service
-#' (STS) security tokens for use in HTTP(S) requests from a mobile device
-#' to WAF. For more information, see [WAF client application
+#' the mobile SDK can use it to establish and manage WAF tokens for use in
+#' HTTP(S) requests from a mobile device to WAF. For more information, see
+#' [WAF client application
 #' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
 #' in the *WAF Developer Guide*.
 #'
@@ -3353,14 +4281,17 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 }
 .wafv2$operations$get_permission_policy <- wafv2_get_permission_policy
 
-#' Retrieves the keys that are currently blocked by a rate-based rule
-#' instance
+#' Retrieves the IP addresses that are currently blocked by a rate-based
+#' rule instance
 #'
 #' @description
-#' Retrieves the keys that are currently blocked by a rate-based rule
-#' instance. The maximum number of managed keys that can be blocked for a
-#' single rate-based rule instance is 10,000. If more than 10,000 addresses
-#' exceed the rate limit, those with the highest rates are blocked.
+#' Retrieves the IP addresses that are currently blocked by a rate-based
+#' rule instance. This is only available for rate-based rules that
+#' aggregate solely on the IP address or on the forwarded IP address.
+#' 
+#' The maximum number of addresses that can be blocked for a single
+#' rate-based rule instance is 10,000. If more than 10,000 addresses exceed
+#' the rate limit, those with the highest rates are blocked.
 #' 
 #' For a rate-based rule that you've defined inside a rule group, provide
 #' the name of the rule group reference statement in your request, in
@@ -3382,7 +4313,8 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3469,7 +4401,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3545,7 +4478,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' @param Scope Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -3834,6 +4768,65 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           IPSetReferenceStatement = list(
@@ -3907,11 +4900,56 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'           ),
 #'           RateBasedStatement = list(
 #'             Limit = 123,
-#'             AggregateKeyType = "IP"|"FORWARDED_IP",
+#'             AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'             ScopeDownStatement = list(),
 #'             ForwardedIPConfig = list(
 #'               HeaderName = "string",
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             CustomKeys = list(
+#'               list(
+#'                 Header = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Cookie = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 QueryArgument = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 QueryString = list(
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 HTTPMethod = list(),
+#'                 ForwardedIP = list(),
+#'                 IP = list(),
+#'                 LabelNamespace = list(
+#'                   Namespace = "string"
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           AndStatement = list(
@@ -3946,6 +4984,116 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -4058,6 +5206,16 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           Challenge = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         OverrideAction = list(
@@ -4084,6 +5242,11 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'           MetricName = "string"
 #'         ),
 #'         CaptchaConfig = list(
+#'           ImmunityTimeProperty = list(
+#'             ImmunityTime = 123
+#'           )
+#'         ),
+#'         ChallengeConfig = list(
 #'           ImmunityTimeProperty = list(
 #'             ImmunityTime = 123
 #'           )
@@ -4175,12 +5338,13 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #'
 #' @param WebAclArn &#91;required&#93; The Amazon resource name (ARN) of the `WebACL` for which you want a
 #' sample of requests.
-#' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` for which you want
-#' a sample of requests.
+#' @param RuleMetricName &#91;required&#93; The metric name assigned to the `Rule` or `RuleGroup` dimension for
+#' which you want a sample of requests.
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4242,8 +5406,14 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #'       CaptchaResponse = list(
 #'         ResponseCode = 123,
 #'         SolveTimestamp = 123,
-#'         FailureReason = "TOKEN_MISSING"|"TOKEN_EXPIRED"
-#'       )
+#'         FailureReason = "TOKEN_MISSING"|"TOKEN_EXPIRED"|"TOKEN_INVALID"|"TOKEN_DOMAIN_MISMATCH"
+#'       ),
+#'       ChallengeResponse = list(
+#'         ResponseCode = 123,
+#'         SolveTimestamp = 123,
+#'         FailureReason = "TOKEN_MISSING"|"TOKEN_EXPIRED"|"TOKEN_INVALID"|"TOKEN_DOMAIN_MISMATCH"
+#'       ),
+#'       OverriddenAction = "string"
 #'     )
 #'   ),
 #'   PopulationSize = 123,
@@ -4311,7 +5481,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -4622,6 +5793,65 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           IPSetReferenceStatement = list(
@@ -4695,11 +5925,56 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           ),
 #'           RateBasedStatement = list(
 #'             Limit = 123,
-#'             AggregateKeyType = "IP"|"FORWARDED_IP",
+#'             AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'             ScopeDownStatement = list(),
 #'             ForwardedIPConfig = list(
 #'               HeaderName = "string",
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             CustomKeys = list(
+#'               list(
+#'                 Header = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Cookie = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 QueryArgument = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 QueryString = list(
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 HTTPMethod = list(),
+#'                 ForwardedIP = list(),
+#'                 IP = list(),
+#'                 LabelNamespace = list(
+#'                   Namespace = "string"
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           AndStatement = list(
@@ -4734,6 +6009,116 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -4846,6 +6231,16 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           Challenge = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         OverrideAction = list(
@@ -4872,6 +6267,11 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'           MetricName = "string"
 #'         ),
 #'         CaptchaConfig = list(
+#'           ImmunityTimeProperty = list(
+#'             ImmunityTime = 123
+#'           )
+#'         ),
+#'         ChallengeConfig = list(
 #'           ImmunityTimeProperty = list(
 #'             ImmunityTime = 123
 #'           )
@@ -5159,6 +6559,65 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   list(
 #'                     Name = "string"
 #'                   )
+#'                 ),
+#'                 RuleActionOverrides = list(
+#'                   list(
+#'                     Name = "string",
+#'                     ActionToUse = list(
+#'                       Block = list(
+#'                         CustomResponse = list(
+#'                           ResponseCode = 123,
+#'                           CustomResponseBodyKey = "string",
+#'                           ResponseHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Allow = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Count = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Captcha = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Challenge = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               IPSetReferenceStatement = list(
@@ -5232,11 +6691,56 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               RateBasedStatement = list(
 #'                 Limit = 123,
-#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'                 ScopeDownStatement = list(),
 #'                 ForwardedIPConfig = list(
 #'                   HeaderName = "string",
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 CustomKeys = list(
+#'                   list(
+#'                     Header = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     Cookie = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryArgument = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryString = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     HTTPMethod = list(),
+#'                     ForwardedIP = list(),
+#'                     IP = list(),
+#'                     LabelNamespace = list(
+#'                       Namespace = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               AndStatement = list(
@@ -5328,6 +6832,116 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -5337,6 +6951,65 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -5636,6 +7309,65 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   list(
 #'                     Name = "string"
 #'                   )
+#'                 ),
+#'                 RuleActionOverrides = list(
+#'                   list(
+#'                     Name = "string",
+#'                     ActionToUse = list(
+#'                       Block = list(
+#'                         CustomResponse = list(
+#'                           ResponseCode = 123,
+#'                           CustomResponseBodyKey = "string",
+#'                           ResponseHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Allow = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Count = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Captcha = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Challenge = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               IPSetReferenceStatement = list(
@@ -5709,11 +7441,56 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               RateBasedStatement = list(
 #'                 Limit = 123,
-#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'                 ScopeDownStatement = list(),
 #'                 ForwardedIPConfig = list(
 #'                   HeaderName = "string",
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 CustomKeys = list(
+#'                   list(
+#'                     Header = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     Cookie = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryArgument = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryString = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     HTTPMethod = list(),
+#'                     ForwardedIP = list(),
+#'                     IP = list(),
+#'                     LabelNamespace = list(
+#'                       Namespace = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               AndStatement = list(
@@ -5805,6 +7582,116 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -5814,6 +7701,65 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -5849,6 +7795,21 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'     CaptchaConfig = list(
 #'       ImmunityTimeProperty = list(
 #'         ImmunityTime = 123
+#'       )
+#'     ),
+#'     ChallengeConfig = list(
+#'       ImmunityTimeProperty = list(
+#'         ImmunityTime = 123
+#'       )
+#'     ),
+#'     TokenDomains = list(
+#'       "string"
+#'     ),
+#'     AssociationConfig = list(
+#'       RequestBody = list(
+#'         list(
+#'           DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -5902,16 +7863,22 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' The ARN must be in one of the following formats:
 #' 
 #' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
 #' -   For an Amazon API Gateway REST API:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
 #' -   For an AppSync GraphQL API:
-#'     `arn:aws:appsync:region:account-id:apis/GraphQLApiId `
+#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
 #' -   For an Amazon Cognito user pool:
-#'     `arn:aws:cognito-idp:region:account-id:userpool/user-pool-id `
+#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' 
+#' -   For an App Runner service:
+#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' 
+#' -   For an Amazon Web Services Verified Access instance:
+#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #'
 #' @return
 #' A list with the following syntax:
@@ -6211,6 +8178,65 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               list(
 #'                 Name = "string"
 #'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           IPSetReferenceStatement = list(
@@ -6284,11 +8310,56 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           ),
 #'           RateBasedStatement = list(
 #'             Limit = 123,
-#'             AggregateKeyType = "IP"|"FORWARDED_IP",
+#'             AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'             ScopeDownStatement = list(),
 #'             ForwardedIPConfig = list(
 #'               HeaderName = "string",
 #'               FallbackBehavior = "MATCH"|"NO_MATCH"
+#'             ),
+#'             CustomKeys = list(
+#'               list(
+#'                 Header = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 Cookie = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 QueryArgument = list(
+#'                   Name = "string",
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 QueryString = list(
+#'                   TextTransformations = list(
+#'                     list(
+#'                       Priority = 123,
+#'                       Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                     )
+#'                   )
+#'                 ),
+#'                 HTTPMethod = list(),
+#'                 ForwardedIP = list(),
+#'                 IP = list(),
+#'                 LabelNamespace = list(
+#'                   Namespace = "string"
+#'                 )
+#'               )
 #'             )
 #'           ),
 #'           AndStatement = list(
@@ -6323,6 +8394,116 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -6435,6 +8616,16 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 )
 #'               )
 #'             )
+#'           ),
+#'           Challenge = list(
+#'             CustomRequestHandling = list(
+#'               InsertHeaders = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Value = "string"
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         OverrideAction = list(
@@ -6461,6 +8652,11 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'           MetricName = "string"
 #'         ),
 #'         CaptchaConfig = list(
+#'           ImmunityTimeProperty = list(
+#'             ImmunityTime = 123
+#'           )
+#'         ),
+#'         ChallengeConfig = list(
 #'           ImmunityTimeProperty = list(
 #'             ImmunityTime = 123
 #'           )
@@ -6748,6 +8944,65 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   list(
 #'                     Name = "string"
 #'                   )
+#'                 ),
+#'                 RuleActionOverrides = list(
+#'                   list(
+#'                     Name = "string",
+#'                     ActionToUse = list(
+#'                       Block = list(
+#'                         CustomResponse = list(
+#'                           ResponseCode = 123,
+#'                           CustomResponseBodyKey = "string",
+#'                           ResponseHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Allow = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Count = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Captcha = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Challenge = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               IPSetReferenceStatement = list(
@@ -6821,11 +9076,56 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               RateBasedStatement = list(
 #'                 Limit = 123,
-#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'                 ScopeDownStatement = list(),
 #'                 ForwardedIPConfig = list(
 #'                   HeaderName = "string",
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 CustomKeys = list(
+#'                   list(
+#'                     Header = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     Cookie = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryArgument = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryString = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     HTTPMethod = list(),
+#'                     ForwardedIP = list(),
+#'                     IP = list(),
+#'                     LabelNamespace = list(
+#'                       Namespace = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               AndStatement = list(
@@ -6917,6 +9217,116 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -6926,6 +9336,65 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -7225,6 +9694,65 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   list(
 #'                     Name = "string"
 #'                   )
+#'                 ),
+#'                 RuleActionOverrides = list(
+#'                   list(
+#'                     Name = "string",
+#'                     ActionToUse = list(
+#'                       Block = list(
+#'                         CustomResponse = list(
+#'                           ResponseCode = 123,
+#'                           CustomResponseBodyKey = "string",
+#'                           ResponseHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Allow = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Count = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Captcha = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       Challenge = list(
+#'                         CustomRequestHandling = list(
+#'                           InsertHeaders = list(
+#'                             list(
+#'                               Name = "string",
+#'                               Value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               IPSetReferenceStatement = list(
@@ -7298,11 +9826,56 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               RateBasedStatement = list(
 #'                 Limit = 123,
-#'                 AggregateKeyType = "IP"|"FORWARDED_IP",
+#'                 AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'                 ScopeDownStatement = list(),
 #'                 ForwardedIPConfig = list(
 #'                   HeaderName = "string",
 #'                   FallbackBehavior = "MATCH"|"NO_MATCH"
+#'                 ),
+#'                 CustomKeys = list(
+#'                   list(
+#'                     Header = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     Cookie = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryArgument = list(
+#'                       Name = "string",
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     QueryString = list(
+#'                       TextTransformations = list(
+#'                         list(
+#'                           Priority = 123,
+#'                           Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                         )
+#'                       )
+#'                     ),
+#'                     HTTPMethod = list(),
+#'                     ForwardedIP = list(),
+#'                     IP = list(),
+#'                     LabelNamespace = list(
+#'                       Namespace = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               ),
 #'               AndStatement = list(
@@ -7394,6 +9967,116 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                 ),
 #'                 PasswordField = list(
 #'                   Identifier = "string"
+#'                 ),
+#'                 AWSManagedRulesBotControlRuleSet = list(
+#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                 ),
+#'                 AWSManagedRulesATPRuleSet = list(
+#'                   LoginPath = "string",
+#'                   RequestInspection = list(
+#'                     PayloadType = "JSON"|"FORM_ENCODED",
+#'                     UsernameField = list(
+#'                       Identifier = "string"
+#'                     ),
+#'                     PasswordField = list(
+#'                       Identifier = "string"
+#'                     )
+#'                   ),
+#'                   ResponseInspection = list(
+#'                     StatusCode = list(
+#'                       SuccessCodes = list(
+#'                         123
+#'                       ),
+#'                       FailureCodes = list(
+#'                         123
+#'                       )
+#'                     ),
+#'                     Header = list(
+#'                       Name = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     BodyContains = list(
+#'                       SuccessStrings = list(
+#'                         "string"
+#'                       ),
+#'                       FailureStrings = list(
+#'                         "string"
+#'                       )
+#'                     ),
+#'                     Json = list(
+#'                       Identifier = "string",
+#'                       SuccessValues = list(
+#'                         "string"
+#'                       ),
+#'                       FailureValues = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
 #'                 )
 #'               )
 #'             )
@@ -7403,6 +10086,65 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'             ExcludedRules = list(
 #'               list(
 #'                 Name = "string"
+#'               )
+#'             ),
+#'             RuleActionOverrides = list(
+#'               list(
+#'                 Name = "string",
+#'                 ActionToUse = list(
+#'                   Block = list(
+#'                     CustomResponse = list(
+#'                       ResponseCode = 123,
+#'                       CustomResponseBodyKey = "string",
+#'                       ResponseHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Allow = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Count = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Captcha = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Challenge = list(
+#'                     CustomRequestHandling = list(
+#'                       InsertHeaders = list(
+#'                         list(
+#'                           Name = "string",
+#'                           Value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -7439,6 +10181,21 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'       ImmunityTimeProperty = list(
 #'         ImmunityTime = 123
 #'       )
+#'     ),
+#'     ChallengeConfig = list(
+#'       ImmunityTimeProperty = list(
+#'         ImmunityTime = 123
+#'       )
+#'     ),
+#'     TokenDomains = list(
+#'       "string"
+#'     ),
+#'     AssociationConfig = list(
+#'       RequestBody = list(
+#'         list(
+#'           DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -7473,6 +10230,98 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 }
 .wafv2$operations$get_web_acl_for_resource <- wafv2_get_web_acl_for_resource
 
+#' Retrieves a list of the API keys that you've defined for the specified
+#' scope
+#'
+#' @description
+#' Retrieves a list of the API keys that you've defined for the specified
+#' scope.
+#' 
+#' API keys are required for the integration of the CAPTCHA API in your
+#' JavaScript client applications. The API lets you customize the placement
+#' and characteristics of the CAPTCHA puzzle for your end users. For more
+#' information about the CAPTCHA JavaScript integration, see [WAF client
+#' application
+#' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
+#' in the *WAF Developer Guide*.
+#'
+#' @usage
+#' wafv2_list_api_keys(Scope, NextMarker, Limit)
+#'
+#' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
+#' regional application. A regional application can be an Application Load
+#' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
+#' 
+#' To work with CloudFront, you must also specify the Region US East (N.
+#' Virginia) as follows:
+#' 
+#' -   CLI - Specify the Region when you use the CloudFront scope:
+#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' 
+#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
+#' of objects that are still available for retrieval exceeds the limit, WAF
+#' returns a `NextMarker` value in the response. To retrieve the next batch
+#' of objects, provide the marker from the prior call in your next request.
+#' @param Limit The maximum number of objects that you want WAF to return for this
+#' request. If more objects are available, in the response, WAF provides a
+#' `NextMarker` value that you can use in a subsequent call to get the next
+#' batch of objects.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextMarker = "string",
+#'   APIKeySummaries = list(
+#'     list(
+#'       TokenDomains = list(
+#'         "string"
+#'       ),
+#'       APIKey = "string",
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Version = 123
+#'     )
+#'   ),
+#'   ApplicationIntegrationURL = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_api_keys(
+#'   Scope = "CLOUDFRONT"|"REGIONAL",
+#'   NextMarker = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wafv2_list_api_keys
+#'
+#' @aliases wafv2_list_api_keys
+wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListAPIKeys",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .wafv2$list_api_keys_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
+  output <- .wafv2$list_api_keys_output()
+  config <- get_config()
+  svc <- .wafv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wafv2$operations$list_api_keys <- wafv2_list_api_keys
+
 #' Returns a list of the available versions for the specified managed rule
 #' group
 #'
@@ -7491,7 +10340,8 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -7574,7 +10424,8 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -7652,7 +10503,8 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -7729,7 +10581,8 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -7820,7 +10673,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'             Conditions = list(
 #'               list(
 #'                 ActionCondition = list(
-#'                   Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'                   Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
 #'                 ),
 #'                 LabelNameCondition = list(
 #'                   LabelName = "string"
@@ -7891,7 +10744,8 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -7966,9 +10820,9 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
 #' specified device platform.
 #' 
 #' The mobile SDK is not generally available. Customers who have access to
-#' the mobile SDK can use it to establish and manage Security Token Service
-#' (STS) security tokens for use in HTTP(S) requests from a mobile device
-#' to WAF. For more information, see [WAF client application
+#' the mobile SDK can use it to establish and manage WAF tokens for use in
+#' HTTP(S) requests from a mobile device to WAF. For more information, see
+#' [WAF client application
 #' integration](https://docs.aws.amazon.com/waf/latest/developerguide/waf-application-integration.html)
 #' in the *WAF Developer Guide*.
 #'
@@ -8045,7 +10899,8 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -8126,8 +10981,14 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' @param WebACLArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL.
 #' @param ResourceType Used for web ACLs that are scoped for regional applications. A regional
 #' application can be an Application Load Balancer (ALB), an Amazon API
-#' Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito user
-#' pool.
+#' Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool,
+#' an App Runner service, or an Amazon Web Services Verified Access
+#' instance.
+#' 
+#' If you don't provide a resource type, the call uses the resource type
+#' `APPLICATION_LOAD_BALANCER`.
+#' 
+#' Default: `APPLICATION_LOAD_BALANCER`
 #'
 #' @return
 #' A list with the following syntax:
@@ -8143,7 +11004,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' ```
 #' svc$list_resources_for_web_acl(
 #'   WebACLArn = "string",
-#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"
+#'   ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"|"COGNITO_USER_POOL"|"APP_RUNNER_SERVICE"|"VERIFIED_ACCESS_INSTANCE"
 #' )
 #' ```
 #'
@@ -8182,7 +11043,8 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -8336,7 +11198,8 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -8409,6 +11272,20 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' Enables the specified LoggingConfiguration, to start logging from a web
 #' ACL, according to the configuration provided.
 #' 
+#' This operation completely replaces any mutable specifications that you
+#' already have for a logging configuration with the ones that you provide
+#' to this call.
+#' 
+#' To modify an existing logging configuration, do the following:
+#' 
+#' 1.  Retrieve it by calling
+#'     [`get_logging_configuration`][wafv2_get_logging_configuration]
+#' 
+#' 2.  Update its settings as needed
+#' 
+#' 3.  Provide the complete logging configuration specification to this
+#'     call
+#' 
 #' You can define one logging destination per web ACL.
 #' 
 #' You can access information about the traffic that WAF inspects using the
@@ -8416,10 +11293,15 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' 
 #' 1.  Create your logging destination. You can use an Amazon CloudWatch
 #'     Logs log group, an Amazon Simple Storage Service (Amazon S3) bucket,
-#'     or an Amazon Kinesis Data Firehose. For information about
-#'     configuring logging destinations and the permissions that are
-#'     required for each, see [Logging web ACL traffic
-#'     information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
+#'     or an Amazon Kinesis Data Firehose.
+#' 
+#'     The name that you give the destination must start with
+#'     `aws-waf-logs-`. Depending on the type of destination, you might
+#'     need to configure additional settings or permissions.
+#' 
+#'     For configuration requirements and pricing information for each
+#'     destination type, see [Logging web ACL
+#'     traffic](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
 #'     in the *WAF Developer Guide*.
 #' 
 #' 2.  Associate your logging destination to your web ACL using a
@@ -8438,14 +11320,6 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' traffic
 #' information](https://docs.aws.amazon.com/waf/latest/developerguide/logging.html)
 #' in the *WAF Developer Guide*.
-#' 
-#' This operation completely replaces the mutable specifications that you
-#' already have for the logging configuration with the ones that you
-#' provide to this call. To modify the logging configuration, retrieve it
-#' by calling
-#' [`get_logging_configuration`][wafv2_get_logging_configuration], update
-#' the settings as needed, and then provide the complete logging
-#' configuration specification to this call.
 #'
 #' @usage
 #' wafv2_put_logging_configuration(LoggingConfiguration)
@@ -8524,7 +11398,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           Conditions = list(
 #'             list(
 #'               ActionCondition = list(
-#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
 #'               ),
 #'               LabelNameCondition = list(
 #'                 LabelName = "string"
@@ -8610,7 +11484,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           Conditions = list(
 #'             list(
 #'               ActionCondition = list(
-#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"EXCLUDED_AS_COUNT"
+#'                 Action = "ALLOW"|"BLOCK"|"COUNT"|"CAPTCHA"|"CHALLENGE"|"EXCLUDED_AS_COUNT"
 #'               ),
 #'               LabelNameCondition = list(
 #'                 LabelName = "string"
@@ -8691,7 +11565,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -8790,8 +11665,7 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 #' 
 #' The policy specifications must conform to the following:
 #' 
-#' -   The policy must be composed using IAM Policy version 2012-10-17 or
-#'     version 2015-01-01.
+#' -   The policy must be composed using IAM Policy version 2012-10-17.
 #' 
 #' -   The policy must include specifications for `Effect`, `Action`, and
 #'     `Principal`.
@@ -8957,9 +11831,14 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' This operation completely replaces the mutable specifications that you
 #' already have for the IP set with the ones that you provide to this call.
-#' To modify the IP set, retrieve it by calling
-#' [`get_ip_set`][wafv2_get_ip_set], update the settings as needed, and
-#' then provide the complete IP set specification to this call.
+#' 
+#' To modify an IP set, do the following:
+#' 
+#' 1.  Retrieve it by calling [`get_ip_set`][wafv2_get_ip_set]
+#' 
+#' 2.  Update its settings as needed
+#' 
+#' 3.  Provide the complete IP set specification to this call
 #' 
 #' When you make changes to web ACLs or web ACL components, like rules and
 #' rule groups, WAF propagates the changes everywhere that the web ACL and
@@ -8983,7 +11862,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -8997,8 +11877,9 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' delete.
 #' @param Description A description of the IP set that helps with identification.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-#' notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
+#' blocks of IP addresses. All addresses must be specified using Classless
+#' Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
+#' CIDR ranges except for `/0`.
 #' 
 #' Example address strings:
 #' 
@@ -9118,7 +11999,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -9200,10 +12082,16 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' 
 #' This operation completely replaces the mutable specifications that you
 #' already have for the regex pattern set with the ones that you provide to
-#' this call. To modify the regex pattern set, retrieve it by calling
-#' [`get_regex_pattern_set`][wafv2_get_regex_pattern_set], update the
-#' settings as needed, and then provide the complete regex pattern set
-#' specification to this call.
+#' this call.
+#' 
+#' To modify a regex pattern set, do the following:
+#' 
+#' 1.  Retrieve it by calling
+#'     [`get_regex_pattern_set`][wafv2_get_regex_pattern_set]
+#' 
+#' 2.  Update its settings as needed
+#' 
+#' 3.  Provide the complete regex pattern set specification to this call
 #' 
 #' When you make changes to web ACLs or web ACL components, like rules and
 #' rule groups, WAF propagates the changes everywhere that the web ACL and
@@ -9228,7 +12116,8 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -9304,9 +12193,15 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' 
 #' This operation completely replaces the mutable specifications that you
 #' already have for the rule group with the ones that you provide to this
-#' call. To modify the rule group, retrieve it by calling
-#' [`get_rule_group`][wafv2_get_rule_group], update the settings as needed,
-#' and then provide the complete rule group specification to this call.
+#' call.
+#' 
+#' To modify a rule group, do the following:
+#' 
+#' 1.  Retrieve it by calling [`get_rule_group`][wafv2_get_rule_group]
+#' 
+#' 2.  Update its settings as needed
+#' 
+#' 3.  Provide the complete rule group specification to this call
 #' 
 #' When you make changes to web ACLs or web ACL components, like rules and
 #' rule groups, WAF propagates the changes everywhere that the web ACL and
@@ -9337,7 +12232,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -9372,14 +12268,12 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' For information about customizing web requests and responses, see
 #' [Customizing web requests and responses in
 #' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request
 #' and response settings, see [WAF
 #' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9661,6 +12555,65 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             list(
 #'               Name = "string"
 #'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
@@ -9734,11 +12687,56 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'           ScopeDownStatement = list(),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
 #'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           CustomKeys = list(
+#'             list(
+#'               Header = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               Cookie = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryArgument = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryString = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               HTTPMethod = list(),
+#'               ForwardedIP = list(),
+#'               IP = list(),
+#'               LabelNamespace = list(
+#'                 Namespace = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         AndStatement = list(
@@ -9773,6 +12771,116 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               ),
 #'               PasswordField = list(
 #'                 Identifier = "string"
+#'               ),
+#'               AWSManagedRulesBotControlRuleSet = list(
+#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'               ),
+#'               AWSManagedRulesATPRuleSet = list(
+#'                 LoginPath = "string",
+#'                 RequestInspection = list(
+#'                   PayloadType = "JSON"|"FORM_ENCODED",
+#'                   UsernameField = list(
+#'                     Identifier = "string"
+#'                   ),
+#'                   PasswordField = list(
+#'                     Identifier = "string"
+#'                   )
+#'                 ),
+#'                 ResponseInspection = list(
+#'                   StatusCode = list(
+#'                     SuccessCodes = list(
+#'                       123
+#'                     ),
+#'                     FailureCodes = list(
+#'                       123
+#'                     )
+#'                   ),
+#'                   Header = list(
+#'                     Name = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   BodyContains = list(
+#'                     SuccessStrings = list(
+#'                       "string"
+#'                     ),
+#'                     FailureStrings = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   Json = list(
+#'                     Identifier = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -9885,6 +12993,16 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Challenge = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -9911,6 +13029,11 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'         MetricName = "string"
 #'       ),
 #'       CaptchaConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
+#'       ),
+#'       ChallengeConfig = list(
 #'         ImmunityTimeProperty = list(
 #'           ImmunityTime = 123
 #'         )
@@ -9961,6 +13084,18 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' continuous coverage to the resources that you have associated with the
 #' web ACL.
 #' 
+#' This operation completely replaces the mutable specifications that you
+#' already have for the web ACL with the ones that you provide to this
+#' call.
+#' 
+#' To modify a web ACL, do the following:
+#' 
+#' 1.  Retrieve it by calling [`get_web_acl`][wafv2_get_web_acl]
+#' 
+#' 2.  Update its settings as needed
+#' 
+#' 3.  Provide the complete web ACL specification to this call
+#' 
 #' When you make changes to web ACLs or web ACL components, like rules and
 #' rule groups, WAF propagates the changes everywhere that the web ACL and
 #' its components are stored and used. Your changes are applied within
@@ -9975,12 +13110,6 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' is already associated with a resource. Generally, any inconsistencies of
 #' this type last only a few seconds.
 #' 
-#' This operation completely replaces the mutable specifications that you
-#' already have for the web ACL with the ones that you provide to this
-#' call. To modify the web ACL, retrieve it by calling
-#' [`get_web_acl`][wafv2_get_web_acl], update the settings as needed, and
-#' then provide the complete web ACL specification to this call.
-#' 
 #' A web ACL defines a collection of rules to use to inspect and control
 #' web requests. Each rule has an action defined (allow, block, or count)
 #' for requests that match the statement of the rule. In the web ACL, you
@@ -9990,18 +13119,21 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' a web ACL with one or more Amazon Web Services resources to protect. The
 #' resources can be an Amazon CloudFront distribution, an Amazon API
 #' Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #'
 #' @usage
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
-#'   VisibilityConfig, LockToken, CustomResponseBodies, CaptchaConfig)
+#'   VisibilityConfig, LockToken, CustomResponseBodies, CaptchaConfig,
+#'   ChallengeConfig, TokenDomains, AssociationConfig)
 #'
 #' @param Name &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
 #' @param Scope &#91;required&#93; Specifies whether this is for an Amazon CloudFront distribution or for a
 #' regional application. A regional application can be an Application Load
 #' Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-#' or an Amazon Cognito user pool.
+#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#' Services Verified Access instance.
 #' 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
@@ -10038,17 +13170,42 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' For information about customizing web requests and responses, see
 #' [Customizing web requests and responses in
 #' WAF](https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #' 
 #' For information about the limits on count and size for custom request
 #' and response settings, see [WAF
 #' quotas](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
-#' in the [WAF Developer
-#' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+#' in the *WAF Developer Guide*.
 #' @param CaptchaConfig Specifies how WAF should handle `CAPTCHA` evaluations for rules that
 #' don't have their own `CaptchaConfig` settings. If you don't specify
 #' this, WAF uses its default settings for `CaptchaConfig`.
+#' @param ChallengeConfig Specifies how WAF should handle challenge evaluations for rules that
+#' don't have their own `ChallengeConfig` settings. If you don't specify
+#' this, WAF uses its default settings for `ChallengeConfig`.
+#' @param TokenDomains Specifies the domains that WAF should accept in a web request token.
+#' This enables the use of tokens across multiple protected websites. When
+#' WAF provides a token, it uses the domain of the Amazon Web Services
+#' resource that the web ACL is protecting. If you don't specify a list of
+#' token domains, WAF accepts tokens only for the domain of the protected
+#' resource. With a token domain list, WAF accepts the resource's host
+#' domain plus all domains in the token domain list, including their
+#' prefixed subdomains.
+#' 
+#' Example JSON:
+#' `"TokenDomains": { "mywebsite.com", "myotherwebsite.com" }`
+#' 
+#' Public suffixes aren't allowed. For example, you can't use `usa.gov` or
+#' `co.uk` as token domains.
+#' @param AssociationConfig Specifies custom configurations for the associations between the web ACL
+#' and protected resources.
+#' 
+#' Use this to customize the maximum size of the request body that your
+#' protected CloudFront distributions forward to WAF for inspection. The
+#' default is 16 KB (16,384 kilobytes).
+#' 
+#' You are charged additional fees when your protected resources forward
+#' body sizes that are larger than the default. For more information, see
+#' [WAF Pricing](https://aws.amazon.com/waf/pricing/).
 #'
 #' @return
 #' A list with the following syntax:
@@ -10354,6 +13511,65 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             list(
 #'               Name = "string"
 #'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         IPSetReferenceStatement = list(
@@ -10427,11 +13643,56 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         ),
 #'         RateBasedStatement = list(
 #'           Limit = 123,
-#'           AggregateKeyType = "IP"|"FORWARDED_IP",
+#'           AggregateKeyType = "IP"|"FORWARDED_IP"|"CUSTOM_KEYS"|"CONSTANT",
 #'           ScopeDownStatement = list(),
 #'           ForwardedIPConfig = list(
 #'             HeaderName = "string",
 #'             FallbackBehavior = "MATCH"|"NO_MATCH"
+#'           ),
+#'           CustomKeys = list(
+#'             list(
+#'               Header = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               Cookie = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryArgument = list(
+#'                 Name = "string",
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               QueryString = list(
+#'                 TextTransformations = list(
+#'                   list(
+#'                     Priority = 123,
+#'                     Type = "NONE"|"COMPRESS_WHITE_SPACE"|"HTML_ENTITY_DECODE"|"LOWERCASE"|"CMD_LINE"|"URL_DECODE"|"BASE64_DECODE"|"HEX_DECODE"|"MD5"|"REPLACE_COMMENTS"|"ESCAPE_SEQ_DECODE"|"SQL_HEX_DECODE"|"CSS_DECODE"|"JS_DECODE"|"NORMALIZE_PATH"|"NORMALIZE_PATH_WIN"|"REMOVE_NULLS"|"REPLACE_NULLS"|"BASE64_DECODE_EXT"|"URL_DECODE_UNI"|"UTF8_TO_UNICODE"
+#'                   )
+#'                 )
+#'               ),
+#'               HTTPMethod = list(),
+#'               ForwardedIP = list(),
+#'               IP = list(),
+#'               LabelNamespace = list(
+#'                 Namespace = "string"
+#'               )
+#'             )
 #'           )
 #'         ),
 #'         AndStatement = list(
@@ -10466,6 +13727,116 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               ),
 #'               PasswordField = list(
 #'                 Identifier = "string"
+#'               ),
+#'               AWSManagedRulesBotControlRuleSet = list(
+#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'               ),
+#'               AWSManagedRulesATPRuleSet = list(
+#'                 LoginPath = "string",
+#'                 RequestInspection = list(
+#'                   PayloadType = "JSON"|"FORM_ENCODED",
+#'                   UsernameField = list(
+#'                     Identifier = "string"
+#'                   ),
+#'                   PasswordField = list(
+#'                     Identifier = "string"
+#'                   )
+#'                 ),
+#'                 ResponseInspection = list(
+#'                   StatusCode = list(
+#'                     SuccessCodes = list(
+#'                       123
+#'                     ),
+#'                     FailureCodes = list(
+#'                       123
+#'                     )
+#'                   ),
+#'                   Header = list(
+#'                     Name = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   BodyContains = list(
+#'                     SuccessStrings = list(
+#'                       "string"
+#'                     ),
+#'                     FailureStrings = list(
+#'                       "string"
+#'                     )
+#'                   ),
+#'                   Json = list(
+#'                     Identifier = "string",
+#'                     SuccessValues = list(
+#'                       "string"
+#'                     ),
+#'                     FailureValues = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RuleActionOverrides = list(
+#'             list(
+#'               Name = "string",
+#'               ActionToUse = list(
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     ResponseCode = 123,
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Count = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Captcha = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Challenge = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
 #'               )
 #'             )
 #'           )
@@ -10578,6 +13949,16 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'               )
 #'             )
 #'           )
+#'         ),
+#'         Challenge = list(
+#'           CustomRequestHandling = list(
+#'             InsertHeaders = list(
+#'               list(
+#'                 Name = "string",
+#'                 Value = "string"
+#'               )
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       OverrideAction = list(
@@ -10607,6 +13988,11 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'         ImmunityTimeProperty = list(
 #'           ImmunityTime = 123
 #'         )
+#'       ),
+#'       ChallengeConfig = list(
+#'         ImmunityTimeProperty = list(
+#'           ImmunityTime = 123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -10626,6 +14012,21 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'     ImmunityTimeProperty = list(
 #'       ImmunityTime = 123
 #'     )
+#'   ),
+#'   ChallengeConfig = list(
+#'     ImmunityTimeProperty = list(
+#'       ImmunityTime = 123
+#'     )
+#'   ),
+#'   TokenDomains = list(
+#'     "string"
+#'   ),
+#'   AssociationConfig = list(
+#'     RequestBody = list(
+#'       list(
+#'         DefaultSizeInspectionLimit = "KB_16"|"KB_32"|"KB_48"|"KB_64"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -10635,14 +14036,14 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' @rdname wafv2_update_web_acl
 #'
 #' @aliases wafv2_update_web_acl
-wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL) {
+wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = NULL, Rules = NULL, VisibilityConfig, LockToken, CustomResponseBodies = NULL, CaptchaConfig = NULL, ChallengeConfig = NULL, TokenDomains = NULL, AssociationConfig = NULL) {
   op <- new_operation(
     name = "UpdateWebACL",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig)
+  input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$update_web_acl_output()
   config <- get_config()
   svc <- .wafv2$service(config)

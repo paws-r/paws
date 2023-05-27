@@ -679,8 +679,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'
 #' @param ApplicationName &#91;required&#93; The name of your application (for example, `sample-app`).
 #' @param ApplicationDescription A summary description of the application.
-#' @param RuntimeEnvironment &#91;required&#93; The runtime environment for the application (`SQL-1_0`, `FLINK-1_6`,
-#' `FLINK-1_8`, or `FLINK-1_11`).
+#' @param RuntimeEnvironment &#91;required&#93; The runtime environment for the application.
 #' @param ServiceExecutionRole &#91;required&#93; The IAM role used by the application to access Kinesis data streams,
 #' Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
 #' external resources.
@@ -692,8 +691,8 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' number of application tags includes system tags. The maximum number of
 #' user-defined application tags is 50. For more information, see [Using
 #' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
-#' @param ApplicationMode Use the `STREAMING` mode to create a Kinesis Data Analytics Studio
-#' notebook. To create a Kinesis Data Analytics Studio notebook, use the
+#' @param ApplicationMode Use the `STREAMING` mode to create a Kinesis Data Analytics For Flink
+#' application. To create a Kinesis Data Analytics Studio notebook, use the
 #' `INTERACTIVE` mode.
 #'
 #' @return
@@ -704,7 +703,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -947,7 +946,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' svc$create_application(
 #'   ApplicationName = "string",
 #'   ApplicationDescription = "string",
-#'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'   ServiceExecutionRole = "string",
 #'   ApplicationConfiguration = list(
 #'     SqlApplicationConfiguration = list(
@@ -1169,8 +1168,7 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 #'
 #' @description
 #' Creates and returns a URL that you can use to connect to an
-#' application's extension. Currently, the only available extension is the
-#' Apache Flink dashboard.
+#' application's extension.
 #' 
 #' The IAM role or user used to call this API defines the permissions to
 #' access the extension. After the presigned URL is created, no additional
@@ -1746,7 +1744,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -2102,7 +2100,7 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -2651,7 +2649,7 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
 #'       ApplicationARN = "string",
 #'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'       ApplicationVersionId = 123,
-#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'       ApplicationMode = "STREAMING"|"INTERACTIVE"
 #'     )
 #'   ),
@@ -2776,7 +2774,7 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -3325,7 +3323,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,

@@ -8,7 +8,8 @@ sagemaker_create_presigned_domain_url(
   DomainId,
   UserProfileName,
   SessionExpirationDurationInSeconds = NULL,
-  ExpiresInSeconds = NULL
+  ExpiresInSeconds = NULL,
+  SpaceName = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ sagemaker_create_presigned_domain_url(
 
 \item{ExpiresInSeconds}{The number of seconds until the pre-signed URL expires. This value
 defaults to 300.}
+
+\item{SpaceName}{The name of the space.}
 }
 \description{
 Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to Amazon SageMaker Studio, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.

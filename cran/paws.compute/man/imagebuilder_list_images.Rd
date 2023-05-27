@@ -39,7 +39,7 @@ a previously truncated response.}
 \item{includeDeprecated}{Includes deprecated images in the response list.}
 }
 \description{
-Returns the list of images that you have access to.
+Returns the list of images that you have access to. Newly created images can take up to two minutes to appear in the ListImages API Results.
 
 See \url{https://paws-r.github.io/docs/imagebuilder/list_images.html} for full documentation.
 }

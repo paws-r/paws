@@ -14,8 +14,8 @@ resiliencehub_list_test_recommendations(
 \item{assessmentArn}{[required] The Amazon Resource Name (ARN) of the assessment. The format for this
 ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{maxResults}{The maximum number of results to include in the response. If more
 results exist than the specified \code{MaxResults} value, a token is included

@@ -9,15 +9,18 @@ cloudwatchlogs_create_log_group(logGroupName, kmsKeyId = NULL, tags = NULL)
 \arguments{
 \item{logGroupName}{[required] The name of the log group.}
 
-\item{kmsKeyId}{The Amazon Resource Name (ARN) of the CMK to use when encrypting log
-data. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms}{Amazon Resource Names - Key Management Service}.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key to use when encrypting log
+data. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kms}{Amazon Resource Names}.}
 
 \item{tags}{The key-value pairs to use for the tags.
 
-CloudWatch Logs doesn’t support IAM policies that prevent users from
-assigning specified tags to log groups using the
-\code{aws:Resource/key-name } or \code{aws:TagKeys} condition keys. For more
-information about using tags to control access, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
+You can grant users access to certain log groups while preventing them
+from accessing other log groups. To do so, tag your groups and use IAM
+policies that refer to those tags. To assign tags when you create a log
+group, you must have either the \code{logs:TagResource} or \code{logs:TagLogGroup}
+permission. For more information about tagging, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.
+For more information about using tags to control access, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 }
 \description{
 Creates a log group with the specified name. You can create up to 20,000 log groups per account.

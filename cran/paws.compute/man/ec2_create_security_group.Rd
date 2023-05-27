@@ -13,7 +13,7 @@ ec2_create_security_group(
 )
 }
 \arguments{
-\item{Description}{[required] A description for the security group. This is informational only.
+\item{Description}{[required] A description for the security group.
 
 Constraints: Up to 255 characters in length
 

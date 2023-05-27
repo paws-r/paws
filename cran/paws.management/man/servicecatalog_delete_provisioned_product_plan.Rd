@@ -13,15 +13,14 @@ servicecatalog_delete_provisioned_product_plan(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
 
 \item{PlanId}{[required] The plan identifier.}
 
-\item{IgnoreErrors}{If set to true, AWS Service Catalog stops managing the specified
-provisioned product even if it cannot delete the underlying resources.}
+\item{IgnoreErrors}{If set to true, Service Catalog stops managing the specified provisioned
+product even if it cannot delete the underlying resources.}
 }
 \description{
 Deletes the specified plan.

@@ -2,21 +2,224 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_put_draft_app_version_template}
 \alias{resiliencehub_put_draft_app_version_template}
-\title{Adds or updates the app template for a draft version of a Resilience Hub
-app}
+\title{Adds or updates the app template for an Resilience Hub application draft
+version}
 \usage{
 resiliencehub_put_draft_app_version_template(appArn, appTemplateBody)
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
-\item{appTemplateBody}{[required] A JSON string that contains the body of the app template.}
+\item{appTemplateBody}{[required] A JSON string that provides information about your application
+structure. To learn more about the \code{appTemplateBody} template, see the
+sample template provided in the \emph{Examples} section.
+
+The \code{appTemplateBody} JSON string has the following structure:
+\itemize{
+\item \strong{\code{resources}}
+
+The list of logical resources that must be included in the
+Resilience Hub application.
+
+Type: Array
+
+Don't add the resources that you want to exclude.
+
+Each \code{resources} array item includes the following fields:
+\itemize{
+\item \emph{logicalResourceId}
+
+The logical identifier of the resource.
+
+Type: Object
+
+Each \code{logicalResourceId} object includes the following fields:
+\itemize{
+\item \code{identifier}
+
+The identifier of the resource.
+
+Type: String
+\item \code{logicalStackName}
+
+The name of the CloudFormation stack this resource belongs
+to.
+
+Type: String
+\item \code{resourceGroupName}
+
+The name of the resource group this resource belongs to.
+
+Type: String
+\item \code{terraformSourceName}
+
+The name of the Terraform S3 state file this resource
+belongs to.
+
+Type: String
+\item \code{eksSourceName}
+
+The name of the Amazon Elastic Kubernetes Service cluster
+and namespace this resource belongs to.
+
+This parameter accepts values in "eks-cluster/namespace"
+format.
+
+Type: String
+}
+\item \emph{type}
+
+The type of resource.
+
+Type: string
+\item \emph{name}
+
+The name of the resource.
+
+Type: String
+\item \code{additionalInfo}
+
+Additional configuration parameters for an Resilience Hub
+application. If you want to implement \code{additionalInfo} through
+the Resilience Hub console rather than using an API call, see
+\href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+
+Currently, this parameter accepts a key-value mapping (in a
+string format) of only one failover region and one associated
+account.
+
+Key: \code{"failover-regions"}
+
+Value:
+\verb{"[\{"region":"<REGION>", "accounts":[\{"id":"<ACCOUNT_ID>"\}]\}]"}
+}
+\item \strong{\code{appComponents}}
+
+The list of Application Components that this resource belongs to. If
+an Application Component is not part of the Resilience Hub
+application, it will be added.
+
+Type: Array
+
+Each \code{appComponents} array item includes the following fields:
+\itemize{
+\item \code{name}
+
+The name of the Application Component.
+
+Type: String
+\item \code{type}
+
+The type of Application Component. For more information about
+the types of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.
+
+Type: String
+\item \code{resourceNames}
+
+The list of included resources that are assigned to the
+Application Component.
+
+Type: Array of strings
+\item \code{additionalInfo}
+
+Additional configuration parameters for an Resilience Hub
+application. If you want to implement \code{additionalInfo} through
+the Resilience Hub console rather than using an API call, see
+\href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+
+Currently, this parameter accepts a key-value mapping (in a
+string format) of only one failover region and one associated
+account.
+
+Key: \code{"failover-regions"}
+
+Value:
+\verb{"[\{"region":"<REGION>", "accounts":[\{"id":"<ACCOUNT_ID>"\}]\}]"}
+}
+\item \strong{\code{excludedResources}}
+
+The list of logical resource identifiers to be excluded from the
+application.
+
+Type: Array
+
+Don't add the resources that you want to include.
+
+Each \code{excludedResources} array item includes the following fields:
+\itemize{
+\item \emph{logicalResourceIds}
+
+The logical identifier of the resource.
+
+Type: Object
+
+You can configure only one of the following fields:
+\itemize{
+\item \code{logicalStackName}
+\item \code{resourceGroupName}
+\item \code{terraformSourceName}
+\item \code{eksSourceName}
+}
+
+Each \code{logicalResourceIds} object includes the following fields:
+\itemize{
+\item \code{identifier}
+
+The identifier of the resource.
+
+Type: String
+\item \code{logicalStackName}
+
+The name of the CloudFormation stack this resource belongs
+to.
+
+Type: String
+\item \code{resourceGroupName}
+
+The name of the resource group this resource belongs to.
+
+Type: String
+\item \code{terraformSourceName}
+
+The name of the Terraform S3 state file this resource
+belongs to.
+
+Type: String
+\item \code{eksSourceName}
+
+The name of the Amazon Elastic Kubernetes Service cluster
+and namespace this resource belongs to.
+
+This parameter accepts values in "eks-cluster/namespace"
+format.
+
+Type: String
+}
+}
+\item \strong{\code{version}}
+
+The Resilience Hub application version.
+\item \code{additionalInfo}
+
+Additional configuration parameters for an Resilience Hub
+application. If you want to implement \code{additionalInfo} through the
+Resilience Hub console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+
+Currently, this parameter accepts a key-value mapping (in a string
+format) of only one failover region and one associated account.
+
+Key: \code{"failover-regions"}
+
+Value:
+\verb{"[\{"region":"<REGION>", "accounts":[\{"id":"<ACCOUNT_ID>"\}]\}]"}
+}}
 }
 \description{
-Adds or updates the app template for a draft version of a Resilience Hub app.
+Adds or updates the app template for an Resilience Hub application draft version.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/put_draft_app_version_template.html} for full documentation.
 }

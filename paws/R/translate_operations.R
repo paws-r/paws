@@ -15,7 +15,7 @@ NULL
 #'
 #' @usage
 #' translate_create_parallel_data(Name, Description, ParallelDataConfig,
-#'   EncryptionKey, ClientToken)
+#'   EncryptionKey, ClientToken, Tags)
 #'
 #' @param Name &#91;required&#93; A custom name for the parallel data resource in Amazon Translate. You
 #' must assign a name that is unique in the account and region.
@@ -24,6 +24,10 @@ NULL
 #' @param EncryptionKey 
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is automatically
 #' generated when you use Amazon Translate through an AWS SDK.
+#' @param Tags Tags to be associated with this resource. A tag is a key-value pair that
+#' adds metadata to a resource. Each tag key for the resource must be
+#' unique. For more information, see [Tagging your
+#' resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -47,7 +51,13 @@ NULL
 #'     Type = "KMS",
 #'     Id = "string"
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -56,14 +66,14 @@ NULL
 #' @rdname translate_create_parallel_data
 #'
 #' @aliases translate_create_parallel_data
-translate_create_parallel_data <- function(Name, Description = NULL, ParallelDataConfig, EncryptionKey = NULL, ClientToken) {
+translate_create_parallel_data <- function(Name, Description = NULL, ParallelDataConfig, EncryptionKey = NULL, ClientToken, Tags = NULL) {
   op <- new_operation(
     name = "CreateParallelData",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .translate$create_parallel_data_input(Name = Name, Description = Description, ParallelDataConfig = ParallelDataConfig, EncryptionKey = EncryptionKey, ClientToken = ClientToken)
+  input <- .translate$create_parallel_data_input(Name = Name, Description = Description, ParallelDataConfig = ParallelDataConfig, EncryptionKey = EncryptionKey, ClientToken = ClientToken, Tags = Tags)
   output <- .translate$create_parallel_data_output()
   config <- get_config()
   svc <- .translate$service(config)
@@ -456,7 +466,7 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
 #'
 #' @usage
 #' translate_import_terminology(Name, MergeStrategy, Description,
-#'   TerminologyData, EncryptionKey)
+#'   TerminologyData, EncryptionKey, Tags)
 #'
 #' @param Name &#91;required&#93; The name of the custom terminology being imported.
 #' @param MergeStrategy &#91;required&#93; The merge strategy of the custom terminology being imported. Currently,
@@ -466,6 +476,10 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
 #' @param Description The description of the custom terminology being imported.
 #' @param TerminologyData &#91;required&#93; The terminology data for the custom terminology being imported.
 #' @param EncryptionKey The encryption key for the custom terminology being imported.
+#' @param Tags Tags to be associated with this resource. A tag is a key-value pair that
+#' adds metadata to a resource. Each tag key for the resource must be
+#' unique. For more information, see [Tagging your
+#' resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -517,6 +531,12 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
 #'   EncryptionKey = list(
 #'     Type = "KMS",
 #'     Id = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -526,14 +546,14 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
 #' @rdname translate_import_terminology
 #'
 #' @aliases translate_import_terminology
-translate_import_terminology <- function(Name, MergeStrategy, Description = NULL, TerminologyData, EncryptionKey = NULL) {
+translate_import_terminology <- function(Name, MergeStrategy, Description = NULL, TerminologyData, EncryptionKey = NULL, Tags = NULL) {
   op <- new_operation(
     name = "ImportTerminology",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .translate$import_terminology_input(Name = Name, MergeStrategy = MergeStrategy, Description = Description, TerminologyData = TerminologyData, EncryptionKey = EncryptionKey)
+  input <- .translate$import_terminology_input(Name = Name, MergeStrategy = MergeStrategy, Description = Description, TerminologyData = TerminologyData, EncryptionKey = EncryptionKey, Tags = Tags)
   output <- .translate$import_terminology_output()
   config <- get_config()
   svc <- .translate$service(config)
@@ -689,6 +709,61 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .translate$operations$list_parallel_data <- translate_list_parallel_data
+
+#' Lists all tags associated with a given Amazon Translate resource
+#'
+#' @description
+#' Lists all tags associated with a given Amazon Translate resource. For
+#' more information, see [Tagging your
+#' resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
+#'
+#' @usage
+#' translate_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Translate resource
+#' you are querying.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname translate_list_tags_for_resource
+#'
+#' @aliases translate_list_tags_for_resource
+translate_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .translate$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .translate$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .translate$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.translate$operations$list_tags_for_resource <- translate_list_tags_for_resource
 
 #' Provides a list of custom terminologies associated with your account
 #'
@@ -878,9 +953,14 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' Starts an asynchronous batch translation job
 #'
 #' @description
-#' Starts an asynchronous batch translation job. Batch translation jobs can
-#' be used to translate large volumes of text across multiple documents at
-#' once. For more information, see async.
+#' Starts an asynchronous batch translation job. Use batch translation jobs
+#' to translate large volumes of text across multiple documents at once.
+#' For batch translation, you can input documents with different source
+#' languages (specify `auto` as the source language). You can specify one
+#' or more target languages. Batch translation translates each input
+#' document into each of the target languages. For more information, see
+#' [Asynchronous batch
+#' processing](https://docs.aws.amazon.com/translate/latest/dg/async.html).
 #' 
 #' Batch translation jobs can be described with the
 #' [`describe_text_translation_job`][translate_describe_text_translation_job]
@@ -889,9 +969,6 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' operation, and stopped with the
 #' [`stop_text_translation_job`][translate_stop_text_translation_job]
 #' operation.
-#' 
-#' Amazon Translate does not support batch translation of multiple source
-#' languages at once.
 #'
 #' @usage
 #' translate_start_text_translation_job(JobName, InputDataConfig,
@@ -905,27 +982,44 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' @param OutputDataConfig &#91;required&#93; Specifies the S3 folder to which your job output will be saved.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an AWS Identity Access and Management
 #' (IAM) role that grants Amazon Translate read access to your input data.
-#' For more information, see identity-and-access-management.
-#' @param SourceLanguageCode &#91;required&#93; The language code of the input language. For a list of language codes,
-#' see what-is-languages.
+#' For more information, see [Identity and access
+#' management](https://docs.aws.amazon.com/translate/latest/dg/) .
+#' @param SourceLanguageCode &#91;required&#93; The language code of the input language. Specify the language if all
+#' input documents share the same language. If you don't know the language
+#' of the source files, or your input documents contains different source
+#' languages, select `auto`. Amazon Translate auto detects the source
+#' language for each input document. For a list of supported language
+#' codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
+#' @param TargetLanguageCodes &#91;required&#93; The target languages of the translation job. Enter up to 10 language
+#' codes. Each input file is translated into each target language.
 #' 
-#' Amazon Translate does not automatically detect a source language during
-#' batch translation jobs.
-#' @param TargetLanguageCodes &#91;required&#93; The language code of the output language.
+#' Each language code is 2 or 5 characters long. For a list of language
+#' codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
 #' @param TerminologyNames The name of a custom terminology resource to add to the translation job.
 #' This resource lists examples source terms and the desired translation
 #' for each term.
 #' 
 #' This parameter accepts only one custom terminology resource.
 #' 
+#' If you specify multiple target languages for the job, translate uses the
+#' designated terminology for each requested target language that has an
+#' entry for the source term in the terminology file.
+#' 
 #' For a list of available custom terminology resources, use the
 #' [`list_terminologies`][translate_list_terminologies] operation.
 #' 
-#' For more information, see how-custom-terminology.
+#' For more information, see [Custom
+#' terminology](https://docs.aws.amazon.com/translate/latest/dg/how-custom-terminology.html).
 #' @param ParallelDataNames The name of a parallel data resource to add to the translation job. This
 #' resource consists of examples that show how you want segments of text to
-#' be translated. When you add parallel data to a translation job, you
-#' create an *Active Custom Translation* job.
+#' be translated. If you specify multiple target languages for the job, the
+#' parallel data file must include translations for all the target
+#' languages.
+#' 
+#' When you add parallel data to a translation job, you create an *Active
+#' Custom Translation* job.
 #' 
 #' This parameter accepts only one parallel data resource.
 #' 
@@ -936,13 +1030,13 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' For a list of available parallel data resources, use the
 #' [`list_parallel_data`][translate_list_parallel_data] operation.
 #' 
-#' For more information, see customizing-translations-parallel-data.
+#' For more information, see [Customizing your translations with parallel
+#' data](https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-parallel-data.html).
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is generated for you
 #' when using the Amazon Translate SDK.
 #' @param Settings Settings to configure your translation output, including the option to
-#' mask profane words and phrases.
-#' [`start_text_translation_job`][translate_start_text_translation_job]
-#' does not support the formality setting.
+#' set the formality level of the output text and the option to mask
+#' profane words and phrases.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1069,27 +1163,201 @@ translate_stop_text_translation_job <- function(JobId) {
 }
 .translate$operations$stop_text_translation_job <- translate_stop_text_translation_job
 
+#' Associates a specific tag with a resource
+#'
+#' @description
+#' Associates a specific tag with a resource. A tag is a key-value pair
+#' that adds as a metadata to a resource. For more information, see
+#' [Tagging your
+#' resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
+#'
+#' @usage
+#' translate_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Translate resource to
+#' which you want to associate the tags.
+#' @param Tags &#91;required&#93; Tags being associated with a specific Amazon Translate resource. There
+#' can be a maximum of 50 tags (both existing and pending) associated with
+#' a specific resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname translate_tag_resource
+#'
+#' @aliases translate_tag_resource
+translate_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .translate$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .translate$tag_resource_output()
+  config <- get_config()
+  svc <- .translate$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.translate$operations$tag_resource <- translate_tag_resource
+
+#' Translates the input document from the source language to the target
+#' language
+#'
+#' @description
+#' Translates the input document from the source language to the target
+#' language. This synchronous operation supports plain text or HTML for the
+#' input document. [`translate_document`][translate_translate_document]
+#' supports translations from English to any supported language, and from
+#' any supported language to English. Therefore, specify either the source
+#' language code or the target language code as “en” (English).
+#' 
+#' [`translate_document`][translate_translate_document] does not support
+#' language auto-detection.
+#' 
+#' If you set the `Formality` parameter, the request will fail if the
+#' target language does not support formality. For a list of target
+#' languages that support formality, see [Setting
+#' formality](https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html).
+#'
+#' @usage
+#' translate_translate_document(Document, TerminologyNames,
+#'   SourceLanguageCode, TargetLanguageCode, Settings)
+#'
+#' @param Document &#91;required&#93; The content and content type for the document to be translated. The
+#' document size must not exceed 100 KB.
+#' @param TerminologyNames The name of a terminology list file to add to the translation job. This
+#' file provides source terms and the desired translation for each term. A
+#' terminology list can contain a maximum of 256 terms. You can use one
+#' custom terminology resource in your translation request.
+#' 
+#' Use the [`list_terminologies`][translate_list_terminologies] operation
+#' to get the available terminology lists.
+#' 
+#' For more information about custom terminology lists, see [Custom
+#' terminology](https://docs.aws.amazon.com/translate/latest/dg/how-custom-terminology.html).
+#' @param SourceLanguageCode &#91;required&#93; The language code for the language of the source text. Do not use
+#' `auto`, because [`translate_document`][translate_translate_document]
+#' does not support language auto-detection. For a list of supported
+#' language codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
+#' @param TargetLanguageCode &#91;required&#93; The language code requested for the translated document. For a list of
+#' supported language codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
+#' @param Settings 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TranslatedDocument = list(
+#'     Content = raw
+#'   ),
+#'   SourceLanguageCode = "string",
+#'   TargetLanguageCode = "string",
+#'   AppliedTerminologies = list(
+#'     list(
+#'       Name = "string",
+#'       Terms = list(
+#'         list(
+#'           SourceText = "string",
+#'           TargetText = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   AppliedSettings = list(
+#'     Formality = "FORMAL"|"INFORMAL",
+#'     Profanity = "MASK"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$translate_document(
+#'   Document = list(
+#'     Content = raw,
+#'     ContentType = "string"
+#'   ),
+#'   TerminologyNames = list(
+#'     "string"
+#'   ),
+#'   SourceLanguageCode = "string",
+#'   TargetLanguageCode = "string",
+#'   Settings = list(
+#'     Formality = "FORMAL"|"INFORMAL",
+#'     Profanity = "MASK"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname translate_translate_document
+#'
+#' @aliases translate_translate_document
+translate_translate_document <- function(Document, TerminologyNames = NULL, SourceLanguageCode, TargetLanguageCode, Settings = NULL) {
+  op <- new_operation(
+    name = "TranslateDocument",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .translate$translate_document_input(Document = Document, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
+  output <- .translate$translate_document_output()
+  config <- get_config()
+  svc <- .translate$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.translate$operations$translate_document <- translate_translate_document
+
 #' Translates input text from the source language to the target language
 #'
 #' @description
 #' Translates input text from the source language to the target language.
-#' For a list of available languages and language codes, see
-#' what-is-languages.
+#' For a list of available languages and language codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
 #'
 #' @usage
 #' translate_translate_text(Text, TerminologyNames, SourceLanguageCode,
 #'   TargetLanguageCode, Settings)
 #'
-#' @param Text &#91;required&#93; The text to translate. The text string can be a maximum of 5,000 bytes
-#' long. Depending on your character set, this may be fewer than 5,000
+#' @param Text &#91;required&#93; The text to translate. The text string can be a maximum of 10,000 bytes
+#' long. Depending on your character set, this may be fewer than 10,000
 #' characters.
-#' @param TerminologyNames The name of the terminology list file to be used in the TranslateText
-#' request. You can use 1 terminology list at most in a
-#' [`translate_text`][translate_translate_text] request. Terminology lists
-#' can contain a maximum of 256 terms.
-#' @param SourceLanguageCode &#91;required&#93; The language code for the language of the source text. The language must
-#' be a language supported by Amazon Translate. For a list of language
-#' codes, see what-is-languages.
+#' @param TerminologyNames The name of a terminology list file to add to the translation job. This
+#' file provides source terms and the desired translation for each term. A
+#' terminology list can contain a maximum of 256 terms. You can use one
+#' custom terminology resource in your translation request.
+#' 
+#' Use the [`list_terminologies`][translate_list_terminologies] operation
+#' to get the available terminology lists.
+#' 
+#' For more information about custom terminology lists, see [Custom
+#' terminology](https://docs.aws.amazon.com/translate/latest/dg/how-custom-terminology.html).
+#' @param SourceLanguageCode &#91;required&#93; The language code for the language of the source text. For a list of
+#' language codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
 #' 
 #' To have Amazon Translate determine the source language of your text, you
 #' can specify `auto` in the `SourceLanguageCode` field. If you specify
@@ -1101,8 +1369,9 @@ translate_stop_text_translation_job <- function(JobId) {
 #' [`translate_text`][translate_translate_text] request in a region that
 #' supports Amazon Comprehend. Otherwise, the request returns an error
 #' indicating that autodetect is not supported.
-#' @param TargetLanguageCode &#91;required&#93; The language code requested for the language of the target text. The
-#' language must be a language supported by Amazon Translate.
+#' @param TargetLanguageCode &#91;required&#93; The language code requested for the language of the target text. For a
+#' list of language codes, see [Supported
+#' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
 #' @param Settings Settings to configure your translation output, including the option to
 #' set the formality level of the output text and the option to mask
 #' profane words and phrases.
@@ -1169,6 +1438,57 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
   return(response)
 }
 .translate$operations$translate_text <- translate_translate_text
+
+#' Removes a specific tag associated with an Amazon Translate resource
+#'
+#' @description
+#' Removes a specific tag associated with an Amazon Translate resource. For
+#' more information, see [Tagging your
+#' resources](https://docs.aws.amazon.com/translate/latest/dg/tagging.html).
+#'
+#' @usage
+#' translate_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the given Amazon Translate resource
+#' from which you want to remove the tags.
+#' @param TagKeys &#91;required&#93; The initial part of a key-value pair that forms a tag being removed from
+#' a given resource. Keys must be unique and cannot be duplicated for a
+#' particular resource.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname translate_untag_resource
+#'
+#' @aliases translate_untag_resource
+translate_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .translate$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .translate$untag_resource_output()
+  config <- get_config()
+  svc <- .translate$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.translate$operations$untag_resource <- translate_untag_resource
 
 #' Updates a previously created parallel data resource by importing a new
 #' input file from Amazon S3

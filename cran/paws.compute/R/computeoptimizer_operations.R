@@ -29,10 +29,6 @@ NULL
 #' metrics](https://docs.aws.amazon.com/compute-optimizer/latest/ug/enhanced-infrastructure-metrics.html)
 #' in the *Compute Optimizer User Guide*.
 #' @param recommendationPreferenceNames &#91;required&#93; The name of the recommendation preference to delete.
-#' 
-#' Enhanced infrastructure metrics (`EnhancedInfrastructureMetrics`) is the
-#' only feature that can be activated through preferences. Therefore, it is
-#' also the only recommendation preference that can be deleted.
 #'
 #' @keywords internal
 #'
@@ -337,6 +333,75 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 }
 .computeoptimizer$operations$export_ec2_instance_recommendations <- computeoptimizer_export_ec2_instance_recommendations
 
+#' Exports optimization recommendations for Amazon ECS services on Fargate
+#'
+#' @description
+#' Exports optimization recommendations for Amazon ECS services on Fargate.
+#'
+#' See [https://paws-r.github.io/docs/computeoptimizer/export_ecs_service_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/export_ecs_service_recommendations.html) for full documentation.
+#'
+#' @param accountIds The Amazon Web Services account IDs for the export Amazon ECS service
+#' recommendations.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to specify the member account you
+#' want to export recommendations to.
+#' 
+#' This parameter can't be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' If this parameter or the include member accounts parameter is omitted,
+#' the recommendations for member accounts aren't included in the export.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of Amazon ECS service recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file.
+#' 
+#' The CSV file is the only export file format currently supported.
+#' @param includeMemberAccounts If your account is the management account or the delegated administrator
+#' of an organization, this parameter indicates whether to include
+#' recommendations for resources in all member accounts of the
+#' organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' If this parameter is omitted, recommendations for member accounts of the
+#' organization aren't included in the export file.
+#' 
+#' If this parameter or the account ID parameter is omitted,
+#' recommendations for member accounts aren't included in the export.
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_ecs_service_recommendations
+computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+  op <- new_operation(
+    name = "ExportECSServiceRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$export_ecs_service_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_ecs_service_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_ecs_service_recommendations <- computeoptimizer_export_ecs_service_recommendations
+
 #' Exports optimization recommendations for Lambda functions
 #'
 #' @description
@@ -587,6 +652,93 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
   return(response)
 }
 .computeoptimizer$operations$get_ec2_recommendation_projected_metrics <- computeoptimizer_get_ec2_recommendation_projected_metrics
+
+#' Returns the projected metrics of Amazon ECS service recommendations
+#'
+#' @description
+#' Returns the projected metrics of Amazon ECS service recommendations.
+#'
+#' See [https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendation_projected_metrics.html](https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendation_projected_metrics.html) for full documentation.
+#'
+#' @param serviceArn &#91;required&#93; The ARN that identifies the Amazon ECS service.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name`
+#' @param stat &#91;required&#93; The statistic of the projected metrics.
+#' @param period &#91;required&#93; The granularity, in seconds, of the projected metrics data points.
+#' @param startTime &#91;required&#93; The timestamp of the first projected metrics data point to return.
+#' @param endTime &#91;required&#93; The timestamp of the last projected metrics data point to return.
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_ecs_servi_recom_proje_metri
+computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(serviceArn, stat, period, startTime, endTime) {
+  op <- new_operation(
+    name = "GetECSServiceRecommendationProjectedMetrics",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_input(serviceArn = serviceArn, stat = stat, period = period, startTime = startTime, endTime = endTime)
+  output <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_ecs_service_recommendation_projected_metrics <- computeoptimizer_get_ecs_service_recommendation_projected_metrics
+
+#' Returns Amazon ECS service recommendations
+#'
+#' @description
+#' Returns Amazon ECS service recommendations.
+#'
+#' See [https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendations.html) for full documentation.
+#'
+#' @param serviceArns The ARN that identifies the Amazon ECS service.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:ecs:region:aws_account_id:service/cluster-name/service-name`
+#' @param nextToken The token to advance to the next page of Amazon ECS service
+#' recommendations.
+#' @param maxResults The maximum number of Amazon ECS service recommendations to return with
+#' a single request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of Amazon ECS service recommendations.
+#' @param accountIds Return the Amazon ECS service recommendations to the specified Amazon
+#' Web Services account IDs.
+#' 
+#' If your account is the management account or the delegated administrator
+#' of an organization, use this parameter to return the Amazon ECS service
+#' recommendations to specific member accounts.
+#' 
+#' You can only specify one account ID per request.
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_ecs_service_recommendations
+computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL) {
+  op <- new_operation(
+    name = "GetECSServiceRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_ecs_service_recommendations_input(serviceArns = serviceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
+  output <- .computeoptimizer$get_ecs_service_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_ecs_service_recommendations <- computeoptimizer_get_ecs_service_recommendations
 
 #' Returns the recommendation preferences that are in effect for a given
 #' resource, such as enhanced infrastructure metrics
@@ -893,18 +1045,31 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' For more information, see [Inferred workload
 #' types](https://docs.aws.amazon.com/compute-optimizer/latest/ug/) in the
 #' *Compute Optimizer User Guide*.
+#' @param externalMetricsPreference The provider of the external metrics recommendation preference to create
+#' or update.
+#' 
+#' Specify a valid provider in the `source` field to activate the
+#' preference. To delete this preference, see the
+#' [`delete_recommendation_preferences`][computeoptimizer_delete_recommendation_preferences]
+#' action.
+#' 
+#' This preference can only be set for the `Ec2Instance` resource type.
+#' 
+#' For more information, see [External metrics
+#' ingestion](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html)
+#' in the *Compute Optimizer User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname computeoptimizer_put_recommendation_preferences
-computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL) {
+computeoptimizer_put_recommendation_preferences <- function(resourceType, scope = NULL, enhancedInfrastructureMetrics = NULL, inferredWorkloadTypes = NULL, externalMetricsPreference = NULL) {
   op <- new_operation(
     name = "PutRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes)
+  input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference)
   output <- .computeoptimizer$put_recommendation_preferences_output()
   config <- get_config()
   svc <- .computeoptimizer$service(config)

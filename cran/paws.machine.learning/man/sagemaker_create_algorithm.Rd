@@ -57,7 +57,7 @@ Services Marketplace.}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
-owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
 Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace.

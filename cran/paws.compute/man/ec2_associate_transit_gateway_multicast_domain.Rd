@@ -6,19 +6,19 @@
 the specified transit gateway multicast domain}
 \usage{
 ec2_associate_transit_gateway_multicast_domain(
-  TransitGatewayMulticastDomainId = NULL,
-  TransitGatewayAttachmentId = NULL,
-  SubnetIds = NULL,
+  TransitGatewayMulticastDomainId,
+  TransitGatewayAttachmentId,
+  SubnetIds,
   DryRun = NULL
 )
 }
 \arguments{
-\item{TransitGatewayMulticastDomainId}{The ID of the transit gateway multicast domain.}
+\item{TransitGatewayMulticastDomainId}{[required] The ID of the transit gateway multicast domain.}
 
-\item{TransitGatewayAttachmentId}{The ID of the transit gateway attachment to associate with the transit
+\item{TransitGatewayAttachmentId}{[required] The ID of the transit gateway attachment to associate with the transit
 gateway multicast domain.}
 
-\item{SubnetIds}{The IDs of the subnets to associate with the transit gateway multicast
+\item{SubnetIds}{[required] The IDs of the subnets to associate with the transit gateway multicast
 domain.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

@@ -23,7 +23,7 @@ ssmcontacts_accept_page(
 
 \item{Note}{Information provided by the user when the user acknowledges the page.}
 
-\item{AcceptCode}{[required] The accept code is a 6-digit code used to acknowledge the page.}
+\item{AcceptCode}{[required] A 6-digit code used to acknowledge the page.}
 
 \item{AcceptCodeValidation}{An optional field that Incident Manager uses to \code{ENFORCE} \code{AcceptCode}
 validation when acknowledging an page. Acknowledgement can occur by

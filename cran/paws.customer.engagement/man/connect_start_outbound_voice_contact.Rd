@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_start_outbound_voice_contact}
 \alias{connect_start_outbound_voice_contact}
-\title{Places an outbound call to a contact, and then initiates the contact
-flow}
+\title{Places an outbound call to a contact, and then initiates the flow}
 \usage{
 connect_start_outbound_voice_contact(
   DestinationPhoneNumber,
@@ -21,21 +20,24 @@ connect_start_outbound_voice_contact(
 \arguments{
 \item{DestinationPhoneNumber}{[required] The phone number of the customer, in E.164 format.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow for the outbound call. To see the
+\item{ContactFlowId}{[required] The identifier of the flow for the outbound call. To see the
 ContactFlowId in the Amazon Connect console user interface, on the
-navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the contact
-flow. On the contact flow page, under the name of the contact flow,
-choose \strong{Show additional flow information}. The ContactFlowId is the
-last part of the ARN, shown here in bold:
+navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the flow.
+On the flow page, under the name of the flow, choose \strong{Show additional
+flow information}. The ContactFlowId is the last part of the ARN, shown
+here in bold:
 
 arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. The token is valid for 7 days after
-creation. If a contact is already started, the contact ID is returned.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.
+The token is valid for 7 days after creation. If a contact is already
+started, the contact ID is returned.}
 
 \item{SourcePhoneNumber}{The phone number associated with the Amazon Connect instance, in E.164
 format. If you do not specify a source phone number, you must specify a
@@ -43,12 +45,12 @@ queue.}
 
 \item{QueueId}{The queue for the call. If you specify a queue, the phone displayed for
 caller ID is the phone number specified in the queue. If you do not
-specify a queue, the queue defined in the contact flow is used. If you
-do not specify a queue, you must specify a source phone number.}
+specify a queue, the queue defined in the flow is used. If you do not
+specify a queue, you must specify a source phone number.}
 
 \item{Attributes}{A custom key-value pair using an attribute map. The attributes are
-standard Amazon Connect attributes, and can be accessed in contact flows
-just like any other contact attributes.
+standard Amazon Connect attributes, and can be accessed in flows just
+like any other contact attributes.
 
 There can be up to 32,768 UTF-8 bytes across all key-value pairs per
 contact. Attribute keys can include only alphanumeric, dash, and
@@ -64,7 +66,7 @@ Use \code{CAMPAIGN} if \code{EnableAnswerMachineDetection} is set to \code{true}
 all other cases, use \code{GENERAL}.}
 }
 \description{
-Places an outbound call to a contact, and then initiates the contact flow. It performs the actions in the contact flow that's specified (in \code{ContactFlowId}).
+Places an outbound call to a contact, and then initiates the flow. It performs the actions in the flow that's specified (in \code{ContactFlowId}).
 
 See \url{https://paws-r.github.io/docs/connect/start_outbound_voice_contact.html} for full documentation.
 }

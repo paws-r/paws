@@ -6,7 +6,7 @@
 device}
 \usage{
 ec2_create_customer_gateway(
-  BgpAsn,
+  BgpAsn = NULL,
   PublicIp = NULL,
   CertificateArn = NULL,
   Type,
@@ -17,7 +17,7 @@ ec2_create_customer_gateway(
 )
 }
 \arguments{
-\item{BgpAsn}{[required] For devices that support BGP, the customer gateway's BGP ASN.
+\item{BgpAsn}{For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000}
 

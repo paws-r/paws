@@ -11,7 +11,7 @@ ssmincidents_update_replication_set(actions, arn, clientToken = NULL)
 
 \item{arn}{[required] The Amazon Resource Name (ARN) of the replication set you're updating.}
 
-\item{clientToken}{A token ensuring that the operation is called only once with the
+\item{clientToken}{A token that ensures that the operation is called only once with the
 specified details.}
 }
 \description{

@@ -5,28 +5,26 @@ NULL
 #' AWS SSO OIDC
 #'
 #' @description
-#' Amazon Web Services Single Sign On OpenID Connect (OIDC) is a web
-#' service that enables a client (such as Amazon Web Services CLI or a
-#' native application) to register with Amazon Web Services SSO. The
-#' service also enables the client to fetch the user’s access token upon
-#' successful authentication and authorization with Amazon Web Services
-#' SSO.
+#' AWS IAM Identity Center (successor to AWS Single Sign-On) OpenID Connect
+#' (OIDC) is a web service that enables a client (such as AWS CLI or a
+#' native application) to register with IAM Identity Center. The service
+#' also enables the client to fetch the user’s access token upon successful
+#' authentication and authorization with IAM Identity Center.
 #' 
-#' Although Amazon Web Services Single Sign-On was renamed, the `sso` and
-#' `identitystore` API namespaces will continue to retain their original
-#' name for backward compatibility purposes. For more information, see
-#' [Amazon Web Services SSO
+#' Although AWS Single Sign-On was renamed, the `sso` and `identitystore`
+#' API namespaces will continue to retain their original name for backward
+#' compatibility purposes. For more information, see [IAM Identity Center
 #' rename](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed).
 #' 
 #' **Considerations for Using This Guide**
 #' 
 #' Before you begin using this guide, we recommend that you first review
-#' the following important information about how the Amazon Web Services
-#' SSO OIDC service works.
+#' the following important information about how the IAM Identity Center
+#' OIDC service works.
 #' 
-#' -   The Amazon Web Services SSO OIDC service currently implements only
-#'     the portions of the OAuth 2.0 Device Authorization Grant standard
-#'     ([https://tools.ietf.org/html/rfc8628](https://www.rfc-editor.org/rfc/rfc8628))
+#' -   The IAM Identity Center OIDC service currently implements only the
+#'     portions of the OAuth 2.0 Device Authorization Grant standard
+#'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
 #'     that are necessary to enable single sign-on authentication with the
 #'     AWS CLI. Support for other OIDC flows frequently needed for native
 #'     applications, such as Authorization Code Flow (+ PKCE), will be
@@ -37,19 +35,19 @@ NULL
 #'     re-authentication.
 #' 
 #' -   The access tokens provided by this service grant access to all AWS
-#'     account entitlements assigned to an Amazon Web Services SSO user,
-#'     not just a particular application.
+#'     account entitlements assigned to an IAM Identity Center user, not
+#'     just a particular application.
 #' 
 #' -   The documentation in this guide does not describe the mechanism to
 #'     convert the access token into AWS Auth (“sigv4”) credentials for use
 #'     with IAM-protected AWS service endpoints. For more information, see
 #'     [GetRoleCredentials](https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html)
-#'     in the *Amazon Web Services SSO Portal API Reference Guide*.
+#'     in the *IAM Identity Center Portal API Reference Guide*.
 #' 
-#' For general information about Amazon Web Services SSO, see [What is
-#' Amazon Web Services
-#' SSO?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
-#' in the *Amazon Web Services SSO User Guide*.
+#' For general information about IAM Identity Center, see [What is IAM
+#' Identity
+#' Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
+#' in the *IAM Identity Center User Guide*.
 #'
 #' @param
 #' config
@@ -100,7 +98,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=ssooidc_create_token]{create_token} \tab Creates and returns an access token for the authorized client\cr
-#'  \link[=ssooidc_register_client]{register_client} \tab Registers a client with Amazon Web Services SSO\cr
+#'  \link[=ssooidc_register_client]{register_client} \tab Registers a client with IAM Identity Center\cr
 #'  \link[=ssooidc_start_device_authorization]{start_device_authorization} \tab Initiates device authorization by requesting a pair of verification codes from the authorization service
 #' }
 #'

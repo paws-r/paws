@@ -2,17 +2,17 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_describe_data_source}
 \alias{kendra_describe_data_source}
-\title{Gets information about an Amazon Kendra data source}
+\title{Gets information about an Amazon Kendra data source connector}
 \usage{
 kendra_describe_data_source(Id, IndexId)
 }
 \arguments{
-\item{Id}{[required] The identifier of the data source.}
+\item{Id}{[required] The identifier of the data source connector.}
 
-\item{IndexId}{[required] The identifier of the index used with the data source.}
+\item{IndexId}{[required] The identifier of the index used with the data source connector.}
 }
 \description{
-Gets information about an Amazon Kendra data source.
+Gets information about an Amazon Kendra data source connector.
 
 See \url{https://paws-r.github.io/docs/kendra/describe_data_source.html} for full documentation.
 }

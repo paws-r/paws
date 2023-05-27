@@ -41,7 +41,7 @@ NULL
 
 .forecastservice$create_dataset_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatasetImportJobName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TimestampFormat = structure(logical(0), tags = list(type = "string")), TimeZone = structure(logical(0), tags = list(type = "string")), UseGeolocationForTimeZone = structure(logical(0), tags = list(type = "boolean")), GeolocationFormat = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DatasetImportJobName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TimestampFormat = structure(logical(0), tags = list(type = "string")), TimeZone = structure(logical(0), tags = list(type = "string")), UseGeolocationForTimeZone = structure(logical(0), tags = list(type = "boolean")), GeolocationFormat = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Format = structure(logical(0), tags = list(type = "string")), ImportMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -132,6 +132,42 @@ NULL
 .forecastservice$create_predictor_backtest_export_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PredictorBacktestExportJobArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$create_what_if_analysis_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfAnalysisName = structure(logical(0), tags = list(type = "string")), ForecastArn = structure(logical(0), tags = list(type = "string")), TimeSeriesSelector = structure(list(TimeSeriesIdentifiers = structure(list(DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(Attributes = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$create_what_if_analysis_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$create_what_if_forecast_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastName = structure(logical(0), tags = list(type = "string")), WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string")), TimeSeriesTransformations = structure(list(structure(list(Action = structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), TimeSeriesConditions = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), TimeSeriesReplacementsDataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Schema = structure(list(Attributes = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Format = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$create_what_if_forecast_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$create_what_if_forecast_export_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastExportName = structure(logical(0), tags = list(type = "string")), WhatIfForecastArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Destination = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$create_what_if_forecast_export_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastExportArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -245,6 +281,36 @@ NULL
   list()
 }
 
+.forecastservice$delete_what_if_analysis_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$delete_what_if_analysis_output <- function(...) {
+  list()
+}
+
+.forecastservice$delete_what_if_forecast_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$delete_what_if_forecast_output <- function(...) {
+  list()
+}
+
+.forecastservice$delete_what_if_forecast_export_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastExportArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$delete_what_if_forecast_export_output <- function(...) {
+  list()
+}
+
 .forecastservice$describe_auto_predictor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PredictorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -289,7 +355,7 @@ NULL
 
 .forecastservice$describe_dataset_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatasetImportJobName = structure(logical(0), tags = list(type = "string")), DatasetImportJobArn = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string")), TimeZone = structure(logical(0), tags = list(type = "string")), UseGeolocationForTimeZone = structure(logical(0), tags = list(type = "boolean")), GeolocationFormat = structure(logical(0), tags = list(type = "string")), DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EstimatedTimeRemainingInMinutes = structure(logical(0), tags = list(type = "long")), FieldStatistics = structure(list(structure(list(Count = structure(logical(0), tags = list(type = "integer")), CountDistinct = structure(logical(0), tags = list(type = "integer")), CountNull = structure(logical(0), tags = list(type = "integer")), CountNan = structure(logical(0), tags = list(type = "integer")), Min = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "string")), Avg = structure(logical(0), tags = list(type = "double")), Stddev = structure(logical(0), tags = list(type = "double")), CountLong = structure(logical(0), tags = list(type = "long")), CountDistinctLong = structure(logical(0), tags = list(type = "long")), CountNullLong = structure(logical(0), tags = list(type = "long")), CountNanLong = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map")), DataSize = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DatasetImportJobName = structure(logical(0), tags = list(type = "string")), DatasetImportJobArn = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string")), TimeZone = structure(logical(0), tags = list(type = "string")), UseGeolocationForTimeZone = structure(logical(0), tags = list(type = "boolean")), GeolocationFormat = structure(logical(0), tags = list(type = "string")), DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EstimatedTimeRemainingInMinutes = structure(logical(0), tags = list(type = "long")), FieldStatistics = structure(list(structure(list(Count = structure(logical(0), tags = list(type = "integer")), CountDistinct = structure(logical(0), tags = list(type = "integer")), CountNull = structure(logical(0), tags = list(type = "integer")), CountNan = structure(logical(0), tags = list(type = "integer")), Min = structure(logical(0), tags = list(type = "string")), Max = structure(logical(0), tags = list(type = "string")), Avg = structure(logical(0), tags = list(type = "double")), Stddev = structure(logical(0), tags = list(type = "double")), CountLong = structure(logical(0), tags = list(type = "long")), CountDistinctLong = structure(logical(0), tags = list(type = "long")), CountNullLong = structure(logical(0), tags = list(type = "long")), CountNanLong = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "map")), DataSize = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp")), Format = structure(logical(0), tags = list(type = "string")), ImportMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -377,6 +443,42 @@ NULL
   return(populate(args, shape))
 }
 
+.forecastservice$describe_what_if_analysis_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$describe_what_if_analysis_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfAnalysisName = structure(logical(0), tags = list(type = "string")), WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string")), ForecastArn = structure(logical(0), tags = list(type = "string")), EstimatedTimeRemainingInMinutes = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp")), TimeSeriesSelector = structure(list(TimeSeriesIdentifiers = structure(list(DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Schema = structure(list(Attributes = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$describe_what_if_forecast_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$describe_what_if_forecast_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastName = structure(logical(0), tags = list(type = "string")), WhatIfForecastArn = structure(logical(0), tags = list(type = "string")), WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string")), EstimatedTimeRemainingInMinutes = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp")), TimeSeriesTransformations = structure(list(structure(list(Action = structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), TimeSeriesConditions = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeValue = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), TimeSeriesReplacementsDataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Schema = structure(list(Attributes = structure(list(structure(list(AttributeName = structure(logical(0), tags = list(type = "string")), AttributeType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Format = structure(logical(0), tags = list(type = "string")), TimestampFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForecastTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$describe_what_if_forecast_export_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastExportArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$describe_what_if_forecast_export_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastExportArn = structure(logical(0), tags = list(type = "string")), WhatIfForecastExportName = structure(logical(0), tags = list(type = "string")), WhatIfForecastArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Destination = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Message = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), EstimatedTimeRemainingInMinutes = structure(logical(0), tags = list(type = "long")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .forecastservice$get_accuracy_metrics_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PredictorArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -409,7 +511,7 @@ NULL
 
 .forecastservice$list_dataset_import_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatasetImportJobs = structure(list(structure(list(DatasetImportJobArn = structure(logical(0), tags = list(type = "string")), DatasetImportJobName = structure(logical(0), tags = list(type = "string")), DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DatasetImportJobs = structure(list(structure(list(DatasetImportJobArn = structure(logical(0), tags = list(type = "string")), DatasetImportJobName = structure(logical(0), tags = list(type = "string")), DataSource = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp")), ImportMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -530,6 +632,42 @@ NULL
 .forecastservice$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Value = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$list_what_if_analyses_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$list_what_if_analyses_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfAnalyses = structure(list(structure(list(WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string")), WhatIfAnalysisName = structure(logical(0), tags = list(type = "string")), ForecastArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$list_what_if_forecast_exports_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$list_what_if_forecast_exports_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecastExports = structure(list(structure(list(WhatIfForecastExportArn = structure(logical(0), tags = list(type = "string")), WhatIfForecastArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), WhatIfForecastExportName = structure(logical(0), tags = list(type = "string")), Destination = structure(list(S3Config = structure(list(Path = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KMSKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$list_what_if_forecasts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Filters = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string")), Condition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.forecastservice$list_what_if_forecasts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WhatIfForecasts = structure(list(structure(list(WhatIfForecastArn = structure(logical(0), tags = list(type = "string")), WhatIfForecastName = structure(logical(0), tags = list(type = "string")), WhatIfAnalysisArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Message = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModificationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

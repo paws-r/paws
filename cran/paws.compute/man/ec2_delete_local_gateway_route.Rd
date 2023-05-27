@@ -5,13 +5,14 @@
 \title{Deletes the specified route from the specified local gateway route table}
 \usage{
 ec2_delete_local_gateway_route(
-  DestinationCidrBlock,
+  DestinationCidrBlock = NULL,
   LocalGatewayRouteTableId,
-  DryRun = NULL
+  DryRun = NULL,
+  DestinationPrefixListId = NULL
 )
 }
 \arguments{
-\item{DestinationCidrBlock}{[required] The CIDR range for the route. This must match the CIDR for the route
+\item{DestinationCidrBlock}{The CIDR range for the route. This must match the CIDR for the route
 exactly.}
 
 \item{LocalGatewayRouteTableId}{[required] The ID of the local gateway route table.}
@@ -20,6 +21,10 @@ exactly.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{DestinationPrefixListId}{Use a prefix list in place of \code{DestinationCidrBlock}. You cannot use
+\code{DestinationPrefixListId} and \code{DestinationCidrBlock} in the same
+request.}
 }
 \description{
 Deletes the specified route from the specified local gateway route table.

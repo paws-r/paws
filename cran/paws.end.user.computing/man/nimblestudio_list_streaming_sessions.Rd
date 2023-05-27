@@ -15,7 +15,8 @@ nimblestudio_list_streaming_sessions(
 \arguments{
 \item{createdBy}{Filters the request to streaming sessions created by the given user.}
 
-\item{nextToken}{The token to request the next page of results.}
+\item{nextToken}{The token for the next set of results, or null if there are no more
+results.}
 
 \item{ownedBy}{Filters the request to streaming session owned by the given user}
 

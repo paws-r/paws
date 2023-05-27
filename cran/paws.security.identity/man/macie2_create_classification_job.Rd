@@ -5,6 +5,7 @@
 \title{Creates and defines the settings for a classification job}
 \usage{
 macie2_create_classification_job(
+  allowListIds = NULL,
   clientToken,
   customDataIdentifierIds = NULL,
   description = NULL,
@@ -20,6 +21,9 @@ macie2_create_classification_job(
 )
 }
 \arguments{
+\item{allowListIds}{An array of unique identifiers, one for each allow list for the job to
+use when it analyzes data.}
+
 \item{clientToken}{[required] A unique, case-sensitive token that you provide to ensure the
 idempotency of the request.}
 

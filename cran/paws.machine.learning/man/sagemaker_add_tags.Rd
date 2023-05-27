@@ -11,7 +11,7 @@ sagemaker_add_tags(ResourceArn, Tags)
 
 \item{Tags}{[required] An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
-owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 }
 \description{
 Adds or overwrites one or more tags for the specified SageMaker resource. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints.

@@ -12,17 +12,30 @@ connectparticipant_send_message(
 )
 }
 \arguments{
-\item{ContentType}{[required] The type of the content. Supported types are text/plain.}
+\item{ContentType}{[required] The type of the content. Supported types are \code{text/plain},
+\code{text/markdown}, \code{application/json}, and
+\code{application/vnd.amazonaws.connect.message.interactive.response}.}
 
-\item{Content}{[required] The content of the message.}
+\item{Content}{[required] The content of the message.
+\itemize{
+\item For \code{text/plain} and \code{text/markdown}, the Length Constraints are
+Minimum of 1, Maximum of 1024.
+\item For \code{application/json}, the Length Constraints are Minimum of 1,
+Maximum of 12000.
+\item For
+\code{application/vnd.amazonaws.connect.message.interactive.response},
+the Length Constraints are Minimum of 1, Maximum of 12288.
+}}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 
 \item{ConnectionToken}{[required] The authentication token associated with the connection.}
 }
 \description{
-Sends a message. Note that ConnectionToken is used for invoking this API instead of ParticipantToken.
+Sends a message.
 
 See \url{https://paws-r.github.io/docs/connectparticipant/send_message.html} for full documentation.
 }

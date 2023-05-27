@@ -2,7 +2,8 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_describe_images}
 \alias{ecrpublic_describe_images}
-\title{Returns metadata about the images in a repository in a public registry}
+\title{Returns metadata that's related to the images in a repository in a
+public registry}
 \usage{
 ecrpublic_describe_images(
   registryId = NULL,
@@ -13,37 +14,37 @@ ecrpublic_describe_images(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry that contains the
-repository in which to describe images. If you do not specify a
-registry, the default public registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID that's associated with the public
+registry that contains the repository where images are described. If you
+do not specify a registry, the default public registry is assumed.}
 
 \item{repositoryName}{[required] The repository that contains the images to describe.}
 
 \item{imageIds}{The list of image IDs for the requested repository.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\item{nextToken}{The \code{nextToken} value that's returned from a previous paginated
 \code{\link[=ecrpublic_describe_images]{describe_images}} request where
 \code{maxResults} was used and the results exceeded the value of that
 parameter. Pagination continues from the end of the previous results
-that returned the \code{nextToken} value. This value is \code{null} when there are
-no more results to return. This option cannot be used when you specify
-images with \code{imageIds}.}
+that returned the \code{nextToken} value. If there are no more results to
+return, this value is \code{null}. If you specify images with \code{imageIds}, you
+can't use this option.}
 
-\item{maxResults}{The maximum number of repository results returned by
+\item{maxResults}{The maximum number of repository results that's returned by
 \code{\link[=ecrpublic_describe_images]{describe_images}} in paginated output. When
 this parameter is used, \code{\link[=ecrpublic_describe_images]{describe_images}}
 only returns \code{maxResults} results in a single page along with a
-\code{nextToken} response element. The remaining results of the initial
-request can be seen by sending another
+\code{nextToken} response element. You can see the remaining results of the
+initial request by sending another
 \code{\link[=ecrpublic_describe_images]{describe_images}} request with the returned
 \code{nextToken} value. This value can be between 1 and 1000. If this
-parameter is not used, then
+parameter isn't used, then
 \code{\link[=ecrpublic_describe_images]{describe_images}} returns up to 100 results
-and a \code{nextToken} value, if applicable. This option cannot be used when
-you specify images with \code{imageIds}.}
+and a \code{nextToken} value, if applicable. If you specify images with
+\code{imageIds}, you can't use this option.}
 }
 \description{
-Returns metadata about the images in a repository in a public registry.
+Returns metadata that's related to the images in a repository in a public registry.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/describe_images.html} for full documentation.
 }

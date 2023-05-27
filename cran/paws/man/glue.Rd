@@ -67,6 +67,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_batch_get_blueprints]{batch_get_blueprints} \tab Retrieves information about a list of blueprints\cr
 \link[paws.analytics:glue_batch_get_crawlers]{batch_get_crawlers} \tab Returns a list of resource metadata for a given list of crawler names\cr
 \link[paws.analytics:glue_batch_get_custom_entity_types]{batch_get_custom_entity_types} \tab Retrieves the details for the custom patterns specified by a list of names\cr
+\link[paws.analytics:glue_batch_get_data_quality_result]{batch_get_data_quality_result} \tab Retrieves a list of data quality results for the specified result IDs\cr
 \link[paws.analytics:glue_batch_get_dev_endpoints]{batch_get_dev_endpoints} \tab Returns a list of resource metadata for a given list of development endpoint names\cr
 \link[paws.analytics:glue_batch_get_jobs]{batch_get_jobs} \tab Returns a list of resource metadata for a given list of job names\cr
 \link[paws.analytics:glue_batch_get_partition]{batch_get_partition} \tab Retrieves partitions in a batch request\cr
@@ -74,6 +75,8 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_batch_get_workflows]{batch_get_workflows} \tab Returns a list of resource metadata for a given list of workflow names\cr
 \link[paws.analytics:glue_batch_stop_job_run]{batch_stop_job_run} \tab Stops one or more job runs for a specified job definition\cr
 \link[paws.analytics:glue_batch_update_partition]{batch_update_partition} \tab Updates one or more partitions in a batch operation\cr
+\link[paws.analytics:glue_cancel_data_quality_rule_recommendation_run]{cancel_data_quality_rule_recommendation_run} \tab Cancels the specified recommendation run that was being used to generate rules\cr
+\link[paws.analytics:glue_cancel_data_quality_ruleset_evaluation_run]{cancel_data_quality_ruleset_evaluation_run} \tab Cancels a run where a ruleset is being evaluated against a data source\cr
 \link[paws.analytics:glue_cancel_ml_task_run]{cancel_ml_task_run} \tab Cancels (stops) a task run\cr
 \link[paws.analytics:glue_cancel_statement]{cancel_statement} \tab Cancels the statement\cr
 \link[paws.analytics:glue_check_schema_version_validity]{check_schema_version_validity} \tab Validates the supplied schema\cr
@@ -83,6 +86,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_create_crawler]{create_crawler} \tab Creates a new crawler with specified targets, role, configuration, and optional schedule\cr
 \link[paws.analytics:glue_create_custom_entity_type]{create_custom_entity_type} \tab Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data\cr
 \link[paws.analytics:glue_create_database]{create_database} \tab Creates a new database in a Data Catalog\cr
+\link[paws.analytics:glue_create_data_quality_ruleset]{create_data_quality_ruleset} \tab Creates a data quality ruleset with DQDL rules applied to a specified Glue table\cr
 \link[paws.analytics:glue_create_dev_endpoint]{create_dev_endpoint} \tab Creates a new development endpoint\cr
 \link[paws.analytics:glue_create_job]{create_job} \tab Creates a new job definition\cr
 \link[paws.analytics:glue_create_ml_transform]{create_ml_transform} \tab Creates an Glue machine learning transform\cr
@@ -105,6 +109,7 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_delete_crawler]{delete_crawler} \tab Removes a specified crawler from the Glue Data Catalog, unless the crawler state is RUNNING\cr
 \link[paws.analytics:glue_delete_custom_entity_type]{delete_custom_entity_type} \tab Deletes a custom pattern by specifying its name\cr
 \link[paws.analytics:glue_delete_database]{delete_database} \tab Removes a specified database from a Data Catalog\cr
+\link[paws.analytics:glue_delete_data_quality_ruleset]{delete_data_quality_ruleset} \tab Deletes a data quality ruleset\cr
 \link[paws.analytics:glue_delete_dev_endpoint]{delete_dev_endpoint} \tab Deletes a specified development endpoint\cr
 \link[paws.analytics:glue_delete_job]{delete_job} \tab Deletes a specified job definition\cr
 \link[paws.analytics:glue_delete_ml_transform]{delete_ml_transform} \tab Deletes an Glue machine learning transform\cr
@@ -139,8 +144,12 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_databases]{get_databases} \tab Retrieves all databases defined in a given Data Catalog\cr
 \link[paws.analytics:glue_get_data_catalog_encryption_settings]{get_data_catalog_encryption_settings} \tab Retrieves the security configuration for a specified catalog\cr
 \link[paws.analytics:glue_get_dataflow_graph]{get_dataflow_graph} \tab Transforms a Python script into a directed acyclic graph (DAG)\cr
+\link[paws.analytics:glue_get_data_quality_result]{get_data_quality_result} \tab Retrieves the result of a data quality rule evaluation\cr
+\link[paws.analytics:glue_get_data_quality_rule_recommendation_run]{get_data_quality_rule_recommendation_run} \tab Gets the specified recommendation run that was used to generate rules\cr
+\link[paws.analytics:glue_get_data_quality_ruleset]{get_data_quality_ruleset} \tab Returns an existing ruleset by identifier or name\cr
+\link[paws.analytics:glue_get_data_quality_ruleset_evaluation_run]{get_data_quality_ruleset_evaluation_run} \tab Retrieves a specific run where a ruleset is evaluated against a data source\cr
 \link[paws.analytics:glue_get_dev_endpoint]{get_dev_endpoint} \tab Retrieves information about a specified development endpoint\cr
-\link[paws.analytics:glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this AWS account\cr
+\link[paws.analytics:glue_get_dev_endpoints]{get_dev_endpoints} \tab Retrieves all the development endpoints in this Amazon Web Services account\cr
 \link[paws.analytics:glue_get_job]{get_job} \tab Retrieves an existing job definition\cr
 \link[paws.analytics:glue_get_job_bookmark]{get_job_bookmark} \tab Returns information on a job bookmark entry\cr
 \link[paws.analytics:glue_get_job_run]{get_job_run} \tab Retrieves the metadata for a given job run\cr
@@ -173,9 +182,9 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_get_tags]{get_tags} \tab Retrieves a list of tags associated with a resource\cr
 \link[paws.analytics:glue_get_trigger]{get_trigger} \tab Retrieves the definition of a trigger\cr
 \link[paws.analytics:glue_get_triggers]{get_triggers} \tab Gets all the triggers associated with a job\cr
-\link[paws.analytics:glue_get_unfiltered_partition_metadata]{get_unfiltered_partition_metadata} \tab Get unfiltered partition metadata\cr
-\link[paws.analytics:glue_get_unfiltered_partitions_metadata]{get_unfiltered_partitions_metadata} \tab Get unfiltered partitions metadata\cr
-\link[paws.analytics:glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata} \tab Get unfiltered table metadata\cr
+\link[paws.analytics:glue_get_unfiltered_partition_metadata]{get_unfiltered_partition_metadata} \tab Retrieves partition metadata from the Data Catalog that contains unfiltered metadata\cr
+\link[paws.analytics:glue_get_unfiltered_partitions_metadata]{get_unfiltered_partitions_metadata} \tab Retrieves partition metadata from the Data Catalog that contains unfiltered metadata\cr
+\link[paws.analytics:glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata} \tab Retrieves table metadata from the Data Catalog that contains unfiltered metadata\cr
 \link[paws.analytics:glue_get_user_defined_function]{get_user_defined_function} \tab Retrieves a specified function definition from the Data Catalog\cr
 \link[paws.analytics:glue_get_user_defined_functions]{get_user_defined_functions} \tab Retrieves multiple function definitions from the Data Catalog\cr
 \link[paws.analytics:glue_get_workflow]{get_workflow} \tab Retrieves resource metadata for a workflow\cr
@@ -187,6 +196,10 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_list_crawlers]{list_crawlers} \tab Retrieves the names of all crawler resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_crawls]{list_crawls} \tab Returns all the crawls of a specified crawler\cr
 \link[paws.analytics:glue_list_custom_entity_types]{list_custom_entity_types} \tab Lists all the custom patterns that have been created\cr
+\link[paws.analytics:glue_list_data_quality_results]{list_data_quality_results} \tab Returns all data quality execution results for your account\cr
+\link[paws.analytics:glue_list_data_quality_rule_recommendation_runs]{list_data_quality_rule_recommendation_runs} \tab Lists the recommendation runs meeting the filter criteria\cr
+\link[paws.analytics:glue_list_data_quality_ruleset_evaluation_runs]{list_data_quality_ruleset_evaluation_runs} \tab Lists all the runs meeting the filter criteria, where a ruleset is evaluated against a data source\cr
+\link[paws.analytics:glue_list_data_quality_rulesets]{list_data_quality_rulesets} \tab Returns a paginated list of rulesets for the specified list of Glue tables\cr
 \link[paws.analytics:glue_list_dev_endpoints]{list_dev_endpoints} \tab Retrieves the names of all DevEndpoint resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_jobs]{list_jobs} \tab Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag\cr
 \link[paws.analytics:glue_list_ml_transforms]{list_ml_transforms} \tab Retrieves a sortable, filterable list of existing Glue machine learning transforms in this Amazon Web Services account, or the resources with the specified tag\cr
@@ -211,6 +224,8 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_start_blueprint_run]{start_blueprint_run} \tab Starts a new run of the specified blueprint\cr
 \link[paws.analytics:glue_start_crawler]{start_crawler} \tab Starts a crawl using the specified crawler, regardless of what is scheduled\cr
 \link[paws.analytics:glue_start_crawler_schedule]{start_crawler_schedule} \tab Changes the schedule state of the specified crawler to SCHEDULED, unless the crawler is already running or the schedule state is already SCHEDULED\cr
+\link[paws.analytics:glue_start_data_quality_rule_recommendation_run]{start_data_quality_rule_recommendation_run} \tab Starts a recommendation run that is used to generate rules when you don't know what rules to write\cr
+\link[paws.analytics:glue_start_data_quality_ruleset_evaluation_run]{start_data_quality_ruleset_evaluation_run} \tab Once you have a ruleset definition (either recommended or your own), you call this operation to evaluate the ruleset against a data source (Glue table)\cr
 \link[paws.analytics:glue_start_export_labels_task_run]{start_export_labels_task_run} \tab Begins an asynchronous task to export all labeled data for a particular transform\cr
 \link[paws.analytics:glue_start_import_labels_task_run]{start_import_labels_task_run} \tab Enables you to provide additional labels (examples of truth) to be used to teach the machine learning transform and improve its quality\cr
 \link[paws.analytics:glue_start_job_run]{start_job_run} \tab Starts a job run using a job definition\cr
@@ -233,12 +248,15 @@ Defines the public endpoint for the Glue service.
 \link[paws.analytics:glue_update_crawler]{update_crawler} \tab Updates a crawler\cr
 \link[paws.analytics:glue_update_crawler_schedule]{update_crawler_schedule} \tab Updates the schedule of a crawler using a cron expression\cr
 \link[paws.analytics:glue_update_database]{update_database} \tab Updates an existing database definition in a Data Catalog\cr
+\link[paws.analytics:glue_update_data_quality_ruleset]{update_data_quality_ruleset} \tab Updates the specified data quality ruleset\cr
 \link[paws.analytics:glue_update_dev_endpoint]{update_dev_endpoint} \tab Updates a specified development endpoint\cr
 \link[paws.analytics:glue_update_job]{update_job} \tab Updates an existing job definition\cr
+\link[paws.analytics:glue_update_job_from_source_control]{update_job_from_source_control} \tab Synchronizes a job from the source control repository\cr
 \link[paws.analytics:glue_update_ml_transform]{update_ml_transform} \tab Updates an existing machine learning transform\cr
 \link[paws.analytics:glue_update_partition]{update_partition} \tab Updates a partition\cr
 \link[paws.analytics:glue_update_registry]{update_registry} \tab Updates an existing registry which is used to hold a collection of schemas\cr
 \link[paws.analytics:glue_update_schema]{update_schema} \tab Updates the description, compatibility setting, or version checkpoint for a schema set\cr
+\link[paws.analytics:glue_update_source_control_from_job]{update_source_control_from_job} \tab Synchronizes a job to the source control repository\cr
 \link[paws.analytics:glue_update_table]{update_table} \tab Updates a metadata table in the Data Catalog\cr
 \link[paws.analytics:glue_update_trigger]{update_trigger} \tab Updates a trigger definition\cr
 \link[paws.analytics:glue_update_user_defined_function]{update_user_defined_function} \tab Updates an existing function definition in the Data Catalog\cr

@@ -146,8 +146,8 @@ lookoutmetrics_create_anomaly_detector <- function(AnomalyDetectorName, AnomalyD
 #' @param MetricSetDescription A description of the dataset you are creating.
 #' @param MetricList &#91;required&#93; A list of metrics that the dataset will contain.
 #' @param Offset After an interval ends, the amount of seconds that the detector waits
-#' before importing data. Offset is only supported for S3 and Redshift
-#' datasources.
+#' before importing data. Offset is only supported for S3, Redshift, Athena
+#' and datasources.
 #' @param TimestampColumn Contains information about the column used for tracking time in your
 #' source data.
 #' @param DimensionList A list of the fields you want to treat as dimensions.
@@ -157,18 +157,19 @@ lookoutmetrics_create_anomaly_detector <- function(AnomalyDetectorName, AnomalyD
 #' @param Tags A list of
 #' [tags](https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html)
 #' to apply to the dataset.
+#' @param DimensionFilterList A list of filters that specify which data is kept for anomaly detection.
 #'
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_create_metric_set
-lookoutmetrics_create_metric_set <- function(AnomalyDetectorArn, MetricSetName, MetricSetDescription = NULL, MetricList, Offset = NULL, TimestampColumn = NULL, DimensionList = NULL, MetricSetFrequency = NULL, MetricSource, Timezone = NULL, Tags = NULL) {
+lookoutmetrics_create_metric_set <- function(AnomalyDetectorArn, MetricSetName, MetricSetDescription = NULL, MetricList, Offset = NULL, TimestampColumn = NULL, DimensionList = NULL, MetricSetFrequency = NULL, MetricSource, Timezone = NULL, Tags = NULL, DimensionFilterList = NULL) {
   op <- new_operation(
     name = "CreateMetricSet",
     http_method = "POST",
     http_path = "/CreateMetricSet",
     paginator = list()
   )
-  input <- .lookoutmetrics$create_metric_set_input(AnomalyDetectorArn = AnomalyDetectorArn, MetricSetName = MetricSetName, MetricSetDescription = MetricSetDescription, MetricList = MetricList, Offset = Offset, TimestampColumn = TimestampColumn, DimensionList = DimensionList, MetricSetFrequency = MetricSetFrequency, MetricSource = MetricSource, Timezone = Timezone, Tags = Tags)
+  input <- .lookoutmetrics$create_metric_set_input(AnomalyDetectorArn = AnomalyDetectorArn, MetricSetName = MetricSetName, MetricSetDescription = MetricSetDescription, MetricList = MetricList, Offset = Offset, TimestampColumn = TimestampColumn, DimensionList = DimensionList, MetricSetFrequency = MetricSetFrequency, MetricSource = MetricSource, Timezone = Timezone, Tags = Tags, DimensionFilterList = DimensionFilterList)
   output <- .lookoutmetrics$create_metric_set_output()
   config <- get_config()
   svc <- .lookoutmetrics$service(config)
@@ -445,6 +446,37 @@ lookoutmetrics_get_anomaly_group <- function(AnomalyGroupId, AnomalyDetectorArn)
   return(response)
 }
 .lookoutmetrics$operations$get_anomaly_group <- lookoutmetrics_get_anomaly_group
+
+#' Returns details about the requested data quality metrics
+#'
+#' @description
+#' Returns details about the requested data quality metrics.
+#'
+#' See [https://paws-r.github.io/docs/lookoutmetrics/get_data_quality_metrics.html](https://paws-r.github.io/docs/lookoutmetrics/get_data_quality_metrics.html) for full documentation.
+#'
+#' @param AnomalyDetectorArn &#91;required&#93; The Amazon Resource Name (ARN) of the anomaly detector that you want to
+#' investigate.
+#' @param MetricSetArn The Amazon Resource Name (ARN) of a specific data quality metric set.
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutmetrics_get_data_quality_metrics
+lookoutmetrics_get_data_quality_metrics <- function(AnomalyDetectorArn, MetricSetArn = NULL) {
+  op <- new_operation(
+    name = "GetDataQualityMetrics",
+    http_method = "POST",
+    http_path = "/GetDataQualityMetrics",
+    paginator = list()
+  )
+  input <- .lookoutmetrics$get_data_quality_metrics_input(AnomalyDetectorArn = AnomalyDetectorArn, MetricSetArn = MetricSetArn)
+  output <- .lookoutmetrics$get_data_quality_metrics_output()
+  config <- get_config()
+  svc <- .lookoutmetrics$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutmetrics$operations$get_data_quality_metrics <- lookoutmetrics_get_data_quality_metrics
 
 #' Get feedback for an anomaly group
 #'
@@ -908,24 +940,29 @@ lookoutmetrics_update_anomaly_detector <- function(AnomalyDetectorArn, KmsKeyArn
 #' @param MetricSetDescription The dataset's description.
 #' @param MetricList The metric list.
 #' @param Offset After an interval ends, the amount of seconds that the detector waits
-#' before importing data. Offset is only supported for S3 and Redshift
-#' datasources.
+#' before importing data. Offset is only supported for S3, Redshift, Athena
+#' and datasources.
 #' @param TimestampColumn The timestamp column.
 #' @param DimensionList The dimension list.
 #' @param MetricSetFrequency The dataset's interval.
 #' @param MetricSource 
+#' @param DimensionFilterList Describes a list of filters for choosing specific dimensions and
+#' specific values. Each filter consists of the dimension and one of its
+#' values that you want to include. When multiple dimensions or values are
+#' specified, the dimensions are joined with an AND operation and the
+#' values are joined with an OR operation.
 #'
 #' @keywords internal
 #'
 #' @rdname lookoutmetrics_update_metric_set
-lookoutmetrics_update_metric_set <- function(MetricSetArn, MetricSetDescription = NULL, MetricList = NULL, Offset = NULL, TimestampColumn = NULL, DimensionList = NULL, MetricSetFrequency = NULL, MetricSource = NULL) {
+lookoutmetrics_update_metric_set <- function(MetricSetArn, MetricSetDescription = NULL, MetricList = NULL, Offset = NULL, TimestampColumn = NULL, DimensionList = NULL, MetricSetFrequency = NULL, MetricSource = NULL, DimensionFilterList = NULL) {
   op <- new_operation(
     name = "UpdateMetricSet",
     http_method = "POST",
     http_path = "/UpdateMetricSet",
     paginator = list()
   )
-  input <- .lookoutmetrics$update_metric_set_input(MetricSetArn = MetricSetArn, MetricSetDescription = MetricSetDescription, MetricList = MetricList, Offset = Offset, TimestampColumn = TimestampColumn, DimensionList = DimensionList, MetricSetFrequency = MetricSetFrequency, MetricSource = MetricSource)
+  input <- .lookoutmetrics$update_metric_set_input(MetricSetArn = MetricSetArn, MetricSetDescription = MetricSetDescription, MetricList = MetricList, Offset = Offset, TimestampColumn = TimestampColumn, DimensionList = DimensionList, MetricSetFrequency = MetricSetFrequency, MetricSource = MetricSource, DimensionFilterList = DimensionFilterList)
   output <- .lookoutmetrics$update_metric_set_output()
   config <- get_config()
   svc <- .lookoutmetrics$service(config)

@@ -137,7 +137,7 @@ NULL
 
 .codestarnotifications$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

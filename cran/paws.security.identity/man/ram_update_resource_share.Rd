@@ -12,7 +12,7 @@ ram_update_resource_share(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of the resource share that you want to modify.}
 
 \item{name}{If specified, the new name that you want to attach to the resource
@@ -29,7 +29,11 @@ also pass the same value for all other parameters. We recommend that you
 use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
 If you don't provide this value, then Amazon Web Services generates a
-random one for you.}
+random one for you.
+
+If you retry the operation with the same \code{ClientToken}, but with
+different parameters, the retry fails with an
+\code{IdempotentParameterMismatch} error.}
 }
 \description{
 Modifies some of the properties of the specified resource share.

@@ -20,7 +20,8 @@ billingconductor_list_pricing_rules(
 
 \item{MaxResults}{The maximum number of pricing rules to retrieve.}
 
-\item{NextToken}{The pagination token used on subsequent call to get pricing rules.}
+\item{NextToken}{The pagination token that's used on subsequent call to get pricing
+rules.}
 }
 \description{
 Describes a pricing rule that can be associated to a pricing plan, or set of pricing plans.

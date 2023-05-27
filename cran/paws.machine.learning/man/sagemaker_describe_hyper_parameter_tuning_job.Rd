@@ -2,7 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_describe_hyper_parameter_tuning_job}
 \alias{sagemaker_describe_hyper_parameter_tuning_job}
-\title{Gets a description of a hyperparameter tuning job}
+\title{Returns a description of a hyperparameter tuning job, depending on the
+fields selected}
 \usage{
 sagemaker_describe_hyper_parameter_tuning_job(HyperParameterTuningJobName)
 }
@@ -10,7 +11,7 @@ sagemaker_describe_hyper_parameter_tuning_job(HyperParameterTuningJobName)
 \item{HyperParameterTuningJobName}{[required] The name of the tuning job.}
 }
 \description{
-Gets a description of a hyperparameter tuning job.
+Returns a description of a hyperparameter tuning job, depending on the fields selected. These fields can include the name, Amazon Resource Name (ARN), job status of your tuning job and more.
 
 See \url{https://paws-r.github.io/docs/sagemaker/describe_hyper_parameter_tuning_job.html} for full documentation.
 }

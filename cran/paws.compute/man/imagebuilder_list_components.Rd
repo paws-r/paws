@@ -2,8 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_components}
 \alias{imagebuilder_list_components}
-\title{Returns the list of component build versions for the specified semantic
-version}
+\title{Returns the list of components that can be filtered by name, or by using
+the listed filters to streamline results}
 \usage{
 imagebuilder_list_components(
   owner = NULL,
@@ -14,11 +14,11 @@ imagebuilder_list_components(
 )
 }
 \arguments{
-\item{owner}{The owner defines which components you want to list. By default, this
-request will only show components owned by your account. You can use
-this field to specify if you want to view components owned by yourself,
-by Amazon, or those components that have been shared with you by other
-customers.}
+\item{owner}{Filters results based on the type of owner for the component. By
+default, this request returns a list of components that your account
+owns. To see results for other types of owners, you can specify
+components that Amazon manages, third party components, or components
+that other accounts have shared with you.}
 
 \item{filters}{Use the following filters to streamline results:
 \itemize{
@@ -30,7 +30,7 @@ customers.}
 \item \code{version}
 }}
 
-\item{byName}{Returns the list of component build versions for the specified name.}
+\item{byName}{Returns the list of components for the specified name.}
 
 \item{maxResults}{The maximum items to return in a request.}
 
@@ -38,7 +38,7 @@ customers.}
 a previously truncated response.}
 }
 \description{
-Returns the list of component build versions for the specified semantic version.
+Returns the list of components that can be filtered by name, or by using the listed \code{filters} to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results.
 
 See \url{https://paws-r.github.io/docs/imagebuilder/list_components.html} for full documentation.
 }

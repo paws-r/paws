@@ -10,7 +10,7 @@ NULL
 #' Associates an alias (also known as a CNAME or an alternate domain name)
 #' with a CloudFront distribution.
 #' 
-#' With this operation you can move an alias that’s already in use on a
+#' With this operation you can move an alias that's already in use on a
 #' CloudFront distribution to a different distribution in one step. This
 #' prevents the downtime that could occur if you first remove the alias
 #' from one distribution and then separately add the alias to another
@@ -27,7 +27,7 @@ NULL
 #' @usage
 #' cloudfront_associate_alias(TargetDistributionId, Alias)
 #'
-#' @param TargetDistributionId &#91;required&#93; The ID of the distribution that you’re associating the alias with.
+#' @param TargetDistributionId &#91;required&#93; The ID of the distribution that you're associating the alias with.
 #' @param Alias &#91;required&#93; The alias (also known as a CNAME) to add to the target distribution.
 #'
 #' @return
@@ -63,247 +63,38 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
 }
 .cloudfront$operations$associate_alias <- cloudfront_associate_alias
 
-#' Creates a cache policy
+#' Creates a staging distribution using the configuration of the provided
+#' primary distribution
 #'
 #' @description
-#' Creates a cache policy.
+#' Creates a staging distribution using the configuration of the provided
+#' primary distribution. A staging distribution is a copy of an existing
+#' distribution (called the primary distribution) that you can use in a
+#' continuous deployment workflow.
 #' 
-#' After you create a cache policy, you can attach it to one or more cache
-#' behaviors. When it’s attached to a cache behavior, the cache policy
-#' determines the following:
-#' 
-#' -   The values that CloudFront includes in the *cache key*. These values
-#'     can include HTTP headers, cookies, and URL query strings. CloudFront
-#'     uses the cache key to find an object in its cache that it can return
-#'     to the viewer.
-#' 
-#' -   The default, minimum, and maximum time to live (TTL) values that you
-#'     want objects to stay in the CloudFront cache.
-#' 
-#' The headers, cookies, and query strings that are included in the cache
-#' key are automatically included in requests that CloudFront sends to the
-#' origin. CloudFront sends a request when it can’t find an object in its
-#' cache that matches the request’s cache key. If you want to send values
-#' to the origin but *not* include them in the cache key, use
-#' `OriginRequestPolicy`.
-#' 
-#' For more information about cache policies, see [Controlling the cache
-#' key](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html)
-#' in the *Amazon CloudFront Developer Guide*.
+#' After you create a staging distribution, you can use
+#' [`update_distribution`][cloudfront_update_distribution] to modify the
+#' staging distribution's configuration. Then you can use
+#' [`create_continuous_deployment_policy`][cloudfront_create_continuous_deployment_policy]
+#' to incrementally move traffic to the staging distribution.
 #'
 #' @usage
-#' cloudfront_create_cache_policy(CachePolicyConfig)
+#' cloudfront_copy_distribution(PrimaryDistributionId, Staging, IfMatch,
+#'   CallerReference)
 #'
-#' @param CachePolicyConfig &#91;required&#93; A cache policy configuration.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CachePolicy = list(
-#'     Id = "string",
-#'     LastModifiedTime = as.POSIXct(
-#'       "2015-01-01"
-#'     ),
-#'     CachePolicyConfig = list(
-#'       Comment = "string",
-#'       Name = "string",
-#'       DefaultTTL = 123,
-#'       MaxTTL = 123,
-#'       MinTTL = 123,
-#'       ParametersInCacheKeyAndForwardedToOrigin = list(
-#'         EnableAcceptEncodingGzip = TRUE|FALSE,
-#'         EnableAcceptEncodingBrotli = TRUE|FALSE,
-#'         HeadersConfig = list(
-#'           HeaderBehavior = "none"|"whitelist",
-#'           Headers = list(
-#'             Quantity = 123,
-#'             Items = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         CookiesConfig = list(
-#'           CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
-#'           Cookies = list(
-#'             Quantity = 123,
-#'             Items = list(
-#'               "string"
-#'             )
-#'           )
-#'         ),
-#'         QueryStringsConfig = list(
-#'           QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
-#'           QueryStrings = list(
-#'             Quantity = 123,
-#'             Items = list(
-#'               "string"
-#'             )
-#'           )
-#'         )
-#'       )
-#'     )
-#'   ),
-#'   Location = "string",
-#'   ETag = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cache_policy(
-#'   CachePolicyConfig = list(
-#'     Comment = "string",
-#'     Name = "string",
-#'     DefaultTTL = 123,
-#'     MaxTTL = 123,
-#'     MinTTL = 123,
-#'     ParametersInCacheKeyAndForwardedToOrigin = list(
-#'       EnableAcceptEncodingGzip = TRUE|FALSE,
-#'       EnableAcceptEncodingBrotli = TRUE|FALSE,
-#'       HeadersConfig = list(
-#'         HeaderBehavior = "none"|"whitelist",
-#'         Headers = list(
-#'           Quantity = 123,
-#'           Items = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       CookiesConfig = list(
-#'         CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
-#'         Cookies = list(
-#'           Quantity = 123,
-#'           Items = list(
-#'             "string"
-#'           )
-#'         )
-#'       ),
-#'       QueryStringsConfig = list(
-#'         QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
-#'         QueryStrings = list(
-#'           Quantity = 123,
-#'           Items = list(
-#'             "string"
-#'           )
-#'         )
-#'       )
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname cloudfront_create_cache_policy
-#'
-#' @aliases cloudfront_create_cache_policy
-cloudfront_create_cache_policy <- function(CachePolicyConfig) {
-  op <- new_operation(
-    name = "CreateCachePolicy",
-    http_method = "POST",
-    http_path = "/2020-05-31/cache-policy",
-    paginator = list()
-  )
-  input <- .cloudfront$create_cache_policy_input(CachePolicyConfig = CachePolicyConfig)
-  output <- .cloudfront$create_cache_policy_output()
-  config <- get_config()
-  svc <- .cloudfront$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.cloudfront$operations$create_cache_policy <- cloudfront_create_cache_policy
-
-#' Creates a new origin access identity
-#'
-#' @description
-#' Creates a new origin access identity. If you're using Amazon S3 for your
-#' origin, you can use an origin access identity to require users to access
-#' your content using a CloudFront URL instead of the Amazon S3 URL. For
-#' more information about how to use origin access identities, see [Serving
-#' Private Content through
-#' CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
-#' in the *Amazon CloudFront Developer Guide*.
-#'
-#' @usage
-#' cloudfront_create_cloud_front_origin_access_identity(
-#'   CloudFrontOriginAccessIdentityConfig)
-#'
-#' @param CloudFrontOriginAccessIdentityConfig &#91;required&#93; The current configuration information for the identity.
-#'
-#' @return
-#' A list with the following syntax:
-#' ```
-#' list(
-#'   CloudFrontOriginAccessIdentity = list(
-#'     Id = "string",
-#'     S3CanonicalUserId = "string",
-#'     CloudFrontOriginAccessIdentityConfig = list(
-#'       CallerReference = "string",
-#'       Comment = "string"
-#'     )
-#'   ),
-#'   Location = "string",
-#'   ETag = "string"
-#' )
-#' ```
-#'
-#' @section Request syntax:
-#' ```
-#' svc$create_cloud_front_origin_access_identity(
-#'   CloudFrontOriginAccessIdentityConfig = list(
-#'     CallerReference = "string",
-#'     Comment = "string"
-#'   )
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname cloudfront_create_cloud_front_origin_access_identity
-#'
-#' @aliases cloudfront_create_cloud_front_origin_access_identity
-cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOriginAccessIdentityConfig) {
-  op <- new_operation(
-    name = "CreateCloudFrontOriginAccessIdentity",
-    http_method = "POST",
-    http_path = "/2020-05-31/origin-access-identity/cloudfront",
-    paginator = list()
-  )
-  input <- .cloudfront$create_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig)
-  output <- .cloudfront$create_cloud_front_origin_access_identity_output()
-  config <- get_config()
-  svc <- .cloudfront$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.cloudfront$operations$create_cloud_front_origin_access_identity <- cloudfront_create_cloud_front_origin_access_identity
-
-#' Creates a new web distribution
-#'
-#' @description
-#' Creates a new web distribution. You create a CloudFront distribution to
-#' tell CloudFront where you want content to be delivered from, and the
-#' details about how to track and manage content delivery. Send a `POST`
-#' request to the `/CloudFront API version/distribution`/`distribution ID`
-#' resource.
-#' 
-#' When you update a distribution, there are more required fields than when
-#' you create a distribution. When you update your distribution by using
-#' [`update_distribution`][cloudfront_update_distribution], follow the
-#' steps included in the documentation to get the current configuration and
-#' then make your updates. This helps to make sure that you include all of
-#' the required fields. To view a summary, see [Required Fields for Create
-#' Distribution and Update
-#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
-#' in the *Amazon CloudFront Developer Guide*.
-#'
-#' @usage
-#' cloudfront_create_distribution(DistributionConfig)
-#'
-#' @param DistributionConfig &#91;required&#93; The distribution's configuration information.
+#' @param PrimaryDistributionId &#91;required&#93; The identifier of the primary distribution whose configuration you are
+#' copying. To get a distribution ID, use
+#' [`list_distributions`][cloudfront_list_distributions].
+#' @param Staging The type of distribution that your primary distribution will be copied
+#' to. The only valid value is `True`, indicating that you are copying to a
+#' staging distribution.
+#' @param IfMatch The version identifier of the primary distribution whose configuration
+#' you are copying. This is the `ETag` value returned in the response to
+#' [`get_distribution`][cloudfront_get_distribution] and
+#' [`get_distribution_config`][cloudfront_get_distribution_config].
+#' @param CallerReference &#91;required&#93; A value that uniquely identifies a request to create a resource. This
+#' helps to prevent CloudFront from creating a duplicate resource if you
+#' accidentally resubmit an identical request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -394,7 +185,8 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
-#'             )
+#'             ),
+#'             OriginAccessControlId = "string"
 #'           )
 #'         )
 #'       ),
@@ -633,8 +425,730 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'         )
 #'       ),
 #'       WebACLId = "string",
-#'       HttpVersion = "http1.1"|"http2",
-#'       IsIPV6Enabled = TRUE|FALSE
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
+#'     ),
+#'     AliasICPRecordals = list(
+#'       list(
+#'         CNAME = "string",
+#'         ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$copy_distribution(
+#'   PrimaryDistributionId = "string",
+#'   Staging = TRUE|FALSE,
+#'   IfMatch = "string",
+#'   CallerReference = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_copy_distribution
+#'
+#' @aliases cloudfront_copy_distribution
+cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, IfMatch = NULL, CallerReference) {
+  op <- new_operation(
+    name = "CopyDistribution",
+    http_method = "POST",
+    http_path = "/2020-05-31/distribution/{PrimaryDistributionId}/copy",
+    paginator = list()
+  )
+  input <- .cloudfront$copy_distribution_input(PrimaryDistributionId = PrimaryDistributionId, Staging = Staging, IfMatch = IfMatch, CallerReference = CallerReference)
+  output <- .cloudfront$copy_distribution_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$copy_distribution <- cloudfront_copy_distribution
+
+#' Creates a cache policy
+#'
+#' @description
+#' Creates a cache policy.
+#' 
+#' After you create a cache policy, you can attach it to one or more cache
+#' behaviors. When it's attached to a cache behavior, the cache policy
+#' determines the following:
+#' 
+#' -   The values that CloudFront includes in the *cache key*. These values
+#'     can include HTTP headers, cookies, and URL query strings. CloudFront
+#'     uses the cache key to find an object in its cache that it can return
+#'     to the viewer.
+#' 
+#' -   The default, minimum, and maximum time to live (TTL) values that you
+#'     want objects to stay in the CloudFront cache.
+#' 
+#' The headers, cookies, and query strings that are included in the cache
+#' key are also included in requests that CloudFront sends to the origin.
+#' CloudFront sends a request when it can't find an object in its cache
+#' that matches the request's cache key. If you want to send values to the
+#' origin but *not* include them in the cache key, use
+#' `OriginRequestPolicy`.
+#' 
+#' For more information about cache policies, see [Controlling the cache
+#' key](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @usage
+#' cloudfront_create_cache_policy(CachePolicyConfig)
+#'
+#' @param CachePolicyConfig &#91;required&#93; A cache policy configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CachePolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CachePolicyConfig = list(
+#'       Comment = "string",
+#'       Name = "string",
+#'       DefaultTTL = 123,
+#'       MaxTTL = 123,
+#'       MinTTL = 123,
+#'       ParametersInCacheKeyAndForwardedToOrigin = list(
+#'         EnableAcceptEncodingGzip = TRUE|FALSE,
+#'         EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'         HeadersConfig = list(
+#'           HeaderBehavior = "none"|"whitelist",
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         CookiesConfig = list(
+#'           CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           Cookies = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         QueryStringsConfig = list(
+#'           QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'           QueryStrings = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_cache_policy(
+#'   CachePolicyConfig = list(
+#'     Comment = "string",
+#'     Name = "string",
+#'     DefaultTTL = 123,
+#'     MaxTTL = 123,
+#'     MinTTL = 123,
+#'     ParametersInCacheKeyAndForwardedToOrigin = list(
+#'       EnableAcceptEncodingGzip = TRUE|FALSE,
+#'       EnableAcceptEncodingBrotli = TRUE|FALSE,
+#'       HeadersConfig = list(
+#'         HeaderBehavior = "none"|"whitelist",
+#'         Headers = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       CookiesConfig = list(
+#'         CookieBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'         Cookies = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       QueryStringsConfig = list(
+#'         QueryStringBehavior = "none"|"whitelist"|"allExcept"|"all",
+#'         QueryStrings = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_cache_policy
+#'
+#' @aliases cloudfront_create_cache_policy
+cloudfront_create_cache_policy <- function(CachePolicyConfig) {
+  op <- new_operation(
+    name = "CreateCachePolicy",
+    http_method = "POST",
+    http_path = "/2020-05-31/cache-policy",
+    paginator = list()
+  )
+  input <- .cloudfront$create_cache_policy_input(CachePolicyConfig = CachePolicyConfig)
+  output <- .cloudfront$create_cache_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_cache_policy <- cloudfront_create_cache_policy
+
+#' Creates a new origin access identity
+#'
+#' @description
+#' Creates a new origin access identity. If you're using Amazon S3 for your
+#' origin, you can use an origin access identity to require users to access
+#' your content using a CloudFront URL instead of the Amazon S3 URL. For
+#' more information about how to use origin access identities, see [Serving
+#' Private Content through
+#' CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @usage
+#' cloudfront_create_cloud_front_origin_access_identity(
+#'   CloudFrontOriginAccessIdentityConfig)
+#'
+#' @param CloudFrontOriginAccessIdentityConfig &#91;required&#93; The current configuration information for the identity.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CloudFrontOriginAccessIdentity = list(
+#'     Id = "string",
+#'     S3CanonicalUserId = "string",
+#'     CloudFrontOriginAccessIdentityConfig = list(
+#'       CallerReference = "string",
+#'       Comment = "string"
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_cloud_front_origin_access_identity(
+#'   CloudFrontOriginAccessIdentityConfig = list(
+#'     CallerReference = "string",
+#'     Comment = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_cloud_front_origin_access_identity
+#'
+#' @aliases cloudfront_create_cloud_front_origin_access_identity
+cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOriginAccessIdentityConfig) {
+  op <- new_operation(
+    name = "CreateCloudFrontOriginAccessIdentity",
+    http_method = "POST",
+    http_path = "/2020-05-31/origin-access-identity/cloudfront",
+    paginator = list()
+  )
+  input <- .cloudfront$create_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig)
+  output <- .cloudfront$create_cloud_front_origin_access_identity_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_cloud_front_origin_access_identity <- cloudfront_create_cloud_front_origin_access_identity
+
+#' Creates a continuous deployment policy that distributes traffic for a
+#' custom domain name to two different CloudFront distributions
+#'
+#' @description
+#' Creates a continuous deployment policy that distributes traffic for a
+#' custom domain name to two different CloudFront distributions.
+#' 
+#' To use a continuous deployment policy, first use
+#' [`copy_distribution`][cloudfront_copy_distribution] to create a staging
+#' distribution, then use
+#' [`update_distribution`][cloudfront_update_distribution] to modify the
+#' staging distribution's configuration.
+#' 
+#' After you create and update a staging distribution, you can use a
+#' continuous deployment policy to incrementally move traffic to the
+#' staging distribution. This workflow enables you to test changes to a
+#' distribution's configuration before moving all of your domain's
+#' production traffic to the new configuration.
+#'
+#' @usage
+#' cloudfront_create_continuous_deployment_policy(
+#'   ContinuousDeploymentPolicyConfig)
+#'
+#' @param ContinuousDeploymentPolicyConfig &#91;required&#93; Contains the configuration for a continuous deployment policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContinuousDeploymentPolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ContinuousDeploymentPolicyConfig = list(
+#'       StagingDistributionDnsNames = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       TrafficConfig = list(
+#'         SingleWeightConfig = list(
+#'           Weight = 123.0,
+#'           SessionStickinessConfig = list(
+#'             IdleTTL = 123,
+#'             MaximumTTL = 123
+#'           )
+#'         ),
+#'         SingleHeaderConfig = list(
+#'           Header = "string",
+#'           Value = "string"
+#'         ),
+#'         Type = "SingleWeight"|"SingleHeader"
+#'       )
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_continuous_deployment_policy(
+#'   ContinuousDeploymentPolicyConfig = list(
+#'     StagingDistributionDnsNames = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     TrafficConfig = list(
+#'       SingleWeightConfig = list(
+#'         Weight = 123.0,
+#'         SessionStickinessConfig = list(
+#'           IdleTTL = 123,
+#'           MaximumTTL = 123
+#'         )
+#'       ),
+#'       SingleHeaderConfig = list(
+#'         Header = "string",
+#'         Value = "string"
+#'       ),
+#'       Type = "SingleWeight"|"SingleHeader"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_continuous_deployment_policy
+#'
+#' @aliases cloudfront_create_continuous_deployment_policy
+cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentPolicyConfig) {
+  op <- new_operation(
+    name = "CreateContinuousDeploymentPolicy",
+    http_method = "POST",
+    http_path = "/2020-05-31/continuous-deployment-policy",
+    paginator = list()
+  )
+  input <- .cloudfront$create_continuous_deployment_policy_input(ContinuousDeploymentPolicyConfig = ContinuousDeploymentPolicyConfig)
+  output <- .cloudfront$create_continuous_deployment_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_continuous_deployment_policy <- cloudfront_create_continuous_deployment_policy
+
+#' Creates a CloudFront distribution
+#'
+#' @description
+#' Creates a CloudFront distribution.
+#'
+#' @usage
+#' cloudfront_create_distribution(DistributionConfig)
+#'
+#' @param DistributionConfig &#91;required&#93; The distribution's configuration information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Distribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InProgressInvalidationBatches = 123,
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ActiveTrustedKeyGroups = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyGroupId = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DistributionConfig = list(
+#'       CallerReference = "string",
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DefaultRootObject = "string",
+#'       Origins = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             DomainName = "string",
+#'             OriginPath = "string",
+#'             CustomHeaders = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   HeaderName = "string",
+#'                   HeaderValue = "string"
+#'                 )
+#'               )
+#'             ),
+#'             S3OriginConfig = list(
+#'               OriginAccessIdentity = "string"
+#'             ),
+#'             CustomOriginConfig = list(
+#'               HTTPPort = 123,
+#'               HTTPSPort = 123,
+#'               OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'               OriginSslProtocols = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                 )
+#'               ),
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123,
+#'             OriginShield = list(
+#'               Enabled = TRUE|FALSE,
+#'               OriginShieldRegion = "string"
+#'             ),
+#'             OriginAccessControlId = "string"
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultCacheBehavior = list(
+#'         TargetOriginId = "string",
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedKeyGroups = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'         AllowedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           ),
+#'           CachedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             )
+#'           )
+#'         ),
+#'         SmoothStreaming = TRUE|FALSE,
+#'         Compress = TRUE|FALSE,
+#'         LambdaFunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               LambdaFunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'               IncludeBody = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
+#'         FieldLevelEncryptionId = "string",
+#'         RealtimeLogConfigArn = "string",
+#'         CachePolicyId = "string",
+#'         OriginRequestPolicyId = "string",
+#'         ResponseHeadersPolicyId = "string",
+#'         ForwardedValues = list(
+#'           QueryString = TRUE|FALSE,
+#'           Cookies = list(
+#'             Forward = "none"|"whitelist"|"all",
+#'             WhitelistedNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           QueryStringCacheKeys = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MinTTL = 123,
+#'         DefaultTTL = 123,
+#'         MaxTTL = 123
+#'       ),
+#'       CacheBehaviors = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PathPattern = "string",
+#'             TargetOriginId = "string",
+#'             TrustedSigners = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             TrustedKeyGroups = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'             AllowedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               ),
+#'               CachedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 )
+#'               )
+#'             ),
+#'             SmoothStreaming = TRUE|FALSE,
+#'             Compress = TRUE|FALSE,
+#'             LambdaFunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   LambdaFunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'                 )
+#'               )
+#'             ),
+#'             FieldLevelEncryptionId = "string",
+#'             RealtimeLogConfigArn = "string",
+#'             CachePolicyId = "string",
+#'             OriginRequestPolicyId = "string",
+#'             ResponseHeadersPolicyId = "string",
+#'             ForwardedValues = list(
+#'               QueryString = TRUE|FALSE,
+#'               Cookies = list(
+#'                 Forward = "none"|"whitelist"|"all",
+#'                 WhitelistedNames = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               QueryStringCacheKeys = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             MinTTL = 123,
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomErrorResponses = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             ErrorCode = 123,
+#'             ResponsePagePath = "string",
+#'             ResponseCode = "string",
+#'             ErrorCachingMinTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         IncludeCookies = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE,
+#'       ViewerCertificate = list(
+#'         CloudFrontDefaultCertificate = TRUE|FALSE,
+#'         IAMCertificateId = "string",
+#'         ACMCertificateArn = "string",
+#'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         Certificate = "string",
+#'         CertificateSource = "cloudfront"|"iam"|"acm"
+#'       ),
+#'       Restrictions = list(
+#'         GeoRestriction = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WebACLId = "string",
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -697,7 +1211,8 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'           OriginShield = list(
 #'             Enabled = TRUE|FALSE,
 #'             OriginShieldRegion = "string"
-#'           )
+#'           ),
+#'           OriginAccessControlId = "string"
 #'         )
 #'       )
 #'     ),
@@ -936,8 +1451,10 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'       )
 #'     ),
 #'     WebACLId = "string",
-#'     HttpVersion = "http1.1"|"http2",
-#'     IsIPV6Enabled = TRUE|FALSE
+#'     HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'     IsIPV6Enabled = TRUE|FALSE,
+#'     ContinuousDeploymentPolicyId = "string",
+#'     Staging = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1063,7 +1580,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
-#'             )
+#'             ),
+#'             OriginAccessControlId = "string"
 #'           )
 #'         )
 #'       ),
@@ -1302,8 +1820,10 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         )
 #'       ),
 #'       WebACLId = "string",
-#'       HttpVersion = "http1.1"|"http2",
-#'       IsIPV6Enabled = TRUE|FALSE
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -1367,7 +1887,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
-#'             )
+#'             ),
+#'             OriginAccessControlId = "string"
 #'           )
 #'         )
 #'       ),
@@ -1606,8 +2127,10 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 #'         )
 #'       ),
 #'       WebACLId = "string",
-#'       HttpVersion = "http1.1"|"http2",
-#'       IsIPV6Enabled = TRUE|FALSE
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
 #'     ),
 #'     Tags = list(
 #'       Items = list(
@@ -1858,23 +2381,23 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' configuration information about the function. The response contains an
 #' Amazon Resource Name (ARN) that uniquely identifies the function.
 #' 
-#' When you create a function, it’s in the `DEVELOPMENT` stage. In this
+#' When you create a function, it's in the `DEVELOPMENT` stage. In this
 #' stage, you can test the function with
 #' [`test_function`][cloudfront_test_function], and update it with
 #' [`update_function`][cloudfront_update_function].
 #' 
-#' When you’re ready to use your function with a CloudFront distribution,
+#' When you're ready to use your function with a CloudFront distribution,
 #' use [`publish_function`][cloudfront_publish_function] to copy the
-#' function from the `DEVELOPMENT` stage to `LIVE`. When it’s live, you can
-#' attach the function to a distribution’s cache behavior, using the
-#' function’s ARN.
+#' function from the `DEVELOPMENT` stage to `LIVE`. When it's live, you can
+#' attach the function to a distribution's cache behavior, using the
+#' function's ARN.
 #'
 #' @usage
 #' cloudfront_create_function(Name, FunctionConfig, FunctionCode)
 #'
 #' @param Name &#91;required&#93; A name to identify the function.
 #' @param FunctionConfig &#91;required&#93; Configuration information about the function, including an optional
-#' comment and the function’s runtime.
+#' comment and the function's runtime.
 #' @param FunctionCode &#91;required&#93; The function code. For more information about writing a CloudFront
 #' function, see [Writing function code for CloudFront
 #' Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html)
@@ -2149,7 +2672,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
   op <- new_operation(
     name = "CreateMonitoringSubscription",
     http_method = "POST",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
     paginator = list()
   )
   input <- .cloudfront$create_monitoring_subscription_input(DistributionId = DistributionId, MonitoringSubscription = MonitoringSubscription)
@@ -2162,13 +2685,88 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 }
 .cloudfront$operations$create_monitoring_subscription <- cloudfront_create_monitoring_subscription
 
+#' Creates a new origin access control in CloudFront
+#'
+#' @description
+#' Creates a new origin access control in CloudFront. After you create an
+#' origin access control, you can add it to an origin in a CloudFront
+#' distribution so that CloudFront sends authenticated (signed) requests to
+#' the origin.
+#' 
+#' This makes it possible to block public access to the origin, allowing
+#' viewers (users) to access the origin's content only through CloudFront.
+#' 
+#' For more information about using a CloudFront origin access control, see
+#' [Restricting access to an Amazon Web Services
+#' origin](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-origin.html)
+#' in the *Amazon CloudFront Developer Guide*.
+#'
+#' @usage
+#' cloudfront_create_origin_access_control(OriginAccessControlConfig)
+#'
+#' @param OriginAccessControlConfig &#91;required&#93; Contains the origin access control.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginAccessControl = list(
+#'     Id = "string",
+#'     OriginAccessControlConfig = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       SigningProtocol = "sigv4",
+#'       SigningBehavior = "never"|"always"|"no-override",
+#'       OriginAccessControlOriginType = "s3"|"mediastore"
+#'     )
+#'   ),
+#'   Location = "string",
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_origin_access_control(
+#'   OriginAccessControlConfig = list(
+#'     Name = "string",
+#'     Description = "string",
+#'     SigningProtocol = "sigv4",
+#'     SigningBehavior = "never"|"always"|"no-override",
+#'     OriginAccessControlOriginType = "s3"|"mediastore"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_create_origin_access_control
+#'
+#' @aliases cloudfront_create_origin_access_control
+cloudfront_create_origin_access_control <- function(OriginAccessControlConfig) {
+  op <- new_operation(
+    name = "CreateOriginAccessControl",
+    http_method = "POST",
+    http_path = "/2020-05-31/origin-access-control",
+    paginator = list()
+  )
+  input <- .cloudfront$create_origin_access_control_input(OriginAccessControlConfig = OriginAccessControlConfig)
+  output <- .cloudfront$create_origin_access_control_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$create_origin_access_control <- cloudfront_create_origin_access_control
+
 #' Creates an origin request policy
 #'
 #' @description
 #' Creates an origin request policy.
 #' 
 #' After you create an origin request policy, you can attach it to one or
-#' more cache behaviors. When it’s attached to a cache behavior, the origin
+#' more cache behaviors. When it's attached to a cache behavior, the origin
 #' request policy determines the values that CloudFront includes in
 #' requests that it sends to the origin. Each request that CloudFront sends
 #' to the origin includes the following:
@@ -2184,7 +2782,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'     items from the viewer request and, in the case of headers,
 #'     additional ones that are added by CloudFront.
 #' 
-#' CloudFront sends a request when it can’t find a valid object in its
+#' CloudFront sends a request when it can't find a valid object in its
 #' cache that matches the request. If you want to send values to the origin
 #' and also include them in the cache key, use `CachePolicy`.
 #' 
@@ -2211,7 +2809,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'       Comment = "string",
 #'       Name = "string",
 #'       HeadersConfig = list(
-#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'         Headers = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -2220,7 +2818,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'         )
 #'       ),
 #'       CookiesConfig = list(
-#'         CookieBehavior = "none"|"whitelist"|"all",
+#'         CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'         Cookies = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -2229,7 +2827,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'         )
 #'       ),
 #'       QueryStringsConfig = list(
-#'         QueryStringBehavior = "none"|"whitelist"|"all",
+#'         QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'         QueryStrings = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -2251,7 +2849,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'     Comment = "string",
 #'     Name = "string",
 #'     HeadersConfig = list(
-#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'       Headers = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -2260,7 +2858,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'       )
 #'     ),
 #'     CookiesConfig = list(
-#'       CookieBehavior = "none"|"whitelist"|"all",
+#'       CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'       Cookies = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -2269,7 +2867,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 #'       )
 #'     ),
 #'     QueryStringsConfig = list(
-#'       QueryStringBehavior = "none"|"whitelist"|"all",
+#'       QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'       QueryStrings = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -2475,21 +3073,25 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #' Creates a response headers policy.
 #' 
 #' A response headers policy contains information about a set of HTTP
-#' response headers and their values. To create a response headers policy,
-#' you provide some metadata about the policy, and a set of configurations
-#' that specify the response headers.
+#' headers. To create a response headers policy, you provide some metadata
+#' about the policy and a set of configurations that specify the headers.
 #' 
 #' After you create a response headers policy, you can use its ID to attach
 #' it to one or more cache behaviors in a CloudFront distribution. When
-#' it’s attached to a cache behavior, CloudFront adds the headers in the
-#' policy to HTTP responses that it sends for requests that match the cache
-#' behavior.
+#' it's attached to a cache behavior, the response headers policy affects
+#' the HTTP headers that CloudFront includes in HTTP responses to requests
+#' that match the cache behavior. CloudFront adds or removes response
+#' headers according to the configuration of the response headers policy.
+#' 
+#' For more information, see [Adding or removing HTTP headers in CloudFront
+#' responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/modifying-response-headers.html)
+#' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @usage
 #' cloudfront_create_response_headers_policy(ResponseHeadersPolicyConfig)
 #'
 #' @param ResponseHeadersPolicyConfig &#91;required&#93; Contains metadata about the response headers policy, and a set of
-#' configurations that specify the response headers.
+#' configurations that specify the HTTP headers.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2561,6 +3163,10 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #'           AccessControlMaxAgeSec = 123
 #'         )
 #'       ),
+#'       ServerTimingHeadersConfig = list(
+#'         Enabled = TRUE|FALSE,
+#'         SamplingRate = 123.0
+#'       ),
 #'       CustomHeadersConfig = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -2571,9 +3177,13 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #'           )
 #'         )
 #'       ),
-#'       ServerTimingHeadersConfig = list(
-#'         Enabled = TRUE|FALSE,
-#'         SamplingRate = 123.0
+#'       RemoveHeadersConfig = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Header = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2646,6 +3256,10 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #'         AccessControlMaxAgeSec = 123
 #'       )
 #'     ),
+#'     ServerTimingHeadersConfig = list(
+#'       Enabled = TRUE|FALSE,
+#'       SamplingRate = 123.0
+#'     ),
 #'     CustomHeadersConfig = list(
 #'       Quantity = 123,
 #'       Items = list(
@@ -2656,9 +3270,13 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #'         )
 #'       )
 #'     ),
-#'     ServerTimingHeadersConfig = list(
-#'       Enabled = TRUE|FALSE,
-#'       SamplingRate = 123.0
+#'     RemoveHeadersConfig = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Header = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2691,9 +3309,8 @@ cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfi
 #' @description
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
-#' information, [read the
-#' announcement](https://repost.aws/questions/QUoUZgHZh7SEWlnQUPlBmVNQ?annID=7356)
-#' on the Amazon CloudFront discussion forum.
+#' information, read the announcement on the Amazon CloudFront discussion
+#' forum.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution(StreamingDistributionConfig)
@@ -2822,9 +3439,8 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #' @description
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
-#' information, [read the
-#' announcement](https://repost.aws/questions/QUoUZgHZh7SEWlnQUPlBmVNQ?annID=7356)
-#' on the Amazon CloudFront discussion forum.
+#' information, read the announcement on the Amazon CloudFront discussion
+#' forum.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution_with_tags(
@@ -2964,11 +3580,11 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #' @description
 #' Deletes a cache policy.
 #' 
-#' You cannot delete a cache policy if it’s attached to a cache behavior.
+#' You cannot delete a cache policy if it's attached to a cache behavior.
 #' First update your distributions to remove the cache policy from all
 #' cache behaviors, then delete the cache policy.
 #' 
-#' To delete a cache policy, you must provide the policy’s identifier and
+#' To delete a cache policy, you must provide the policy's identifier and
 #' version. To get these values, you can use
 #' [`list_cache_policies`][cloudfront_list_cache_policies] or
 #' [`get_cache_policy`][cloudfront_get_cache_policy].
@@ -2980,7 +3596,7 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 #' the identifier, you can use
 #' [`list_cache_policies`][cloudfront_list_cache_policies].
 #' @param IfMatch The version of the cache policy that you are deleting. The version is
-#' the cache policy’s `ETag` value, which you can get using
+#' the cache policy's `ETag` value, which you can get using
 #' [`list_cache_policies`][cloudfront_list_cache_policies],
 #' [`get_cache_policy`][cloudfront_get_cache_policy], or
 #' [`get_cache_policy_config`][cloudfront_get_cache_policy_config].
@@ -3062,6 +3678,56 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
   return(response)
 }
 .cloudfront$operations$delete_cloud_front_origin_access_identity <- cloudfront_delete_cloud_front_origin_access_identity
+
+#' Deletes a continuous deployment policy
+#'
+#' @description
+#' Deletes a continuous deployment policy.
+#' 
+#' You cannot delete a continuous deployment policy that's attached to a
+#' primary distribution. First update your distribution to remove the
+#' continuous deployment policy, then you can delete the policy.
+#'
+#' @usage
+#' cloudfront_delete_continuous_deployment_policy(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The identifier of the continuous deployment policy that you are
+#' deleting.
+#' @param IfMatch The current version (`ETag` value) of the continuous deployment policy
+#' that you are deleting.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_continuous_deployment_policy(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_continuous_deployment_policy
+#'
+#' @aliases cloudfront_delete_continuous_deployment_policy
+cloudfront_delete_continuous_deployment_policy <- function(Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "DeleteContinuousDeploymentPolicy",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/continuous-deployment-policy/{Id}",
+    paginator = list()
+  )
+  input <- .cloudfront$delete_continuous_deployment_policy_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_continuous_deployment_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_continuous_deployment_policy <- cloudfront_delete_continuous_deployment_policy
 
 #' Delete a distribution
 #'
@@ -3203,11 +3869,11 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 #' @description
 #' Deletes a CloudFront function.
 #' 
-#' You cannot delete a function if it’s associated with a cache behavior.
+#' You cannot delete a function if it's associated with a cache behavior.
 #' First, update your distributions to remove the function association from
 #' all cache behaviors, then delete the function.
 #' 
-#' To delete a function, you must provide the function’s name and version
+#' To delete a function, you must provide the function's name and version
 #' (`ETag` value). To get these values, you can use
 #' [`list_functions`][cloudfront_list_functions] and
 #' [`describe_function`][cloudfront_describe_function].
@@ -3262,7 +3928,7 @@ cloudfront_delete_function <- function(Name, IfMatch) {
 #' First update your distributions to remove the key group from all cache
 #' behaviors, then delete the key group.
 #' 
-#' To delete a key group, you must provide the key group’s identifier and
+#' To delete a key group, you must provide the key group's identifier and
 #' version. To get these values, use
 #' [`list_key_groups`][cloudfront_list_key_groups] followed by
 #' [`get_key_group`][cloudfront_get_key_group] or
@@ -3274,7 +3940,7 @@ cloudfront_delete_function <- function(Name, IfMatch) {
 #' @param Id &#91;required&#93; The identifier of the key group that you are deleting. To get the
 #' identifier, use [`list_key_groups`][cloudfront_list_key_groups].
 #' @param IfMatch The version of the key group that you are deleting. The version is the
-#' key group’s `ETag` value. To get the `ETag`, use
+#' key group's `ETag` value. To get the `ETag`, use
 #' [`get_key_group`][cloudfront_get_key_group] or
 #' [`get_key_group_config`][cloudfront_get_key_group_config].
 #'
@@ -3342,7 +4008,7 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "DeleteMonitoringSubscription",
     http_method = "DELETE",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
     paginator = list()
   )
   input <- .cloudfront$delete_monitoring_subscription_input(DistributionId = DistributionId)
@@ -3355,16 +4021,66 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
 }
 .cloudfront$operations$delete_monitoring_subscription <- cloudfront_delete_monitoring_subscription
 
+#' Deletes a CloudFront origin access control
+#'
+#' @description
+#' Deletes a CloudFront origin access control.
+#' 
+#' You cannot delete an origin access control if it's in use. First, update
+#' all distributions to remove the origin access control from all origins,
+#' then delete the origin access control.
+#'
+#' @usage
+#' cloudfront_delete_origin_access_control(Id, IfMatch)
+#'
+#' @param Id &#91;required&#93; The unique identifier of the origin access control that you are
+#' deleting.
+#' @param IfMatch The current version (`ETag` value) of the origin access control that you
+#' are deleting.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_origin_access_control(
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_delete_origin_access_control
+#'
+#' @aliases cloudfront_delete_origin_access_control
+cloudfront_delete_origin_access_control <- function(Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "DeleteOriginAccessControl",
+    http_method = "DELETE",
+    http_path = "/2020-05-31/origin-access-control/{Id}",
+    paginator = list()
+  )
+  input <- .cloudfront$delete_origin_access_control_input(Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$delete_origin_access_control_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$delete_origin_access_control <- cloudfront_delete_origin_access_control
+
 #' Deletes an origin request policy
 #'
 #' @description
 #' Deletes an origin request policy.
 #' 
-#' You cannot delete an origin request policy if it’s attached to any cache
+#' You cannot delete an origin request policy if it's attached to any cache
 #' behaviors. First update your distributions to remove the origin request
 #' policy from all cache behaviors, then delete the origin request policy.
 #' 
-#' To delete an origin request policy, you must provide the policy’s
+#' To delete an origin request policy, you must provide the policy's
 #' identifier and version. To get the identifier, you can use
 #' [`list_origin_request_policies`][cloudfront_list_origin_request_policies]
 #' or [`get_origin_request_policy`][cloudfront_get_origin_request_policy].
@@ -3376,7 +4092,7 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
 #' deleting. To get the identifier, you can use
 #' [`list_origin_request_policies`][cloudfront_list_origin_request_policies].
 #' @param IfMatch The version of the origin request policy that you are deleting. The
-#' version is the origin request policy’s `ETag` value, which you can get
+#' version is the origin request policy's `ETag` value, which you can get
 #' using
 #' [`list_origin_request_policies`][cloudfront_list_origin_request_policies],
 #' [`get_origin_request_policy`][cloudfront_get_origin_request_policy], or
@@ -3465,13 +4181,13 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
 #' @description
 #' Deletes a real-time log configuration.
 #' 
-#' You cannot delete a real-time log configuration if it’s attached to a
+#' You cannot delete a real-time log configuration if it's attached to a
 #' cache behavior. First update your distributions to remove the real-time
 #' log configuration from all cache behaviors, then delete the real-time
 #' log configuration.
 #' 
 #' To delete a real-time log configuration, you can provide the
-#' configuration’s name or its Amazon Resource Name (ARN). You must provide
+#' configuration's name or its Amazon Resource Name (ARN). You must provide
 #' at least one. If you provide both, CloudFront uses the name to identify
 #' the real-time log configuration to delete.
 #'
@@ -3520,12 +4236,12 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #' @description
 #' Deletes a response headers policy.
 #' 
-#' You cannot delete a response headers policy if it’s attached to a cache
+#' You cannot delete a response headers policy if it's attached to a cache
 #' behavior. First update your distributions to remove the response headers
 #' policy from all cache behaviors, then delete the response headers
 #' policy.
 #' 
-#' To delete a response headers policy, you must provide the policy’s
+#' To delete a response headers policy, you must provide the policy's
 #' identifier and version. To get these values, you can use
 #' [`list_response_headers_policies`][cloudfront_list_response_headers_policies]
 #' or
@@ -3540,7 +4256,7 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #' [`list_response_headers_policies`][cloudfront_list_response_headers_policies].
 #' @param IfMatch The version of the response headers policy that you are deleting.
 #' 
-#' The version is the response headers policy’s `ETag` value, which you can
+#' The version is the response headers policy's `ETag` value, which you can
 #' get using
 #' [`list_response_headers_policies`][cloudfront_list_response_headers_policies],
 #' [`get_response_headers_policy`][cloudfront_get_response_headers_policy],
@@ -3665,22 +4381,22 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 .cloudfront$operations$delete_streaming_distribution <- cloudfront_delete_streaming_distribution
 
 #' Gets configuration information and metadata about a CloudFront function,
-#' but not the function’s code
+#' but not the function's code
 #'
 #' @description
 #' Gets configuration information and metadata about a CloudFront function,
-#' but not the function’s code. To get a function’s code, use
+#' but not the function's code. To get a function's code, use
 #' [`get_function`][cloudfront_get_function].
 #' 
 #' To get configuration information and metadata about a function, you must
-#' provide the function’s name and stage. To get these values, you can use
+#' provide the function's name and stage. To get these values, you can use
 #' [`list_functions`][cloudfront_list_functions].
 #'
 #' @usage
 #' cloudfront_describe_function(Name, Stage)
 #'
 #' @param Name &#91;required&#93; The name of the function that you are getting information about.
-#' @param Stage The function’s stage, either `DEVELOPMENT` or `LIVE`.
+#' @param Stage The function's stage, either `DEVELOPMENT` or `LIVE`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3743,13 +4459,13 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
 #' @description
 #' Gets a cache policy, including the following metadata:
 #' 
-#' -   The policy’s identifier.
+#' -   The policy's identifier.
 #' 
 #' -   The date and time when the policy was last modified.
 #' 
-#' To get a cache policy, you must provide the policy’s identifier. If the
-#' cache policy is attached to a distribution’s cache behavior, you can get
-#' the policy’s identifier using
+#' To get a cache policy, you must provide the policy's identifier. If the
+#' cache policy is attached to a distribution's cache behavior, you can get
+#' the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the cache policy
 #' is not attached to a cache behavior, you can get the identifier using
@@ -3759,7 +4475,7 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
 #' cloudfront_get_cache_policy(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the cache policy. If the cache policy is
-#' attached to a distribution’s cache behavior, you can get the policy’s
+#' attached to a distribution's cache behavior, you can get the policy's
 #' identifier using [`list_distributions`][cloudfront_list_distributions]
 #' or [`get_distribution`][cloudfront_get_distribution]. If the cache
 #' policy is not attached to a cache behavior, you can get the identifier
@@ -3851,9 +4567,9 @@ cloudfront_get_cache_policy <- function(Id) {
 #' @description
 #' Gets a cache policy configuration.
 #' 
-#' To get a cache policy configuration, you must provide the policy’s
-#' identifier. If the cache policy is attached to a distribution’s cache
-#' behavior, you can get the policy’s identifier using
+#' To get a cache policy configuration, you must provide the policy's
+#' identifier. If the cache policy is attached to a distribution's cache
+#' behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the cache policy
 #' is not attached to a cache behavior, you can get the identifier using
@@ -3863,7 +4579,7 @@ cloudfront_get_cache_policy <- function(Id) {
 #' cloudfront_get_cache_policy_config(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the cache policy. If the cache policy is
-#' attached to a distribution’s cache behavior, you can get the policy’s
+#' attached to a distribution's cache behavior, you can get the policy's
 #' identifier using [`list_distributions`][cloudfront_list_distributions]
 #' or [`get_distribution`][cloudfront_get_distribution]. If the cache
 #' policy is not attached to a cache behavior, you can get the identifier
@@ -4050,6 +4766,155 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 }
 .cloudfront$operations$get_cloud_front_origin_access_identity_config <- cloudfront_get_cloud_front_origin_access_identity_config
 
+#' Gets a continuous deployment policy, including metadata (the policy's
+#' identifier and the date and time when the policy was last modified)
+#'
+#' @description
+#' Gets a continuous deployment policy, including metadata (the policy's
+#' identifier and the date and time when the policy was last modified).
+#'
+#' @usage
+#' cloudfront_get_continuous_deployment_policy(Id)
+#'
+#' @param Id &#91;required&#93; The identifier of the continuous deployment policy that you are getting.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContinuousDeploymentPolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ContinuousDeploymentPolicyConfig = list(
+#'       StagingDistributionDnsNames = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       TrafficConfig = list(
+#'         SingleWeightConfig = list(
+#'           Weight = 123.0,
+#'           SessionStickinessConfig = list(
+#'             IdleTTL = 123,
+#'             MaximumTTL = 123
+#'           )
+#'         ),
+#'         SingleHeaderConfig = list(
+#'           Header = "string",
+#'           Value = "string"
+#'         ),
+#'         Type = "SingleWeight"|"SingleHeader"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_continuous_deployment_policy(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_continuous_deployment_policy
+#'
+#' @aliases cloudfront_get_continuous_deployment_policy
+cloudfront_get_continuous_deployment_policy <- function(Id) {
+  op <- new_operation(
+    name = "GetContinuousDeploymentPolicy",
+    http_method = "GET",
+    http_path = "/2020-05-31/continuous-deployment-policy/{Id}",
+    paginator = list()
+  )
+  input <- .cloudfront$get_continuous_deployment_policy_input(Id = Id)
+  output <- .cloudfront$get_continuous_deployment_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_continuous_deployment_policy <- cloudfront_get_continuous_deployment_policy
+
+#' Gets configuration information about a continuous deployment policy
+#'
+#' @description
+#' Gets configuration information about a continuous deployment policy.
+#'
+#' @usage
+#' cloudfront_get_continuous_deployment_policy_config(Id)
+#'
+#' @param Id &#91;required&#93; The identifier of the continuous deployment policy whose configuration
+#' you are getting.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContinuousDeploymentPolicyConfig = list(
+#'     StagingDistributionDnsNames = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     TrafficConfig = list(
+#'       SingleWeightConfig = list(
+#'         Weight = 123.0,
+#'         SessionStickinessConfig = list(
+#'           IdleTTL = 123,
+#'           MaximumTTL = 123
+#'         )
+#'       ),
+#'       SingleHeaderConfig = list(
+#'         Header = "string",
+#'         Value = "string"
+#'       ),
+#'       Type = "SingleWeight"|"SingleHeader"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_continuous_deployment_policy_config(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_continuous_deployment_policy_config
+#'
+#' @aliases cloudfront_get_continuous_deployment_policy_config
+cloudfront_get_continuous_deployment_policy_config <- function(Id) {
+  op <- new_operation(
+    name = "GetContinuousDeploymentPolicyConfig",
+    http_method = "GET",
+    http_path = "/2020-05-31/continuous-deployment-policy/{Id}/config",
+    paginator = list()
+  )
+  input <- .cloudfront$get_continuous_deployment_policy_config_input(Id = Id)
+  output <- .cloudfront$get_continuous_deployment_policy_config_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_continuous_deployment_policy_config <- cloudfront_get_continuous_deployment_policy_config
+
 #' Get the information about a distribution
 #'
 #' @description
@@ -4150,7 +5015,8 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
-#'             )
+#'             ),
+#'             OriginAccessControlId = "string"
 #'           )
 #'         )
 #'       ),
@@ -4389,8 +5255,10 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 #'         )
 #'       ),
 #'       WebACLId = "string",
-#'       HttpVersion = "http1.1"|"http2",
-#'       IsIPV6Enabled = TRUE|FALSE
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -4493,7 +5361,8 @@ cloudfront_get_distribution <- function(Id) {
 #'           OriginShield = list(
 #'             Enabled = TRUE|FALSE,
 #'             OriginShieldRegion = "string"
-#'           )
+#'           ),
+#'           OriginAccessControlId = "string"
 #'         )
 #'       )
 #'     ),
@@ -4732,8 +5601,10 @@ cloudfront_get_distribution <- function(Id) {
 #'       )
 #'     ),
 #'     WebACLId = "string",
-#'     HttpVersion = "http1.1"|"http2",
-#'     IsIPV6Enabled = TRUE|FALSE
+#'     HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'     IsIPV6Enabled = TRUE|FALSE,
+#'     ContinuousDeploymentPolicyId = "string",
+#'     Staging = TRUE|FALSE
 #'   ),
 #'   ETag = "string"
 #' )
@@ -5074,7 +5945,7 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 #' and metadata about a function, use
 #' [`describe_function`][cloudfront_describe_function].
 #' 
-#' To get a function’s code, you must provide the function’s name and
+#' To get a function's code, you must provide the function's name and
 #' stage. To get these values, you can use
 #' [`list_functions`][cloudfront_list_functions].
 #'
@@ -5082,7 +5953,7 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 #' cloudfront_get_function(Name, Stage)
 #'
 #' @param Name &#91;required&#93; The name of the function whose code you are getting.
-#' @param Stage The function’s stage, either `DEVELOPMENT` or `LIVE`.
+#' @param Stage The function's stage, either `DEVELOPMENT` or `LIVE`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5196,9 +6067,9 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 #' Gets a key group, including the date and time when the key group was
 #' last modified.
 #' 
-#' To get a key group, you must provide the key group’s identifier. If the
-#' key group is referenced in a distribution’s cache behavior, you can get
-#' the key group’s identifier using
+#' To get a key group, you must provide the key group's identifier. If the
+#' key group is referenced in a distribution's cache behavior, you can get
+#' the key group's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the key group is
 #' not referenced in a cache behavior, you can get the identifier using
@@ -5265,9 +6136,9 @@ cloudfront_get_key_group <- function(Id) {
 #' @description
 #' Gets a key group configuration.
 #' 
-#' To get a key group configuration, you must provide the key group’s
-#' identifier. If the key group is referenced in a distribution’s cache
-#' behavior, you can get the key group’s identifier using
+#' To get a key group configuration, you must provide the key group's
+#' identifier. If the key group is referenced in a distribution's cache
+#' behavior, you can get the key group's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the key group is
 #' not referenced in a cache behavior, you can get the identifier using
@@ -5363,7 +6234,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
   op <- new_operation(
     name = "GetMonitoringSubscription",
     http_method = "GET",
-    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription",
+    http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
     paginator = list()
   )
   input <- .cloudfront$get_monitoring_subscription_input(DistributionId = DistributionId)
@@ -5376,18 +6247,130 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 }
 .cloudfront$operations$get_monitoring_subscription <- cloudfront_get_monitoring_subscription
 
+#' Gets a CloudFront origin access control, including its unique identifier
+#'
+#' @description
+#' Gets a CloudFront origin access control, including its unique
+#' identifier.
+#'
+#' @usage
+#' cloudfront_get_origin_access_control(Id)
+#'
+#' @param Id &#91;required&#93; The unique identifier of the origin access control.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginAccessControl = list(
+#'     Id = "string",
+#'     OriginAccessControlConfig = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       SigningProtocol = "sigv4",
+#'       SigningBehavior = "never"|"always"|"no-override",
+#'       OriginAccessControlOriginType = "s3"|"mediastore"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_origin_access_control(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_origin_access_control
+#'
+#' @aliases cloudfront_get_origin_access_control
+cloudfront_get_origin_access_control <- function(Id) {
+  op <- new_operation(
+    name = "GetOriginAccessControl",
+    http_method = "GET",
+    http_path = "/2020-05-31/origin-access-control/{Id}",
+    paginator = list()
+  )
+  input <- .cloudfront$get_origin_access_control_input(Id = Id)
+  output <- .cloudfront$get_origin_access_control_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_origin_access_control <- cloudfront_get_origin_access_control
+
+#' Gets a CloudFront origin access control configuration
+#'
+#' @description
+#' Gets a CloudFront origin access control configuration.
+#'
+#' @usage
+#' cloudfront_get_origin_access_control_config(Id)
+#'
+#' @param Id &#91;required&#93; The unique identifier of the origin access control.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginAccessControlConfig = list(
+#'     Name = "string",
+#'     Description = "string",
+#'     SigningProtocol = "sigv4",
+#'     SigningBehavior = "never"|"always"|"no-override",
+#'     OriginAccessControlOriginType = "s3"|"mediastore"
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_origin_access_control_config(
+#'   Id = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_get_origin_access_control_config
+#'
+#' @aliases cloudfront_get_origin_access_control_config
+cloudfront_get_origin_access_control_config <- function(Id) {
+  op <- new_operation(
+    name = "GetOriginAccessControlConfig",
+    http_method = "GET",
+    http_path = "/2020-05-31/origin-access-control/{Id}/config",
+    paginator = list()
+  )
+  input <- .cloudfront$get_origin_access_control_config_input(Id = Id)
+  output <- .cloudfront$get_origin_access_control_config_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$get_origin_access_control_config <- cloudfront_get_origin_access_control_config
+
 #' Gets an origin request policy, including the following metadata:
 #'
 #' @description
 #' Gets an origin request policy, including the following metadata:
 #' 
-#' -   The policy’s identifier.
+#' -   The policy's identifier.
 #' 
 #' -   The date and time when the policy was last modified.
 #' 
-#' To get an origin request policy, you must provide the policy’s
-#' identifier. If the origin request policy is attached to a distribution’s
-#' cache behavior, you can get the policy’s identifier using
+#' To get an origin request policy, you must provide the policy's
+#' identifier. If the origin request policy is attached to a distribution's
+#' cache behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the origin request
 #' policy is not attached to a cache behavior, you can get the identifier
@@ -5398,8 +6381,8 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #' cloudfront_get_origin_request_policy(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy. If the origin
-#' request policy is attached to a distribution’s cache behavior, you can
-#' get the policy’s identifier using
+#' request policy is attached to a distribution's cache behavior, you can
+#' get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the origin request
 #' policy is not attached to a cache behavior, you can get the identifier
@@ -5419,7 +6402,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #'       Comment = "string",
 #'       Name = "string",
 #'       HeadersConfig = list(
-#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'         Headers = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -5428,7 +6411,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #'         )
 #'       ),
 #'       CookiesConfig = list(
-#'         CookieBehavior = "none"|"whitelist"|"all",
+#'         CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'         Cookies = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -5437,7 +6420,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #'         )
 #'       ),
 #'       QueryStringsConfig = list(
-#'         QueryStringBehavior = "none"|"whitelist"|"all",
+#'         QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'         QueryStrings = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -5486,8 +6469,8 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #' Gets an origin request policy configuration.
 #' 
 #' To get an origin request policy configuration, you must provide the
-#' policy’s identifier. If the origin request policy is attached to a
-#' distribution’s cache behavior, you can get the policy’s identifier using
+#' policy's identifier. If the origin request policy is attached to a
+#' distribution's cache behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the origin request
 #' policy is not attached to a cache behavior, you can get the identifier
@@ -5498,8 +6481,8 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #' cloudfront_get_origin_request_policy_config(Id)
 #'
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy. If the origin
-#' request policy is attached to a distribution’s cache behavior, you can
-#' get the policy’s identifier using
+#' request policy is attached to a distribution's cache behavior, you can
+#' get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the origin request
 #' policy is not attached to a cache behavior, you can get the identifier
@@ -5514,7 +6497,7 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #'     Comment = "string",
 #'     Name = "string",
 #'     HeadersConfig = list(
-#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'       Headers = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -5523,7 +6506,7 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #'       )
 #'     ),
 #'     CookiesConfig = list(
-#'       CookieBehavior = "none"|"whitelist"|"all",
+#'       CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'       Cookies = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -5532,7 +6515,7 @@ cloudfront_get_origin_request_policy <- function(Id) {
 #'       )
 #'     ),
 #'     QueryStringsConfig = list(
-#'       QueryStringBehavior = "none"|"whitelist"|"all",
+#'       QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'       QueryStrings = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -5692,7 +6675,7 @@ cloudfront_get_public_key_config <- function(Id) {
 #' Gets a real-time log configuration.
 #' 
 #' To get a real-time log configuration, you can provide the
-#' configuration’s name or its Amazon Resource Name (ARN). You must provide
+#' configuration's name or its Amazon Resource Name (ARN). You must provide
 #' at least one. If you provide both, CloudFront uses the name to identify
 #' the real-time log configuration to get.
 #'
@@ -5757,16 +6740,16 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 }
 .cloudfront$operations$get_realtime_log_config <- cloudfront_get_realtime_log_config
 
-#' Gets a response headers policy, including metadata (the policy’s
+#' Gets a response headers policy, including metadata (the policy's
 #' identifier and the date and time when the policy was last modified)
 #'
 #' @description
-#' Gets a response headers policy, including metadata (the policy’s
+#' Gets a response headers policy, including metadata (the policy's
 #' identifier and the date and time when the policy was last modified).
 #' 
-#' To get a response headers policy, you must provide the policy’s
+#' To get a response headers policy, you must provide the policy's
 #' identifier. If the response headers policy is attached to a
-#' distribution’s cache behavior, you can get the policy’s identifier using
+#' distribution's cache behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the response
 #' headers policy is not attached to a cache behavior, you can get the
@@ -5778,8 +6761,8 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #'
 #' @param Id &#91;required&#93; The identifier for the response headers policy.
 #' 
-#' If the response headers policy is attached to a distribution’s cache
-#' behavior, you can get the policy’s identifier using
+#' If the response headers policy is attached to a distribution's cache
+#' behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the response
 #' headers policy is not attached to a cache behavior, you can get the
@@ -5856,6 +6839,10 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #'           AccessControlMaxAgeSec = 123
 #'         )
 #'       ),
+#'       ServerTimingHeadersConfig = list(
+#'         Enabled = TRUE|FALSE,
+#'         SamplingRate = 123.0
+#'       ),
 #'       CustomHeadersConfig = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -5866,9 +6853,13 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #'           )
 #'         )
 #'       ),
-#'       ServerTimingHeadersConfig = list(
-#'         Enabled = TRUE|FALSE,
-#'         SamplingRate = 123.0
+#'       RemoveHeadersConfig = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Header = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -5911,8 +6902,8 @@ cloudfront_get_response_headers_policy <- function(Id) {
 #' Gets a response headers policy configuration.
 #' 
 #' To get a response headers policy configuration, you must provide the
-#' policy’s identifier. If the response headers policy is attached to a
-#' distribution’s cache behavior, you can get the policy’s identifier using
+#' policy's identifier. If the response headers policy is attached to a
+#' distribution's cache behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the response
 #' headers policy is not attached to a cache behavior, you can get the
@@ -5924,8 +6915,8 @@ cloudfront_get_response_headers_policy <- function(Id) {
 #'
 #' @param Id &#91;required&#93; The identifier for the response headers policy.
 #' 
-#' If the response headers policy is attached to a distribution’s cache
-#' behavior, you can get the policy’s identifier using
+#' If the response headers policy is attached to a distribution's cache
+#' behavior, you can get the policy's identifier using
 #' [`list_distributions`][cloudfront_list_distributions] or
 #' [`get_distribution`][cloudfront_get_distribution]. If the response
 #' headers policy is not attached to a cache behavior, you can get the
@@ -5997,6 +6988,10 @@ cloudfront_get_response_headers_policy <- function(Id) {
 #'         AccessControlMaxAgeSec = 123
 #'       )
 #'     ),
+#'     ServerTimingHeadersConfig = list(
+#'       Enabled = TRUE|FALSE,
+#'       SamplingRate = 123.0
+#'     ),
 #'     CustomHeadersConfig = list(
 #'       Quantity = 123,
 #'       Items = list(
@@ -6007,9 +7002,13 @@ cloudfront_get_response_headers_policy <- function(Id) {
 #'         )
 #'       )
 #'     ),
-#'     ServerTimingHeadersConfig = list(
-#'       Enabled = TRUE|FALSE,
-#'       SamplingRate = 123.0
+#'     RemoveHeadersConfig = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Header = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   ETag = "string"
@@ -6251,7 +7250,7 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of cache policies. The response includes cache policies in the
 #' list that occur after the marker. To get the next page of the list, set
-#' this field’s value to the value of `NextMarker` from the current page’s
+#' this field's value to the value of `NextMarker` from the current page's
 #' response.
 #' @param MaxItems The maximum number of cache policies that you want in the response.
 #'
@@ -6426,7 +7425,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #' conflicting alias. In the returned list, the distribution and account
 #' IDs are partially hidden, which allows you to identify the distributions
 #' and accounts that you own, but helps to protect the information of ones
-#' that you don’t own.
+#' that you don't own.
 #' 
 #' Use this operation to find aliases that are in use in CloudFront that
 #' conflict or overlap with the provided alias. For example, if you provide
@@ -6462,8 +7461,8 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 #' @param Marker Use this field when paginating results to indicate where to begin in the
 #' list of conflicting aliases. The response includes conflicting aliases
 #' in the list that occur after the marker. To get the next page of the
-#' list, set this field’s value to the value of `NextMarker` from the
-#' current page’s response.
+#' list, set this field's value to the value of `NextMarker` from the
+#' current page's response.
 #' @param MaxItems The maximum number of conflicting aliases that you want in the response.
 #'
 #' @return
@@ -6516,6 +7515,106 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
   return(response)
 }
 .cloudfront$operations$list_conflicting_aliases <- cloudfront_list_conflicting_aliases
+
+#' Gets a list of the continuous deployment policies in your Amazon Web
+#' Services account
+#'
+#' @description
+#' Gets a list of the continuous deployment policies in your Amazon Web
+#' Services account.
+#' 
+#' You can optionally specify the maximum number of items to receive in the
+#' response. If the total number of items in the list exceeds the maximum
+#' that you specify, or the default maximum, the response is paginated. To
+#' get the next page of items, send a subsequent request that specifies the
+#' `NextMarker` value from the current response as the `Marker` value in
+#' the subsequent request.
+#'
+#' @usage
+#' cloudfront_list_continuous_deployment_policies(Marker, MaxItems)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list of continuous deployment policies. The response includes
+#' policies in the list that occur after the marker. To get the next page
+#' of the list, set this field's value to the value of `NextMarker` from
+#' the current page's response.
+#' @param MaxItems The maximum number of continuous deployment policies that you want
+#' returned in the response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContinuousDeploymentPolicyList = list(
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         ContinuousDeploymentPolicy = list(
+#'           Id = "string",
+#'           LastModifiedTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           ContinuousDeploymentPolicyConfig = list(
+#'             StagingDistributionDnsNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Enabled = TRUE|FALSE,
+#'             TrafficConfig = list(
+#'               SingleWeightConfig = list(
+#'                 Weight = 123.0,
+#'                 SessionStickinessConfig = list(
+#'                   IdleTTL = 123,
+#'                   MaximumTTL = 123
+#'                 )
+#'               ),
+#'               SingleHeaderConfig = list(
+#'                 Header = "string",
+#'                 Value = "string"
+#'               ),
+#'               Type = "SingleWeight"|"SingleHeader"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_continuous_deployment_policies(
+#'   Marker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_continuous_deployment_policies
+#'
+#' @aliases cloudfront_list_continuous_deployment_policies
+cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListContinuousDeploymentPolicies",
+    http_method = "GET",
+    http_path = "/2020-05-31/continuous-deployment-policy",
+    paginator = list()
+  )
+  input <- .cloudfront$list_continuous_deployment_policies_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_continuous_deployment_policies_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_continuous_deployment_policies <- cloudfront_list_continuous_deployment_policies
 
 #' List CloudFront distributions
 #'
@@ -6594,7 +7693,8 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
-#'               )
+#'               ),
+#'               OriginAccessControlId = "string"
 #'             )
 #'           )
 #'         ),
@@ -6827,14 +7927,15 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
 #'           )
 #'         ),
 #'         WebACLId = "string",
-#'         HttpVersion = "http1.1"|"http2",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'         IsIPV6Enabled = TRUE|FALSE,
 #'         AliasICPRecordals = list(
 #'           list(
 #'             CNAME = "string",
 #'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
 #'           )
-#'         )
+#'         ),
+#'         Staging = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -6872,11 +7973,11 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 .cloudfront$operations$list_distributions <- cloudfront_list_distributions
 
 #' Gets a list of distribution IDs for distributions that have a cache
-#' behavior that’s associated with the specified cache policy
+#' behavior that's associated with the specified cache policy
 #'
 #' @description
 #' Gets a list of distribution IDs for distributions that have a cache
-#' behavior that’s associated with the specified cache policy.
+#' behavior that's associated with the specified cache policy.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
 #' response. If the total number of items in the list exceeds the maximum
@@ -6892,8 +7993,8 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of distribution IDs. The response includes distribution IDs in
 #' the list that occur after the marker. To get the next page of the list,
-#' set this field’s value to the value of `NextMarker` from the current
-#' page’s response.
+#' set this field's value to the value of `NextMarker` from the current
+#' page's response.
 #' @param MaxItems The maximum number of distribution IDs that you want in the response.
 #' @param CachePolicyId &#91;required&#93; The ID of the cache policy whose associated distribution IDs you want to
 #' list.
@@ -6966,8 +8067,8 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of distribution IDs. The response includes distribution IDs in
 #' the list that occur after the marker. To get the next page of the list,
-#' set this field’s value to the value of `NextMarker` from the current
-#' page’s response.
+#' set this field's value to the value of `NextMarker` from the current
+#' page's response.
 #' @param MaxItems The maximum number of distribution IDs that you want in the response.
 #' @param KeyGroupId &#91;required&#93; The ID of the key group whose associated distribution IDs you are
 #' listing.
@@ -7021,11 +8122,11 @@ cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems =
 .cloudfront$operations$list_distributions_by_key_group <- cloudfront_list_distributions_by_key_group
 
 #' Gets a list of distribution IDs for distributions that have a cache
-#' behavior that’s associated with the specified origin request policy
+#' behavior that's associated with the specified origin request policy
 #'
 #' @description
 #' Gets a list of distribution IDs for distributions that have a cache
-#' behavior that’s associated with the specified origin request policy.
+#' behavior that's associated with the specified origin request policy.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
 #' response. If the total number of items in the list exceeds the maximum
@@ -7041,8 +8142,8 @@ cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems =
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of distribution IDs. The response includes distribution IDs in
 #' the list that occur after the marker. To get the next page of the list,
-#' set this field’s value to the value of `NextMarker` from the current
-#' page’s response.
+#' set this field's value to the value of `NextMarker` from the current
+#' page's response.
 #' @param MaxItems The maximum number of distribution IDs that you want in the response.
 #' @param OriginRequestPolicyId &#91;required&#93; The ID of the origin request policy whose associated distribution IDs
 #' you want to list.
@@ -7095,11 +8196,11 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 }
 .cloudfront$operations$list_distributions_by_origin_request_policy_id <- cloudfront_list_distributions_by_origin_request_policy_id
 
-#' Gets a list of distributions that have a cache behavior that’s
+#' Gets a list of distributions that have a cache behavior that's
 #' associated with the specified real-time log configuration
 #'
 #' @description
-#' Gets a list of distributions that have a cache behavior that’s
+#' Gets a list of distributions that have a cache behavior that's
 #' associated with the specified real-time log configuration.
 #' 
 #' You can specify the real-time log configuration by its name or its
@@ -7121,7 +8222,7 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of distributions. The response includes distributions in the
 #' list that occur after the marker. To get the next page of the list, set
-#' this field’s value to the value of `NextMarker` from the current page’s
+#' this field's value to the value of `NextMarker` from the current page's
 #' response.
 #' @param MaxItems The maximum number of distributions that you want in the response.
 #' @param RealtimeLogConfigName The name of the real-time log configuration whose associated
@@ -7191,7 +8292,8 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
-#'               )
+#'               ),
+#'               OriginAccessControlId = "string"
 #'             )
 #'           )
 #'         ),
@@ -7424,14 +8526,15 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #'           )
 #'         ),
 #'         WebACLId = "string",
-#'         HttpVersion = "http1.1"|"http2",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'         IsIPV6Enabled = TRUE|FALSE,
 #'         AliasICPRecordals = list(
 #'           list(
 #'             CNAME = "string",
 #'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
 #'           )
-#'         )
+#'         ),
+#'         Staging = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -7471,11 +8574,11 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 .cloudfront$operations$list_distributions_by_realtime_log_config <- cloudfront_list_distributions_by_realtime_log_config
 
 #' Gets a list of distribution IDs for distributions that have a cache
-#' behavior that’s associated with the specified response headers policy
+#' behavior that's associated with the specified response headers policy
 #'
 #' @description
 #' Gets a list of distribution IDs for distributions that have a cache
-#' behavior that’s associated with the specified response headers policy.
+#' behavior that's associated with the specified response headers policy.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
 #' response. If the total number of items in the list exceeds the maximum
@@ -7491,8 +8594,8 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of distribution IDs. The response includes distribution IDs in
 #' the list that occur after the marker. To get the next page of the list,
-#' set this field’s value to the value of `NextMarker` from the current
-#' page’s response.
+#' set this field's value to the value of `NextMarker` from the current
+#' page's response.
 #' @param MaxItems The maximum number of distribution IDs that you want to get in the
 #' response.
 #' @param ResponseHeadersPolicyId &#91;required&#93; The ID of the response headers policy whose associated distribution IDs
@@ -7628,7 +8731,8 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'               OriginShield = list(
 #'                 Enabled = TRUE|FALSE,
 #'                 OriginShieldRegion = "string"
-#'               )
+#'               ),
+#'               OriginAccessControlId = "string"
 #'             )
 #'           )
 #'         ),
@@ -7861,14 +8965,15 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
 #'           )
 #'         ),
 #'         WebACLId = "string",
-#'         HttpVersion = "http1.1"|"http2",
+#'         HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
 #'         IsIPV6Enabled = TRUE|FALSE,
 #'         AliasICPRecordals = list(
 #'           list(
 #'             CNAME = "string",
 #'             ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
 #'           )
-#'         )
+#'         ),
+#'         Staging = TRUE|FALSE
 #'       )
 #'     )
 #'   )
@@ -8108,7 +9213,7 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of functions. The response includes functions in the list that
 #' occur after the marker. To get the next page of the list, set this
-#' field’s value to the value of `NextMarker` from the current page’s
+#' field's value to the value of `NextMarker` from the current page's
 #' response.
 #' @param MaxItems The maximum number of functions that you want in the response.
 #' @param Stage An optional filter to return only the functions that are in the
@@ -8268,7 +9373,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of key groups. The response includes key groups in the list
 #' that occur after the marker. To get the next page of the list, set this
-#' field’s value to the value of `NextMarker` from the current page’s
+#' field's value to the value of `NextMarker` from the current page's
 #' response.
 #' @param MaxItems The maximum number of key groups that you want in the response.
 #'
@@ -8331,6 +9436,85 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 }
 .cloudfront$operations$list_key_groups <- cloudfront_list_key_groups
 
+#' Gets the list of CloudFront origin access controls in this Amazon Web
+#' Services account
+#'
+#' @description
+#' Gets the list of CloudFront origin access controls in this Amazon Web
+#' Services account.
+#' 
+#' You can optionally specify the maximum number of items to receive in the
+#' response. If the total number of items in the list exceeds the maximum
+#' that you specify, or the default maximum, the response is paginated. To
+#' get the next page of items, send another request that specifies the
+#' `NextMarker` value from the current response as the `Marker` value in
+#' the next request.
+#'
+#' @usage
+#' cloudfront_list_origin_access_controls(Marker, MaxItems)
+#'
+#' @param Marker Use this field when paginating results to indicate where to begin in
+#' your list of origin access controls. The response includes the items in
+#' the list that occur after the marker. To get the next page of the list,
+#' set this field's value to the value of `NextMarker` from the current
+#' page's response.
+#' @param MaxItems The maximum number of origin access controls that you want in the
+#' response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginAccessControlList = list(
+#'     Marker = "string",
+#'     NextMarker = "string",
+#'     MaxItems = 123,
+#'     IsTruncated = TRUE|FALSE,
+#'     Quantity = 123,
+#'     Items = list(
+#'       list(
+#'         Id = "string",
+#'         Description = "string",
+#'         Name = "string",
+#'         SigningProtocol = "sigv4",
+#'         SigningBehavior = "never"|"always"|"no-override",
+#'         OriginAccessControlOriginType = "s3"|"mediastore"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_origin_access_controls(
+#'   Marker = "string",
+#'   MaxItems = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_list_origin_access_controls
+#'
+#' @aliases cloudfront_list_origin_access_controls
+cloudfront_list_origin_access_controls <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListOriginAccessControls",
+    http_method = "GET",
+    http_path = "/2020-05-31/origin-access-control",
+    paginator = list()
+  )
+  input <- .cloudfront$list_origin_access_controls_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .cloudfront$list_origin_access_controls_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$list_origin_access_controls <- cloudfront_list_origin_access_controls
+
 #' Gets a list of origin request policies
 #'
 #' @description
@@ -8361,8 +9545,8 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of origin request policies. The response includes origin
 #' request policies in the list that occur after the marker. To get the
-#' next page of the list, set this field’s value to the value of
-#' `NextMarker` from the current page’s response.
+#' next page of the list, set this field's value to the value of
+#' `NextMarker` from the current page's response.
 #' @param MaxItems The maximum number of origin request policies that you want in the
 #' response.
 #'
@@ -8386,7 +9570,7 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #'             Comment = "string",
 #'             Name = "string",
 #'             HeadersConfig = list(
-#'               HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'               HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'               Headers = list(
 #'                 Quantity = 123,
 #'                 Items = list(
@@ -8395,7 +9579,7 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #'               )
 #'             ),
 #'             CookiesConfig = list(
-#'               CookieBehavior = "none"|"whitelist"|"all",
+#'               CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'               Cookies = list(
 #'                 Quantity = 123,
 #'                 Items = list(
@@ -8404,7 +9588,7 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 #'               )
 #'             ),
 #'             QueryStringsConfig = list(
-#'               QueryStringBehavior = "none"|"whitelist"|"all",
+#'               QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'               QueryStrings = list(
 #'                 Quantity = 123,
 #'                 Items = list(
@@ -8540,8 +9724,8 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of real-time log configurations. The response includes
 #' real-time log configurations in the list that occur after the marker. To
-#' get the next page of the list, set this field’s value to the value of
-#' `NextMarker` from the current page’s response.
+#' get the next page of the list, set this field's value to the value of
+#' `NextMarker` from the current page's response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8635,8 +9819,8 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
 #' @param Marker Use this field when paginating results to indicate where to begin in
 #' your list of response headers policies. The response includes response
 #' headers policies in the list that occur after the marker. To get the
-#' next page of the list, set this field’s value to the value of
-#' `NextMarker` from the current page’s response.
+#' next page of the list, set this field's value to the value of
+#' `NextMarker` from the current page's response.
 #' @param MaxItems The maximum number of response headers policies that you want to get in
 #' the response.
 #'
@@ -8717,6 +9901,10 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
 #'                 AccessControlMaxAgeSec = 123
 #'               )
 #'             ),
+#'             ServerTimingHeadersConfig = list(
+#'               Enabled = TRUE|FALSE,
+#'               SamplingRate = 123.0
+#'             ),
 #'             CustomHeadersConfig = list(
 #'               Quantity = 123,
 #'               Items = list(
@@ -8727,9 +9915,13 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
 #'                 )
 #'               )
 #'             ),
-#'             ServerTimingHeadersConfig = list(
-#'               Enabled = TRUE|FALSE,
-#'               SamplingRate = 123.0
+#'             RemoveHeadersConfig = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   Header = "string"
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -8920,10 +10112,10 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 #' in the `LIVE` stage.
 #' 
 #' When a function is published to the `LIVE` stage, you can attach the
-#' function to a distribution’s cache behavior, using the function’s Amazon
+#' function to a distribution's cache behavior, using the function's Amazon
 #' Resource Name (ARN).
 #' 
-#' To publish a function, you must provide the function’s name and version
+#' To publish a function, you must provide the function's name and version
 #' (`ETag` value). To get these values, you can use
 #' [`list_functions`][cloudfront_list_functions] and
 #' [`describe_function`][cloudfront_describe_function].
@@ -9050,15 +10242,15 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #' To test a function, you provide an *event object* that represents an
 #' HTTP request or response that your CloudFront distribution could receive
 #' in production. CloudFront runs the function, passing it the event object
-#' that you provided, and returns the function’s result (the modified event
+#' that you provided, and returns the function's result (the modified event
 #' object) in the response. The response also contains function logs and
 #' error messages, if any exist. For more information about testing
 #' functions, see [Testing
 #' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
-#' To test a function, you provide the function’s name and version (`ETag`
-#' value) along with the event object. To get the function’s name and
+#' To test a function, you provide the function's name and version (`ETag`
+#' value) along with the event object. To get the function's name and
 #' version, you can use [`list_functions`][cloudfront_list_functions] and
 #' [`describe_function`][cloudfront_describe_function].
 #'
@@ -9206,18 +10398,18 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 #' 
 #' 3.  Call [`update_cache_policy`][cloudfront_update_cache_policy] by
 #'     providing the entire cache policy configuration, including the
-#'     fields that you modified and those that you didn’t.
+#'     fields that you modified and those that you didn't.
 #'
 #' @usage
 #' cloudfront_update_cache_policy(CachePolicyConfig, Id, IfMatch)
 #'
 #' @param CachePolicyConfig &#91;required&#93; A cache policy configuration.
 #' @param Id &#91;required&#93; The unique identifier for the cache policy that you are updating. The
-#' identifier is returned in a cache behavior’s `CachePolicyId` field in
+#' identifier is returned in a cache behavior's `CachePolicyId` field in
 #' the response to
 #' [`get_distribution_config`][cloudfront_get_distribution_config].
 #' @param IfMatch The version of the cache policy that you are updating. The version is
-#' returned in the cache policy’s `ETag` field in the response to
+#' returned in the cache policy's `ETag` field in the response to
 #' [`get_cache_policy_config`][cloudfront_get_cache_policy_config].
 #'
 #' @return
@@ -9404,85 +10596,165 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 }
 .cloudfront$operations$update_cloud_front_origin_access_identity <- cloudfront_update_cloud_front_origin_access_identity
 
-#' Updates the configuration for a web distribution
+#' Updates a continuous deployment policy
 #'
 #' @description
-#' Updates the configuration for a web distribution.
+#' Updates a continuous deployment policy. You can update a continuous
+#' deployment policy to enable or disable it, to change the percentage of
+#' traffic that it sends to the staging distribution, or to change the
+#' staging distribution that it sends traffic to.
 #' 
-#' When you update a distribution, there are more required fields than when
-#' you create a distribution. When you update your distribution by using
-#' this API action, follow the steps here to get the current configuration
-#' and then make your updates, to make sure that you include all of the
-#' required fields. To view a summary, see [Required Fields for Create
-#' Distribution and Update
-#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html)
-#' in the *Amazon CloudFront Developer Guide*.
+#' When you update a continuous deployment policy configuration, all the
+#' fields are updated with the values that are provided in the request. You
+#' cannot update some fields independent of others. To update a continuous
+#' deployment policy configuration:
+#' 
+#' 1.  Use
+#'     [`get_continuous_deployment_policy_config`][cloudfront_get_continuous_deployment_policy_config]
+#'     to get the current configuration.
+#' 
+#' 2.  Locally modify the fields in the continuous deployment policy
+#'     configuration that you want to update.
+#' 
+#' 3.  Use
+#'     [`update_continuous_deployment_policy`][cloudfront_update_continuous_deployment_policy],
+#'     providing the entire continuous deployment policy configuration,
+#'     including the fields that you modified and those that you didn't.
+#'
+#' @usage
+#' cloudfront_update_continuous_deployment_policy(
+#'   ContinuousDeploymentPolicyConfig, Id, IfMatch)
+#'
+#' @param ContinuousDeploymentPolicyConfig &#91;required&#93; The continuous deployment policy configuration.
+#' @param Id &#91;required&#93; The identifier of the continuous deployment policy that you are
+#' updating.
+#' @param IfMatch The current version (`ETag` value) of the continuous deployment policy
+#' that you are updating.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ContinuousDeploymentPolicy = list(
+#'     Id = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ContinuousDeploymentPolicyConfig = list(
+#'       StagingDistributionDnsNames = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       Enabled = TRUE|FALSE,
+#'       TrafficConfig = list(
+#'         SingleWeightConfig = list(
+#'           Weight = 123.0,
+#'           SessionStickinessConfig = list(
+#'             IdleTTL = 123,
+#'             MaximumTTL = 123
+#'           )
+#'         ),
+#'         SingleHeaderConfig = list(
+#'           Header = "string",
+#'           Value = "string"
+#'         ),
+#'         Type = "SingleWeight"|"SingleHeader"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_continuous_deployment_policy(
+#'   ContinuousDeploymentPolicyConfig = list(
+#'     StagingDistributionDnsNames = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Enabled = TRUE|FALSE,
+#'     TrafficConfig = list(
+#'       SingleWeightConfig = list(
+#'         Weight = 123.0,
+#'         SessionStickinessConfig = list(
+#'           IdleTTL = 123,
+#'           MaximumTTL = 123
+#'         )
+#'       ),
+#'       SingleHeaderConfig = list(
+#'         Header = "string",
+#'         Value = "string"
+#'       ),
+#'       Type = "SingleWeight"|"SingleHeader"
+#'     )
+#'   ),
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_continuous_deployment_policy
+#'
+#' @aliases cloudfront_update_continuous_deployment_policy
+cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentPolicyConfig, Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "UpdateContinuousDeploymentPolicy",
+    http_method = "PUT",
+    http_path = "/2020-05-31/continuous-deployment-policy/{Id}",
+    paginator = list()
+  )
+  input <- .cloudfront$update_continuous_deployment_policy_input(ContinuousDeploymentPolicyConfig = ContinuousDeploymentPolicyConfig, Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$update_continuous_deployment_policy_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_continuous_deployment_policy <- cloudfront_update_continuous_deployment_policy
+
+#' Updates the configuration for a CloudFront distribution
+#'
+#' @description
+#' Updates the configuration for a CloudFront distribution.
 #' 
 #' The update process includes getting the current distribution
-#' configuration, updating the XML document that is returned to make your
-#' changes, and then submitting an
+#' configuration, updating it to make your changes, and then submitting an
 #' [`update_distribution`][cloudfront_update_distribution] request to make
 #' the updates.
 #' 
-#' For information about updating a distribution using the CloudFront
-#' console instead, see [Creating a
-#' Distribution](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html)
-#' in the *Amazon CloudFront Developer Guide*.
-#' 
 #' **To update a web distribution using the CloudFront API**
 #' 
-#' 1.  Submit a
-#'     [`get_distribution_config`][cloudfront_get_distribution_config]
-#'     request to get the current configuration and an `Etag` header for
-#'     the distribution.
+#' 1.  Use [`get_distribution_config`][cloudfront_get_distribution_config]
+#'     to get the current configuration, including the version identifier
+#'     (`ETag`).
 #' 
-#'     If you update the distribution again, you must get a new `Etag`
-#'     header.
+#' 2.  Update the distribution configuration that was returned in the
+#'     response. Note the following important requirements and
+#'     restrictions:
 #' 
-#' 2.  Update the XML document that was returned in the response to your
-#'     [`get_distribution_config`][cloudfront_get_distribution_config]
-#'     request to include your changes.
+#'     -   You must rename the `ETag` field to `IfMatch`, leaving the value
+#'         unchanged. (Set the value of `IfMatch` to the value of `ETag`,
+#'         then remove the `ETag` field.)
 #' 
-#'     When you edit the XML file, be aware of the following:
-#' 
-#'     -   You must strip out the ETag parameter that is returned.
-#' 
-#'     -   Additional fields are required when you update a distribution.
-#'         There may be fields included in the XML file for features that
-#'         you haven't configured for your distribution. This is expected
-#'         and required to successfully update the distribution.
-#' 
-#'     -   You can't change the value of `CallerReference`. If you try to
-#'         change this value, CloudFront returns an `IllegalUpdate` error.
-#' 
-#'     -   The new configuration replaces the existing configuration; the
-#'         values that you specify in an
-#'         [`update_distribution`][cloudfront_update_distribution] request
-#'         are not merged into your existing configuration. When you add,
-#'         delete, or replace values in an element that allows multiple
-#'         values (for example, `CNAME`), you must specify all of the
-#'         values that you want to appear in the updated distribution. In
-#'         addition, you must update the corresponding `Quantity` element.
+#'     -   You can't change the value of `CallerReference`.
 #' 
 #' 3.  Submit an [`update_distribution`][cloudfront_update_distribution]
-#'     request to update the configuration for your distribution:
-#' 
-#'     -   In the request body, include the XML document that you updated
-#'         in Step 2. The request body must include an XML document with a
-#'         `DistributionConfig` element.
-#' 
-#'     -   Set the value of the HTTP `If-Match` header to the value of the
-#'         `ETag` header that CloudFront returned when you submitted the
-#'         [`get_distribution_config`][cloudfront_get_distribution_config]
-#'         request in Step 1.
-#' 
-#' 4.  Review the response to the
-#'     [`update_distribution`][cloudfront_update_distribution] request to
-#'     confirm that the configuration was successfully updated.
-#' 
-#' 5.  Optional: Submit a [`get_distribution`][cloudfront_get_distribution]
-#'     request to confirm that your changes have propagated. When
-#'     propagation is complete, the value of `Status` is `Deployed`.
+#'     request, providing the distribution configuration. The new
+#'     configuration replaces the existing configuration. The values that
+#'     you specify in an
+#'     [`update_distribution`][cloudfront_update_distribution] request are
+#'     not merged into your existing configuration. Make sure to include
+#'     all fields: the ones that you modified and also the ones that you
+#'     didn't.
 #'
 #' @usage
 #' cloudfront_update_distribution(DistributionConfig, Id, IfMatch)
@@ -9581,7 +10853,8 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'             OriginShield = list(
 #'               Enabled = TRUE|FALSE,
 #'               OriginShieldRegion = "string"
-#'             )
+#'             ),
+#'             OriginAccessControlId = "string"
 #'           )
 #'         )
 #'       ),
@@ -9820,8 +11093,10 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'         )
 #'       ),
 #'       WebACLId = "string",
-#'       HttpVersion = "http1.1"|"http2",
-#'       IsIPV6Enabled = TRUE|FALSE
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
 #'     ),
 #'     AliasICPRecordals = list(
 #'       list(
@@ -9883,7 +11158,8 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'           OriginShield = list(
 #'             Enabled = TRUE|FALSE,
 #'             OriginShieldRegion = "string"
-#'           )
+#'           ),
+#'           OriginAccessControlId = "string"
 #'         )
 #'       )
 #'     ),
@@ -10122,8 +11398,10 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 #'       )
 #'     ),
 #'     WebACLId = "string",
-#'     HttpVersion = "http1.1"|"http2",
-#'     IsIPV6Enabled = TRUE|FALSE
+#'     HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'     IsIPV6Enabled = TRUE|FALSE,
+#'     ContinuousDeploymentPolicyId = "string",
+#'     Staging = TRUE|FALSE
 #'   ),
 #'   Id = "string",
 #'   IfMatch = "string"
@@ -10151,6 +11429,414 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
   return(response)
 }
 .cloudfront$operations$update_distribution <- cloudfront_update_distribution
+
+#' Copies the staging distribution's configuration to its corresponding
+#' primary distribution
+#'
+#' @description
+#' Copies the staging distribution's configuration to its corresponding
+#' primary distribution. The primary distribution retains its `Aliases`
+#' (also known as alternate domain names or CNAMEs) and
+#' `ContinuousDeploymentPolicyId` value, but otherwise its configuration is
+#' overwritten to match the staging distribution.
+#' 
+#' You can use this operation in a continuous deployment workflow after you
+#' have tested configuration changes on the staging distribution. After
+#' using a continuous deployment policy to move a portion of your domain
+#' name's traffic to the staging distribution and verifying that it works
+#' as intended, you can use this operation to copy the staging
+#' distribution's configuration to the primary distribution. This action
+#' will disable the continuous deployment policy and move your domain's
+#' traffic back to the primary distribution.
+#'
+#' @usage
+#' cloudfront_update_distribution_with_staging_config(Id,
+#'   StagingDistributionId, IfMatch)
+#'
+#' @param Id &#91;required&#93; The identifier of the primary distribution to which you are copying a
+#' staging distribution's configuration.
+#' @param StagingDistributionId The identifier of the staging distribution whose configuration you are
+#' copying to the primary distribution.
+#' @param IfMatch The current versions (`ETag` values) of both primary and staging
+#' distributions. Provide these in the following format:
+#' 
+#' `<primary ETag>, <staging ETag>`
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Distribution = list(
+#'     Id = "string",
+#'     ARN = "string",
+#'     Status = "string",
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     InProgressInvalidationBatches = 123,
+#'     DomainName = "string",
+#'     ActiveTrustedSigners = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           AwsAccountNumber = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     ActiveTrustedKeyGroups = list(
+#'       Enabled = TRUE|FALSE,
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           KeyGroupId = "string",
+#'           KeyPairIds = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     DistributionConfig = list(
+#'       CallerReference = "string",
+#'       Aliases = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DefaultRootObject = "string",
+#'       Origins = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             DomainName = "string",
+#'             OriginPath = "string",
+#'             CustomHeaders = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   HeaderName = "string",
+#'                   HeaderValue = "string"
+#'                 )
+#'               )
+#'             ),
+#'             S3OriginConfig = list(
+#'               OriginAccessIdentity = "string"
+#'             ),
+#'             CustomOriginConfig = list(
+#'               HTTPPort = 123,
+#'               HTTPSPort = 123,
+#'               OriginProtocolPolicy = "http-only"|"match-viewer"|"https-only",
+#'               OriginSslProtocols = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "SSLv3"|"TLSv1"|"TLSv1.1"|"TLSv1.2"
+#'                 )
+#'               ),
+#'               OriginReadTimeout = 123,
+#'               OriginKeepaliveTimeout = 123
+#'             ),
+#'             ConnectionAttempts = 123,
+#'             ConnectionTimeout = 123,
+#'             OriginShield = list(
+#'               Enabled = TRUE|FALSE,
+#'               OriginShieldRegion = "string"
+#'             ),
+#'             OriginAccessControlId = "string"
+#'           )
+#'         )
+#'       ),
+#'       OriginGroups = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Id = "string",
+#'             FailoverCriteria = list(
+#'               StatusCodes = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   123
+#'                 )
+#'               )
+#'             ),
+#'             Members = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   OriginId = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       DefaultCacheBehavior = list(
+#'         TargetOriginId = "string",
+#'         TrustedSigners = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         TrustedKeyGroups = list(
+#'           Enabled = TRUE|FALSE,
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         ),
+#'         ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'         AllowedMethods = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'           ),
+#'           CachedMethods = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'             )
+#'           )
+#'         ),
+#'         SmoothStreaming = TRUE|FALSE,
+#'         Compress = TRUE|FALSE,
+#'         LambdaFunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               LambdaFunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'               IncludeBody = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         FunctionAssociations = list(
+#'           Quantity = 123,
+#'           Items = list(
+#'             list(
+#'               FunctionARN = "string",
+#'               EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'             )
+#'           )
+#'         ),
+#'         FieldLevelEncryptionId = "string",
+#'         RealtimeLogConfigArn = "string",
+#'         CachePolicyId = "string",
+#'         OriginRequestPolicyId = "string",
+#'         ResponseHeadersPolicyId = "string",
+#'         ForwardedValues = list(
+#'           QueryString = TRUE|FALSE,
+#'           Cookies = list(
+#'             Forward = "none"|"whitelist"|"all",
+#'             WhitelistedNames = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           Headers = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           ),
+#'           QueryStringCacheKeys = list(
+#'             Quantity = 123,
+#'             Items = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         MinTTL = 123,
+#'         DefaultTTL = 123,
+#'         MaxTTL = 123
+#'       ),
+#'       CacheBehaviors = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             PathPattern = "string",
+#'             TargetOriginId = "string",
+#'             TrustedSigners = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             TrustedKeyGroups = list(
+#'               Enabled = TRUE|FALSE,
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+#'             AllowedMethods = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'               ),
+#'               CachedMethods = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+#'                 )
+#'               )
+#'             ),
+#'             SmoothStreaming = TRUE|FALSE,
+#'             Compress = TRUE|FALSE,
+#'             LambdaFunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   LambdaFunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+#'                   IncludeBody = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             FunctionAssociations = list(
+#'               Quantity = 123,
+#'               Items = list(
+#'                 list(
+#'                   FunctionARN = "string",
+#'                   EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response"
+#'                 )
+#'               )
+#'             ),
+#'             FieldLevelEncryptionId = "string",
+#'             RealtimeLogConfigArn = "string",
+#'             CachePolicyId = "string",
+#'             OriginRequestPolicyId = "string",
+#'             ResponseHeadersPolicyId = "string",
+#'             ForwardedValues = list(
+#'               QueryString = TRUE|FALSE,
+#'               Cookies = list(
+#'                 Forward = "none"|"whitelist"|"all",
+#'                 WhitelistedNames = list(
+#'                   Quantity = 123,
+#'                   Items = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               ),
+#'               Headers = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               QueryStringCacheKeys = list(
+#'                 Quantity = 123,
+#'                 Items = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             MinTTL = 123,
+#'             DefaultTTL = 123,
+#'             MaxTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       CustomErrorResponses = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             ErrorCode = 123,
+#'             ResponsePagePath = "string",
+#'             ResponseCode = "string",
+#'             ErrorCachingMinTTL = 123
+#'           )
+#'         )
+#'       ),
+#'       Comment = "string",
+#'       Logging = list(
+#'         Enabled = TRUE|FALSE,
+#'         IncludeCookies = TRUE|FALSE,
+#'         Bucket = "string",
+#'         Prefix = "string"
+#'       ),
+#'       PriceClass = "PriceClass_100"|"PriceClass_200"|"PriceClass_All",
+#'       Enabled = TRUE|FALSE,
+#'       ViewerCertificate = list(
+#'         CloudFrontDefaultCertificate = TRUE|FALSE,
+#'         IAMCertificateId = "string",
+#'         ACMCertificateArn = "string",
+#'         SSLSupportMethod = "sni-only"|"vip"|"static-ip",
+#'         MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019"|"TLSv1.2_2021",
+#'         Certificate = "string",
+#'         CertificateSource = "cloudfront"|"iam"|"acm"
+#'       ),
+#'       Restrictions = list(
+#'         GeoRestriction = list(
+#'           RestrictionType = "blacklist"|"whitelist"|"none",
+#'           Quantity = 123,
+#'           Items = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       WebACLId = "string",
+#'       HttpVersion = "http1.1"|"http2"|"http3"|"http2and3",
+#'       IsIPV6Enabled = TRUE|FALSE,
+#'       ContinuousDeploymentPolicyId = "string",
+#'       Staging = TRUE|FALSE
+#'     ),
+#'     AliasICPRecordals = list(
+#'       list(
+#'         CNAME = "string",
+#'         ICPRecordalStatus = "APPROVED"|"SUSPENDED"|"PENDING"
+#'       )
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_distribution_with_staging_config(
+#'   Id = "string",
+#'   StagingDistributionId = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_distribution_with_staging_config
+#'
+#' @aliases cloudfront_update_distribution_with_staging_config
+cloudfront_update_distribution_with_staging_config <- function(Id, StagingDistributionId = NULL, IfMatch = NULL) {
+  op <- new_operation(
+    name = "UpdateDistributionWithStagingConfig",
+    http_method = "PUT",
+    http_path = "/2020-05-31/distribution/{Id}/promote-staging-config",
+    paginator = list()
+  )
+  input <- .cloudfront$update_distribution_with_staging_config_input(Id = Id, StagingDistributionId = StagingDistributionId, IfMatch = IfMatch)
+  output <- .cloudfront$update_distribution_with_staging_config_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_distribution_with_staging_config <- cloudfront_update_distribution_with_staging_config
 
 #' Update a field-level encryption configuration
 #'
@@ -10371,10 +12057,10 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 #' @description
 #' Updates a CloudFront function.
 #' 
-#' You can update a function’s code or the comment that describes the
-#' function. You cannot update a function’s name.
+#' You can update a function's code or the comment that describes the
+#' function. You cannot update a function's name.
 #' 
-#' To update a function, you provide the function’s name and version
+#' To update a function, you provide the function's name and version
 #' (`ETag` value) along with the updated function code. To get the name and
 #' version, you can use [`list_functions`][cloudfront_list_functions] and
 #' [`describe_function`][cloudfront_describe_function].
@@ -10471,7 +12157,7 @@ cloudfront_update_function <- function(Name, IfMatch, FunctionConfig, FunctionCo
 #' 
 #' 3.  Call [`update_key_group`][cloudfront_update_key_group] with the
 #'     entire key group object, including the fields that you modified and
-#'     those that you didn’t.
+#'     those that you didn't.
 #'
 #' @usage
 #' cloudfront_update_key_group(KeyGroupConfig, Id, IfMatch)
@@ -10479,7 +12165,7 @@ cloudfront_update_function <- function(Name, IfMatch, FunctionConfig, FunctionCo
 #' @param KeyGroupConfig &#91;required&#93; The key group configuration.
 #' @param Id &#91;required&#93; The identifier of the key group that you are updating.
 #' @param IfMatch The version of the key group that you are updating. The version is the
-#' key group’s `ETag` value.
+#' key group's `ETag` value.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10539,6 +12225,76 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 }
 .cloudfront$operations$update_key_group <- cloudfront_update_key_group
 
+#' Updates a CloudFront origin access control
+#'
+#' @description
+#' Updates a CloudFront origin access control.
+#'
+#' @usage
+#' cloudfront_update_origin_access_control(OriginAccessControlConfig, Id,
+#'   IfMatch)
+#'
+#' @param OriginAccessControlConfig &#91;required&#93; An origin access control.
+#' @param Id &#91;required&#93; The unique identifier of the origin access control that you are
+#' updating.
+#' @param IfMatch The current version (`ETag` value) of the origin access control that you
+#' are updating.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   OriginAccessControl = list(
+#'     Id = "string",
+#'     OriginAccessControlConfig = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       SigningProtocol = "sigv4",
+#'       SigningBehavior = "never"|"always"|"no-override",
+#'       OriginAccessControlOriginType = "s3"|"mediastore"
+#'     )
+#'   ),
+#'   ETag = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_origin_access_control(
+#'   OriginAccessControlConfig = list(
+#'     Name = "string",
+#'     Description = "string",
+#'     SigningProtocol = "sigv4",
+#'     SigningBehavior = "never"|"always"|"no-override",
+#'     OriginAccessControlOriginType = "s3"|"mediastore"
+#'   ),
+#'   Id = "string",
+#'   IfMatch = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudfront_update_origin_access_control
+#'
+#' @aliases cloudfront_update_origin_access_control
+cloudfront_update_origin_access_control <- function(OriginAccessControlConfig, Id, IfMatch = NULL) {
+  op <- new_operation(
+    name = "UpdateOriginAccessControl",
+    http_method = "PUT",
+    http_path = "/2020-05-31/origin-access-control/{Id}/config",
+    paginator = list()
+  )
+  input <- .cloudfront$update_origin_access_control_input(OriginAccessControlConfig = OriginAccessControlConfig, Id = Id, IfMatch = IfMatch)
+  output <- .cloudfront$update_origin_access_control_output()
+  config <- get_config()
+  svc <- .cloudfront$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudfront$operations$update_origin_access_control <- cloudfront_update_origin_access_control
+
 #' Updates an origin request policy configuration
 #'
 #' @description
@@ -10559,7 +12315,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #' 3.  Call
 #'     [`update_origin_request_policy`][cloudfront_update_origin_request_policy]
 #'     by providing the entire origin request policy configuration,
-#'     including the fields that you modified and those that you didn’t.
+#'     including the fields that you modified and those that you didn't.
 #'
 #' @usage
 #' cloudfront_update_origin_request_policy(OriginRequestPolicyConfig, Id,
@@ -10567,11 +12323,11 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'
 #' @param OriginRequestPolicyConfig &#91;required&#93; An origin request policy configuration.
 #' @param Id &#91;required&#93; The unique identifier for the origin request policy that you are
-#' updating. The identifier is returned in a cache behavior’s
+#' updating. The identifier is returned in a cache behavior's
 #' `OriginRequestPolicyId` field in the response to
 #' [`get_distribution_config`][cloudfront_get_distribution_config].
 #' @param IfMatch The version of the origin request policy that you are updating. The
-#' version is returned in the origin request policy’s `ETag` field in the
+#' version is returned in the origin request policy's `ETag` field in the
 #' response to
 #' [`get_origin_request_policy_config`][cloudfront_get_origin_request_policy_config].
 #'
@@ -10588,7 +12344,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'       Comment = "string",
 #'       Name = "string",
 #'       HeadersConfig = list(
-#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'         HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'         Headers = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -10597,7 +12353,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'         )
 #'       ),
 #'       CookiesConfig = list(
-#'         CookieBehavior = "none"|"whitelist"|"all",
+#'         CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'         Cookies = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -10606,7 +12362,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'         )
 #'       ),
 #'       QueryStringsConfig = list(
-#'         QueryStringBehavior = "none"|"whitelist"|"all",
+#'         QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'         QueryStrings = list(
 #'           Quantity = 123,
 #'           Items = list(
@@ -10627,7 +12383,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'     Comment = "string",
 #'     Name = "string",
 #'     HeadersConfig = list(
-#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront",
+#'       HeaderBehavior = "none"|"whitelist"|"allViewer"|"allViewerAndWhitelistCloudFront"|"allExcept",
 #'       Headers = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -10636,7 +12392,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'       )
 #'     ),
 #'     CookiesConfig = list(
-#'       CookieBehavior = "none"|"whitelist"|"all",
+#'       CookieBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'       Cookies = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -10645,7 +12401,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 #'       )
 #'     ),
 #'     QueryStringsConfig = list(
-#'       QueryStringBehavior = "none"|"whitelist"|"all",
+#'       QueryStringBehavior = "none"|"whitelist"|"all"|"allExcept",
 #'       QueryStrings = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -10770,9 +12526,9 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 #' 3.  Call this API
 #'     ([`update_realtime_log_config`][cloudfront_update_realtime_log_config])
 #'     by providing the entire real-time log configuration, including the
-#'     parameters that you modified and those that you didn’t.
+#'     parameters that you modified and those that you didn't.
 #' 
-#' You cannot update a real-time log configuration’s `Name` or `ARN`.
+#' You cannot update a real-time log configuration's `Name` or `ARN`.
 #'
 #' @usage
 #' cloudfront_update_realtime_log_config(EndPoints, Fields, Name, ARN,
@@ -10870,7 +12626,7 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #' 
 #' 1.  Use
 #'     [`get_response_headers_policy_config`][cloudfront_get_response_headers_policy_config]
-#'     to get the current policy’s configuration.
+#'     to get the current policy's configuration.
 #' 
 #' 2.  Modify the fields in the response headers policy configuration that
 #'     you want to update.
@@ -10878,7 +12634,7 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #' 3.  Call
 #'     [`update_response_headers_policy`][cloudfront_update_response_headers_policy],
 #'     providing the entire response headers policy configuration,
-#'     including the fields that you modified and those that you didn’t.
+#'     including the fields that you modified and those that you didn't.
 #'
 #' @usage
 #' cloudfront_update_response_headers_policy(ResponseHeadersPolicyConfig,
@@ -10888,7 +12644,7 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #' @param Id &#91;required&#93; The identifier for the response headers policy that you are updating.
 #' @param IfMatch The version of the response headers policy that you are updating.
 #' 
-#' The version is returned in the cache policy’s `ETag` field in the
+#' The version is returned in the cache policy's `ETag` field in the
 #' response to
 #' [`get_response_headers_policy_config`][cloudfront_get_response_headers_policy_config].
 #'
@@ -10962,6 +12718,10 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #'           AccessControlMaxAgeSec = 123
 #'         )
 #'       ),
+#'       ServerTimingHeadersConfig = list(
+#'         Enabled = TRUE|FALSE,
+#'         SamplingRate = 123.0
+#'       ),
 #'       CustomHeadersConfig = list(
 #'         Quantity = 123,
 #'         Items = list(
@@ -10972,9 +12732,13 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #'           )
 #'         )
 #'       ),
-#'       ServerTimingHeadersConfig = list(
-#'         Enabled = TRUE|FALSE,
-#'         SamplingRate = 123.0
+#'       RemoveHeadersConfig = list(
+#'         Quantity = 123,
+#'         Items = list(
+#'           list(
+#'             Header = "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -11046,6 +12810,10 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #'         AccessControlMaxAgeSec = 123
 #'       )
 #'     ),
+#'     ServerTimingHeadersConfig = list(
+#'       Enabled = TRUE|FALSE,
+#'       SamplingRate = 123.0
+#'     ),
 #'     CustomHeadersConfig = list(
 #'       Quantity = 123,
 #'       Items = list(
@@ -11056,9 +12824,13 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 #'         )
 #'       )
 #'     ),
-#'     ServerTimingHeadersConfig = list(
-#'       Enabled = TRUE|FALSE,
-#'       SamplingRate = 123.0
+#'     RemoveHeadersConfig = list(
+#'       Quantity = 123,
+#'       Items = list(
+#'         list(
+#'           Header = "string"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   Id = "string",

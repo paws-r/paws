@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_list_permission_sets_provisioned_to_account}
 \alias{ssoadmin_list_permission_sets_provisioned_to_account}
-\title{Lists all the permission sets that are provisioned to a specified Amazon
-Web Services account}
+\title{Lists all the permission sets that are provisioned to a specified AWS
+account}
 \usage{
 ssoadmin_list_permission_sets_provisioned_to_account(
   InstanceArn,
@@ -14,13 +14,11 @@ ssoadmin_list_permission_sets_provisioned_to_account(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed. For more information about ARNs, see Amazon
-Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-\emph{Amazon Web Services General Reference}.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed. For more information about ARNs, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 
-\item{AccountId}{[required] The identifier of the Amazon Web Services account from which to list the
-assignments.}
+\item{AccountId}{[required] The identifier of the AWS account from which to list the assignments.}
 
 \item{ProvisioningStatus}{The status object for the permission set provisioning operation.}
 
@@ -30,7 +28,7 @@ assignments.}
 the output of previous API calls to make subsequent calls.}
 }
 \description{
-Lists all the permission sets that are provisioned to a specified Amazon Web Services account.
+Lists all the permission sets that are provisioned to a specified AWS account.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/list_permission_sets_provisioned_to_account.html} for full documentation.
 }

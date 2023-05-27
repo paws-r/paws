@@ -10,10 +10,24 @@ support_describe_trusted_advisor_check_result(checkId, language = NULL)
 \arguments{
 \item{checkId}{[required] The unique identifier for the Trusted Advisor check.}
 
-\item{language}{The ISO 639-1 code for the language in which Amazon Web Services
-provides support. Amazon Web Services Support currently supports English
-("en") and Japanese ("ja"). Language parameters must be passed
-explicitly for operations that take them.}
+\item{language}{The ISO 639-1 code for the language that you want your check results to
+appear in.
+
+The Amazon Web Services Support API currently supports the following
+languages for Trusted Advisor:
+\itemize{
+\item Chinese, Simplified - \code{zh}
+\item Chinese, Traditional - \code{zh_TW}
+\item English - \code{en}
+\item French - \code{fr}
+\item German - \code{de}
+\item Indonesian - \code{id}
+\item Italian - \code{it}
+\item Japanese - \code{ja}
+\item Korean - \code{ko}
+\item Portuguese, Brazilian - \code{pt_BR}
+\item Spanish - \code{es}
+}}
 }
 \description{
 Returns the results of the Trusted Advisor check that has the specified check ID. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.

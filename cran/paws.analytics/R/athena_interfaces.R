@@ -35,7 +35,31 @@ NULL
 
 .athena$batch_get_query_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryExecutions = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), AthenaError = structure(list(ErrorCategory = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorType = structure(logical(0), tags = list(type = "integer", box = TRUE)), Retryable = structure(logical(0), tags = list(type = "boolean")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutionParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedQueryExecutionIds = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(QueryExecutions = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResultReuseConfiguration = structure(list(ResultReuseByAgeConfiguration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MaxAgeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), AthenaError = structure(list(ErrorCategory = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorType = structure(logical(0), tags = list(type = "integer", box = TRUE)), Retryable = structure(logical(0), tags = list(type = "boolean")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long")), ResultReuseInformation = structure(list(ReusedPreviousResult = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutionParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SubstatementType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnprocessedQueryExecutionIds = structure(list(structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$cancel_capacity_reservation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$cancel_capacity_reservation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$create_capacity_reservation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TargetDpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$create_capacity_reservation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,6 +87,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$create_notebook_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$create_notebook_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$create_prepared_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), QueryStatement = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -75,9 +111,21 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$create_presigned_notebook_url_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$create_presigned_notebook_url_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookUrl = structure(logical(0), tags = list(type = "string")), AuthToken = structure(logical(0), tags = list(type = "string")), AuthTokenExpirationTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$create_work_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalConfiguration = structure(logical(0), tags = list(type = "string")), ExecutionRole = structure(logical(0), tags = list(type = "string")), CustomerContentEncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EnableMinimumEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,6 +159,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$delete_notebook_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$delete_notebook_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$delete_prepared_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -132,6 +192,78 @@ NULL
 .athena$delete_work_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$export_notebook_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$export_notebook_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookMetadata = structure(list(NotebookId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Payload = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_calculation_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_calculation_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string")), SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), Status = structure(list(SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Statistics = structure(list(DpuExecutionInMillis = structure(logical(0), tags = list(type = "long")), Progress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Result = structure(list(StdOutS3Uri = structure(logical(0), tags = list(type = "string")), StdErrorS3Uri = structure(logical(0), tags = list(type = "string")), ResultS3Uri = structure(logical(0), tags = list(type = "string")), ResultType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_calculation_execution_code_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_calculation_execution_code_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CodeBlock = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_calculation_execution_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_calculation_execution_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(list(SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Statistics = structure(list(DpuExecutionInMillis = structure(logical(0), tags = list(type = "long")), Progress = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_capacity_assignment_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CapacityReservationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_capacity_assignment_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CapacityAssignmentConfiguration = structure(list(CapacityReservationName = structure(logical(0), tags = list(type = "string")), CapacityAssignments = structure(list(structure(list(WorkGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_capacity_reservation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_capacity_reservation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CapacityReservation = structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), TargetDpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), AllocatedDpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), LastAllocation = structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RequestTime = structure(logical(0), tags = list(type = "timestamp")), RequestCompletionTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), LastSuccessfulAllocationTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -171,6 +303,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$get_notebook_metadata_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_notebook_metadata_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookMetadata = structure(list(NotebookId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$get_prepared_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -191,7 +335,7 @@ NULL
 
 .athena$get_query_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryExecution = structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), AthenaError = structure(list(ErrorCategory = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorType = structure(logical(0), tags = list(type = "integer", box = TRUE)), Retryable = structure(logical(0), tags = list(type = "boolean")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutionParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(QueryExecution = structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatementType = structure(logical(0), tags = list(type = "string")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ResultReuseConfiguration = structure(list(ResultReuseByAgeConfiguration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MaxAgeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(list(State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string")), SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), AthenaError = structure(list(ErrorCategory = structure(logical(0), tags = list(type = "integer", box = TRUE)), ErrorType = structure(logical(0), tags = list(type = "integer", box = TRUE)), Retryable = structure(logical(0), tags = list(type = "boolean")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Statistics = structure(list(EngineExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), DataScannedInBytes = structure(logical(0), tags = list(type = "long")), DataManifestLocation = structure(logical(0), tags = list(type = "string")), TotalExecutionTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryQueueTimeInMillis = structure(logical(0), tags = list(type = "long")), QueryPlanningTimeInMillis = structure(logical(0), tags = list(type = "long")), ServiceProcessingTimeInMillis = structure(logical(0), tags = list(type = "long")), ResultReuseInformation = structure(list(ReusedPreviousResult = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExecutionParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SubstatementType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -219,6 +363,30 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$get_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(logical(0), tags = list(type = "string")), EngineConfiguration = structure(list(CoordinatorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxConcurrentDpus = structure(logical(0), tags = list(type = "integer")), DefaultExecutorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), AdditionalConfigs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), SessionConfiguration = structure(list(ExecutionRole = structure(logical(0), tags = list(type = "string")), WorkingDirectory = structure(logical(0), tags = list(type = "string")), IdleTimeoutSeconds = structure(logical(0), tags = list(type = "long")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Status = structure(list(StartDateTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), IdleSinceDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Statistics = structure(list(DpuExecutionInMillis = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_session_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$get_session_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Status = structure(list(StartDateTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), IdleSinceDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$get_table_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CatalogName = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -239,7 +407,55 @@ NULL
 
 .athena$get_work_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkGroup = structure(list(Name = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Configuration = structure(list(ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AdditionalConfiguration = structure(logical(0), tags = list(type = "string")), ExecutionRole = structure(logical(0), tags = list(type = "string")), CustomerContentEncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EnableMinimumEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$import_notebook_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Payload = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$import_notebook_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_application_dpu_sizes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_application_dpu_sizes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationDPUSizes = structure(list(structure(list(ApplicationRuntimeId = structure(logical(0), tags = list(type = "string")), SupportedDPUSizes = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_calculation_executions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), StateFilter = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_calculation_executions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Calculations = structure(list(structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(list(SubmissionDateTime = structure(logical(0), tags = list(type = "timestamp")), CompletionDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_capacity_reservations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_capacity_reservations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CapacityReservations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), TargetDpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), AllocatedDpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), LastAllocation = structure(list(Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RequestTime = structure(logical(0), tags = list(type = "timestamp")), RequestCompletionTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), LastSuccessfulAllocationTime = structure(logical(0), tags = list(type = "timestamp")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -279,6 +495,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$list_executors_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), ExecutorStateFilter = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_executors_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), ExecutorsSummary = structure(list(structure(list(ExecutorId = structure(logical(0), tags = list(type = "string")), ExecutorType = structure(logical(0), tags = list(type = "string")), StartDateTime = structure(logical(0), tags = list(type = "long")), TerminationDateTime = structure(logical(0), tags = list(type = "long")), ExecutorState = structure(logical(0), tags = list(type = "string")), ExecutorSize = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$list_named_queries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -288,6 +516,30 @@ NULL
 .athena$list_named_queries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NamedQueryIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_notebook_metadata_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filters = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), WorkGroup = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_notebook_metadata_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), NotebookMetadataList = structure(list(structure(list(NotebookId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_notebook_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_notebook_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookSessionsList = structure(list(structure(list(SessionId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -312,6 +564,18 @@ NULL
 .athena$list_query_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QueryExecutionIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_sessions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), StateFilter = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$list_sessions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Sessions = structure(list(structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), Status = structure(list(StartDateTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDateTime = structure(logical(0), tags = list(type = "timestamp")), EndDateTime = structure(logical(0), tags = list(type = "timestamp")), IdleSinceDateTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateChangeReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -351,15 +615,63 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$put_capacity_assignment_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CapacityReservationName = structure(logical(0), tags = list(type = "string")), CapacityAssignments = structure(list(structure(list(WorkGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$put_capacity_assignment_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$start_calculation_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), CalculationConfiguration = structure(list(CodeBlock = structure(logical(0), tags = list(type = "string"))), tags = list(deprecated = TRUE, deprecatedMessage = "Kepler Post GA Tasks : https://sim.amazon.com/issues/ATHENA-39828", type = "structure")), CodeBlock = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$start_calculation_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$start_query_execution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(QueryString = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), ExecutionParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(QueryString = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), QueryExecutionContext = structure(list(Database = structure(logical(0), tags = list(type = "string")), Catalog = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResultConfiguration = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), WorkGroup = structure(logical(0), tags = list(type = "string")), ExecutionParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResultReuseConfiguration = structure(list(ResultReuseByAgeConfiguration = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), MaxAgeInMinutes = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .athena$start_query_execution_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QueryExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$start_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), EngineConfiguration = structure(list(CoordinatorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), MaxConcurrentDpus = structure(logical(0), tags = list(type = "integer")), DefaultExecutorDpuSize = structure(logical(0), tags = list(type = "integer", box = TRUE)), AdditionalConfigs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), NotebookVersion = structure(logical(0), tags = list(type = "string")), SessionIdleTimeoutInMinutes = structure(logical(0), tags = list(type = "integer", box = TRUE)), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$start_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$stop_calculation_execution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CalculationExecutionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$stop_calculation_execution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -387,6 +699,18 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$terminate_session_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SessionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$terminate_session_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$untag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -394,6 +718,18 @@ NULL
 }
 
 .athena$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$update_capacity_reservation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TargetDpus = structure(logical(0), tags = list(type = "integer", box = TRUE)), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$update_capacity_reservation_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -423,6 +759,30 @@ NULL
   return(populate(args, shape))
 }
 
+.athena$update_notebook_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string")), Payload = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), SessionId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$update_notebook_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$update_notebook_metadata_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NotebookId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.athena$update_notebook_metadata_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .athena$update_prepared_statement_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(StatementName = structure(logical(0), tags = list(type = "string")), WorkGroup = structure(logical(0), tags = list(type = "string")), QueryStatement = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -437,7 +797,7 @@ NULL
 
 .athena$update_work_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ConfigurationUpdates = structure(list(EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), ResultConfigurationUpdates = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), RemoveOutputLocation = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), RemoveExpectedBucketOwner = structure(logical(0), tags = list(type = "boolean")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveAclConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RemoveBytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "boolean")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkGroup = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ConfigurationUpdates = structure(list(EnforceWorkGroupConfiguration = structure(logical(0), tags = list(type = "boolean")), ResultConfigurationUpdates = structure(list(OutputLocation = structure(logical(0), tags = list(type = "string")), RemoveOutputLocation = structure(logical(0), tags = list(type = "boolean")), EncryptionConfiguration = structure(list(EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean")), ExpectedBucketOwner = structure(logical(0), tags = list(type = "string")), RemoveExpectedBucketOwner = structure(logical(0), tags = list(type = "boolean")), AclConfiguration = structure(list(S3AclOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveAclConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), PublishCloudWatchMetricsEnabled = structure(logical(0), tags = list(type = "boolean")), BytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "long")), RemoveBytesScannedCutoffPerQuery = structure(logical(0), tags = list(type = "boolean")), RequesterPaysEnabled = structure(logical(0), tags = list(type = "boolean")), EngineVersion = structure(list(SelectedEngineVersion = structure(logical(0), tags = list(type = "string")), EffectiveEngineVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RemoveCustomerContentEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean")), AdditionalConfiguration = structure(logical(0), tags = list(type = "string")), ExecutionRole = structure(logical(0), tags = list(type = "string")), CustomerContentEncryptionConfiguration = structure(list(KmsKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EnableMinimumEncryptionConfiguration = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

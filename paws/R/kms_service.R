@@ -13,7 +13,7 @@ NULL
 #' Management Service Developer
 #' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
 #' 
-#' KMS is replacing the term *customer master key (CMK)* with *KMS key* and
+#' KMS has replaced the term *customer master key (CMK)* with *KMS key* and
 #' *KMS key*. The concept has not changed. To prevent breaking changes, KMS
 #' is keeping some variations of this term.
 #' 
@@ -47,16 +47,15 @@ NULL
 #' 
 #' **Signing Requests**
 #' 
-#' Requests must be signed by using an access key ID and a secret access
-#' key. We strongly recommend that you *do not* use your Amazon Web
-#' Services account (root) access key ID and secret key for everyday work
-#' with KMS. Instead, use the access key ID and secret access key for an
-#' IAM user. You can also use the Amazon Web Services Security Token
-#' Service to generate temporary security credentials that you can use to
-#' sign requests.
+#' Requests must be signed using an access key ID and a secret access key.
+#' We strongly recommend that you do not use your Amazon Web Services
+#' account root access key ID and secret access key for everyday work. You
+#' can use the access key ID and secret access key for an IAM user or you
+#' can use the Security Token Service (STS) to generate temporary security
+#' credentials and use those to sign requests.
 #' 
-#' All KMS operations require [Signature Version
-#' 4](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' All KMS requests must be signed with [Signature Version
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -75,7 +74,7 @@ NULL
 #' following:
 #' 
 #' -   [Amazon Web Services Security
-#'     Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html) -
+#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
 #'     This topic provides general information about the types of
 #'     credentials used to access Amazon Web Services.
 #' 
@@ -85,7 +84,7 @@ NULL
 #'     temporary security credentials.
 #' 
 #' -   [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html) -
+#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
 #' 
@@ -154,9 +153,9 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=kms_cancel_key_deletion]{cancel_key_deletion} \tab Cancels the deletion of a KMS key\cr
-#'  \link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its associated CloudHSM cluster\cr
+#'  \link[=kms_connect_custom_key_store]{connect_custom_key_store} \tab Connects or reconnects a custom key store to its backing key store\cr
 #'  \link[=kms_create_alias]{create_alias} \tab Creates a friendly name for a KMS key\cr
-#'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store that is associated with an CloudHSM cluster that you own and manage\cr
+#'  \link[=kms_create_custom_key_store]{create_custom_key_store} \tab Creates a custom key store backed by a key store that you own and manage\cr
 #'  \link[=kms_create_grant]{create_grant} \tab Adds a grant to a KMS key\cr
 #'  \link[=kms_create_key]{create_key} \tab Creates a unique customer managed KMS key in your Amazon Web Services account and Region\cr
 #'  \link[=kms_decrypt]{decrypt} \tab Decrypts ciphertext that was encrypted by a KMS key using any of the following operations:\cr
@@ -167,7 +166,7 @@ NULL
 #'  \link[=kms_describe_key]{describe_key} \tab Provides detailed information about a KMS key\cr
 #'  \link[=kms_disable_key]{disable_key} \tab Sets the state of a KMS key to disabled\cr
 #'  \link[=kms_disable_key_rotation]{disable_key_rotation} \tab Disables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
-#'  \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its associated CloudHSM cluster\cr
+#'  \link[=kms_disconnect_custom_key_store]{disconnect_custom_key_store} \tab Disconnects the custom key store from its backing key store\cr
 #'  \link[=kms_enable_key]{enable_key} \tab Sets the key state of a KMS key to enabled\cr
 #'  \link[=kms_enable_key_rotation]{enable_key_rotation} \tab Enables automatic rotation of the key material of the specified symmetric encryption KMS key\cr
 #'  \link[=kms_encrypt]{encrypt} \tab Encrypts plaintext of up to 4,096 bytes using a KMS key\cr

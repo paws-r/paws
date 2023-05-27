@@ -12,7 +12,7 @@ codegurureviewer_describe_recommendation_feedback(
 }
 \arguments{
 \item{CodeReviewArn}{[required] The Amazon Resource Name (ARN) of the
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{\code{CodeReview}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{CodeReview}
 object.}
 
 \item{RecommendationId}{[required] The recommendation ID that can be used to track the provided

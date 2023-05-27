@@ -18,7 +18,7 @@ using the
 \code{\link[=iam_list_open_id_connect_providers]{list_open_id_connect_providers}}
 operation.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{ClientID}{[required] The client ID (also known as audience) to remove from the IAM OIDC

@@ -5,7 +5,12 @@
 \title{Creates a custom pattern that is used to detect sensitive data across
 the columns and rows of your structured data}
 \usage{
-glue_create_custom_entity_type(Name, RegexString, ContextWords = NULL)
+glue_create_custom_entity_type(
+  Name,
+  RegexString,
+  ContextWords = NULL,
+  Tags = NULL
+)
 }
 \arguments{
 \item{Name}{[required] A name for the custom pattern that allows it to be retrieved or deleted
@@ -19,6 +24,8 @@ the vicinity of the regular expression the data will not be detected as
 sensitive data.
 
 If no context words are passed only a regular expression is checked.}
+
+\item{Tags}{A list of tags applied to the custom entity type.}
 }
 \description{
 Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data.

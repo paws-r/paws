@@ -13,7 +13,7 @@ cloudwatchlogs_describe_export_tasks(
 }
 \arguments{
 \item{taskId}{The ID of the export task. Specifying a task ID filters the results to
-zero or one export tasks.}
+one or zero export tasks.}
 
 \item{statusCode}{The status code of the export task. Specifying a status code filters the
 results to zero or more export tasks.}

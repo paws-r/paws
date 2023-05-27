@@ -36,7 +36,9 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 
 \item{ExcessCapacityTerminationPolicy}{Indicates whether running instances should be terminated if the total
 target capacity of the EC2 Fleet is decreased below the current size of
-the EC2 Fleet.}
+the EC2 Fleet.
+
+Supported only for fleets of type \code{maintain}.}
 
 \item{LaunchTemplateConfigs}{[required] The configuration for the EC2 Fleet.}
 

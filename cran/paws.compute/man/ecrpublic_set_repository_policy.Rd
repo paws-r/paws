@@ -13,9 +13,9 @@ ecrpublic_set_repository_policy(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the
-repository. If you do not specify a registry, the default public
-registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID that's associated with the registry
+that contains the repository. If you do not specify a registry, the
+default public registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository to receive the policy.}
 
@@ -23,10 +23,10 @@ registry is assumed.}
 information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policy-examples.html}{Amazon ECR Repository Policies}
 in the \emph{Amazon Elastic Container Registry User Guide}.}
 
-\item{force}{If the policy you are attempting to set on a repository policy would
-prevent you from setting another policy in the future, you must force
-the \code{\link[=ecrpublic_set_repository_policy]{set_repository_policy}}
-operation. This is intended to prevent accidental repository lock outs.}
+\item{force}{If the policy that you want to set on a repository policy would prevent
+you from setting another policy in the future, you must force the
+\code{\link[=ecrpublic_set_repository_policy]{set_repository_policy}} operation.
+This prevents accidental repository lockouts.}
 }
 \description{
 Applies a repository policy to the specified public repository to control access permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html}{Amazon ECR Repository Policies} in the \emph{Amazon Elastic Container Registry User Guide}.

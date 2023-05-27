@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_delete_package}
 \alias{opensearchservice_delete_package}
-\title{Deletes the package}
+\title{Deletes an Amazon OpenSearch Service package}
 \usage{
 opensearchservice_delete_package(PackageID)
 }
@@ -12,7 +12,7 @@ opensearchservice_delete_package(PackageID)
 value.}
 }
 \description{
-Deletes the package.
+Deletes an Amazon OpenSearch Service package. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/delete_package.html} for full documentation.
 }

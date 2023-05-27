@@ -61,10 +61,11 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @usage
 #' emrserverless_create_application(name, releaseLabel, type, clientToken,
 #'   initialCapacity, maximumCapacity, tags, autoStartConfiguration,
-#'   autoStopConfiguration, networkConfiguration)
+#'   autoStopConfiguration, networkConfiguration, architecture,
+#'   imageConfiguration, workerTypeSpecifications)
 #'
 #' @param name The name of the application.
-#' @param releaseLabel &#91;required&#93; The EMR release version associated with the application.
+#' @param releaseLabel &#91;required&#93; The EMR release associated with the application.
 #' @param type &#91;required&#93; The type of application you want to start, such as Spark or Hive.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to create. Its value
 #' must be unique for each request.
@@ -79,6 +80,17 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @param autoStopConfiguration The configuration for an application to automatically stop after a
 #' certain amount of time being idle.
 #' @param networkConfiguration The network configuration for customer VPC connectivity.
+#' @param architecture The CPU architecture of an application.
+#' @param imageConfiguration The image configuration for all worker types. You can either set this
+#' parameter or `imageConfiguration` for each worker type in
+#' `workerTypeSpecifications`.
+#' @param workerTypeSpecifications The key-value pairs that specify worker type to
+#' `WorkerTypeSpecificationInput`. This parameter must contain all valid
+#' worker types for a Spark or Hive application. Valid worker types include
+#' `Driver` and `Executor` for Spark applications and `HiveDriver` and
+#' `TezTask` for Hive applications. You can either set image details in
+#' this parameter for each worker type, or in `imageConfiguration` for all
+#' worker types.
 #'
 #' @return
 #' A list with the following syntax:
@@ -129,6 +141,17 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'     securityGroupIds = list(
 #'       "string"
 #'     )
+#'   ),
+#'   architecture = "ARM64"|"X86_64",
+#'   imageConfiguration = list(
+#'     imageUri = "string"
+#'   ),
+#'   workerTypeSpecifications = list(
+#'     list(
+#'       imageConfiguration = list(
+#'         imageUri = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -138,14 +161,14 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @rdname emrserverless_create_application
 #'
 #' @aliases emrserverless_create_application
-emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL) {
+emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/applications",
     paginator = list()
   )
-  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration)
+  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications)
   output <- .emrserverless$create_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config)
@@ -258,6 +281,19 @@ emrserverless_delete_application <- function(applicationId) {
 #'       securityGroupIds = list(
 #'         "string"
 #'       )
+#'     ),
+#'     architecture = "ARM64"|"X86_64",
+#'     imageConfiguration = list(
+#'       imageUri = "string",
+#'       resolvedImageDigest = "string"
+#'     ),
+#'     workerTypeSpecifications = list(
+#'       list(
+#'         imageConfiguration = list(
+#'           imageUri = "string",
+#'           resolvedImageDigest = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -291,6 +327,57 @@ emrserverless_get_application <- function(applicationId) {
   return(response)
 }
 .emrserverless$operations$get_application <- emrserverless_get_application
+
+#' Returns a URL to access the job run dashboard
+#'
+#' @description
+#' Returns a URL to access the job run dashboard. The generated URL is
+#' valid for one hour, after which you must invoke the API again to
+#' generate a new URL.
+#'
+#' @usage
+#' emrserverless_get_dashboard_for_job_run(applicationId, jobRunId)
+#'
+#' @param applicationId &#91;required&#93; The ID of the application.
+#' @param jobRunId &#91;required&#93; The ID of the job run.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   url = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_dashboard_for_job_run(
+#'   applicationId = "string",
+#'   jobRunId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emrserverless_get_dashboard_for_job_run
+#'
+#' @aliases emrserverless_get_dashboard_for_job_run
+emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
+  op <- new_operation(
+    name = "GetDashboardForJobRun",
+    http_method = "GET",
+    http_path = "/applications/{applicationId}/jobruns/{jobRunId}/dashboard",
+    paginator = list()
+  )
+  input <- .emrserverless$get_dashboard_for_job_run_input(applicationId = applicationId, jobRunId = jobRunId)
+  output <- .emrserverless$get_dashboard_for_job_run_output()
+  config <- get_config()
+  svc <- .emrserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emrserverless$operations$get_dashboard_for_job_run <- emrserverless_get_dashboard_for_job_run
 
 #' Displays detailed information about a job run
 #'
@@ -374,7 +461,13 @@ emrserverless_get_application <- function(applicationId) {
 #'         "string"
 #'       )
 #'     ),
-#'     totalExecutionDurationSeconds = 123
+#'     totalExecutionDurationSeconds = 123,
+#'     executionTimeoutMinutes = 123,
+#'     billedResourceUtilization = list(
+#'       vCPUHour = 123.0,
+#'       memoryGBHour = 123.0,
+#'       storageGBHour = 123.0
+#'     )
 #'   )
 #' )
 #' ```
@@ -441,7 +534,8 @@ emrserverless_get_job_run <- function(applicationId, jobRunId) {
 #'       ),
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       architecture = "ARM64"|"X86_64"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -811,12 +905,12 @@ emrserverless_stop_application <- function(applicationId) {
 #' Assigns tags to resources
 #'
 #' @description
-#' Assigns tags to resources. A tag is a label that you assign to an AWS
-#' resource. Each tag consists of a key and an optional value, both of
-#' which you define. Tags enable you to categorize your AWS resources by
-#' attributes such as purpose, owner, or environment. When you have many
-#' resources of the same type, you can quickly identify a specific resource
-#' based on the tags you've assigned to it.
+#' Assigns tags to resources. A tag is a label that you assign to an Amazon
+#' Web Services resource. Each tag consists of a key and an optional value,
+#' both of which you define. Tags enable you to categorize your Amazon Web
+#' Services resources by attributes such as purpose, owner, or environment.
+#' When you have many resources of the same type, you can quickly identify
+#' a specific resource based on the tags you've assigned to it.
 #'
 #' @usage
 #' emrserverless_tag_resource(resourceArn, tags)
@@ -918,7 +1012,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @usage
 #' emrserverless_update_application(applicationId, clientToken,
 #'   initialCapacity, maximumCapacity, autoStartConfiguration,
-#'   autoStopConfiguration, networkConfiguration)
+#'   autoStopConfiguration, networkConfiguration, architecture,
+#'   imageConfiguration, workerTypeSpecifications)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to update.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to update. Its value
@@ -933,6 +1028,17 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @param autoStopConfiguration The configuration for an application to automatically stop after a
 #' certain amount of time being idle.
 #' @param networkConfiguration 
+#' @param architecture The CPU architecture of an application.
+#' @param imageConfiguration The image configuration to be used for all worker types. You can either
+#' set this parameter or `imageConfiguration` for each worker type in
+#' `WorkerTypeSpecificationInput`.
+#' @param workerTypeSpecifications The key-value pairs that specify worker type to
+#' `WorkerTypeSpecificationInput`. This parameter must contain all valid
+#' worker types for a Spark or Hive application. Valid worker types include
+#' `Driver` and `Executor` for Spark applications and `HiveDriver` and
+#' `TezTask` for Hive applications. You can either set image details in
+#' this parameter for each worker type, or in `imageConfiguration` for all
+#' worker types.
 #'
 #' @return
 #' A list with the following syntax:
@@ -984,6 +1090,19 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'       securityGroupIds = list(
 #'         "string"
 #'       )
+#'     ),
+#'     architecture = "ARM64"|"X86_64",
+#'     imageConfiguration = list(
+#'       imageUri = "string",
+#'       resolvedImageDigest = "string"
+#'     ),
+#'     workerTypeSpecifications = list(
+#'       list(
+#'         imageConfiguration = list(
+#'           imageUri = "string",
+#'           resolvedImageDigest = "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1023,6 +1142,17 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'     securityGroupIds = list(
 #'       "string"
 #'     )
+#'   ),
+#'   architecture = "ARM64"|"X86_64",
+#'   imageConfiguration = list(
+#'     imageUri = "string"
+#'   ),
+#'   workerTypeSpecifications = list(
+#'     list(
+#'       imageConfiguration = list(
+#'         imageUri = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1032,14 +1162,14 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname emrserverless_update_application
 #'
 #' @aliases emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
     paginator = list()
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications)
   output <- .emrserverless$update_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config)

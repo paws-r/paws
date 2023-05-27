@@ -42,9 +42,8 @@ parameter. Pagination continues from the end of the previous results
 that returned the \code{nextToken} value. This value is \code{null} when there are
 no more results to return.
 
-This token should be treated as an opaque identifier that's only used to
-retrieve the next items in a list and not for other programmatic
-purposes.}
+Treat this token as an opaque identifier that's only used to retrieve
+the next items in a list and not for other programmatic purposes.}
 }
 \description{
 Describes a list of job definitions. You can specify a \code{status} (such as \code{ACTIVE}) to only return job definitions that match that status.

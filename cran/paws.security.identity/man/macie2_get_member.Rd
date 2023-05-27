@@ -8,8 +8,8 @@ Macie administrator account}
 macie2_get_member(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 }
 \description{
 Retrieves information about an account that's associated with an Amazon Macie administrator account.

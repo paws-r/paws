@@ -31,7 +31,10 @@ If you omit \code{defaultVariation}, the first variation listed in the
 feature. Each user is specified by a key-value pair . For each key,
 specify a user by entering their user ID, account ID, or some other
 identifier. For the value, specify the name of the variation that they
-are to be served.}
+are to be served.
+
+This parameter is limited to 2500 overrides or a total of 40KB. The 40KB
+limit includes an overhead of 6 bytes per override.}
 
 \item{evaluationStrategy}{Specify \code{ALL_RULES} to activate the traffic allocation specified by any
 ongoing launches or experiments. Specify \code{DEFAULT_VARIATION} to serve
@@ -50,8 +53,9 @@ access or change only resources with certain tag values.
 Tags don't have any semantic meaning to Amazon Web Services and are
 interpreted strictly as strings of characters.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>You can associate as many as 50 tags with a feature.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p>
-}\if{html}{\out{</div>}}}
+You can associate as many as 50 tags with a feature.
+
+For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 
 \item{variations}{[required] An array of structures that contain the configuration of the feature's
 different variations.}

@@ -15,8 +15,8 @@ connect_list_security_profile_permissions(
 \arguments{
 \item{SecurityProfileId}{[required] The identifier for the security profle.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

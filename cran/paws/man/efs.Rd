@@ -89,7 +89,7 @@ and the \href{https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html}{Amazon E
 \link[paws.storage:efs_put_account_preferences]{put_account_preferences} \tab Use this operation to set the account preference in the current Amazon Web Services Region to use long 17 character (63 bit) or short 8 character (32 bit) resource IDs for new EFS file system and mount target resources\cr
 \link[paws.storage:efs_put_backup_policy]{put_backup_policy} \tab Updates the file system's backup policy\cr
 \link[paws.storage:efs_put_file_system_policy]{put_file_system_policy} \tab Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system\cr
-\link[paws.storage:efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Use this action to manage EFS lifecycle management and intelligent tiering\cr
+\link[paws.storage:efs_put_lifecycle_configuration]{put_lifecycle_configuration} \tab Use this action to manage EFS lifecycle management and EFS Intelligent-Tiering\cr
 \link[paws.storage:efs_tag_resource]{tag_resource} \tab Creates a tag for an EFS resource\cr
 \link[paws.storage:efs_untag_resource]{untag_resource} \tab Removes tags from an EFS resource\cr
 \link[paws.storage:efs_update_file_system]{update_file_system} \tab Updates the throughput mode or the amount of provisioned throughput of an existing file system

@@ -12,11 +12,13 @@ nimblestudio_list_launch_profile_members(
 )
 }
 \arguments{
-\item{launchProfileId}{[required] The Launch Profile ID.}
+\item{launchProfileId}{[required] The ID of the launch profile used to control access from the streaming
+session.}
 
 \item{maxResults}{The max number of results to return in the response.}
 
-\item{nextToken}{The token to request the next page of results.}
+\item{nextToken}{The token for the next set of results, or null if there are no more
+results.}
 
 \item{studioId}{[required] The studio ID.}
 }

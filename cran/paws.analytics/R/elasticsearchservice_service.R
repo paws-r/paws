@@ -74,15 +74,18 @@ NULL
 #'  \link[=elasticsearchservice_accept_inbound_cross_cluster_search_connection]{accept_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to accept an inbound cross-cluster search connection request\cr
 #'  \link[=elasticsearchservice_add_tags]{add_tags} \tab Attaches tags to an existing Elasticsearch domain\cr
 #'  \link[=elasticsearchservice_associate_package]{associate_package} \tab Associates a package with an Amazon ES domain\cr
+#'  \link[=elasticsearchservice_authorize_vpc_endpoint_access]{authorize_vpc_endpoint_access} \tab Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
 #'  \link[=elasticsearchservice_cancel_elasticsearch_service_software_update]{cancel_elasticsearch_service_software_update} \tab Cancels a scheduled service software update for an Amazon ES domain\cr
 #'  \link[=elasticsearchservice_create_elasticsearch_domain]{create_elasticsearch_domain} \tab Creates a new Elasticsearch domain\cr
 #'  \link[=elasticsearchservice_create_outbound_cross_cluster_search_connection]{create_outbound_cross_cluster_search_connection} \tab Creates a new cross-cluster search connection from a source domain to a destination domain\cr
 #'  \link[=elasticsearchservice_create_package]{create_package} \tab Create a package for use with Amazon ES domains\cr
+#'  \link[=elasticsearchservice_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates an Amazon OpenSearch Service-managed VPC endpoint\cr
 #'  \link[=elasticsearchservice_delete_elasticsearch_domain]{delete_elasticsearch_domain} \tab Permanently deletes the specified Elasticsearch domain and all of its data\cr
 #'  \link[=elasticsearchservice_delete_elasticsearch_service_role]{delete_elasticsearch_service_role} \tab Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains\cr
 #'  \link[=elasticsearchservice_delete_inbound_cross_cluster_search_connection]{delete_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to delete an existing inbound cross-cluster search connection\cr
 #'  \link[=elasticsearchservice_delete_outbound_cross_cluster_search_connection]{delete_outbound_cross_cluster_search_connection} \tab Allows the source domain owner to delete an existing outbound cross-cluster search connection\cr
 #'  \link[=elasticsearchservice_delete_package]{delete_package} \tab Delete the package\cr
+#'  \link[=elasticsearchservice_delete_vpc_endpoint]{delete_vpc_endpoint} \tab Deletes an Amazon OpenSearch Service-managed interface VPC endpoint\cr
 #'  \link[=elasticsearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes} \tab Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date\cr
 #'  \link[=elasticsearchservice_describe_domain_change_progress]{describe_domain_change_progress} \tab Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages\cr
 #'  \link[=elasticsearchservice_describe_elasticsearch_domain]{describe_elasticsearch_domain} \tab Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN\cr
@@ -94,6 +97,7 @@ NULL
 #'  \link[=elasticsearchservice_describe_packages]{describe_packages} \tab Describes all packages available to Amazon ES\cr
 #'  \link[=elasticsearchservice_describe_reserved_elasticsearch_instance_offerings]{describe_reserved_elasticsearch_instance_offerings} \tab Lists available reserved Elasticsearch instance offerings\cr
 #'  \link[=elasticsearchservice_describe_reserved_elasticsearch_instances]{describe_reserved_elasticsearch_instances} \tab Returns information about reserved Elasticsearch instances for this account\cr
+#'  \link[=elasticsearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
 #'  \link[=elasticsearchservice_dissociate_package]{dissociate_package} \tab Dissociates a package from the Amazon ES domain\cr
 #'  \link[=elasticsearchservice_get_compatible_elasticsearch_versions]{get_compatible_elasticsearch_versions} \tab Returns a list of upgrade compatible Elastisearch versions\cr
 #'  \link[=elasticsearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of versions of the package, along with their creation time and commit message\cr
@@ -105,12 +109,17 @@ NULL
 #'  \link[=elasticsearchservice_list_elasticsearch_versions]{list_elasticsearch_versions} \tab List all supported Elasticsearch versions\cr
 #'  \link[=elasticsearchservice_list_packages_for_domain]{list_packages_for_domain} \tab Lists all packages associated with the Amazon ES domain\cr
 #'  \link[=elasticsearchservice_list_tags]{list_tags} \tab Returns all tags for the given Elasticsearch domain\cr
+#'  \link[=elasticsearchservice_list_vpc_endpoint_access]{list_vpc_endpoint_access} \tab Retrieves information about each principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint\cr
+#'  \link[=elasticsearchservice_list_vpc_endpoints]{list_vpc_endpoints} \tab Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region\cr
+#'  \link[=elasticsearchservice_list_vpc_endpoints_for_domain]{list_vpc_endpoints_for_domain} \tab Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain\cr
 #'  \link[=elasticsearchservice_purchase_reserved_elasticsearch_instance_offering]{purchase_reserved_elasticsearch_instance_offering} \tab Allows you to purchase reserved Elasticsearch instances\cr
 #'  \link[=elasticsearchservice_reject_inbound_cross_cluster_search_connection]{reject_inbound_cross_cluster_search_connection} \tab Allows the destination domain owner to reject an inbound cross-cluster search connection request\cr
 #'  \link[=elasticsearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from the specified Elasticsearch domain\cr
+#'  \link[=elasticsearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
 #'  \link[=elasticsearchservice_start_elasticsearch_service_software_update]{start_elasticsearch_service_software_update} \tab Schedules a service software update for an Amazon ES domain\cr
 #'  \link[=elasticsearchservice_update_elasticsearch_domain_config]{update_elasticsearch_domain_config} \tab Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances\cr
 #'  \link[=elasticsearchservice_update_package]{update_package} \tab Updates a package for use with Amazon ES domains\cr
+#'  \link[=elasticsearchservice_update_vpc_endpoint]{update_vpc_endpoint} \tab Modifies an Amazon OpenSearch Service-managed interface VPC endpoint\cr
 #'  \link[=elasticsearchservice_upgrade_elasticsearch_domain]{upgrade_elasticsearch_domain} \tab Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version
 #' }
 #'

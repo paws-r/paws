@@ -123,6 +123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.locationservice$create_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), ExpireTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), KeyName = structure(logical(0), tags = list(type = "string")), NoExpiry = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Restrictions = structure(list(AllowActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowReferers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$create_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KeyArn = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .locationservice$create_map_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Configuration = structure(list(Style = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), MapName = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. If included, the only allowed value is RequestBasedUsage.", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -178,6 +190,18 @@ NULL
 }
 
 .locationservice$delete_geofence_collection_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$delete_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyName = structure(logical(0), tags = list(location = "uri", locationName = "KeyName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$delete_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -240,6 +264,18 @@ NULL
 .locationservice$describe_geofence_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CollectionArn = structure(logical(0), tags = list(type = "string")), CollectionName = structure(logical(0), tags = list(type = "string")), CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), PricingPlan = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Always returns RequestBasedUsage.", type = "string")), PricingPlanDataSource = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "Deprecated. Unused.", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$describe_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyName = structure(logical(0), tags = list(location = "uri", locationName = "KeyName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$describe_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), ExpireTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Key = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), KeyArn = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), Restrictions = structure(list(AllowActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowReferers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -341,49 +377,61 @@ NULL
 
 .locationservice$get_map_glyphs_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FontStack = structure(logical(0), tags = list(location = "uri", locationName = "FontStack", type = "string")), FontUnicodeRange = structure(logical(0), tags = list(location = "uri", locationName = "FontUnicodeRange", type = "string")), MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FontStack = structure(logical(0), tags = list(location = "uri", locationName = "FontStack", type = "string")), FontUnicodeRange = structure(logical(0), tags = list(location = "uri", locationName = "FontUnicodeRange", type = "string")), Key = structure(logical(0), tags = list(location = "querystring", locationName = "key", type = "string", sensitive = TRUE)), MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_glyphs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
+  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_sprites_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FileName = structure(logical(0), tags = list(location = "uri", locationName = "FileName", type = "string")), MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FileName = structure(logical(0), tags = list(location = "uri", locationName = "FileName", type = "string")), Key = structure(logical(0), tags = list(location = "querystring", locationName = "key", type = "string", sensitive = TRUE)), MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_sprites_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
+  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_style_descriptor_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Key = structure(logical(0), tags = list(location = "querystring", locationName = "key", type = "string", sensitive = TRUE)), MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_style_descriptor_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
+  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_tile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string")), X = structure(logical(0), tags = list(location = "uri", locationName = "X", type = "string")), Y = structure(logical(0), tags = list(location = "uri", locationName = "Y", type = "string")), Z = structure(logical(0), tags = list(location = "uri", locationName = "Z", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Key = structure(logical(0), tags = list(location = "querystring", locationName = "key", type = "string", sensitive = TRUE)), MapName = structure(logical(0), tags = list(location = "uri", locationName = "MapName", type = "string")), X = structure(logical(0), tags = list(location = "uri", locationName = "X", type = "string")), Y = structure(logical(0), tags = list(location = "uri", locationName = "Y", type = "string")), Z = structure(logical(0), tags = list(location = "uri", locationName = "Z", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .locationservice$get_map_tile_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
+  shape <- structure(list(Blob = structure(logical(0), tags = list(type = "blob")), CacheControl = structure(logical(0), tags = list(location = "header", locationName = "Cache-Control", type = "string")), ContentType = structure(logical(0), tags = list(location = "header", locationName = "Content-Type", type = "string"))), tags = list(type = "structure", payload = "Blob"))
+  return(populate(args, shape))
+}
+
+.locationservice$get_place_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(IndexName = structure(logical(0), tags = list(location = "uri", locationName = "IndexName", type = "string")), Language = structure(logical(0), tags = list(location = "querystring", locationName = "language", type = "string")), PlaceId = structure(logical(0), tags = list(location = "uri", locationName = "PlaceId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$get_place_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Place = structure(list(AddressNumber = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), Geometry = structure(list(Point = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure")), Interpolated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Label = structure(logical(0), tags = list(type = "string")), Municipality = structure(logical(0), tags = list(type = "string")), Neighborhood = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Street = structure(logical(0), tags = list(type = "string")), SubRegion = structure(logical(0), tags = list(type = "string")), TimeZone = structure(list(Name = structure(logical(0), tags = list(type = "string")), Offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), UnitNumber = structure(logical(0), tags = list(type = "string")), UnitType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -420,6 +468,18 @@ NULL
 .locationservice$list_geofences_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), GeofenceId = structure(logical(0), tags = list(type = "string")), Geometry = structure(list(Circle = structure(list(Center = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), Radius = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure", sensitive = TRUE)), Polygon = structure(list(structure(list(structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$list_keys_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Filter = structure(list(KeyStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$list_keys_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Entries = structure(list(structure(list(CreateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), Description = structure(logical(0), tags = list(type = "string")), ExpireTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), KeyName = structure(logical(0), tags = list(type = "string")), Restrictions = structure(list(AllowActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowReferers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -515,7 +575,7 @@ NULL
 
 .locationservice$search_place_index_for_position_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(Distance = structure(logical(0), tags = list(type = "double", box = TRUE)), Place = structure(list(AddressNumber = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), Geometry = structure(list(Point = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure")), Interpolated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Label = structure(logical(0), tags = list(type = "string")), Municipality = structure(logical(0), tags = list(type = "string")), Neighborhood = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Street = structure(logical(0), tags = list(type = "string")), SubRegion = structure(logical(0), tags = list(type = "string")), TimeZone = structure(list(Name = structure(logical(0), tags = list(type = "string")), Offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), Summary = structure(list(DataSource = structure(logical(0), tags = list(type = "string")), Language = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Position = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Results = structure(list(structure(list(Distance = structure(logical(0), tags = list(type = "double", box = TRUE)), Place = structure(list(AddressNumber = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), Geometry = structure(list(Point = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure")), Interpolated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Label = structure(logical(0), tags = list(type = "string")), Municipality = structure(logical(0), tags = list(type = "string")), Neighborhood = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Street = structure(logical(0), tags = list(type = "string")), SubRegion = structure(logical(0), tags = list(type = "string")), TimeZone = structure(list(Name = structure(logical(0), tags = list(type = "string")), Offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), UnitNumber = structure(logical(0), tags = list(type = "string")), UnitType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PlaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Summary = structure(list(DataSource = structure(logical(0), tags = list(type = "string")), Language = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Position = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -527,7 +587,7 @@ NULL
 
 .locationservice$search_place_index_for_suggestions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(Text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Summary = structure(list(BiasPosition = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), DataSource = structure(logical(0), tags = list(type = "string")), FilterBBox = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), FilterCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Language = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Results = structure(list(structure(list(PlaceId = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Summary = structure(list(BiasPosition = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), DataSource = structure(logical(0), tags = list(type = "string")), FilterBBox = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), FilterCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Language = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -539,7 +599,7 @@ NULL
 
 .locationservice$search_place_index_for_text_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Results = structure(list(structure(list(Distance = structure(logical(0), tags = list(type = "double", box = TRUE)), Place = structure(list(AddressNumber = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), Geometry = structure(list(Point = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure")), Interpolated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Label = structure(logical(0), tags = list(type = "string")), Municipality = structure(logical(0), tags = list(type = "string")), Neighborhood = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Street = structure(logical(0), tags = list(type = "string")), SubRegion = structure(logical(0), tags = list(type = "string")), TimeZone = structure(list(Name = structure(logical(0), tags = list(type = "string")), Offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), Relevance = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Summary = structure(list(BiasPosition = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), DataSource = structure(logical(0), tags = list(type = "string")), FilterBBox = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), FilterCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Language = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResultBBox = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Results = structure(list(structure(list(Distance = structure(logical(0), tags = list(type = "double", box = TRUE)), Place = structure(list(AddressNumber = structure(logical(0), tags = list(type = "string")), Country = structure(logical(0), tags = list(type = "string")), Geometry = structure(list(Point = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE))), tags = list(type = "structure")), Interpolated = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Label = structure(logical(0), tags = list(type = "string")), Municipality = structure(logical(0), tags = list(type = "string")), Neighborhood = structure(logical(0), tags = list(type = "string")), PostalCode = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), Street = structure(logical(0), tags = list(type = "string")), SubRegion = structure(logical(0), tags = list(type = "string")), TimeZone = structure(list(Name = structure(logical(0), tags = list(type = "string")), Offset = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure")), UnitNumber = structure(logical(0), tags = list(type = "string")), UnitType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PlaceId = structure(logical(0), tags = list(type = "string")), Relevance = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), Summary = structure(list(BiasPosition = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), DataSource = structure(logical(0), tags = list(type = "string")), FilterBBox = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), FilterCountries = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Language = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResultBBox = structure(list(structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "list", sensitive = TRUE)), Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -576,6 +636,18 @@ NULL
 .locationservice$update_geofence_collection_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CollectionArn = structure(logical(0), tags = list(type = "string")), CollectionName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$update_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Description = structure(logical(0), tags = list(type = "string")), ExpireTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), ForceUpdate = structure(logical(0), tags = list(type = "boolean", box = TRUE)), KeyName = structure(logical(0), tags = list(location = "uri", locationName = "KeyName", type = "string")), NoExpiry = structure(logical(0), tags = list(type = "boolean", box = TRUE)), Restrictions = structure(list(AllowActions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowReferers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllowResources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.locationservice$update_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(KeyArn = structure(logical(0), tags = list(type = "string")), KeyName = structure(logical(0), tags = list(type = "string")), UpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

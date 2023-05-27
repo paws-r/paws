@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_list_maps}
 \alias{locationservice_list_maps}
-\title{Lists map resources in your AWS account}
+\title{Lists map resources in your Amazon Web Services account}
 \usage{
 locationservice_list_maps(MaxResults = NULL, NextToken = NULL)
 }
@@ -17,7 +17,7 @@ response. If no token is provided, the default page is the first page.
 Default value: \code{null}}
 }
 \description{
-Lists map resources in your AWS account.
+Lists map resources in your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/list_maps.html} for full documentation.
 }

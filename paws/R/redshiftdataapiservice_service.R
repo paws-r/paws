@@ -12,7 +12,7 @@ NULL
 #' For more information about the Amazon Redshift Data API and CLI usage
 #' examples, see [Using the Amazon Redshift Data
 #' API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in
-#' the *Amazon Redshift Cluster Management Guide*.
+#' the *Amazon Redshift Management Guide*.
 #'
 #' @param
 #' config

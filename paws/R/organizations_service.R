@@ -17,10 +17,8 @@ NULL
 #' 
 #' We welcome your feedback. Send your comments to
 #' <feedback-awsorganizations@@amazon.com> or post your feedback and
-#' questions in the [Organizations support
-#' forum](https://repost.aws/tags/TA6BEgyePwRAKiMatMcHghcA?forumID=219).
-#' For more information about the Amazon Web Services support forums, see
-#' [Forums Help](https://repost.aws/forums?origin=help.jspa).
+#' questions in the Organizations support forum. For more information about
+#' the Amazon Web Services support forums, see Forums Help.
 #' 
 #' **Endpoint to call When using the CLI or the Amazon Web Services SDK**
 #' 
@@ -143,6 +141,7 @@ NULL
 #'  \link[=organizations_delete_organization]{delete_organization} \tab Deletes the organization\cr
 #'  \link[=organizations_delete_organizational_unit]{delete_organizational_unit} \tab Deletes an organizational unit (OU) from a root or another OU\cr
 #'  \link[=organizations_delete_policy]{delete_policy} \tab Deletes the specified policy from your organization\cr
+#'  \link[=organizations_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy from your organization\cr
 #'  \link[=organizations_deregister_delegated_administrator]{deregister_delegated_administrator} \tab Removes the specified member Amazon Web Services account as a delegated administrator for the specified Amazon Web Services service\cr
 #'  \link[=organizations_describe_account]{describe_account} \tab Retrieves Organizations-related information about the specified account\cr
 #'  \link[=organizations_describe_create_account_status]{describe_create_account_status} \tab Retrieves the current status of an asynchronous request to create an account\cr
@@ -151,6 +150,7 @@ NULL
 #'  \link[=organizations_describe_organization]{describe_organization} \tab Retrieves information about the organization that the user's account belongs to\cr
 #'  \link[=organizations_describe_organizational_unit]{describe_organizational_unit} \tab Retrieves information about an organizational unit (OU)\cr
 #'  \link[=organizations_describe_policy]{describe_policy} \tab Retrieves information about a policy\cr
+#'  \link[=organizations_describe_resource_policy]{describe_resource_policy} \tab Retrieves information about a resource policy\cr
 #'  \link[=organizations_detach_policy]{detach_policy} \tab Detaches a policy from a target root, organizational unit (OU), or account\cr
 #'  \link[=organizations_disable_aws_service_access]{disable_aws_service_access} \tab Disables the integration of an Amazon Web Services service (the service that is specified by ServicePrincipal) with Organizations\cr
 #'  \link[=organizations_disable_policy_type]{disable_policy_type} \tab Disables an organizational policy type in a root\cr
@@ -176,6 +176,7 @@ NULL
 #'  \link[=organizations_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags that are attached to the specified resource\cr
 #'  \link[=organizations_list_targets_for_policy]{list_targets_for_policy} \tab Lists all the roots, organizational units (OUs), and accounts that the specified policy is attached to\cr
 #'  \link[=organizations_move_account]{move_account} \tab Moves an account from its current source parent root or organizational unit (OU) to the specified destination parent root or OU\cr
+#'  \link[=organizations_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy\cr
 #'  \link[=organizations_register_delegated_administrator]{register_delegated_administrator} \tab Enables the specified member account to administer the Organizations features of the specified Amazon Web Services service\cr
 #'  \link[=organizations_remove_account_from_organization]{remove_account_from_organization} \tab Removes the specified account from the organization\cr
 #'  \link[=organizations_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr

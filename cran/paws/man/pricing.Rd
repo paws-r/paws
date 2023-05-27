@@ -87,7 +87,9 @@ endpoints:
 \tabular{ll}{
 \link[paws.cost.management:pricing_describe_services]{describe_services} \tab Returns the metadata for one service or a list of the metadata for all services\cr
 \link[paws.cost.management:pricing_get_attribute_values]{get_attribute_values} \tab Returns a list of attribute values\cr
-\link[paws.cost.management:pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria
+\link[paws.cost.management:pricing_get_price_list_file_url]{get_price_list_file_url} \tab This feature is in preview release and is subject to change\cr
+\link[paws.cost.management:pricing_get_products]{get_products} \tab Returns a list of all products that match the filter criteria\cr
+\link[paws.cost.management:pricing_list_price_lists]{list_price_lists} \tab This feature is in preview release and is subject to change
 }
 }
 

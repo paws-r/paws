@@ -67,7 +67,7 @@ proton_cancel_component_deployment <- function(componentName) {
 #' action, if the deployment is IN_PROGRESS
 #'
 #' @description
-#' Attempts to cancel an environment deployment on an [`update_environment`][proton_update_environment] action, if the deployment is `IN_PROGRESS`. For more information, see [Update an environment](https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html) in the *Proton Administrator guide*.
+#' Attempts to cancel an environment deployment on an [`update_environment`][proton_update_environment] action, if the deployment is `IN_PROGRESS`. For more information, see [Update an environment](https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html) in the *Proton User guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/cancel_environment_deployment.html](https://paws-r.github.io/docs/proton/cancel_environment_deployment.html) for full documentation.
 #'
@@ -97,7 +97,7 @@ proton_cancel_environment_deployment <- function(environmentName) {
 #' UpdateServiceInstance action, if the deployment is IN_PROGRESS
 #'
 #' @description
-#' Attempts to cancel a service instance deployment on an [`update_service_instance`][proton_update_service_instance] action, if the deployment is `IN_PROGRESS`. For more information, see *Update a service instance* in the [Proton Administrator guide](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-instance-update.html) or the [Proton User guide](https://docs.aws.amazon.com/proton/latest/userguide/).
+#' Attempts to cancel a service instance deployment on an [`update_service_instance`][proton_update_service_instance] action, if the deployment is `IN_PROGRESS`. For more information, see [Update a service instance](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-instance-update.html) in the *Proton User guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/cancel_service_instance_deployment.html](https://paws-r.github.io/docs/proton/cancel_service_instance_deployment.html) for full documentation.
 #'
@@ -128,7 +128,7 @@ proton_cancel_service_instance_deployment <- function(serviceInstanceName, servi
 #' UpdateServicePipeline action, if the deployment is IN_PROGRESS
 #'
 #' @description
-#' Attempts to cancel a service pipeline deployment on an [`update_service_pipeline`][proton_update_service_pipeline] action, if the deployment is `IN_PROGRESS`. For more information, see *Update a service pipeline* in the [Proton Administrator guide](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-pipeline-update.html) or the [Proton User guide](https://docs.aws.amazon.com/proton/latest/userguide/).
+#' Attempts to cancel a service pipeline deployment on an [`update_service_pipeline`][proton_update_service_pipeline] action, if the deployment is `IN_PROGRESS`. For more information, see [Update a service pipeline](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-pipeline-update.html) in the *Proton User guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/cancel_service_pipeline_deployment.html](https://paws-r.github.io/docs/proton/cancel_service_pipeline_deployment.html) for full documentation.
 #'
@@ -161,6 +161,7 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #'
 #' See [https://paws-r.github.io/docs/proton/create_component.html](https://paws-r.github.io/docs/proton/create_component.html) for full documentation.
 #'
+#' @param clientToken The client token for the created component.
 #' @param description An optional customer-provided description of the component.
 #' @param environmentName The name of the Proton environment that you want to associate this
 #' component with. You must specify this when you don't specify
@@ -183,11 +184,9 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton component. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #' @param templateFile &#91;required&#93; A path to the Infrastructure as Code (IaC) file describing
 #' infrastructure that a custom component provisions.
 #' 
@@ -197,14 +196,14 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #' @keywords internal
 #'
 #' @rdname proton_create_component
-proton_create_component <- function(description = NULL, environmentName = NULL, manifest, name, serviceInstanceName = NULL, serviceName = NULL, serviceSpec = NULL, tags = NULL, templateFile) {
+proton_create_component <- function(clientToken = NULL, description = NULL, environmentName = NULL, manifest, name, serviceInstanceName = NULL, serviceName = NULL, serviceSpec = NULL, tags = NULL, templateFile) {
   op <- new_operation(
     name = "CreateComponent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$create_component_input(description = description, environmentName = environmentName, manifest = manifest, name = name, serviceInstanceName = serviceInstanceName, serviceName = serviceName, serviceSpec = serviceSpec, tags = tags, templateFile = templateFile)
+  input <- .proton$create_component_input(clientToken = clientToken, description = description, environmentName = environmentName, manifest = manifest, name = name, serviceInstanceName = serviceInstanceName, serviceName = serviceName, serviceSpec = serviceSpec, tags = tags, templateFile = templateFile)
   output <- .proton$create_component_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -221,6 +220,13 @@ proton_create_component <- function(description = NULL, environmentName = NULL, 
 #'
 #' See [https://paws-r.github.io/docs/proton/create_environment.html](https://paws-r.github.io/docs/proton/create_environment.html) for full documentation.
 #'
+#' @param codebuildRoleArn The Amazon Resource Name (ARN) of the IAM service role that allows
+#' Proton to provision infrastructure using CodeBuild-based provisioning on
+#' your behalf.
+#' 
+#' To use CodeBuild-based provisioning for the environment or for any
+#' service instance running in the environment, specify either the
+#' `environmentAccountConnectionId` or `codebuildRoleArn` parameter.
 #' @param componentRoleArn The Amazon Resource Name (ARN) of the IAM service role that Proton uses
 #' when provisioning directly defined components in this environment. It
 #' determines the scope of infrastructure that a component can provision.
@@ -230,13 +236,13 @@ proton_create_component <- function(description = NULL, environmentName = NULL, 
 #' 
 #' For more information about components, see [Proton
 #' components](https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param description A description of the environment that's being created and deployed.
 #' @param environmentAccountConnectionId The ID of the environment account connection that you provide if you're
 #' provisioning your environment infrastructure resources to an environment
 #' account. For more information, see [Environment account
 #' connections](https://docs.aws.amazon.com/proton/latest/userguide/ag-env-account-connections.html)
-#' in the *Proton Administrator guide*.
+#' in the *Proton User guide*.
 #' 
 #' To use Amazon Web Services-managed provisioning for the environment,
 #' specify either the `environmentAccountConnectionId` or
@@ -250,8 +256,10 @@ proton_create_component <- function(description = NULL, environmentName = NULL, 
 #' specify either the `environmentAccountConnectionId` or
 #' `protonServiceRoleArn` parameter and omit the `provisioningRepository`
 #' parameter.
-#' @param provisioningRepository The infrastructure repository that you use to host your rendered
-#' infrastructure templates for self-managed provisioning.
+#' @param provisioningRepository The linked repository that you use to host your rendered infrastructure
+#' templates for self-managed provisioning. A linked repository is a
+#' repository that has been registered with Proton. For more information,
+#' see [`create_repository`][proton_create_repository].
 #' 
 #' To use self-managed provisioning for the environment, specify this
 #' parameter and omit the `environmentAccountConnectionId` and
@@ -259,33 +267,31 @@ proton_create_component <- function(description = NULL, environmentName = NULL, 
 #' @param spec &#91;required&#93; A YAML formatted string that provides inputs as defined in the
 #' environment template bundle schema file. For more information, see
 #' [Environments](https://docs.aws.amazon.com/proton/latest/userguide/ag-environments.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton environment. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #' @param templateMajorVersion &#91;required&#93; The major version of the environment template.
 #' @param templateMinorVersion The minor version of the environment template.
 #' @param templateName &#91;required&#93; The name of the environment template. For more information, see
 #' [Environment
 #' Templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname proton_create_environment
-proton_create_environment <- function(componentRoleArn = NULL, description = NULL, environmentAccountConnectionId = NULL, name, protonServiceRoleArn = NULL, provisioningRepository = NULL, spec, tags = NULL, templateMajorVersion, templateMinorVersion = NULL, templateName) {
+proton_create_environment <- function(codebuildRoleArn = NULL, componentRoleArn = NULL, description = NULL, environmentAccountConnectionId = NULL, name, protonServiceRoleArn = NULL, provisioningRepository = NULL, spec, tags = NULL, templateMajorVersion, templateMinorVersion = NULL, templateName) {
   op <- new_operation(
     name = "CreateEnvironment",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$create_environment_input(componentRoleArn = componentRoleArn, description = description, environmentAccountConnectionId = environmentAccountConnectionId, name = name, protonServiceRoleArn = protonServiceRoleArn, provisioningRepository = provisioningRepository, spec = spec, tags = tags, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion, templateName = templateName)
+  input <- .proton$create_environment_input(codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, description = description, environmentAccountConnectionId = environmentAccountConnectionId, name = name, protonServiceRoleArn = protonServiceRoleArn, provisioningRepository = provisioningRepository, spec = spec, tags = tags, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion, templateName = templateName)
   output <- .proton$create_environment_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -307,6 +313,10 @@ proton_create_environment <- function(componentRoleArn = NULL, description = NUL
 #' @param clientToken When included, if two identical requests are made with the same client
 #' token, Proton returns the environment account connection that the first
 #' request created.
+#' @param codebuildRoleArn The Amazon Resource Name (ARN) of an IAM service role in the environment
+#' account. Proton uses this role to provision infrastructure resources
+#' using CodeBuild-based provisioning in the associated environment
+#' account.
 #' @param componentRoleArn The Amazon Resource Name (ARN) of the IAM service role that Proton uses
 #' when provisioning directly defined components in the associated
 #' environment account. It determines the scope of infrastructure that a
@@ -317,7 +327,7 @@ proton_create_environment <- function(componentRoleArn = NULL, description = NUL
 #' 
 #' For more information about components, see [Proton
 #' components](https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param environmentName &#91;required&#93; The name of the Proton environment that's created in the associated
 #' management account.
 #' @param managementAccountId &#91;required&#93; The ID of the management account that accepts or rejects the environment
@@ -326,7 +336,7 @@ proton_create_environment <- function(componentRoleArn = NULL, description = NUL
 #' connection, Proton can use the associated IAM role to provision
 #' environment infrastructure resources in the associated environment
 #' account.
-#' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM service role that's created in
+#' @param roleArn The Amazon Resource Name (ARN) of the IAM service role that's created in
 #' the environment account. Proton uses this role to provision
 #' infrastructure resources in the associated environment account.
 #' @param tags An optional list of metadata items that you can associate with the
@@ -334,19 +344,19 @@ proton_create_environment <- function(componentRoleArn = NULL, description = NUL
 #' 
 #' For more information, see [Proton resources and
 #' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname proton_create_environment_account_connection
-proton_create_environment_account_connection <- function(clientToken = NULL, componentRoleArn = NULL, environmentName, managementAccountId, roleArn, tags = NULL) {
+proton_create_environment_account_connection <- function(clientToken = NULL, codebuildRoleArn = NULL, componentRoleArn = NULL, environmentName, managementAccountId, roleArn = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentAccountConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$create_environment_account_connection_input(clientToken = clientToken, componentRoleArn = componentRoleArn, environmentName = environmentName, managementAccountId = managementAccountId, roleArn = roleArn, tags = tags)
+  input <- .proton$create_environment_account_connection_input(clientToken = clientToken, codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, environmentName = environmentName, managementAccountId = managementAccountId, roleArn = roleArn, tags = tags)
   output <- .proton$create_environment_account_connection_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -359,7 +369,7 @@ proton_create_environment_account_connection <- function(clientToken = NULL, com
 #' Create an environment template for Proton
 #'
 #' @description
-#' Create an environment template for Proton. For more information, see [Environment Templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html) in the *Proton Administrator Guide*.
+#' Create an environment template for Proton. For more information, see [Environment Templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html) in the *Proton User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/create_environment_template.html](https://paws-r.github.io/docs/proton/create_environment_template.html) for full documentation.
 #'
@@ -372,11 +382,9 @@ proton_create_environment_account_connection <- function(clientToken = NULL, com
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton environment template. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #'
 #' @keywords internal
 #'
@@ -419,11 +427,9 @@ proton_create_environment_template <- function(description = NULL, displayName =
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton environment template version. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #' @param templateName &#91;required&#93; The name of the environment template.
 #'
 #' @keywords internal
@@ -446,19 +452,18 @@ proton_create_environment_template_version <- function(clientToken = NULL, descr
 }
 .proton$operations$create_environment_template_version <- proton_create_environment_template_version
 
-#' Create and register a link to a repository that can be used with
-#' self-managed provisioning (infrastructure or pipelines) or for template
-#' sync configurations
+#' Create and register a link to a repository
 #'
 #' @description
-#' Create and register a link to a repository that can be used with self-managed provisioning (infrastructure or pipelines) or for template sync configurations. When you create a repository link, Proton creates a [service-linked role](https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html) for you.
+#' Create and register a link to a repository. Proton uses the link to repeatedly access the repository, to either push to it (self-managed provisioning) or pull from it (template sync). You can share a linked repository across multiple resources (like environments using self-managed provisioning, or synced templates). When you create a repository link, Proton creates a [service-linked role](https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html) for you.
 #'
 #' See [https://paws-r.github.io/docs/proton/create_repository.html](https://paws-r.github.io/docs/proton/create_repository.html) for full documentation.
 #'
-#' @param connectionArn &#91;required&#93; The Amazon Resource Name (ARN) of your Amazon Web Services CodeStar
-#' connection. For more information, see [Setting up for
+#' @param connectionArn &#91;required&#93; The Amazon Resource Name (ARN) of your AWS CodeStar connection that
+#' connects Proton to your repository provider account. For more
+#' information, see [Setting up for
 #' Proton](https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param encryptionKey The ARN of your customer Amazon Web Services Key Management Service
 #' (Amazon Web Services KMS) key.
 #' @param name &#91;required&#93; The repository name (for example, `myrepos/myrepo`).
@@ -466,11 +471,9 @@ proton_create_environment_template_version <- function(clientToken = NULL, descr
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton repository. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #'
 #' @keywords internal
 #'
@@ -495,7 +498,7 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
 #' Create an Proton service
 #'
 #' @description
-#' Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see [Services](https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html) in the *Proton Administrator Guide* and [Services](https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html) in the *Proton User Guide*.
+#' Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see [Services](https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html) in the *Proton User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/create_service.html](https://paws-r.github.io/docs/proton/create_service.html) for full documentation.
 #'
@@ -505,10 +508,8 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
 #' @param description A description of the Proton service.
 #' @param name &#91;required&#93; The service name.
 #' @param repositoryConnectionArn The Amazon Resource Name (ARN) of the repository connection. For more
-#' information, see [Set up repository
+#' information, see [Setting up an AWS CodeStar
 #' connection](https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol)
-#' in the *Proton Administrator Guide* and [Setting up with
-#' Proton](https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setup-repo-connection)
 #' in the *Proton User Guide*. *Don't* include this parameter if your
 #' service template *doesn't* include a service pipeline.
 #' @param repositoryId The ID of the code repository. *Don't* include this parameter if your
@@ -517,18 +518,14 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
 #' template bundle schema file. The spec file is in YAML format. *Don’t*
 #' include pipeline inputs in the spec if your service template *doesn’t*
 #' include a service pipeline. For more information, see [Create a
-#' service](https://docs.aws.amazon.com/proton/latest/userguide/) in the
-#' *Proton Administrator Guide* and [Create a
 #' service](https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html)
 #' in the *Proton User Guide*.
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton service. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #' @param templateMajorVersion &#91;required&#93; The major version of the service template that was used to create the
 #' service.
 #' @param templateMinorVersion The minor version of the service template that was used to create the
@@ -555,10 +552,85 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
 }
 .proton$operations$create_service <- proton_create_service
 
+#' Create a service instance
+#'
+#' @description
+#' Create a service instance.
+#'
+#' See [https://paws-r.github.io/docs/proton/create_service_instance.html](https://paws-r.github.io/docs/proton/create_service_instance.html) for full documentation.
+#'
+#' @param clientToken The client token of the service instance to create.
+#' @param name &#91;required&#93; The name of the service instance to create.
+#' @param serviceName &#91;required&#93; The name of the service the service instance is added to.
+#' @param spec &#91;required&#93; The spec for the service instance you want to create.
+#' @param tags An optional list of metadata items that you can associate with the
+#' Proton service instance. A tag is a key-value pair.
+#' 
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
+#' @param templateMajorVersion To create a new major and minor version of the service template,
+#' *exclude* `major Version`.
+#' @param templateMinorVersion To create a new minor version of the service template, include a
+#' `major Version`.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_create_service_instance
+proton_create_service_instance <- function(clientToken = NULL, name, serviceName, spec, tags = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
+  op <- new_operation(
+    name = "CreateServiceInstance",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$create_service_instance_input(clientToken = clientToken, name = name, serviceName = serviceName, spec = spec, tags = tags, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
+  output <- .proton$create_service_instance_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$create_service_instance <- proton_create_service_instance
+
+#' Create the Proton Ops configuration file
+#'
+#' @description
+#' Create the Proton Ops configuration file.
+#'
+#' See [https://paws-r.github.io/docs/proton/create_service_sync_config.html](https://paws-r.github.io/docs/proton/create_service_sync_config.html) for full documentation.
+#'
+#' @param branch &#91;required&#93; The repository branch for your Proton Ops file.
+#' @param filePath &#91;required&#93; The path to the Proton Ops file.
+#' @param repositoryName &#91;required&#93; The repository name.
+#' @param repositoryProvider &#91;required&#93; The provider type for your repository.
+#' @param serviceName &#91;required&#93; The name of the service the Proton Ops file is for.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_create_service_sync_config
+proton_create_service_sync_config <- function(branch, filePath, repositoryName, repositoryProvider, serviceName) {
+  op <- new_operation(
+    name = "CreateServiceSyncConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$create_service_sync_config_input(branch = branch, filePath = filePath, repositoryName = repositoryName, repositoryProvider = repositoryProvider, serviceName = serviceName)
+  output <- .proton$create_service_sync_config_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$create_service_sync_config <- proton_create_service_sync_config
+
 #' Create a service template
 #'
 #' @description
-#' Create a service template. The administrator creates a service template to define standardized infrastructure and an optional CI/CD service pipeline. Developers, in turn, select the service template from Proton. If the selected service template includes a service pipeline definition, they provide a link to their source code repository. Proton then deploys and manages the infrastructure defined by the selected service template. For more information, see [Service Templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html) in the *Proton Administrator Guide*.
+#' Create a service template. The administrator creates a service template to define standardized infrastructure and an optional CI/CD service pipeline. Developers, in turn, select the service template from Proton. If the selected service template includes a service pipeline definition, they provide a link to their source code repository. Proton then deploys and manages the infrastructure defined by the selected service template. For more information, see [Proton templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html) in the *Proton User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/create_service_template.html](https://paws-r.github.io/docs/proton/create_service_template.html) for full documentation.
 #'
@@ -570,17 +642,15 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
 #' @param pipelineProvisioning By default, Proton provides a service pipeline for your service. When
 #' this parameter is included, it indicates that an Proton service pipeline
 #' *isn't* provided for your service. After it's included, it *can't* be
-#' changed. For more information, see [Service template
+#' changed. For more information, see [Template
 #' bundles](https://docs.aws.amazon.com/proton/latest/userguide/ag-template-authoring.html#ag-template-bundles)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton service template. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #'
 #' @keywords internal
 #'
@@ -629,15 +699,13 @@ proton_create_service_template <- function(description = NULL, displayName = NUL
 #' 
 #' For more information about components, see [Proton
 #' components](https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param tags An optional list of metadata items that you can associate with the
 #' Proton service template version. A tag is a key-value pair.
 #' 
-#' For more information, see *Proton resources and tagging* in the [Proton
-#' Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
-#' or [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' For more information, see [Proton resources and
+#' tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html)
+#' in the *Proton User Guide*.
 #' @param templateName &#91;required&#93; The name of the service template.
 #'
 #' @keywords internal
@@ -660,15 +728,16 @@ proton_create_service_template_version <- function(clientToken = NULL, compatibl
 }
 .proton$operations$create_service_template_version <- proton_create_service_template_version
 
-#' Set up a template to create new template versions automatically
+#' Set up a template to create new template versions automatically by
+#' tracking a linked repository
 #'
 #' @description
-#' Set up a template to create new template versions automatically. When a commit is pushed to your registered [repository](https://docs.aws.amazon.com/proton/latest/APIReference/API_Repository.html), Proton checks for changes to your repository template bundles. If it detects a template bundle change, a new major or minor version of its template is created, if the version doesn’t already exist. For more information, see [Template sync configurations](https://docs.aws.amazon.com/proton/latest/userguide/ag-template-sync-configs.html) in the *Proton Administrator Guide*.
+#' Set up a template to create new template versions automatically by tracking a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see [`create_repository`][proton_create_repository].
 #'
 #' See [https://paws-r.github.io/docs/proton/create_template_sync_config.html](https://paws-r.github.io/docs/proton/create_template_sync_config.html) for full documentation.
 #'
-#' @param branch &#91;required&#93; The branch of the registered repository for your template.
-#' @param repositoryName &#91;required&#93; The name of your repository (for example, `myrepos/myrepo`).
+#' @param branch &#91;required&#93; The repository branch for your template.
+#' @param repositoryName &#91;required&#93; The repository name (for example, `myrepos/myrepo`).
 #' @param repositoryProvider &#91;required&#93; The provider type for your repository.
 #' @param subdirectory A repository subdirectory path to your template bundle directory. When
 #' included, Proton limits the template bundle search to this repository
@@ -853,7 +922,7 @@ proton_delete_environment_template_version <- function(majorVersion, minorVersio
 #'
 #' See [https://paws-r.github.io/docs/proton/delete_repository.html](https://paws-r.github.io/docs/proton/delete_repository.html) for full documentation.
 #'
-#' @param name &#91;required&#93; The name of the repository.
+#' @param name &#91;required&#93; The repository name.
 #' @param provider &#91;required&#93; The repository provider.
 #'
 #' @keywords internal
@@ -904,6 +973,36 @@ proton_delete_service <- function(name) {
   return(response)
 }
 .proton$operations$delete_service <- proton_delete_service
+
+#' Delete the Proton Ops file
+#'
+#' @description
+#' Delete the Proton Ops file.
+#'
+#' See [https://paws-r.github.io/docs/proton/delete_service_sync_config.html](https://paws-r.github.io/docs/proton/delete_service_sync_config.html) for full documentation.
+#'
+#' @param serviceName &#91;required&#93; The name of the service that you want to delete the service sync
+#' configuration for.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_delete_service_sync_config
+proton_delete_service_sync_config <- function(serviceName) {
+  op <- new_operation(
+    name = "DeleteServiceSyncConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$delete_service_sync_config_input(serviceName = serviceName)
+  output <- .proton$delete_service_sync_config_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$delete_service_sync_config <- proton_delete_service_sync_config
 
 #' If no other major or minor versions of the service template exist,
 #' delete the service template
@@ -997,10 +1096,10 @@ proton_delete_template_sync_config <- function(templateName, templateType) {
 }
 .proton$operations$delete_template_sync_config <- proton_delete_template_sync_config
 
-#' Get detail data for the Proton pipeline service role
+#' Get detail data for Proton account-wide settings
 #'
 #' @description
-#' Get detail data for the Proton pipeline service role.
+#' Get detail data for Proton account-wide settings.
 #'
 #' See [https://paws-r.github.io/docs/proton/get_account_settings.html](https://paws-r.github.io/docs/proton/get_account_settings.html) for full documentation.
 #'
@@ -1156,7 +1255,7 @@ proton_get_environment_template <- function(name) {
 #' @param minorVersion &#91;required&#93; To get environment template minor version detail data, include
 #' `minorVersion`.
 #' @param templateName &#91;required&#93; The name of the environment template a version of which you want to get
-#' detailed data for..
+#' detailed data for.
 #'
 #' @keywords internal
 #'
@@ -1178,10 +1277,10 @@ proton_get_environment_template_version <- function(majorVersion, minorVersion, 
 }
 .proton$operations$get_environment_template_version <- proton_get_environment_template_version
 
-#' Get detail data for a repository
+#' Get detail data for a linked repository
 #'
 #' @description
-#' Get detail data for a repository.
+#' Get detail data for a linked repository.
 #'
 #' See [https://paws-r.github.io/docs/proton/get_repository.html](https://paws-r.github.io/docs/proton/get_repository.html) for full documentation.
 #'
@@ -1240,6 +1339,33 @@ proton_get_repository_sync_status <- function(branch, repositoryName, repository
 }
 .proton$operations$get_repository_sync_status <- proton_get_repository_sync_status
 
+#' Get counts of Proton resources
+#'
+#' @description
+#' Get counts of Proton resources.
+#'
+#' See [https://paws-r.github.io/docs/proton/get_resources_summary.html](https://paws-r.github.io/docs/proton/get_resources_summary.html) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_resources_summary
+proton_get_resources_summary <- function() {
+  op <- new_operation(
+    name = "GetResourcesSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_resources_summary_input()
+  output <- .proton$get_resources_summary_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_resources_summary <- proton_get_resources_summary
+
 #' Get detailed data for a service
 #'
 #' @description
@@ -1278,7 +1404,7 @@ proton_get_service <- function(name) {
 #'
 #' @param name &#91;required&#93; The name of a service instance that you want to get the detailed data
 #' for.
-#' @param serviceName &#91;required&#93; The name of the service that the service instance belongs to.
+#' @param serviceName &#91;required&#93; The name of the service that you want the service instance input for.
 #'
 #' @keywords internal
 #'
@@ -1299,6 +1425,100 @@ proton_get_service_instance <- function(name, serviceName) {
   return(response)
 }
 .proton$operations$get_service_instance <- proton_get_service_instance
+
+#' Get the status of the synced service instance
+#'
+#' @description
+#' Get the status of the synced service instance.
+#'
+#' See [https://paws-r.github.io/docs/proton/get_service_instance_sync_status.html](https://paws-r.github.io/docs/proton/get_service_instance_sync_status.html) for full documentation.
+#'
+#' @param serviceInstanceName &#91;required&#93; The name of the service instance that you want the sync status input
+#' for.
+#' @param serviceName &#91;required&#93; The name of the service that the service instance belongs to.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_service_instance_sync_status
+proton_get_service_instance_sync_status <- function(serviceInstanceName, serviceName) {
+  op <- new_operation(
+    name = "GetServiceInstanceSyncStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_service_instance_sync_status_input(serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$get_service_instance_sync_status_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_service_instance_sync_status <- proton_get_service_instance_sync_status
+
+#' Get detailed data for the service sync blocker summary
+#'
+#' @description
+#' Get detailed data for the service sync blocker summary.
+#'
+#' See [https://paws-r.github.io/docs/proton/get_service_sync_blocker_summary.html](https://paws-r.github.io/docs/proton/get_service_sync_blocker_summary.html) for full documentation.
+#'
+#' @param serviceInstanceName The name of the service instance that you want to get the service sync
+#' blocker summary for. If given bothe the instance name and the service
+#' name, only the instance is blocked.
+#' @param serviceName &#91;required&#93; The name of the service that you want to get the service sync blocker
+#' summary for. If given only the service name, all instances are blocked.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_service_sync_blocker_summary
+proton_get_service_sync_blocker_summary <- function(serviceInstanceName = NULL, serviceName) {
+  op <- new_operation(
+    name = "GetServiceSyncBlockerSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_service_sync_blocker_summary_input(serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$get_service_sync_blocker_summary_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_service_sync_blocker_summary <- proton_get_service_sync_blocker_summary
+
+#' Get detailed information for the service sync configuration
+#'
+#' @description
+#' Get detailed information for the service sync configuration.
+#'
+#' See [https://paws-r.github.io/docs/proton/get_service_sync_config.html](https://paws-r.github.io/docs/proton/get_service_sync_config.html) for full documentation.
+#'
+#' @param serviceName &#91;required&#93; The name of the service that you want to get the service sync
+#' configuration for.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_service_sync_config
+proton_get_service_sync_config <- function(serviceName) {
+  op <- new_operation(
+    name = "GetServiceSyncConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_service_sync_config_input(serviceName = serviceName)
+  output <- .proton$get_service_sync_config_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_service_sync_config <- proton_get_service_sync_config
 
 #' Get detailed data for a service template
 #'
@@ -1732,10 +1952,10 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
 }
 .proton$operations$list_environments <- proton_list_environments
 
-#' List repositories with detail data
+#' List linked repositories with detail data
 #'
 #' @description
-#' List repositories with detail data.
+#' List linked repositories with detail data.
 #'
 #' See [https://paws-r.github.io/docs/proton/list_repositories.html](https://paws-r.github.io/docs/proton/list_repositories.html) for full documentation.
 #'
@@ -1865,27 +2085,39 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
 #' List service instances with summary data
 #'
 #' @description
-#' List service instances with summary data.
+#' List service instances with summary data. This action lists service instances of all services in the Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/proton/list_service_instances.html](https://paws-r.github.io/docs/proton/list_service_instances.html) for full documentation.
 #'
+#' @param filters An array of filtering criteria that scope down the result list. By
+#' default, all service instances in the Amazon Web Services account are
+#' returned.
 #' @param maxResults The maximum number of service instances to list.
 #' @param nextToken A token that indicates the location of the next service in the array of
 #' service instances, after the list of service instances that was
 #' previously requested.
 #' @param serviceName The name of the service that the service instance belongs to.
+#' @param sortBy The field that the result list is sorted by.
+#' 
+#' When you choose to sort by `serviceName`, service instances within each
+#' service are sorted by service instance name.
+#' 
+#' Default: `serviceName`
+#' @param sortOrder Result list sort order.
+#' 
+#' Default: `ASCENDING`
 #'
 #' @keywords internal
 #'
 #' @rdname proton_list_service_instances
-proton_list_service_instances <- function(maxResults = NULL, nextToken = NULL, serviceName = NULL) {
+proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nextToken = NULL, serviceName = NULL, sortBy = NULL, sortOrder = NULL) {
   op <- new_operation(
     name = "ListServiceInstances",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$list_service_instances_input(maxResults = maxResults, nextToken = nextToken, serviceName = serviceName)
+  input <- .proton$list_service_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken, serviceName = serviceName, sortBy = sortBy, sortOrder = sortOrder)
   output <- .proton$list_service_instances_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2063,7 +2295,7 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
 #' List tags for a resource
 #'
 #' @description
-#' List tags for a resource. For more information, see *Proton resources and tagging* in the [Proton Administrator Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html) or [Proton User Guide](https://docs.aws.amazon.com/proton/latest/userguide/resources.html).
+#' List tags for a resource. For more information, see [Proton resources and tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html) in the *Proton User Guide*.
 #'
 #' See [https://paws-r.github.io/docs/proton/list_tags_for_resource.html](https://paws-r.github.io/docs/proton/list_tags_for_resource.html) for full documentation.
 #'
@@ -2105,13 +2337,13 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
 #' @param outputs The provisioned resource state change detail data that's returned by
 #' Proton.
 #' @param resourceArn &#91;required&#93; The provisioned resource Amazon Resource Name (ARN).
-#' @param status &#91;required&#93; The status of your provisioned resource.
+#' @param status The status of your provisioned resource.
 #' @param statusMessage The deployment status message for your provisioned resource.
 #'
 #' @keywords internal
 #'
 #' @rdname proton_notify_resource_deployment_status_change
-proton_notify_resource_deployment_status_change <- function(deploymentId = NULL, outputs = NULL, resourceArn, status, statusMessage = NULL) {
+proton_notify_resource_deployment_status_change <- function(deploymentId = NULL, outputs = NULL, resourceArn, status = NULL, statusMessage = NULL) {
   op <- new_operation(
     name = "NotifyResourceDeploymentStatusChange",
     http_method = "POST",
@@ -2221,32 +2453,47 @@ proton_untag_resource <- function(resourceArn, tagKeys) {
 }
 .proton$operations$untag_resource <- proton_untag_resource
 
-#' Update the Proton service pipeline role or repository settings
+#' Update Proton settings that are used for multiple services in the Amazon
+#' Web Services account
 #'
 #' @description
-#' Update the Proton service pipeline role or repository settings.
+#' Update Proton settings that are used for multiple services in the Amazon Web Services account.
 #'
 #' See [https://paws-r.github.io/docs/proton/update_account_settings.html](https://paws-r.github.io/docs/proton/update_account_settings.html) for full documentation.
 #'
-#' @param pipelineProvisioningRepository A repository for pipeline provisioning. Specify it if you have
+#' @param deletePipelineProvisioningRepository Set to `true` to remove a configured pipeline repository from the
+#' account settings. Don't set this field if you are updating the
+#' configured pipeline repository.
+#' @param pipelineCodebuildRoleArn The Amazon Resource Name (ARN) of the service role you want to use for
+#' provisioning pipelines. Proton assumes this role for CodeBuild-based
+#' provisioning.
+#' @param pipelineProvisioningRepository A linked repository for pipeline provisioning. Specify it if you have
 #' environments configured for self-managed provisioning with services that
-#' include pipelines.
+#' include pipelines. A linked repository is a repository that has been
+#' registered with Proton. For more information, see
+#' [`create_repository`][proton_create_repository].
+#' 
+#' To remove a previously configured repository, set
+#' `deletePipelineProvisioningRepository` to `true`, and don't set
+#' `pipelineProvisioningRepository`.
 #' @param pipelineServiceRoleArn The Amazon Resource Name (ARN) of the service role you want to use for
 #' provisioning pipelines. Assumed by Proton for Amazon Web
 #' Services-managed provisioning, and by customer-owned automation for
 #' self-managed provisioning.
+#' 
+#' To remove a previously configured ARN, specify an empty string.
 #'
 #' @keywords internal
 #'
 #' @rdname proton_update_account_settings
-proton_update_account_settings <- function(pipelineProvisioningRepository = NULL, pipelineServiceRoleArn = NULL) {
+proton_update_account_settings <- function(deletePipelineProvisioningRepository = NULL, pipelineCodebuildRoleArn = NULL, pipelineProvisioningRepository = NULL, pipelineServiceRoleArn = NULL) {
   op <- new_operation(
     name = "UpdateAccountSettings",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$update_account_settings_input(pipelineProvisioningRepository = pipelineProvisioningRepository, pipelineServiceRoleArn = pipelineServiceRoleArn)
+  input <- .proton$update_account_settings_input(deletePipelineProvisioningRepository = deletePipelineProvisioningRepository, pipelineCodebuildRoleArn = pipelineCodebuildRoleArn, pipelineProvisioningRepository = pipelineProvisioningRepository, pipelineServiceRoleArn = pipelineServiceRoleArn)
   output <- .proton$update_account_settings_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2263,6 +2510,7 @@ proton_update_account_settings <- function(pipelineProvisioningRepository = NULL
 #'
 #' See [https://paws-r.github.io/docs/proton/update_component.html](https://paws-r.github.io/docs/proton/update_component.html) for full documentation.
 #'
+#' @param clientToken The client token for the updated component.
 #' @param deploymentType &#91;required&#93; The deployment type. It defines the mode for updating a component, as
 #' follows:
 #' 
@@ -2304,14 +2552,14 @@ proton_update_account_settings <- function(pipelineProvisioningRepository = NULL
 #' @keywords internal
 #'
 #' @rdname proton_update_component
-proton_update_component <- function(deploymentType, description = NULL, name, serviceInstanceName = NULL, serviceName = NULL, serviceSpec = NULL, templateFile = NULL) {
+proton_update_component <- function(clientToken = NULL, deploymentType, description = NULL, name, serviceInstanceName = NULL, serviceName = NULL, serviceSpec = NULL, templateFile = NULL) {
   op <- new_operation(
     name = "UpdateComponent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$update_component_input(deploymentType = deploymentType, description = description, name = name, serviceInstanceName = serviceInstanceName, serviceName = serviceName, serviceSpec = serviceSpec, templateFile = templateFile)
+  input <- .proton$update_component_input(clientToken = clientToken, deploymentType = deploymentType, description = description, name = name, serviceInstanceName = serviceInstanceName, serviceName = serviceName, serviceSpec = serviceSpec, templateFile = templateFile)
   output <- .proton$update_component_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2328,6 +2576,9 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #'
 #' See [https://paws-r.github.io/docs/proton/update_environment.html](https://paws-r.github.io/docs/proton/update_environment.html) for full documentation.
 #'
+#' @param codebuildRoleArn The Amazon Resource Name (ARN) of the IAM service role that allows
+#' Proton to provision infrastructure using CodeBuild-based provisioning on
+#' your behalf.
 #' @param componentRoleArn The Amazon Resource Name (ARN) of the IAM service role that Proton uses
 #' when provisioning directly defined components in this environment. It
 #' determines the scope of infrastructure that a component can provision.
@@ -2337,7 +2588,7 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' 
 #' For more information about components, see [Proton
 #' components](https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param deploymentType &#91;required&#93; There are four modes for updating an environment. The `deploymentType`
 #' field defines the mode.
 #' 
@@ -2384,8 +2635,10 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' @param name &#91;required&#93; The name of the environment to update.
 #' @param protonServiceRoleArn The Amazon Resource Name (ARN) of the Proton service role that allows
 #' Proton to make API calls to other services your behalf.
-#' @param provisioningRepository The infrastructure repository that you use to host your rendered
-#' infrastructure templates for self-managed provisioning.
+#' @param provisioningRepository The linked repository that you use to host your rendered infrastructure
+#' templates for self-managed provisioning. A linked repository is a
+#' repository that has been registered with Proton. For more information,
+#' see [`create_repository`][proton_create_repository].
 #' @param spec The formatted specification that defines the update.
 #' @param templateMajorVersion The major version of the environment to update.
 #' @param templateMinorVersion The minor version of the environment to update.
@@ -2393,14 +2646,14 @@ proton_update_component <- function(deploymentType, description = NULL, name, se
 #' @keywords internal
 #'
 #' @rdname proton_update_environment
-proton_update_environment <- function(componentRoleArn = NULL, deploymentType, description = NULL, environmentAccountConnectionId = NULL, name, protonServiceRoleArn = NULL, provisioningRepository = NULL, spec = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
+proton_update_environment <- function(codebuildRoleArn = NULL, componentRoleArn = NULL, deploymentType, description = NULL, environmentAccountConnectionId = NULL, name, protonServiceRoleArn = NULL, provisioningRepository = NULL, spec = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
   op <- new_operation(
     name = "UpdateEnvironment",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$update_environment_input(componentRoleArn = componentRoleArn, deploymentType = deploymentType, description = description, environmentAccountConnectionId = environmentAccountConnectionId, name = name, protonServiceRoleArn = protonServiceRoleArn, provisioningRepository = provisioningRepository, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
+  input <- .proton$update_environment_input(codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, deploymentType = deploymentType, description = description, environmentAccountConnectionId = environmentAccountConnectionId, name = name, protonServiceRoleArn = protonServiceRoleArn, provisioningRepository = provisioningRepository, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
   output <- .proton$update_environment_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2418,6 +2671,10 @@ proton_update_environment <- function(componentRoleArn = NULL, deploymentType, d
 #'
 #' See [https://paws-r.github.io/docs/proton/update_environment_account_connection.html](https://paws-r.github.io/docs/proton/update_environment_account_connection.html) for full documentation.
 #'
+#' @param codebuildRoleArn The Amazon Resource Name (ARN) of an IAM service role in the environment
+#' account. Proton uses this role to provision infrastructure resources
+#' using CodeBuild-based provisioning in the associated environment
+#' account.
 #' @param componentRoleArn The Amazon Resource Name (ARN) of the IAM service role that Proton uses
 #' when provisioning directly defined components in the associated
 #' environment account. It determines the scope of infrastructure that a
@@ -2429,7 +2686,7 @@ proton_update_environment <- function(componentRoleArn = NULL, deploymentType, d
 #' 
 #' For more information about components, see [Proton
 #' components](https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param id &#91;required&#93; The ID of the environment account connection to update.
 #' @param roleArn The Amazon Resource Name (ARN) of the IAM service role that's associated
 #' with the environment account connection to update.
@@ -2437,14 +2694,14 @@ proton_update_environment <- function(componentRoleArn = NULL, deploymentType, d
 #' @keywords internal
 #'
 #' @rdname proton_update_environment_account_connection
-proton_update_environment_account_connection <- function(componentRoleArn = NULL, id, roleArn = NULL) {
+proton_update_environment_account_connection <- function(codebuildRoleArn = NULL, componentRoleArn = NULL, id, roleArn = NULL) {
   op <- new_operation(
     name = "UpdateEnvironmentAccountConnection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$update_environment_account_connection_input(componentRoleArn = componentRoleArn, id = id, roleArn = roleArn)
+  input <- .proton$update_environment_account_connection_input(codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, id = id, roleArn = roleArn)
   output <- .proton$update_environment_account_connection_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2534,10 +2791,9 @@ proton_update_environment_template_version <- function(description = NULL, major
 #' @param spec Lists the service instances to add and the existing service instances to
 #' remain. Omit the existing service instances to delete from the list.
 #' *Don't* include edits to the existing service instances or pipeline. For
-#' more information, see *Edit a service* in the [Proton Administrator
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html)
-#' or the [Proton User
-#' Guide](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html).
+#' more information, see [Edit a
+#' service](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-update.html)
+#' in the *Proton User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2566,6 +2822,7 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #'
 #' See [https://paws-r.github.io/docs/proton/update_service_instance.html](https://paws-r.github.io/docs/proton/update_service_instance.html) for full documentation.
 #'
+#' @param clientToken The client token of the service instance to update.
 #' @param deploymentType &#91;required&#93; The deployment type. It defines the mode for updating a service
 #' instance, as follows:
 #' 
@@ -2611,14 +2868,14 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #' @keywords internal
 #'
 #' @rdname proton_update_service_instance
-proton_update_service_instance <- function(deploymentType, name, serviceName, spec = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
+proton_update_service_instance <- function(clientToken = NULL, deploymentType, name, serviceName, spec = NULL, templateMajorVersion = NULL, templateMinorVersion = NULL) {
   op <- new_operation(
     name = "UpdateServiceInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .proton$update_service_instance_input(deploymentType = deploymentType, name = name, serviceName = serviceName, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
+  input <- .proton$update_service_instance_input(clientToken = clientToken, deploymentType = deploymentType, name = name, serviceName = serviceName, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
   output <- .proton$update_service_instance_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2700,6 +2957,70 @@ proton_update_service_pipeline <- function(deploymentType, serviceName, spec, te
 }
 .proton$operations$update_service_pipeline <- proton_update_service_pipeline
 
+#' Update the service sync blocker by resolving it
+#'
+#' @description
+#' Update the service sync blocker by resolving it.
+#'
+#' See [https://paws-r.github.io/docs/proton/update_service_sync_blocker.html](https://paws-r.github.io/docs/proton/update_service_sync_blocker.html) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the service sync blocker.
+#' @param resolvedReason &#91;required&#93; The reason the service sync blocker was resolved.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_update_service_sync_blocker
+proton_update_service_sync_blocker <- function(id, resolvedReason) {
+  op <- new_operation(
+    name = "UpdateServiceSyncBlocker",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$update_service_sync_blocker_input(id = id, resolvedReason = resolvedReason)
+  output <- .proton$update_service_sync_blocker_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$update_service_sync_blocker <- proton_update_service_sync_blocker
+
+#' Update the Proton Ops config file
+#'
+#' @description
+#' Update the Proton Ops config file.
+#'
+#' See [https://paws-r.github.io/docs/proton/update_service_sync_config.html](https://paws-r.github.io/docs/proton/update_service_sync_config.html) for full documentation.
+#'
+#' @param branch &#91;required&#93; The name of the code repository branch where the Proton Ops file is
+#' found.
+#' @param filePath &#91;required&#93; The path to the Proton Ops file.
+#' @param repositoryName &#91;required&#93; The name of the repository where the Proton Ops file is found.
+#' @param repositoryProvider &#91;required&#93; The name of the repository provider where the Proton Ops file is found.
+#' @param serviceName &#91;required&#93; The name of the service the Proton Ops file is for.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_update_service_sync_config
+proton_update_service_sync_config <- function(branch, filePath, repositoryName, repositoryProvider, serviceName) {
+  op <- new_operation(
+    name = "UpdateServiceSyncConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$update_service_sync_config_input(branch = branch, filePath = filePath, repositoryName = repositoryName, repositoryProvider = repositoryProvider, serviceName = serviceName)
+  output <- .proton$update_service_sync_config_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$update_service_sync_config <- proton_update_service_sync_config
+
 #' Update a service template
 #'
 #' @description
@@ -2757,7 +3078,7 @@ proton_update_service_template <- function(description = NULL, displayName = NUL
 #' 
 #' For more information about components, see [Proton
 #' components](https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html)
-#' in the *Proton Administrator Guide*.
+#' in the *Proton User Guide*.
 #' @param templateName &#91;required&#93; The name of the service template.
 #'
 #' @keywords internal
@@ -2784,12 +3105,12 @@ proton_update_service_template_version <- function(compatibleEnvironmentTemplate
 #' templateName and templateType
 #'
 #' @description
-#' Update template sync configuration parameters, except for the `templateName` and `templateType`.
+#' Update template sync configuration parameters, except for the `templateName` and `templateType`. Repository details (branch, name, and provider) should be of a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see [`create_repository`][proton_create_repository].
 #'
 #' See [https://paws-r.github.io/docs/proton/update_template_sync_config.html](https://paws-r.github.io/docs/proton/update_template_sync_config.html) for full documentation.
 #'
-#' @param branch &#91;required&#93; The repository branch.
-#' @param repositoryName &#91;required&#93; The name of the repository (for example, `myrepos/myrepo`).
+#' @param branch &#91;required&#93; The repository branch for your template.
+#' @param repositoryName &#91;required&#93; The repository name (for example, `myrepos/myrepo`).
 #' @param repositoryProvider &#91;required&#93; The repository provider.
 #' @param subdirectory A subdirectory path to your template bundle version. When included,
 #' limits the template bundle search to this repository directory.

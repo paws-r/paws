@@ -16,8 +16,8 @@ cloudwatchlogs_describe_metric_filters(
 \arguments{
 \item{logGroupName}{The name of the log group.}
 
-\item{filterNamePrefix}{The prefix to match. CloudWatch Logs uses the value you set here only if
-you also include the \code{logGroupName} parameter in your request.}
+\item{filterNamePrefix}{The prefix to match. CloudWatch Logs uses the value that you set here
+only if you also include the \code{logGroupName} parameter in your request.}
 
 \item{nextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

@@ -19,7 +19,7 @@ proton_get_environment_template_version(
 \code{minorVersion}.}
 
 \item{templateName}{[required] The name of the environment template a version of which you want to get
-detailed data for..}
+detailed data for.}
 }
 \description{
 Get detailed data for a major or minor version of an environment template.

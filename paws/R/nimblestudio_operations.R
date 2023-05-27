@@ -12,11 +12,11 @@ NULL
 #' nimblestudio_accept_eulas(clientToken, eulaIds, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param eulaIds The EULA ID.
-#' @param studioId &#91;required&#93; A collection of EULA IDs.
+#' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -80,9 +80,9 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #'   studioComponentIds, studioId, tags)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param description The description.
 #' @param ec2SubnetIds &#91;required&#93; Specifies the IDs of the EC2 subnets where streaming sessions will be
 #' accessible from. These subnets must support the specified instance
@@ -94,7 +94,7 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #' @param studioComponentIds &#91;required&#93; Unique identifiers for a collection of studio components that can be
 #' used with this launch profile.
 #' @param studioId &#91;required&#93; The studio ID.
-#' @param tags A collection of labels, in the form of key:value pairs, that apply to
+#' @param tags A collection of labels, in the form of key-value pairs, that apply to
 #' this resource.
 #'
 #' @return
@@ -117,15 +117,21 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #'     ),
 #'     name = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED",
+#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED"|"INVALID_INSTANCE_TYPES_PROVIDED"|"INVALID_SUBNETS_COMBINATION",
 #'     statusMessage = "string",
 #'     streamConfiguration = list(
+#'       automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'       clipboardMode = "ENABLED"|"DISABLED",
 #'       ec2InstanceTypes = list(
-#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'       ),
 #'       maxSessionLengthInMinutes = 123,
 #'       maxStoppedSessionLengthInMinutes = 123,
+#'       sessionBackup = list(
+#'         maxBackupsToRetain = 123,
+#'         mode = "AUTOMATIC"|"DEACTIVATED"
+#'       ),
+#'       sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'       sessionStorage = list(
 #'         mode = list(
 #'           "UPLOAD"
@@ -137,6 +143,11 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #'       ),
 #'       streamingImageIds = list(
 #'         "string"
+#'       ),
+#'       volumeConfiguration = list(
+#'         iops = 123,
+#'         size = 123,
+#'         throughput = 123
 #'       )
 #'     ),
 #'     studioComponentIds = list(
@@ -174,12 +185,18 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #'   ),
 #'   name = "string",
 #'   streamConfiguration = list(
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'     clipboardMode = "ENABLED"|"DISABLED",
 #'     ec2InstanceTypes = list(
-#'       "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'       "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'     ),
 #'     maxSessionLengthInMinutes = 123,
 #'     maxStoppedSessionLengthInMinutes = 123,
+#'     sessionBackup = list(
+#'       maxBackupsToRetain = 123,
+#'       mode = "AUTOMATIC"|"DEACTIVATED"
+#'     ),
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     sessionStorage = list(
 #'       mode = list(
 #'         "UPLOAD"
@@ -191,6 +208,11 @@ nimblestudio_accept_eulas <- function(clientToken = NULL, eulaIds = NULL, studio
 #'     ),
 #'     streamingImageIds = list(
 #'       "string"
+#'     ),
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
 #'     )
 #'   ),
 #'   studioComponentIds = list(
@@ -235,15 +257,15 @@ nimblestudio_create_launch_profile <- function(clientToken = NULL, description =
 #'   ec2ImageId, name, studioId, tags)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param description A human-readable description of the streaming image.
 #' @param ec2ImageId &#91;required&#93; The ID of an EC2 machine image with which to create this streaming
 #' image.
 #' @param name &#91;required&#93; A friendly name for a streaming image resource.
 #' @param studioId &#91;required&#93; The studio ID.
-#' @param tags A collection of labels, in the form of key:value pairs, that apply to
+#' @param tags A collection of labels, in the form of key-value pairs, that apply to
 #' this resource.
 #'
 #' @return
@@ -317,24 +339,25 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #' Creates a streaming session in a studio.
 #' 
 #' After invoking this operation, you must poll GetStreamingSession until
-#' the streaming session is in state READY.
+#' the streaming session is in the `READY` state.
 #'
 #' @usage
 #' nimblestudio_create_streaming_session(clientToken, ec2InstanceType,
 #'   launchProfileId, ownedBy, streamingImageId, studioId, tags)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param ec2InstanceType The EC2 Instance type used for the streaming session.
-#' @param launchProfileId The launch profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param ownedBy The user ID of the user that owns the streaming session. The user that
 #' owns the session will be logging into the session and interacting with
 #' the virtual workstation.
 #' @param streamingImageId The ID of the streaming image.
 #' @param studioId &#91;required&#93; The studio ID.
-#' @param tags A collection of labels, in the form of key:value pairs, that apply to
+#' @param tags A collection of labels, in the form of key-value pairs, that apply to
 #' this resource.
 #'
 #' @return
@@ -343,18 +366,23 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #' list(
 #'   session = list(
 #'     arn = "string",
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
+#'     backupMode = "AUTOMATIC"|"DEACTIVATED",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
 #'     ec2InstanceType = "string",
 #'     launchProfileId = "string",
+#'     maxBackupsToRetain = 123,
 #'     ownedBy = "string",
 #'     sessionId = "string",
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     startedBy = "string",
+#'     startedFromBackupId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
 #'     statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
 #'     statusMessage = "string",
@@ -375,7 +403,13 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     updatedBy = "string"
+#'     updatedBy = "string",
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
+#'     ),
+#'     volumeRetentionMode = "RETAIN"|"DELETE"
 #'   )
 #' )
 #' ```
@@ -384,7 +418,7 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #' ```
 #' svc$create_streaming_session(
 #'   clientToken = "string",
-#'   ec2InstanceType = "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge",
+#'   ec2InstanceType = "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge",
 #'   launchProfileId = "string",
 #'   ownedBy = "string",
 #'   streamingImageId = "string",
@@ -400,7 +434,7 @@ nimblestudio_create_streaming_image <- function(clientToken = NULL, description 
 #' @rdname nimblestudio_create_streaming_session
 #'
 #' @aliases nimblestudio_create_streaming_session
-nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2InstanceType = NULL, launchProfileId = NULL, ownedBy = NULL, streamingImageId = NULL, studioId, tags = NULL) {
+nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2InstanceType = NULL, launchProfileId, ownedBy = NULL, streamingImageId = NULL, studioId, tags = NULL) {
   op <- new_operation(
     name = "CreateStreamingSession",
     http_method = "POST",
@@ -423,16 +457,16 @@ nimblestudio_create_streaming_session <- function(clientToken = NULL, ec2Instanc
 #' Creates a streaming session stream for a streaming session.
 #' 
 #' After invoking this API, invoke GetStreamingSessionStream with the
-#' returned streamId to poll the resource until it is in state READY.
+#' returned streamId to poll the resource until it is in the `READY` state.
 #'
 #' @usage
 #' nimblestudio_create_streaming_session_stream(clientToken,
 #'   expirationInSeconds, sessionId, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param expirationInSeconds The expiration time in seconds.
 #' @param sessionId &#91;required&#93; The streaming session ID.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -490,29 +524,30 @@ nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, exp
 }
 .nimblestudio$operations$create_streaming_session_stream <- nimblestudio_create_streaming_session_stream
 
-#' Create a new Studio
+#' Create a new studio
 #'
 #' @description
-#' Create a new Studio.
+#' Create a new studio.
 #' 
-#' When creating a Studio, two IAM roles must be provided: the admin role
-#' and the user Role. These roles are assumed by your users when they log
+#' When creating a studio, two IAM roles must be provided: the admin role
+#' and the user role. These roles are assumed by your users when they log
 #' in to the Nimble Studio portal.
 #' 
-#' The user role must have the AmazonNimbleStudio-StudioUser managed policy
-#' attached for the portal to function properly.
+#' The user role must have the `AmazonNimbleStudio-StudioUser` managed
+#' policy attached for the portal to function properly.
 #' 
-#' The Admin Role must have the AmazonNimbleStudio-StudioAdmin managed
+#' The admin role must have the `AmazonNimbleStudio-StudioAdmin` managed
 #' policy attached for the portal to function properly.
 #' 
 #' You may optionally specify a KMS key in the
-#' StudioEncryptionConfiguration.
+#' `StudioEncryptionConfiguration`.
 #' 
 #' In Nimble Studio, resource names, descriptions, initialization scripts,
 #' and other data you provide are always encrypted at rest using an KMS
 #' key. By default, this key is owned by Amazon Web Services and managed on
-#' your behalf. You may provide your own KMS key when calling CreateStudio
-#' to encrypt this data using a key you own and manage.
+#' your behalf. You may provide your own KMS key when calling
+#' [`create_studio`][nimblestudio_create_studio] to encrypt this data using
+#' a key you own and manage.
 #' 
 #' When providing an KMS key during studio creation, Nimble Studio creates
 #' KMS grants in your account to provide your studio user and admin roles
@@ -528,19 +563,19 @@ nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, exp
 #' nimblestudio_create_studio(adminRoleArn, clientToken, displayName,
 #'   studioEncryptionConfiguration, studioName, tags, userRoleArn)
 #'
-#' @param adminRoleArn &#91;required&#93; The IAM role that Studio Admins will assume when logging in to the
+#' @param adminRoleArn &#91;required&#93; The IAM role that studio admins will assume when logging in to the
 #' Nimble Studio portal.
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param displayName &#91;required&#93; A friendly name for the studio.
 #' @param studioEncryptionConfiguration The studio encryption configuration.
 #' @param studioName &#91;required&#93; The studio name that is used in the URL of the Nimble Studio portal when
 #' accessed by Nimble Studio users.
-#' @param tags A collection of labels, in the form of key:value pairs, that apply to
+#' @param tags A collection of labels, in the form of key-value pairs, that apply to
 #' this resource.
-#' @param userRoleArn &#91;required&#93; The IAM role that Studio Users will assume when logging in to the Nimble
+#' @param userRoleArn &#91;required&#93; The IAM role that studio users will assume when logging in to the Nimble
 #' Studio portal.
 #'
 #' @return
@@ -557,7 +592,7 @@ nimblestudio_create_streaming_session_stream <- function(clientToken = NULL, exp
 #'     homeRegion = "string",
 #'     ssoClientId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS",
+#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS"|"AWS_STS_REGION_DISABLED",
 #'     statusMessage = "string",
 #'     studioEncryptionConfiguration = list(
 #'       keyArn = "string",
@@ -629,24 +664,24 @@ nimblestudio_create_studio <- function(adminRoleArn, clientToken = NULL, display
 #'   subtype, tags, type)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param configuration The configuration of the studio component, based on component type.
 #' @param description The description.
 #' @param ec2SecurityGroupIds The EC2 security groups that control access to the studio component.
 #' @param initializationScripts Initialization scripts for studio components.
 #' @param name &#91;required&#93; The name for the studio component.
 #' @param runtimeRoleArn An IAM role attached to a Studio Component that gives the studio
-#' component access to AWS resources at anytime while the instance is
-#' running.
+#' component access to Amazon Web Services resources at anytime while the
+#' instance is running.
 #' @param scriptParameters Parameters for the studio component scripts.
 #' @param secureInitializationRoleArn An IAM role attached to Studio Component when the system initialization
-#' script runs which give the studio component access to AWS resources when
-#' the system initialization script runs.
+#' script runs which give the studio component access to Amazon Web
+#' Services resources when the system initialization script runs.
 #' @param studioId &#91;required&#93; The studio ID.
 #' @param subtype The specific subtype of a studio component.
-#' @param tags A collection of labels, in the form of key:value pairs, that apply to
+#' @param tags A collection of labels, in the form of key-value pairs, that apply to
 #' this resource.
 #' @param type &#91;required&#93; The type of the studio component.
 #'
@@ -816,10 +851,11 @@ nimblestudio_create_studio_component <- function(clientToken = NULL, configurati
 #'   studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -842,15 +878,21 @@ nimblestudio_create_studio_component <- function(clientToken = NULL, configurati
 #'     ),
 #'     name = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED",
+#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED"|"INVALID_INSTANCE_TYPES_PROVIDED"|"INVALID_SUBNETS_COMBINATION",
 #'     statusMessage = "string",
 #'     streamConfiguration = list(
+#'       automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'       clipboardMode = "ENABLED"|"DISABLED",
 #'       ec2InstanceTypes = list(
-#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'       ),
 #'       maxSessionLengthInMinutes = 123,
 #'       maxStoppedSessionLengthInMinutes = 123,
+#'       sessionBackup = list(
+#'         maxBackupsToRetain = 123,
+#'         mode = "AUTOMATIC"|"DEACTIVATED"
+#'       ),
+#'       sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'       sessionStorage = list(
 #'         mode = list(
 #'           "UPLOAD"
@@ -862,6 +904,11 @@ nimblestudio_create_studio_component <- function(clientToken = NULL, configurati
 #'       ),
 #'       streamingImageIds = list(
 #'         "string"
+#'       ),
+#'       volumeConfiguration = list(
+#'         iops = 123,
+#'         size = 123,
+#'         throughput = 123
 #'       )
 #'     ),
 #'     studioComponentIds = list(
@@ -927,12 +974,12 @@ nimblestudio_delete_launch_profile <- function(clientToken = NULL, launchProfile
 #'   principalId, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
-#' @param principalId &#91;required&#93; The principal ID. This currently supports a Amazon Web Services SSO
-#' UserId.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
+#' @param principalId &#91;required&#93; The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -980,9 +1027,9 @@ nimblestudio_delete_launch_profile_member <- function(clientToken = NULL, launch
 #'   studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param streamingImageId &#91;required&#93; The streaming image ID.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -1052,18 +1099,18 @@ nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingIma
 #' Deletes streaming session resource.
 #' 
 #' After invoking this operation, use GetStreamingSession to poll the
-#' resource until it transitions to a DELETED state.
+#' resource until it transitions to a `DELETED` state.
 #' 
 #' A streaming session will count against your streaming session quota
-#' until it is marked DELETED.
+#' until it is marked `DELETED`.
 #'
 #' @usage
 #' nimblestudio_delete_streaming_session(clientToken, sessionId, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param sessionId &#91;required&#93; The streaming session ID.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -1073,18 +1120,23 @@ nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingIma
 #' list(
 #'   session = list(
 #'     arn = "string",
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
+#'     backupMode = "AUTOMATIC"|"DEACTIVATED",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
 #'     ec2InstanceType = "string",
 #'     launchProfileId = "string",
+#'     maxBackupsToRetain = 123,
 #'     ownedBy = "string",
 #'     sessionId = "string",
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     startedBy = "string",
+#'     startedFromBackupId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
 #'     statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
 #'     statusMessage = "string",
@@ -1105,7 +1157,13 @@ nimblestudio_delete_streaming_image <- function(clientToken = NULL, streamingIma
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     updatedBy = "string"
+#'     updatedBy = "string",
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
+#'     ),
+#'     volumeRetentionMode = "RETAIN"|"DELETE"
 #'   )
 #' )
 #' ```
@@ -1150,9 +1208,9 @@ nimblestudio_delete_streaming_session <- function(clientToken = NULL, sessionId,
 #' nimblestudio_delete_studio(clientToken, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -1169,7 +1227,7 @@ nimblestudio_delete_streaming_session <- function(clientToken = NULL, sessionId,
 #'     homeRegion = "string",
 #'     ssoClientId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS",
+#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS"|"AWS_STS_REGION_DISABLED",
 #'     statusMessage = "string",
 #'     studioEncryptionConfiguration = list(
 #'       keyArn = "string",
@@ -1229,9 +1287,9 @@ nimblestudio_delete_studio <- function(clientToken = NULL, studioId) {
 #'   studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param studioComponentId &#91;required&#93; The studio component ID.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -1349,11 +1407,10 @@ nimblestudio_delete_studio_component <- function(clientToken = NULL, studioCompo
 #' nimblestudio_delete_studio_member(clientToken, principalId, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
-#' @param principalId &#91;required&#93; The principal ID. This currently supports a Amazon Web Services SSO
-#' UserId.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
+#' @param principalId &#91;required&#93; The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -1390,10 +1447,10 @@ nimblestudio_delete_studio_member <- function(clientToken = NULL, principalId, s
 }
 .nimblestudio$operations$delete_studio_member <- nimblestudio_delete_studio_member
 
-#' Get Eula
+#' Get EULA
 #'
 #' @description
-#' Get Eula.
+#' Get EULA.
 #'
 #' @usage
 #' nimblestudio_get_eula(eulaId)
@@ -1455,7 +1512,8 @@ nimblestudio_get_eula <- function(eulaId) {
 #' @usage
 #' nimblestudio_get_launch_profile(launchProfileId, studioId)
 #'
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -1478,15 +1536,21 @@ nimblestudio_get_eula <- function(eulaId) {
 #'     ),
 #'     name = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED",
+#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED"|"INVALID_INSTANCE_TYPES_PROVIDED"|"INVALID_SUBNETS_COMBINATION",
 #'     statusMessage = "string",
 #'     streamConfiguration = list(
+#'       automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'       clipboardMode = "ENABLED"|"DISABLED",
 #'       ec2InstanceTypes = list(
-#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'       ),
 #'       maxSessionLengthInMinutes = 123,
 #'       maxStoppedSessionLengthInMinutes = 123,
+#'       sessionBackup = list(
+#'         maxBackupsToRetain = 123,
+#'         mode = "AUTOMATIC"|"DEACTIVATED"
+#'       ),
+#'       sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'       sessionStorage = list(
 #'         mode = list(
 #'           "UPLOAD"
@@ -1498,6 +1562,11 @@ nimblestudio_get_eula <- function(eulaId) {
 #'       ),
 #'       streamingImageIds = list(
 #'         "string"
+#'       ),
+#'       volumeConfiguration = list(
+#'         iops = 123,
+#'         size = 123,
+#'         throughput = 123
 #'       )
 #'     ),
 #'     studioComponentIds = list(
@@ -1566,7 +1635,8 @@ nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
 #' @usage
 #' nimblestudio_get_launch_profile_details(launchProfileId, studioId)
 #'
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -1589,15 +1659,21 @@ nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
 #'     ),
 #'     name = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED",
+#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED"|"INVALID_INSTANCE_TYPES_PROVIDED"|"INVALID_SUBNETS_COMBINATION",
 #'     statusMessage = "string",
 #'     streamConfiguration = list(
+#'       automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'       clipboardMode = "ENABLED"|"DISABLED",
 #'       ec2InstanceTypes = list(
-#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'       ),
 #'       maxSessionLengthInMinutes = 123,
 #'       maxStoppedSessionLengthInMinutes = 123,
+#'       sessionBackup = list(
+#'         maxBackupsToRetain = 123,
+#'         mode = "AUTOMATIC"|"DEACTIVATED"
+#'       ),
+#'       sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'       sessionStorage = list(
 #'         mode = list(
 #'           "UPLOAD"
@@ -1609,6 +1685,11 @@ nimblestudio_get_launch_profile <- function(launchProfileId, studioId) {
 #'       ),
 #'       streamingImageIds = list(
 #'         "string"
+#'       ),
+#'       volumeConfiguration = list(
+#'         iops = 123,
+#'         size = 123,
+#'         throughput = 123
 #'       )
 #'     ),
 #'     studioComponentIds = list(
@@ -1713,11 +1794,12 @@ nimblestudio_get_launch_profile_details <- function(launchProfileId, studioId) {
 #' nimblestudio_get_launch_profile_initialization(launchProfileId,
 #'   launchProfileProtocolVersions, launchPurpose, platform, studioId)
 #'
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param launchProfileProtocolVersions &#91;required&#93; The launch profile protocol versions supported by the client.
 #' @param launchPurpose &#91;required&#93; The launch purpose.
-#' @param platform &#91;required&#93; The platform where this Launch Profile will be used, either WINDOWS or
-#' LINUX.
+#' @param platform &#91;required&#93; The platform where this Launch Profile will be used, either Windows or
+#' Linux.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -1815,9 +1897,9 @@ nimblestudio_get_launch_profile_initialization <- function(launchProfileId, laun
 #' nimblestudio_get_launch_profile_member(launchProfileId, principalId,
 #'   studioId)
 #'
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
-#' @param principalId &#91;required&#93; The principal ID. This currently supports a Amazon Web Services SSO
-#' UserId.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
+#' @param principalId &#91;required&#93; The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -1954,18 +2036,23 @@ nimblestudio_get_streaming_image <- function(streamingImageId, studioId) {
 #' list(
 #'   session = list(
 #'     arn = "string",
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
+#'     backupMode = "AUTOMATIC"|"DEACTIVATED",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
 #'     ec2InstanceType = "string",
 #'     launchProfileId = "string",
+#'     maxBackupsToRetain = 123,
 #'     ownedBy = "string",
 #'     sessionId = "string",
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     startedBy = "string",
+#'     startedFromBackupId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
 #'     statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
 #'     statusMessage = "string",
@@ -1986,7 +2073,13 @@ nimblestudio_get_streaming_image <- function(streamingImageId, studioId) {
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     updatedBy = "string"
+#'     updatedBy = "string",
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
+#'     ),
+#'     volumeRetentionMode = "RETAIN"|"DELETE"
 #'   )
 #' )
 #' ```
@@ -2021,15 +2114,82 @@ nimblestudio_get_streaming_session <- function(sessionId, studioId) {
 }
 .nimblestudio$operations$get_streaming_session <- nimblestudio_get_streaming_session
 
+#' Gets StreamingSessionBackup resource
+#'
+#' @description
+#' Gets `StreamingSessionBackup` resource.
+#' 
+#' Invoke this operation to poll for a streaming session backup while
+#' stopping a streaming session.
+#'
+#' @usage
+#' nimblestudio_get_streaming_session_backup(backupId, studioId)
+#'
+#' @param backupId &#91;required&#93; The ID of the backup.
+#' @param studioId &#91;required&#93; The studio ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   streamingSessionBackup = list(
+#'     arn = "string",
+#'     backupId = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     launchProfileId = "string",
+#'     ownedBy = "string",
+#'     sessionId = "string",
+#'     state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
+#'     statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
+#'     statusMessage = "string",
+#'     tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_streaming_session_backup(
+#'   backupId = "string",
+#'   studioId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname nimblestudio_get_streaming_session_backup
+#'
+#' @aliases nimblestudio_get_streaming_session_backup
+nimblestudio_get_streaming_session_backup <- function(backupId, studioId) {
+  op <- new_operation(
+    name = "GetStreamingSessionBackup",
+    http_method = "GET",
+    http_path = "/2020-08-01/studios/{studioId}/streaming-session-backups/{backupId}",
+    paginator = list()
+  )
+  input <- .nimblestudio$get_streaming_session_backup_input(backupId = backupId, studioId = studioId)
+  output <- .nimblestudio$get_streaming_session_backup_output()
+  config <- get_config()
+  svc <- .nimblestudio$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.nimblestudio$operations$get_streaming_session_backup <- nimblestudio_get_streaming_session_backup
+
 #' Gets a StreamingSessionStream for a streaming session
 #'
 #' @description
 #' Gets a StreamingSessionStream for a streaming session.
 #' 
 #' Invoke this operation to poll the resource after invoking
-#' CreateStreamingSessionStream.
+#' [`create_streaming_session_stream`][nimblestudio_create_streaming_session_stream].
 #' 
-#' After the StreamingSessionStream changes to the state READY, the url
+#' After the `StreamingSessionStream` changes to the `READY` state, the url
 #' property will contain a stream to be used with the DCV streaming client.
 #'
 #' @usage
@@ -2091,10 +2251,10 @@ nimblestudio_get_streaming_session_stream <- function(sessionId, streamId, studi
 }
 .nimblestudio$operations$get_streaming_session_stream <- nimblestudio_get_streaming_session_stream
 
-#' Get a Studio resource
+#' Get a studio resource
 #'
 #' @description
-#' Get a Studio resource.
+#' Get a studio resource.
 #'
 #' @usage
 #' nimblestudio_get_studio(studioId)
@@ -2115,7 +2275,7 @@ nimblestudio_get_streaming_session_stream <- function(sessionId, streamId, studi
 #'     homeRegion = "string",
 #'     ssoClientId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS",
+#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS"|"AWS_STS_REGION_DISABLED",
 #'     statusMessage = "string",
 #'     studioEncryptionConfiguration = list(
 #'       keyArn = "string",
@@ -2287,8 +2447,7 @@ nimblestudio_get_studio_component <- function(studioComponentId, studioId) {
 #' @usage
 #' nimblestudio_get_studio_member(principalId, studioId)
 #'
-#' @param principalId &#91;required&#93; The principal ID. This currently supports a Amazon Web Services SSO
-#' UserId.
+#' @param principalId &#91;required&#93; The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -2334,16 +2493,17 @@ nimblestudio_get_studio_member <- function(principalId, studioId) {
 }
 .nimblestudio$operations$get_studio_member <- nimblestudio_get_studio_member
 
-#' List Eula Acceptances
+#' List EULA acceptances
 #'
 #' @description
-#' List Eula Acceptances.
+#' List EULA acceptances.
 #'
 #' @usage
 #' nimblestudio_list_eula_acceptances(eulaIds, nextToken, studioId)
 #'
 #' @param eulaIds The list of EULA IDs that have been previously accepted.
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -2398,16 +2558,17 @@ nimblestudio_list_eula_acceptances <- function(eulaIds = NULL, nextToken = NULL,
 }
 .nimblestudio$operations$list_eula_acceptances <- nimblestudio_list_eula_acceptances
 
-#' List Eulas
+#' List EULAs
 #'
 #' @description
-#' List Eulas.
+#' List EULAs.
 #'
 #' @usage
 #' nimblestudio_list_eulas(eulaIds, nextToken)
 #'
 #' @param eulaIds The list of EULA IDs that should be returned
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2471,9 +2632,11 @@ nimblestudio_list_eulas <- function(eulaIds = NULL, nextToken = NULL) {
 #' nimblestudio_list_launch_profile_members(launchProfileId, maxResults,
 #'   nextToken, studioId)
 #'
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param maxResults The max number of results to return in the response.
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -2534,9 +2697,9 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
 #'   states, studioId)
 #'
 #' @param maxResults The max number of results to return in the response.
-#' @param nextToken The token to request the next page of results.
-#' @param principalId The principal ID. This currently supports a Amazon Web Services SSO
-#' UserId.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param principalId The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param states Filter this request to launch profiles in any of the given states.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -2561,15 +2724,21 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
 #'       ),
 #'       name = "string",
 #'       state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'       statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED",
+#'       statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED"|"INVALID_INSTANCE_TYPES_PROVIDED"|"INVALID_SUBNETS_COMBINATION",
 #'       statusMessage = "string",
 #'       streamConfiguration = list(
+#'         automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'         clipboardMode = "ENABLED"|"DISABLED",
 #'         ec2InstanceTypes = list(
-#'           "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'           "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'         ),
 #'         maxSessionLengthInMinutes = 123,
 #'         maxStoppedSessionLengthInMinutes = 123,
+#'         sessionBackup = list(
+#'           maxBackupsToRetain = 123,
+#'           mode = "AUTOMATIC"|"DEACTIVATED"
+#'         ),
+#'         sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'         sessionStorage = list(
 #'           mode = list(
 #'             "UPLOAD"
@@ -2581,6 +2750,11 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
 #'         ),
 #'         streamingImageIds = list(
 #'           "string"
+#'         ),
+#'         volumeConfiguration = list(
+#'           iops = 123,
+#'           size = 123,
+#'           throughput = 123
 #'         )
 #'       ),
 #'       studioComponentIds = list(
@@ -2653,7 +2827,8 @@ nimblestudio_list_launch_profiles <- function(maxResults = NULL, nextToken = NUL
 #' @usage
 #' nimblestudio_list_streaming_images(nextToken, owner, studioId)
 #'
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #' @param owner Filter this request to streaming images with the given owner
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -2720,6 +2895,77 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
 }
 .nimblestudio$operations$list_streaming_images <- nimblestudio_list_streaming_images
 
+#' Lists the backups of a streaming session in a studio
+#'
+#' @description
+#' Lists the backups of a streaming session in a studio.
+#'
+#' @usage
+#' nimblestudio_list_streaming_session_backups(nextToken, ownedBy,
+#'   studioId)
+#'
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
+#' @param ownedBy The user ID of the user that owns the streaming session.
+#' @param studioId &#91;required&#93; The studio ID.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   streamingSessionBackups = list(
+#'     list(
+#'       arn = "string",
+#'       backupId = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       launchProfileId = "string",
+#'       ownedBy = "string",
+#'       sessionId = "string",
+#'       state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
+#'       statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
+#'       statusMessage = "string",
+#'       tags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_streaming_session_backups(
+#'   nextToken = "string",
+#'   ownedBy = "string",
+#'   studioId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname nimblestudio_list_streaming_session_backups
+#'
+#' @aliases nimblestudio_list_streaming_session_backups
+nimblestudio_list_streaming_session_backups <- function(nextToken = NULL, ownedBy = NULL, studioId) {
+  op <- new_operation(
+    name = "ListStreamingSessionBackups",
+    http_method = "GET",
+    http_path = "/2020-08-01/studios/{studioId}/streaming-session-backups",
+    paginator = list()
+  )
+  input <- .nimblestudio$list_streaming_session_backups_input(nextToken = nextToken, ownedBy = ownedBy, studioId = studioId)
+  output <- .nimblestudio$list_streaming_session_backups_output()
+  config <- get_config()
+  svc <- .nimblestudio$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.nimblestudio$operations$list_streaming_session_backups <- nimblestudio_list_streaming_session_backups
+
 #' Lists the streaming sessions in a studio
 #'
 #' @description
@@ -2730,7 +2976,8 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
 #'   sessionIds, studioId)
 #'
 #' @param createdBy Filters the request to streaming sessions created by the given user.
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #' @param ownedBy Filters the request to streaming session owned by the given user
 #' @param sessionIds Filters the request to only the provided session IDs.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -2743,18 +2990,23 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
 #'   sessions = list(
 #'     list(
 #'       arn = "string",
+#'       automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
+#'       backupMode = "AUTOMATIC"|"DEACTIVATED",
 #'       createdAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       createdBy = "string",
 #'       ec2InstanceType = "string",
 #'       launchProfileId = "string",
+#'       maxBackupsToRetain = 123,
 #'       ownedBy = "string",
 #'       sessionId = "string",
+#'       sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'       startedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       startedBy = "string",
+#'       startedFromBackupId = "string",
 #'       state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
 #'       statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
 #'       statusMessage = "string",
@@ -2775,7 +3027,13 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
 #'       updatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       updatedBy = "string"
+#'       updatedBy = "string",
+#'       volumeConfiguration = list(
+#'         iops = 123,
+#'         size = 123,
+#'         throughput = 123
+#'       ),
+#'       volumeRetentionMode = "RETAIN"|"DELETE"
 #'     )
 #'   )
 #' )
@@ -2817,14 +3075,15 @@ nimblestudio_list_streaming_sessions <- function(createdBy = NULL, nextToken = N
 #' Lists the StudioComponents in a studio
 #'
 #' @description
-#' Lists the StudioComponents in a studio.
+#' Lists the `StudioComponents` in a studio.
 #'
 #' @usage
 #' nimblestudio_list_studio_components(maxResults, nextToken, states,
 #'   studioId, types)
 #'
 #' @param maxResults The max number of results to return in the response.
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #' @param states Filters the request to studio components that are in one of the given
 #' states.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -2957,7 +3216,8 @@ nimblestudio_list_studio_components <- function(maxResults = NULL, nextToken = N
 #' nimblestudio_list_studio_members(maxResults, nextToken, studioId)
 #'
 #' @param maxResults The max number of results to return in the response.
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -3007,17 +3267,18 @@ nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL
 }
 .nimblestudio$operations$list_studio_members <- nimblestudio_list_studio_members
 
-#' List studios in your Amazon Web Services account in the requested Amazon
-#' Web Services Region
+#' List studios in your Amazon Web Services accounts in the requested
+#' Amazon Web Services Region
 #'
 #' @description
-#' List studios in your Amazon Web Services account in the requested Amazon
-#' Web Services Region.
+#' List studios in your Amazon Web Services accounts in the requested
+#' Amazon Web Services Region.
 #'
 #' @usage
 #' nimblestudio_list_studios(nextToken)
 #'
-#' @param nextToken The token to request the next page of results.
+#' @param nextToken The token for the next set of results, or null if there are no more
+#' results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3035,7 +3296,7 @@ nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL
 #'       homeRegion = "string",
 #'       ssoClientId = "string",
 #'       state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'       statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS",
+#'       statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS"|"AWS_STS_REGION_DISABLED",
 #'       statusMessage = "string",
 #'       studioEncryptionConfiguration = list(
 #'         keyArn = "string",
@@ -3151,11 +3412,12 @@ nimblestudio_list_tags_for_resource <- function(resourceArn) {
 #'   launchProfileId, members, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param identityStoreId &#91;required&#93; The ID of the identity store.
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param members &#91;required&#93; A list of members.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
@@ -3210,9 +3472,9 @@ nimblestudio_put_launch_profile_members <- function(clientToken = NULL, identity
 #'   studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param identityStoreId &#91;required&#93; The ID of the identity store.
 #' @param members &#91;required&#93; A list of members.
 #' @param studioId &#91;required&#93; The studio ID.
@@ -3260,18 +3522,20 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #' Transitions sessions from the STOPPED state into the READY state
 #'
 #' @description
-#' Transitions sessions from the STOPPED state into the READY state. The
-#' START_IN_PROGRESS state is the intermediate state between the STOPPED
-#' and READY states.
+#' Transitions sessions from the `STOPPED` state into the `READY` state.
+#' The `START_IN_PROGRESS` state is the intermediate state between the
+#' `STOPPED` and `READY` states.
 #'
 #' @usage
-#' nimblestudio_start_streaming_session(clientToken, sessionId, studioId)
+#' nimblestudio_start_streaming_session(backupId, clientToken, sessionId,
+#'   studioId)
 #'
+#' @param backupId The ID of the backup.
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
-#' @param sessionId &#91;required&#93; The streaming session ID for the StartStreamingSessionRequest.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
+#' @param sessionId &#91;required&#93; The streaming session ID for the `StartStreamingSessionRequest`.
 #' @param studioId &#91;required&#93; The studio ID for the StartStreamingSessionRequest.
 #'
 #' @return
@@ -3280,18 +3544,23 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #' list(
 #'   session = list(
 #'     arn = "string",
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
+#'     backupMode = "AUTOMATIC"|"DEACTIVATED",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
 #'     ec2InstanceType = "string",
 #'     launchProfileId = "string",
+#'     maxBackupsToRetain = 123,
 #'     ownedBy = "string",
 #'     sessionId = "string",
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     startedBy = "string",
+#'     startedFromBackupId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
 #'     statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
 #'     statusMessage = "string",
@@ -3312,7 +3581,13 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     updatedBy = "string"
+#'     updatedBy = "string",
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
+#'     ),
+#'     volumeRetentionMode = "RETAIN"|"DELETE"
 #'   )
 #' )
 #' ```
@@ -3320,6 +3595,7 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #' @section Request syntax:
 #' ```
 #' svc$start_streaming_session(
+#'   backupId = "string",
 #'   clientToken = "string",
 #'   sessionId = "string",
 #'   studioId = "string"
@@ -3331,14 +3607,14 @@ nimblestudio_put_studio_members <- function(clientToken = NULL, identityStoreId,
 #' @rdname nimblestudio_start_streaming_session
 #'
 #' @aliases nimblestudio_start_streaming_session
-nimblestudio_start_streaming_session <- function(clientToken = NULL, sessionId, studioId) {
+nimblestudio_start_streaming_session <- function(backupId = NULL, clientToken = NULL, sessionId, studioId) {
   op <- new_operation(
     name = "StartStreamingSession",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}/start",
     paginator = list()
   )
-  input <- .nimblestudio$start_streaming_session_input(clientToken = clientToken, sessionId = sessionId, studioId = studioId)
+  input <- .nimblestudio$start_streaming_session_input(backupId = backupId, clientToken = clientToken, sessionId = sessionId, studioId = studioId)
   output <- .nimblestudio$start_streaming_session_output()
   config <- get_config()
   svc <- .nimblestudio$service(config)
@@ -3348,22 +3624,21 @@ nimblestudio_start_streaming_session <- function(clientToken = NULL, sessionId, 
 }
 .nimblestudio$operations$start_streaming_session <- nimblestudio_start_streaming_session
 
-#' Repairs the Amazon Web Services SSO configuration for a given studio
+#' Repairs the IAM Identity Center configuration for a given studio
 #'
 #' @description
-#' Repairs the Amazon Web Services SSO configuration for a given studio.
+#' Repairs the IAM Identity Center configuration for a given studio.
 #' 
-#' If the studio has a valid Amazon Web Services SSO configuration
-#' currently associated with it, this operation will fail with a validation
-#' error.
+#' If the studio has a valid IAM Identity Center configuration currently
+#' associated with it, this operation will fail with a validation error.
 #' 
-#' If the studio does not have a valid Amazon Web Services SSO
-#' configuration currently associated with it, then a new Amazon Web
-#' Services SSO application is created for the studio and the studio is
-#' changed to the READY state.
+#' If the studio does not have a valid IAM Identity Center configuration
+#' currently associated with it, then a new IAM Identity Center application
+#' is created for the studio and the studio is changed to the `READY`
+#' state.
 #' 
-#' After the Amazon Web Services SSO application is repaired, you must use
-#' the Amazon Nimble Studio console to add administrators and users to your
+#' After the IAM Identity Center application is repaired, you must use the
+#' Amazon Nimble Studio console to add administrators and users to your
 #' studio.
 #'
 #' @usage
@@ -3371,9 +3646,9 @@ nimblestudio_start_streaming_session <- function(clientToken = NULL, sessionId, 
 #'   studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -3390,7 +3665,7 @@ nimblestudio_start_streaming_session <- function(clientToken = NULL, sessionId, 
 #'     homeRegion = "string",
 #'     ssoClientId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS",
+#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS"|"AWS_STS_REGION_DISABLED",
 #'     statusMessage = "string",
 #'     studioEncryptionConfiguration = list(
 #'       keyArn = "string",
@@ -3443,19 +3718,22 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #' Transitions sessions from the READY state into the STOPPED state
 #'
 #' @description
-#' Transitions sessions from the READY state into the STOPPED state. The
-#' STOP_IN_PROGRESS state is the intermediate state between the READY and
-#' STOPPED states.
+#' Transitions sessions from the `READY` state into the `STOPPED` state.
+#' The `STOP_IN_PROGRESS` state is the intermediate state between the
+#' `READY` and `STOPPED` states.
 #'
 #' @usage
-#' nimblestudio_stop_streaming_session(clientToken, sessionId, studioId)
+#' nimblestudio_stop_streaming_session(clientToken, sessionId, studioId,
+#'   volumeRetentionMode)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
-#' @param sessionId &#91;required&#93; The streaming session ID for the StopStreamingSessionRequest.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
+#' @param sessionId &#91;required&#93; The streaming session ID for the `StopStreamingSessionRequest`.
 #' @param studioId &#91;required&#93; The studioId for the StopStreamingSessionRequest.
+#' @param volumeRetentionMode Adds additional instructions to a streaming session stop action to
+#' either retain the EBS volumes or delete the EBS volumes.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3463,18 +3741,23 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #' list(
 #'   session = list(
 #'     arn = "string",
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
+#'     backupMode = "AUTOMATIC"|"DEACTIVATED",
 #'     createdAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     createdBy = "string",
 #'     ec2InstanceType = "string",
 #'     launchProfileId = "string",
+#'     maxBackupsToRetain = 123,
 #'     ownedBy = "string",
 #'     sessionId = "string",
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     startedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     startedBy = "string",
+#'     startedFromBackupId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"READY"|"DELETED"|"CREATE_FAILED"|"DELETE_FAILED"|"STOP_IN_PROGRESS"|"START_IN_PROGRESS"|"STOPPED"|"STOP_FAILED"|"START_FAILED",
 #'     statusCode = "STREAMING_SESSION_READY"|"STREAMING_SESSION_DELETED"|"STREAMING_SESSION_CREATE_IN_PROGRESS"|"STREAMING_SESSION_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"INSUFFICIENT_CAPACITY"|"ACTIVE_DIRECTORY_DOMAIN_JOIN_ERROR"|"NETWORK_CONNECTION_ERROR"|"INITIALIZATION_SCRIPT_ERROR"|"DECRYPT_STREAMING_IMAGE_ERROR"|"NETWORK_INTERFACE_ERROR"|"STREAMING_SESSION_STOPPED"|"STREAMING_SESSION_STARTED"|"STREAMING_SESSION_STOP_IN_PROGRESS"|"STREAMING_SESSION_START_IN_PROGRESS"|"AMI_VALIDATION_ERROR",
 #'     statusMessage = "string",
@@ -3495,7 +3778,13 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     updatedBy = "string"
+#'     updatedBy = "string",
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
+#'     ),
+#'     volumeRetentionMode = "RETAIN"|"DELETE"
 #'   )
 #' )
 #' ```
@@ -3505,7 +3794,8 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #' svc$stop_streaming_session(
 #'   clientToken = "string",
 #'   sessionId = "string",
-#'   studioId = "string"
+#'   studioId = "string",
+#'   volumeRetentionMode = "RETAIN"|"DELETE"
 #' )
 #' ```
 #'
@@ -3514,14 +3804,14 @@ nimblestudio_start_studio_sso_configuration_repair <- function(clientToken = NUL
 #' @rdname nimblestudio_stop_streaming_session
 #'
 #' @aliases nimblestudio_stop_streaming_session
-nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, studioId) {
+nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, studioId, volumeRetentionMode = NULL) {
   op <- new_operation(
     name = "StopStreamingSession",
     http_method = "POST",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions/{sessionId}/stop",
     paginator = list()
   )
-  input <- .nimblestudio$stop_streaming_session_input(clientToken = clientToken, sessionId = sessionId, studioId = studioId)
+  input <- .nimblestudio$stop_streaming_session_input(clientToken = clientToken, sessionId = sessionId, studioId = studioId, volumeRetentionMode = volumeRetentionMode)
   output <- .nimblestudio$stop_streaming_session_output()
   config <- get_config()
   svc <- .nimblestudio$service(config)
@@ -3540,7 +3830,7 @@ nimblestudio_stop_streaming_session <- function(clientToken = NULL, sessionId, s
 #' nimblestudio_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to add tags to.
-#' @param tags A collection of labels, in the form of key:value pairs, that apply to
+#' @param tags A collection of labels, in the form of key-value pairs, that apply to
 #' this resource.
 #'
 #' @return
@@ -3636,11 +3926,12 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #'   streamConfiguration, studioComponentIds, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param description The description.
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param launchProfileProtocolVersions The version number of the protocol that is used by the launch profile.
 #' The only valid version is "2021-03-31".
 #' @param name The name for the launch profile.
@@ -3669,15 +3960,21 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #'     ),
 #'     name = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED",
+#'     statusCode = "LAUNCH_PROFILE_CREATED"|"LAUNCH_PROFILE_UPDATED"|"LAUNCH_PROFILE_DELETED"|"LAUNCH_PROFILE_CREATE_IN_PROGRESS"|"LAUNCH_PROFILE_UPDATE_IN_PROGRESS"|"LAUNCH_PROFILE_DELETE_IN_PROGRESS"|"INTERNAL_ERROR"|"STREAMING_IMAGE_NOT_FOUND"|"STREAMING_IMAGE_NOT_READY"|"LAUNCH_PROFILE_WITH_STREAM_SESSIONS_NOT_DELETED"|"ENCRYPTION_KEY_ACCESS_DENIED"|"ENCRYPTION_KEY_NOT_FOUND"|"INVALID_SUBNETS_PROVIDED"|"INVALID_INSTANCE_TYPES_PROVIDED"|"INVALID_SUBNETS_COMBINATION",
 #'     statusMessage = "string",
 #'     streamConfiguration = list(
+#'       automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'       clipboardMode = "ENABLED"|"DISABLED",
 #'       ec2InstanceTypes = list(
-#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'         "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'       ),
 #'       maxSessionLengthInMinutes = 123,
 #'       maxStoppedSessionLengthInMinutes = 123,
+#'       sessionBackup = list(
+#'         maxBackupsToRetain = 123,
+#'         mode = "AUTOMATIC"|"DEACTIVATED"
+#'       ),
+#'       sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'       sessionStorage = list(
 #'         mode = list(
 #'           "UPLOAD"
@@ -3689,6 +3986,11 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #'       ),
 #'       streamingImageIds = list(
 #'         "string"
+#'       ),
+#'       volumeConfiguration = list(
+#'         iops = 123,
+#'         size = 123,
+#'         throughput = 123
 #'       )
 #'     ),
 #'     studioComponentIds = list(
@@ -3724,12 +4026,18 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #'   ),
 #'   name = "string",
 #'   streamConfiguration = list(
+#'     automaticTerminationMode = "DEACTIVATED"|"ACTIVATED",
 #'     clipboardMode = "ENABLED"|"DISABLED",
 #'     ec2InstanceTypes = list(
-#'       "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"
+#'       "g4dn.xlarge"|"g4dn.2xlarge"|"g4dn.4xlarge"|"g4dn.8xlarge"|"g4dn.12xlarge"|"g4dn.16xlarge"|"g3.4xlarge"|"g3s.xlarge"|"g5.xlarge"|"g5.2xlarge"|"g5.4xlarge"|"g5.8xlarge"|"g5.16xlarge"
 #'     ),
 #'     maxSessionLengthInMinutes = 123,
 #'     maxStoppedSessionLengthInMinutes = 123,
+#'     sessionBackup = list(
+#'       maxBackupsToRetain = 123,
+#'       mode = "AUTOMATIC"|"DEACTIVATED"
+#'     ),
+#'     sessionPersistenceMode = "DEACTIVATED"|"ACTIVATED",
 #'     sessionStorage = list(
 #'       mode = list(
 #'         "UPLOAD"
@@ -3741,6 +4049,11 @@ nimblestudio_untag_resource <- function(resourceArn, tagKeys) {
 #'     ),
 #'     streamingImageIds = list(
 #'       "string"
+#'     ),
+#'     volumeConfiguration = list(
+#'       iops = 123,
+#'       size = 123,
+#'       throughput = 123
 #'     )
 #'   ),
 #'   studioComponentIds = list(
@@ -3782,13 +4095,13 @@ nimblestudio_update_launch_profile <- function(clientToken = NULL, description =
 #'   persona, principalId, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
-#' @param launchProfileId &#91;required&#93; The Launch Profile ID.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
+#' @param launchProfileId &#91;required&#93; The ID of the launch profile used to control access from the streaming
+#' session.
 #' @param persona &#91;required&#93; The persona.
-#' @param principalId &#91;required&#93; The principal ID. This currently supports a Amazon Web Services SSO
-#' UserId.
+#' @param principalId &#91;required&#93; The principal ID. This currently supports a IAM Identity Center UserId.
 #' @param studioId &#91;required&#93; The studio ID.
 #'
 #' @return
@@ -3847,9 +4160,9 @@ nimblestudio_update_launch_profile_member <- function(clientToken = NULL, launch
 #'   streamingImageId, studioId)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param description The description.
 #' @param name The name for the streaming image.
 #' @param streamingImageId &#91;required&#93; The streaming image ID.
@@ -3932,9 +4245,9 @@ nimblestudio_update_streaming_image <- function(clientToken = NULL, description 
 #' @param adminRoleArn The IAM role that Studio Admins will assume when logging in to the
 #' Nimble Studio portal.
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param displayName A friendly name for the studio.
 #' @param studioId &#91;required&#93; The studio ID.
 #' @param userRoleArn The IAM role that Studio Users will assume when logging in to the Nimble
@@ -3954,7 +4267,7 @@ nimblestudio_update_streaming_image <- function(clientToken = NULL, description 
 #'     homeRegion = "string",
 #'     ssoClientId = "string",
 #'     state = "CREATE_IN_PROGRESS"|"READY"|"UPDATE_IN_PROGRESS"|"DELETE_IN_PROGRESS"|"DELETED"|"DELETE_FAILED"|"CREATE_FAILED"|"UPDATE_FAILED",
-#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS",
+#'     statusCode = "STUDIO_CREATED"|"STUDIO_DELETED"|"STUDIO_UPDATED"|"STUDIO_CREATE_IN_PROGRESS"|"STUDIO_UPDATE_IN_PROGRESS"|"STUDIO_DELETE_IN_PROGRESS"|"STUDIO_WITH_LAUNCH_PROFILES_NOT_DELETED"|"STUDIO_WITH_STUDIO_COMPONENTS_NOT_DELETED"|"STUDIO_WITH_STREAMING_IMAGES_NOT_DELETED"|"AWS_SSO_NOT_ENABLED"|"AWS_SSO_ACCESS_DENIED"|"ROLE_NOT_OWNED_BY_STUDIO_OWNER"|"ROLE_COULD_NOT_BE_ASSUMED"|"INTERNAL_ERROR"|"ENCRYPTION_KEY_NOT_FOUND"|"ENCRYPTION_KEY_ACCESS_DENIED"|"AWS_SSO_CONFIGURATION_REPAIRED"|"AWS_SSO_CONFIGURATION_REPAIR_IN_PROGRESS"|"AWS_STS_REGION_DISABLED",
 #'     statusMessage = "string",
 #'     studioEncryptionConfiguration = list(
 #'       keyArn = "string",
@@ -4019,21 +4332,21 @@ nimblestudio_update_studio <- function(adminRoleArn = NULL, clientToken = NULL, 
 #'   studioComponentId, studioId, subtype, type)
 #'
 #' @param clientToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request. If you don’t specify a client token, the AWS
-#' SDK automatically generates a client token and uses it for the request
-#' to ensure idempotency.
+#' idempotency of the request. If you don’t specify a client token, the
+#' Amazon Web Services SDK automatically generates a client token and uses
+#' it for the request to ensure idempotency.
 #' @param configuration The configuration of the studio component, based on component type.
 #' @param description The description.
 #' @param ec2SecurityGroupIds The EC2 security groups that control access to the studio component.
 #' @param initializationScripts Initialization scripts for studio components.
 #' @param name The name for the studio component.
 #' @param runtimeRoleArn An IAM role attached to a Studio Component that gives the studio
-#' component access to AWS resources at anytime while the instance is
-#' running.
+#' component access to Amazon Web Services resources at anytime while the
+#' instance is running.
 #' @param scriptParameters Parameters for the studio component scripts.
 #' @param secureInitializationRoleArn An IAM role attached to Studio Component when the system initialization
-#' script runs which give the studio component access to AWS resources when
-#' the system initialization script runs.
+#' script runs which give the studio component access to Amazon Web
+#' Services resources when the system initialization script runs.
 #' @param studioComponentId &#91;required&#93; The studio component ID.
 #' @param studioId &#91;required&#93; The studio ID.
 #' @param subtype The specific subtype of a studio component.

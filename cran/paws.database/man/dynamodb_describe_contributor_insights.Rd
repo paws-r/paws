@@ -2,7 +2,7 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_describe_contributor_insights}
 \alias{dynamodb_describe_contributor_insights}
-\title{Returns information about contributor insights, for a given table or
+\title{Returns information about contributor insights for a given table or
 global secondary index}
 \usage{
 dynamodb_describe_contributor_insights(TableName, IndexName = NULL)
@@ -13,7 +13,7 @@ dynamodb_describe_contributor_insights(TableName, IndexName = NULL)
 \item{IndexName}{The name of the global secondary index to describe, if applicable.}
 }
 \description{
-Returns information about contributor insights, for a given table or global secondary index.
+Returns information about contributor insights for a given table or global secondary index.
 
 See \url{https://paws-r.github.io/docs/dynamodb/describe_contributor_insights.html} for full documentation.
 }

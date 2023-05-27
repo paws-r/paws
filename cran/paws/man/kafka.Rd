@@ -62,15 +62,21 @@ The operations for managing an Amazon MSK cluster.
 \link[paws.analytics:kafka_create_cluster]{create_cluster} \tab Creates a new MSK cluster\cr
 \link[paws.analytics:kafka_create_cluster_v2]{create_cluster_v2} \tab Creates a new MSK cluster\cr
 \link[paws.analytics:kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
+\link[paws.analytics:kafka_create_vpc_connection]{create_vpc_connection} \tab Creates a new MSK VPC connection\cr
 \link[paws.analytics:kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
+\link[paws.analytics:kafka_delete_cluster_policy]{delete_cluster_policy} \tab Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 \link[paws.analytics:kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
+\link[paws.analytics:kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
 \link[paws.analytics:kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 \link[paws.analytics:kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
 \link[paws.analytics:kafka_describe_cluster_v2]{describe_cluster_v2} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 \link[paws.analytics:kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
 \link[paws.analytics:kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
+\link[paws.analytics:kafka_describe_vpc_connection]{describe_vpc_connection} \tab Returns a description of this MSK VPC connection\cr
 \link[paws.analytics:kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
+\link[paws.analytics:kafka_get_cluster_policy]{get_cluster_policy} \tab Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 \link[paws.analytics:kafka_get_compatible_kafka_versions]{get_compatible_kafka_versions} \tab Gets the Apache Kafka versions to which you can update the MSK cluster\cr
+\link[paws.analytics:kafka_list_client_vpc_connections]{list_client_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
 \link[paws.analytics:kafka_list_cluster_operations]{list_cluster_operations} \tab Returns a list of all the operations that have been performed on the specified MSK cluster\cr
 \link[paws.analytics:kafka_list_clusters]{list_clusters} \tab Returns a list of all the MSK clusters in the current Region\cr
 \link[paws.analytics:kafka_list_clusters_v2]{list_clusters_v2} \tab Returns a list of all the MSK clusters in the current Region\cr
@@ -80,7 +86,10 @@ The operations for managing an Amazon MSK cluster.
 \link[paws.analytics:kafka_list_nodes]{list_nodes} \tab Returns a list of the broker nodes in the cluster\cr
 \link[paws.analytics:kafka_list_scram_secrets]{list_scram_secrets} \tab Returns a list of the Scram Secrets associated with an Amazon MSK cluster\cr
 \link[paws.analytics:kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource\cr
+\link[paws.analytics:kafka_list_vpc_connections]{list_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
+\link[paws.analytics:kafka_put_cluster_policy]{put_cluster_policy} \tab Creates or updates the MSK cluster policy specified by the cluster Amazon Resource Name (ARN) in the request\cr
 \link[paws.analytics:kafka_reboot_broker]{reboot_broker} \tab Reboots brokers\cr
+\link[paws.analytics:kafka_reject_client_vpc_connection]{reject_client_vpc_connection} \tab Returns empty response\cr
 \link[paws.analytics:kafka_tag_resource]{tag_resource} \tab Adds tags to the specified MSK resource\cr
 \link[paws.analytics:kafka_untag_resource]{untag_resource} \tab Removes the tags associated with the keys that are provided in the query\cr
 \link[paws.analytics:kafka_update_broker_count]{update_broker_count} \tab Updates the number of broker nodes in the cluster\cr
@@ -91,7 +100,8 @@ The operations for managing an Amazon MSK cluster.
 \link[paws.analytics:kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
 \link[paws.analytics:kafka_update_connectivity]{update_connectivity} \tab Updates the cluster's connectivity configuration\cr
 \link[paws.analytics:kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster\cr
-\link[paws.analytics:kafka_update_security]{update_security} \tab Updates the security settings for the cluster
+\link[paws.analytics:kafka_update_security]{update_security} \tab Updates the security settings for the cluster\cr
+\link[paws.analytics:kafka_update_storage]{update_storage} \tab Updates cluster broker volume size (or) sets cluster storage mode to TIERED
 }
 }
 

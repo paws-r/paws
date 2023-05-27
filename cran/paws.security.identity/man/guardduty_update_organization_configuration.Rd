@@ -2,24 +2,45 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_update_organization_configuration}
 \alias{guardduty_update_organization_configuration}
-\title{Updates the delegated administrator account with the values provided}
+\title{Configures the delegated administrator account with the provided values}
 \usage{
 guardduty_update_organization_configuration(
   DetectorId,
-  AutoEnable,
-  DataSources = NULL
+  AutoEnable = NULL,
+  DataSources = NULL,
+  Features = NULL,
+  AutoEnableOrganizationMembers = NULL
 )
 }
 \arguments{
-\item{DetectorId}{[required] The ID of the detector to update the delegated administrator for.}
+\item{DetectorId}{[required] The ID of the detector that configures the delegated administrator.}
 
-\item{AutoEnable}{[required] Indicates whether to automatically enable member accounts in the
-organization.}
+\item{AutoEnable}{Indicates whether to automatically enable member accounts in the
+organization.
+
+Even though this is still supported, we recommend using
+\code{AutoEnableOrganizationMembers} to achieve the similar results.}
 
 \item{DataSources}{Describes which data sources will be updated.}
+
+\item{Features}{A list of features that will be configured for the organization.}
+
+\item{AutoEnableOrganizationMembers}{Indicates the auto-enablement configuration of GuardDuty for the member
+accounts in the organization.
+\itemize{
+\item \code{NEW}: Indicates that when a new account joins the organization,
+they will have GuardDuty enabled automatically.
+\item \code{ALL}: Indicates that all accounts in the Amazon Web Services
+Organization have GuardDuty enabled automatically. This includes
+\code{NEW} accounts that join the organization and accounts that may have
+been suspended or removed from the organization in GuardDuty.
+\item \code{NONE}: Indicates that GuardDuty will not be automatically enabled
+for any accounts in the organization. GuardDuty must be managed for
+each account individually by the administrator.
+}}
 }
 \description{
-Updates the delegated administrator account with the values provided.
+Configures the delegated administrator account with the provided values. You must provide the value for either \code{autoEnableOrganizationMembers} or \code{autoEnable}.
 
 See \url{https://paws-r.github.io/docs/guardduty/update_organization_configuration.html} for full documentation.
 }

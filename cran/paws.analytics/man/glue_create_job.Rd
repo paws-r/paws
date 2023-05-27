@@ -25,7 +25,8 @@ glue_create_job(
   NumberOfWorkers = NULL,
   WorkerType = NULL,
   CodeGenConfigurationNodes = NULL,
-  ExecutionClass = NULL
+  ExecutionClass = NULL,
+  SourceControlDetails = NULL
 )
 }
 \arguments{
@@ -156,6 +157,9 @@ whose start and completion times may vary.
 Only jobs with Glue version 3.0 and above and command type \code{glueetl}
 will be allowed to set \code{ExecutionClass} to \code{FLEX}. The flexible
 execution class is available for Spark jobs.}
+
+\item{SourceControlDetails}{The details for a source control configuration for a job, allowing
+synchronization of job artifacts to or from a remote repository.}
 }
 \description{
 Creates a new job definition.

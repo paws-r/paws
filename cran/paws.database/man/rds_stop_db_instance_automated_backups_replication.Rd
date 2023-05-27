@@ -8,7 +8,7 @@ rds_stop_db_instance_automated_backups_replication(SourceDBInstanceArn)
 }
 \arguments{
 \item{SourceDBInstanceArn}{[required] The Amazon Resource Name (ARN) of the source DB instance for which to
-stop replicating automated backups, for example,
+stop replicating automate backups, for example,
 \code{arn:aws:rds:us-west-2:123456789012:db:mydatabase}.}
 }
 \description{

@@ -66,9 +66,12 @@ Amazon Textract.
 \link[paws.machine.learning:textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
 \link[paws.machine.learning:textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
 \link[paws.machine.learning:textract_get_expense_analysis]{get_expense_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts\cr
+\link[paws.machine.learning:textract_get_lending_analysis]{get_lending_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a lending document\cr
+\link[paws.machine.learning:textract_get_lending_analysis_summary]{get_lending_analysis_summary} \tab Gets summarized results for the StartLendingAnalysis operation, which analyzes text in a lending document\cr
 \link[paws.machine.learning:textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
 \link[paws.machine.learning:textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document\cr
-\link[paws.machine.learning:textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names
+\link[paws.machine.learning:textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names\cr
+\link[paws.machine.learning:textract_start_lending_analysis]{start_lending_analysis} \tab Starts the classification and analysis of an input document
 }
 }
 

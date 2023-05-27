@@ -13,7 +13,10 @@ wafv2_create_web_acl(
   VisibilityConfig,
   Tags = NULL,
   CustomResponseBodies = NULL,
-  CaptchaConfig = NULL
+  CaptchaConfig = NULL,
+  ChallengeConfig = NULL,
+  TokenDomains = NULL,
+  AssociationConfig = NULL
 )
 }
 \arguments{
@@ -23,7 +26,8 @@ you create it.}
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -55,15 +59,45 @@ default actions that you define in the web ACL.
 
 For information about customizing web requests and responses, see
 \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html}{Customizing web requests and responses in WAF}
-in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.
+in the \emph{WAF Developer Guide}.
 
 For information about the limits on count and size for custom request
 and response settings, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/limits.html}{WAF quotas}
-in the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{WAF Developer Guide}.}
+in the \emph{WAF Developer Guide}.}
 
 \item{CaptchaConfig}{Specifies how WAF should handle \code{CAPTCHA} evaluations for rules that
 don't have their own \code{CaptchaConfig} settings. If you don't specify
 this, WAF uses its default settings for \code{CaptchaConfig}.}
+
+\item{ChallengeConfig}{Specifies how WAF should handle challenge evaluations for rules that
+don't have their own \code{ChallengeConfig} settings. If you don't specify
+this, WAF uses its default settings for \code{ChallengeConfig}.}
+
+\item{TokenDomains}{Specifies the domains that WAF should accept in a web request token.
+This enables the use of tokens across multiple protected websites. When
+WAF provides a token, it uses the domain of the Amazon Web Services
+resource that the web ACL is protecting. If you don't specify a list of
+token domains, WAF accepts tokens only for the domain of the protected
+resource. With a token domain list, WAF accepts the resource's host
+domain plus all domains in the token domain list, including their
+prefixed subdomains.
+
+Example JSON:
+\verb{"TokenDomains": \{ "mywebsite.com", "myotherwebsite.com" \}}
+
+Public suffixes aren't allowed. For example, you can't use \code{usa.gov} or
+\code{co.uk} as token domains.}
+
+\item{AssociationConfig}{Specifies custom configurations for the associations between the web ACL
+and protected resources.
+
+Use this to customize the maximum size of the request body that your
+protected CloudFront distributions forward to WAF for inspection. The
+default is 16 KB (16,384 kilobytes).
+
+You are charged additional fees when your protected resources forward
+body sizes that are larger than the default. For more information, see
+\href{https://aws.amazon.com/waf/pricing/}{WAF Pricing}.}
 }
 \description{
 Creates a WebACL per the specifications provided.

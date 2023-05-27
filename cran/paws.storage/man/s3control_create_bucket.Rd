@@ -57,7 +57,7 @@ This is not supported by Amazon S3 on Outposts buckets.}
 
 \item{OutpostId}{The ID of the Outposts where the bucket is being created.
 
-This is required by Amazon S3 on Outposts buckets.}
+This ID is required by Amazon S3 on Outposts buckets.}
 }
 \description{
 This action creates an Amazon S3 on Outposts bucket. To create an S3 bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{Create Bucket} in the \emph{Amazon S3 API Reference}.

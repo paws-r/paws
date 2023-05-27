@@ -35,7 +35,7 @@ StartPosition.}
 \item{ConnectionToken}{[required] The authentication token associated with the participant's connection.}
 }
 \description{
-Retrieves a transcript of the session, including details about any attachments. Note that ConnectionToken is used for invoking this API instead of ParticipantToken.
+Retrieves a transcript of the session, including details about any attachments. For information about accessing past chat contact transcripts for a persistent chat, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/chat-persistence.html}{Enable persistent chat}.
 
 See \url{https://paws-r.github.io/docs/connectparticipant/get_transcript.html} for full documentation.
 }

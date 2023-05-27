@@ -106,13 +106,13 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' 
 #' We strongly recommend using the `STANDARD` permissions mode to maximize
 #' the security of your ledger data.
-#' @param DeletionProtection The flag that prevents a ledger from being deleted by any user. If not
-#' provided on ledger creation, this feature is enabled (`true`) by
-#' default.
+#' @param DeletionProtection Specifies whether the ledger is protected from being deleted by any
+#' user. If not defined during ledger creation, this feature is enabled
+#' (`true`) by default.
 #' 
 #' If deletion protection is enabled, you must first disable it before you
 #' can delete the ledger. You can disable it by calling the
-#' [`update_ledger`][qldb_update_ledger] operation to set the flag to
+#' [`update_ledger`][qldb_update_ledger] operation to set this parameter to
 #' `false`.
 #' @param KmsKey The key in Key Management Service (KMS) to use for encryption of data at
 #' rest in the ledger. For more information, see [Encryption at
@@ -127,7 +127,8 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' -   **Undefined**: By default, use an Amazon Web Services owned KMS key.
 #' 
 #' -   **A valid symmetric customer managed KMS key**: Use the specified
-#'     KMS key in your account that you create, own, and manage.
+#'     symmetric encryption KMS key in your account that you create, own,
+#'     and manage.
 #' 
 #'     Amazon QLDB does not support asymmetric keys. For more information,
 #'     see [Using symmetric and asymmetric
@@ -212,7 +213,7 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
 #' 
 #' If deletion protection is enabled, you must first disable it before you
 #' can delete the ledger. You can disable it by calling the
-#' [`update_ledger`][qldb_update_ledger] operation to set the flag to
+#' [`update_ledger`][qldb_update_ledger] operation to set this parameter to
 #' `false`.
 #'
 #' @usage
@@ -491,13 +492,6 @@ qldb_describe_ledger <- function(Name) {
 #' export job can write the data objects in either the text or binary
 #' representation of Amazon Ion format, or in *JSON Lines* text format.
 #' 
-#' In JSON Lines format, each journal block in the exported data object is
-#' a valid JSON object that is delimited by a newline. You can use this
-#' format to easily integrate JSON exports with analytics tools such as
-#' Glue and Amazon Athena because these services can parse
-#' newline-delimited JSON automatically. For more information about the
-#' format, see [JSON Lines](https://jsonlines.org/).
-#' 
 #' If the ledger with the given `Name` doesn't exist, then throws
 #' `ResourceNotFoundException`.
 #' 
@@ -538,8 +532,7 @@ qldb_describe_ledger <- function(Name) {
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants QLDB
 #' permissions for a journal export job to do the following:
 #' 
-#' -   Write objects into your Amazon Simple Storage Service (Amazon S3)
-#'     bucket.
+#' -   Write objects into your Amazon S3 bucket.
 #' 
 #' -   (Optional) Use your customer managed key in Key Management Service
 #'     (KMS) for server-side encryption of your exported data.
@@ -547,8 +540,19 @@ qldb_describe_ledger <- function(Name) {
 #' To pass a role to QLDB when requesting a journal export, you must have
 #' permissions to perform the `iam:PassRole` action on the IAM role
 #' resource. This is required for all journal export requests.
-#' @param OutputFormat The output format of your exported journal data. If this parameter is
-#' not specified, the exported data defaults to `ION_TEXT` format.
+#' @param OutputFormat The output format of your exported journal data. A journal export job
+#' can write the data objects in either the text or binary representation
+#' of [Amazon
+#' Ion](https://docs.aws.amazon.com/qldb/latest/developerguide/ion.html)
+#' format, or in [JSON Lines](https://jsonlines.org/) text format.
+#' 
+#' Default: `ION_TEXT`
+#' 
+#' In JSON Lines format, each journal block in an exported data object is a
+#' valid JSON object that is delimited by a newline. You can use this
+#' format to directly integrate JSON exports with analytics tools such as
+#' Amazon Athena and Glue because these services can parse
+#' newline-delimited JSON automatically.
 #'
 #' @return
 #' A list with the following syntax:
@@ -811,14 +815,10 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 }
 .qldb$operations$get_revision <- qldb_get_revision
 
-#' Returns an array of all Amazon QLDB journal stream descriptors for a
-#' given ledger
+#' Returns all Amazon QLDB journal streams for a given ledger
 #'
 #' @description
-#' Returns an array of all Amazon QLDB journal stream descriptors for a
-#' given ledger. The output of each stream descriptor includes the same
-#' details that are returned by
-#' [`describe_journal_kinesis_stream`][qldb_describe_journal_kinesis_stream].
+#' Returns all Amazon QLDB journal streams for a given ledger.
 #' 
 #' This action does not return any expired journal streams. For more
 #' information, see [Expiration for terminal
@@ -907,12 +907,12 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 }
 .qldb$operations$list_journal_kinesis_streams_for_ledger <- qldb_list_journal_kinesis_streams_for_ledger
 
-#' Returns an array of journal export job descriptions for all ledgers that
-#' are associated with the current Amazon Web Services account and Region
+#' Returns all journal export jobs for all ledgers that are associated with
+#' the current Amazon Web Services account and Region
 #'
 #' @description
-#' Returns an array of journal export job descriptions for all ledgers that
-#' are associated with the current Amazon Web Services account and Region.
+#' Returns all journal export jobs for all ledgers that are associated with
+#' the current Amazon Web Services account and Region.
 #' 
 #' This action returns a maximum of `MaxResults` items, and is paginated so
 #' that you can retrieve all the items by calling
@@ -999,12 +999,10 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .qldb$operations$list_journal_s3_exports <- qldb_list_journal_s3_exports
 
-#' Returns an array of journal export job descriptions for a specified
-#' ledger
+#' Returns all journal export jobs for a specified ledger
 #'
 #' @description
-#' Returns an array of journal export job descriptions for a specified
-#' ledger.
+#' Returns all journal export jobs for a specified ledger.
 #' 
 #' This action returns a maximum of `MaxResults` items, and is paginated so
 #' that you can retrieve all the items by calling
@@ -1094,15 +1092,15 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
 }
 .qldb$operations$list_journal_s3_exports_for_ledger <- qldb_list_journal_s3_exports_for_ledger
 
-#' Returns an array of ledger summaries that are associated with the
-#' current Amazon Web Services account and Region
+#' Returns all ledgers that are associated with the current Amazon Web
+#' Services account and Region
 #'
 #' @description
-#' Returns an array of ledger summaries that are associated with the
-#' current Amazon Web Services account and Region.
+#' Returns all ledgers that are associated with the current Amazon Web
+#' Services account and Region.
 #' 
-#' This action returns a maximum of 100 items and is paginated so that you
-#' can retrieve all the items by calling
+#' This action returns a maximum of `MaxResults` items and is paginated so
+#' that you can retrieve all the items by calling
 #' [`list_ledgers`][qldb_list_ledgers] multiple times.
 #'
 #' @usage
@@ -1431,13 +1429,13 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' qldb_update_ledger(Name, DeletionProtection, KmsKey)
 #'
 #' @param Name &#91;required&#93; The name of the ledger.
-#' @param DeletionProtection The flag that prevents a ledger from being deleted by any user. If not
-#' provided on ledger creation, this feature is enabled (`true`) by
-#' default.
+#' @param DeletionProtection Specifies whether the ledger is protected from being deleted by any
+#' user. If not defined during ledger creation, this feature is enabled
+#' (`true`) by default.
 #' 
 #' If deletion protection is enabled, you must first disable it before you
 #' can delete the ledger. You can disable it by calling the
-#' [`update_ledger`][qldb_update_ledger] operation to set the flag to
+#' [`update_ledger`][qldb_update_ledger] operation to set this parameter to
 #' `false`.
 #' @param KmsKey The key in Key Management Service (KMS) to use for encryption of data at
 #' rest in the ledger. For more information, see [Encryption at
@@ -1452,7 +1450,8 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' -   **Undefined**: Make no changes to the KMS key of the ledger.
 #' 
 #' -   **A valid symmetric customer managed KMS key**: Use the specified
-#'     KMS key in your account that you create, own, and manage.
+#'     symmetric encryption KMS key in your account that you create, own,
+#'     and manage.
 #' 
 #'     Amazon QLDB does not support asymmetric keys. For more information,
 #'     see [Using symmetric and asymmetric

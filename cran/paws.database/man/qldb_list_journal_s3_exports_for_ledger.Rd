@@ -2,8 +2,7 @@
 % Please edit documentation in R/qldb_operations.R
 \name{qldb_list_journal_s3_exports_for_ledger}
 \alias{qldb_list_journal_s3_exports_for_ledger}
-\title{Returns an array of journal export job descriptions for a specified
-ledger}
+\title{Returns all journal export jobs for a specified ledger}
 \usage{
 qldb_list_journal_s3_exports_for_ledger(
   Name,
@@ -25,7 +24,7 @@ a previous
 call, then you should use that value as input here.}
 }
 \description{
-Returns an array of journal export job descriptions for a specified ledger.
+Returns all journal export jobs for a specified ledger.
 
 See \url{https://paws-r.github.io/docs/qldb/list_journal_s3_exports_for_ledger.html} for full documentation.
 }

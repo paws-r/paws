@@ -26,7 +26,7 @@ NULL
 #' manage Config. The Config API uses the Signature Version 4 protocol for
 #' signing requests. For more information about how to sign a request with
 #' this protocol, see [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' For detailed information about Config features and their associated
 #' actions or commands, as well as how to work with Amazon Web Services
 #' Management Console, see [What Is
@@ -109,7 +109,7 @@ NULL
 #'  \link[=configservice_describe_configuration_aggregators]{describe_configuration_aggregators} \tab Returns the details of one or more configuration aggregators\cr
 #'  \link[=configservice_describe_configuration_aggregator_sources_status]{describe_configuration_aggregator_sources_status} \tab Returns status information for sources within an aggregator\cr
 #'  \link[=configservice_describe_configuration_recorders]{describe_configuration_recorders} \tab Returns the details for the specified configuration recorders\cr
-#'  \link[=configservice_describe_configuration_recorder_status]{describe_configuration_recorder_status} \tab Returns the current status of the specified configuration recorder\cr
+#'  \link[=configservice_describe_configuration_recorder_status]{describe_configuration_recorder_status} \tab Returns the current status of the specified configuration recorder as well as the status of the last recording event for the recorder\cr
 #'  \link[=configservice_describe_conformance_pack_compliance]{describe_conformance_pack_compliance} \tab Returns compliance details for each rule in that conformance pack\cr
 #'  \link[=configservice_describe_conformance_packs]{describe_conformance_packs} \tab Returns a list of one or more conformance packs\cr
 #'  \link[=configservice_describe_conformance_pack_status]{describe_conformance_pack_status} \tab Provides one or more conformance packs deployment status\cr
@@ -141,10 +141,12 @@ NULL
 #'  \link[=configservice_get_organization_conformance_pack_detailed_status]{get_organization_conformance_pack_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization conformance pack\cr
 #'  \link[=configservice_get_organization_custom_rule_policy]{get_organization_custom_rule_policy} \tab Returns the policy definition containing the logic for your organization Config Custom Policy rule\cr
 #'  \link[=configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of ConfigurationItems for the specified resource\cr
+#'  \link[=configservice_get_resource_evaluation_summary]{get_resource_evaluation_summary} \tab Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run\cr
 #'  \link[=configservice_get_stored_query]{get_stored_query} \tab Returns the details of a specific stored query\cr
 #'  \link[=configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
 #'  \link[=configservice_list_conformance_pack_compliance_scores]{list_conformance_pack_compliance_scores} \tab Returns a list of conformance pack compliance scores\cr
 #'  \link[=configservice_list_discovered_resources]{list_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers for the resources of that type\cr
+#'  \link[=configservice_list_resource_evaluations]{list_resource_evaluations} \tab Returns a list of proactive resource evaluations\cr
 #'  \link[=configservice_list_stored_queries]{list_stored_queries} \tab Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region\cr
 #'  \link[=configservice_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for Config resource\cr
 #'  \link[=configservice_put_aggregation_authorization]{put_aggregation_authorization} \tab Authorizes the aggregator account and region to collect data from the source account and region\cr
@@ -158,7 +160,7 @@ NULL
 #'  \link[=configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
 #'  \link[=configservice_put_organization_conformance_pack]{put_organization_conformance_pack} \tab Deploys conformance packs across member accounts in an Amazon Web Services Organization\cr
 #'  \link[=configservice_put_remediation_configurations]{put_remediation_configurations} \tab Adds or updates the remediation configuration with a specific Config rule with the selected target or action\cr
-#'  \link[=configservice_put_remediation_exceptions]{put_remediation_exceptions} \tab A remediation exception is when a specific resource is no longer considered for auto-remediation\cr
+#'  \link[=configservice_put_remediation_exceptions]{put_remediation_exceptions} \tab A remediation exception is when a specified resource is no longer considered for auto-remediation\cr
 #'  \link[=configservice_put_resource_config]{put_resource_config} \tab Records the configuration state for the resource provided in the request\cr
 #'  \link[=configservice_put_retention_configuration]{put_retention_configuration} \tab Creates and updates the retention configuration with details about retention period (number of days) that Config stores your historical information\cr
 #'  \link[=configservice_put_stored_query]{put_stored_query} \tab Saves a new query or updates an existing saved query\cr
@@ -167,6 +169,7 @@ NULL
 #'  \link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation} \tab Runs an on-demand evaluation for the specified Config rules against the last known configuration state of the resources\cr
 #'  \link[=configservice_start_configuration_recorder]{start_configuration_recorder} \tab Starts recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account\cr
 #'  \link[=configservice_start_remediation_execution]{start_remediation_execution} \tab Runs an on-demand remediation for the specified Config rules against the last known remediation configuration\cr
+#'  \link[=configservice_start_resource_evaluation]{start_resource_evaluation} \tab Runs an on-demand evaluation for the specified resource to determine whether the resource details will comply with configured Config rules\cr
 #'  \link[=configservice_stop_configuration_recorder]{stop_configuration_recorder} \tab Stops recording configurations of the Amazon Web Services resources you have selected to record in your Amazon Web Services account\cr
 #'  \link[=configservice_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 #'  \link[=configservice_untag_resource]{untag_resource} \tab Deletes specified tags from a resource

@@ -23,8 +23,8 @@ exception.
 For accounts that created clusters in a Region before November 25, 2019,
 block public access is disabled by default in that Region. To use this
 feature, you must manually enable and configure it. For accounts that
-did not create an EMR cluster in a Region before this date, block public
-access is enabled by default in that Region.}
+did not create an Amazon EMR cluster in a Region before this date, block
+public access is enabled by default in that Region.}
 }
 \description{
 Creates or updates an Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the \emph{Amazon EMR Management Guide}.

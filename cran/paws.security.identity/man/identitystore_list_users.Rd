@@ -2,8 +2,7 @@
 % Please edit documentation in R/identitystore_operations.R
 \name{identitystore_list_users}
 \alias{identitystore_list_users}
-\title{Lists the attribute name and value of the user that you specified in the
-search}
+\title{Lists all users in the identity store}
 \usage{
 identitystore_list_users(
   IdentityStoreId,
@@ -15,13 +14,13 @@ identitystore_list_users(
 \arguments{
 \item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as
 \code{d-1234567890}. In this example, \verb{d-} is a fixed prefix, and
-\code{1234567890} is a randomly generated string that contains number and
+\code{1234567890} is a randomly generated string that contains numbers and
 lower case letters. This value is generated at the time that a new
 identity store is created.}
 
 \item{MaxResults}{The maximum number of results to be returned per request. This parameter
 is used in the \code{\link[=identitystore_list_users]{list_users}} and
-\code{\link[=identitystore_list_groups]{list_groups}} request to specify how many
+\code{\link[=identitystore_list_groups]{list_groups}} requests to specify how many
 results to return in one page. The length limit is 50 characters.}
 
 \item{NextToken}{The pagination token used for the
@@ -34,10 +33,10 @@ the next page.}
 
 \item{Filters}{A list of \code{Filter} objects, which is used in the
 \code{\link[=identitystore_list_users]{list_users}} and
-\code{\link[=identitystore_list_groups]{list_groups}} request.}
+\code{\link[=identitystore_list_groups]{list_groups}} requests.}
 }
 \description{
-Lists the attribute name and value of the user that you specified in the search. We only support \code{UserName} as a valid filter attribute path currently, and filter is required. This API returns minimum attributes, including \code{UserId} and \code{UserName} in the response.
+Lists all users in the identity store. Returns a paginated list of complete \code{User} objects. Filtering for a \code{User} by the \code{UserName} attribute is deprecated. Instead, use the \code{\link[=identitystore_get_user_id]{get_user_id}} API action.
 
 See \url{https://paws-r.github.io/docs/identitystore/list_users.html} for full documentation.
 }

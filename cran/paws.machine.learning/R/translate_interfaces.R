@@ -5,7 +5,7 @@ NULL
 
 .translate$create_parallel_data_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,7 +75,7 @@ NULL
 
 .translate$import_terminology_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MergeStrategy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TerminologyData = structure(list(File = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), Format = structure(logical(0), tags = list(type = "string")), Directionality = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), MergeStrategy = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), TerminologyData = structure(list(File = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), Format = structure(logical(0), tags = list(type = "string")), Directionality = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -106,6 +106,18 @@ NULL
 .translate$list_parallel_data_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ParallelDataPropertiesList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Message = structure(logical(0), tags = list(type = "string")), ImportedDataSize = structure(logical(0), tags = list(type = "long")), ImportedRecordCount = structure(logical(0), tags = list(type = "long")), FailedRecordCount = structure(logical(0), tags = list(type = "long")), SkippedRecordCount = structure(logical(0), tags = list(type = "long")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LatestUpdateAttemptStatus = structure(logical(0), tags = list(type = "string")), LatestUpdateAttemptAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -157,6 +169,30 @@ NULL
   return(populate(args, shape))
 }
 
+.translate$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$translate_document_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Document = structure(list(Content = structure(logical(0), tags = list(type = "blob", sensitive = TRUE)), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string")), Settings = structure(list(Formality = structure(logical(0), tags = list(type = "string")), Profanity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$translate_document_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TranslatedDocument = structure(list(Content = structure(logical(0), tags = list(type = "blob", sensitive = TRUE))), tags = list(type = "structure")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string")), AppliedTerminologies = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Terms = structure(list(structure(list(SourceText = structure(logical(0), tags = list(type = "string")), TargetText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AppliedSettings = structure(list(Formality = structure(logical(0), tags = list(type = "string")), Profanity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .translate$translate_text_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Text = structure(logical(0), tags = list(type = "string")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string")), Settings = structure(list(Formality = structure(logical(0), tags = list(type = "string")), Profanity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -166,6 +202,18 @@ NULL
 .translate$translate_text_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TranslatedText = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string")), AppliedTerminologies = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Terms = structure(list(structure(list(SourceText = structure(logical(0), tags = list(type = "string")), TargetText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), AppliedSettings = structure(list(Formality = structure(logical(0), tags = list(type = "string")), Profanity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

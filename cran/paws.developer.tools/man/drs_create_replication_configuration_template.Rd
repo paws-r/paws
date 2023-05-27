@@ -6,6 +6,7 @@
 \usage{
 drs_create_replication_configuration_template(
   associateDefaultSecurityGroup,
+  autoReplicateNewDisks = NULL,
   bandwidthThrottling,
   createPublicIP,
   dataPlaneRouting,
@@ -24,6 +25,9 @@ drs_create_replication_configuration_template(
 \arguments{
 \item{associateDefaultSecurityGroup}{[required] Whether to associate the default Elastic Disaster Recovery Security
 group with the Replication Configuration Template.}
+
+\item{autoReplicateNewDisks}{Whether to allow the AWS replication agent to automatically replicate
+newly added disks.}
 
 \item{bandwidthThrottling}{[required] Configure bandwidth throttling for the outbound data transfer rate of
 the Source Server in Mbps.}

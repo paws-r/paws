@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_place_index}
 \alias{locationservice_create_place_index}
-\title{Creates a place index resource in your AWS account}
+\title{Creates a place index resource in your Amazon Web Services account}
 \usage{
 locationservice_create_place_index(
   DataSource,
@@ -24,14 +24,18 @@ Valid values include:
 \item \code{Esri} – For additional information about
 \href{https://docs.aws.amazon.com/location/latest/developerguide/esri.html}{Esri}'s
 coverage in your region of interest, see \href{https://developers.arcgis.com/rest/geocode/api-reference/geocode-coverage.htm}{Esri details on geocoding coverage}.
+\item \code{Grab} – Grab provides place index functionality for Southeast Asia.
+For additional information about
+\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}'
+coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
 \item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}'
 coverage in your region of interest, see HERE details on goecoding
 coverage.
 
 If you specify HERE Technologies (\code{Here}) as the data provider, you
 may not \href{https://docs.aws.amazon.com/location/latest/APIReference/API_DataSourceConfiguration.html}{store results}
-for locations in Japan. For more information, see the \href{https://aws.amazon.com/service-terms/}{AWS Service Terms} for Amazon Location
-Service.
+for locations in Japan. For more information, see the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} for
+Amazon Location Service.
 }
 
 For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html}{Data providers}
@@ -73,7 +77,7 @@ characters: + - = . _ : / @
 }}
 }
 \description{
-Creates a place index resource in your AWS account. Use a place index resource to geocode addresses and other text queries by using the \code{\link[=locationservice_search_place_index_for_text]{search_place_index_for_text}} operation, and reverse geocode coordinates by using the \code{\link[=locationservice_search_place_index_for_position]{search_place_index_for_position}} operation, and enable autosuggestions by using the \code{\link[=locationservice_search_place_index_for_suggestions]{search_place_index_for_suggestions}} operation.
+Creates a place index resource in your Amazon Web Services account. Use a place index resource to geocode addresses and other text queries by using the \code{\link[=locationservice_search_place_index_for_text]{search_place_index_for_text}} operation, and reverse geocode coordinates by using the \code{\link[=locationservice_search_place_index_for_position]{search_place_index_for_position}} operation, and enable autosuggestions by using the \code{\link[=locationservice_search_place_index_for_suggestions]{search_place_index_for_suggestions}} operation.
 
 See \url{https://paws-r.github.io/docs/locationservice/create_place_index.html} for full documentation.
 }

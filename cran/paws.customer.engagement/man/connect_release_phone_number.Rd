@@ -2,7 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_release_phone_number}
 \alias{connect_release_phone_number}
-\title{Releases a phone number previously claimed to an Amazon Connect instance}
+\title{Releases a phone number previously claimed to an Amazon Connect instance
+or traffic distribution group}
 \usage{
 connect_release_phone_number(PhoneNumberId, ClientToken = NULL)
 }
@@ -10,10 +11,12 @@ connect_release_phone_number(PhoneNumberId, ClientToken = NULL)
 \item{PhoneNumberId}{[required] A unique identifier for the phone number.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
-Releases a phone number previously claimed to an Amazon Connect instance.
+Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group. You can call this API only in the Amazon Web Services Region where the number was claimed.
 
 See \url{https://paws-r.github.io/docs/connect/release_phone_number.html} for full documentation.
 }

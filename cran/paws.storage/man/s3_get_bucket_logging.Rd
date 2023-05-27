@@ -15,7 +15,7 @@ different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
 }
 \description{
-Returns the logging status of a bucket and the permissions users have to view and modify that status. To use GET, you must be the bucket owner.
+Returns the logging status of a bucket and the permissions users have to view and modify that status.
 
 See \url{https://paws-r.github.io/docs/s3/get_bucket_logging.html} for full documentation.
 }

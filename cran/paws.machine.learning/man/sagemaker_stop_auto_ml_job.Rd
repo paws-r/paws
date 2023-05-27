@@ -2,7 +2,7 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_stop_auto_ml_job}
 \alias{sagemaker_stop_auto_ml_job}
-\title{A method for forcing the termination of a running job}
+\title{A method for forcing a running job to shut down}
 \usage{
 sagemaker_stop_auto_ml_job(AutoMLJobName)
 }
@@ -10,7 +10,7 @@ sagemaker_stop_auto_ml_job(AutoMLJobName)
 \item{AutoMLJobName}{[required] The name of the object you are requesting.}
 }
 \description{
-A method for forcing the termination of a running job.
+A method for forcing a running job to shut down.
 
 See \url{https://paws-r.github.io/docs/sagemaker/stop_auto_ml_job.html} for full documentation.
 }

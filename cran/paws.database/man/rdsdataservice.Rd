@@ -31,8 +31,11 @@ Operations section.
 Amazon RDS Data Service
 
 Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
-Aurora Serverless DB cluster. To run these statements, you work with the
-Data Service API.
+Aurora Serverless v1 DB cluster. To run these statements, you work with
+the Data Service API.
+
+The Data Service API isn't supported on Amazon Aurora Serverless v2 DB
+clusters.
 
 For more information about the Data Service API, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API}
 in the \emph{Amazon Aurora User Guide}.

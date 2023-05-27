@@ -28,28 +28,35 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Web Services Systems Manager is a collection of capabilities to
-help you manage your applications and infrastructure running in the
-Amazon Web Services Cloud;. Systems Manager simplifies application and
-resource management, shortens the time to detect and resolve operational
-problems, and helps you manage your Amazon Web Services resources
-securely at scale.
+Amazon Web Services Systems Manager is the operations hub for your
+Amazon Web Services applications and resources and a secure end-to-end
+management solution for hybrid cloud environments that enables safe and
+secure operations at scale.
 
 This reference is intended to be used with the \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Amazon Web Services Systems Manager User Guide}.
-
-To get started, verify prerequisites. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting up Amazon Web Services Systems Manager}.
+To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting up Amazon Web Services Systems Manager}.
 
 \strong{Related resources}
 \itemize{
-\item For information about how to use a Query API, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html}{Making API requests}.
-\item For information about other API operations you can perform on EC2
-instances, see the \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{Amazon EC2 API Reference}.
+\item For information about each of the capabilities that comprise Systems
+Manager, see \href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/#systems-manager-capabilities}{Systems Manager capabilities}
+in the \emph{Amazon Web Services Systems Manager User Guide}.
+\item For details about predefined runbooks for Automation, a capability
+of Amazon Web Services Systems Manager, see the \emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html">}}Systems
+Manager Automation runbook reference\if{html}{\out{</span>}}} .
 \item For information about AppConfig, a capability of Systems Manager,
-see the \href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide} and
-the \href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}.
+see the \emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/appconfig/latest/userguide/">}}AppConfig
+User Guide\if{html}{\out{</span>}}} and the \emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/">}}AppConfig
+API Reference\if{html}{\out{</span>}}} .
 \item For information about Incident Manager, a capability of Systems
-Manager, see the \href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Incident Manager User Guide}
-and the \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Incident Manager API Reference}.
+Manager, see the \emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/incident-manager/latest/userguide/">}}Systems
+Manager Incident Manager User Guide\if{html}{\out{</span>}}} and the \emph{\if{html}{\out{<span
+href="https://docs.aws.amazon.com/incident-manager/latest/APIReference/">}}Systems
+Manager Incident Manager API Reference\if{html}{\out{</span>}}} .
 }
 }
 \section{Service syntax}{
@@ -102,6 +109,7 @@ and the \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}
 \link[=ssm_delete_parameters]{delete_parameters} \tab Delete a list of parameters\cr
 \link[=ssm_delete_patch_baseline]{delete_patch_baseline} \tab Deletes a patch baseline\cr
 \link[=ssm_delete_resource_data_sync]{delete_resource_data_sync} \tab Deletes a resource data sync configuration\cr
+\link[=ssm_delete_resource_policy]{delete_resource_policy} \tab Deletes a Systems Manager resource policy\cr
 \link[=ssm_deregister_managed_instance]{deregister_managed_instance} \tab Removes the server or virtual machine from the list of registered servers\cr
 \link[=ssm_deregister_patch_baseline_for_patch_group]{deregister_patch_baseline_for_patch_group} \tab Removes a patch group from a patch baseline\cr
 \link[=ssm_deregister_target_from_maintenance_window]{deregister_target_from_maintenance_window} \tab Removes a target from a maintenance window\cr
@@ -162,6 +170,7 @@ and the \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}
 \link[=ssm_get_parameters_by_path]{get_parameters_by_path} \tab Retrieve information about one or more parameters in a specific hierarchy\cr
 \link[=ssm_get_patch_baseline]{get_patch_baseline} \tab Retrieves information about a patch baseline\cr
 \link[=ssm_get_patch_baseline_for_patch_group]{get_patch_baseline_for_patch_group} \tab Retrieves the patch baseline that should be used for the specified patch group\cr
+\link[=ssm_get_resource_policies]{get_resource_policies} \tab Returns an array of the Policy object\cr
 \link[=ssm_get_service_setting]{get_service_setting} \tab ServiceSetting is an account-level setting for an Amazon Web Services service\cr
 \link[=ssm_label_parameter_version]{label_parameter_version} \tab A parameter label is a user-defined alias to help you manage different versions of a parameter\cr
 \link[=ssm_list_associations]{list_associations} \tab Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region\cr
@@ -184,6 +193,7 @@ and the \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}
 \link[=ssm_put_compliance_items]{put_compliance_items} \tab Registers a compliance type and other compliance details on a designated resource\cr
 \link[=ssm_put_inventory]{put_inventory} \tab Bulk update custom inventory items on one or more managed nodes\cr
 \link[=ssm_put_parameter]{put_parameter} \tab Add a parameter to the system\cr
+\link[=ssm_put_resource_policy]{put_resource_policy} \tab Creates or updates a Systems Manager resource policy\cr
 \link[=ssm_register_default_patch_baseline]{register_default_patch_baseline} \tab Defines the default patch baseline for the relevant operating system\cr
 \link[=ssm_register_patch_baseline_for_patch_group]{register_patch_baseline_for_patch_group} \tab Registers a patch baseline for a patch group\cr
 \link[=ssm_register_target_with_maintenance_window]{register_target_with_maintenance_window} \tab Registers a target with a maintenance window\cr

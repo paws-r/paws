@@ -39,21 +39,21 @@ panorama_create_application_instance <- function(ApplicationInstanceIdToReplace 
 }
 .panorama$operations$create_application_instance <- panorama_create_application_instance
 
-#' Creates a job to run on one or more devices
+#' Creates a job to run on a device
 #'
 #' @description
-#' Creates a job to run on one or more devices.
+#' Creates a job to run on a device. A job can update a device's software or reboot it.
 #'
 #' See [https://paws-r.github.io/docs/panorama/create_job_for_devices.html](https://paws-r.github.io/docs/panorama/create_job_for_devices.html) for full documentation.
 #'
-#' @param DeviceIds &#91;required&#93; IDs of target devices.
-#' @param DeviceJobConfig &#91;required&#93; Configuration settings for the job.
+#' @param DeviceIds &#91;required&#93; ID of target device.
+#' @param DeviceJobConfig Configuration settings for a software update job.
 #' @param JobType &#91;required&#93; The type of job to run.
 #'
 #' @keywords internal
 #'
 #' @rdname panorama_create_job_for_devices
-panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig, JobType) {
+panorama_create_job_for_devices <- function(DeviceIds, DeviceJobConfig = NULL, JobType) {
   op <- new_operation(
     name = "CreateJobForDevices",
     http_method = "POST",
@@ -633,21 +633,26 @@ panorama_list_application_instances <- function(DeviceId = NULL, MaxResults = NU
 #'
 #' See [https://paws-r.github.io/docs/panorama/list_devices.html](https://paws-r.github.io/docs/panorama/list_devices.html) for full documentation.
 #'
+#' @param DeviceAggregatedStatusFilter Filter based on a device's status.
 #' @param MaxResults The maximum number of devices to return in one page of results.
+#' @param NameFilter Filter based on device's name. Prefixes supported.
 #' @param NextToken Specify the pagination token from a previous request to retrieve the
 #' next page of results.
+#' @param SortBy The target column to be sorted on. Default column sort is CREATED_TIME.
+#' @param SortOrder The sorting order for the returned list. SortOrder is DESCENDING by
+#' default based on CREATED_TIME. Otherwise, SortOrder is ASCENDING.
 #'
 #' @keywords internal
 #'
 #' @rdname panorama_list_devices
-panorama_list_devices <- function(MaxResults = NULL, NextToken = NULL) {
+panorama_list_devices <- function(DeviceAggregatedStatusFilter = NULL, MaxResults = NULL, NameFilter = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListDevices",
     http_method = "GET",
     http_path = "/devices",
     paginator = list()
   )
-  input <- .panorama$list_devices_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .panorama$list_devices_input(DeviceAggregatedStatusFilter = DeviceAggregatedStatusFilter, MaxResults = MaxResults, NameFilter = NameFilter, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .panorama$list_devices_output()
   config <- get_config()
   svc <- .panorama$service(config)
@@ -942,6 +947,36 @@ panorama_remove_application_instance <- function(ApplicationInstanceId) {
   return(response)
 }
 .panorama$operations$remove_application_instance <- panorama_remove_application_instance
+
+#' Signal camera nodes to stop or resume
+#'
+#' @description
+#' Signal camera nodes to stop or resume.
+#'
+#' See [https://paws-r.github.io/docs/panorama/signal_application_instance_node_instances.html](https://paws-r.github.io/docs/panorama/signal_application_instance_node_instances.html) for full documentation.
+#'
+#' @param ApplicationInstanceId &#91;required&#93; An application instance ID.
+#' @param NodeSignals &#91;required&#93; A list of signals.
+#'
+#' @keywords internal
+#'
+#' @rdname panorama_signal_application_instance_node_instances
+panorama_signal_application_instance_node_instances <- function(ApplicationInstanceId, NodeSignals) {
+  op <- new_operation(
+    name = "SignalApplicationInstanceNodeInstances",
+    http_method = "PUT",
+    http_path = "/application-instances/{ApplicationInstanceId}/node-signals",
+    paginator = list()
+  )
+  input <- .panorama$signal_application_instance_node_instances_input(ApplicationInstanceId = ApplicationInstanceId, NodeSignals = NodeSignals)
+  output <- .panorama$signal_application_instance_node_instances_output()
+  config <- get_config()
+  svc <- .panorama$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.panorama$operations$signal_application_instance_node_instances <- panorama_signal_application_instance_node_instances
 
 #' Tags a resource
 #'

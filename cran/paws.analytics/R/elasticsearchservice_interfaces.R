@@ -37,6 +37,18 @@ NULL
   return(populate(args, shape))
 }
 
+.elasticsearchservice$authorize_vpc_endpoint_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Account = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$authorize_vpc_endpoint_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AuthorizedPrincipal = structure(list(PrincipalType = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .elasticsearchservice$cancel_elasticsearch_service_software_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DomainName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -82,6 +94,18 @@ NULL
 .elasticsearchservice$create_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$create_vpc_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$create_vpc_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpoint = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -138,6 +162,18 @@ NULL
 .elasticsearchservice$delete_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$delete_vpc_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpointId = structure(logical(0), tags = list(location = "uri", locationName = "VpcEndpointId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$delete_vpc_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpointSummary = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -273,6 +309,18 @@ NULL
   return(populate(args, shape))
 }
 
+.elasticsearchservice$describe_vpc_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpointIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$describe_vpc_endpoints_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpoints = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), VpcEndpointErrors = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .elasticsearchservice$dissociate_package_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PackageID = structure(logical(0), tags = list(location = "uri", locationName = "PackageID", type = "string")), DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string"))), tags = list(type = "structure"))
@@ -405,6 +453,42 @@ NULL
   return(populate(args, shape))
 }
 
+.elasticsearchservice$list_vpc_endpoint_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$list_vpc_endpoint_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AuthorizedPrincipalList = structure(list(structure(list(PrincipalType = structure(logical(0), tags = list(type = "string")), Principal = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$list_vpc_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$list_vpc_endpoints_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpointSummaryList = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$list_vpc_endpoints_for_domain_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$list_vpc_endpoints_for_domain_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpointSummaryList = structure(list(structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .elasticsearchservice$purchase_reserved_elasticsearch_instance_offering_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ReservedElasticsearchInstanceOfferingId = structure(logical(0), tags = list(type = "string")), ReservationName = structure(logical(0), tags = list(type = "string")), InstanceCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -437,6 +521,18 @@ NULL
 
 .elasticsearchservice$remove_tags_output <- function(...) {
   list()
+}
+
+.elasticsearchservice$revoke_vpc_endpoint_access_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DomainName = structure(logical(0), tags = list(location = "uri", locationName = "DomainName", type = "string")), Account = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$revoke_vpc_endpoint_access_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .elasticsearchservice$start_elasticsearch_service_software_update_input <- function(...) {
@@ -472,6 +568,18 @@ NULL
 .elasticsearchservice$update_package_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PackageDetails = structure(list(PackageID = structure(logical(0), tags = list(type = "string")), PackageName = structure(logical(0), tags = list(type = "string")), PackageType = structure(logical(0), tags = list(type = "string")), PackageDescription = structure(logical(0), tags = list(type = "string")), PackageStatus = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), AvailablePackageVersion = structure(logical(0), tags = list(type = "string")), ErrorDetails = structure(list(ErrorType = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$update_vpc_endpoint_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.elasticsearchservice$update_vpc_endpoint_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(VpcEndpoint = structure(list(VpcEndpointId = structure(logical(0), tags = list(type = "string")), VpcEndpointOwner = structure(logical(0), tags = list(type = "string")), DomainArn = structure(logical(0), tags = list(type = "string")), VpcOptions = structure(list(VPCId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), Endpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

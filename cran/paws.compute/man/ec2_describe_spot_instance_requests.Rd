@@ -13,7 +13,7 @@ ec2_describe_spot_instance_requests(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone-group} - The Availability Zone group.
 \item \code{create-time} - The time stamp when the Spot Instance request was
@@ -98,14 +98,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{SpotInstanceRequestIds}{One or more Spot Instance request IDs.}
+\item{SpotInstanceRequestIds}{The IDs of the Spot Instance requests.}
 
-\item{NextToken}{The token to request the next set of results. This value is \code{null} when
-there are no more results to return.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. Specify a
-value between 5 and 1000. To retrieve the remaining results, make
-another call with the returned \code{NextToken} value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes the specified Spot Instance requests.

@@ -16,14 +16,15 @@ firehose_create_delivery_stream(
   AmazonopensearchserviceDestinationConfiguration = NULL,
   SplunkDestinationConfiguration = NULL,
   HttpEndpointDestinationConfiguration = NULL,
-  Tags = NULL
+  Tags = NULL,
+  AmazonOpenSearchServerlessDestinationConfiguration = NULL
 )
 }
 \arguments{
-\item{DeliveryStreamName}{[required] The name of the delivery stream. This name must be unique per AWS
-account in the same AWS Region. If the delivery streams are in different
-accounts or different Regions, you can have multiple delivery streams
-with the same name.}
+\item{DeliveryStreamName}{[required] The name of the delivery stream. This name must be unique per Amazon Web
+Services account in the same Amazon Web Services Region. If the delivery
+streams are in different accounts or different Regions, you can have
+multiple delivery streams with the same name.}
 
 \item{DeliveryStreamType}{The delivery stream type. This parameter can be one of the following
 values:
@@ -52,7 +53,8 @@ destination.}
 
 \item{ElasticsearchDestinationConfiguration}{The destination in Amazon ES. You can specify only one destination.}
 
-\item{AmazonopensearchserviceDestinationConfiguration}{}
+\item{AmazonopensearchserviceDestinationConfiguration}{The destination in Amazon OpenSearch Service. You can specify only one
+destination.}
 
 \item{SplunkDestinationConfiguration}{The destination in Splunk. You can specify only one destination.}
 
@@ -60,13 +62,16 @@ destination.}
 endpoint destination. You can specify only one destination.}
 
 \item{Tags}{A set of tags to assign to the delivery stream. A tag is a key-value
-pair that you can define and assign to AWS resources. Tags are metadata.
-For example, you can add friendly names and descriptions or other types
-of information that can help you distinguish the delivery stream. For
-more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the AWS Billing and Cost Management User Guide.
+pair that you can define and assign to Amazon Web Services resources.
+Tags are metadata. For example, you can add friendly names and
+descriptions or other types of information that can help you distinguish
+the delivery stream. For more information about tags, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
+in the Amazon Web Services Billing and Cost Management User Guide.
 
 You can specify up to 50 tags when creating a delivery stream.}
+
+\item{AmazonOpenSearchServerlessDestinationConfiguration}{The destination in the Serverless offering for Amazon OpenSearch
+Service. You can specify only one destination.}
 }
 \description{
 Creates a Kinesis Data Firehose delivery stream.

@@ -2,8 +2,8 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_search_resources}
 \alias{resourcegroups_search_resources}
-\title{Returns a list of AWS resource identifiers that matches the specified
-query}
+\title{Returns a list of Amazon Web Services resource identifiers that matches
+the specified query}
 \usage{
 resourcegroups_search_resources(
   ResourceQuery,
@@ -34,7 +34,7 @@ provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
 \description{
-Returns a list of AWS resource identifiers that matches the specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.
+Returns a list of Amazon Web Services resource identifiers that matches the specified query. The query uses the same format as a resource query in a \code{\link[=resourcegroups_create_group]{create_group}} or \code{\link[=resourcegroups_update_group_query]{update_group_query}} operation.
 
 See \url{https://paws-r.github.io/docs/resourcegroups/search_resources.html} for full documentation.
 }

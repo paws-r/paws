@@ -2579,18 +2579,28 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
 #' from being accidentally deleted.
+#' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with this DB
+#' cluster.
+#' 
+#' *Type:* String.       *Required:* No.
+#' 
+#' If this argument is omitted, the default DB cluster parameter group is
+#' used. If supplied, must match the name of an existing default DB cluster
+#' parameter group. The string must consist of from 1 to 255 letters,
+#' numbers or hyphens. Its first character must be a letter, and it cannot
+#' end with a hyphen or contain two consecutive hyphens.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_from_snapshot
-docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .docdb$restore_db_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .docdb$service(config)

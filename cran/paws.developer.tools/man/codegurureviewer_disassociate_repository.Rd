@@ -9,10 +9,9 @@ codegurureviewer_disassociate_repository(AssociationArn)
 }
 \arguments{
 \item{AssociationArn}{[required] The Amazon Resource Name (ARN) of the
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{\code{RepositoryAssociation}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html}{RepositoryAssociation}
 object. You can retrieve this ARN by calling
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html}{\code{list_repository_associations}}
-.}
+\code{\link[=codegurureviewer_list_repository_associations]{list_repository_associations}}.}
 }
 \description{
 Removes the association between Amazon CodeGuru Reviewer and a repository.

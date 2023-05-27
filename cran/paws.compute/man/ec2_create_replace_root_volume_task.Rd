@@ -2,22 +2,32 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_replace_root_volume_task}
 \alias{ec2_create_replace_root_volume_task}
-\title{Creates a root volume replacement task for an Amazon EC2 instance}
+\title{Replaces the EBS-backed root volume for a running instance with a new
+volume that is restored to the original root volume's launch state, that
+is restored to a specific snapshot taken from the original root volume,
+or that is restored from an AMI that has the same key characteristics as
+that of the instance}
 \usage{
 ec2_create_replace_root_volume_task(
   InstanceId,
   SnapshotId = NULL,
   ClientToken = NULL,
   DryRun = NULL,
-  TagSpecifications = NULL
+  TagSpecifications = NULL,
+  ImageId = NULL,
+  DeleteReplacedRootVolume = NULL
 )
 }
 \arguments{
 \item{InstanceId}{[required] The ID of the instance for which to replace the root volume.}
 
 \item{SnapshotId}{The ID of the snapshot from which to restore the replacement root
-volume. If you want to restore the volume to the initial launch state,
-omit this parameter.}
+volume. The specified snapshot must be a snapshot that you previously
+created from the original root volume.
+
+If you want to restore the replacement root volume to the initial launch
+state, or if you want to restore the replacement root volume from an
+AMI, omit this parameter.}
 
 \item{ClientToken}{Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. If you do not specify a client token, a randomly
@@ -30,9 +40,22 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to apply to the root volume replacement task.}
+
+\item{ImageId}{The ID of the AMI to use to restore the root volume. The specified AMI
+must have the same product code, billing information, architecture type,
+and virtualization type as that of the instance.
+
+If you want to restore the replacement volume from a specific snapshot,
+or if you want to restore it to its launch state, omit this parameter.}
+
+\item{DeleteReplacedRootVolume}{Indicates whether to automatically delete the original root volume after
+the root volume replacement task completes. To delete the original root
+volume, specify \code{true}. If you choose to keep the original root volume
+after the replacement task completes, you must manually delete it when
+you no longer need it.}
 }
 \description{
-Creates a root volume replacement task for an Amazon EC2 instance. The root volume can either be restored to its initial launch state, or it can be restored using a specific snapshot.
+Replaces the EBS-backed root volume for a \code{running} instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance.
 
 See \url{https://paws-r.github.io/docs/ec2/create_replace_root_volume_task.html} for full documentation.
 }

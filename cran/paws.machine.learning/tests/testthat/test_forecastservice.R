@@ -79,3 +79,27 @@ test_that("list_predictors", {
 test_that("list_predictors", {
   expect_error(svc$list_predictors(MaxResults = 20), NA)
 })
+
+test_that("list_what_if_analyses", {
+  expect_error(svc$list_what_if_analyses(), NA)
+})
+
+test_that("list_what_if_analyses", {
+  expect_error(svc$list_what_if_analyses(MaxResults = 20), NA)
+})
+
+test_that("list_what_if_forecast_exports", {
+  expect_error(svc$list_what_if_forecast_exports(), NA)
+})
+
+test_that("list_what_if_forecast_exports", {
+  expect_error(svc$list_what_if_forecast_exports(MaxResults = 20), NA)
+})
+
+test_that("list_what_if_forecasts", {
+  expect_error(svc$list_what_if_forecasts(), NA)
+})
+
+test_that("list_what_if_forecasts", {
+  expect_error(svc$list_what_if_forecasts(MaxResults = 20), NA)
+})

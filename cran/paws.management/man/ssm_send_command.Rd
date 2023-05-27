@@ -21,7 +21,8 @@ ssm_send_command(
   MaxErrors = NULL,
   ServiceRoleArn = NULL,
   NotificationConfig = NULL,
-  CloudWatchOutputConfig = NULL
+  CloudWatchOutputConfig = NULL,
+  AlarmConfiguration = NULL
 )
 }
 \arguments{
@@ -55,7 +56,7 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.}
 document) to run. This can be a public document or a custom document. To
 run a shared document belonging to another account, specify the document
 Amazon Resource Name (ARN). For more information about how to use shared
-documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Using shared SSM documents}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 If you specify a document name or ARN that hasn't been shared with your
@@ -116,13 +117,20 @@ in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{ServiceRoleArn}{The ARN of the Identity and Access Management (IAM) service role to use
 to publish Amazon Simple Notification Service (Amazon SNS) notifications
-for Run Command commands.}
+for Run Command commands.
+
+This role must provide the \code{sns:Publish} permission for your
+notification topic. For information about creating and using this
+service role, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html}{Monitoring Systems Manager status changes using Amazon SNS notifications}
+in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{NotificationConfig}{Configurations for sending notifications.}
 
 \item{CloudWatchOutputConfig}{Enables Amazon Web Services Systems Manager to send Run Command output
 to Amazon CloudWatch Logs. Run Command is a capability of Amazon Web
 Services Systems Manager.}
+
+\item{AlarmConfiguration}{The CloudWatch alarm you want to apply to your command.}
 }
 \description{
 Runs commands on one or more managed nodes.

@@ -8,8 +8,8 @@ change}
 connect_delete_instance(InstanceId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

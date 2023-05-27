@@ -2,8 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_connect_custom_key_store}
 \alias{kms_connect_custom_key_store}
-\title{Connects or reconnects a custom key store to its associated CloudHSM
-cluster}
+\title{Connects or reconnects a custom key store to its backing key store}
 \usage{
 kms_connect_custom_key_store(CustomKeyStoreId)
 }
@@ -14,7 +13,7 @@ To find the ID of a custom key store, use the
 operation.}
 }
 \description{
-Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} to its associated CloudHSM cluster.
+Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} to its backing key store. For an CloudHSM key store, \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} connects the key store to its associated CloudHSM cluster. For an external key store, \code{\link[=kms_connect_custom_key_store]{connect_custom_key_store}} connects the key store to the external key store proxy that communicates with your external key manager.
 
 See \url{https://paws-r.github.io/docs/kms/connect_custom_key_store.html} for full documentation.
 }

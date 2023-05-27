@@ -2,16 +2,16 @@
 % Please edit documentation in R/appregistry_operations.R
 \name{appregistry_get_attribute_group}
 \alias{appregistry_get_attribute_group}
-\title{Retrieves an attribute group, either by its name or its ID}
+\title{Retrieves an attribute group by its ARN, ID, or name}
 \usage{
 appregistry_get_attribute_group(attributeGroup)
 }
 \arguments{
-\item{attributeGroup}{[required] The name or ID of the attribute group that holds the attributes to
+\item{attributeGroup}{[required] The name, ID, or ARN of the attribute group that holds the attributes to
 describe the application.}
 }
 \description{
-Retrieves an attribute group, either by its name or its ID. The attribute group can be specified either by its unique ID or by its name.
+Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name.
 
 See \url{https://paws-r.github.io/docs/appregistry/get_attribute_group.html} for full documentation.
 }

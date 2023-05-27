@@ -30,11 +30,11 @@ keyspaces_restore_table(
 
 \item{capacitySpecificationOverride}{Specifies the read/write throughput capacity mode for the target table.
 The options are:
-
-• \code{throughputMode:PAY_PER_REQUEST}
-
-• \code{throughputMode:PROVISIONED} - Provisioned capacity mode requires
+\itemize{
+\item \code{throughputMode:PAY_PER_REQUEST}
+\item \code{throughputMode:PROVISIONED} - Provisioned capacity mode requires
 \code{readCapacityUnits} and \code{writeCapacityUnits} as input.
+}
 
 The default is \code{throughput_mode:PAY_PER_REQUEST}.
 
@@ -43,13 +43,13 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{encryptionSpecificationOverride}{Specifies the encryption settings for the target table. You can choose
 one of the following KMS key (KMS key):
-
-• \code{type:AWS_OWNED_KMS_KEY} - This key is owned by Amazon Keyspaces.
-
-• \code{type:CUSTOMER_MANAGED_KMS_KEY} - This key is stored in your account
+\itemize{
+\item \code{type:AWS_OWNED_KMS_KEY} - This key is owned by Amazon Keyspaces.
+\item \code{type:CUSTOMER_MANAGED_KMS_KEY} - This key is stored in your account
 and is created, owned, and managed by you. This option requires the
-\code{kms_key_identifier} of the KMS key in Amazon Resource Name (ARN) format
-as input.
+\code{kms_key_identifier} of the KMS key in Amazon Resource Name (ARN)
+format as input.
+}
 
 The default is \code{type:AWS_OWNED_KMS_KEY}.
 
@@ -58,12 +58,12 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{pointInTimeRecoveryOverride}{Specifies the \code{pointInTimeRecovery} settings for the target table. The
 options are:
+\itemize{
+\item \code{status=ENABLED}
+\item \code{status=DISABLED}
+}
 
-• \code{ENABLED}
-
-• \code{DISABLED}
-
-If it's not specified, the default is \code{DISABLED}.
+If it's not specified, the default is \code{status=DISABLED}.
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery.html}{Point-in-time recovery}
 in the \emph{Amazon Keyspaces Developer Guide}.}

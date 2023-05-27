@@ -65,7 +65,7 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_delete_bucket]{delete_bucket} \tab Deletes the S3 bucket\cr
 \link[paws.storage:s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab Deletes an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
 \link[paws.storage:s3_delete_bucket_cors]{delete_bucket_cors} \tab Deletes the cors configuration information set for the bucket\cr
-\link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action removes default encryption from the bucket\cr
+\link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3)\cr
 \link[paws.storage:s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab Deletes the S3 Intelligent-Tiering configuration from the specified bucket\cr
 \link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab Deletes an inventory configuration (identified by the inventory ID) from the bucket\cr
 \link[paws.storage:s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab Deletes the lifecycle configuration from the specified bucket\cr
@@ -128,7 +128,7 @@ Amazon Simple Storage Service
 \link[paws.storage:s3_put_bucket_acl]{put_bucket_acl} \tab Sets the permissions on an existing bucket using access control lists (ACL)\cr
 \link[paws.storage:s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab Sets an analytics configuration for the bucket (specified by the analytics configuration ID)\cr
 \link[paws.storage:s3_put_bucket_cors]{put_bucket_cors} \tab Sets the cors configuration for your bucket\cr
-\link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This action uses the encryption subresource to configure default encryption and Amazon S3 Bucket Key for an existing bucket\cr
+\link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This action uses the encryption subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket\cr
 \link[paws.storage:s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab Puts a S3 Intelligent-Tiering configuration to the specified bucket\cr
 \link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This implementation of the PUT action adds an inventory configuration (identified by the inventory ID) to the bucket\cr
 \link[paws.storage:s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab For an updated version of this API, see PutBucketLifecycleConfiguration\cr

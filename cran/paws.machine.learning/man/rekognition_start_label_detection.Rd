@@ -9,7 +9,9 @@ rekognition_start_label_detection(
   ClientRequestToken = NULL,
   MinConfidence = NULL,
   NotificationChannel = NULL,
-  JobTag = NULL
+  JobTag = NULL,
+  Features = NULL,
+  Settings = NULL
 )
 }
 \arguments{
@@ -29,8 +31,9 @@ lowest confidence. 100 is the highest confidence. Amazon Rekognition
 Video doesn't return any labels with a confidence level lower than this
 specified value.
 
-If you don't specify \code{MinConfidence}, the operation returns labels with
-confidence values greater than or equal to 50 percent.}
+If you don't specify \code{MinConfidence}, the operation returns labels and
+bounding boxes (if detected) with confidence values greater than or
+equal to 50 percent.}
 
 \item{NotificationChannel}{The Amazon SNS topic ARN you want Amazon Rekognition Video to publish
 the completion status of the label detection operation to. The Amazon
@@ -41,6 +44,13 @@ you are using the AmazonRekognitionServiceRole permissions policy.}
 that's published to your Amazon Simple Notification Service topic. For
 example, you can use \code{JobTag} to group related jobs and identify them in
 the completion notification.}
+
+\item{Features}{The features to return after video analysis. You can specify that
+GENERAL_LABELS are returned.}
+
+\item{Settings}{The settings for a StartLabelDetection request.Contains the specified
+parameters for the label detection request of an asynchronous label
+analysis operation. Settings can include filters for GENERAL_LABELS.}
 }
 \description{
 Starts asynchronous detection of labels in a stored video.

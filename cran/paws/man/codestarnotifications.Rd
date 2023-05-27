@@ -55,8 +55,7 @@ target from a notification rule.
 Targets, by calling the following:
 \itemize{
 \item \code{delete_target}, which
-removes a notification rule target (SNS topic) from a notification
-rule.
+removes a notification rule target from a notification rule.
 \item \code{list_targets}, which lists
 the targets associated with a notification rule.
 }
@@ -79,8 +78,8 @@ account.
 removes a tag from a notification rule in your account.
 }
 
-For information about how to use AWS CodeStar Notifications, see link in
-the CodeStarNotifications User Guide.
+For information about how to use AWS CodeStar Notifications, see the
+\href{https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html}{Amazon Web Services Developer Tools Console User Guide}.
 }
 \section{Service syntax}{
 
@@ -114,12 +113,12 @@ the CodeStarNotifications User Guide.
 \link[paws.developer.tools:codestarnotifications_delete_target]{delete_target} \tab Deletes a specified target for notifications\cr
 \link[paws.developer.tools:codestarnotifications_describe_notification_rule]{describe_notification_rule} \tab Returns information about a specified notification rule\cr
 \link[paws.developer.tools:codestarnotifications_list_event_types]{list_event_types} \tab Returns information about the event types available for configuring notifications\cr
-\link[paws.developer.tools:codestarnotifications_list_notification_rules]{list_notification_rules} \tab Returns a list of the notification rules for an AWS account\cr
+\link[paws.developer.tools:codestarnotifications_list_notification_rules]{list_notification_rules} \tab Returns a list of the notification rules for an Amazon Web Services account\cr
 \link[paws.developer.tools:codestarnotifications_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a notification rule\cr
-\link[paws.developer.tools:codestarnotifications_list_targets]{list_targets} \tab Returns a list of the notification rule targets for an AWS account\cr
-\link[paws.developer.tools:codestarnotifications_subscribe]{subscribe} \tab Creates an association between a notification rule and an SNS topic so that the associated target can receive notifications when the events described in the rule are triggered\cr
+\link[paws.developer.tools:codestarnotifications_list_targets]{list_targets} \tab Returns a list of the notification rule targets for an Amazon Web Services account\cr
+\link[paws.developer.tools:codestarnotifications_subscribe]{subscribe} \tab Creates an association between a notification rule and an Chatbot topic or Chatbot client so that the associated target can receive notifications when the events described in the rule are triggered\cr
 \link[paws.developer.tools:codestarnotifications_tag_resource]{tag_resource} \tab Associates a set of provided tags with a notification rule\cr
-\link[paws.developer.tools:codestarnotifications_unsubscribe]{unsubscribe} \tab Removes an association between a notification rule and an Amazon SNS topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered\cr
+\link[paws.developer.tools:codestarnotifications_unsubscribe]{unsubscribe} \tab Removes an association between a notification rule and an Chatbot topic so that subscribers to that topic stop receiving notifications when the events described in the rule are triggered\cr
 \link[paws.developer.tools:codestarnotifications_untag_resource]{untag_resource} \tab Removes the association between one or more provided tags and a notification rule\cr
 \link[paws.developer.tools:codestarnotifications_update_notification_rule]{update_notification_rule} \tab Updates a notification rule for a resource
 }

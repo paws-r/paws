@@ -8,8 +8,16 @@ test_that("describe_organization_configuration", {
   expect_error(svc$describe_organization_configuration(), NA)
 })
 
+test_that("list_allow_lists", {
+  expect_error(svc$list_allow_lists(), NA)
+})
+
 test_that("list_classification_jobs", {
   expect_error(svc$list_classification_jobs(), NA)
+})
+
+test_that("list_classification_scopes", {
+  expect_error(svc$list_classification_scopes(), NA)
 })
 
 test_that("list_custom_data_identifiers", {
@@ -38,4 +46,8 @@ test_that("list_members", {
 
 test_that("list_organization_admin_accounts", {
   expect_error(svc$list_organization_admin_accounts(), NA)
+})
+
+test_that("list_sensitivity_inspection_templates", {
+  expect_error(svc$list_sensitivity_inspection_templates(), NA)
 })

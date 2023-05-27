@@ -4,20 +4,28 @@
 \alias{nimblestudio_stop_streaming_session}
 \title{Transitions sessions from the READY state into the STOPPED state}
 \usage{
-nimblestudio_stop_streaming_session(clientToken = NULL, sessionId, studioId)
+nimblestudio_stop_streaming_session(
+  clientToken = NULL,
+  sessionId,
+  studioId,
+  volumeRetentionMode = NULL
+)
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
-\item{sessionId}{[required] The streaming session ID for the StopStreamingSessionRequest.}
+\item{sessionId}{[required] The streaming session ID for the \code{StopStreamingSessionRequest}.}
 
 \item{studioId}{[required] The studioId for the StopStreamingSessionRequest.}
+
+\item{volumeRetentionMode}{Adds additional instructions to a streaming session stop action to
+either retain the EBS volumes or delete the EBS volumes.}
 }
 \description{
-Transitions sessions from the READY state into the STOPPED state. The STOP_IN_PROGRESS state is the intermediate state between the READY and STOPPED states.
+Transitions sessions from the \code{READY} state into the \code{STOPPED} state. The \code{STOP_IN_PROGRESS} state is the intermediate state between the \code{READY} and \code{STOPPED} states.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/stop_streaming_session.html} for full documentation.
 }

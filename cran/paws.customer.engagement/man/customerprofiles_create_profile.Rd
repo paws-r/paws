@@ -26,7 +26,9 @@ customerprofiles_create_profile(
   ShippingAddress = NULL,
   MailingAddress = NULL,
   BillingAddress = NULL,
-  Attributes = NULL
+  Attributes = NULL,
+  PartyTypeString = NULL,
+  GenderString = NULL
 )
 }
 \arguments{
@@ -76,6 +78,10 @@ shipping, or billing.}
 \item{BillingAddress}{The customer’s billing address.}
 
 \item{Attributes}{A key value pair of attributes of a customer profile.}
+
+\item{PartyTypeString}{An alternative to \code{PartyType} which accepts any string as input.}
+
+\item{GenderString}{An alternative to \code{Gender} which accepts any string as input.}
 }
 \description{
 Creates a standard profile.

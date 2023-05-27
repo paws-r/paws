@@ -21,8 +21,8 @@ ASCII character from the ! (\code{U+0021}) through the DEL character
 (\verb{U+007F}), including most punctuation characters, digits, and upper and
 lowercased letters.}
 
-\item{VirtualMFADeviceName}{[required] The name of the virtual MFA device. Use with path to uniquely identify a
-virtual MFA device.
+\item{VirtualMFADeviceName}{[required] The name of the virtual MFA device, which must be unique. Use with path
+to uniquely identify a virtual MFA device.
 
 This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no

@@ -2,18 +2,19 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_associate_admin_account}
 \alias{fms_associate_admin_account}
-\title{Sets the Firewall Manager administrator account}
+\title{Sets a Firewall Manager default administrator account}
 \usage{
 fms_associate_admin_account(AdminAccount)
 }
 \arguments{
 \item{AdminAccount}{[required] The Amazon Web Services account ID to associate with Firewall Manager as
-the Firewall Manager administrator account. This must be an
-Organizations member account. For more information about Organizations,
-see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the Amazon Web Services Accounts in Your Organization}.}
+the Firewall Manager default administrator account. This account must be
+a member account of the organization in Organizations whose resources
+you want to protect. For more information about Organizations, see
+\href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the Amazon Web Services Accounts in Your Organization}.}
 }
 \description{
-Sets the Firewall Manager administrator account. The account must be a member of the organization in Organizations whose resources you want to protect. Firewall Manager sets the permissions that allow the account to administer your Firewall Manager policies.
+Sets a Firewall Manager default administrator account. The Firewall Manager default administrator account can manage third-party firewalls and has full administrative scope that allows administration of all policy types, accounts, organizational units, and Regions. This account must be a member account of the organization in Organizations whose resources you want to protect.
 
 See \url{https://paws-r.github.io/docs/fms/associate_admin_account.html} for full documentation.
 }

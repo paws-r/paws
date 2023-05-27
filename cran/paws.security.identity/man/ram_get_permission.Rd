@@ -2,24 +2,27 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_get_permission}
 \alias{ram_get_permission}
-\title{Gets the contents of an RAM permission in JSON format}
+\title{Retrieves the contents of a managed permission in JSON format}
 \usage{
 ram_get_permission(permissionArn, permissionVersion = NULL)
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
 of the permission whose contents you want to retrieve. To find the ARN
 for a permission, use either the
 \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the
 Permissions library page in the RAM console and then choose the name of
 the permission. The ARN is displayed on the detail page.}
 
-\item{permissionVersion}{Specifies identifier for the version of the RAM permission to retrieve.
-If you don't specify this parameter, the operation retrieves the default
-version.}
+\item{permissionVersion}{Specifies the version number of the RAM permission to retrieve. If you
+don't specify this parameter, the operation retrieves the default
+version.
+
+To see the list of available versions, use
+\code{\link[=ram_list_permission_versions]{list_permission_versions}}.}
 }
 \description{
-Gets the contents of an RAM permission in JSON format.
+Retrieves the contents of a managed permission in JSON format.
 
 See \url{https://paws-r.github.io/docs/ram/get_permission.html} for full documentation.
 }

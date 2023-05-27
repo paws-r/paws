@@ -12,10 +12,10 @@ lambda_get_provisioned_concurrency_config(FunctionName, Qualifier)
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \verb{my-function}.
-\item \strong{Function ARN} -
+\item \strong{Function name} – \verb{my-function}.
+\item \strong{Function ARN} –
 \verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
+\item \strong{Partial ARN} – \verb{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only

@@ -230,6 +230,36 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 }
 .workspaces$operations$create_ip_group <- workspaces_create_ip_group
 
+#' Creates a standby WorkSpace in a secondary Region
+#'
+#' @description
+#' Creates a standby WorkSpace in a secondary Region.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/create_standby_workspaces.html](https://paws-r.github.io/docs/workspaces/create_standby_workspaces.html) for full documentation.
+#'
+#' @param PrimaryRegion &#91;required&#93; The Region of the primary WorkSpace.
+#' @param StandbyWorkspaces &#91;required&#93; Information about the standby WorkSpace to be created.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_standby_workspaces
+workspaces_create_standby_workspaces <- function(PrimaryRegion, StandbyWorkspaces) {
+  op <- new_operation(
+    name = "CreateStandbyWorkspaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_standby_workspaces_input(PrimaryRegion = PrimaryRegion, StandbyWorkspaces = StandbyWorkspaces)
+  output <- .workspaces$create_standby_workspaces_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_standby_workspaces <- workspaces_create_standby_workspaces
+
 #' Creates the specified tags for the specified WorkSpaces resource
 #'
 #' @description
@@ -1266,34 +1296,43 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 }
 .workspaces$operations$import_client_branding <- workspaces_import_client_branding
 
-#' Imports the specified Windows 10 Bring Your Own License (BYOL) image
-#' into Amazon WorkSpaces
+#' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+#' image into Amazon WorkSpaces
 #'
 #' @description
-#' Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see [Bring Your Own Windows Desktop Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+#' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see [Bring Your Own Windows Desktop Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #'
 #' See [https://paws-r.github.io/docs/workspaces/import_workspace_image.html](https://paws-r.github.io/docs/workspaces/import_workspace_image.html) for full documentation.
 #'
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
 #' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image, depending on
 #' which protocol you want to use for your BYOL Workspace image, either
-#' PCoIP or WorkSpaces Streaming Protocol (WSP). To use WSP, specify a
-#' value that ends in `_WSP`. To use PCoIP, specify a value that does not
-#' end in `_WSP`.
+#' PCoIP, WorkSpaces Streaming Protocol (WSP), or bring your own protocol
+#' (BYOP). To use WSP, specify a value that ends in `_WSP`. To use PCoIP,
+#' specify a value that does not end in `_WSP`. To use BYOP, specify a
+#' value that ends in `_BYOP`.
 #' 
 #' For non-GPU-enabled bundles (bundles other than Graphics or
-#' GraphicsPro), specify `BYOL_REGULAR` or `BYOL_REGULAR_WSP`, depending on
-#' the protocol.
+#' GraphicsPro), specify `BYOL_REGULAR`, `BYOL_REGULAR_WSP`, or
+#' `BYOL_REGULAR_BYOP`, depending on the protocol.
+#' 
+#' The `BYOL_REGULAR_BYOP` and `BYOL_GRAPHICS_G4DN_BYOP` values are only
+#' supported by Amazon WorkSpaces Core. Contact your account team to be
+#' allow-listed to use these values. For more information, see [Amazon
+#' WorkSpaces Core](https://aws.amazon.com/workspaces/core/).
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #' @param Applications If specified, the version of Microsoft Office to subscribe to. Valid
-#' only for Windows 10 BYOL images. For more information about subscribing
-#' to Office for BYOL images, see [Bring Your Own Windows Desktop
+#' only for Windows 10 and 11 BYOL images. For more information about
+#' subscribing to Office for BYOL images, see [Bring Your Own Windows
+#' Desktop
 #' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #' 
-#' Although this parameter is an array, only one item is allowed at this
-#' time.
+#' -   Although this parameter is an array, only one item is allowed at
+#'     this time.
+#' 
+#' -   Windows 11 only supports `Microsoft_Office_2019`.
 #'
 #' @keywords internal
 #'
@@ -1418,6 +1457,39 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
   return(response)
 }
 .workspaces$operations$modify_account <- workspaces_modify_account
+
+#' Modifies the properties of the certificate-based authentication you want
+#' to use with your WorkSpaces
+#'
+#' @description
+#' Modifies the properties of the certificate-based authentication you want to use with your WorkSpaces.
+#'
+#' See [https://paws-r.github.io/docs/workspaces/modify_certificate_based_auth_properties.html](https://paws-r.github.io/docs/workspaces/modify_certificate_based_auth_properties.html) for full documentation.
+#'
+#' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
+#' @param CertificateBasedAuthProperties The properties of the certificate-based authentication.
+#' @param PropertiesToDelete The properties of the certificate-based authentication you want to
+#' delete.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_modify_certificate_based_auth_properties
+workspaces_modify_certificate_based_auth_properties <- function(ResourceId, CertificateBasedAuthProperties = NULL, PropertiesToDelete = NULL) {
+  op <- new_operation(
+    name = "ModifyCertificateBasedAuthProperties",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$modify_certificate_based_auth_properties_input(ResourceId = ResourceId, CertificateBasedAuthProperties = CertificateBasedAuthProperties, PropertiesToDelete = PropertiesToDelete)
+  output <- .workspaces$modify_certificate_based_auth_properties_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$modify_certificate_based_auth_properties <- workspaces_modify_certificate_based_auth_properties
 
 #' Modifies the properties of the specified Amazon WorkSpaces clients
 #'

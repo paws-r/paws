@@ -330,6 +330,58 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 }
 .networkfirewall$operations$create_rule_group <- networkfirewall_create_rule_group
 
+#' Creates an Network Firewall TLS inspection configuration
+#'
+#' @description
+#' Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains the Certificate Manager certificate references that Network Firewall uses to decrypt and re-encrypt inbound traffic.
+#'
+#' See [https://paws-r.github.io/docs/networkfirewall/create_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/create_tls_inspection_configuration.html) for full documentation.
+#'
+#' @param TLSInspectionConfigurationName &#91;required&#93; The descriptive name of the TLS inspection configuration. You can't
+#' change the name of a TLS inspection configuration after you create it.
+#' @param TLSInspectionConfiguration &#91;required&#93; The object that defines a TLS inspection configuration. This, along with
+#' TLSInspectionConfigurationResponse, define the TLS inspection
+#' configuration. You can retrieve all objects for a TLS inspection
+#' configuration by calling
+#' [`describe_tls_inspection_configuration`][networkfirewall_describe_tls_inspection_configuration].
+#' 
+#' Network Firewall uses a TLS inspection configuration to decrypt traffic.
+#' Network Firewall re-encrypts the traffic before sending it to its
+#' destination.
+#' 
+#' To use a TLS inspection configuration, you add it to a Network Firewall
+#' firewall policy, then you apply the firewall policy to a firewall.
+#' Network Firewall acts as a proxy service to decrypt and inspect inbound
+#' traffic. You can reference a TLS inspection configuration from more than
+#' one firewall policy, and you can use a firewall policy in more than one
+#' firewall. For more information about using TLS inspection
+#' configurations, see [Decrypting SSL/TLS traffic with TLS inspection
+#' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
+#' in the *Network Firewall Developer Guide*.
+#' @param Description A description of the TLS inspection configuration.
+#' @param Tags The key:value pairs to associate with the resource.
+#' @param EncryptionConfiguration 
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_create_tls_inspection_configuration
+networkfirewall_create_tls_inspection_configuration <- function(TLSInspectionConfigurationName, TLSInspectionConfiguration, Description = NULL, Tags = NULL, EncryptionConfiguration = NULL) {
+  op <- new_operation(
+    name = "CreateTLSInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$create_tls_inspection_configuration_input(TLSInspectionConfigurationName = TLSInspectionConfigurationName, TLSInspectionConfiguration = TLSInspectionConfiguration, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration)
+  output <- .networkfirewall$create_tls_inspection_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$create_tls_inspection_configuration <- networkfirewall_create_tls_inspection_configuration
+
 #' Deletes the specified Firewall and its FirewallStatus
 #'
 #' @description
@@ -471,6 +523,41 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
   return(response)
 }
 .networkfirewall$operations$delete_rule_group <- networkfirewall_delete_rule_group
+
+#' Deletes the specified TLSInspectionConfiguration
+#'
+#' @description
+#' Deletes the specified TLSInspectionConfiguration.
+#'
+#' See [https://paws-r.github.io/docs/networkfirewall/delete_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/delete_tls_inspection_configuration.html) for full documentation.
+#'
+#' @param TLSInspectionConfigurationArn The Amazon Resource Name (ARN) of the TLS inspection configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param TLSInspectionConfigurationName The descriptive name of the TLS inspection configuration. You can't
+#' change the name of a TLS inspection configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_delete_tls_inspection_configuration
+networkfirewall_delete_tls_inspection_configuration <- function(TLSInspectionConfigurationArn = NULL, TLSInspectionConfigurationName = NULL) {
+  op <- new_operation(
+    name = "DeleteTLSInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$delete_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName)
+  output <- .networkfirewall$delete_tls_inspection_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$delete_tls_inspection_configuration <- networkfirewall_delete_tls_inspection_configuration
 
 #' Returns the data objects for the specified firewall
 #'
@@ -692,6 +779,41 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 }
 .networkfirewall$operations$describe_rule_group_metadata <- networkfirewall_describe_rule_group_metadata
 
+#' Returns the data objects for the specified TLS inspection configuration
+#'
+#' @description
+#' Returns the data objects for the specified TLS inspection configuration.
+#'
+#' See [https://paws-r.github.io/docs/networkfirewall/describe_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/describe_tls_inspection_configuration.html) for full documentation.
+#'
+#' @param TLSInspectionConfigurationArn The Amazon Resource Name (ARN) of the TLS inspection configuration.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#' @param TLSInspectionConfigurationName The descriptive name of the TLS inspection configuration. You can't
+#' change the name of a TLS inspection configuration after you create it.
+#' 
+#' You must specify the ARN or the name, and you can specify both.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_describe_tls_inspection_configuration
+networkfirewall_describe_tls_inspection_configuration <- function(TLSInspectionConfigurationArn = NULL, TLSInspectionConfigurationName = NULL) {
+  op <- new_operation(
+    name = "DescribeTLSInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$describe_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName)
+  output <- .networkfirewall$describe_tls_inspection_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$describe_tls_inspection_configuration <- networkfirewall_describe_tls_inspection_configuration
+
 #' Removes the specified subnet associations from the firewall
 #'
 #' @description
@@ -867,6 +989,44 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
 }
 .networkfirewall$operations$list_rule_groups <- networkfirewall_list_rule_groups
 
+#' Retrieves the metadata for the TLS inspection configurations that you
+#' have defined
+#'
+#' @description
+#' Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.
+#'
+#' See [https://paws-r.github.io/docs/networkfirewall/list_tls_inspection_configurations.html](https://paws-r.github.io/docs/networkfirewall/list_tls_inspection_configurations.html) for full documentation.
+#'
+#' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
+#' number of objects that are still available for retrieval exceeds the
+#' maximum you requested, Network Firewall returns a `NextToken` value in
+#' the response. To retrieve the next batch of objects, use the token
+#' returned from the prior request in your next request.
+#' @param MaxResults The maximum number of objects that you want Network Firewall to return
+#' for this request. If more objects are available, in the response,
+#' Network Firewall provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_list_tls_inspection_configurations
+networkfirewall_list_tls_inspection_configurations <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListTLSInspectionConfigurations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$list_tls_inspection_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .networkfirewall$list_tls_inspection_configurations_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$list_tls_inspection_configurations <- networkfirewall_list_tls_inspection_configurations
+
 #' Retrieves the tags associated with the specified resource
 #'
 #' @description
@@ -929,10 +1089,6 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' 
 #' For a firewall policy resource, you can specify the following operations
 #' in the Actions section of the statement:
-#' 
-#' -   network-firewall:CreateFirewall
-#' 
-#' -   network-firewall:UpdateFirewall
 #' 
 #' -   network-firewall:AssociateFirewallPolicy
 #' 
@@ -1484,3 +1640,70 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
   return(response)
 }
 .networkfirewall$operations$update_subnet_change_protection <- networkfirewall_update_subnet_change_protection
+
+#' Updates the TLS inspection configuration settings for the specified TLS
+#' inspection configuration
+#'
+#' @description
+#' Updates the TLS inspection configuration settings for the specified TLS inspection configuration. You use a TLS inspection configuration by reference in one or more firewall policies. When you modify a TLS inspection configuration, you modify all firewall policies that use the TLS inspection configuration.
+#'
+#' See [https://paws-r.github.io/docs/networkfirewall/update_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/update_tls_inspection_configuration.html) for full documentation.
+#'
+#' @param TLSInspectionConfigurationArn The Amazon Resource Name (ARN) of the TLS inspection configuration.
+#' @param TLSInspectionConfigurationName The descriptive name of the TLS inspection configuration. You can't
+#' change the name of a TLS inspection configuration after you create it.
+#' @param TLSInspectionConfiguration &#91;required&#93; The object that defines a TLS inspection configuration. This, along with
+#' TLSInspectionConfigurationResponse, define the TLS inspection
+#' configuration. You can retrieve all objects for a TLS inspection
+#' configuration by calling
+#' [`describe_tls_inspection_configuration`][networkfirewall_describe_tls_inspection_configuration].
+#' 
+#' Network Firewall uses a TLS inspection configuration to decrypt traffic.
+#' Network Firewall re-encrypts the traffic before sending it to its
+#' destination.
+#' 
+#' To use a TLS inspection configuration, you add it to a Network Firewall
+#' firewall policy, then you apply the firewall policy to a firewall.
+#' Network Firewall acts as a proxy service to decrypt and inspect inbound
+#' traffic. You can reference a TLS inspection configuration from more than
+#' one firewall policy, and you can use a firewall policy in more than one
+#' firewall. For more information about using TLS inspection
+#' configurations, see [Decrypting SSL/TLS traffic with TLS inspection
+#' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
+#' in the *Network Firewall Developer Guide*.
+#' @param Description A description of the TLS inspection configuration.
+#' @param EncryptionConfiguration A complex type that contains the Amazon Web Services KMS encryption
+#' configuration settings for your TLS inspection configuration.
+#' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
+#' your requests that access the TLS inspection configuration. The token
+#' marks the state of the TLS inspection configuration resource at the time
+#' of the request.
+#' 
+#' To make changes to the TLS inspection configuration, you provide the
+#' token in your request. Network Firewall uses the token to ensure that
+#' the TLS inspection configuration hasn't changed since you last retrieved
+#' it. If it has changed, the operation fails with an
+#' `InvalidTokenException`. If this happens, retrieve the TLS inspection
+#' configuration again to get a current copy of it with a current token.
+#' Reapply your changes as needed, then try the operation again using the
+#' new token.
+#'
+#' @keywords internal
+#'
+#' @rdname networkfirewall_update_tls_inspection_configuration
+networkfirewall_update_tls_inspection_configuration <- function(TLSInspectionConfigurationArn = NULL, TLSInspectionConfigurationName = NULL, TLSInspectionConfiguration, Description = NULL, EncryptionConfiguration = NULL, UpdateToken) {
+  op <- new_operation(
+    name = "UpdateTLSInspectionConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .networkfirewall$update_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName, TLSInspectionConfiguration = TLSInspectionConfiguration, Description = Description, EncryptionConfiguration = EncryptionConfiguration, UpdateToken = UpdateToken)
+  output <- .networkfirewall$update_tls_inspection_configuration_output()
+  config <- get_config()
+  svc <- .networkfirewall$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.networkfirewall$operations$update_tls_inspection_configuration <- networkfirewall_update_tls_inspection_configuration

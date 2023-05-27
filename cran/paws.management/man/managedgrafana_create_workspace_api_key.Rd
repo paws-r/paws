@@ -2,7 +2,7 @@
 % Please edit documentation in R/managedgrafana_operations.R
 \name{managedgrafana_create_workspace_api_key}
 \alias{managedgrafana_create_workspace_api_key}
-\title{Creates an API key for the workspace}
+\title{Creates a Grafana API key for the workspace}
 \usage{
 managedgrafana_create_workspace_api_key(
   keyName,
@@ -12,20 +12,19 @@ managedgrafana_create_workspace_api_key(
 )
 }
 \arguments{
-\item{keyName}{[required] Specifies the name of the key to create. Key names must be unique to the
-workspace.}
+\item{keyName}{[required] Specifies the name of the key. Keynames must be unique to the workspace.}
 
 \item{keyRole}{[required] Specifies the permission level of the key.
 
-Valid Values: \code{VIEWER} | \code{EDITOR} | \code{ADMIN}}
+Valid values: \code{VIEWER}|\code{EDITOR}|\code{ADMIN}}
 
 \item{secondsToLive}{[required] Specifies the time in seconds until the key expires. Keys can be valid
 for up to 30 days.}
 
-\item{workspaceId}{[required] The ID of the workspace in which to create an API key.}
+\item{workspaceId}{[required] The ID of the workspace to create an API key.}
 }
 \description{
-Creates an API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html for available APIs and example requests.
+Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See \url{https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html} for available APIs and example requests.
 
 See \url{https://paws-r.github.io/docs/managedgrafana/create_workspace_api_key.html} for full documentation.
 }

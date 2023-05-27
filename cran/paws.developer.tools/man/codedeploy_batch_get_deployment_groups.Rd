@@ -7,8 +7,8 @@
 codedeploy_batch_get_deployment_groups(applicationName, deploymentGroupNames)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the applicable
-IAM user or AWS account.}
+\item{applicationName}{[required] The name of an CodeDeploy application associated with the applicable IAM
+or Amazon Web Services account.}
 
 \item{deploymentGroupNames}{[required] The names of the deployment groups.}
 }

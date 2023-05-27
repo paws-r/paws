@@ -8,9 +8,10 @@ another template}
 quicksight_update_template(
   AwsAccountId,
   TemplateId,
-  SourceEntity,
+  SourceEntity = NULL,
   VersionDescription = NULL,
-  Name = NULL
+  Name = NULL,
+  Definition = NULL
 )
 }
 \arguments{
@@ -19,7 +20,7 @@ that you're updating.}
 
 \item{TemplateId}{[required] The ID for the template.}
 
-\item{SourceEntity}{[required] The entity that you are using as a source when you update the template.
+\item{SourceEntity}{The entity that you are using as a source when you update the template.
 In \code{SourceEntity}, you specify the type of object you're using as
 source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
 analysis. Both of these require an Amazon Resource Name (ARN). For
@@ -40,6 +41,11 @@ maintains a description of the version in the \code{VersionDescription}
 field.}
 
 \item{Name}{The name for the template.}
+
+\item{Definition}{The definition of a template.
+
+A definition is the data model of all features in a Dashboard, Template,
+or Analysis.}
 }
 \description{
 Updates a template from an existing Amazon QuickSight analysis or another template.

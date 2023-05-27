@@ -13,7 +13,7 @@ NULL
 #'
 #' @usage
 #' recyclebin_create_rule(RetentionPeriod, Description, Tags, ResourceType,
-#'   ResourceTags)
+#'   ResourceTags, LockConfiguration)
 #'
 #' @param RetentionPeriod &#91;required&#93; Information about the retention period for which the retention rule is
 #' to retain resources.
@@ -39,6 +39,7 @@ NULL
 #' It retains all deleted resources of the specified resource type in the
 #' Region in which the rule is created, even if the resources are not
 #' tagged.
+#' @param LockConfiguration Information about the retention rule lock configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -63,7 +64,14 @@ NULL
 #'       ResourceTagValue = "string"
 #'     )
 #'   ),
-#'   Status = "pending"|"available"
+#'   Status = "pending"|"available",
+#'   LockConfiguration = list(
+#'     UnlockDelay = list(
+#'       UnlockDelayValue = 123,
+#'       UnlockDelayUnit = "DAYS"
+#'     )
+#'   ),
+#'   LockState = "locked"|"pending_unlock"|"unlocked"
 #' )
 #' ```
 #'
@@ -87,6 +95,12 @@ NULL
 #'       ResourceTagKey = "string",
 #'       ResourceTagValue = "string"
 #'     )
+#'   ),
+#'   LockConfiguration = list(
+#'     UnlockDelay = list(
+#'       UnlockDelayValue = 123,
+#'       UnlockDelayUnit = "DAYS"
+#'     )
 #'   )
 #' )
 #' ```
@@ -96,14 +110,14 @@ NULL
 #' @rdname recyclebin_create_rule
 #'
 #' @aliases recyclebin_create_rule
-recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL) {
+recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = NULL, ResourceType, ResourceTags = NULL, LockConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
     http_path = "/rules",
     paginator = list()
   )
-  input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags)
+  input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags, LockConfiguration = LockConfiguration)
   output <- .recyclebin$create_rule_output()
   config <- get_config()
   svc <- .recyclebin$service(config)
@@ -185,7 +199,17 @@ recyclebin_delete_rule <- function(Identifier) {
 #'       ResourceTagValue = "string"
 #'     )
 #'   ),
-#'   Status = "pending"|"available"
+#'   Status = "pending"|"available",
+#'   LockConfiguration = list(
+#'     UnlockDelay = list(
+#'       UnlockDelayValue = 123,
+#'       UnlockDelayUnit = "DAYS"
+#'     )
+#'   ),
+#'   LockState = "locked"|"pending_unlock"|"unlocked",
+#'   LockEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -224,7 +248,8 @@ recyclebin_get_rule <- function(Identifier) {
 #' Lists the Recycle Bin retention rules in the Region.
 #'
 #' @usage
-#' recyclebin_list_rules(MaxResults, NextToken, ResourceType, ResourceTags)
+#' recyclebin_list_rules(MaxResults, NextToken, ResourceType, ResourceTags,
+#'   LockState)
 #'
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
@@ -237,6 +262,8 @@ recyclebin_get_rule <- function(Identifier) {
 #' retention rules that retain EBS-backed AMIs, specify `EC2_IMAGE`.
 #' @param ResourceTags Information about the resource tags used to identify resources that are
 #' retained by the retention rule.
+#' @param LockState The lock state of the retention rules to list. Only retention rules with
+#' the specified lock state are returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -249,7 +276,8 @@ recyclebin_get_rule <- function(Identifier) {
 #'       RetentionPeriod = list(
 #'         RetentionPeriodValue = 123,
 #'         RetentionPeriodUnit = "DAYS"
-#'       )
+#'       ),
+#'       LockState = "locked"|"pending_unlock"|"unlocked"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -267,7 +295,8 @@ recyclebin_get_rule <- function(Identifier) {
 #'       ResourceTagKey = "string",
 #'       ResourceTagValue = "string"
 #'     )
-#'   )
+#'   ),
+#'   LockState = "locked"|"pending_unlock"|"unlocked"
 #' )
 #' ```
 #'
@@ -276,14 +305,14 @@ recyclebin_get_rule <- function(Identifier) {
 #' @rdname recyclebin_list_rules
 #'
 #' @aliases recyclebin_list_rules
-recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL) {
+recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceType, ResourceTags = NULL, LockState = NULL) {
   op <- new_operation(
     name = "ListRules",
     http_method = "POST",
     http_path = "/list-rules",
     paginator = list()
   )
-  input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags)
+  input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags, LockState = LockState)
   output <- .recyclebin$list_rules_output()
   config <- get_config()
   svc <- .recyclebin$service(config)
@@ -345,6 +374,81 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
 }
 .recyclebin$operations$list_tags_for_resource <- recyclebin_list_tags_for_resource
 
+#' Locks a retention rule
+#'
+#' @description
+#' Locks a retention rule. A locked retention rule can't be modified or
+#' deleted.
+#'
+#' @usage
+#' recyclebin_lock_rule(Identifier, LockConfiguration)
+#'
+#' @param Identifier &#91;required&#93; The unique ID of the retention rule.
+#' @param LockConfiguration &#91;required&#93; Information about the retention rule lock configuration.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Identifier = "string",
+#'   Description = "string",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   RetentionPeriod = list(
+#'     RetentionPeriodValue = 123,
+#'     RetentionPeriodUnit = "DAYS"
+#'   ),
+#'   ResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   ),
+#'   Status = "pending"|"available",
+#'   LockConfiguration = list(
+#'     UnlockDelay = list(
+#'       UnlockDelayValue = 123,
+#'       UnlockDelayUnit = "DAYS"
+#'     )
+#'   ),
+#'   LockState = "locked"|"pending_unlock"|"unlocked"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$lock_rule(
+#'   Identifier = "string",
+#'   LockConfiguration = list(
+#'     UnlockDelay = list(
+#'       UnlockDelayValue = 123,
+#'       UnlockDelayUnit = "DAYS"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname recyclebin_lock_rule
+#'
+#' @aliases recyclebin_lock_rule
+recyclebin_lock_rule <- function(Identifier, LockConfiguration) {
+  op <- new_operation(
+    name = "LockRule",
+    http_method = "PATCH",
+    http_path = "/rules/{identifier}/lock",
+    paginator = list()
+  )
+  input <- .recyclebin$lock_rule_input(Identifier = Identifier, LockConfiguration = LockConfiguration)
+  output <- .recyclebin$lock_rule_output()
+  config <- get_config()
+  svc <- .recyclebin$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.recyclebin$operations$lock_rule <- recyclebin_lock_rule
+
 #' Assigns tags to the specified retention rule
 #'
 #' @description
@@ -393,6 +497,77 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
   return(response)
 }
 .recyclebin$operations$tag_resource <- recyclebin_tag_resource
+
+#' Unlocks a retention rule
+#'
+#' @description
+#' Unlocks a retention rule. After a retention rule is unlocked, it can be
+#' modified or deleted only after the unlock delay period expires.
+#'
+#' @usage
+#' recyclebin_unlock_rule(Identifier)
+#'
+#' @param Identifier &#91;required&#93; The unique ID of the retention rule.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Identifier = "string",
+#'   Description = "string",
+#'   ResourceType = "EBS_SNAPSHOT"|"EC2_IMAGE",
+#'   RetentionPeriod = list(
+#'     RetentionPeriodValue = 123,
+#'     RetentionPeriodUnit = "DAYS"
+#'   ),
+#'   ResourceTags = list(
+#'     list(
+#'       ResourceTagKey = "string",
+#'       ResourceTagValue = "string"
+#'     )
+#'   ),
+#'   Status = "pending"|"available",
+#'   LockConfiguration = list(
+#'     UnlockDelay = list(
+#'       UnlockDelayValue = 123,
+#'       UnlockDelayUnit = "DAYS"
+#'     )
+#'   ),
+#'   LockState = "locked"|"pending_unlock"|"unlocked",
+#'   LockEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$unlock_rule(
+#'   Identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname recyclebin_unlock_rule
+#'
+#' @aliases recyclebin_unlock_rule
+recyclebin_unlock_rule <- function(Identifier) {
+  op <- new_operation(
+    name = "UnlockRule",
+    http_method = "PATCH",
+    http_path = "/rules/{identifier}/unlock",
+    paginator = list()
+  )
+  input <- .recyclebin$unlock_rule_input(Identifier = Identifier)
+  output <- .recyclebin$unlock_rule_output()
+  config <- get_config()
+  svc <- .recyclebin$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.recyclebin$operations$unlock_rule <- recyclebin_unlock_rule
 
 #' Unassigns a tag from a retention rule
 #'
@@ -444,8 +619,10 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates an existing Recycle Bin retention rule
 #'
 #' @description
-#' Updates an existing Recycle Bin retention rule. For more information,
-#' see [Update Recycle Bin retention
+#' Updates an existing Recycle Bin retention rule. You can update a
+#' retention rule's description, resource tags, and retention period at any
+#' time after creation. You can't update a retention rule's resource type
+#' after creation. For more information, see [Update Recycle Bin retention
 #' rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
@@ -457,10 +634,8 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param RetentionPeriod Information about the retention period for which the retention rule is
 #' to retain resources.
 #' @param Description The retention rule description.
-#' @param ResourceType The resource type to be retained by the retention rule. Currently, only
-#' Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
-#' snapshots, specify `EBS_SNAPSHOT`. To retain EBS-backed AMIs, specify
-#' `EC2_IMAGE`.
+#' @param ResourceType This parameter is currently not supported. You can't update a retention
+#' rule's resource type after creation.
 #' @param ResourceTags Specifies the resource tags to use to identify resources that are to be
 #' retained by a tag-level retention rule. For tag-level retention rules,
 #' only deleted resources, of the specified resource type, that have one or
@@ -495,7 +670,11 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
 #'       ResourceTagValue = "string"
 #'     )
 #'   ),
-#'   Status = "pending"|"available"
+#'   Status = "pending"|"available",
+#'   LockState = "locked"|"pending_unlock"|"unlocked",
+#'   LockEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'

@@ -48,13 +48,13 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' -   The InsightsEnabled boolean can be set to true to enable insights
 #'     for the new group or false to disable insights for the new group.
 #' 
-#' -   The NotifcationsEnabled boolean can be set to true to enable
+#' -   The NotificationsEnabled boolean can be set to true to enable
 #'     insights notifications for the new group. Notifications may only be
 #'     enabled on a group with InsightsEnabled set to true.
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group. For more information about ways to use tags, see [Tagging
 #' Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
@@ -105,7 +105,7 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray sampling rule. For more information about ways to use tags, see
 #' [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
@@ -173,6 +173,39 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
   return(response)
 }
 .xray$operations$delete_group <- xray_delete_group
+
+#' Deletes a resource policy from the target Amazon Web Services account
+#'
+#' @description
+#' Deletes a resource policy from the target Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/xray/delete_resource_policy.html](https://paws-r.github.io/docs/xray/delete_resource_policy.html) for full documentation.
+#'
+#' @param PolicyName &#91;required&#93; The name of the resource policy to delete.
+#' @param PolicyRevisionId Specifies a specific policy revision to delete. Provide a
+#' `PolicyRevisionId` to ensure an atomic delete operation. If the provided
+#' revision id does not match the latest policy revision id, an
+#' `InvalidPolicyRevisionIdException` exception is returned.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_delete_resource_policy
+xray_delete_resource_policy <- function(PolicyName, PolicyRevisionId = NULL) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/DeleteResourcePolicy",
+    paginator = list()
+  )
+  input <- .xray$delete_resource_policy_input(PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId)
+  output <- .xray$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$delete_resource_policy <- xray_delete_resource_policy
 
 #' Deletes a sampling rule
 #'
@@ -668,6 +701,36 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 }
 .xray$operations$get_trace_summaries <- xray_get_trace_summaries
 
+#' Returns the list of resource policies in the target Amazon Web Services
+#' account
+#'
+#' @description
+#' Returns the list of resource policies in the target Amazon Web Services account.
+#'
+#' See [https://paws-r.github.io/docs/xray/list_resource_policies.html](https://paws-r.github.io/docs/xray/list_resource_policies.html) for full documentation.
+#'
+#' @param NextToken Not currently supported.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_list_resource_policies
+xray_list_resource_policies <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourcePolicies",
+    http_method = "POST",
+    http_path = "/ListResourcePolicies",
+    paginator = list()
+  )
+  input <- .xray$list_resource_policies_input(NextToken = NextToken)
+  output <- .xray$list_resource_policies_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$list_resource_policies <- xray_list_resource_policies
+
 #' Returns a list of tags that are applied to the specified Amazon Web
 #' Services X-Ray group or sampling rule
 #'
@@ -745,6 +808,59 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 }
 .xray$operations$put_encryption_config <- xray_put_encryption_config
 
+#' Sets the resource policy to grant one or more Amazon Web Services
+#' services and accounts permissions to access X-Ray
+#'
+#' @description
+#' Sets the resource policy to grant one or more Amazon Web Services services and accounts permissions to access X-Ray. Each resource policy will be associated with a specific Amazon Web Services account. Each Amazon Web Services account can have a maximum of 5 resource policies, and each policy name must be unique within that account. The maximum size of each resource policy is 5KB.
+#'
+#' See [https://paws-r.github.io/docs/xray/put_resource_policy.html](https://paws-r.github.io/docs/xray/put_resource_policy.html) for full documentation.
+#'
+#' @param PolicyName &#91;required&#93; The name of the resource policy. Must be unique within a specific Amazon
+#' Web Services account.
+#' @param PolicyDocument &#91;required&#93; The resource policy document, which can be up to 5kb in size.
+#' @param PolicyRevisionId Specifies a specific policy revision, to ensure an atomic create
+#' operation. By default the resource policy is created if it does not
+#' exist, or updated with an incremented revision id. The revision id is
+#' unique to each policy in the account.
+#' 
+#' If the policy revision id does not match the latest revision id, the
+#' operation will fail with an `InvalidPolicyRevisionIdException`
+#' exception. You can also provide a `PolicyRevisionId` of 0. In this case,
+#' the operation will fail with an `InvalidPolicyRevisionIdException`
+#' exception if a resource policy with the same name already exists.
+#' @param BypassPolicyLockoutCheck A flag to indicate whether to bypass the resource policy lockout safety
+#' check.
+#' 
+#' Setting this value to true increases the risk that the policy becomes
+#' unmanageable. Do not set this value to true indiscriminately.
+#' 
+#' Use this parameter only when you include a policy in the request and you
+#' intend to prevent the principal that is making the request from making a
+#' subsequent [`put_resource_policy`][xray_put_resource_policy] request.
+#' 
+#' The default value is false.
+#'
+#' @keywords internal
+#'
+#' @rdname xray_put_resource_policy
+xray_put_resource_policy <- function(PolicyName, PolicyDocument, PolicyRevisionId = NULL, BypassPolicyLockoutCheck = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/PutResourcePolicy",
+    paginator = list()
+  )
+  input <- .xray$put_resource_policy_input(PolicyName = PolicyName, PolicyDocument = PolicyDocument, PolicyRevisionId = PolicyRevisionId, BypassPolicyLockoutCheck = BypassPolicyLockoutCheck)
+  output <- .xray$put_resource_policy_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$put_resource_policy <- xray_put_resource_policy
+
 #' Used by the Amazon Web Services X-Ray daemon to upload telemetry
 #'
 #' @description
@@ -819,7 +935,7 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' @param Tags &#91;required&#93; A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group or sampling rule. For more information about ways to use
 #' tags, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' The following restrictions apply to tags:
@@ -905,7 +1021,7 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 #' -   The InsightsEnabled boolean can be set to true to enable insights
 #'     for the group or false to disable insights for the group.
 #' 
-#' -   The NotifcationsEnabled boolean can be set to true to enable
+#' -   The NotificationsEnabled boolean can be set to true to enable
 #'     insights notifications for the group. Notifications can only be
 #'     enabled on a group with InsightsEnabled set to true.
 #'

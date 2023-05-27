@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_delete_fleets}
 \alias{ec2_delete_fleets}
-\title{Deletes the specified EC2 Fleet}
+\title{Deletes the specified EC2 Fleets}
 \usage{
 ec2_delete_fleets(DryRun = NULL, FleetIds, TerminateInstances)
 }
@@ -14,18 +14,18 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{FleetIds}{[required] The IDs of the EC2 Fleets.}
 
-\item{TerminateInstances}{[required] Indicates whether to terminate the instances when the EC2 Fleet is
-deleted. The default is to terminate the instances.
+\item{TerminateInstances}{[required] Indicates whether to terminate the associated instances when the EC2
+Fleet is deleted. The default is to terminate the instances.
 
 To let the instances continue to run after the EC2 Fleet is deleted,
-specify \code{NoTerminateInstances}. Supported only for fleets of type
+specify \code{no-terminate-instances}. Supported only for fleets of type
 \code{maintain} and \code{request}.
 
 For \code{instant} fleets, you cannot specify \code{NoTerminateInstances}. A
 deleted \code{instant} fleet with running instances is not supported.}
 }
 \description{
-Deletes the specified EC2 Fleet.
+Deletes the specified EC2 Fleets.
 
 See \url{https://paws-r.github.io/docs/ec2/delete_fleets.html} for full documentation.
 }

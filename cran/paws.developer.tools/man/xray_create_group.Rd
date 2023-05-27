@@ -21,13 +21,13 @@ names must be unique.}
 \itemize{
 \item The InsightsEnabled boolean can be set to true to enable insights
 for the new group or false to disable insights for the new group.
-\item The NotifcationsEnabled boolean can be set to true to enable
+\item The NotificationsEnabled boolean can be set to true to enable
 insights notifications for the new group. Notifications may only be
 enabled on a group with InsightsEnabled set to true.
 }}
 
 \item{Tags}{A map that contains one or more tag keys and tag values to attach to an
-X-Ray group. For more information about ways to use tags, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+X-Ray group. For more information about ways to use tags, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference}.
 
 The following restrictions apply to tags:

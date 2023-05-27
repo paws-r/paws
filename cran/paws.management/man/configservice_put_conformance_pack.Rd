@@ -10,25 +10,26 @@ configservice_put_conformance_pack(
   TemplateBody = NULL,
   DeliveryS3Bucket = NULL,
   DeliveryS3KeyPrefix = NULL,
-  ConformancePackInputParameters = NULL
+  ConformancePackInputParameters = NULL,
+  TemplateSSMDocumentDetails = NULL
 )
 }
 \arguments{
-\item{ConformancePackName}{[required] Name of the conformance pack you want to create.}
+\item{ConformancePackName}{[required] The unique name of the conformance pack you want to deploy.}
 
-\item{TemplateS3Uri}{Location of file containing the template body
-(\verb{s3://bucketname/prefix}). The uri must point to the conformance pack
+\item{TemplateS3Uri}{The location of the file containing the template body
+(\verb{s3://bucketname/prefix}). The uri must point to a conformance pack
 template (max size: 300 KB) that is located in an Amazon S3 bucket in
-the same region as the conformance pack.
+the same Region as the conformance pack.
 
 You must have access to read Amazon S3 bucket.}
 
-\item{TemplateBody}{A string containing full conformance pack template body. Structure
-containing the template body with a minimum length of 1 byte and a
-maximum length of 51,200 bytes.
+\item{TemplateBody}{A string containing the full conformance pack template body. The
+structure containing the template body has a minimum length of 1 byte
+and a maximum length of 51,200 bytes.
 
-You can only use a YAML template with two resource types: Config rule
-(\verb{AWS::Config::ConfigRule}) and a remediation action
+You can use a YAML template with two resource types: Config rule
+(\verb{AWS::Config::ConfigRule}) and remediation action
 (\verb{AWS::Config::RemediationConfiguration}).}
 
 \item{DeliveryS3Bucket}{The name of the Amazon S3 bucket where Config stores conformance pack
@@ -41,9 +42,14 @@ This field is optional.}
 This field is optional.}
 
 \item{ConformancePackInputParameters}{A list of \code{ConformancePackInputParameter} objects.}
+
+\item{TemplateSSMDocumentDetails}{An object of type \code{TemplateSSMDocumentDetails}, which contains the name
+or the Amazon Resource Name (ARN) of the Amazon Web Services Systems
+Manager document (SSM document) and the version of the SSM document that
+is used to create a conformance pack.}
 }
 \description{
-Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across Amazon Web Services Organization. For information on how many conformance packs you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the Config Developer Guide.
+Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the Config Developer Guide.
 
 See \url{https://paws-r.github.io/docs/configservice/put_conformance_pack.html} for full documentation.
 }

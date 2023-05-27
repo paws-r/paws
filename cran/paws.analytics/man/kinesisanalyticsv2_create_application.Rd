@@ -20,8 +20,7 @@ kinesisanalyticsv2_create_application(
 
 \item{ApplicationDescription}{A summary description of the application.}
 
-\item{RuntimeEnvironment}{[required] The runtime environment for the application (\verb{SQL-1_0}, \verb{FLINK-1_6},
-\verb{FLINK-1_8}, or \verb{FLINK-1_11}).}
+\item{RuntimeEnvironment}{[required] The runtime environment for the application.}
 
 \item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams,
 Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
@@ -37,8 +36,8 @@ key-value pair that identifies an application. Note that the maximum
 number of application tags includes system tags. The maximum number of
 user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.}
 
-\item{ApplicationMode}{Use the \code{STREAMING} mode to create a Kinesis Data Analytics Studio
-notebook. To create a Kinesis Data Analytics Studio notebook, use the
+\item{ApplicationMode}{Use the \code{STREAMING} mode to create a Kinesis Data Analytics For Flink
+application. To create a Kinesis Data Analytics Studio notebook, use the
 \code{INTERACTIVE} mode.}
 }
 \description{

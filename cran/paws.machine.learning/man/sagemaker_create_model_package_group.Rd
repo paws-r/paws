@@ -16,7 +16,7 @@ sagemaker_create_model_package_group(
 \item{ModelPackageGroupDescription}{A description for the model group.}
 
 \item{Tags}{A list of key value pairs associated with the model group. For more
-information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services resources}
+information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
 in the \emph{Amazon Web Services General Reference Guide}.}
 }
 \description{

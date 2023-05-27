@@ -12,13 +12,13 @@ ssmincidents_update_related_items(
 )
 }
 \arguments{
-\item{clientToken}{A token ensuring that the operation is called only once with the
-specified details.}
+\item{clientToken}{A token that ensures that a client calls the operation only once with
+the specified details.}
 
-\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record containing the
-related items you are updating.}
+\item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident record that contains the
+related items that you update.}
 
-\item{relatedItemsUpdate}{[required] Details about the item you are adding or deleting.}
+\item{relatedItemsUpdate}{[required] Details about the item that you are add to, or delete from, an incident.}
 }
 \description{
 Add or remove related items from the related items tab of an incident record.

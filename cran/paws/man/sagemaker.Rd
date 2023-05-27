@@ -73,6 +73,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_app_image_config]{create_app_image_config} \tab Creates a configuration for running a SageMaker image as a KernelGateway app\cr
 \link[paws.machine.learning:sagemaker_create_artifact]{create_artifact} \tab Creates an artifact\cr
 \link[paws.machine.learning:sagemaker_create_auto_ml_job]{create_auto_ml_job} \tab Creates an Autopilot job\cr
+\link[paws.machine.learning:sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2} \tab Creates an Amazon SageMaker AutoML job that uses non-tabular data such as images or text for Computer Vision or Natural Language Processing problems\cr
 \link[paws.machine.learning:sagemaker_create_code_repository]{create_code_repository} \tab Creates a Git repository as a resource in your SageMaker account\cr
 \link[paws.machine.learning:sagemaker_create_compilation_job]{create_compilation_job} \tab Starts a model compilation job\cr
 \link[paws.machine.learning:sagemaker_create_context]{create_context} \tab Creates a context\cr
@@ -84,22 +85,26 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_edge_packaging_job]{create_edge_packaging_job} \tab Starts a SageMaker Edge Manager model packaging job\cr
 \link[paws.machine.learning:sagemaker_create_endpoint]{create_endpoint} \tab Creates an endpoint using the endpoint configuration specified in the request\cr
 \link[paws.machine.learning:sagemaker_create_endpoint_config]{create_endpoint_config} \tab Creates an endpoint configuration that SageMaker hosting services uses to deploy models\cr
-\link[paws.machine.learning:sagemaker_create_experiment]{create_experiment} \tab Creates an SageMaker experiment\cr
+\link[paws.machine.learning:sagemaker_create_experiment]{create_experiment} \tab Creates a SageMaker experiment\cr
 \link[paws.machine.learning:sagemaker_create_feature_group]{create_feature_group} \tab Create a new FeatureGroup\cr
 \link[paws.machine.learning:sagemaker_create_flow_definition]{create_flow_definition} \tab Creates a flow definition\cr
+\link[paws.machine.learning:sagemaker_create_hub]{create_hub} \tab Create a hub\cr
 \link[paws.machine.learning:sagemaker_create_human_task_ui]{create_human_task_ui} \tab Defines the settings you will use for the human review workflow user interface\cr
 \link[paws.machine.learning:sagemaker_create_hyper_parameter_tuning_job]{create_hyper_parameter_tuning_job} \tab Starts a hyperparameter tuning job\cr
 \link[paws.machine.learning:sagemaker_create_image]{create_image} \tab Creates a custom SageMaker image\cr
 \link[paws.machine.learning:sagemaker_create_image_version]{create_image_version} \tab Creates a version of the SageMaker image specified by ImageName\cr
+\link[paws.machine.learning:sagemaker_create_inference_experiment]{create_inference_experiment} \tab Creates an inference experiment using the configurations specified in the request\cr
 \link[paws.machine.learning:sagemaker_create_inference_recommendations_job]{create_inference_recommendations_job} \tab Starts a recommendation job\cr
 \link[paws.machine.learning:sagemaker_create_labeling_job]{create_labeling_job} \tab Creates a job that uses workers to label the data objects in your input dataset\cr
 \link[paws.machine.learning:sagemaker_create_model]{create_model} \tab Creates a model in SageMaker\cr
 \link[paws.machine.learning:sagemaker_create_model_bias_job_definition]{create_model_bias_job_definition} \tab Creates the definition for a model bias job\cr
+\link[paws.machine.learning:sagemaker_create_model_card]{create_model_card} \tab Creates an Amazon SageMaker Model Card\cr
+\link[paws.machine.learning:sagemaker_create_model_card_export_job]{create_model_card_export_job} \tab Creates an Amazon SageMaker Model Card export job\cr
 \link[paws.machine.learning:sagemaker_create_model_explainability_job_definition]{create_model_explainability_job_definition} \tab Creates the definition for a model explainability job\cr
 \link[paws.machine.learning:sagemaker_create_model_package]{create_model_package} \tab Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group\cr
 \link[paws.machine.learning:sagemaker_create_model_package_group]{create_model_package_group} \tab Creates a model group\cr
 \link[paws.machine.learning:sagemaker_create_model_quality_job_definition]{create_model_quality_job_definition} \tab Creates a definition for a job that monitors model quality and drift\cr
-\link[paws.machine.learning:sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endoint\cr
+\link[paws.machine.learning:sagemaker_create_monitoring_schedule]{create_monitoring_schedule} \tab Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint\cr
 \link[paws.machine.learning:sagemaker_create_notebook_instance]{create_notebook_instance} \tab Creates an SageMaker notebook instance\cr
 \link[paws.machine.learning:sagemaker_create_notebook_instance_lifecycle_config]{create_notebook_instance_lifecycle_config} \tab Creates a lifecycle configuration that you can associate with a notebook instance\cr
 \link[paws.machine.learning:sagemaker_create_pipeline]{create_pipeline} \tab Creates a pipeline using a JSON pipeline definition\cr
@@ -107,6 +112,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_create_presigned_notebook_instance_url]{create_presigned_notebook_instance_url} \tab Returns a URL that you can use to connect to the Jupyter server from a notebook instance\cr
 \link[paws.machine.learning:sagemaker_create_processing_job]{create_processing_job} \tab Creates a processing job\cr
 \link[paws.machine.learning:sagemaker_create_project]{create_project} \tab Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model\cr
+\link[paws.machine.learning:sagemaker_create_space]{create_space} \tab Creates a space used for real time collaboration in a Domain\cr
 \link[paws.machine.learning:sagemaker_create_studio_lifecycle_config]{create_studio_lifecycle_config} \tab Creates a new Studio Lifecycle Configuration\cr
 \link[paws.machine.learning:sagemaker_create_training_job]{create_training_job} \tab Starts a model training job\cr
 \link[paws.machine.learning:sagemaker_create_transform_job]{create_transform_job} \tab Starts a transform job\cr
@@ -133,11 +139,15 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_delete_experiment]{delete_experiment} \tab Deletes an SageMaker experiment\cr
 \link[paws.machine.learning:sagemaker_delete_feature_group]{delete_feature_group} \tab Delete the FeatureGroup and any data that was written to the OnlineStore of the FeatureGroup\cr
 \link[paws.machine.learning:sagemaker_delete_flow_definition]{delete_flow_definition} \tab Deletes the specified flow definition\cr
+\link[paws.machine.learning:sagemaker_delete_hub]{delete_hub} \tab Delete a hub\cr
+\link[paws.machine.learning:sagemaker_delete_hub_content]{delete_hub_content} \tab Delete the contents of a hub\cr
 \link[paws.machine.learning:sagemaker_delete_human_task_ui]{delete_human_task_ui} \tab Use this operation to delete a human task user interface (worker task template)\cr
 \link[paws.machine.learning:sagemaker_delete_image]{delete_image} \tab Deletes a SageMaker image and all versions of the image\cr
 \link[paws.machine.learning:sagemaker_delete_image_version]{delete_image_version} \tab Deletes a version of a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_delete_inference_experiment]{delete_inference_experiment} \tab Deletes an inference experiment\cr
 \link[paws.machine.learning:sagemaker_delete_model]{delete_model} \tab Deletes a model\cr
 \link[paws.machine.learning:sagemaker_delete_model_bias_job_definition]{delete_model_bias_job_definition} \tab Deletes an Amazon SageMaker model bias job definition\cr
+\link[paws.machine.learning:sagemaker_delete_model_card]{delete_model_card} \tab Deletes an Amazon SageMaker Model Card\cr
 \link[paws.machine.learning:sagemaker_delete_model_explainability_job_definition]{delete_model_explainability_job_definition} \tab Deletes an Amazon SageMaker model explainability job definition\cr
 \link[paws.machine.learning:sagemaker_delete_model_package]{delete_model_package} \tab Deletes a model package\cr
 \link[paws.machine.learning:sagemaker_delete_model_package_group]{delete_model_package_group} \tab Deletes the specified model group\cr
@@ -148,6 +158,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_delete_notebook_instance_lifecycle_config]{delete_notebook_instance_lifecycle_config} \tab Deletes a notebook instance lifecycle configuration\cr
 \link[paws.machine.learning:sagemaker_delete_pipeline]{delete_pipeline} \tab Deletes a pipeline if there are no running instances of the pipeline\cr
 \link[paws.machine.learning:sagemaker_delete_project]{delete_project} \tab Delete the specified project\cr
+\link[paws.machine.learning:sagemaker_delete_space]{delete_space} \tab Used to delete a space\cr
 \link[paws.machine.learning:sagemaker_delete_studio_lifecycle_config]{delete_studio_lifecycle_config} \tab Deletes the Studio Lifecycle Configuration\cr
 \link[paws.machine.learning:sagemaker_delete_tags]{delete_tags} \tab Deletes the specified tags from an SageMaker resource\cr
 \link[paws.machine.learning:sagemaker_delete_trial]{delete_trial} \tab Deletes the specified trial\cr
@@ -162,6 +173,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_app_image_config]{describe_app_image_config} \tab Describes an AppImageConfig\cr
 \link[paws.machine.learning:sagemaker_describe_artifact]{describe_artifact} \tab Describes an artifact\cr
 \link[paws.machine.learning:sagemaker_describe_auto_ml_job]{describe_auto_ml_job} \tab Returns information about an Amazon SageMaker AutoML job\cr
+\link[paws.machine.learning:sagemaker_describe_auto_ml_job_v2]{describe_auto_ml_job_v2} \tab Returns information about an Amazon SageMaker AutoML V2 job\cr
 \link[paws.machine.learning:sagemaker_describe_code_repository]{describe_code_repository} \tab Gets details about the specified Git repository\cr
 \link[paws.machine.learning:sagemaker_describe_compilation_job]{describe_compilation_job} \tab Returns information about a model compilation job\cr
 \link[paws.machine.learning:sagemaker_describe_context]{describe_context} \tab Describes a context\cr
@@ -177,15 +189,20 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_feature_group]{describe_feature_group} \tab Use this operation to describe a FeatureGroup\cr
 \link[paws.machine.learning:sagemaker_describe_feature_metadata]{describe_feature_metadata} \tab Shows the metadata for a feature within a feature group\cr
 \link[paws.machine.learning:sagemaker_describe_flow_definition]{describe_flow_definition} \tab Returns information about the specified flow definition\cr
+\link[paws.machine.learning:sagemaker_describe_hub]{describe_hub} \tab Describe a hub\cr
+\link[paws.machine.learning:sagemaker_describe_hub_content]{describe_hub_content} \tab Describe the content of a hub\cr
 \link[paws.machine.learning:sagemaker_describe_human_task_ui]{describe_human_task_ui} \tab Returns information about the requested human task user interface (worker task template)\cr
-\link[paws.machine.learning:sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Gets a description of a hyperparameter tuning job\cr
+\link[paws.machine.learning:sagemaker_describe_hyper_parameter_tuning_job]{describe_hyper_parameter_tuning_job} \tab Returns a description of a hyperparameter tuning job, depending on the fields selected\cr
 \link[paws.machine.learning:sagemaker_describe_image]{describe_image} \tab Describes a SageMaker image\cr
 \link[paws.machine.learning:sagemaker_describe_image_version]{describe_image_version} \tab Describes a version of a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_describe_inference_experiment]{describe_inference_experiment} \tab Returns details about an inference experiment\cr
 \link[paws.machine.learning:sagemaker_describe_inference_recommendations_job]{describe_inference_recommendations_job} \tab Provides the results of the Inference Recommender job\cr
 \link[paws.machine.learning:sagemaker_describe_labeling_job]{describe_labeling_job} \tab Gets information about a labeling job\cr
 \link[paws.machine.learning:sagemaker_describe_lineage_group]{describe_lineage_group} \tab Provides a list of properties for the requested lineage group\cr
 \link[paws.machine.learning:sagemaker_describe_model]{describe_model} \tab Describes a model that you created using the CreateModel API\cr
 \link[paws.machine.learning:sagemaker_describe_model_bias_job_definition]{describe_model_bias_job_definition} \tab Returns a description of a model bias job definition\cr
+\link[paws.machine.learning:sagemaker_describe_model_card]{describe_model_card} \tab Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card\cr
+\link[paws.machine.learning:sagemaker_describe_model_card_export_job]{describe_model_card_export_job} \tab Describes an Amazon SageMaker Model Card export job\cr
 \link[paws.machine.learning:sagemaker_describe_model_explainability_job_definition]{describe_model_explainability_job_definition} \tab Returns a description of a model explainability job definition\cr
 \link[paws.machine.learning:sagemaker_describe_model_package]{describe_model_package} \tab Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace\cr
 \link[paws.machine.learning:sagemaker_describe_model_package_group]{describe_model_package_group} \tab Gets a description for the specified model group\cr
@@ -198,6 +215,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_describe_pipeline_execution]{describe_pipeline_execution} \tab Describes the details of a pipeline execution\cr
 \link[paws.machine.learning:sagemaker_describe_processing_job]{describe_processing_job} \tab Returns a description of a processing job\cr
 \link[paws.machine.learning:sagemaker_describe_project]{describe_project} \tab Describes the details of a project\cr
+\link[paws.machine.learning:sagemaker_describe_space]{describe_space} \tab Describes the space\cr
 \link[paws.machine.learning:sagemaker_describe_studio_lifecycle_config]{describe_studio_lifecycle_config} \tab Describes the Studio Lifecycle Configuration\cr
 \link[paws.machine.learning:sagemaker_describe_subscribed_workteam]{describe_subscribed_workteam} \tab Gets information about a work team provided by a vendor\cr
 \link[paws.machine.learning:sagemaker_describe_training_job]{describe_training_job} \tab Returns information about a training job\cr
@@ -214,9 +232,11 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_get_lineage_group_policy]{get_lineage_group_policy} \tab The resource policy for the lineage group\cr
 \link[paws.machine.learning:sagemaker_get_model_package_group_policy]{get_model_package_group_policy} \tab Gets a resource policy that manages access for a model group\cr
 \link[paws.machine.learning:sagemaker_get_sagemaker_servicecatalog_portfolio_status]{get_sagemaker_servicecatalog_portfolio_status} \tab Gets the status of Service Catalog in SageMaker\cr
-\link[paws.machine.learning:sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the Amazon SageMaker console\cr
+\link[paws.machine.learning:sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the SageMaker console\cr
+\link[paws.machine.learning:sagemaker_import_hub_content]{import_hub_content} \tab Import hub content\cr
 \link[paws.machine.learning:sagemaker_list_actions]{list_actions} \tab Lists the actions in your account and their properties\cr
 \link[paws.machine.learning:sagemaker_list_algorithms]{list_algorithms} \tab Lists the machine learning algorithms that have been created\cr
+\link[paws.machine.learning:sagemaker_list_aliases]{list_aliases} \tab Lists the aliases of a specified image or image version\cr
 \link[paws.machine.learning:sagemaker_list_app_image_configs]{list_app_image_configs} \tab Lists the AppImageConfigs in your account and their properties\cr
 \link[paws.machine.learning:sagemaker_list_apps]{list_apps} \tab Lists apps\cr
 \link[paws.machine.learning:sagemaker_list_artifacts]{list_artifacts} \tab Lists the artifacts in your account and their properties\cr
@@ -237,21 +257,31 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_list_experiments]{list_experiments} \tab Lists all the experiments in your account\cr
 \link[paws.machine.learning:sagemaker_list_feature_groups]{list_feature_groups} \tab List FeatureGroups based on given filter and order\cr
 \link[paws.machine.learning:sagemaker_list_flow_definitions]{list_flow_definitions} \tab Returns information about the flow definitions in your account\cr
+\link[paws.machine.learning:sagemaker_list_hub_contents]{list_hub_contents} \tab List the contents of a hub\cr
+\link[paws.machine.learning:sagemaker_list_hub_content_versions]{list_hub_content_versions} \tab List hub content versions\cr
+\link[paws.machine.learning:sagemaker_list_hubs]{list_hubs} \tab List all existing hubs\cr
 \link[paws.machine.learning:sagemaker_list_human_task_uis]{list_human_task_uis} \tab Returns information about the human task user interfaces in your account\cr
 \link[paws.machine.learning:sagemaker_list_hyper_parameter_tuning_jobs]{list_hyper_parameter_tuning_jobs} \tab Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account\cr
 \link[paws.machine.learning:sagemaker_list_images]{list_images} \tab Lists the images in your account and their properties\cr
 \link[paws.machine.learning:sagemaker_list_image_versions]{list_image_versions} \tab Lists the versions of a specified image and their properties\cr
+\link[paws.machine.learning:sagemaker_list_inference_experiments]{list_inference_experiments} \tab Returns the list of all inference experiments\cr
 \link[paws.machine.learning:sagemaker_list_inference_recommendations_jobs]{list_inference_recommendations_jobs} \tab Lists recommendation jobs that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_inference_recommendations_job_steps]{list_inference_recommendations_job_steps} \tab Returns a list of the subtasks for an Inference Recommender job\cr
 \link[paws.machine.learning:sagemaker_list_labeling_jobs]{list_labeling_jobs} \tab Gets a list of labeling jobs\cr
 \link[paws.machine.learning:sagemaker_list_labeling_jobs_for_workteam]{list_labeling_jobs_for_workteam} \tab Gets a list of labeling jobs assigned to a specified work team\cr
 \link[paws.machine.learning:sagemaker_list_lineage_groups]{list_lineage_groups} \tab A list of lineage groups shared with your Amazon Web Services account\cr
 \link[paws.machine.learning:sagemaker_list_model_bias_job_definitions]{list_model_bias_job_definitions} \tab Lists model bias jobs definitions that satisfy various filters\cr
+\link[paws.machine.learning:sagemaker_list_model_card_export_jobs]{list_model_card_export_jobs} \tab List the export jobs for the Amazon SageMaker Model Card\cr
+\link[paws.machine.learning:sagemaker_list_model_cards]{list_model_cards} \tab List existing model cards\cr
+\link[paws.machine.learning:sagemaker_list_model_card_versions]{list_model_card_versions} \tab List existing versions of an Amazon SageMaker Model Card\cr
 \link[paws.machine.learning:sagemaker_list_model_explainability_job_definitions]{list_model_explainability_job_definitions} \tab Lists model explainability job definitions that satisfy various filters\cr
 \link[paws.machine.learning:sagemaker_list_model_metadata]{list_model_metadata} \tab Lists the domain, framework, task, and model name of standard machine learning models found in common model zoos\cr
 \link[paws.machine.learning:sagemaker_list_model_package_groups]{list_model_package_groups} \tab Gets a list of the model groups in your Amazon Web Services account\cr
 \link[paws.machine.learning:sagemaker_list_model_packages]{list_model_packages} \tab Lists the model packages that have been created\cr
 \link[paws.machine.learning:sagemaker_list_model_quality_job_definitions]{list_model_quality_job_definitions} \tab Gets a list of model quality monitoring job definitions in your account\cr
 \link[paws.machine.learning:sagemaker_list_models]{list_models} \tab Lists models created with the CreateModel API\cr
+\link[paws.machine.learning:sagemaker_list_monitoring_alert_history]{list_monitoring_alert_history} \tab Gets a list of past alerts in a model monitoring schedule\cr
+\link[paws.machine.learning:sagemaker_list_monitoring_alerts]{list_monitoring_alerts} \tab Gets the alerts for a single monitoring schedule\cr
 \link[paws.machine.learning:sagemaker_list_monitoring_executions]{list_monitoring_executions} \tab Returns list of all monitoring job executions\cr
 \link[paws.machine.learning:sagemaker_list_monitoring_schedules]{list_monitoring_schedules} \tab Returns list of all monitoring schedules\cr
 \link[paws.machine.learning:sagemaker_list_notebook_instance_lifecycle_configs]{list_notebook_instance_lifecycle_configs} \tab Lists notebook instance lifestyle configurations created with the CreateNotebookInstanceLifecycleConfig API\cr
@@ -262,6 +292,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_list_pipelines]{list_pipelines} \tab Gets a list of pipelines\cr
 \link[paws.machine.learning:sagemaker_list_processing_jobs]{list_processing_jobs} \tab Lists processing jobs that satisfy various filters\cr
 \link[paws.machine.learning:sagemaker_list_projects]{list_projects} \tab Gets a list of the projects in an Amazon Web Services account\cr
+\link[paws.machine.learning:sagemaker_list_spaces]{list_spaces} \tab Lists spaces\cr
 \link[paws.machine.learning:sagemaker_list_stage_devices]{list_stage_devices} \tab Lists devices allocated to the stage, containing detailed device information and deployment status\cr
 \link[paws.machine.learning:sagemaker_list_studio_lifecycle_configs]{list_studio_lifecycle_configs} \tab Lists the Studio Lifecycle Configurations in your Amazon Web Services Account\cr
 \link[paws.machine.learning:sagemaker_list_subscribed_workteams]{list_subscribed_workteams} \tab Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace\cr
@@ -279,18 +310,20 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_register_devices]{register_devices} \tab Register devices\cr
 \link[paws.machine.learning:sagemaker_render_ui_template]{render_ui_template} \tab Renders the UI template so that you can preview the worker's experience\cr
 \link[paws.machine.learning:sagemaker_retry_pipeline_execution]{retry_pipeline_execution} \tab Retry the execution of the pipeline\cr
-\link[paws.machine.learning:sagemaker_search]{search} \tab Finds Amazon SageMaker resources that match a search query\cr
+\link[paws.machine.learning:sagemaker_search]{search} \tab Finds SageMaker resources that match a search query\cr
 \link[paws.machine.learning:sagemaker_send_pipeline_execution_step_failure]{send_pipeline_execution_step_failure} \tab Notifies the pipeline that the execution of a callback step failed, along with a message describing why\cr
 \link[paws.machine.learning:sagemaker_send_pipeline_execution_step_success]{send_pipeline_execution_step_success} \tab Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters\cr
 \link[paws.machine.learning:sagemaker_start_edge_deployment_stage]{start_edge_deployment_stage} \tab Starts a stage in an edge deployment plan\cr
+\link[paws.machine.learning:sagemaker_start_inference_experiment]{start_inference_experiment} \tab Starts an inference experiment\cr
 \link[paws.machine.learning:sagemaker_start_monitoring_schedule]{start_monitoring_schedule} \tab Starts a previously stopped monitoring schedule\cr
 \link[paws.machine.learning:sagemaker_start_notebook_instance]{start_notebook_instance} \tab Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume\cr
 \link[paws.machine.learning:sagemaker_start_pipeline_execution]{start_pipeline_execution} \tab Starts a pipeline execution\cr
-\link[paws.machine.learning:sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing the termination of a running job\cr
+\link[paws.machine.learning:sagemaker_stop_auto_ml_job]{stop_auto_ml_job} \tab A method for forcing a running job to shut down\cr
 \link[paws.machine.learning:sagemaker_stop_compilation_job]{stop_compilation_job} \tab Stops a model compilation job\cr
 \link[paws.machine.learning:sagemaker_stop_edge_deployment_stage]{stop_edge_deployment_stage} \tab Stops a stage in an edge deployment plan\cr
 \link[paws.machine.learning:sagemaker_stop_edge_packaging_job]{stop_edge_packaging_job} \tab Request to stop an edge packaging job\cr
 \link[paws.machine.learning:sagemaker_stop_hyper_parameter_tuning_job]{stop_hyper_parameter_tuning_job} \tab Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched\cr
+\link[paws.machine.learning:sagemaker_stop_inference_experiment]{stop_inference_experiment} \tab Stops an inference experiment\cr
 \link[paws.machine.learning:sagemaker_stop_inference_recommendations_job]{stop_inference_recommendations_job} \tab Stops an Inference Recommender job\cr
 \link[paws.machine.learning:sagemaker_stop_labeling_job]{stop_labeling_job} \tab Stops a running labeling job\cr
 \link[paws.machine.learning:sagemaker_stop_monitoring_schedule]{stop_monitoring_schedule} \tab Stops a previously started monitoring schedule\cr
@@ -312,15 +345,21 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_update_experiment]{update_experiment} \tab Adds, updates, or removes the description of an experiment\cr
 \link[paws.machine.learning:sagemaker_update_feature_group]{update_feature_group} \tab Updates the feature group\cr
 \link[paws.machine.learning:sagemaker_update_feature_metadata]{update_feature_metadata} \tab Updates the description and parameters of the feature group\cr
+\link[paws.machine.learning:sagemaker_update_hub]{update_hub} \tab Update a hub\cr
 \link[paws.machine.learning:sagemaker_update_image]{update_image} \tab Updates the properties of a SageMaker image\cr
+\link[paws.machine.learning:sagemaker_update_image_version]{update_image_version} \tab Updates the properties of a SageMaker image version\cr
+\link[paws.machine.learning:sagemaker_update_inference_experiment]{update_inference_experiment} \tab Updates an inference experiment that you created\cr
+\link[paws.machine.learning:sagemaker_update_model_card]{update_model_card} \tab Update an Amazon SageMaker Model Card\cr
 \link[paws.machine.learning:sagemaker_update_model_package]{update_model_package} \tab Updates a versioned model\cr
+\link[paws.machine.learning:sagemaker_update_monitoring_alert]{update_monitoring_alert} \tab Update the parameters of a model monitor alert\cr
 \link[paws.machine.learning:sagemaker_update_monitoring_schedule]{update_monitoring_schedule} \tab Updates a previously created schedule\cr
 \link[paws.machine.learning:sagemaker_update_notebook_instance]{update_notebook_instance} \tab Updates a notebook instance\cr
 \link[paws.machine.learning:sagemaker_update_notebook_instance_lifecycle_config]{update_notebook_instance_lifecycle_config} \tab Updates a notebook instance lifecycle configuration created with the CreateNotebookInstanceLifecycleConfig API\cr
 \link[paws.machine.learning:sagemaker_update_pipeline]{update_pipeline} \tab Updates a pipeline\cr
 \link[paws.machine.learning:sagemaker_update_pipeline_execution]{update_pipeline_execution} \tab Updates a pipeline execution\cr
 \link[paws.machine.learning:sagemaker_update_project]{update_project} \tab Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model\cr
-\link[paws.machine.learning:sagemaker_update_training_job]{update_training_job} \tab Update a model training job to request a new Debugger profiling configuration\cr
+\link[paws.machine.learning:sagemaker_update_space]{update_space} \tab Updates the settings of a space\cr
+\link[paws.machine.learning:sagemaker_update_training_job]{update_training_job} \tab Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length\cr
 \link[paws.machine.learning:sagemaker_update_trial]{update_trial} \tab Updates the display name of a trial\cr
 \link[paws.machine.learning:sagemaker_update_trial_component]{update_trial_component} \tab Updates one or more properties of a trial component\cr
 \link[paws.machine.learning:sagemaker_update_user_profile]{update_user_profile} \tab Updates a user profile\cr

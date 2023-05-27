@@ -2,7 +2,7 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_remove_managed_scaling_policy}
 \alias{emr_remove_managed_scaling_policy}
-\title{Removes a managed scaling policy from a specified EMR cluster}
+\title{Removes a managed scaling policy from a specified Amazon EMR cluster}
 \usage{
 emr_remove_managed_scaling_policy(ClusterId)
 }
@@ -11,7 +11,7 @@ emr_remove_managed_scaling_policy(ClusterId)
 will be removed.}
 }
 \description{
-Removes a managed scaling policy from a specified EMR cluster.
+Removes a managed scaling policy from a specified Amazon EMR cluster.
 
 See \url{https://paws-r.github.io/docs/emr/remove_managed_scaling_policy.html} for full documentation.
 }

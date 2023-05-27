@@ -74,7 +74,7 @@ in the \emph{Amazon CodeGuru Reviewer User Guide}.
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.developer.tools:codegurureviewer_associate_repository]{associate_repository} \tab Use to associate an Amazon Web Services CodeCommit repository or a repostory managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer\cr
+\link[paws.developer.tools:codegurureviewer_associate_repository]{associate_repository} \tab Use to associate an Amazon Web Services CodeCommit repository or a repository managed by Amazon Web Services CodeStar Connections with Amazon CodeGuru Reviewer\cr
 \link[paws.developer.tools:codegurureviewer_create_code_review]{create_code_review} \tab Use to create a code review with a CodeReviewType of RepositoryAnalysis\cr
 \link[paws.developer.tools:codegurureviewer_describe_code_review]{describe_code_review} \tab Returns the metadata associated with the code review along with its status\cr
 \link[paws.developer.tools:codegurureviewer_describe_recommendation_feedback]{describe_recommendation_feedback} \tab Describes the customer feedback for a CodeGuru Reviewer recommendation\cr

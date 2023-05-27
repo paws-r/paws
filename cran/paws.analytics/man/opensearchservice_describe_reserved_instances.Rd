@@ -2,7 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_reserved_instances}
 \alias{opensearchservice_describe_reserved_instances}
-\title{Returns information about reserved OpenSearch instances for this account}
+\title{Describes the Amazon OpenSearch Service instances that you have reserved
+in a given Region}
 \usage{
 opensearchservice_describe_reserved_instances(
   ReservedInstanceId = NULL,
@@ -15,13 +16,18 @@ opensearchservice_describe_reserved_instances(
 show only the reservation that matches the specified reserved OpenSearch
 instance ID.}
 
-\item{MaxResults}{Set this value to limit the number of results returned. If not
-specified, defaults to 100.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{Provides an identifier to allow retrieval of paginated results.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_describe_reserved_instances]{describe_reserved_instances}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_describe_reserved_instances]{describe_reserved_instances}}
+operations, which returns results in the next page.}
 }
 \description{
-Returns information about reserved OpenSearch instances for this account.
+Describes the Amazon OpenSearch Service instances that you have reserved in a given Region. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html}{Reserved Instances in Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_reserved_instances.html} for full documentation.
 }

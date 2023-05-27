@@ -49,10 +49,11 @@ management and include this parameter, an error is returned.}
 
 \item{HierarchyGroupId}{The identifier of the hierarchy group for the user.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Tags}{One or more tags.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a user account for the specified Amazon Connect instance.

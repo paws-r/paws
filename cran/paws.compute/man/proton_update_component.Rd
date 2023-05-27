@@ -5,6 +5,7 @@
 \title{Update a component}
 \usage{
 proton_update_component(
+  clientToken = NULL,
   deploymentType,
   description = NULL,
   name,
@@ -15,6 +16,8 @@ proton_update_component(
 )
 }
 \arguments{
+\item{clientToken}{The client token for the updated component.}
+
 \item{deploymentType}{[required] The deployment type. It defines the mode for updating a component, as
 follows:
 

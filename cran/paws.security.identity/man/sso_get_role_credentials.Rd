@@ -10,13 +10,12 @@ sso_get_role_credentials(roleName, accountId, accessToken)
 \arguments{
 \item{roleName}{[required] The friendly name of the role that is assigned to the user.}
 
-\item{accountId}{[required] The identifier for the Amazon Web Services account that is assigned to
-the user.}
+\item{accountId}{[required] The identifier for the AWS account that is assigned to the user.}
 
 \item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information,
 see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \emph{Amazon Web Services SSO OIDC API Reference Guide}.}
+in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 }
 \description{
 Returns the STS short-term credentials for a given role name that is assigned to the user.

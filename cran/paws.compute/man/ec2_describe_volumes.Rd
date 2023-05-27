@@ -59,25 +59,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{MaxResults}{The maximum number of volume results returned by
-\code{\link[=ec2_describe_volumes]{describe_volumes}} in paginated output. When
-this parameter is used, \code{\link[=ec2_describe_volumes]{describe_volumes}} only
-returns \code{MaxResults} results in a single page along with a \code{NextToken}
-response element. The remaining results of the initial request can be
-seen by sending another \code{\link[=ec2_describe_volumes]{describe_volumes}}
-request with the returned \code{NextToken} value. This value can be between 5
-and 500; if \code{MaxResults} is given a value larger than 500, only 500
-results are returned. If this parameter is not used, then
-\code{\link[=ec2_describe_volumes]{describe_volumes}} returns all results. You
-cannot specify this parameter and the volume IDs parameter in the same
-request.}
+\item{MaxResults}{The maximum number of volumes to return for this request. This value can
+be between 5 and 500; if you specify a value larger than 500, only 500
+items are returned. If this parameter is not used, then all items are
+returned. You cannot specify this parameter and the volume IDs parameter
+in the same request. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The \code{NextToken} value returned from a previous paginated
-\code{\link[=ec2_describe_volumes]{describe_volumes}} request where \code{MaxResults}
-was used and the results exceeded the value of that parameter.
-Pagination continues from the end of the previous results that returned
-the \code{NextToken} value. This value is \code{null} when there are no more
-results to return.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned from the previous request.}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.

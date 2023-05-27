@@ -2,16 +2,16 @@
 % Please edit documentation in R/appregistry_operations.R
 \name{appregistry_delete_application}
 \alias{appregistry_delete_application}
-\title{Deletes an application that is specified either by its application ID or
-name}
+\title{Deletes an application that is specified either by its application ID,
+name, or ARN}
 \usage{
 appregistry_delete_application(application)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 }
 \description{
-Deletes an application that is specified either by its application ID or name. All associated attribute groups and resources must be disassociated from it before deleting an application.
+Deletes an application that is specified either by its application ID, name, or ARN. All associated attribute groups and resources must be disassociated from it before deleting an application.
 
 See \url{https://paws-r.github.io/docs/appregistry/delete_application.html} for full documentation.
 }

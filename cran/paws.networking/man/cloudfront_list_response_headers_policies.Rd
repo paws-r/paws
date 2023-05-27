@@ -23,8 +23,8 @@ Services account.
 \item{Marker}{Use this field when paginating results to indicate where to begin in
 your list of response headers policies. The response includes response
 headers policies in the list that occur after the marker. To get the
-next page of the list, set this field’s value to the value of
-\code{NextMarker} from the current page’s response.}
+next page of the list, set this field's value to the value of
+\code{NextMarker} from the current page's response.}
 
 \item{MaxItems}{The maximum number of response headers policies that you want to get in
 the response.}

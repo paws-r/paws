@@ -2,7 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_phone_numbers_v2}
 \alias{connect_list_phone_numbers_v2}
-\title{Lists phone numbers claimed to your Amazon Connect instance}
+\title{Lists phone numbers claimed to your Amazon Connect instance or traffic
+distribution group}
 \usage{
 connect_list_phone_numbers_v2(
   TargetArn = NULL,
@@ -14,10 +15,11 @@ connect_list_phone_numbers_v2(
 )
 }
 \arguments{
-\item{TargetArn}{The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-numbers are claimed to. If \code{TargetArn} input is not provided, this API
-lists numbers claimed to all the Amazon Connect instances belonging to
-your account.}
+\item{TargetArn}{The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+distribution groups that phone numbers are claimed to. If \code{TargetArn}
+input is not provided, this API lists numbers claimed to all the Amazon
+Connect instances belonging to your account in the same Amazon Web
+Services Region as the request.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
 
@@ -33,7 +35,7 @@ results.}
 of the country code.}
 }
 \description{
-Lists phone numbers claimed to your Amazon Connect instance.
+Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group. If the provided \code{TargetArn} is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group.
 
 See \url{https://paws-r.github.io/docs/connect/list_phone_numbers_v2.html} for full documentation.
 }

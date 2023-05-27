@@ -2,8 +2,8 @@
 % Please edit documentation in R/billingconductor_operations.R
 \name{billingconductor_list_account_associations}
 \alias{billingconductor_list_account_associations}
-\title{Amazon Web Services Billing Conductor is in beta release and is subject
-to change}
+\title{This is a paginated call to list linked accounts that are linked to the
+payer account for the specified time period}
 \usage{
 billingconductor_list_account_associations(
   BillingPeriod = NULL,
@@ -19,16 +19,16 @@ following:
 
 \code{MONITORED}: linked accounts that are associated to billing groups.
 
-\code{UNMONITORED}: linked accounts that are not associated to billing
-groups.
+\code{UNMONITORED}: linked accounts that aren't associated to billing groups.
 
 \verb{Billing Group Arn}: linked accounts that are associated to the provided
 billing group Arn.}
 
-\item{NextToken}{The pagination token used on subsequent calls to retrieve accounts.}
+\item{NextToken}{The pagination token that's used on subsequent calls to retrieve
+accounts.}
 }
 \description{
-\emph{Amazon Web Services Billing Conductor is in beta release and is subject to change. Your use of Amazon Web Services Billing Conductor is subject to the Beta Service Participation terms of the \if{html}{\out{<span href="https://aws.amazon.com/service-terms/">}}Amazon Web Services Service Terms\if{html}{\out{</span>}} (Section 1.10).}
+This is a paginated call to list linked accounts that are linked to the payer account for the specified time period. If no information is provided, the current billing period is used. The response will optionally include the billing group that's associated with the linked account.
 
 See \url{https://paws-r.github.io/docs/billingconductor/list_account_associations.html} for full documentation.
 }

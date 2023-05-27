@@ -8,6 +8,7 @@ the pool}
 cognitoidentityprovider_create_user_pool(
   PoolName,
   Policies = NULL,
+  DeletionProtection = NULL,
   LambdaConfig = NULL,
   AutoVerifiedAttributes = NULL,
   AliasAttributes = NULL,
@@ -35,6 +36,19 @@ cognitoidentityprovider_create_user_pool(
 
 \item{Policies}{The policies associated with the new user pool.}
 
+\item{DeletionProtection}{When active, \code{DeletionProtection} prevents accidental deletion of your
+user pool. Before you can delete a user pool that you have protected
+against deletion, you must deactivate this feature.
+
+When you try to delete a protected user pool in a
+\code{\link[=cognitoidentityprovider_delete_user_pool]{delete_user_pool}} API
+request, Amazon Cognito returns an \code{InvalidParameterException} error. To
+delete a protected user pool, send a new
+\code{\link[=cognitoidentityprovider_delete_user_pool]{delete_user_pool}} request
+after you deactivate deletion protection in an
+\code{\link[=cognitoidentityprovider_update_user_pool]{update_user_pool}} API
+request.}
+
 \item{LambdaConfig}{The Lambda trigger configuration information for the new user pool.
 
 In a push model, event sources (such as Amazon S3 and custom
@@ -59,17 +73,14 @@ For adding permission using the CLI, see
 \item{UsernameAttributes}{Specifies whether a user can use an email address or phone number as a
 username when they sign up.}
 
-\item{SmsVerificationMessage}{A string representing the SMS verification message.}
+\item{SmsVerificationMessage}{This parameter is no longer used. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
-\item{EmailVerificationMessage}{A string representing the email verification message.
-\code{EmailVerificationMessage} is allowed only if
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount}{EmailSendingAccount}
-is DEVELOPER.}
+\item{EmailVerificationMessage}{This parameter is no longer used. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
-\item{EmailVerificationSubject}{A string representing the email verification subject.
-\code{EmailVerificationSubject} is allowed only if
-\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount}{EmailSendingAccount}
-is DEVELOPER.}
+\item{EmailVerificationSubject}{This parameter is no longer used. See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html}{VerificationMessageTemplateType}.}
 
 \item{VerificationMessageTemplate}{The template for the verification message that the user sees when the
 app requests permission to access the user's information.}

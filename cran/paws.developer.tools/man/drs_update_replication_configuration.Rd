@@ -6,6 +6,7 @@
 \usage{
 drs_update_replication_configuration(
   associateDefaultSecurityGroup = NULL,
+  autoReplicateNewDisks = NULL,
   bandwidthThrottling = NULL,
   createPublicIP = NULL,
   dataPlaneRouting = NULL,
@@ -26,6 +27,9 @@ drs_update_replication_configuration(
 \arguments{
 \item{associateDefaultSecurityGroup}{Whether to associate the default Elastic Disaster Recovery Security
 group with the Replication Configuration.}
+
+\item{autoReplicateNewDisks}{Whether to allow the AWS replication agent to automatically replicate
+newly added disks.}
 
 \item{bandwidthThrottling}{Configure bandwidth throttling for the outbound data transfer rate of
 the Source Server in Mbps.}

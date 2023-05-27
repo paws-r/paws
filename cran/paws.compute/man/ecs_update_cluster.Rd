@@ -4,7 +4,12 @@
 \alias{ecs_update_cluster}
 \title{Updates the cluster}
 \usage{
-ecs_update_cluster(cluster, settings = NULL, configuration = NULL)
+ecs_update_cluster(
+  cluster,
+  settings = NULL,
+  configuration = NULL,
+  serviceConnectDefaults = NULL
+)
 }
 \arguments{
 \item{cluster}{[required] The name of the cluster to modify the settings for.}
@@ -12,6 +17,23 @@ ecs_update_cluster(cluster, settings = NULL, configuration = NULL)
 \item{settings}{The cluster settings for your cluster.}
 
 \item{configuration}{The execute command configuration for the cluster.}
+
+\item{serviceConnectDefaults}{Use this parameter to set a default Service Connect namespace. After you
+set a default Service Connect namespace, any new services with Service
+Connect turned on that are created in the cluster are added as client
+services in the namespace. This setting only applies to new services
+that set the \code{enabled} parameter to \code{true} in the
+\code{ServiceConnectConfiguration}. You can set the namespace of each service
+individually in the \code{ServiceConnectConfiguration} to override this
+default parameter.
+
+Tasks that run in a namespace can use short names to connect to services
+in the namespace. Tasks can connect to services across all of the
+clusters in the namespace. Tasks connect through a managed proxy
+container that collects logs and metrics for increased visibility. Only
+the tasks that Amazon ECS services create are supported with Service
+Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
 Updates the cluster.

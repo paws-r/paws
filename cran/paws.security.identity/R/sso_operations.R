@@ -12,12 +12,11 @@ NULL
 #' See [https://paws-r.github.io/docs/sso/get_role_credentials.html](https://paws-r.github.io/docs/sso/get_role_credentials.html) for full documentation.
 #'
 #' @param roleName &#91;required&#93; The friendly name of the role that is assigned to the user.
-#' @param accountId &#91;required&#93; The identifier for the Amazon Web Services account that is assigned to
-#' the user.
+#' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
+#' in the *IAM Identity Center OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -39,11 +38,10 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 }
 .sso$operations$get_role_credentials <- sso_get_role_credentials
 
-#' Lists all roles that are assigned to the user for a given Amazon Web
-#' Services account
+#' Lists all roles that are assigned to the user for a given AWS account
 #'
 #' @description
-#' Lists all roles that are assigned to the user for a given Amazon Web Services account.
+#' Lists all roles that are assigned to the user for a given AWS account.
 #'
 #' See [https://paws-r.github.io/docs/sso/list_account_roles.html](https://paws-r.github.io/docs/sso/list_account_roles.html) for full documentation.
 #'
@@ -53,9 +51,8 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
-#' @param accountId &#91;required&#93; The identifier for the Amazon Web Services account that is assigned to
-#' the user.
+#' in the *IAM Identity Center OIDC API Reference Guide*.
+#' @param accountId &#91;required&#93; The identifier for the AWS account that is assigned to the user.
 #'
 #' @keywords internal
 #'
@@ -77,10 +74,10 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 }
 .sso$operations$list_account_roles <- sso_list_account_roles
 
-#' Lists all Amazon Web Services accounts assigned to the user
+#' Lists all AWS accounts assigned to the user
 #'
 #' @description
-#' Lists all Amazon Web Services accounts assigned to the user. These Amazon Web Services accounts are assigned by the administrator of the account. For more information, see [Assign User Access](https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers) in the *Amazon Web Services SSO User Guide*. This operation returns a paginated response.
+#' Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of the account. For more information, see [Assign User Access](https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers) in the *IAM Identity Center User Guide*. This operation returns a paginated response.
 #'
 #' See [https://paws-r.github.io/docs/sso/list_accounts.html](https://paws-r.github.io/docs/sso/list_accounts.html) for full documentation.
 #'
@@ -90,7 +87,7 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
+#' in the *IAM Identity Center OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'
@@ -113,18 +110,18 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 .sso$operations$list_accounts <- sso_list_accounts
 
 #' Removes the locally stored SSO tokens from the client-side cache and
-#' sends an API call to the Amazon Web Services SSO service to invalidate
-#' the corresponding server-side Amazon Web Services SSO sign in session
+#' sends an API call to the IAM Identity Center service to invalidate the
+#' corresponding server-side IAM Identity Center sign in session
 #'
 #' @description
-#' Removes the locally stored SSO tokens from the client-side cache and sends an API call to the Amazon Web Services SSO service to invalidate the corresponding server-side Amazon Web Services SSO sign in session.
+#' Removes the locally stored SSO tokens from the client-side cache and sends an API call to the IAM Identity Center service to invalidate the corresponding server-side IAM Identity Center sign in session.
 #'
 #' See [https://paws-r.github.io/docs/sso/logout.html](https://paws-r.github.io/docs/sso/logout.html) for full documentation.
 #'
 #' @param accessToken &#91;required&#93; The token issued by the `CreateToken` API call. For more information,
 #' see
 #' [CreateToken](https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html)
-#' in the *Amazon Web Services SSO OIDC API Reference Guide*.
+#' in the *IAM Identity Center OIDC API Reference Guide*.
 #'
 #' @keywords internal
 #'

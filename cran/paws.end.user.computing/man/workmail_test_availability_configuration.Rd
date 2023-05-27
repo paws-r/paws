@@ -13,7 +13,7 @@ workmail_test_availability_configuration(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization where the availability provider will be
+\item{OrganizationId}{[required] The WorkMail organization where the availability provider will be
 tested.}
 
 \item{DomainName}{The domain to which the provider applies. If this field is provided, a

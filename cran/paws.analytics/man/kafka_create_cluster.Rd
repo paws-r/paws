@@ -15,7 +15,8 @@ kafka_create_cluster(
   KafkaVersion,
   LoggingInfo = NULL,
   NumberOfBrokerNodes,
-  Tags = NULL
+  Tags = NULL,
+  StorageMode = NULL
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ PER_TOPIC_PER_PARTITION.}
 \item{NumberOfBrokerNodes}{[required] The number of broker nodes in the cluster.}
 
 \item{Tags}{Create tags when creating the cluster.}
+
+\item{StorageMode}{This controls storage mode for supported storage tiers.}
 }
 \description{
 Creates a new MSK cluster.

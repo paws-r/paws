@@ -15,9 +15,9 @@ transcribeservice_create_medical_vocabulary(
 \item{VocabularyName}{[required] A unique name, chosen by you, for your new custom medical vocabulary.
 
 This name is case sensitive, cannot contain spaces, and must be unique
-within an Amazon Web Services account. If you try to create a new
-medical vocabulary with the same name as an existing medical vocabulary,
-you get a \code{ConflictException} error.}
+within an Amazon Web Services account. If you try to create a new custom
+medical vocabulary with the same name as an existing custom medical
+vocabulary, you get a \code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code that represents the language of the entries in your
 custom vocabulary. US English (\code{en-US}) is the only language supported
@@ -30,7 +30,8 @@ Region as the resource you're calling.
 Here's an example URI path: \verb{s3://DOC-EXAMPLE-BUCKET/my-vocab-file.txt}}
 
 \item{Tags}{Adds one or more custom tags, each in the form of a key:value pair, to a
-new medical vocabulary at the time you create this new vocabulary.
+new custom medical vocabulary at the time you create this new custom
+vocabulary.
 
 To learn more about using tags with Amazon Transcribe, refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/tagging.html}{Tagging resources}.}
 }

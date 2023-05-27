@@ -3,6 +3,371 @@
 #' @include identitystore_service.R
 NULL
 
+#' Creates a group within the specified identity store
+#'
+#' @description
+#' Creates a group within the specified identity store.
+#'
+#' @usage
+#' identitystore_create_group(IdentityStoreId, DisplayName, Description)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param DisplayName A string containing the name of the group. This value is commonly
+#' displayed when the group is referenced. "Administrator" and
+#' "AWSAdministrators" are reserved names and can't be used for users or
+#' groups.
+#' @param Description A string containing the description of the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string",
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_group(
+#'   IdentityStoreId = "string",
+#'   DisplayName = "string",
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_create_group
+#'
+#' @aliases identitystore_create_group
+identitystore_create_group <- function(IdentityStoreId, DisplayName = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "CreateGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$create_group_input(IdentityStoreId = IdentityStoreId, DisplayName = DisplayName, Description = Description)
+  output <- .identitystore$create_group_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$create_group <- identitystore_create_group
+
+#' Creates a relationship between a member and a group
+#'
+#' @description
+#' Creates a relationship between a member and a group. The following
+#' identifiers must be specified: `GroupId`, `IdentityStoreId`, and
+#' `MemberId`.
+#'
+#' @usage
+#' identitystore_create_group_membership(IdentityStoreId, GroupId,
+#'   MemberId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the
+#' `UserID` field to the specific identifier for a user indicates that the
+#' user is a member of the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MembershipId = "string",
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_group_membership(
+#'   IdentityStoreId = "string",
+#'   GroupId = "string",
+#'   MemberId = list(
+#'     UserId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_create_group_membership
+#'
+#' @aliases identitystore_create_group_membership
+identitystore_create_group_membership <- function(IdentityStoreId, GroupId, MemberId) {
+  op <- new_operation(
+    name = "CreateGroupMembership",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$create_group_membership_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
+  output <- .identitystore$create_group_membership_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$create_group_membership <- identitystore_create_group_membership
+
+#' Creates a user within the specified identity store
+#'
+#' @description
+#' Creates a user within the specified identity store.
+#'
+#' @usage
+#' identitystore_create_user(IdentityStoreId, UserName, Name, DisplayName,
+#'   NickName, ProfileUrl, Emails, Addresses, PhoneNumbers, UserType, Title,
+#'   PreferredLanguage, Locale, Timezone)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param UserName A unique string used to identify the user. The length limit is 128
+#' characters. This value can consist of letters, accented characters,
+#' symbols, numbers, and punctuation. This value is specified at the time
+#' the user is created and stored as an attribute of the user object in the
+#' identity store. "Administrator" and "AWSAdministrators" are reserved
+#' names and can't be used for users or groups.
+#' @param Name An object containing the name of the user.
+#' @param DisplayName A string containing the name of the user. This value is typically
+#' formatted for display when the user is referenced. For example, "John
+#' Doe."
+#' @param NickName A string containing an alternate name for the user.
+#' @param ProfileUrl A string containing a URL that might be associated with the user.
+#' @param Emails A list of `Email` objects containing email addresses associated with the
+#' user.
+#' @param Addresses A list of `Address` objects containing addresses associated with the
+#' user.
+#' @param PhoneNumbers A list of `PhoneNumber` objects containing phone numbers associated with
+#' the user.
+#' @param UserType A string indicating the type of user. Possible values are left
+#' unspecified. The value can vary based on your specific use case.
+#' @param Title A string containing the title of the user. Possible values are left
+#' unspecified. The value can vary based on your specific use case.
+#' @param PreferredLanguage A string containing the preferred language of the user. For example,
+#' "American English" or "en-us."
+#' @param Locale A string containing the geographical region or location of the user.
+#' @param Timezone A string containing the time zone of the user.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserId = "string",
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_user(
+#'   IdentityStoreId = "string",
+#'   UserName = "string",
+#'   Name = list(
+#'     Formatted = "string",
+#'     FamilyName = "string",
+#'     GivenName = "string",
+#'     MiddleName = "string",
+#'     HonorificPrefix = "string",
+#'     HonorificSuffix = "string"
+#'   ),
+#'   DisplayName = "string",
+#'   NickName = "string",
+#'   ProfileUrl = "string",
+#'   Emails = list(
+#'     list(
+#'       Value = "string",
+#'       Type = "string",
+#'       Primary = TRUE|FALSE
+#'     )
+#'   ),
+#'   Addresses = list(
+#'     list(
+#'       StreetAddress = "string",
+#'       Locality = "string",
+#'       Region = "string",
+#'       PostalCode = "string",
+#'       Country = "string",
+#'       Formatted = "string",
+#'       Type = "string",
+#'       Primary = TRUE|FALSE
+#'     )
+#'   ),
+#'   PhoneNumbers = list(
+#'     list(
+#'       Value = "string",
+#'       Type = "string",
+#'       Primary = TRUE|FALSE
+#'     )
+#'   ),
+#'   UserType = "string",
+#'   Title = "string",
+#'   PreferredLanguage = "string",
+#'   Locale = "string",
+#'   Timezone = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_create_user
+#'
+#' @aliases identitystore_create_user
+identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = NULL, DisplayName = NULL, NickName = NULL, ProfileUrl = NULL, Emails = NULL, Addresses = NULL, PhoneNumbers = NULL, UserType = NULL, Title = NULL, PreferredLanguage = NULL, Locale = NULL, Timezone = NULL) {
+  op <- new_operation(
+    name = "CreateUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone)
+  output <- .identitystore$create_user_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$create_user <- identitystore_create_user
+
+#' Delete a group within an identity store given GroupId
+#'
+#' @description
+#' Delete a group within an identity store given `GroupId`.
+#'
+#' @usage
+#' identitystore_delete_group(IdentityStoreId, GroupId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_group(
+#'   IdentityStoreId = "string",
+#'   GroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_delete_group
+#'
+#' @aliases identitystore_delete_group
+identitystore_delete_group <- function(IdentityStoreId, GroupId) {
+  op <- new_operation(
+    name = "DeleteGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$delete_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
+  output <- .identitystore$delete_group_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$delete_group <- identitystore_delete_group
+
+#' Delete a membership within a group given MembershipId
+#'
+#' @description
+#' Delete a membership within a group given `MembershipId`.
+#'
+#' @usage
+#' identitystore_delete_group_membership(IdentityStoreId, MembershipId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param MembershipId &#91;required&#93; The identifier for a `GroupMembership` in an identity store.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_group_membership(
+#'   IdentityStoreId = "string",
+#'   MembershipId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_delete_group_membership
+#'
+#' @aliases identitystore_delete_group_membership
+identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId) {
+  op <- new_operation(
+    name = "DeleteGroupMembership",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$delete_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
+  output <- .identitystore$delete_group_membership_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$delete_group_membership <- identitystore_delete_group_membership
+
+#' Deletes a user within an identity store given UserId
+#'
+#' @description
+#' Deletes a user within an identity store given `UserId`.
+#'
+#' @usage
+#' identitystore_delete_user(IdentityStoreId, UserId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_user(
+#'   IdentityStoreId = "string",
+#'   UserId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_delete_user
+#'
+#' @aliases identitystore_delete_user
+identitystore_delete_user <- function(IdentityStoreId, UserId) {
+  op <- new_operation(
+    name = "DeleteUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$delete_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
+  output <- .identitystore$delete_user_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$delete_user <- identitystore_delete_user
+
 #' Retrieves the group metadata and attributes from GroupId in an identity
 #' store
 #'
@@ -15,7 +380,7 @@ NULL
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
-#' `1234567890` is a randomly generated string that contains number and
+#' `1234567890` is a randomly generated string that contains numbers and
 #' lower case letters. This value is generated at the time that a new
 #' identity store is created.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
@@ -25,7 +390,15 @@ NULL
 #' ```
 #' list(
 #'   GroupId = "string",
-#'   DisplayName = "string"
+#'   DisplayName = "string",
+#'   ExternalIds = list(
+#'     list(
+#'       Issuer = "string",
+#'       Id = "string"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   IdentityStoreId = "string"
 #' )
 #' ```
 #'
@@ -59,19 +432,75 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 }
 .identitystore$operations$describe_group <- identitystore_describe_group
 
-#' Retrieves the user metadata and attributes from UserId in an identity
-#' store
+#' Retrieves membership metadata and attributes from MembershipId in an
+#' identity store
 #'
 #' @description
-#' Retrieves the user metadata and attributes from `UserId` in an identity
-#' store.
+#' Retrieves membership metadata and attributes from `MembershipId` in an
+#' identity store.
+#'
+#' @usage
+#' identitystore_describe_group_membership(IdentityStoreId, MembershipId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param MembershipId &#91;required&#93; The identifier for a `GroupMembership` in an identity store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityStoreId = "string",
+#'   MembershipId = "string",
+#'   GroupId = "string",
+#'   MemberId = list(
+#'     UserId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_group_membership(
+#'   IdentityStoreId = "string",
+#'   MembershipId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_describe_group_membership
+#'
+#' @aliases identitystore_describe_group_membership
+identitystore_describe_group_membership <- function(IdentityStoreId, MembershipId) {
+  op <- new_operation(
+    name = "DescribeGroupMembership",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$describe_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
+  output <- .identitystore$describe_group_membership_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$describe_group_membership <- identitystore_describe_group_membership
+
+#' Retrieves the user metadata and attributes from the UserId in an
+#' identity store
+#'
+#' @description
+#' Retrieves the user metadata and attributes from the `UserId` in an
+#' identity store.
 #'
 #' @usage
 #' identitystore_describe_user(IdentityStoreId, UserId)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
-#' `1234567890` is a randomly generated string that contains number and
+#' `1234567890` is a randomly generated string that contains numbers and
 #' lower case letters. This value is generated at the time that a new
 #' identity store is created.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
@@ -81,7 +510,56 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' ```
 #' list(
 #'   UserName = "string",
-#'   UserId = "string"
+#'   UserId = "string",
+#'   ExternalIds = list(
+#'     list(
+#'       Issuer = "string",
+#'       Id = "string"
+#'     )
+#'   ),
+#'   Name = list(
+#'     Formatted = "string",
+#'     FamilyName = "string",
+#'     GivenName = "string",
+#'     MiddleName = "string",
+#'     HonorificPrefix = "string",
+#'     HonorificSuffix = "string"
+#'   ),
+#'   DisplayName = "string",
+#'   NickName = "string",
+#'   ProfileUrl = "string",
+#'   Emails = list(
+#'     list(
+#'       Value = "string",
+#'       Type = "string",
+#'       Primary = TRUE|FALSE
+#'     )
+#'   ),
+#'   Addresses = list(
+#'     list(
+#'       StreetAddress = "string",
+#'       Locality = "string",
+#'       Region = "string",
+#'       PostalCode = "string",
+#'       Country = "string",
+#'       Formatted = "string",
+#'       Type = "string",
+#'       Primary = TRUE|FALSE
+#'     )
+#'   ),
+#'   PhoneNumbers = list(
+#'     list(
+#'       Value = "string",
+#'       Type = "string",
+#'       Primary = TRUE|FALSE
+#'     )
+#'   ),
+#'   UserType = "string",
+#'   Title = "string",
+#'   PreferredLanguage = "string",
+#'   Locale = "string",
+#'   Timezone = "string",
+#'   IdentityStoreId = "string"
 #' )
 #' ```
 #'
@@ -115,14 +593,420 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 }
 .identitystore$operations$describe_user <- identitystore_describe_user
 
-#' Lists the attribute name and value of the group that you specified in
-#' the search
+#' Retrieves GroupId in an identity store
 #'
 #' @description
-#' Lists the attribute name and value of the group that you specified in
-#' the search. We only support `DisplayName` as a valid filter attribute
-#' path currently, and filter is required. This API returns minimum
-#' attributes, including `GroupId` and group `DisplayName` in the response.
+#' Retrieves `GroupId` in an identity store.
+#'
+#' @usage
+#' identitystore_get_group_id(IdentityStoreId, AlternateIdentifier)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary
+#' identifier. This value can be an identifier from an external identity
+#' provider (IdP) that is associated with the user, the group, or a unique
+#' attribute. For the unique attribute, the only valid path is
+#' `displayName`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupId = "string",
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_group_id(
+#'   IdentityStoreId = "string",
+#'   AlternateIdentifier = list(
+#'     ExternalId = list(
+#'       Issuer = "string",
+#'       Id = "string"
+#'     ),
+#'     UniqueAttribute = list(
+#'       AttributePath = "string",
+#'       AttributeValue = list()
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_get_group_id
+#'
+#' @aliases identitystore_get_group_id
+identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
+  op <- new_operation(
+    name = "GetGroupId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$get_group_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
+  output <- .identitystore$get_group_id_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$get_group_id <- identitystore_get_group_id
+
+#' Retrieves the MembershipId in an identity store
+#'
+#' @description
+#' Retrieves the `MembershipId` in an identity store.
+#'
+#' @usage
+#' identitystore_get_group_membership_id(IdentityStoreId, GroupId,
+#'   MemberId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the
+#' `UserID` field to the specific identifier for a user indicates that the
+#' user is a member of the group.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MembershipId = "string",
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_group_membership_id(
+#'   IdentityStoreId = "string",
+#'   GroupId = "string",
+#'   MemberId = list(
+#'     UserId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_get_group_membership_id
+#'
+#' @aliases identitystore_get_group_membership_id
+identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, MemberId) {
+  op <- new_operation(
+    name = "GetGroupMembershipId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$get_group_membership_id_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
+  output <- .identitystore$get_group_membership_id_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$get_group_membership_id <- identitystore_get_group_membership_id
+
+#' Retrieves the UserId in an identity store
+#'
+#' @description
+#' Retrieves the `UserId` in an identity store.
+#'
+#' @usage
+#' identitystore_get_user_id(IdentityStoreId, AlternateIdentifier)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary
+#' identifier. This value can be an identifier from an external identity
+#' provider (IdP) that is associated with the user, the group, or a unique
+#' attribute. For the unique attribute, the only valid paths are `userName`
+#' and `emails.value`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserId = "string",
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_user_id(
+#'   IdentityStoreId = "string",
+#'   AlternateIdentifier = list(
+#'     ExternalId = list(
+#'       Issuer = "string",
+#'       Id = "string"
+#'     ),
+#'     UniqueAttribute = list(
+#'       AttributePath = "string",
+#'       AttributeValue = list()
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_get_user_id
+#'
+#' @aliases identitystore_get_user_id
+identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
+  op <- new_operation(
+    name = "GetUserId",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$get_user_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
+  output <- .identitystore$get_user_id_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$get_user_id <- identitystore_get_user_id
+
+#' Checks the user's membership in all requested groups and returns if the
+#' member exists in all queried groups
+#'
+#' @description
+#' Checks the user's membership in all requested groups and returns if the
+#' member exists in all queried groups.
+#'
+#' @usage
+#' identitystore_is_member_in_groups(IdentityStoreId, MemberId, GroupIds)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param MemberId &#91;required&#93; An object containing the identifier of a group member.
+#' @param GroupIds &#91;required&#93; A list of identifiers for groups in the identity store.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Results = list(
+#'     list(
+#'       GroupId = "string",
+#'       MemberId = list(
+#'         UserId = "string"
+#'       ),
+#'       MembershipExists = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$is_member_in_groups(
+#'   IdentityStoreId = "string",
+#'   MemberId = list(
+#'     UserId = "string"
+#'   ),
+#'   GroupIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_is_member_in_groups
+#'
+#' @aliases identitystore_is_member_in_groups
+identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupIds) {
+  op <- new_operation(
+    name = "IsMemberInGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$is_member_in_groups_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, GroupIds = GroupIds)
+  output <- .identitystore$is_member_in_groups_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$is_member_in_groups <- identitystore_is_member_in_groups
+
+#' For the specified group in the specified identity store, returns the
+#' list of all GroupMembership objects and returns results in paginated
+#' form
+#'
+#' @description
+#' For the specified group in the specified identity store, returns the
+#' list of all `GroupMembership` objects and returns results in paginated
+#' form.
+#'
+#' @usage
+#' identitystore_list_group_memberships(IdentityStoreId, GroupId,
+#'   MaxResults, NextToken)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' @param MaxResults The maximum number of results to be returned per request. This parameter
+#' is used in all `List` requests to specify how many results to return in
+#' one page.
+#' @param NextToken The pagination token used for the
+#' [`list_users`][identitystore_list_users],
+#' [`list_groups`][identitystore_list_groups] and
+#' [`list_group_memberships`][identitystore_list_group_memberships] API
+#' operations. This value is generated by the identity store service. It is
+#' returned in the API response if the total results are more than the size
+#' of one page. This token is also returned when it is used in the API
+#' request to search for the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupMemberships = list(
+#'     list(
+#'       IdentityStoreId = "string",
+#'       MembershipId = "string",
+#'       GroupId = "string",
+#'       MemberId = list(
+#'         UserId = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_group_memberships(
+#'   IdentityStoreId = "string",
+#'   GroupId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_list_group_memberships
+#'
+#' @aliases identitystore_list_group_memberships
+identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGroupMemberships",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$list_group_memberships_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .identitystore$list_group_memberships_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$list_group_memberships <- identitystore_list_group_memberships
+
+#' For the specified member in the specified identity store, returns the
+#' list of all GroupMembership objects and returns results in paginated
+#' form
+#'
+#' @description
+#' For the specified member in the specified identity store, returns the
+#' list of all `GroupMembership` objects and returns results in paginated
+#' form.
+#'
+#' @usage
+#' identitystore_list_group_memberships_for_member(IdentityStoreId,
+#'   MemberId, MaxResults, NextToken)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the
+#' `UserID` field to the specific identifier for a user indicates that the
+#' user is a member of the group.
+#' @param MaxResults The maximum number of results to be returned per request. This parameter
+#' is used in the [`list_users`][identitystore_list_users] and
+#' [`list_groups`][identitystore_list_groups] requests to specify how many
+#' results to return in one page. The length limit is 50 characters.
+#' @param NextToken The pagination token used for the
+#' [`list_users`][identitystore_list_users],
+#' [`list_groups`][identitystore_list_groups], and
+#' [`list_group_memberships`][identitystore_list_group_memberships] API
+#' operations. This value is generated by the identity store service. It is
+#' returned in the API response if the total results are more than the size
+#' of one page. This token is also returned when it is used in the API
+#' request to search for the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   GroupMemberships = list(
+#'     list(
+#'       IdentityStoreId = "string",
+#'       MembershipId = "string",
+#'       GroupId = "string",
+#'       MemberId = list(
+#'         UserId = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_group_memberships_for_member(
+#'   IdentityStoreId = "string",
+#'   MemberId = list(
+#'     UserId = "string"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_list_group_memberships_for_member
+#'
+#' @aliases identitystore_list_group_memberships_for_member
+identitystore_list_group_memberships_for_member <- function(IdentityStoreId, MemberId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListGroupMembershipsForMember",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$list_group_memberships_for_member_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .identitystore$list_group_memberships_for_member_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$list_group_memberships_for_member <- identitystore_list_group_memberships_for_member
+
+#' Lists all groups in the identity store
+#'
+#' @description
+#' Lists all groups in the identity store. Returns a paginated list of
+#' complete `Group` objects. Filtering for a `Group` by the `DisplayName`
+#' attribute is deprecated. Instead, use the
+#' [`get_group_id`][identitystore_get_group_id] API action.
 #'
 #' @usage
 #' identitystore_list_groups(IdentityStoreId, MaxResults, NextToken,
@@ -130,12 +1014,12 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
-#' `1234567890` is a randomly generated string that contains number and
+#' `1234567890` is a randomly generated string that contains numbers and
 #' lower case letters. This value is generated at the time that a new
 #' identity store is created.
 #' @param MaxResults The maximum number of results to be returned per request. This parameter
 #' is used in the [`list_users`][identitystore_list_users] and
-#' [`list_groups`][identitystore_list_groups] request to specify how many
+#' [`list_groups`][identitystore_list_groups] requests to specify how many
 #' results to return in one page. The length limit is 50 characters.
 #' @param NextToken The pagination token used for the
 #' [`list_users`][identitystore_list_users] and
@@ -146,7 +1030,7 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #' the next page.
 #' @param Filters A list of `Filter` objects, which is used in the
 #' [`list_users`][identitystore_list_users] and
-#' [`list_groups`][identitystore_list_groups] request.
+#' [`list_groups`][identitystore_list_groups] requests.
 #'
 #' @return
 #' A list with the following syntax:
@@ -155,7 +1039,15 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #'   Groups = list(
 #'     list(
 #'       GroupId = "string",
-#'       DisplayName = "string"
+#'       DisplayName = "string",
+#'       ExternalIds = list(
+#'         list(
+#'           Issuer = "string",
+#'           Id = "string"
+#'         )
+#'       ),
+#'       Description = "string",
+#'       IdentityStoreId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -199,14 +1091,13 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 }
 .identitystore$operations$list_groups <- identitystore_list_groups
 
-#' Lists the attribute name and value of the user that you specified in the
-#' search
+#' Lists all users in the identity store
 #'
 #' @description
-#' Lists the attribute name and value of the user that you specified in the
-#' search. We only support `UserName` as a valid filter attribute path
-#' currently, and filter is required. This API returns minimum attributes,
-#' including `UserId` and `UserName` in the response.
+#' Lists all users in the identity store. Returns a paginated list of
+#' complete `User` objects. Filtering for a `User` by the `UserName`
+#' attribute is deprecated. Instead, use the
+#' [`get_user_id`][identitystore_get_user_id] API action.
 #'
 #' @usage
 #' identitystore_list_users(IdentityStoreId, MaxResults, NextToken,
@@ -214,12 +1105,12 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as
 #' `d-1234567890`. In this example, `d-` is a fixed prefix, and
-#' `1234567890` is a randomly generated string that contains number and
+#' `1234567890` is a randomly generated string that contains numbers and
 #' lower case letters. This value is generated at the time that a new
 #' identity store is created.
 #' @param MaxResults The maximum number of results to be returned per request. This parameter
 #' is used in the [`list_users`][identitystore_list_users] and
-#' [`list_groups`][identitystore_list_groups] request to specify how many
+#' [`list_groups`][identitystore_list_groups] requests to specify how many
 #' results to return in one page. The length limit is 50 characters.
 #' @param NextToken The pagination token used for the
 #' [`list_users`][identitystore_list_users] and
@@ -230,7 +1121,7 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' the next page.
 #' @param Filters A list of `Filter` objects, which is used in the
 #' [`list_users`][identitystore_list_users] and
-#' [`list_groups`][identitystore_list_groups] request.
+#' [`list_groups`][identitystore_list_groups] requests.
 #'
 #' @return
 #' A list with the following syntax:
@@ -239,7 +1130,56 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #'   Users = list(
 #'     list(
 #'       UserName = "string",
-#'       UserId = "string"
+#'       UserId = "string",
+#'       ExternalIds = list(
+#'         list(
+#'           Issuer = "string",
+#'           Id = "string"
+#'         )
+#'       ),
+#'       Name = list(
+#'         Formatted = "string",
+#'         FamilyName = "string",
+#'         GivenName = "string",
+#'         MiddleName = "string",
+#'         HonorificPrefix = "string",
+#'         HonorificSuffix = "string"
+#'       ),
+#'       DisplayName = "string",
+#'       NickName = "string",
+#'       ProfileUrl = "string",
+#'       Emails = list(
+#'         list(
+#'           Value = "string",
+#'           Type = "string",
+#'           Primary = TRUE|FALSE
+#'         )
+#'       ),
+#'       Addresses = list(
+#'         list(
+#'           StreetAddress = "string",
+#'           Locality = "string",
+#'           Region = "string",
+#'           PostalCode = "string",
+#'           Country = "string",
+#'           Formatted = "string",
+#'           Type = "string",
+#'           Primary = TRUE|FALSE
+#'         )
+#'       ),
+#'       PhoneNumbers = list(
+#'         list(
+#'           Value = "string",
+#'           Type = "string",
+#'           Primary = TRUE|FALSE
+#'         )
+#'       ),
+#'       UserType = "string",
+#'       Title = "string",
+#'       PreferredLanguage = "string",
+#'       Locale = "string",
+#'       Timezone = "string",
+#'       IdentityStoreId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -282,3 +1222,111 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
   return(response)
 }
 .identitystore$operations$list_users <- identitystore_list_users
+
+#' For the specified group in the specified identity store, updates the
+#' group metadata and attributes
+#'
+#' @description
+#' For the specified group in the specified identity store, updates the
+#' group metadata and attributes.
+#'
+#' @usage
+#' identitystore_update_group(IdentityStoreId, GroupId, Operations)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' @param Operations &#91;required&#93; A list of `AttributeOperation` objects to apply to the requested group.
+#' These operations might add, replace, or remove an attribute.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_group(
+#'   IdentityStoreId = "string",
+#'   GroupId = "string",
+#'   Operations = list(
+#'     list(
+#'       AttributePath = "string",
+#'       AttributeValue = list()
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_update_group
+#'
+#' @aliases identitystore_update_group
+identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
+  op <- new_operation(
+    name = "UpdateGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$update_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, Operations = Operations)
+  output <- .identitystore$update_group_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$update_group <- identitystore_update_group
+
+#' For the specified user in the specified identity store, updates the user
+#' metadata and attributes
+#'
+#' @description
+#' For the specified user in the specified identity store, updates the user
+#' metadata and attributes.
+#'
+#' @usage
+#' identitystore_update_user(IdentityStoreId, UserId, Operations)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#' @param Operations &#91;required&#93; A list of `AttributeOperation` objects to apply to the requested user.
+#' These operations might add, replace, or remove an attribute.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_user(
+#'   IdentityStoreId = "string",
+#'   UserId = "string",
+#'   Operations = list(
+#'     list(
+#'       AttributePath = "string",
+#'       AttributeValue = list()
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_update_user
+#'
+#' @aliases identitystore_update_user
+identitystore_update_user <- function(IdentityStoreId, UserId, Operations) {
+  op <- new_operation(
+    name = "UpdateUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .identitystore$update_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Operations = Operations)
+  output <- .identitystore$update_user_output()
+  config <- get_config()
+  svc <- .identitystore$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$update_user <- identitystore_update_user

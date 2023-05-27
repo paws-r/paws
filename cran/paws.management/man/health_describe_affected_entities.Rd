@@ -29,7 +29,7 @@ returned, the response does not contain a pagination token value.}
 inclusive.}
 }
 \description{
-Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Services service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
+Returns a list of entities that have been affected by the specified events, based on the specified filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service. Events that have impact beyond that of the affected entities, or where the extent of impact is unknown, include at least one entity indicating this.
 
 See \url{https://paws-r.github.io/docs/health/describe_affected_entities.html} for full documentation.
 }

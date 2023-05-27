@@ -38,26 +38,26 @@ NULL
 #' (see [Getting Started with Amazon
 #' IVS](https://docs.aws.amazon.com/ivs/latest/userguide/getting-started.html)):
 #' 
-#' -   Channel — Stores configuration data related to your live stream. You
-#'     first create a channel and then use the channel’s stream key to
+#' -   **Channel** — Stores configuration data related to your live stream.
+#'     You first create a channel and then use the channel’s stream key to
 #'     start your live stream. See the Channel endpoints for more
 #'     information.
 #' 
-#' -   Stream key — An identifier assigned by Amazon IVS when you create a
-#'     channel, which is then used to authorize streaming. See the
+#' -   **Stream key** — An identifier assigned by Amazon IVS when you
+#'     create a channel, which is then used to authorize streaming. See the
 #'     StreamKey endpoints for more information. *Treat the stream key like
 #'     a secret, since it allows anyone to stream to the channel.*
 #' 
-#' -   Playback key pair — Video playback may be restricted using
+#' -   **Playback key pair** — Video playback may be restricted using
 #'     playback-authorization tokens, which use public-key encryption. A
 #'     playback key pair is the public-private pair of keys used to sign
 #'     and validate the playback-authorization token. See the
 #'     PlaybackKeyPair endpoints for more information.
 #' 
-#' -   Recording configuration — Stores configuration related to recording
-#'     a live stream and where to store the recorded content. Multiple
-#'     channels can reference the same recording configuration. See the
-#'     Recording Configuration endpoints for more information.
+#' -   **Recording configuration** — Stores configuration related to
+#'     recording a live stream and where to store the recorded content.
+#'     Multiple channels can reference the same recording configuration.
+#'     See the Recording Configuration endpoints for more information.
 #' 
 #' **Tagging**
 #' 
@@ -65,8 +65,10 @@ NULL
 #' resource. A tag comprises a *key* and a *value*, both set by you. For
 #' example, you might set a tag as `topic:nature` to label a particular
 #' video category. See [Tagging Amazon Web Services
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' for more information, including restrictions that apply to tags.
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #' 
 #' Tags can help you identify and organize your Amazon Web Services
 #' resources. For example, you can use the same tag for different resources
@@ -90,8 +92,9 @@ NULL
 #' -   *Authentication* is about verifying identity. You need to be
 #'     authenticated to sign Amazon IVS API requests.
 #' 
-#' -   *Authorization* is about granting permissions. You need to be
-#'     authorized to view [Amazon IVS private
+#' -   *Authorization* is about granting permissions. Your IAM roles need
+#'     to have permissions for Amazon IVS API requests. In addition,
+#'     authorization is needed to view [Amazon IVS private
 #'     channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html).
 #'     (Private channels are channels that are enabled for "playback
 #'     authorization.")
@@ -106,8 +109,8 @@ NULL
 #' 
 #' You generate a signature using valid Amazon Web Services credentials
 #' that have permission to perform the requested action. For example, you
-#' must sign PutMetadata requests with a signature generated from an IAM
-#' user account that has the `ivs:PutMetadata` permission.
+#' must sign PutMetadata requests with a signature generated from a user
+#' account that has the `ivs:PutMetadata` permission.
 #' 
 #' For more information:
 #' 
@@ -120,13 +123,21 @@ NULL
 #'     Management](https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
 #' 
+#' **Amazon Resource Names (ARNs)**
+#' 
+#' ARNs uniquely identify AWS resources. An ARN is required when you need
+#' to specify a resource unambiguously across all of AWS, such as in IAM
+#' policies and API calls. For more information, see [Amazon Resource
+#' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the *AWS General Reference*.
+#' 
 #' **Channel Endpoints**
 #' 
 #' -   [`create_channel`][ivs_create_channel] — Creates a new channel and
 #'     an associated stream key to start streaming.
 #' 
 #' -   [`get_channel`][ivs_get_channel] — Gets the channel configuration
-#'     for the specified channel ARN (Amazon Resource Name).
+#'     for the specified channel ARN.
 #' 
 #' -   [`batch_get_channel`][ivs_batch_get_channel] — Performs
 #'     [`get_channel`][ivs_get_channel] on multiple ARNs simultaneously.

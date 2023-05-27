@@ -2,16 +2,17 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_get_compatible_versions}
 \alias{opensearchservice_get_compatible_versions}
-\title{Returns a list of upgrade-compatible versions of
-OpenSearch/Elasticsearch}
+\title{Returns a map of OpenSearch or Elasticsearch versions and the versions
+you can upgrade them to}
 \usage{
 opensearchservice_get_compatible_versions(DomainName = NULL)
 }
 \arguments{
-\item{DomainName}{}
+\item{DomainName}{The name of an existing domain. Provide this parameter to limit the
+results to a single domain.}
 }
 \description{
-Returns a list of upgrade-compatible versions of OpenSearch/Elasticsearch. You can optionally pass a \code{DomainName} to get all upgrade-compatible versions of OpenSearch/Elasticsearch for that specific domain.
+Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/get_compatible_versions.html} for full documentation.
 }

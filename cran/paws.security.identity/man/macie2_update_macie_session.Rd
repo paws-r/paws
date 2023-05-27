@@ -10,7 +10,7 @@ macie2_update_macie_session(findingPublishingFrequency = NULL, status = NULL)
 \arguments{
 \item{findingPublishingFrequency}{Specifies how often to publish updates to policy findings for the
 account. This includes publishing updates to Security Hub and Amazon
-EventBridge (formerly called Amazon CloudWatch Events).}
+EventBridge (formerly Amazon CloudWatch Events).}
 
 \item{status}{Specifies a new status for the account. Valid values are: ENABLED,
 resume all Amazon Macie activities for the account; and, PAUSED, suspend

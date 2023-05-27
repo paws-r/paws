@@ -14,7 +14,6 @@ servicecatalog_list_budgets_for_resource(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

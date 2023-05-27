@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_untag_resource}
 \alias{codepipeline_untag_resource}
-\title{Removes tags from an AWS resource}
+\title{Removes tags from an Amazon Web Services resource}
 \usage{
 codepipeline_untag_resource(resourceArn, tagKeys)
 }
@@ -12,7 +12,7 @@ codepipeline_untag_resource(resourceArn, tagKeys)
 \item{tagKeys}{[required] The list of keys for the tags to be removed from the resource.}
 }
 \description{
-Removes tags from an AWS resource.
+Removes tags from an Amazon Web Services resource.
 
 See \url{https://paws-r.github.io/docs/codepipeline/untag_resource.html} for full documentation.
 }

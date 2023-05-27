@@ -5,10 +5,15 @@
 \title{Updates the shard count of the specified stream to the specified number
 of shards}
 \usage{
-kinesis_update_shard_count(StreamName, TargetShardCount, ScalingType)
+kinesis_update_shard_count(
+  StreamName = NULL,
+  TargetShardCount,
+  ScalingType,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream.}
+\item{StreamName}{The name of the stream.}
 
 \item{TargetShardCount}{[required] The new number of shards. This value has the following default limits.
 By default, you cannot do the following:
@@ -24,9 +29,11 @@ value to less than 10000 shards.
 }}
 
 \item{ScalingType}{[required] The scaling type. Uniform scaling creates shards of equal size.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
-Updates the shard count of the specified stream to the specified number of shards.
+Updates the shard count of the specified stream to the specified number of shards. This API is only supported for the data streams with the provisioned capacity mode.
 
 See \url{https://paws-r.github.io/docs/kinesis/update_shard_count.html} for full documentation.
 }

@@ -18,8 +18,8 @@ quicksight_create_iam_policy_assignment(
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account where you want to assign an
 IAM policy to Amazon QuickSight users or groups.}
 
-\item{AssignmentName}{[required] The name of the assignment, also called a rule. It must be unique within
-an Amazon Web Services account.}
+\item{AssignmentName}{[required] The name of the assignment, also called a rule. The name must be unique
+within the Amazon Web Services account.}
 
 \item{AssignmentStatus}{[required] The status of the assignment. Possible values are as follows:
 \itemize{

@@ -10,7 +10,7 @@ ssmincidents_untag_resource(resourceArn, tagKeys)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the response plan you're removing a
 tag from.}
 
-\item{tagKeys}{[required] The name of the tag you're removing from the response plan.}
+\item{tagKeys}{[required] The name of the tag to remove from the response plan.}
 }
 \description{
 Removes a tag from a resource.

@@ -15,7 +15,8 @@ lexmodelsv2_update_slot(
   botVersion,
   localeId,
   intentId,
-  multipleValuesSetting = NULL
+  multipleValuesSetting = NULL,
+  subSlotSetting = NULL
 )
 }
 \arguments{
@@ -49,6 +50,9 @@ this value to \code{true} in any other locale, Amazon Lex throws a
 \code{ValidationException}.
 
 If the \code{multipleValuesSetting} is not set, the default value is \code{false}.}
+
+\item{subSlotSetting}{Specifications for the constituent sub slots and the expression for the
+composite slot.}
 }
 \description{
 Updates the settings for a slot.

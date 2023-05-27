@@ -39,11 +39,11 @@ automatically aggregate findings from new Regions.
 }}
 
 \item{Regions}{If \code{RegionLinkingMode} is \code{ALL_REGIONS_EXCEPT_SPECIFIED}, then this is a
-comma-separated list of Regions that do not aggregate findings to the
+space-separated list of Regions that do not aggregate findings to the
 aggregation Region.
 
 If \code{RegionLinkingMode} is \code{SPECIFIED_REGIONS}, then this is a
-comma-separated list of Regions that do aggregate findings to the
+space-separated list of Regions that do aggregate findings to the
 aggregation Region.}
 }
 \description{

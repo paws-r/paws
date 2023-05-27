@@ -2,7 +2,7 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_create_app}
 \alias{resiliencehub_create_app}
-\title{Creates a Resilience Hub application}
+\title{Creates an Resilience Hub application}
 \usage{
 resiliencehub_create_app(
   assessmentSchedule = NULL,
@@ -27,14 +27,14 @@ the same client token for other API requests.}
 \item{policyArn}{The Amazon Resource Name (ARN) of the resiliency policy. The format for
 this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{tags}{The tags assigned to the resource. A tag is a label that you assign to
 an Amazon Web Services resource. Each tag consists of a key/value pair.}
 }
 \description{
-Creates a Resilience Hub application. A Resilience Hub application is a collection of Amazon Web Services resources structured to prevent and recover Amazon Web Services application disruptions. To describe a Resilience Hub application, you provide an application name, resources from one or more–up to five–CloudFormation stacks, and an appropriate resiliency policy.
+Creates an Resilience Hub application. An Resilience Hub application is a collection of Amazon Web Services resources structured to prevent and recover Amazon Web Services application disruptions. To describe an Resilience Hub application, you provide an application name, resources from one or more CloudFormation stacks, Resource Groups, Terraform state files, AppRegistry applications, and an appropriate resiliency policy. For more information about the number of resources supported per application, see \href{https://docs.aws.amazon.com/general/latest/gr/resiliencehub.html#limits_resiliencehub}{Service Quotas}.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/create_app.html} for full documentation.
 }

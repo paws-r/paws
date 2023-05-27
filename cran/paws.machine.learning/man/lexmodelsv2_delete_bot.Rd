@@ -9,8 +9,11 @@ lexmodelsv2_delete_bot(botId, skipResourceInUseCheck = NULL)
 \arguments{
 \item{botId}{[required] The identifier of the bot to delete.}
 
-\item{skipResourceInUseCheck}{When \code{true}, Amazon Lex doesn't check to see if another resource, such
-as an alias, is using the bot before it is deleted.}
+\item{skipResourceInUseCheck}{By default, Amazon Lex checks if any other resource, such as an alias or
+bot network, is using the bot version before it is deleted and throws a
+\code{ResourceInUseException} exception if the bot is being used by another
+resource. Set this parameter to \code{true} to skip this check and remove the
+bot even if it is being used by another resource.}
 }
 \description{
 Deletes all versions of a bot, including the \code{Draft} version. To delete a specific version, use the \code{\link[=lexmodelsv2_delete_bot_version]{delete_bot_version}} operation.

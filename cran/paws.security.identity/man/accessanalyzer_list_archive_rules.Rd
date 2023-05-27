@@ -6,16 +6,16 @@
 \usage{
 accessanalyzer_list_archive_rules(
   analyzerName,
-  maxResults = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  maxResults = NULL
 )
 }
 \arguments{
 \item{analyzerName}{[required] The name of the analyzer to retrieve rules from.}
 
-\item{maxResults}{The maximum number of results to return in the request.}
-
 \item{nextToken}{A token used for pagination of results returned.}
+
+\item{maxResults}{The maximum number of results to return in the request.}
 }
 \description{
 Retrieves a list of archive rules created for the specified analyzer.

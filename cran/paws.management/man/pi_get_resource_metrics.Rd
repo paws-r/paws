@@ -13,7 +13,8 @@ pi_get_resource_metrics(
   EndTime,
   PeriodInSeconds = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  PeriodAlignment = NULL
 )
 }
 \arguments{
@@ -74,6 +75,9 @@ included in the response so that the remaining results can be retrieved.}
 \item{NextToken}{An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 token, up to the value specified by \code{MaxRecords}.}
+
+\item{PeriodAlignment}{The returned timestamp which is the start or end time of the time
+periods. The default value is \code{END_TIME}.}
 }
 \description{
 Retrieve Performance Insights metrics for a set of data sources over a time period. You can provide specific dimension groups and dimensions, and provide aggregation and filtering criteria for each group.

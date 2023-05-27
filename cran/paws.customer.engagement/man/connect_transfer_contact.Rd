@@ -15,8 +15,8 @@ connect_transfer_contact(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactId}{[required] The identifier of the contact in this instance of Amazon Connect.}
 
@@ -24,13 +24,15 @@ instanceId in the ARN of the instance.}
 
 \item{UserId}{The identifier for the user.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow.}
+\item{ContactFlowId}{[required] The identifier of the flow.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
-Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created. You can transfer a contact to another queue by providing the contact flow which orchestrates the contact to the destination queue. This gives you more control over contact handling and helps you adhere to the service level agreement (SLA) guaranteed to your customers.
+Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created. You can transfer a contact to another queue by providing the flow which orchestrates the contact to the destination queue. This gives you more control over contact handling and helps you adhere to the service level agreement (SLA) guaranteed to your customers.
 
 See \url{https://paws-r.github.io/docs/connect/transfer_contact.html} for full documentation.
 }

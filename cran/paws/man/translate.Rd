@@ -28,8 +28,8 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Provides translation between one source language and another of the same
-set of languages.
+Provides translation of the input content from the source language to
+the target language.
 }
 \section{Service syntax}{
 
@@ -67,11 +67,15 @@ set of languages.
 \link[paws.machine.learning:translate_import_terminology]{import_terminology} \tab Creates or updates a custom terminology, depending on whether one already exists for the given terminology name\cr
 \link[paws.machine.learning:translate_list_languages]{list_languages} \tab Provides a list of languages (RFC-5646 codes and names) that Amazon Translate supports\cr
 \link[paws.machine.learning:translate_list_parallel_data]{list_parallel_data} \tab Provides a list of your parallel data resources in Amazon Translate\cr
+\link[paws.machine.learning:translate_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags associated with a given Amazon Translate resource\cr
 \link[paws.machine.learning:translate_list_terminologies]{list_terminologies} \tab Provides a list of custom terminologies associated with your account\cr
 \link[paws.machine.learning:translate_list_text_translation_jobs]{list_text_translation_jobs} \tab Gets a list of the batch translation jobs that you have submitted\cr
 \link[paws.machine.learning:translate_start_text_translation_job]{start_text_translation_job} \tab Starts an asynchronous batch translation job\cr
 \link[paws.machine.learning:translate_stop_text_translation_job]{stop_text_translation_job} \tab Stops an asynchronous batch translation job that is in progress\cr
+\link[paws.machine.learning:translate_tag_resource]{tag_resource} \tab Associates a specific tag with a resource\cr
+\link[paws.machine.learning:translate_translate_document]{translate_document} \tab Translates the input document from the source language to the target language\cr
 \link[paws.machine.learning:translate_translate_text]{translate_text} \tab Translates input text from the source language to the target language\cr
+\link[paws.machine.learning:translate_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Translate resource\cr
 \link[paws.machine.learning:translate_update_parallel_data]{update_parallel_data} \tab Updates a previously created parallel data resource by importing a new input file from Amazon S3
 }
 }

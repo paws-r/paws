@@ -15,12 +15,15 @@ connect_create_vocabulary(
 }
 \arguments{
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If a create request is received more than
-once with same client token, subsequent requests return the previous
-response without creating a vocabulary again.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.
+If a create request is received more than once with same client token,
+subsequent requests return the previous response without creating a
+vocabulary again.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{VocabularyName}{[required] A unique name of the custom vocabulary.}
 
@@ -33,7 +36,8 @@ described with \code{Phrase}, \code{IPA}, \code{SoundsLike}, and \code{DisplayAs
 Separate the fields with TAB characters. The size limit is 50KB. For
 more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#create-vocabulary-table}{Create a custom vocabulary using a table}.}
 
-\item{Tags}{The tags used to organize, track, or control access for this resource.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Amazon Connect uses the default vocabulary in post-call and real-time contact analysis sessions for that language.

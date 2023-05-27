@@ -8,7 +8,8 @@ guardduty_update_detector(
   DetectorId,
   Enable = NULL,
   FindingPublishingFrequency = NULL,
-  DataSources = NULL
+  DataSources = NULL,
+  Features = NULL
 )
 }
 \arguments{
@@ -19,7 +20,13 @@ guardduty_update_detector(
 \item{FindingPublishingFrequency}{An enum value that specifies how frequently findings are exported, such
 as to CloudWatch Events.}
 
-\item{DataSources}{Describes which data sources will be updated.}
+\item{DataSources}{Describes which data sources will be updated.
+
+There might be regional differences because some data sources might not
+be available in all the Amazon Web Services Regions where GuardDuty is
+presently supported. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html}{Regions and endpoints}.}
+
+\item{Features}{Provides the features that will be updated for the detector.}
 }
 \description{
 Updates the Amazon GuardDuty detector specified by the detectorId.

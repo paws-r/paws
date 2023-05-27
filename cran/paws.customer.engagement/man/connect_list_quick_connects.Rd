@@ -13,14 +13,15 @@ connect_list_quick_connects(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of
 results.}
 
-\item{MaxResults}{The maximum number of results to return per page.}
+\item{MaxResults}{The maximum number of results to return per page. The default MaxResult
+size is 100.}
 
 \item{QuickConnectTypes}{The type of quick connect. In the Amazon Connect console, when you
 create a quick connect, you are prompted to assign one of the following

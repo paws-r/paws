@@ -20,7 +20,7 @@ that are found in policies attached to that entity. Note that all
 parameters are shown in unencoded form here for clarity, but must be URL
 encoded to be included as a part of a real HTML request.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{PolicyInputList}{An optional list of additional policies for which you want the list of

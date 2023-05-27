@@ -2,7 +2,7 @@
 % Please edit documentation in R/timestreamwrite_operations.R
 \name{timestreamwrite_list_tags_for_resource}
 \alias{timestreamwrite_list_tags_for_resource}
-\title{List all tags on a Timestream resource}
+\title{Lists all tags on a Timestream resource}
 \usage{
 timestreamwrite_list_tags_for_resource(ResourceARN)
 }
@@ -11,7 +11,7 @@ timestreamwrite_list_tags_for_resource(ResourceARN)
 Resource Name (ARN).}
 }
 \description{
-List all tags on a Timestream resource.
+Lists all tags on a Timestream resource.
 
 See \url{https://paws-r.github.io/docs/timestreamwrite/list_tags_for_resource.html} for full documentation.
 }

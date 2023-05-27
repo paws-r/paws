@@ -15,7 +15,7 @@ NULL
 #' @param Tags Creates tags associated with the access point. Each tag is a key-value
 #' pair, each key must be unique. For more information, see [Tagging Amazon
 #' Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that the access point provides access to.
 #' @param PosixUser The operating system user and group applied to all file system requests
@@ -100,14 +100,14 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' 
 #' EFS accepts only symmetric KMS keys. You cannot use asymmetric KMS keys
 #' with Amazon EFS file systems.
-#' @param ThroughputMode Specifies the throughput mode for the file system, either `bursting` or
-#' `provisioned`. If you set `ThroughputMode` to `provisioned`, you must
-#' also set a value for `ProvisionedThroughputInMibps`. After you create
-#' the file system, you can decrease your file system's throughput in
-#' Provisioned Throughput mode or change between the throughput modes, as
-#' long as it’s been more than 24 hours since the last decrease or
-#' throughput mode change. For more information, see [Specifying throughput
-#' with provisioned
+#' @param ThroughputMode Specifies the throughput mode for the file system. The mode can be
+#' `bursting`, `provisioned`, or `elastic`. If you set `ThroughputMode` to
+#' `provisioned`, you must also set a value for
+#' `ProvisionedThroughputInMibps`. After you create the file system, you
+#' can decrease your file system's throughput in Provisioned Throughput
+#' mode or change between the throughput modes, with certain time
+#' restrictions. For more information, see [Specifying throughput with
+#' provisioned
 #' mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
 #' in the *Amazon EFS User Guide*.
 #' 
@@ -146,7 +146,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' is a user-defined key-value pair. Name your file system on creation by
 #' including a `"Key":"Name","Value":"{value}"` key-value pair. Each key
 #' must be unique. For more information, see [Tagging Amazon Web Services
-#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
 #'
 #' @keywords internal
@@ -978,11 +978,11 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 }
 .efs$operations$put_file_system_policy <- efs_put_file_system_policy
 
-#' Use this action to manage EFS lifecycle management and intelligent
-#' tiering
+#' Use this action to manage EFS lifecycle management and EFS
+#' Intelligent-Tiering
 #'
 #' @description
-#' Use this action to manage EFS lifecycle management and intelligent tiering. A `LifecycleConfiguration` consists of one or more `LifecyclePolicy` objects that define the following:
+#' Use this action to manage EFS lifecycle management and EFS Intelligent-Tiering. A `LifecycleConfiguration` consists of one or more `LifecyclePolicy` objects that define the following:
 #'
 #' See [https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html](https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html) for full documentation.
 #'

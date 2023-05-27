@@ -4,12 +4,14 @@
 \alias{glue_list_custom_entity_types}
 \title{Lists all the custom patterns that have been created}
 \usage{
-glue_list_custom_entity_types(NextToken = NULL, MaxResults = NULL)
+glue_list_custom_entity_types(NextToken = NULL, MaxResults = NULL, Tags = NULL)
 }
 \arguments{
 \item{NextToken}{A paginated token to offset the results.}
 
 \item{MaxResults}{The maximum number of results to return.}
+
+\item{Tags}{A list of key-value pair tags.}
 }
 \description{
 Lists all the custom patterns that have been created.

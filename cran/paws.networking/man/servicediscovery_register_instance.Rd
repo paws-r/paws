@@ -33,7 +33,12 @@ creates a new one.
 
 The health check isn't deleted immediately, so it will still appear
 for a while if you submit a \code{ListHealthChecks} request, for example.
-}}
+}
+
+Do not include sensitive information in \code{InstanceId} if the namespace is
+discoverable by public DNS queries and any \code{Type} member of \code{DnsRecord}
+for the service contains \code{SRV} because the \code{InstanceId} is discoverable
+by public DNS queries.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and that allows failed
 \code{\link[=servicediscovery_register_instance]{register_instance}} requests to be
@@ -52,16 +57,19 @@ service.
 \item For each attribute, the applicable value.
 }
 
+Do not include sensitive information in the attributes if the namespace
+is discoverable by public DNS queries.
+
 Supported attribute keys include the following:
 
 \strong{AWS_ALIAS_DNS_NAME}
 
-If you want Cloud Map to create an Amazon Route 53 alias record that
+If you want Cloud Map to create an Amazon Route 53 alias record that
 routes traffic to an Elastic Load Balancing load balancer, specify the
 DNS name that's associated with the load balancer. For information about
 how to get the DNS name, see "DNSName" in the topic
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}
-in the \emph{Route 53 API Reference}.
+in the \emph{Route 53 API Reference}.
 
 Note the following:
 \itemize{
@@ -70,7 +78,7 @@ must include settings for an \code{A} record, an \code{AAAA} record, or both.
 \item In the service that's specified by \code{ServiceId}, the value of
 \code{RoutingPolicy} must be \code{WEIGHTED}.
 \item If the service that's specified by \code{ServiceId} includes
-\code{HealthCheckConfig} settings, Cloud Map will create the Route 53
+\code{HealthCheckConfig} settings, Cloud Map will create the Route 53
 health check, but it doesn't associate the health check with the
 alias record.
 \item Auto naming currently doesn't support creating alias records that
@@ -99,7 +107,7 @@ a value for \code{AWS_INIT_HEALTH_STATUS}, the initial status is \code{HEALTHY}.
 \strong{AWS_INSTANCE_CNAME}
 
 If the service configuration includes a \code{CNAME} record, the domain name
-that you want Route 53 to return in response to DNS queries (for
+that you want Route 53 to return in response to DNS queries (for
 example, \code{example.com}).
 
 This value is required if the service specified by \code{ServiceId} includes
@@ -108,7 +116,7 @@ settings for an \code{CNAME} record.
 \strong{AWS_INSTANCE_IPV4}
 
 If the service configuration includes an \code{A} record, the IPv4 address
-that you want Route 53 to return in response to DNS queries (for
+that you want Route 53 to return in response to DNS queries (for
 example, \verb{192.0.2.44}).
 
 This value is required if the service specified by \code{ServiceId} includes
@@ -119,7 +127,7 @@ settings for an \code{A} record. If the service includes settings for an
 \strong{AWS_INSTANCE_IPV6}
 
 If the service configuration includes an \code{AAAA} record, the IPv6 address
-that you want Route 53 to return in response to DNS queries (for
+that you want Route 53 to return in response to DNS queries (for
 example, \verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}).
 
 This value is required if the service specified by \code{ServiceId} includes
@@ -129,14 +137,14 @@ settings for an \code{AAAA} record. If the service includes settings for an
 
 \strong{AWS_INSTANCE_PORT}
 
-If the service includes an \code{SRV} record, the value that you want Route
-53 to return for the port.
+If the service includes an \code{SRV} record, the value that you want
+Route 53 to return for the port.
 
 If the service includes \code{HealthCheckConfig}, the port on the endpoint
-that you want Route 53 to send requests to.
+that you want Route 53 to send requests to.
 
 This value is required if you specified settings for an \code{SRV} record or
-a Route 53 health check when you created the service.
+a Route 53 health check when you created the service.
 
 \strong{Custom attributes}
 

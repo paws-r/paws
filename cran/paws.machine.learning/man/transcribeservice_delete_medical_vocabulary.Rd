@@ -7,11 +7,11 @@
 transcribeservice_delete_medical_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the custom medical vocabulary you want to delete. Vocabulary
-names are case sensitive.}
+\item{VocabularyName}{[required] The name of the custom medical vocabulary you want to delete. Custom
+medical vocabulary names are case sensitive.}
 }
 \description{
-Deletes a custom medical vocabulary. To use this operation, specify the name of the vocabulary you want to delete using \code{VocabularyName}. Vocabulary names are case sensitive.
+Deletes a custom medical vocabulary. To use this operation, specify the name of the custom vocabulary you want to delete using \code{VocabularyName}. Custom vocabulary names are case sensitive.
 
 See \url{https://paws-r.github.io/docs/transcribeservice/delete_medical_vocabulary.html} for full documentation.
 }

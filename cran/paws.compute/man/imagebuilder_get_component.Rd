@@ -7,8 +7,8 @@
 imagebuilder_get_component(componentBuildVersionArn)
 }
 \arguments{
-\item{componentBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the component that you want to
-retrieve. Regex requires "/\\d+$" suffix.}
+\item{componentBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the component that you want to get.
+Regex requires the suffix \verb{/\\\\d+$}.}
 }
 \description{
 Gets a component object.

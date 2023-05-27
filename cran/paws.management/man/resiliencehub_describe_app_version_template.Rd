@@ -2,20 +2,21 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_describe_app_version_template}
 \alias{resiliencehub_describe_app_version_template}
-\title{Describes details about an AWS Resilience Hub}
+\title{Describes details about an Resilience Hub application}
 \usage{
 resiliencehub_describe_app_version_template(appArn, appVersion)
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
 \item{appVersion}{[required] The version of the application.}
 }
 \description{
-Describes details about an AWS Resilience Hub
+Describes details about an Resilience Hub application.
 
 See \url{https://paws-r.github.io/docs/resiliencehub/describe_app_version_template.html} for full documentation.
 }

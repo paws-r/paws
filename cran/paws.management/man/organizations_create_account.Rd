@@ -41,9 +41,7 @@ was created with an invalid email address.}
 
 \item{AccountName}{[required] The friendly name of the member account.}
 
-\item{RoleName}{(Optional)
-
-The name of an IAM role that Organizations automatically preconfigures
+\item{RoleName}{The name of an IAM role that Organizations automatically preconfigures
 in the new member account. This role trusts the management account,
 allowing users in the management account to assume the role, as
 permitted by the management account administrator. The role has
@@ -82,7 +80,7 @@ can set the value to an empty string, but you can't set it to \code{null}.
 For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
 in the Organizations User Guide.
 
-If any one of the tags is invalid or if you exceed the maximum allowed
+If any one of the tags is not valid or if you exceed the maximum allowed
 number of tags for an account, then the entire request fails and the
 account is not created.}
 }

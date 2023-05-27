@@ -20,7 +20,7 @@ Currently, the only valid extension URL type is \code{FLINK_DASHBOARD_URL}.}
 \item{SessionExpirationDurationInSeconds}{The duration in seconds for which the returned URL will be valid.}
 }
 \description{
-Creates and returns a URL that you can use to connect to an application's extension. Currently, the only available extension is the Apache Flink dashboard.
+Creates and returns a URL that you can use to connect to an application's extension.
 
 See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_presigned_url.html} for full documentation.
 }

@@ -99,6 +99,9 @@ snapshot ID or a volume size.}
 \item Magnetic: \code{standard}
 }
 
+Throughput Optimized HDD (\code{st1}) and Cold HDD (\code{sc1}) volumes can't be
+used as boot volumes.
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html}{Amazon EBS volume types}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 

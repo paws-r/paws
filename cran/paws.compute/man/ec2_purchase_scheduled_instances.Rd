@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_purchase_scheduled_instances}
 \alias{ec2_purchase_scheduled_instances}
-\title{Purchases the Scheduled Instances with the specified schedule}
+\title{You can no longer purchase Scheduled Instances}
 \usage{
 ec2_purchase_scheduled_instances(
   ClientToken = NULL,
@@ -22,7 +22,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{PurchaseRequests}{[required] The purchase requests.}
 }
 \description{
-Purchases the Scheduled Instances with the specified schedule.
+You can no longer purchase Scheduled Instances.
 
 See \url{https://paws-r.github.io/docs/ec2/purchase_scheduled_instances.html} for full documentation.
 }

@@ -60,6 +60,7 @@ Defines the public endpoint for the Lake Formation service.
 
 \tabular{ll}{
 \link[paws.database:lakeformation_add_lf_tags_to_resource]{add_lf_tags_to_resource} \tab Attaches one or more LF-tags to an existing resource\cr
+\link[paws.database:lakeformation_assume_decorated_role_with_saml]{assume_decorated_role_with_saml} \tab Allows a caller to assume an IAM role decorated as the SAML user specified in the SAML assertion included in the request\cr
 \link[paws.database:lakeformation_batch_grant_permissions]{batch_grant_permissions} \tab Batch operation to grant permissions to the principal\cr
 \link[paws.database:lakeformation_batch_revoke_permissions]{batch_revoke_permissions} \tab Batch operation to revoke permissions from the principal\cr
 \link[paws.database:lakeformation_cancel_transaction]{cancel_transaction} \tab Attempts to cancel the specified transaction\cr
@@ -67,12 +68,13 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_create_data_cells_filter]{create_data_cells_filter} \tab Creates a data cell filter to allow one to grant access to certain columns on certain rows\cr
 \link[paws.database:lakeformation_create_lf_tag]{create_lf_tag} \tab Creates an LF-tag with the specified name and values\cr
 \link[paws.database:lakeformation_delete_data_cells_filter]{delete_data_cells_filter} \tab Deletes a data cell filter\cr
-\link[paws.database:lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag key name\cr
+\link[paws.database:lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag given a key name\cr
 \link[paws.database:lakeformation_delete_objects_on_cancel]{delete_objects_on_cancel} \tab For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled\cr
 \link[paws.database:lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr
 \link[paws.database:lakeformation_describe_resource]{describe_resource} \tab Retrieves the current data access role for the given resource registered in Lake Formation\cr
 \link[paws.database:lakeformation_describe_transaction]{describe_transaction} \tab Returns the details of a single transaction\cr
 \link[paws.database:lakeformation_extend_transaction]{extend_transaction} \tab Indicates to the service that the specified transaction is still active and should not be treated as idle and aborted\cr
+\link[paws.database:lakeformation_get_data_cells_filter]{get_data_cells_filter} \tab Returns a data cells filter\cr
 \link[paws.database:lakeformation_get_data_lake_settings]{get_data_lake_settings} \tab Retrieves the list of the data lake administrators of a Lake Formation-managed data lake\cr
 \link[paws.database:lakeformation_get_effective_permissions_for_path]{get_effective_permissions_for_path} \tab Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3\cr
 \link[paws.database:lakeformation_get_lf_tag]{get_lf_tag} \tab Returns an LF-tag definition\cr
@@ -99,6 +101,7 @@ Defines the public endpoint for the Lake Formation service.
 \link[paws.database:lakeformation_search_tables_by_lf_tags]{search_tables_by_lf_tags} \tab This operation allows a search on TABLE resources by LFTags\cr
 \link[paws.database:lakeformation_start_query_planning]{start_query_planning} \tab Submits a request to process a query statement\cr
 \link[paws.database:lakeformation_start_transaction]{start_transaction} \tab Starts a new transaction and returns its transaction ID\cr
+\link[paws.database:lakeformation_update_data_cells_filter]{update_data_cells_filter} \tab Updates a data cell filter\cr
 \link[paws.database:lakeformation_update_lf_tag]{update_lf_tag} \tab Updates the list of possible values for the specified LF-tag key\cr
 \link[paws.database:lakeformation_update_resource]{update_resource} \tab Updates the data access role used for vending access to the given (registered) resource in Lake Formation\cr
 \link[paws.database:lakeformation_update_table_objects]{update_table_objects} \tab Updates the manifest of Amazon S3 objects that make up the specified governed table\cr

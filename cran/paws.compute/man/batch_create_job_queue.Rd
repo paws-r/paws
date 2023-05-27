@@ -29,7 +29,7 @@ in, first out (FIFO) scheduling policy. After a job queue is created,
 you can replace but can't remove the fair share scheduling policy. The
 format is \code{aws:Partition:batch:Region:Account:scheduling-policy/Name }.
 An example is
-\code{aws:aws:batch:us-west-2:012345678910:scheduling-policy/MySchedulingPolicy}.}
+\code{aws:aws:batch:us-west-2:123456789012:scheduling-policy/MySchedulingPolicy}.}
 
 \item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first

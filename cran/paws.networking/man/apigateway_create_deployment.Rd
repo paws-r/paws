@@ -29,8 +29,8 @@ create.}
 
 \item{cacheClusterEnabled}{Enables a cache cluster for the Stage resource specified in the input.}
 
-\item{cacheClusterSize}{Specifies the cache cluster size for the Stage resource specified in the
-input, if a cache cluster is enabled.}
+\item{cacheClusterSize}{The stage's cache capacity in GB. For more information about choosing a
+cache size, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html}{Enabling API caching to enhance responsiveness}.}
 
 \item{variables}{A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have alphanumeric

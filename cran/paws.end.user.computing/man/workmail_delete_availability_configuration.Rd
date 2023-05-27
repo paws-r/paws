@@ -8,8 +8,8 @@ organization and domain}
 workmail_delete_availability_configuration(OrganizationId, DomainName)
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization for which the
-\code{AvailabilityConfiguration} will be deleted.}
+\item{OrganizationId}{[required] The WorkMail organization for which the \code{AvailabilityConfiguration} will
+be deleted.}
 
 \item{DomainName}{[required] The domain for which the \code{AvailabilityConfiguration} will be deleted.}
 }

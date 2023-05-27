@@ -13,7 +13,10 @@ NULL
 #'   serverSideEncryptionConfiguration, tags, type)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description of the assistant.
 #' @param name &#91;required&#93; The name of the assistant.
 #' @param serverSideEncryptionConfiguration The KMS key used for encryption.
@@ -96,7 +99,10 @@ connectwisdomservice_create_assistant <- function(clientToken = NULL, descriptio
 #' @param association &#91;required&#93; The identifier of the associated resource.
 #' @param associationType &#91;required&#93; The type of association.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param tags The tags used to organize, track, or control access for this resource.
 #'
 #' @return
@@ -171,7 +177,10 @@ connectwisdomservice_create_assistant_association <- function(assistantId, assoc
 #'   metadata, name, overrideLinkOutUri, tags, title, uploadId)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param knowledgeBaseId &#91;required&#93; The identifier of the knowledge base. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
 #' @param metadata A key/value map to store attributes without affecting tagging or
@@ -269,7 +278,21 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' DataIntegrations with external knowledge bases such as Salesforce and
 #' ServiceNow. If you do, you'll get an `InvalidRequestException` error.
 #' 
-#'      <p>For example, you\'re programmatically managing your external knowledge base, and you want to add or remove one of the fields that is being ingested from Salesforce. Do the following:</p> <ol> <li> <p>Call <a href="https://docs.aws.amazon.com/wisdom/latest/APIReference/API_DeleteKnowledgeBase.html">DeleteKnowledgeBase</a>.</p> </li> <li> <p>Call <a href="https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html">DeleteDataIntegration</a>.</p> </li> <li> <p>Call <a href="https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html">CreateDataIntegration</a> to recreate the DataIntegration or a create different one.</p> </li> <li> <p>Call CreateKnowledgeBase.</p> </li> </ol> </note> 
+#' For example, you're programmatically managing your external knowledge
+#' base, and you want to add or remove one of the fields that is being
+#' ingested from Salesforce. Do the following:
+#' 
+#' 1.  Call
+#'     [`delete_knowledge_base`][connectwisdomservice_delete_knowledge_base].
+#' 
+#' 2.  Call
+#'     [DeleteDataIntegration](https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html).
+#' 
+#' 3.  Call
+#'     [CreateDataIntegration](https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html)
+#'     to recreate the DataIntegration or a create different one.
+#' 
+#' 4.  Call CreateKnowledgeBase.
 #'
 #' @usage
 #' connectwisdomservice_create_knowledge_base(clientToken, description,
@@ -277,7 +300,10 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #'   serverSideEncryptionConfiguration, sourceConfiguration, tags)
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description.
 #' @param knowledgeBaseType &#91;required&#93; The type of knowledge base. Only CUSTOM knowledge bases allow you to
 #' upload your own content. EXTERNAL knowledge bases support integrations
@@ -387,7 +413,10 @@ connectwisdomservice_create_knowledge_base <- function(clientToken = NULL, descr
 #' @param assistantId &#91;required&#93; The identifier of the Wisdom assistant. Can be either the ID or the ARN.
 #' URLs cannot contain the ARN.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description.
 #' @param name &#91;required&#93; The name of the session.
 #' @param tags The tags used to organize, track, or control access for this resource.

@@ -5,10 +5,10 @@
 \title{Returns metadata about a query, including query run time in
 milliseconds, number of events scanned and matched, and query status}
 \usage{
-cloudtrail_describe_query(EventDataStore, QueryId)
+cloudtrail_describe_query(EventDataStore = NULL, QueryId)
 }
 \arguments{
-\item{EventDataStore}{[required] The ARN (or the ID suffix of the ARN) of an event data store on which
+\item{EventDataStore}{The ARN (or the ID suffix of the ARN) of an event data store on which
 the specified query was run.}
 
 \item{QueryId}{[required] The query ID.}

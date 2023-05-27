@@ -16,7 +16,8 @@ quicksight_update_data_set(
   RowLevelPermissionDataSet = NULL,
   RowLevelPermissionTagConfiguration = NULL,
   ColumnLevelPermissionRules = NULL,
-  DataSetUsageConfiguration = NULL
+  DataSetUsageConfiguration = NULL,
+  DatasetParameters = NULL
 )
 }
 \arguments{
@@ -49,9 +50,11 @@ only.}
 \item{ColumnLevelPermissionRules}{A set of one or more definitions of a \code{ColumnLevelPermissionRule}.}
 
 \item{DataSetUsageConfiguration}{}
+
+\item{DatasetParameters}{The parameter declarations of the dataset.}
 }
 \description{
-Updates a dataset. This operation doesn't support datasets that include uploaded files as a source.
+Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
 
 See \url{https://paws-r.github.io/docs/quicksight/update_data_set.html} for full documentation.
 }

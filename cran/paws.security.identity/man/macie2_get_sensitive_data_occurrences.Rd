@@ -2,7 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_sensitive_data_occurrences}
 \alias{macie2_get_sensitive_data_occurrences}
-\title{Retrieves (reveals) occurrences of sensitive data reported by a finding}
+\title{Retrieves occurrences of sensitive data reported by a finding}
 \usage{
 macie2_get_sensitive_data_occurrences(findingId)
 }
@@ -10,7 +10,7 @@ macie2_get_sensitive_data_occurrences(findingId)
 \item{findingId}{[required] The unique identifier for the finding.}
 }
 \description{
-Retrieves (reveals) occurrences of sensitive data reported by a finding.
+Retrieves occurrences of sensitive data reported by a finding.
 
 See \url{https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences.html} for full documentation.
 }

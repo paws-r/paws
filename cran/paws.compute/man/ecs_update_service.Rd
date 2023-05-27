@@ -21,7 +21,8 @@ ecs_update_service(
   enableECSManagedTags = NULL,
   loadBalancers = NULL,
   propagateTags = NULL,
-  serviceRegistries = NULL
+  serviceRegistries = NULL,
+  serviceConnectConfiguration = NULL
 )
 }
 \arguments{
@@ -182,6 +183,18 @@ configuration, and then stops the old tasks when the new tasks are
 running.
 
 You can remove existing \code{serviceRegistries} by passing an empty list.}
+
+\item{serviceConnectConfiguration}{The configuration for this service to discover and connect to services,
+and be discovered by, and connected from, other services within a
+namespace.
+
+Tasks that run in a namespace can use short names to connect to services
+in the namespace. Tasks can connect to services across all of the
+clusters in the namespace. Tasks connect through a managed proxy
+container that collects logs and metrics for increased visibility. Only
+the tasks that Amazon ECS services create are supported with Service
+Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
 Modifies the parameters of a service.

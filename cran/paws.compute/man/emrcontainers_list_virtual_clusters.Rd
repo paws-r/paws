@@ -17,8 +17,8 @@ emrcontainers_list_virtual_clusters(
 \arguments{
 \item{containerProviderId}{The container provider ID of the virtual cluster.}
 
-\item{containerProviderType}{The container provider type of the virtual cluster. EKS is the only
-supported type as of now.}
+\item{containerProviderType}{The container provider type of the virtual cluster. Amazon EKS is the
+only supported type as of now.}
 
 \item{createdAfter}{The date and time after which the virtual clusters are created.}
 

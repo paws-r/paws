@@ -7,7 +7,8 @@
 redshiftserverless_create_snapshot(
   namespaceName,
   retentionPeriod = NULL,
-  snapshotName
+  snapshotName,
+  tags = NULL
 )
 }
 \arguments{
@@ -16,6 +17,9 @@ redshiftserverless_create_snapshot(
 \item{retentionPeriod}{How long to retain the created snapshot.}
 
 \item{snapshotName}{[required] The name of the snapshot.}
+
+\item{tags}{An array of \href{https://docs.aws.amazon.com/redshift-serverless/latest/APIReference/API_Tag.html}{Tag objects}
+to associate with the snapshot.}
 }
 \description{
 Creates a snapshot of all databases in a namespace. For more information about snapshots, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html}{Working with snapshots and recovery points}.

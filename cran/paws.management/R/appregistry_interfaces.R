@@ -71,7 +71,7 @@ NULL
 
 .appregistry$delete_attribute_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributeGroup = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(attributeGroup = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -131,7 +131,17 @@ NULL
 
 .appregistry$get_attribute_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), attributes = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), attributes = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appregistry$get_configuration_input <- function(...) {
+  list()
+}
+
+.appregistry$get_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(configuration = structure(list(tagQueryConfiguration = structure(list(tagKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -167,7 +177,7 @@ NULL
 
 .appregistry$list_associated_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resources = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resources = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), resourceDetails = structure(list(tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +189,7 @@ NULL
 
 .appregistry$list_attribute_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributeGroups = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(attributeGroups = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), lastUpdateTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,7 +201,7 @@ NULL
 
 .appregistry$list_attribute_groups_for_application_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(attributeGroupsDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(attributeGroupsDetails = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated. We recommend not using the field when using ListAttributeGroupsForApplication.", type = "string")), createdBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -205,6 +215,16 @@ NULL
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
+}
+
+.appregistry$put_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(configuration = structure(list(tagQueryConfiguration = structure(list(tagKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.appregistry$put_configuration_output <- function(...) {
+  list()
 }
 
 .appregistry$sync_resource_input <- function(...) {

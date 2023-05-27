@@ -4,7 +4,11 @@
 \alias{configservice_describe_config_rules}
 \title{Returns details about your Config rules}
 \usage{
-configservice_describe_config_rules(ConfigRuleNames = NULL, NextToken = NULL)
+configservice_describe_config_rules(
+  ConfigRuleNames = NULL,
+  NextToken = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{ConfigRuleNames}{The names of the Config rules for which you want details. If you do not
@@ -12,6 +16,11 @@ specify any names, Config returns details for all your rules.}
 
 \item{NextToken}{The \code{nextToken} string returned on a previous page that you use to get
 the next page of results in a paginated response.}
+
+\item{Filters}{Returns a list of Detective or Proactive Config rules. By default, this
+API returns an unfiltered list. For more information on Detective or
+Proactive Config rules, see \href{https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html}{\strong{Evaluation Mode}}
+in the Config Developer Guide.}
 }
 \description{
 Returns details about your Config rules.

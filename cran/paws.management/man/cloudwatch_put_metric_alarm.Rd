@@ -3,7 +3,8 @@
 \name{cloudwatch_put_metric_alarm}
 \alias{cloudwatch_put_metric_alarm}
 \title{Creates or updates an alarm and associates it with the specified metric,
-metric math expression, or anomaly detection model}
+metric math expression, anomaly detection model, or Metrics Insights
+query}
 \usage{
 cloudwatch_put_metric_alarm(
   AlarmName,
@@ -31,7 +32,10 @@ cloudwatch_put_metric_alarm(
 )
 }
 \arguments{
-\item{AlarmName}{[required] The name for the alarm. This name must be unique within the Region.}
+\item{AlarmName}{[required] The name for the alarm. This name must be unique within the Region.
+
+The name must contain only UTF-8 characters, and can't contain ASCII
+control characters}
 
 \item{AlarmDescription}{The description for the alarm.}
 
@@ -40,63 +44,99 @@ alarm state. The default is \code{TRUE}.}
 
 \item{OKActions}{The actions to execute when this alarm transitions to an \code{OK} state from
 any other state. Each action is specified as an Amazon Resource Name
-(ARN).
+(ARN). Valid values:
 
-Valid Values: \code{arn:aws:automate:region:ec2:stop} |
-\code{arn:aws:automate:region:ec2:terminate} |
-\code{arn:aws:automate:region:ec2:recover} |
-\code{arn:aws:automate:region:ec2:reboot} |
-\code{arn:aws:sns:region:account-id:sns-topic-name } |
-\code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+\strong{EC2 actions:}
+\itemize{
+\item \code{arn:aws:automate:region:ec2:stop}
+\item \code{arn:aws:automate:region:ec2:terminate}
+\item \code{arn:aws:automate:region:ec2:reboot}
+\item \code{arn:aws:automate:region:ec2:recover}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}
+}
 
-Valid Values (for use with IAM roles):
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}}
+\strong{Autoscaling action:}
+\itemize{
+\item \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+}
+
+\strong{SNS notification action:}
+\itemize{
+\item \code{arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+}
+
+\strong{SSM integration actions:}
+\itemize{
+\item \code{arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name }
+\item \code{arn:aws:ssm-incidents::account-id:responseplan/response-plan-name }
+}}
 
 \item{AlarmActions}{The actions to execute when this alarm transitions to the \code{ALARM} state
 from any other state. Each action is specified as an Amazon Resource
-Name (ARN).
+Name (ARN). Valid values:
 
-Valid Values: \code{arn:aws:automate:region:ec2:stop} |
-\code{arn:aws:automate:region:ec2:terminate} |
-\code{arn:aws:automate:region:ec2:recover} |
-\code{arn:aws:automate:region:ec2:reboot} |
-\code{arn:aws:sns:region:account-id:sns-topic-name } |
-\code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
-| \code{arn:aws:ssm:region:account-id:opsitem:severity } |
-\code{arn:aws:ssm-incidents::account-id:response-plan:response-plan-name }
+\strong{EC2 actions:}
+\itemize{
+\item \code{arn:aws:automate:region:ec2:stop}
+\item \code{arn:aws:automate:region:ec2:terminate}
+\item \code{arn:aws:automate:region:ec2:reboot}
+\item \code{arn:aws:automate:region:ec2:recover}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}
+}
 
-Valid Values (for use with IAM roles):
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}}
+\strong{Autoscaling action:}
+\itemize{
+\item \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+}
+
+\strong{SNS notification action:}
+\itemize{
+\item \code{arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+}
+
+\strong{SSM integration actions:}
+\itemize{
+\item \code{arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name }
+\item \code{arn:aws:ssm-incidents::account-id:responseplan/response-plan-name }
+}}
 
 \item{InsufficientDataActions}{The actions to execute when this alarm transitions to the
 \code{INSUFFICIENT_DATA} state from any other state. Each action is specified
-as an Amazon Resource Name (ARN).
+as an Amazon Resource Name (ARN). Valid values:
 
-Valid Values: \code{arn:aws:automate:region:ec2:stop} |
-\code{arn:aws:automate:region:ec2:terminate} |
-\code{arn:aws:automate:region:ec2:recover} |
-\code{arn:aws:automate:region:ec2:reboot} |
-\code{arn:aws:sns:region:account-id:sns-topic-name } |
-\code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+\strong{EC2 actions:}
+\itemize{
+\item \code{arn:aws:automate:region:ec2:stop}
+\item \code{arn:aws:automate:region:ec2:terminate}
+\item \code{arn:aws:automate:region:ec2:reboot}
+\item \code{arn:aws:automate:region:ec2:recover}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}
+\item \code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0}
+}
 
-Valid Values (for use with IAM roles):
-\verb{>arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0}
-|
-\code{arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0}}
+\strong{Autoscaling action:}
+\itemize{
+\item \code{arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+}
+
+\strong{SNS notification action:}
+\itemize{
+\item \code{arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name }
+}
+
+\strong{SSM integration actions:}
+\itemize{
+\item \code{arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name }
+\item \code{arn:aws:ssm-incidents::account-id:responseplan/response-plan-name }
+}}
 
 \item{MetricName}{The name for the metric associated with the alarm. For each
 \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} operation, you must
@@ -254,7 +294,7 @@ Model Alarm} example on this page.
 If your alarm uses this parameter, it cannot have Auto Scaling actions.}
 }
 \description{
-Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly detection model.
+Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. For more information about using a Metrics Insights query for an alarm, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html}{Create alarms on Metrics Insights queries}.
 
 See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_alarm.html} for full documentation.
 }

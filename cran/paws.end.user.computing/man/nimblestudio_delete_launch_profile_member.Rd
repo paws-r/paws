@@ -13,14 +13,14 @@ nimblestudio_delete_launch_profile_member(
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
-\item{launchProfileId}{[required] The Launch Profile ID.}
+\item{launchProfileId}{[required] The ID of the launch profile used to control access from the streaming
+session.}
 
-\item{principalId}{[required] The principal ID. This currently supports a Amazon Web Services SSO
-UserId.}
+\item{principalId}{[required] The principal ID. This currently supports a IAM Identity Center UserId.}
 
 \item{studioId}{[required] The studio ID.}
 }

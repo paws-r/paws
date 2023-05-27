@@ -8,7 +8,8 @@ route53domains_update_domain_contact(
   DomainName,
   AdminContact = NULL,
   RegistrantContact = NULL,
-  TechContact = NULL
+  TechContact = NULL,
+  Consent = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ route53domains_update_domain_contact(
 \item{RegistrantContact}{Provides detailed contact information.}
 
 \item{TechContact}{Provides detailed contact information.}
+
+\item{Consent}{Customer's consent for the owner change request.}
 }
 \description{
 This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.

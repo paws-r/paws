@@ -6,7 +6,7 @@ NULL
 #' Creates a resource group with the specified name and description
 #'
 #' @description
-#' Creates a resource group with the specified name and description. You can optionally include a resource query, or a service configuration. For more information about constructing a resource query, see [Create a tag-based group in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag). For more information about service configurations, see [Service configurations for resource groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
+#' Creates a resource group with the specified name and description. You can optionally include either a resource query or a service configuration. For more information about constructing a resource query, see [Build queries and groups in Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/) in the *Resource Groups User Guide*. For more information about service-linked groups and service configurations, see [Service configurations for Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #'
 #' See [https://paws-r.github.io/docs/resourcegroups/create_group.html](https://paws-r.github.io/docs/resourcegroups/create_group.html) for full documentation.
 #'
@@ -15,23 +15,23 @@ NULL
 #' create it. A resource group name can consist of letters, numbers,
 #' hyphens, periods, and underscores. The name cannot start with `AWS` or
 #' `aws`; these are reserved. A resource group name must be unique within
-#' each AWS Region in your AWS account.
+#' each Amazon Web Services Region in your Amazon Web Services account.
 #' @param Description The description of the resource group. Descriptions can consist of
 #' letters, numbers, hyphens, underscores, periods, and spaces.
-#' @param ResourceQuery The resource query that determines which AWS resources are members of
-#' this group. For more information about resource queries, see [Create a
-#' tag-based group in Resource
+#' @param ResourceQuery The resource query that determines which Amazon Web Services resources
+#' are members of this group. For more information about resource queries,
+#' see [Create a tag-based group in Resource
 #' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 #' 
 #' A resource group can contain either a `ResourceQuery` or a
 #' `Configuration`, but not both.
 #' @param Tags The tags to add to the group. A tag is key-value pair string.
-#' @param Configuration A configuration associates the resource group with an AWS service and
-#' specifies how the service can interact with the resources in the group.
-#' A configuration is an array of GroupConfigurationItem elements. For
-#' details about the syntax of service configurations, see [Service
-#' configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
+#' @param Configuration A configuration associates the resource group with an Amazon Web
+#' Services service and specifies how the service can interact with the
+#' resources in the group. A configuration is an array of
+#' GroupConfigurationItem elements. For details about the syntax of service
+#' configurations, see [Service configurations for Resource
+#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
@@ -86,6 +86,35 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
 }
 .resourcegroups$operations$delete_group <- resourcegroups_delete_group
 
+#' Retrieves the current status of optional features in Resource Groups
+#'
+#' @description
+#' Retrieves the current status of optional features in Resource Groups.
+#'
+#' See [https://paws-r.github.io/docs/resourcegroups/get_account_settings.html](https://paws-r.github.io/docs/resourcegroups/get_account_settings.html) for full documentation.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_get_account_settings
+resourcegroups_get_account_settings <- function() {
+  op <- new_operation(
+    name = "GetAccountSettings",
+    http_method = "POST",
+    http_path = "/get-account-settings",
+    paginator = list()
+  )
+  input <- .resourcegroups$get_account_settings_input()
+  output <- .resourcegroups$get_account_settings_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$get_account_settings <- resourcegroups_get_account_settings
+
 #' Returns information about a specified resource group
 #'
 #' @description
@@ -116,15 +145,16 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 }
 .resourcegroups$operations$get_group <- resourcegroups_get_group
 
-#' Returns the service configuration associated with the specified resource
-#' group
+#' Retrieves the service configuration associated with the specified
+#' resource group
 #'
 #' @description
-#' Returns the service configuration associated with the specified resource group. For details about the service configuration syntax, see [Service configurations for resource groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
+#' Retrieves the service configuration associated with the specified resource group. For details about the service configuration syntax, see [Service configurations for Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #'
 #' See [https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html](https://paws-r.github.io/docs/resourcegroups/get_group_configuration.html) for full documentation.
 #'
-#' @param Group The name or the ARN of the resource group.
+#' @param Group The name or the ARN of the resource group for which you want to retrive
+#' the service configuration.
 #'
 #' @keywords internal
 #'
@@ -215,7 +245,7 @@ resourcegroups_get_tags <- function(Arn) {
 #' See [https://paws-r.github.io/docs/resourcegroups/group_resources.html](https://paws-r.github.io/docs/resourcegroups/group_resources.html) for full documentation.
 #'
 #' @param Group &#91;required&#93; The name or the ARN of the resource group to add resources to.
-#' @param ResourceArns &#91;required&#93; The list of ARNs for resources to be added to the group.
+#' @param ResourceArns &#91;required&#93; The list of ARNs of the resources to be added to the group.
 #'
 #' @keywords internal
 #'
@@ -258,12 +288,12 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #'     example, `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
 #' 
 #' When you specify a `resource-type` filter for
-#' [`list_group_resources`][resourcegroups_list_group_resources], AWS
-#' Resource Groups validates your filter resource types against the types
-#' that are defined in the query associated with the group. For example, if
-#' a group contains only S3 buckets because its query specifies only that
-#' resource type, but your `resource-type` filter includes EC2 instances,
-#' AWS Resource Groups does not filter for EC2 instances. In this case, a
+#' [`list_group_resources`][resourcegroups_list_group_resources], Resource
+#' Groups validates your filter resource types against the types that are
+#' defined in the query associated with the group. For example, if a group
+#' contains only S3 buckets because its query specifies only that resource
+#' type, but your `resource-type` filter includes EC2 instances, AWS
+#' Resource Groups does not filter for EC2 instances. In this case, a
 #' [`list_group_resources`][resourcegroups_list_group_resources] request
 #' returns a `BadRequestException` error with a message similar to the
 #' following:
@@ -274,8 +304,8 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' because they are not part of the query associated with the group. This
 #' validation doesn't occur when the group query specifies
 #' `AWS::AllSupported`, because a group based on such a query can contain
-#' any of the allowed resource types for the query type (tag-based or AWS
-#' CloudFormation stack-based queries).
+#' any of the allowed resource types for the query type (tag-based or
+#' Amazon CloudFront stack-based queries).
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -312,10 +342,10 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 }
 .resourcegroups$operations$list_group_resources <- resourcegroups_list_group_resources
 
-#' Returns a list of existing resource groups in your account
+#' Returns a list of existing Resource Groups in your account
 #'
 #' @description
-#' Returns a list of existing resource groups in your account.
+#' Returns a list of existing Resource Groups in your account.
 #'
 #' See [https://paws-r.github.io/docs/resourcegroups/list_groups.html](https://paws-r.github.io/docs/resourcegroups/list_groups.html) for full documentation.
 #'
@@ -331,9 +361,9 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 #'     groups that have the specified configuration types attached. The
 #'     current supported values are:
 #' 
-#'     -   `AWS:EC2::CapacityReservationPool`
+#'     -   `AWS::EC2::CapacityReservationPool`
 #' 
-#'     -   `AWS:EC2::HostManagement`
+#'     -   `AWS::EC2::HostManagement`
 #' @param MaxResults The total number of results that you want included on each page of the
 #' response. If you do not include this parameter, it defaults to a value
 #' that is specific to the operation. If additional items exist beyond the
@@ -380,13 +410,14 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 #' @param Group The name or ARN of the resource group with the configuration that you
 #' want to update.
 #' @param Configuration The new configuration to associate with the specified group. A
-#' configuration associates the resource group with an AWS service and
-#' specifies how the service can interact with the resources in the group.
-#' A configuration is an array of GroupConfigurationItem elements.
+#' configuration associates the resource group with an Amazon Web Services
+#' service and specifies how the service can interact with the resources in
+#' the group. A configuration is an array of GroupConfigurationItem
+#' elements.
 #' 
 #' For information about the syntax of a service configuration, see
-#' [Service configurations for resource
-#' groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
+#' [Service configurations for Resource
+#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html).
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.
@@ -411,11 +442,11 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 }
 .resourcegroups$operations$put_group_configuration <- resourcegroups_put_group_configuration
 
-#' Returns a list of AWS resource identifiers that matches the specified
-#' query
+#' Returns a list of Amazon Web Services resource identifiers that matches
+#' the specified query
 #'
 #' @description
-#' Returns a list of AWS resource identifiers that matches the specified query. The query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery operation.
+#' Returns a list of Amazon Web Services resource identifiers that matches the specified query. The query uses the same format as a resource query in a [`create_group`][resourcegroups_create_group] or [`update_group_query`][resourcegroups_update_group_query] operation.
 #'
 #' See [https://paws-r.github.io/docs/resourcegroups/search_resources.html](https://paws-r.github.io/docs/resourcegroups/search_resources.html) for full documentation.
 #'
@@ -492,7 +523,7 @@ resourcegroups_tag <- function(Arn, Tags) {
 #' Removes the specified resources from the specified group
 #'
 #' @description
-#' Removes the specified resources from the specified group.
+#' Removes the specified resources from the specified group. This operation works only with static groups that you populated using the [`group_resources`][resourcegroups_group_resources] operation. It doesn't work with any resource groups that are automatically populated by tag-based or CloudFormation stack-based queries.
 #'
 #' See [https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html](https://paws-r.github.io/docs/resourcegroups/ungroup_resources.html) for full documentation.
 #'
@@ -552,6 +583,37 @@ resourcegroups_untag <- function(Arn, Keys) {
 }
 .resourcegroups$operations$untag <- resourcegroups_untag
 
+#' Turns on or turns off optional features in Resource Groups
+#'
+#' @description
+#' Turns on or turns off optional features in Resource Groups.
+#'
+#' See [https://paws-r.github.io/docs/resourcegroups/update_account_settings.html](https://paws-r.github.io/docs/resourcegroups/update_account_settings.html) for full documentation.
+#'
+#' @param GroupLifecycleEventsDesiredStatus Specifies whether you want to turn [group lifecycle
+#' events](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups.html)
+#' on or off.
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_update_account_settings
+resourcegroups_update_account_settings <- function(GroupLifecycleEventsDesiredStatus = NULL) {
+  op <- new_operation(
+    name = "UpdateAccountSettings",
+    http_method = "POST",
+    http_path = "/update-account-settings",
+    paginator = list()
+  )
+  input <- .resourcegroups$update_account_settings_input(GroupLifecycleEventsDesiredStatus = GroupLifecycleEventsDesiredStatus)
+  output <- .resourcegroups$update_account_settings_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$update_account_settings <- resourcegroups_update_account_settings
+
 #' Updates the description for an existing group
 #'
 #' @description
@@ -594,8 +656,8 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 #'
 #' @param GroupName Don't use this parameter. Use `Group` instead.
 #' @param Group The name or the ARN of the resource group to query.
-#' @param ResourceQuery &#91;required&#93; The resource query to determine which AWS resources are members of this
-#' resource group.
+#' @param ResourceQuery &#91;required&#93; The resource query to determine which Amazon Web Services resources are
+#' members of this resource group.
 #' 
 #' A resource group can contain either a `Configuration` or a
 #' `ResourceQuery`, but not both.

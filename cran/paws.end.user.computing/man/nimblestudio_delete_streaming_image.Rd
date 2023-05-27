@@ -12,9 +12,9 @@ nimblestudio_delete_streaming_image(
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{streamingImageId}{[required] The streaming image ID.}
 

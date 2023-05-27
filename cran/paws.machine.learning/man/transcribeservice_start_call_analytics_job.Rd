@@ -23,7 +23,8 @@ within an Amazon Web Services account. If you try to create a new job
 with the same name as an existing job, you get a \code{ConflictException}
 error.}
 
-\item{Media}{[required]}
+\item{Media}{[required] Describes the Amazon S3 location of the media file you want to use in
+your Call Analytics request.}
 
 \item{OutputLocation}{The Amazon S3 location where you want your Call Analytics transcription
 output stored. You can use any of the following formats to specify the
@@ -77,12 +78,12 @@ the default Amazon S3 key (SSE-S3).
 If you specify a KMS key to encrypt your output, you must also specify
 an output location using the \code{OutputLocation} parameter.
 
-Note that the user making the request must have permission to use the
+Note that the role making the request must have permission to use the
 specified KMS key.}
 
 \item{DataAccessRoleArn}{The Amazon Resource Name (ARN) of an IAM role that has permissions to
 access the Amazon S3 bucket that contains your input files. If the role
-you specify doesn’t have the appropriate permissions to access the
+that you specify doesn’t have the appropriate permissions to access the
 specified Amazon S3 location, your request fails.
 
 IAM role ARNs have the format
@@ -95,10 +96,10 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 redaction; allows you to apply custom language models, vocabulary
 filters, and custom vocabularies to your Call Analytics job.}
 
-\item{ChannelDefinitions}{Allows you to specify which speaker is on which channel. For example, if
-your agent is the first participant to speak, you would set \code{ChannelId}
-to \code{0} (to indicate the first channel) and \code{ParticipantRole} to \code{AGENT}
-(to indicate that it's the agent speaking).}
+\item{ChannelDefinitions}{Makes it possible to specify which speaker is on which channel. For
+example, if your agent is the first participant to speak, you would set
+\code{ChannelId} to \code{0} (to indicate the first channel) and \code{ParticipantRole}
+to \code{AGENT} (to indicate that it's the agent speaking).}
 }
 \description{
 Transcribes the audio from a customer service call and applies any additional Request Parameters you choose to include in your request.

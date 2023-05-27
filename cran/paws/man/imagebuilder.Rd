@@ -87,10 +87,12 @@ specific IT standards.
 \link[paws.compute:imagebuilder_get_image_recipe]{get_image_recipe} \tab Gets an image recipe\cr
 \link[paws.compute:imagebuilder_get_image_recipe_policy]{get_image_recipe_policy} \tab Gets an image recipe policy\cr
 \link[paws.compute:imagebuilder_get_infrastructure_configuration]{get_infrastructure_configuration} \tab Gets an infrastructure configuration\cr
+\link[paws.compute:imagebuilder_get_workflow_execution]{get_workflow_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow\cr
+\link[paws.compute:imagebuilder_get_workflow_step_execution]{get_workflow_step_execution} \tab Get the runtime information that was logged for a specific runtime instance of the workflow step\cr
 \link[paws.compute:imagebuilder_import_component]{import_component} \tab Imports a component and transforms its data into a component document\cr
 \link[paws.compute:imagebuilder_import_vm_image]{import_vm_image} \tab When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data\cr
 \link[paws.compute:imagebuilder_list_component_build_versions]{list_component_build_versions} \tab Returns the list of component build versions for the specified semantic version\cr
-\link[paws.compute:imagebuilder_list_components]{list_components} \tab Returns the list of component build versions for the specified semantic version\cr
+\link[paws.compute:imagebuilder_list_components]{list_components} \tab Returns the list of components that can be filtered by name, or by using the listed filters to streamline results\cr
 \link[paws.compute:imagebuilder_list_container_recipes]{list_container_recipes} \tab Returns a list of container recipes\cr
 \link[paws.compute:imagebuilder_list_distribution_configurations]{list_distribution_configurations} \tab Returns a list of distribution configurations\cr
 \link[paws.compute:imagebuilder_list_image_build_versions]{list_image_build_versions} \tab Returns a list of image build versions\cr
@@ -99,8 +101,12 @@ specific IT standards.
 \link[paws.compute:imagebuilder_list_image_pipelines]{list_image_pipelines} \tab Returns a list of image pipelines\cr
 \link[paws.compute:imagebuilder_list_image_recipes]{list_image_recipes} \tab Returns a list of image recipes\cr
 \link[paws.compute:imagebuilder_list_images]{list_images} \tab Returns the list of images that you have access to\cr
+\link[paws.compute:imagebuilder_list_image_scan_finding_aggregations]{list_image_scan_finding_aggregations} \tab Returns a list of image scan aggregations for your account\cr
+\link[paws.compute:imagebuilder_list_image_scan_findings]{list_image_scan_findings} \tab Returns a list of image scan findings for your account\cr
 \link[paws.compute:imagebuilder_list_infrastructure_configurations]{list_infrastructure_configurations} \tab Returns a list of infrastructure configurations\cr
 \link[paws.compute:imagebuilder_list_tags_for_resource]{list_tags_for_resource} \tab Returns the list of tags for the specified resource\cr
+\link[paws.compute:imagebuilder_list_workflow_executions]{list_workflow_executions} \tab Returns a list of workflow runtime instance metadata objects for a specific image build version\cr
+\link[paws.compute:imagebuilder_list_workflow_step_executions]{list_workflow_step_executions} \tab Shows runtime data for each step in a runtime instance of the workflow that you specify in the request\cr
 \link[paws.compute:imagebuilder_put_component_policy]{put_component_policy} \tab Applies a policy to a component\cr
 \link[paws.compute:imagebuilder_put_container_recipe_policy]{put_container_recipe_policy} \tab Applies a policy to a container image\cr
 \link[paws.compute:imagebuilder_put_image_policy]{put_image_policy} \tab Applies a policy to an image\cr

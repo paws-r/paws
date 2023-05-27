@@ -28,13 +28,13 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Resilience Hub helps you proactively prepare and protect your Amazon
-Web Services applications from disruptions. Resilience Hub offers
-continuous resiliency assessment and validation that integrates into
-your software development lifecycle. This enables you to uncover
-resiliency weaknesses, ensure recovery time objective (RTO) and recovery
-point objective (RPO) targets for your applications are met, and resolve
-issues before they are released into production.
+Resilience Hub helps you proactively prepare and protect your Amazon Web
+Services applications from disruptions. It offers continual resiliency
+assessment and validation that integrates into your software development
+lifecycle. This enables you to uncover resiliency weaknesses, ensure
+recovery time objective (RTO) and recovery point objective (RPO) targets
+for your applications are met, and resolve issues before they are
+released into production.
 }
 \section{Service syntax}{
 
@@ -64,27 +64,37 @@ issues before they are released into production.
 
 \tabular{ll}{
 \link[paws.management:resiliencehub_add_draft_app_version_resource_mappings]{add_draft_app_version_resource_mappings} \tab Adds the resource mapping for the draft application version\cr
-\link[paws.management:resiliencehub_create_app]{create_app} \tab Creates a Resilience Hub application\cr
-\link[paws.management:resiliencehub_create_recommendation_template]{create_recommendation_template} \tab Creates a new recommendation template\cr
+\link[paws.management:resiliencehub_create_app]{create_app} \tab Creates an Resilience Hub application\cr
+\link[paws.management:resiliencehub_create_app_version_app_component]{create_app_version_app_component} \tab Creates a new Application Component in the Resilience Hub application\cr
+\link[paws.management:resiliencehub_create_app_version_resource]{create_app_version_resource} \tab Adds a resource to the Resilience Hub application and assigns it to the specified Application Components\cr
+\link[paws.management:resiliencehub_create_recommendation_template]{create_recommendation_template} \tab Creates a new recommendation template for the Resilience Hub application\cr
 \link[paws.management:resiliencehub_create_resiliency_policy]{create_resiliency_policy} \tab Creates a resiliency policy for an application\cr
-\link[paws.management:resiliencehub_delete_app]{delete_app} \tab Deletes an AWS Resilience Hub application\cr
-\link[paws.management:resiliencehub_delete_app_assessment]{delete_app_assessment} \tab Deletes an AWS Resilience Hub application assessment\cr
+\link[paws.management:resiliencehub_delete_app]{delete_app} \tab Deletes an Resilience Hub application\cr
+\link[paws.management:resiliencehub_delete_app_assessment]{delete_app_assessment} \tab Deletes an Resilience Hub application assessment\cr
+\link[paws.management:resiliencehub_delete_app_input_source]{delete_app_input_source} \tab Deletes the input source and all of its imported resources from the Resilience Hub application\cr
+\link[paws.management:resiliencehub_delete_app_version_app_component]{delete_app_version_app_component} \tab Deletes an Application Component from the Resilience Hub application\cr
+\link[paws.management:resiliencehub_delete_app_version_resource]{delete_app_version_resource} \tab Deletes a resource from the Resilience Hub application\cr
 \link[paws.management:resiliencehub_delete_recommendation_template]{delete_recommendation_template} \tab Deletes a recommendation template\cr
 \link[paws.management:resiliencehub_delete_resiliency_policy]{delete_resiliency_policy} \tab Deletes a resiliency policy\cr
-\link[paws.management:resiliencehub_describe_app]{describe_app} \tab Describes an AWS Resilience Hub application\cr
-\link[paws.management:resiliencehub_describe_app_assessment]{describe_app_assessment} \tab Describes an assessment for an AWS Resilience Hub application\cr
+\link[paws.management:resiliencehub_describe_app]{describe_app} \tab Describes an Resilience Hub application\cr
+\link[paws.management:resiliencehub_describe_app_assessment]{describe_app_assessment} \tab Describes an assessment for an Resilience Hub application\cr
+\link[paws.management:resiliencehub_describe_app_version]{describe_app_version} \tab Describes the Resilience Hub application version\cr
+\link[paws.management:resiliencehub_describe_app_version_app_component]{describe_app_version_app_component} \tab Describes an Application Component in the Resilience Hub application\cr
+\link[paws.management:resiliencehub_describe_app_version_resource]{describe_app_version_resource} \tab Describes a resource of the Resilience Hub application\cr
 \link[paws.management:resiliencehub_describe_app_version_resources_resolution_status]{describe_app_version_resources_resolution_status} \tab Returns the resolution status for the specified resolution identifier for an application version\cr
-\link[paws.management:resiliencehub_describe_app_version_template]{describe_app_version_template} \tab Describes details about an AWS Resilience Hub\cr
+\link[paws.management:resiliencehub_describe_app_version_template]{describe_app_version_template} \tab Describes details about an Resilience Hub application\cr
 \link[paws.management:resiliencehub_describe_draft_app_version_resources_import_status]{describe_draft_app_version_resources_import_status} \tab Describes the status of importing resources to an application version\cr
-\link[paws.management:resiliencehub_describe_resiliency_policy]{describe_resiliency_policy} \tab Describes a specified resiliency policy for an AWS Resilience Hub application\cr
-\link[paws.management:resiliencehub_import_resources_to_draft_app_version]{import_resources_to_draft_app_version} \tab Imports resources from sources such as a CloudFormation stack, resource-groups, or application registry app to a draft application version\cr
-\link[paws.management:resiliencehub_list_alarm_recommendations]{list_alarm_recommendations} \tab Lists the alarm recommendations for a AWS Resilience Hub application\cr
-\link[paws.management:resiliencehub_list_app_assessments]{list_app_assessments} \tab Lists the assessments for an AWS Resilience Hub application\cr
-\link[paws.management:resiliencehub_list_app_component_compliances]{list_app_component_compliances} \tab Lists the compliances for an AWS Resilience Hub component\cr
-\link[paws.management:resiliencehub_list_app_component_recommendations]{list_app_component_recommendations} \tab Lists the recommendations for an AWS Resilience Hub component\cr
+\link[paws.management:resiliencehub_describe_resiliency_policy]{describe_resiliency_policy} \tab Describes a specified resiliency policy for an Resilience Hub application\cr
+\link[paws.management:resiliencehub_import_resources_to_draft_app_version]{import_resources_to_draft_app_version} \tab Imports resources to Resilience Hub application draft version from different input sources\cr
+\link[paws.management:resiliencehub_list_alarm_recommendations]{list_alarm_recommendations} \tab Lists the alarm recommendations for an Resilience Hub application\cr
+\link[paws.management:resiliencehub_list_app_assessments]{list_app_assessments} \tab Lists the assessments for an Resilience Hub application\cr
+\link[paws.management:resiliencehub_list_app_component_compliances]{list_app_component_compliances} \tab Lists the compliances for an Resilience Hub Application Component\cr
+\link[paws.management:resiliencehub_list_app_component_recommendations]{list_app_component_recommendations} \tab Lists the recommendations for an Resilience Hub Application Component\cr
+\link[paws.management:resiliencehub_list_app_input_sources]{list_app_input_sources} \tab Lists all the input sources of the Resilience Hub application\cr
 \link[paws.management:resiliencehub_list_apps]{list_apps} \tab Lists your Resilience Hub applications\cr
+\link[paws.management:resiliencehub_list_app_version_app_components]{list_app_version_app_components} \tab Lists all the Application Components in the Resilience Hub application\cr
 \link[paws.management:resiliencehub_list_app_version_resource_mappings]{list_app_version_resource_mappings} \tab Lists how the resources in an application version are mapped/sourced from\cr
-\link[paws.management:resiliencehub_list_app_version_resources]{list_app_version_resources} \tab Lists all the resources in an application version\cr
+\link[paws.management:resiliencehub_list_app_version_resources]{list_app_version_resources} \tab Lists all the resources in an Resilience Hub application\cr
 \link[paws.management:resiliencehub_list_app_versions]{list_app_versions} \tab Lists the different versions for the Resilience Hub applications\cr
 \link[paws.management:resiliencehub_list_recommendation_templates]{list_recommendation_templates} \tab Lists the recommendation templates for the Resilience Hub applications\cr
 \link[paws.management:resiliencehub_list_resiliency_policies]{list_resiliency_policies} \tab Lists the resiliency policies for the Resilience Hub applications\cr
@@ -92,15 +102,18 @@ issues before they are released into production.
 \link[paws.management:resiliencehub_list_suggested_resiliency_policies]{list_suggested_resiliency_policies} \tab Lists the suggested resiliency policies for the Resilience Hub applications\cr
 \link[paws.management:resiliencehub_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for your resources in your Resilience Hub applications\cr
 \link[paws.management:resiliencehub_list_test_recommendations]{list_test_recommendations} \tab Lists the test recommendations for the Resilience Hub application\cr
-\link[paws.management:resiliencehub_list_unsupported_app_version_resources]{list_unsupported_app_version_resources} \tab Lists the resources that are not currently supported in AWS Resilience Hub\cr
+\link[paws.management:resiliencehub_list_unsupported_app_version_resources]{list_unsupported_app_version_resources} \tab Lists the resources that are not currently supported in Resilience Hub\cr
 \link[paws.management:resiliencehub_publish_app_version]{publish_app_version} \tab Publishes a new version of a specific Resilience Hub application\cr
-\link[paws.management:resiliencehub_put_draft_app_version_template]{put_draft_app_version_template} \tab Adds or updates the app template for a draft version of a Resilience Hub app\cr
+\link[paws.management:resiliencehub_put_draft_app_version_template]{put_draft_app_version_template} \tab Adds or updates the app template for an Resilience Hub application draft version\cr
 \link[paws.management:resiliencehub_remove_draft_app_version_resource_mappings]{remove_draft_app_version_resource_mappings} \tab Removes resource mappings from a draft application version\cr
 \link[paws.management:resiliencehub_resolve_app_version_resources]{resolve_app_version_resources} \tab Resolves the resources for an application version\cr
 \link[paws.management:resiliencehub_start_app_assessment]{start_app_assessment} \tab Creates a new application assessment for an application\cr
 \link[paws.management:resiliencehub_tag_resource]{tag_resource} \tab Applies one or more tags to a resource\cr
 \link[paws.management:resiliencehub_untag_resource]{untag_resource} \tab Removes one or more tags from a resource\cr
 \link[paws.management:resiliencehub_update_app]{update_app} \tab Updates an application\cr
+\link[paws.management:resiliencehub_update_app_version]{update_app_version} \tab Updates the Resilience Hub application version\cr
+\link[paws.management:resiliencehub_update_app_version_app_component]{update_app_version_app_component} \tab Updates an existing Application Component in the Resilience Hub application\cr
+\link[paws.management:resiliencehub_update_app_version_resource]{update_app_version_resource} \tab Updates the resource details in the Resilience Hub application\cr
 \link[paws.management:resiliencehub_update_resiliency_policy]{update_resiliency_policy} \tab Updates a resiliency policy
 }
 }

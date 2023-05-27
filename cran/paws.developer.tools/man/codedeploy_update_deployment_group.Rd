@@ -44,15 +44,22 @@ you want to change them. To keep the existing tags, enter their names.
 To remove tags, do not enter any tag names.}
 
 \item{autoScalingGroups}{The replacement list of Auto Scaling groups to be included in the
-deployment group, if you want to change them. To keep the Auto Scaling
-groups, enter their names. To remove Auto Scaling groups, do not enter
-any Auto Scaling group names.}
+deployment group, if you want to change them.
+\itemize{
+\item To keep the Auto Scaling groups, enter their names or do not specify
+this parameter.
+\item To remove Auto Scaling groups, specify a non-null empty list of Auto
+Scaling group names to detach all CodeDeploy-managed Auto Scaling
+lifecycle hooks. For examples, see Amazon EC2 instances in an Amazon
+EC2 Auto Scaling group fail to launch and receive the error
+"Heartbeat Timeout" in the \emph{CodeDeploy User Guide}.
+}}
 
 \item{serviceRoleArn}{A replacement ARN for the service role, if you want to change it.}
 
 \item{triggerConfigurations}{Information about triggers to change when the deployment group is
 updated. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-edit-trigger.html}{Edit a Trigger in a CodeDeploy Deployment Group}
-in the \emph{AWS CodeDeploy User Guide}.}
+in the \emph{CodeDeploy User Guide}.}
 
 \item{alarmConfiguration}{Information to add or change about Amazon CloudWatch alarms when the
 deployment group is updated.}
@@ -60,16 +67,16 @@ deployment group is updated.}
 \item{autoRollbackConfiguration}{Information for an automatic rollback configuration that is added or
 changed when a deployment group is updated.}
 
-\item{outdatedInstancesStrategy}{Indicates what happens when new EC2 instances are launched
+\item{outdatedInstancesStrategy}{Indicates what happens when new Amazon EC2 instances are launched
 mid-deployment and do not receive the deployed application revision.
 
 If this option is set to \code{UPDATE} or is unspecified, CodeDeploy
 initiates one or more 'auto-update outdated instances' deployments to
-apply the deployed application revision to the new EC2 instances.
+apply the deployed application revision to the new Amazon EC2 instances.
 
 If this option is set to \code{IGNORE}, CodeDeploy does not initiate a
-deployment to update the new EC2 instances. This may result in instances
-having different revisions.}
+deployment to update the new Amazon EC2 instances. This may result in
+instances having different revisions.}
 
 \item{deploymentStyle}{Information about the type of deployment, either in-place or blue/green,
 you want to run and whether to route deployment traffic behind a load
@@ -80,8 +87,8 @@ balancer.}
 \item{loadBalancerInfo}{Information about the load balancer used in a deployment.}
 
 \item{ec2TagSet}{Information about groups of tags applied to on-premises instances. The
-deployment group includes only EC2 instances identified by all the tag
-groups.}
+deployment group includes only Amazon EC2 instances identified by all
+the tag groups.}
 
 \item{ecsServices}{The target Amazon ECS services in the deployment group. This applies
 only to deployment groups that use the Amazon ECS compute platform. A

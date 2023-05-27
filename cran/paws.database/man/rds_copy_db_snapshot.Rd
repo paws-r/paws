@@ -13,6 +13,7 @@ rds_copy_db_snapshot(
   PreSignedUrl = NULL,
   OptionGroupName = NULL,
   TargetCustomAvailabilityZone = NULL,
+  CopyOptionGroup = NULL,
   SourceRegion = NULL
 )
 }
@@ -82,7 +83,7 @@ Services Region.}
 \item{Tags}{}
 
 \item{CopyTags}{A value that indicates whether to copy all tags from the source DB
-snapshot to the target DB snapshot. By default, tags are not copied.}
+snapshot to the target DB snapshot. By default, tags aren't copied.}
 
 \item{PreSignedUrl}{When you are copying a snapshot from one Amazon Web Services GovCloud
 (US) Region to another, the URL that contains a Signature Version 4
@@ -135,7 +136,7 @@ from the us-west-2 Amazon Web Services Region, then your
 
 To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
-and \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can
 specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of
@@ -160,6 +161,11 @@ in the \emph{Amazon RDS User Guide}.}
 CAZ.
 
 Example: \code{rds-caz-aiqhTgQv}.}
+
+\item{CopyOptionGroup}{A value that indicates whether to copy the DB option group associated
+with the source DB snapshot to the target Amazon Web Services account
+and associate with the target DB snapshot. The associated option group
+can be copied only with cross-account snapshot copy calls.}
 
 \item{SourceRegion}{The ID of the region that contains the snapshot to be copied.}
 }

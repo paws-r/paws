@@ -3,23 +3,36 @@
 \name{cloudwatchlogs_get_log_group_fields}
 \alias{cloudwatchlogs_get_log_group_fields}
 \title{Returns a list of the fields that are included in log events in the
-specified log group, along with the percentage of log events that
-contain each field}
+specified log group}
 \usage{
-cloudwatchlogs_get_log_group_fields(logGroupName, time = NULL)
+cloudwatchlogs_get_log_group_fields(
+  logGroupName = NULL,
+  time = NULL,
+  logGroupIdentifier = NULL
+)
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group to search.}
+\item{logGroupName}{The name of the log group to search.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
 
 \item{time}{The time to set as the center of the query. If you specify \code{time}, the
-15 minutes before this time are queries. If you omit \code{time} the 8
+15 minutes before this time are queries. If you omit \code{time}, the 8
 minutes before and 8 minutes after this time are searched.
 
-The \code{time} value is specified as epoch time, the number of seconds since
-January 1, 1970, 00:00:00 UTC.}
+The \code{time} value is specified as epoch time, which is the number of
+seconds since \verb{January 1, 1970, 00:00:00 UTC}.}
+
+\item{logGroupIdentifier}{Specify either the name or ARN of the log group to view. If the log
+group is in a source account and you are using a monitoring account, you
+must specify the ARN.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
 }
 \description{
-Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field. The search is limited to a time period that you specify.
+Returns a list of the fields that are included in log events in the specified log group. Includes the percentage of log events that contain each field. The search is limited to a time period that you specify.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_log_group_fields.html} for full documentation.
 }

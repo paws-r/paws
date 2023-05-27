@@ -24,10 +24,9 @@ archive with two files, \code{topic-terms.csv} that lists the terms
 associated with each topic, and \code{doc-topics.csv} that lists the
 documents associated with each topic}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that grants Amazon Comprehend read access to your input data.
-For more information, see
-https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+Comprehend read access to your input data. For more information, see
+\href{https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions}{Role-based permissions}.}
 
 \item{JobName}{The identifier of the job.}
 
@@ -36,10 +35,10 @@ https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permiss
 \item{ClientRequestToken}{A unique identifier for the request. If you do not set the client
 request token, Amazon Comprehend generates one.}
 
-\item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-uses to encrypt data on the storage volume attached to the ML compute
-instance(s) that process the analysis job. The VolumeKmsKeyId can be
-either of the following formats:
+\item{VolumeKmsKeyId}{ID for the Amazon Web Services Key Management Service (KMS) key that
+Amazon Comprehend uses to encrypt data on the storage volume attached to
+the ML compute instance(s) that process the analysis job. The
+VolumeKmsKeyId can be either of the following formats:
 \itemize{
 \item KMS Key ID: \code{"1234abcd-12ab-34cd-56ef-1234567890ab"}
 \item Amazon Resource Name (ARN) of a KMS Key:
@@ -50,10 +49,10 @@ either of the following formats:
 (VPC) containing the resources you are using for your topic detection
 job. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html}{Amazon VPC}.}
 
-\item{Tags}{Tags to be associated with the topics detection job. A tag is a
-key-value pair that adds metadata to a resource used by Amazon
-Comprehend. For example, a tag with "Sales" as the key might be added to
-a resource to indicate its use by the sales department.}
+\item{Tags}{Tags to associate with the topics detection job. A tag is a key-value
+pair that adds metadata to a resource used by Amazon Comprehend. For
+example, a tag with "Sales" as the key might be added to a resource to
+indicate its use by the sales department.}
 }
 \description{
 Starts an asynchronous topic detection job. Use the \code{DescribeTopicDetectionJob} operation to track the status of a job.

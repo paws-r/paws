@@ -2,7 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_disconnect_custom_key_store}
 \alias{kms_disconnect_custom_key_store}
-\title{Disconnects the custom key store from its associated CloudHSM cluster}
+\title{Disconnects the custom key store from its backing key store}
 \usage{
 kms_disconnect_custom_key_store(CustomKeyStoreId)
 }
@@ -13,7 +13,7 @@ ID of a custom key store, use the
 operation.}
 }
 \description{
-Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} from its associated CloudHSM cluster. While a custom key store is disconnected, you can manage the custom key store and its KMS keys, but you cannot create or use KMS keys in the custom key store. You can reconnect the custom key store at any time.
+Disconnects the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} from its backing key store. This operation disconnects an CloudHSM key store from its associated CloudHSM cluster or disconnects an external key store from the external key store proxy that communicates with your external key manager.
 
 See \url{https://paws-r.github.io/docs/kms/disconnect_custom_key_store.html} for full documentation.
 }

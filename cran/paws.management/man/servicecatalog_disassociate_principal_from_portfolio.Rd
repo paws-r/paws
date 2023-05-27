@@ -8,20 +8,24 @@ portfolio}
 servicecatalog_disassociate_principal_from_portfolio(
   AcceptLanguage = NULL,
   PortfolioId,
-  PrincipalARN
+  PrincipalARN,
+  PrincipalType = NULL
 )
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
 
 \item{PortfolioId}{[required] The portfolio identifier.}
 
-\item{PrincipalARN}{[required] The ARN of the principal (IAM user, role, or group).}
+\item{PrincipalARN}{[required] The ARN of the principal (user, role, or group). This field allows an
+ARN with no \code{accountID} if \code{PrincipalType} is \code{IAM_PATTERN}.}
+
+\item{PrincipalType}{The supported value is \code{IAM} if you use a fully defined ARN, or
+\code{IAM_PATTERN} if you use no \code{accountID}.}
 }
 \description{
 Disassociates a previously associated principal ARN from a specified portfolio.

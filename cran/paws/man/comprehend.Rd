@@ -28,10 +28,10 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Comprehend is an AWS service for gaining insight into the content
-of documents. Use these actions to determine the topics contained in
-your documents, the topics they discuss, the predominant sentiment
-expressed in them, the predominant language used, and more.
+Amazon Comprehend is an Amazon Web Services service for gaining insight
+into the content of documents. Use these actions to determine the topics
+contained in your documents, the topics they discuss, the predominant
+sentiment expressed in them, the predominant language used, and more.
 }
 \section{Service syntax}{
 
@@ -65,15 +65,20 @@ expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_batch_detect_key_phrases]{batch_detect_key_phrases} \tab Detects the key noun phrases found in a batch of documents\cr
 \link[paws.machine.learning:comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one\cr
 \link[paws.machine.learning:comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
+\link[paws.machine.learning:comprehend_batch_detect_targeted_sentiment]{batch_detect_targeted_sentiment} \tab Inspects a batch of documents and returns a sentiment analysis for each entity identified in the documents\cr
 \link[paws.machine.learning:comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
 \link[paws.machine.learning:comprehend_contains_pii_entities]{contains_pii_entities} \tab Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number\cr
+\link[paws.machine.learning:comprehend_create_dataset]{create_dataset} \tab Creates a dataset to upload training or test data for a model associated with a flywheel\cr
 \link[paws.machine.learning:comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
 \link[paws.machine.learning:comprehend_create_endpoint]{create_endpoint} \tab Creates a model-specific endpoint for synchronous inference for a previously trained custom model For information about endpoints, see Managing endpoints\cr
 \link[paws.machine.learning:comprehend_create_entity_recognizer]{create_entity_recognizer} \tab Creates an entity recognizer using submitted files\cr
+\link[paws.machine.learning:comprehend_create_flywheel]{create_flywheel} \tab A flywheel is an Amazon Web Services resource that orchestrates the ongoing training of a model for custom classification or custom entity recognition\cr
 \link[paws.machine.learning:comprehend_delete_document_classifier]{delete_document_classifier} \tab Deletes a previously created document classifier\cr
 \link[paws.machine.learning:comprehend_delete_endpoint]{delete_endpoint} \tab Deletes a model-specific endpoint for a previously-trained custom model\cr
 \link[paws.machine.learning:comprehend_delete_entity_recognizer]{delete_entity_recognizer} \tab Deletes an entity recognizer\cr
+\link[paws.machine.learning:comprehend_delete_flywheel]{delete_flywheel} \tab Deletes a flywheel\cr
 \link[paws.machine.learning:comprehend_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy that is attached to a custom model\cr
+\link[paws.machine.learning:comprehend_describe_dataset]{describe_dataset} \tab Returns information about the dataset that you specify\cr
 \link[paws.machine.learning:comprehend_describe_document_classification_job]{describe_document_classification_job} \tab Gets the properties associated with a document classification job\cr
 \link[paws.machine.learning:comprehend_describe_document_classifier]{describe_document_classifier} \tab Gets the properties associated with a document classifier\cr
 \link[paws.machine.learning:comprehend_describe_dominant_language_detection_job]{describe_dominant_language_detection_job} \tab Gets the properties associated with a dominant language detection job\cr
@@ -81,6 +86,8 @@ expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_describe_entities_detection_job]{describe_entities_detection_job} \tab Gets the properties associated with an entities detection job\cr
 \link[paws.machine.learning:comprehend_describe_entity_recognizer]{describe_entity_recognizer} \tab Provides details about an entity recognizer including status, S3 buckets containing training data, recognizer metadata, metrics, and so on\cr
 \link[paws.machine.learning:comprehend_describe_events_detection_job]{describe_events_detection_job} \tab Gets the status and details of an events detection job\cr
+\link[paws.machine.learning:comprehend_describe_flywheel]{describe_flywheel} \tab Provides configuration information about the flywheel\cr
+\link[paws.machine.learning:comprehend_describe_flywheel_iteration]{describe_flywheel_iteration} \tab Retrieve the configuration properties of a flywheel iteration\cr
 \link[paws.machine.learning:comprehend_describe_key_phrases_detection_job]{describe_key_phrases_detection_job} \tab Gets the properties associated with a key phrases detection job\cr
 \link[paws.machine.learning:comprehend_describe_pii_entities_detection_job]{describe_pii_entities_detection_job} \tab Gets the properties associated with a PII entities detection job\cr
 \link[paws.machine.learning:comprehend_describe_resource_policy]{describe_resource_policy} \tab Gets the details of a resource-based policy that is attached to a custom model, including the JSON body of the policy\cr
@@ -88,12 +95,14 @@ expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_describe_targeted_sentiment_detection_job]{describe_targeted_sentiment_detection_job} \tab Gets the properties associated with a targeted sentiment detection job\cr
 \link[paws.machine.learning:comprehend_describe_topics_detection_job]{describe_topics_detection_job} \tab Gets the properties associated with a topic detection job\cr
 \link[paws.machine.learning:comprehend_detect_dominant_language]{detect_dominant_language} \tab Determines the dominant language of the input text\cr
-\link[paws.machine.learning:comprehend_detect_entities]{detect_entities} \tab Inspects text for named entities, and returns information about them\cr
+\link[paws.machine.learning:comprehend_detect_entities]{detect_entities} \tab Detects named entities in input text when you use the pre-trained model\cr
 \link[paws.machine.learning:comprehend_detect_key_phrases]{detect_key_phrases} \tab Detects the key noun phrases found in the text\cr
 \link[paws.machine.learning:comprehend_detect_pii_entities]{detect_pii_entities} \tab Inspects the input text for entities that contain personally identifiable information (PII) and returns information about them\cr
 \link[paws.machine.learning:comprehend_detect_sentiment]{detect_sentiment} \tab Inspects text and returns an inference of the prevailing sentiment (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)\cr
 \link[paws.machine.learning:comprehend_detect_syntax]{detect_syntax} \tab Inspects text for syntax and the part of speech of words in the document\cr
+\link[paws.machine.learning:comprehend_detect_targeted_sentiment]{detect_targeted_sentiment} \tab Inspects the input text and returns a sentiment analysis for each entity identified in the text\cr
 \link[paws.machine.learning:comprehend_import_model]{import_model} \tab Creates a new custom model that replicates a source custom model that you import\cr
+\link[paws.machine.learning:comprehend_list_datasets]{list_datasets} \tab List the datasets that you have configured in this Region\cr
 \link[paws.machine.learning:comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted\cr
 \link[paws.machine.learning:comprehend_list_document_classifiers]{list_document_classifiers} \tab Gets a list of the document classifiers that you have created\cr
 \link[paws.machine.learning:comprehend_list_document_classifier_summaries]{list_document_classifier_summaries} \tab Gets a list of summaries of the document classifiers that you have created\cr
@@ -103,6 +112,8 @@ expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_list_entity_recognizers]{list_entity_recognizers} \tab Gets a list of the properties of all entity recognizers that you created, including recognizers currently in training\cr
 \link[paws.machine.learning:comprehend_list_entity_recognizer_summaries]{list_entity_recognizer_summaries} \tab Gets a list of summaries for the entity recognizers that you have created\cr
 \link[paws.machine.learning:comprehend_list_events_detection_jobs]{list_events_detection_jobs} \tab Gets a list of the events detection jobs that you have submitted\cr
+\link[paws.machine.learning:comprehend_list_flywheel_iteration_history]{list_flywheel_iteration_history} \tab Information about the history of a flywheel iteration\cr
+\link[paws.machine.learning:comprehend_list_flywheels]{list_flywheels} \tab Gets a list of the flywheels that you have created\cr
 \link[paws.machine.learning:comprehend_list_key_phrases_detection_jobs]{list_key_phrases_detection_jobs} \tab Get a list of key phrase detection jobs that you have submitted\cr
 \link[paws.machine.learning:comprehend_list_pii_entities_detection_jobs]{list_pii_entities_detection_jobs} \tab Gets a list of the PII entity detection jobs that you have submitted\cr
 \link[paws.machine.learning:comprehend_list_sentiment_detection_jobs]{list_sentiment_detection_jobs} \tab Gets a list of sentiment detection jobs that you have submitted\cr
@@ -114,6 +125,7 @@ expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_start_dominant_language_detection_job]{start_dominant_language_detection_job} \tab Starts an asynchronous dominant language detection job for a collection of documents\cr
 \link[paws.machine.learning:comprehend_start_entities_detection_job]{start_entities_detection_job} \tab Starts an asynchronous entity detection job for a collection of documents\cr
 \link[paws.machine.learning:comprehend_start_events_detection_job]{start_events_detection_job} \tab Starts an asynchronous event detection job for a collection of documents\cr
+\link[paws.machine.learning:comprehend_start_flywheel_iteration]{start_flywheel_iteration} \tab Start the flywheel iteration\cr
 \link[paws.machine.learning:comprehend_start_key_phrases_detection_job]{start_key_phrases_detection_job} \tab Starts an asynchronous key phrase detection job for a collection of documents\cr
 \link[paws.machine.learning:comprehend_start_pii_entities_detection_job]{start_pii_entities_detection_job} \tab Starts an asynchronous PII entity detection job for a collection of documents\cr
 \link[paws.machine.learning:comprehend_start_sentiment_detection_job]{start_sentiment_detection_job} \tab Starts an asynchronous sentiment detection job for a collection of documents\cr
@@ -130,7 +142,8 @@ expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_stop_training_entity_recognizer]{stop_training_entity_recognizer} \tab Stops an entity recognizer training job while in progress\cr
 \link[paws.machine.learning:comprehend_tag_resource]{tag_resource} \tab Associates a specific tag with an Amazon Comprehend resource\cr
 \link[paws.machine.learning:comprehend_untag_resource]{untag_resource} \tab Removes a specific tag associated with an Amazon Comprehend resource\cr
-\link[paws.machine.learning:comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint
+\link[paws.machine.learning:comprehend_update_endpoint]{update_endpoint} \tab Updates information about the specified endpoint\cr
+\link[paws.machine.learning:comprehend_update_flywheel]{update_flywheel} \tab Update the configuration information for an existing flywheel
 }
 }
 

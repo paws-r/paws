@@ -2,7 +2,8 @@
 % Please edit documentation in R/servicecatalog_operations.R
 \name{servicecatalog_list_principals_for_portfolio}
 \alias{servicecatalog_list_principals_for_portfolio}
-\title{Lists all principal ARNs associated with the specified portfolio}
+\title{Lists all PrincipalARNs and corresponding PrincipalTypes associated with
+the specified portfolio}
 \usage{
 servicecatalog_list_principals_for_portfolio(
   AcceptLanguage = NULL,
@@ -14,7 +15,6 @@ servicecatalog_list_principals_for_portfolio(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -27,7 +27,7 @@ servicecatalog_list_principals_for_portfolio(
 results, use null.}
 }
 \description{
-Lists all principal ARNs associated with the specified portfolio.
+Lists all \code{PrincipalARN}s and corresponding \code{PrincipalType}s associated with the specified portfolio.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html} for full documentation.
 }

@@ -28,27 +28,26 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Web Services Single Sign On Portal is a web service that makes it
-easy for you to assign user access to Amazon Web Services SSO resources
-such as the AWS access portal. Users can get Amazon Web Services account
-applications and roles assigned to them and get federated into the
-application.
+AWS IAM Identity Center (successor to AWS Single Sign-On) Portal is a
+web service that makes it easy for you to assign user access to IAM
+Identity Center resources such as the AWS access portal. Users can get
+AWS account applications and roles assigned to them and get federated
+into the application.
 
-Although Amazon Web Services Single Sign-On was renamed, the \code{sso} and
-\code{identitystore} API namespaces will continue to retain their original
-name for backward compatibility purposes. For more information, see
-\href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed}{Amazon Web Services SSO rename}.
+Although AWS Single Sign-On was renamed, the \code{sso} and \code{identitystore}
+API namespaces will continue to retain their original name for backward
+compatibility purposes. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed}{IAM Identity Center rename}.
 
-This API reference guide describes the Amazon Web Services SSO Portal
-operations that you can call programatically and includes detailed
-information on data types and errors.
+This reference guide describes the IAM Identity Center Portal operations
+that you can call programatically and includes detailed information on
+data types and errors.
 
-Amazon Web Services provides SDKs that consist of libraries and sample
-code for various programming languages and platforms, such as Java,
-Ruby, .Net, iOS, or Android. The SDKs provide a convenient way to create
-programmatic access to Amazon Web Services SSO and other Amazon Web
-Services services. For more information about the Amazon Web Services
-SDKs, including how to download and install them, see \href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
+AWS provides SDKs that consist of libraries and sample code for various
+programming languages and platforms, such as Java, Ruby, .Net, iOS, or
+Android. The SDKs provide a convenient way to create programmatic access
+to IAM Identity Center and other AWS services. For more information
+about the AWS SDKs, including how to download and install them, see
+\href{https://aws.amazon.com/developer/tools/}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
 
@@ -78,9 +77,9 @@ SDKs, including how to download and install them, see \href{https://aws.amazon.c
 
 \tabular{ll}{
 \link[paws.security.identity:sso_get_role_credentials]{get_role_credentials} \tab Returns the STS short-term credentials for a given role name that is assigned to the user\cr
-\link[paws.security.identity:sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given Amazon Web Services account\cr
-\link[paws.security.identity:sso_list_accounts]{list_accounts} \tab Lists all Amazon Web Services accounts assigned to the user\cr
-\link[paws.security.identity:sso_logout]{logout} \tab Removes the locally stored SSO tokens from the client-side cache and sends an API call to the Amazon Web Services SSO service to invalidate the corresponding server-side Amazon Web Services SSO sign in session
+\link[paws.security.identity:sso_list_account_roles]{list_account_roles} \tab Lists all roles that are assigned to the user for a given AWS account\cr
+\link[paws.security.identity:sso_list_accounts]{list_accounts} \tab Lists all AWS accounts assigned to the user\cr
+\link[paws.security.identity:sso_logout]{logout} \tab Removes the locally stored SSO tokens from the client-side cache and sends an API call to the IAM Identity Center service to invalidate the corresponding server-side IAM Identity Center sign in session
 }
 }
 

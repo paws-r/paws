@@ -15,7 +15,7 @@ eks_delete_addon(clusterName, addonName, preserve = NULL)
 
 \item{preserve}{Specifying this option preserves the add-on software on your cluster but
 Amazon EKS stops managing any settings for the add-on. If an IAM account
-is associated with the add-on, it is not removed.}
+is associated with the add-on, it isn't removed.}
 }
 \description{
 Delete an Amazon EKS add-on.

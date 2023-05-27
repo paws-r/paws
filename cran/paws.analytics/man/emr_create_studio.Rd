@@ -25,8 +25,8 @@ emr_create_studio(
 
 \item{Description}{A detailed description of the Amazon EMR Studio.}
 
-\item{AuthMode}{[required] Specifies whether the Studio authenticates users using IAM or Amazon Web
-Services SSO.}
+\item{AuthMode}{[required] Specifies whether the Studio authenticates users using IAM or IAM
+Identity Center.}
 
 \item{VpcId}{[required] The ID of the Amazon Virtual Private Cloud (Amazon VPC) to associate
 with the Studio.}
@@ -41,9 +41,9 @@ provides a way for Amazon EMR Studio to interoperate with other Amazon
 Web Services services.}
 
 \item{UserRole}{The IAM user role that users and groups assume when logged in to an
-Amazon EMR Studio. Only specify a \code{UserRole} when you use Amazon Web
-Services SSO authentication. The permissions attached to the \code{UserRole}
-can be scoped down for each user or group using session policies.}
+Amazon EMR Studio. Only specify a \code{UserRole} when you use IAM Identity
+Center authentication. The permissions attached to the \code{UserRole} can be
+scoped down for each user or group using session policies.}
 
 \item{WorkspaceSecurityGroupId}{[required] The ID of the Amazon EMR Studio Workspace security group. The Workspace
 security group allows outbound network traffic to resources in the

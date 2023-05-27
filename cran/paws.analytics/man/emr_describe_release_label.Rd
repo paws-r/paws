@@ -2,9 +2,9 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_describe_release_label}
 \alias{emr_describe_release_label}
-\title{Provides EMR release label details, such as releases available the
-region where the API request is run, and the available applications for
-a specific EMR release label}
+\title{Provides Amazon EMR release label details, such as the releases
+available the Region where the API request is run, and the available
+applications for a specific Amazon EMR release label}
 \usage{
 emr_describe_release_label(
   ReleaseLabel = NULL,
@@ -20,7 +20,7 @@ emr_describe_release_label(
 \item{MaxResults}{Reserved for future use. Currently set to null.}
 }
 \description{
-Provides EMR release label details, such as releases available the region where the API request is run, and the available applications for a specific EMR release label. Can also list EMR release versions that support a specified version of Spark.
+Provides Amazon EMR release label details, such as the releases available the Region where the API request is run, and the available applications for a specific Amazon EMR release label. Can also list Amazon EMR releases that support a specified version of Spark.
 
 See \url{https://paws-r.github.io/docs/emr/describe_release_label.html} for full documentation.
 }

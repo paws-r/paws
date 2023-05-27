@@ -149,18 +149,21 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @param Notes 
 #' @param ClientRequestToken &#91;required&#93; 
 #' @param Tags The tags to be associated with the workload.
+#' @param DiscoveryConfig Well-Architected discovery configuration settings associated to the
+#' workload.
+#' @param Applications List of AppRegistry application ARNs associated to the workload.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -417,6 +420,41 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
 }
 .wellarchitected$operations$get_answer <- wellarchitected_get_answer
 
+#' Get a consolidated report of your workloads
+#'
+#' @description
+#' Get a consolidated report of your workloads.
+#'
+#' See [https://paws-r.github.io/docs/wellarchitected/get_consolidated_report.html](https://paws-r.github.io/docs/wellarchitected/get_consolidated_report.html) for full documentation.
+#'
+#' @param Format &#91;required&#93; The format of the consolidated report.
+#' 
+#' For `PDF`, `Base64String` is returned. For `JSON`, `Metrics` is
+#' returned.
+#' @param IncludeSharedResources Set to `true` to have shared resources included in the report.
+#' @param NextToken 
+#' @param MaxResults The maximum number of results to return for this request.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_consolidated_report
+wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResources = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetConsolidatedReport",
+    http_method = "GET",
+    http_path = "/consolidatedReport",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_consolidated_report_input(Format = Format, IncludeSharedResources = IncludeSharedResources, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$get_consolidated_report_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_consolidated_report <- wellarchitected_get_consolidated_report
+
 #' Get an existing lens
 #'
 #' @description
@@ -599,10 +637,10 @@ wellarchitected_get_workload <- function(WorkloadId) {
 }
 .wellarchitected$operations$get_workload <- wellarchitected_get_workload
 
-#' Import a new lens
+#' Import a new custom lens or update an existing custom lens
 #'
 #' @description
-#' Import a new lens.
+#' Import a new custom lens or update an existing custom lens.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/import_lens.html](https://paws-r.github.io/docs/wellarchitected/import_lens.html) for full documentation.
 #'
@@ -631,10 +669,10 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 }
 .wellarchitected$operations$import_lens <- wellarchitected_import_lens
 
-#' List of answers
+#' List of answers for a particular workload and lens
 #'
 #' @description
-#' List of answers.
+#' List of answers for a particular workload and lens.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/list_answers.html](https://paws-r.github.io/docs/wellarchitected/list_answers.html) for full documentation.
 #'
@@ -664,6 +702,77 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
   return(response)
 }
 .wellarchitected$operations$list_answers <- wellarchitected_list_answers
+
+#' List of Trusted Advisor check details by account related to the workload
+#'
+#' @description
+#' List of Trusted Advisor check details by account related to the workload.
+#'
+#' See [https://paws-r.github.io/docs/wellarchitected/list_check_details.html](https://paws-r.github.io/docs/wellarchitected/list_check_details.html) for full documentation.
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param NextToken 
+#' @param MaxResults 
+#' @param LensArn &#91;required&#93; Well-Architected Lens ARN.
+#' @param PillarId &#91;required&#93; 
+#' @param QuestionId &#91;required&#93; 
+#' @param ChoiceId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_check_details
+wellarchitected_list_check_details <- function(WorkloadId, NextToken = NULL, MaxResults = NULL, LensArn, PillarId, QuestionId, ChoiceId) {
+  op <- new_operation(
+    name = "ListCheckDetails",
+    http_method = "POST",
+    http_path = "/workloads/{WorkloadId}/checks",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_check_details_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
+  output <- .wellarchitected$list_check_details_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_check_details <- wellarchitected_list_check_details
+
+#' List of Trusted Advisor checks summarized for all accounts related to
+#' the workload
+#'
+#' @description
+#' List of Trusted Advisor checks summarized for all accounts related to the workload.
+#'
+#' See [https://paws-r.github.io/docs/wellarchitected/list_check_summaries.html](https://paws-r.github.io/docs/wellarchitected/list_check_summaries.html) for full documentation.
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param NextToken 
+#' @param MaxResults 
+#' @param LensArn &#91;required&#93; Well-Architected Lens ARN.
+#' @param PillarId &#91;required&#93; 
+#' @param QuestionId &#91;required&#93; 
+#' @param ChoiceId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_check_summaries
+wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, MaxResults = NULL, LensArn, PillarId, QuestionId, ChoiceId) {
+  op <- new_operation(
+    name = "ListCheckSummaries",
+    http_method = "POST",
+    http_path = "/workloads/{WorkloadId}/checkSummaries",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_check_summaries_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
+  output <- .wellarchitected$list_check_summaries_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_check_summaries <- wellarchitected_list_check_summaries
 
 #' List lens review improvements
 #'
@@ -699,10 +808,10 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 }
 .wellarchitected$operations$list_lens_review_improvements <- wellarchitected_list_lens_review_improvements
 
-#' List lens reviews
+#' List lens reviews for a particular workload
 #'
 #' @description
-#' List lens reviews.
+#' List lens reviews for a particular workload.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/list_lens_reviews.html](https://paws-r.github.io/docs/wellarchitected/list_lens_reviews.html) for full documentation.
 #'
@@ -739,8 +848,8 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 #' See [https://paws-r.github.io/docs/wellarchitected/list_lens_shares.html](https://paws-r.github.io/docs/wellarchitected/list_lens_shares.html) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
-#' @param SharedWithPrefix The Amazon Web Services account ID or IAM role with which the lens is
-#' shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
+#' organizational unit (OU) ID with which the lens is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -931,8 +1040,8 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
 #' See [https://paws-r.github.io/docs/wellarchitected/list_workload_shares.html](https://paws-r.github.io/docs/wellarchitected/list_workload_shares.html) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
-#' @param SharedWithPrefix The Amazon Web Services account ID or IAM role with which the workload
-#' is shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
+#' organizational unit (OU) ID with which the workload is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -957,10 +1066,10 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 }
 .wellarchitected$operations$list_workload_shares <- wellarchitected_list_workload_shares
 
-#' List workloads
+#' Paginated list of workloads
 #'
 #' @description
-#' List workloads. Paginated.
+#' Paginated list of workloads.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/list_workloads.html](https://paws-r.github.io/docs/wellarchitected/list_workloads.html) for full documentation.
 #'
@@ -1087,26 +1196,27 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 .wellarchitected$operations$update_answer <- wellarchitected_update_answer
 
 #' Updates whether the Amazon Web Services account is opted into
-#' organization sharing features
+#' organization sharing and discovery integration features
 #'
 #' @description
-#' Updates whether the Amazon Web Services account is opted into organization sharing features.
+#' Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/update_global_settings.html](https://paws-r.github.io/docs/wellarchitected/update_global_settings.html) for full documentation.
 #'
 #' @param OrganizationSharingStatus The status of organization sharing settings.
+#' @param DiscoveryIntegrationStatus The status of discovery support settings.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_global_settings
-wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL) {
+wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL, DiscoveryIntegrationStatus = NULL) {
   op <- new_operation(
     name = "UpdateGlobalSettings",
     http_method = "PATCH",
     http_path = "/global-settings",
     paginator = list()
   )
-  input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus)
+  input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus, DiscoveryIntegrationStatus = DiscoveryIntegrationStatus)
   output <- .wellarchitected$update_global_settings_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1116,10 +1226,10 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 }
 .wellarchitected$operations$update_global_settings <- wellarchitected_update_global_settings
 
-#' Update lens review
+#' Update lens review for a particular workload
 #'
 #' @description
-#' Update lens review.
+#' Update lens review for a particular workload.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/update_lens_review.html](https://paws-r.github.io/docs/wellarchitected/update_lens_review.html) for full documentation.
 #'
@@ -1148,10 +1258,10 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 }
 .wellarchitected$operations$update_lens_review <- wellarchitected_update_lens_review
 
-#' Update a workload invitation
+#' Update a workload or custom lens share invitation
 #'
 #' @description
-#' Update a workload invitation.
+#' Update a workload or custom lens share invitation.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/update_share_invitation.html](https://paws-r.github.io/docs/wellarchitected/update_share_invitation.html) for full documentation.
 #'
@@ -1205,18 +1315,21 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @param Industry 
 #' @param Notes 
 #' @param ImprovementStatus 
+#' @param DiscoveryConfig Well-Architected discovery configuration settings to associate to the
+#' workload.
+#' @param Applications List of AppRegistry application ARNs to associate to the workload.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_update_workload
-wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL) {
+wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL, DiscoveryConfig = NULL, Applications = NULL) {
   op <- new_operation(
     name = "UpdateWorkload",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}",
     paginator = list()
   )
-  input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus)
+  input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
   output <- .wellarchitected$update_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1257,10 +1370,10 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
 }
 .wellarchitected$operations$update_workload_share <- wellarchitected_update_workload_share
 
-#' Upgrade lens review
+#' Upgrade lens review for a particular workload
 #'
 #' @description
-#' Upgrade lens review.
+#' Upgrade lens review for a particular workload.
 #'
 #' See [https://paws-r.github.io/docs/wellarchitected/upgrade_lens_review.html](https://paws-r.github.io/docs/wellarchitected/upgrade_lens_review.html) for full documentation.
 #'

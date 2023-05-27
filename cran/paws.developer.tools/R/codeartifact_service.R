@@ -108,6 +108,9 @@ NULL
 #' -   [`delete_domain_permissions_policy`][codeartifact_delete_domain_permissions_policy]:
 #'     Deletes the resource policy that is set on a domain.
 #' 
+#' -   [`delete_package`][codeartifact_delete_package]: Deletes a package
+#'     and all associated package versions.
+#' 
 #' -   [`delete_package_versions`][codeartifact_delete_package_versions]:
 #'     Deletes versions of a package. After a package has been deleted, it
 #'     can be republished, but its assets and metadata cannot be restored
@@ -199,6 +202,9 @@ NULL
 #' -   [`list_repositories_in_domain`][codeartifact_list_repositories_in_domain]:
 #'     Returns a list of the repositories in a domain.
 #' 
+#' -   [`publish_package_version`][codeartifact_publish_package_version]:
+#'     Creates a new package version containing one or more assets.
+#' 
 #' -   [`put_domain_permissions_policy`][codeartifact_put_domain_permissions_policy]:
 #'     Attaches a resource policy to a domain.
 #' 
@@ -271,6 +277,7 @@ NULL
 #'  \link[=codeartifact_create_repository]{create_repository} \tab Creates a repository\cr
 #'  \link[=codeartifact_delete_domain]{delete_domain} \tab Deletes a domain\cr
 #'  \link[=codeartifact_delete_domain_permissions_policy]{delete_domain_permissions_policy} \tab Deletes the resource policy set on a domain\cr
+#'  \link[=codeartifact_delete_package]{delete_package} \tab Deletes a package and all associated package versions\cr
 #'  \link[=codeartifact_delete_package_versions]{delete_package_versions} \tab Deletes one or more versions of a package\cr
 #'  \link[=codeartifact_delete_repository]{delete_repository} \tab Deletes a repository\cr
 #'  \link[=codeartifact_delete_repository_permissions_policy]{delete_repository_permissions_policy} \tab Deletes the resource policy that is set on a repository\cr
@@ -294,6 +301,7 @@ NULL
 #'  \link[=codeartifact_list_repositories]{list_repositories} \tab Returns a list of RepositorySummary objects\cr
 #'  \link[=codeartifact_list_repositories_in_domain]{list_repositories_in_domain} \tab Returns a list of RepositorySummary objects\cr
 #'  \link[=codeartifact_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in CodeArtifact\cr
+#'  \link[=codeartifact_publish_package_version]{publish_package_version} \tab Creates a new package version containing one or more assets (or files)\cr
 #'  \link[=codeartifact_put_domain_permissions_policy]{put_domain_permissions_policy} \tab Sets a resource policy on a domain that specifies permissions to access it\cr
 #'  \link[=codeartifact_put_package_origin_configuration]{put_package_origin_configuration} \tab Sets the package origin configuration for a package\cr
 #'  \link[=codeartifact_put_repository_permissions_policy]{put_repository_permissions_policy} \tab Sets the resource policy on a repository that specifies permissions to access it\cr

@@ -1,5 +1,13 @@
 svc <- paws::comprehend()
 
+test_that("list_datasets", {
+  expect_error(svc$list_datasets(), NA)
+})
+
+test_that("list_datasets", {
+  expect_error(svc$list_datasets(MaxResults = 20), NA)
+})
+
 test_that("list_document_classification_jobs", {
   expect_error(svc$list_document_classification_jobs(), NA)
 })
@@ -70,6 +78,14 @@ test_that("list_events_detection_jobs", {
 
 test_that("list_events_detection_jobs", {
   expect_error(svc$list_events_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_flywheels", {
+  expect_error(svc$list_flywheels(), NA)
+})
+
+test_that("list_flywheels", {
+  expect_error(svc$list_flywheels(MaxResults = 20), NA)
 })
 
 test_that("list_key_phrases_detection_jobs", {

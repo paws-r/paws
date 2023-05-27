@@ -9,7 +9,8 @@ lookoutequipment_list_inference_schedulers(
   NextToken = NULL,
   MaxResults = NULL,
   InferenceSchedulerNameBeginsWith = NULL,
-  ModelName = NULL
+  ModelName = NULL,
+  Status = NULL
 )
 }
 \arguments{
@@ -21,6 +22,8 @@ inference schedulers.}
 \item{InferenceSchedulerNameBeginsWith}{The beginning of the name of the inference schedulers to be listed.}
 
 \item{ModelName}{The name of the ML model used by the inference scheduler to be listed.}
+
+\item{Status}{Specifies the current status of the inference schedulers to list.}
 }
 \description{
 Retrieves a list of all inference schedulers currently available for your account.

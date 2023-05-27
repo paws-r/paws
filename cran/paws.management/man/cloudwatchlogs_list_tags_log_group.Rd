@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_list_tags_log_group}
 \alias{cloudwatchlogs_list_tags_log_group}
-\title{Lists the tags for the specified log group}
+\title{The ListTagsLogGroup operation is on the path to deprecation}
 \usage{
 cloudwatchlogs_list_tags_log_group(logGroupName)
 }
@@ -10,7 +10,7 @@ cloudwatchlogs_list_tags_log_group(logGroupName)
 \item{logGroupName}{[required] The name of the log group.}
 }
 \description{
-Lists the tags for the specified log group.
+The ListTagsLogGroup operation is on the path to deprecation. We recommend that you use \code{\link[=cloudwatchlogs_list_tags_for_resource]{list_tags_for_resource}} instead.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/list_tags_log_group.html} for full documentation.
 }

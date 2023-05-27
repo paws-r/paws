@@ -2,7 +2,7 @@
 % Please edit documentation in R/nimblestudio_operations.R
 \name{nimblestudio_get_studio}
 \alias{nimblestudio_get_studio}
-\title{Get a Studio resource}
+\title{Get a studio resource}
 \usage{
 nimblestudio_get_studio(studioId)
 }
@@ -10,7 +10,7 @@ nimblestudio_get_studio(studioId)
 \item{studioId}{[required] The studio ID.}
 }
 \description{
-Get a Studio resource.
+Get a studio resource.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/get_studio.html} for full documentation.
 }

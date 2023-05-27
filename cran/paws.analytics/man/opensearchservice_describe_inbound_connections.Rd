@@ -2,7 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_inbound_connections}
 \alias{opensearchservice_describe_inbound_connections}
-\title{Lists all the inbound cross-cluster connections for a remote domain}
+\title{Lists all the inbound cross-cluster search connections for a destination
+(remote) Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_describe_inbound_connections(
   Filters = NULL,
@@ -12,24 +13,20 @@ opensearchservice_describe_inbound_connections(
 }
 \arguments{
 \item{Filters}{A list of filters used to match properties for inbound cross-cluster
-connections. Available \code{Filter} values are:
-\itemize{
-\item connection-id
-\item local-domain-info.domain-name
-\item local-domain-info.owner-id
-\item local-domain-info.region
-\item remote-domain-info.domain-name
-}}
+connections.}
 
-\item{MaxResults}{Set this value to limit the number of results returned. If not
-specified, defaults to 100.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{If more results are available and NextToken is present, make the next
-request to the same API with the received NextToken to paginate the
-remaining results.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_describe_inbound_connections]{describe_inbound_connections}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_describe_inbound_connections]{describe_inbound_connections}}
+operations, which returns results in the next page.}
 }
 \description{
-Lists all the inbound cross-cluster connections for a remote domain.
+Lists all the inbound cross-cluster search connections for a destination (remote) Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_inbound_connections.html} for full documentation.
 }

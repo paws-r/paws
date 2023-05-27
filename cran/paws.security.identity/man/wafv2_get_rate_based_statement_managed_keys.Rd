@@ -2,8 +2,8 @@
 % Please edit documentation in R/wafv2_operations.R
 \name{wafv2_get_rate_based_statement_managed_keys}
 \alias{wafv2_get_rate_based_statement_managed_keys}
-\title{Retrieves the keys that are currently blocked by a rate-based rule
-instance}
+\title{Retrieves the IP addresses that are currently blocked by a rate-based
+rule instance}
 \usage{
 wafv2_get_rate_based_statement_managed_keys(
   Scope,
@@ -17,7 +17,8 @@ wafv2_get_rate_based_statement_managed_keys(
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -44,7 +45,7 @@ provide the name of the rule group reference statement in the request
 parameter \code{RuleGroupRuleName}.}
 }
 \description{
-Retrieves the keys that are currently blocked by a rate-based rule instance. The maximum number of managed keys that can be blocked for a single rate-based rule instance is 10,000. If more than 10,000 addresses exceed the rate limit, those with the highest rates are blocked.
+Retrieves the IP addresses that are currently blocked by a rate-based rule instance. This is only available for rate-based rules that aggregate solely on the IP address or on the forwarded IP address.
 
 See \url{https://paws-r.github.io/docs/wafv2/get_rate_based_statement_managed_keys.html} for full documentation.
 }

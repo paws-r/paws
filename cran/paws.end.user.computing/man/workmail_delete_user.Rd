@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_delete_user}
 \alias{workmail_delete_user}
-\title{Deletes a user from Amazon WorkMail and all subsequent systems}
+\title{Deletes a user from WorkMail and all subsequent systems}
 \usage{
 workmail_delete_user(OrganizationId, UserId)
 }
@@ -12,7 +12,7 @@ workmail_delete_user(OrganizationId, UserId)
 \item{UserId}{[required] The identifier of the user to be deleted.}
 }
 \description{
-Deletes a user from Amazon WorkMail and all subsequent systems. Before you can delete a user, the user state must be \code{DISABLED}. Use the \code{\link[=workmail_describe_user]{describe_user}} action to confirm the user state.
+Deletes a user from WorkMail and all subsequent systems. Before you can delete a user, the user state must be \code{DISABLED}. Use the \code{\link[=workmail_describe_user]{describe_user}} action to confirm the user state.
 
 See \url{https://paws-r.github.io/docs/workmail/delete_user.html} for full documentation.
 }

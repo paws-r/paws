@@ -52,7 +52,7 @@ in the \emph{Amazon Web Services Key Management Service Developer Guide}.}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
-owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 
 \item{LifecycleConfigName}{The name of a lifecycle configuration to associate with the notebook
 instance. For information about lifestyle configurations, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html}{Step 2.1: (Optional) Customize a Notebook Instance}.}

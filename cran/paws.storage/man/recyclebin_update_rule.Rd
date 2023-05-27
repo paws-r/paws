@@ -20,10 +20,8 @@ to retain resources.}
 
 \item{Description}{The retention rule description.}
 
-\item{ResourceType}{The resource type to be retained by the retention rule. Currently, only
-Amazon EBS snapshots and EBS-backed AMIs are supported. To retain
-snapshots, specify \code{EBS_SNAPSHOT}. To retain EBS-backed AMIs, specify
-\code{EC2_IMAGE}.}
+\item{ResourceType}{This parameter is currently not supported. You can't update a retention
+rule's resource type after creation.}
 
 \item{ResourceTags}{Specifies the resource tags to use to identify resources that are to be
 retained by a tag-level retention rule. For tag-level retention rules,
@@ -43,7 +41,7 @@ Region in which the rule is created, even if the resources are not
 tagged.}
 }
 \description{
-Updates an existing Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule}{Update Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-update-rule}{Update Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://paws-r.github.io/docs/recyclebin/update_rule.html} for full documentation.
 }

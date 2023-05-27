@@ -16,14 +16,15 @@ ssm_start_automation_execution(
   MaxConcurrency = NULL,
   MaxErrors = NULL,
   TargetLocations = NULL,
-  Tags = NULL
+  Tags = NULL,
+  AlarmConfiguration = NULL
 )
 }
 \arguments{
 \item{DocumentName}{[required] The name of the SSM document to run. This can be a public document or a
 custom document. To run a shared document belonging to another account,
 specify the document ARN. For more information about how to use shared
-documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html}{Using shared SSM documents}
+documents, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-ssm-sharing.html}{Using shared SSM documents}
 in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{DocumentVersion}{The version of the Automation runbook to use for this execution.}
@@ -86,6 +87,8 @@ following key-value pairs:
 
 To add tags to an existing automation, use the
 \code{\link[=ssm_add_tags_to_resource]{add_tags_to_resource}} operation.}
+
+\item{AlarmConfiguration}{The CloudWatch alarm you want to apply to your automation.}
 }
 \description{
 Initiates execution of an Automation runbook.

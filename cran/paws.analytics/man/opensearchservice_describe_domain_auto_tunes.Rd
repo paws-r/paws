@@ -2,8 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_domain_auto_tunes}
 \alias{opensearchservice_describe_domain_auto_tunes}
-\title{Provides scheduled Auto-Tune action details for the domain, such as
-Auto-Tune action type, description, severity, and scheduled date}
+\title{Returns the list of optimizations that Auto-Tune has made to an Amazon
+OpenSearch Service domain}
 \usage{
 opensearchservice_describe_domain_auto_tunes(
   DomainName,
@@ -12,16 +12,20 @@ opensearchservice_describe_domain_auto_tunes(
 )
 }
 \arguments{
-\item{DomainName}{[required] The domain name for which you want Auto-Tune action details.}
+\item{DomainName}{[required] Name of the domain that you want Auto-Tune details about.}
 
-\item{MaxResults}{Set this value to limit the number of results returned. If not
-specified, defaults to 100.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{NextToken is sent in case the earlier API call results contain the
-NextToken. Used for pagination.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_describe_domain_auto_tunes]{describe_domain_auto_tunes}}
+operations, which returns results in the next page.}
 }
 \description{
-Provides scheduled Auto-Tune action details for the domain, such as Auto-Tune action type, description, severity, and scheduled date.
+Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html}{Auto-Tune for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_domain_auto_tunes.html} for full documentation.
 }

@@ -15,8 +15,8 @@ connect_create_routing_profile(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Name}{[required] The name of the routing profile. Must not be more than 127 characters.}
 
@@ -26,12 +26,18 @@ characters.}
 \item{DefaultOutboundQueueId}{[required] The default outbound queue for the routing profile.}
 
 \item{QueueConfigs}{The inbound queues associated with the routing profile. If no queue is
-added, the agent can make only outbound calls.}
+added, the agent can make only outbound calls.
+
+The limit of 10 array members applies to the maximum number of
+\code{RoutingProfileQueueConfig} objects that can be passed during a
+CreateRoutingProfile API request. It is different from the quota of 50
+queues per routing profile per instance that is listed in \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{Amazon Connect service quotas}.}
 
 \item{MediaConcurrencies}{[required] The channels that agents can handle in the Contact Control Panel (CCP)
 for this routing profile.}
 
-\item{Tags}{One or more tags.}
+\item{Tags}{The tags used to organize, track, or control access for this resource.
+For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a new routing profile.

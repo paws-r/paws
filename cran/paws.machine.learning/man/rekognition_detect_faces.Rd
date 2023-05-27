@@ -15,16 +15,17 @@ If you are using an AWS SDK to call Amazon Rekognition, you might not
 need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 
-\item{Attributes}{An array of facial attributes you want to be returned. This can be the
-default list of attributes or all attributes. If you don't specify a
-value for \code{Attributes} or if you specify \verb{["DEFAULT"]}, the API returns
-the following subset of facial attributes: \code{BoundingBox}, \code{Confidence},
-\code{Pose}, \code{Quality}, and \code{Landmarks}. If you provide \verb{["ALL"]}, all facial
-attributes are returned, but the operation takes longer to complete.
+\item{Attributes}{An array of facial attributes you want to be returned. A \code{DEFAULT}
+subset of facial attributes - \code{BoundingBox}, \code{Confidence}, \code{Pose},
+\code{Quality}, and \code{Landmarks} - will always be returned. You can request
+for specific facial attributes (in addition to the default list) - by
+using [\verb{"DEFAULT", "FACE_OCCLUDED"}] or just [\code{"FACE_OCCLUDED"}].
+You can request for all facial attributes by using [\verb{"ALL"]}.
+Requesting more attributes may increase response time.
 
 If you provide both, \verb{["ALL", "DEFAULT"]}, the service uses a logical
-AND operator to determine which attributes to return (in this case, all
-attributes).}
+"AND" operator to determine which attributes to return (in this case,
+all attributes).}
 }
 \description{
 Detects faces within an image that is provided as input.

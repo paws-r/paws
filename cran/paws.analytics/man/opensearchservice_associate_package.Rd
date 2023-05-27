@@ -11,10 +11,10 @@ opensearchservice_associate_package(PackageID, DomainName)
 \code{\link[=opensearchservice_describe_packages]{describe_packages}} to find this
 value.}
 
-\item{DomainName}{[required] The name of the domain to associate the package with.}
+\item{DomainName}{[required] Name of the domain to associate the package with.}
 }
 \description{
-Associates a package with an Amazon OpenSearch Service domain.
+Associates a package with an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/associate_package.html} for full documentation.
 }

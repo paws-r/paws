@@ -16,13 +16,14 @@ fsx_create_file_system_from_backup(
   StorageType = NULL,
   KmsKeyId = NULL,
   FileSystemTypeVersion = NULL,
-  OpenZFSConfiguration = NULL
+  OpenZFSConfiguration = NULL,
+  StorageCapacity = NULL
 )
 }
 \arguments{
 \item{BackupId}{[required]}
 
-\item{ClientRequestToken}{A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+\item{ClientRequestToken}{A string of up to 63 ASCII characters that Amazon FSx uses to ensure
 idempotent creation. This string is automatically filled on your behalf
 when you use the Command Line Interface (CLI) or an Amazon Web Services
 SDK.}
@@ -80,6 +81,17 @@ choose to specify \code{FileSystemTypeVersion} when creating from backup, the
 value must match the backup's \code{FileSystemTypeVersion} setting.}
 
 \item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}
+
+\item{StorageCapacity}{Sets the storage capacity of the OpenZFS file system that you're
+creating from a backup, in gibibytes (GiB). Valid values are from 64 GiB
+up to 524,288 GiB (512 TiB). However, the value that you specify must be
+equal to or greater than the backup's storage capacity value. If you
+don't use the \code{StorageCapacity} parameter, the default is the backup's
+\code{StorageCapacity} value.
+
+If used to create a file system other than OpenZFS, you must provide a
+value that matches the backup's \code{StorageCapacity} value. If you provide
+any other value, Amazon FSx responds with a 400 Bad Request.}
 }
 \description{
 Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.

@@ -5,7 +5,7 @@ NULL
 #' Amazon QLDB
 #'
 #' @description
-#' The control plane for Amazon QLDB
+#' The resource management API for Amazon QLDB
 #'
 #' @param
 #' config
@@ -65,10 +65,10 @@ NULL
 #'  \link[=qldb_get_block]{get_block} \tab Returns a block object at a specified address in a journal\cr
 #'  \link[=qldb_get_digest]{get_digest} \tab Returns the digest of a ledger at the latest committed block in the journal\cr
 #'  \link[=qldb_get_revision]{get_revision} \tab Returns a revision data object for a specified document ID and block address\cr
-#'  \link[=qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger} \tab Returns an array of all Amazon QLDB journal stream descriptors for a given ledger\cr
-#'  \link[=qldb_list_journal_s3_exports]{list_journal_s3_exports} \tab Returns an array of journal export job descriptions for all ledgers that are associated with the current Amazon Web Services account and Region\cr
-#'  \link[=qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger} \tab Returns an array of journal export job descriptions for a specified ledger\cr
-#'  \link[=qldb_list_ledgers]{list_ledgers} \tab Returns an array of ledger summaries that are associated with the current Amazon Web Services account and Region\cr
+#'  \link[=qldb_list_journal_kinesis_streams_for_ledger]{list_journal_kinesis_streams_for_ledger} \tab Returns all Amazon QLDB journal streams for a given ledger\cr
+#'  \link[=qldb_list_journal_s3_exports]{list_journal_s3_exports} \tab Returns all journal export jobs for all ledgers that are associated with the current Amazon Web Services account and Region\cr
+#'  \link[=qldb_list_journal_s3_exports_for_ledger]{list_journal_s3_exports_for_ledger} \tab Returns all journal export jobs for a specified ledger\cr
+#'  \link[=qldb_list_ledgers]{list_ledgers} \tab Returns all ledgers that are associated with the current Amazon Web Services account and Region\cr
 #'  \link[=qldb_list_tags_for_resource]{list_tags_for_resource} \tab Returns all tags for a specified Amazon QLDB resource\cr
 #'  \link[=qldb_stream_journal_to_kinesis]{stream_journal_to_kinesis} \tab Creates a journal stream for a given Amazon QLDB ledger\cr
 #'  \link[=qldb_tag_resource]{tag_resource} \tab Adds one or more tags to a specified Amazon QLDB resource\cr

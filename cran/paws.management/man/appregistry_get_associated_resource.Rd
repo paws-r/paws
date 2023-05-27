@@ -7,7 +7,7 @@
 appregistry_get_associated_resource(application, resourceType, resource)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 
 \item{resourceType}{[required] The type of resource associated with the application.}
 

@@ -12,7 +12,8 @@ imagebuilder_create_image(
   imageTestsConfiguration = NULL,
   enhancedImageMetadataEnabled = NULL,
   tags = NULL,
-  clientToken
+  clientToken,
+  imageScanningConfiguration = NULL
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ Enabled by default.}
 \item{tags}{The tags of the image.}
 
 \item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+
+\item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
 }
 \description{
 Creates a new image. This request will create a new image along with all of the configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.

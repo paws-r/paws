@@ -11,15 +11,15 @@ batch_tag_resource(resourceArn, tags)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource that tags are added to.
 Batch resources that support tags are compute environments, jobs, job
 definitions, job queues, and scheduling policies. ARNs for child jobs of
-array and multi-node parallel (MNP) jobs are not supported.}
+array and multi-node parallel (MNP) jobs aren't supported.}
 
 \item{tags}{[required] The tags that you apply to the resource to help you categorize and
 organize your resources. Each tag consists of a key and an optional
-value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+value. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 in \emph{Amazon Web Services General Reference}.}
 }
 \description{
-Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs are not supported.
+Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
 
 See \url{https://paws-r.github.io/docs/batch/tag_resource.html} for full documentation.
 }

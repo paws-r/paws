@@ -62,7 +62,7 @@ in the \emph{AWS Panorama Developer Guide}.
 
 \tabular{ll}{
 \link[paws.machine.learning:panorama_create_application_instance]{create_application_instance} \tab Creates an application instance and deploys it to a device\cr
-\link[paws.machine.learning:panorama_create_job_for_devices]{create_job_for_devices} \tab Creates a job to run on one or more devices\cr
+\link[paws.machine.learning:panorama_create_job_for_devices]{create_job_for_devices} \tab Creates a job to run on a device\cr
 \link[paws.machine.learning:panorama_create_node_from_template_job]{create_node_from_template_job} \tab Creates a camera stream node\cr
 \link[paws.machine.learning:panorama_create_package]{create_package} \tab Creates a package and storage location in an Amazon S3 access point\cr
 \link[paws.machine.learning:panorama_create_package_import_job]{create_package_import_job} \tab Imports a node package\cr
@@ -91,6 +91,7 @@ in the \emph{AWS Panorama Developer Guide}.
 \link[paws.machine.learning:panorama_provision_device]{provision_device} \tab Creates a device and returns a configuration archive\cr
 \link[paws.machine.learning:panorama_register_package_version]{register_package_version} \tab Registers a package version\cr
 \link[paws.machine.learning:panorama_remove_application_instance]{remove_application_instance} \tab Removes an application instance\cr
+\link[paws.machine.learning:panorama_signal_application_instance_node_instances]{signal_application_instance_node_instances} \tab Signal camera nodes to stop or resume\cr
 \link[paws.machine.learning:panorama_tag_resource]{tag_resource} \tab Tags a resource\cr
 \link[paws.machine.learning:panorama_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
 \link[paws.machine.learning:panorama_update_device_metadata]{update_device_metadata} \tab Updates a device's metadata

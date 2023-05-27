@@ -10,7 +10,7 @@ NULL
 #' Sends a response to the originator of a handshake agreeing to the action
 #' proposed by the handshake request.
 #' 
-#' This operation can be called only by the following principals when they
+#' You can only call this operation by the following principals when they
 #' also have the relevant IAM permissions:
 #' 
 #' -   **Invitation to join** or **Approve all features request**
@@ -327,7 +327,9 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'
 #' @description
 #' Closes an Amazon Web Services member account within an organization. You
-#' can't close the management account with this API. This is an
+#' can close an account when [all features are
+#' enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+#' . You can't close the management account with this API. This is an
 #' asynchronous request that Amazon Web Services performs in the
 #' background. Because [`close_account`][organizations_close_account]
 #' operates asynchronously, it can return a successful completion message
@@ -352,10 +354,14 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     in the *Organizations User Guide.*
 #' 
 #' 
-#' -   You can only close 10% of active member accounts within a rolling 30
-#'     day period. This quota is not bound by a calendar month, but starts
-#'     when you close an account. Within 30 days of that initial account
-#'     closure, you can't exceed the 10% account closure limit.
+#' -   You can close only 10% of member accounts, between 10 and 200,
+#'     within a rolling 30 day period. This quota is not bound by a
+#'     calendar month, but starts when you close an account.
+#' 
+#'     After you reach this limit, you can close additional accounts in the
+#'     Billing console. For more information, see [Closing an
+#'     account](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/close-account.html)
+#'     in the Amazon Web Services Billing and Cost Management User Guide.
 #' 
 #' -   To reinstate a closed account, contact Amazon Web Services Support
 #'     within the 90-day grace period while the account is in SUSPENDED
@@ -425,7 +431,7 @@ organizations_close_account <- function(AccountId) {
 #' need to wait a few minutes before you can successfully access the
 #' account. To check the status of the request, do one of the following:
 #' 
-#' -   Use the `Id` member of the `CreateAccountStatus` response element
+#' -   Use the `Id` value of the `CreateAccountStatus` response element
 #'     from this operation to provide as a parameter to the
 #'     [`describe_create_account_status`][organizations_describe_create_account_status]
 #'     operation.
@@ -535,9 +541,7 @@ organizations_close_account <- function(AccountId) {
 #' You can't access the root user of the account or remove an account that
 #' was created with an invalid email address.
 #' @param AccountName &#91;required&#93; The friendly name of the member account.
-#' @param RoleName (Optional)
-#' 
-#' The name of an IAM role that Organizations automatically preconfigures
+#' @param RoleName The name of an IAM role that Organizations automatically preconfigures
 #' in the new member account. This role trusts the management account,
 #' allowing users in the management account to assume the role, as
 #' permitted by the management account administrator. The role has
@@ -580,7 +584,7 @@ organizations_close_account <- function(AccountId) {
 #' resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
 #' in the Organizations User Guide.
 #' 
-#' If any one of the tags is invalid or if you exceed the maximum allowed
+#' If any one of the tags is not valid or if you exceed the maximum allowed
 #' number of tags for an account, then the entire request fails and the
 #' account is not created.
 #'
@@ -600,7 +604,7 @@ organizations_close_account <- function(AccountId) {
 #'     ),
 #'     AccountId = "string",
 #'     GovCloudAccountId = "string",
-#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"
+#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"|"UPDATE_EXISTING_RESOURCE_POLICY_WITH_TAGS_NOT_SUPPORTED"
 #'   )
 #' )
 #' ```
@@ -892,7 +896,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
 #' in the Organizations User Guide.
 #' 
-#' If any one of the tags is invalid or if you exceed the maximum allowed
+#' If any one of the tags is not valid or if you exceed the maximum allowed
 #' number of tags for an account, then the entire request fails and the
 #' account is not created.
 #'
@@ -912,7 +916,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     ),
 #'     AccountId = "string",
 #'     GovCloudAccountId = "string",
-#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"
+#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"|"UPDATE_EXISTING_RESOURCE_POLICY_WITH_TAGS_NOT_SUPPORTED"
 #'   )
 #' )
 #' ```
@@ -1112,8 +1116,9 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
 #' in the Organizations User Guide.
 #' 
-#' If any one of the tags is invalid or if you exceed the allowed number of
-#' tags for an OU, then the entire request fails and the OU is not created.
+#' If any one of the tags is not valid or if you exceed the allowed number
+#' of tags for an OU, then the entire request fails and the OU is not
+#' created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1221,9 +1226,9 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
 #' in the Organizations User Guide.
 #' 
-#' If any one of the tags is invalid or if you exceed the allowed number of
-#' tags for a policy, then the entire request fails and the policy is not
-#' created.
+#' If any one of the tags is not valid or if you exceed the allowed number
+#' of tags for a policy, then the entire request fails and the policy is
+#' not created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1569,6 +1574,46 @@ organizations_delete_policy <- function(PolicyId) {
 }
 .organizations$operations$delete_policy <- organizations_delete_policy
 
+#' Deletes the resource policy from your organization
+#'
+#' @description
+#' Deletes the resource policy from your organization.
+#' 
+#' You can only call this operation from the organization's management
+#' account.
+#'
+#' @usage
+#' organizations_delete_resource_policy()
+#'
+
+#'
+#' @return
+#' An empty list.
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_delete_resource_policy
+#'
+#' @aliases organizations_delete_resource_policy
+organizations_delete_resource_policy <- function() {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$delete_resource_policy_input()
+  output <- .organizations$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .organizations$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$delete_resource_policy <- organizations_delete_resource_policy
+
 #' Removes the specified member Amazon Web Services account as a delegated
 #' administrator for the specified Amazon Web Services service
 #'
@@ -1757,7 +1802,7 @@ organizations_describe_account <- function(AccountId) {
 #'     ),
 #'     AccountId = "string",
 #'     GovCloudAccountId = "string",
-#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"
+#'     FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"|"UPDATE_EXISTING_RESOURCE_POLICY_WITH_TAGS_NOT_SUPPORTED"
 #'   )
 #' )
 #' ```
@@ -2207,6 +2252,58 @@ organizations_describe_policy <- function(PolicyId) {
 }
 .organizations$operations$describe_policy <- organizations_describe_policy
 
+#' Retrieves information about a resource policy
+#'
+#' @description
+#' Retrieves information about a resource policy.
+#' 
+#' You can only call this operation from the organization's management
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
+#'
+#' @usage
+#' organizations_describe_resource_policy()
+#'
+
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourcePolicy = list(
+#'     ResourcePolicySummary = list(
+#'       Id = "string",
+#'       Arn = "string"
+#'     ),
+#'     Content = "string"
+#'   )
+#' )
+#' ```
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_describe_resource_policy
+#'
+#' @aliases organizations_describe_resource_policy
+organizations_describe_resource_policy <- function() {
+  op <- new_operation(
+    name = "DescribeResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$describe_resource_policy_input()
+  output <- .organizations$describe_resource_policy_output()
+  config <- get_config()
+  svc <- .organizations$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$describe_resource_policy <- organizations_describe_resource_policy
+
 #' Detaches a policy from a target root, organizational unit (OU), or
 #' account
 #'
@@ -2548,7 +2645,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' Services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
 #' in the *Organizations User Guide.*
 #' 
-#' This operation can be called only from the organization's management
+#' You can only call this operation from the organization's management
 #' account and only if the organization has [enabled all
 #' features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html).
 #'
@@ -2878,9 +2975,9 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' means that if the tag policy changes between the invitation and the
 #' acceptance, then that tags could potentially be non-compliant.
 #' 
-#' If any one of the tags is invalid or if you exceed the allowed number of
-#' tags for an account, then the entire request fails and invitations are
-#' not sent.
+#' If any one of the tags is not valid or if you exceed the allowed number
+#' of tags for an account, then the entire request fails and invitations
+#' are not sent.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3516,7 +3613,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #'       ),
 #'       AccountId = "string",
 #'       GovCloudAccountId = "string",
-#'       FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"
+#'       FailureReason = "ACCOUNT_LIMIT_EXCEEDED"|"EMAIL_ALREADY_EXISTS"|"INVALID_ADDRESS"|"INVALID_EMAIL"|"CONCURRENT_ACCOUNT_MODIFICATION"|"INTERNAL_FAILURE"|"GOVCLOUD_ACCOUNT_ALREADY_EXISTS"|"MISSING_BUSINESS_VALIDATION"|"FAILED_BUSINESS_VALIDATION"|"PENDING_BUSINESS_VALIDATION"|"INVALID_IDENTITY_FOR_BUSINESS_VALIDATION"|"UNKNOWN_BUSINESS_VALIDATION"|"MISSING_PAYMENT_INSTRUMENT"|"INVALID_PAYMENT_INSTRUMENT"|"UPDATE_EXISTING_RESOURCE_POLICY_WITH_TAGS_NOT_SUPPORTED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4809,6 +4906,83 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 }
 .organizations$operations$move_account <- organizations_move_account
 
+#' Creates or updates a resource policy
+#'
+#' @description
+#' Creates or updates a resource policy.
+#' 
+#' You can only call this operation from the organization's management
+#' account.
+#'
+#' @usage
+#' organizations_put_resource_policy(Content, Tags)
+#'
+#' @param Content &#91;required&#93; If provided, the new content for the resource policy. The text must be
+#' correctly formatted JSON that complies with the syntax for the resource
+#' policy's type. For more information, see [Service Control Policy
+#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide.*
+#' @param Tags A list of tags that you want to attach to the newly created resource
+#' policy. For each tag in the list, you must specify both a tag key and a
+#' value. You can set the value to an empty string, but you can't set it to
+#' `null`. For more information about tagging, see [Tagging Organizations
+#' resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
+#' in the Organizations User Guide.
+#' 
+#' Calls with tags apply to the initial creation of the resource policy,
+#' otherwise an exception is thrown. If any one of the tags is not valid or
+#' if you exceed the allowed number of tags for the resource policy, then
+#' the entire request fails and the resource policy is not created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourcePolicy = list(
+#'     ResourcePolicySummary = list(
+#'       Id = "string",
+#'       Arn = "string"
+#'     ),
+#'     Content = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   Content = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname organizations_put_resource_policy
+#'
+#' @aliases organizations_put_resource_policy
+organizations_put_resource_policy <- function(Content, Tags = NULL) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .organizations$put_resource_policy_input(Content = Content, Tags = Tags)
+  output <- .organizations$put_resource_policy_output()
+  config <- get_config()
+  svc <- .organizations$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.organizations$operations$put_resource_policy <- organizations_put_resource_policy
+
 #' Enables the specified member account to administer the Organizations
 #' features of the specified Amazon Web Services service
 #'
@@ -5005,7 +5179,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' For each tag in the list, you must specify both a tag key and a value.
 #' The value can be an empty string, but you can't set it to `null`.
 #' 
-#' If any one of the tags is invalid or if you exceed the maximum allowed
+#' If any one of the tags is not valid or if you exceed the maximum allowed
 #' number of tags for a resource, then the entire request fails.
 #'
 #' @return

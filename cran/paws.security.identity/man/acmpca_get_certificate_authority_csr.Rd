@@ -15,7 +15,7 @@ action. This must be of the form:
 \code{arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-123456789012 }}
 }
 \description{
-Retrieves the certificate signing request (CSR) for your private certificate authority (CA). The CSR is created when you call the \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}} action. Sign the CSR with your ACM Private CA-hosted or on-premises root or subordinate CA. Then import the signed certificate back into ACM Private CA by calling the \code{\link[=acmpca_import_certificate_authority_certificate]{import_certificate_authority_certificate}} action. The CSR is returned as a base64 PEM-encoded string.
+Retrieves the certificate signing request (CSR) for your private certificate authority (CA). The CSR is created when you call the \code{\link[=acmpca_create_certificate_authority]{create_certificate_authority}} action. Sign the CSR with your Amazon Web Services Private CA-hosted or on-premises root or subordinate CA. Then import the signed certificate back into Amazon Web Services Private CA by calling the \code{\link[=acmpca_import_certificate_authority_certificate]{import_certificate_authority_certificate}} action. The CSR is returned as a base64 PEM-encoded string.
 
 See \url{https://paws-r.github.io/docs/acmpca/get_certificate_authority_csr.html} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/networkmanager_operations.R
 \name{networkmanager_start_organization_service_access_update}
 \alias{networkmanager_start_organization_service_access_update}
-\title{Enables for the Network Manager service for an Amazon Web Services
+\title{Enables the Network Manager service for an Amazon Web Services
 Organization}
 \usage{
 networkmanager_start_organization_service_access_update(Action)
@@ -12,7 +12,7 @@ networkmanager_start_organization_service_access_update(Action)
 or \code{DISABLE}.}
 }
 \description{
-Enables for the Network Manager service for an Amazon Web Services Organization. This can only be called by a management account within the organization.
+Enables the Network Manager service for an Amazon Web Services Organization. This can only be called by a management account within the organization.
 
 See \url{https://paws-r.github.io/docs/networkmanager/start_organization_service_access_update.html} for full documentation.
 }

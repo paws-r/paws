@@ -27,8 +27,7 @@ template \emph{doesn't} include a service pipeline.}
 \item{name}{[required] The service name.}
 
 \item{repositoryConnectionArn}{The Amazon Resource Name (ARN) of the repository connection. For more
-information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol}{Set up repository connection}
-in the \emph{Proton Administrator Guide} and \href{https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setup-repo-connection}{Setting up with Proton}
+information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol}{Setting up an AWS CodeStar connection}
 in the \emph{Proton User Guide}. \emph{Don't} include this parameter if your
 service template \emph{doesn't} include a service pipeline.}
 
@@ -38,15 +37,14 @@ service template \emph{doesn't} include a service pipeline.}
 \item{spec}{[required] A link to a spec file that provides inputs as defined in the service
 template bundle schema file. The spec file is in YAML format. \emph{Don’t}
 include pipeline inputs in the spec if your service template \emph{doesn’t}
-include a service pipeline. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/}{Create a service} in the
-\emph{Proton Administrator Guide} and \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html}{Create a service}
+include a service pipeline. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html}{Create a service}
 in the \emph{Proton User Guide}.}
 
 \item{tags}{An optional list of metadata items that you can associate with the
 Proton service. A tag is a key-value pair.
 
-For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide}
-or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
+in the \emph{Proton User Guide}.}
 
 \item{templateMajorVersion}{[required] The major version of the service template that was used to create the
 service.}
@@ -57,7 +55,7 @@ service.}
 \item{templateName}{[required] The name of the service template that's used to create the service.}
 }
 \description{
-Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html}{Services} in the \emph{Proton Administrator Guide} and \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html}{Services} in the \emph{Proton User Guide}.
+Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html}{Services} in the \emph{Proton User Guide}.
 
 See \url{https://paws-r.github.io/docs/proton/create_service.html} for full documentation.
 }

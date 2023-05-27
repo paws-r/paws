@@ -20,8 +20,8 @@ comprehend_start_events_detection_job(
 
 \item{OutputDataConfig}{[required] Specifies where to send the output files.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that grants Amazon Comprehend read access to your input data.}
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+Comprehend read access to your input data.}
 
 \item{JobName}{The identifier of the events detection job.}
 
@@ -32,10 +32,10 @@ request token, Amazon Comprehend generates one.}
 
 \item{TargetEventTypes}{[required] The types of events to detect in the input documents.}
 
-\item{Tags}{Tags to be associated with the events detection job. A tag is a
-key-value pair that adds metadata to a resource used by Amazon
-Comprehend. For example, a tag with "Sales" as the key might be added to
-a resource to indicate its use by the sales department.}
+\item{Tags}{Tags to associate with the events detection job. A tag is a key-value
+pair that adds metadata to a resource used by Amazon Comprehend. For
+example, a tag with "Sales" as the key might be added to a resource to
+indicate its use by the sales department.}
 }
 \description{
 Starts an asynchronous event detection job for a collection of documents.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_put_account_setting_default}
 \alias{ecs_put_account_setting_default}
-\title{Modifies an account setting for all IAM users on an account for whom no
+\title{Modifies an account setting for all users on an account for whom no
 individual account setting has been specified}
 \usage{
 ecs_put_account_setting_default(name, value)
@@ -16,13 +16,23 @@ resource ID for your Amazon ECS tasks is affected. If
 for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
 is specified, the ENI limit for your Amazon ECS container instances is
 affected. If \code{containerInsights} is specified, the default setting for
-CloudWatch Container Insights for your clusters is affected.}
+Amazon Web Services CloudWatch Container Insights for your clusters is
+affected. If \code{tagResourceAuthorization} is specified, the opt-in option
+for tagging resources on creation is affected. For information about the
+opt-in timeline, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources}{Tagging authorization timeline}
+in the \emph{Amazon ECS Developer Guide}.
+
+When you specify \code{fargateFIPSMode} for the \code{name} and \code{enabled} for the
+\code{value}, Fargate uses FIPS-140 compliant cryptographic algorithms on
+your tasks. For more information about FIPS-140 compliance with Fargate,
+see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html}{Amazon Web Services Fargate Federal Information Processing Standard (FIPS) 140-2 compliance}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
-values are \code{enabled} and \code{disabled}.}
+values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.}
 }
 \description{
-Modifies an account setting for all IAM users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
+Modifies an account setting for all users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
 
 See \url{https://paws-r.github.io/docs/ecs/put_account_setting_default.html} for full documentation.
 }

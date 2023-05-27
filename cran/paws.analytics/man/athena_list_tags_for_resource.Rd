@@ -2,8 +2,7 @@
 % Please edit documentation in R/athena_operations.R
 \name{athena_list_tags_for_resource}
 \alias{athena_list_tags_for_resource}
-\title{Lists the tags associated with an Athena workgroup or data catalog
-resource}
+\title{Lists the tags associated with an Athena resource}
 \usage{
 athena_list_tags_for_resource(ResourceARN, NextToken = NULL, MaxResults = NULL)
 }
@@ -18,7 +17,7 @@ for the resource with the specified ARN.}
 tags for the resource.}
 }
 \description{
-Lists the tags associated with an Athena workgroup or data catalog resource.
+Lists the tags associated with an Athena resource.
 
 See \url{https://paws-r.github.io/docs/athena/list_tags_for_resource.html} for full documentation.
 }

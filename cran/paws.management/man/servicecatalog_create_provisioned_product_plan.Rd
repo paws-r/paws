@@ -21,7 +21,6 @@ servicecatalog_create_provisioned_product_plan(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -41,8 +40,8 @@ one path. To list the paths for a product, use
 \item{ProductId}{[required] The product identifier.}
 
 \item{ProvisionedProductName}{[required] A user-friendly name for the provisioned product. This value must be
-unique for the AWS account and cannot be updated after the product is
-provisioned.}
+unique for the Amazon Web Services account and cannot be updated after
+the product is provisioned.}
 
 \item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
 
@@ -60,7 +59,7 @@ have a \code{RESOURCE_UPDATE} constraint with
 \code{TagUpdatesOnProvisionedProduct} set to \code{ALLOWED} to allow tag updates.}
 }
 \description{
-Creates a plan. A plan includes the list of resources to be created (when provisioning a new product) or modified (when updating a provisioned product) when the plan is executed.
+Creates a plan.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html} for full documentation.
 }

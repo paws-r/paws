@@ -10,7 +10,7 @@ kendra_batch_get_document_status(IndexId, DocumentInfoList)
 \arguments{
 \item{IndexId}{[required] The identifier of the index to add documents to. The index ID is
 returned by the
-\href{https://docs.aws.amazon.com/kendra/latest/dg/API_CreateIndex.html}{CreateIndex}
+\href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html}{CreateIndex}
 API.}
 
 \item{DocumentInfoList}{[required] A list of \code{DocumentInfo} objects that identify the documents for which
@@ -18,7 +18,7 @@ to get the status. You identify the documents by their document ID and
 optional attributes.}
 }
 \description{
-Returns the indexing status for one or more documents submitted with the \href{https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html}{BatchPutDocument} API.
+Returns the indexing status for one or more documents submitted with the \href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_BatchPutDocument.html}{BatchPutDocument} API.
 
 See \url{https://paws-r.github.io/docs/kendra/batch_get_document_status.html} for full documentation.
 }

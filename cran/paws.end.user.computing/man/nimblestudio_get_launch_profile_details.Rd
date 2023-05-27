@@ -9,7 +9,8 @@ profile}
 nimblestudio_get_launch_profile_details(launchProfileId, studioId)
 }
 \arguments{
-\item{launchProfileId}{[required] The Launch Profile ID.}
+\item{launchProfileId}{[required] The ID of the launch profile used to control access from the streaming
+session.}
 
 \item{studioId}{[required] The studio ID.}
 }

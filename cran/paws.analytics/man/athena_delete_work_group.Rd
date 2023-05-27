@@ -10,7 +10,7 @@ athena_delete_work_group(WorkGroup, RecursiveDeleteOption = NULL)
 \item{WorkGroup}{[required] The unique name of the workgroup to delete.}
 
 \item{RecursiveDeleteOption}{The option to delete the workgroup and its contents even if the
-workgroup contains any named queries or query executions.}
+workgroup contains any named queries, query executions, or notebooks.}
 }
 \description{
 Deletes the workgroup with the specified name. The primary workgroup cannot be deleted.

@@ -21,7 +21,6 @@ servicecatalog_associate_service_action_with_provisioning_artifact(
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

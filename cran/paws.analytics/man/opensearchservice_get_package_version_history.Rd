@@ -2,8 +2,9 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_get_package_version_history}
 \alias{opensearchservice_get_package_version_history}
-\title{Returns a list of package versions, along with their creation time and
-commit message}
+\title{Returns a list of Amazon OpenSearch Service package versions, along with
+their creation time, commit message, and plugin properties (if the
+package is a zip plugin package)}
 \usage{
 opensearchservice_get_package_version_history(
   PackageID,
@@ -12,16 +13,20 @@ opensearchservice_get_package_version_history(
 )
 }
 \arguments{
-\item{PackageID}{[required] Returns an audit history of package versions.}
+\item{PackageID}{[required] The unique identifier of the package.}
 
-\item{MaxResults}{Limits results to a maximum number of package versions.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{Used for pagination. Only necessary if a previous API call includes a
-non-null NextToken value. If provided, returns results for the next
-page.}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_get_package_version_history]{get_package_version_history}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_get_package_version_history]{get_package_version_history}}
+operations, which returns results in the next page.}
 }
 \description{
-Returns a list of package versions, along with their creation time and commit message.
+Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package). For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/get_package_version_history.html} for full documentation.
 }

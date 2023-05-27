@@ -17,9 +17,15 @@ redshiftserverless_restore_from_snapshot(
 
 \item{ownerAccount}{The Amazon Web Services account that owns the snapshot.}
 
-\item{snapshotArn}{The Amazon Resource Name (ARN) of the snapshot to restore from.}
+\item{snapshotArn}{The Amazon Resource Name (ARN) of the snapshot to restore from. Required
+if restoring from Amazon Redshift Serverless to a provisioned cluster.
+Must not be specified at the same time as \code{snapshotName}.
 
-\item{snapshotName}{The name of the snapshot to restore from.}
+The format of the ARN is
+arn:aws:redshift:\<region\>:\<account_id\>:snapshot:\<cluster_identifier\>/\<snapshot_identifier\>.}
+
+\item{snapshotName}{The name of the snapshot to restore from. Must not be specified at the
+same time as \code{snapshotArn}.}
 
 \item{workgroupName}{[required] The name of the workgroup used to restore the snapshot.}
 }

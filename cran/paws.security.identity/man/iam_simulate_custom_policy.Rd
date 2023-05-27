@@ -95,8 +95,10 @@ If you include a \code{ResourcePolicy}, then it must be applicable to all of
 the resources included in the simulation or you receive an invalid input
 error.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{Amazon Web Services General Reference}.
+
+Simulation of resource-based policies isn't supported for IAM roles.}
 
 \item{ResourcePolicy}{A resource-based policy to include in the simulation provided as a
 string. Each resource in the simulation is treated as if it had this
@@ -117,7 +119,9 @@ following:
 character set (through \verb{U+00FF})
 \item The special characters tab (\code{U+0009}), line feed (\verb{U+000A}), and
 carriage return (\verb{U+000D})
-}}
+}
+
+Simulation of resource-based policies isn't supported for IAM roles.}
 
 \item{ResourceOwner}{An ARN representing the Amazon Web Services account ID that specifies
 the owner of any simulated resource that does not identify its owner in
@@ -158,31 +162,25 @@ following list shows each of the supported scenario values and the
 resources that you must define to run the simulation.
 
 Each of the EC2 scenarios requires that you specify instance, image, and
-security-group resources. If your scenario includes an EBS volume, then
+security group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
-VPC, then you must supply the network-interface resource. If it includes
+VPC, then you must supply the network interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
 information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
-\item \strong{EC2-Classic-InstanceStore}
-
-instance, image, security-group
-\item \strong{EC2-Classic-EBS}
-
-instance, image, security-group, volume
 \item \strong{EC2-VPC-InstanceStore}
 
-instance, image, security-group, network-interface
+instance, image, security group, network interface
 \item \strong{EC2-VPC-InstanceStore-Subnet}
 
-instance, image, security-group, network-interface, subnet
+instance, image, security group, network interface, subnet
 \item \strong{EC2-VPC-EBS}
 
-instance, image, security-group, network-interface, volume
+instance, image, security group, network interface, volume
 \item \strong{EC2-VPC-EBS-Subnet}
 
-instance, image, security-group, network-interface, subnet, volume
+instance, image, security group, network interface, subnet, volume
 }}
 
 \item{MaxItems}{Use this only when paginating results to indicate the maximum number of

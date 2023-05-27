@@ -10,7 +10,8 @@ devopsguru_list_anomalies_for_insight(
   StartTimeRange = NULL,
   MaxResults = NULL,
   NextToken = NULL,
-  AccountId = NULL
+  AccountId = NULL,
+  Filters = NULL
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ value.}
 this operation. If this value is null, it retrieves the first page.}
 
 \item{AccountId}{The ID of the Amazon Web Services account.}
+
+\item{Filters}{Specifies one or more service names that are used to list anomalies.}
 }
 \description{
 Returns a list of the anomalies that belong to an insight that you specify using its ID.

@@ -16,7 +16,8 @@ backup_list_backup_jobs(
   ByResourceType = NULL,
   ByAccountId = NULL,
   ByCompleteAfter = NULL,
-  ByCompleteBefore = NULL
+  ByCompleteBefore = NULL,
+  ByParentJobId = NULL
 )
 }
 \arguments{
@@ -69,6 +70,8 @@ and Coordinated Universal Time (UTC).}
 
 \item{ByCompleteBefore}{Returns only backup jobs completed before a date expressed in Unix
 format and Coordinated Universal Time (UTC).}
+
+\item{ByParentJobId}{This is a filter to list child (nested) jobs based on parent job ID.}
 }
 \description{
 Returns a list of existing backup jobs for an authenticated account for the last 30 days. For a longer period of time, consider using these \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/monitoring.html}{monitoring tools}.

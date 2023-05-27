@@ -4,12 +4,14 @@
 \alias{sagemaker_delete_image_version}
 \title{Deletes a version of a SageMaker image}
 \usage{
-sagemaker_delete_image_version(ImageName, Version)
+sagemaker_delete_image_version(ImageName, Version = NULL, Alias = NULL)
 }
 \arguments{
-\item{ImageName}{[required] The name of the image.}
+\item{ImageName}{[required] The name of the image to delete.}
 
-\item{Version}{[required] The version to delete.}
+\item{Version}{The version to delete.}
+
+\item{Alias}{The alias of the image to delete.}
 }
 \description{
 Deletes a version of a SageMaker image. The container image the version represents isn't deleted.

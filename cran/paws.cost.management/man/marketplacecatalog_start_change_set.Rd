@@ -2,13 +2,14 @@
 % Please edit documentation in R/marketplacecatalog_operations.R
 \name{marketplacecatalog_start_change_set}
 \alias{marketplacecatalog_start_change_set}
-\title{This operation allows you to request changes for your entities}
+\title{Allows you to request changes for your entities}
 \usage{
 marketplacecatalog_start_change_set(
   Catalog,
   ChangeSet,
   ChangeSetName = NULL,
-  ClientRequestToken = NULL
+  ClientRequestToken = NULL,
+  ChangeSetTags = NULL
 )
 }
 \arguments{
@@ -20,9 +21,12 @@ marketplacecatalog_start_change_set(
 set name can be used to filter the list of change sets.}
 
 \item{ClientRequestToken}{A unique token to identify the request to ensure idempotency.}
+
+\item{ChangeSetTags}{A list of objects specifying each key name and value for the
+\code{ChangeSetTags} property.}
 }
 \description{
-This operation allows you to request changes for your entities. Within a single ChangeSet, you cannot start the same change type against the same entity multiple times. Additionally, when a ChangeSet is running, all the entities targeted by the different changes are locked until the ChangeSet has completed (either succeeded, cancelled, or failed). If you try to start a ChangeSet containing a change against an entity that is already locked, you will receive a \code{ResourceInUseException}.
+Allows you to request changes for your entities. Within a single \code{ChangeSet}, you can't start the same change type against the same entity multiple times. Additionally, when a \code{ChangeSet} is running, all the entities targeted by the different changes are locked until the change set has completed (either succeeded, cancelled, or failed). If you try to start a change set containing a change against an entity that is already locked, you will receive a \code{ResourceInUseException} error.
 
 See \url{https://paws-r.github.io/docs/marketplacecatalog/start_change_set.html} for full documentation.
 }

@@ -16,7 +16,8 @@ ssmincidents_update_response_plan(
   incidentTemplateNotificationTargets = NULL,
   incidentTemplateSummary = NULL,
   incidentTemplateTags = NULL,
-  incidentTemplateTitle = NULL
+  incidentTemplateTitle = NULL,
+  integrations = NULL
 )
 }
 \arguments{
@@ -36,8 +37,8 @@ specified details.}
 \item{displayName}{The long format name of the response plan. The display name can't
 contain spaces.}
 
-\item{engagements}{The contacts and escalation plans that Incident Manager engages at the
-start of the incident.}
+\item{engagements}{The Amazon Resource Name (ARN) for the contacts and escalation plans
+that the response plan engages during an incident.}
 
 \item{incidentTemplateDedupeString}{The string Incident Manager uses to prevent duplicate incidents from
 being created by the same incident in the same account.}
@@ -60,13 +61,17 @@ incident.}
 \item{incidentTemplateSummary}{A brief summary of the incident. This typically contains what has
 happened, what's currently happening, and next steps.}
 
-\item{incidentTemplateTags}{Tags to apply to an incident when calling the
-\code{\link[=ssmincidents_start_incident]{start_incident}} API action. To call this
-action, you must also have permission to call the
+\item{incidentTemplateTags}{Tags to assign to the template. When the
+\code{\link[=ssmincidents_start_incident]{start_incident}} API action is called,
+Incident Manager assigns the tags specified in the template to the
+incident. To call this action, you must also have permission to call the
 \code{\link[=ssmincidents_tag_resource]{tag_resource}} API action for the incident
 record resource.}
 
 \item{incidentTemplateTitle}{The short format name of the incident. The title can't contain spaces.}
+
+\item{integrations}{Information about third-party services integrated into the response
+plan.}
 }
 \description{
 Updates the specified response plan.

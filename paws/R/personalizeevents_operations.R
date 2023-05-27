@@ -46,6 +46,9 @@ NULL
 #'       recommendationId = "string",
 #'       impression = list(
 #'         "string"
+#'       ),
+#'       metricAttribution = list(
+#'         eventAttributionSource = "string"
 #'       )
 #'     )
 #'   )

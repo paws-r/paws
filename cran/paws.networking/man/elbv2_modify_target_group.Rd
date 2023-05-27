@@ -45,8 +45,7 @@ Services.ALB/healthcheck.}
 \item{HealthCheckEnabled}{Indicates whether health checks are enabled.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
-individual target. For TCP health checks, the supported values are 10 or
-30 seconds.}
+individual target.}
 
 \item{HealthCheckTimeoutSeconds}{[HTTP/HTTPS health checks] The amount of time, in seconds, during
 which no response means a failed health check.}
@@ -55,11 +54,13 @@ which no response means a failed health check.}
 considering an unhealthy target healthy.}
 
 \item{UnhealthyThresholdCount}{The number of consecutive health check failures required before
-considering the target unhealthy. For target groups with a protocol of
-TCP or TLS, this value must be the same as the healthy threshold count.}
+considering the target unhealthy.}
 
 \item{Matcher}{[HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking
-for a successful response from a target.}
+for a successful response from a target. For target groups with a
+protocol of TCP, TCP_UDP, UDP or TLS the range is 200-599. For target
+groups with a protocol of HTTP or HTTPS, the range is 200-499. For
+target groups with a protocol of GENEVE, the range is 200-399.}
 }
 \description{
 Modifies the health checks used when evaluating the health state of the targets in the specified target group.

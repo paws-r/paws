@@ -839,7 +839,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' @rdname glacier_list_multipart_uploads
 glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, limit = NULL) {
   op <- new_operation(
-    name = "ListMultipartUploads",
+    name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
     paginator = list()
@@ -883,7 +883,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' @rdname glacier_list_parts
 glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, limit = NULL) {
   op <- new_operation(
-    name = "ListParts",
+    name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
     paginator = list()

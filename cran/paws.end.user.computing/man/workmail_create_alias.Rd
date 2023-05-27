@@ -2,8 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_alias}
 \alias{workmail_create_alias}
-\title{Adds an alias to the set of a given member (user or group) of Amazon
-WorkMail}
+\title{Adds an alias to the set of a given member (user or group) of WorkMail}
 \usage{
 workmail_create_alias(OrganizationId, EntityId, Alias)
 }
@@ -15,7 +14,7 @@ workmail_create_alias(OrganizationId, EntityId, Alias)
 \item{Alias}{[required] The alias to add to the member set.}
 }
 \description{
-Adds an alias to the set of a given member (user or group) of Amazon WorkMail.
+Adds an alias to the set of a given member (user or group) of WorkMail.
 
 See \url{https://paws-r.github.io/docs/workmail/create_alias.html} for full documentation.
 }

@@ -31,17 +31,17 @@ Operations section.
 Compute Optimizer is a service that analyzes the configuration and
 utilization metrics of your Amazon Web Services compute resources, such
 as Amazon EC2 instances, Amazon EC2 Auto Scaling groups, Lambda
-functions, and Amazon EBS volumes. It reports whether your resources are
-optimal, and generates optimization recommendations to reduce the cost
-and improve the performance of your workloads. Compute Optimizer also
-provides recent utilization metric data, in addition to projected
-utilization metric data for the recommendations, which you can use to
-evaluate which recommendation provides the best price-performance
-trade-off. The analysis of your usage patterns can help you decide when
-to move or resize your running resources, and still meet your
-performance and capacity requirements. For more information about
-Compute Optimizer, including the required permissions to use the
-service, see the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{Compute Optimizer User Guide}.
+functions, Amazon EBS volumes, and Amazon ECS services on Fargate. It
+reports whether your resources are optimal, and generates optimization
+recommendations to reduce the cost and improve the performance of your
+workloads. Compute Optimizer also provides recent utilization metric
+data, in addition to projected utilization metric data for the
+recommendations, which you can use to evaluate which recommendation
+provides the best price-performance trade-off. The analysis of your
+usage patterns can help you decide when to move or resize your running
+resources, and still meet your performance and capacity requirements.
+For more information about Compute Optimizer, including the required
+permissions to use the service, see the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}{Compute Optimizer User Guide}.
 }
 \section{Service syntax}{
 
@@ -75,11 +75,14 @@ service, see the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/}
 \link[paws.compute:computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations} \tab Exports optimization recommendations for Auto Scaling groups\cr
 \link[paws.compute:computeoptimizer_export_ebs_volume_recommendations]{export_ebs_volume_recommendations} \tab Exports optimization recommendations for Amazon EBS volumes\cr
 \link[paws.compute:computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances\cr
+\link[paws.compute:computeoptimizer_export_ecs_service_recommendations]{export_ecs_service_recommendations} \tab Exports optimization recommendations for Amazon ECS services on Fargate\cr
 \link[paws.compute:computeoptimizer_export_lambda_function_recommendations]{export_lambda_function_recommendations} \tab Exports optimization recommendations for Lambda functions\cr
 \link[paws.compute:computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Auto Scaling group recommendations\cr
 \link[paws.compute:computeoptimizer_get_ebs_volume_recommendations]{get_ebs_volume_recommendations} \tab Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations\cr
 \link[paws.compute:computeoptimizer_get_ec2_instance_recommendations]{get_ec2_instance_recommendations} \tab Returns Amazon EC2 instance recommendations\cr
 \link[paws.compute:computeoptimizer_get_ec2_recommendation_projected_metrics]{get_ec2_recommendation_projected_metrics} \tab Returns the projected utilization metrics of Amazon EC2 instance recommendations\cr
+\link[paws.compute:computeoptimizer_get_ecs_service_recommendation_projected_metrics]{get_ecs_service_recommendation_projected_metrics} \tab Returns the projected metrics of Amazon ECS service recommendations\cr
+\link[paws.compute:computeoptimizer_get_ecs_service_recommendations]{get_ecs_service_recommendations} \tab Returns Amazon ECS service recommendations\cr
 \link[paws.compute:computeoptimizer_get_effective_recommendation_preferences]{get_effective_recommendation_preferences} \tab Returns the recommendation preferences that are in effect for a given resource, such as enhanced infrastructure metrics\cr
 \link[paws.compute:computeoptimizer_get_enrollment_status]{get_enrollment_status} \tab Returns the enrollment (opt in) status of an account to the Compute Optimizer service\cr
 \link[paws.compute:computeoptimizer_get_enrollment_statuses_for_organization]{get_enrollment_statuses_for_organization} \tab Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your account is an organization management account\cr

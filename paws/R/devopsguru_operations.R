@@ -51,6 +51,14 @@ NULL
 #'   Config = list(
 #'     Sns = list(
 #'       TopicArn = "string"
+#'     ),
+#'     Filters = list(
+#'       Severities = list(
+#'         "LOW"|"MEDIUM"|"HIGH"
+#'       ),
+#'       MessageTypes = list(
+#'         "NEW_INSIGHT"|"CLOSED_INSIGHT"|"NEW_ASSOCIATION"|"SEVERITY_UPGRADED"|"NEW_RECOMMENDATION"
+#'       )
 #'     )
 #'   )
 #' )
@@ -142,7 +150,8 @@ devopsguru_delete_insight <- function(Id) {
 #'   OpenReactiveInsights = 123,
 #'   OpenProactiveInsights = 123,
 #'   MetricsAnalyzed = 123,
-#'   ResourceHours = 123
+#'   ResourceHours = 123,
+#'   AnalyzedResourceCount = 123
 #' )
 #' ```
 #'
@@ -396,7 +405,8 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #'         Name = "string",
 #'         Type = "string"
 #'       )
-#'     )
+#'     ),
+#'     Description = "string"
 #'   ),
 #'   ReactiveAnomaly = list(
 #'     Id = "string",
@@ -953,7 +963,8 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
 #'         OpenProactiveInsights = 123,
 #'         OpenReactiveInsights = 123,
 #'         MeanTimeToRecoverInMilliseconds = 123
-#'       )
+#'       ),
+#'       AnalyzedResourceCount = 123
 #'     )
 #'   ),
 #'   Service = list(
@@ -962,7 +973,8 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
 #'       Insight = list(
 #'         OpenProactiveInsights = 123,
 #'         OpenReactiveInsights = 123
-#'       )
+#'       ),
+#'       AnalyzedResourceCount = 123
 #'     )
 #'   ),
 #'   Account = list(
@@ -983,7 +995,8 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
 #'         OpenProactiveInsights = 123,
 #'         OpenReactiveInsights = 123,
 #'         MeanTimeToRecoverInMilliseconds = 123
-#'       )
+#'       ),
+#'       AnalyzedResourceCount = 123
 #'     )
 #'   )
 #' )
@@ -1068,7 +1081,8 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
 #'         OpenProactiveInsights = 123,
 #'         OpenReactiveInsights = 123,
 #'         MeanTimeToRecoverInMilliseconds = 123
-#'       )
+#'       ),
+#'       AnalyzedResourceCount = 123
 #'     )
 #'   ),
 #'   Service = list(
@@ -1077,7 +1091,8 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
 #'       Insight = list(
 #'         OpenProactiveInsights = 123,
 #'         OpenReactiveInsights = 123
-#'       )
+#'       ),
+#'       AnalyzedResourceCount = 123
 #'     )
 #'   ),
 #'   NextToken = "string",
@@ -1089,7 +1104,8 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
 #'         OpenProactiveInsights = 123,
 #'         OpenReactiveInsights = 123,
 #'         MeanTimeToRecoverInMilliseconds = 123
-#'       )
+#'       ),
+#'       AnalyzedResourceCount = 123
 #'     )
 #'   )
 #' )
@@ -1351,7 +1367,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'
 #' @usage
 #' devopsguru_list_anomalies_for_insight(InsightId, StartTimeRange,
-#'   MaxResults, NextToken, AccountId)
+#'   MaxResults, NextToken, AccountId, Filters)
 #'
 #' @param InsightId &#91;required&#93; The ID of the insight. The returned anomalies belong to this insight.
 #' @param StartTimeRange A time range used to specify when the requested anomalies started. All
@@ -1362,6 +1378,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
 #' @param AccountId The ID of the Amazon Web Services account.
+#' @param Filters Specifies one or more service names that are used to list anomalies.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1510,7 +1527,8 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'           Name = "string",
 #'           Type = "string"
 #'         )
-#'       )
+#'       ),
+#'       Description = "string"
 #'     )
 #'   ),
 #'   ReactiveAnomalies = list(
@@ -1664,7 +1682,14 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #'   ),
 #'   MaxResults = 123,
 #'   NextToken = "string",
-#'   AccountId = "string"
+#'   AccountId = "string",
+#'   Filters = list(
+#'     ServiceCollection = list(
+#'       ServiceNames = list(
+#'         "API_GATEWAY"|"APPLICATION_ELB"|"AUTO_SCALING_GROUP"|"CLOUD_FRONT"|"DYNAMO_DB"|"EC2"|"ECS"|"EKS"|"ELASTIC_BEANSTALK"|"ELASTI_CACHE"|"ELB"|"ES"|"KINESIS"|"LAMBDA"|"NAT_GATEWAY"|"NETWORK_ELB"|"RDS"|"REDSHIFT"|"ROUTE_53"|"S3"|"SAGE_MAKER"|"SNS"|"SQS"|"STEP_FUNCTIONS"|"SWF"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1673,14 +1698,14 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' @rdname devopsguru_list_anomalies_for_insight
 #'
 #' @aliases devopsguru_list_anomalies_for_insight
-devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
+devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListAnomaliesForInsight",
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
     paginator = list()
   )
-  input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
+  input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
   output <- .devopsguru$list_anomalies_for_insight_output()
   config <- get_config()
   svc <- .devopsguru$service(config)
@@ -2074,7 +2099,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #' @usage
 #' devopsguru_list_monitored_resources(Filters, MaxResults, NextToken)
 #'
-#' @param Filters &#91;required&#93; Filters to determine which monitored resources you want to retrieve. You
+#' @param Filters Filters to determine which monitored resources you want to retrieve. You
 #' can filter by resource type or resource permission status.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -2090,7 +2115,25 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #'     list(
 #'       MonitoredResourceName = "string",
 #'       Type = "string",
-#'       ResourcePermission = "FULL_PERMISSION"|"MISSING_PERMISSION"
+#'       ResourcePermission = "FULL_PERMISSION"|"MISSING_PERMISSION",
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResourceCollection = list(
+#'         CloudFormation = list(
+#'           StackNames = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Tags = list(
+#'           list(
+#'             AppBoundaryKey = "string",
+#'             TagValues = list(
+#'               "string"
+#'             )
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2103,7 +2146,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #'   Filters = list(
 #'     ResourcePermission = "FULL_PERMISSION"|"MISSING_PERMISSION",
 #'     ResourceTypeFilters = list(
-#'       "LOG_GROUPS"
+#'       "LOG_GROUPS"|"CLOUDFRONT_DISTRIBUTION"|"DYNAMODB_TABLE"|"EC2_NAT_GATEWAY"|"ECS_CLUSTER"|"ECS_SERVICE"|"EKS_CLUSTER"|"ELASTIC_BEANSTALK_ENVIRONMENT"|"ELASTIC_LOAD_BALANCER_LOAD_BALANCER"|"ELASTIC_LOAD_BALANCING_V2_LOAD_BALANCER"|"ELASTIC_LOAD_BALANCING_V2_TARGET_GROUP"|"ELASTICACHE_CACHE_CLUSTER"|"ELASTICSEARCH_DOMAIN"|"KINESIS_STREAM"|"LAMBDA_FUNCTION"|"OPEN_SEARCH_SERVICE_DOMAIN"|"RDS_DB_INSTANCE"|"RDS_DB_CLUSTER"|"REDSHIFT_CLUSTER"|"ROUTE53_HOSTED_ZONE"|"ROUTE53_HEALTH_CHECK"|"S3_BUCKET"|"SAGEMAKER_ENDPOINT"|"SNS_TOPIC"|"SQS_QUEUE"|"STEP_FUNCTIONS_ACTIVITY"|"STEP_FUNCTIONS_STATE_MACHINE"
 #'     )
 #'   ),
 #'   MaxResults = 123,
@@ -2116,7 +2159,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #' @rdname devopsguru_list_monitored_resources
 #'
 #' @aliases devopsguru_list_monitored_resources
-devopsguru_list_monitored_resources <- function(Filters, MaxResults = NULL, NextToken = NULL) {
+devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListMonitoredResources",
     http_method = "POST",
@@ -2158,6 +2201,14 @@ devopsguru_list_monitored_resources <- function(Filters, MaxResults = NULL, Next
 #'       Config = list(
 #'         Sns = list(
 #'           TopicArn = "string"
+#'         ),
+#'         Filters = list(
+#'           Severities = list(
+#'             "LOW"|"MEDIUM"|"HIGH"
+#'           ),
+#'           MessageTypes = list(
+#'             "NEW_INSIGHT"|"CLOSED_INSIGHT"|"NEW_ASSOCIATION"|"SEVERITY_UPGRADED"|"NEW_RECOMMENDATION"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2560,8 +2611,8 @@ devopsguru_remove_notification_channel <- function(Id) {
 #' @description
 #' Returns a list of insights in your Amazon Web Services account. You can
 #' specify which insights are returned by their start time, one or more
-#' statuses (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities
-#' (`LOW`, `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
+#' statuses (`ONGOING` or `CLOSED`), one or more severities (`LOW`,
+#' `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
 #' 
 #' Use the `Filters` parameter to specify status and severity search
 #' parameters. Use the `Type` parameter to specify `REACTIVE` or

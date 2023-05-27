@@ -2436,7 +2436,8 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #'     DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
 #'     LastDriftCheckTimestamp = as.POSIXct(
 #'       "2015-01-01"
-#'     )
+#'     ),
+#'     LastOperationId = "string"
 #'   )
 #' )
 #' ```
@@ -2884,6 +2885,9 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 #'     ),
 #'     ManagedExecution = list(
 #'       Active = TRUE|FALSE
+#'     ),
+#'     Regions = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -2999,7 +3003,10 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
 #'       InProgressStackInstancesCount = 123,
 #'       FailedStackInstancesCount = 123
 #'     ),
-#'     StatusReason = "string"
+#'     StatusReason = "string",
+#'     StatusDetails = list(
+#'       FailedStackInstancesCount = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -4400,7 +4407,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
 #' parameter to get the next set of results.
-#' @param Filters The status that stack instances are filtered by.
+#' @param Filters The filter to apply to stack instances
 #' @param StackInstanceAccount The name of the Amazon Web Services account that you want to list stack
 #' instances for.
 #' @param StackInstanceRegion The name of the Region where you want to list stack instances.
@@ -4441,7 +4448,8 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'       DriftStatus = "DRIFTED"|"IN_SYNC"|"UNKNOWN"|"NOT_CHECKED",
 #'       LastDriftCheckTimestamp = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       LastOperationId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -4456,7 +4464,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #'   MaxResults = 123,
 #'   Filters = list(
 #'     list(
-#'       Name = "DETAILED_STATUS",
+#'       Name = "DETAILED_STATUS"|"LAST_OPERATION_ID",
 #'       Values = "string"
 #'     )
 #'   ),
@@ -4578,7 +4586,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #'
 #' @usage
 #' cloudformation_list_stack_set_operation_results(StackSetName,
-#'   OperationId, NextToken, MaxResults, CallAs)
+#'   OperationId, NextToken, MaxResults, CallAs, Filters)
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to get operation
 #' results for.
@@ -4611,6 +4619,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #'     [Register a delegated
 #'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
 #'     in the *CloudFormation User Guide*.
+#' @param Filters The filter to apply to operation results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4640,7 +4649,13 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #'   OperationId = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   CallAs = "SELF"|"DELEGATED_ADMIN"
+#'   CallAs = "SELF"|"DELEGATED_ADMIN",
+#'   Filters = list(
+#'     list(
+#'       Name = "OPERATION_RESULT_STATUS",
+#'       Values = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4649,14 +4664,14 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #' @rdname cloudformation_list_stack_set_operation_results
 #'
 #' @aliases cloudformation_list_stack_set_operation_results
-cloudformation_list_stack_set_operation_results <- function(StackSetName, OperationId, NextToken = NULL, MaxResults = NULL, CallAs = NULL) {
+cloudformation_list_stack_set_operation_results <- function(StackSetName, OperationId, NextToken = NULL, MaxResults = NULL, CallAs = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListStackSetOperationResults",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
+  input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -4721,7 +4736,20 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 #'       EndTimestamp = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       StatusReason = "string"
+#'       StatusReason = "string",
+#'       StatusDetails = list(
+#'         FailedStackInstancesCount = 123
+#'       ),
+#'       OperationPreferences = list(
+#'         RegionConcurrencyType = "SEQUENTIAL"|"PARALLEL",
+#'         RegionOrder = list(
+#'           "string"
+#'         ),
+#'         FailureToleranceCount = 123,
+#'         FailureTolerancePercentage = 123,
+#'         MaxConcurrentCount = 123,
+#'         MaxConcurrentPercentage = 123
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -5409,7 +5437,7 @@ cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL
 #'   OperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
 #'   CurrentOperationStatus = "PENDING"|"IN_PROGRESS"|"SUCCESS"|"FAILED",
 #'   StatusMessage = "string",
-#'   ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"NetworkFailure"|"InternalFailure"|"InvalidTypeConfiguration"|"HandlerInternalFailure"|"NonCompliant"|"Unknown",
+#'   ErrorCode = "NotUpdatable"|"InvalidRequest"|"AccessDenied"|"InvalidCredentials"|"AlreadyExists"|"NotFound"|"ResourceConflict"|"Throttling"|"ServiceLimitExceeded"|"NotStabilized"|"GeneralServiceException"|"ServiceInternalError"|"NetworkFailure"|"InternalFailure"|"InvalidTypeConfiguration"|"HandlerInternalFailure"|"NonCompliant"|"Unknown"|"UnsupportedTarget",
 #'   ResourceModel = "string",
 #'   ClientRequestToken = "string"
 #' )
@@ -6105,9 +6133,10 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' [`register_type`][cloudformation_register_type].
 #' 
 #' Once you've initiated testing on an extension using
-#' [`test_type`][cloudformation_test_type], you can use
-#' [`describe_type`][cloudformation_describe_type] to monitor the current
-#' test status and test status description for the extension.
+#' [`test_type`][cloudformation_test_type], you can pass the returned
+#' `TypeVersionArn` into [`describe_type`][cloudformation_describe_type] to
+#' monitor the current test status and test status description for the
+#' extension.
 #' 
 #' An extension must have a test status of `PASSED` before it can be
 #' published. For more information, see [Publishing extensions to make them

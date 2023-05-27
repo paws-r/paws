@@ -17,12 +17,10 @@ sesv2_list_suppressed_destinations(
 \item{Reasons}{The factors that caused the email address to be added to .}
 
 \item{StartDate}{Used to filter the list of suppressed email destinations so that it only
-includes addresses that were added to the list after a specific date.
-The date that you specify should be in Unix time format.}
+includes addresses that were added to the list after a specific date.}
 
 \item{EndDate}{Used to filter the list of suppressed email destinations so that it only
-includes addresses that were added to the list before a specific date.
-The date that you specify should be in Unix time format.}
+includes addresses that were added to the list before a specific date.}
 
 \item{NextToken}{A token returned from a previous call to
 \code{\link[=sesv2_list_suppressed_destinations]{list_suppressed_destinations}} to

@@ -14,15 +14,15 @@ opensearchservice_update_package(
 \arguments{
 \item{PackageID}{[required] The unique identifier for the package.}
 
-\item{PackageSource}{[required]}
+\item{PackageSource}{[required] Amazon S3 bucket and key for the package.}
 
 \item{PackageDescription}{A new description of the package.}
 
-\item{CommitMessage}{A commit message for the new version which is shown as part of
+\item{CommitMessage}{Commit message for the updated file, which is shown as part of
 \code{GetPackageVersionHistoryResponse}.}
 }
 \description{
-Updates a package for use with Amazon OpenSearch Service domains.
+Updates a package for use with Amazon OpenSearch Service domains. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/update_package.html} for full documentation.
 }

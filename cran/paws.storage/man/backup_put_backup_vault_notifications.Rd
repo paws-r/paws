@@ -24,7 +24,7 @@ vault’s events; for example,
 \item{BackupVaultEvents}{[required] An array of events that indicate the status of jobs to back up resources
 to the backup vault.
 
-For common use cases and code samples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/sns-notifications.html}{Using Amazon SNS to track Backup events}.
+For common use cases and code samples, see \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/}{Using Amazon SNS to track Backup events}.
 
 The following events are supported:
 \itemize{
@@ -35,8 +35,10 @@ The following events are supported:
 \item \code{S3_BACKUP_OBJECT_FAILED} | \code{S3_RESTORE_OBJECT_FAILED}
 }
 
-Ignore the list below because it includes deprecated events. Refer to
-the list above.}
+The list below shows items that are deprecated events (for reference)
+and are no longer in use. They are no longer supported and will not
+return statuses or notifications. Refer to the list above for current
+supported events.}
 }
 \description{
 Turns on notifications on a backup vault for the specified topic and events.

@@ -58,9 +58,8 @@ user \code{\link[=s3_get_object]{get_object}} request.}
 \item{Body}{The object data.}
 
 \item{StatusCode}{The integer status code for an HTTP response of a corresponding
-\code{\link[=s3_get_object]{get_object}} request.
-
-\strong{Status Codes}
+\code{\link[=s3_get_object]{get_object}} request. The following is a list of status
+codes.
 \itemize{
 \item \code{200 - OK}
 \item \verb{206 - Partial Content}
@@ -204,15 +203,15 @@ Replication, see
 time of the restored object copy.}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing requested object
-in Amazon S3 (for example, AES256, aws:kms).}
+in Amazon S3 (for example, AES256, \code{aws:kms}).}
 
 \item{SSECustomerAlgorithm}{Encryption algorithm used if server-side encryption with a
 customer-provided encryption key was specified for object stored in
 Amazon S3.}
 
 \item{SSEKMSKeyId}{If present, specifies the ID of the Amazon Web Services Key Management
-Service (Amazon Web Services KMS) symmetric customer managed key that
-was used for stored in Amazon S3 object.}
+Service (Amazon Web Services KMS) symmetric encryption customer managed
+key that was used for stored in Amazon S3 object.}
 
 \item{SSECustomerKeyMD5}{128-bit MD5 digest of customer-provided encryption key used in Amazon S3
 to encrypt data stored in S3. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using server-side encryption with customer-provided encryption keys (SSE-C)}.}

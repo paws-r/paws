@@ -5,20 +5,20 @@
 \title{Starts a SQL transaction}
 \usage{
 rdsdataservice_begin_transaction(
-  database = NULL,
   resourceArn,
-  schema = NULL,
-  secretArn
+  secretArn,
+  database = NULL,
+  schema = NULL
 )
 }
 \arguments{
-\item{database}{The name of the database.}
-
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
 
-\item{schema}{The name of the database schema.}
-
 \item{secretArn}{[required] The name or ARN of the secret that enables access to the DB cluster.}
+
+\item{database}{The name of the database.}
+
+\item{schema}{The name of the database schema.}
 }
 \description{
 Starts a SQL transaction.

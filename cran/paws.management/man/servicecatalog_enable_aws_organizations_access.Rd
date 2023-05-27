@@ -2,12 +2,12 @@
 % Please edit documentation in R/servicecatalog_operations.R
 \name{servicecatalog_enable_aws_organizations_access}
 \alias{servicecatalog_enable_aws_organizations_access}
-\title{Enable portfolio sharing feature through AWS Organizations}
+\title{Enable portfolio sharing feature through Organizations}
 \usage{
 servicecatalog_enable_aws_organizations_access()
 }
 \description{
-Enable portfolio sharing feature through AWS Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
+Enable portfolio sharing feature through Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html} for full documentation.
 }

@@ -42,9 +42,7 @@ The output contains duplicates.
 
 The following are the valid DB engine values:
 \itemize{
-\item \code{aurora} (for MySQL 5.6-compatible Aurora)
-\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
-Aurora)
+\item \code{aurora-mysql}
 \item \code{aurora-postgresql}
 \item \code{mariadb}
 \item \code{mysql}

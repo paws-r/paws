@@ -112,7 +112,7 @@ their cache and can receive alarms if a part of their cache runs hot.
 \link[paws.database:elasticache_describe_user_groups]{describe_user_groups} \tab Returns a list of user groups\cr
 \link[paws.database:elasticache_describe_users]{describe_users} \tab Returns a list of users\cr
 \link[paws.database:elasticache_disassociate_global_replication_group]{disassociate_global_replication_group} \tab Remove a secondary cluster from the Global datastore using the Global datastore name\cr
-\link[paws.database:elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a selected secondary region\cr
+\link[paws.database:elasticache_failover_global_replication_group]{failover_global_replication_group} \tab Used to failover the primary region to a secondary region\cr
 \link[paws.database:elasticache_increase_node_groups_in_global_replication_group]{increase_node_groups_in_global_replication_group} \tab Increase the number of node groups in the Global datastore\cr
 \link[paws.database:elasticache_increase_replica_count]{increase_replica_count} \tab Dynamically increases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group\cr
 \link[paws.database:elasticache_list_allowed_node_type_modifications]{list_allowed_node_type_modifications} \tab Lists all available node types that you can scale your Redis cluster's or replication group's current node type\cr

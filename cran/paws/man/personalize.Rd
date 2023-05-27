@@ -67,6 +67,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_create_dataset_import_job]{create_dataset_import_job} \tab Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset\cr
 \link[paws.machine.learning:personalize_create_event_tracker]{create_event_tracker} \tab Creates an event tracker that you use when adding event data to a specified dataset group using the PutEvents API\cr
 \link[paws.machine.learning:personalize_create_filter]{create_filter} \tab Creates a recommendation filter\cr
+\link[paws.machine.learning:personalize_create_metric_attribution]{create_metric_attribution} \tab Creates a metric attribution\cr
 \link[paws.machine.learning:personalize_create_recommender]{create_recommender} \tab Creates a recommender with the recipe (a Domain dataset group use case) you specify\cr
 \link[paws.machine.learning:personalize_create_schema]{create_schema} \tab Creates an Amazon Personalize schema from the specified schema string\cr
 \link[paws.machine.learning:personalize_create_solution]{create_solution} \tab Creates the configuration for training a model\cr
@@ -76,6 +77,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_delete_dataset_group]{delete_dataset_group} \tab Deletes a dataset group\cr
 \link[paws.machine.learning:personalize_delete_event_tracker]{delete_event_tracker} \tab Deletes the event tracker\cr
 \link[paws.machine.learning:personalize_delete_filter]{delete_filter} \tab Deletes a filter\cr
+\link[paws.machine.learning:personalize_delete_metric_attribution]{delete_metric_attribution} \tab Deletes a metric attribution\cr
 \link[paws.machine.learning:personalize_delete_recommender]{delete_recommender} \tab Deactivates and removes a recommender\cr
 \link[paws.machine.learning:personalize_delete_schema]{delete_schema} \tab Deletes a schema\cr
 \link[paws.machine.learning:personalize_delete_solution]{delete_solution} \tab Deletes all versions of a solution and the Solution object itself\cr
@@ -90,6 +92,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_describe_event_tracker]{describe_event_tracker} \tab Describes an event tracker\cr
 \link[paws.machine.learning:personalize_describe_feature_transformation]{describe_feature_transformation} \tab Describes the given feature transformation\cr
 \link[paws.machine.learning:personalize_describe_filter]{describe_filter} \tab Describes a filter's properties\cr
+\link[paws.machine.learning:personalize_describe_metric_attribution]{describe_metric_attribution} \tab Describes a metric attribution\cr
 \link[paws.machine.learning:personalize_describe_recipe]{describe_recipe} \tab Describes a recipe\cr
 \link[paws.machine.learning:personalize_describe_recommender]{describe_recommender} \tab Describes the given recommender, including its status\cr
 \link[paws.machine.learning:personalize_describe_schema]{describe_schema} \tab Describes a schema\cr
@@ -105,6 +108,8 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_list_datasets]{list_datasets} \tab Returns the list of datasets contained in the given dataset group\cr
 \link[paws.machine.learning:personalize_list_event_trackers]{list_event_trackers} \tab Returns the list of event trackers associated with the account\cr
 \link[paws.machine.learning:personalize_list_filters]{list_filters} \tab Lists all filters that belong to a given dataset group\cr
+\link[paws.machine.learning:personalize_list_metric_attribution_metrics]{list_metric_attribution_metrics} \tab Lists the metrics for the metric attribution\cr
+\link[paws.machine.learning:personalize_list_metric_attributions]{list_metric_attributions} \tab Lists metric attributions\cr
 \link[paws.machine.learning:personalize_list_recipes]{list_recipes} \tab Returns a list of available recipes\cr
 \link[paws.machine.learning:personalize_list_recommenders]{list_recommenders} \tab Returns a list of recommenders in a given Domain dataset group\cr
 \link[paws.machine.learning:personalize_list_schemas]{list_schemas} \tab Returns the list of schemas associated with the account\cr
@@ -117,6 +122,7 @@ add individualized recommendations to customers.
 \link[paws.machine.learning:personalize_tag_resource]{tag_resource} \tab Add a list of tags to a resource\cr
 \link[paws.machine.learning:personalize_untag_resource]{untag_resource} \tab Remove tags that are attached to a resource\cr
 \link[paws.machine.learning:personalize_update_campaign]{update_campaign} \tab Updates a campaign by either deploying a new solution or changing the value of the campaign's minProvisionedTPS parameter\cr
+\link[paws.machine.learning:personalize_update_metric_attribution]{update_metric_attribution} \tab Updates a metric attribution\cr
 \link[paws.machine.learning:personalize_update_recommender]{update_recommender} \tab Updates the recommender to modify the recommender configuration
 }
 }

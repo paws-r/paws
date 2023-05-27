@@ -14,12 +14,11 @@ sesv2_list_domain_deliverability_campaigns(
 )
 }
 \arguments{
-\item{StartDate}{[required] The first day, in Unix time format, that you want to obtain
-deliverability data for.}
+\item{StartDate}{[required] The first day that you want to obtain deliverability data for.}
 
-\item{EndDate}{[required] The last day, in Unix time format, that you want to obtain
-deliverability data for. This value has to be less than or equal to 30
-days after the value of the \code{StartDate} parameter.}
+\item{EndDate}{[required] The last day that you want to obtain deliverability data for. This value
+has to be less than or equal to 30 days after the value of the
+\code{StartDate} parameter.}
 
 \item{SubscribedDomain}{[required] The domain to obtain deliverability data for.}
 

@@ -7,7 +7,9 @@
 connect_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource. All Amazon Connect
+resources (instances, queues, flows, routing profiles, etc) have an ARN.
+To locate the ARN for an instance, for example, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{Find your Amazon Connect instance ID/ARN}.}
 }
 \description{
 Lists the tags for the specified resource.

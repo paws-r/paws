@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_describe_packages}
 \alias{opensearchservice_describe_packages}
-\title{Describes all packages available to Amazon OpenSearch Service domains}
+\title{Describes all packages available to OpenSearch Service}
 \usage{
 opensearchservice_describe_packages(
   Filters = NULL,
@@ -14,14 +14,16 @@ opensearchservice_describe_packages(
 \item{Filters}{Only returns packages that match the \code{DescribePackagesFilterList}
 values.}
 
-\item{MaxResults}{Limits results to a maximum number of packages.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{Used for pagination. Only necessary if a previous API call includes a
-non-null NextToken value. If provided, returns results for the next
+\item{NextToken}{If your initial \code{DescribePackageFilters} operation returns a
+\code{nextToken}, you can include the returned \code{nextToken} in subsequent
+\code{DescribePackageFilters} operations, which returns results in the next
 page.}
 }
 \description{
-Describes all packages available to Amazon OpenSearch Service domains. Includes options for filtering, limiting the number of results, and pagination.
+Describes all packages available to OpenSearch Service. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/describe_packages.html} for full documentation.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_put_action_revision}
 \alias{codepipeline_put_action_revision}
-\title{Provides information to AWS CodePipeline about new revisions to a source}
+\title{Provides information to CodePipeline about new revisions to a source}
 \usage{
 codepipeline_put_action_revision(
   pipelineName,
@@ -23,7 +23,7 @@ revision.}
 \item{actionRevision}{[required] Represents information about the version (or revision) of an action.}
 }
 \description{
-Provides information to AWS CodePipeline about new revisions to a source.
+Provides information to CodePipeline about new revisions to a source.
 
 See \url{https://paws-r.github.io/docs/codepipeline/put_action_revision.html} for full documentation.
 }

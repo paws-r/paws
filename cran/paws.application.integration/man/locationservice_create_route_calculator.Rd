@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_route_calculator}
 \alias{locationservice_create_route_calculator}
-\title{Creates a route calculator resource in your AWS account}
+\title{Creates a route calculator resource in your Amazon Web Services account}
 \usage{
 locationservice_create_route_calculator(
   CalculatorName,
@@ -26,15 +26,20 @@ periods (.), and underscores (_).
 \item{DataSource}{[required] Specifies the data provider of traffic and road network data.
 
 This field is case-sensitive. Enter the valid values as shown. For
-example, entering \code{HERE} returns an error. Route calculators that use
-Esri as a data source only calculate routes that are shorter than 400
-km.
+example, entering \code{HERE} returns an error.
 
 Valid values include:
 \itemize{
 \item \code{Esri} – For additional information about
 \href{https://docs.aws.amazon.com/location/latest/developerguide/esri.html}{Esri}'s
 coverage in your region of interest, see \href{https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm}{Esri details on street networks and traffic coverage}.
+
+Route calculators that use Esri as a data source only calculate
+routes that are shorter than 400 km.
+\item \code{Grab} – Grab provides routing functionality for Southeast Asia. For
+additional information about
+\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}'
+coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
 \item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}'
 coverage in your region of interest, see HERE car routing coverage
 and HERE truck routing coverage.
@@ -69,7 +74,7 @@ characters: + - = . _ : / @.
 }}
 }
 \description{
-Creates a route calculator resource in your AWS account.
+Creates a route calculator resource in your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/create_route_calculator.html} for full documentation.
 }

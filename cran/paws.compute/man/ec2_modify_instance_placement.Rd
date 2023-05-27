@@ -11,7 +11,8 @@ ec2_modify_instance_placement(
   InstanceId,
   Tenancy = NULL,
   PartitionNumber = NULL,
-  HostResourceGroupArn = NULL
+  HostResourceGroupArn = NULL,
+  GroupId = NULL
 )
 }
 \arguments{
@@ -39,6 +40,9 @@ unsupported tenancy changes results in the \code{InvalidTenancy} error code.}
 if the placement group strategy is set to \code{partition}.}
 
 \item{HostResourceGroupArn}{The ARN of the host resource group in which to place the instance.}
+
+\item{GroupId}{The Group Id of a placement group. You must specify the Placement Group
+\strong{Group Id} to launch an instance in a shared placement group.}
 }
 \description{
 Modifies the placement attributes for a specified instance. You can do the following:

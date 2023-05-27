@@ -2,17 +2,17 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_describe_contact_flow}
 \alias{connect_describe_contact_flow}
-\title{Describes the specified contact flow}
+\title{Describes the specified flow}
 \usage{
 connect_describe_contact_flow(InstanceId, ContactFlowId)
 }
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow.}
+\item{ContactFlowId}{[required] The identifier of the flow.}
 }
 \description{
-Describes the specified contact flow.
+Describes the specified flow.
 
 See \url{https://paws-r.github.io/docs/connect/describe_contact_flow.html} for full documentation.
 }

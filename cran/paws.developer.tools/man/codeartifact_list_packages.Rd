@@ -30,14 +30,18 @@ the domain. It does not include dashes or spaces.}
 \item{format}{The format used to filter requested packages. Only packages from the
 provided format will be returned.}
 
-\item{namespace}{The namespace used to filter requested packages. Only packages with the
-provided namespace will be returned. The package component that
-specifies its namespace depends on its type. For example:
+\item{namespace}{The namespace prefix used to filter requested packages. Only packages
+with a namespace that starts with the provided string value are
+returned. Note that although this option is called \code{--namespace} and not
+\code{--namespace-prefix}, it has prefix-matching behavior.
+
+Each package format uses namespace as follows:
 \itemize{
 \item The namespace of a Maven package is its \code{groupId}.
 \item The namespace of an npm package is its \code{scope}.
 \item Python and NuGet packages do not contain a corresponding component,
 packages of those formats do not have a namespace.
+\item The namespace of a generic package is its \code{namespace}.
 }}
 
 \item{packagePrefix}{A prefix used to filter requested packages. Only packages with names

@@ -97,23 +97,26 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' Personalize doesn't use that portion of the expression to filter
 #' recommendations.
 #' 
-#' For more information, see [Filtering
-#' Recommendations](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+#' For more information, see [Filtering recommendations and user
+#' segments](https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
 #' @param recommenderArn The Amazon Resource Name (ARN) of the recommender to use to get
 #' recommendations. Provide a recommender ARN if you created a Domain
 #' dataset group with a recommender for a domain use case.
+#' @param promotions The promotions to apply to the recommendation request. A promotion
+#' defines additional business rules that apply to a configurable subset of
+#' recommended items.
 #'
 #' @keywords internal
 #'
 #' @rdname personalizeruntime_get_recommendations
-personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL, recommenderArn = NULL) {
+personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = NULL, userId = NULL, numResults = NULL, context = NULL, filterArn = NULL, filterValues = NULL, recommenderArn = NULL, promotions = NULL) {
   op <- new_operation(
     name = "GetRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
     paginator = list()
   )
-  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn)
+  input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn, promotions = promotions)
   output <- .personalizeruntime$get_recommendations_output()
   config <- get_config()
   svc <- .personalizeruntime$service(config)

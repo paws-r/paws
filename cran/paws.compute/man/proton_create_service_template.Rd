@@ -26,17 +26,17 @@ interface.}
 \item{pipelineProvisioning}{By default, Proton provides a service pipeline for your service. When
 this parameter is included, it indicates that an Proton service pipeline
 \emph{isn't} provided for your service. After it's included, it \emph{can't} be
-changed. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-template-authoring.html#ag-template-bundles}{Service template bundles}
-in the \emph{Proton Administrator Guide}.}
+changed. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-template-authoring.html#ag-template-bundles}{Template bundles}
+in the \emph{Proton User Guide}.}
 
 \item{tags}{An optional list of metadata items that you can associate with the
 Proton service template. A tag is a key-value pair.
 
-For more information, see \emph{Proton resources and tagging} in the \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton Administrator Guide}
-or \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/resources.html}{Proton resources and tagging}
+in the \emph{Proton User Guide}.}
 }
 \description{
-Create a service template. The administrator creates a service template to define standardized infrastructure and an optional CI/CD service pipeline. Developers, in turn, select the service template from Proton. If the selected service template includes a service pipeline definition, they provide a link to their source code repository. Proton then deploys and manages the infrastructure defined by the selected service template. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html}{Service Templates} in the \emph{Proton Administrator Guide}.
+Create a service template. The administrator creates a service template to define standardized infrastructure and an optional CI/CD service pipeline. Developers, in turn, select the service template from Proton. If the selected service template includes a service pipeline definition, they provide a link to their source code repository. Proton then deploys and manages the infrastructure defined by the selected service template. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html}{Proton templates} in the \emph{Proton User Guide}.
 
 See \url{https://paws-r.github.io/docs/proton/create_service_template.html} for full documentation.
 }

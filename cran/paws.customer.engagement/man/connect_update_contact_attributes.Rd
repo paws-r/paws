@@ -11,11 +11,11 @@ connect_update_contact_attributes(InitialContactId, InstanceId, Attributes)
 \item{InitialContactId}{[required] The identifier of the contact. This is the identifier of the contact
 associated with the first interaction with the contact center.}
 
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Attributes}{[required] The Amazon Connect attributes. These attributes can be accessed in
-contact flows just like any other contact attributes.
+\item{Attributes}{[required] The Amazon Connect attributes. These attributes can be accessed in flows
+just like any other contact attributes.
 
 You can have up to 32,768 UTF-8 bytes across all attributes for a
 contact. Attribute keys can include only alphanumeric, dash, and

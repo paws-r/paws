@@ -32,7 +32,11 @@ lowercased letters.}
 
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
-create resources named both "MyResource" and "myresource".}
+create resources named both "MyResource" and "myresource".
+
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: _+=,.@-}
 
 \item{AssumeRolePolicyDocument}{[required] The trust relationship policy document that grants an entity permission
 to assume the role.
@@ -64,7 +68,7 @@ specified role. If you do not specify a value for this setting, the
 default value of one hour is applied. This setting can have a value from
 1 hour to 12 hours.
 
-Anyone who assumes the role from the or API can use the
+Anyone who assumes the role from the CLI or API can use the
 \code{DurationSeconds} API parameter or the \code{duration-seconds} CLI parameter
 to request a longer session. The \code{MaxSessionDuration} setting determines
 the maximum duration that can be requested using the \code{DurationSeconds}
@@ -75,8 +79,18 @@ This applies when you use the \verb{AssumeRole*} API operations or the
 operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM roles}
 in the \emph{IAM User Guide}.}
 
-\item{PermissionsBoundary}{The ARN of the policy that is used to set the permissions boundary for
-the role.}
+\item{PermissionsBoundary}{The ARN of the managed policy that is used to set the permissions
+boundary for the role.
+
+A permissions boundary policy defines the maximum permissions that
+identity-based policies can grant to an entity, but does not grant
+permissions. Permissions boundaries do not define the maximum
+permissions that a resource-based policy can grant to an entity. To
+learn more, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
+in the \emph{IAM User Guide}.
+
+For more information about policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types}{Policy types}
+in the \emph{IAM User Guide}.}
 
 \item{Tags}{A list of tags that you want to attach to the new role. Each tag
 consists of a key name and an associated value. For more information

@@ -5,12 +5,14 @@
 \title{Updates the data access role used for vending access to the given
 (registered) resource in Lake Formation}
 \usage{
-lakeformation_update_resource(RoleArn, ResourceArn)
+lakeformation_update_resource(RoleArn, ResourceArn, WithFederation = NULL)
 }
 \arguments{
 \item{RoleArn}{[required] The new role to use for the given resource registered in Lake Formation.}
 
 \item{ResourceArn}{[required] The resource ARN.}
+
+\item{WithFederation}{Whether or not the resource is a federated resource.}
 }
 \description{
 Updates the data access role used for vending access to the given (registered) resource in Lake Formation.

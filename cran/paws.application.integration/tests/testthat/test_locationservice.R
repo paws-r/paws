@@ -8,6 +8,14 @@ test_that("list_geofence_collections", {
   expect_error(svc$list_geofence_collections(MaxResults = 20), NA)
 })
 
+test_that("list_keys", {
+  expect_error(svc$list_keys(), NA)
+})
+
+test_that("list_keys", {
+  expect_error(svc$list_keys(MaxResults = 20), NA)
+})
+
 test_that("list_maps", {
   expect_error(svc$list_maps(), NA)
 })

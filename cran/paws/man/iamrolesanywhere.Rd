@@ -28,26 +28,25 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-AWS Identity and Access Management Roles Anywhere provides a secure way
-for your workloads such as servers, containers, and applications running
-outside of AWS to obtain Temporary AWS credentials. Your workloads can
-use the same IAM policies and roles that you have configured with native
-AWS applications to access AWS resources. Using IAM Roles Anywhere will
-eliminate the need to manage long term credentials for workloads running
-outside of AWS.
+Identity and Access Management Roles Anywhere provides a secure way for
+your workloads such as servers, containers, and applications that run
+outside of Amazon Web Services to obtain temporary Amazon Web Services
+credentials. Your workloads can use the same IAM policies and roles you
+have for native Amazon Web Services applications to access Amazon Web
+Services resources. Using IAM Roles Anywhere eliminates the need to
+manage long-term credentials for workloads running outside of Amazon Web
+Services.
 
-To use IAM Roles Anywhere customer workloads will need to use X.509
-certificates issued by their Certificate Authority (CA) . The
-Certificate Authority (CA) needs to be registered with IAM Roles
-Anywhere as a trust anchor to establish trust between customer PKI and
-IAM Roles Anywhere. Customers who do not manage their own PKI system can
-use AWS Certificate Manager Private Certificate Authority (ACM PCA) to
-create a Certificate Authority and use that to establish trust with IAM
-Roles Anywhere
+To use IAM Roles Anywhere, your workloads must use X.509 certificates
+issued by their certificate authority (CA). You register the CA with IAM
+Roles Anywhere as a trust anchor to establish trust between your public
+key infrastructure (PKI) and IAM Roles Anywhere. If you don't manage
+your own PKI system, you can use Private Certificate Authority to create
+a CA and then use that to establish trust with IAM Roles Anywhere.
 
-This guide describes the IAM rolesanywhere operations that you can call
-programmatically. For general information about IAM Roles Anywhere see
-\url{https://docs.aws.amazon.com/}
+This guide describes the IAM Roles Anywhere operations that you can call
+programmatically. For more information about IAM Roles Anywhere, see the
+\href{https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html}{IAM Roles Anywhere User Guide}.
 }
 \section{Service syntax}{
 
@@ -76,8 +75,8 @@ programmatically. For general information about IAM Roles Anywhere see
 \section{Operations}{
 
 \tabular{ll}{
-\link[paws.security.identity:iamrolesanywhere_create_profile]{create_profile} \tab Creates a profile\cr
-\link[paws.security.identity:iamrolesanywhere_create_trust_anchor]{create_trust_anchor} \tab Creates a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_create_profile]{create_profile} \tab Creates a profile, a list of the roles that Roles Anywhere service is trusted to assume\cr
+\link[paws.security.identity:iamrolesanywhere_create_trust_anchor]{create_trust_anchor} \tab Creates a trust anchor to establish trust between IAM Roles Anywhere and your certificate authority (CA)\cr
 \link[paws.security.identity:iamrolesanywhere_delete_crl]{delete_crl} \tab Deletes a certificate revocation list (CRL)\cr
 \link[paws.security.identity:iamrolesanywhere_delete_profile]{delete_profile} \tab Deletes a profile\cr
 \link[paws.security.identity:iamrolesanywhere_delete_trust_anchor]{delete_trust_anchor} \tab Deletes a trust anchor\cr
@@ -85,23 +84,25 @@ programmatically. For general information about IAM Roles Anywhere see
 \link[paws.security.identity:iamrolesanywhere_disable_profile]{disable_profile} \tab Disables a profile\cr
 \link[paws.security.identity:iamrolesanywhere_disable_trust_anchor]{disable_trust_anchor} \tab Disables a trust anchor\cr
 \link[paws.security.identity:iamrolesanywhere_enable_crl]{enable_crl} \tab Enables a certificate revocation list (CRL)\cr
-\link[paws.security.identity:iamrolesanywhere_enable_profile]{enable_profile} \tab Enables the roles in a profile to receive session credentials in CreateSession\cr
+\link[paws.security.identity:iamrolesanywhere_enable_profile]{enable_profile} \tab Enables temporary credential requests for a profile\cr
 \link[paws.security.identity:iamrolesanywhere_enable_trust_anchor]{enable_trust_anchor} \tab Enables a trust anchor\cr
 \link[paws.security.identity:iamrolesanywhere_get_crl]{get_crl} \tab Gets a certificate revocation list (CRL)\cr
 \link[paws.security.identity:iamrolesanywhere_get_profile]{get_profile} \tab Gets a profile\cr
-\link[paws.security.identity:iamrolesanywhere_get_subject]{get_subject} \tab Gets a Subject\cr
+\link[paws.security.identity:iamrolesanywhere_get_subject]{get_subject} \tab Gets a subject, which associates a certificate identity with authentication attempts\cr
 \link[paws.security.identity:iamrolesanywhere_get_trust_anchor]{get_trust_anchor} \tab Gets a trust anchor\cr
 \link[paws.security.identity:iamrolesanywhere_import_crl]{import_crl} \tab Imports the certificate revocation list (CRL)\cr
-\link[paws.security.identity:iamrolesanywhere_list_crls]{list_crls} \tab Lists all Crls in the authenticated account and Amazon Web Services Region\cr
+\link[paws.security.identity:iamrolesanywhere_list_crls]{list_crls} \tab Lists all certificate revocation lists (CRL) in the authenticated account and Amazon Web Services Region\cr
 \link[paws.security.identity:iamrolesanywhere_list_profiles]{list_profiles} \tab Lists all profiles in the authenticated account and Amazon Web Services Region\cr
 \link[paws.security.identity:iamrolesanywhere_list_subjects]{list_subjects} \tab Lists the subjects in the authenticated account and Amazon Web Services Region\cr
 \link[paws.security.identity:iamrolesanywhere_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags attached to the resource\cr
 \link[paws.security.identity:iamrolesanywhere_list_trust_anchors]{list_trust_anchors} \tab Lists the trust anchors in the authenticated account and Amazon Web Services Region\cr
+\link[paws.security.identity:iamrolesanywhere_put_notification_settings]{put_notification_settings} \tab Attaches a list of notification settings to a trust anchor\cr
+\link[paws.security.identity:iamrolesanywhere_reset_notification_settings]{reset_notification_settings} \tab Resets the custom notification setting to IAM Roles Anywhere default setting\cr
 \link[paws.security.identity:iamrolesanywhere_tag_resource]{tag_resource} \tab Attaches tags to a resource\cr
 \link[paws.security.identity:iamrolesanywhere_untag_resource]{untag_resource} \tab Removes tags from the resource\cr
 \link[paws.security.identity:iamrolesanywhere_update_crl]{update_crl} \tab Updates the certificate revocation list (CRL)\cr
-\link[paws.security.identity:iamrolesanywhere_update_profile]{update_profile} \tab Updates the profile\cr
-\link[paws.security.identity:iamrolesanywhere_update_trust_anchor]{update_trust_anchor} \tab Updates the trust anchor
+\link[paws.security.identity:iamrolesanywhere_update_profile]{update_profile} \tab Updates a profile, a list of the roles that IAM Roles Anywhere service is trusted to assume\cr
+\link[paws.security.identity:iamrolesanywhere_update_trust_anchor]{update_trust_anchor} \tab Updates a trust anchor
 }
 }
 

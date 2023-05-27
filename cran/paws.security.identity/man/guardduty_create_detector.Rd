@@ -9,7 +9,8 @@ guardduty_create_detector(
   ClientToken = NULL,
   FindingPublishingFrequency = NULL,
   DataSources = NULL,
-  Tags = NULL
+  Tags = NULL,
+  Features = NULL
 )
 }
 \arguments{
@@ -19,9 +20,15 @@ guardduty_create_detector(
 
 \item{FindingPublishingFrequency}{A value that specifies how frequently updated findings are exported.}
 
-\item{DataSources}{Describes which data sources will be enabled for the detector.}
+\item{DataSources}{Describes which data sources will be enabled for the detector.
+
+There might be regional differences because some data sources might not
+be available in all the Amazon Web Services Regions where GuardDuty is
+presently supported. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_regions.html}{Regions and endpoints}.}
 
 \item{Tags}{The tags to be added to a new detector resource.}
+
+\item{Features}{A list of features that will be configured for the detector.}
 }
 \description{
 Creates a single Amazon GuardDuty detector. A detector is a resource that represents the GuardDuty service. To start using GuardDuty, you must create a detector in each Region where you enable the service. You can have only one detector per account per Region. All data sources are enabled in a new detector by default.

@@ -5,35 +5,47 @@
 \title{Lists log events from the specified log stream}
 \usage{
 cloudwatchlogs_get_log_events(
-  logGroupName,
+  logGroupName = NULL,
+  logGroupIdentifier = NULL,
   logStreamName,
   startTime = NULL,
   endTime = NULL,
   nextToken = NULL,
   limit = NULL,
-  startFromHead = NULL
+  startFromHead = NULL,
+  unmask = NULL
 )
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group.}
+\item{logGroupName}{The name of the log group.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
+
+\item{logGroupIdentifier}{Specify either the name or ARN of the log group to view events from. If
+the log group is in a source account and you are using a monitoring
+account, you must use the log group ARN.
+
+You must include either \code{logGroupIdentifier} or \code{logGroupName}, but not
+both.}
 
 \item{logStreamName}{[required] The name of the log stream.}
 
 \item{startTime}{The start of the time range, expressed as the number of milliseconds
-after Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to this
+after \verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp equal to this
 time or later than this time are included. Events with a timestamp
 earlier than this time are not included.}
 
 \item{endTime}{The end of the time range, expressed as the number of milliseconds after
-Jan 1, 1970 00:00:00 UTC. Events with a timestamp equal to or later than
-this time are not included.}
+\verb{Jan 1, 1970 00:00:00 UTC}. Events with a timestamp equal to or later
+than this time are not included.}
 
 \item{nextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 
-\item{limit}{The maximum number of log events returned. If you don't specify a value,
-the maximum is as many log events as can fit in a response size of 1 MB,
-up to 10,000 log events.}
+\item{limit}{The maximum number of log events returned. If you don't specify a limit,
+the default is as many log events as can fit in a response size of 1 MB
+(up to 10,000 log events).}
 
 \item{startFromHead}{If the value is true, the earliest log events are returned first. If the
 value is false, the latest log events are returned first. The default
@@ -41,6 +53,12 @@ value is false.
 
 If you are using a previous \code{nextForwardToken} value as the \code{nextToken}
 in this operation, you must specify \code{true} for \code{startFromHead}.}
+
+\item{unmask}{Specify \code{true} to display the log event fields with all sensitive data
+unmasked and visible. The default is \code{false}.
+
+To use this operation with this parameter, you must be signed into an
+account with the \code{logs:Unmask} permission.}
 }
 \description{
 Lists log events from the specified log stream. You can list all of the log events or filter using a time range.

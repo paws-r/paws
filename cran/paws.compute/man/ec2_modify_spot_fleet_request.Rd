@@ -14,9 +14,11 @@ ec2_modify_spot_fleet_request(
 )
 }
 \arguments{
-\item{ExcessCapacityTerminationPolicy}{Indicates whether running Spot Instances should be terminated if the
-target capacity of the Spot Fleet request is decreased below the current
-size of the Spot Fleet.}
+\item{ExcessCapacityTerminationPolicy}{Indicates whether running instances should be terminated if the target
+capacity of the Spot Fleet request is decreased below the current size
+of the Spot Fleet.
+
+Supported only for fleets of type \code{maintain}.}
 
 \item{LaunchTemplateConfigs}{The launch template and overrides. You can only use this parameter if
 you specified a launch template (\code{LaunchTemplateConfigs}) in your Spot

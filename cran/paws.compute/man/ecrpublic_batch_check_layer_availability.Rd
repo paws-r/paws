@@ -2,8 +2,8 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_batch_check_layer_availability}
 \alias{ecrpublic_batch_check_layer_availability}
-\title{Checks the availability of one or more image layers within a repository
-in a public registry}
+\title{Checks the availability of one or more image layers that are within a
+repository in a public registry}
 \usage{
 ecrpublic_batch_check_layer_availability(
   registryId = NULL,
@@ -12,17 +12,17 @@ ecrpublic_batch_check_layer_availability(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry that contains the
-image layers to check. If you do not specify a registry, the default
-public registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID, or registry alias, associated with
+the public registry that contains the image layers to check. If you do
+not specify a registry, the default public registry is assumed.}
 
-\item{repositoryName}{[required] The name of the repository that is associated with the image layers to
+\item{repositoryName}{[required] The name of the repository that's associated with the image layers to
 check.}
 
 \item{layerDigests}{[required] The digests of the image layers to check.}
 }
 \description{
-Checks the availability of one or more image layers within a repository in a public registry. When an image is pushed to a repository, each image layer is checked to verify if it has been uploaded before. If it has been uploaded, then the image layer is skipped.
+Checks the availability of one or more image layers that are within a repository in a public registry. When an image is pushed to a repository, each image layer is checked to verify if it has been uploaded before. If it has been uploaded, then the image layer is skipped.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/batch_check_layer_availability.html} for full documentation.
 }

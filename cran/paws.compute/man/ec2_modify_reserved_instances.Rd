@@ -2,8 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_reserved_instances}
 \alias{ec2_modify_reserved_instances}
-\title{Modifies the Availability Zone, instance count, instance type, or
-network platform (EC2-Classic or EC2-VPC) of your Reserved Instances}
+\title{Modifies the configuration of your Reserved Instances, such as the
+Availability Zone, instance count, or instance type}
 \usage{
 ec2_modify_reserved_instances(
   ReservedInstancesIds,
@@ -20,7 +20,7 @@ modification request. For more information, see \href{https://docs.aws.amazon.co
 \item{TargetConfigurations}{[required] The configuration settings for the Reserved Instances to modify.}
 }
 \description{
-Modifies the Availability Zone, instance count, instance type, or network platform (EC2-Classic or EC2-VPC) of your Reserved Instances. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
+Modifies the configuration of your Reserved Instances, such as the Availability Zone, instance count, or instance type. The Reserved Instances to be modified must be identical, except for Availability Zone, network platform, and instance type.
 
 See \url{https://paws-r.github.io/docs/ec2/modify_reserved_instances.html} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_transact_write_items}
 \alias{dynamodb_transact_write_items}
-\title{TransactWriteItems is a synchronous write operation that groups up to 25
-action requests}
+\title{TransactWriteItems is a synchronous write operation that groups up to
+100 action requests}
 \usage{
 dynamodb_transact_write_items(
   TransactItems,
@@ -13,7 +13,7 @@ dynamodb_transact_write_items(
 )
 }
 \arguments{
-\item{TransactItems}{[required] An ordered array of up to 25 \code{TransactWriteItem} objects, each of which
+\item{TransactItems}{[required] An ordered array of up to 100 \code{TransactWriteItem} objects, each of which
 contains a \code{ConditionCheck}, \code{Put}, \code{Update}, or \code{Delete} object. These
 can operate on items in different tables, but the tables must reside in
 the same Amazon Web Services account and Region, and no two of them can
@@ -33,7 +33,7 @@ call.
 
 Although multiple identical calls using the same client request token
 produce the same result on the server (no side effects), the responses
-to the calls might not be the same. If the \verb{ReturnConsumedCapacity>}
+to the calls might not be the same. If the \code{ReturnConsumedCapacity}
 parameter is set, then the initial
 \code{\link[=dynamodb_transact_write_items]{transact_write_items}} call returns the
 amount of write capacity units consumed in making the changes.
@@ -52,7 +52,7 @@ parameters within the 10-minute idempotency window, DynamoDB returns an
 \code{IdempotentParameterMismatch} exception.}
 }
 \description{
-\code{\link[=dynamodb_transact_write_items]{transact_write_items}} is a synchronous write operation that groups up to 25 action requests. These actions can target items in different tables, but not in different Amazon Web Services accounts or Regions, and no two actions can target the same item. For example, you cannot both \code{ConditionCheck} and \code{Update} the same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
+\code{\link[=dynamodb_transact_write_items]{transact_write_items}} is a synchronous write operation that groups up to 100 action requests. These actions can target items in different tables, but not in different Amazon Web Services accounts or Regions, and no two actions can target the same item. For example, you cannot both \code{ConditionCheck} and \code{Update} the same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
 
 See \url{https://paws-r.github.io/docs/dynamodb/transact_write_items.html} for full documentation.
 }

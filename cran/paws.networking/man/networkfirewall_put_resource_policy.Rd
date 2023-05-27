@@ -25,8 +25,6 @@ the Actions section of the statement:
 For a firewall policy resource, you can specify the following operations
 in the Actions section of the statement:
 \itemize{
-\item network-firewall:CreateFirewall
-\item network-firewall:UpdateFirewall
 \item network-firewall:AssociateFirewallPolicy
 \item network-firewall:ListFirewallPolicies
 }

@@ -18,7 +18,7 @@ rds_restore_db_cluster_from_s3(
   EngineVersion = NULL,
   Port = NULL,
   MasterUsername,
-  MasterUserPassword,
+  MasterUserPassword = NULL,
   OptionGroupName = NULL,
   PreferredBackupWindow = NULL,
   PreferredMaintenanceWindow = NULL,
@@ -37,7 +37,11 @@ rds_restore_db_cluster_from_s3(
   CopyTagsToSnapshot = NULL,
   Domain = NULL,
   DomainIAMRoleName = NULL,
-  ServerlessV2ScalingConfiguration = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  NetworkType = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -72,8 +76,8 @@ Constraints:
 Example: \code{my-cluster1}}
 
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with the
-restored DB cluster. If this argument is omitted, \code{default.aurora5.6} is
-used.
+restored DB cluster. If this argument is omitted, the default parameter
+group for the engine version is used.
 
 Constraints:
 \itemize{
@@ -93,27 +97,18 @@ Example: \code{mydbsubnetgroup}}
 
 \item{Engine}{[required] The name of the database engine to be used for this DB cluster.
 
-Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora) and
-\code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
-Aurora)}
+Valid Values: \code{aurora-mysql} (for Aurora MySQL)}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
-To list all of the available engine versions for \code{aurora} (for MySQL
-5.6-compatible Aurora), use the following command:
-
-\verb{aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"}
-
-To list all of the available engine versions for \code{aurora-mysql} (for
-MySQL 5.7-compatible and MySQL 8.0-compatible Aurora), use the following
-command:
+To list all of the available engine versions for \code{aurora-mysql} (Aurora
+MySQL), use the following command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"}
 
 \strong{Aurora MySQL}
 
-Example: \verb{5.6.10a}, \verb{5.6.mysql_aurora.1.19.2},
-\verb{5.7.mysql_aurora.2.07.1}, \verb{8.0.mysql_aurora.3.02.0}}
+Examples: \verb{5.7.mysql_aurora.2.07.1}, \verb{8.0.mysql_aurora.3.02.0}}
 
 \item{Port}{The port number on which the instances in the restored DB cluster accept
 connections.
@@ -129,10 +124,14 @@ Constraints:
 \item Can't be a reserved word for the chosen database engine.
 }}
 
-\item{MasterUserPassword}{[required] The password for the master database user. This password can contain any
+\item{MasterUserPassword}{The password for the master database user. This password can contain any
 printable ASCII character except "/", """, or "@".
 
-Constraints: Must contain from 8 to 41 characters.}
+Constraints:
+\itemize{
+\item Must contain from 8 to 41 characters.
+\item Can't be specified if \code{ManageMasterUserPassword} is turned on.
+}}
 
 \item{OptionGroupName}{A value that indicates that the restored DB cluster should be associated
 with the specified option group.
@@ -238,10 +237,6 @@ Logs. The values in the list depend on the DB engine being used.
 
 Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
 
-\strong{Aurora PostgreSQL}
-
-Possible value is \code{postgresql}.
-
 For more information about exporting CloudWatch Logs for Amazon Aurora,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
@@ -266,6 +261,63 @@ in the \emph{Amazon Aurora User Guide}.}
 Directory Service.}
 
 \item{ServerlessV2ScalingConfiguration}{}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}}
+
+\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
+Amazon Web Services Secrets Manager.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon Aurora User Guide.}
+
+Constraints:
+\itemize{
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
+}}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB cluster.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
+
+\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
+
+Valid values: \code{aurora}, \code{aurora-iopt1}
+
+Default: \code{aurora}
+
+Valid for: Aurora DB clusters only}
 }
 \description{
 Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and the data must be created using the Percona XtraBackup utility as described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket} in the \emph{Amazon Aurora User Guide}.

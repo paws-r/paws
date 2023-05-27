@@ -8,7 +8,7 @@ codepipeline_get_pipeline(name, version = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline for which you want to get information. Pipeline
-names must be unique under an AWS user account.}
+names must be unique in an Amazon Web Services account.}
 
 \item{version}{The version number of the pipeline. If you do not specify a version,
 defaults to the current version.}

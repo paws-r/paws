@@ -20,13 +20,14 @@ sagemaker_create_user_profile(
 
 \item{SingleSignOnUserIdentifier}{A specifier for the type of value specified in SingleSignOnUserValue.
 Currently, the only supported value is "UserName". If the Domain's
-AuthMode is SSO, this field is required. If the Domain's AuthMode is not
-SSO, this field cannot be specified.}
+AuthMode is IAM Identity Center, this field is required. If the Domain's
+AuthMode is not IAM Identity Center, this field cannot be specified.}
 
 \item{SingleSignOnUserValue}{The username of the associated Amazon Web Services Single Sign-On User
-for this UserProfile. If the Domain's AuthMode is SSO, this field is
-required, and must match a valid username of a user in your directory.
-If the Domain's AuthMode is not SSO, this field cannot be specified.}
+for this UserProfile. If the Domain's AuthMode is IAM Identity Center,
+this field is required, and must match a valid username of a user in
+your directory. If the Domain's AuthMode is not IAM Identity Center,
+this field cannot be specified.}
 
 \item{Tags}{Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.
@@ -37,7 +38,7 @@ that the User Profile launches.}
 \item{UserSettings}{A collection of settings.}
 }
 \description{
-Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from SSO, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory.
+Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory.
 
 See \url{https://paws-r.github.io/docs/sagemaker/create_user_profile.html} for full documentation.
 }

@@ -108,7 +108,7 @@ containers.
 
 If you're using the EC2 launch type, this field is optional. Supported
 values are between \code{128} CPU units (\code{0.125} vCPUs) and \code{10240} CPU units
-(\code{10} vCPUs).
+(\code{10} vCPUs). If you do not specify a value, the parameter is ignored.
 
 If you're using the Fargate launch type, this field is required and you
 must use one of the following values, which determines your range of
@@ -123,10 +123,18 @@ GB), 2048 (2 GB)
 3072 (3 GB), 4096 (4 GB)
 \item 1024 (1 vCPU) - Available \code{memory} values: 2048 (2 GB), 3072 (3 GB),
 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
-\item 2048 (2 vCPU) - Available \code{memory} values: Between 4096 (4 GB) and
-16384 (16 GB) in increments of 1024 (1 GB)
-\item 4096 (4 vCPU) - Available \code{memory} values: Between 8192 (8 GB) and
-30720 (30 GB) in increments of 1024 (1 GB)
+\item 2048 (2 vCPU) - Available \code{memory} values: 4096 (4 GB) and 16384 (16
+GB) in increments of 1024 (1 GB)
+\item 4096 (4 vCPU) - Available \code{memory} values: 8192 (8 GB) and 30720 (30
+GB) in increments of 1024 (1 GB)
+\item 8192 (8 vCPU) - Available \code{memory} values: 16 GB and 60 GB in 4 GB
+increments
+
+This option requires Linux platform \verb{1.4.0} or later.
+\item 16384 (16vCPU) - Available \code{memory} values: 32GB and 120 GB in 8 GB
+increments
+
+This option requires Linux platform \verb{1.4.0} or later.
 }}
 
 \item{memory}{The amount of memory (in MiB) used by the task. It can be expressed as
@@ -158,6 +166,14 @@ values: 512 (.5 vCPU)
 Available \code{cpu} values: 2048 (2 vCPU)
 \item Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) -
 Available \code{cpu} values: 4096 (4 vCPU)
+\item Between 16 GB and 60 GB in 4 GB increments - Available \code{cpu} values:
+8192 (8 vCPU)
+
+This option requires Linux platform \verb{1.4.0} or later.
+\item Between 32GB and 120 GB in 8 GB increments - Available \code{cpu} values:
+16384 (16 vCPU)
+
+This option requires Linux platform \verb{1.4.0} or later.
 }}
 
 \item{tags}{The metadata that you apply to the task definition to help you
@@ -238,7 +254,7 @@ version \verb{1.26.0-1} of the \code{ecs-init} package to use a proxy
 configuration. If your container instances are launched from the Amazon
 ECS-optimized AMI version \code{20190301} or later, then they contain the
 required versions of the container agent and \code{ecs-init}. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-versions.html}{Amazon ECS-optimized AMI versions}
+information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html#ecs-optimized-ami-linux-releasenotes}{Amazon ECS-optimized AMI versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{inferenceAccelerators}{The Elastic Inference accelerators to use for the containers in the
@@ -250,8 +266,8 @@ beyond the default amount, for tasks hosted on Fargate. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_data_volumes.html}{Fargate task storage}
 in the \emph{Amazon ECS User Guide for Fargate}.
 
-This parameter is only supported for tasks hosted on Fargate using the
-following platform versions:
+For tasks using the Fargate launch type, the task requires the following
+platforms:
 \itemize{
 \item Linux platform version \verb{1.4.0} or later.
 \item Windows platform version \verb{1.0.0} or later.

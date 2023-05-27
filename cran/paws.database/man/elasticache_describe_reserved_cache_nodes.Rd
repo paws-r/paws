@@ -35,7 +35,7 @@ previous generation counterparts.
 \itemize{
 \item Current generation:
 
-\strong{M6g node types:} (available only for Redis engine version
+\strong{M6g node types} (available only for Redis engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
 \code{cache.m6g.large}, \code{cache.m6g.xlarge}, \code{cache.m6g.2xlarge},
 \code{cache.m6g.4xlarge}, \code{cache.m6g.8xlarge}, \code{cache.m6g.12xlarge},
@@ -51,7 +51,7 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \code{cache.m4.2xlarge}, \code{cache.m4.4xlarge}, \code{cache.m4.10xlarge}
 
 \strong{T4g node types} (available only for Redis engine version
-5.0.6 onward and for Memcached engine version 1.5.16 onward):
+5.0.6 onward and Memcached engine version 1.5.16 onward):
 \code{cache.t4g.micro}, \code{cache.t4g.small}, \code{cache.t4g.medium}
 
 \strong{T3 node types:} \code{cache.t3.micro}, \code{cache.t3.small},
@@ -78,17 +78,6 @@ still supported but creation of new clusters is not supported
 for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
-}
-\item Memory optimized with data tiering:
-\itemize{
-\item Current generation:
-
-\strong{R6gd node types} (available only for Redis engine version 6.2
-onward).
-
-\code{cache.r6gd.xlarge}, \code{cache.r6gd.2xlarge}, \code{cache.r6gd.4xlarge},
-\code{cache.r6gd.8xlarge}, \code{cache.r6gd.12xlarge},
-\code{cache.r6gd.16xlarge}
 }
 \item Memory optimized:
 \itemize{

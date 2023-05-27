@@ -12,33 +12,33 @@ ecrpublic_describe_image_tags(
 )
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry that contains the
-repository in which to describe images. If you do not specify a
-registry, the default public registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID that's associated with the public
+registry that contains the repository where images are described. If you
+do not specify a registry, the default public registry is assumed.}
 
 \item{repositoryName}{[required] The name of the repository that contains the image tag details to
 describe.}
 
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
+\item{nextToken}{The \code{nextToken} value that's returned from a previous paginated
 \code{\link[=ecrpublic_describe_image_tags]{describe_image_tags}} request where
 \code{maxResults} was used and the results exceeded the value of that
 parameter. Pagination continues from the end of the previous results
-that returned the \code{nextToken} value. This value is \code{null} when there are
-no more results to return. This option cannot be used when you specify
-images with \code{imageIds}.}
+that returned the \code{nextToken} value. If there are no more results to
+return, this value is \code{null}. If you specify images with \code{imageIds}, you
+can't use this option.}
 
-\item{maxResults}{The maximum number of repository results returned by
+\item{maxResults}{The maximum number of repository results that's returned by
 \code{\link[=ecrpublic_describe_image_tags]{describe_image_tags}} in paginated
 output. When this parameter is used,
 \code{\link[=ecrpublic_describe_image_tags]{describe_image_tags}} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
-element. The remaining results of the initial request can be seen by
+element. You can see the remaining results of the initial request by
 sending another \code{\link[=ecrpublic_describe_image_tags]{describe_image_tags}}
 request with the returned \code{nextToken} value. This value can be between 1
-and 1000. If this parameter is not used, then
+and 1000. If this parameter isn't used, then
 \code{\link[=ecrpublic_describe_image_tags]{describe_image_tags}} returns up to 100
-results and a \code{nextToken} value, if applicable. This option cannot be
-used when you specify images with \code{imageIds}.}
+results and a \code{nextToken} value, if applicable. If you specify images
+with \code{imageIds}, you can't use this option.}
 }
 \description{
 Returns the image tag details for a repository in a public registry.

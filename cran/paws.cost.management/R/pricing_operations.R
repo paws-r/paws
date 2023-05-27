@@ -77,6 +77,42 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 }
 .pricing$operations$get_attribute_values <- pricing_get_attribute_values
 
+#' This feature is in preview release and is subject to change
+#'
+#' @description
+#' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
+#'
+#' See [https://paws-r.github.io/docs/pricing/get_price_list_file_url.html](https://paws-r.github.io/docs/pricing/get_price_list_file_url.html) for full documentation.
+#'
+#' @param PriceListArn &#91;required&#93; The unique identifier that maps to where your Price List files are
+#' located. `PriceListArn` can be obtained from the
+#' [`list_price_lists`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html)
+#' response.
+#' @param FileFormat &#91;required&#93; The format that you want to retrieve your Price List files in. The
+#' `FileFormat` can be obtained from the
+#' [`list_price_lists`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html)
+#' response.
+#'
+#' @keywords internal
+#'
+#' @rdname pricing_get_price_list_file_url
+pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
+  op <- new_operation(
+    name = "GetPriceListFileUrl",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pricing$get_price_list_file_url_input(PriceListArn = PriceListArn, FileFormat = FileFormat)
+  output <- .pricing$get_price_list_file_url_output()
+  config <- get_config()
+  svc <- .pricing$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pricing$operations$get_price_list_file_url <- pricing_get_price_list_file_url
+
 #' Returns a list of all products that match the filter criteria
 #'
 #' @description
@@ -113,3 +149,54 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
   return(response)
 }
 .pricing$operations$get_products <- pricing_get_products
+
+#' This feature is in preview release and is subject to change
+#'
+#' @description
+#' *This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the <span href="https://aws.amazon.com/service-terms/">Amazon Web Services Service Terms</span> (Section 1.10).*
+#'
+#' See [https://paws-r.github.io/docs/pricing/list_price_lists.html](https://paws-r.github.io/docs/pricing/list_price_lists.html) for full documentation.
+#'
+#' @param ServiceCode &#91;required&#93; The service code or the Savings Plan service code for the attributes
+#' that you want to retrieve. For example, to get the list of applicable
+#' Amazon EC2 price lists, use `AmazonEC2`. For a full list of service
+#' codes containing On-Demand and Reserved Instance (RI) pricing, use the
+#' [`describe_services`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_DescribeServices.html#awscostmanagement-pricing_DescribeServices-request-FormatVersion)
+#' API.
+#' 
+#' To retrieve the Compute Savings Plan price lists, use
+#' `ComputeSavingsPlans`. To retrieve Machine Learning Savings Plans price
+#' lists, use `MachineLearningSavingsPlans`.
+#' @param EffectiveDate &#91;required&#93; The date that the Price List file prices are effective from.
+#' @param RegionCode This is used to filter the Price List by Amazon Web Services Region. For
+#' example, to get the price list only for the `US East (N. Virginia)`
+#' Region, use `us-east-1`. If nothing is specified, you retrieve price
+#' lists for all applicable Regions. The available `RegionCode` list can be
+#' retrieved from
+#' [`get_attribute_values`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetAttributeValues.html)
+#' API.
+#' @param CurrencyCode &#91;required&#93; The three alphabetical character ISO-4217 currency code that the Price
+#' List files are denominated in.
+#' @param NextToken The pagination token that indicates the next set of results that you
+#' want to retrieve.
+#' @param MaxResults The maximum number of results to return in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname pricing_list_price_lists
+pricing_list_price_lists <- function(ServiceCode, EffectiveDate, RegionCode = NULL, CurrencyCode, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPriceLists",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pricing$list_price_lists_input(ServiceCode = ServiceCode, EffectiveDate = EffectiveDate, RegionCode = RegionCode, CurrencyCode = CurrencyCode, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .pricing$list_price_lists_output()
+  config <- get_config()
+  svc <- .pricing$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pricing$operations$list_price_lists <- pricing_list_price_lists

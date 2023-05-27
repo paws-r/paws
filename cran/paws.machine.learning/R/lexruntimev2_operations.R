@@ -209,7 +209,7 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' -   If the value begins with `audio/`, Amazon Lex V2 returns speech in
 #'     the response. Amazon Lex V2 uses Amazon Polly to generate the speech
 #'     using the configuration that you specified in the
-#'     `requestContentType` parameter. For example, if you specify
+#'     `responseContentType` parameter. For example, if you specify
 #'     `audio/mpeg` as the value, Amazon Lex V2 returns speech in the MPEG
 #'     format.
 #' 

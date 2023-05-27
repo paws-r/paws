@@ -11,15 +11,28 @@ cloudtrail_create_event_data_store(
   OrganizationEnabled = NULL,
   RetentionPeriod = NULL,
   TerminationProtectionEnabled = NULL,
-  TagsList = NULL
+  TagsList = NULL,
+  KmsKeyId = NULL
 )
 }
 \arguments{
 \item{Name}{[required] The name of the event data store.}
 
 \item{AdvancedEventSelectors}{The advanced event selectors to use to select the events for the data
-store. For more information about how to use advanced event selectors,
-see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced}{Log events by using advanced event selectors}
+store. You can configure up to five advanced event selectors for each
+event data store.
+
+For more information about how to use advanced event selectors to log
+CloudTrail events, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html#creating-data-event-selectors-advanced}{Log events by using advanced event selectors}
+in the CloudTrail User Guide.
+
+For more information about how to use advanced event selectors to
+include Config configuration items in your event data store, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-lake-cli.html#lake-cli-create-eds-config}{Create an event data store for Config configuration items}
+in the CloudTrail User Guide.
+
+For more information about how to use advanced event selectors to
+include non-Amazon Web Services events in your event data store, see
+\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/query-lake-cli.html#lake-cli-create-integration}{Create an integration to log events from outside Amazon Web Services}
 in the CloudTrail User Guide.}
 
 \item{MultiRegionEnabled}{Specifies whether the event data store includes events from all regions,
@@ -29,13 +42,38 @@ or only from the region in which the event data store is created.}
 organization in Organizations.}
 
 \item{RetentionPeriod}{The retention period of the event data store, in days. You can set a
-retention period of up to 2555 days, the equivalent of seven years.}
+retention period of up to 2557 days, the equivalent of seven years.}
 
 \item{TerminationProtectionEnabled}{Specifies whether termination protection is enabled for the event data
 store. If termination protection is enabled, you cannot delete the event
 data store until termination protection is disabled.}
 
 \item{TagsList}{}
+
+\item{KmsKeyId}{Specifies the KMS key ID to use to encrypt the events delivered by
+CloudTrail. The value can be an alias name prefixed by \verb{alias/}, a fully
+specified ARN to an alias, a fully specified ARN to a key, or a globally
+unique identifier.
+
+Disabling or deleting the KMS key, or removing CloudTrail permissions on
+the key, prevents CloudTrail from logging events to the event data
+store, and prevents users from querying the data in the event data store
+that was encrypted with the key. After you associate an event data store
+with a KMS key, the KMS key cannot be removed or changed. Before you
+disable or delete a KMS key that you are using with an event data store,
+delete or back up your event data store.
+
+CloudTrail also supports KMS multi-Region keys. For more information
+about multi-Region keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html}{Using multi-Region keys}
+in the \emph{Key Management Service Developer Guide}.
+
+Examples:
+\itemize{
+\item \code{alias/MyAliasName}
+\item \code{arn:aws:kms:us-east-2:123456789012:alias/MyAliasName}
+\item \code{arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012}
+\item \code{12345678-1234-1234-1234-123456789012}
+}}
 }
 \description{
 Creates a new event data store.

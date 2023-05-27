@@ -15,7 +15,7 @@ ssmincidents_list_timeline_events(
 }
 \arguments{
 \item{filters}{Filters the timeline events based on the provided conditional values.
-You can filter timeline events using the following keys:
+You can filter timeline events with the following keys:
 \itemize{
 \item \code{eventTime}
 \item \code{eventType}
@@ -38,7 +38,7 @@ timeline event.}
 
 \item{nextToken}{The pagination token to continue to the next page of results.}
 
-\item{sortBy}{Sort by the specified key value pair.}
+\item{sortBy}{Sort timeline events by the specified key value pair.}
 
 \item{sortOrder}{Sorts the order of timeline events by the value specified in the
 \code{sortBy} field.}

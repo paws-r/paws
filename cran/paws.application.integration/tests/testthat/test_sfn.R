@@ -4,6 +4,10 @@ test_that("list_activities", {
   expect_error(svc$list_activities(), NA)
 })
 
+test_that("list_executions", {
+  expect_error(svc$list_executions(), NA)
+})
+
 test_that("list_state_machines", {
   expect_error(svc$list_state_machines(), NA)
 })

@@ -7,8 +7,9 @@
 ssmincidents_delete_timeline_event(eventId, incidentRecordArn)
 }
 \arguments{
-\item{eventId}{[required] The ID of the event you are updating. You can find this by using
-\code{\link[=ssmincidents_list_timeline_events]{list_timeline_events}}.}
+\item{eventId}{[required] The ID of the event to update. You can use
+\code{\link[=ssmincidents_list_timeline_events]{list_timeline_events}} to find an
+event's ID.}
 
 \item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the
 timeline event.}

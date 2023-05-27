@@ -21,16 +21,18 @@ codestarnotifications_update_notification_rule(
 \item{Status}{The status of the notification rule. Valid statuses include enabled
 (sending notifications) or disabled (not sending notifications).}
 
-\item{EventTypeIds}{A list of event types associated with this notification rule.}
+\item{EventTypeIds}{A list of event types associated with this notification rule. For a
+complete list of event types and IDs, see \href{https://docs.aws.amazon.com/dtconsole/latest/userguide/concepts.html#concepts-api}{Notification concepts}
+in the \emph{Developer Tools Console User Guide}.}
 
 \item{Targets}{The address and type of the targets to receive notifications from this
 notification rule.}
 
 \item{DetailType}{The level of detail to include in the notifications for this resource.
 BASIC will include only the contents of the event as it would appear in
-AWS CloudWatch. FULL will include any supplemental information provided
-by AWS CodeStar Notifications and/or the service for the resource for
-which the notification is created.}
+Amazon CloudWatch. FULL will include any supplemental information
+provided by AWS CodeStar Notifications and/or the service for the
+resource for which the notification is created.}
 }
 \description{
 Updates a notification rule for a resource. You can change the events that trigger the notification rule, the status of the rule, and the targets that receive the notifications.

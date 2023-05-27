@@ -22,9 +22,9 @@ Attempting to use \code{InstanceInformationFilterList} and \code{Filters} leads 
 an exception error.}
 
 \item{Filters}{One or more filters. Use a filter to return a more specific list of
-managed nodes. You can filter based on tags applied to EC2 instances.
-Use this \code{Filters} data type instead of \code{InstanceInformationFilterList},
-which is deprecated.}
+managed nodes. You can filter based on tags applied to your managed
+nodes. Use this \code{Filters} data type instead of
+\code{InstanceInformationFilterList}, which is deprecated.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the

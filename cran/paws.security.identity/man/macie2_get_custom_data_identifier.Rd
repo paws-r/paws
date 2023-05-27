@@ -7,8 +7,8 @@
 macie2_get_custom_data_identifier(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 }
 \description{
 Retrieves the criteria and other settings for a custom data identifier.

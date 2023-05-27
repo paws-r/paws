@@ -67,7 +67,7 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_create_account_customization]{create_account_customization} \tab Creates Amazon QuickSight customizations for the current Amazon Web Services Region\cr
 \link[paws.analytics:quicksight_create_account_subscription]{create_account_subscription} \tab Creates an Amazon QuickSight account, or subscribes to Amazon QuickSight Q\cr
 \link[paws.analytics:quicksight_create_analysis]{create_analysis} \tab Creates an analysis in Amazon QuickSight\cr
-\link[paws.analytics:quicksight_create_dashboard]{create_dashboard} \tab Creates a dashboard from a template\cr
+\link[paws.analytics:quicksight_create_dashboard]{create_dashboard} \tab Creates a dashboard from either a template or directly with a DashboardDefinition\cr
 \link[paws.analytics:quicksight_create_data_set]{create_data_set} \tab Creates a dataset\cr
 \link[paws.analytics:quicksight_create_data_source]{create_data_source} \tab Creates a data source\cr
 \link[paws.analytics:quicksight_create_folder]{create_folder} \tab Creates an empty shared folder\cr
@@ -77,14 +77,20 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_create_iam_policy_assignment]{create_iam_policy_assignment} \tab Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN)\cr
 \link[paws.analytics:quicksight_create_ingestion]{create_ingestion} \tab Creates and starts a new SPICE ingestion for a dataset\cr
 \link[paws.analytics:quicksight_create_namespace]{create_namespace} \tab (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight\cr
-\link[paws.analytics:quicksight_create_template]{create_template} \tab Creates a template from an existing Amazon QuickSight analysis or template\cr
+\link[paws.analytics:quicksight_create_refresh_schedule]{create_refresh_schedule} \tab Creates a refresh schedule for a dataset\cr
+\link[paws.analytics:quicksight_create_template]{create_template} \tab Creates a template either from a TemplateDefinition or from an existing Amazon QuickSight analysis or template\cr
 \link[paws.analytics:quicksight_create_template_alias]{create_template_alias} \tab Creates a template alias for a template\cr
 \link[paws.analytics:quicksight_create_theme]{create_theme} \tab Creates a theme\cr
 \link[paws.analytics:quicksight_create_theme_alias]{create_theme_alias} \tab Creates a theme alias for a theme\cr
+\link[paws.analytics:quicksight_create_topic]{create_topic} \tab Creates a new Q topic\cr
+\link[paws.analytics:quicksight_create_topic_refresh_schedule]{create_topic_refresh_schedule} \tab Creates a topic refresh schedule\cr
+\link[paws.analytics:quicksight_create_vpc_connection]{create_vpc_connection} \tab Creates a new VPC connection\cr
 \link[paws.analytics:quicksight_delete_account_customization]{delete_account_customization} \tab Deletes all Amazon QuickSight customizations in this Amazon Web Services Region for the specified Amazon Web Services account and Amazon QuickSight namespace\cr
+\link[paws.analytics:quicksight_delete_account_subscription]{delete_account_subscription} \tab Use the DeleteAccountSubscription operation to delete an Amazon QuickSight account\cr
 \link[paws.analytics:quicksight_delete_analysis]{delete_analysis} \tab Deletes an analysis from Amazon QuickSight\cr
 \link[paws.analytics:quicksight_delete_dashboard]{delete_dashboard} \tab Deletes a dashboard\cr
 \link[paws.analytics:quicksight_delete_data_set]{delete_data_set} \tab Deletes a dataset\cr
+\link[paws.analytics:quicksight_delete_data_set_refresh_properties]{delete_data_set_refresh_properties} \tab Deletes the dataset refresh properties of the dataset\cr
 \link[paws.analytics:quicksight_delete_data_source]{delete_data_source} \tab Deletes the data source permanently\cr
 \link[paws.analytics:quicksight_delete_folder]{delete_folder} \tab Deletes an empty folder\cr
 \link[paws.analytics:quicksight_delete_folder_membership]{delete_folder_membership} \tab Removes an asset, such as a dashboard, analysis, or dataset, from a folder\cr
@@ -92,21 +98,30 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_delete_group_membership]{delete_group_membership} \tab Removes a user from a group so that the user is no longer a member of the group\cr
 \link[paws.analytics:quicksight_delete_iam_policy_assignment]{delete_iam_policy_assignment} \tab Deletes an existing IAM policy assignment\cr
 \link[paws.analytics:quicksight_delete_namespace]{delete_namespace} \tab Deletes a namespace and the users and groups that are associated with the namespace\cr
+\link[paws.analytics:quicksight_delete_refresh_schedule]{delete_refresh_schedule} \tab Deletes a refresh schedule from a dataset\cr
 \link[paws.analytics:quicksight_delete_template]{delete_template} \tab Deletes a template\cr
 \link[paws.analytics:quicksight_delete_template_alias]{delete_template_alias} \tab Deletes the item that the specified template alias points to\cr
 \link[paws.analytics:quicksight_delete_theme]{delete_theme} \tab Deletes a theme\cr
 \link[paws.analytics:quicksight_delete_theme_alias]{delete_theme_alias} \tab Deletes the version of the theme that the specified theme alias points to\cr
-\link[paws.analytics:quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the Identity and Access Management (IAM) user or role that's making the call\cr
+\link[paws.analytics:quicksight_delete_topic]{delete_topic} \tab Deletes a topic\cr
+\link[paws.analytics:quicksight_delete_topic_refresh_schedule]{delete_topic_refresh_schedule} \tab Deletes a topic refresh schedule\cr
+\link[paws.analytics:quicksight_delete_user]{delete_user} \tab Deletes the Amazon QuickSight user that is associated with the identity of the IAM user or role that's making the call\cr
 \link[paws.analytics:quicksight_delete_user_by_principal_id]{delete_user_by_principal_id} \tab Deletes a user identified by its principal ID\cr
+\link[paws.analytics:quicksight_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a VPC connection\cr
 \link[paws.analytics:quicksight_describe_account_customization]{describe_account_customization} \tab Describes the customizations associated with the provided Amazon Web Services account and Amazon Amazon QuickSight namespace in an Amazon Web Services Region\cr
 \link[paws.analytics:quicksight_describe_account_settings]{describe_account_settings} \tab Describes the settings that were used when your Amazon QuickSight subscription was first created in this Amazon Web Services account\cr
-\link[paws.analytics:quicksight_describe_account_subscription]{describe_account_subscription} \tab Use the DescribeAccountSubscription operation to receive a description of a Amazon QuickSight account's subscription\cr
+\link[paws.analytics:quicksight_describe_account_subscription]{describe_account_subscription} \tab Use the DescribeAccountSubscription operation to receive a description of an Amazon QuickSight account's subscription\cr
 \link[paws.analytics:quicksight_describe_analysis]{describe_analysis} \tab Provides a summary of the metadata for an analysis\cr
+\link[paws.analytics:quicksight_describe_analysis_definition]{describe_analysis_definition} \tab Provides a detailed description of the definition of an analysis\cr
 \link[paws.analytics:quicksight_describe_analysis_permissions]{describe_analysis_permissions} \tab Provides the read and write permissions for an analysis\cr
+\link[paws.analytics:quicksight_describe_asset_bundle_export_job]{describe_asset_bundle_export_job} \tab Describes an existing export job\cr
+\link[paws.analytics:quicksight_describe_asset_bundle_import_job]{describe_asset_bundle_import_job} \tab Describes an existing import job\cr
 \link[paws.analytics:quicksight_describe_dashboard]{describe_dashboard} \tab Provides a summary for a dashboard\cr
+\link[paws.analytics:quicksight_describe_dashboard_definition]{describe_dashboard_definition} \tab Provides a detailed description of the definition of a dashboard\cr
 \link[paws.analytics:quicksight_describe_dashboard_permissions]{describe_dashboard_permissions} \tab Describes read and write permissions for a dashboard\cr
 \link[paws.analytics:quicksight_describe_data_set]{describe_data_set} \tab Describes a dataset\cr
 \link[paws.analytics:quicksight_describe_data_set_permissions]{describe_data_set_permissions} \tab Describes the permissions on a dataset\cr
+\link[paws.analytics:quicksight_describe_data_set_refresh_properties]{describe_data_set_refresh_properties} \tab Describes the refresh properties of a dataset\cr
 \link[paws.analytics:quicksight_describe_data_source]{describe_data_source} \tab Describes a data source\cr
 \link[paws.analytics:quicksight_describe_data_source_permissions]{describe_data_source_permissions} \tab Describes the resource permissions for a data source\cr
 \link[paws.analytics:quicksight_describe_folder]{describe_folder} \tab Describes a folder\cr
@@ -118,18 +133,27 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_describe_ingestion]{describe_ingestion} \tab Describes a SPICE ingestion\cr
 \link[paws.analytics:quicksight_describe_ip_restriction]{describe_ip_restriction} \tab Provides a summary and status of IP rules\cr
 \link[paws.analytics:quicksight_describe_namespace]{describe_namespace} \tab Describes the current namespace\cr
+\link[paws.analytics:quicksight_describe_refresh_schedule]{describe_refresh_schedule} \tab Provides a summary of a refresh schedule\cr
 \link[paws.analytics:quicksight_describe_template]{describe_template} \tab Describes a template's metadata\cr
 \link[paws.analytics:quicksight_describe_template_alias]{describe_template_alias} \tab Describes the template alias for a template\cr
+\link[paws.analytics:quicksight_describe_template_definition]{describe_template_definition} \tab Provides a detailed description of the definition of a template\cr
 \link[paws.analytics:quicksight_describe_template_permissions]{describe_template_permissions} \tab Describes read and write permissions on a template\cr
 \link[paws.analytics:quicksight_describe_theme]{describe_theme} \tab Describes a theme\cr
 \link[paws.analytics:quicksight_describe_theme_alias]{describe_theme_alias} \tab Describes the alias for a theme\cr
 \link[paws.analytics:quicksight_describe_theme_permissions]{describe_theme_permissions} \tab Describes the read and write permissions for a theme\cr
+\link[paws.analytics:quicksight_describe_topic]{describe_topic} \tab Describes a topic\cr
+\link[paws.analytics:quicksight_describe_topic_permissions]{describe_topic_permissions} \tab Describes the permissions of a topic\cr
+\link[paws.analytics:quicksight_describe_topic_refresh]{describe_topic_refresh} \tab Describes the status of a topic refresh\cr
+\link[paws.analytics:quicksight_describe_topic_refresh_schedule]{describe_topic_refresh_schedule} \tab Deletes a topic refresh schedule\cr
 \link[paws.analytics:quicksight_describe_user]{describe_user} \tab Returns information about a user, given the user name\cr
-\link[paws.analytics:quicksight_generate_embed_url_for_anonymous_user]{generate_embed_url_for_anonymous_user} \tab Generates an embed URL that you can use to embed an Amazon QuickSight dashboard in your website, without having to register any reader users\cr
+\link[paws.analytics:quicksight_describe_vpc_connection]{describe_vpc_connection} \tab Describes a VPC connection\cr
+\link[paws.analytics:quicksight_generate_embed_url_for_anonymous_user]{generate_embed_url_for_anonymous_user} \tab Generates an embed URL that you can use to embed an Amazon QuickSight dashboard or visual in your website, without having to register any reader users\cr
 \link[paws.analytics:quicksight_generate_embed_url_for_registered_user]{generate_embed_url_for_registered_user} \tab Generates an embed URL that you can use to embed an Amazon QuickSight experience in your website\cr
 \link[paws.analytics:quicksight_get_dashboard_embed_url]{get_dashboard_embed_url} \tab Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon QuickSight read-only dashboard in your website or application\cr
 \link[paws.analytics:quicksight_get_session_embed_url]{get_session_embed_url} \tab Generates a session URL and authorization code that you can use to embed the Amazon Amazon QuickSight console in your web server code\cr
 \link[paws.analytics:quicksight_list_analyses]{list_analyses} \tab Lists Amazon QuickSight analyses that exist in the specified Amazon Web Services account\cr
+\link[paws.analytics:quicksight_list_asset_bundle_export_jobs]{list_asset_bundle_export_jobs} \tab Lists all asset bundle export jobs that have been taken place in the last 14 days\cr
+\link[paws.analytics:quicksight_list_asset_bundle_import_jobs]{list_asset_bundle_import_jobs} \tab Lists all asset bundle import jobs that have taken place in the last 14 days\cr
 \link[paws.analytics:quicksight_list_dashboards]{list_dashboards} \tab Lists dashboards in an Amazon Web Services account\cr
 \link[paws.analytics:quicksight_list_dashboard_versions]{list_dashboard_versions} \tab Lists all the versions of the dashboards in the Amazon QuickSight subscription\cr
 \link[paws.analytics:quicksight_list_data_sets]{list_data_sets} \tab Lists all of the datasets belonging to the current Amazon Web Services account in an Amazon Web Services Region\cr
@@ -138,10 +162,11 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_list_folders]{list_folders} \tab Lists all folders in an account\cr
 \link[paws.analytics:quicksight_list_group_memberships]{list_group_memberships} \tab Lists member users in a group\cr
 \link[paws.analytics:quicksight_list_groups]{list_groups} \tab Lists all user groups in Amazon QuickSight\cr
-\link[paws.analytics:quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists IAM policy assignments in the current Amazon QuickSight account\cr
-\link[paws.analytics:quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all the IAM policy assignments, including the Amazon Resource Names (ARNs) for the IAM policies assigned to the specified user and group or groups that the user belongs to\cr
+\link[paws.analytics:quicksight_list_iam_policy_assignments]{list_iam_policy_assignments} \tab Lists the IAM policy assignments in the current Amazon QuickSight account\cr
+\link[paws.analytics:quicksight_list_iam_policy_assignments_for_user]{list_iam_policy_assignments_for_user} \tab Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to\cr
 \link[paws.analytics:quicksight_list_ingestions]{list_ingestions} \tab Lists the history of SPICE ingestions for a dataset\cr
 \link[paws.analytics:quicksight_list_namespaces]{list_namespaces} \tab Lists the namespaces for the specified Amazon Web Services account\cr
+\link[paws.analytics:quicksight_list_refresh_schedules]{list_refresh_schedules} \tab Lists the refresh schedules of a dataset\cr
 \link[paws.analytics:quicksight_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a resource\cr
 \link[paws.analytics:quicksight_list_template_aliases]{list_template_aliases} \tab Lists all the aliases of a template\cr
 \link[paws.analytics:quicksight_list_templates]{list_templates} \tab Lists all the templates in the current Amazon QuickSight account\cr
@@ -149,14 +174,22 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_list_theme_aliases]{list_theme_aliases} \tab Lists all the aliases of a theme\cr
 \link[paws.analytics:quicksight_list_themes]{list_themes} \tab Lists all the themes in the current Amazon Web Services account\cr
 \link[paws.analytics:quicksight_list_theme_versions]{list_theme_versions} \tab Lists all the versions of the themes in the current Amazon Web Services account\cr
+\link[paws.analytics:quicksight_list_topic_refresh_schedules]{list_topic_refresh_schedules} \tab Lists all of the refresh schedules for a topic\cr
+\link[paws.analytics:quicksight_list_topics]{list_topics} \tab Lists all of the topics within an account\cr
 \link[paws.analytics:quicksight_list_user_groups]{list_user_groups} \tab Lists the Amazon QuickSight groups that an Amazon QuickSight user is a member of\cr
 \link[paws.analytics:quicksight_list_users]{list_users} \tab Returns a list of all of the Amazon QuickSight users belonging to this account\cr
-\link[paws.analytics:quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user, whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request\cr
+\link[paws.analytics:quicksight_list_vpc_connections]{list_vpc_connections} \tab Lists all of the VPC connections in the current set Amazon Web Services Region of an Amazon Web Services account\cr
+\link[paws.analytics:quicksight_put_data_set_refresh_properties]{put_data_set_refresh_properties} \tab Creates or updates the dataset refresh properties for the dataset\cr
+\link[paws.analytics:quicksight_register_user]{register_user} \tab Creates an Amazon QuickSight user whose identity is associated with the Identity and Access Management (IAM) identity or role specified in the request\cr
 \link[paws.analytics:quicksight_restore_analysis]{restore_analysis} \tab Restores an analysis\cr
 \link[paws.analytics:quicksight_search_analyses]{search_analyses} \tab Searches for analyses that belong to the user specified in the filter\cr
 \link[paws.analytics:quicksight_search_dashboards]{search_dashboards} \tab Searches for dashboards that belong to a user\cr
+\link[paws.analytics:quicksight_search_data_sets]{search_data_sets} \tab Use the SearchDataSets operation to search for datasets that belong to an account\cr
+\link[paws.analytics:quicksight_search_data_sources]{search_data_sources} \tab Use the SearchDataSources operation to search for data sources that belong to an account\cr
 \link[paws.analytics:quicksight_search_folders]{search_folders} \tab Searches the subfolders in a folder\cr
 \link[paws.analytics:quicksight_search_groups]{search_groups} \tab Use the SearchGroups operation to search groups in a specified Amazon QuickSight namespace using the supplied filters\cr
+\link[paws.analytics:quicksight_start_asset_bundle_export_job]{start_asset_bundle_export_job} \tab Starts an Asset Bundle export job\cr
+\link[paws.analytics:quicksight_start_asset_bundle_import_job]{start_asset_bundle_import_job} \tab Starts an Asset Bundle import job\cr
 \link[paws.analytics:quicksight_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource\cr
 \link[paws.analytics:quicksight_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource\cr
 \link[paws.analytics:quicksight_update_account_customization]{update_account_customization} \tab Updates Amazon QuickSight customizations for the current Amazon Web Services Region\cr
@@ -176,13 +209,18 @@ manage Amazon QuickSight.
 \link[paws.analytics:quicksight_update_iam_policy_assignment]{update_iam_policy_assignment} \tab Updates an existing IAM policy assignment\cr
 \link[paws.analytics:quicksight_update_ip_restriction]{update_ip_restriction} \tab Updates the content and status of IP rules\cr
 \link[paws.analytics:quicksight_update_public_sharing_settings]{update_public_sharing_settings} \tab Use the UpdatePublicSharingSettings operation to turn on or turn off the public sharing settings of an Amazon QuickSight dashboard\cr
+\link[paws.analytics:quicksight_update_refresh_schedule]{update_refresh_schedule} \tab Updates a refresh schedule for a dataset\cr
 \link[paws.analytics:quicksight_update_template]{update_template} \tab Updates a template from an existing Amazon QuickSight analysis or another template\cr
 \link[paws.analytics:quicksight_update_template_alias]{update_template_alias} \tab Updates the template alias of a template\cr
 \link[paws.analytics:quicksight_update_template_permissions]{update_template_permissions} \tab Updates the resource permissions for a template\cr
 \link[paws.analytics:quicksight_update_theme]{update_theme} \tab Updates a theme\cr
 \link[paws.analytics:quicksight_update_theme_alias]{update_theme_alias} \tab Updates an alias of a theme\cr
 \link[paws.analytics:quicksight_update_theme_permissions]{update_theme_permissions} \tab Updates the resource permissions for a theme\cr
-\link[paws.analytics:quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user
+\link[paws.analytics:quicksight_update_topic]{update_topic} \tab Updates a topic\cr
+\link[paws.analytics:quicksight_update_topic_permissions]{update_topic_permissions} \tab Updates the permissions of a topic\cr
+\link[paws.analytics:quicksight_update_topic_refresh_schedule]{update_topic_refresh_schedule} \tab Updates a topic refresh schedule\cr
+\link[paws.analytics:quicksight_update_user]{update_user} \tab Updates an Amazon QuickSight user\cr
+\link[paws.analytics:quicksight_update_vpc_connection]{update_vpc_connection} \tab Updates a VPC connection
 }
 }
 

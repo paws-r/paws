@@ -25,10 +25,17 @@ NULL
 #'     document are returned (including text that doesn't have a
 #'     relationship with the value of `FeatureTypes`).
 #' 
-#' -   Queries.A QUERIES_RESULT Block object contains the answer to the
-#'     query, the alias associated and an ID that connect it to the query
-#'     asked. This Block also contains a location and attached confidence
-#'     score.
+#' -   Signatures. A SIGNATURE `Block` object contains the location
+#'     information of a signature in a document. If used in conjunction
+#'     with forms or tables, a signature can be given a Key-Value pairing
+#'     or be detected in the cell of a table.
+#' 
+#' -   Query. A QUERY Block object contains the query text, alias and link
+#'     to the associated Query results block object.
+#' 
+#' -   Query Result. A QUERY_RESULT Block object contains the answer to the
+#'     query and an ID that connects it to the query asked. This Block also
+#'     contains a confidence score.
 #' 
 #' Selection elements such as check boxes and option buttons (radio
 #' buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
@@ -60,10 +67,13 @@ NULL
 #' to base64-encode image bytes that are passed using the `Bytes` field.
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
 #' return information about the tables that are detected in the input
-#' document. Add FORMS to return detected form data. To perform both types
-#' of analysis, add TABLES and FORMS to `FeatureTypes`. All lines and words
-#' detected in the document are included in the response (including text
-#' that isn't related to the value of `FeatureTypes`).
+#' document. Add FORMS to return detected form data. Add SIGNATURES to
+#' return the locations of detected signatures. To perform both forms and
+#' table analysis, add TABLES and FORMS to `FeatureTypes`. To detect
+#' signatures within form data and table data, add SIGNATURES to either
+#' TABLES or FORMS. All lines and words detected in the document are
+#' included in the response (including text that isn't related to the value
+#' of `FeatureTypes`).
 #' @param HumanLoopConfig Sets the configuration for the human in the loop workflow for analyzing
 #' documents.
 #' @param QueriesConfig Contains Queries and the alias for those Queries, as determined by the
@@ -78,7 +88,7 @@ NULL
 #'   ),
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -103,14 +113,14 @@ NULL
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"|"COLUMN_HEADER"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
 #'       Page = 123,
@@ -146,7 +156,7 @@ NULL
 #'     )
 #'   ),
 #'   FeatureTypes = list(
-#'     "TABLES"|"FORMS"|"QUERIES"
+#'     "TABLES"|"FORMS"|"QUERIES"|"SIGNATURES"
 #'   ),
 #'   HumanLoopConfig = list(
 #'     HumanLoopName = "string",
@@ -200,7 +210,7 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #' [`analyze_expense`][textract_analyze_expense] synchronously analyzes an
 #' input document for financially related relationships between text.
 #' 
-#' Information is returned as `ExpenseDocuments` and seperated as follows.
+#' Information is returned as `ExpenseDocuments` and seperated as follows:
 #' 
 #' -   `LineItemGroups`- A data set containing `LineItems` which store
 #'     information about the lines of text, such as an item purchased and
@@ -266,7 +276,19 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'             ),
 #'             Confidence = 123.0
 #'           ),
-#'           PageNumber = 123
+#'           PageNumber = 123,
+#'           Currency = list(
+#'             Code = "string",
+#'             Confidence = 123.0
+#'           ),
+#'           GroupProperties = list(
+#'             list(
+#'               Types = list(
+#'                 "string"
+#'               ),
+#'               Id = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       LineItemGroups = list(
@@ -316,9 +338,68 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 #'                     ),
 #'                     Confidence = 123.0
 #'                   ),
-#'                   PageNumber = 123
+#'                   PageNumber = 123,
+#'                   Currency = list(
+#'                     Code = "string",
+#'                     Confidence = 123.0
+#'                   ),
+#'                   GroupProperties = list(
+#'                     list(
+#'                       Types = list(
+#'                         "string"
+#'                       ),
+#'                       Id = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Blocks = list(
+#'         list(
+#'           BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'           Confidence = 123.0,
+#'           Text = "string",
+#'           TextType = "HANDWRITING"|"PRINTED",
+#'           RowIndex = 123,
+#'           ColumnIndex = 123,
+#'           RowSpan = 123,
+#'           ColumnSpan = 123,
+#'           Geometry = list(
+#'             BoundingBox = list(
+#'               Width = 123.0,
+#'               Height = 123.0,
+#'               Left = 123.0,
+#'               Top = 123.0
+#'             ),
+#'             Polygon = list(
+#'               list(
+#'                 X = 123.0,
+#'                 Y = 123.0
+#'               )
+#'             )
+#'           ),
+#'           Id = "string",
+#'           Relationships = list(
+#'             list(
+#'               Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'               Ids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           EntityTypes = list(
+#'             "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
+#'           ),
+#'           SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'           Page = 123,
+#'           Query = list(
+#'             Text = "string",
+#'             Alias = "string",
+#'             Pages = list(
+#'               "string"
 #'             )
 #'           )
 #'         )
@@ -369,7 +450,7 @@ textract_analyze_expense <- function(Document) {
 #' @description
 #' Analyzes identity documents for relevant information. This information
 #' is extracted and returned as `IdentityDocumentFields`, which records
-#' both the normalized field and value of the extracted text.Unlike other
+#' both the normalized field and value of the extracted text. Unlike other
 #' Amazon Textract operations, [`analyze_id`][textract_analyze_id] doesn't
 #' return any Geometry data.
 #'
@@ -402,6 +483,53 @@ textract_analyze_expense <- function(Document) {
 #'               ValueType = "DATE"
 #'             ),
 #'             Confidence = 123.0
+#'           )
+#'         )
+#'       ),
+#'       Blocks = list(
+#'         list(
+#'           BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'           Confidence = 123.0,
+#'           Text = "string",
+#'           TextType = "HANDWRITING"|"PRINTED",
+#'           RowIndex = 123,
+#'           ColumnIndex = 123,
+#'           RowSpan = 123,
+#'           ColumnSpan = 123,
+#'           Geometry = list(
+#'             BoundingBox = list(
+#'               Width = 123.0,
+#'               Height = 123.0,
+#'               Left = 123.0,
+#'               Top = 123.0
+#'             ),
+#'             Polygon = list(
+#'               list(
+#'                 X = 123.0,
+#'                 Y = 123.0
+#'               )
+#'             )
+#'           ),
+#'           Id = "string",
+#'           Relationships = list(
+#'             list(
+#'               Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'               Ids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           EntityTypes = list(
+#'             "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
+#'           ),
+#'           SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'           Page = 123,
+#'           Query = list(
+#'             Text = "string",
+#'             Alias = "string",
+#'             Pages = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       )
@@ -457,7 +585,7 @@ textract_analyze_id <- function(DocumentPages) {
 #' @description
 #' Detects text in the input document. Amazon Textract can detect lines of
 #' text and the words that make up a line of text. The input document must
-#' be an image in JPEG, PNG, PDF, or TIFF format.
+#' be in one of the following image formats: JPEG, PNG, PDF, or TIFF.
 #' [`detect_document_text`][textract_detect_document_text] returns the
 #' detected text in an array of Block objects.
 #' 
@@ -493,7 +621,7 @@ textract_analyze_id <- function(DocumentPages) {
 #'   ),
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -518,14 +646,14 @@ textract_analyze_id <- function(DocumentPages) {
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"|"COLUMN_HEADER"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
 #'       Page = 123,
@@ -618,10 +746,17 @@ textract_detect_document_text <- function(Document) {
 #'     [`start_document_analysis`][textract_start_document_analysis]
 #'     `FeatureTypes` input parameter).
 #' 
-#' -   Queries. A QUERIES_RESULT Block object contains the answer to the
-#'     query, the alias associated and an ID that connect it to the query
-#'     asked. This Block also contains a location and attached confidence
-#'     score
+#' -   Query. A QUERY Block object contains the query text, alias and link
+#'     to the associated Query results block object.
+#' 
+#' -   Query Results. A QUERY_RESULT Block object contains the answer to
+#'     the query and an ID that connects it to the query asked. This Block
+#'     also contains a confidence score.
+#' 
+#' While processing a document with queries, look out for
+#' `INVALID_REQUEST_PARAMETERS` output. This indicates that either the per
+#' page query limit has been exceeded or that the operation is trying to
+#' query a page in the document which doesn’t exist.
 #' 
 #' Selection elements such as check boxes and option buttons (radio
 #' buttons) can be detected in form data and in tables. A SELECTION_ELEMENT
@@ -666,7 +801,7 @@ textract_detect_document_text <- function(Document) {
 #'   NextToken = "string",
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -691,14 +826,14 @@ textract_detect_document_text <- function(Document) {
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"|"COLUMN_HEADER"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
 #'       Page = 123,
@@ -826,7 +961,7 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #'   NextToken = "string",
 #'   Blocks = list(
 #'     list(
-#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT",
+#'       BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'       Confidence = 123.0,
 #'       Text = "string",
 #'       TextType = "HANDWRITING"|"PRINTED",
@@ -851,14 +986,14 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #'       Id = "string",
 #'       Relationships = list(
 #'         list(
-#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER",
+#'           Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
 #'           Ids = list(
 #'             "string"
 #'           )
 #'         )
 #'       ),
 #'       EntityTypes = list(
-#'         "KEY"|"VALUE"|"COLUMN_HEADER"
+#'         "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
 #'       ),
 #'       SelectionStatus = "SELECTED"|"NOT_SELECTED",
 #'       Page = 123,
@@ -1017,7 +1152,19 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'             ),
 #'             Confidence = 123.0
 #'           ),
-#'           PageNumber = 123
+#'           PageNumber = 123,
+#'           Currency = list(
+#'             Code = "string",
+#'             Confidence = 123.0
+#'           ),
+#'           GroupProperties = list(
+#'             list(
+#'               Types = list(
+#'                 "string"
+#'               ),
+#'               Id = "string"
+#'             )
+#'           )
 #'         )
 #'       ),
 #'       LineItemGroups = list(
@@ -1067,9 +1214,68 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'                     ),
 #'                     Confidence = 123.0
 #'                   ),
-#'                   PageNumber = 123
+#'                   PageNumber = 123,
+#'                   Currency = list(
+#'                     Code = "string",
+#'                     Confidence = 123.0
+#'                   ),
+#'                   GroupProperties = list(
+#'                     list(
+#'                       Types = list(
+#'                         "string"
+#'                       ),
+#'                       Id = "string"
+#'                     )
+#'                   )
 #'                 )
 #'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Blocks = list(
+#'         list(
+#'           BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'           Confidence = 123.0,
+#'           Text = "string",
+#'           TextType = "HANDWRITING"|"PRINTED",
+#'           RowIndex = 123,
+#'           ColumnIndex = 123,
+#'           RowSpan = 123,
+#'           ColumnSpan = 123,
+#'           Geometry = list(
+#'             BoundingBox = list(
+#'               Width = 123.0,
+#'               Height = 123.0,
+#'               Left = 123.0,
+#'               Top = 123.0
+#'             ),
+#'             Polygon = list(
+#'               list(
+#'                 X = 123.0,
+#'                 Y = 123.0
+#'               )
+#'             )
+#'           ),
+#'           Id = "string",
+#'           Relationships = list(
+#'             list(
+#'               Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'               Ids = list(
+#'                 "string"
+#'               )
+#'             )
+#'           ),
+#'           EntityTypes = list(
+#'             "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
+#'           ),
+#'           SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'           Page = 123,
+#'           Query = list(
+#'             Text = "string",
+#'             Alias = "string",
+#'             Pages = list(
+#'               "string"
 #'             )
 #'           )
 #'         )
@@ -1119,6 +1325,536 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
   return(response)
 }
 .textract$operations$get_expense_analysis <- textract_get_expense_analysis
+
+#' Gets the results for an Amazon Textract asynchronous operation that
+#' analyzes text in a lending document
+#'
+#' @description
+#' Gets the results for an Amazon Textract asynchronous operation that
+#' analyzes text in a lending document.
+#' 
+#' You start asynchronous text analysis by calling
+#' [`start_lending_analysis`][textract_start_lending_analysis], which
+#' returns a job identifier (`JobId`). When the text analysis operation
+#' finishes, Amazon Textract publishes a completion status to the Amazon
+#' Simple Notification Service (Amazon SNS) topic that's registered in the
+#' initial call to
+#' [`start_lending_analysis`][textract_start_lending_analysis].
+#' 
+#' To get the results of the text analysis operation, first check that the
+#' status value published to the Amazon SNS topic is SUCCEEDED. If so, call
+#' GetLendingAnalysis, and pass the job identifier (`JobId`) from the
+#' initial call to
+#' [`start_lending_analysis`][textract_start_lending_analysis].
+#'
+#' @usage
+#' textract_get_lending_analysis(JobId, MaxResults, NextToken)
+#'
+#' @param JobId &#91;required&#93; A unique identifier for the lending or text-detection job. The `JobId`
+#' is returned from
+#' [`start_lending_analysis`][textract_start_lending_analysis]. A `JobId`
+#' value is only valid for 7 days.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value that you can specify is 30. If you specify a value greater than
+#' 30, a maximum of 30 results is returned. The default value is 30.
+#' @param NextToken If the previous response was incomplete, Amazon Textract returns a
+#' pagination token in the response. You can use this pagination token to
+#' retrieve the next set of lending results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
+#'   NextToken = "string",
+#'   Results = list(
+#'     list(
+#'       Page = 123,
+#'       PageClassification = list(
+#'         PageType = list(
+#'           list(
+#'             Value = "string",
+#'             Confidence = 123.0
+#'           )
+#'         ),
+#'         PageNumber = list(
+#'           list(
+#'             Value = "string",
+#'             Confidence = 123.0
+#'           )
+#'         )
+#'       ),
+#'       Extractions = list(
+#'         list(
+#'           LendingDocument = list(
+#'             LendingFields = list(
+#'               list(
+#'                 Type = "string",
+#'                 KeyDetection = list(
+#'                   Text = "string",
+#'                   SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'                   Geometry = list(
+#'                     BoundingBox = list(
+#'                       Width = 123.0,
+#'                       Height = 123.0,
+#'                       Left = 123.0,
+#'                       Top = 123.0
+#'                     ),
+#'                     Polygon = list(
+#'                       list(
+#'                         X = 123.0,
+#'                         Y = 123.0
+#'                       )
+#'                     )
+#'                   ),
+#'                   Confidence = 123.0
+#'                 ),
+#'                 ValueDetections = list(
+#'                   list(
+#'                     Text = "string",
+#'                     SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'                     Geometry = list(
+#'                       BoundingBox = list(
+#'                         Width = 123.0,
+#'                         Height = 123.0,
+#'                         Left = 123.0,
+#'                         Top = 123.0
+#'                       ),
+#'                       Polygon = list(
+#'                         list(
+#'                           X = 123.0,
+#'                           Y = 123.0
+#'                         )
+#'                       )
+#'                     ),
+#'                     Confidence = 123.0
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             SignatureDetections = list(
+#'               list(
+#'                 Confidence = 123.0,
+#'                 Geometry = list(
+#'                   BoundingBox = list(
+#'                     Width = 123.0,
+#'                     Height = 123.0,
+#'                     Left = 123.0,
+#'                     Top = 123.0
+#'                   ),
+#'                   Polygon = list(
+#'                     list(
+#'                       X = 123.0,
+#'                       Y = 123.0
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           ExpenseDocument = list(
+#'             ExpenseIndex = 123,
+#'             SummaryFields = list(
+#'               list(
+#'                 Type = list(
+#'                   Text = "string",
+#'                   Confidence = 123.0
+#'                 ),
+#'                 LabelDetection = list(
+#'                   Text = "string",
+#'                   Geometry = list(
+#'                     BoundingBox = list(
+#'                       Width = 123.0,
+#'                       Height = 123.0,
+#'                       Left = 123.0,
+#'                       Top = 123.0
+#'                     ),
+#'                     Polygon = list(
+#'                       list(
+#'                         X = 123.0,
+#'                         Y = 123.0
+#'                       )
+#'                     )
+#'                   ),
+#'                   Confidence = 123.0
+#'                 ),
+#'                 ValueDetection = list(
+#'                   Text = "string",
+#'                   Geometry = list(
+#'                     BoundingBox = list(
+#'                       Width = 123.0,
+#'                       Height = 123.0,
+#'                       Left = 123.0,
+#'                       Top = 123.0
+#'                     ),
+#'                     Polygon = list(
+#'                       list(
+#'                         X = 123.0,
+#'                         Y = 123.0
+#'                       )
+#'                     )
+#'                   ),
+#'                   Confidence = 123.0
+#'                 ),
+#'                 PageNumber = 123,
+#'                 Currency = list(
+#'                   Code = "string",
+#'                   Confidence = 123.0
+#'                 ),
+#'                 GroupProperties = list(
+#'                   list(
+#'                     Types = list(
+#'                       "string"
+#'                     ),
+#'                     Id = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             LineItemGroups = list(
+#'               list(
+#'                 LineItemGroupIndex = 123,
+#'                 LineItems = list(
+#'                   list(
+#'                     LineItemExpenseFields = list(
+#'                       list(
+#'                         Type = list(
+#'                           Text = "string",
+#'                           Confidence = 123.0
+#'                         ),
+#'                         LabelDetection = list(
+#'                           Text = "string",
+#'                           Geometry = list(
+#'                             BoundingBox = list(
+#'                               Width = 123.0,
+#'                               Height = 123.0,
+#'                               Left = 123.0,
+#'                               Top = 123.0
+#'                             ),
+#'                             Polygon = list(
+#'                               list(
+#'                                 X = 123.0,
+#'                                 Y = 123.0
+#'                               )
+#'                             )
+#'                           ),
+#'                           Confidence = 123.0
+#'                         ),
+#'                         ValueDetection = list(
+#'                           Text = "string",
+#'                           Geometry = list(
+#'                             BoundingBox = list(
+#'                               Width = 123.0,
+#'                               Height = 123.0,
+#'                               Left = 123.0,
+#'                               Top = 123.0
+#'                             ),
+#'                             Polygon = list(
+#'                               list(
+#'                                 X = 123.0,
+#'                                 Y = 123.0
+#'                               )
+#'                             )
+#'                           ),
+#'                           Confidence = 123.0
+#'                         ),
+#'                         PageNumber = 123,
+#'                         Currency = list(
+#'                           Code = "string",
+#'                           Confidence = 123.0
+#'                         ),
+#'                         GroupProperties = list(
+#'                           list(
+#'                             Types = list(
+#'                               "string"
+#'                             ),
+#'                             Id = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             Blocks = list(
+#'               list(
+#'                 BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'                 Confidence = 123.0,
+#'                 Text = "string",
+#'                 TextType = "HANDWRITING"|"PRINTED",
+#'                 RowIndex = 123,
+#'                 ColumnIndex = 123,
+#'                 RowSpan = 123,
+#'                 ColumnSpan = 123,
+#'                 Geometry = list(
+#'                   BoundingBox = list(
+#'                     Width = 123.0,
+#'                     Height = 123.0,
+#'                     Left = 123.0,
+#'                     Top = 123.0
+#'                   ),
+#'                   Polygon = list(
+#'                     list(
+#'                       X = 123.0,
+#'                       Y = 123.0
+#'                     )
+#'                   )
+#'                 ),
+#'                 Id = "string",
+#'                 Relationships = list(
+#'                   list(
+#'                     Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'                     Ids = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 EntityTypes = list(
+#'                   "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
+#'                 ),
+#'                 SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'                 Page = 123,
+#'                 Query = list(
+#'                   Text = "string",
+#'                   Alias = "string",
+#'                   Pages = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           IdentityDocument = list(
+#'             DocumentIndex = 123,
+#'             IdentityDocumentFields = list(
+#'               list(
+#'                 Type = list(
+#'                   Text = "string",
+#'                   NormalizedValue = list(
+#'                     Value = "string",
+#'                     ValueType = "DATE"
+#'                   ),
+#'                   Confidence = 123.0
+#'                 ),
+#'                 ValueDetection = list(
+#'                   Text = "string",
+#'                   NormalizedValue = list(
+#'                     Value = "string",
+#'                     ValueType = "DATE"
+#'                   ),
+#'                   Confidence = 123.0
+#'                 )
+#'               )
+#'             ),
+#'             Blocks = list(
+#'               list(
+#'                 BlockType = "KEY_VALUE_SET"|"PAGE"|"LINE"|"WORD"|"TABLE"|"CELL"|"SELECTION_ELEMENT"|"MERGED_CELL"|"TITLE"|"QUERY"|"QUERY_RESULT"|"SIGNATURE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'                 Confidence = 123.0,
+#'                 Text = "string",
+#'                 TextType = "HANDWRITING"|"PRINTED",
+#'                 RowIndex = 123,
+#'                 ColumnIndex = 123,
+#'                 RowSpan = 123,
+#'                 ColumnSpan = 123,
+#'                 Geometry = list(
+#'                   BoundingBox = list(
+#'                     Width = 123.0,
+#'                     Height = 123.0,
+#'                     Left = 123.0,
+#'                     Top = 123.0
+#'                   ),
+#'                   Polygon = list(
+#'                     list(
+#'                       X = 123.0,
+#'                       Y = 123.0
+#'                     )
+#'                   )
+#'                 ),
+#'                 Id = "string",
+#'                 Relationships = list(
+#'                   list(
+#'                     Type = "VALUE"|"CHILD"|"COMPLEX_FEATURES"|"MERGED_CELL"|"TITLE"|"ANSWER"|"TABLE"|"TABLE_TITLE"|"TABLE_FOOTER",
+#'                     Ids = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 ),
+#'                 EntityTypes = list(
+#'                   "KEY"|"VALUE"|"COLUMN_HEADER"|"TABLE_TITLE"|"TABLE_FOOTER"|"TABLE_SECTION_TITLE"|"TABLE_SUMMARY"|"STRUCTURED_TABLE"|"SEMI_STRUCTURED_TABLE"
+#'                 ),
+#'                 SelectionStatus = "SELECTED"|"NOT_SELECTED",
+#'                 Page = 123,
+#'                 Query = list(
+#'                   Text = "string",
+#'                   Alias = "string",
+#'                   Pages = list(
+#'                     "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       Pages = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   StatusMessage = "string",
+#'   AnalyzeLendingModelVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_lending_analysis(
+#'   JobId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_get_lending_analysis
+#'
+#' @aliases textract_get_lending_analysis
+textract_get_lending_analysis <- function(JobId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetLendingAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$get_lending_analysis_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .textract$get_lending_analysis_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$get_lending_analysis <- textract_get_lending_analysis
+
+#' Gets summarized results for the StartLendingAnalysis operation, which
+#' analyzes text in a lending document
+#'
+#' @description
+#' Gets summarized results for the
+#' [`start_lending_analysis`][textract_start_lending_analysis] operation,
+#' which analyzes text in a lending document. The returned summary consists
+#' of information about documents grouped together by a common document
+#' type. Information like detected signatures, page numbers, and split
+#' documents is returned with respect to the type of grouped document.
+#' 
+#' You start asynchronous text analysis by calling
+#' [`start_lending_analysis`][textract_start_lending_analysis], which
+#' returns a job identifier (`JobId`). When the text analysis operation
+#' finishes, Amazon Textract publishes a completion status to the Amazon
+#' Simple Notification Service (Amazon SNS) topic that's registered in the
+#' initial call to
+#' [`start_lending_analysis`][textract_start_lending_analysis].
+#' 
+#' To get the results of the text analysis operation, first check that the
+#' status value published to the Amazon SNS topic is SUCCEEDED. If so, call
+#' [`get_lending_analysis_summary`][textract_get_lending_analysis_summary],
+#' and pass the job identifier (`JobId`) from the initial call to
+#' [`start_lending_analysis`][textract_start_lending_analysis].
+#'
+#' @usage
+#' textract_get_lending_analysis_summary(JobId)
+#'
+#' @param JobId &#91;required&#93; A unique identifier for the lending or text-detection job. The `JobId`
+#' is returned from StartLendingAnalysis. A `JobId` value is only valid for
+#' 7 days.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DocumentMetadata = list(
+#'     Pages = 123
+#'   ),
+#'   JobStatus = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"PARTIAL_SUCCESS",
+#'   Summary = list(
+#'     DocumentGroups = list(
+#'       list(
+#'         Type = "string",
+#'         SplitDocuments = list(
+#'           list(
+#'             Index = 123,
+#'             Pages = list(
+#'               123
+#'             )
+#'           )
+#'         ),
+#'         DetectedSignatures = list(
+#'           list(
+#'             Page = 123
+#'           )
+#'         ),
+#'         UndetectedSignatures = list(
+#'           list(
+#'             Page = 123
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     UndetectedDocumentTypes = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Warnings = list(
+#'     list(
+#'       ErrorCode = "string",
+#'       Pages = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   StatusMessage = "string",
+#'   AnalyzeLendingModelVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_lending_analysis_summary(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_get_lending_analysis_summary
+#'
+#' @aliases textract_get_lending_analysis_summary
+textract_get_lending_analysis_summary <- function(JobId) {
+  op <- new_operation(
+    name = "GetLendingAnalysisSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$get_lending_analysis_summary_input(JobId = JobId)
+  output <- .textract$get_lending_analysis_summary_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$get_lending_analysis_summary <- textract_get_lending_analysis_summary
 
 #' Starts the asynchronous analysis of an input document for relationships
 #' between detected items such as key-value pairs, tables, and selection
@@ -1202,7 +1938,7 @@ textract_get_expense_analysis <- function(JobId, MaxResults = NULL, NextToken = 
 #'     )
 #'   ),
 #'   FeatureTypes = list(
-#'     "TABLES"|"FORMS"|"QUERIES"
+#'     "TABLES"|"FORMS"|"QUERIES"|"SIGNATURES"
 #'   ),
 #'   ClientRequestToken = "string",
 #'   JobTag = "string",
@@ -1467,3 +2203,117 @@ textract_start_expense_analysis <- function(DocumentLocation, ClientRequestToken
   return(response)
 }
 .textract$operations$start_expense_analysis <- textract_start_expense_analysis
+
+#' Starts the classification and analysis of an input document
+#'
+#' @description
+#' Starts the classification and analysis of an input document.
+#' [`start_lending_analysis`][textract_start_lending_analysis] initiates
+#' the classification and analysis of a packet of lending documents.
+#' [`start_lending_analysis`][textract_start_lending_analysis] operates on
+#' a document file located in an Amazon S3 bucket.
+#' 
+#' [`start_lending_analysis`][textract_start_lending_analysis] can analyze
+#' text in documents that are in one of the following formats: JPEG, PNG,
+#' TIFF, PDF. Use `DocumentLocation` to specify the bucket name and the
+#' file name of the document.
+#' 
+#' [`start_lending_analysis`][textract_start_lending_analysis] returns a
+#' job identifier (`JobId`) that you use to get the results of the
+#' operation. When the text analysis is finished, Amazon Textract publishes
+#' a completion status to the Amazon Simple Notification Service (Amazon
+#' SNS) topic that you specify in `NotificationChannel`. To get the results
+#' of the text analysis operation, first check that the status value
+#' published to the Amazon SNS topic is SUCCEEDED. If the status is
+#' SUCCEEDED you can call either
+#' [`get_lending_analysis`][textract_get_lending_analysis] or
+#' [`get_lending_analysis_summary`][textract_get_lending_analysis_summary]
+#' and provide the `JobId` to obtain the results of the analysis.
+#' 
+#' If using `OutputConfig` to specify an Amazon S3 bucket, the output will
+#' be contained within the specified prefix in a directory labeled with the
+#' job-id. In the directory there are 3 sub-directories:
+#' 
+#' -   detailedResponse (contains the GetLendingAnalysis response)
+#' 
+#' -   summaryResponse (for the GetLendingAnalysisSummary response)
+#' 
+#' -   splitDocuments (documents split across logical boundaries)
+#'
+#' @usage
+#' textract_start_lending_analysis(DocumentLocation, ClientRequestToken,
+#'   JobTag, NotificationChannel, OutputConfig, KMSKeyId)
+#'
+#' @param DocumentLocation &#91;required&#93; 
+#' @param ClientRequestToken The idempotent token that you use to identify the start request. If you
+#' use the same token with multiple
+#' [`start_lending_analysis`][textract_start_lending_analysis] requests,
+#' the same `JobId` is returned. Use `ClientRequestToken` to prevent the
+#' same job from being accidentally started more than once. For more
+#' information, see [Calling Amazon Textract Asynchronous
+#' Operations](https://docs.aws.amazon.com/textract/latest/dg/).
+#' @param JobTag An identifier that you specify to be included in the completion
+#' notification published to the Amazon SNS topic. For example, you can use
+#' `JobTag` to identify the type of document that the completion
+#' notification corresponds to (such as a tax form or a receipt).
+#' @param NotificationChannel 
+#' @param OutputConfig 
+#' @param KMSKeyId The KMS key used to encrypt the inference results. This can be in either
+#' Key ID or Key Alias format. When a KMS key is provided, the KMS key will
+#' be used for server-side encryption of the objects in the customer
+#' bucket. When this parameter is not enabled, the result will be encrypted
+#' server side, using SSE-S3.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_lending_analysis(
+#'   DocumentLocation = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   JobTag = "string",
+#'   NotificationChannel = list(
+#'     SNSTopicArn = "string",
+#'     RoleArn = "string"
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3Prefix = "string"
+#'   ),
+#'   KMSKeyId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname textract_start_lending_analysis
+#'
+#' @aliases textract_start_lending_analysis
+textract_start_lending_analysis <- function(DocumentLocation, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
+  op <- new_operation(
+    name = "StartLendingAnalysis",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$start_lending_analysis_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
+  output <- .textract$start_lending_analysis_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$start_lending_analysis <- textract_start_lending_analysis

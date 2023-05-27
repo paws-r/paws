@@ -6,20 +6,21 @@
 \usage{
 sagemaker_create_app(
   DomainId,
-  UserProfileName,
+  UserProfileName = NULL,
   AppType,
   AppName,
   Tags = NULL,
-  ResourceSpec = NULL
+  ResourceSpec = NULL,
+  SpaceName = NULL
 )
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
 
-\item{UserProfileName}{[required] The user profile name.}
+\item{UserProfileName}{The user profile name. If this value is not set, then \code{SpaceName} must
+be set.}
 
-\item{AppType}{[required] The type of app. Supported apps are \code{JupyterServer} and \code{KernelGateway}.
-\code{TensorBoard} is not supported.}
+\item{AppType}{[required] The type of app.}
 
 \item{AppName}{[required] The name of the app.}
 
@@ -36,9 +37,12 @@ domain. If \code{InstanceType} is not specified in any of those three
 \code{ResourceSpec} values for a \code{KernelGateway} app, the
 \code{\link[=sagemaker_create_app]{create_app}} call fails with a request
 validation error.}
+
+\item{SpaceName}{The name of the space. If this value is not set, then \code{UserProfileName}
+must be set.}
 }
 \description{
-Creates a running app for the specified UserProfile. Supported apps are \code{JupyterServer} and \code{KernelGateway}. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
+Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 
 See \url{https://paws-r.github.io/docs/sagemaker/create_app.html} for full documentation.
 }

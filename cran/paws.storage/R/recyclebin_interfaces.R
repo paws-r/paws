@@ -5,13 +5,13 @@ NULL
 
 .recyclebin$create_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LockConfiguration = structure(list(UnlockDelay = structure(list(UnlockDelayValue = structure(logical(0), tags = list(type = "integer")), UnlockDelayUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .recyclebin$create_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LockConfiguration = structure(list(UnlockDelay = structure(list(UnlockDelayValue = structure(logical(0), tags = list(type = "integer")), UnlockDelayUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LockState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -35,19 +35,19 @@ NULL
 
 .recyclebin$get_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LockConfiguration = structure(list(UnlockDelay = structure(list(UnlockDelayValue = structure(logical(0), tags = list(type = "integer")), UnlockDelayUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LockState = structure(logical(0), tags = list(type = "string")), LockEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .recyclebin$list_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), LockState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .recyclebin$list_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Rules = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Rules = structure(list(structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LockState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.recyclebin$lock_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(location = "uri", locationName = "identifier", type = "string")), LockConfiguration = structure(list(UnlockDelay = structure(list(UnlockDelayValue = structure(logical(0), tags = list(type = "integer")), UnlockDelayUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.recyclebin$lock_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LockConfiguration = structure(list(UnlockDelay = structure(list(UnlockDelayValue = structure(logical(0), tags = list(type = "integer")), UnlockDelayUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LockState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .recyclebin$tag_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -72,6 +84,18 @@ NULL
 .recyclebin$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.recyclebin$unlock_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(location = "uri", locationName = "identifier", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.recyclebin$unlock_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LockConfiguration = structure(list(UnlockDelay = structure(list(UnlockDelayValue = structure(logical(0), tags = list(type = "integer")), UnlockDelayUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), LockState = structure(logical(0), tags = list(type = "string")), LockEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -95,6 +119,6 @@ NULL
 
 .recyclebin$update_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Identifier = structure(logical(0), tags = list(type = "string")), RetentionPeriod = structure(list(RetentionPeriodValue = structure(logical(0), tags = list(type = "integer")), RetentionPeriodUnit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), ResourceTags = structure(list(structure(list(ResourceTagKey = structure(logical(0), tags = list(type = "string")), ResourceTagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), LockState = structure(logical(0), tags = list(type = "string")), LockEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

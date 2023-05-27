@@ -77,7 +77,7 @@ NULL
 
 .personalize$create_dataset_import_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), importMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), importMode = structure(logical(0), tags = list(type = "string")), publishAttributionMetricsToS3 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -108,6 +108,18 @@ NULL
 .personalize$create_filter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(filterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$create_metric_attribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), metrics = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), metricsOutputConfig = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$create_metric_attribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttributionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -149,7 +161,7 @@ NULL
 
 .personalize$create_solution_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(solutionArn = structure(logical(0), tags = list(type = "string")), trainingMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), trainingMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(tagKey = structure(logical(0), tags = list(type = "string")), tagValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -206,6 +218,16 @@ NULL
 }
 
 .personalize$delete_filter_output <- function(...) {
+  list()
+}
+
+.personalize$delete_metric_attribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttributionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$delete_metric_attribution_output <- function(...) {
   list()
 }
 
@@ -331,7 +353,7 @@ NULL
 
 .personalize$describe_dataset_import_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetImportJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetImportJobArn = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), importMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetImportJob = structure(list(jobName = structure(logical(0), tags = list(type = "string")), datasetImportJobArn = structure(logical(0), tags = list(type = "string")), datasetArn = structure(logical(0), tags = list(type = "string")), dataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string")), importMode = structure(logical(0), tags = list(type = "string")), publishAttributionMetricsToS3 = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -368,6 +390,18 @@ NULL
 .personalize$describe_filter_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(filter = structure(list(name = structure(logical(0), tags = list(type = "string")), filterArn = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), filterExpression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$describe_metric_attribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttributionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$describe_metric_attribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttribution = structure(list(name = structure(logical(0), tags = list(type = "string")), metricAttributionArn = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), metricsOutputConfig = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -427,7 +461,7 @@ NULL
 
 .personalize$describe_solution_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(solutionVersion = structure(list(solutionVersionArn = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), optimizationObjective = structure(list(itemAttribute = structure(logical(0), tags = list(type = "string")), objectiveSensitivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), trainingHours = structure(logical(0), tags = list(type = "double")), trainingMode = structure(logical(0), tags = list(type = "string")), tunedHPOParams = structure(list(algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(solutionVersion = structure(list(name = structure(logical(0), tags = list(type = "string")), solutionVersionArn = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), performHPO = structure(logical(0), tags = list(type = "boolean")), performAutoML = structure(logical(0), tags = list(type = "boolean")), recipeArn = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), datasetGroupArn = structure(logical(0), tags = list(type = "string")), solutionConfig = structure(list(eventValueThreshold = structure(logical(0), tags = list(type = "string")), hpoConfig = structure(list(hpoObjective = structure(list(type = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), metricRegex = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), hpoResourceConfig = structure(list(maxNumberOfTrainingJobs = structure(logical(0), tags = list(type = "string")), maxParallelTrainingJobs = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), algorithmHyperParameterRanges = structure(list(integerHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "integer")), maxValue = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), continuousHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), minValue = structure(logical(0), tags = list(type = "double")), maxValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), categoricalHyperParameterRanges = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), featureTransformationParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), autoMLConfig = structure(list(metricName = structure(logical(0), tags = list(type = "string")), recipeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), optimizationObjective = structure(list(itemAttribute = structure(logical(0), tags = list(type = "string")), objectiveSensitivity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), trainingHours = structure(logical(0), tags = list(type = "double")), trainingMode = structure(logical(0), tags = list(type = "string")), tunedHPOParams = structure(list(algorithmHyperParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), failureReason = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -551,6 +585,30 @@ NULL
   return(populate(args, shape))
 }
 
+.personalize$list_metric_attribution_metrics_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttributionArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_metric_attribution_metrics_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metrics = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_metric_attributions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(datasetGroupArn = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$list_metric_attributions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttributions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), metricAttributionArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), failureReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .personalize$list_recipes_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(recipeProvider = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), domain = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -607,7 +665,7 @@ NULL
 
 .personalize$list_solutions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(solutions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(solutions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), solutionArn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), creationDateTime = structure(logical(0), tags = list(type = "timestamp")), lastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), recipeArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -690,6 +748,18 @@ NULL
 .personalize$update_campaign_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(campaignArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$update_metric_attribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(addMetrics = structure(list(structure(list(eventType = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), removeMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), metricsOutputConfig = structure(list(s3DataDestination = structure(list(path = structure(logical(0), tags = list(type = "string")), kmsKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), metricAttributionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.personalize$update_metric_attribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricAttributionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -79,7 +79,9 @@ Bin, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Recycle Bin
 \link[paws.storage:recyclebin_get_rule]{get_rule} \tab Gets information about a Recycle Bin retention rule\cr
 \link[paws.storage:recyclebin_list_rules]{list_rules} \tab Lists the Recycle Bin retention rules in the Region\cr
 \link[paws.storage:recyclebin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags assigned to a retention rule\cr
+\link[paws.storage:recyclebin_lock_rule]{lock_rule} \tab Locks a retention rule\cr
 \link[paws.storage:recyclebin_tag_resource]{tag_resource} \tab Assigns tags to the specified retention rule\cr
+\link[paws.storage:recyclebin_unlock_rule]{unlock_rule} \tab Unlocks a retention rule\cr
 \link[paws.storage:recyclebin_untag_resource]{untag_resource} \tab Unassigns a tag from a retention rule\cr
 \link[paws.storage:recyclebin_update_rule]{update_rule} \tab Updates an existing Recycle Bin retention rule
 }

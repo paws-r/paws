@@ -11,6 +11,7 @@ ssm_get_service_setting(SettingId)
 \item{SettingId}{[required] The ID of the service setting to get. The setting ID can be one of the
 following.
 \itemize{
+\item \verb{/ssm/managed-instance/default-ec2-instance-management-role}
 \item \verb{/ssm/automation/customer-script-log-destination}
 \item \verb{/ssm/automation/customer-script-log-group-name}
 \item \verb{/ssm/documents/console/public-sharing-permission}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_get_resolver_config}
 \alias{route53resolver_get_resolver_config}
-\title{Retrieves the behavior configuration of Route 53 Resolver behavior for a
+\title{Retrieves the behavior configuration of Route 53 Resolver behavior for a
 single VPC from Amazon Virtual Private Cloud}
 \usage{
 route53resolver_get_resolver_config(ResourceId)
@@ -11,7 +11,7 @@ route53resolver_get_resolver_config(ResourceId)
 \item{ResourceId}{[required] Resource ID of the Amazon VPC that you want to get information about.}
 }
 \description{
-Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
+Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 
 See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_config.html} for full documentation.
 }

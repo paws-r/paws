@@ -11,7 +11,6 @@ servicecatalog_describe_service_action(Id, AcceptLanguage = NULL)
 
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

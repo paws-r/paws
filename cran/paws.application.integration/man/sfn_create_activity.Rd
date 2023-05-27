@@ -8,8 +8,9 @@ sfn_create_activity(name, tags = NULL)
 }
 \arguments{
 \item{name}{[required] The name of the activity to create. This name must be unique for your
-AWS account and region for 90 days. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
-in the \emph{AWS Step Functions Developer Guide}.
+Amazon Web Services account and region for 90 days. For more
+information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+in the \emph{Step Functions Developer Guide}.
 
 A name must \emph{not} contain:
 \itemize{
@@ -28,13 +29,14 @@ To enable logging with CloudWatch Logs, the name should only contain
 \item{tags}{The list of tags to add to a resource.
 
 An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}, and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}, and
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
 
 Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
 }
 \description{
-Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to AWS Step Functions. Activities must poll Step Functions using the \code{\link[=sfn_get_activity_task]{get_activity_task}} API action and respond using \verb{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
+Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to Step Functions. Activities must poll Step Functions using the \code{\link[=sfn_get_activity_task]{get_activity_task}} API action and respond using \verb{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 
 See \url{https://paws-r.github.io/docs/sfn/create_activity.html} for full documentation.
 }

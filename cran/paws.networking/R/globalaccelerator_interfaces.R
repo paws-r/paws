@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.globalaccelerator$add_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointConfigurations = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$add_endpoints_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointDescriptions = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer")), HealthState = structure(logical(0), tags = list(type = "string")), HealthReason = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .globalaccelerator$advertise_byoip_cidr_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Cidr = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -426,6 +438,16 @@ NULL
 }
 
 .globalaccelerator$remove_custom_routing_endpoints_output <- function(...) {
+  list()
+}
+
+.globalaccelerator$remove_endpoints_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EndpointIdentifiers = structure(list(structure(list(EndpointId = structure(logical(0), tags = list(type = "string")), ClientIPPreservationEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), EndpointGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.globalaccelerator$remove_endpoints_output <- function(...) {
   list()
 }
 

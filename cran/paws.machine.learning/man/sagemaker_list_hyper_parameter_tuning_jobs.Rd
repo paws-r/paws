@@ -48,7 +48,7 @@ specified time.}
 \item{StatusEquals}{A filter that returns only tuning jobs with the specified status.}
 }
 \description{
-Gets a list of HyperParameterTuningJobSummary objects that describe the hyperparameter tuning jobs launched in your account.
+Gets a list of \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobSummary.html}{HyperParameterTuningJobSummary} objects that describe the hyperparameter tuning jobs launched in your account.
 
 See \url{https://paws-r.github.io/docs/sagemaker/list_hyper_parameter_tuning_jobs.html} for full documentation.
 }

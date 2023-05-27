@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_place_index}
 \alias{locationservice_delete_place_index}
-\title{Deletes a place index resource from your AWS account}
+\title{Deletes a place index resource from your Amazon Web Services account}
 \usage{
 locationservice_delete_place_index(IndexName)
 }
@@ -10,7 +10,7 @@ locationservice_delete_place_index(IndexName)
 \item{IndexName}{[required] The name of the place index resource to be deleted.}
 }
 \description{
-Deletes a place index resource from your AWS account.
+Deletes a place index resource from your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/delete_place_index.html} for full documentation.
 }

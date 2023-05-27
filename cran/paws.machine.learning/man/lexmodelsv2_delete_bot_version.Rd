@@ -15,14 +15,14 @@ lexmodelsv2_delete_bot_version(
 
 \item{botVersion}{[required] The version of the bot to delete.}
 
-\item{skipResourceInUseCheck}{By default, the \code{\link[=lexmodelsv2_delete_bot_version]{delete_bot_version}}
-operations throws a \code{ResourceInUseException} exception if you try to
-delete a bot version that has an alias pointing at it. Set the
-\code{skipResourceInUseCheck} parameter to \code{true} to skip this check and
-remove the version even if an alias points to it.}
+\item{skipResourceInUseCheck}{By default, Amazon Lex checks if any other resource, such as an alias or
+bot network, is using the bot version before it is deleted and throws a
+\code{ResourceInUseException} exception if the version is being used by
+another resource. Set this parameter to \code{true} to skip this check and
+remove the version even if it is being used by another resource.}
 }
 \description{
-Deletes a specific version of a bot. To delete all version of a bot, use the \code{\link[=lexmodelsv2_delete_bot]{delete_bot}} operation.
+Deletes a specific version of a bot. To delete all versions of a bot, use the \code{\link[=lexmodelsv2_delete_bot]{delete_bot}} operation.
 
 See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_bot_version.html} for full documentation.
 }

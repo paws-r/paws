@@ -25,9 +25,9 @@ transcribeservice_start_medical_transcription_job(
 }
 \arguments{
 \item{MedicalTranscriptionJobName}{[required] A unique name, chosen by you, for your medical transcription job. The
-name you specify is also used as the default name of your transcription
-output file. If you want to specify a different name for your
-transcription output, use the \code{OutputKey} parameter.
+name that you specify is also used as the default name of your
+transcription output file. If you want to specify a different name for
+your transcription output, use the \code{OutputKey} parameter.
 
 This name is case sensitive, cannot contain spaces, and must be unique
 within an Amazon Web Services account. If you try to create a new job
@@ -39,14 +39,15 @@ file. US English (\code{en-US}) is the only valid value for medical
 transcription jobs. Any other value you enter for language code results
 in a \code{BadRequestException} error.}
 
-\item{MediaSampleRateHertz}{The sample rate, in Hertz, of the audio track in your input media file.
+\item{MediaSampleRateHertz}{The sample rate, in hertz, of the audio track in your input media file.
 
 If you don't specify the media sample rate, Amazon Transcribe Medical
 determines it for you. If you specify the sample rate, it must match the
 rate detected by Amazon Transcribe Medical; if there's a mismatch
-between the value you specify and the value detected, your job fails.
-Therefore, in most cases, it's advised to omit \code{MediaSampleRateHertz}
-and let Amazon Transcribe Medical determine the sample rate.}
+between the value that you specify and the value detected, your job
+fails. Therefore, in most cases, it's advised to omit
+\code{MediaSampleRateHertz} and let Amazon Transcribe Medical determine the
+sample rate.}
 
 \item{MediaFormat}{Specify the format of your input media file.}
 
@@ -68,11 +69,7 @@ For example, if you want your output stored in
 
 Note that Amazon Transcribe must have permission to use the specified
 location. You can change Amazon S3 permissions using the \href{https://console.aws.amazon.com/s3/home}{Amazon Web Services Management Console}.
-See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
-
-If you don't specify \code{OutputBucketName}, your transcript is placed in a
-service-managed Amazon S3 bucket and you are provided with a URI to
-access your transcript.}
+See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
 
 \item{OutputKey}{Use in combination with \code{OutputBucketName} to specify the output
 location of your transcript and, optionally, a unique name for your
@@ -135,7 +132,7 @@ the default Amazon S3 key (SSE-S3).
 If you specify a KMS key to encrypt your output, you must also specify
 an output location using the \code{OutputLocation} parameter.
 
-Note that the user making the request must have permission to use the
+Note that the role making the request must have permission to use the
 specified KMS key.}
 
 \item{KMSEncryptionContext}{A map of plain text, non-secret key:value pairs, known as encryption
@@ -144,8 +141,8 @@ For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg
 and \href{https://docs.aws.amazon.com/transcribe/latest/dg/}{Asymmetric keys in KMS}.}
 
 \item{Settings}{Specify additional optional settings in your request, including channel
-identification, alternative transcriptions, and speaker labeling; allows
-you to apply custom vocabularies to your transcription job.}
+identification, alternative transcriptions, and speaker partitioning.
+You can use that to apply custom vocabularies to your transcription job.}
 
 \item{ContentIdentificationType}{Labels all personal health information (PHI) identified in your
 transcript. For more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/phi-id.html}{Identifying personal health information (PHI) in a transcription}.}

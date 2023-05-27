@@ -55,7 +55,11 @@ rds_create_db_instance(
   EnableCustomerOwnedIp = NULL,
   CustomIamInstanceProfile = NULL,
   BackupTarget = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  StorageThroughput = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL,
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -162,8 +166,8 @@ specified for an Aurora PostgreSQL DB cluster, a database named
 Constraints:
 \itemize{
 \item It must contain 1 to 63 alphanumeric characters.
-\item It must begin with a letter or an underscore. Subsequent characters
-can be letters, underscores, or digits (0 to 9).
+\item It must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0 to 9).
 \item It can't be a word reserved by the database engine.
 }}
 
@@ -195,8 +199,8 @@ space that you use in an Aurora cluster volume.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 40 to
-65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
+\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 40
+to 65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
 Server.
 \item Provisioned IOPS storage (io1): Must be an integer from 40 to 65536
 for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
@@ -207,8 +211,8 @@ for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-65536.
+\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
+to 65536.
 \item Provisioned IOPS storage (io1): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
@@ -219,8 +223,8 @@ following:
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-65536.
+\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
+to 65536.
 \item Provisioned IOPS storage (io1): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
@@ -231,8 +235,8 @@ following:
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-65536.
+\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
+to 65536.
 \item Provisioned IOPS storage (io1): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
@@ -243,8 +247,8 @@ following:
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2): Must be an integer from 20 to
-65536.
+\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
+to 65536.
 \item Provisioned IOPS storage (io1): Must be an integer from 100 to
 65536.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
@@ -255,7 +259,7 @@ following:
 Constraints to the amount of storage for each storage type are the
 following:
 \itemize{
-\item General Purpose (SSD) storage (gp2):
+\item General Purpose (SSD) storage (gp2, gp3):
 \itemize{
 \item Enterprise and Standard editions: Must be an integer from 20 to
 16384.
@@ -289,14 +293,13 @@ Region.
 
 Valid Values:
 \itemize{
-\item \code{aurora} (for MySQL 5.6-compatible Aurora)
-\item \code{aurora-mysql} (for MySQL 5.7-compatible and MySQL 8.0-compatible
-Aurora)
-\item \code{aurora-postgresql}
-\item \verb{custom-oracle-ee (for RDS Custom for Oracle instances)}
-\item \verb{custom-sqlserver-ee (for RDS Custom for SQL Server instances)}
-\item \verb{custom-sqlserver-se (for RDS Custom for SQL Server instances)}
-\item \verb{custom-sqlserver-web (for RDS Custom for SQL Server instances)}
+\item \code{aurora-mysql} (for Aurora MySQL DB instances)
+\item \code{aurora-postgresql} (for Aurora PostgreSQL DB instances)
+\item \verb{custom-oracle-ee (for RDS Custom for Oracle DB instances)}
+\item \verb{custom-oracle-ee-cdb (for RDS Custom for Oracle DB instances)}
+\item \verb{custom-sqlserver-ee (for RDS Custom for SQL Server DB instances)}
+\item \verb{custom-sqlserver-se (for RDS Custom for SQL Server DB instances)}
+\item \verb{custom-sqlserver-web (for RDS Custom for SQL Server DB instances)}
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -334,6 +337,9 @@ ASCII character except "/", """, or "@".
 
 Not applicable. The password for the master user is managed by the DB
 cluster.
+
+Constraints: Can't be specified if \code{ManageMasterUserPassword} is turned
+on.
 
 \strong{MariaDB}
 
@@ -420,9 +426,9 @@ This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
-\item Must be 1 to 255 letters, numbers, or hyphens.
-\item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item It must be 1 to 255 letters, numbers, or hyphens.
+\item The first character must be a letter.
+\item It can't end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Setting
@@ -540,7 +546,7 @@ the DB instance is managed by the DB cluster.
 
 A custom engine version (CEV) that you have previously created. This
 setting is required for RDS Custom for Oracle. The CEV name has the
-following format: \verb{19.customized_string }. An example identifier is
+following format: 19.\emph{customized_string}. A valid CEV name is
 \verb{19.my_cev1}. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-creating.html#custom-creating.create}{Creating an RDS Custom for Oracle DB instance}
 in the \emph{Amazon RDS User Guide}.
 
@@ -594,7 +600,7 @@ Not applicable.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance. For information about valid
-\code{Iops} values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage to improve performance}
+IOPS values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html}{Amazon RDS DB instance storage}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances,
@@ -677,10 +683,10 @@ This setting doesn't apply to RDS Custom.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{standard | gp2 | io1}
+Valid values: \code{gp2 | gp3 | io1 | standard}
 
-If you specify \code{io1}, you must also include a value for the \code{Iops}
-parameter.
+If you specify \code{io1} or \code{gp3}, you must also include a value for the
+\code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}
 
@@ -940,7 +946,7 @@ outside of its virtual private cloud (VPC) on your local network.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
 \item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
@@ -981,6 +987,54 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting applies only to the \code{gp3} storage type.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
+
+\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
+Amazon Web Services Secrets Manager.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide.}
+
+Constraints:
+\itemize{
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
+}}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB instance.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
+
+\item{CACertificateIdentifier}{Specifies the CA certificate identifier to use for the DB instance’s
+server certificate.
+
+This setting doesn't apply to RDS Custom.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
+in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
+in the \emph{Amazon Aurora User Guide}.}
 }
 \description{
 Creates a new DB instance.

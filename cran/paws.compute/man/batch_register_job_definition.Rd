@@ -15,7 +15,8 @@ batch_register_job_definition(
   propagateTags = NULL,
   timeout = NULL,
   tags = NULL,
-  platformCapabilities = NULL
+  platformCapabilities = NULL,
+  eksProperties = NULL
 )
 }
 \arguments{
@@ -36,17 +37,18 @@ Parameters in a \code{\link[=batch_submit_job]{submit_job}} request override any
 corresponding parameter defaults from the job definition.}
 
 \item{schedulingPriority}{The scheduling priority for jobs that are submitted with this job
-definition. This will only affect jobs in job queues with a fair share
-policy. Jobs with a higher scheduling priority will be scheduled before
-jobs with a lower scheduling priority.
+definition. This only affects jobs in job queues with a fair share
+policy. Jobs with a higher scheduling priority are scheduled before jobs
+with a lower scheduling priority.
 
 The minimum supported value is 0 and the maximum supported value is
 9999.}
 
-\item{containerProperties}{An object with various properties specific to single-node
-container-based jobs. If the job definition's \code{type} parameter is
-\code{container}, then you must specify either \code{containerProperties} or
-\code{nodeProperties}.
+\item{containerProperties}{An object with various properties specific to Amazon ECS based
+single-node container-based jobs. If the job definition's \code{type}
+parameter is \code{container}, then you must specify either
+\code{containerProperties} or \code{nodeProperties}. This must not be specified
+for Amazon EKS based job definitions.
 
 If the job runs on Fargate resources, then you must not specify
 \code{nodeProperties}; use only \code{containerProperties}.}
@@ -59,7 +61,10 @@ in the \emph{Batch User Guide}. If the job definition's \code{type} parameter is
 \code{nodeProperties}.
 
 If the job runs on Fargate resources, then you must not specify
-\code{nodeProperties}; use \code{containerProperties} instead.}
+\code{nodeProperties}; use \code{containerProperties} instead.
+
+If the job runs on Amazon EKS resources, then you must not specify
+\code{nodeProperties}.}
 
 \item{retryStrategy}{The retry strategy to use for failed jobs that are submitted with this
 job definition. Any retry strategy that's specified during a
@@ -71,7 +76,10 @@ to the corresponding Amazon ECS task. If no value is specified, the tags
 are not propagated. Tags can only be propagated to the tasks during task
 creation. For tags with the same name, job tags are given priority over
 job definitions tags. If the total number of combined tags from the job
-and job definition is over 50, the job is moved to the \code{FAILED} state.}
+and job definition is over 50, the job is moved to the \code{FAILED} state.
+
+If the job runs on Amazon EKS resources, then you must not specify
+\code{propagateTags}.}
 
 \item{timeout}{The timeout configuration for jobs that are submitted with this job
 definition, after which Batch terminates your jobs if they have not
@@ -89,7 +97,13 @@ in \emph{Batch User Guide}.}
 
 \item{platformCapabilities}{The platform capabilities required by the job definition. If no value is
 specified, it defaults to \code{EC2}. To run the job on Fargate resources,
-specify \code{FARGATE}.}
+specify \code{FARGATE}.
+
+If the job runs on Amazon EKS resources, then you must not specify
+\code{platformCapabilities}.}
+
+\item{eksProperties}{An object with various properties that are specific to Amazon EKS based
+jobs. This must not be specified for Amazon ECS based job definitions.}
 }
 \description{
 Registers an Batch job definition.

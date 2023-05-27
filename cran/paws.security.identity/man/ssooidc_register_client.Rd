@@ -2,7 +2,7 @@
 % Please edit documentation in R/ssooidc_operations.R
 \name{ssooidc_register_client}
 \alias{ssooidc_register_client}
-\title{Registers a client with Amazon Web Services SSO}
+\title{Registers a client with IAM Identity Center}
 \usage{
 ssooidc_register_client(clientName, clientType, scopes = NULL)
 }
@@ -16,7 +16,7 @@ Anything other than public will be rejected by the service.}
 this list is used to restrict permissions when granting an access token.}
 }
 \description{
-Registers a client with Amazon Web Services SSO. This allows clients to initiate device authorization. The output should be persisted for reuse through many authentication requests.
+Registers a client with IAM Identity Center. This allows clients to initiate device authorization. The output should be persisted for reuse through many authentication requests.
 
 See \url{https://paws-r.github.io/docs/ssooidc/register_client.html} for full documentation.
 }

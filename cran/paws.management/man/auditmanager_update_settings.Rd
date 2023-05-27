@@ -2,13 +2,15 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_update_settings}
 \alias{auditmanager_update_settings}
-\title{Updates Audit Manager settings for the current user account}
+\title{Updates Audit Manager settings for the current account}
 \usage{
 auditmanager_update_settings(
   snsTopic = NULL,
   defaultAssessmentReportsDestination = NULL,
   defaultProcessOwners = NULL,
-  kmsKey = NULL
+  kmsKey = NULL,
+  evidenceFinderEnabled = NULL,
+  deregistrationPolicy = NULL
 )
 }
 \arguments{
@@ -20,9 +22,25 @@ Manager sends notifications to.}
 \item{defaultProcessOwners}{A list of the default audit owners.}
 
 \item{kmsKey}{The KMS key details.}
+
+\item{evidenceFinderEnabled}{Specifies whether the evidence finder feature is enabled. Change this
+attribute to enable or disable evidence finder.
+
+When you use this attribute to disable evidence finder, Audit Manager
+deletes the event data store that’s used to query your evidence data. As
+a result, you can’t re-enable evidence finder and use the feature again.
+Your only alternative is to
+\href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterAccount.html}{deregister}
+and then
+\href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterAccount.html}{re-register}
+Audit Manager.}
+
+\item{deregistrationPolicy}{The deregistration policy for your Audit Manager data. You can use this
+attribute to determine how your data is handled when you deregister
+Audit Manager.}
 }
 \description{
-Updates Audit Manager settings for the current user account.
+Updates Audit Manager settings for the current account.
 
 See \url{https://paws-r.github.io/docs/auditmanager/update_settings.html} for full documentation.
 }

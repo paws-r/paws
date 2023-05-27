@@ -4,16 +4,26 @@
 \alias{sagemaker_delete_app}
 \title{Used to stop and delete an app}
 \usage{
-sagemaker_delete_app(DomainId, UserProfileName, AppType, AppName)
+sagemaker_delete_app(
+  DomainId,
+  UserProfileName = NULL,
+  AppType,
+  AppName,
+  SpaceName = NULL
+)
 }
 \arguments{
 \item{DomainId}{[required] The domain ID.}
 
-\item{UserProfileName}{[required] The user profile name.}
+\item{UserProfileName}{The user profile name. If this value is not set, then \code{SpaceName} must
+be set.}
 
 \item{AppType}{[required] The type of app.}
 
 \item{AppName}{[required] The name of the app.}
+
+\item{SpaceName}{The name of the space. If this value is not set, then \code{UserProfileName}
+must be set.}
 }
 \description{
 Used to stop and delete an app.

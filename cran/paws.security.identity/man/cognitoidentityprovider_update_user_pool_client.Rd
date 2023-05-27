@@ -25,7 +25,8 @@ cognitoidentityprovider_update_user_pool_client(
   AnalyticsConfiguration = NULL,
   PreventUserExistenceErrors = NULL,
   EnableTokenRevocation = NULL,
-  EnablePropagateAdditionalUserContextData = NULL
+  EnablePropagateAdditionalUserContextData = NULL,
+  AuthSessionValidity = NULL
 )
 }
 \arguments{
@@ -48,7 +49,10 @@ retrieve new access and ID tokens for 10 days.
 The default time unit for \code{RefreshTokenValidity} in an API request is
 days. You can't set \code{RefreshTokenValidity} to 0. If you do, Amazon
 Cognito overrides the value with the default value of 30 days. \emph{Valid
-range} is displayed below in seconds.}
+range} is displayed below in seconds.
+
+If you don't specify otherwise in the configuration of your app client,
+your refresh tokens are valid for 30 days.}
 
 \item{AccessTokenValidity}{The access token time limit. After this limit expires, your user can't
 use their access token. To specify the time unit for
@@ -60,7 +64,10 @@ For example, when you set \code{AccessTokenValidity} to \code{10} and
 their access token for 10 hours.
 
 The default time unit for \code{AccessTokenValidity} in an API request is
-hours. \emph{Valid range} is displayed below in seconds.}
+hours. \emph{Valid range} is displayed below in seconds.
+
+If you don't specify otherwise in the configuration of your app client,
+your access tokens are valid for one hour.}
 
 \item{IdTokenValidity}{The ID token time limit. After this limit expires, your user can't use
 their ID token. To specify the time unit for \code{IdTokenValidity} as
@@ -72,7 +79,10 @@ For example, when you set \code{IdTokenValidity} as \code{10} and
 session with their ID token for 10 hours.
 
 The default time unit for \code{AccessTokenValidity} in an API request is
-hours. \emph{Valid range} is displayed below in seconds.}
+hours. \emph{Valid range} is displayed below in seconds.
+
+If you don't specify otherwise in the configuration of your app client,
+your ID tokens are valid for one hour.}
 
 \item{TokenValidityUnits}{The units in which the validity times are represented. The default unit
 for RefreshToken is days, and the default for ID and access tokens is
@@ -82,18 +92,24 @@ hours.}
 
 \item{WriteAttributes}{The writeable attributes of the user pool.}
 
-\item{ExplicitAuthFlows}{The authentication flows that are supported by the user pool clients.
-Flow names without the \code{ALLOW_} prefix are no longer supported in favor
-of new names with the \code{ALLOW_} prefix. Note that values with \code{ALLOW_}
-prefix must be used only along with values with the \code{ALLOW_} prefix.
+\item{ExplicitAuthFlows}{The authentication flows that you want your user pool client to support.
+For each app client in your user pool, you can sign in your users with
+any combination of one or more flows, including with a user name and
+Secure Remote Password (SRP), a user name and password, or a custom
+authentication process that you define with Lambda functions.
+
+If you don't specify a value for \code{ExplicitAuthFlows}, your user client
+supports \code{ALLOW_REFRESH_TOKEN_AUTH}, \code{ALLOW_USER_SRP_AUTH}, and
+\code{ALLOW_CUSTOM_AUTH}.
 
 Valid values include:
 \itemize{
 \item \code{ALLOW_ADMIN_USER_PASSWORD_AUTH}: Enable admin based user password
 authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting
 replaces the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication
-flow, Amazon Cognito receives the password in the request instead of
-using the Secure Remote Password (SRP) protocol to verify passwords.
+flow, your app passes a user name and password to Amazon Cognito in
+the request, instead of using the Secure Remote Password (SRP)
+protocol to securely transmit the password.
 \item \code{ALLOW_CUSTOM_AUTH}: Enable Lambda trigger based authentication.
 \item \code{ALLOW_USER_PASSWORD_AUTH}: Enable user password-based
 authentication. In this flow, Amazon Cognito receives the password
@@ -101,7 +117,12 @@ in the request instead of using the SRP protocol to verify
 passwords.
 \item \code{ALLOW_USER_SRP_AUTH}: Enable SRP-based authentication.
 \item \code{ALLOW_REFRESH_TOKEN_AUTH}: Enable authflow to refresh tokens.
-}}
+}
+
+In some environments, you will see the values \code{ADMIN_NO_SRP_AUTH},
+\code{CUSTOM_AUTH_FLOW_ONLY}, or \code{USER_PASSWORD_AUTH}. You can't assign these
+legacy \code{ExplicitAuthFlows} values to user pool clients at the same time
+as values that begin with \code{ALLOW_}, like \code{ALLOW_USER_SRP_AUTH}.}
 
 \item{SupportedIdentityProviders}{A list of provider names for the IdPs that this client supports. The
 following are supported: \code{COGNITO}, \code{Facebook}, \code{Google},
@@ -117,7 +138,7 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
 
 Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 testing purposes only.
@@ -135,7 +156,7 @@ A redirect URI must:
 \item Not include a fragment component.
 }
 
-See \href{https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
 
 Amazon Cognito requires HTTPS over HTTP except for \verb{http://localhost}
 for testing purposes only.
@@ -205,6 +226,11 @@ information, including source IP address, to Amazon Cognito advanced
 security. You can only activate
 \code{EnablePropagateAdditionalUserContextData} in an app client that has a
 client secret.}
+
+\item{AuthSessionValidity}{Amazon Cognito creates a session token for each API request in an
+authentication flow. \code{AuthSessionValidity} is the duration, in minutes,
+of that session token. Your user pool native user must respond to each
+authentication challenge before the session expires.}
 }
 \description{
 Updates the specified user pool app client with the specified attributes. You can get a list of the current user pool app client settings using \code{\link[=cognitoidentityprovider_describe_user_pool_client]{describe_user_pool_client}}.

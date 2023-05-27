@@ -2,7 +2,8 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_describe_state_machine_for_execution}
 \alias{sfn_describe_state_machine_for_execution}
-\title{Describes the state machine associated with a specific execution}
+\title{Provides information about a state machine's definition, its execution
+role ARN, and configuration}
 \usage{
 sfn_describe_state_machine_for_execution(executionArn)
 }
@@ -11,7 +12,7 @@ sfn_describe_state_machine_for_execution(executionArn)
 information for.}
 }
 \description{
-Describes the state machine associated with a specific execution.
+Provides information about a state machine's definition, its execution role ARN, and configuration. If an execution was dispatched by a Map Run, the Map Run is returned in the response. Additionally, the state machine returned will be the state machine associated with the Map Run.
 
 See \url{https://paws-r.github.io/docs/sfn/describe_state_machine_for_execution.html} for full documentation.
 }

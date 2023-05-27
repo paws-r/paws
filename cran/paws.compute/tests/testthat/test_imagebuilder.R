@@ -20,6 +20,14 @@ test_that("list_image_recipes", {
   expect_error(svc$list_image_recipes(), NA)
 })
 
+test_that("list_image_scan_finding_aggregations", {
+  expect_error(svc$list_image_scan_finding_aggregations(), NA)
+})
+
+test_that("list_image_scan_findings", {
+  expect_error(svc$list_image_scan_findings(), NA)
+})
+
 test_that("list_images", {
   expect_error(svc$list_images(), NA)
 })

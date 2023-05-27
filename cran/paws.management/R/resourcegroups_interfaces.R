@@ -27,6 +27,16 @@ NULL
   return(populate(args, shape))
 }
 
+.resourcegroups$get_account_settings_input <- function(...) {
+  list()
+}
+
+.resourcegroups$get_account_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountSettings = structure(list(GroupLifecycleEventsDesiredStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .resourcegroups$get_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "This field is deprecated, use Group instead.", type = "string")), Group = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -168,6 +178,18 @@ NULL
 .resourcegroups$untag_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Keys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroups$update_account_settings_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(GroupLifecycleEventsDesiredStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.resourcegroups$update_account_settings_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountSettings = structure(list(GroupLifecycleEventsDesiredStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatus = structure(logical(0), tags = list(type = "string")), GroupLifecycleEventsStatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

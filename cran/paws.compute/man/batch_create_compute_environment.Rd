@@ -11,13 +11,14 @@ batch_create_compute_environment(
   unmanagedvCpus = NULL,
   computeResources = NULL,
   serviceRole = NULL,
-  tags = NULL
+  tags = NULL,
+  eksConfiguration = NULL
 )
 }
 \arguments{
-\item{computeEnvironmentName}{[required] The name for your compute environment. It can be up to 128 letters long.
-It can contain uppercase and lowercase letters, numbers, hyphens (-),
-and underscores (_).}
+\item{computeEnvironmentName}{[required] The name for your compute environment. It can be up to 128 characters
+long. It can contain uppercase and lowercase letters, numbers, hyphens
+(-), and underscores (_).}
 
 \item{type}{[required] The type of the compute environment: \code{MANAGED} or \code{UNMANAGED}. For more
 information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments}
@@ -35,8 +36,19 @@ its instances out or in automatically, based on the job queue demand.
 If the state is \code{DISABLED}, then the Batch scheduler doesn't attempt to
 place jobs within the environment. Jobs in a \code{STARTING} or \code{RUNNING}
 state continue to progress normally. Managed compute environments in the
-\code{DISABLED} state don't scale out. However, they scale in to \code{minvCpus}
-value after instances become idle.}
+\code{DISABLED} state don't scale out.
+
+Compute environments in a \code{DISABLED} state may continue to incur billing
+charges. To prevent additional charges, turn off and then delete the
+compute environment. For more information, see
+\href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state}{State}
+in the \emph{Batch User Guide}.
+
+When an instance is idle, the instance scales down to the \code{minvCpus}
+value. However, the instance size doesn't change. For example, consider
+a \code{c5.8xlarge} instance with a \code{minvCpus} value of \code{4} and a
+\code{desiredvCpus} value of \code{36}. This instance doesn't scale down to a
+\code{c5.large} instance.}
 
 \item{unmanagedvCpus}{The maximum number of vCPUs for an unmanaged compute environment. This
 parameter is only used for fair share scheduling to reserve vCPU
@@ -64,9 +76,8 @@ create the Batch service-linked role in your account.
 
 If your specified role has a path other than \code{/}, then you must specify
 either the full role ARN (recommended) or prefix the role name with the
-path. For example, if a role with the name \code{bar} has a path of \verb{/foo/}
-then you would specify \verb{/foo/bar} as the role name. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names}{Friendly names and paths}
+path. For example, if a role with the name \code{bar} has a path of \verb{/foo/},
+specify \verb{/foo/bar} as the role name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names}{Friendly names and paths}
 in the \emph{IAM User Guide}.
 
 Depending on how you created your Batch service role, its ARN might
@@ -78,13 +89,16 @@ environments.}
 
 \item{tags}{The tags that you apply to the compute environment to help you
 categorize and organize your resources. Each tag consists of a key and
-an optional value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+an optional value. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 in \emph{Amazon Web Services General Reference}.
 
 These tags can be updated or removed using the
 \code{\link[=batch_tag_resource]{tag_resource}} and
 \code{\link[=batch_untag_resource]{untag_resource}} API operations. These tags
 don't propagate to the underlying compute resources.}
+
+\item{eksConfiguration}{The details for the Amazon EKS cluster that supports the compute
+environment.}
 }
 \description{
 Creates an Batch compute environment. You can create \code{MANAGED} or \code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use Amazon EC2 or Fargate resources. \code{UNMANAGED} compute environments can only use EC2 resources.

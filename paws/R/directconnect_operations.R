@@ -1392,6 +1392,14 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #' address. IPv6 addresses are automatically assigned from the Amazon pool
 #' of IPv6 addresses; you cannot specify custom IPv6 addresses.
 #' 
+#' If you let Amazon Web Services auto-assign IPv4 addresses, a /30 CIDR
+#' will be allocated from 169.254.0.0/16. Amazon Web Services does not
+#' recommend this option if you intend to use the customer router peer IP
+#' address as the source and destination for traffic. Instead you should
+#' use RFC 1918 or other addressing, and specify the address yourself. For
+#' more information about RFC 1918 see [Address Allocation for Private
+#' Internets](https://datatracker.ietf.org/doc/html/rfc1918).
+#' 
 #' For a public virtual interface, the Autonomous System Number (ASN) must
 #' be private or already on the allow list for the virtual interface.
 #'
@@ -2015,7 +2023,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'   providerName, requestMACSec)
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
-#' bundled by the LAG.
+#' bundled by the LAG. You can have a maximum of four connections when the
+#' port speed is 1G or 10G, or two when the port speed is 100G.
 #' @param location &#91;required&#93; The location for the LAG.
 #' @param connectionsBandwidth &#91;required&#93; The bandwidth of the individual physical dedicated connections bundled
 #' by the LAG. The possible values are 1Gbps and 10Gbps.
@@ -2427,12 +2436,13 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' use the default ASN 64512 for both your the transit gateway and Direct
 #' Connect gateway, the association request fails.
 #' 
-#' Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
-#' an update to the underlying physical connection if it wasn't updated to
-#' support jumbo frames. Updating the connection disrupts network
-#' connectivity for all virtual interfaces associated with the connection
-#' for up to 30 seconds. To check whether your connection supports jumbo
-#' frames, call
+#' A jumbo MTU value must be either 1500 or 8500. No other values will be
+#' accepted. Setting the MTU of a virtual interface to 8500 (jumbo frames)
+#' can cause an update to the underlying physical connection if it wasn't
+#' updated to support jumbo frames. Updating the connection disrupts
+#' network connectivity for all virtual interfaces associated with the
+#' connection for up to 30 seconds. To check whether your connection
+#' supports jumbo frames, call
 #' [`describe_connections`][directconnect_describe_connections]. To check
 #' whether your virtual interface supports jumbo frames, call
 #' [`describe_virtual_interfaces`][directconnect_describe_virtual_interfaces].
@@ -4849,7 +4859,7 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' @param bgpPeers The BGP peers to place in the DOWN state.
 #' @param testDurationInMinutes The time in minutes that the virtual interface failover test will last.
 #' 
-#' Maximum value: 180 minutes (3 hours).
+#' Maximum value: 4,320 minutes (72 hours).
 #' 
 #' Default: 180 minutes (3 hours).
 #'

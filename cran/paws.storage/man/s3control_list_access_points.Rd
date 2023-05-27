@@ -2,8 +2,8 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_list_access_points}
 \alias{s3control_list_access_points}
-\title{Returns a list of the access points currently associated with the
-specified bucket}
+\title{Returns a list of the access points that are owned by the current
+account that's associated with the specified bucket}
 \usage{
 s3control_list_access_points(
   AccountId,
@@ -13,8 +13,8 @@ s3control_list_access_points(
 )
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID for owner of the bucket whose access
-points you want to list.}
+\item{AccountId}{[required] The Amazon Web Services account ID for the account that owns the
+specified access points.}
 
 \item{Bucket}{The name of the bucket whose associated access points you want to list.
 
@@ -25,7 +25,7 @@ For using this parameter with S3 on Outposts with the Amazon Web
 Services SDK and CLI, you must specify the ARN of the bucket accessed in
 the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/bucket/<my-bucket-name>}.
-For example, to access the bucket \code{reports} through outpost \code{my-outpost}
+For example, to access the bucket \code{reports} through Outpost \code{my-outpost}
 owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
 encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
@@ -43,7 +43,7 @@ points, then the response will include a continuation token in the
 points.}
 }
 \description{
-Returns a list of the access points currently associated with the specified bucket. You can retrieve up to 1000 access points per call. If the specified bucket has more than 1,000 access points (or the number specified in \code{maxResults}, whichever is less), the response will include a continuation token that you can use to list the additional access points.
+Returns a list of the access points that are owned by the current account that's associated with the specified bucket. You can retrieve up to 1000 access points per call. If the specified bucket has more than 1,000 access points (or the number specified in \code{maxResults}, whichever is less), the response will include a continuation token that you can use to list the additional access points.
 
 See \url{https://paws-r.github.io/docs/s3control/list_access_points.html} for full documentation.
 }

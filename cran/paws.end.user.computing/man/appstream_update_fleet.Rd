@@ -41,6 +41,8 @@ instance types are available:
 \item stream.standard.small
 \item stream.standard.medium
 \item stream.standard.large
+\item stream.standard.xlarge
+\item stream.standard.2xlarge
 \item stream.compute.large
 \item stream.compute.xlarge
 \item stream.compute.2xlarge
@@ -77,6 +79,9 @@ The following instance types are available for Elastic fleets:
 \itemize{
 \item stream.standard.small
 \item stream.standard.medium
+\item stream.standard.large
+\item stream.standard.xlarge
+\item stream.standard.2xlarge
 }}
 
 \item{ComputeCapacity}{The desired capacity for the fleet. This is not allowed for Elastic

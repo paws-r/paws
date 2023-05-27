@@ -22,21 +22,18 @@ kendra_create_index(
 
 \item{Edition}{The Amazon Kendra edition to use for the index. Choose
 \code{DEVELOPER_EDITION} for indexes intended for development, testing, or
-proof of concept. Use \code{ENTERPRISE_EDITION} for your production
-databases. Once you set the edition for an index, it can't be changed.
+proof of concept. Use \code{ENTERPRISE_EDITION} for production. Once you set
+the edition for an index, it can't be changed.
 
 The \code{Edition} parameter is optional. If you don't supply a value, the
 default is \code{ENTERPRISE_EDITION}.
 
-For more information on quota limits for enterprise and developer
+For more information on quota limits for Enterprise and Developer
 editions, see
 \href{https://docs.aws.amazon.com/kendra/latest/dg/quotas.html}{Quotas}.}
 
-\item{RoleArn}{[required] An Identity and Access Management (IAM) role that gives Amazon Kendra
-permissions to access your Amazon CloudWatch logs and metrics. This is
-also the role you use when you call the
-\code{\link[=kendra_batch_put_document]{batch_put_document}} API to index documents
-from an Amazon S3 bucket.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role with permission to access
+your Amazon CloudWatch logs and metrics. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
 \item{ServerSideEncryptionConfiguration}{The identifier of the KMS customer managed key (CMK) that's used to
 encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
@@ -48,9 +45,10 @@ asymmetric CMKs.}
 Multiple calls to the \code{\link[=kendra_create_index]{create_index}} API with the
 same client token will create only one index.}
 
-\item{Tags}{A list of key-value pairs that identify the index. You can use the tags
-to identify and organize your resources and to control access to
-resources.}
+\item{Tags}{A list of key-value pairs that identify or categorize the index. You can
+also use tags to help control access to the index. Tag keys and values
+can consist of Unicode letters, digits, white space, and any of the
+following symbols: _ . : / = + - @.}
 
 \item{UserTokenConfigurations}{The user token configuration.}
 
@@ -69,9 +67,9 @@ Enables token-based user access control to filter search results on user
 context. All documents with no access control and all documents
 accessible to the user will be searchable and displayable.}
 
-\item{UserGroupResolutionConfiguration}{Enables fetching access levels of groups and users from an Amazon Web
-Services Single Sign On identity source. To configure this, see
-\href{https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.}
+\item{UserGroupResolutionConfiguration}{Gets users and groups from IAM Identity Center (successor to Single
+Sign-On) identity source. To configure this, see
+\href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.}
 }
 \description{
 Creates an Amazon Kendra index. Index creation is an asynchronous API. To determine if index creation has completed, check the \code{Status} field returned from a call to \code{\link[=kendra_describe_index]{describe_index}}. The \code{Status} field is set to \code{ACTIVE} when the index is ready to use.

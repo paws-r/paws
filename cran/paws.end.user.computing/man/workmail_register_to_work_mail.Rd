@@ -2,8 +2,8 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_register_to_work_mail}
 \alias{workmail_register_to_work_mail}
-\title{Registers an existing and disabled user, group, or resource for Amazon
-WorkMail use by associating a mailbox and calendaring capabilities}
+\title{Registers an existing and disabled user, group, or resource for WorkMail
+use by associating a mailbox and calendaring capabilities}
 \usage{
 workmail_register_to_work_mail(OrganizationId, EntityId, Email)
 }
@@ -16,7 +16,7 @@ resource exists.}
 \item{Email}{[required] The email for the user, group, or resource to be updated.}
 }
 \description{
-Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see \href{https://aws.amazon.com/workmail/pricing/}{Pricing}. The equivalent console functionality for this operation is \emph{Enable}.
+Registers an existing and disabled user, group, or resource for WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see \href{https://aws.amazon.com/workmail/pricing/}{Pricing}. The equivalent console functionality for this operation is \emph{Enable}.
 
 See \url{https://paws-r.github.io/docs/workmail/register_to_work_mail.html} for full documentation.
 }

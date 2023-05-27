@@ -31,7 +31,8 @@ with your authentication credentials.}
 connect to with your authentication credentials.}
 
 \item{DbUser}{The database user name. This parameter is required when connecting to a
-cluster and authenticating using temporary credentials.}
+cluster as a database user and authenticating using temporary
+credentials.}
 
 \item{MaxResults}{The maximum number of tables to return in the response. If more tables
 exist than fit in one response, then \code{NextToken} is returned to page
@@ -54,9 +55,9 @@ parameter is required when authenticating using Secrets Manager.}
 matching schemas are returned. If no table and no schema is specified,
 then all tables for all schemas in the database are returned}
 
-\item{WorkgroupName}{The serverless workgroup name. This parameter is required when
-connecting to a serverless workgroup and authenticating using either
-Secrets Manager or temporary credentials.}
+\item{WorkgroupName}{The serverless workgroup name or Amazon Resource Name (ARN). This
+parameter is required when connecting to a serverless workgroup and
+authenticating using either Secrets Manager or temporary credentials.}
 }
 \description{
 Describes the detailed information about a table from metadata in the cluster. The information includes its columns. A token is returned to page through the column list. Depending on the authorization method, use one of the following combinations of request parameters:

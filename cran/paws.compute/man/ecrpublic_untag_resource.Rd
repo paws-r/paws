@@ -7,9 +7,8 @@
 ecrpublic_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource from which to delete
-tags. Currently, the supported resource is an Amazon ECR Public
-repository.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to delete tags from.
+Currently, the supported resource is an Amazon ECR Public repository.}
 
 \item{tagKeys}{[required] The keys of the tags to be removed.}
 }

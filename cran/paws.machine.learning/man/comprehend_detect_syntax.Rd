@@ -7,8 +7,7 @@
 comprehend_detect_syntax(Text, LanguageCode)
 }
 \arguments{
-\item{Text}{[required] A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
-encoded characters.}
+\item{Text}{[required] A UTF-8 string. The maximum string size is 5 KB.}
 
 \item{LanguageCode}{[required] The language code of the input documents. You can specify any of the
 following languages supported by Amazon Comprehend: German ("de"),
@@ -16,7 +15,7 @@ English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt").}
 }
 \description{
-Inspects text for syntax and the part of speech of words in the document. For more information, how-syntax.
+Inspects text for syntax and the part of speech of words in the document. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html}{Syntax} in the Comprehend Developer Guide.
 
 See \url{https://paws-r.github.io/docs/comprehend/detect_syntax.html} for full documentation.
 }

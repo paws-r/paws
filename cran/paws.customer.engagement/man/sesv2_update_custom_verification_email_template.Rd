@@ -23,7 +23,7 @@ update.}
 
 \item{TemplateContent}{[required] The content of the custom verification email. The total size of the
 email must be less than 10 MB. The message body may contain HTML, with
-some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions}
+some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#send-email-verify-address-custom-faq}{Custom verification email frequently asked questions}
 in the \emph{Amazon SES Developer Guide}.}
 
 \item{SuccessRedirectionURL}{[required] The URL that the recipient of the verification email is sent to if his

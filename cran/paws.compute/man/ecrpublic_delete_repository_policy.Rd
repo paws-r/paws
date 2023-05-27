@@ -2,20 +2,21 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_delete_repository_policy}
 \alias{ecrpublic_delete_repository_policy}
-\title{Deletes the repository policy associated with the specified repository}
+\title{Deletes the repository policy that's associated with the specified
+repository}
 \usage{
 ecrpublic_delete_repository_policy(registryId = NULL, repositoryName)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the public registry that contains the
-repository policy to delete. If you do not specify a registry, the
-default public registry is assumed.}
+\item{registryId}{The Amazon Web Services account ID that's associated with the public
+registry that contains the repository policy to delete. If you do not
+specify a registry, the default public registry is assumed.}
 
-\item{repositoryName}{[required] The name of the repository that is associated with the repository policy
+\item{repositoryName}{[required] The name of the repository that's associated with the repository policy
 to delete.}
 }
 \description{
-Deletes the repository policy associated with the specified repository.
+Deletes the repository policy that's associated with the specified repository.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/delete_repository_policy.html} for full documentation.
 }

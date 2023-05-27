@@ -18,7 +18,7 @@ inspector2_create_findings_report(
 \item{s3Destination}{[required] The Amazon S3 export destination for the report.}
 }
 \description{
-Creates a finding report.
+Creates a finding report. By default only \code{ACTIVE} findings are returned in the report. To see \code{SUPRESSED} or \code{CLOSED} findings you must specify a value for the \code{findingStatus} filter criteria.
 
 See \url{https://paws-r.github.io/docs/inspector2/create_findings_report.html} for full documentation.
 }

@@ -669,8 +669,6 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 #'
 #' @param ConfigRuleNames Specify one or more Config rule names to filter the results by rule.
 #' @param ComplianceTypes Filters the results by compliance.
-#' 
-#' The allowed values are `COMPLIANT` and `NON_COMPLIANT`.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
 #'
@@ -710,9 +708,6 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 #' information. You can specify only one resource ID. If you specify a
 #' resource ID, you must also specify a type for `ResourceType`.
 #' @param ComplianceTypes Filters the results by compliance.
-#' 
-#' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
-#' `INSUFFICIENT_DATA`.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 10. You cannot specify a number greater than 100. If you
 #' specify 0, Config uses the default.
@@ -791,18 +786,23 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 #' specify any names, Config returns details for all your rules.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#' @param Filters Returns a list of Detective or Proactive Config rules. By default, this
+#' API returns an unfiltered list. For more information on Detective or
+#' Proactive Config rules, see [**Evaluation
+#' Mode**](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config-rules.html)
+#' in the Config Developer Guide.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_describe_config_rules
-configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToken = NULL) {
+configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "DescribeConfigRules",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$describe_config_rules_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken)
+  input <- .configservice$describe_config_rules_input(ConfigRuleNames = ConfigRuleNames, NextToken = NextToken, Filters = Filters)
   output <- .configservice$describe_config_rules_output()
   config <- get_config()
   svc <- .configservice$service(config)
@@ -885,10 +885,11 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 }
 .configservice$operations$describe_configuration_aggregators <- configservice_describe_configuration_aggregators
 
-#' Returns the current status of the specified configuration recorder
+#' Returns the current status of the specified configuration recorder as
+#' well as the status of the last recording event for the recorder
 #'
 #' @description
-#' Returns the current status of the specified configuration recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
+#' Returns the current status of the specified configuration recorder as well as the status of the last recording event for the recorder. If a configuration recorder is not specified, this action returns the status of all configuration recorders associated with the account.
 #'
 #' See [https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html](https://paws-r.github.io/docs/configservice/describe_configuration_recorder_status.html) for full documentation.
 #'
@@ -1615,8 +1616,9 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 #' @param ConfigRuleName &#91;required&#93; The name of the Config rule for which you want compliance information.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
-#' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
-#' `NOT_APPLICABLE`.
+#' `INSUFFICIENT_DATA` is a valid `ComplianceType` that is returned when an
+#' Config rule cannot be evaluated. However, `INSUFFICIENT_DATA` cannot be
+#' used as a `ComplianceType` for filtering results.
 #' @param Limit The maximum number of evaluation results returned on each page. The
 #' default is 10. You cannot specify a number greater than 100. If you
 #' specify 0, Config uses the default.
@@ -1647,32 +1649,38 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 #' resource
 #'
 #' @description
-#' Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last used, and whether the resource complies with each rule.
+#' Returns the evaluation results for the specified Amazon Web Services resource. The results indicate which Config rules were used to evaluate the resource, when each rule was last invoked, and whether the resource complies with each rule.
 #'
 #' See [https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html](https://paws-r.github.io/docs/configservice/get_compliance_details_by_resource.html) for full documentation.
 #'
-#' @param ResourceType &#91;required&#93; The type of the Amazon Web Services resource for which you want
+#' @param ResourceType The type of the Amazon Web Services resource for which you want
 #' compliance information.
-#' @param ResourceId &#91;required&#93; The ID of the Amazon Web Services resource for which you want compliance
+#' @param ResourceId The ID of the Amazon Web Services resource for which you want compliance
 #' information.
 #' @param ComplianceTypes Filters the results by compliance.
 #' 
-#' The allowed values are `COMPLIANT`, `NON_COMPLIANT`, and
-#' `NOT_APPLICABLE`.
+#' `INSUFFICIENT_DATA` is a valid `ComplianceType` that is returned when an
+#' Config rule cannot be evaluated. However, `INSUFFICIENT_DATA` cannot be
+#' used as a `ComplianceType` for filtering results.
 #' @param NextToken The `nextToken` string returned on a previous page that you use to get
 #' the next page of results in a paginated response.
+#' @param ResourceEvaluationId The unique ID of Amazon Web Services resource execution for which you
+#' want to retrieve evaluation results.
+#' 
+#' You need to only provide either a `ResourceEvaluationID` or a
+#' `ResourceID `and `ResourceType`.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_get_compliance_details_by_resource
-configservice_get_compliance_details_by_resource <- function(ResourceType, ResourceId, ComplianceTypes = NULL, NextToken = NULL) {
+configservice_get_compliance_details_by_resource <- function(ResourceType = NULL, ResourceId = NULL, ComplianceTypes = NULL, NextToken = NULL, ResourceEvaluationId = NULL) {
   op <- new_operation(
     name = "GetComplianceDetailsByResource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$get_compliance_details_by_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, ComplianceTypes = ComplianceTypes, NextToken = NextToken)
+  input <- .configservice$get_compliance_details_by_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, ComplianceTypes = ComplianceTypes, NextToken = NextToken, ResourceEvaluationId = ResourceEvaluationId)
   output <- .configservice$get_compliance_details_by_resource_output()
   config <- get_config()
   svc <- .configservice$service(config)
@@ -2038,6 +2046,37 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 }
 .configservice$operations$get_resource_config_history <- configservice_get_resource_config_history
 
+#' Returns a summary of resource evaluation for the specified resource
+#' evaluation ID from the proactive rules that were run
+#'
+#' @description
+#' Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run. The results indicate which evaluation context was used to evaluate the rules, which resource details were evaluated, the evaluation mode that was run, and whether the resource details comply with the configuration of the proactive rules.
+#'
+#' See [https://paws-r.github.io/docs/configservice/get_resource_evaluation_summary.html](https://paws-r.github.io/docs/configservice/get_resource_evaluation_summary.html) for full documentation.
+#'
+#' @param ResourceEvaluationId &#91;required&#93; The unique `ResourceEvaluationId` of Amazon Web Services resource
+#' execution for which you want to retrieve the evaluation summary.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_get_resource_evaluation_summary
+configservice_get_resource_evaluation_summary <- function(ResourceEvaluationId) {
+  op <- new_operation(
+    name = "GetResourceEvaluationSummary",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$get_resource_evaluation_summary_input(ResourceEvaluationId = ResourceEvaluationId)
+  output <- .configservice$get_resource_evaluation_summary_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$get_resource_evaluation_summary <- configservice_get_resource_evaluation_summary
+
 #' Returns the details of a specific stored query
 #'
 #' @description
@@ -2107,7 +2146,7 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' Returns a list of conformance pack compliance scores
 #'
 #' @description
-#' Returns a list of conformance pack compliance scores. A compliance score is the percentage of the number of compliant rule-resource combinations in a conformance pack compared to the number of total possible rule-resource combinations in the conformance pack. This metric provides you with a high-level view of the compliance state of your conformance packs, and can be used to identify, investigate, and understand the level of compliance in your conformance packs.
+#' Returns a list of conformance pack compliance scores. A compliance score is the percentage of the number of compliant rule-resource combinations in a conformance pack compared to the number of total possible rule-resource combinations in the conformance pack. This metric provides you with a high-level view of the compliance state of your conformance packs. You can use it to identify, investigate, and understand the level of compliance in your conformance packs.
 #'
 #' See [https://paws-r.github.io/docs/configservice/list_conformance_pack_compliance_scores.html](https://paws-r.github.io/docs/configservice/list_conformance_pack_compliance_scores.html) for full documentation.
 #'
@@ -2116,20 +2155,28 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' @param SortOrder Determines the order in which conformance pack compliance scores are
 #' sorted. Either in ascending or descending order.
 #' 
-#' Conformance packs with a compliance score of `INSUFFICIENT_DATA` will be
-#' first when sorting by ascending order and last when sorting by
-#' descending order.
+#' By default, conformance pack compliance scores are sorted in
+#' alphabetical order by name of the conformance pack. Conformance pack
+#' compliance scores are sorted in reverse alphabetical order if you enter
+#' `DESCENDING`.
+#' 
+#' You can sort conformance pack compliance scores by the numerical value
+#' of the compliance score by entering `SCORE` in the `SortBy` action. When
+#' compliance scores are sorted by `SCORE`, conformance packs with a
+#' compliance score of `INSUFFICIENT_DATA` will be last when sorting by
+#' ascending order and first when sorting by descending order.
 #' @param SortBy Sorts your conformance pack compliance scores in either ascending or
 #' descending order, depending on `SortOrder`.
 #' 
-#' By default, conformance pack compliance scores are sorted in ascending
-#' order by compliance score and alphabetically by name of the conformance
-#' pack if there is more than one conformance pack with the same compliance
-#' score.
+#' By default, conformance pack compliance scores are sorted in
+#' alphabetical order by name of the conformance pack. Enter `SCORE`, to
+#' sort conformance pack compliance scores by the numerical value of the
+#' compliance score.
 #' @param Limit The maximum number of conformance pack compliance scores returned on
 #' each page.
 #' @param NextToken The `nextToken` string in a prior request that you can use to get the
-#' paginated response for next set of conformance pack compliance scores.
+#' paginated response for the next set of conformance pack compliance
+#' scores.
 #'
 #' @keywords internal
 #'
@@ -2162,7 +2209,8 @@ configservice_list_conformance_pack_compliance_scores <- function(Filters = NULL
 #' @param resourceType &#91;required&#93; The type of resources that you want Config to list in the response.
 #' @param resourceIds The IDs of only those resources that you want Config to list in the
 #' response. If you do not specify this parameter, Config lists all
-#' resources of the specified type that it has discovered.
+#' resources of the specified type that it has discovered. You can list a
+#' minimum of 1 resourceID and a maximum of 20 resourceIds.
 #' @param resourceName The custom name of only those resources that you want Config to list in
 #' the response. If you do not specify this parameter, Config lists all
 #' resources of the specified type that it has discovered.
@@ -2193,6 +2241,40 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
   return(response)
 }
 .configservice$operations$list_discovered_resources <- configservice_list_discovered_resources
+
+#' Returns a list of proactive resource evaluations
+#'
+#' @description
+#' Returns a list of proactive resource evaluations.
+#'
+#' See [https://paws-r.github.io/docs/configservice/list_resource_evaluations.html](https://paws-r.github.io/docs/configservice/list_resource_evaluations.html) for full documentation.
+#'
+#' @param Filters Returns a `ResourceEvaluationFilters` object.
+#' @param Limit The maximum number of evaluations returned on each page. The default is
+#' 10. You cannot specify a number greater than 100. If you specify 0,
+#' Config uses the default.
+#' @param NextToken The `nextToken` string returned on a previous page that you use to get
+#' the next page of results in a paginated response.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_list_resource_evaluations
+configservice_list_resource_evaluations <- function(Filters = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceEvaluations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$list_resource_evaluations_input(Filters = Filters, Limit = Limit, NextToken = NextToken)
+  output <- .configservice$list_resource_evaluations_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$list_resource_evaluations <- configservice_list_resource_evaluations
 
 #' Lists the stored queries for a single Amazon Web Services account and a
 #' single Amazon Web Services Region
@@ -2392,23 +2474,23 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' Creates or updates a conformance pack
 #'
 #' @description
-#' Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across Amazon Web Services Organization. For information on how many conformance packs you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the Config Developer Guide.
+#' Creates or updates a conformance pack. A conformance pack is a collection of Config rules that can be easily deployed in an account and a region and across an organization. For information on how many conformance packs you can have per account, see [**Service Limits**](https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html) in the Config Developer Guide.
 #'
 #' See [https://paws-r.github.io/docs/configservice/put_conformance_pack.html](https://paws-r.github.io/docs/configservice/put_conformance_pack.html) for full documentation.
 #'
-#' @param ConformancePackName &#91;required&#93; Name of the conformance pack you want to create.
-#' @param TemplateS3Uri Location of file containing the template body
-#' (`s3://bucketname/prefix`). The uri must point to the conformance pack
+#' @param ConformancePackName &#91;required&#93; The unique name of the conformance pack you want to deploy.
+#' @param TemplateS3Uri The location of the file containing the template body
+#' (`s3://bucketname/prefix`). The uri must point to a conformance pack
 #' template (max size: 300 KB) that is located in an Amazon S3 bucket in
-#' the same region as the conformance pack.
+#' the same Region as the conformance pack.
 #' 
 #' You must have access to read Amazon S3 bucket.
-#' @param TemplateBody A string containing full conformance pack template body. Structure
-#' containing the template body with a minimum length of 1 byte and a
-#' maximum length of 51,200 bytes.
+#' @param TemplateBody A string containing the full conformance pack template body. The
+#' structure containing the template body has a minimum length of 1 byte
+#' and a maximum length of 51,200 bytes.
 #' 
-#' You can only use a YAML template with two resource types: Config rule
-#' (`AWS::Config::ConfigRule`) and a remediation action
+#' You can use a YAML template with two resource types: Config rule
+#' (`AWS::Config::ConfigRule`) and remediation action
 #' (`AWS::Config::RemediationConfiguration`).
 #' @param DeliveryS3Bucket The name of the Amazon S3 bucket where Config stores conformance pack
 #' templates.
@@ -2418,18 +2500,22 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' 
 #' This field is optional.
 #' @param ConformancePackInputParameters A list of `ConformancePackInputParameter` objects.
+#' @param TemplateSSMDocumentDetails An object of type `TemplateSSMDocumentDetails`, which contains the name
+#' or the Amazon Resource Name (ARN) of the Amazon Web Services Systems
+#' Manager document (SSM document) and the version of the SSM document that
+#' is used to create a conformance pack.
 #'
 #' @keywords internal
 #'
 #' @rdname configservice_put_conformance_pack
-configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL) {
+configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Uri = NULL, TemplateBody = NULL, DeliveryS3Bucket = NULL, DeliveryS3KeyPrefix = NULL, ConformancePackInputParameters = NULL, TemplateSSMDocumentDetails = NULL) {
   op <- new_operation(
     name = "PutConformancePack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters)
+  input <- .configservice$put_conformance_pack_input(ConformancePackName = ConformancePackName, TemplateS3Uri = TemplateS3Uri, TemplateBody = TemplateBody, DeliveryS3Bucket = DeliveryS3Bucket, DeliveryS3KeyPrefix = DeliveryS3KeyPrefix, ConformancePackInputParameters = ConformancePackInputParameters, TemplateSSMDocumentDetails = TemplateSSMDocumentDetails)
   output <- .configservice$put_conformance_pack_output()
   config <- get_config()
   svc <- .configservice$service(config)
@@ -2674,11 +2760,11 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 }
 .configservice$operations$put_remediation_configurations <- configservice_put_remediation_configurations
 
-#' A remediation exception is when a specific resource is no longer
+#' A remediation exception is when a specified resource is no longer
 #' considered for auto-remediation
 #'
 #' @description
-#' A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specific resource with a specific Config rule.
+#' A remediation exception is when a specified resource is no longer considered for auto-remediation. This API adds a new exception or updates an existing exception for a specified resource with a specified Config rule.
 #'
 #' See [https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html](https://paws-r.github.io/docs/configservice/put_remediation_exceptions.html) for full documentation.
 #'
@@ -2991,6 +3077,53 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 }
 .configservice$operations$start_remediation_execution <- configservice_start_remediation_execution
 
+#' Runs an on-demand evaluation for the specified resource to determine
+#' whether the resource details will comply with configured Config rules
+#'
+#' @description
+#' Runs an on-demand evaluation for the specified resource to determine whether the resource details will comply with configured Config rules. You can also use it for evaluation purposes. Config recommends using an evaluation context. It runs an execution against the resource details with all of the Config rules in your account that match with the specified proactive mode and resource type.
+#'
+#' See [https://paws-r.github.io/docs/configservice/start_resource_evaluation.html](https://paws-r.github.io/docs/configservice/start_resource_evaluation.html) for full documentation.
+#'
+#' @param ResourceDetails &#91;required&#93; Returns a `ResourceDetails` object.
+#' @param EvaluationContext Returns an `EvaluationContext` object.
+#' @param EvaluationMode &#91;required&#93; The mode of an evaluation. The valid values for this API are `DETECTIVE`
+#' and `PROACTIVE`.
+#' @param EvaluationTimeout The timeout for an evaluation. The default is 900 seconds. You cannot
+#' specify a number greater than 3600. If you specify 0, Config uses the
+#' default.
+#' @param ClientToken A client token is a unique, case-sensitive string of up to 64 ASCII
+#' characters. To make an idempotent API request using one of these
+#' actions, specify a client token in the request.
+#' 
+#' Avoid reusing the same client token for other API requests. If you retry
+#' a request that completed successfully using the same client token and
+#' the same parameters, the retry succeeds without performing any further
+#' actions. If you retry a successful request using the same client token,
+#' but one or more of the parameters are different, other than the Region
+#' or Availability Zone, the retry fails with an
+#' IdempotentParameterMismatch error.
+#'
+#' @keywords internal
+#'
+#' @rdname configservice_start_resource_evaluation
+configservice_start_resource_evaluation <- function(ResourceDetails, EvaluationContext = NULL, EvaluationMode, EvaluationTimeout = NULL, ClientToken = NULL) {
+  op <- new_operation(
+    name = "StartResourceEvaluation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .configservice$start_resource_evaluation_input(ResourceDetails = ResourceDetails, EvaluationContext = EvaluationContext, EvaluationMode = EvaluationMode, EvaluationTimeout = EvaluationTimeout, ClientToken = ClientToken)
+  output <- .configservice$start_resource_evaluation_output()
+  config <- get_config()
+  svc <- .configservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.configservice$operations$start_resource_evaluation <- configservice_start_resource_evaluation
+
 #' Stops recording configurations of the Amazon Web Services resources you
 #' have selected to record in your Amazon Web Services account
 #'
@@ -3026,7 +3159,7 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' resourceArn
 #'
 #' @description
-#' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
+#' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. If existing tags are specified, however, then their values will be updated. When a resource is deleted, the tags associated with that resource are deleted as well.
 #'
 #' See [https://paws-r.github.io/docs/configservice/tag_resource.html](https://paws-r.github.io/docs/configservice/tag_resource.html) for full documentation.
 #'

@@ -2,8 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_accept_vpc_endpoint_connections}
 \alias{ec2_accept_vpc_endpoint_connections}
-\title{Accepts one or more interface VPC endpoint connection requests to your
-VPC endpoint service}
+\title{Accepts connection requests to your VPC endpoint service}
 \usage{
 ec2_accept_vpc_endpoint_connections(DryRun = NULL, ServiceId, VpcEndpointIds)
 }
@@ -15,10 +14,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceId}{[required] The ID of the VPC endpoint service.}
 
-\item{VpcEndpointIds}{[required] The IDs of one or more interface VPC endpoints.}
+\item{VpcEndpointIds}{[required] The IDs of the interface VPC endpoints.}
 }
 \description{
-Accepts one or more interface VPC endpoint connection requests to your VPC endpoint service.
+Accepts connection requests to your VPC endpoint service.
 
 See \url{https://paws-r.github.io/docs/ec2/accept_vpc_endpoint_connections.html} for full documentation.
 }

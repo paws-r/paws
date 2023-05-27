@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_list_lens_reviews}
 \alias{wellarchitected_list_lens_reviews}
-\title{List lens reviews}
+\title{List lens reviews for a particular workload}
 \usage{
 wellarchitected_list_lens_reviews(
   WorkloadId,
@@ -21,7 +21,7 @@ wellarchitected_list_lens_reviews(
 \item{MaxResults}{}
 }
 \description{
-List lens reviews.
+List lens reviews for a particular workload.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/list_lens_reviews.html} for full documentation.
 }

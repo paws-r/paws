@@ -50,7 +50,10 @@ rds_restore_db_instance_from_s3(
   UseDefaultProcessorFeatures = NULL,
   DeletionProtection = NULL,
   MaxAllocatedStorage = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  StorageThroughput = NULL,
+  ManageMasterUserPassword = NULL,
+  MasterUserSecretKmsKeyId = NULL
 )
 }
 \arguments{
@@ -70,12 +73,12 @@ Constraints:
 
 Example: \code{mydbinstance}}
 
-\item{AllocatedStorage}{The amount of storage (in gigabytes) to allocate initially for the DB
+\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
 instance. Follow the allocation rules specified in
 \code{\link[=rds_create_db_instance]{create_db_instance}}.
 
-Be sure to allocate enough memory for your new DB instance so that the
-restore operation can succeed. You can also allocate additional memory
+Be sure to allocate enough storage for your new DB instance so that the
+restore operation can succeed. You can also allocate additional storage
 for future growth.}
 
 \item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example
@@ -103,7 +106,28 @@ Constraints:
 \item{MasterUserPassword}{The password for the master user. The password can include any printable
 ASCII character except "/", """, or "@".
 
-Constraints: Must contain from 8 to 41 characters.}
+Constraints: Can't be specified if \code{ManageMasterUserPassword} is turned
+on.
+
+\strong{MariaDB}
+
+Constraints: Must contain from 8 to 41 characters.
+
+\strong{Microsoft SQL Server}
+
+Constraints: Must contain from 8 to 128 characters.
+
+\strong{MySQL}
+
+Constraints: Must contain from 8 to 41 characters.
+
+\strong{Oracle}
+
+Constraints: Must contain from 8 to 30 characters.
+
+\strong{PostgreSQL}
+
+Constraints: Must contain from 8 to 128 characters.}
 
 \item{DBSecurityGroups}{A list of DB security groups to associate with this DB instance.
 
@@ -190,8 +214,8 @@ default, minor engine upgrades are not applied automatically.}
 \item{LicenseModel}{The license model for this DB instance. Use \code{general-public-license}.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
-allocate initially for the DB instance. For information about valid Iops
-values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+allocate initially for the DB instance. For information about valid IOPS
+values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{OptionGroupName}{The name of the option group to associate with this DB instance. If this
@@ -220,10 +244,10 @@ in the \emph{Amazon RDS User Guide.}}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{standard} | \code{gp2} | \code{io1}
+Valid values: \code{gp2 | gp3 | io1 | standard}
 
-If you specify \code{io1}, you must also include a value for the \code{Iops}
-parameter.
+If you specify \code{io1} or \code{gp3}, you must also include a value for the
+\code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified; otherwise \code{gp2}}
 
@@ -362,6 +386,43 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
+
+\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
+Amazon Web Services Secrets Manager.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
+in the \emph{Amazon RDS User Guide.}
+
+Constraints:
+\itemize{
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
+}}
+
+\item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
+automatically generated and managed in Amazon Web Services Secrets
+Manager.
+
+This setting is valid only if the master user password is managed by RDS
+in Amazon Web Services Secrets Manager for the DB instance.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
+ARN, or alias name for the KMS key. To use a KMS key in a different
+Amazon Web Services account, specify the key ARN or alias ARN.
+
+If you don't specify \code{MasterUserSecretKmsKeyId}, then the
+\code{aws/secretsmanager} KMS key is used to encrypt the secret. If the
+secret is in a different Amazon Web Services account, then you can't use
+the \code{aws/secretsmanager} KMS key to encrypt the secret, and you must use
+a customer managed KMS key.
+
+There is a default KMS key for your Amazon Web Services account. Your
+Amazon Web Services account has a different default KMS key for each
+Amazon Web Services Region.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}

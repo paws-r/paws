@@ -11,6 +11,7 @@ ssmincidents_create_response_plan(
   displayName = NULL,
   engagements = NULL,
   incidentTemplate,
+  integrations = NULL,
   name,
   tags = NULL
 )
@@ -27,10 +28,13 @@ specified details.}
 \item{displayName}{The long format of the response plan name. This field can contain
 spaces.}
 
-\item{engagements}{The contacts and escalation plans that the response plan engages during
-an incident.}
+\item{engagements}{The Amazon Resource Name (ARN) for the contacts and escalation plans
+that the response plan engages during an incident.}
 
 \item{incidentTemplate}{[required] Details used to create an incident when using this response plan.}
+
+\item{integrations}{Information about third-party services integrated into the response
+plan.}
 
 \item{name}{[required] The short format name of the response plan. Can't include spaces.}
 

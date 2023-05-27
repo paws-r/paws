@@ -19,7 +19,7 @@ For using this parameter with S3 on Outposts with the Amazon Web
 Services SDK and CLI, you must specify the ARN of the access point
 accessed in the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/accesspoint/<my-accesspoint-name>}.
-For example, to access the access point \code{reports-ap} through outpost
+For example, to access the access point \code{reports-ap} through Outpost
 \code{my-outpost} owned by account \code{123456789012} in Region \code{us-west-2}, use
 the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap}.

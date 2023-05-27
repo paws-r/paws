@@ -2,7 +2,9 @@
 % Please edit documentation in R/sfn_operations.R
 \name{sfn_describe_execution}
 \alias{sfn_describe_execution}
-\title{Describes an execution}
+\title{Provides all information about a state machine execution, such as the
+state machine associated with the execution, the execution input and
+output, and relevant execution metadata}
 \usage{
 sfn_describe_execution(executionArn)
 }
@@ -10,7 +12,7 @@ sfn_describe_execution(executionArn)
 \item{executionArn}{[required] The Amazon Resource Name (ARN) of the execution to describe.}
 }
 \description{
-Describes an execution.
+Provides all information about a state machine execution, such as the state machine associated with the execution, the execution input and output, and relevant execution metadata. Use this API action to return the Map Run ARN if the execution was dispatched by a Map Run.
 
 See \url{https://paws-r.github.io/docs/sfn/describe_execution.html} for full documentation.
 }

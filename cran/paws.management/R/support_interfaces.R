@@ -75,6 +75,18 @@ NULL
   return(populate(args, shape))
 }
 
+.support$describe_create_case_options_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(issueType = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$describe_create_case_options_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(languageAvailability = structure(logical(0), tags = list(type = "string")), communicationTypes = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), supportedHours = structure(list(structure(list(startTime = structure(logical(0), tags = list(type = "string")), endTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), datesWithoutSupport = structure(list(structure(list(startDateTime = structure(logical(0), tags = list(type = "string")), endDateTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .support$describe_services_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(serviceCodeList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), language = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -96,6 +108,18 @@ NULL
 .support$describe_severity_levels_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(severityLevels = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$describe_supported_languages_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(issueType = structure(logical(0), tags = list(type = "string")), serviceCode = structure(logical(0), tags = list(type = "string")), categoryCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.support$describe_supported_languages_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(supportedLanguages = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), display = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

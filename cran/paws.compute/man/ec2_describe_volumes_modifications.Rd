@@ -41,10 +41,12 @@ is to be enabled (true | false).
 \item \code{volume-id} - The ID of the volume.
 }}
 
-\item{NextToken}{The \code{nextToken} value returned by a previous paginated request.}
+\item{NextToken}{The token returned by a previous paginated request. Pagination continues
+from the end of the items returned by the previous request.}
 
 \item{MaxResults}{The maximum number of results (up to a limit of 500) to be returned in a
-paginated request.}
+paginated request. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 }
 \description{
 Describes the most recent volume modification request for the specified EBS volumes.

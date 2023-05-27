@@ -39,14 +39,13 @@ assignment requirements for the nodes that you can assign. For example,
 you might choose a software version pattern, such as 1.0.0, or a date,
 such as 2021.01.01.}
 
-\item{description}{The description of the component. Describes the contents of the
-component.}
+\item{description}{Describes the contents of the component.}
 
 \item{changeDescription}{The change description of the component. Describes what change has been
 made in this version, or what makes this version different from other
 versions of this component.}
 
-\item{platform}{[required] The platform of the component.}
+\item{platform}{[required] The operating system platform of the component.}
 
 \item{supportedOsVersions}{The operating system (OS) version supported by the component. If the OS
 information is available, a prefix match is performed against the base
@@ -64,9 +63,9 @@ component content up to your service quota.
 Alternatively, you can specify the YAML document inline, using the
 component \code{data} property. You cannot specify both properties.}
 
-\item{kmsKeyId}{The ID of the KMS key that should be used to encrypt this component.}
+\item{kmsKeyId}{The ID of the KMS key that is used to encrypt this component.}
 
-\item{tags}{The tags of the component.}
+\item{tags}{The tags that apply to the component.}
 
 \item{clientToken}{[required] The idempotency token of the component.}
 }

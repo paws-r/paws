@@ -2,7 +2,7 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_delete_tracker}
 \alias{locationservice_delete_tracker}
-\title{Deletes a tracker resource from your AWS account}
+\title{Deletes a tracker resource from your Amazon Web Services account}
 \usage{
 locationservice_delete_tracker(TrackerName)
 }
@@ -10,7 +10,7 @@ locationservice_delete_tracker(TrackerName)
 \item{TrackerName}{[required] The name of the tracker resource to be deleted.}
 }
 \description{
-Deletes a tracker resource from your AWS account.
+Deletes a tracker resource from your Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/locationservice/delete_tracker.html} for full documentation.
 }

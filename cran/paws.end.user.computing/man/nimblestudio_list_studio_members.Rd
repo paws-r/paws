@@ -9,7 +9,8 @@ nimblestudio_list_studio_members(maxResults = NULL, nextToken = NULL, studioId)
 \arguments{
 \item{maxResults}{The max number of results to return in the response.}
 
-\item{nextToken}{The token to request the next page of results.}
+\item{nextToken}{The token for the next set of results, or null if there are no more
+results.}
 
 \item{studioId}{[required] The studio ID.}
 }

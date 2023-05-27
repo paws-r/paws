@@ -16,8 +16,8 @@ error, such as when the CMK or the grant are in an invalid state. If you
 force deletion, you can then use the
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html}{RevokeGrant}
 operation to revoke the grant you gave to Kinesis Data Firehose. If a
-failure to retire the grant happens due to an AWS KMS issue, Kinesis
-Data Firehose keeps retrying the delete operation.
+failure to retire the grant happens due to an Amazon Web Services KMS
+issue, Kinesis Data Firehose keeps retrying the delete operation.
 
 The default value is false.}
 }

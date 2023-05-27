@@ -24,11 +24,10 @@ recipes belonging to your account.}
 \item \code{platform}
 }}
 
-\item{maxResults}{The maximum number of results to return in the list.}
+\item{maxResults}{The maximum items to return in a request.}
 
-\item{nextToken}{Provides a token for pagination, which determines where to begin the
-next set of results when the current set reaches the maximum for one
-request.}
+\item{nextToken}{A token to specify where to start paginating. This is the NextToken from
+a previously truncated response.}
 }
 \description{
 Returns a list of container recipes.

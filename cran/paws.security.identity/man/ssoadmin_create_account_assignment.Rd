@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_create_account_assignment}
 \alias{ssoadmin_create_account_assignment}
-\title{Assigns access to a principal for a specified Amazon Web Services
-account using a specified permission set}
+\title{Assigns access to a principal for a specified AWS account using a
+specified permission set}
 \usage{
 ssoadmin_create_account_assignment(
   InstanceArn,
@@ -15,13 +15,12 @@ ssoadmin_create_account_assignment(
 )
 }
 \arguments{
-\item{InstanceArn}{[required] The ARN of the Amazon Web Services SSO instance under which the
-operation will be executed. For more information about ARNs, see Amazon
-Resource Names (ARNs) and Amazon Web Services Service Namespaces in the
-\emph{Amazon Web Services General Reference}.}
+\item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
+will be executed. For more information about ARNs, see Amazon Resource
+Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
 
-\item{TargetId}{[required] TargetID is an Amazon Web Services account identifier, typically a 10-12
-digit string (For example, 123456789012).}
+\item{TargetId}{[required] TargetID is an AWS account identifier, typically a 10-12 digit string
+(For example, 123456789012).}
 
 \item{TargetType}{[required] The entity type for which the assignment will be created.}
 
@@ -30,14 +29,14 @@ principal access to.}
 
 \item{PrincipalType}{[required] The entity type for which the assignment will be created.}
 
-\item{PrincipalId}{[required] An identifier for an object in Amazon Web Services SSO, such as a user
-or group. PrincipalIds are GUIDs (For example,
+\item{PrincipalId}{[required] An identifier for an object in IAM Identity Center, such as a user or
+group. PrincipalIds are GUIDs (For example,
 f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
-PrincipalIds in Amazon Web Services SSO, see the Amazon Web Services SSO
+PrincipalIds in IAM Identity Center, see the IAM Identity Center
 Identity Store API Reference.}
 }
 \description{
-Assigns access to a principal for a specified Amazon Web Services account using a specified permission set.
+Assigns access to a principal for a specified AWS account using a specified permission set.
 
 See \url{https://paws-r.github.io/docs/ssoadmin/create_account_assignment.html} for full documentation.
 }

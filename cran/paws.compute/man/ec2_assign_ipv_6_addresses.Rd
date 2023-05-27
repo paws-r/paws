@@ -20,9 +20,8 @@ network interface. Amazon EC2 automatically selects the IPv6 addresses
 from the subnet range. You can't use this option if specifying specific
 IPv6 addresses.}
 
-\item{Ipv6Addresses}{One or more specific IPv6 addresses to be assigned to the network
-interface. You can't use this option if you're specifying a number of
-IPv6 addresses.}
+\item{Ipv6Addresses}{The IPv6 addresses to be assigned to the network interface. You can't
+use this option if you're specifying a number of IPv6 addresses.}
 
 \item{Ipv6PrefixCount}{The number of IPv6 prefixes that Amazon Web Services automatically
 assigns to the network interface. You cannot use this option if you use

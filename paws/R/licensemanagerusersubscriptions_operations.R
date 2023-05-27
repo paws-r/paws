@@ -9,6 +9,13 @@ NULL
 #' @description
 #' Associates the user to an EC2 instance to utilize user-based
 #' subscriptions.
+#' 
+#' Your estimated bill for charges on the number of users and related costs
+#' will take 48 hours to appear for billing periods that haven't closed
+#' (marked as **Pending** billing status) in Amazon Web Services Billing.
+#' For more information, see [Viewing your monthly
+#' charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html)
+#' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @usage
 #' licensemanagerusersubscriptions_associate_user(Domain, IdentityProvider,
@@ -102,6 +109,12 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
 #'       )
 #'     ),
 #'     Product = "string",
+#'     Settings = list(
+#'       SecurityGroupId = "string",
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     ),
 #'     Status = "string"
 #'   )
 #' )
@@ -239,6 +252,12 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
 #'         )
 #'       ),
 #'       Product = "string",
+#'       Settings = list(
+#'         SecurityGroupId = "string",
+#'         Subnets = list(
+#'           "string"
+#'         )
+#'       ),
 #'       Status = "string"
 #'     )
 #'   ),
@@ -521,10 +540,12 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #'
 #' @usage
 #' licensemanagerusersubscriptions_register_identity_provider(
-#'   IdentityProvider, Product)
+#'   IdentityProvider, Product, Settings)
 #'
 #' @param IdentityProvider &#91;required&#93; An object that specifies details for the identity provider.
 #' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param Settings The registered identity provider’s product related configuration
+#' settings such as the subnets to provision VPC endpoints.
 #'
 #' @return
 #' A list with the following syntax:
@@ -538,6 +559,12 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #'       )
 #'     ),
 #'     Product = "string",
+#'     Settings = list(
+#'       SecurityGroupId = "string",
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     ),
 #'     Status = "string"
 #'   )
 #' )
@@ -551,7 +578,13 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #'       DirectoryId = "string"
 #'     )
 #'   ),
-#'   Product = "string"
+#'   Product = "string",
+#'   Settings = list(
+#'     SecurityGroupId = "string",
+#'     Subnets = list(
+#'       "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -560,14 +593,14 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
 #' @rdname licensemanagerusersubscriptions_register_identity_provider
 #'
 #' @aliases licensemanagerusersubscriptions_register_identity_provider
-licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product) {
+licensemanagerusersubscriptions_register_identity_provider <- function(IdentityProvider, Product, Settings = NULL) {
   op <- new_operation(
     name = "RegisterIdentityProvider",
     http_method = "POST",
     http_path = "/identity-provider/RegisterIdentityProvider",
     paginator = list()
   )
-  input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product)
+  input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings)
   output <- .licensemanagerusersubscriptions$register_identity_provider_output()
   config <- get_config()
   svc <- .licensemanagerusersubscriptions$service(config)
@@ -583,6 +616,13 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' @description
 #' Starts a product subscription for a user with the specified identity
 #' provider.
+#' 
+#' Your estimated bill for charges on the number of users and related costs
+#' will take 48 hours to appear for billing periods that haven't closed
+#' (marked as **Pending** billing status) in Amazon Web Services Billing.
+#' For more information, see [Viewing your monthly
+#' charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html)
+#' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @usage
 #' licensemanagerusersubscriptions_start_product_subscription(Domain,
@@ -722,3 +762,92 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
   return(response)
 }
 .licensemanagerusersubscriptions$operations$stop_product_subscription <- licensemanagerusersubscriptions_stop_product_subscription
+
+#' Updates additional product configuration settings for the registered
+#' identity provider
+#'
+#' @description
+#' Updates additional product configuration settings for the registered
+#' identity provider.
+#'
+#' @usage
+#' licensemanagerusersubscriptions_update_identity_provider_settings(
+#'   IdentityProvider, Product, UpdateSettings)
+#'
+#' @param IdentityProvider &#91;required&#93; 
+#' @param Product &#91;required&#93; The name of the user-based subscription product.
+#' @param UpdateSettings &#91;required&#93; Updates the registered identity provider’s product related configuration
+#' settings. You can update any combination of settings in a single
+#' operation such as the:
+#' 
+#' -   Subnets which you want to add to provision VPC endpoints.
+#' 
+#' -   Subnets which you want to remove the VPC endpoints from.
+#' 
+#' -   Security group ID which permits traffic to the VPC endpoints.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityProviderSummary = list(
+#'     FailureMessage = "string",
+#'     IdentityProvider = list(
+#'       ActiveDirectoryIdentityProvider = list(
+#'         DirectoryId = "string"
+#'       )
+#'     ),
+#'     Product = "string",
+#'     Settings = list(
+#'       SecurityGroupId = "string",
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     ),
+#'     Status = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_identity_provider_settings(
+#'   IdentityProvider = list(
+#'     ActiveDirectoryIdentityProvider = list(
+#'       DirectoryId = "string"
+#'     )
+#'   ),
+#'   Product = "string",
+#'   UpdateSettings = list(
+#'     AddSubnets = list(
+#'       "string"
+#'     ),
+#'     RemoveSubnets = list(
+#'       "string"
+#'     ),
+#'     SecurityGroupId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname licensemanagerusersubscriptions_upd_ide_pro_set
+#'
+#' @aliases licensemanagerusersubscriptions_update_identity_provider_settings
+licensemanagerusersubscriptions_update_identity_provider_settings <- function(IdentityProvider, Product, UpdateSettings) {
+  op <- new_operation(
+    name = "UpdateIdentityProviderSettings",
+    http_method = "POST",
+    http_path = "/identity-provider/UpdateIdentityProviderSettings",
+    paginator = list()
+  )
+  input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, UpdateSettings = UpdateSettings)
+  output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()
+  config <- get_config()
+  svc <- .licensemanagerusersubscriptions$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.licensemanagerusersubscriptions$operations$update_identity_provider_settings <- licensemanagerusersubscriptions_update_identity_provider_settings

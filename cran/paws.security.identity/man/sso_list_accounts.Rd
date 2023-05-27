@@ -2,7 +2,7 @@
 % Please edit documentation in R/sso_operations.R
 \name{sso_list_accounts}
 \alias{sso_list_accounts}
-\title{Lists all Amazon Web Services accounts assigned to the user}
+\title{Lists all AWS accounts assigned to the user}
 \usage{
 sso_list_accounts(nextToken = NULL, maxResults = NULL, accessToken)
 }
@@ -15,10 +15,10 @@ the previous response output.}
 \item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information,
 see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \emph{Amazon Web Services SSO OIDC API Reference Guide}.}
+in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 }
 \description{
-Lists all Amazon Web Services accounts assigned to the user. These Amazon Web Services accounts are assigned by the administrator of the account. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers}{Assign User Access} in the \emph{Amazon Web Services SSO User Guide}. This operation returns a paginated response.
+Lists all AWS accounts assigned to the user. These AWS accounts are assigned by the administrator of the account. For more information, see \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/useraccess.html#assignusers}{Assign User Access} in the \emph{IAM Identity Center User Guide}. This operation returns a paginated response.
 
 See \url{https://paws-r.github.io/docs/sso/list_accounts.html} for full documentation.
 }

@@ -17,8 +17,8 @@ quicksight_update_iam_policy_assignment(
 \item{AwsAccountId}{[required] The ID of the Amazon Web Services account that contains the IAM policy
 assignment.}
 
-\item{AssignmentName}{[required] The name of the assignment, also called a rule. This name must be unique
-within an Amazon Web Services account.}
+\item{AssignmentName}{[required] The name of the assignment, also called a rule. The name must be unique
+within the Amazon Web Services account.}
 
 \item{Namespace}{[required] The namespace of the assignment.}
 

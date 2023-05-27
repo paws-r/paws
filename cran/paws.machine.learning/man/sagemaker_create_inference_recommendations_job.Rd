@@ -17,7 +17,11 @@ sagemaker_create_inference_recommendations_job(
 }
 \arguments{
 \item{JobName}{[required] A name for the recommendation job. The name must be unique within the
-Amazon Web Services Region and within your Amazon Web Services account.}
+Amazon Web Services Region and within your Amazon Web Services account.
+The job name is passed down to the resources created by the
+recommendation job. The names of resources (such as the model, endpoint
+configuration, endpoint, and compilation) that are prefixed with the job
+name are truncated at 40 characters.}
 
 \item{JobType}{[required] Defines the type of recommendation job. Specify \code{Default} to initiate an
 instance recommendation and \code{Advanced} to initiate a load test. If left
@@ -40,7 +44,7 @@ for Amazon S3 server-side encryption.}
 
 \item{Tags}{The metadata that you apply to Amazon Web Services resources to help you
 categorize and organize them. Each tag consists of a key and a value,
-both of which you define. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}
+both of which you define. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 in the Amazon Web Services General Reference.}
 }
 \description{

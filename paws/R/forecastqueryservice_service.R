@@ -55,7 +55,8 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast for a single item, filtered by the supplied criteria
+#'  \link[=forecastqueryservice_query_forecast]{query_forecast} \tab Retrieves a forecast for a single item, filtered by the supplied criteria\cr
+#'  \link[=forecastqueryservice_query_what_if_forecast]{query_what_if_forecast} \tab Retrieves a what-if forecast
 #' }
 #'
 #' @return

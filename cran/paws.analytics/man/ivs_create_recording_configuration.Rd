@@ -8,6 +8,7 @@ Amazon S3}
 ivs_create_recording_configuration(
   destinationConfiguration,
   name = NULL,
+  recordingReconnectWindowSeconds = NULL,
   tags = NULL,
   thumbnailConfiguration = NULL
 )
@@ -18,7 +19,15 @@ recorded video will be stored.}
 
 \item{name}{Recording-configuration name. The value does not need to be unique.}
 
-\item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}.}
+\item{recordingReconnectWindowSeconds}{If a broadcast disconnects and then reconnects within the specified
+interval, the multiple streams will be considered a single broadcast and
+merged together. Default: 0.}
+
+\item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See
+\href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
+for more information, including restrictions that apply to tags and "Tag
+naming limits and requirements"; Amazon IVS has no service-specific
+constraints beyond what is documented there.}
 
 \item{thumbnailConfiguration}{A complex type that allows you to enable/disable the recording of
 thumbnails for a live session and modify the interval at which

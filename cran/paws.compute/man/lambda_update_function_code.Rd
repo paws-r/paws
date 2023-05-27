@@ -22,19 +22,18 @@ lambda_update_function_code(
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} - \verb{my-function}.
-\item \strong{Function ARN} -
+\item \strong{Function name} – \verb{my-function}.
+\item \strong{Function ARN} –
 \verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
-\item \strong{Partial ARN} - \verb{123456789012:function:my-function}.
+\item \strong{Partial ARN} – \verb{123456789012:function:my-function}.
 }
 
 The length constraint applies only to the full ARN. If you specify only
 the function name, it is limited to 64 characters in length.}
 
 \item{ZipFile}{The base64-encoded contents of the deployment package. Amazon Web
-Services SDK and Amazon Web Services CLI clients handle the encoding for
-you. Use only with a function defined with a .zip file archive
-deployment package.}
+Services SDK and CLI clients handle the encoding for you. Use only with
+a function defined with a .zip file archive deployment package.}
 
 \item{S3Bucket}{An Amazon S3 bucket in the same Amazon Web Services Region as your
 function. The bucket can be in a different Amazon Web Services account.
@@ -57,7 +56,7 @@ code. This has the same effect as calling
 \item{DryRun}{Set to true to validate the request parameters and access permissions
 without modifying the function code.}
 
-\item{RevisionId}{Only update the function if the revision ID matches the ID that's
+\item{RevisionId}{Update the function only if the revision ID matches the ID that's
 specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 
@@ -66,7 +65,7 @@ string array with one of the valid values (arm64 or x86_64). The default
 value is \code{x86_64}.}
 }
 \description{
-Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/}{Configuring code signing}.
+Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{Configuring code signing for Lambda}.
 
 See \url{https://paws-r.github.io/docs/lambda/update_function_code.html} for full documentation.
 }

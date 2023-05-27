@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_contact_flow_module_content}
 \alias{connect_update_contact_flow_module_content}
-\title{Updates specified contact flow module for the specified Amazon Connect
-instance}
+\title{Updates specified flow module for the specified Amazon Connect instance}
 \usage{
 connect_update_contact_flow_module_content(
   InstanceId,
@@ -12,15 +11,15 @@ connect_update_contact_flow_module_content(
 )
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{ContactFlowModuleId}{[required] The identifier of the contact flow module.}
+\item{ContactFlowModuleId}{[required] The identifier of the flow module.}
 
-\item{Content}{[required] The content of the contact flow module.}
+\item{Content}{[required] The content of the flow module.}
 }
 \description{
-Updates specified contact flow module for the specified Amazon Connect instance.
+Updates specified flow module for the specified Amazon Connect instance.
 
 See \url{https://paws-r.github.io/docs/connect/update_contact_flow_module_content.html} for full documentation.
 }

@@ -15,9 +15,9 @@ proton_update_template_sync_config(
 )
 }
 \arguments{
-\item{branch}{[required] The repository branch.}
+\item{branch}{[required] The repository branch for your template.}
 
-\item{repositoryName}{[required] The name of the repository (for example, \code{myrepos/myrepo}).}
+\item{repositoryName}{[required] The repository name (for example, \code{myrepos/myrepo}).}
 
 \item{repositoryProvider}{[required] The repository provider.}
 
@@ -29,7 +29,7 @@ limits the template bundle search to this repository directory.}
 \item{templateType}{[required] The synced template type.}
 }
 \description{
-Update template sync configuration parameters, except for the \code{templateName} and \code{templateType}.
+Update template sync configuration parameters, except for the \code{templateName} and \code{templateType}. Repository details (branch, name, and provider) should be of a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see \code{\link[=proton_create_repository]{create_repository}}.
 
 See \url{https://paws-r.github.io/docs/proton/update_template_sync_config.html} for full documentation.
 }

@@ -3,16 +3,52 @@
 #' @include voiceid_service.R
 NULL
 
+#' Associates the fraudsters with the watchlist specified in the same
+#' domain
+#'
+#' @description
+#' Associates the fraudsters with the watchlist specified in the same domain.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/associate_fraudster.html](https://paws-r.github.io/docs/voiceid/associate_fraudster.html) for full documentation.
+#'
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
+#' @param FraudsterId &#91;required&#93; The identifier of the fraudster to be associated with the watchlist.
+#' @param WatchlistId &#91;required&#93; The identifier of the watchlist you want to associate with the
+#' fraudster.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_associate_fraudster
+voiceid_associate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
+  op <- new_operation(
+    name = "AssociateFraudster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$associate_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId, WatchlistId = WatchlistId)
+  output <- .voiceid$associate_fraudster_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$associate_fraudster <- voiceid_associate_fraudster
+
 #' Creates a domain that contains all Amazon Connect Voice ID data, such as
 #' speakers, fraudsters, customer audio, and voiceprints
 #'
 #' @description
-#' Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints.
+#' Creates a domain that contains all Amazon Connect Voice ID data, such as speakers, fraudsters, customer audio, and voiceprints. Every domain is created with a default watchlist that fraudsters can be a part of.
 #'
 #' See [https://paws-r.github.io/docs/voiceid/create_domain.html](https://paws-r.github.io/docs/voiceid/create_domain.html) for full documentation.
 #'
-#' @param ClientToken The idempotency token for creating a new domain. If not provided, Amazon
-#' Web Services SDK populates this field.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param Description A brief description of this domain.
 #' @param Name &#91;required&#93; The name of the domain.
 #' @param ServerSideEncryptionConfiguration &#91;required&#93; The configuration, containing the KMS key identifier, to be used by
@@ -41,6 +77,42 @@ voiceid_create_domain <- function(ClientToken = NULL, Description = NULL, Name, 
   return(response)
 }
 .voiceid$operations$create_domain <- voiceid_create_domain
+
+#' Creates a watchlist that fraudsters can be a part of
+#'
+#' @description
+#' Creates a watchlist that fraudsters can be a part of.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/create_watchlist.html](https://paws-r.github.io/docs/voiceid/create_watchlist.html) for full documentation.
+#'
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
+#' @param Description A brief description of this watchlist.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.
+#' @param Name &#91;required&#93; The name of the watchlist.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_create_watchlist
+voiceid_create_watchlist <- function(ClientToken = NULL, Description = NULL, DomainId, Name) {
+  op <- new_operation(
+    name = "CreateWatchlist",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$create_watchlist_input(ClientToken = ClientToken, Description = Description, DomainId = DomainId, Name = Name)
+  output <- .voiceid$create_watchlist_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$create_watchlist <- voiceid_create_watchlist
 
 #' Deletes the specified domain from Voice ID
 #'
@@ -74,11 +146,11 @@ voiceid_delete_domain <- function(DomainId) {
 #' Deletes the specified fraudster from Voice ID
 #'
 #' @description
-#' Deletes the specified fraudster from Voice ID.
+#' Deletes the specified fraudster from Voice ID. This action disassociates the fraudster from any watchlists it is a part of.
 #'
 #' See [https://paws-r.github.io/docs/voiceid/delete_fraudster.html](https://paws-r.github.io/docs/voiceid/delete_fraudster.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the fraudster.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
 #' @param FraudsterId &#91;required&#93; The identifier of the fraudster you want to delete.
 #'
 #' @keywords internal
@@ -108,7 +180,7 @@ voiceid_delete_fraudster <- function(DomainId, FraudsterId) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/delete_speaker.html](https://paws-r.github.io/docs/voiceid/delete_speaker.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the speaker.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker.
 #' @param SpeakerId &#91;required&#93; The identifier of the speaker you want to delete.
 #'
 #' @keywords internal
@@ -131,6 +203,36 @@ voiceid_delete_speaker <- function(DomainId, SpeakerId) {
 }
 .voiceid$operations$delete_speaker <- voiceid_delete_speaker
 
+#' Deletes the specified watchlist from Voice ID
+#'
+#' @description
+#' Deletes the specified watchlist from Voice ID. This API throws an exception when there are fraudsters in the watchlist that you are trying to delete. You must delete the fraudsters, and then delete the watchlist. Every domain has a default watchlist which cannot be deleted.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/delete_watchlist.html](https://paws-r.github.io/docs/voiceid/delete_watchlist.html) for full documentation.
+#'
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.
+#' @param WatchlistId &#91;required&#93; The identifier of the watchlist to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_delete_watchlist
+voiceid_delete_watchlist <- function(DomainId, WatchlistId) {
+  op <- new_operation(
+    name = "DeleteWatchlist",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$delete_watchlist_input(DomainId = DomainId, WatchlistId = WatchlistId)
+  output <- .voiceid$delete_watchlist_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$delete_watchlist <- voiceid_delete_watchlist
+
 #' Describes the specified domain
 #'
 #' @description
@@ -138,7 +240,7 @@ voiceid_delete_speaker <- function(DomainId, SpeakerId) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/describe_domain.html](https://paws-r.github.io/docs/voiceid/describe_domain.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain you are describing.
+#' @param DomainId &#91;required&#93; The identifier of the domain that you are describing.
 #'
 #' @keywords internal
 #'
@@ -167,7 +269,7 @@ voiceid_describe_domain <- function(DomainId) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/describe_fraudster.html](https://paws-r.github.io/docs/voiceid/describe_fraudster.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the fraudster.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
 #' @param FraudsterId &#91;required&#93; The identifier of the fraudster you are describing.
 #'
 #' @keywords internal
@@ -197,8 +299,9 @@ voiceid_describe_fraudster <- function(DomainId, FraudsterId) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/describe_fraudster_registration_job.html](https://paws-r.github.io/docs/voiceid/describe_fraudster_registration_job.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier for the domain containing the fraudster registration job.
-#' @param JobId &#91;required&#93; The identifier for the fraudster registration job you are describing.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster registration
+#' job.
+#' @param JobId &#91;required&#93; The identifier of the fraudster registration job you are describing.
 #'
 #' @keywords internal
 #'
@@ -257,7 +360,7 @@ voiceid_describe_speaker <- function(DomainId, SpeakerId) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/describe_speaker_enrollment_job.html](https://paws-r.github.io/docs/voiceid/describe_speaker_enrollment_job.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the speaker enrollment job.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker enrollment job.
 #' @param JobId &#91;required&#93; The identifier of the speaker enrollment job you are describing.
 #'
 #' @keywords internal
@@ -279,6 +382,68 @@ voiceid_describe_speaker_enrollment_job <- function(DomainId, JobId) {
   return(response)
 }
 .voiceid$operations$describe_speaker_enrollment_job <- voiceid_describe_speaker_enrollment_job
+
+#' Describes the specified watchlist
+#'
+#' @description
+#' Describes the specified watchlist.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/describe_watchlist.html](https://paws-r.github.io/docs/voiceid/describe_watchlist.html) for full documentation.
+#'
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.
+#' @param WatchlistId &#91;required&#93; The identifier of the watchlist that you are describing.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_describe_watchlist
+voiceid_describe_watchlist <- function(DomainId, WatchlistId) {
+  op <- new_operation(
+    name = "DescribeWatchlist",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$describe_watchlist_input(DomainId = DomainId, WatchlistId = WatchlistId)
+  output <- .voiceid$describe_watchlist_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$describe_watchlist <- voiceid_describe_watchlist
+
+#' Disassociates the fraudsters from the watchlist specified
+#'
+#' @description
+#' Disassociates the fraudsters from the watchlist specified. Voice ID always expects a fraudster to be a part of at least one watchlist. If you try to disassociate a fraudster from its only watchlist, a `ValidationException` is thrown.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/disassociate_fraudster.html](https://paws-r.github.io/docs/voiceid/disassociate_fraudster.html) for full documentation.
+#'
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster.
+#' @param FraudsterId &#91;required&#93; The identifier of the fraudster to be disassociated from the watchlist.
+#' @param WatchlistId &#91;required&#93; The identifier of the watchlist that you want to disassociate from the
+#' fraudster.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_disassociate_fraudster
+voiceid_disassociate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
+  op <- new_operation(
+    name = "DisassociateFraudster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$disassociate_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId, WatchlistId = WatchlistId)
+  output <- .voiceid$disassociate_fraudster_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$disassociate_fraudster <- voiceid_disassociate_fraudster
 
 #' Evaluates a specified session based on audio data accumulated during a
 #' streaming Amazon Connect Voice ID call
@@ -320,7 +485,7 @@ voiceid_evaluate_session <- function(DomainId, SessionNameOrId) {
 #' See [https://paws-r.github.io/docs/voiceid/list_domains.html](https://paws-r.github.io/docs/voiceid/list_domains.html) for full documentation.
 #'
 #' @param MaxResults The maximum number of results that are returned per call. You can use
-#' `NextToken` to obtain further pages of results. The default is 100; the
+#' `NextToken` to obtain more pages of results. The default is 100; the
 #' maximum allowed page size is also 100.
 #' @param NextToken If `NextToken` is returned, there are more results available. The value
 #' of `NextToken` is a unique pagination token for each page. Make the call
@@ -355,10 +520,11 @@ voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/list_fraudster_registration_jobs.html](https://paws-r.github.io/docs/voiceid/list_fraudster_registration_jobs.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the fraudster registration Jobs.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster registration
+#' Jobs.
 #' @param JobStatus Provides the status of your fraudster registration job.
 #' @param MaxResults The maximum number of results that are returned per call. You can use
-#' `NextToken` to obtain further pages of results. The default is 100; the
+#' `NextToken` to obtain more pages of results. The default is 100; the
 #' maximum allowed page size is also 100.
 #' @param NextToken If `NextToken` is returned, there are more results available. The value
 #' of `NextToken` is a unique pagination token for each page. Make the call
@@ -385,6 +551,45 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
 }
 .voiceid$operations$list_fraudster_registration_jobs <- voiceid_list_fraudster_registration_jobs
 
+#' Lists all fraudsters in a specified watchlist or domain
+#'
+#' @description
+#' Lists all fraudsters in a specified watchlist or domain.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/list_fraudsters.html](https://paws-r.github.io/docs/voiceid/list_fraudsters.html) for full documentation.
+#'
+#' @param DomainId &#91;required&#93; The identifier of the domain.
+#' @param MaxResults The maximum number of results that are returned per call. You can use
+#' `NextToken` to obtain more pages of results. The default is 100; the
+#' maximum allowed page size is also 100.
+#' @param NextToken If `NextToken` is returned, there are more results available. The value
+#' of `NextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours.
+#' @param WatchlistId The identifier of the watchlist. If provided, all fraudsters in the
+#' watchlist are listed. If not provided, all fraudsters in the domain are
+#' listed.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_list_fraudsters
+voiceid_list_fraudsters <- function(DomainId, MaxResults = NULL, NextToken = NULL, WatchlistId = NULL) {
+  op <- new_operation(
+    name = "ListFraudsters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$list_fraudsters_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken, WatchlistId = WatchlistId)
+  output <- .voiceid$list_fraudsters_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$list_fraudsters <- voiceid_list_fraudsters
+
 #' Lists all the speaker enrollment jobs in the domain with the specified
 #' JobStatus
 #'
@@ -393,10 +598,10 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
 #'
 #' See [https://paws-r.github.io/docs/voiceid/list_speaker_enrollment_jobs.html](https://paws-r.github.io/docs/voiceid/list_speaker_enrollment_jobs.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the speaker enrollment jobs.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker enrollment jobs.
 #' @param JobStatus Provides the status of your speaker enrollment Job.
 #' @param MaxResults The maximum number of results that are returned per call. You can use
-#' `NextToken` to obtain further pages of results. The default is 100; the
+#' `NextToken` to obtain more pages of results. The default is 100; the
 #' maximum allowed page size is also 100.
 #' @param NextToken If `NextToken` is returned, there are more results available. The value
 #' of `NextToken` is a unique pagination token for each page. Make the call
@@ -432,7 +637,7 @@ voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, Max
 #'
 #' @param DomainId &#91;required&#93; The identifier of the domain.
 #' @param MaxResults The maximum number of results that are returned per call. You can use
-#' `NextToken` to obtain further pages of results. The default is 100; the
+#' `NextToken` to obtain more pages of results. The default is 100; the
 #' maximum allowed page size is also 100.
 #' @param NextToken If `NextToken` is returned, there are more results available. The value
 #' of `NextToken` is a unique pagination token for each page. Make the call
@@ -489,6 +694,42 @@ voiceid_list_tags_for_resource <- function(ResourceArn) {
 }
 .voiceid$operations$list_tags_for_resource <- voiceid_list_tags_for_resource
 
+#' Lists all watchlists in a specified domain
+#'
+#' @description
+#' Lists all watchlists in a specified domain.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/list_watchlists.html](https://paws-r.github.io/docs/voiceid/list_watchlists.html) for full documentation.
+#'
+#' @param DomainId &#91;required&#93; The identifier of the domain.
+#' @param MaxResults The maximum number of results that are returned per call. You can use
+#' `NextToken` to obtain more pages of results. The default is 100; the
+#' maximum allowed page size is also 100.
+#' @param NextToken If `NextToken` is returned, there are more results available. The value
+#' of `NextToken` is a unique pagination token for each page. Make the call
+#' again using the returned token to retrieve the next page. Keep all other
+#' arguments unchanged. Each pagination token expires after 24 hours.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_list_watchlists
+voiceid_list_watchlists <- function(DomainId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListWatchlists",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$list_watchlists_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .voiceid$list_watchlists_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$list_watchlists <- voiceid_list_watchlists
+
 #' Opts out a speaker from Voice ID
 #'
 #' @description
@@ -496,7 +737,7 @@ voiceid_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/opt_out_speaker.html](https://paws-r.github.io/docs/voiceid/opt_out_speaker.html) for full documentation.
 #'
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the speaker.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker.
 #' @param SpeakerId &#91;required&#93; The identifier of the speaker you want opted-out.
 #'
 #' @keywords internal
@@ -526,15 +767,18 @@ voiceid_opt_out_speaker <- function(DomainId, SpeakerId) {
 #'
 #' See [https://paws-r.github.io/docs/voiceid/start_fraudster_registration_job.html](https://paws-r.github.io/docs/voiceid/start_fraudster_registration_job.html) for full documentation.
 #'
-#' @param ClientToken The idempotency token for starting a new fraudster registration job. If
-#' not provided, Amazon Web Services SDK populates this field.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param DataAccessRoleArn &#91;required&#93; The IAM role Amazon Resource Name (ARN) that grants Voice ID permissions
 #' to access customer's buckets to read the input manifest file and write
 #' the Job output file. Refer to the [Create and edit a fraudster
 #' watchlist](https://docs.aws.amazon.com/connect/latest/adminguide/voiceid-fraudster-watchlist.html)
 #' documentation for the permissions needed in this role.
-#' @param DomainId &#91;required&#93; The identifier of the domain containing the fraudster registration job
-#' and in which the fraudsters are registered.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the fraudster registration
+#' job and in which the fraudsters are registered.
 #' @param InputDataConfig &#91;required&#93; The input data config containing an S3 URI for the input manifest file
 #' that contains the list of fraudster registration requests.
 #' @param JobName The name of the new fraudster registration job.
@@ -572,14 +816,17 @@ voiceid_start_fraudster_registration_job <- function(ClientToken = NULL, DataAcc
 #'
 #' See [https://paws-r.github.io/docs/voiceid/start_speaker_enrollment_job.html](https://paws-r.github.io/docs/voiceid/start_speaker_enrollment_job.html) for full documentation.
 #'
-#' @param ClientToken The idempotency token for starting a new speaker enrollment Job. If not
-#' provided, Amazon Web Services SDK populates this field.
+#' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. If not provided, the Amazon Web Services SDK
+#' populates this field. For more information about idempotency, see
+#' [Making retries safe with idempotent
+#' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param DataAccessRoleArn &#91;required&#93; The IAM role Amazon Resource Name (ARN) that grants Voice ID permissions
 #' to access customer's buckets to read the input manifest file and write
 #' the job output file. Refer to [Batch enrollment using audio data from
 #' prior
 #' calls](https://docs.aws.amazon.com/connect/latest/adminguide/voiceid-batch-enrollment.html)
-#' documentation for the permissions needed in this role.
+#' for the permissions needed in this role.
 #' @param DomainId &#91;required&#93; The identifier of the domain that contains the speaker enrollment job
 #' and in which the speakers are enrolled.
 #' @param EnrollmentConfig The enrollment config that contains details such as the action to take
@@ -684,10 +931,12 @@ voiceid_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param DomainId &#91;required&#93; The identifier of the domain to be updated.
 #' @param Name &#91;required&#93; The name of the domain.
 #' @param ServerSideEncryptionConfiguration &#91;required&#93; The configuration, containing the KMS key identifier, to be used by
-#' Voice ID for the server-side encryption of your data. Note that all the
-#' existing data in the domain are still encrypted using the existing key,
-#' only the data added to domain after updating the key is encrypted using
-#' the new key.
+#' Voice ID for the server-side encryption of your data. Changing the
+#' domain's associated KMS key immediately triggers an asynchronous process
+#' to remove dependency on the old KMS key, such that the domain's data can
+#' only be accessed using the new KMS key. The domain's
+#' `ServerSideEncryptionUpdateDetails` contains the details for this
+#' process.
 #'
 #' @keywords internal
 #'
@@ -708,3 +957,35 @@ voiceid_update_domain <- function(Description = NULL, DomainId, Name, ServerSide
   return(response)
 }
 .voiceid$operations$update_domain <- voiceid_update_domain
+
+#' Updates the specified watchlist
+#'
+#' @description
+#' Updates the specified watchlist. Every domain has a default watchlist which cannot be updated.
+#'
+#' See [https://paws-r.github.io/docs/voiceid/update_watchlist.html](https://paws-r.github.io/docs/voiceid/update_watchlist.html) for full documentation.
+#'
+#' @param Description A brief description about this watchlist.
+#' @param DomainId &#91;required&#93; The identifier of the domain that contains the watchlist.
+#' @param Name The name of the watchlist.
+#' @param WatchlistId &#91;required&#93; The identifier of the watchlist to be updated.
+#'
+#' @keywords internal
+#'
+#' @rdname voiceid_update_watchlist
+voiceid_update_watchlist <- function(Description = NULL, DomainId, Name = NULL, WatchlistId) {
+  op <- new_operation(
+    name = "UpdateWatchlist",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .voiceid$update_watchlist_input(Description = Description, DomainId = DomainId, Name = Name, WatchlistId = WatchlistId)
+  output <- .voiceid$update_watchlist_output()
+  config <- get_config()
+  svc <- .voiceid$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.voiceid$operations$update_watchlist <- voiceid_update_watchlist

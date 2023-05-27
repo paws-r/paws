@@ -3,8 +3,7 @@
 \name{quicksight_delete_user}
 \alias{quicksight_delete_user}
 \title{Deletes the Amazon QuickSight user that is associated with the identity
-of the Identity and Access Management (IAM) user or role that's making
-the call}
+of the IAM user or role that's making the call}
 \usage{
 quicksight_delete_user(UserName, AwsAccountId, Namespace)
 }
@@ -18,7 +17,7 @@ contains your Amazon QuickSight account.}
 \item{Namespace}{[required] The namespace. Currently, you should set this to \code{default}.}
 }
 \description{
-Deletes the Amazon QuickSight user that is associated with the identity of the Identity and Access Management (IAM) user or role that's making the call. The IAM user isn't deleted as a result of this call.
+Deletes the Amazon QuickSight user that is associated with the identity of the IAM user or role that's making the call. The IAM user isn't deleted as a result of this call.
 
 See \url{https://paws-r.github.io/docs/quicksight/delete_user.html} for full documentation.
 }

@@ -69,8 +69,8 @@ This is a good option if you aren't sure which algorithm is suitable for
 your training data. In this case, \code{PerformHPO} must be false.}
 
 \item{AutoMLOverrideStrategy}{The \code{LatencyOptimized} AutoML override strategy is only available in
-private beta. Contact AWS Support or your account manager to learn more
-about access privileges.
+private beta. Contact Amazon Web Services Support or your account
+manager to learn more about access privileges.
 
 Used to overide the default AutoML strategy, which is to optimize
 predictor accuracy. To apply an AutoML strategy that minimizes training
@@ -121,7 +121,7 @@ predictor.}
 
 \item{FeaturizationConfig}{[required] The featurization configuration.}
 
-\item{EncryptionConfig}{An AWS Key Management Service (KMS) key and the AWS Identity and Access
+\item{EncryptionConfig}{An Key Management Service (KMS) key and the Identity and Access
 Management (IAM) role that Amazon Forecast can assume to access the key.}
 
 \item{Tags}{The optional metadata that you apply to the predictor to help you
@@ -142,12 +142,12 @@ numbers, and spaces representable in UTF-8, and the following
 characters: + - = . _ : / @.
 \item Tag keys and values are case sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
-such as a prefix for keys as it is reserved for AWS use. You cannot
-edit or delete tag keys with this prefix. Values can have this
-prefix. If a tag value has \code{aws} as its prefix but the key does not,
-then Forecast considers it to be a user tag and will count against
-the limit of 50 tags. Tags with only the key prefix of \code{aws} do not
-count against your tags per resource limit.
+such as a prefix for keys as it is reserved for Amazon Web Services
+use. You cannot edit or delete tag keys with this prefix. Values can
+have this prefix. If a tag value has \code{aws} as its prefix but the key
+does not, then Forecast considers it to be a user tag and will count
+against the limit of 50 tags. Tags with only the key prefix of \code{aws}
+do not count against your tags per resource limit.
 }}
 
 \item{OptimizationMetric}{The accuracy metric used to optimize the predictor.}

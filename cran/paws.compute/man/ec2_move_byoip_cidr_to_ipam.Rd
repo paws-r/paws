@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_move_byoip_cidr_to_ipam}
 \alias{ec2_move_byoip_cidr_to_ipam}
-\title{Move an BYOIP IPv4 CIDR to IPAM from a public IPv4 pool}
+\title{Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool}
 \usage{
 ec2_move_byoip_cidr_to_ipam(DryRun = NULL, Cidr, IpamPoolId, IpamPoolOwner)
 }
@@ -19,7 +19,7 @@ you have the required permissions, the error response is
 \item{IpamPoolOwner}{[required] The Amazon Web Services account ID of the owner of the IPAM pool.}
 }
 \description{
-Move an BYOIP IPv4 CIDR to IPAM from a public IPv4 pool.
+Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool.
 
 See \url{https://paws-r.github.io/docs/ec2/move_byoip_cidr_to_ipam.html} for full documentation.
 }

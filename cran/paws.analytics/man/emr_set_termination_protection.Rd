@@ -2,9 +2,9 @@
 % Please edit documentation in R/emr_operations.R
 \name{emr_set_termination_protection}
 \alias{emr_set_termination_protection}
-\title{SetTerminationProtection locks a cluster (job flow) so the EC2 instances
-in the cluster cannot be terminated by user intervention, an API call,
-or in the event of a job-flow error}
+\title{SetTerminationProtection locks a cluster (job flow) so the Amazon EC2
+instances in the cluster cannot be terminated by user intervention, an
+API call, or in the event of a job-flow error}
 \usage{
 emr_set_termination_protection(JobFlowIds, TerminationProtected)
 }
@@ -18,7 +18,7 @@ Amazon EC2 instances in the cluster from shutting down due to API calls,
 user intervention, or job-flow error.}
 }
 \description{
-SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling \code{\link[=emr_set_termination_protection]{set_termination_protection}} on a cluster is similar to calling the Amazon EC2 \code{DisableAPITermination} API on all EC2 instances in a cluster.
+SetTerminationProtection locks a cluster (job flow) so the Amazon EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling \code{\link[=emr_set_termination_protection]{set_termination_protection}} on a cluster is similar to calling the Amazon EC2 \code{DisableAPITermination} API on all Amazon EC2 instances in a cluster.
 
 See \url{https://paws-r.github.io/docs/emr/set_termination_protection.html} for full documentation.
 }

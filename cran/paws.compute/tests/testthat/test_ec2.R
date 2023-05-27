@@ -4,6 +4,14 @@ test_that("describe_account_attributes", {
   expect_error(svc$describe_account_attributes(), NA)
 })
 
+test_that("describe_address_transfers", {
+  expect_error(svc$describe_address_transfers(), NA)
+})
+
+test_that("describe_address_transfers", {
+  expect_error(svc$describe_address_transfers(MaxResults = 20), NA)
+})
+
 test_that("describe_addresses", {
   expect_error(svc$describe_addresses(), NA)
 })
@@ -22,6 +30,14 @@ test_that("describe_aggregate_id_format", {
 
 test_that("describe_availability_zones", {
   expect_error(svc$describe_availability_zones(), NA)
+})
+
+test_that("describe_aws_network_performance_metric_subscriptions", {
+  expect_error(svc$describe_aws_network_performance_metric_subscriptions(), NA)
+})
+
+test_that("describe_aws_network_performance_metric_subscriptions", {
+  expect_error(svc$describe_aws_network_performance_metric_subscriptions(MaxResults = 20), NA)
 })
 
 test_that("describe_bundle_tasks", {
@@ -278,6 +294,22 @@ test_that("describe_ipam_pools", {
 
 test_that("describe_ipam_pools", {
   expect_error(svc$describe_ipam_pools(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_resource_discoveries", {
+  expect_error(svc$describe_ipam_resource_discoveries(), NA)
+})
+
+test_that("describe_ipam_resource_discoveries", {
+  expect_error(svc$describe_ipam_resource_discoveries(MaxResults = 20), NA)
+})
+
+test_that("describe_ipam_resource_discovery_associations", {
+  expect_error(svc$describe_ipam_resource_discovery_associations(), NA)
+})
+
+test_that("describe_ipam_resource_discovery_associations", {
+  expect_error(svc$describe_ipam_resource_discovery_associations(MaxResults = 20), NA)
 })
 
 test_that("describe_ipam_scopes", {
@@ -698,6 +730,46 @@ test_that("describe_trunk_interface_associations", {
 
 test_that("describe_trunk_interface_associations", {
   expect_error(svc$describe_trunk_interface_associations(MaxResults = 20), NA)
+})
+
+test_that("describe_verified_access_endpoints", {
+  expect_error(svc$describe_verified_access_endpoints(), NA)
+})
+
+test_that("describe_verified_access_endpoints", {
+  expect_error(svc$describe_verified_access_endpoints(MaxResults = 20), NA)
+})
+
+test_that("describe_verified_access_groups", {
+  expect_error(svc$describe_verified_access_groups(), NA)
+})
+
+test_that("describe_verified_access_groups", {
+  expect_error(svc$describe_verified_access_groups(MaxResults = 20), NA)
+})
+
+test_that("describe_verified_access_instance_logging_configurations", {
+  expect_error(svc$describe_verified_access_instance_logging_configurations(), NA)
+})
+
+test_that("describe_verified_access_instance_logging_configurations", {
+  expect_error(svc$describe_verified_access_instance_logging_configurations(MaxResults = 20), NA)
+})
+
+test_that("describe_verified_access_instances", {
+  expect_error(svc$describe_verified_access_instances(), NA)
+})
+
+test_that("describe_verified_access_instances", {
+  expect_error(svc$describe_verified_access_instances(MaxResults = 20), NA)
+})
+
+test_that("describe_verified_access_trust_providers", {
+  expect_error(svc$describe_verified_access_trust_providers(), NA)
+})
+
+test_that("describe_verified_access_trust_providers", {
+  expect_error(svc$describe_verified_access_trust_providers(MaxResults = 20), NA)
 })
 
 test_that("describe_volume_status", {

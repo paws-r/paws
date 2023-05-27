@@ -2,7 +2,7 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_create_package}
 \alias{opensearchservice_create_package}
-\title{Create a package for use with Amazon OpenSearch Service domains}
+\title{Creates a package for use with Amazon OpenSearch Service domains}
 \usage{
 opensearchservice_create_package(
   PackageName,
@@ -12,16 +12,16 @@ opensearchservice_create_package(
 )
 }
 \arguments{
-\item{PackageName}{[required] Unique identifier for the package.}
+\item{PackageName}{[required] Unique name for the package.}
 
-\item{PackageType}{[required] Type of package. Currently supports only TXT-DICTIONARY.}
+\item{PackageType}{[required] The type of package.}
 
 \item{PackageDescription}{Description of the package.}
 
 \item{PackageSource}{[required] The Amazon S3 location from which to import the package.}
 }
 \description{
-Create a package for use with Amazon OpenSearch Service domains.
+Creates a package for use with Amazon OpenSearch Service domains. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/create_package.html} for full documentation.
 }

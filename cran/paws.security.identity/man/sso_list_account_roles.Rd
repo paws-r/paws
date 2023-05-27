@@ -2,8 +2,7 @@
 % Please edit documentation in R/sso_operations.R
 \name{sso_list_account_roles}
 \alias{sso_list_account_roles}
-\title{Lists all roles that are assigned to the user for a given Amazon Web
-Services account}
+\title{Lists all roles that are assigned to the user for a given AWS account}
 \usage{
 sso_list_account_roles(
   nextToken = NULL,
@@ -21,13 +20,12 @@ subsequent pages.}
 \item{accessToken}{[required] The token issued by the \code{CreateToken} API call. For more information,
 see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
-in the \emph{Amazon Web Services SSO OIDC API Reference Guide}.}
+in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 
-\item{accountId}{[required] The identifier for the Amazon Web Services account that is assigned to
-the user.}
+\item{accountId}{[required] The identifier for the AWS account that is assigned to the user.}
 }
 \description{
-Lists all roles that are assigned to the user for a given Amazon Web Services account.
+Lists all roles that are assigned to the user for a given AWS account.
 
 See \url{https://paws-r.github.io/docs/sso/list_account_roles.html} for full documentation.
 }

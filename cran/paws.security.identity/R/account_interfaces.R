@@ -13,6 +13,26 @@ NULL
   list()
 }
 
+.account$disable_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$disable_region_output <- function(...) {
+  list()
+}
+
+.account$enable_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$enable_region_output <- function(...) {
+  list()
+}
+
 .account$get_alternate_contact_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), AlternateContactType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -34,6 +54,30 @@ NULL
 .account$get_contact_information_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ContactInformation = structure(list(AddressLine1 = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AddressLine2 = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AddressLine3 = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), City = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CompanyName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), CountryCode = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), DistrictOrCounty = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FullName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PhoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PostalCode = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), StateOrRegion = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), WebsiteUrl = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$get_region_opt_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$get_region_opt_status_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RegionName = structure(logical(0), tags = list(type = "string")), RegionOptStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$list_regions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), RegionOptStatusContains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.account$list_regions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Regions = structure(list(structure(list(RegionName = structure(logical(0), tags = list(type = "string")), RegionOptStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

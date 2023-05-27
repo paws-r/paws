@@ -11,10 +11,9 @@ NULL
 #'
 #' See [https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html](https://paws-r.github.io/docs/comprehend/batch_detect_dominant_language.html) for full documentation.
 #'
-#' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
-#' a maximum of 25 documents. Each document should contain at least 20
-#' characters and must contain fewer than 5,000 bytes of UTF-8 encoded
-#' characters.
+#' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
+#' list can contain a maximum of 25 documents. Each document should contain
+#' at least 20 characters. The maximum size of each document is 5 KB.
 #'
 #' @keywords internal
 #'
@@ -40,13 +39,13 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' information about them
 #'
 #' @description
-#' Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see how-entities
+#' Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see [Entities](https://docs.aws.amazon.com/comprehend/latest/dg/how-entities.html) in the Comprehend Developer Guide.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/batch_detect_entities.html](https://paws-r.github.io/docs/comprehend/batch_detect_entities.html) for full documentation.
 #'
-#' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
-#' a maximum of 25 documents. Each document must contain fewer than 5,000
-#' bytes of UTF-8 encoded characters.
+#' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
+#' list can contain a maximum of 25 documents. The maximum size of each
+#' document is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
@@ -78,9 +77,9 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/batch_detect_key_phrases.html](https://paws-r.github.io/docs/comprehend/batch_detect_key_phrases.html) for full documentation.
 #'
-#' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
-#' a maximum of 25 documents. Each document must contain fewer than 5,000
-#' bytes of UTF-8 encoded characters.
+#' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
+#' list can contain a maximum of 25 documents. The maximum size of each
+#' document is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
@@ -113,9 +112,9 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html](https://paws-r.github.io/docs/comprehend/batch_detect_sentiment.html) for full documentation.
 #'
-#' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
-#' a maximum of 25 documents. Each document must contain fewer that 5,000
-#' bytes of UTF-8 encoded characters.
+#' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
+#' list can contain a maximum of 25 documents. The maximum size of each
+#' document is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
@@ -144,13 +143,13 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' speech of the words in the document and returns information about them
 #'
 #' @description
-#' Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see how-syntax.
+#' Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see [Syntax](https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html) in the Comprehend Developer Guide.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html](https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html) for full documentation.
 #'
-#' @param TextList &#91;required&#93; A list containing the text of the input documents. The list can contain
-#' a maximum of 25 documents. Each document must contain fewer that 5,000
-#' bytes of UTF-8 encoded characters.
+#' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
+#' list can contain a maximum of 25 documents. The maximum size for each
+#' document is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
 #' following languages supported by Amazon Comprehend: German ("de"),
 #' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
@@ -176,6 +175,40 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 }
 .comprehend$operations$batch_detect_syntax <- comprehend_batch_detect_syntax
 
+#' Inspects a batch of documents and returns a sentiment analysis for each
+#' entity identified in the documents
+#'
+#' @description
+#' Inspects a batch of documents and returns a sentiment analysis for each entity identified in the documents.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/batch_detect_targeted_sentiment.html](https://paws-r.github.io/docs/comprehend/batch_detect_targeted_sentiment.html) for full documentation.
+#'
+#' @param TextList &#91;required&#93; A list containing the UTF-8 encoded text of the input documents. The
+#' list can contain a maximum of 25 documents. The maximum size of each
+#' document is 5 KB.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
+#' supported language.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_batch_detect_targeted_sentiment
+comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
+  op <- new_operation(
+    name = "BatchDetectTargetedSentiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$batch_detect_targeted_sentiment_input(TextList = TextList, LanguageCode = LanguageCode)
+  output <- .comprehend$batch_detect_targeted_sentiment_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$batch_detect_targeted_sentiment <- comprehend_batch_detect_targeted_sentiment
+
 #' Creates a new document classification request to analyze a single
 #' document in real-time, using a previously created and trained custom
 #' model and an endpoint
@@ -185,22 +218,39 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/classify_document.html](https://paws-r.github.io/docs/comprehend/classify_document.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; The document text to be analyzed.
+#' @param Text The document text to be analyzed. If you enter text using this
+#' parameter, do not use the `Bytes` parameter.
 #' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint. For information about
 #' endpoints, see [Managing
 #' endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
+#' @param Bytes Use the `Bytes` parameter to input a text, PDF, Word or image file. You
+#' can also use the `Bytes` parameter to input an Amazon Textract
+#' `DetectDocumentText` or `AnalyzeDocument` output file.
+#' 
+#' Provide the input document as a sequence of base64-encoded bytes. If
+#' your code uses an Amazon Web Services SDK to classify documents, the SDK
+#' may encode the document file bytes for you.
+#' 
+#' The maximum length of this field depends on the input document type. For
+#' details, see [Inputs for real-time custom
+#' analysis](https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync.html)
+#' in the Comprehend Developer Guide.
+#' 
+#' If you use the `Bytes` parameter, do not use the `Text` parameter.
+#' @param DocumentReaderConfig Provides configuration parameters to override the default actions for
+#' extracting text from PDF documents and image files.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_classify_document
-comprehend_classify_document <- function(Text, EndpointArn) {
+comprehend_classify_document <- function(Text = NULL, EndpointArn, Bytes = NULL, DocumentReaderConfig = NULL) {
   op <- new_operation(
     name = "ClassifyDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$classify_document_input(Text = Text, EndpointArn = EndpointArn)
+  input <- .comprehend$classify_document_input(Text = Text, EndpointArn = EndpointArn, Bytes = Bytes, DocumentReaderConfig = DocumentReaderConfig)
   output <- .comprehend$classify_document_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -219,9 +269,7 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/contains_pii_entities.html](https://paws-r.github.io/docs/comprehend/contains_pii_entities.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; Creates a new document classification request to analyze a single
-#' document in real-time, returning personally identifiable information
-#' (PII) entity labels.
+#' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 100 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
 #' valid language.
 #'
@@ -245,11 +293,52 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
 }
 .comprehend$operations$contains_pii_entities <- comprehend_contains_pii_entities
 
+#' Creates a dataset to upload training or test data for a model associated
+#' with a flywheel
+#'
+#' @description
+#' Creates a dataset to upload training or test data for a model associated with a flywheel. For more information about datasets, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/create_dataset.html](https://paws-r.github.io/docs/comprehend/create_dataset.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel of the flywheel to
+#' receive the data.
+#' @param DatasetName &#91;required&#93; Name of the dataset.
+#' @param DatasetType The dataset type. You can specify that the data in a dataset is for
+#' training the model or for testing the model.
+#' @param Description Description of the dataset.
+#' @param InputDataConfig &#91;required&#93; Information about the input data configuration. The type of input data
+#' varies based on the format of the input and whether the data is for a
+#' classifier model or an entity recognition model.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
+#' @param Tags Tags for the dataset.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_create_dataset
+comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NULL, Description = NULL, InputDataConfig, ClientRequestToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$create_dataset_input(FlywheelArn = FlywheelArn, DatasetName = DatasetName, DatasetType = DatasetType, Description = Description, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .comprehend$create_dataset_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$create_dataset <- comprehend_create_dataset
+
 #' Creates a new document classifier that you can use to categorize
 #' documents
 #'
 #' @description
-#' Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that labeled with the categories that you want to use. After the classifier is trained you can use it to categorize a set of labeled documents into the categories. For more information, see how-document-classification.
+#' Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that are labeled with the categories that you want to use. For more information, see [Training classifier models](https://docs.aws.amazon.com/comprehend/latest/dg/training-classifier-model.html) in the Comprehend Developer Guide.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/create_document_classifier.html](https://paws-r.github.io/docs/comprehend/create_document_classifier.html) for full documentation.
 #'
@@ -257,27 +346,27 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
 #' @param VersionName The version name given to the newly created classifier. Version names
 #' can have a maximum of 256 characters. Alphanumeric characters, hyphens
 #' (-) and underscores (_) are allowed. The version name must be unique
-#' among all models with the same classifier name in the account/AWS
-#' Region.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
-#' role that grants Amazon Comprehend read access to your input data.
-#' @param Tags Tags to be associated with the document classifier being created. A tag
-#' is a key-value pair that adds as a metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' among all models with the same classifier name in the Amazon Web
+#' Services account/Amazon Web Services Region.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data.
+#' @param Tags Tags to associate with the document classifier. A tag is a key-value
+#' pair that adds as a metadata to a resource used by Amazon Comprehend.
+#' For example, a tag with "Sales" as the key might be added to a resource
+#' to indicate its use by the sales department.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
-#' @param OutputDataConfig Enables the addition of output results configuration parameters for
-#' custom classifier jobs.
+#' @param OutputDataConfig Specifies the location for the output files from a custom classifier
+#' job. This parameter is required for a request that creates a native
+#' classifier model.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
-#' following languages supported by Amazon Comprehend: German ("de"),
-#' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
-#' Portuguese ("pt"). All documents must be in the same language.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' languages supported by Amazon Comprehend. All documents must be in the
+#' same language.
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -293,17 +382,16 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
 #' one or more labels for each document. In multi-label mode, multiple
 #' labels for an individual document are separated by a delimiter. The
 #' default delimiter between labels is a pipe (|).
-#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
-#' of the following formats:
+#' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
+#' models. The ModelKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param ModelPolicy The resource-based policy to attach to your custom document classifier
-#' model. You can use this policy to allow another AWS account to import
-#' your custom model.
+#' model. You can use this policy to allow another Amazon Web Services
+#' account to import your custom model.
 #' 
 #' Provide your policy as a JSON body that you enter as a UTF-8 encoded
 #' string without line breaks. To provide valid JSON, enclose the attribute
@@ -349,7 +437,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, Versio
 #'
 #' @param EndpointName &#91;required&#93; This is the descriptive suffix that becomes part of the `EndpointArn`
 #' used for all subsequent requests to this resource.
-#' @param ModelArn &#91;required&#93; The Amazon Resource Number (ARN) of the model to which the endpoint will
+#' @param ModelArn The Amazon Resource Number (ARN) of the model to which the endpoint will
 #' be attached.
 #' @param DesiredInferenceUnits &#91;required&#93; The desired number of inference units to be used by the model using this
 #' endpoint. Each inference unit represents of a throughput of 100
@@ -357,25 +445,27 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, Versio
 #' @param ClientRequestToken An idempotency token provided by the customer. If this token matches a
 #' previous endpoint creation request, Amazon Comprehend will not return a
 #' `ResourceInUseException`.
-#' @param Tags Tags associated with the endpoint being created. A tag is a key-value
-#' pair that adds metadata to the endpoint. For example, a tag with "Sales"
-#' as the key might be added to an endpoint to indicate its use by the
-#' sales department.
-#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the AWS identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to trained custom
-#' models encrypted with a customer managed key (ModelKmsKeyId).
+#' @param Tags Tags to associate with the endpoint. A tag is a key-value pair that adds
+#' metadata to the endpoint. For example, a tag with "Sales" as the key
+#' might be added to an endpoint to indicate its use by the sales
+#' department.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to trained custom models encrypted with a
+#' customer managed key (ModelKmsKeyId).
+#' @param FlywheelArn The Amazon Resource Number (ARN) of the flywheel to which the endpoint
+#' will be attached.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_create_endpoint
-comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL, DataAccessRoleArn = NULL) {
+comprehend_create_endpoint <- function(EndpointName, ModelArn = NULL, DesiredInferenceUnits, ClientRequestToken = NULL, Tags = NULL, DataAccessRoleArn = NULL, FlywheelArn = NULL) {
   op <- new_operation(
     name = "CreateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
+  input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn, FlywheelArn = FlywheelArn)
   output <- .comprehend$create_endpoint_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -388,37 +478,38 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' Creates an entity recognizer using submitted files
 #'
 #' @description
-#' Creates an entity recognizer using submitted files. After your [`create_entity_recognizer`][comprehend_create_entity_recognizer] request is submitted, you can check job status using the API.
+#' Creates an entity recognizer using submitted files. After your [`create_entity_recognizer`][comprehend_create_entity_recognizer] request is submitted, you can check job status using the [`describe_entity_recognizer`][comprehend_describe_entity_recognizer] API.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html](https://paws-r.github.io/docs/comprehend/create_entity_recognizer.html) for full documentation.
 #'
 #' @param RecognizerName &#91;required&#93; The name given to the newly created recognizer. Recognizer names can be
 #' a maximum of 256 characters. Alphanumeric characters, hyphens (-) and
 #' underscores (_) are allowed. The name must be unique in the
-#' account/region.
+#' account/Region.
 #' @param VersionName The version name given to the newly created recognizer. Version names
 #' can be a maximum of 256 characters. Alphanumeric characters, hyphens (-)
 #' and underscores (_) are allowed. The version name must be unique among
-#' all models with the same recognizer name in the account/ AWS Region.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
-#' role that grants Amazon Comprehend read access to your input data.
-#' @param Tags Tags to be associated with the entity recognizer being created. A tag is
-#' a key-value pair that adds as a metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' all models with the same recognizer name in the account/Region.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data.
+#' @param Tags Tags to associate with the entity recognizer. A tag is a key-value pair
+#' that adds as a metadata to a resource used by Amazon Comprehend. For
+#' example, a tag with "Sales" as the key might be added to a resource to
+#' indicate its use by the sales department.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data. The S3 bucket
-#' containing the input data must be located in the same region as the
+#' containing the input data must be located in the same Region as the
 #' entity recognizer being created.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
-#' @param LanguageCode &#91;required&#93; You can specify any of the following languages supported by Amazon
-#' Comprehend: English ("en"), Spanish ("es"), French ("fr"), Italian
-#' ("it"), German ("de"), or Portuguese ("pt"). All documents must be in
-#' the same language.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param LanguageCode &#91;required&#93; You can specify any of the following languages: English ("en"), Spanish
+#' ("es"), French ("fr"), Italian ("it"), German ("de"), or Portuguese
+#' ("pt"). If you plan to use this entity recognizer with PDF, Word, or
+#' image input files, you must specify English as the language. All
+#' training documents must be in the same language.
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -428,17 +519,16 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 #' (VPC) containing the resources you are using for your custom entity
 #' recognizer. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
-#' of the following formats
+#' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
+#' models. The ModelKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param ModelPolicy The JSON resource-based policy to attach to your custom entity
-#' recognizer model. You can use this policy to allow another AWS account
-#' to import your custom model.
+#' recognizer model. You can use this policy to allow another Amazon Web
+#' Services account to import your custom model.
 #' 
 #' Provide your JSON as a UTF-8 encoded string without line breaks. To
 #' provide valid JSON for your policy, enclose the attribute names and
@@ -472,6 +562,51 @@ comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NU
   return(response)
 }
 .comprehend$operations$create_entity_recognizer <- comprehend_create_entity_recognizer
+
+#' A flywheel is an Amazon Web Services resource that orchestrates the
+#' ongoing training of a model for custom classification or custom entity
+#' recognition
+#'
+#' @description
+#' A flywheel is an Amazon Web Services resource that orchestrates the ongoing training of a model for custom classification or custom entity recognition. You can create a flywheel to start with an existing trained model, or Comprehend can create and train a new model.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/create_flywheel.html](https://paws-r.github.io/docs/comprehend/create_flywheel.html) for full documentation.
+#'
+#' @param FlywheelName &#91;required&#93; Name for the flywheel.
+#' @param ActiveModelArn To associate an existing model with the flywheel, specify the Amazon
+#' Resource Number (ARN) of the model version.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend the permissions required to access the flywheel data in the
+#' data lake.
+#' @param TaskConfig Configuration about the custom classifier associated with the flywheel.
+#' @param ModelType The model type.
+#' @param DataLakeS3Uri &#91;required&#93; Enter the S3 location for the data lake. You can specify a new S3 bucket
+#' or a new folder of an existing S3 bucket. The flywheel creates the data
+#' lake at this location.
+#' @param DataSecurityConfig Data security configurations.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
+#' @param Tags The tags to associate with this flywheel.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_create_flywheel
+comprehend_create_flywheel <- function(FlywheelName, ActiveModelArn = NULL, DataAccessRoleArn, TaskConfig = NULL, ModelType = NULL, DataLakeS3Uri, DataSecurityConfig = NULL, ClientRequestToken = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateFlywheel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$create_flywheel_input(FlywheelName = FlywheelName, ActiveModelArn = ActiveModelArn, DataAccessRoleArn = DataAccessRoleArn, TaskConfig = TaskConfig, ModelType = ModelType, DataLakeS3Uri = DataLakeS3Uri, DataSecurityConfig = DataSecurityConfig, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .comprehend$create_flywheel_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$create_flywheel <- comprehend_create_flywheel
 
 #' Deletes a previously created document classifier
 #'
@@ -560,6 +695,35 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 }
 .comprehend$operations$delete_entity_recognizer <- comprehend_delete_entity_recognizer
 
+#' Deletes a flywheel
+#'
+#' @description
+#' Deletes a flywheel. When you delete the flywheel, Amazon Comprehend does not delete the data lake or the model associated with the flywheel.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/delete_flywheel.html](https://paws-r.github.io/docs/comprehend/delete_flywheel.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_delete_flywheel
+comprehend_delete_flywheel <- function(FlywheelArn) {
+  op <- new_operation(
+    name = "DeleteFlywheel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$delete_flywheel_input(FlywheelArn = FlywheelArn)
+  output <- .comprehend$delete_flywheel_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$delete_flywheel <- comprehend_delete_flywheel
+
 #' Deletes a resource-based policy that is attached to a custom model
 #'
 #' @description
@@ -591,6 +755,35 @@ comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NU
 }
 .comprehend$operations$delete_resource_policy <- comprehend_delete_resource_policy
 
+#' Returns information about the dataset that you specify
+#'
+#' @description
+#' Returns information about the dataset that you specify. For more information about datasets, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/describe_dataset.html](https://paws-r.github.io/docs/comprehend/describe_dataset.html) for full documentation.
+#'
+#' @param DatasetArn &#91;required&#93; The ARN of the dataset.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_describe_dataset
+comprehend_describe_dataset <- function(DatasetArn) {
+  op <- new_operation(
+    name = "DescribeDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$describe_dataset_input(DatasetArn = DatasetArn)
+  output <- .comprehend$describe_dataset_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$describe_dataset <- comprehend_describe_dataset
+
 #' Gets the properties associated with a document classification job
 #'
 #' @description
@@ -599,6 +792,7 @@ comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NU
 #' See [https://paws-r.github.io/docs/comprehend/describe_document_classification_job.html](https://paws-r.github.io/docs/comprehend/describe_document_classification_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
+#' [`start_document_classification_job`][comprehend_start_document_classification_job]
 #' operation returns this identifier in its response.
 #'
 #' @keywords internal
@@ -629,7 +823,9 @@ comprehend_describe_document_classification_job <- function(JobId) {
 #' See [https://paws-r.github.io/docs/comprehend/describe_document_classifier.html](https://paws-r.github.io/docs/comprehend/describe_document_classifier.html) for full documentation.
 #'
 #' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the document classifier.
-#' The operation returns this identifier in its response.
+#' The
+#' [`create_document_classifier`][comprehend_create_document_classifier]
+#' operation returns this identifier in its response.
 #'
 #' @keywords internal
 #'
@@ -659,6 +855,7 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 #' See [https://paws-r.github.io/docs/comprehend/describe_dominant_language_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_dominant_language_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
+#' [`start_dominant_language_detection_job`][comprehend_start_dominant_language_detection_job]
 #' operation returns this identifier in its response.
 #'
 #' @keywords internal
@@ -718,6 +915,7 @@ comprehend_describe_endpoint <- function(EndpointArn) {
 #' See [https://paws-r.github.io/docs/comprehend/describe_entities_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_entities_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
+#' [`start_entities_detection_job`][comprehend_start_entities_detection_job]
 #' operation returns this identifier in its response.
 #'
 #' @keywords internal
@@ -799,6 +997,65 @@ comprehend_describe_events_detection_job <- function(JobId) {
 }
 .comprehend$operations$describe_events_detection_job <- comprehend_describe_events_detection_job
 
+#' Provides configuration information about the flywheel
+#'
+#' @description
+#' Provides configuration information about the flywheel. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/describe_flywheel.html](https://paws-r.github.io/docs/comprehend/describe_flywheel.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_describe_flywheel
+comprehend_describe_flywheel <- function(FlywheelArn) {
+  op <- new_operation(
+    name = "DescribeFlywheel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$describe_flywheel_input(FlywheelArn = FlywheelArn)
+  output <- .comprehend$describe_flywheel_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$describe_flywheel <- comprehend_describe_flywheel
+
+#' Retrieve the configuration properties of a flywheel iteration
+#'
+#' @description
+#' Retrieve the configuration properties of a flywheel iteration. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/describe_flywheel_iteration.html](https://paws-r.github.io/docs/comprehend/describe_flywheel_iteration.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; 
+#' @param FlywheelIterationId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_describe_flywheel_iteration
+comprehend_describe_flywheel_iteration <- function(FlywheelArn, FlywheelIterationId) {
+  op <- new_operation(
+    name = "DescribeFlywheelIteration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$describe_flywheel_iteration_input(FlywheelArn = FlywheelArn, FlywheelIterationId = FlywheelIterationId)
+  output <- .comprehend$describe_flywheel_iteration_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$describe_flywheel_iteration <- comprehend_describe_flywheel_iteration
+
 #' Gets the properties associated with a key phrases detection job
 #'
 #' @description
@@ -807,6 +1064,7 @@ comprehend_describe_events_detection_job <- function(JobId) {
 #' See [https://paws-r.github.io/docs/comprehend/describe_key_phrases_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_key_phrases_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
+#' [`start_key_phrases_detection_job`][comprehend_start_key_phrases_detection_job]
 #' operation returns this identifier in its response.
 #'
 #' @keywords internal
@@ -867,7 +1125,8 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/describe_resource_policy.html](https://paws-r.github.io/docs/comprehend/describe_resource_policy.html) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the policy to describe.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom model version that has the
+#' resource policy.
 #'
 #' @keywords internal
 #'
@@ -927,6 +1186,7 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 #' See [https://paws-r.github.io/docs/comprehend/describe_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/describe_targeted_sentiment_detection_job.html) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier that Amazon Comprehend generated for the job. The
+#' [`start_targeted_sentiment_detection_job`][comprehend_start_targeted_sentiment_detection_job]
 #' operation returns this identifier in its response.
 #'
 #' @keywords internal
@@ -985,8 +1245,8 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/detect_dominant_language.html](https://paws-r.github.io/docs/comprehend/detect_dominant_language.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; A UTF-8 text string. Each string should contain at least 20 characters
-#' and must contain fewer that 5,000 bytes of UTF-8 encoded characters.
+#' @param Text &#91;required&#93; A UTF-8 text string. The string must contain at least 20 characters. The
+#' maximum string size is 100 KB.
 #'
 #' @keywords internal
 #'
@@ -1008,22 +1268,22 @@ comprehend_detect_dominant_language <- function(Text) {
 }
 .comprehend$operations$detect_dominant_language <- comprehend_detect_dominant_language
 
-#' Inspects text for named entities, and returns information about them
+#' Detects named entities in input text when you use the pre-trained model
 #'
 #' @description
-#' Inspects text for named entities, and returns information about them. For more information, about named entities, see how-entities.
+#' Detects named entities in input text when you use the pre-trained model. Detects custom entities if you have a custom entity recognition model.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/detect_entities.html](https://paws-r.github.io/docs/comprehend/detect_entities.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
-#' UTF-8 encoded characters.
+#' @param Text A UTF-8 text string. The maximum string size is 100 KB. If you enter
+#' text using this parameter, do not use the `Bytes` parameter.
 #' @param LanguageCode The language of the input documents. You can specify any of the primary
-#' languages supported by Amazon Comprehend. All documents must be in the
-#' same language.
+#' languages supported by Amazon Comprehend. If your request includes the
+#' endpoint for a custom entity recognition model, Amazon Comprehend uses
+#' the language of your custom model, and it ignores any language code that
+#' you specify here.
 #' 
-#' If your request includes the endpoint for a custom entity recognition
-#' model, Amazon Comprehend uses the language of your custom model, and it
-#' ignores any language code that you specify here.
+#' All input documents must be in the same language.
 #' @param EndpointArn The Amazon Resource Name of an endpoint that is associated with a custom
 #' entity recognition model. Provide an endpoint if you want to detect
 #' entities by using your own custom model instead of the default model
@@ -1035,18 +1295,42 @@ comprehend_detect_dominant_language <- function(Text) {
 #' 
 #' For information about endpoints, see [Managing
 #' endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
+#' @param Bytes This field applies only when you use a custom entity recognition model
+#' that was trained with PDF annotations. For other cases, enter your text
+#' input in the `Text` field.
+#' 
+#' Use the `Bytes` parameter to input a text, PDF, Word or image file.
+#' Using a plain-text file in the `Bytes` parameter is equivelent to using
+#' the `Text` parameter (the `Entities` field in the response is
+#' identical).
+#' 
+#' You can also use the `Bytes` parameter to input an Amazon Textract
+#' `DetectDocumentText` or `AnalyzeDocument` output file.
+#' 
+#' Provide the input document as a sequence of base64-encoded bytes. If
+#' your code uses an Amazon Web Services SDK to detect entities, the SDK
+#' may encode the document file bytes for you.
+#' 
+#' The maximum length of this field depends on the input document type. For
+#' details, see [Inputs for real-time custom
+#' analysis](https://docs.aws.amazon.com/comprehend/latest/dg/idp-inputs-sync.html)
+#' in the Comprehend Developer Guide.
+#' 
+#' If you use the `Bytes` parameter, do not use the `Text` parameter.
+#' @param DocumentReaderConfig Provides configuration parameters to override the default actions for
+#' extracting text from PDF documents and image files.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_detect_entities
-comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = NULL) {
+comprehend_detect_entities <- function(Text = NULL, LanguageCode = NULL, EndpointArn = NULL, Bytes = NULL, DocumentReaderConfig = NULL) {
   op <- new_operation(
     name = "DetectEntities",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$detect_entities_input(Text = Text, LanguageCode = LanguageCode, EndpointArn = EndpointArn)
+  input <- .comprehend$detect_entities_input(Text = Text, LanguageCode = LanguageCode, EndpointArn = EndpointArn, Bytes = Bytes, DocumentReaderConfig = DocumentReaderConfig)
   output <- .comprehend$detect_entities_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -1063,8 +1347,8 @@ comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = 
 #'
 #' See [https://paws-r.github.io/docs/comprehend/detect_key_phrases.html](https://paws-r.github.io/docs/comprehend/detect_key_phrases.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
-#' UTF-8 encoded characters.
+#' @param Text &#91;required&#93; A UTF-8 text string. The string must contain less than 100 KB of UTF-8
+#' encoded characters.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
@@ -1097,8 +1381,7 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/detect_pii_entities.html](https://paws-r.github.io/docs/comprehend/detect_pii_entities.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
-#' UTF-8 encoded characters.
+#' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 100 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
 #' valid language.
 #'
@@ -1130,8 +1413,7 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
 #'
 #' See [https://paws-r.github.io/docs/comprehend/detect_sentiment.html](https://paws-r.github.io/docs/comprehend/detect_sentiment.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; A UTF-8 text string. Each string must contain fewer that 5,000 bytes of
-#' UTF-8 encoded characters.
+#' @param Text &#91;required&#93; A UTF-8 text string. The maximum string size is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
@@ -1159,12 +1441,11 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 #' Inspects text for syntax and the part of speech of words in the document
 #'
 #' @description
-#' Inspects text for syntax and the part of speech of words in the document. For more information, how-syntax.
+#' Inspects text for syntax and the part of speech of words in the document. For more information, see [Syntax](https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html) in the Comprehend Developer Guide.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/detect_syntax.html](https://paws-r.github.io/docs/comprehend/detect_syntax.html) for full documentation.
 #'
-#' @param Text &#91;required&#93; A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF
-#' encoded characters.
+#' @param Text &#91;required&#93; A UTF-8 string. The maximum string size is 5 KB.
 #' @param LanguageCode &#91;required&#93; The language code of the input documents. You can specify any of the
 #' following languages supported by Amazon Comprehend: German ("de"),
 #' English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
@@ -1190,11 +1471,43 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 }
 .comprehend$operations$detect_syntax <- comprehend_detect_syntax
 
+#' Inspects the input text and returns a sentiment analysis for each entity
+#' identified in the text
+#'
+#' @description
+#' Inspects the input text and returns a sentiment analysis for each entity identified in the text.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/detect_targeted_sentiment.html](https://paws-r.github.io/docs/comprehend/detect_targeted_sentiment.html) for full documentation.
+#'
+#' @param Text &#91;required&#93; A UTF-8 text string. The maximum string length is 5 KB.
+#' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
+#' supported language.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_detect_targeted_sentiment
+comprehend_detect_targeted_sentiment <- function(Text, LanguageCode) {
+  op <- new_operation(
+    name = "DetectTargetedSentiment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$detect_targeted_sentiment_input(Text = Text, LanguageCode = LanguageCode)
+  output <- .comprehend$detect_targeted_sentiment_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$detect_targeted_sentiment <- comprehend_detect_targeted_sentiment
+
 #' Creates a new custom model that replicates a source custom model that
 #' you import
 #'
 #' @description
-#' Creates a new custom model that replicates a source custom model that you import. The source model can be in your AWS account or another one.
+#' Creates a new custom model that replicates a source custom model that you import. The source model can be in your Amazon Web Services account or another one.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/import_model.html](https://paws-r.github.io/docs/comprehend/import_model.html) for full documentation.
 #'
@@ -1205,23 +1518,21 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' import. Version names can have a maximum of 256 characters. Alphanumeric
 #' characters, hyphens (-) and underscores (_) are allowed. The version
 #' name must be unique among all models with the same classifier name in
-#' the account/AWS Region.
-#' @param ModelKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt trained custom models. The ModelKmsKeyId can be either
-#' of the following formats:
+#' the account/Region.
+#' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
+#' models. The ModelKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
-#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM)
-#' role that allows Amazon Comprehend to use Amazon Key Management Service
-#' (KMS) to encrypt or decrypt the custom model.
-#' @param Tags Tags to be associated with the custom model that is created by this
-#' import. A tag is a key-value pair that adds as a metadata to a resource
-#' used by Amazon Comprehend. For example, a tag with "Sales" as the key
-#' might be added to a resource to indicate its use by the sales
-#' department.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend permission to use Amazon Key Management Service (KMS) to
+#' encrypt or decrypt the custom model.
+#' @param Tags Tags to associate with the custom model that is created by this import.
+#' A tag is a key-value pair that adds as a metadata to a resource used by
+#' Amazon Comprehend. For example, a tag with "Sales" as the key might be
+#' added to a resource to indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
@@ -1242,6 +1553,38 @@ comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionNam
   return(response)
 }
 .comprehend$operations$import_model <- comprehend_import_model
+
+#' List the datasets that you have configured in this Region
+#'
+#' @description
+#' List the datasets that you have configured in this Region. For more information about datasets, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/list_datasets.html](https://paws-r.github.io/docs/comprehend/list_datasets.html) for full documentation.
+#'
+#' @param FlywheelArn The Amazon Resource Number (ARN) of the flywheel.
+#' @param Filter Filters the datasets to be returned in the response.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults Maximum number of results to return in a response. The default is 100.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_datasets
+comprehend_list_datasets <- function(FlywheelArn = NULL, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListDatasets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_datasets_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_datasets_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_datasets <- comprehend_list_datasets
 
 #' Gets a list of the documentation classification jobs that you have
 #' submitted
@@ -1547,6 +1890,71 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 }
 .comprehend$operations$list_events_detection_jobs <- comprehend_list_events_detection_jobs
 
+#' Information about the history of a flywheel iteration
+#'
+#' @description
+#' Information about the history of a flywheel iteration. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/list_flywheel_iteration_history.html](https://paws-r.github.io/docs/comprehend/list_flywheel_iteration_history.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; The ARN of the flywheel.
+#' @param Filter Filter the flywheel iteration history based on creation time.
+#' @param NextToken Next token
+#' @param MaxResults Maximum number of iteration history results to return
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_flywheel_iteration_history
+comprehend_list_flywheel_iteration_history <- function(FlywheelArn, Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFlywheelIterationHistory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_flywheel_iteration_history_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_flywheel_iteration_history_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_flywheel_iteration_history <- comprehend_list_flywheel_iteration_history
+
+#' Gets a list of the flywheels that you have created
+#'
+#' @description
+#' Gets a list of the flywheels that you have created.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/list_flywheels.html](https://paws-r.github.io/docs/comprehend/list_flywheels.html) for full documentation.
+#'
+#' @param Filter Filters the flywheels that are returned. You can filter flywheels on
+#' their status, or the date and time that they were submitted. You can
+#' only set one filter at a time.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults Maximum number of results to return in a response. The default is 100.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_list_flywheels
+comprehend_list_flywheels <- function(Filter = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListFlywheels",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$list_flywheels_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .comprehend$list_flywheels_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$list_flywheels <- comprehend_list_flywheels
+
 #' Get a list of key phrase detection jobs that you have submitted
 #'
 #' @description
@@ -1749,7 +2157,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 #' Attaches a resource-based policy to a custom model
 #'
 #' @description
-#' Attaches a resource-based policy to a custom model. You can use this policy to authorize an entity in another AWS account to import the custom model, which replicates it in Amazon Comprehend in their account.
+#' Attaches a resource-based policy to a custom model. You can use this policy to authorize an entity in another Amazon Web Services account to import the custom model, which replicates it in Amazon Comprehend in their account.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/put_resource_policy.html](https://paws-r.github.io/docs/comprehend/put_resource_policy.html) for full documentation.
 #'
@@ -1795,23 +2203,23 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
 #' Starts an asynchronous document classification job
 #'
 #' @description
-#' Starts an asynchronous document classification job. Use the operation to track the progress of the job.
+#' Starts an asynchronous document classification job. Use the [`describe_document_classification_job`][comprehend_describe_document_classification_job] operation to track the progress of the job.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/start_document_classification_job.html](https://paws-r.github.io/docs/comprehend/start_document_classification_job.html) for full documentation.
 #'
 #' @param JobName The identifier of the job.
-#' @param DocumentClassifierArn &#91;required&#93; The Amazon Resource Name (ARN) of the document classifier to use to
+#' @param DocumentClassifierArn The Amazon Resource Name (ARN) of the document classifier to use to
 #' process the job.
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -1821,22 +2229,24 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
 #' (VPC) containing the resources you are using for your document
 #' classification job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param Tags Tags to be associated with the document classification job. A tag is a
+#' @param Tags Tags to associate with the document classification job. A tag is a
 #' key-value pair that adds metadata to a resource used by Amazon
 #' Comprehend. For example, a tag with "Sales" as the key might be added to
 #' a resource to indicate its use by the sales department.
+#' @param FlywheelArn The Amazon Resource Number (ARN) of the flywheel associated with the
+#' model to use.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_document_classification_job
-comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
+comprehend_start_document_classification_job <- function(JobName = NULL, DocumentClassifierArn = NULL, InputDataConfig, OutputDataConfig, DataAccessRoleArn, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL, FlywheelArn = NULL) {
   op <- new_operation(
     name = "StartDocumentClassificationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
+  input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags, FlywheelArn = FlywheelArn)
   output <- .comprehend$start_document_classification_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -1856,17 +2266,17 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see
-#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data. For more information, see
+#' [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions).
 #' @param JobName An identifier for the job.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -1876,8 +2286,8 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' (VPC) containing the resources you are using for your dominant language
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param Tags Tags to be associated with the dominant language detection job. A tag is
-#' a key-value pair that adds metadata to a resource used by Amazon
+#' @param Tags Tags to associate with the dominant language detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
 #' Comprehend. For example, a tag with "Sales" as the key might be added to
 #' a resource to indicate its use by the sales department.
 #'
@@ -1911,10 +2321,10 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see
-#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data. For more information, see
+#' [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions).
 #' @param JobName The identifier of the job.
 #' @param EntityRecognizerArn The Amazon Resource Name (ARN) that identifies the specific entity
 #' recognizer to be used by the
@@ -1927,10 +2337,10 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' ignored and the language used for training the model is used instead.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -1940,22 +2350,24 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' (VPC) containing the resources you are using for your entity detection
 #' job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param Tags Tags to be associated with the entities detection job. A tag is a
-#' key-value pair that adds metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' @param Tags Tags to associate with the entities detection job. A tag is a key-value
+#' pair that adds metadata to a resource used by Amazon Comprehend. For
+#' example, a tag with "Sales" as the key might be added to a resource to
+#' indicate its use by the sales department.
+#' @param FlywheelArn The Amazon Resource Number (ARN) of the flywheel associated with the
+#' model to use.
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_start_entities_detection_job
-comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL) {
+comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataConfig, DataAccessRoleArn, JobName = NULL, EntityRecognizerArn = NULL, LanguageCode, ClientRequestToken = NULL, VolumeKmsKeyId = NULL, VpcConfig = NULL, Tags = NULL, FlywheelArn = NULL) {
   op <- new_operation(
     name = "StartEntitiesDetectionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
+  input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags, FlywheelArn = FlywheelArn)
   output <- .comprehend$start_entities_detection_job_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -1974,17 +2386,17 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data.
 #' @param JobName The identifier of the events detection job.
 #' @param LanguageCode &#91;required&#93; The language code of the input documents.
 #' @param ClientRequestToken An unique identifier for the request. If you don't set the client
 #' request token, Amazon Comprehend generates one.
 #' @param TargetEventTypes &#91;required&#93; The types of events to detect in the input documents.
-#' @param Tags Tags to be associated with the events detection job. A tag is a
-#' key-value pair that adds metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' @param Tags Tags to associate with the events detection job. A tag is a key-value
+#' pair that adds metadata to a resource used by Amazon Comprehend. For
+#' example, a tag with "Sales" as the key might be added to a resource to
+#' indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
@@ -2006,6 +2418,37 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 }
 .comprehend$operations$start_events_detection_job <- comprehend_start_events_detection_job
 
+#' Start the flywheel iteration
+#'
+#' @description
+#' Start the flywheel iteration.This operation uses any new datasets to train a new model version. For more information about flywheels, see [Flywheel overview](https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html) in the *Amazon Comprehend Developer Guide*.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/start_flywheel_iteration.html](https://paws-r.github.io/docs/comprehend/start_flywheel_iteration.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; The ARN of the flywheel.
+#' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
+#' token, Amazon Comprehend generates one.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_start_flywheel_iteration
+comprehend_start_flywheel_iteration <- function(FlywheelArn, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "StartFlywheelIteration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$start_flywheel_iteration_input(FlywheelArn = FlywheelArn, ClientRequestToken = ClientRequestToken)
+  output <- .comprehend$start_flywheel_iteration_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$start_flywheel_iteration <- comprehend_start_flywheel_iteration
+
 #' Starts an asynchronous key phrase detection job for a collection of
 #' documents
 #'
@@ -2016,20 +2459,20 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see
-#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data. For more information, see
+#' [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions).
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -2039,7 +2482,7 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' (VPC) containing the resources you are using for your key phrases
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param Tags Tags to be associated with the key phrases detection job. A tag is a
+#' @param Tags Tags to associate with the key phrases detection job. A tag is a
 #' key-value pair that adds metadata to a resource used by Amazon
 #' Comprehend. For example, a tag with "Sales" as the key might be added to
 #' a resource to indicate its use by the sales department.
@@ -2082,14 +2525,14 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' This parameter is required if you set the `Mode` parameter to
 #' `ONLY_REDACTION`. In that case, you must provide a `RedactionConfig`
 #' definition that includes the `PiiEntityTypes` parameter.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
 #' valid language.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
-#' @param Tags Tags to be associated with the PII entities detection job. A tag is a
+#' @param Tags Tags to associate with the PII entities detection job. A tag is a
 #' key-value pair that adds metadata to a resource used by Amazon
 #' Comprehend. For example, a tag with "Sales" as the key might be added to
 #' a resource to indicate its use by the sales department.
@@ -2124,20 +2567,20 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #'
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see
-#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data. For more information, see
+#' [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions).
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the primary
 #' languages supported by Amazon Comprehend. All documents must be in the
 #' same language.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -2147,10 +2590,10 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' (VPC) containing the resources you are using for your sentiment
 #' detection job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param Tags Tags to be associated with the sentiment detection job. A tag is a
-#' key-value pair that adds metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' @param Tags Tags to associate with the sentiment detection job. A tag is a key-value
+#' pair that adds metadata to a resource used by Amazon Comprehend. For
+#' example, a tag with "Sales" as the key might be added to a resource to
+#' indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
@@ -2176,18 +2619,18 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' of documents
 #'
 #' @description
-#' Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the operation to track the status of a job.
+#' Starts an asynchronous targeted sentiment detection job for a collection of documents. Use the [`describe_targeted_sentiment_detection_job`][comprehend_describe_targeted_sentiment_detection_job] operation to track the status of a job.
 #'
 #' See [https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html](https://paws-r.github.io/docs/comprehend/start_targeted_sentiment_detection_job.html) for full documentation.
 #'
 #' @param InputDataConfig &#91;required&#93; 
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see Role-based permissions.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data. For more information, see
+#' Role-based permissions.
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
-#' valid language.
+#' supported language.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
 #' @param VolumeKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt data on the
@@ -2199,8 +2642,8 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' -   Amazon Resource Name (ARN) of a KMS Key:
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig 
-#' @param Tags Tags to be associated with the targeted sentiment detection job. A tag
-#' is a key-value pair that adds metadata to a resource used by Amazon
+#' @param Tags Tags to associate with the targeted sentiment detection job. A tag is a
+#' key-value pair that adds metadata to a resource used by Amazon
 #' Comprehend. For example, a tag with "Sales" as the key might be added to
 #' a resource to indicate its use by the sales department.
 #'
@@ -2236,18 +2679,18 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
 #' archive with two files, `topic-terms.csv` that lists the terms
 #' associated with each topic, and `doc-topics.csv` that lists the
 #' documents associated with each topic
-#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-#' (IAM) role that grants Amazon Comprehend read access to your input data.
-#' For more information, see
-#' https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions.
+#' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend read access to your input data. For more information, see
+#' [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions).
 #' @param JobName The identifier of the job.
 #' @param NumberOfTopics The number of topics to detect.
 #' @param ClientRequestToken A unique identifier for the request. If you do not set the client
 #' request token, Amazon Comprehend generates one.
-#' @param VolumeKmsKeyId ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
-#' uses to encrypt data on the storage volume attached to the ML compute
-#' instance(s) that process the analysis job. The VolumeKmsKeyId can be
-#' either of the following formats:
+#' @param VolumeKmsKeyId ID for the Amazon Web Services Key Management Service (KMS) key that
+#' Amazon Comprehend uses to encrypt data on the storage volume attached to
+#' the ML compute instance(s) that process the analysis job. The
+#' VolumeKmsKeyId can be either of the following formats:
 #' 
 #' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
@@ -2257,10 +2700,10 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
 #' (VPC) containing the resources you are using for your topic detection
 #' job. For more information, see [Amazon
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
-#' @param Tags Tags to be associated with the topics detection job. A tag is a
-#' key-value pair that adds metadata to a resource used by Amazon
-#' Comprehend. For example, a tag with "Sales" as the key might be added to
-#' a resource to indicate its use by the sales department.
+#' @param Tags Tags to associate with the topics detection job. A tag is a key-value
+#' pair that adds metadata to a resource used by Amazon Comprehend. For
+#' example, a tag with "Sales" as the key might be added to a resource to
+#' indicate its use by the sales department.
 #'
 #' @keywords internal
 #'
@@ -2626,18 +3069,19 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
 #' characters per second.
 #' @param DesiredDataAccessRoleArn Data access role ARN to use in case the new model is encrypted with a
 #' customer CMK.
+#' @param FlywheelArn The Amazon Resource Number (ARN) of the flywheel
 #'
 #' @keywords internal
 #'
 #' @rdname comprehend_update_endpoint
-comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, DesiredInferenceUnits = NULL, DesiredDataAccessRoleArn = NULL) {
+comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, DesiredInferenceUnits = NULL, DesiredDataAccessRoleArn = NULL, FlywheelArn = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredModelArn = DesiredModelArn, DesiredInferenceUnits = DesiredInferenceUnits, DesiredDataAccessRoleArn = DesiredDataAccessRoleArn)
+  input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredModelArn = DesiredModelArn, DesiredInferenceUnits = DesiredInferenceUnits, DesiredDataAccessRoleArn = DesiredDataAccessRoleArn, FlywheelArn = FlywheelArn)
   output <- .comprehend$update_endpoint_output()
   config <- get_config()
   svc <- .comprehend$service(config)
@@ -2646,3 +3090,36 @@ comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, Desi
   return(response)
 }
 .comprehend$operations$update_endpoint <- comprehend_update_endpoint
+
+#' Update the configuration information for an existing flywheel
+#'
+#' @description
+#' Update the configuration information for an existing flywheel.
+#'
+#' See [https://paws-r.github.io/docs/comprehend/update_flywheel.html](https://paws-r.github.io/docs/comprehend/update_flywheel.html) for full documentation.
+#'
+#' @param FlywheelArn &#91;required&#93; The Amazon Resource Number (ARN) of the flywheel to update.
+#' @param ActiveModelArn The Amazon Resource Number (ARN) of the active model version.
+#' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the IAM role that grants Amazon
+#' Comprehend permission to access the flywheel data.
+#' @param DataSecurityConfig Flywheel data security configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_update_flywheel
+comprehend_update_flywheel <- function(FlywheelArn, ActiveModelArn = NULL, DataAccessRoleArn = NULL, DataSecurityConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateFlywheel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$update_flywheel_input(FlywheelArn = FlywheelArn, ActiveModelArn = ActiveModelArn, DataAccessRoleArn = DataAccessRoleArn, DataSecurityConfig = DataSecurityConfig)
+  output <- .comprehend$update_flywheel_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$update_flywheel <- comprehend_update_flywheel

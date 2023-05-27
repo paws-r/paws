@@ -19,15 +19,15 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ServiceId}{[required] The ID of the service.}
 
-\item{AddAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions
-are granted to the principals in this list. To grant permissions to all
+\item{AddAllowedPrincipals}{The Amazon Resource Names (ARN) of the principals. Permissions are
+granted to the principals in this list. To grant permissions to all
 principals, specify an asterisk (*).}
 
-\item{RemoveAllowedPrincipals}{The Amazon Resource Names (ARN) of one or more principals. Permissions
-are revoked for principals in this list.}
+\item{RemoveAllowedPrincipals}{The Amazon Resource Names (ARN) of the principals. Permissions are
+revoked for principals in this list.}
 }
 \description{
-Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (IAM users, IAM roles, and Amazon Web Services accounts) to connect to your endpoint service.
+Modifies the permissions for your VPC endpoint service. You can add or remove permissions for service consumers (Amazon Web Services accounts, users, and IAM roles) to connect to your endpoint service.
 
 See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_service_permissions.html} for full documentation.
 }

@@ -12,12 +12,12 @@ ssmincidents_update_deletion_protection(
 )
 }
 \arguments{
-\item{arn}{[required] The Amazon Resource Name (ARN) of the replication set you're updating.}
+\item{arn}{[required] The Amazon Resource Name (ARN) of the replication set to update.}
 
-\item{clientToken}{A token ensuring that the operation is called only once with the
+\item{clientToken}{A token that ensures that the operation is called only once with the
 specified details.}
 
-\item{deletionProtected}{[required] Details if deletion protection is enabled or disabled in your account.}
+\item{deletionProtected}{[required] Specifies if deletion protection is turned on or off in your account.}
 }
 \description{
 Update deletion protection to either allow or deny deletion of the final Region in a replication set.

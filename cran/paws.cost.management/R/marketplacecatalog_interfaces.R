@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.marketplacecatalog$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$delete_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .marketplacecatalog$describe_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Catalog = structure(logical(0), tags = list(location = "querystring", locationName = "catalog", type = "string")), ChangeSetId = structure(logical(0), tags = list(location = "querystring", locationName = "changeSetId", type = "string"))), tags = list(type = "structure"))
@@ -39,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.marketplacecatalog$get_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$get_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .marketplacecatalog$list_change_sets_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), FilterList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Sort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -53,7 +77,7 @@ NULL
 
 .marketplacecatalog$list_entities_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string")), FilterList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Sort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), EntityType = structure(logical(0), tags = list(type = "string")), FilterList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ValueList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Sort = structure(list(SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), OwnershipType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,14 +87,62 @@ NULL
   return(populate(args, shape))
 }
 
+.marketplacecatalog$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .marketplacecatalog$start_change_set_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), ChangeSet = structure(list(structure(list(ChangeType = structure(logical(0), tags = list(type = "string")), Entity = structure(list(Type = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Details = structure(logical(0), tags = list(type = "string")), ChangeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ChangeSetName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Catalog = structure(logical(0), tags = list(type = "string")), ChangeSet = structure(list(structure(list(ChangeType = structure(logical(0), tags = list(type = "string")), Entity = structure(list(Type = structure(logical(0), tags = list(type = "string")), Identifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EntityTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Details = structure(logical(0), tags = list(type = "string")), ChangeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ChangeSetName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ChangeSetTags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .marketplacecatalog$start_change_set_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ChangeSetId = structure(logical(0), tags = list(type = "string")), ChangeSetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.marketplacecatalog$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }

@@ -9,7 +9,8 @@ processed}
 ivs_list_recording_configurations(maxResults = NULL, nextToken = NULL)
 }
 \arguments{
-\item{maxResults}{Maximum number of recording configurations to return. Default: 50.}
+\item{maxResults}{Maximum number of recording configurations to return. Default: your
+service quota or 100, whichever is smaller.}
 
 \item{nextToken}{The first recording configuration to retrieve. This is used for
 pagination; see the \code{nextToken} response field.}

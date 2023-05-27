@@ -18,8 +18,8 @@ workdocs_update_user(
 )
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 
 \item{UserId}{[required] The ID of the user.}
 
@@ -35,7 +35,7 @@ administrator credentials to access the API.}
 
 \item{Locale}{The locale of the user.}
 
-\item{GrantPoweruserPrivileges}{Boolean value to determine whether the user is granted Poweruser
+\item{GrantPoweruserPrivileges}{Boolean value to determine whether the user is granted Power user
 privileges.}
 }
 \description{

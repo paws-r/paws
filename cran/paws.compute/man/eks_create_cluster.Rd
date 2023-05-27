@@ -13,14 +13,17 @@ eks_create_cluster(
   logging = NULL,
   clientRequestToken = NULL,
   tags = NULL,
-  encryptionConfig = NULL
+  encryptionConfig = NULL,
+  outpostConfig = NULL
 )
 }
 \arguments{
 \item{name}{[required] The unique name to give to your cluster.}
 
 \item{version}{The desired Kubernetes version for your cluster. If you don't specify a
-value here, the latest version available in Amazon EKS is used.}
+value here, the default version available in Amazon EKS is used.
+
+The default version might not be the latest version available.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions
 for the Kubernetes control plane to make calls to Amazon Web Services
@@ -54,6 +57,12 @@ organization. Each tag consists of a key and an optional value. You
 define both.}
 
 \item{encryptionConfig}{The encryption configuration for the cluster.}
+
+\item{outpostConfig}{An object representing the configuration of your local Amazon EKS
+cluster on an Amazon Web Services Outpost. Before creating a local
+cluster on an Outpost, review \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-local-cluster-overview.html}{Local clusters for Amazon EKS on Amazon Web Services Outposts}
+in the \emph{Amazon EKS User Guide}. This object isn't available for creating
+Amazon EKS clusters on the Amazon Web Services cloud.}
 }
 \description{
 Creates an Amazon EKS control plane.

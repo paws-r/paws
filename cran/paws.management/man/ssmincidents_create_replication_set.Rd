@@ -5,14 +5,16 @@
 \title{A replication set replicates and encrypts your data to the provided
 Regions with the provided KMS key}
 \usage{
-ssmincidents_create_replication_set(clientToken = NULL, regions)
+ssmincidents_create_replication_set(clientToken = NULL, regions, tags = NULL)
 }
 \arguments{
-\item{clientToken}{A token ensuring that the operation is called only once with the
+\item{clientToken}{A token that ensures that the operation is called only once with the
 specified details.}
 
 \item{regions}{[required] The Regions that Incident Manager replicates your data to. You can have
 up to three Regions in your replication set.}
+
+\item{tags}{A list of tags to add to the replication set.}
 }
 \description{
 A replication set replicates and encrypts your data to the provided Regions with the provided KMS key.

@@ -15,7 +15,7 @@ If you're using an AWS SDK to call Amazon Textract, you might not need
 to base64-encode image bytes that are passed using the \code{Bytes} field.}
 }
 \description{
-Detects text in the input document. Amazon Textract can detect lines of text and the words that make up a line of text. The input document must be an image in JPEG, PNG, PDF, or TIFF format. \code{\link[=textract_detect_document_text]{detect_document_text}} returns the detected text in an array of Block objects.
+Detects text in the input document. Amazon Textract can detect lines of text and the words that make up a line of text. The input document must be in one of the following image formats: JPEG, PNG, PDF, or TIFF. \code{\link[=textract_detect_document_text]{detect_document_text}} returns the detected text in an array of Block objects.
 
 See \url{https://paws-r.github.io/docs/textract/detect_document_text.html} for full documentation.
 }

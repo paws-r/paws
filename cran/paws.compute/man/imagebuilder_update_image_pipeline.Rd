@@ -15,7 +15,8 @@ imagebuilder_update_image_pipeline(
   enhancedImageMetadataEnabled = NULL,
   schedule = NULL,
   status = NULL,
-  clientToken
+  clientToken,
+  imageScanningConfiguration = NULL
 )
 }
 \arguments{
@@ -30,11 +31,11 @@ configure images updated by this image pipeline.}
 \item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container pipeline to update.}
 
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that
-will be used to build images updated by this image pipeline.}
+Image Builder uses to build images that this image pipeline has updated.}
 
 \item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that
-will be used to configure and distribute images updated by this image
-pipeline.}
+Image Builder uses to configure and distribute images that this image
+pipeline has updated.}
 
 \item{imageTestsConfiguration}{The image test configuration of the image pipeline.}
 
@@ -48,6 +49,8 @@ Enabled by default.}
 \item{status}{The status of the image pipeline.}
 
 \item{clientToken}{[required] The idempotency token used to make this request idempotent.}
+
+\item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
 }
 \description{
 Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images.

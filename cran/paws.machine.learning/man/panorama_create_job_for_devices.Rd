@@ -2,19 +2,19 @@
 % Please edit documentation in R/panorama_operations.R
 \name{panorama_create_job_for_devices}
 \alias{panorama_create_job_for_devices}
-\title{Creates a job to run on one or more devices}
+\title{Creates a job to run on a device}
 \usage{
-panorama_create_job_for_devices(DeviceIds, DeviceJobConfig, JobType)
+panorama_create_job_for_devices(DeviceIds, DeviceJobConfig = NULL, JobType)
 }
 \arguments{
-\item{DeviceIds}{[required] IDs of target devices.}
+\item{DeviceIds}{[required] ID of target device.}
 
-\item{DeviceJobConfig}{[required] Configuration settings for the job.}
+\item{DeviceJobConfig}{Configuration settings for a software update job.}
 
 \item{JobType}{[required] The type of job to run.}
 }
 \description{
-Creates a job to run on one or more devices.
+Creates a job to run on a device. A job can update a device's software or reboot it.
 
 See \url{https://paws-r.github.io/docs/panorama/create_job_for_devices.html} for full documentation.
 }

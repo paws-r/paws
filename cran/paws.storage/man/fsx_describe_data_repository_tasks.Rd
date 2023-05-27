@@ -2,9 +2,9 @@
 % Please edit documentation in R/fsx_operations.R
 \name{fsx_describe_data_repository_tasks}
 \alias{fsx_describe_data_repository_tasks}
-\title{Returns the description of specific Amazon FSx for Lustre data
-repository tasks, if one or more TaskIds values are provided in the
-request, or if filters are used in the request}
+\title{Returns the description of specific Amazon FSx for Lustre or Amazon File
+Cache data repository tasks, if one or more TaskIds values are provided
+in the request, or if filters are used in the request}
 \usage{
 fsx_describe_data_repository_tasks(
   TaskIds = NULL,
@@ -27,7 +27,7 @@ specific lifecycle state.}
 \item{NextToken}{}
 }
 \description{
-Returns the description of specific Amazon FSx for Lustre data repository tasks, if one or more \code{TaskIds} values are provided in the request, or if filters are used in the request. You can use filters to narrow the response to include just tasks for specific file systems, or tasks in a specific lifecycle state. Otherwise, it returns all data repository tasks owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
+Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository tasks, if one or more \code{TaskIds} values are provided in the request, or if filters are used in the request. You can use filters to narrow the response to include just tasks for specific file systems or caches, or tasks in a specific lifecycle state. Otherwise, it returns all data repository tasks owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
 See \url{https://paws-r.github.io/docs/fsx/describe_data_repository_tasks.html} for full documentation.
 }

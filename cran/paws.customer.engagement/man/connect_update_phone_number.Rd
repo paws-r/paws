@@ -3,21 +3,25 @@
 \name{connect_update_phone_number}
 \alias{connect_update_phone_number}
 \title{Updates your claimed phone number from its current Amazon Connect
-instance to another Amazon Connect instance in the same Region}
+instance or traffic distribution group to another Amazon Connect
+instance or traffic distribution group in the same Amazon Web Services
+Region}
 \usage{
 connect_update_phone_number(PhoneNumberId, TargetArn, ClientToken = NULL)
 }
 \arguments{
 \item{PhoneNumberId}{[required] A unique identifier for the phone number.}
 
-\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances that phone
-numbers are claimed to.}
+\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+distribution groups that phone numbers are claimed to.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request.}
+idempotency of the request. If not provided, the Amazon Web Services SDK
+populates this field. For more information about idempotency, see
+\href{https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/}{Making retries safe with idempotent APIs}.}
 }
 \description{
-Updates your claimed phone number from its current Amazon Connect instance to another Amazon Connect instance in the same Region.
+Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region.
 
 See \url{https://paws-r.github.io/docs/connect/update_phone_number.html} for full documentation.
 }

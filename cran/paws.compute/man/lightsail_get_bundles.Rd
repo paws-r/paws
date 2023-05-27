@@ -5,7 +5,11 @@
 \title{Returns the bundles that you can apply to an Amazon Lightsail instance
 when you create it}
 \usage{
-lightsail_get_bundles(includeInactive = NULL, pageToken = NULL)
+lightsail_get_bundles(
+  includeInactive = NULL,
+  pageToken = NULL,
+  appCategory = NULL
+)
 }
 \arguments{
 \item{includeInactive}{A Boolean value that indicates whether to include inactive (unavailable)
@@ -17,6 +21,10 @@ To get a page token, perform an initial
 \code{\link[=lightsail_get_bundles]{get_bundles}} request. If your results are
 paginated, the response will return a next page token that you can
 specify as the page token in a subsequent request.}
+
+\item{appCategory}{Returns a list of bundles that are specific to Lightsail for Research.
+
+You must use this parameter to view Lightsail for Research bundles.}
 }
 \description{
 Returns the bundles that you can apply to an Amazon Lightsail instance when you create it.

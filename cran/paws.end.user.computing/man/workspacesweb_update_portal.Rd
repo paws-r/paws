@@ -4,9 +4,29 @@
 \alias{workspacesweb_update_portal}
 \title{Updates a web portal}
 \usage{
-workspacesweb_update_portal(displayName = NULL, portalArn)
+workspacesweb_update_portal(
+  authenticationType = NULL,
+  displayName = NULL,
+  portalArn
+)
 }
 \arguments{
+\item{authenticationType}{The type of authentication integration points used when signing into the
+web portal. Defaults to \code{Standard}.
+
+\code{Standard} web portals are authenticated directly through your identity
+provider. You need to call
+\code{\link[=workspacesweb_create_identity_provider]{create_identity_provider}} to
+integrate your identity provider with your web portal. User and group
+access to your web portal is controlled through your identity provider.
+
+\code{IAM_Identity_Center} web portals are authenticated through AWS IAM
+Identity Center (successor to AWS Single Sign-On). They provide
+additional features, such as IdP-initiated authentication. Identity
+sources (including external identity provider integration), plus user
+and group access to your web portal, can be configured in the IAM
+Identity Center.}
+
 \item{displayName}{The name of the web portal. This is not visible to users who log into
 the web portal.}
 

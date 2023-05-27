@@ -14,8 +14,8 @@ workmail_list_mobile_device_access_overrides(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization under which to list mobile device
-access overrides.}
+\item{OrganizationId}{[required] The WorkMail organization under which to list mobile device access
+overrides.}
 
 \item{UserId}{The WorkMail user under which you list the mobile device access
 overrides. Accepts the following types of user identities:

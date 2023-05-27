@@ -7,6 +7,7 @@
 resiliencehub_remove_draft_app_version_resource_mappings(
   appArn,
   appRegistryAppNames = NULL,
+  eksSourceNames = NULL,
   logicalStackNames = NULL,
   resourceGroupNames = NULL,
   resourceNames = NULL,
@@ -14,24 +15,31 @@ resiliencehub_remove_draft_app_version_resource_mappings(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the application. The format for this
-ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}.
-For more information about ARNs, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference}.}
+\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
+format for this ARN is:
+arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
+information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
+in the \emph{AWS General Reference} guide.}
 
-\item{appRegistryAppNames}{The names of the registered applications to remove from the resource
+\item{appRegistryAppNames}{The names of the registered applications you want to remove from the
+resource mappings.}
+
+\item{eksSourceNames}{The names of the Amazon Elastic Kubernetes Service clusters and
+namespaces you want to remove from the resource mappings.
+
+This parameter accepts values in "eks-cluster/namespace" format.}
+
+\item{logicalStackNames}{The names of the CloudFormation stacks you want to remove from the
+resource mappings.}
+
+\item{resourceGroupNames}{The names of the resource groups you want to remove from the resource
 mappings.}
 
-\item{logicalStackNames}{The names of the CloudFormation stacks to remove from the resource
+\item{resourceNames}{The names of the resources you want to remove from the resource
 mappings.}
 
-\item{resourceGroupNames}{The names of the resource groups to remove from the resource mappings.}
-
-\item{resourceNames}{The names of the resources to remove from the resource mappings.}
-
-\item{terraformSourceNames}{\if{html}{\out{
-</p>
-}}}
+\item{terraformSourceNames}{The names of the Terraform sources you want to remove from the resource
+mappings.}
 }
 \description{
 Removes resource mappings from a draft application version.

@@ -9,7 +9,8 @@ recyclebin_create_rule(
   Description = NULL,
   Tags = NULL,
   ResourceType,
-  ResourceTags = NULL
+  ResourceTags = NULL,
+  LockConfiguration = NULL
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ Region-level retention rule does not have any resource tags specified.
 It retains all deleted resources of the specified resource type in the
 Region in which the rule is created, even if the resources are not
 tagged.}
+
+\item{LockConfiguration}{Information about the retention rule lock configuration.}
 }
 \description{
 Creates a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule}{Create Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.

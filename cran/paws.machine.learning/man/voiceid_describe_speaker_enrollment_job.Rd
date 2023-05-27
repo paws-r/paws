@@ -7,7 +7,7 @@
 voiceid_describe_speaker_enrollment_job(DomainId, JobId)
 }
 \arguments{
-\item{DomainId}{[required] The identifier of the domain containing the speaker enrollment job.}
+\item{DomainId}{[required] The identifier of the domain that contains the speaker enrollment job.}
 
 \item{JobId}{[required] The identifier of the speaker enrollment job you are describing.}
 }

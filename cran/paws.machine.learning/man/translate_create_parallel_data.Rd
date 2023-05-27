@@ -10,7 +10,8 @@ translate_create_parallel_data(
   Description = NULL,
   ParallelDataConfig,
   EncryptionKey = NULL,
-  ClientToken
+  ClientToken,
+  Tags = NULL
 )
 }
 \arguments{
@@ -25,6 +26,10 @@ must assign a name that is unique in the account and region.}
 
 \item{ClientToken}{[required] A unique identifier for the request. This token is automatically
 generated when you use Amazon Translate through an AWS SDK.}
+
+\item{Tags}{Tags to be associated with this resource. A tag is a key-value pair that
+adds metadata to a resource. Each tag key for the resource must be
+unique. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/tagging.html}{Tagging your resources}.}
 }
 \description{
 Creates a parallel data resource in Amazon Translate by importing an input file from Amazon S3. Parallel data files contain examples that show how you want segments of text to be translated. By adding parallel data, you can influence the style, tone, and word choice in your translation output.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_vpc}
 \alias{ec2_create_vpc}
-\title{Creates a VPC with the specified IPv4 CIDR block}
+\title{Creates a VPC with the specified CIDR blocks}
 \usage{
 ec2_create_vpc(
   CidrBlock = NULL,
@@ -85,7 +85,7 @@ parameter.}
 \item{TagSpecifications}{The tags to assign to the VPC.}
 }
 \description{
-Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses). For more information about how large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{Your VPC and subnets} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a VPC with the specified CIDR blocks. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html#vpc-cidr-blocks}{VPC CIDR blocks} in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 See \url{https://paws-r.github.io/docs/ec2/create_vpc.html} for full documentation.
 }

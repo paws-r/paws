@@ -9,7 +9,6 @@ servicecatalog_describe_product(AcceptLanguage = NULL, Id = NULL, Name = NULL)
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}

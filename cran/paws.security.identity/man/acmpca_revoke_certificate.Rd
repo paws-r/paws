@@ -2,7 +2,8 @@
 % Please edit documentation in R/acmpca_operations.R
 \name{acmpca_revoke_certificate}
 \alias{acmpca_revoke_certificate}
-\title{Revokes a certificate that was issued inside ACM Private CA}
+\title{Revokes a certificate that was issued inside Amazon Web Services Private
+CA}
 \usage{
 acmpca_revoke_certificate(
   CertificateAuthorityArn,
@@ -33,7 +34,7 @@ action in the \emph{Certificate Manager API Reference}.}
 \item{RevocationReason}{[required] Specifies why you revoked the certificate.}
 }
 \description{
-Revokes a certificate that was issued inside ACM Private CA. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. ACM Private CA writes the CRL to an S3 bucket that you specify. A CRL is typically updated approximately 30 minutes after a certificate is revoked. If for any reason the CRL update fails, ACM Private CA attempts makes further attempts every 15 minutes. With Amazon CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and \code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
+Revokes a certificate that was issued inside Amazon Web Services Private CA. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. Amazon Web Services Private CA writes the CRL to an S3 bucket that you specify. A CRL is typically updated approximately 30 minutes after a certificate is revoked. If for any reason the CRL update fails, Amazon Web Services Private CA attempts makes further attempts every 15 minutes. With Amazon CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and \code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
 
 See \url{https://paws-r.github.io/docs/acmpca/revoke_certificate.html} for full documentation.
 }

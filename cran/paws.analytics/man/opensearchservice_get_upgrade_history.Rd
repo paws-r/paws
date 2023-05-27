@@ -2,8 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_get_upgrade_history}
 \alias{opensearchservice_get_upgrade_history}
-\title{Retrieves the complete history of the last 10 upgrades performed on the
-domain}
+\title{Retrieves the complete history of the last 10 upgrades performed on an
+Amazon OpenSearch Service domain}
 \usage{
 opensearchservice_get_upgrade_history(
   DomainName,
@@ -12,14 +12,20 @@ opensearchservice_get_upgrade_history(
 )
 }
 \arguments{
-\item{DomainName}{[required]}
+\item{DomainName}{[required] The name of an existing domain.}
 
-\item{MaxResults}{}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_get_upgrade_history]{get_upgrade_history}} operation
+returns a \code{nextToken}, you can include the returned \code{nextToken} in
+subsequent
+\code{\link[=opensearchservice_get_upgrade_history]{get_upgrade_history}}
+operations, which returns results in the next page.}
 }
 \description{
-Retrieves the complete history of the last 10 upgrades performed on the domain.
+Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/get_upgrade_history.html} for full documentation.
 }

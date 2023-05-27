@@ -3,7 +3,7 @@
 \name{customerprofiles_add_profile_key}
 \alias{customerprofiles_add_profile_key}
 \title{Associates a new key value with a specific profile, such as a Contact
-Trace Record (CTR) ContactId}
+Record ContactId}
 \usage{
 customerprofiles_add_profile_key(ProfileId, KeyName, Values, DomainName)
 }
@@ -23,7 +23,7 @@ _shopifyCustomerId, _shopifyOrderId.}
 \item{DomainName}{[required] The unique name of the domain.}
 }
 \description{
-Associates a new key value with a specific profile, such as a Contact Trace Record (CTR) ContactId.
+Associates a new key value with a specific profile, such as a Contact Record ContactId.
 
 See \url{https://paws-r.github.io/docs/customerprofiles/add_profile_key.html} for full documentation.
 }

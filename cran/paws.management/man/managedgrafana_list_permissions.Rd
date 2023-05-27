@@ -25,9 +25,9 @@ this token from a previous
 
 \item{userId}{(Optional) Limits the results to only the user that matches this ID.}
 
-\item{userType}{(Optional) If you specify \code{SSO_USER}, then only the permissions of
-Amazon Web Services SSO users are returned. If you specify \code{SSO_GROUP},
-only the permissions of Amazon Web Services SSO groups are returned.}
+\item{userType}{(Optional) If you specify \code{SSO_USER}, then only the permissions of IAM
+Identity Center users are returned. If you specify \code{SSO_GROUP}, only the
+permissions of IAM Identity Center groups are returned.}
 
 \item{workspaceId}{[required] The ID of the workspace to list permissions for. This parameter is
 required.}

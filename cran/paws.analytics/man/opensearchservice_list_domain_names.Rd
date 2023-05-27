@@ -2,16 +2,16 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_list_domain_names}
 \alias{opensearchservice_list_domain_names}
-\title{Returns the names of all domains owned by the current user's account}
+\title{Returns the names of all Amazon OpenSearch Service domains owned by the
+current user in the active Region}
 \usage{
 opensearchservice_list_domain_names(EngineType = NULL)
 }
 \arguments{
-\item{EngineType}{Optional parameter to filter the output by domain engine type.
-Acceptable values are 'Elasticsearch' and 'OpenSearch'.}
+\item{EngineType}{Filters the output by domain engine type.}
 }
 \description{
-Returns the names of all domains owned by the current user's account.
+Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/list_domain_names.html} for full documentation.
 }

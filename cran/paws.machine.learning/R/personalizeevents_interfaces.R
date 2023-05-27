@@ -5,7 +5,7 @@ NULL
 
 .personalizeevents$put_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(trackingId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string")), sessionId = structure(logical(0), tags = list(type = "string")), eventList = structure(list(structure(list(eventId = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), eventValue = structure(logical(0), tags = list(type = "float")), itemId = structure(logical(0), tags = list(type = "string")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), sentAt = structure(logical(0), tags = list(type = "timestamp")), recommendationId = structure(logical(0), tags = list(type = "string")), impression = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(trackingId = structure(logical(0), tags = list(type = "string")), userId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sessionId = structure(logical(0), tags = list(type = "string")), eventList = structure(list(structure(list(eventId = structure(logical(0), tags = list(type = "string")), eventType = structure(logical(0), tags = list(type = "string")), eventValue = structure(logical(0), tags = list(type = "float")), itemId = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string", sensitive = TRUE)), sentAt = structure(logical(0), tags = list(type = "timestamp")), recommendationId = structure(logical(0), tags = list(type = "string")), impression = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list")), metricAttribution = structure(list(eventAttributionSource = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -15,7 +15,7 @@ NULL
 
 .personalizeevents$put_items_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(itemId = structure(logical(0), tags = list(type = "string")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), items = structure(list(structure(list(itemId = structure(logical(0), tags = list(type = "string")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -25,7 +25,7 @@ NULL
 
 .personalizeevents$put_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), users = structure(list(structure(list(userId = structure(logical(0), tags = list(type = "string")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(datasetArn = structure(logical(0), tags = list(type = "string")), users = structure(list(structure(list(userId = structure(logical(0), tags = list(type = "string")), properties = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

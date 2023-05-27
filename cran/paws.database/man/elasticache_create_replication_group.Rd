@@ -39,7 +39,11 @@ elasticache_create_replication_group(
   KmsKeyId = NULL,
   UserGroupIds = NULL,
   LogDeliveryConfigurations = NULL,
-  DataTieringEnabled = NULL
+  DataTieringEnabled = NULL,
+  NetworkType = NULL,
+  IpDiscovery = NULL,
+  TransitEncryptionMode = NULL,
+  ClusterMode = NULL
 )
 }
 \arguments{
@@ -182,17 +186,6 @@ for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
 }
-\item Memory optimized with data tiering:
-\itemize{
-\item Current generation:
-
-\strong{R6gd node types} (available only for Redis engine version 6.2
-onward).
-
-\code{cache.r6gd.xlarge}, \code{cache.r6gd.2xlarge}, \code{cache.r6gd.4xlarge},
-\code{cache.r6gd.8xlarge}, \code{cache.r6gd.12xlarge},
-\code{cache.r6gd.16xlarge}
-}
 \item Memory optimized:
 \itemize{
 \item Current generation:
@@ -238,7 +231,7 @@ supported on Redis version 2.8.22 and later.
 }}
 
 \item{Engine}{The name of the cache engine to be used for the clusters in this
-replication group. Must be Redis.}
+replication group. The value must be set to \code{Redis}.}
 
 \item{EngineVersion}{The version number of the cache engine to be used for the clusters in
 this replication group. To view the supported cache engine versions, use
@@ -376,10 +369,6 @@ http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
 
-You cannot modify the value of \code{TransitEncryptionEnabled} after the
-cluster is created. To enable in-transit encryption on a cluster you
-must set \code{TransitEncryptionEnabled} to \code{true} when you create a cluster.
-
 This parameter is valid only if the \code{Engine} parameter is \code{redis}, the
 \code{EngineVersion} parameter is \verb{3.2.6}, \verb{4.x} or later, and the cluster is
 being created in an Amazon VPC.
@@ -416,6 +405,37 @@ Default: \code{false}}
 \item{DataTieringEnabled}{Enables data tiering. Data tiering is only supported for replication
 groups using the r6gd node type. This parameter must be set to true when
 using r6gd nodes. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html}{Data tiering}.}
+
+\item{NetworkType}{Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. IPv6 is supported for
+workloads using Redis engine version 6.2 onward or Memcached engine
+version 1.6.6 on all instances built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+
+\item{IpDiscovery}{The network type you choose when creating a replication group, either
+\code{ipv4} | \code{ipv6}. IPv6 is supported for workloads using Redis engine
+version 6.2 onward or Memcached engine version 1.6.6 on all instances
+built on the \href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+
+\item{TransitEncryptionMode}{A setting that allows you to migrate your clients to use in-transit
+encryption, with no downtime.
+
+When setting \code{TransitEncryptionEnabled} to \code{true}, you can set your
+\code{TransitEncryptionMode} to \code{preferred} in the same request, to allow
+both encrypted and unencrypted connections at the same time. Once you
+migrate all your Redis clients to use encrypted connections you can
+modify the value to \code{required} to allow encrypted connections only.
+
+Setting \code{TransitEncryptionMode} to \code{required} is a two-step process that
+requires you to first set the \code{TransitEncryptionMode} to \code{preferred},
+after that you can set \code{TransitEncryptionMode} to \code{required}.
+
+This process will not trigger the replacement of the replication group.}
+
+\item{ClusterMode}{Enabled or Disabled. To modify cluster mode from Disabled to Enabled,
+you must first set the cluster mode to Compatible. Compatible mode
+allows your Redis clients to connect using both cluster mode enabled and
+cluster mode disabled. After you migrate all Redis clients to use
+cluster mode enabled, you can then complete cluster mode configuration
+and set the cluster mode to Enabled.}
 }
 \description{
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group.

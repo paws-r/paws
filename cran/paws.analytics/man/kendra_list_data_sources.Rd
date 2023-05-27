@@ -2,22 +2,23 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_list_data_sources}
 \alias{kendra_list_data_sources}
-\title{Lists the data sources that you have created}
+\title{Lists the data source connectors that you have created}
 \usage{
 kendra_list_data_sources(IndexId, NextToken = NULL, MaxResults = NULL)
 }
 \arguments{
-\item{IndexId}{[required] The identifier of the index used with one or more data sources.}
+\item{IndexId}{[required] The identifier of the index used with one or more data source
+connectors.}
 
 \item{NextToken}{If the previous response was incomplete (because there is more data to
 retrieve), Amazon Kendra returns a pagination token in the response. You
-can use this pagination token to retrieve the next set of data sources
-(\code{DataSourceSummaryItems}).}
+can use this pagination token to retrieve the next set of data source
+connectors.}
 
-\item{MaxResults}{The maximum number of data sources to return.}
+\item{MaxResults}{The maximum number of data source connectors to return.}
 }
 \description{
-Lists the data sources that you have created.
+Lists the data source connectors that you have created.
 
 See \url{https://paws-r.github.io/docs/kendra/list_data_sources.html} for full documentation.
 }

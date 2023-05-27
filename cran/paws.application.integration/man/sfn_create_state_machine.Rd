@@ -44,20 +44,21 @@ once it has been created.}
 logged.
 
 By default, the \code{level} is set to \code{OFF}. For more information see \href{https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html}{Log Levels}
-in the AWS Step Functions User Guide.}
+in the Step Functions User Guide.}
 
 \item{tags}{Tags to be added when creating a state machine.
 
 An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}, and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}, and
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.
 
 Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.}
 
-\item{tracingConfiguration}{Selects whether AWS X-Ray tracing is enabled.}
+\item{tracingConfiguration}{Selects whether X-Ray tracing is enabled.}
 }
 \description{
-Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} in the AWS Step Functions User Guide.
+Creates a state machine. A state machine consists of a collection of states that can do work (\code{Task} states), determine to which states to transition next (\code{Choice} states), stop an execution with an error (\code{Fail} states), and so on. State machines are specified using a JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language} in the Step Functions User Guide.
 
 See \url{https://paws-r.github.io/docs/sfn/create_state_machine.html} for full documentation.
 }

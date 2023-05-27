@@ -8,8 +8,8 @@ a member account}
 macie2_update_member_session(id, status)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 
 \item{status}{[required] Specifies the new status for the account. Valid values are: ENABLED,
 resume all Amazon Macie activities for the account; and, PAUSED, suspend

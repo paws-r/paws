@@ -7,15 +7,16 @@
 transcribeservice_update_vocabulary_filter(
   VocabularyFilterName,
   Words = NULL,
-  VocabularyFilterFileUri = NULL
+  VocabularyFilterFileUri = NULL,
+  DataAccessRoleArn = NULL
 )
 }
 \arguments{
-\item{VocabularyFilterName}{[required] The name of the custom vocabulary filter you want to update. Vocabulary
-filter names are case sensitive.}
+\item{VocabularyFilterName}{[required] The name of the custom vocabulary filter you want to update. Custom
+vocabulary filter names are case sensitive.}
 
-\item{Words}{Use this parameter if you want to update your vocabulary filter by
-including all desired terms, as comma-separated values, within your
+\item{Words}{Use this parameter if you want to update your custom vocabulary filter
+by including all desired terms, as comma-separated values, within your
 request. The other option for updating your vocabulary filter is to save
 your entries in a text file and upload them to an Amazon S3 bucket, then
 specify the location of your file using the \code{VocabularyFilterFileUri}
@@ -26,7 +27,7 @@ Note that if you include \code{Words} in your request, you cannot use
 
 Each language has a character set that contains all allowed characters
 for that specific language. If you use unsupported characters, your
-vocabulary filter request fails. Refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html}{Character Sets for Custom Vocabularies}
+custom vocabulary filter request fails. Refer to \href{https://docs.aws.amazon.com/transcribe/latest/dg/charsets.html}{Character Sets for Custom Vocabularies}
 to get the character set for your language.}
 
 \item{VocabularyFilterFileUri}{The Amazon S3 location of the text file that contains your custom
@@ -38,9 +39,21 @@ Here's an example URI path:
 
 Note that if you include \code{VocabularyFilterFileUri} in your request, you
 cannot use \code{Words}; you must choose one or the other.}
+
+\item{DataAccessRoleArn}{The Amazon Resource Name (ARN) of an IAM role that has permissions to
+access the Amazon S3 bucket that contains your input files (in this
+case, your custom vocabulary filter). If the role that you specify
+doesn’t have the appropriate permissions to access the specified Amazon
+S3 location, your request fails.
+
+IAM role ARNs have the format
+\code{arn:partition:iam::account:role/role-name-with-path}. For example:
+\verb{arn:aws:iam::111122223333:role/Admin}.
+
+For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs}.}
 }
 \description{
-Updates an existing custom vocabulary filter with a new list of words. The new list you provide overwrites all previous entries; you cannot append new terms onto an existing vocabulary filter.
+Updates an existing custom vocabulary filter with a new list of words. The new list you provide overwrites all previous entries; you cannot append new terms onto an existing custom vocabulary filter.
 
 See \url{https://paws-r.github.io/docs/transcribeservice/update_vocabulary_filter.html} for full documentation.
 }

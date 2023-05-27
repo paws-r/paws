@@ -17,7 +17,8 @@ billingconductor_list_billing_groups(
 
 \item{MaxResults}{The maximum number of billing groups to retrieve.}
 
-\item{NextToken}{The pagination token used on subsequent calls to get billing groups.}
+\item{NextToken}{The pagination token that's used on subsequent calls to get billing
+groups.}
 
 \item{Filters}{A \code{ListBillingGroupsFilter} that specifies the billing group and pricing
 plan to retrieve billing group information.}

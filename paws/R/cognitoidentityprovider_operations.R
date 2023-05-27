@@ -624,12 +624,16 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 }
 .cognitoidentityprovider$operations$admin_disable_provider_for_user <- cognitoidentityprovider_admin_disable_provider_for_user
 
-#' Disables the specified user
+#' Deactivates a user and revokes all access tokens for the user
 #'
 #' @description
-#' Disables the specified user.
+#' Deactivates a user and revokes all access tokens for the user. A
+#' deactivated user can't sign in, but still appears in the responses to
+#' [`get_user`][cognitoidentityprovider_get_user] and
+#' [`list_users`][cognitoidentityprovider_list_users] API requests.
 #' 
-#' Calling this action requires developer credentials.
+#' You must make this API request with Amazon Web Services credentials that
+#' have `cognito-idp:AdminDisableUser` permissions.
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
@@ -1411,7 +1415,9 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user pool username or an alias.
-#' @param MaxResults The maximum number of authentication events to return.
+#' @param MaxResults The maximum number of authentication events to return. Returns 60 events
+#' if you set `MaxResults` to 0, or if you don't include a `MaxResults`
+#' parameter.
 #' @param NextToken A pagination token.
 #'
 #' @return
@@ -1421,11 +1427,11 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #'   AuthEvents = list(
 #'     list(
 #'       EventId = "string",
-#'       EventType = "SignIn"|"SignUp"|"ForgotPassword",
+#'       EventType = "SignIn"|"SignUp"|"ForgotPassword"|"PasswordChange"|"ResendCode",
 #'       CreationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       EventResponse = "Success"|"Failure",
+#'       EventResponse = "Pass"|"Fail"|"InProgress",
 #'       EventRisk = list(
 #'         RiskDecision = "NoRisk"|"AccountTakeover"|"Block",
 #'         RiskLevel = "Low"|"Medium"|"High",
@@ -3142,16 +3148,28 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool(PoolName, Policies,
-#'   LambdaConfig, AutoVerifiedAttributes, AliasAttributes,
-#'   UsernameAttributes, SmsVerificationMessage, EmailVerificationMessage,
-#'   EmailVerificationSubject, VerificationMessageTemplate,
-#'   SmsAuthenticationMessage, MfaConfiguration, UserAttributeUpdateSettings,
-#'   DeviceConfiguration, EmailConfiguration, SmsConfiguration, UserPoolTags,
-#'   AdminCreateUserConfig, Schema, UserPoolAddOns, UsernameConfiguration,
-#'   AccountRecoverySetting)
+#'   DeletionProtection, LambdaConfig, AutoVerifiedAttributes,
+#'   AliasAttributes, UsernameAttributes, SmsVerificationMessage,
+#'   EmailVerificationMessage, EmailVerificationSubject,
+#'   VerificationMessageTemplate, SmsAuthenticationMessage, MfaConfiguration,
+#'   UserAttributeUpdateSettings, DeviceConfiguration, EmailConfiguration,
+#'   SmsConfiguration, UserPoolTags, AdminCreateUserConfig, Schema,
+#'   UserPoolAddOns, UsernameConfiguration, AccountRecoverySetting)
 #'
 #' @param PoolName &#91;required&#93; A string used to name the user pool.
 #' @param Policies The policies associated with the new user pool.
+#' @param DeletionProtection When active, `DeletionProtection` prevents accidental deletion of your
+#' user pool. Before you can delete a user pool that you have protected
+#' against deletion, you must deactivate this feature.
+#' 
+#' When you try to delete a protected user pool in a
+#' [`delete_user_pool`][cognitoidentityprovider_delete_user_pool] API
+#' request, Amazon Cognito returns an `InvalidParameterException` error. To
+#' delete a protected user pool, send a new
+#' [`delete_user_pool`][cognitoidentityprovider_delete_user_pool] request
+#' after you deactivate deletion protection in an
+#' [`update_user_pool`][cognitoidentityprovider_update_user_pool] API
+#' request.
 #' @param LambdaConfig The Lambda trigger configuration information for the new user pool.
 #' 
 #' In a push model, event sources (such as Amazon S3 and custom
@@ -3172,15 +3190,12 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' **phone_number**, **email**, or **preferred_username**.
 #' @param UsernameAttributes Specifies whether a user can use an email address or phone number as a
 #' username when they sign up.
-#' @param SmsVerificationMessage A string representing the SMS verification message.
-#' @param EmailVerificationMessage A string representing the email verification message.
-#' `EmailVerificationMessage` is allowed only if
-#' [EmailSendingAccount](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
-#' is DEVELOPER.
-#' @param EmailVerificationSubject A string representing the email verification subject.
-#' `EmailVerificationSubject` is allowed only if
-#' [EmailSendingAccount](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount)
-#' is DEVELOPER.
+#' @param SmsVerificationMessage This parameter is no longer used. See
+#' [VerificationMessageTemplateType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html).
+#' @param EmailVerificationMessage This parameter is no longer used. See
+#' [VerificationMessageTemplateType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html).
+#' @param EmailVerificationSubject This parameter is no longer used. See
+#' [VerificationMessageTemplateType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html).
 #' @param VerificationMessageTemplate The template for the verification message that the user sees when the
 #' app requests permission to access the user's information.
 #' @param SmsAuthenticationMessage A string representing the SMS authentication message.
@@ -3248,6 +3263,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'         TemporaryPasswordValidityDays = 123
 #'       )
 #'     ),
+#'     DeletionProtection = "ACTIVE"|"INACTIVE",
 #'     LambdaConfig = list(
 #'       PreSignUp = "string",
 #'       CustomMessage = "string",
@@ -3386,6 +3402,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #'       TemporaryPasswordValidityDays = 123
 #'     )
 #'   ),
+#'   DeletionProtection = "ACTIVE"|"INACTIVE",
 #'   LambdaConfig = list(
 #'     PreSignUp = "string",
 #'     CustomMessage = "string",
@@ -3501,14 +3518,14 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @rdname cognitoidentityprovider_create_user_pool
 #'
 #' @aliases cognitoidentityprovider_create_user_pool
-cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, UserAttributeUpdateSettings = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, UsernameConfiguration = NULL, AccountRecoverySetting = NULL) {
+cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, DeletionProtection = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, AliasAttributes = NULL, UsernameAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, MfaConfiguration = NULL, UserAttributeUpdateSettings = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, Schema = NULL, UserPoolAddOns = NULL, UsernameConfiguration = NULL, AccountRecoverySetting = NULL) {
   op <- new_operation(
     name = "CreateUserPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting)
+  input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$create_user_pool_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config)
@@ -3535,7 +3552,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #'   DefaultRedirectURI, AllowedOAuthFlows, AllowedOAuthScopes,
 #'   AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration,
 #'   PreventUserExistenceErrors, EnableTokenRevocation,
-#'   EnablePropagateAdditionalUserContextData)
+#'   EnablePropagateAdditionalUserContextData, AuthSessionValidity)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to create a user pool
 #' client.
@@ -3555,6 +3572,9 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' days. You can't set `RefreshTokenValidity` to 0. If you do, Amazon
 #' Cognito overrides the value with the default value of 30 days. *Valid
 #' range* is displayed below in seconds.
+#' 
+#' If you don't specify otherwise in the configuration of your app client,
+#' your refresh tokens are valid for 30 days.
 #' @param AccessTokenValidity The access token time limit. After this limit expires, your user can't
 #' use their access token. To specify the time unit for
 #' `AccessTokenValidity` as `seconds`, `minutes`, `hours`, or `days`, set a
@@ -3566,6 +3586,9 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' The default time unit for `AccessTokenValidity` in an API request is
 #' hours. *Valid range* is displayed below in seconds.
+#' 
+#' If you don't specify otherwise in the configuration of your app client,
+#' your access tokens are valid for one hour.
 #' @param IdTokenValidity The ID token time limit. After this limit expires, your user can't use
 #' their ID token. To specify the time unit for `IdTokenValidity` as
 #' `seconds`, `minutes`, `hours`, or `days`, set a `TokenValidityUnits`
@@ -3577,6 +3600,9 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' The default time unit for `AccessTokenValidity` in an API request is
 #' hours. *Valid range* is displayed below in seconds.
+#' 
+#' If you don't specify otherwise in the configuration of your app client,
+#' your ID tokens are valid for one hour.
 #' @param TokenValidityUnits The units in which the validity times are represented. The default unit
 #' for RefreshToken is days, and default for ID and access tokens are
 #' hours.
@@ -3591,43 +3617,40 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' tries to update the attribute. For more information, see [Specifying IdP
 #' Attribute Mappings for Your user
 #' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html).
-#' @param ExplicitAuthFlows The authentication flows that are supported by the user pool clients.
-#' Flow names without the `ALLOW_` prefix are no longer supported, in favor
-#' of new names with the `ALLOW_` prefix.
+#' @param ExplicitAuthFlows The authentication flows that you want your user pool client to support.
+#' For each app client in your user pool, you can sign in your users with
+#' any combination of one or more flows, including with a user name and
+#' Secure Remote Password (SRP), a user name and password, or a custom
+#' authentication process that you define with Lambda functions.
 #' 
-#' Values with `ALLOW_` prefix must be used only along with the `ALLOW_`
-#' prefix.
+#' If you don't specify a value for `ExplicitAuthFlows`, your user client
+#' supports `ALLOW_REFRESH_TOKEN_AUTH`, `ALLOW_USER_SRP_AUTH`, and
+#' `ALLOW_CUSTOM_AUTH`.
 #' 
 #' Valid values include:
 #' 
-#' **ALLOW_ADMIN_USER_PASSWORD_AUTH**
+#' -   `ALLOW_ADMIN_USER_PASSWORD_AUTH`: Enable admin based user password
+#'     authentication flow `ADMIN_USER_PASSWORD_AUTH`. This setting
+#'     replaces the `ADMIN_NO_SRP_AUTH` setting. With this authentication
+#'     flow, your app passes a user name and password to Amazon Cognito in
+#'     the request, instead of using the Secure Remote Password (SRP)
+#'     protocol to securely transmit the password.
 #' 
-#' Enable admin based user password authentication flow
-#' `ADMIN_USER_PASSWORD_AUTH`. This setting replaces the
-#' `ADMIN_NO_SRP_AUTH` setting. With this authentication flow, Amazon
-#' Cognito receives the password in the request instead of using the Secure
-#' Remote Password (SRP) protocol to verify passwords.
+#' -   `ALLOW_CUSTOM_AUTH`: Enable Lambda trigger based authentication.
 #' 
-#' **ALLOW_CUSTOM_AUTH**
+#' -   `ALLOW_USER_PASSWORD_AUTH`: Enable user password-based
+#'     authentication. In this flow, Amazon Cognito receives the password
+#'     in the request instead of using the SRP protocol to verify
+#'     passwords.
 #' 
-#' Enable Lambda trigger based authentication.
+#' -   `ALLOW_USER_SRP_AUTH`: Enable SRP-based authentication.
 #' 
-#' **ALLOW_USER_PASSWORD_AUTH**
+#' -   `ALLOW_REFRESH_TOKEN_AUTH`: Enable authflow to refresh tokens.
 #' 
-#' Enable user password-based authentication. In this flow, Amazon Cognito
-#' receives the password in the request instead of using the SRP protocol
-#' to verify passwords.
-#' 
-#' **ALLOW_USER_SRP_AUTH**
-#' 
-#' Enable SRP-based authentication.
-#' 
-#' **ALLOW_REFRESH_TOKEN_AUTH**
-#' 
-#' Enable the authflow that refreshes tokens.
-#' 
-#' If you don't specify a value for `ExplicitAuthFlows`, your user client
-#' supports `ALLOW_USER_SRP_AUTH` and `ALLOW_CUSTOM_AUTH`.
+#' In some environments, you will see the values `ADMIN_NO_SRP_AUTH`,
+#' `CUSTOM_AUTH_FLOW_ONLY`, or `USER_PASSWORD_AUTH`. You can't assign these
+#' legacy `ExplicitAuthFlows` values to user pool clients at the same time
+#' as values that begin with `ALLOW_`, like `ALLOW_USER_SRP_AUTH`.
 #' @param SupportedIdentityProviders A list of provider names for the identity providers (IdPs) that are
 #' supported on this client. The following are supported: `COGNITO`,
 #' `Facebook`, `Google`, `SignInWithApple`, and `LoginWithAmazon`. You can
@@ -3644,7 +3667,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -3662,7 +3685,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -3730,6 +3753,10 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' security. You can only activate
 #' `EnablePropagateAdditionalUserContextData` in an app client that has a
 #' client secret.
+#' @param AuthSessionValidity Amazon Cognito creates a session token for each API request in an
+#' authentication flow. `AuthSessionValidity` is the duration, in minutes,
+#' of that session token. Your user pool native user must respond to each
+#' authentication challenge before the session expires.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3789,7 +3816,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #'     ),
 #'     PreventUserExistenceErrors = "LEGACY"|"ENABLED",
 #'     EnableTokenRevocation = TRUE|FALSE,
-#'     EnablePropagateAdditionalUserContextData = TRUE|FALSE
+#'     EnablePropagateAdditionalUserContextData = TRUE|FALSE,
+#'     AuthSessionValidity = 123
 #'   )
 #' )
 #' ```
@@ -3843,7 +3871,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #'   ),
 #'   PreventUserExistenceErrors = "LEGACY"|"ENABLED",
 #'   EnableTokenRevocation = TRUE|FALSE,
-#'   EnablePropagateAdditionalUserContextData = TRUE|FALSE
+#'   EnablePropagateAdditionalUserContextData = TRUE|FALSE,
+#'   AuthSessionValidity = 123
 #' )
 #' ```
 #'
@@ -3852,14 +3881,14 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' @rdname cognitoidentityprovider_create_user_pool_client
 #'
 #' @aliases cognitoidentityprovider_create_user_pool_client
-cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientName, GenerateSecret = NULL, RefreshTokenValidity = NULL, AccessTokenValidity = NULL, IdTokenValidity = NULL, TokenValidityUnits = NULL, ReadAttributes = NULL, WriteAttributes = NULL, ExplicitAuthFlows = NULL, SupportedIdentityProviders = NULL, CallbackURLs = NULL, LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL, AnalyticsConfiguration = NULL, PreventUserExistenceErrors = NULL, EnableTokenRevocation = NULL, EnablePropagateAdditionalUserContextData = NULL) {
+cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientName, GenerateSecret = NULL, RefreshTokenValidity = NULL, AccessTokenValidity = NULL, IdTokenValidity = NULL, TokenValidityUnits = NULL, ReadAttributes = NULL, WriteAttributes = NULL, ExplicitAuthFlows = NULL, SupportedIdentityProviders = NULL, CallbackURLs = NULL, LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL, AnalyticsConfiguration = NULL, PreventUserExistenceErrors = NULL, EnableTokenRevocation = NULL, EnablePropagateAdditionalUserContextData = NULL, AuthSessionValidity = NULL) {
   op <- new_operation(
     name = "CreateUserPoolClient",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentityprovider$create_user_pool_client_input(UserPoolId = UserPoolId, ClientName = ClientName, GenerateSecret = GenerateSecret, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData)
+  input <- .cognitoidentityprovider$create_user_pool_client_input(UserPoolId = UserPoolId, ClientName = ClientName, GenerateSecret = GenerateSecret, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$create_user_pool_client_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config)
@@ -4631,6 +4660,7 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #'         TemporaryPasswordValidityDays = 123
 #'       )
 #'     ),
+#'     DeletionProtection = "ACTIVE"|"INACTIVE",
 #'     LambdaConfig = list(
 #'       PreSignUp = "string",
 #'       CustomMessage = "string",
@@ -4855,7 +4885,8 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #'     ),
 #'     PreventUserExistenceErrors = "LEGACY"|"ENABLED",
 #'     EnableTokenRevocation = TRUE|FALSE,
-#'     EnablePropagateAdditionalUserContextData = TRUE|FALSE
+#'     EnablePropagateAdditionalUserContextData = TRUE|FALSE,
+#'     AuthSessionValidity = 123
 #'   )
 #' )
 #' ```
@@ -5387,6 +5418,12 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 #'
 #' @description
 #' This method takes a user pool ID, and returns the signing certificate.
+#' The issued certificate is valid for 10 years from the date of issue.
+#' 
+#' Amazon Cognito issues and assigns a new signing certificate annually.
+#' This process returns a new value in the response to
+#' [`get_signing_certificate`][cognitoidentityprovider_get_signing_certificate],
+#' but doesn't invalidate the original certificate.
 #'
 #' @usage
 #' cognitoidentityprovider_get_signing_certificate(UserPoolId)
@@ -5734,11 +5771,9 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #'
 #' @description
 #' Signs out users from all devices. It also invalidates all refresh tokens
-#' that Amazon Cognito has issued to a user. The user's current access and
-#' ID tokens remain valid until their expiry. By default, access and ID
-#' tokens expire one hour after Amazon Cognito issues them. A user can
-#' still use a hosted UI cookie to retrieve new tokens for the duration of
-#' the cookie validity period of 1 hour.
+#' that Amazon Cognito has issued to a user. A user can still use a hosted
+#' UI cookie to retrieve new tokens for the duration of the 1-hour cookie
+#' validity period.
 #'
 #' @usage
 #' cognitoidentityprovider_global_sign_out(AccessToken)
@@ -7098,13 +7133,14 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 }
 .cognitoidentityprovider$operations$respond_to_auth_challenge <- cognitoidentityprovider_respond_to_auth_challenge
 
-#' Revokes all of the access tokens generated by the specified refresh
-#' token
+#' Revokes all of the access tokens generated by, and at the same time as,
+#' the specified refresh token
 #'
 #' @description
-#' Revokes all of the access tokens generated by the specified refresh
-#' token. After the token is revoked, you can't use the revoked token to
-#' access Amazon Cognito authenticated APIs.
+#' Revokes all of the access tokens generated by, and at the same time as,
+#' the specified refresh token. After a token is revoked, you can't use the
+#' revoked token to access Amazon Cognito user APIs, or to authorize access
+#' to your resource server.
 #'
 #' @usage
 #' cognitoidentityprovider_revoke_token(Token, ClientId, ClientSecret)
@@ -8512,22 +8548,37 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool(UserPoolId, Policies,
-#'   LambdaConfig, AutoVerifiedAttributes, SmsVerificationMessage,
-#'   EmailVerificationMessage, EmailVerificationSubject,
-#'   VerificationMessageTemplate, SmsAuthenticationMessage,
-#'   UserAttributeUpdateSettings, MfaConfiguration, DeviceConfiguration,
-#'   EmailConfiguration, SmsConfiguration, UserPoolTags,
+#'   DeletionProtection, LambdaConfig, AutoVerifiedAttributes,
+#'   SmsVerificationMessage, EmailVerificationMessage,
+#'   EmailVerificationSubject, VerificationMessageTemplate,
+#'   SmsAuthenticationMessage, UserAttributeUpdateSettings, MfaConfiguration,
+#'   DeviceConfiguration, EmailConfiguration, SmsConfiguration, UserPoolTags,
 #'   AdminCreateUserConfig, UserPoolAddOns, AccountRecoverySetting)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to update.
 #' @param Policies A container with the policies you want to update in a user pool.
+#' @param DeletionProtection When active, `DeletionProtection` prevents accidental deletion of your
+#' user pool. Before you can delete a user pool that you have protected
+#' against deletion, you must deactivate this feature.
+#' 
+#' When you try to delete a protected user pool in a
+#' [`delete_user_pool`][cognitoidentityprovider_delete_user_pool] API
+#' request, Amazon Cognito returns an `InvalidParameterException` error. To
+#' delete a protected user pool, send a new
+#' [`delete_user_pool`][cognitoidentityprovider_delete_user_pool] request
+#' after you deactivate deletion protection in an
+#' [`update_user_pool`][cognitoidentityprovider_update_user_pool] API
+#' request.
 #' @param LambdaConfig The Lambda configuration information from the request to update the user
 #' pool.
 #' @param AutoVerifiedAttributes The attributes that are automatically verified when Amazon Cognito
 #' requests to update user pools.
-#' @param SmsVerificationMessage A container with information about the SMS verification message.
-#' @param EmailVerificationMessage The contents of the email verification message.
-#' @param EmailVerificationSubject The subject of the email verification message.
+#' @param SmsVerificationMessage This parameter is no longer used. See
+#' [VerificationMessageTemplateType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html).
+#' @param EmailVerificationMessage This parameter is no longer used. See
+#' [VerificationMessageTemplateType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html).
+#' @param EmailVerificationSubject This parameter is no longer used. See
+#' [VerificationMessageTemplateType](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_VerificationMessageTemplateType.html).
 #' @param VerificationMessageTemplate The template for verification messages.
 #' @param SmsAuthenticationMessage The contents of the SMS authentication message.
 #' @param UserAttributeUpdateSettings The settings for updates to user attributes. These settings include the
@@ -8600,6 +8651,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #'       TemporaryPasswordValidityDays = 123
 #'     )
 #'   ),
+#'   DeletionProtection = "ACTIVE"|"INACTIVE",
 #'   LambdaConfig = list(
 #'     PreSignUp = "string",
 #'     CustomMessage = "string",
@@ -8689,14 +8741,14 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @rdname cognitoidentityprovider_update_user_pool
 #'
 #' @aliases cognitoidentityprovider_update_user_pool
-cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, UserAttributeUpdateSettings = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, UserPoolAddOns = NULL, AccountRecoverySetting = NULL) {
+cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL, DeletionProtection = NULL, LambdaConfig = NULL, AutoVerifiedAttributes = NULL, SmsVerificationMessage = NULL, EmailVerificationMessage = NULL, EmailVerificationSubject = NULL, VerificationMessageTemplate = NULL, SmsAuthenticationMessage = NULL, UserAttributeUpdateSettings = NULL, MfaConfiguration = NULL, DeviceConfiguration = NULL, EmailConfiguration = NULL, SmsConfiguration = NULL, UserPoolTags = NULL, AdminCreateUserConfig = NULL, UserPoolAddOns = NULL, AccountRecoverySetting = NULL) {
   op <- new_operation(
     name = "UpdateUserPool",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting)
+  input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$update_user_pool_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config)
@@ -8729,7 +8781,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #'   DefaultRedirectURI, AllowedOAuthFlows, AllowedOAuthScopes,
 #'   AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration,
 #'   PreventUserExistenceErrors, EnableTokenRevocation,
-#'   EnablePropagateAdditionalUserContextData)
+#'   EnablePropagateAdditionalUserContextData, AuthSessionValidity)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to update the user
 #' pool client.
@@ -8748,6 +8800,9 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' days. You can't set `RefreshTokenValidity` to 0. If you do, Amazon
 #' Cognito overrides the value with the default value of 30 days. *Valid
 #' range* is displayed below in seconds.
+#' 
+#' If you don't specify otherwise in the configuration of your app client,
+#' your refresh tokens are valid for 30 days.
 #' @param AccessTokenValidity The access token time limit. After this limit expires, your user can't
 #' use their access token. To specify the time unit for
 #' `AccessTokenValidity` as `seconds`, `minutes`, `hours`, or `days`, set a
@@ -8759,6 +8814,9 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' The default time unit for `AccessTokenValidity` in an API request is
 #' hours. *Valid range* is displayed below in seconds.
+#' 
+#' If you don't specify otherwise in the configuration of your app client,
+#' your access tokens are valid for one hour.
 #' @param IdTokenValidity The ID token time limit. After this limit expires, your user can't use
 #' their ID token. To specify the time unit for `IdTokenValidity` as
 #' `seconds`, `minutes`, `hours`, or `days`, set a `TokenValidityUnits`
@@ -8770,23 +8828,32 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' The default time unit for `AccessTokenValidity` in an API request is
 #' hours. *Valid range* is displayed below in seconds.
+#' 
+#' If you don't specify otherwise in the configuration of your app client,
+#' your ID tokens are valid for one hour.
 #' @param TokenValidityUnits The units in which the validity times are represented. The default unit
 #' for RefreshToken is days, and the default for ID and access tokens is
 #' hours.
 #' @param ReadAttributes The read-only attributes of the user pool.
 #' @param WriteAttributes The writeable attributes of the user pool.
-#' @param ExplicitAuthFlows The authentication flows that are supported by the user pool clients.
-#' Flow names without the `ALLOW_` prefix are no longer supported in favor
-#' of new names with the `ALLOW_` prefix. Note that values with `ALLOW_`
-#' prefix must be used only along with values with the `ALLOW_` prefix.
+#' @param ExplicitAuthFlows The authentication flows that you want your user pool client to support.
+#' For each app client in your user pool, you can sign in your users with
+#' any combination of one or more flows, including with a user name and
+#' Secure Remote Password (SRP), a user name and password, or a custom
+#' authentication process that you define with Lambda functions.
+#' 
+#' If you don't specify a value for `ExplicitAuthFlows`, your user client
+#' supports `ALLOW_REFRESH_TOKEN_AUTH`, `ALLOW_USER_SRP_AUTH`, and
+#' `ALLOW_CUSTOM_AUTH`.
 #' 
 #' Valid values include:
 #' 
 #' -   `ALLOW_ADMIN_USER_PASSWORD_AUTH`: Enable admin based user password
 #'     authentication flow `ADMIN_USER_PASSWORD_AUTH`. This setting
 #'     replaces the `ADMIN_NO_SRP_AUTH` setting. With this authentication
-#'     flow, Amazon Cognito receives the password in the request instead of
-#'     using the Secure Remote Password (SRP) protocol to verify passwords.
+#'     flow, your app passes a user name and password to Amazon Cognito in
+#'     the request, instead of using the Secure Remote Password (SRP)
+#'     protocol to securely transmit the password.
 #' 
 #' -   `ALLOW_CUSTOM_AUTH`: Enable Lambda trigger based authentication.
 #' 
@@ -8798,6 +8865,11 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' -   `ALLOW_USER_SRP_AUTH`: Enable SRP-based authentication.
 #' 
 #' -   `ALLOW_REFRESH_TOKEN_AUTH`: Enable authflow to refresh tokens.
+#' 
+#' In some environments, you will see the values `ADMIN_NO_SRP_AUTH`,
+#' `CUSTOM_AUTH_FLOW_ONLY`, or `USER_PASSWORD_AUTH`. You can't assign these
+#' legacy `ExplicitAuthFlows` values to user pool clients at the same time
+#' as values that begin with `ALLOW_`, like `ALLOW_USER_SRP_AUTH`.
 #' @param SupportedIdentityProviders A list of provider names for the IdPs that this client supports. The
 #' following are supported: `COGNITO`, `Facebook`, `Google`,
 #' `SignInWithApple`, `LoginWithAmazon`, and the names of your own SAML and
@@ -8813,7 +8885,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 #' testing purposes only.
@@ -8831,7 +8903,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' -   Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
-#' Endpoint](https://www.rfc-editor.org/rfc/rfc6749#section-3.1.2).
+#' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
 #' 
 #' Amazon Cognito requires HTTPS over HTTP except for `http://localhost`
 #' for testing purposes only.
@@ -8896,6 +8968,10 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' security. You can only activate
 #' `EnablePropagateAdditionalUserContextData` in an app client that has a
 #' client secret.
+#' @param AuthSessionValidity Amazon Cognito creates a session token for each API request in an
+#' authentication flow. `AuthSessionValidity` is the duration, in minutes,
+#' of that session token. Your user pool native user must respond to each
+#' authentication challenge before the session expires.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8955,7 +9031,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #'     ),
 #'     PreventUserExistenceErrors = "LEGACY"|"ENABLED",
 #'     EnableTokenRevocation = TRUE|FALSE,
-#'     EnablePropagateAdditionalUserContextData = TRUE|FALSE
+#'     EnablePropagateAdditionalUserContextData = TRUE|FALSE,
+#'     AuthSessionValidity = 123
 #'   )
 #' )
 #' ```
@@ -9009,7 +9086,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #'   ),
 #'   PreventUserExistenceErrors = "LEGACY"|"ENABLED",
 #'   EnableTokenRevocation = TRUE|FALSE,
-#'   EnablePropagateAdditionalUserContextData = TRUE|FALSE
+#'   EnablePropagateAdditionalUserContextData = TRUE|FALSE,
+#'   AuthSessionValidity = 123
 #' )
 #' ```
 #'
@@ -9018,14 +9096,14 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' @rdname cognitoidentityprovider_update_user_pool_client
 #'
 #' @aliases cognitoidentityprovider_update_user_pool_client
-cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId, ClientName = NULL, RefreshTokenValidity = NULL, AccessTokenValidity = NULL, IdTokenValidity = NULL, TokenValidityUnits = NULL, ReadAttributes = NULL, WriteAttributes = NULL, ExplicitAuthFlows = NULL, SupportedIdentityProviders = NULL, CallbackURLs = NULL, LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL, AnalyticsConfiguration = NULL, PreventUserExistenceErrors = NULL, EnableTokenRevocation = NULL, EnablePropagateAdditionalUserContextData = NULL) {
+cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId, ClientName = NULL, RefreshTokenValidity = NULL, AccessTokenValidity = NULL, IdTokenValidity = NULL, TokenValidityUnits = NULL, ReadAttributes = NULL, WriteAttributes = NULL, ExplicitAuthFlows = NULL, SupportedIdentityProviders = NULL, CallbackURLs = NULL, LogoutURLs = NULL, DefaultRedirectURI = NULL, AllowedOAuthFlows = NULL, AllowedOAuthScopes = NULL, AllowedOAuthFlowsUserPoolClient = NULL, AnalyticsConfiguration = NULL, PreventUserExistenceErrors = NULL, EnableTokenRevocation = NULL, EnablePropagateAdditionalUserContextData = NULL, AuthSessionValidity = NULL) {
   op <- new_operation(
     name = "UpdateUserPoolClient",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cognitoidentityprovider$update_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId, ClientName = ClientName, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData)
+  input <- .cognitoidentityprovider$update_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId, ClientName = ClientName, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$update_user_pool_client_output()
   config <- get_config()
   svc <- .cognitoidentityprovider$service(config)

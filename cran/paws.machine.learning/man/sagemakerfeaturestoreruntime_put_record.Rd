@@ -4,7 +4,11 @@
 \alias{sagemakerfeaturestoreruntime_put_record}
 \title{Used for data ingestion into the FeatureStore}
 \usage{
-sagemakerfeaturestoreruntime_put_record(FeatureGroupName, Record)
+sagemakerfeaturestoreruntime_put_record(
+  FeatureGroupName,
+  Record,
+  TargetStores = NULL
+)
 }
 \arguments{
 \item{FeatureGroupName}{[required] The name of the feature group that you want to insert the record into.}
@@ -19,6 +23,10 @@ retrieve the latest record.
 \item Use \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} to
 update feature values.
 }}
+
+\item{TargetStores}{A list of stores to which you're adding the record. By default, Feature
+Store adds the record to all of the stores that you're using for the
+\code{FeatureGroup}.}
 }
 \description{
 Used for data ingestion into the \code{FeatureStore}. The \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} API writes to both the \code{OnlineStore} and \code{OfflineStore}. If the record is the latest record for the \code{recordIdentifier}, the record is written to both the \code{OnlineStore} and \code{OfflineStore}. If the record is a historic record, it is written only to the \code{OfflineStore}.

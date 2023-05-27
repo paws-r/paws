@@ -8,10 +8,14 @@ managedgrafana_create_workspace(
   accountAccessType,
   authenticationProviders,
   clientToken = NULL,
+  configuration = NULL,
+  grafanaVersion = NULL,
+  networkAccessControl = NULL,
   organizationRoleName = NULL,
   permissionType,
   stackSetName = NULL,
   tags = NULL,
+  vpcConfiguration = NULL,
   workspaceDataSources = NULL,
   workspaceDescription = NULL,
   workspaceName = NULL,
@@ -28,29 +32,50 @@ organization. If you specify \code{ORGANIZATION}, you must specify which
 organizational units the workspace can access in the
 \code{workspaceOrganizationalUnits} parameter.}
 
-\item{authenticationProviders}{[required] Specifies whether this workspace uses SAML 2.0, Amazon Web Services
-Single Sign On, or both to authenticate users for using the Grafana
-console within a workspace. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html}{User authentication in Amazon Managed Grafana}.}
+\item{authenticationProviders}{[required] Specifies whether this workspace uses SAML 2.0, IAM Identity Center
+(successor to Single Sign-On), or both to authenticate users for using
+the Grafana console within a workspace. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/authentication-in-AMG.html}{User authentication in Amazon Managed Grafana}.}
 
 \item{clientToken}{A unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
+
+\item{configuration}{The configuration string for the workspace that you create. For more
+information about the format and configuration options available, see
+\href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html}{Working in your Grafana workspace}.}
+
+\item{grafanaVersion}{Specifies the version of Grafana to support in the new workspace.
+
+Supported values are \code{8.4} and \code{9.4}.}
+
+\item{networkAccessControl}{Configuration for network access to your workspace.
+
+When this is configured, only listed IP addresses and VPC endpoints will
+be able to access your workspace. Standard Grafana authentication and
+authorization will still be required.
+
+If this is not configured, or is removed, then all IP addresses and VPC
+endpoints will be allowed. Standard Grafana authentication and
+authorization will still be required.}
 
 \item{organizationRoleName}{The name of an IAM role that already exists to use with Organizations to
 access Amazon Web Services data sources and notification channels in
 other accounts in an organization.}
 
-\item{permissionType}{[required] If you specify \code{SERVICE_MANAGED} on AWS Grafana console, Amazon Managed
-Grafana automatically creates the IAM roles and provisions the
-permissions that the workspace needs to use Amazon Web Services data
-sources and notification channels. In CLI mode, the permissionType
-\code{SERVICE_MANAGED} will not create the IAM role for you.
+\item{permissionType}{[required] When creating a workspace through the Amazon Web Services API, CLI or
+Amazon Web Services CloudFormation, you must manage IAM roles and
+provision the permissions that the workspace needs to use Amazon Web
+Services data sources and notification channels.
 
-If you specify \code{CUSTOMER_MANAGED}, you will manage those roles and
-permissions yourself. If you are creating this workspace in a member
-account of an organization that is not a delegated administrator
-account, and you want the workspace to access data sources in other
-Amazon Web Services accounts in the organization, you must choose
-\code{CUSTOMER_MANAGED}.
+You must also specify a \code{workspaceRoleArn} for a role that you will
+manage for the workspace to use when accessing those datasources and
+notification channels.
+
+The ability for Amazon Managed Grafana to create and update IAM roles on
+behalf of the user is supported only in the Amazon Managed Grafana
+console, where this value may be set to \code{SERVICE_MANAGED}.
+
+Use only the \code{CUSTOMER_MANAGED} permission type when creating a
+workspace with the API, CLI or Amazon Web Services CloudFormation.
 
 For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html}{Amazon Managed Grafana permissions and policies for Amazon Web Services data sources and notification channels}.}
 
@@ -59,15 +84,10 @@ be used for this workspace.}
 
 \item{tags}{The list of tags associated with the workspace.}
 
-\item{workspaceDataSources}{Specify the Amazon Web Services data sources that you want to be queried
-in this workspace. Specifying these data sources here enables Amazon
-Managed Grafana to create IAM roles and permissions that allow Amazon
-Managed Grafana to read data from these sources. You must still add them
-as data sources in the Grafana console in the workspace.
+\item{vpcConfiguration}{The configuration settings for an Amazon VPC that contains data sources
+for your Grafana workspace to connect to.}
 
-If you don't specify a data source here, you can still add it as a data
-source in the workspace console later. However, you will then have to
-manually configure permissions for it.}
+\item{workspaceDataSources}{This parameter is for internal use only, and should not be used.}
 
 \item{workspaceDescription}{A description for the workspace. This is used only to help you identify
 this workspace.
@@ -85,10 +105,11 @@ Managed Grafana to use these channels.}
 data sources from, if this workspace is in an account that is part of an
 organization.}
 
-\item{workspaceRoleArn}{The workspace needs an IAM role that grants permissions to the Amazon
-Web Services resources that the workspace will view data from. If you
-already have a role that you want to use, specify it here. The
-permission type should be set to \code{CUSTOMER_MANAGED}.}
+\item{workspaceRoleArn}{Specified the IAM role that grants permissions to the Amazon Web
+Services resources that the workspace will view data from, including
+both data sources and notification channels. You are responsible for
+managing the permissions for this role as new data sources or
+notification channels are added.}
 }
 \description{
 Creates a \emph{workspace}. In a workspace, you can create Grafana dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to run the Grafana server.

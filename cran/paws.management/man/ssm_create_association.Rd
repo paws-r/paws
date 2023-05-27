@@ -23,7 +23,9 @@ ssm_create_association(
   CalendarNames = NULL,
   TargetLocations = NULL,
   ScheduleOffset = NULL,
-  TargetMaps = NULL
+  TargetMaps = NULL,
+  Tags = NULL,
+  AlarmConfiguration = NULL
 )
 }
 \arguments{
@@ -31,7 +33,8 @@ ssm_create_association(
 the configuration information for the managed node.
 
 You can specify Amazon Web Services-predefined documents, documents you
-created, or a document that is shared with you from another account.
+created, or a document that is shared with you from another Amazon Web
+Services account.
 
 For Systems Manager documents (SSM documents) that are shared with you
 from other Amazon Web Services accounts, you must specify the complete
@@ -164,6 +167,14 @@ immediately after you create it.}
 
 \item{TargetMaps}{A key-value mapping of document parameters to target resources. Both
 Targets and TargetMaps can't be specified together.}
+
+\item{Tags}{Adds or overwrites one or more tags for a State Manager association.
+\emph{Tags} are metadata that you can assign to your Amazon Web Services
+resources. Tags enable you to categorize your resources in different
+ways, for example, by purpose, owner, or environment. Each tag consists
+of a key and an optional value, both of which you define.}
+
+\item{AlarmConfiguration}{}
 }
 \description{
 A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a capability of Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.

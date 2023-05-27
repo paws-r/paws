@@ -7,7 +7,7 @@
 billingconductor_delete_pricing_plan(Arn)
 }
 \arguments{
-\item{Arn}{[required] The Amazon Resource Name (ARN) of the pricing plan you're deleting.}
+\item{Arn}{[required] The Amazon Resource Name (ARN) of the pricing plan that you're deleting.}
 }
 \description{
 Deletes a pricing plan. The pricing plan must not be associated with any billing groups to delete successfully.

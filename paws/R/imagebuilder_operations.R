@@ -12,8 +12,8 @@ NULL
 #' @usage
 #' imagebuilder_cancel_image_creation(imageBuildVersionArn, clientToken)
 #'
-#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image whose creation you want to
-#' cancel.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to cancel
+#' creation for.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
 #' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
@@ -94,12 +94,11 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' assignment requirements for the nodes that you can assign. For example,
 #' you might choose a software version pattern, such as 1.0.0, or a date,
 #' such as 2021.01.01.
-#' @param description The description of the component. Describes the contents of the
-#' component.
+#' @param description Describes the contents of the component.
 #' @param changeDescription The change description of the component. Describes what change has been
 #' made in this version, or what makes this version different from other
 #' versions of this component.
-#' @param platform &#91;required&#93; The platform of the component.
+#' @param platform &#91;required&#93; The operating system platform of the component.
 #' @param supportedOsVersions The operating system (OS) version supported by the component. If the OS
 #' information is available, a prefix match is performed against the base
 #' image OS version during image recipe creation.
@@ -113,8 +112,8 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' 
 #' Alternatively, you can specify the YAML document inline, using the
 #' component `data` property. You cannot specify both properties.
-#' @param kmsKeyId The ID of the KMS key that should be used to encrypt this component.
-#' @param tags The tags of the component.
+#' @param kmsKeyId The ID of the KMS key that is used to encrypt this component.
+#' @param tags The tags that apply to the component.
 #' @param clientToken &#91;required&#93; The idempotency token of the component.
 #'
 #' @return
@@ -203,6 +202,8 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' you might choose a software version pattern, such as 1.0.0, or a date,
 #' such as 2021.01.01.
 #' @param components &#91;required&#93; Components for build and test that are included in the container recipe.
+#' Recipes require a minimum of one build component, and can have a maximum
+#' of 20 build and test components in any combination.
 #' @param instanceConfiguration A group of options that can be used to configure an instance for
 #' building and testing container images.
 #' @param dockerfileTemplateData The Dockerfile template used to build your image as an inline data blob.
@@ -451,7 +452,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' imagebuilder_create_image(imageRecipeArn, containerRecipeArn,
 #'   distributionConfigurationArn, infrastructureConfigurationArn,
 #'   imageTestsConfiguration, enhancedImageMetadataEnabled, tags,
-#'   clientToken)
+#'   clientToken, imageScanningConfiguration)
 #'
 #' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that defines how
 #' images are configured, tested, and assessed.
@@ -468,6 +469,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' Enabled by default.
 #' @param tags The tags of the image.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
+#' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #'
 #' @return
 #' A list with the following syntax:
@@ -494,7 +496,16 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   imageScanningConfiguration = list(
+#'     imageScanningEnabled = TRUE|FALSE,
+#'     ecrConfiguration = list(
+#'       repositoryName = "string",
+#'       containerTags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -503,14 +514,14 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @rdname imagebuilder_create_image
 #'
 #' @aliases imagebuilder_create_image
-imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn = NULL, distributionConfigurationArn = NULL, infrastructureConfigurationArn, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, tags = NULL, clientToken) {
+imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn = NULL, distributionConfigurationArn = NULL, infrastructureConfigurationArn, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, tags = NULL, clientToken, imageScanningConfiguration = NULL) {
   op <- new_operation(
     name = "CreateImage",
     http_method = "PUT",
     http_path = "/CreateImage",
     paginator = list()
   )
-  input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration)
   output <- .imagebuilder$create_image_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -530,7 +541,8 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' imagebuilder_create_image_pipeline(name, description, imageRecipeArn,
 #'   containerRecipeArn, infrastructureConfigurationArn,
 #'   distributionConfigurationArn, imageTestsConfiguration,
-#'   enhancedImageMetadataEnabled, schedule, status, tags, clientToken)
+#'   enhancedImageMetadataEnabled, schedule, status, tags, clientToken,
+#'   imageScanningConfiguration)
 #'
 #' @param name &#91;required&#93; The name of the image pipeline.
 #' @param description The description of the image pipeline.
@@ -552,6 +564,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @param status The status of the image pipeline.
 #' @param tags The tags of the image pipeline.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
+#' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #'
 #' @return
 #' A list with the following syntax:
@@ -586,7 +599,16 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   imageScanningConfiguration = list(
+#'     imageScanningEnabled = TRUE|FALSE,
+#'     ecrConfiguration = list(
+#'       repositoryName = "string",
+#'       containerTags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -595,14 +617,14 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @rdname imagebuilder_create_image_pipeline
 #'
 #' @aliases imagebuilder_create_image_pipeline
-imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, clientToken) {
+imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, tags = NULL, clientToken, imageScanningConfiguration = NULL) {
   op <- new_operation(
     name = "CreateImagePipeline",
     http_method = "PUT",
     http_path = "/CreateImagePipeline",
     paginator = list()
   )
-  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken)
+  input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration)
   output <- .imagebuilder$create_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)
@@ -641,7 +663,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' assignment requirements for the nodes that you can assign. For example,
 #' you might choose a software version pattern, such as 1.0.0, or a date,
 #' such as 2021.01.01.
-#' @param components &#91;required&#93; The components of the image recipe.
+#' @param components &#91;required&#93; The components included in the image recipe.
 #' @param parentImage &#91;required&#93; The base image of the image recipe. The value of the string can be the
 #' ARN of the base image or an AMI ID. The format for the ARN follows this
 #' example:
@@ -1215,8 +1237,8 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' @usage
 #' imagebuilder_get_component(componentBuildVersionArn)
 #'
-#' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to
-#' retrieve. Regex requires "/\\d+$" suffix.
+#' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to get.
+#' Regex requires the suffix `/\\d+$`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1255,7 +1277,9 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #'     dateCreated = "string",
 #'     tags = list(
 #'       "string"
-#'     )
+#'     ),
+#'     publisher = "string",
+#'     obfuscate = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1628,7 +1652,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #' @usage
 #' imagebuilder_get_image(imageBuildVersionArn)
 #'
-#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to retrieve.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to get.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1902,7 +1926,21 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
+#'     buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT",
+#'     imageSource = "AMAZON_MANAGED"|"AWS_MARKETPLACE"|"IMPORTED"|"CUSTOM",
+#'     scanState = list(
+#'       status = "PENDING"|"SCANNING"|"COLLECTING"|"COMPLETED"|"ABANDONED"|"FAILED"|"TIMED_OUT",
+#'       reason = "string"
+#'     ),
+#'     imageScanningConfiguration = list(
+#'       imageScanningEnabled = TRUE|FALSE,
+#'       ecrConfiguration = list(
+#'         repositoryName = "string",
+#'         containerTags = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1978,6 +2016,15 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 #'     dateNextRun = "string",
 #'     tags = list(
 #'       "string"
+#'     ),
+#'     imageScanningConfiguration = list(
+#'       imageScanningEnabled = TRUE|FALSE,
+#'       ecrConfiguration = list(
+#'         repositoryName = "string",
+#'         containerTags = list(
+#'           "string"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -2292,6 +2339,134 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 }
 .imagebuilder$operations$get_infrastructure_configuration <- imagebuilder_get_infrastructure_configuration
 
+#' Get the runtime information that was logged for a specific runtime
+#' instance of the workflow
+#'
+#' @description
+#' Get the runtime information that was logged for a specific runtime
+#' instance of the workflow.
+#'
+#' @usage
+#' imagebuilder_get_workflow_execution(workflowExecutionId)
+#'
+#' @param workflowExecutionId &#91;required&#93; Use the unique identifier for a runtime instance of the workflow to get
+#' runtime details.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   workflowBuildVersionArn = "string",
+#'   workflowExecutionId = "string",
+#'   imageBuildVersionArn = "string",
+#'   type = "BUILD"|"TEST"|"DISTRIBUTION",
+#'   status = "PENDING"|"SKIPPED"|"RUNNING"|"COMPLETED"|"FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETED",
+#'   message = "string",
+#'   totalStepCount = 123,
+#'   totalStepsSucceeded = 123,
+#'   totalStepsFailed = 123,
+#'   totalStepsSkipped = 123,
+#'   startTime = "string",
+#'   endTime = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow_execution(
+#'   workflowExecutionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_get_workflow_execution
+#'
+#' @aliases imagebuilder_get_workflow_execution
+imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
+  op <- new_operation(
+    name = "GetWorkflowExecution",
+    http_method = "GET",
+    http_path = "/GetWorkflowExecution",
+    paginator = list()
+  )
+  input <- .imagebuilder$get_workflow_execution_input(workflowExecutionId = workflowExecutionId)
+  output <- .imagebuilder$get_workflow_execution_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$get_workflow_execution <- imagebuilder_get_workflow_execution
+
+#' Get the runtime information that was logged for a specific runtime
+#' instance of the workflow step
+#'
+#' @description
+#' Get the runtime information that was logged for a specific runtime
+#' instance of the workflow step.
+#'
+#' @usage
+#' imagebuilder_get_workflow_step_execution(stepExecutionId)
+#'
+#' @param stepExecutionId &#91;required&#93; Use the unique identifier for a specific runtime instance of the
+#' workflow step to get runtime details for that step.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   stepExecutionId = "string",
+#'   workflowBuildVersionArn = "string",
+#'   workflowExecutionId = "string",
+#'   imageBuildVersionArn = "string",
+#'   name = "string",
+#'   description = "string",
+#'   action = "string",
+#'   status = "PENDING"|"SKIPPED"|"RUNNING"|"COMPLETED"|"FAILED",
+#'   rollbackStatus = "RUNNING"|"COMPLETED"|"SKIPPED"|"FAILED",
+#'   message = "string",
+#'   inputs = "string",
+#'   outputs = "string",
+#'   startTime = "string",
+#'   endTime = "string",
+#'   onFailure = "string",
+#'   timeoutSeconds = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_workflow_step_execution(
+#'   stepExecutionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_get_workflow_step_execution
+#'
+#' @aliases imagebuilder_get_workflow_step_execution
+imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
+  op <- new_operation(
+    name = "GetWorkflowStepExecution",
+    http_method = "GET",
+    http_path = "/GetWorkflowStepExecution",
+    paginator = list()
+  )
+  input <- .imagebuilder$get_workflow_step_execution_input(stepExecutionId = stepExecutionId)
+  output <- .imagebuilder$get_workflow_step_execution_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$get_workflow_step_execution <- imagebuilder_get_workflow_step_execution
+
 #' Imports a component and transforms its data into a component document
 #'
 #' @description
@@ -2317,9 +2492,9 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 #' also be wildcards.
 #' @param description The description of the component. Describes the contents of the
 #' component.
-#' @param changeDescription The change description of the component. Describes what change has been
-#' made in this version, or what makes this version different from other
-#' versions of this component.
+#' @param changeDescription The change description of the component. This description indicates the
+#' change that has been made in this version, or what makes this version
+#' different from other versions of this component.
 #' @param type &#91;required&#93; The type of the component denotes whether the component is used to build
 #' the image, or only to test it.
 #' @param format &#91;required&#93; The format of the resource that you want to import as a component.
@@ -2538,7 +2713,9 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 #'       dateCreated = "string",
 #'       tags = list(
 #'         "string"
-#'       )
+#'       ),
+#'       publisher = "string",
+#'       obfuscate = TRUE|FALSE
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2576,12 +2753,13 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 }
 .imagebuilder$operations$list_component_build_versions <- imagebuilder_list_component_build_versions
 
-#' Returns the list of component build versions for the specified semantic
-#' version
+#' Returns the list of components that can be filtered by name, or by using
+#' the listed filters to streamline results
 #'
 #' @description
-#' Returns the list of component build versions for the specified semantic
-#' version.
+#' Returns the list of components that can be filtered by name, or by using
+#' the listed `filters` to streamline results. Newly created components can
+#' take up to two minutes to appear in the ListComponents API Results.
 #' 
 #' The semantic version has four nodes:
 #' \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the
@@ -2597,11 +2775,11 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' imagebuilder_list_components(owner, filters, byName, maxResults,
 #'   nextToken)
 #'
-#' @param owner The owner defines which components you want to list. By default, this
-#' request will only show components owned by your account. You can use
-#' this field to specify if you want to view components owned by yourself,
-#' by Amazon, or those components that have been shared with you by other
-#' customers.
+#' @param owner Filters results based on the type of owner for the component. By
+#' default, this request returns a list of components that your account
+#' owns. To see results for other types of owners, you can specify
+#' components that Amazon manages, third party components, or components
+#' that other accounts have shared with you.
 #' @param filters Use the following filters to streamline results:
 #' 
 #' -   `description`
@@ -2615,7 +2793,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' -   `type`
 #' 
 #' -   `version`
-#' @param byName Returns the list of component build versions for the specified name.
+#' @param byName Returns the list of components for the specified name.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -2647,7 +2825,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' @section Request syntax:
 #' ```
 #' svc$list_components(
-#'   owner = "Self"|"Shared"|"Amazon",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -2705,10 +2883,9 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' -   `parentImage`
 #' 
 #' -   `platform`
-#' @param maxResults The maximum number of results to return in the list.
-#' @param nextToken Provides a token for pagination, which determines where to begin the
-#' next set of results when the current set reaches the maximum for one
-#' request.
+#' @param maxResults The maximum items to return in a request.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2736,7 +2913,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' @section Request syntax:
 #' ```
 #' svc$list_container_recipes(
-#'   owner = "Self"|"Shared"|"Amazon",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -2919,7 +3096,8 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
+#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT",
+#'       imageSource = "AMAZON_MANAGED"|"AWS_MARKETPLACE"|"IMPORTED"|"CUSTOM"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2980,8 +3158,7 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 #'
 #' @param imageBuildVersionArn &#91;required&#93; Filter results for the ListImagePackages request by the Image Build
 #' Version ARN
-#' @param maxResults The maxiumum number of results to return from the ListImagePackages
-#' request.
+#' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
 #'
@@ -3096,7 +3273,8 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
+#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT",
+#'       imageSource = "AMAZON_MANAGED"|"AWS_MARKETPLACE"|"IMPORTED"|"CUSTOM"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3199,6 +3377,15 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #'       dateNextRun = "string",
 #'       tags = list(
 #'         "string"
+#'       ),
+#'       imageScanningConfiguration = list(
+#'         imageScanningEnabled = TRUE|FALSE,
+#'         ecrConfiguration = list(
+#'           repositoryName = "string",
+#'           containerTags = list(
+#'             "string"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3293,7 +3480,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$list_image_recipes(
-#'   owner = "Self"|"Shared"|"Amazon",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -3329,10 +3516,276 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 }
 .imagebuilder$operations$list_image_recipes <- imagebuilder_list_image_recipes
 
+#' Returns a list of image scan aggregations for your account
+#'
+#' @description
+#' Returns a list of image scan aggregations for your account. You can
+#' filter by the type of key that Image Builder uses to group results. For
+#' example, if you want to get a list of findings by severity level for one
+#' of your pipelines, you might specify your pipeline with the
+#' `imagePipelineArn` filter. If you don't specify a filter, Image Builder
+#' returns an aggregation for your account.
+#' 
+#' To streamline results, you can use the following filters in your
+#' request:
+#' 
+#' -   `accountId`
+#' 
+#' -   `imageBuildVersionArn`
+#' 
+#' -   `imagePipelineArn`
+#' 
+#' -   `vulnerabilityId`
+#'
+#' @usage
+#' imagebuilder_list_image_scan_finding_aggregations(filter, nextToken)
+#'
+#' @param filter 
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   aggregationType = "string",
+#'   responses = list(
+#'     list(
+#'       accountAggregation = list(
+#'         accountId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           critical = 123,
+#'           high = 123,
+#'           medium = 123
+#'         )
+#'       ),
+#'       imageAggregation = list(
+#'         imageBuildVersionArn = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           critical = 123,
+#'           high = 123,
+#'           medium = 123
+#'         )
+#'       ),
+#'       imagePipelineAggregation = list(
+#'         imagePipelineArn = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           critical = 123,
+#'           high = 123,
+#'           medium = 123
+#'         )
+#'       ),
+#'       vulnerabilityIdAggregation = list(
+#'         vulnerabilityId = "string",
+#'         severityCounts = list(
+#'           all = 123,
+#'           critical = 123,
+#'           high = 123,
+#'           medium = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_image_scan_finding_aggregations(
+#'   filter = list(
+#'     name = "string",
+#'     values = list(
+#'       "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_image_scan_finding_aggregations
+#'
+#' @aliases imagebuilder_list_image_scan_finding_aggregations
+imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListImageScanFindingAggregations",
+    http_method = "POST",
+    http_path = "/ListImageScanFindingAggregations",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_image_scan_finding_aggregations_input(filter = filter, nextToken = nextToken)
+  output <- .imagebuilder$list_image_scan_finding_aggregations_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_image_scan_finding_aggregations <- imagebuilder_list_image_scan_finding_aggregations
+
+#' Returns a list of image scan findings for your account
+#'
+#' @description
+#' Returns a list of image scan findings for your account.
+#'
+#' @usage
+#' imagebuilder_list_image_scan_findings(filters, maxResults, nextToken)
+#'
+#' @param filters An array of name value pairs that you can use to filter your results.
+#' You can use the following filters to streamline results:
+#' 
+#' -   `imageBuildVersionArn`
+#' 
+#' -   `imagePipelineArn`
+#' 
+#' -   `vulnerabilityId`
+#' 
+#' -   `severity`
+#' 
+#' If you don't request a filter, then all findings in your account are
+#' listed.
+#' @param maxResults The maximum items to return in a request.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   findings = list(
+#'     list(
+#'       awsAccountId = "string",
+#'       imageBuildVersionArn = "string",
+#'       imagePipelineArn = "string",
+#'       type = "string",
+#'       description = "string",
+#'       title = "string",
+#'       remediation = list(
+#'         recommendation = list(
+#'           text = "string",
+#'           url = "string"
+#'         )
+#'       ),
+#'       severity = "string",
+#'       firstObservedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       inspectorScore = 123.0,
+#'       inspectorScoreDetails = list(
+#'         adjustedCvss = list(
+#'           scoreSource = "string",
+#'           cvssSource = "string",
+#'           version = "string",
+#'           score = 123.0,
+#'           scoringVector = "string",
+#'           adjustments = list(
+#'             list(
+#'               metric = "string",
+#'               reason = "string"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       packageVulnerabilityDetails = list(
+#'         vulnerabilityId = "string",
+#'         vulnerablePackages = list(
+#'           list(
+#'             name = "string",
+#'             version = "string",
+#'             sourceLayerHash = "string",
+#'             epoch = 123,
+#'             release = "string",
+#'             arch = "string",
+#'             packageManager = "string",
+#'             filePath = "string",
+#'             fixedInVersion = "string",
+#'             remediation = "string"
+#'           )
+#'         ),
+#'         source = "string",
+#'         cvss = list(
+#'           list(
+#'             baseScore = 123.0,
+#'             scoringVector = "string",
+#'             version = "string",
+#'             source = "string"
+#'           )
+#'         ),
+#'         relatedVulnerabilities = list(
+#'           "string"
+#'         ),
+#'         sourceUrl = "string",
+#'         vendorSeverity = "string",
+#'         vendorCreatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         vendorUpdatedAt = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         referenceUrls = list(
+#'           "string"
+#'         )
+#'       ),
+#'       fixAvailable = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_image_scan_findings(
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_image_scan_findings
+#'
+#' @aliases imagebuilder_list_image_scan_findings
+imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListImageScanFindings",
+    http_method = "POST",
+    http_path = "/ListImageScanFindings",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_image_scan_findings_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .imagebuilder$list_image_scan_findings_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_image_scan_findings <- imagebuilder_list_image_scan_findings
+
 #' Returns the list of images that you have access to
 #'
 #' @description
-#' Returns the list of images that you have access to.
+#' Returns the list of images that you have access to. Newly created images
+#' can take up to two minutes to appear in the ListImages API Results.
 #'
 #' @usage
 #' imagebuilder_list_images(owner, filters, byName, maxResults, nextToken,
@@ -3375,7 +3828,8 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #'       osVersion = "string",
 #'       owner = "string",
 #'       dateCreated = "string",
-#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT"
+#'       buildType = "USER_INITIATED"|"SCHEDULED"|"IMPORT",
+#'       imageSource = "AMAZON_MANAGED"|"AWS_MARKETPLACE"|"IMPORTED"|"CUSTOM"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -3385,7 +3839,7 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' @section Request syntax:
 #' ```
 #' svc$list_images(
-#'   owner = "Self"|"Shared"|"Amazon",
+#'   owner = "Self"|"Shared"|"Amazon"|"ThirdParty",
 #'   filters = list(
 #'     list(
 #'       name = "string",
@@ -3552,6 +4006,156 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .imagebuilder$operations$list_tags_for_resource <- imagebuilder_list_tags_for_resource
+
+#' Returns a list of workflow runtime instance metadata objects for a
+#' specific image build version
+#'
+#' @description
+#' Returns a list of workflow runtime instance metadata objects for a
+#' specific image build version.
+#'
+#' @usage
+#' imagebuilder_list_workflow_executions(maxResults, nextToken,
+#'   imageBuildVersionArn)
+#'
+#' @param maxResults The maximum items to return in a request.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#' @param imageBuildVersionArn &#91;required&#93; List all workflow runtime instances for the specified image build
+#' version resource ARN.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   workflowExecutions = list(
+#'     list(
+#'       workflowBuildVersionArn = "string",
+#'       workflowExecutionId = "string",
+#'       type = "BUILD"|"TEST"|"DISTRIBUTION",
+#'       status = "PENDING"|"SKIPPED"|"RUNNING"|"COMPLETED"|"FAILED"|"ROLLBACK_IN_PROGRESS"|"ROLLBACK_COMPLETED",
+#'       message = "string",
+#'       totalStepCount = 123,
+#'       totalStepsSucceeded = 123,
+#'       totalStepsFailed = 123,
+#'       totalStepsSkipped = 123,
+#'       startTime = "string",
+#'       endTime = "string"
+#'     )
+#'   ),
+#'   imageBuildVersionArn = "string",
+#'   message = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workflow_executions(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   imageBuildVersionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_workflow_executions
+#'
+#' @aliases imagebuilder_list_workflow_executions
+imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken = NULL, imageBuildVersionArn) {
+  op <- new_operation(
+    name = "ListWorkflowExecutions",
+    http_method = "POST",
+    http_path = "/ListWorkflowExecutions",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_workflow_executions_input(maxResults = maxResults, nextToken = nextToken, imageBuildVersionArn = imageBuildVersionArn)
+  output <- .imagebuilder$list_workflow_executions_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_workflow_executions <- imagebuilder_list_workflow_executions
+
+#' Shows runtime data for each step in a runtime instance of the workflow
+#' that you specify in the request
+#'
+#' @description
+#' Shows runtime data for each step in a runtime instance of the workflow
+#' that you specify in the request.
+#'
+#' @usage
+#' imagebuilder_list_workflow_step_executions(maxResults, nextToken,
+#'   workflowExecutionId)
+#'
+#' @param maxResults The maximum items to return in a request.
+#' @param nextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#' @param workflowExecutionId &#91;required&#93; The unique identifier that Image Builder assigned to keep track of
+#' runtime details when it ran the workflow.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   requestId = "string",
+#'   steps = list(
+#'     list(
+#'       stepExecutionId = "string",
+#'       name = "string",
+#'       description = "string",
+#'       action = "string",
+#'       status = "PENDING"|"SKIPPED"|"RUNNING"|"COMPLETED"|"FAILED",
+#'       rollbackStatus = "RUNNING"|"COMPLETED"|"SKIPPED"|"FAILED",
+#'       message = "string",
+#'       inputs = "string",
+#'       outputs = "string",
+#'       startTime = "string",
+#'       endTime = "string"
+#'     )
+#'   ),
+#'   workflowBuildVersionArn = "string",
+#'   workflowExecutionId = "string",
+#'   imageBuildVersionArn = "string",
+#'   message = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workflow_step_executions(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   workflowExecutionId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname imagebuilder_list_workflow_step_executions
+#'
+#' @aliases imagebuilder_list_workflow_step_executions
+imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextToken = NULL, workflowExecutionId) {
+  op <- new_operation(
+    name = "ListWorkflowStepExecutions",
+    http_method = "POST",
+    http_path = "/ListWorkflowStepExecutions",
+    paginator = list()
+  )
+  input <- .imagebuilder$list_workflow_step_executions_input(maxResults = maxResults, nextToken = nextToken, workflowExecutionId = workflowExecutionId)
+  output <- .imagebuilder$list_workflow_step_executions_output()
+  config <- get_config()
+  svc <- .imagebuilder$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.imagebuilder$operations$list_workflow_step_executions <- imagebuilder_list_workflow_step_executions
 
 #' Applies a policy to a component
 #'
@@ -4074,7 +4678,8 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' imagebuilder_update_image_pipeline(imagePipelineArn, description,
 #'   imageRecipeArn, containerRecipeArn, infrastructureConfigurationArn,
 #'   distributionConfigurationArn, imageTestsConfiguration,
-#'   enhancedImageMetadataEnabled, schedule, status, clientToken)
+#'   enhancedImageMetadataEnabled, schedule, status, clientToken,
+#'   imageScanningConfiguration)
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to
 #' update.
@@ -4083,10 +4688,10 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' configure images updated by this image pipeline.
 #' @param containerRecipeArn The Amazon Resource Name (ARN) of the container pipeline to update.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that
-#' will be used to build images updated by this image pipeline.
+#' Image Builder uses to build images that this image pipeline has updated.
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that
-#' will be used to configure and distribute images updated by this image
-#' pipeline.
+#' Image Builder uses to configure and distribute images that this image
+#' pipeline has updated.
 #' @param imageTestsConfiguration The image test configuration of the image pipeline.
 #' @param enhancedImageMetadataEnabled Collects additional information about the image being created, including
 #' the operating system (OS) version and package list. This information is
@@ -4095,6 +4700,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @param schedule The schedule of the image pipeline.
 #' @param status The status of the image pipeline.
 #' @param clientToken &#91;required&#93; The idempotency token used to make this request idempotent.
+#' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4126,7 +4732,16 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #'     pipelineExecutionStartCondition = "EXPRESSION_MATCH_ONLY"|"EXPRESSION_MATCH_AND_DEPENDENCY_UPDATES_AVAILABLE"
 #'   ),
 #'   status = "DISABLED"|"ENABLED",
-#'   clientToken = "string"
+#'   clientToken = "string",
+#'   imageScanningConfiguration = list(
+#'     imageScanningEnabled = TRUE|FALSE,
+#'     ecrConfiguration = list(
+#'       repositoryName = "string",
+#'       containerTags = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -4135,14 +4750,14 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @rdname imagebuilder_update_image_pipeline
 #'
 #' @aliases imagebuilder_update_image_pipeline
-imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken) {
+imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = NULL, imageRecipeArn = NULL, containerRecipeArn = NULL, infrastructureConfigurationArn, distributionConfigurationArn = NULL, imageTestsConfiguration = NULL, enhancedImageMetadataEnabled = NULL, schedule = NULL, status = NULL, clientToken, imageScanningConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateImagePipeline",
     http_method = "PUT",
     http_path = "/UpdateImagePipeline",
     paginator = list()
   )
-  input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken)
+  input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration)
   output <- .imagebuilder$update_image_pipeline_output()
   config <- get_config()
   svc <- .imagebuilder$service(config)

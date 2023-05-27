@@ -227,7 +227,7 @@ NULL
 
 .swf$poll_for_decision_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), taskList = structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), identity = structure(logical(0), tags = list(type = "string")), nextPageToken = structure(logical(0), tags = list(type = "string")), maximumPageSize = structure(logical(0), tags = list(type = "integer")), reverseOrder = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), taskList = structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), identity = structure(logical(0), tags = list(type = "string")), nextPageToken = structure(logical(0), tags = list(type = "string")), maximumPageSize = structure(logical(0), tags = list(type = "integer")), reverseOrder = structure(logical(0), tags = list(type = "boolean")), startAtPreviousStartedEvent = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

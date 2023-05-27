@@ -4,10 +4,15 @@
 \alias{kinesis_describe_stream}
 \title{Describes the specified Kinesis data stream}
 \usage{
-kinesis_describe_stream(StreamName, Limit = NULL, ExclusiveStartShardId = NULL)
+kinesis_describe_stream(
+  StreamName = NULL,
+  Limit = NULL,
+  ExclusiveStartShardId = NULL,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream to describe.}
+\item{StreamName}{The name of the stream to describe.}
 
 \item{Limit}{The maximum number of shards to return in a single call. The default
 value is 100. If you specify a value greater than 100, at most 100
@@ -22,6 +27,8 @@ starting with the shard whose ID immediately follows
 If you don't specify this parameter, the default behavior for
 \code{\link[=kinesis_describe_stream]{describe_stream}} is to describe the stream
 starting with the first shard in the stream.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Describes the specified Kinesis data stream.

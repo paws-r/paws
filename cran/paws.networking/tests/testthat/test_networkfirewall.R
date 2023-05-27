@@ -20,6 +20,10 @@ test_that("describe_rule_group_metadata", {
   expect_error(svc$describe_rule_group_metadata(), NA)
 })
 
+test_that("describe_tls_inspection_configuration", {
+  expect_error(svc$describe_tls_inspection_configuration(), NA)
+})
+
 test_that("list_firewall_policies", {
   expect_error(svc$list_firewall_policies(), NA)
 })
@@ -42,4 +46,12 @@ test_that("list_rule_groups", {
 
 test_that("list_rule_groups", {
   expect_error(svc$list_rule_groups(MaxResults = 20), NA)
+})
+
+test_that("list_tls_inspection_configurations", {
+  expect_error(svc$list_tls_inspection_configurations(), NA)
+})
+
+test_that("list_tls_inspection_configurations", {
+  expect_error(svc$list_tls_inspection_configurations(MaxResults = 20), NA)
 })

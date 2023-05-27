@@ -51,7 +51,10 @@ a \code{nextToken} value if applicable.}
 
 \item{startedBy}{The \code{startedBy} value to filter the task results with. Specifying a
 \code{startedBy} value limits the results to tasks that were started with
-that value.}
+that value.
+
+When you specify \code{startedBy} as the filter, it must be the only filter
+that you use.}
 
 \item{serviceName}{The name of the service to use when filtering the
 \code{\link[=ecs_list_tasks]{list_tasks}} results. Specifying a \code{serviceName}

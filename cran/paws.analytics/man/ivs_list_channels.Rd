@@ -18,7 +18,7 @@ ivs_list_channels(
 \item{filterByRecordingConfigurationArn}{Filters the channel list to match the specified recording-configuration
 ARN.}
 
-\item{maxResults}{Maximum number of channels to return. Default: 50.}
+\item{maxResults}{Maximum number of channels to return. Default: 100.}
 
 \item{nextToken}{The first channel to retrieve. This is used for pagination; see the
 \code{nextToken} response field.}

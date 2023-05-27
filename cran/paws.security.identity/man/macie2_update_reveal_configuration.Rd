@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_update_reveal_configuration}
 \alias{macie2_update_reveal_configuration}
-\title{Updates the status and configuration settings for retrieving (revealing)
-occurrences of sensitive data reported by findings}
+\title{Updates the status and configuration settings for retrieving occurrences
+of sensitive data reported by findings}
 \usage{
 macie2_update_reveal_configuration(configuration)
 }
@@ -12,7 +12,7 @@ macie2_update_reveal_configuration(configuration)
 the account.}
 }
 \description{
-Updates the status and configuration settings for retrieving (revealing) occurrences of sensitive data reported by findings.
+Updates the status and configuration settings for retrieving occurrences of sensitive data reported by findings.
 
 See \url{https://paws-r.github.io/docs/macie2/update_reveal_configuration.html} for full documentation.
 }

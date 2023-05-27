@@ -2,7 +2,8 @@
 % Please edit documentation in R/codestarnotifications_operations.R
 \name{codestarnotifications_list_notification_rules}
 \alias{codestarnotifications_list_notification_rules}
-\title{Returns a list of the notification rules for an AWS account}
+\title{Returns a list of the notification rules for an Amazon Web Services
+account}
 \usage{
 codestarnotifications_list_notification_rules(
   Filters = NULL,
@@ -25,7 +26,7 @@ batch of the results.}
 maximum number of results that can be returned is 100.}
 }
 \description{
-Returns a list of the notification rules for an AWS account.
+Returns a list of the notification rules for an Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/codestarnotifications/list_notification_rules.html} for full documentation.
 }

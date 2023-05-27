@@ -14,9 +14,9 @@ lambda_list_functions(
 }
 \arguments{
 \item{MasterRegion}{For Lambda@Edge functions, the Amazon Web Services Region of the master
-function. For example, \code{us-east-1} filters the list of functions to only
-include Lambda@Edge functions replicated from a master function in US
-East (N. Virginia). If specified, you must set \code{FunctionVersion} to
+function. For example, \code{us-east-1} filters the list of functions to
+include only Lambda@Edge functions replicated from a master function in
+US East (N. Virginia). If specified, you must set \code{FunctionVersion} to
 \code{ALL}.}
 
 \item{FunctionVersion}{Set to \code{ALL} to include entries for all published versions of each

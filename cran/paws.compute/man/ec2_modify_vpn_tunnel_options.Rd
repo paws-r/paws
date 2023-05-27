@@ -9,7 +9,8 @@ ec2_modify_vpn_tunnel_options(
   VpnConnectionId,
   VpnTunnelOutsideIpAddress,
   TunnelOptions,
-  DryRun = NULL
+  DryRun = NULL,
+  SkipTunnelReplacement = NULL
 )
 }
 \arguments{
@@ -23,6 +24,10 @@ ec2_modify_vpn_tunnel_options(
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SkipTunnelReplacement}{Choose whether or not to trigger immediate tunnel replacement.
+
+Valid values: \code{True} | \code{False}}
 }
 \description{
 Modifies the options for a VPN tunnel in an Amazon Web Services Site-to-Site VPN connection. You can modify multiple options for a tunnel in a single request, but you can only modify one tunnel at a time. For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPNTunnels.html}{Site-to-Site VPN tunnel options for your Site-to-Site VPN connection} in the \emph{Amazon Web Services Site-to-Site VPN User Guide}.

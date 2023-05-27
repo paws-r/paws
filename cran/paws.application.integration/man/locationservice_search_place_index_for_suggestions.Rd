@@ -58,8 +58,7 @@ characters: \code{AUS}.
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
-\href{https://datatracker.ietf.org/doc/search?rfcs=on&activedrafts=on&name=bcp47}{BCP 47}
-language tag, for example, \code{en} for English.
+BCP 47 language tag, for example, \code{en} for English.
 
 This setting affects the languages used in the results. If no language
 is specified, or not supported for a particular result, the partner

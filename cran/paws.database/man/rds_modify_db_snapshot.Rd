@@ -25,6 +25,10 @@ available when you upgrade a DB snapshot.
 
 \strong{Oracle}
 \itemize{
+\item \verb{19.0.0.0.ru-2022-01.rur-2022-01.r1} (supported for 12.2.0.1 DB
+snapshots)
+\item \verb{19.0.0.0.ru-2022-07.rur-2022-07.r1} (supported for 12.1.0.2 DB
+snapshots)
 \item \verb{12.1.0.2.v8} (supported for 12.1.0.1 DB snapshots)
 \item \verb{11.2.0.4.v12} (supported for 11.2.0.2 DB snapshots)
 \item \verb{11.2.0.4.v11} (supported for 11.2.0.3 DB snapshots)

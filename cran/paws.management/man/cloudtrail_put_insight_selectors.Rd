@@ -12,8 +12,16 @@ cloudtrail_put_insight_selectors(TrailName, InsightSelectors)
 Insights selectors.}
 
 \item{InsightSelectors}{[required] A JSON string that contains the insight types you want to log on a
-trail. \code{ApiCallRateInsight} and \code{ApiErrorRateInsight} are valid insight
-types.}
+trail. \code{ApiCallRateInsight} and \code{ApiErrorRateInsight} are valid Insight
+types.
+
+The \code{ApiCallRateInsight} Insights type analyzes write-only management
+API calls that are aggregated per minute against a baseline API call
+volume.
+
+The \code{ApiErrorRateInsight} Insights type analyzes management API calls
+that result in error codes. The error is shown if the API call is
+unsuccessful.}
 }
 \description{
 Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail. You also use \code{\link[=cloudtrail_put_insight_selectors]{put_insight_selectors}} to turn off Insights event logging, by passing an empty list of insight types. The valid Insights event types in this release are \code{ApiErrorRateInsight} and \code{ApiCallRateInsight}.

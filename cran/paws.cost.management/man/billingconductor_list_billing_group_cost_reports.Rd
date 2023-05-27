@@ -18,7 +18,7 @@ billingconductor_list_billing_group_cost_reports(
 
 \item{MaxResults}{The maximum number of reports to retrieve.}
 
-\item{NextToken}{The pagination token used on subsequent calls to get reports.}
+\item{NextToken}{The pagination token that's used on subsequent calls to get reports.}
 
 \item{Filters}{A \code{ListBillingGroupCostReportsFilter} to specify billing groups to
 retrieve reports from.}

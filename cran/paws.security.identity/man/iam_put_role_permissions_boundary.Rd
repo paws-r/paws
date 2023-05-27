@@ -11,8 +11,18 @@ iam_put_role_permissions_boundary(RoleName, PermissionsBoundary)
 \item{RoleName}{[required] The name (friendly name, not ARN) of the IAM role for which you want to
 set the permissions boundary.}
 
-\item{PermissionsBoundary}{[required] The ARN of the policy that is used to set the permissions boundary for
-the role.}
+\item{PermissionsBoundary}{[required] The ARN of the managed policy that is used to set the permissions
+boundary for the role.
+
+A permissions boundary policy defines the maximum permissions that
+identity-based policies can grant to an entity, but does not grant
+permissions. Permissions boundaries do not define the maximum
+permissions that a resource-based policy can grant to an entity. To
+learn more, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html}{Permissions boundaries for IAM entities}
+in the \emph{IAM User Guide}.
+
+For more information about policy types, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types}{Policy types}
+in the \emph{IAM User Guide}.}
 }
 \description{
 Adds or updates the policy that is specified as the IAM role's permissions boundary. You can use an Amazon Web Services managed policy or a customer managed policy to set the boundary for a role. Use the boundary to control the maximum permissions that the role can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the role.

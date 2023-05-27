@@ -3,19 +3,19 @@
 \name{codedeploy_list_deployment_groups}
 \alias{codedeploy_list_deployment_groups}
 \title{Lists the deployment groups for an application registered with the IAM
-user or AWS account}
+user or Amazon Web Services account}
 \usage{
 codedeploy_list_deployment_groups(applicationName, nextToken = NULL)
 }
 \arguments{
-\item{applicationName}{[required] The name of an AWS CodeDeploy application associated with the IAM user
-or AWS account.}
+\item{applicationName}{[required] The name of an CodeDeploy application associated with the IAM user or
+Amazon Web Services account.}
 
 \item{nextToken}{An identifier returned from the previous list deployment groups call. It
 can be used to return the next set of deployment groups in the list.}
 }
 \description{
-Lists the deployment groups for an application registered with the IAM user or AWS account.
+Lists the deployment groups for an application registered with the IAM user or Amazon Web Services account.
 
 See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_groups.html} for full documentation.
 }

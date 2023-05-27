@@ -30,7 +30,8 @@ rds_restore_db_cluster_to_point_in_time(
   StorageType = NULL,
   PubliclyAccessible = NULL,
   Iops = NULL,
-  ServerlessV2ScalingConfiguration = NULL
+  ServerlessV2ScalingConfiguration = NULL,
+  NetworkType = NULL
 )
 }
 \arguments{
@@ -53,9 +54,6 @@ source DB cluster.
 \item \code{copy-on-write} - The new DB cluster is restored as a clone of the
 source DB cluster.
 }
-
-Constraints: You can't specify \code{copy-on-write} if the engine version of
-the source DB cluster is earlier than 1.11.
 
 If you don't specify a \code{RestoreType} value, then the new DB cluster is
 restored as a full copy of the source DB cluster.
@@ -262,7 +260,7 @@ be an Aurora Serverless v1 cluster or an encrypted provisioned cluster.
 Valid for: Aurora DB clusters only}
 
 \item{DBClusterInstanceClass}{The compute and memory capacity of the each DB instance in the Multi-AZ
-DB cluster, for example db.m6g.xlarge. Not all DB instance classes are
+DB cluster, for example db.m6gd.xlarge. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
 engines.
 
@@ -272,16 +270,17 @@ in the \emph{Amazon RDS User Guide.}
 
 Valid for: Multi-AZ DB clusters only}
 
-\item{StorageType}{Specifies the storage type to be associated with the each DB instance in
-the Multi-AZ DB cluster.
+\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
 
-Valid values: \code{io1}
+When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
+parameter is required.
 
-When specified, a value for the \code{Iops} parameter is required.
+Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
+(Multi-AZ DB clusters)
 
-Default: \code{io1}
+Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
 
-Valid for: Multi-AZ DB clusters only}
+Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB cluster is publicly accessible.
 
@@ -322,7 +321,7 @@ Valid for: Multi-AZ DB clusters only}
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
 
-For information about valid \code{Iops} values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage to improve performance}
+For information about valid IOPS values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide}.
 
 Constraints: Must be a multiple between .5 and 50 of the storage amount
@@ -331,6 +330,23 @@ for the DB instance.
 Valid for: Multi-AZ DB clusters only}
 
 \item{ServerlessV2ScalingConfiguration}{}
+
+\item{NetworkType}{The network type of the DB cluster.
+
+Valid values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}
+
+The network type is determined by the \code{DBSubnetGroup} specified for the
+DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
+IPv4 and the IPv6 protocols (\code{DUAL}).
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
+in the \emph{Amazon Aurora User Guide.}
+
+Valid for: Aurora DB clusters only}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.

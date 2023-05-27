@@ -2,18 +2,18 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_contact_flow_module}
 \alias{connect_delete_contact_flow_module}
-\title{Deletes the specified contact flow module}
+\title{Deletes the specified flow module}
 \usage{
 connect_delete_contact_flow_module(InstanceId, ContactFlowModuleId)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
-\item{ContactFlowModuleId}{[required] The identifier of the contact flow module.}
+\item{ContactFlowModuleId}{[required] The identifier of the flow module.}
 }
 \description{
-Deletes the specified contact flow module.
+Deletes the specified flow module.
 
 See \url{https://paws-r.github.io/docs/connect/delete_contact_flow_module.html} for full documentation.
 }

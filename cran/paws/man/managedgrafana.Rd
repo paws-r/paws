@@ -70,11 +70,12 @@ servers.
 \tabular{ll}{
 \link[paws.management:managedgrafana_associate_license]{associate_license} \tab Assigns a Grafana Enterprise license to a workspace\cr
 \link[paws.management:managedgrafana_create_workspace]{create_workspace} \tab Creates a workspace\cr
-\link[paws.management:managedgrafana_create_workspace_api_key]{create_workspace_api_key} \tab Creates an API key for the workspace\cr
+\link[paws.management:managedgrafana_create_workspace_api_key]{create_workspace_api_key} \tab Creates a Grafana API key for the workspace\cr
 \link[paws.management:managedgrafana_delete_workspace]{delete_workspace} \tab Deletes an Amazon Managed Grafana workspace\cr
-\link[paws.management:managedgrafana_delete_workspace_api_key]{delete_workspace_api_key} \tab Deletes an API key for a workspace\cr
+\link[paws.management:managedgrafana_delete_workspace_api_key]{delete_workspace_api_key} \tab Deletes a Grafana API key for the workspace\cr
 \link[paws.management:managedgrafana_describe_workspace]{describe_workspace} \tab Displays information about one Amazon Managed Grafana workspace\cr
 \link[paws.management:managedgrafana_describe_workspace_authentication]{describe_workspace_authentication} \tab Displays information about the authentication methods used in one Amazon Managed Grafana workspace\cr
+\link[paws.management:managedgrafana_describe_workspace_configuration]{describe_workspace_configuration} \tab Gets the current configuration string for the given workspace\cr
 \link[paws.management:managedgrafana_disassociate_license]{disassociate_license} \tab Removes the Grafana Enterprise license from a workspace\cr
 \link[paws.management:managedgrafana_list_permissions]{list_permissions} \tab Lists the users and groups who have the Grafana Admin and Editor roles in this workspace\cr
 \link[paws.management:managedgrafana_list_tags_for_resource]{list_tags_for_resource} \tab The ListTagsForResource operation returns the tags that are associated with the Amazon Managed Service for Grafana resource specified by the resourceArn\cr
@@ -83,7 +84,8 @@ servers.
 \link[paws.management:managedgrafana_untag_resource]{untag_resource} \tab The UntagResource operation removes the association of the tag with the Amazon Managed Grafana resource\cr
 \link[paws.management:managedgrafana_update_permissions]{update_permissions} \tab Updates which users in a workspace have the Grafana Admin or Editor roles\cr
 \link[paws.management:managedgrafana_update_workspace]{update_workspace} \tab Modifies an existing Amazon Managed Grafana workspace\cr
-\link[paws.management:managedgrafana_update_workspace_authentication]{update_workspace_authentication} \tab Use this operation to define the identity provider (IdP) that this workspace authenticates users from, using SAML
+\link[paws.management:managedgrafana_update_workspace_authentication]{update_workspace_authentication} \tab Use this operation to define the identity provider (IdP) that this workspace authenticates users from, using SAML\cr
+\link[paws.management:managedgrafana_update_workspace_configuration]{update_workspace_configuration} \tab Updates the configuration string for the given workspace
 }
 }
 

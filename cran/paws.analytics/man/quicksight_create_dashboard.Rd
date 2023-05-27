@@ -2,7 +2,8 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_dashboard}
 \alias{quicksight_create_dashboard}
-\title{Creates a dashboard from a template}
+\title{Creates a dashboard from either a template or directly with a
+DashboardDefinition}
 \usage{
 quicksight_create_dashboard(
   AwsAccountId,
@@ -10,11 +11,12 @@ quicksight_create_dashboard(
   Name,
   Parameters = NULL,
   Permissions = NULL,
-  SourceEntity,
+  SourceEntity = NULL,
   Tags = NULL,
   VersionDescription = NULL,
   DashboardPublishOptions = NULL,
-  ThemeArn = NULL
+  ThemeArn = NULL,
+  Definition = NULL
 )
 }
 \arguments{
@@ -35,7 +37,7 @@ action information for each principal ARN.
 
 To specify no permissions, omit the permissions list.}
 
-\item{SourceEntity}{[required] The entity that you are using as a source when you create the dashboard.
+\item{SourceEntity}{The entity that you are using as a source when you create the dashboard.
 In \code{SourceEntity}, you specify the type of object you're using as
 source. You can only create a dashboard from a template, so you use a
 \code{SourceTemplate} entity. If you need to create a dashboard from an
@@ -47,7 +49,10 @@ account and any Amazon QuickSight-supported Amazon Web Services Region.
 
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} to list the
 replacement datasets for the placeholders listed in the original. The
-schema in each dataset must match its placeholder.}
+schema in each dataset must match its placeholder.
+
+Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
+the request to be valid.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the dashboard.}
@@ -74,9 +79,17 @@ by default.
 dashboard. If you add a value for this field, it overrides the value
 that is used in the source entity. The theme ARN must exist in the same
 Amazon Web Services account where you create the dashboard.}
+
+\item{Definition}{The definition of a dashboard.
+
+A definition is the data model of all features in a Dashboard, Template,
+or Analysis.
+
+Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
+the request to be valid.}
 }
 \description{
-Creates a dashboard from a template. To first create a template, see the \code{\link[=quicksight_create_template]{create_template}} API operation.
+Creates a dashboard from either a template or directly with a \code{DashboardDefinition}. To first create a template, see the \code{\link[=quicksight_create_template]{create_template}} API operation.
 
 See \url{https://paws-r.github.io/docs/quicksight/create_dashboard.html} for full documentation.
 }

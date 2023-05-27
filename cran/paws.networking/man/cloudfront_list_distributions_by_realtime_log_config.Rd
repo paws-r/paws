@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_list_distributions_by_realtime_log_config}
 \alias{cloudfront_list_distributions_by_realtime_log_config}
-\title{Gets a list of distributions that have a cache behavior that’s
+\title{Gets a list of distributions that have a cache behavior that's
 associated with the specified real-time log configuration}
 \usage{
 cloudfront_list_distributions_by_realtime_log_config(
@@ -16,7 +16,7 @@ cloudfront_list_distributions_by_realtime_log_config(
 \item{Marker}{Use this field when paginating results to indicate where to begin in
 your list of distributions. The response includes distributions in the
 list that occur after the marker. To get the next page of the list, set
-this field’s value to the value of \code{NextMarker} from the current page’s
+this field's value to the value of \code{NextMarker} from the current page's
 response.}
 
 \item{MaxItems}{The maximum number of distributions that you want in the response.}
@@ -28,7 +28,7 @@ distributions you want to list.}
 associated distributions you want to list.}
 }
 \description{
-Gets a list of distributions that have a cache behavior that’s associated with the specified real-time log configuration.
+Gets a list of distributions that have a cache behavior that's associated with the specified real-time log configuration.
 
 See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_realtime_log_config.html} for full documentation.
 }

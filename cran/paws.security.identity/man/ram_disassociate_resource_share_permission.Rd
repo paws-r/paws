@@ -2,7 +2,7 @@
 % Please edit documentation in R/ram_operations.R
 \name{ram_disassociate_resource_share_permission}
 \alias{ram_disassociate_resource_share_permission}
-\title{Disassociates an RAM permission from a resource share}
+\title{Removes a managed permission from a resource share}
 \usage{
 ram_disassociate_resource_share_permission(
   resourceShareArn,
@@ -11,12 +11,13 @@ ram_disassociate_resource_share_permission(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
-of the resource share from which you want to disassociate a permission.}
+\item{resourceShareArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of the resource share that you want to remove the managed permission
+from.}
 
-\item{permissionArn}{[required] The \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resoure Name (ARN)}
-of the permission to disassociate from the resource share. Changes to
-permissions take effect immediately.}
+\item{permissionArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
+of the managed permission to disassociate from the resource share.
+Changes to permissions take effect immediately.}
 
 \item{clientToken}{Specifies a unique, case-sensitive identifier that you provide to ensure
 the idempotency of the request. This lets you safely retry the request
@@ -26,10 +27,14 @@ also pass the same value for all other parameters. We recommend that you
 use a \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID type of value.}.
 
 If you don't provide this value, then Amazon Web Services generates a
-random one for you.}
+random one for you.
+
+If you retry the operation with the same \code{ClientToken}, but with
+different parameters, the retry fails with an
+\code{IdempotentParameterMismatch} error.}
 }
 \description{
-Disassociates an RAM permission from a resource share. Permission changes take effect immediately. You can remove a RAM permission from a resource share only if there are currently no resources of the relevant resource type currently attached to the resource share.
+Removes a managed permission from a resource share. Permission changes take effect immediately. You can remove a managed permission from a resource share only if there are currently no resources of the relevant resource type currently attached to the resource share.
 
 See \url{https://paws-r.github.io/docs/ram/disassociate_resource_share_permission.html} for full documentation.
 }

@@ -2,9 +2,8 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_attach_load_balancers}
 \alias{autoscaling_attach_load_balancers}
-\title{To attach an Application Load Balancer, Network Load Balancer, or
-Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
-operation instead}
+\title{This API operation is superseded by AttachTrafficSources, which can
+attach multiple traffic sources types}
 \usage{
 autoscaling_attach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 }
@@ -15,7 +14,7 @@ autoscaling_attach_load_balancers(AutoScalingGroupName, LoadBalancerNames)
 balancers.}
 }
 \description{
-To attach an Application Load Balancer, Network Load Balancer, or Gateway Load Balancer, use the \code{\link[=autoscaling_attach_load_balancer_target_groups]{attach_load_balancer_target_groups}} API operation instead.
+This API operation is superseded by \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}}, which can attach multiple traffic sources types. We recommend using \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} to simplify how you manage traffic sources. However, we continue to support \code{\link[=autoscaling_attach_load_balancers]{attach_load_balancers}}. You can use both the original \code{\link[=autoscaling_attach_load_balancers]{attach_load_balancers}} API operation and \code{\link[=autoscaling_attach_traffic_sources]{attach_traffic_sources}} on the same Auto Scaling group.
 
 See \url{https://paws-r.github.io/docs/autoscaling/attach_load_balancers.html} for full documentation.
 }

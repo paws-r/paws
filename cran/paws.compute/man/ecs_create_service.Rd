@@ -27,7 +27,8 @@ ecs_create_service(
   tags = NULL,
   enableECSManagedTags = NULL,
   propagateTags = NULL,
-  enableExecuteCommand = NULL
+  enableExecuteCommand = NULL,
+  serviceConnectConfiguration = NULL
 )
 }
 \arguments{
@@ -45,7 +46,9 @@ definition to run in your service. If a \code{revision} isn't specified, the
 latest \code{ACTIVE} revision is used.
 
 A task definition must be specified if the service uses either the \code{ECS}
-or \code{CODE_DEPLOY} deployment controllers.}
+or \code{CODE_DEPLOY} deployment controllers.
+
+For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types}.}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}
@@ -103,7 +106,7 @@ Each service may be associated with one service registry. Multiple
 service registries for each service isn't supported.}
 
 \item{desiredCount}{The number of instantiations of the specified task definition to place
-and keep running on your cluster.
+and keep running in your service.
 
 This is required if \code{schedulingStrategy} is \code{REPLICA} or isn't
 specified. If \code{schedulingStrategy} is \code{DAEMON} then this isn't required.}
@@ -196,8 +199,8 @@ configured to use a load balancer. If your service has a load balancer
 defined and you don't specify a health check grace period value, the
 default value of \code{0} is used.
 
-If you do not use an Elastic Load Balancing, we recomend that you use
-the \code{startPeriod} in the task definition healtch check parameters. For
+If you do not use an Elastic Load Balancing, we recommend that you use
+the \code{startPeriod} in the task definition health check parameters. For
 more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html}{Health check}.
 
 If your service's tasks take a while to start and respond to Elastic
@@ -271,9 +274,21 @@ only be propagated to the task during task creation. To add tags to a
 task after task creation, use the \code{\link[=ecs_tag_resource]{tag_resource}} API
 action.}
 
-\item{enableExecuteCommand}{Determines whether the execute command functionality is enabled for the
-service. If \code{true}, this enables execute command functionality on all
-containers in the service tasks.}
+\item{enableExecuteCommand}{Determines whether the execute command functionality is turned on for
+the service. If \code{true}, this enables execute command functionality on
+all containers in the service tasks.}
+
+\item{serviceConnectConfiguration}{The configuration for this service to discover and connect to services,
+and be discovered by, and connected from, other services within a
+namespace.
+
+Tasks that run in a namespace can use short names to connect to services
+in the namespace. Tasks can connect to services across all of the
+clusters in the namespace. Tasks connect through a managed proxy
+container that collects logs and metrics for increased visibility. Only
+the tasks that Amazon ECS services create are supported with Service
+Connect. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html}{Service Connect}
+in the \emph{Amazon Elastic Container Service Developer Guide}.}
 }
 \description{
 Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the \code{desiredCount}, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, see the \code{\link[=ecs_update_service]{update_service}} action.

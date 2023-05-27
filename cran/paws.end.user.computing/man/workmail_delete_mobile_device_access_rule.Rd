@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_delete_mobile_device_access_rule}
 \alias{workmail_delete_mobile_device_access_rule}
-\title{Deletes a mobile device access rule for the specified Amazon WorkMail
+\title{Deletes a mobile device access rule for the specified WorkMail
 organization}
 \usage{
 workmail_delete_mobile_device_access_rule(
@@ -11,12 +11,12 @@ workmail_delete_mobile_device_access_rule(
 )
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization under which the rule will be deleted.}
+\item{OrganizationId}{[required] The WorkMail organization under which the rule will be deleted.}
 
 \item{MobileDeviceAccessRuleId}{[required] The identifier of the rule to be deleted.}
 }
 \description{
-Deletes a mobile device access rule for the specified Amazon WorkMail organization.
+Deletes a mobile device access rule for the specified WorkMail organization.
 
 See \url{https://paws-r.github.io/docs/workmail/delete_mobile_device_access_rule.html} for full documentation.
 }

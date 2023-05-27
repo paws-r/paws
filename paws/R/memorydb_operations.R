@@ -91,7 +91,8 @@ NULL
 #'       MaintenanceWindow = "string",
 #'       SnapshotWindow = "string",
 #'       ACLName = "string",
-#'       AutoMinorVersionUpgrade = TRUE|FALSE
+#'       AutoMinorVersionUpgrade = TRUE|FALSE,
+#'       DataTiering = "true"|"false"
 #'     )
 #'   ),
 #'   UnprocessedClusters = list(
@@ -198,7 +199,8 @@ memorydb_batch_update_cluster <- function(ClusterNames, ServiceUpdate = NULL) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```
@@ -332,7 +334,8 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #'   Description, NumShards, NumReplicasPerShard, SubnetGroupName,
 #'   SecurityGroupIds, MaintenanceWindow, Port, SnsTopicArn, TLSEnabled,
 #'   KmsKeyId, SnapshotArns, SnapshotName, SnapshotRetentionLimit, Tags,
-#'   SnapshotWindow, ACLName, EngineVersion, AutoMinorVersionUpgrade)
+#'   SnapshotWindow, ACLName, EngineVersion, AutoMinorVersionUpgrade,
+#'   DataTiering)
 #'
 #' @param ClusterName &#91;required&#93; The name of the cluster. This value must be unique as it also serves as
 #' the cluster identifier.
@@ -346,8 +349,26 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' @param SecurityGroupIds A list of security group names to associate with this cluster.
 #' @param MaintenanceWindow Specifies the weekly time range during which maintenance on the cluster
 #' is performed. It is specified as a range in the format
-#' `ddd:hh24:mi-ddd:hh24:mi` (24H Clock UTC). The minimum maintenance
-#' window is a 60 minute period.
+#' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+#' is a 60 minute period.
+#' 
+#' Valid values for `ddd` are:
+#' 
+#' -   `sun`
+#' 
+#' -   `mon`
+#' 
+#' -   `tue`
+#' 
+#' -   `wed`
+#' 
+#' -   `thu`
+#' 
+#' -   `fri`
+#' 
+#' -   `sat`
+#' 
+#' Example: `sun:23:00-mon:01:30`
 #' @param Port The port number on which each of the nodes accepts connections.
 #' @param SnsTopicArn The Amazon Resource Name (ARN) of the Amazon Simple Notification Service
 #' (SNS) topic to which notifications are sent.
@@ -379,6 +400,10 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' @param EngineVersion The version number of the Redis engine to be used for the cluster.
 #' @param AutoMinorVersionUpgrade When set to true, the cluster will automatically receive minor engine
 #' version upgrades after launch.
+#' @param DataTiering Enables data tiering. Data tiering is only supported for clusters using
+#' the r6gd node type. This parameter must be set when using r6gd nodes.
+#' For more information, see [Data
+#' tiering](https://docs.aws.amazon.com/memorydb/latest/devguide/data-tiering.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -453,7 +478,8 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #'     MaintenanceWindow = "string",
 #'     SnapshotWindow = "string",
 #'     ACLName = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```
@@ -490,7 +516,8 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #'   SnapshotWindow = "string",
 #'   ACLName = "string",
 #'   EngineVersion = "string",
-#'   AutoMinorVersionUpgrade = TRUE|FALSE
+#'   AutoMinorVersionUpgrade = TRUE|FALSE,
+#'   DataTiering = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -499,14 +526,14 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' @rdname memorydb_create_cluster
 #'
 #' @aliases memorydb_create_cluster
-memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL) {
+memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = NULL, Description = NULL, NumShards = NULL, NumReplicasPerShard = NULL, SubnetGroupName = NULL, SecurityGroupIds = NULL, MaintenanceWindow = NULL, Port = NULL, SnsTopicArn = NULL, TLSEnabled = NULL, KmsKeyId = NULL, SnapshotArns = NULL, SnapshotName = NULL, SnapshotRetentionLimit = NULL, Tags = NULL, SnapshotWindow = NULL, ACLName, EngineVersion = NULL, AutoMinorVersionUpgrade = NULL, DataTiering = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade)
+  input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DataTiering = DataTiering)
   output <- .memorydb$create_cluster_output()
   config <- get_config()
   svc <- .memorydb$service(config)
@@ -637,7 +664,8 @@ memorydb_create_parameter_group <- function(ParameterGroupName, Family, Descript
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```
@@ -998,7 +1026,8 @@ memorydb_delete_acl <- function(ACLName) {
 #'     MaintenanceWindow = "string",
 #'     SnapshotWindow = "string",
 #'     ACLName = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```
@@ -1136,7 +1165,8 @@ memorydb_delete_parameter_group <- function(ParameterGroupName) {
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```
@@ -1471,7 +1501,8 @@ memorydb_describe_ac_ls <- function(ACLName = NULL, MaxResults = NULL, NextToken
 #'       MaintenanceWindow = "string",
 #'       SnapshotWindow = "string",
 #'       ACLName = "string",
-#'       AutoMinorVersionUpgrade = TRUE|FALSE
+#'       AutoMinorVersionUpgrade = TRUE|FALSE,
+#'       DataTiering = "true"|"false"
 #'     )
 #'   )
 #' )
@@ -1803,6 +1834,188 @@ memorydb_describe_parameters <- function(ParameterGroupName, MaxResults = NULL, 
 }
 .memorydb$operations$describe_parameters <- memorydb_describe_parameters
 
+#' Returns information about reserved nodes for this account, or about a
+#' specified reserved node
+#'
+#' @description
+#' Returns information about reserved nodes for this account, or about a
+#' specified reserved node.
+#'
+#' @usage
+#' memorydb_describe_reserved_nodes(ReservationId, ReservedNodesOfferingId,
+#'   NodeType, Duration, OfferingType, MaxResults, NextToken)
+#'
+#' @param ReservationId The reserved node identifier filter value. Use this parameter to show
+#' only the reservation that matches the specified reservation ID.
+#' @param ReservedNodesOfferingId The offering identifier filter value. Use this parameter to show only
+#' purchased reservations matching the specified offering identifier.
+#' @param NodeType The node type filter value. Use this parameter to show only those
+#' reservations matching the specified node type. For more information, see
+#' [Supported node
+#' types](https://docs.aws.amazon.com/memorydb/latest/devguide/#reserved-nodes-supported).
+#' @param Duration The duration filter value, specified in years or seconds. Use this
+#' parameter to show only reservations for this duration.
+#' @param OfferingType The offering type filter value. Use this parameter to show only the
+#' available offerings matching the specified offering type. Valid values:
+#' "All Upfront"|"Partial Upfront"| "No Upfront"
+#' @param MaxResults The maximum number of records to include in the response. If more
+#' records exist than the specified MaxRecords value, a marker is included
+#' in the response so that the remaining results can be retrieved.
+#' @param NextToken An optional marker returned from a prior request. Use this marker for
+#' pagination of results from this operation. If this parameter is
+#' specified, the response includes only records beyond the marker, up to
+#' the value specified by MaxRecords.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ReservedNodes = list(
+#'     list(
+#'       ReservationId = "string",
+#'       ReservedNodesOfferingId = "string",
+#'       NodeType = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Duration = 123,
+#'       FixedPrice = 123.0,
+#'       NodeCount = 123,
+#'       OfferingType = "string",
+#'       State = "string",
+#'       RecurringCharges = list(
+#'         list(
+#'           RecurringChargeAmount = 123.0,
+#'           RecurringChargeFrequency = "string"
+#'         )
+#'       ),
+#'       ARN = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_reserved_nodes(
+#'   ReservationId = "string",
+#'   ReservedNodesOfferingId = "string",
+#'   NodeType = "string",
+#'   Duration = "string",
+#'   OfferingType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_describe_reserved_nodes
+#'
+#' @aliases memorydb_describe_reserved_nodes
+memorydb_describe_reserved_nodes <- function(ReservationId = NULL, ReservedNodesOfferingId = NULL, NodeType = NULL, Duration = NULL, OfferingType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeReservedNodes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .memorydb$describe_reserved_nodes_input(ReservationId = ReservationId, ReservedNodesOfferingId = ReservedNodesOfferingId, NodeType = NodeType, Duration = Duration, OfferingType = OfferingType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .memorydb$describe_reserved_nodes_output()
+  config <- get_config()
+  svc <- .memorydb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$describe_reserved_nodes <- memorydb_describe_reserved_nodes
+
+#' Lists available reserved node offerings
+#'
+#' @description
+#' Lists available reserved node offerings.
+#'
+#' @usage
+#' memorydb_describe_reserved_nodes_offerings(ReservedNodesOfferingId,
+#'   NodeType, Duration, OfferingType, MaxResults, NextToken)
+#'
+#' @param ReservedNodesOfferingId The offering identifier filter value. Use this parameter to show only
+#' the available offering that matches the specified reservation
+#' identifier.
+#' @param NodeType The node type for the reserved nodes. For more information, see
+#' [Supported node
+#' types](https://docs.aws.amazon.com/memorydb/latest/devguide/#reserved-nodes-supported).
+#' @param Duration Duration filter value, specified in years or seconds. Use this parameter
+#' to show only reservations for a given duration.
+#' @param OfferingType The offering type filter value. Use this parameter to show only the
+#' available offerings matching the specified offering type. Valid values:
+#' "All Upfront"|"Partial Upfront"| "No Upfront"
+#' @param MaxResults The maximum number of records to include in the response. If more
+#' records exist than the specified MaxRecords value, a marker is included
+#' in the response so that the remaining results can be retrieved.
+#' @param NextToken An optional marker returned from a prior request. Use this marker for
+#' pagination of results from this operation. If this parameter is
+#' specified, the response includes only records beyond the marker, up to
+#' the value specified by MaxRecords.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ReservedNodesOfferings = list(
+#'     list(
+#'       ReservedNodesOfferingId = "string",
+#'       NodeType = "string",
+#'       Duration = 123,
+#'       FixedPrice = 123.0,
+#'       OfferingType = "string",
+#'       RecurringCharges = list(
+#'         list(
+#'           RecurringChargeAmount = 123.0,
+#'           RecurringChargeFrequency = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_reserved_nodes_offerings(
+#'   ReservedNodesOfferingId = "string",
+#'   NodeType = "string",
+#'   Duration = "string",
+#'   OfferingType = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_describe_reserved_nodes_offerings
+#'
+#' @aliases memorydb_describe_reserved_nodes_offerings
+memorydb_describe_reserved_nodes_offerings <- function(ReservedNodesOfferingId = NULL, NodeType = NULL, Duration = NULL, OfferingType = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeReservedNodesOfferings",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .memorydb$describe_reserved_nodes_offerings_input(ReservedNodesOfferingId = ReservedNodesOfferingId, NodeType = NodeType, Duration = Duration, OfferingType = OfferingType, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .memorydb$describe_reserved_nodes_offerings_output()
+  config <- get_config()
+  svc <- .memorydb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$describe_reserved_nodes_offerings <- memorydb_describe_reserved_nodes_offerings
+
 #' Returns details of the service updates
 #'
 #' @description
@@ -1955,7 +2168,8 @@ memorydb_describe_service_updates <- function(ServiceUpdateName = NULL, ClusterN
 #'             )
 #'           )
 #'         )
-#'       )
+#'       ),
+#'       DataTiering = "true"|"false"
 #'     )
 #'   )
 #' )
@@ -2154,7 +2368,11 @@ memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults 
 #' Used to failover a shard
 #'
 #' @description
-#' Used to failover a shard
+#' Used to failover a shard. This API is designed for testing the behavior
+#' of your application in case of MemoryDB failover. It is not designed to
+#' be used as a production-level tool for initiating a failover to overcome
+#' a problem you may have with the cluster. Moreover, in certain conditions
+#' such as large scale operational events, Amazon may block this API.
 #'
 #' @usage
 #' memorydb_failover_shard(ClusterName, ShardName)
@@ -2235,7 +2453,8 @@ memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults 
 #'     MaintenanceWindow = "string",
 #'     SnapshotWindow = "string",
 #'     ACLName = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```
@@ -2384,6 +2603,86 @@ memorydb_list_tags <- function(ResourceArn) {
   return(response)
 }
 .memorydb$operations$list_tags <- memorydb_list_tags
+
+#' Allows you to purchase a reserved node offering
+#'
+#' @description
+#' Allows you to purchase a reserved node offering. Reserved nodes are not
+#' eligible for cancellation and are non-refundable.
+#'
+#' @usage
+#' memorydb_purchase_reserved_nodes_offering(ReservedNodesOfferingId,
+#'   ReservationId, NodeCount, Tags)
+#'
+#' @param ReservedNodesOfferingId &#91;required&#93; The ID of the reserved node offering to purchase.
+#' @param ReservationId A customer-specified identifier to track this reservation.
+#' @param NodeCount The number of node instances to reserve.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
+#' A tag key must be accompanied by a tag value, although null is accepted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReservedNode = list(
+#'     ReservationId = "string",
+#'     ReservedNodesOfferingId = "string",
+#'     NodeType = "string",
+#'     StartTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     Duration = 123,
+#'     FixedPrice = 123.0,
+#'     NodeCount = 123,
+#'     OfferingType = "string",
+#'     State = "string",
+#'     RecurringCharges = list(
+#'       list(
+#'         RecurringChargeAmount = 123.0,
+#'         RecurringChargeFrequency = "string"
+#'       )
+#'     ),
+#'     ARN = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$purchase_reserved_nodes_offering(
+#'   ReservedNodesOfferingId = "string",
+#'   ReservationId = "string",
+#'   NodeCount = 123,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname memorydb_purchase_reserved_nodes_offering
+#'
+#' @aliases memorydb_purchase_reserved_nodes_offering
+memorydb_purchase_reserved_nodes_offering <- function(ReservedNodesOfferingId, ReservationId = NULL, NodeCount = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "PurchaseReservedNodesOffering",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .memorydb$purchase_reserved_nodes_offering_input(ReservedNodesOfferingId = ReservedNodesOfferingId, ReservationId = ReservationId, NodeCount = NodeCount, Tags = Tags)
+  output <- .memorydb$purchase_reserved_nodes_offering_output()
+  config <- get_config()
+  svc <- .memorydb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.memorydb$operations$purchase_reserved_nodes_offering <- memorydb_purchase_reserved_nodes_offering
 
 #' Modifies the parameters of a parameter group to the engine or system
 #' default value
@@ -2674,7 +2973,28 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #' @param ClusterName &#91;required&#93; The name of the cluster to update
 #' @param Description The description of the cluster to update
 #' @param SecurityGroupIds The SecurityGroupIds to update
-#' @param MaintenanceWindow The maintenance window to update
+#' @param MaintenanceWindow Specifies the weekly time range during which maintenance on the cluster
+#' is performed. It is specified as a range in the format
+#' ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
+#' is a 60 minute period.
+#' 
+#' Valid values for `ddd` are:
+#' 
+#' -   `sun`
+#' 
+#' -   `mon`
+#' 
+#' -   `tue`
+#' 
+#' -   `wed`
+#' 
+#' -   `thu`
+#' 
+#' -   `fri`
+#' 
+#' -   `sat`
+#' 
+#' Example: `sun:23:00-mon:01:30`
 #' @param SnsTopicArn The SNS topic ARN to update
 #' @param SnsTopicStatus The status of the Amazon SNS notification topic. Notifications are sent
 #' only if the status is active.
@@ -2768,7 +3088,8 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #'     MaintenanceWindow = "string",
 #'     SnapshotWindow = "string",
 #'     ACLName = "string",
-#'     AutoMinorVersionUpgrade = TRUE|FALSE
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     DataTiering = "true"|"false"
 #'   )
 #' )
 #' ```

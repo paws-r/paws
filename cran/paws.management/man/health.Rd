@@ -30,27 +30,34 @@ Operations section.
 \description{
 Health
 
-The Health API provides programmatic access to the Health information
-that appears in the \href{https://health.aws.amazon.com/health/home#/}{Personal Health Dashboard}. You can use the
-API operations to get information about events that might affect your
-Amazon Web Services services and resources.
-\itemize{
-\item You must have a Business, Enterprise On-Ramp, or Enterprise Support
-plan from \href{https://aws.amazon.com/premiumsupport/}{Amazon Web Services Support} to use the Health
-API. If you call the Health API from an Amazon Web Services account
-that doesn't have a Business, Enterprise On-Ramp, or Enterprise
-Support plan, you receive a \code{SubscriptionRequiredException} error.
-\item You can use the Health endpoint health.us-east-1.amazonaws.com
-(HTTPS) to call the Health API operations. Health supports a
-multi-Region application architecture and has two regional endpoints
-in an active-passive configuration. You can use the high
-availability endpoint example to determine which Amazon Web Services
-Region is active, so that you can get the latest information from
-the API. For more information, see \href{https://docs.aws.amazon.com/health/latest/ug/health-api.html}{Accessing the Health API}
-in the \emph{Health User Guide}.
-}
+The Health API provides access to the Health information that appears in
+the \href{https://health.aws.amazon.com/health/home}{Health Dashboard}. You
+can use the API operations to get information about events that might
+affect your Amazon Web Services and resources.
 
-For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
+from \href{https://aws.amazon.com/premiumsupport/}{Amazon Web Services Support} to use the Health API.
+If you call the Health API from an Amazon Web Services account that
+doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+you receive a \code{SubscriptionRequiredException} error.
+
+For API access, you need an access key ID and a secret access key. Use
+temporary credentials instead of long-term access keys when possible.
+Temporary credentials include an access key ID, a secret access key, and
+a security token that indicates when the credentials expire. For more
+information, see \href{https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html}{Best practices for managing Amazon Web Services access keys}
+in the \emph{Amazon Web Services General Reference}.
+
+You can use the Health endpoint health.us-east-1.amazonaws.com (HTTPS)
+to call the Health API operations. Health supports a multi-Region
+application architecture and has two regional endpoints in an
+active-passive configuration. You can use the high availability endpoint
+example to determine which Amazon Web Services Region is active, so that
+you can get the latest information from the API. For more information,
+see \href{https://docs.aws.amazon.com/health/latest/ug/health-api.html}{Accessing the Health API} in
+the \emph{Health User Guide}.
+
+For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If your Amazon Web Services account is part of Organizations, you can
 use the Health organizational view feature. This feature provides a

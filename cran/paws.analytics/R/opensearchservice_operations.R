@@ -3,15 +3,15 @@
 #' @include opensearchservice_service.R
 NULL
 
-#' Allows the remote domain owner to accept an inbound cross-cluster
-#' connection request
+#' Allows the destination Amazon OpenSearch Service domain owner to accept
+#' an inbound cross-cluster search connection request
 #'
 #' @description
-#' Allows the remote domain owner to accept an inbound cross-cluster connection request.
+#' Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/accept_inbound_connection.html](https://paws-r.github.io/docs/opensearchservice/accept_inbound_connection.html) for full documentation.
 #'
-#' @param ConnectionId &#91;required&#93; The ID of the inbound connection you want to accept.
+#' @param ConnectionId &#91;required&#93; The ID of the inbound connection to accept.
 #'
 #' @keywords internal
 #'
@@ -33,15 +33,16 @@ opensearchservice_accept_inbound_connection <- function(ConnectionId) {
 }
 .opensearchservice$operations$accept_inbound_connection <- opensearchservice_accept_inbound_connection
 
-#' Attaches tags to an existing domain
+#' Attaches tags to an existing Amazon OpenSearch Service domain
 #'
 #' @description
-#' Attaches tags to an existing domain. Tags are a set of case-sensitive key value pairs. An domain can have up to 10 tags. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging" target="_blank">Tagging Amazon OpenSearch Service domains</a> for more information.
+#' Attaches tags to an existing Amazon OpenSearch Service domain. Tags are a set of case-sensitive key-value pairs. A domain can have up to 10 tags. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/add_tags.html](https://paws-r.github.io/docs/opensearchservice/add_tags.html) for full documentation.
 #'
-#' @param ARN &#91;required&#93; Specify the `ARN` of the domain you want to add tags to.
-#' @param TagList &#91;required&#93; List of `Tag` to add to the domain.
+#' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the OpenSearch Service domain to which
+#' you want to attach resource tags.
+#' @param TagList &#91;required&#93; List of resource tags.
 #'
 #' @keywords internal
 #'
@@ -66,14 +67,14 @@ opensearchservice_add_tags <- function(ARN, TagList) {
 #' Associates a package with an Amazon OpenSearch Service domain
 #'
 #' @description
-#' Associates a package with an Amazon OpenSearch Service domain.
+#' Associates a package with an Amazon OpenSearch Service domain. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/associate_package.html](https://paws-r.github.io/docs/opensearchservice/associate_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package to associate with a domain. Use
 #' [`describe_packages`][opensearchservice_describe_packages] to find this
 #' value.
-#' @param DomainName &#91;required&#93; The name of the domain to associate the package with.
+#' @param DomainName &#91;required&#93; Name of the domain to associate the package with.
 #'
 #' @keywords internal
 #'
@@ -95,16 +96,47 @@ opensearchservice_associate_package <- function(PackageID, DomainName) {
 }
 .opensearchservice$operations$associate_package <- opensearchservice_associate_package
 
+#' Provides access to an Amazon OpenSearch Service domain through the use
+#' of an interface VPC endpoint
+#'
+#' @description
+#' Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/authorize_vpc_endpoint_access.html](https://paws-r.github.io/docs/opensearchservice/authorize_vpc_endpoint_access.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to provide access to.
+#' @param Account &#91;required&#93; The Amazon Web Services account ID to grant access to.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_authorize_vpc_endpoint_access
+opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account) {
+  op <- new_operation(
+    name = "AuthorizeVpcEndpointAccess",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/authorizeVpcEndpointAccess",
+    paginator = list()
+  )
+  input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
+  output <- .opensearchservice$authorize_vpc_endpoint_access_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$authorize_vpc_endpoint_access <- opensearchservice_authorize_vpc_endpoint_access
+
 #' Cancels a scheduled service software update for an Amazon OpenSearch
 #' Service domain
 #'
 #' @description
-#' Cancels a scheduled service software update for an Amazon OpenSearch Service domain. You can only perform this operation before the `AutomatedUpdateDate` and when the `UpdateStatus` is in the `PENDING_UPDATE` state.
+#' Cancels a scheduled service software update for an Amazon OpenSearch Service domain. You can only perform this operation before the `AutomatedUpdateDate` and when the domain's `UpdateStatus` is `PENDING_UPDATE`. For more information, see [Service software updates in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/cancel_service_software_update.html](https://paws-r.github.io/docs/opensearchservice/cancel_service_software_update.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the domain that you want to stop the latest service software
-#' update on.
+#' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain that you want to cancel the
+#' service software update on.
 #'
 #' @keywords internal
 #'
@@ -126,66 +158,91 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 }
 .opensearchservice$operations$cancel_service_software_update <- opensearchservice_cancel_service_software_update
 
-#' Creates a new Amazon OpenSearch Service domain
+#' Creates an Amazon OpenSearch Service domain
 #'
 #' @description
-#' Creates a new Amazon OpenSearch Service domain. For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html" target="_blank">Creating and managing Amazon OpenSearch Service domains</a> in the *Amazon OpenSearch Service Developer Guide*.
+#' Creates an Amazon OpenSearch Service domain. For more information, see [Creating and managing Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/create_domain.html](https://paws-r.github.io/docs/opensearchservice/create_domain.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the Amazon OpenSearch Service domain you're creating. Domain
-#' names are unique across the domains owned by an account within an AWS
-#' region. Domain names must start with a lowercase letter and can contain
-#' the following characters: a-z (lowercase), 0-9, and - (hyphen).
+#' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain to create. Domain names are unique
+#' across the domains owned by an account within an Amazon Web Services
+#' Region.
 #' @param EngineVersion String of format Elasticsearch_X.Y or OpenSearch_X.Y to specify the
-#' engine version for the Amazon OpenSearch Service domain. For example,
-#' "OpenSearch_1.0" or "Elasticsearch_7.9". For more information, see <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains"
-#' target="_blank">Creating and managing Amazon OpenSearch Service
-#' domains</a> .
-#' @param ClusterConfig Configuration options for a domain. Specifies the instance type and
-#' number of instances in the domain.
-#' @param EBSOptions Options to enable, disable, and specify the type and size of EBS storage
-#' volumes.
-#' @param AccessPolicies IAM access policy as a JSON-formatted string.
-#' @param SnapshotOptions Option to set time, in UTC format, of the daily automated snapshot.
-#' Default value is 0 hours.
-#' @param VPCOptions Options to specify the subnets and security groups for a VPC endpoint.
-#' For more information, see <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html"
-#' target="_blank">Launching your Amazon OpenSearch Service domains using a
-#' VPC</a> .
-#' @param CognitoOptions Options to specify the Cognito user and identity pools for OpenSearch
-#' Dashboards authentication. For more information, see <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-#' target="_blank">Configuring Amazon Cognito authentication for OpenSearch
-#' Dashboards</a>.
-#' @param EncryptionAtRestOptions Options for encryption of data at rest.
-#' @param NodeToNodeEncryptionOptions Node-to-node encryption options.
-#' @param AdvancedOptions Option to allow references to indices in an HTTP request body. Must be
-#' `false` when configuring access to individual sub-resources. By default,
-#' the value is `true`. See <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options"
-#' target="_blank">Advanced cluster parameters</a> for more information.
-#' @param LogPublishingOptions Map of `LogType` and `LogPublishingOption`, each containing options to
-#' publish a given type of OpenSearch log.
-#' @param DomainEndpointOptions Options to specify configurations that will be applied to the domain
-#' endpoint.
-#' @param AdvancedSecurityOptions Specifies advanced security options.
-#' @param TagList A list of `Tag` added during domain creation.
-#' @param AutoTuneOptions Specifies Auto-Tune options.
+#' engine version for the OpenSearch Service domain. For example,
+#' `OpenSearch_1.0` or `Elasticsearch_7.9`. For more information, see
+#' [Creating and managing Amazon OpenSearch Service
+#' domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomains).
+#' @param ClusterConfig Container for the cluster configuration of a domain.
+#' @param EBSOptions Container for the parameters required to enable EBS-based storage for an
+#' OpenSearch Service domain.
+#' @param AccessPolicies Identity and Access Management (IAM) policy document specifying the
+#' access policies for the new domain.
+#' @param SnapshotOptions DEPRECATED. Container for the parameters required to configure automated
+#' snapshots of domain indexes.
+#' @param VPCOptions Container for the values required to configure VPC access domains. If
+#' you don't specify these values, OpenSearch Service creates the domain
+#' with a public endpoint. For more information, see [Launching your Amazon
+#' OpenSearch Service domains using a
+#' VPC](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html).
+#' @param CognitoOptions Key-value pairs to configure Amazon Cognito authentication. For more
+#' information, see [Configuring Amazon Cognito authentication for
+#' OpenSearch
+#' Dashboards](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html).
+#' @param EncryptionAtRestOptions Key-value pairs to enable encryption at rest.
+#' @param NodeToNodeEncryptionOptions Enables node-to-node encryption.
+#' @param AdvancedOptions Key-value pairs to specify advanced configuration options. The following
+#' key-value pairs are supported:
+#' 
+#' -   `"rest.action.multi.allow_explicit_index": "true" | "false"` - Note
+#'     the use of a string rather than a boolean. Specifies whether
+#'     explicit references to indexes are allowed inside the body of HTTP
+#'     requests. If you want to configure access policies for domain
+#'     sub-resources, such as specific indexes and domain APIs, you must
+#'     disable this property. Default is true.
+#' 
+#' -   `"indices.fielddata.cache.size": "80" ` - Note the use of a string
+#'     rather than a boolean. Specifies the percentage of heap space
+#'     allocated to field data. Default is unbounded.
+#' 
+#' -   `"indices.query.bool.max_clause_count": "1024"` - Note the use of a
+#'     string rather than a boolean. Specifies the maximum number of
+#'     clauses allowed in a Lucene boolean query. Default is 1,024. Queries
+#'     with more than the permitted number of clauses result in a
+#'     `TooManyClauses` error.
+#' 
+#' -   `"override_main_response_version": "true" | "false"` - Note the use
+#'     of a string rather than a boolean. Specifies whether the domain
+#'     reports its version as 7.10 to allow Elasticsearch OSS clients and
+#'     plugins to continue working with it. Default is false when creating
+#'     a domain and true when upgrading a domain.
+#' 
+#' For more information, see [Advanced cluster
+#' parameters](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options).
+#' @param LogPublishingOptions Key-value pairs to configure log publishing.
+#' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require
+#' HTTPS for all traffic.
+#' @param AdvancedSecurityOptions Options for fine-grained access control.
+#' @param TagList List of tags to add to the domain upon creation.
+#' @param AutoTuneOptions Options for Auto-Tune.
+#' @param OffPeakWindowOptions Specifies a daily 10-hour time block during which OpenSearch Service can
+#' perform configuration changes on the domain, including service software
+#' updates and Auto-Tune enhancements that require a blue/green deployment.
+#' If no options are specified, the default start time of 10:00 P.M. local
+#' time (for the Region that the domain is created in) is used.
+#' @param SoftwareUpdateOptions Software update options for the domain.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain",
     paginator = list()
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -195,30 +252,30 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
 }
 .opensearchservice$operations$create_domain <- opensearchservice_create_domain
 
-#' Creates a new cross-cluster connection from a local OpenSearch domain to
-#' a remote OpenSearch domain
+#' Creates a new cross-cluster search connection from a source Amazon
+#' OpenSearch Service domain to a destination domain
 #'
 #' @description
-#' Creates a new cross-cluster connection from a local OpenSearch domain to a remote OpenSearch domain.
+#' Creates a new cross-cluster search connection from a source Amazon OpenSearch Service domain to a destination domain. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/create_outbound_connection.html](https://paws-r.github.io/docs/opensearchservice/create_outbound_connection.html) for full documentation.
 #'
-#' @param LocalDomainInfo &#91;required&#93; The ` AWSDomainInformation ` for the local OpenSearch domain.
-#' @param RemoteDomainInfo &#91;required&#93; The ` AWSDomainInformation ` for the remote OpenSearch domain.
-#' @param ConnectionAlias &#91;required&#93; The connection alias used used by the customer for this cross-cluster
-#' connection.
+#' @param LocalDomainInfo &#91;required&#93; Name and Region of the source (local) domain.
+#' @param RemoteDomainInfo &#91;required&#93; Name and Region of the destination (remote) domain.
+#' @param ConnectionAlias &#91;required&#93; Name of the connection.
+#' @param ConnectionMode The connection mode.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_outbound_connection
-opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias) {
+opensearchservice_create_outbound_connection <- function(LocalDomainInfo, RemoteDomainInfo, ConnectionAlias, ConnectionMode = NULL) {
   op <- new_operation(
     name = "CreateOutboundConnection",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/cc/outboundConnection",
     paginator = list()
   )
-  input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias)
+  input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode)
   output <- .opensearchservice$create_outbound_connection_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -228,15 +285,15 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 }
 .opensearchservice$operations$create_outbound_connection <- opensearchservice_create_outbound_connection
 
-#' Create a package for use with Amazon OpenSearch Service domains
+#' Creates a package for use with Amazon OpenSearch Service domains
 #'
 #' @description
-#' Create a package for use with Amazon OpenSearch Service domains.
+#' Creates a package for use with Amazon OpenSearch Service domains. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/create_package.html](https://paws-r.github.io/docs/opensearchservice/create_package.html) for full documentation.
 #'
-#' @param PackageName &#91;required&#93; Unique identifier for the package.
-#' @param PackageType &#91;required&#93; Type of package. Currently supports only TXT-DICTIONARY.
+#' @param PackageName &#91;required&#93; Unique name for the package.
+#' @param PackageType &#91;required&#93; The type of package.
 #' @param PackageDescription Description of the package.
 #' @param PackageSource &#91;required&#93; The Amazon S3 location from which to import the package.
 #'
@@ -260,10 +317,41 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
 }
 .opensearchservice$operations$create_package <- opensearchservice_create_package
 
-#' Permanently deletes the specified domain and all of its data
+#' Creates an Amazon OpenSearch Service-managed VPC endpoint
 #'
 #' @description
-#' Permanently deletes the specified domain and all of its data. Once a domain is deleted, it cannot be recovered.
+#' Creates an Amazon OpenSearch Service-managed VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/create_vpc_endpoint.html](https://paws-r.github.io/docs/opensearchservice/create_vpc_endpoint.html) for full documentation.
+#'
+#' @param DomainArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain to create the endpoint for.
+#' @param VpcOptions &#91;required&#93; Options to specify the subnets and security groups for the endpoint.
+#' @param ClientToken Unique, case-sensitive identifier to ensure idempotency of the request.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_create_vpc_endpoint
+opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientToken = NULL) {
+  op <- new_operation(
+    name = "CreateVpcEndpoint",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/vpcEndpoints",
+    paginator = list()
+  )
+  input <- .opensearchservice$create_vpc_endpoint_input(DomainArn = DomainArn, VpcOptions = VpcOptions, ClientToken = ClientToken)
+  output <- .opensearchservice$create_vpc_endpoint_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$create_vpc_endpoint <- opensearchservice_create_vpc_endpoint
+
+#' Deletes an Amazon OpenSearch Service domain and all of its data
+#'
+#' @description
+#' Deletes an Amazon OpenSearch Service domain and all of its data. You can't recover a domain after you delete it.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/delete_domain.html](https://paws-r.github.io/docs/opensearchservice/delete_domain.html) for full documentation.
 #'
@@ -289,11 +377,11 @@ opensearchservice_delete_domain <- function(DomainName) {
 }
 .opensearchservice$operations$delete_domain <- opensearchservice_delete_domain
 
-#' Allows the remote domain owner to delete an existing inbound
-#' cross-cluster connection
+#' Allows the destination Amazon OpenSearch Service domain owner to delete
+#' an existing inbound cross-cluster search connection
 #'
 #' @description
-#' Allows the remote domain owner to delete an existing inbound cross-cluster connection.
+#' Allows the destination Amazon OpenSearch Service domain owner to delete an existing inbound cross-cluster search connection. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/delete_inbound_connection.html](https://paws-r.github.io/docs/opensearchservice/delete_inbound_connection.html) for full documentation.
 #'
@@ -319,11 +407,11 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
 }
 .opensearchservice$operations$delete_inbound_connection <- opensearchservice_delete_inbound_connection
 
-#' Allows the local domain owner to delete an existing outbound
-#' cross-cluster connection
+#' Allows the source Amazon OpenSearch Service domain owner to delete an
+#' existing outbound cross-cluster search connection
 #'
 #' @description
-#' Allows the local domain owner to delete an existing outbound cross-cluster connection.
+#' Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/delete_outbound_connection.html](https://paws-r.github.io/docs/opensearchservice/delete_outbound_connection.html) for full documentation.
 #'
@@ -349,10 +437,10 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
 }
 .opensearchservice$operations$delete_outbound_connection <- opensearchservice_delete_outbound_connection
 
-#' Deletes the package
+#' Deletes an Amazon OpenSearch Service package
 #'
 #' @description
-#' Deletes the package.
+#' Deletes an Amazon OpenSearch Service package. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/delete_package.html](https://paws-r.github.io/docs/opensearchservice/delete_package.html) for full documentation.
 #'
@@ -380,15 +468,45 @@ opensearchservice_delete_package <- function(PackageID) {
 }
 .opensearchservice$operations$delete_package <- opensearchservice_delete_package
 
-#' Returns domain configuration information about the specified domain,
-#' including the domain ID, domain endpoint, and domain ARN
+#' Deletes an Amazon OpenSearch Service-managed interface VPC endpoint
 #'
 #' @description
-#' Returns domain configuration information about the specified domain, including the domain ID, domain endpoint, and domain ARN.
+#' Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/delete_vpc_endpoint.html](https://paws-r.github.io/docs/opensearchservice/delete_vpc_endpoint.html) for full documentation.
+#'
+#' @param VpcEndpointId &#91;required&#93; The unique identifier of the endpoint.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_delete_vpc_endpoint
+opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
+  op <- new_operation(
+    name = "DeleteVpcEndpoint",
+    http_method = "DELETE",
+    http_path = "/2021-01-01/opensearch/vpcEndpoints/{VpcEndpointId}",
+    paginator = list()
+  )
+  input <- .opensearchservice$delete_vpc_endpoint_input(VpcEndpointId = VpcEndpointId)
+  output <- .opensearchservice$delete_vpc_endpoint_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$delete_vpc_endpoint <- opensearchservice_delete_vpc_endpoint
+
+#' Describes the domain configuration for the specified Amazon OpenSearch
+#' Service domain, including the domain ID, domain service endpoint, and
+#' domain ARN
+#'
+#' @description
+#' Describes the domain configuration for the specified Amazon OpenSearch Service domain, including the domain ID, domain service endpoint, and domain ARN.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_domain.html](https://paws-r.github.io/docs/opensearchservice/describe_domain.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the domain for which you want information.
+#' @param DomainName &#91;required&#93; The name of the domain that you want information about.
 #'
 #' @keywords internal
 #'
@@ -410,19 +528,23 @@ opensearchservice_describe_domain <- function(DomainName) {
 }
 .opensearchservice$operations$describe_domain <- opensearchservice_describe_domain
 
-#' Provides scheduled Auto-Tune action details for the domain, such as
-#' Auto-Tune action type, description, severity, and scheduled date
+#' Returns the list of optimizations that Auto-Tune has made to an Amazon
+#' OpenSearch Service domain
 #'
 #' @description
-#' Provides scheduled Auto-Tune action details for the domain, such as Auto-Tune action type, description, severity, and scheduled date.
+#' Returns the list of optimizations that Auto-Tune has made to an Amazon OpenSearch Service domain. For more information, see [Auto-Tune for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_auto_tunes.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_auto_tunes.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The domain name for which you want Auto-Tune action details.
-#' @param MaxResults Set this value to limit the number of results returned. If not
-#' specified, defaults to 100.
-#' @param NextToken NextToken is sent in case the earlier API call results contain the
-#' NextToken. Used for pagination.
+#' @param DomainName &#91;required&#93; Name of the domain that you want Auto-Tune details about.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`describe_domain_auto_tunes`][opensearchservice_describe_domain_auto_tunes]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`describe_domain_auto_tunes`][opensearchservice_describe_domain_auto_tunes]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -445,17 +567,17 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
 .opensearchservice$operations$describe_domain_auto_tunes <- opensearchservice_describe_domain_auto_tunes
 
 #' Returns information about the current blue/green deployment happening on
-#' a domain, including a change ID, status, and progress stages
+#' an Amazon OpenSearch Service domain
 #'
 #' @description
-#' Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages.
+#' Returns information about the current blue/green deployment happening on an Amazon OpenSearch Service domain. For more information, see [Making configuration changes in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_change_progress.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_change_progress.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The domain you want to get the progress information about.
+#' @param DomainName &#91;required&#93; The name of the domain to get progress information for.
 #' @param ChangeId The specific change ID for which you want to get progress information.
-#' This is an optional parameter. If omitted, the service returns
-#' information about the most recent configuration change.
+#' If omitted, the request returns information about the most recent
+#' configuration change.
 #'
 #' @keywords internal
 #'
@@ -477,16 +599,15 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 }
 .opensearchservice$operations$describe_domain_change_progress <- opensearchservice_describe_domain_change_progress
 
-#' Provides cluster configuration information about the specified domain,
-#' such as the state, creation date, update version, and update date for
-#' cluster options
+#' Returns the configuration of an Amazon OpenSearch Service domain
 #'
 #' @description
-#' Provides cluster configuration information about the specified domain, such as the state, creation date, update version, and update date for cluster options.
+#' Returns the configuration of an Amazon OpenSearch Service domain.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_config.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_config.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The domain you want to get information about.
+#' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain configuration that you want to
+#' describe.
 #'
 #' @keywords internal
 #'
@@ -508,15 +629,79 @@ opensearchservice_describe_domain_config <- function(DomainName) {
 }
 .opensearchservice$operations$describe_domain_config <- opensearchservice_describe_domain_config
 
-#' Returns domain configuration information about the specified domains,
-#' including the domain ID, domain endpoint, and domain ARN
+#' Returns information about domain and node health, the standby
+#' Availability Zone, number of nodes per Availability Zone, and shard
+#' count per node
 #'
 #' @description
-#' Returns domain configuration information about the specified domains, including the domain ID, domain endpoint, and domain ARN.
+#' Returns information about domain and node health, the standby Availability Zone, number of nodes per Availability Zone, and shard count per node.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_health.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_health.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_describe_domain_health
+opensearchservice_describe_domain_health <- function(DomainName) {
+  op <- new_operation(
+    name = "DescribeDomainHealth",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/health",
+    paginator = list()
+  )
+  input <- .opensearchservice$describe_domain_health_input(DomainName = DomainName)
+  output <- .opensearchservice$describe_domain_health_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$describe_domain_health <- opensearchservice_describe_domain_health
+
+#' Returns information about domain and nodes, including data nodes, master
+#' nodes, ultrawarm nodes, Availability Zone(s), standby nodes, node
+#' configurations, and node states
+#'
+#' @description
+#' Returns information about domain and nodes, including data nodes, master nodes, ultrawarm nodes, Availability Zone(s), standby nodes, node configurations, and node states.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/describe_domain_nodes.html](https://paws-r.github.io/docs/opensearchservice/describe_domain_nodes.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_describe_domain_nodes
+opensearchservice_describe_domain_nodes <- function(DomainName) {
+  op <- new_operation(
+    name = "DescribeDomainNodes",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/nodes",
+    paginator = list()
+  )
+  input <- .opensearchservice$describe_domain_nodes_input(DomainName = DomainName)
+  output <- .opensearchservice$describe_domain_nodes_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$describe_domain_nodes <- opensearchservice_describe_domain_nodes
+
+#' Returns domain configuration information about the specified Amazon
+#' OpenSearch Service domains
+#'
+#' @description
+#' Returns domain configuration information about the specified Amazon OpenSearch Service domains.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_domains.html](https://paws-r.github.io/docs/opensearchservice/describe_domains.html) for full documentation.
 #'
-#' @param DomainNames &#91;required&#93; The domains for which you want information.
+#' @param DomainNames &#91;required&#93; Array of OpenSearch Service domain names that you want information
+#' about. If you don't specify any domains, OpenSearch Service returns
+#' information about all domains owned by the account.
 #'
 #' @keywords internal
 #'
@@ -538,26 +723,58 @@ opensearchservice_describe_domains <- function(DomainNames) {
 }
 .opensearchservice$operations$describe_domains <- opensearchservice_describe_domains
 
-#' Lists all the inbound cross-cluster connections for a remote domain
+#' Describes the progress of a pre-update dry run analysis on an Amazon
+#' OpenSearch Service domain
 #'
 #' @description
-#' Lists all the inbound cross-cluster connections for a remote domain.
+#' Describes the progress of a pre-update dry run analysis on an Amazon OpenSearch Service domain. For more information, see [Determining whether a change will cause a blue/green deployment](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#dryrun).
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/describe_dry_run_progress.html](https://paws-r.github.io/docs/opensearchservice/describe_dry_run_progress.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param DryRunId The unique identifier of the dry run.
+#' @param LoadDryRunConfig Whether to include the configuration of the dry run in the response. The
+#' configuration specifies the updates that you're planning to make on the
+#' domain.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_describe_dry_run_progress
+opensearchservice_describe_dry_run_progress <- function(DomainName, DryRunId = NULL, LoadDryRunConfig = NULL) {
+  op <- new_operation(
+    name = "DescribeDryRunProgress",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/dryRun",
+    paginator = list()
+  )
+  input <- .opensearchservice$describe_dry_run_progress_input(DomainName = DomainName, DryRunId = DryRunId, LoadDryRunConfig = LoadDryRunConfig)
+  output <- .opensearchservice$describe_dry_run_progress_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$describe_dry_run_progress <- opensearchservice_describe_dry_run_progress
+
+#' Lists all the inbound cross-cluster search connections for a destination
+#' (remote) Amazon OpenSearch Service domain
+#'
+#' @description
+#' Lists all the inbound cross-cluster search connections for a destination (remote) Amazon OpenSearch Service domain. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_inbound_connections.html](https://paws-r.github.io/docs/opensearchservice/describe_inbound_connections.html) for full documentation.
 #'
 #' @param Filters A list of filters used to match properties for inbound cross-cluster
-#' connections. Available ` Filter ` values are:
-#' 
-#' -   connection-id
-#' -   local-domain-info.domain-name
-#' -   local-domain-info.owner-id
-#' -   local-domain-info.region
-#' -   remote-domain-info.domain-name
-#' @param MaxResults Set this value to limit the number of results returned. If not
-#' specified, defaults to 100.
-#' @param NextToken If more results are available and NextToken is present, make the next
-#' request to the same API with the received NextToken to paginate the
-#' remaining results.
+#' connections.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`describe_inbound_connections`][opensearchservice_describe_inbound_connections]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`describe_inbound_connections`][opensearchservice_describe_inbound_connections]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -579,19 +796,20 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
 }
 .opensearchservice$operations$describe_inbound_connections <- opensearchservice_describe_inbound_connections
 
-#' Describe the limits for a given instance type and OpenSearch or
-#' Elasticsearch version
+#' Describes the instance count, storage, and master node limits for a
+#' given OpenSearch or Elasticsearch version and instance type
 #'
 #' @description
-#' Describe the limits for a given instance type and OpenSearch or Elasticsearch version. When modifying an existing domain, specify the ` DomainName ` to see which limits you can modify.
+#' Describes the instance count, storage, and master node limits for a given OpenSearch or Elasticsearch version and instance type.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_instance_type_limits.html](https://paws-r.github.io/docs/opensearchservice/describe_instance_type_limits.html) for full documentation.
 #'
-#' @param DomainName The name of the domain you want to modify. Only include this value if
-#' you're querying OpenSearch ` Limits ` for an existing domain.
-#' @param InstanceType &#91;required&#93; The instance type for an OpenSearch cluster for which OpenSearch
-#' ` Limits ` are needed.
-#' @param EngineVersion &#91;required&#93; Version of OpenSearch for which ` Limits ` are needed.
+#' @param DomainName The name of the domain. Only specify if you need the limits for an
+#' existing domain.
+#' @param InstanceType &#91;required&#93; The OpenSearch Service instance type for which you need limit
+#' information.
+#' @param EngineVersion &#91;required&#93; Version of OpenSearch or Elasticsearch, in the format Elasticsearch_X.Y
+#' or OpenSearch_X.Y. Defaults to the latest version of OpenSearch.
 #'
 #' @keywords internal
 #'
@@ -613,25 +831,23 @@ opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, I
 }
 .opensearchservice$operations$describe_instance_type_limits <- opensearchservice_describe_instance_type_limits
 
-#' Lists all the outbound cross-cluster connections for a local domain
+#' Lists all the outbound cross-cluster connections for a local (source)
+#' Amazon OpenSearch Service domain
 #'
 #' @description
-#' Lists all the outbound cross-cluster connections for a local domain.
+#' Lists all the outbound cross-cluster connections for a local (source) Amazon OpenSearch Service domain. For more information, see [Cross-cluster search for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_outbound_connections.html](https://paws-r.github.io/docs/opensearchservice/describe_outbound_connections.html) for full documentation.
 #'
-#' @param Filters A list of filters used to match properties for outbound cross-cluster
-#' connections. Available ` Filter ` names for this operation are:
-#' 
-#' -   connection-id
-#' -   remote-domain-info.domain-name
-#' -   remote-domain-info.owner-id
-#' -   remote-domain-info.region
-#' -   local-domain-info.domain-name
-#' @param MaxResults Set this value to limit the number of results returned. If not
-#' specified, defaults to 100.
-#' @param NextToken NextToken is sent in case the earlier API call results contain the
-#' NextToken parameter. Used for pagination.
+#' @param Filters List of filter names and values that you can use for requests.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`describe_outbound_connections`][opensearchservice_describe_outbound_connections]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`describe_outbound_connections`][opensearchservice_describe_outbound_connections]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -653,18 +869,20 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
 }
 .opensearchservice$operations$describe_outbound_connections <- opensearchservice_describe_outbound_connections
 
-#' Describes all packages available to Amazon OpenSearch Service domains
+#' Describes all packages available to OpenSearch Service
 #'
 #' @description
-#' Describes all packages available to Amazon OpenSearch Service domains. Includes options for filtering, limiting the number of results, and pagination.
+#' Describes all packages available to OpenSearch Service. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_packages.html](https://paws-r.github.io/docs/opensearchservice/describe_packages.html) for full documentation.
 #'
 #' @param Filters Only returns packages that match the `DescribePackagesFilterList`
 #' values.
-#' @param MaxResults Limits results to a maximum number of packages.
-#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
-#' non-null NextToken value. If provided, returns results for the next
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial `DescribePackageFilters` operation returns a
+#' `nextToken`, you can include the returned `nextToken` in subsequent
+#' `DescribePackageFilters` operations, which returns results in the next
 #' page.
 #'
 #' @keywords internal
@@ -687,19 +905,25 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
 }
 .opensearchservice$operations$describe_packages <- opensearchservice_describe_packages
 
-#' Lists available reserved OpenSearch instance offerings
+#' Describes the available Amazon OpenSearch Service Reserved Instance
+#' offerings for a given Region
 #'
 #' @description
-#' Lists available reserved OpenSearch instance offerings.
+#' Describes the available Amazon OpenSearch Service Reserved Instance offerings for a given Region. For more information, see [Reserved Instances in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_reserved_instance_offerings.html](https://paws-r.github.io/docs/opensearchservice/describe_reserved_instance_offerings.html) for full documentation.
 #'
-#' @param ReservedInstanceOfferingId The offering identifier filter value. Use this parameter to show only
-#' the available offering that matches the specified reservation
-#' identifier.
-#' @param MaxResults Set this value to limit the number of results returned. If not
-#' specified, defaults to 100.
-#' @param NextToken Provides an identifier to allow retrieval of paginated results.
+#' @param ReservedInstanceOfferingId The Reserved Instance identifier filter value. Use this parameter to
+#' show only the available instance types that match the specified
+#' reservation identifier.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`describe_reserved_instance_offerings`][opensearchservice_describe_reserved_instance_offerings]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`describe_reserved_instance_offerings`][opensearchservice_describe_reserved_instance_offerings]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -721,19 +945,25 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
 }
 .opensearchservice$operations$describe_reserved_instance_offerings <- opensearchservice_describe_reserved_instance_offerings
 
-#' Returns information about reserved OpenSearch instances for this account
+#' Describes the Amazon OpenSearch Service instances that you have reserved
+#' in a given Region
 #'
 #' @description
-#' Returns information about reserved OpenSearch instances for this account.
+#' Describes the Amazon OpenSearch Service instances that you have reserved in a given Region. For more information, see [Reserved Instances in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/describe_reserved_instances.html](https://paws-r.github.io/docs/opensearchservice/describe_reserved_instances.html) for full documentation.
 #'
 #' @param ReservedInstanceId The reserved instance identifier filter value. Use this parameter to
 #' show only the reservation that matches the specified reserved OpenSearch
 #' instance ID.
-#' @param MaxResults Set this value to limit the number of results returned. If not
-#' specified, defaults to 100.
-#' @param NextToken Provides an identifier to allow retrieval of paginated results.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`describe_reserved_instances`][opensearchservice_describe_reserved_instances]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`describe_reserved_instances`][opensearchservice_describe_reserved_instances]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -755,17 +985,46 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
 }
 .opensearchservice$operations$describe_reserved_instances <- opensearchservice_describe_reserved_instances
 
-#' Dissociates a package from the Amazon OpenSearch Service domain
+#' Describes one or more Amazon OpenSearch Service-managed VPC endpoints
 #'
 #' @description
-#' Dissociates a package from the Amazon OpenSearch Service domain.
+#' Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/describe_vpc_endpoints.html](https://paws-r.github.io/docs/opensearchservice/describe_vpc_endpoints.html) for full documentation.
+#'
+#' @param VpcEndpointIds &#91;required&#93; The unique identifiers of the endpoints to get information about.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_describe_vpc_endpoints
+opensearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
+  op <- new_operation(
+    name = "DescribeVpcEndpoints",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/vpcEndpoints/describe",
+    paginator = list()
+  )
+  input <- .opensearchservice$describe_vpc_endpoints_input(VpcEndpointIds = VpcEndpointIds)
+  output <- .opensearchservice$describe_vpc_endpoints_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$describe_vpc_endpoints <- opensearchservice_describe_vpc_endpoints
+
+#' Removes a package from the specified Amazon OpenSearch Service domain
+#'
+#' @description
+#' Removes a package from the specified Amazon OpenSearch Service domain. The package can't be in use with any OpenSearch index for the dissociation to succeed. The package is still available in OpenSearch Service for association later. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/dissociate_package.html](https://paws-r.github.io/docs/opensearchservice/dissociate_package.html) for full documentation.
 #'
-#' @param PackageID &#91;required&#93; The internal ID of the package to associate with a domain. Use
-#' [`describe_packages`][opensearchservice_describe_packages] to find this
-#' value.
-#' @param DomainName &#91;required&#93; The name of the domain to associate the package with.
+#' @param PackageID &#91;required&#93; Internal ID of the package to dissociate from the domain. Use
+#' [`list_packages_for_domain`][opensearchservice_list_packages_for_domain]
+#' to find this value.
+#' @param DomainName &#91;required&#93; Name of the domain to dissociate the package from.
 #'
 #' @keywords internal
 #'
@@ -787,15 +1046,16 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
 }
 .opensearchservice$operations$dissociate_package <- opensearchservice_dissociate_package
 
-#' Returns a list of upgrade-compatible versions of
-#' OpenSearch/Elasticsearch
+#' Returns a map of OpenSearch or Elasticsearch versions and the versions
+#' you can upgrade them to
 #'
 #' @description
-#' Returns a list of upgrade-compatible versions of OpenSearch/Elasticsearch. You can optionally pass a ` DomainName ` to get all upgrade-compatible versions of OpenSearch/Elasticsearch for that specific domain.
+#' Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/get_compatible_versions.html](https://paws-r.github.io/docs/opensearchservice/get_compatible_versions.html) for full documentation.
 #'
-#' @param DomainName 
+#' @param DomainName The name of an existing domain. Provide this parameter to limit the
+#' results to a single domain.
 #'
 #' @keywords internal
 #'
@@ -817,19 +1077,24 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 }
 .opensearchservice$operations$get_compatible_versions <- opensearchservice_get_compatible_versions
 
-#' Returns a list of package versions, along with their creation time and
-#' commit message
+#' Returns a list of Amazon OpenSearch Service package versions, along with
+#' their creation time, commit message, and plugin properties (if the
+#' package is a zip plugin package)
 #'
 #' @description
-#' Returns a list of package versions, along with their creation time and commit message.
+#' Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package). For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/get_package_version_history.html](https://paws-r.github.io/docs/opensearchservice/get_package_version_history.html) for full documentation.
 #'
-#' @param PackageID &#91;required&#93; Returns an audit history of package versions.
-#' @param MaxResults Limits results to a maximum number of package versions.
-#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
-#' non-null NextToken value. If provided, returns results for the next
-#' page.
+#' @param PackageID &#91;required&#93; The unique identifier of the package.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`get_package_version_history`][opensearchservice_get_package_version_history]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`get_package_version_history`][opensearchservice_get_package_version_history]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -851,17 +1116,23 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
 }
 .opensearchservice$operations$get_package_version_history <- opensearchservice_get_package_version_history
 
-#' Retrieves the complete history of the last 10 upgrades performed on the
-#' domain
+#' Retrieves the complete history of the last 10 upgrades performed on an
+#' Amazon OpenSearch Service domain
 #'
 #' @description
-#' Retrieves the complete history of the last 10 upgrades performed on the domain.
+#' Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/get_upgrade_history.html](https://paws-r.github.io/docs/opensearchservice/get_upgrade_history.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; 
-#' @param MaxResults 
-#' @param NextToken 
+#' @param DomainName &#91;required&#93; The name of an existing domain.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`get_upgrade_history`][opensearchservice_get_upgrade_history] operation
+#' returns a `nextToken`, you can include the returned `nextToken` in
+#' subsequent
+#' [`get_upgrade_history`][opensearchservice_get_upgrade_history]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -883,15 +1154,15 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
 }
 .opensearchservice$operations$get_upgrade_history <- opensearchservice_get_upgrade_history
 
-#' Retrieves the latest status of the last upgrade or upgrade eligibility
-#' check performed on the domain
+#' Returns the most recent status of the last upgrade or upgrade
+#' eligibility check performed on an Amazon OpenSearch Service domain
 #'
 #' @description
-#' Retrieves the latest status of the last upgrade or upgrade eligibility check performed on the domain.
+#' Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/get_upgrade_status.html](https://paws-r.github.io/docs/opensearchservice/get_upgrade_status.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; 
+#' @param DomainName &#91;required&#93; The domain of the domain to get upgrade status information for.
 #'
 #' @keywords internal
 #'
@@ -913,15 +1184,15 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
 
-#' Returns the names of all domains owned by the current user's account
+#' Returns the names of all Amazon OpenSearch Service domains owned by the
+#' current user in the active Region
 #'
 #' @description
-#' Returns the names of all domains owned by the current user's account.
+#' Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/list_domain_names.html](https://paws-r.github.io/docs/opensearchservice/list_domain_names.html) for full documentation.
 #'
-#' @param EngineType Optional parameter to filter the output by domain engine type.
-#' Acceptable values are 'Elasticsearch' and 'OpenSearch'.
+#' @param EngineType Filters the output by domain engine type.
 #'
 #' @keywords internal
 #'
@@ -943,18 +1214,24 @@ opensearchservice_list_domain_names <- function(EngineType = NULL) {
 }
 .opensearchservice$operations$list_domain_names <- opensearchservice_list_domain_names
 
-#' Lists all Amazon OpenSearch Service domains associated with the package
+#' Lists all Amazon OpenSearch Service domains associated with a given
+#' package
 #'
 #' @description
-#' Lists all Amazon OpenSearch Service domains associated with the package.
+#' Lists all Amazon OpenSearch Service domains associated with a given package. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/list_domains_for_package.html](https://paws-r.github.io/docs/opensearchservice/list_domains_for_package.html) for full documentation.
 #'
-#' @param PackageID &#91;required&#93; The package for which to list associated domains.
-#' @param MaxResults Limits the results to a maximum number of domains.
-#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
-#' non-null NextToken value. If provided, returns results for the next
-#' page.
+#' @param PackageID &#91;required&#93; The unique identifier of the package for which to list associated
+#' domains.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`list_domains_for_package`][opensearchservice_list_domains_for_package]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_domains_for_package`][opensearchservice_list_domains_for_package]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -976,29 +1253,41 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
 }
 .opensearchservice$operations$list_domains_for_package <- opensearchservice_list_domains_for_package
 
-#' List instance type details
+#' Lists all instance types and available features for a given OpenSearch
+#' or Elasticsearch version
 #'
 #' @description
-#' List instance type details
+#' Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/list_instance_type_details.html](https://paws-r.github.io/docs/opensearchservice/list_instance_type_details.html) for full documentation.
 #'
-#' @param EngineVersion &#91;required&#93; 
-#' @param DomainName 
-#' @param MaxResults 
-#' @param NextToken 
+#' @param EngineVersion &#91;required&#93; The version of OpenSearch or Elasticsearch, in the format
+#' Elasticsearch_X.Y or OpenSearch_X.Y. Defaults to the latest version of
+#' OpenSearch.
+#' @param DomainName The name of the domain.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`list_instance_type_details`][opensearchservice_list_instance_type_details]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_instance_type_details`][opensearchservice_list_instance_type_details]
+#' operations, which returns results in the next page.
+#' @param RetrieveAZs An optional parameter that specifies the Availability Zones for the
+#' domain.
+#' @param InstanceType An optional parameter that lists information for a given instance type.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_list_instance_type_details
-opensearchservice_list_instance_type_details <- function(EngineVersion, DomainName = NULL, MaxResults = NULL, NextToken = NULL) {
+opensearchservice_list_instance_type_details <- function(EngineVersion, DomainName = NULL, MaxResults = NULL, NextToken = NULL, RetrieveAZs = NULL, InstanceType = NULL) {
   op <- new_operation(
     name = "ListInstanceTypeDetails",
     http_method = "GET",
     http_path = "/2021-01-01/opensearch/instanceTypeDetails/{EngineVersion}",
     paginator = list()
   )
-  input <- .opensearchservice$list_instance_type_details_input(EngineVersion = EngineVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .opensearchservice$list_instance_type_details_input(EngineVersion = EngineVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken, RetrieveAZs = RetrieveAZs, InstanceType = InstanceType)
   output <- .opensearchservice$list_instance_type_details_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -1008,18 +1297,22 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
 }
 .opensearchservice$operations$list_instance_type_details <- opensearchservice_list_instance_type_details
 
-#' Lists all packages associated with the Amazon OpenSearch Service domain
+#' Lists all packages associated with an Amazon OpenSearch Service domain
 #'
 #' @description
-#' Lists all packages associated with the Amazon OpenSearch Service domain.
+#' Lists all packages associated with an Amazon OpenSearch Service domain. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/list_packages_for_domain.html](https://paws-r.github.io/docs/opensearchservice/list_packages_for_domain.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to list associated packages.
-#' @param MaxResults Limits results to a maximum number of packages.
-#' @param NextToken Used for pagination. Only necessary if a previous API call includes a
-#' non-null NextToken value. If provided, returns results for the next
-#' page.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`list_packages_for_domain`][opensearchservice_list_packages_for_domain]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_packages_for_domain`][opensearchservice_list_packages_for_domain]
+#' operations, which returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -1041,15 +1334,52 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
 }
 .opensearchservice$operations$list_packages_for_domain <- opensearchservice_list_packages_for_domain
 
-#' Returns all tags for the given domain
+#' Retrieves a list of configuration changes that are scheduled for a
+#' domain
 #'
 #' @description
-#' Returns all tags for the given domain.
+#' Retrieves a list of configuration changes that are scheduled for a domain. These changes can be [service software updates](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html) or [blue/green Auto-Tune enhancements](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types).
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/list_scheduled_actions.html](https://paws-r.github.io/docs/opensearchservice/list_scheduled_actions.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`list_scheduled_actions`][opensearchservice_list_scheduled_actions]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_scheduled_actions`][opensearchservice_list_scheduled_actions]
+#' operations, which returns results in the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_scheduled_actions
+opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListScheduledActions",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledActions",
+    paginator = list()
+  )
+  input <- .opensearchservice$list_scheduled_actions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .opensearchservice$list_scheduled_actions_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_scheduled_actions <- opensearchservice_list_scheduled_actions
+
+#' Returns all resource tags for an Amazon OpenSearch Service domain
+#'
+#' @description
+#' Returns all resource tags for an Amazon OpenSearch Service domain. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/list_tags.html](https://paws-r.github.io/docs/opensearchservice/list_tags.html) for full documentation.
 #'
-#' @param ARN &#91;required&#93; Specify the `ARN` of the domain that the tags you want to view are
-#' attached to.
+#' @param ARN &#91;required&#93; Amazon Resource Name (ARN) for the domain to view tags for.
 #'
 #' @keywords internal
 #'
@@ -1071,16 +1401,21 @@ opensearchservice_list_tags <- function(ARN) {
 }
 .opensearchservice$operations$list_tags <- opensearchservice_list_tags
 
-#' List all supported versions of OpenSearch and Elasticsearch
+#' Lists all versions of OpenSearch and Elasticsearch that Amazon
+#' OpenSearch Service supports
 #'
 #' @description
-#' List all supported versions of OpenSearch and Elasticsearch.
+#' Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/list_versions.html](https://paws-r.github.io/docs/opensearchservice/list_versions.html) for full documentation.
 #'
-#' @param MaxResults Set this value to limit the number of results returned. Value must be
-#' greater than 10 or it won't be honored.
-#' @param NextToken 
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial [`list_versions`][opensearchservice_list_versions]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_versions`][opensearchservice_list_versions] operations, which
+#' returns results in the next page.
 #'
 #' @keywords internal
 #'
@@ -1102,14 +1437,120 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
 }
 .opensearchservice$operations$list_versions <- opensearchservice_list_versions
 
-#' Allows you to purchase reserved OpenSearch instances
+#' Retrieves information about each Amazon Web Services principal that is
+#' allowed to access a given Amazon OpenSearch Service domain through the
+#' use of an interface VPC endpoint
 #'
 #' @description
-#' Allows you to purchase reserved OpenSearch instances.
+#' Retrieves information about each Amazon Web Services principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoint_access.html](https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoint_access.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to retrieve access information
+#' for.
+#' @param NextToken If your initial
+#' [`list_vpc_endpoint_access`][opensearchservice_list_vpc_endpoint_access]
+#' operation returns a `nextToken`, you can include the returned
+#' `nextToken` in subsequent
+#' [`list_vpc_endpoint_access`][opensearchservice_list_vpc_endpoint_access]
+#' operations, which returns results in the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_vpc_endpoint_access
+opensearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpointAccess",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/listVpcEndpointAccess",
+    paginator = list()
+  )
+  input <- .opensearchservice$list_vpc_endpoint_access_input(DomainName = DomainName, NextToken = NextToken)
+  output <- .opensearchservice$list_vpc_endpoint_access_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_vpc_endpoint_access <- opensearchservice_list_vpc_endpoint_access
+
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the
+#' current Amazon Web Services account and Region
+#'
+#' @description
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Amazon Web Services account and Region.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints.html](https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints.html) for full documentation.
+#'
+#' @param NextToken If your initial
+#' [`list_vpc_endpoints`][opensearchservice_list_vpc_endpoints] operation
+#' returns a `nextToken`, you can include the returned `nextToken` in
+#' subsequent [`list_vpc_endpoints`][opensearchservice_list_vpc_endpoints]
+#' operations, which returns results in the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_vpc_endpoints
+opensearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpoints",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/vpcEndpoints",
+    paginator = list()
+  )
+  input <- .opensearchservice$list_vpc_endpoints_input(NextToken = NextToken)
+  output <- .opensearchservice$list_vpc_endpoints_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_vpc_endpoints <- opensearchservice_list_vpc_endpoints
+
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated
+#' with a particular domain
+#'
+#' @description
+#' Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints_for_domain.html](https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints_for_domain.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain to list associated VPC endpoints for.
+#' @param NextToken If your initial `ListEndpointsForDomain` operation returns a
+#' `nextToken`, you can include the returned `nextToken` in subsequent
+#' `ListEndpointsForDomain` operations, which returns results in the next
+#' page.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_vpc_endpoints_for_domain
+opensearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcEndpointsForDomain",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/vpcEndpoints",
+    paginator = list()
+  )
+  input <- .opensearchservice$list_vpc_endpoints_for_domain_input(DomainName = DomainName, NextToken = NextToken)
+  output <- .opensearchservice$list_vpc_endpoints_for_domain_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_vpc_endpoints_for_domain <- opensearchservice_list_vpc_endpoints_for_domain
+
+#' Allows you to purchase Amazon OpenSearch Service Reserved Instances
+#'
+#' @description
+#' Allows you to purchase Amazon OpenSearch Service Reserved Instances.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/purchase_reserved_instance_offering.html](https://paws-r.github.io/docs/opensearchservice/purchase_reserved_instance_offering.html) for full documentation.
 #'
-#' @param ReservedInstanceOfferingId &#91;required&#93; The ID of the reserved OpenSearch instance offering to purchase.
+#' @param ReservedInstanceOfferingId &#91;required&#93; The ID of the Reserved Instance offering to purchase.
 #' @param ReservationName &#91;required&#93; A customer-specified identifier to track this reservation.
 #' @param InstanceCount The number of OpenSearch instances to reserve.
 #'
@@ -1133,15 +1574,15 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
 }
 .opensearchservice$operations$purchase_reserved_instance_offering <- opensearchservice_purchase_reserved_instance_offering
 
-#' Allows the remote domain owner to reject an inbound cross-cluster
-#' connection request
+#' Allows the remote Amazon OpenSearch Service domain owner to reject an
+#' inbound cross-cluster connection request
 #'
 #' @description
-#' Allows the remote domain owner to reject an inbound cross-cluster connection request.
+#' Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/reject_inbound_connection.html](https://paws-r.github.io/docs/opensearchservice/reject_inbound_connection.html) for full documentation.
 #'
-#' @param ConnectionId &#91;required&#93; The ID of the inbound connection to reject.
+#' @param ConnectionId &#91;required&#93; The unique identifier of the inbound connection to reject.
 #'
 #' @keywords internal
 #'
@@ -1163,16 +1604,17 @@ opensearchservice_reject_inbound_connection <- function(ConnectionId) {
 }
 .opensearchservice$operations$reject_inbound_connection <- opensearchservice_reject_inbound_connection
 
-#' Removes the specified set of tags from the given domain
+#' Removes the specified set of tags from an Amazon OpenSearch Service
+#' domain
 #'
 #' @description
-#' Removes the specified set of tags from the given domain.
+#' Removes the specified set of tags from an Amazon OpenSearch Service domain. For more information, see [Tagging Amazon OpenSearch Service domains](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/remove_tags.html](https://paws-r.github.io/docs/opensearchservice/remove_tags.html) for full documentation.
 #'
-#' @param ARN &#91;required&#93; The `ARN` of the domain from which you want to delete the specified
-#' tags.
-#' @param TagKeys &#91;required&#93; The `TagKey` list you want to remove from the domain.
+#' @param ARN &#91;required&#93; The Amazon Resource Name (ARN) of the domain from which you want to
+#' delete the specified tags.
+#' @param TagKeys &#91;required&#93; The list of tag keys to remove from the domain.
 #'
 #' @keywords internal
 #'
@@ -1194,28 +1636,78 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
 }
 .opensearchservice$operations$remove_tags <- opensearchservice_remove_tags
 
+#' Revokes access to an Amazon OpenSearch Service domain that was provided
+#' through an interface VPC endpoint
+#'
+#' @description
+#' Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/revoke_vpc_endpoint_access.html](https://paws-r.github.io/docs/opensearchservice/revoke_vpc_endpoint_access.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain.
+#' @param Account &#91;required&#93; The account ID to revoke access from.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_revoke_vpc_endpoint_access
+opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
+  op <- new_operation(
+    name = "RevokeVpcEndpointAccess",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/revokeVpcEndpointAccess",
+    paginator = list()
+  )
+  input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account)
+  output <- .opensearchservice$revoke_vpc_endpoint_access_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$revoke_vpc_endpoint_access <- opensearchservice_revoke_vpc_endpoint_access
+
 #' Schedules a service software update for an Amazon OpenSearch Service
 #' domain
 #'
 #' @description
-#' Schedules a service software update for an Amazon OpenSearch Service domain.
+#' Schedules a service software update for an Amazon OpenSearch Service domain. For more information, see [Service software updates in Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/start_service_software_update.html](https://paws-r.github.io/docs/opensearchservice/start_service_software_update.html) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update to the latest service
 #' software.
+#' @param ScheduleAt When to start the service software update.
+#' 
+#' -   `NOW` - Immediately schedules the update to happen in the current
+#'     hour if there's capacity available.
+#' 
+#' -   `TIMESTAMP` - Lets you specify a custom date and time to apply the
+#'     update. If you specify this value, you must also provide a value for
+#'     `DesiredStartTime`.
+#' 
+#' -   `OFF_PEAK_WINDOW` - Marks the update to be picked up during an
+#'     upcoming off-peak window. There's no guarantee that the update will
+#'     happen during the next immediate window. Depending on capacity, it
+#'     might happen in subsequent days.
+#' 
+#' Default: `NOW` if you don't specify a value for `DesiredStartTime`, and
+#' `TIMESTAMP` if you do.
+#' @param DesiredStartTime The Epoch timestamp when you want the service software update to start.
+#' You only need to specify this parameter if you set `ScheduleAt` to
+#' `TIMESTAMP`.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_start_service_software_update
-opensearchservice_start_service_software_update <- function(DomainName) {
+opensearchservice_start_service_software_update <- function(DomainName, ScheduleAt = NULL, DesiredStartTime = NULL) {
   op <- new_operation(
     name = "StartServiceSoftwareUpdate",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/start",
     paginator = list()
   )
-  input <- .opensearchservice$start_service_software_update_input(DomainName = DomainName)
+  input <- .opensearchservice$start_service_software_update_input(DomainName = DomainName, ScheduleAt = ScheduleAt, DesiredStartTime = DesiredStartTime)
   output <- .opensearchservice$start_service_software_update_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -1225,58 +1717,84 @@ opensearchservice_start_service_software_update <- function(DomainName) {
 }
 .opensearchservice$operations$start_service_software_update <- opensearchservice_start_service_software_update
 
-#' Modifies the cluster configuration of the specified domain, such as
-#' setting the instance type and the number of instances
+#' Modifies the cluster configuration of the specified Amazon OpenSearch
+#' Service domain
 #'
 #' @description
-#' Modifies the cluster configuration of the specified domain, such as setting the instance type and the number of instances.
+#' Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.sl
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/update_domain_config.html](https://paws-r.github.io/docs/opensearchservice/update_domain_config.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; The name of the domain you're updating.
-#' @param ClusterConfig The type and number of instances to instantiate for the domain cluster.
-#' @param EBSOptions Specify the type and size of the EBS volume to use.
+#' @param DomainName &#91;required&#93; The name of the domain that you're updating.
+#' @param ClusterConfig Changes that you want to make to the cluster configuration, such as the
+#' instance type and number of EC2 instances.
+#' @param EBSOptions The type and size of the EBS volume to attach to instances in the
+#' domain.
 #' @param SnapshotOptions Option to set the time, in UTC format, for the daily automated snapshot.
 #' Default value is `0` hours.
-#' @param VPCOptions Options to specify the subnets and security groups for the VPC endpoint.
-#' For more information, see <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html"
-#' target="_blank">Launching your Amazon OpenSearch Service domains using a
-#' VPC</a> .
-#' @param CognitoOptions Options to specify the Cognito user and identity pools for OpenSearch
-#' Dashboards authentication. For more information, see <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html"
-#' target="_blank">Configuring Amazon Cognito authentication for OpenSearch
-#' Dashboards</a>.
-#' @param AdvancedOptions Modifies the advanced option to allow references to indices in an HTTP
-#' request body. Must be `false` when configuring access to individual
-#' sub-resources. By default, the value is `true`. See <a
-#' href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options"
-#' target="_blank">Advanced options</a> for more information.
-#' @param AccessPolicies IAM access policy as a JSON-formatted string.
-#' @param LogPublishingOptions Map of `LogType` and `LogPublishingOption`, each containing options to
-#' publish a given type of OpenSearch log.
-#' @param EncryptionAtRestOptions Specifies encryption of data at rest options.
-#' @param DomainEndpointOptions Options to specify configuration that will be applied to the domain
-#' endpoint.
-#' @param NodeToNodeEncryptionOptions Specifies node-to-node encryption options.
-#' @param AdvancedSecurityOptions Specifies advanced security options.
-#' @param AutoTuneOptions Specifies Auto-Tune options.
+#' @param VPCOptions Options to specify the subnets and security groups for a VPC endpoint.
+#' For more information, see [Launching your Amazon OpenSearch Service
+#' domains using a
+#' VPC](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html).
+#' @param CognitoOptions Key-value pairs to configure Amazon Cognito authentication for
+#' OpenSearch Dashboards.
+#' @param AdvancedOptions Key-value pairs to specify advanced configuration options. The following
+#' key-value pairs are supported:
+#' 
+#' -   `"rest.action.multi.allow_explicit_index": "true" | "false"` - Note
+#'     the use of a string rather than a boolean. Specifies whether
+#'     explicit references to indexes are allowed inside the body of HTTP
+#'     requests. If you want to configure access policies for domain
+#'     sub-resources, such as specific indexes and domain APIs, you must
+#'     disable this property. Default is true.
+#' 
+#' -   `"indices.fielddata.cache.size": "80" ` - Note the use of a string
+#'     rather than a boolean. Specifies the percentage of heap space
+#'     allocated to field data. Default is unbounded.
+#' 
+#' -   `"indices.query.bool.max_clause_count": "1024"` - Note the use of a
+#'     string rather than a boolean. Specifies the maximum number of
+#'     clauses allowed in a Lucene boolean query. Default is 1,024. Queries
+#'     with more than the permitted number of clauses result in a
+#'     `TooManyClauses` error.
+#' 
+#' For more information, see [Advanced cluster
+#' parameters](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options).
+#' @param AccessPolicies Identity and Access Management (IAM) access policy as a JSON-formatted
+#' string.
+#' @param LogPublishingOptions Options to publish OpenSearch logs to Amazon CloudWatch Logs.
+#' @param EncryptionAtRestOptions Encryption at rest options for the domain.
+#' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require
+#' HTTPS for all traffic.
+#' @param NodeToNodeEncryptionOptions Node-to-node encryption options for the domain.
+#' @param AdvancedSecurityOptions Options for fine-grained access control.
+#' @param AutoTuneOptions Options for Auto-Tune.
 #' @param DryRun This flag, when set to True, specifies whether the `UpdateDomain`
-#' request should return the results of validation checks (DryRunResults)
-#' without actually applying the change.
+#' request should return the results of a dry run analysis without actually
+#' applying the change. A dry run determines what type of deployment the
+#' update will cause.
+#' @param DryRunMode The type of dry run to perform.
+#' 
+#' -   `Basic` only returns the type of deployment (blue/green or dynamic)
+#'     that the update will cause.
+#' 
+#' -   `Verbose` runs an additional check to validate the changes you're
+#'     making. For more information, see [Validating a domain
+#'     update](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#validation-check).
+#' @param OffPeakWindowOptions Off-peak window options for the domain.
+#' @param SoftwareUpdateOptions Service software update options for the domain.
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
     paginator = list()
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -1289,14 +1807,14 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
 #' Updates a package for use with Amazon OpenSearch Service domains
 #'
 #' @description
-#' Updates a package for use with Amazon OpenSearch Service domains.
+#' Updates a package for use with Amazon OpenSearch Service domains. For more information, see [Custom packages for Amazon OpenSearch Service](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html).
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/update_package.html](https://paws-r.github.io/docs/opensearchservice/update_package.html) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The unique identifier for the package.
-#' @param PackageSource &#91;required&#93; 
+#' @param PackageSource &#91;required&#93; Amazon S3 bucket and key for the package.
 #' @param PackageDescription A new description of the package.
-#' @param CommitMessage A commit message for the new version which is shown as part of
+#' @param CommitMessage Commit message for the updated file, which is shown as part of
 #' `GetPackageVersionHistoryResponse`.
 #'
 #' @keywords internal
@@ -1319,19 +1837,108 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
 }
 .opensearchservice$operations$update_package <- opensearchservice_update_package
 
-#' Allows you to either upgrade your domain or perform an upgrade
-#' eligibility check to a compatible version of OpenSearch or Elasticsearch
+#' Reschedules a planned domain configuration change for a later time
 #'
 #' @description
-#' Allows you to either upgrade your domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
+#' Reschedules a planned domain configuration change for a later time. This change can be a scheduled [service software update](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html) or a [blue/green Auto-Tune enhancement](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types).
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/update_scheduled_action.html](https://paws-r.github.io/docs/opensearchservice/update_scheduled_action.html) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain to reschedule an action for.
+#' @param ActionID &#91;required&#93; The unique identifier of the action to reschedule. To retrieve this ID,
+#' send a
+#' [`list_scheduled_actions`][opensearchservice_list_scheduled_actions]
+#' request.
+#' @param ActionType &#91;required&#93; The type of action to reschedule. Can be one of
+#' `SERVICE_SOFTWARE_UPDATE`, `JVM_HEAP_SIZE_TUNING`, or
+#' `JVM_YOUNG_GEN_TUNING`. To retrieve this value, send a
+#' [`list_scheduled_actions`][opensearchservice_list_scheduled_actions]
+#' request.
+#' @param ScheduleAt &#91;required&#93; When to schedule the action.
+#' 
+#' -   `NOW` - Immediately schedules the update to happen in the current
+#'     hour if there's capacity available.
+#' 
+#' -   `TIMESTAMP` - Lets you specify a custom date and time to apply the
+#'     update. If you specify this value, you must also provide a value for
+#'     `DesiredStartTime`.
+#' 
+#' -   `OFF_PEAK_WINDOW` - Marks the action to be picked up during an
+#'     upcoming off-peak window. There's no guarantee that the change will
+#'     be implemented during the next immediate window. Depending on
+#'     capacity, it might happen in subsequent days.
+#' @param DesiredStartTime The time to implement the change, in Coordinated Universal Time (UTC).
+#' Only specify this parameter if you set `ScheduleAt` to `TIMESTAMP`.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_scheduled_action
+opensearchservice_update_scheduled_action <- function(DomainName, ActionID, ActionType, ScheduleAt, DesiredStartTime = NULL) {
+  op <- new_operation(
+    name = "UpdateScheduledAction",
+    http_method = "PUT",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledAction/update",
+    paginator = list()
+  )
+  input <- .opensearchservice$update_scheduled_action_input(DomainName = DomainName, ActionID = ActionID, ActionType = ActionType, ScheduleAt = ScheduleAt, DesiredStartTime = DesiredStartTime)
+  output <- .opensearchservice$update_scheduled_action_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_scheduled_action <- opensearchservice_update_scheduled_action
+
+#' Modifies an Amazon OpenSearch Service-managed interface VPC endpoint
+#'
+#' @description
+#' Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+#'
+#' See [https://paws-r.github.io/docs/opensearchservice/update_vpc_endpoint.html](https://paws-r.github.io/docs/opensearchservice/update_vpc_endpoint.html) for full documentation.
+#'
+#' @param VpcEndpointId &#91;required&#93; The unique identifier of the endpoint.
+#' @param VpcOptions &#91;required&#93; The security groups and/or subnets to add, remove, or modify.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_update_vpc_endpoint
+opensearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) {
+  op <- new_operation(
+    name = "UpdateVpcEndpoint",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/vpcEndpoints/update",
+    paginator = list()
+  )
+  input <- .opensearchservice$update_vpc_endpoint_input(VpcEndpointId = VpcEndpointId, VpcOptions = VpcOptions)
+  output <- .opensearchservice$update_vpc_endpoint_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$update_vpc_endpoint <- opensearchservice_update_vpc_endpoint
+
+#' Allows you to either upgrade your Amazon OpenSearch Service domain or
+#' perform an upgrade eligibility check to a compatible version of
+#' OpenSearch or Elasticsearch
+#'
+#' @description
+#' Allows you to either upgrade your Amazon OpenSearch Service domain or perform an upgrade eligibility check to a compatible version of OpenSearch or Elasticsearch.
 #'
 #' See [https://paws-r.github.io/docs/opensearchservice/upgrade_domain.html](https://paws-r.github.io/docs/opensearchservice/upgrade_domain.html) for full documentation.
 #'
-#' @param DomainName &#91;required&#93; 
-#' @param TargetVersion &#91;required&#93; The version of OpenSearch you intend to upgrade the domain to.
+#' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain that you want to upgrade.
+#' @param TargetVersion &#91;required&#93; OpenSearch or Elasticsearch version to which you want to upgrade, in the
+#' format Opensearch_X.Y or Elasticsearch_X.Y.
 #' @param PerformCheckOnly When true, indicates that an upgrade eligibility check needs to be
 #' performed. Does not actually perform the upgrade.
-#' @param AdvancedOptions 
+#' @param AdvancedOptions Only supports the `override_main_response_version` parameter and not
+#' other advanced options. You can only include this option when upgrading
+#' to an OpenSearch version. Specifies whether the domain reports its
+#' version as 7.10 so that it continues to work with Elasticsearch OSS
+#' clients and plugins.
 #'
 #' @keywords internal
 #'

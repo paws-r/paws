@@ -11,12 +11,13 @@ resourcegroups_put_group_configuration(Group = NULL, Configuration = NULL)
 want to update.}
 
 \item{Configuration}{The new configuration to associate with the specified group. A
-configuration associates the resource group with an AWS service and
-specifies how the service can interact with the resources in the group.
-A configuration is an array of GroupConfigurationItem elements.
+configuration associates the resource group with an Amazon Web Services
+service and specifies how the service can interact with the resources in
+the group. A configuration is an array of GroupConfigurationItem
+elements.
 
 For information about the syntax of a service configuration, see
-\href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for resource groups}.
+\href{https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html}{Service configurations for Resource Groups}.
 
 A resource group can contain either a \code{Configuration} or a
 \code{ResourceQuery}, but not both.}

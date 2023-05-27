@@ -21,7 +21,7 @@ create an IPSet for.}
 
 \item{Name}{[required] The user-friendly name to identify the IPSet.
 
-Allowed characters are alphanumerics, spaces, hyphens (-), and
+Allowed characters are alphanumeric, whitespace, dash (-), and
 underscores (_).}
 
 \item{Format}{[required] The format of the file that contains the IPSet.}

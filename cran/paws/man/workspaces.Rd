@@ -85,6 +85,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Amazon Connect within a directory\cr
 \link[paws.end.user.computing:workspaces_create_connection_alias]{create_connection_alias} \tab Creates the specified connection alias for use with cross-Region redirection\cr
 \link[paws.end.user.computing:workspaces_create_ip_group]{create_ip_group} \tab Creates an IP access control group\cr
+\link[paws.end.user.computing:workspaces_create_standby_workspaces]{create_standby_workspaces} \tab Creates a standby WorkSpace in a secondary Region\cr
 \link[paws.end.user.computing:workspaces_create_tags]{create_tags} \tab Creates the specified tags for the specified WorkSpaces resource\cr
 \link[paws.end.user.computing:workspaces_create_updated_workspace_image]{create_updated_workspace_image} \tab Creates a new updated WorkSpace image based on the specified source image\cr
 \link[paws.end.user.computing:workspaces_create_workspace_bundle]{create_workspace_bundle} \tab Creates the specified WorkSpace bundle\cr
@@ -117,10 +118,11 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[paws.end.user.computing:workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
 \link[paws.end.user.computing:workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
 \link[paws.end.user.computing:workspaces_import_client_branding]{import_client_branding} \tab Imports client branding\cr
-\link[paws.end.user.computing:workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
+\link[paws.end.user.computing:workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr
 \link[paws.end.user.computing:workspaces_migrate_workspace]{migrate_workspace} \tab Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume\cr
 \link[paws.end.user.computing:workspaces_modify_account]{modify_account} \tab Modifies the configuration of Bring Your Own License (BYOL) for the specified account\cr
+\link[paws.end.user.computing:workspaces_modify_certificate_based_auth_properties]{modify_certificate_based_auth_properties} \tab Modifies the properties of the certificate-based authentication you want to use with your WorkSpaces\cr
 \link[paws.end.user.computing:workspaces_modify_client_properties]{modify_client_properties} \tab Modifies the properties of the specified Amazon WorkSpaces clients\cr
 \link[paws.end.user.computing:workspaces_modify_saml_properties]{modify_saml_properties} \tab Modifies multiple properties related to SAML 2\cr
 \link[paws.end.user.computing:workspaces_modify_selfservice_permissions]{modify_selfservice_permissions} \tab Modifies the self-service WorkSpace management capabilities for your users\cr

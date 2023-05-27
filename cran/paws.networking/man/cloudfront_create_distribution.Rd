@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_create_distribution}
 \alias{cloudfront_create_distribution}
-\title{Creates a new web distribution}
+\title{Creates a CloudFront distribution}
 \usage{
 cloudfront_create_distribution(DistributionConfig)
 }
@@ -10,7 +10,7 @@ cloudfront_create_distribution(DistributionConfig)
 \item{DistributionConfig}{[required] The distribution's configuration information.}
 }
 \description{
-Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you want content to be delivered from, and the details about how to track and manage content delivery. Send a \code{POST} request to the \verb{/CloudFront API version/distribution}/\verb{distribution ID} resource.
+Creates a CloudFront distribution.
 
 See \url{https://paws-r.github.io/docs/cloudfront/create_distribution.html} for full documentation.
 }

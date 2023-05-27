@@ -3,6 +3,260 @@
 #' @include lexmodelsv2_service.R
 NULL
 
+#' Create a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Create a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary.
+#'
+#' @usage
+#' lexmodelsv2_batch_create_custom_vocabulary_item(botId, botVersion,
+#'   localeId, customVocabularyItemList)
+#'
+#' @param botId &#91;required&#93; The identifier of the bot associated with this custom vocabulary.
+#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' Languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' .
+#' @param customVocabularyItemList &#91;required&#93; A list of new custom vocabulary items. Each entry must contain a phrase
+#' and can optionally contain a displayAs and/or a weight.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   errors = list(
+#'     list(
+#'       itemId = "string",
+#'       errorMessage = "string",
+#'       errorCode = "DUPLICATE_INPUT"|"RESOURCE_DOES_NOT_EXIST"|"RESOURCE_ALREADY_EXISTS"|"INTERNAL_SERVER_FAILURE"
+#'     )
+#'   ),
+#'   resources = list(
+#'     list(
+#'       itemId = "string",
+#'       phrase = "string",
+#'       weight = 123,
+#'       displayAs = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_create_custom_vocabulary_item(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   customVocabularyItemList = list(
+#'     list(
+#'       phrase = "string",
+#'       weight = 123,
+#'       displayAs = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_batch_create_custom_vocabulary_item
+#'
+#' @aliases lexmodelsv2_batch_create_custom_vocabulary_item
+lexmodelsv2_batch_create_custom_vocabulary_item <- function(botId, botVersion, localeId, customVocabularyItemList) {
+  op <- new_operation(
+    name = "BatchCreateCustomVocabularyItem",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchcreate",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$batch_create_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
+  output <- .lexmodelsv2$batch_create_custom_vocabulary_item_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$batch_create_custom_vocabulary_item <- lexmodelsv2_batch_create_custom_vocabulary_item
+
+#' Delete a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Delete a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary.
+#'
+#' @usage
+#' lexmodelsv2_batch_delete_custom_vocabulary_item(botId, botVersion,
+#'   localeId, customVocabularyItemList)
+#'
+#' @param botId &#91;required&#93; The identifier of the bot associated with this custom vocabulary.
+#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' Languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' .
+#' @param customVocabularyItemList &#91;required&#93; A list of custom vocabulary items requested to be deleted. Each entry
+#' must contain the unique custom vocabulary entry identifier.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   errors = list(
+#'     list(
+#'       itemId = "string",
+#'       errorMessage = "string",
+#'       errorCode = "DUPLICATE_INPUT"|"RESOURCE_DOES_NOT_EXIST"|"RESOURCE_ALREADY_EXISTS"|"INTERNAL_SERVER_FAILURE"
+#'     )
+#'   ),
+#'   resources = list(
+#'     list(
+#'       itemId = "string",
+#'       phrase = "string",
+#'       weight = 123,
+#'       displayAs = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_custom_vocabulary_item(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   customVocabularyItemList = list(
+#'     list(
+#'       itemId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_batch_delete_custom_vocabulary_item
+#'
+#' @aliases lexmodelsv2_batch_delete_custom_vocabulary_item
+lexmodelsv2_batch_delete_custom_vocabulary_item <- function(botId, botVersion, localeId, customVocabularyItemList) {
+  op <- new_operation(
+    name = "BatchDeleteCustomVocabularyItem",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchdelete",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$batch_delete_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
+  output <- .lexmodelsv2$batch_delete_custom_vocabulary_item_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$batch_delete_custom_vocabulary_item <- lexmodelsv2_batch_delete_custom_vocabulary_item
+
+#' Update a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Update a batch of custom vocabulary items for a given bot locale's
+#' custom vocabulary.
+#'
+#' @usage
+#' lexmodelsv2_batch_update_custom_vocabulary_item(botId, botVersion,
+#'   localeId, customVocabularyItemList)
+#'
+#' @param botId &#91;required&#93; The identifier of the bot associated with this custom vocabulary
+#' @param botVersion &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' Languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' .
+#' @param customVocabularyItemList &#91;required&#93; A list of custom vocabulary items with updated fields. Each entry must
+#' contain a phrase and can optionally contain a displayAs and/or a weight.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   errors = list(
+#'     list(
+#'       itemId = "string",
+#'       errorMessage = "string",
+#'       errorCode = "DUPLICATE_INPUT"|"RESOURCE_DOES_NOT_EXIST"|"RESOURCE_ALREADY_EXISTS"|"INTERNAL_SERVER_FAILURE"
+#'     )
+#'   ),
+#'   resources = list(
+#'     list(
+#'       itemId = "string",
+#'       phrase = "string",
+#'       weight = 123,
+#'       displayAs = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_custom_vocabulary_item(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   customVocabularyItemList = list(
+#'     list(
+#'       itemId = "string",
+#'       phrase = "string",
+#'       weight = 123,
+#'       displayAs = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_batch_update_custom_vocabulary_item
+#'
+#' @aliases lexmodelsv2_batch_update_custom_vocabulary_item
+lexmodelsv2_batch_update_custom_vocabulary_item <- function(botId, botVersion, localeId, customVocabularyItemList) {
+  op <- new_operation(
+    name = "BatchUpdateCustomVocabularyItem",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/batchupdate",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$batch_update_custom_vocabulary_item_input(botId = botId, botVersion = botVersion, localeId = localeId, customVocabularyItemList = customVocabularyItemList)
+  output <- .lexmodelsv2$batch_update_custom_vocabulary_item_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$batch_update_custom_vocabulary_item <- lexmodelsv2_batch_update_custom_vocabulary_item
+
 #' Builds a bot, its intents, and its slot types into a specific locale
 #'
 #' @description
@@ -75,7 +329,7 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'
 #' @usage
 #' lexmodelsv2_create_bot(botName, description, roleArn, dataPrivacy,
-#'   idleSessionTTLInSeconds, botTags, testBotAliasTags)
+#'   idleSessionTTLInSeconds, botTags, testBotAliasTags, botType, botMembers)
 #'
 #' @param botName &#91;required&#93; The name of the bot. The bot name must be unique in the account that
 #' creates the bot.
@@ -101,6 +355,8 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #' when you create a bot. You can't use the `UpdateAlias` operation to
 #' update tags. To update tags on the test alias, use the
 #' [`tag_resource`][lexmodelsv2_tag_resource] operation.
+#' @param botType The type of a bot to create.
+#' @param botMembers The list of bot members in a network to be created.
 #'
 #' @return
 #' A list with the following syntax:
@@ -114,7 +370,7 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'     childDirected = TRUE|FALSE
 #'   ),
 #'   idleSessionTTLInSeconds = 123,
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -123,6 +379,16 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'   ),
 #'   testBotAliasTags = list(
 #'     "string"
+#'   ),
+#'   botType = "Bot"|"BotNetwork",
+#'   botMembers = list(
+#'     list(
+#'       botMemberId = "string",
+#'       botMemberName = "string",
+#'       botMemberAliasId = "string",
+#'       botMemberAliasName = "string",
+#'       botMemberVersion = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -142,6 +408,16 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #'   ),
 #'   testBotAliasTags = list(
 #'     "string"
+#'   ),
+#'   botType = "Bot"|"BotNetwork",
+#'   botMembers = list(
+#'     list(
+#'       botMemberId = "string",
+#'       botMemberName = "string",
+#'       botMemberAliasId = "string",
+#'       botMemberAliasName = "string",
+#'       botMemberVersion = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -151,14 +427,14 @@ lexmodelsv2_build_bot_locale <- function(botId, botVersion, localeId) {
 #' @rdname lexmodelsv2_create_bot
 #'
 #' @aliases lexmodelsv2_create_bot
-lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL) {
+lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botTags = NULL, testBotAliasTags = NULL, botType = NULL, botMembers = NULL) {
   op <- new_operation(
     name = "CreateBot",
     http_method = "PUT",
     http_path = "/bots/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags)
+  input <- .lexmodelsv2$create_bot_input(botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botTags = botTags, testBotAliasTags = testBotAliasTags, botType = botType, botMembers = botMembers)
   output <- .lexmodelsv2$create_bot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -473,7 +749,7 @@ lexmodelsv2_create_bot_locale <- function(botId, botVersion, localeId, descripti
 #'       sourceBotVersion = "string"
 #'     )
 #'   ),
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   )
@@ -655,7 +931,7 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'   parentIntentSignature, sampleUtterances, dialogCodeHook,
 #'   fulfillmentCodeHook, intentConfirmationSetting, intentClosingSetting,
 #'   inputContexts, outputContexts, kendraConfiguration, botId, botVersion,
-#'   localeId)
+#'   localeId, initialResponseSetting)
 #'
 #' @param intentName &#91;required&#93; The name of the intent. Intent names must be unique in the locale that
 #' contains the intent and cannot match the name of any built-in intent.
@@ -728,6 +1004,8 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' of the bots, slot types, and slots used by the intent must have the same
 #' locale. For more information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+#' @param initialResponseSetting Configuration settings for the response that is sent to the user at the
+#' beginning of a conversation, before eliciting slot values.
 #'
 #' @return
 #' A list with the following syntax:
@@ -906,6 +1184,579 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'           )
 #'         ),
 #'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       successNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       successConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       timeoutNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     fulfillmentUpdatesSpecification = list(
@@ -1019,7 +1870,8 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       timeoutInSeconds = 123
-#'     )
+#'     ),
+#'     active = TRUE|FALSE
 #'   ),
 #'   intentConfirmationSetting = list(
 #'     promptSpecification = list(
@@ -1075,7 +1927,32 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     declinationResponse = list(
 #'       messageGroups = list(
@@ -1130,7 +2007,1429 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     confirmationResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     confirmationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     confirmationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     declinationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     declinationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     failureResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     failureNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     failureConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     elicitationCodeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       invocationLabel = "string"
+#'     )
 #'   ),
 #'   intentClosingSetting = list(
 #'     closingResponse = list(
@@ -1186,7 +3485,198 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   inputContexts = list(
 #'     list(
@@ -1210,6 +3700,991 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'   localeId = "string",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   initialResponseSetting = list(
+#'     initialResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1389,6 +4864,579 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'           )
 #'         ),
 #'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       successNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       successConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       timeoutNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     fulfillmentUpdatesSpecification = list(
@@ -1502,7 +5550,8 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       timeoutInSeconds = 123
-#'     )
+#'     ),
+#'     active = TRUE|FALSE
 #'   ),
 #'   intentConfirmationSetting = list(
 #'     promptSpecification = list(
@@ -1558,7 +5607,32 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     declinationResponse = list(
 #'       messageGroups = list(
@@ -1613,7 +5687,1429 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     confirmationResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     confirmationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     confirmationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     declinationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     declinationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     failureResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     failureNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     failureConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     elicitationCodeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       invocationLabel = "string"
+#'     )
 #'   ),
 #'   intentClosingSetting = list(
 #'     closingResponse = list(
@@ -1669,7 +7165,198 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   inputContexts = list(
 #'     list(
@@ -1690,7 +7377,992 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #'   ),
 #'   botId = "string",
 #'   botVersion = "string",
-#'   localeId = "string"
+#'   localeId = "string",
+#'   initialResponseSetting = list(
+#'     initialResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1699,14 +8371,14 @@ lexmodelsv2_create_export <- function(resourceSpecification, fileFormat, filePas
 #' @rdname lexmodelsv2_create_intent
 #'
 #' @aliases lexmodelsv2_create_intent
-lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId) {
+lexmodelsv2_create_intent <- function(intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL) {
   op <- new_operation(
     name = "CreateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId)
+  input <- .lexmodelsv2$create_intent_input(intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting)
   output <- .lexmodelsv2$create_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -1885,7 +8557,7 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #' @usage
 #' lexmodelsv2_create_slot(slotName, description, slotTypeId,
 #'   valueElicitationSetting, obfuscationSetting, botId, botVersion,
-#'   localeId, intentId, multipleValuesSetting)
+#'   localeId, intentId, multipleValuesSetting, subSlotSetting)
 #'
 #' @param slotName &#91;required&#93; The name of the slot. Slot names must be unique within the bot that
 #' contains the slot.
@@ -1914,6 +8586,8 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #' `ValidationException`.
 #' 
 #' If the `multipleValuesSetting` is not set, the default value is `false`.
+#' @param subSlotSetting Specifications for the constituent sub slots and the expression for the
+#' composite slot.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1985,7 +8659,32 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     sampleUtterances = list(
 #'       list(
@@ -2155,6 +8854,1239 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       active = TRUE|FALSE
+#'     ),
+#'     slotCaptureSetting = list(
+#'       captureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       captureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       captureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       codeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         active = TRUE|FALSE,
+#'         invocationLabel = "string",
+#'         postCodeHookSpecification = list(
+#'           successResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           successNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           successConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           failureResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           failureNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           failureConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           timeoutResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           timeoutNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           timeoutConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       elicitationCodeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         invocationLabel = "string"
+#'       )
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -2169,6 +10101,272 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'   ),
 #'   multipleValuesSetting = list(
 #'     allowMultipleValues = TRUE|FALSE
+#'   ),
+#'   subSlotSetting = list(
+#'     expression = "string",
+#'     slotSpecifications = list(
+#'       list(
+#'         slotTypeId = "string",
+#'         valueElicitationSetting = list(
+#'           defaultValueSpecification = list(
+#'             defaultValueList = list(
+#'               list(
+#'                 defaultValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           promptSpecification = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             maxRetries = 123,
+#'             allowInterrupt = TRUE|FALSE,
+#'             messageSelectionStrategy = "Random"|"Ordered",
+#'             promptAttemptsSpecification = list(
+#'               list(
+#'                 allowInterrupt = TRUE|FALSE,
+#'                 allowedInputTypes = list(
+#'                   allowAudioInput = TRUE|FALSE,
+#'                   allowDTMFInput = TRUE|FALSE
+#'                 ),
+#'                 audioAndDTMFInputSpecification = list(
+#'                   startTimeoutMs = 123,
+#'                   audioSpecification = list(
+#'                     maxLengthMs = 123,
+#'                     endTimeoutMs = 123
+#'                   ),
+#'                   dtmfSpecification = list(
+#'                     maxLength = 123,
+#'                     endTimeoutMs = 123,
+#'                     deletionCharacter = "string",
+#'                     endCharacter = "string"
+#'                   )
+#'                 ),
+#'                 textInputSpecification = list(
+#'                   startTimeoutMs = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sampleUtterances = list(
+#'             list(
+#'               utterance = "string"
+#'             )
+#'           ),
+#'           waitAndContinueSpecification = list(
+#'             waitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             continueResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             stillWaitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               frequencyInSeconds = 123,
+#'               timeoutInSeconds = 123,
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             active = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2241,7 +10439,32 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     sampleUtterances = list(
 #'       list(
@@ -2411,6 +10634,1239 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       active = TRUE|FALSE
+#'     ),
+#'     slotCaptureSetting = list(
+#'       captureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       captureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       captureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       codeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         active = TRUE|FALSE,
+#'         invocationLabel = "string",
+#'         postCodeHookSpecification = list(
+#'           successResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           successNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           successConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           failureResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           failureNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           failureConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           timeoutResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           timeoutNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           timeoutConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       elicitationCodeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         invocationLabel = "string"
+#'       )
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -2422,6 +11878,272 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #'   intentId = "string",
 #'   multipleValuesSetting = list(
 #'     allowMultipleValues = TRUE|FALSE
+#'   ),
+#'   subSlotSetting = list(
+#'     expression = "string",
+#'     slotSpecifications = list(
+#'       list(
+#'         slotTypeId = "string",
+#'         valueElicitationSetting = list(
+#'           defaultValueSpecification = list(
+#'             defaultValueList = list(
+#'               list(
+#'                 defaultValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           promptSpecification = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             maxRetries = 123,
+#'             allowInterrupt = TRUE|FALSE,
+#'             messageSelectionStrategy = "Random"|"Ordered",
+#'             promptAttemptsSpecification = list(
+#'               list(
+#'                 allowInterrupt = TRUE|FALSE,
+#'                 allowedInputTypes = list(
+#'                   allowAudioInput = TRUE|FALSE,
+#'                   allowDTMFInput = TRUE|FALSE
+#'                 ),
+#'                 audioAndDTMFInputSpecification = list(
+#'                   startTimeoutMs = 123,
+#'                   audioSpecification = list(
+#'                     maxLengthMs = 123,
+#'                     endTimeoutMs = 123
+#'                   ),
+#'                   dtmfSpecification = list(
+#'                     maxLength = 123,
+#'                     endTimeoutMs = 123,
+#'                     deletionCharacter = "string",
+#'                     endCharacter = "string"
+#'                   )
+#'                 ),
+#'                 textInputSpecification = list(
+#'                   startTimeoutMs = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sampleUtterances = list(
+#'             list(
+#'               utterance = "string"
+#'             )
+#'           ),
+#'           waitAndContinueSpecification = list(
+#'             waitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             continueResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             stillWaitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               frequencyInSeconds = 123,
+#'               timeoutInSeconds = 123,
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             active = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2431,14 +12153,14 @@ lexmodelsv2_create_resource_policy_statement <- function(resourceArn, statementI
 #' @rdname lexmodelsv2_create_slot
 #'
 #' @aliases lexmodelsv2_create_slot
-lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL) {
+lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL, subSlotSetting = NULL) {
   op <- new_operation(
     name = "CreateSlot",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_slot_input(slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting)
+  input <- .lexmodelsv2$create_slot_input(slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting, subSlotSetting = subSlotSetting)
   output <- .lexmodelsv2$create_slot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -2459,7 +12181,7 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #' @usage
 #' lexmodelsv2_create_slot_type(slotTypeName, description, slotTypeValues,
 #'   valueSelectionSetting, parentSlotTypeSignature, botId, botVersion,
-#'   localeId, externalSourceSetting)
+#'   localeId, externalSourceSetting, compositeSlotTypeSetting)
 #'
 #' @param slotTypeName &#91;required&#93; The name for the slot. A slot type name must be unique within the
 #' account.
@@ -2495,6 +12217,7 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #' locale. For more information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param externalSourceSetting Sets the type of external information used to create the slot type.
+#' @param compositeSlotTypeSetting Specifications for a composite slot type.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2516,7 +12239,7 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #'     )
 #'   ),
 #'   valueSelectionSetting = list(
-#'     resolutionStrategy = "OriginalValue"|"TopResolution",
+#'     resolutionStrategy = "OriginalValue"|"TopResolution"|"Concatenation",
 #'     regexFilter = list(
 #'       pattern = "string"
 #'     ),
@@ -2537,6 +12260,14 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #'         s3BucketName = "string",
 #'         s3ObjectKey = "string",
 #'         kmsKeyArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   compositeSlotTypeSetting = list(
+#'     subSlots = list(
+#'       list(
+#'         name = "string",
+#'         slotTypeId = "string"
 #'       )
 #'     )
 #'   )
@@ -2561,7 +12292,7 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #'     )
 #'   ),
 #'   valueSelectionSetting = list(
-#'     resolutionStrategy = "OriginalValue"|"TopResolution",
+#'     resolutionStrategy = "OriginalValue"|"TopResolution"|"Concatenation",
 #'     regexFilter = list(
 #'       pattern = "string"
 #'     ),
@@ -2581,6 +12312,14 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #'         kmsKeyArn = "string"
 #'       )
 #'     )
+#'   ),
+#'   compositeSlotTypeSetting = list(
+#'     subSlots = list(
+#'       list(
+#'         name = "string",
+#'         slotTypeId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2590,14 +12329,14 @@ lexmodelsv2_create_slot <- function(slotName, description = NULL, slotTypeId = N
 #' @rdname lexmodelsv2_create_slot_type
 #'
 #' @aliases lexmodelsv2_create_slot_type
-lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL) {
+lexmodelsv2_create_slot_type <- function(slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL, compositeSlotTypeSetting = NULL) {
   op <- new_operation(
     name = "CreateSlotType",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/",
     paginator = list()
   )
-  input <- .lexmodelsv2$create_slot_type_input(slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting)
+  input <- .lexmodelsv2$create_slot_type_input(slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting, compositeSlotTypeSetting = compositeSlotTypeSetting)
   output <- .lexmodelsv2$create_slot_type_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -2673,15 +12412,18 @@ lexmodelsv2_create_upload_url <- function() {
 #' lexmodelsv2_delete_bot(botId, skipResourceInUseCheck)
 #'
 #' @param botId &#91;required&#93; The identifier of the bot to delete.
-#' @param skipResourceInUseCheck When `true`, Amazon Lex doesn't check to see if another resource, such
-#' as an alias, is using the bot before it is deleted.
+#' @param skipResourceInUseCheck By default, Amazon Lex checks if any other resource, such as an alias or
+#' bot network, is using the bot version before it is deleted and throws a
+#' `ResourceInUseException` exception if the bot is being used by another
+#' resource. Set this parameter to `true` to skip this check and remove the
+#' bot even if it is being used by another resource.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   botId = "string",
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating"
 #' )
 #' ```
 #'
@@ -2725,8 +12467,11 @@ lexmodelsv2_delete_bot <- function(botId, skipResourceInUseCheck = NULL) {
 #'
 #' @param botAliasId &#91;required&#93; The unique identifier of the bot alias to delete.
 #' @param botId &#91;required&#93; The unique identifier of the bot associated with the alias to delete.
-#' @param skipResourceInUseCheck When this parameter is true, Amazon Lex doesn't check to see if any
-#' other resource is using the alias before it is deleted.
+#' @param skipResourceInUseCheck By default, Amazon Lex checks if any other resource, such as a bot
+#' network, is using the bot alias before it is deleted and throws a
+#' `ResourceInUseException` exception if the alias is being used by another
+#' resource. Set this parameter to `true` to skip this check and remove the
+#' alias even if it is being used by another resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2832,8 +12577,8 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
 #' Deletes a specific version of a bot
 #'
 #' @description
-#' Deletes a specific version of a bot. To delete all version of a bot, use
-#' the [`delete_bot`][lexmodelsv2_delete_bot] operation.
+#' Deletes a specific version of a bot. To delete all versions of a bot,
+#' use the [`delete_bot`][lexmodelsv2_delete_bot] operation.
 #'
 #' @usage
 #' lexmodelsv2_delete_bot_version(botId, botVersion,
@@ -2841,11 +12586,11 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that contains the version.
 #' @param botVersion &#91;required&#93; The version of the bot to delete.
-#' @param skipResourceInUseCheck By default, the [`delete_bot_version`][lexmodelsv2_delete_bot_version]
-#' operations throws a `ResourceInUseException` exception if you try to
-#' delete a bot version that has an alias pointing at it. Set the
-#' `skipResourceInUseCheck` parameter to `true` to skip this check and
-#' remove the version even if an alias points to it.
+#' @param skipResourceInUseCheck By default, Amazon Lex checks if any other resource, such as an alias or
+#' bot network, is using the bot version before it is deleted and throws a
+#' `ResourceInUseException` exception if the version is being used by
+#' another resource. Set this parameter to `true` to skip this check and
+#' remove the version even if it is being used by another resource.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2853,7 +12598,7 @@ lexmodelsv2_delete_bot_locale <- function(botId, botVersion, localeId) {
 #' list(
 #'   botId = "string",
 #'   botVersion = "string",
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating"
 #' )
 #' ```
 #'
@@ -3420,12 +13165,25 @@ lexmodelsv2_delete_utterances <- function(botId, localeId = NULL, sessionId = NU
 #'     childDirected = TRUE|FALSE
 #'   ),
 #'   idleSessionTTLInSeconds = 123,
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   lastUpdatedDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   botType = "Bot"|"BotNetwork",
+#'   botMembers = list(
+#'     list(
+#'       botMemberId = "string",
+#'       botMemberName = "string",
+#'       botMemberAliasId = "string",
+#'       botMemberAliasName = "string",
+#'       botMemberVersion = "string"
+#'     )
+#'   ),
+#'   failureReasons = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -3535,6 +13293,12 @@ lexmodelsv2_describe_bot <- function(botId) {
 #'   ),
 #'   lastUpdatedDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   parentBotNetworks = list(
+#'     list(
+#'       botId = "string",
+#'       botVersion = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -3684,7 +13448,7 @@ lexmodelsv2_describe_bot_locale <- function(botId, botVersion, localeId) {
 #'   botId = "string",
 #'   botVersion = "string",
 #'   localeId = "string",
-#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed",
+#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed"|"Stopping"|"Stopped",
 #'   botRecommendationId = "string",
 #'   failureReasons = list(
 #'     "string"
@@ -3795,12 +13559,28 @@ lexmodelsv2_describe_bot_recommendation <- function(botId, botVersion, localeId,
 #'     childDirected = TRUE|FALSE
 #'   ),
 #'   idleSessionTTLInSeconds = 123,
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'   failureReasons = list(
 #'     "string"
 #'   ),
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   parentBotNetworks = list(
+#'     list(
+#'       botId = "string",
+#'       botVersion = "string"
+#'     )
+#'   ),
+#'   botType = "Bot"|"BotNetwork",
+#'   botMembers = list(
+#'     list(
+#'       botMemberId = "string",
+#'       botMemberName = "string",
+#'       botMemberAliasId = "string",
+#'       botMemberAliasName = "string",
+#'       botMemberVersion = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4256,6 +14036,579 @@ lexmodelsv2_describe_import <- function(importId) {
 #'           )
 #'         ),
 #'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       successNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       successConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       timeoutNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     fulfillmentUpdatesSpecification = list(
@@ -4369,7 +14722,8 @@ lexmodelsv2_describe_import <- function(importId) {
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       timeoutInSeconds = 123
-#'     )
+#'     ),
+#'     active = TRUE|FALSE
 #'   ),
 #'   slotPriorities = list(
 #'     list(
@@ -4431,7 +14785,32 @@ lexmodelsv2_describe_import <- function(importId) {
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     declinationResponse = list(
 #'       messageGroups = list(
@@ -4486,7 +14865,1429 @@ lexmodelsv2_describe_import <- function(importId) {
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     confirmationResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     confirmationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     confirmationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     declinationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     declinationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     failureResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     failureNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     failureConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     elicitationCodeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       invocationLabel = "string"
+#'     )
 #'   ),
 #'   intentClosingSetting = list(
 #'     closingResponse = list(
@@ -4542,7 +16343,198 @@ lexmodelsv2_describe_import <- function(importId) {
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   inputContexts = list(
 #'     list(
@@ -4569,6 +16561,991 @@ lexmodelsv2_describe_import <- function(importId) {
 #'   ),
 #'   lastUpdatedDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   initialResponseSetting = list(
+#'     initialResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -4742,7 +17719,32 @@ lexmodelsv2_describe_resource_policy <- function(resourceArn) {
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     sampleUtterances = list(
 #'       list(
@@ -4912,6 +17914,1239 @@ lexmodelsv2_describe_resource_policy <- function(resourceArn) {
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       active = TRUE|FALSE
+#'     ),
+#'     slotCaptureSetting = list(
+#'       captureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       captureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       captureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       codeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         active = TRUE|FALSE,
+#'         invocationLabel = "string",
+#'         postCodeHookSpecification = list(
+#'           successResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           successNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           successConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           failureResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           failureNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           failureConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           timeoutResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           timeoutNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           timeoutConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       elicitationCodeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         invocationLabel = "string"
+#'       )
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -4929,6 +19164,272 @@ lexmodelsv2_describe_resource_policy <- function(resourceArn) {
 #'   ),
 #'   multipleValuesSetting = list(
 #'     allowMultipleValues = TRUE|FALSE
+#'   ),
+#'   subSlotSetting = list(
+#'     expression = "string",
+#'     slotSpecifications = list(
+#'       list(
+#'         slotTypeId = "string",
+#'         valueElicitationSetting = list(
+#'           defaultValueSpecification = list(
+#'             defaultValueList = list(
+#'               list(
+#'                 defaultValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           promptSpecification = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             maxRetries = 123,
+#'             allowInterrupt = TRUE|FALSE,
+#'             messageSelectionStrategy = "Random"|"Ordered",
+#'             promptAttemptsSpecification = list(
+#'               list(
+#'                 allowInterrupt = TRUE|FALSE,
+#'                 allowedInputTypes = list(
+#'                   allowAudioInput = TRUE|FALSE,
+#'                   allowDTMFInput = TRUE|FALSE
+#'                 ),
+#'                 audioAndDTMFInputSpecification = list(
+#'                   startTimeoutMs = 123,
+#'                   audioSpecification = list(
+#'                     maxLengthMs = 123,
+#'                     endTimeoutMs = 123
+#'                   ),
+#'                   dtmfSpecification = list(
+#'                     maxLength = 123,
+#'                     endTimeoutMs = 123,
+#'                     deletionCharacter = "string",
+#'                     endCharacter = "string"
+#'                   )
+#'                 ),
+#'                 textInputSpecification = list(
+#'                   startTimeoutMs = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sampleUtterances = list(
+#'             list(
+#'               utterance = "string"
+#'             )
+#'           ),
+#'           waitAndContinueSpecification = list(
+#'             waitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             continueResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             stillWaitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               frequencyInSeconds = 123,
+#'               timeoutInSeconds = 123,
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             active = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -5002,7 +19503,7 @@ lexmodelsv2_describe_slot <- function(slotId, botId, botVersion, localeId, inten
 #'     )
 #'   ),
 #'   valueSelectionSetting = list(
-#'     resolutionStrategy = "OriginalValue"|"TopResolution",
+#'     resolutionStrategy = "OriginalValue"|"TopResolution"|"Concatenation",
 #'     regexFilter = list(
 #'       pattern = "string"
 #'     ),
@@ -5026,6 +19527,14 @@ lexmodelsv2_describe_slot <- function(slotId, botId, botVersion, localeId, inten
 #'         s3BucketName = "string",
 #'         s3ObjectKey = "string",
 #'         kmsKeyArn = "string"
+#'       )
+#'     )
+#'   ),
+#'   compositeSlotTypeSetting = list(
+#'     subSlots = list(
+#'       list(
+#'         name = "string",
+#'         slotTypeId = "string"
 #'       )
 #'     )
 #'   )
@@ -5411,7 +19920,7 @@ lexmodelsv2_list_bot_locales <- function(botId, botVersion, sortBy = NULL, filte
 #'   localeId = "string",
 #'   botRecommendationSummaries = list(
 #'     list(
-#'       botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed",
+#'       botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed"|"Stopping"|"Stopped",
 #'       botRecommendationId = "string",
 #'       creationDateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -5498,7 +20007,7 @@ lexmodelsv2_list_bot_recommendations <- function(botId, botVersion, localeId, ma
 #'       botName = "string",
 #'       botVersion = "string",
 #'       description = "string",
-#'       botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'       botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'       creationDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -5578,11 +20087,12 @@ lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NUL
 #'       botId = "string",
 #'       botName = "string",
 #'       description = "string",
-#'       botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'       botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'       latestBotVersion = "string",
 #'       lastUpdatedDateTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       botType = "Bot"|"BotNetwork"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -5598,11 +20108,11 @@ lexmodelsv2_list_bot_versions <- function(botId, sortBy = NULL, maxResults = NUL
 #'   ),
 #'   filters = list(
 #'     list(
-#'       name = "BotName",
+#'       name = "BotName"|"BotType",
 #'       values = list(
 #'         "string"
 #'       ),
-#'       operator = "CO"|"EQ"
+#'       operator = "CO"|"EQ"|"NE"
 #'     )
 #'   ),
 #'   maxResults = 123,
@@ -5789,6 +20299,79 @@ lexmodelsv2_list_built_in_slot_types <- function(localeId, sortBy = NULL, maxRes
   return(response)
 }
 .lexmodelsv2$operations$list_built_in_slot_types <- lexmodelsv2_list_built_in_slot_types
+
+#' Paginated list of custom vocabulary items for a given bot locale's
+#' custom vocabulary
+#'
+#' @description
+#' Paginated list of custom vocabulary items for a given bot locale's
+#' custom vocabulary.
+#'
+#' @usage
+#' lexmodelsv2_list_custom_vocabulary_items(botId, botVersion, localeId,
+#'   maxResults, nextToken)
+#'
+#' @param botId &#91;required&#93; The identifier of the version of the bot associated with this custom
+#' vocabulary.
+#' @param botVersion &#91;required&#93; The bot version of the bot to the list custom vocabulary request.
+#' @param localeId &#91;required&#93; The identifier of the language and locale where this custom vocabulary
+#' is used. The string must match one of the supported locales. For more
+#' information, see Supported languages
+#' (https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+#' @param maxResults The maximum number of items returned by the list operation.
+#' @param nextToken The nextToken identifier to the list custom vocabulary request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   customVocabularyItems = list(
+#'     list(
+#'       itemId = "string",
+#'       phrase = "string",
+#'       weight = 123,
+#'       displayAs = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_vocabulary_items(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_list_custom_vocabulary_items
+#'
+#' @aliases lexmodelsv2_list_custom_vocabulary_items
+lexmodelsv2_list_custom_vocabulary_items <- function(botId, botVersion, localeId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCustomVocabularyItems",
+    http_method = "POST",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/customvocabulary/DEFAULT/list",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$list_custom_vocabulary_items_input(botId = botId, botVersion = botVersion, localeId = localeId, maxResults = maxResults, nextToken = nextToken)
+  output <- .lexmodelsv2$list_custom_vocabulary_items_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$list_custom_vocabulary_items <- lexmodelsv2_list_custom_vocabulary_items
 
 #' Lists the exports for a bot, bot locale, or custom vocabulary
 #'
@@ -6135,7 +20718,8 @@ lexmodelsv2_list_intents <- function(botId, botVersion, localeId, sortBy = NULL,
 #'
 #' @description
 #' Gets a list of recommended intents provided by the bot recommendation
-#' that you can use in your bot.
+#' that you can use in your bot. Intents in the response are ordered by
+#' relevance.
 #'
 #' @usage
 #' lexmodelsv2_list_recommended_intents(botId, botVersion, localeId,
@@ -6255,7 +20839,7 @@ lexmodelsv2_list_recommended_intents <- function(botId, botVersion, localeId, bo
 #'       lastUpdatedDateTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       slotTypeCategory = "Custom"|"Extended"|"ExternalGrammar"
+#'       slotTypeCategory = "Custom"|"Extended"|"ExternalGrammar"|"Composite"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -6407,7 +20991,32 @@ lexmodelsv2_list_slot_types <- function(botId, botVersion, localeId, sortBy = NU
 #'         ),
 #'         maxRetries = 123,
 #'         allowInterrupt = TRUE|FALSE,
-#'         messageSelectionStrategy = "Random"|"Ordered"
+#'         messageSelectionStrategy = "Random"|"Ordered",
+#'         promptAttemptsSpecification = list(
+#'           list(
+#'             allowInterrupt = TRUE|FALSE,
+#'             allowedInputTypes = list(
+#'               allowAudioInput = TRUE|FALSE,
+#'               allowDTMFInput = TRUE|FALSE
+#'             ),
+#'             audioAndDTMFInputSpecification = list(
+#'               startTimeoutMs = 123,
+#'               audioSpecification = list(
+#'                 maxLengthMs = 123,
+#'                 endTimeoutMs = 123
+#'               ),
+#'               dtmfSpecification = list(
+#'                 maxLength = 123,
+#'                 endTimeoutMs = 123,
+#'                 deletionCharacter = "string",
+#'                 endCharacter = "string"
+#'               )
+#'             ),
+#'             textInputSpecification = list(
+#'               startTimeoutMs = 123
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       lastUpdatedDateTime = as.POSIXct(
 #'         "2015-01-01"
@@ -6637,7 +21246,7 @@ lexmodelsv2_search_associated_transcripts <- function(botId, botVersion, localeI
 #'   botId = "string",
 #'   botVersion = "string",
 #'   localeId = "string",
-#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed",
+#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed"|"Stopping"|"Stopped",
 #'   botRecommendationId = "string",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
@@ -6862,6 +21471,68 @@ lexmodelsv2_start_import <- function(importId, resourceSpecification, mergeStrat
 }
 .lexmodelsv2$operations$start_import <- lexmodelsv2_start_import
 
+#' Stop an already running Bot Recommendation request
+#'
+#' @description
+#' Stop an already running Bot Recommendation request.
+#'
+#' @usage
+#' lexmodelsv2_stop_bot_recommendation(botId, botVersion, localeId,
+#'   botRecommendationId)
+#'
+#' @param botId &#91;required&#93; The unique identifier of the bot containing the bot recommendation to be
+#' stopped.
+#' @param botVersion &#91;required&#93; The version of the bot containing the bot recommendation.
+#' @param localeId &#91;required&#93; The identifier of the language and locale of the bot recommendation to
+#' stop. The string must match one of the supported locales. For more
+#' information, see [Supported
+#' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html)
+#' @param botRecommendationId &#91;required&#93; The unique identifier of the bot recommendation to be stopped.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed"|"Stopping"|"Stopped",
+#'   botRecommendationId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_bot_recommendation(
+#'   botId = "string",
+#'   botVersion = "string",
+#'   localeId = "string",
+#'   botRecommendationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lexmodelsv2_stop_bot_recommendation
+#'
+#' @aliases lexmodelsv2_stop_bot_recommendation
+lexmodelsv2_stop_bot_recommendation <- function(botId, botVersion, localeId, botRecommendationId) {
+  op <- new_operation(
+    name = "StopBotRecommendation",
+    http_method = "PUT",
+    http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/botrecommendations/{botRecommendationId}/stopbotrecommendation",
+    paginator = list()
+  )
+  input <- .lexmodelsv2$stop_bot_recommendation_input(botId = botId, botVersion = botVersion, localeId = localeId, botRecommendationId = botRecommendationId)
+  output <- .lexmodelsv2$stop_bot_recommendation_output()
+  config <- get_config()
+  svc <- .lexmodelsv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lexmodelsv2$operations$stop_bot_recommendation <- lexmodelsv2_stop_bot_recommendation
+
 #' Adds the specified tags to the specified resource
 #'
 #' @description
@@ -6965,7 +21636,7 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #'
 #' @usage
 #' lexmodelsv2_update_bot(botId, botName, description, roleArn,
-#'   dataPrivacy, idleSessionTTLInSeconds)
+#'   dataPrivacy, idleSessionTTLInSeconds, botType, botMembers)
 #'
 #' @param botId &#91;required&#93; The unique identifier of the bot to update. This identifier is returned
 #' by the [`create_bot`][lexmodelsv2_create_bot] operation.
@@ -6984,6 +21655,9 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #' Lex deletes any data provided before the timeout.
 #' 
 #' You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.
+#' @param botType The type of the bot to be updated.
+#' @param botMembers The list of bot members in the network associated with the update
+#' action.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6997,12 +21671,22 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #'     childDirected = TRUE|FALSE
 #'   ),
 #'   idleSessionTTLInSeconds = 123,
-#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing",
+#'   botStatus = "Creating"|"Available"|"Inactive"|"Deleting"|"Failed"|"Versioning"|"Importing"|"Updating",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   lastUpdatedDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   botType = "Bot"|"BotNetwork",
+#'   botMembers = list(
+#'     list(
+#'       botMemberId = "string",
+#'       botMemberName = "string",
+#'       botMemberAliasId = "string",
+#'       botMemberAliasName = "string",
+#'       botMemberVersion = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -7017,7 +21701,17 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #'   dataPrivacy = list(
 #'     childDirected = TRUE|FALSE
 #'   ),
-#'   idleSessionTTLInSeconds = 123
+#'   idleSessionTTLInSeconds = 123,
+#'   botType = "Bot"|"BotNetwork",
+#'   botMembers = list(
+#'     list(
+#'       botMemberId = "string",
+#'       botMemberName = "string",
+#'       botMemberAliasId = "string",
+#'       botMemberAliasName = "string",
+#'       botMemberVersion = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -7026,14 +21720,14 @@ lexmodelsv2_untag_resource <- function(resourceARN, tagKeys) {
 #' @rdname lexmodelsv2_update_bot
 #'
 #' @aliases lexmodelsv2_update_bot
-lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds) {
+lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, dataPrivacy, idleSessionTTLInSeconds, botType = NULL, botMembers = NULL) {
   op <- new_operation(
     name = "UpdateBot",
     http_method = "PUT",
     http_path = "/bots/{botId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds)
+  input <- .lexmodelsv2$update_bot_input(botId = botId, botName = botName, description = description, roleArn = roleArn, dataPrivacy = dataPrivacy, idleSessionTTLInSeconds = idleSessionTTLInSeconds, botType = botType, botMembers = botMembers)
   output <- .lexmodelsv2$update_bot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -7310,7 +22004,7 @@ lexmodelsv2_update_bot_locale <- function(botId, botVersion, localeId, descripti
 #'   botId = "string",
 #'   botVersion = "string",
 #'   localeId = "string",
-#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed",
+#'   botRecommendationStatus = "Processing"|"Deleting"|"Deleted"|"Downloading"|"Updating"|"Available"|"Failed"|"Stopping"|"Stopped",
 #'   botRecommendationId = "string",
 #'   creationDateTime = as.POSIXct(
 #'     "2015-01-01"
@@ -7475,7 +22169,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'   parentIntentSignature, sampleUtterances, dialogCodeHook,
 #'   fulfillmentCodeHook, slotPriorities, intentConfirmationSetting,
 #'   intentClosingSetting, inputContexts, outputContexts,
-#'   kendraConfiguration, botId, botVersion, localeId)
+#'   kendraConfiguration, botId, botVersion, localeId,
+#'   initialResponseSetting)
 #'
 #' @param intentId &#91;required&#93; The unique identifier of the intent to update.
 #' @param intentName &#91;required&#93; The new name for the intent.
@@ -7504,6 +22199,7 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' string must match one of the supported locales. For more information,
 #' see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+#' @param initialResponseSetting 
 #'
 #' @return
 #' A list with the following syntax:
@@ -7682,6 +22378,579 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'           )
 #'         ),
 #'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       successNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       successConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       timeoutNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     fulfillmentUpdatesSpecification = list(
@@ -7795,7 +23064,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       timeoutInSeconds = 123
-#'     )
+#'     ),
+#'     active = TRUE|FALSE
 #'   ),
 #'   slotPriorities = list(
 #'     list(
@@ -7857,7 +23127,32 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     declinationResponse = list(
 #'       messageGroups = list(
@@ -7912,7 +23207,1429 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     confirmationResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     confirmationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     confirmationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     declinationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     declinationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     failureResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     failureNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     failureConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     elicitationCodeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       invocationLabel = "string"
+#'     )
 #'   ),
 #'   intentClosingSetting = list(
 #'     closingResponse = list(
@@ -7968,7 +24685,198 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   inputContexts = list(
 #'     list(
@@ -7995,6 +24903,991 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'   ),
 #'   lastUpdatedDateTime = as.POSIXct(
 #'     "2015-01-01"
+#'   ),
+#'   initialResponseSetting = list(
+#'     initialResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -8175,6 +26068,579 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'           )
 #'         ),
 #'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       successNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       successConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       timeoutNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       timeoutConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
 #'       )
 #'     ),
 #'     fulfillmentUpdatesSpecification = list(
@@ -8288,7 +26754,8 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       timeoutInSeconds = 123
-#'     )
+#'     ),
+#'     active = TRUE|FALSE
 #'   ),
 #'   slotPriorities = list(
 #'     list(
@@ -8350,7 +26817,32 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     declinationResponse = list(
 #'       messageGroups = list(
@@ -8405,7 +26897,1429 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     confirmationResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     confirmationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     confirmationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     declinationNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     declinationConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     failureResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     failureNextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     failureConditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     elicitationCodeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       invocationLabel = "string"
+#'     )
 #'   ),
 #'   intentClosingSetting = list(
 #'     closingResponse = list(
@@ -8461,7 +28375,198 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'       ),
 #'       allowInterrupt = TRUE|FALSE
 #'     ),
-#'     active = TRUE|FALSE
+#'     active = TRUE|FALSE,
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   inputContexts = list(
 #'     list(
@@ -8482,7 +28587,992 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #'   ),
 #'   botId = "string",
 #'   botVersion = "string",
-#'   localeId = "string"
+#'   localeId = "string",
+#'   initialResponseSetting = list(
+#'     initialResponse = list(
+#'       messageGroups = list(
+#'         list(
+#'           message = list(
+#'             plainTextMessage = list(
+#'               value = "string"
+#'             ),
+#'             customPayload = list(
+#'               value = "string"
+#'             ),
+#'             ssmlMessage = list(
+#'               value = "string"
+#'             ),
+#'             imageResponseCard = list(
+#'               title = "string",
+#'               subtitle = "string",
+#'               imageUrl = "string",
+#'               buttons = list(
+#'                 list(
+#'                   text = "string",
+#'                   value = "string"
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           variations = list(
+#'             list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       allowInterrupt = TRUE|FALSE
+#'     ),
+#'     nextStep = list(
+#'       dialogAction = list(
+#'         type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'         slotToElicit = "string",
+#'         suppressNextMessage = TRUE|FALSE
+#'       ),
+#'       intent = list(
+#'         name = "string",
+#'         slots = list(
+#'           list(
+#'             shape = "Scalar"|"List",
+#'             value = list(
+#'               interpretedValue = "string"
+#'             ),
+#'             values = list(
+#'               list()
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       sessionAttributes = list(
+#'         "string"
+#'       )
+#'     ),
+#'     conditional = list(
+#'       active = TRUE|FALSE,
+#'       conditionalBranches = list(
+#'         list(
+#'           name = "string",
+#'           condition = list(
+#'             expressionString = "string"
+#'           ),
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       defaultBranch = list(
+#'         nextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         response = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         )
+#'       )
+#'     ),
+#'     codeHook = list(
+#'       enableCodeHookInvocation = TRUE|FALSE,
+#'       active = TRUE|FALSE,
+#'       invocationLabel = "string",
+#'       postCodeHookSpecification = list(
+#'         successResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         successNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         successConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         failureResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         failureNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         failureConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         timeoutResponse = list(
+#'           messageGroups = list(
+#'             list(
+#'               message = list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               variations = list(
+#'                 list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           allowInterrupt = TRUE|FALSE
+#'         ),
+#'         timeoutNextStep = list(
+#'           dialogAction = list(
+#'             type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'             slotToElicit = "string",
+#'             suppressNextMessage = TRUE|FALSE
+#'           ),
+#'           intent = list(
+#'             name = "string",
+#'             slots = list(
+#'               list(
+#'                 shape = "Scalar"|"List",
+#'                 value = list(
+#'                   interpretedValue = "string"
+#'                 ),
+#'                 values = list(
+#'                   list()
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sessionAttributes = list(
+#'             "string"
+#'           )
+#'         ),
+#'         timeoutConditional = list(
+#'           active = TRUE|FALSE,
+#'           conditionalBranches = list(
+#'             list(
+#'               name = "string",
+#'               condition = list(
+#'                 expressionString = "string"
+#'               ),
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           defaultBranch = list(
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -8491,14 +29581,14 @@ lexmodelsv2_update_export <- function(exportId, filePassword = NULL) {
 #' @rdname lexmodelsv2_update_intent
 #'
 #' @aliases lexmodelsv2_update_intent
-lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId) {
+lexmodelsv2_update_intent <- function(intentId, intentName, description = NULL, parentIntentSignature = NULL, sampleUtterances = NULL, dialogCodeHook = NULL, fulfillmentCodeHook = NULL, slotPriorities = NULL, intentConfirmationSetting = NULL, intentClosingSetting = NULL, inputContexts = NULL, outputContexts = NULL, kendraConfiguration = NULL, botId, botVersion, localeId, initialResponseSetting = NULL) {
   op <- new_operation(
     name = "UpdateIntent",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId)
+  input <- .lexmodelsv2$update_intent_input(intentId = intentId, intentName = intentName, description = description, parentIntentSignature = parentIntentSignature, sampleUtterances = sampleUtterances, dialogCodeHook = dialogCodeHook, fulfillmentCodeHook = fulfillmentCodeHook, slotPriorities = slotPriorities, intentConfirmationSetting = intentConfirmationSetting, intentClosingSetting = intentClosingSetting, inputContexts = inputContexts, outputContexts = outputContexts, kendraConfiguration = kendraConfiguration, botId = botId, botVersion = botVersion, localeId = localeId, initialResponseSetting = initialResponseSetting)
   output <- .lexmodelsv2$update_intent_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -8584,7 +29674,7 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #' @usage
 #' lexmodelsv2_update_slot(slotId, slotName, description, slotTypeId,
 #'   valueElicitationSetting, obfuscationSetting, botId, botVersion,
-#'   localeId, intentId, multipleValuesSetting)
+#'   localeId, intentId, multipleValuesSetting, subSlotSetting)
 #'
 #' @param slotId &#91;required&#93; The unique identifier for the slot to update.
 #' @param slotName &#91;required&#93; The new name for the slot.
@@ -8607,6 +29697,8 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #' `ValidationException`.
 #' 
 #' If the `multipleValuesSetting` is not set, the default value is `false`.
+#' @param subSlotSetting Specifications for the constituent sub slots and the expression for the
+#' composite slot.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8678,7 +29770,32 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     sampleUtterances = list(
 #'       list(
@@ -8848,6 +29965,1239 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       active = TRUE|FALSE
+#'     ),
+#'     slotCaptureSetting = list(
+#'       captureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       captureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       captureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       codeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         active = TRUE|FALSE,
+#'         invocationLabel = "string",
+#'         postCodeHookSpecification = list(
+#'           successResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           successNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           successConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           failureResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           failureNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           failureConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           timeoutResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           timeoutNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           timeoutConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       elicitationCodeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         invocationLabel = "string"
+#'       )
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -8865,6 +31215,272 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'   ),
 #'   multipleValuesSetting = list(
 #'     allowMultipleValues = TRUE|FALSE
+#'   ),
+#'   subSlotSetting = list(
+#'     expression = "string",
+#'     slotSpecifications = list(
+#'       list(
+#'         slotTypeId = "string",
+#'         valueElicitationSetting = list(
+#'           defaultValueSpecification = list(
+#'             defaultValueList = list(
+#'               list(
+#'                 defaultValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           promptSpecification = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             maxRetries = 123,
+#'             allowInterrupt = TRUE|FALSE,
+#'             messageSelectionStrategy = "Random"|"Ordered",
+#'             promptAttemptsSpecification = list(
+#'               list(
+#'                 allowInterrupt = TRUE|FALSE,
+#'                 allowedInputTypes = list(
+#'                   allowAudioInput = TRUE|FALSE,
+#'                   allowDTMFInput = TRUE|FALSE
+#'                 ),
+#'                 audioAndDTMFInputSpecification = list(
+#'                   startTimeoutMs = 123,
+#'                   audioSpecification = list(
+#'                     maxLengthMs = 123,
+#'                     endTimeoutMs = 123
+#'                   ),
+#'                   dtmfSpecification = list(
+#'                     maxLength = 123,
+#'                     endTimeoutMs = 123,
+#'                     deletionCharacter = "string",
+#'                     endCharacter = "string"
+#'                   )
+#'                 ),
+#'                 textInputSpecification = list(
+#'                   startTimeoutMs = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sampleUtterances = list(
+#'             list(
+#'               utterance = "string"
+#'             )
+#'           ),
+#'           waitAndContinueSpecification = list(
+#'             waitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             continueResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             stillWaitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               frequencyInSeconds = 123,
+#'               timeoutInSeconds = 123,
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             active = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -8938,7 +31554,32 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'       ),
 #'       maxRetries = 123,
 #'       allowInterrupt = TRUE|FALSE,
-#'       messageSelectionStrategy = "Random"|"Ordered"
+#'       messageSelectionStrategy = "Random"|"Ordered",
+#'       promptAttemptsSpecification = list(
+#'         list(
+#'           allowInterrupt = TRUE|FALSE,
+#'           allowedInputTypes = list(
+#'             allowAudioInput = TRUE|FALSE,
+#'             allowDTMFInput = TRUE|FALSE
+#'           ),
+#'           audioAndDTMFInputSpecification = list(
+#'             startTimeoutMs = 123,
+#'             audioSpecification = list(
+#'               maxLengthMs = 123,
+#'               endTimeoutMs = 123
+#'             ),
+#'             dtmfSpecification = list(
+#'               maxLength = 123,
+#'               endTimeoutMs = 123,
+#'               deletionCharacter = "string",
+#'               endCharacter = "string"
+#'             )
+#'           ),
+#'           textInputSpecification = list(
+#'             startTimeoutMs = 123
+#'           )
+#'         )
+#'       )
 #'     ),
 #'     sampleUtterances = list(
 #'       list(
@@ -9108,6 +31749,1239 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'         allowInterrupt = TRUE|FALSE
 #'       ),
 #'       active = TRUE|FALSE
+#'     ),
+#'     slotCaptureSetting = list(
+#'       captureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       captureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       captureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       failureResponse = list(
+#'         messageGroups = list(
+#'           list(
+#'             message = list(
+#'               plainTextMessage = list(
+#'                 value = "string"
+#'               ),
+#'               customPayload = list(
+#'                 value = "string"
+#'               ),
+#'               ssmlMessage = list(
+#'                 value = "string"
+#'               ),
+#'               imageResponseCard = list(
+#'                 title = "string",
+#'                 subtitle = "string",
+#'                 imageUrl = "string",
+#'                 buttons = list(
+#'                   list(
+#'                     text = "string",
+#'                     value = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             variations = list(
+#'               list(
+#'                 plainTextMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 customPayload = list(
+#'                   value = "string"
+#'                 ),
+#'                 ssmlMessage = list(
+#'                   value = "string"
+#'                 ),
+#'                 imageResponseCard = list(
+#'                   title = "string",
+#'                   subtitle = "string",
+#'                   imageUrl = "string",
+#'                   buttons = list(
+#'                     list(
+#'                       text = "string",
+#'                       value = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         allowInterrupt = TRUE|FALSE
+#'       ),
+#'       failureNextStep = list(
+#'         dialogAction = list(
+#'           type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'           slotToElicit = "string",
+#'           suppressNextMessage = TRUE|FALSE
+#'         ),
+#'         intent = list(
+#'           name = "string",
+#'           slots = list(
+#'             list(
+#'               shape = "Scalar"|"List",
+#'               value = list(
+#'                 interpretedValue = "string"
+#'               ),
+#'               values = list(
+#'                 list()
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         sessionAttributes = list(
+#'           "string"
+#'         )
+#'       ),
+#'       failureConditional = list(
+#'         active = TRUE|FALSE,
+#'         conditionalBranches = list(
+#'           list(
+#'             name = "string",
+#'             condition = list(
+#'               expressionString = "string"
+#'             ),
+#'             nextStep = list(
+#'               dialogAction = list(
+#'                 type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                 slotToElicit = "string",
+#'                 suppressNextMessage = TRUE|FALSE
+#'               ),
+#'               intent = list(
+#'                 name = "string",
+#'                 slots = list(
+#'                   list(
+#'                     shape = "Scalar"|"List",
+#'                     value = list(
+#'                       interpretedValue = "string"
+#'                     ),
+#'                     values = list(
+#'                       list()
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               sessionAttributes = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             response = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             )
+#'           )
+#'         ),
+#'         defaultBranch = list(
+#'           nextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           response = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           )
+#'         )
+#'       ),
+#'       codeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         active = TRUE|FALSE,
+#'         invocationLabel = "string",
+#'         postCodeHookSpecification = list(
+#'           successResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           successNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           successConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           failureResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           failureNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           failureConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           ),
+#'           timeoutResponse = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             allowInterrupt = TRUE|FALSE
+#'           ),
+#'           timeoutNextStep = list(
+#'             dialogAction = list(
+#'               type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'               slotToElicit = "string",
+#'               suppressNextMessage = TRUE|FALSE
+#'             ),
+#'             intent = list(
+#'               name = "string",
+#'               slots = list(
+#'                 list(
+#'                   shape = "Scalar"|"List",
+#'                   value = list(
+#'                     interpretedValue = "string"
+#'                   ),
+#'                   values = list(
+#'                     list()
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             sessionAttributes = list(
+#'               "string"
+#'             )
+#'           ),
+#'           timeoutConditional = list(
+#'             active = TRUE|FALSE,
+#'             conditionalBranches = list(
+#'               list(
+#'                 name = "string",
+#'                 condition = list(
+#'                   expressionString = "string"
+#'                 ),
+#'                 nextStep = list(
+#'                   dialogAction = list(
+#'                     type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                     slotToElicit = "string",
+#'                     suppressNextMessage = TRUE|FALSE
+#'                   ),
+#'                   intent = list(
+#'                     name = "string",
+#'                     slots = list(
+#'                       list(
+#'                         shape = "Scalar"|"List",
+#'                         value = list(
+#'                           interpretedValue = "string"
+#'                         ),
+#'                         values = list(
+#'                           list()
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   sessionAttributes = list(
+#'                     "string"
+#'                   )
+#'                 ),
+#'                 response = list(
+#'                   messageGroups = list(
+#'                     list(
+#'                       message = list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       ),
+#'                       variations = list(
+#'                         list(
+#'                           plainTextMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           customPayload = list(
+#'                             value = "string"
+#'                           ),
+#'                           ssmlMessage = list(
+#'                             value = "string"
+#'                           ),
+#'                           imageResponseCard = list(
+#'                             title = "string",
+#'                             subtitle = "string",
+#'                             imageUrl = "string",
+#'                             buttons = list(
+#'                               list(
+#'                                 text = "string",
+#'                                 value = "string"
+#'                               )
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   allowInterrupt = TRUE|FALSE
+#'                 )
+#'               )
+#'             ),
+#'             defaultBranch = list(
+#'               nextStep = list(
+#'                 dialogAction = list(
+#'                   type = "ElicitIntent"|"StartIntent"|"ElicitSlot"|"EvaluateConditional"|"InvokeDialogCodeHook"|"ConfirmIntent"|"FulfillIntent"|"CloseIntent"|"EndConversation",
+#'                   slotToElicit = "string",
+#'                   suppressNextMessage = TRUE|FALSE
+#'                 ),
+#'                 intent = list(
+#'                   name = "string",
+#'                   slots = list(
+#'                     list(
+#'                       shape = "Scalar"|"List",
+#'                       value = list(
+#'                         interpretedValue = "string"
+#'                       ),
+#'                       values = list(
+#'                         list()
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 sessionAttributes = list(
+#'                   "string"
+#'                 )
+#'               ),
+#'               response = list(
+#'                 messageGroups = list(
+#'                   list(
+#'                     message = list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     variations = list(
+#'                       list(
+#'                         plainTextMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         customPayload = list(
+#'                           value = "string"
+#'                         ),
+#'                         ssmlMessage = list(
+#'                           value = "string"
+#'                         ),
+#'                         imageResponseCard = list(
+#'                           title = "string",
+#'                           subtitle = "string",
+#'                           imageUrl = "string",
+#'                           buttons = list(
+#'                             list(
+#'                               text = "string",
+#'                               value = "string"
+#'                             )
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 allowInterrupt = TRUE|FALSE
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       elicitationCodeHook = list(
+#'         enableCodeHookInvocation = TRUE|FALSE,
+#'         invocationLabel = "string"
+#'       )
 #'     )
 #'   ),
 #'   obfuscationSetting = list(
@@ -9119,6 +32993,272 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #'   intentId = "string",
 #'   multipleValuesSetting = list(
 #'     allowMultipleValues = TRUE|FALSE
+#'   ),
+#'   subSlotSetting = list(
+#'     expression = "string",
+#'     slotSpecifications = list(
+#'       list(
+#'         slotTypeId = "string",
+#'         valueElicitationSetting = list(
+#'           defaultValueSpecification = list(
+#'             defaultValueList = list(
+#'               list(
+#'                 defaultValue = "string"
+#'               )
+#'             )
+#'           ),
+#'           promptSpecification = list(
+#'             messageGroups = list(
+#'               list(
+#'                 message = list(
+#'                   plainTextMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   customPayload = list(
+#'                     value = "string"
+#'                   ),
+#'                   ssmlMessage = list(
+#'                     value = "string"
+#'                   ),
+#'                   imageResponseCard = list(
+#'                     title = "string",
+#'                     subtitle = "string",
+#'                     imageUrl = "string",
+#'                     buttons = list(
+#'                       list(
+#'                         text = "string",
+#'                         value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 variations = list(
+#'                   list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             maxRetries = 123,
+#'             allowInterrupt = TRUE|FALSE,
+#'             messageSelectionStrategy = "Random"|"Ordered",
+#'             promptAttemptsSpecification = list(
+#'               list(
+#'                 allowInterrupt = TRUE|FALSE,
+#'                 allowedInputTypes = list(
+#'                   allowAudioInput = TRUE|FALSE,
+#'                   allowDTMFInput = TRUE|FALSE
+#'                 ),
+#'                 audioAndDTMFInputSpecification = list(
+#'                   startTimeoutMs = 123,
+#'                   audioSpecification = list(
+#'                     maxLengthMs = 123,
+#'                     endTimeoutMs = 123
+#'                   ),
+#'                   dtmfSpecification = list(
+#'                     maxLength = 123,
+#'                     endTimeoutMs = 123,
+#'                     deletionCharacter = "string",
+#'                     endCharacter = "string"
+#'                   )
+#'                 ),
+#'                 textInputSpecification = list(
+#'                   startTimeoutMs = 123
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           sampleUtterances = list(
+#'             list(
+#'               utterance = "string"
+#'             )
+#'           ),
+#'           waitAndContinueSpecification = list(
+#'             waitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             continueResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             stillWaitingResponse = list(
+#'               messageGroups = list(
+#'                 list(
+#'                   message = list(
+#'                     plainTextMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     customPayload = list(
+#'                       value = "string"
+#'                     ),
+#'                     ssmlMessage = list(
+#'                       value = "string"
+#'                     ),
+#'                     imageResponseCard = list(
+#'                       title = "string",
+#'                       subtitle = "string",
+#'                       imageUrl = "string",
+#'                       buttons = list(
+#'                         list(
+#'                           text = "string",
+#'                           value = "string"
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   variations = list(
+#'                     list(
+#'                       plainTextMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       customPayload = list(
+#'                         value = "string"
+#'                       ),
+#'                       ssmlMessage = list(
+#'                         value = "string"
+#'                       ),
+#'                       imageResponseCard = list(
+#'                         title = "string",
+#'                         subtitle = "string",
+#'                         imageUrl = "string",
+#'                         buttons = list(
+#'                           list(
+#'                             text = "string",
+#'                             value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               frequencyInSeconds = 123,
+#'               timeoutInSeconds = 123,
+#'               allowInterrupt = TRUE|FALSE
+#'             ),
+#'             active = TRUE|FALSE
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -9128,14 +33268,14 @@ lexmodelsv2_update_resource_policy <- function(resourceArn, policy, expectedRevi
 #' @rdname lexmodelsv2_update_slot
 #'
 #' @aliases lexmodelsv2_update_slot
-lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL) {
+lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTypeId = NULL, valueElicitationSetting, obfuscationSetting = NULL, botId, botVersion, localeId, intentId, multipleValuesSetting = NULL, subSlotSetting = NULL) {
   op <- new_operation(
     name = "UpdateSlot",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/intents/{intentId}/slots/{slotId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_slot_input(slotId = slotId, slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting)
+  input <- .lexmodelsv2$update_slot_input(slotId = slotId, slotName = slotName, description = description, slotTypeId = slotTypeId, valueElicitationSetting = valueElicitationSetting, obfuscationSetting = obfuscationSetting, botId = botId, botVersion = botVersion, localeId = localeId, intentId = intentId, multipleValuesSetting = multipleValuesSetting, subSlotSetting = subSlotSetting)
   output <- .lexmodelsv2$update_slot_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)
@@ -9153,7 +33293,7 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #' @usage
 #' lexmodelsv2_update_slot_type(slotTypeId, slotTypeName, description,
 #'   slotTypeValues, valueSelectionSetting, parentSlotTypeSignature, botId,
-#'   botVersion, localeId, externalSourceSetting)
+#'   botVersion, localeId, externalSourceSetting, compositeSlotTypeSetting)
 #'
 #' @param slotTypeId &#91;required&#93; The unique identifier of the slot type to update.
 #' @param slotTypeName &#91;required&#93; The new name of the slot type.
@@ -9171,6 +33311,7 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #' information, see [Supported
 #' languages](https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
 #' @param externalSourceSetting 
+#' @param compositeSlotTypeSetting Specifications for a composite slot type.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9192,7 +33333,7 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #'     )
 #'   ),
 #'   valueSelectionSetting = list(
-#'     resolutionStrategy = "OriginalValue"|"TopResolution",
+#'     resolutionStrategy = "OriginalValue"|"TopResolution"|"Concatenation",
 #'     regexFilter = list(
 #'       pattern = "string"
 #'     ),
@@ -9218,6 +33359,14 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #'         kmsKeyArn = "string"
 #'       )
 #'     )
+#'   ),
+#'   compositeSlotTypeSetting = list(
+#'     subSlots = list(
+#'       list(
+#'         name = "string",
+#'         slotTypeId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -9241,7 +33390,7 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #'     )
 #'   ),
 #'   valueSelectionSetting = list(
-#'     resolutionStrategy = "OriginalValue"|"TopResolution",
+#'     resolutionStrategy = "OriginalValue"|"TopResolution"|"Concatenation",
 #'     regexFilter = list(
 #'       pattern = "string"
 #'     ),
@@ -9261,6 +33410,14 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #'         kmsKeyArn = "string"
 #'       )
 #'     )
+#'   ),
+#'   compositeSlotTypeSetting = list(
+#'     subSlots = list(
+#'       list(
+#'         name = "string",
+#'         slotTypeId = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -9270,14 +33427,14 @@ lexmodelsv2_update_slot <- function(slotId, slotName, description = NULL, slotTy
 #' @rdname lexmodelsv2_update_slot_type
 #'
 #' @aliases lexmodelsv2_update_slot_type
-lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL) {
+lexmodelsv2_update_slot_type <- function(slotTypeId, slotTypeName, description = NULL, slotTypeValues = NULL, valueSelectionSetting = NULL, parentSlotTypeSignature = NULL, botId, botVersion, localeId, externalSourceSetting = NULL, compositeSlotTypeSetting = NULL) {
   op <- new_operation(
     name = "UpdateSlotType",
     http_method = "PUT",
     http_path = "/bots/{botId}/botversions/{botVersion}/botlocales/{localeId}/slottypes/{slotTypeId}/",
     paginator = list()
   )
-  input <- .lexmodelsv2$update_slot_type_input(slotTypeId = slotTypeId, slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting)
+  input <- .lexmodelsv2$update_slot_type_input(slotTypeId = slotTypeId, slotTypeName = slotTypeName, description = description, slotTypeValues = slotTypeValues, valueSelectionSetting = valueSelectionSetting, parentSlotTypeSignature = parentSlotTypeSignature, botId = botId, botVersion = botVersion, localeId = localeId, externalSourceSetting = externalSourceSetting, compositeSlotTypeSetting = compositeSlotTypeSetting)
   output <- .lexmodelsv2$update_slot_type_output()
   config <- get_config()
   svc <- .lexmodelsv2$service(config)

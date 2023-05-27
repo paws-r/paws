@@ -8,7 +8,7 @@ resourceArn}
 ecrpublic_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to which to add tags.
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource to add tags to.
 Currently, the supported resource is an Amazon ECR Public repository.}
 
 \item{tags}{[required] The tags to add to the resource. A tag is an array of key-value pairs.
@@ -16,7 +16,7 @@ Tag keys can have a maximum character length of 128 characters, and tag
 values can have a maximum length of 256 characters.}
 }
 \description{
-Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
+Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/tag_resource.html} for full documentation.
 }

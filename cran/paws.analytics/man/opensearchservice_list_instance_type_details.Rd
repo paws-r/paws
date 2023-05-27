@@ -2,26 +2,42 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_list_instance_type_details}
 \alias{opensearchservice_list_instance_type_details}
-\title{List instance type details}
+\title{Lists all instance types and available features for a given OpenSearch
+or Elasticsearch version}
 \usage{
 opensearchservice_list_instance_type_details(
   EngineVersion,
   DomainName = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  RetrieveAZs = NULL,
+  InstanceType = NULL
 )
 }
 \arguments{
-\item{EngineVersion}{[required]}
+\item{EngineVersion}{[required] The version of OpenSearch or Elasticsearch, in the format
+Elasticsearch_X.Y or OpenSearch_X.Y. Defaults to the latest version of
+OpenSearch.}
 
-\item{DomainName}{}
+\item{DomainName}{The name of the domain.}
 
-\item{MaxResults}{}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{}
+\item{NextToken}{If your initial
+\code{\link[=opensearchservice_list_instance_type_details]{list_instance_type_details}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_list_instance_type_details]{list_instance_type_details}}
+operations, which returns results in the next page.}
+
+\item{RetrieveAZs}{An optional parameter that specifies the Availability Zones for the
+domain.}
+
+\item{InstanceType}{An optional parameter that lists information for a given instance type.}
 }
 \description{
-List instance type details
+Lists all instance types and available features for a given OpenSearch or Elasticsearch version.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/list_instance_type_details.html} for full documentation.
 }

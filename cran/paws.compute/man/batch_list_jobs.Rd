@@ -46,9 +46,8 @@ the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the \code{nextToken}
 value. This value is \code{null} when there are no more results to return.
 
-This token should be treated as an opaque identifier that's only used to
-retrieve the next items in a list and not for other programmatic
-purposes.}
+Treat this token as an opaque identifier that's only used to retrieve
+the next items in a list and not for other programmatic purposes.}
 
 \item{filters}{The filter to apply to the query. Only one filter can be used at a time.
 When the filter is used, \code{jobStatus} is ignored. The filter doesn't
@@ -59,7 +58,7 @@ being first.
 \strong{JOB_NAME}
 
 The value of the filter is a case-insensitive match for the job name. If
-the value ends with an asterisk (\emph{), the filter will match any job name
+the value ends with an asterisk (\emph{), the filter matches any job name
 that begins with the string before the '}'. This corresponds to the
 \code{jobName} value. For example, \code{test1} matches both \code{Test1} and \code{test1},
 and \verb{test1*} matches both \code{test1} and \code{Test10}. When the \code{JOB_NAME}
@@ -72,14 +71,14 @@ the job definition. This corresponds to the \code{jobDefinition} value. The
 value is case sensitive. When the value for the filter is the job
 definition name, the results include all the jobs that used any revision
 of that job definition name. If the value ends with an asterisk (\emph{),
-the filter will match any job definition name that begins with the
-string before the '}'. For example, \code{jd1} matches only \code{jd1}, and
-\verb{jd1*} matches both \code{jd1} and \code{jd1A}. The version of the job definition
-that's used doesn't affect the sort order. When the \code{JOB_DEFINITION}
-filter is used and the ARN is used (which is in the form
+the filter matches any job definition name that begins with the string
+before the '}'. For example, \code{jd1} matches only \code{jd1}, and \verb{jd1*}
+matches both \code{jd1} and \code{jd1A}. The version of the job definition that's
+used doesn't affect the sort order. When the \code{JOB_DEFINITION} filter is
+used and the ARN is used (which is in the form
 \verb{arn:$\{Partition\}:batch:$\{Region\}:$\{Account\}:job-definition/$\{JobDefinitionName\}:$\{Revision\}}),
 the results include jobs that used the specified revision of the job
-definition. Asterisk (*) is not supported when the ARN is used.
+definition. Asterisk (*) isn't supported when the ARN is used.
 
 \strong{BEFORE_CREATED_AT}
 

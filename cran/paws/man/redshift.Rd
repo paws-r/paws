@@ -169,7 +169,7 @@ make up your data warehouse.
 \link[paws.database:redshift_get_cluster_credentials_with_iam]{get_cluster_credentials_with_iam} \tab Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database\cr
 \link[paws.database:redshift_get_reserved_node_exchange_configuration_options]{get_reserved_node_exchange_configuration_options} \tab Gets the configuration options for the reserved-node exchange\cr
 \link[paws.database:redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
-\link[paws.database:redshift_modify_aqua_configuration]{modify_aqua_configuration} \tab Modifies whether a cluster can use AQUA (Advanced Query Accelerator)\cr
+\link[paws.database:redshift_modify_aqua_configuration]{modify_aqua_configuration} \tab This operation is retired\cr
 \link[paws.database:redshift_modify_authentication_profile]{modify_authentication_profile} \tab Modifies an authentication profile\cr
 \link[paws.database:redshift_modify_cluster]{modify_cluster} \tab Modifies the settings for a cluster\cr
 \link[paws.database:redshift_modify_cluster_db_revision]{modify_cluster_db_revision} \tab Modifies the database revision of a cluster\cr

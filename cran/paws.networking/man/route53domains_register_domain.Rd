@@ -49,7 +49,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 Default: 1}
 
 \item{AutoRenew}{Indicates whether the domain will be automatically renewed (\code{true}) or
-not (\code{false}). Autorenewal only takes effect after the account is
+not (\code{false}). Auto renewal only takes effect after the account is
 charged.
 
 Default: \code{true}}

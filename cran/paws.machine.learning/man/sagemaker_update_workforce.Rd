@@ -13,7 +13,8 @@ sagemaker_update_workforce(
 }
 \arguments{
 \item{WorkforceName}{[required] The name of the private workforce that you want to update. You can find
-your workforce name by using the operation.}
+your workforce name by using the
+\code{\link[=sagemaker_list_workforces]{list_workforces}} operation.}
 
 \item{SourceIpConfig}{A list of one to ten worker IP address ranges
 (\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs})

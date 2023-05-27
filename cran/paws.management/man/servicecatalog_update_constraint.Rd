@@ -14,7 +14,6 @@ servicecatalog_update_constraint(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -79,7 +78,7 @@ You cannot have both a \code{LAUNCH} and a \code{STACKSET} constraint.
 You also cannot have more than one \code{STACKSET} constraint on a product
 and portfolio.
 
-Products with a \code{STACKSET} constraint will launch an AWS CloudFormation
+Products with a \code{STACKSET} constraint will launch an CloudFormation
 stack set.
 
 \strong{TEMPLATE}

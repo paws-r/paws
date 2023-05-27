@@ -4,6 +4,14 @@ test_that("describe_endpoints", {
   expect_error(svc$describe_endpoints(), NA)
 })
 
+test_that("list_batch_load_tasks", {
+  expect_error(svc$list_batch_load_tasks(), NA)
+})
+
+test_that("list_batch_load_tasks", {
+  expect_error(svc$list_batch_load_tasks(MaxResults = 20), NA)
+})
+
 test_that("list_databases", {
   expect_error(svc$list_databases(), NA)
 })

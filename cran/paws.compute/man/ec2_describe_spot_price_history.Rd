@@ -17,7 +17,7 @@ ec2_describe_spot_price_history(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{availability-zone} - The Availability Zone for which prices should
 be returned.
@@ -48,12 +48,13 @@ the price history data, in UTC format (for example,
 
 \item{InstanceTypes}{Filters the results by the specified instance types.}
 
-\item{MaxResults}{The maximum number of results to return in a single call. Specify a
-value between 1 and 1000. The default value is 1000. To retrieve the
-remaining results, make another call with the returned \code{NextToken}
-value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The token for the next set of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{ProductDescriptions}{Filters the results by the specified basic product descriptions.}
 

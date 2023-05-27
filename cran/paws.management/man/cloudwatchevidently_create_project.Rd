@@ -6,6 +6,7 @@
 contain features, launches, and experiments}
 \usage{
 cloudwatchevidently_create_project(
+  appConfigResource = NULL,
   dataDelivery = NULL,
   description = NULL,
   name,
@@ -13,6 +14,20 @@ cloudwatchevidently_create_project(
 )
 }
 \arguments{
+\item{appConfigResource}{Use this parameter if the project will use \emph{client-side evaluation
+powered by AppConfig}. Client-side evaluation allows your application to
+assign variations to user sessions locally instead of by calling the
+\code{\link[=cloudwatchevidently_evaluate_feature]{evaluate_feature}} operation.
+This mitigates the latency and availability risks that come with an API
+call. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-client-side-evaluation.html}{Client-side evaluation - powered by AppConfig.}
+
+This parameter is a structure that contains information about the
+AppConfig application and environment that will be used as for
+client-side evaluation.
+
+To create a project that uses client-side evaluation, you must have the
+\code{evidently:ExportProjectAsConfiguration} permission.}
+
 \item{dataDelivery}{A structure that contains information about where Evidently is to store
 evaluation events for longer term storage, if you choose to do so. If
 you choose not to store these events, Evidently deletes them after using
@@ -31,8 +46,9 @@ access or change only resources with certain tag values.
 Tags don't have any semantic meaning to Amazon Web Services and are
 interpreted strictly as strings of characters.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <p>You can associate as many as 50 tags with a project.</p> <p>For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging Amazon Web Services resources</a>.</p>
-}\if{html}{\out{</div>}}}
+You can associate as many as 50 tags with a project.
+
+For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}.}
 }
 \description{
 Creates a project, which is the logical object in Evidently that can contain features, launches, and experiments. Use projects to group similar features together.

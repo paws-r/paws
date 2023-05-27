@@ -2,7 +2,8 @@
 % Please edit documentation in R/appregistry_operations.R
 \name{appregistry_list_associated_resources}
 \alias{appregistry_list_associated_resources}
-\title{Lists all resources that are associated with specified application}
+\title{Lists all of the resources that are associated with the specified
+application}
 \usage{
 appregistry_list_associated_resources(
   application,
@@ -11,7 +12,7 @@ appregistry_list_associated_resources(
 )
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 
 \item{nextToken}{The token to use to get the next page of results after a previous API
 call.}
@@ -20,7 +21,7 @@ call.}
 If this parameter is omitted, it defaults to 25. This value is optional.}
 }
 \description{
-Lists all resources that are associated with specified application. Results are paginated.
+Lists all of the resources that are associated with the specified application. Results are paginated.
 
 See \url{https://paws-r.github.io/docs/appregistry/list_associated_resources.html} for full documentation.
 }

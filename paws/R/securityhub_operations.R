@@ -37,6 +37,18 @@ NULL
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example demonstrates how an account can accept an
+#' # invitation from the Security Hub administrator account to be a member
+#' # account. This operation is applicable only to member accounts that are
+#' # not added through AWS Organizations.
+#' svc$accept_administrator_invitation(
+#'   AdministratorId = "123456789012",
+#'   InvitationId = "7ab938c5d52d7904ad09f9e7c20cc4eb"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_accept_administrator_invitation
@@ -173,6 +185,16 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example disables a security standard in Security Hub.
+#' svc$batch_disable_standards(
+#'   StandardsSubscriptionArns = list(
+#'     "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss/v/3.2.1"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_disable_standards
@@ -245,6 +267,19 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example imports findings from a third party provider to
+#' # Security Hub.
+#' svc$batch_enable_standards(
+#'   StandardsSubscriptionRequests = list(
+#'     list(
+#'       StandardsArn = "arn:aws:securityhub:us-west-1::standards/pci-dss/v/3.2.1"
+#'     )
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_enable_standards
@@ -266,6 +301,164 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
   return(response)
 }
 .securityhub$operations$batch_enable_standards <- securityhub_batch_enable_standards
+
+#' Provides details about a batch of security controls for the current
+#' Amazon Web Services account and Amazon Web Services Region
+#'
+#' @description
+#' Provides details about a batch of security controls for the current
+#' Amazon Web Services account and Amazon Web Services Region.
+#'
+#' @usage
+#' securityhub_batch_get_security_controls(SecurityControlIds)
+#'
+#' @param SecurityControlIds &#91;required&#93; A list of security controls (identified with `SecurityControlId`,
+#' `SecurityControlArn`, or a mix of both parameters). The security control
+#' ID or Amazon Resource Name (ARN) is the same across standards.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityControls = list(
+#'     list(
+#'       SecurityControlId = "string",
+#'       SecurityControlArn = "string",
+#'       Title = "string",
+#'       Description = "string",
+#'       RemediationUrl = "string",
+#'       SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'       SecurityControlStatus = "ENABLED"|"DISABLED"
+#'     )
+#'   ),
+#'   UnprocessedIds = list(
+#'     list(
+#'       SecurityControlId = "string",
+#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"LIMIT_EXCEEDED",
+#'       ErrorReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_security_controls(
+#'   SecurityControlIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_get_security_controls
+#'
+#' @aliases securityhub_batch_get_security_controls
+securityhub_batch_get_security_controls <- function(SecurityControlIds) {
+  op <- new_operation(
+    name = "BatchGetSecurityControls",
+    http_method = "POST",
+    http_path = "/securityControls/batchGet",
+    paginator = list()
+  )
+  input <- .securityhub$batch_get_security_controls_input(SecurityControlIds = SecurityControlIds)
+  output <- .securityhub$batch_get_security_controls_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_get_security_controls <- securityhub_batch_get_security_controls
+
+#' For a batch of security controls and standards, identifies whether each
+#' control is currently enabled or disabled in a standard
+#'
+#' @description
+#' For a batch of security controls and standards, identifies whether each
+#' control is currently enabled or disabled in a standard.
+#'
+#' @usage
+#' securityhub_batch_get_standards_control_associations(
+#'   StandardsControlAssociationIds)
+#'
+#' @param StandardsControlAssociationIds &#91;required&#93; An array with one or more objects that includes a security control
+#' (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of
+#' both parameters) and the Amazon Resource Name (ARN) of a standard. This
+#' field is used to query the enablement status of a control in a specified
+#' standard. The security control ID or ARN is the same across standards.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StandardsControlAssociationDetails = list(
+#'     list(
+#'       StandardsArn = "string",
+#'       SecurityControlId = "string",
+#'       SecurityControlArn = "string",
+#'       AssociationStatus = "ENABLED"|"DISABLED",
+#'       RelatedRequirements = list(
+#'         "string"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedReason = "string",
+#'       StandardsControlTitle = "string",
+#'       StandardsControlDescription = "string",
+#'       StandardsControlArns = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   UnprocessedAssociations = list(
+#'     list(
+#'       StandardsControlAssociationId = list(
+#'         SecurityControlId = "string",
+#'         StandardsArn = "string"
+#'       ),
+#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"LIMIT_EXCEEDED",
+#'       ErrorReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_standards_control_associations(
+#'   StandardsControlAssociationIds = list(
+#'     list(
+#'       SecurityControlId = "string",
+#'       StandardsArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_get_standards_control_associations
+#'
+#' @aliases securityhub_batch_get_standards_control_associations
+securityhub_batch_get_standards_control_associations <- function(StandardsControlAssociationIds) {
+  op <- new_operation(
+    name = "BatchGetStandardsControlAssociations",
+    http_method = "POST",
+    http_path = "/associations/batchGet",
+    paginator = list()
+  )
+  input <- .securityhub$batch_get_standards_control_associations_input(StandardsControlAssociationIds = StandardsControlAssociationIds)
+  output <- .securityhub$batch_get_standards_control_associations_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_get_standards_control_associations <- securityhub_batch_get_standards_control_associations
 
 #' Imports security findings generated by a finding provider into Security
 #' Hub
@@ -859,6 +1052,9 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 HttpPutResponseHopLimit = 123,
 #'                 HttpTokens = "string",
 #'                 InstanceMetadataTags = "string"
+#'               ),
+#'               Monitoring = list(
+#'                 State = "string"
 #'               )
 #'             ),
 #'             AwsEc2NetworkInterface = list(
@@ -1316,6 +1512,16 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               BucketVersioningConfiguration = list(
 #'                 IsMfaDeleteEnabled = TRUE|FALSE,
 #'                 Status = "string"
+#'               ),
+#'               ObjectLockConfiguration = list(
+#'                 ObjectLockEnabled = "string",
+#'                 Rule = list(
+#'                   DefaultRetention = list(
+#'                     Days = 123,
+#'                     Mode = "string",
+#'                     Years = 123
+#'                   )
+#'                 )
 #'               )
 #'             ),
 #'             AwsS3AccountPublicAccessBlock = list(
@@ -2108,7 +2314,11 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 ),
 #'                 VpcId = "string"
 #'               ),
-#'               Version = "string"
+#'               Version = "string",
+#'               Architectures = list(
+#'                 "string"
+#'               ),
+#'               PackageType = "string"
 #'             ),
 #'             AwsLambdaLayerVersion = list(
 #'               Version = 123,
@@ -3125,7 +3335,8 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                 ),
 #'                 SubnetIds = list(
 #'                   "string"
-#'                 )
+#'                 ),
+#'                 EndpointPublicAccess = TRUE|FALSE
 #'               ),
 #'               RoleArn = "string",
 #'               Version = "string",
@@ -3597,6 +3808,552 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'                   Privileged = TRUE|FALSE
 #'                 )
 #'               )
+#'             ),
+#'             AwsBackupBackupVault = list(
+#'               BackupVaultArn = "string",
+#'               BackupVaultName = "string",
+#'               EncryptionKeyArn = "string",
+#'               Notifications = list(
+#'                 BackupVaultEvents = list(
+#'                   "string"
+#'                 ),
+#'                 SnsTopicArn = "string"
+#'               ),
+#'               AccessPolicy = "string"
+#'             ),
+#'             AwsBackupBackupPlan = list(
+#'               BackupPlan = list(
+#'                 BackupPlanName = "string",
+#'                 AdvancedBackupSettings = list(
+#'                   list(
+#'                     BackupOptions = list(
+#'                       "string"
+#'                     ),
+#'                     ResourceType = "string"
+#'                   )
+#'                 ),
+#'                 BackupPlanRule = list(
+#'                   list(
+#'                     TargetBackupVault = "string",
+#'                     StartWindowMinutes = 123,
+#'                     ScheduleExpression = "string",
+#'                     RuleName = "string",
+#'                     RuleId = "string",
+#'                     EnableContinuousBackup = TRUE|FALSE,
+#'                     CompletionWindowMinutes = 123,
+#'                     CopyActions = list(
+#'                       list(
+#'                         DestinationBackupVaultArn = "string",
+#'                         Lifecycle = list(
+#'                           DeleteAfterDays = 123,
+#'                           MoveToColdStorageAfterDays = 123
+#'                         )
+#'                       )
+#'                     ),
+#'                     Lifecycle = list(
+#'                       DeleteAfterDays = 123,
+#'                       MoveToColdStorageAfterDays = 123
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               BackupPlanArn = "string",
+#'               BackupPlanId = "string",
+#'               VersionId = "string"
+#'             ),
+#'             AwsBackupRecoveryPoint = list(
+#'               BackupSizeInBytes = 123,
+#'               BackupVaultArn = "string",
+#'               BackupVaultName = "string",
+#'               CalculatedLifecycle = list(
+#'                 DeleteAt = "string",
+#'                 MoveToColdStorageAt = "string"
+#'               ),
+#'               CompletionDate = "string",
+#'               CreatedBy = list(
+#'                 BackupPlanArn = "string",
+#'                 BackupPlanId = "string",
+#'                 BackupPlanVersion = "string",
+#'                 BackupRuleId = "string"
+#'               ),
+#'               CreationDate = "string",
+#'               EncryptionKeyArn = "string",
+#'               IamRoleArn = "string",
+#'               IsEncrypted = TRUE|FALSE,
+#'               LastRestoreTime = "string",
+#'               Lifecycle = list(
+#'                 DeleteAfterDays = 123,
+#'                 MoveToColdStorageAfterDays = 123
+#'               ),
+#'               RecoveryPointArn = "string",
+#'               ResourceArn = "string",
+#'               ResourceType = "string",
+#'               SourceBackupVaultArn = "string",
+#'               Status = "string",
+#'               StatusMessage = "string",
+#'               StorageClass = "string"
+#'             ),
+#'             AwsEc2LaunchTemplate = list(
+#'               LaunchTemplateName = "string",
+#'               Id = "string",
+#'               LaunchTemplateData = list(
+#'                 BlockDeviceMappingSet = list(
+#'                   list(
+#'                     DeviceName = "string",
+#'                     Ebs = list(
+#'                       DeleteOnTermination = TRUE|FALSE,
+#'                       Encrypted = TRUE|FALSE,
+#'                       Iops = 123,
+#'                       KmsKeyId = "string",
+#'                       SnapshotId = "string",
+#'                       Throughput = 123,
+#'                       VolumeSize = 123,
+#'                       VolumeType = "string"
+#'                     ),
+#'                     NoDevice = "string",
+#'                     VirtualName = "string"
+#'                   )
+#'                 ),
+#'                 CapacityReservationSpecification = list(
+#'                   CapacityReservationPreference = "string",
+#'                   CapacityReservationTarget = list(
+#'                     CapacityReservationId = "string",
+#'                     CapacityReservationResourceGroupArn = "string"
+#'                   )
+#'                 ),
+#'                 CpuOptions = list(
+#'                   CoreCount = 123,
+#'                   ThreadsPerCore = 123
+#'                 ),
+#'                 CreditSpecification = list(
+#'                   CpuCredits = "string"
+#'                 ),
+#'                 DisableApiStop = TRUE|FALSE,
+#'                 DisableApiTermination = TRUE|FALSE,
+#'                 EbsOptimized = TRUE|FALSE,
+#'                 ElasticGpuSpecificationSet = list(
+#'                   list(
+#'                     Type = "string"
+#'                   )
+#'                 ),
+#'                 ElasticInferenceAcceleratorSet = list(
+#'                   list(
+#'                     Count = 123,
+#'                     Type = "string"
+#'                   )
+#'                 ),
+#'                 EnclaveOptions = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 HibernationOptions = list(
+#'                   Configured = TRUE|FALSE
+#'                 ),
+#'                 IamInstanceProfile = list(
+#'                   Arn = "string",
+#'                   Name = "string"
+#'                 ),
+#'                 ImageId = "string",
+#'                 InstanceInitiatedShutdownBehavior = "string",
+#'                 InstanceMarketOptions = list(
+#'                   MarketType = "string",
+#'                   SpotOptions = list(
+#'                     BlockDurationMinutes = 123,
+#'                     InstanceInterruptionBehavior = "string",
+#'                     MaxPrice = "string",
+#'                     SpotInstanceType = "string",
+#'                     ValidUntil = "string"
+#'                   )
+#'                 ),
+#'                 InstanceRequirements = list(
+#'                   AcceleratorCount = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   AcceleratorManufacturers = list(
+#'                     "string"
+#'                   ),
+#'                   AcceleratorNames = list(
+#'                     "string"
+#'                   ),
+#'                   AcceleratorTotalMemoryMiB = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   AcceleratorTypes = list(
+#'                     "string"
+#'                   ),
+#'                   BareMetal = "string",
+#'                   BaselineEbsBandwidthMbps = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   BurstablePerformance = "string",
+#'                   CpuManufacturers = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedInstanceTypes = list(
+#'                     "string"
+#'                   ),
+#'                   InstanceGenerations = list(
+#'                     "string"
+#'                   ),
+#'                   LocalStorage = "string",
+#'                   LocalStorageTypes = list(
+#'                     "string"
+#'                   ),
+#'                   MemoryGiBPerVCpu = list(
+#'                     Max = 123.0,
+#'                     Min = 123.0
+#'                   ),
+#'                   MemoryMiB = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   NetworkInterfaceCount = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   OnDemandMaxPricePercentageOverLowestPrice = 123,
+#'                   RequireHibernateSupport = TRUE|FALSE,
+#'                   SpotMaxPricePercentageOverLowestPrice = 123,
+#'                   TotalLocalStorageGB = list(
+#'                     Max = 123.0,
+#'                     Min = 123.0
+#'                   ),
+#'                   VCpuCount = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   )
+#'                 ),
+#'                 InstanceType = "string",
+#'                 KernelId = "string",
+#'                 KeyName = "string",
+#'                 LicenseSet = list(
+#'                   list(
+#'                     LicenseConfigurationArn = "string"
+#'                   )
+#'                 ),
+#'                 MaintenanceOptions = list(
+#'                   AutoRecovery = "string"
+#'                 ),
+#'                 MetadataOptions = list(
+#'                   HttpEndpoint = "string",
+#'                   HttpProtocolIpv6 = "string",
+#'                   HttpTokens = "string",
+#'                   HttpPutResponseHopLimit = 123,
+#'                   InstanceMetadataTags = "string"
+#'                 ),
+#'                 Monitoring = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 NetworkInterfaceSet = list(
+#'                   list(
+#'                     AssociateCarrierIpAddress = TRUE|FALSE,
+#'                     AssociatePublicIpAddress = TRUE|FALSE,
+#'                     DeleteOnTermination = TRUE|FALSE,
+#'                     Description = "string",
+#'                     DeviceIndex = 123,
+#'                     Groups = list(
+#'                       "string"
+#'                     ),
+#'                     InterfaceType = "string",
+#'                     Ipv4PrefixCount = 123,
+#'                     Ipv4Prefixes = list(
+#'                       list(
+#'                         Ipv4Prefix = "string"
+#'                       )
+#'                     ),
+#'                     Ipv6AddressCount = 123,
+#'                     Ipv6Addresses = list(
+#'                       list(
+#'                         Ipv6Address = "string"
+#'                       )
+#'                     ),
+#'                     Ipv6PrefixCount = 123,
+#'                     Ipv6Prefixes = list(
+#'                       list(
+#'                         Ipv6Prefix = "string"
+#'                       )
+#'                     ),
+#'                     NetworkCardIndex = 123,
+#'                     NetworkInterfaceId = "string",
+#'                     PrivateIpAddress = "string",
+#'                     PrivateIpAddresses = list(
+#'                       list(
+#'                         Primary = TRUE|FALSE,
+#'                         PrivateIpAddress = "string"
+#'                       )
+#'                     ),
+#'                     SecondaryPrivateIpAddressCount = 123,
+#'                     SubnetId = "string"
+#'                   )
+#'                 ),
+#'                 Placement = list(
+#'                   Affinity = "string",
+#'                   AvailabilityZone = "string",
+#'                   GroupName = "string",
+#'                   HostId = "string",
+#'                   HostResourceGroupArn = "string",
+#'                   PartitionNumber = 123,
+#'                   SpreadDomain = "string",
+#'                   Tenancy = "string"
+#'                 ),
+#'                 PrivateDnsNameOptions = list(
+#'                   EnableResourceNameDnsAAAARecord = TRUE|FALSE,
+#'                   EnableResourceNameDnsARecord = TRUE|FALSE,
+#'                   HostnameType = "string"
+#'                 ),
+#'                 RamDiskId = "string",
+#'                 SecurityGroupIdSet = list(
+#'                   "string"
+#'                 ),
+#'                 SecurityGroupSet = list(
+#'                   "string"
+#'                 ),
+#'                 UserData = "string"
+#'               ),
+#'               DefaultVersionNumber = 123,
+#'               LatestVersionNumber = 123
+#'             ),
+#'             AwsSageMakerNotebookInstance = list(
+#'               AcceleratorTypes = list(
+#'                 "string"
+#'               ),
+#'               AdditionalCodeRepositories = list(
+#'                 "string"
+#'               ),
+#'               DefaultCodeRepository = "string",
+#'               DirectInternetAccess = "string",
+#'               FailureReason = "string",
+#'               InstanceMetadataServiceConfiguration = list(
+#'                 MinimumInstanceMetadataServiceVersion = "string"
+#'               ),
+#'               InstanceType = "string",
+#'               KmsKeyId = "string",
+#'               NetworkInterfaceId = "string",
+#'               NotebookInstanceArn = "string",
+#'               NotebookInstanceLifecycleConfigName = "string",
+#'               NotebookInstanceName = "string",
+#'               NotebookInstanceStatus = "string",
+#'               PlatformIdentifier = "string",
+#'               RoleArn = "string",
+#'               RootAccess = "string",
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               SubnetId = "string",
+#'               Url = "string",
+#'               VolumeSizeInGB = 123
+#'             ),
+#'             AwsWafv2WebAcl = list(
+#'               Name = "string",
+#'               Arn = "string",
+#'               ManagedbyFirewallManager = TRUE|FALSE,
+#'               Id = "string",
+#'               Capacity = 123,
+#'               CaptchaConfig = list(
+#'                 ImmunityTimeProperty = list(
+#'                   ImmunityTime = 123
+#'                 )
+#'               ),
+#'               DefaultAction = list(
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseCode = 123,
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               Description = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Allow = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Block = list(
+#'                       CustomResponse = list(
+#'                         CustomResponseBodyKey = "string",
+#'                         ResponseCode = 123,
+#'                         ResponseHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Captcha = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Count = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Name = "string",
+#'                   OverrideAction = "string",
+#'                   Priority = 123,
+#'                   VisibilityConfig = list(
+#'                     CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                     MetricName = "string",
+#'                     SampledRequestsEnabled = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               VisibilityConfig = list(
+#'                 CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                 MetricName = "string",
+#'                 SampledRequestsEnabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             AwsWafv2RuleGroup = list(
+#'               Capacity = 123,
+#'               Description = "string",
+#'               Id = "string",
+#'               Name = "string",
+#'               Arn = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Allow = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Block = list(
+#'                       CustomResponse = list(
+#'                         CustomResponseBodyKey = "string",
+#'                         ResponseCode = 123,
+#'                         ResponseHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Captcha = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Count = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Name = "string",
+#'                   OverrideAction = "string",
+#'                   Priority = 123,
+#'                   VisibilityConfig = list(
+#'                     CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                     MetricName = "string",
+#'                     SampledRequestsEnabled = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               Scope = "string",
+#'               VisibilityConfig = list(
+#'                 CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                 MetricName = "string",
+#'                 SampledRequestsEnabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             AwsEc2RouteTable = list(
+#'               AssociationSet = list(
+#'                 list(
+#'                   AssociationState = list(
+#'                     State = "string",
+#'                     StatusMessage = "string"
+#'                   ),
+#'                   GatewayId = "string",
+#'                   Main = TRUE|FALSE,
+#'                   RouteTableAssociationId = "string",
+#'                   RouteTableId = "string",
+#'                   SubnetId = "string"
+#'                 )
+#'               ),
+#'               OwnerId = "string",
+#'               PropagatingVgwSet = list(
+#'                 list(
+#'                   GatewayId = "string"
+#'                 )
+#'               ),
+#'               RouteTableId = "string",
+#'               RouteSet = list(
+#'                 list(
+#'                   CarrierGatewayId = "string",
+#'                   CoreNetworkArn = "string",
+#'                   DestinationCidrBlock = "string",
+#'                   DestinationIpv6CidrBlock = "string",
+#'                   DestinationPrefixListId = "string",
+#'                   EgressOnlyInternetGatewayId = "string",
+#'                   GatewayId = "string",
+#'                   InstanceId = "string",
+#'                   InstanceOwnerId = "string",
+#'                   LocalGatewayId = "string",
+#'                   NatGatewayId = "string",
+#'                   NetworkInterfaceId = "string",
+#'                   Origin = "string",
+#'                   State = "string",
+#'                   TransitGatewayId = "string",
+#'                   VpcPeeringConnectionId = "string"
+#'                 )
+#'               ),
+#'               VpcId = "string"
 #'             )
 #'           )
 #'         )
@@ -3610,6 +4367,12 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'           list(
 #'             ReasonCode = "string",
 #'             Description = "string"
+#'           )
+#'         ),
+#'         SecurityControlId = "string",
+#'         AssociatedStandards = list(
+#'           list(
+#'             StandardsId = "string"
 #'           )
 #'         )
 #'       ),
@@ -3641,7 +4404,11 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'               Release = "string",
 #'               Architecture = "string",
 #'               PackageManager = "string",
-#'               FilePath = "string"
+#'               FilePath = "string",
+#'               FixedInVersion = "string",
+#'               Remediation = "string",
+#'               SourceLayerHash = "string",
+#'               SourceLayerArn = "string"
 #'             )
 #'           ),
 #'           Cvss = list(
@@ -3670,7 +4437,8 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'           ),
 #'           ReferenceUrls = list(
 #'             "string"
-#'           )
+#'           ),
+#'           FixAvailable = "YES"|"NO"|"PARTIAL"
 #'         )
 #'       ),
 #'       PatchSummary = list(
@@ -3816,6 +4584,44 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example imports findings from a third party provider to
+#' # Security Hub.
+#' svc$batch_import_findings(
+#'   Findings = list(
+#'     list(
+#'       AwsAccountId = "123456789012",
+#'       CreatedAt = "2020-05-27T17:05:54.832Z",
+#'       Description = "Vulnerability in a CloudTrail trail",
+#'       FindingProviderFields = list(
+#'         Severity = list(
+#'           Label = "LOW",
+#'           Original = "10"
+#'         ),
+#'         Types = list(
+#'           "Software and Configuration Checks/Vulnerabilities/CVE"
+#'         )
+#'       ),
+#'       GeneratorId = "TestGeneratorId",
+#'       Id = "Id1",
+#'       ProductArn = "arn:aws:securityhub:us-west-1:123456789012:product/123456789012/default",
+#'       Resources = list(
+#'         list(
+#'           Id = "arn:aws:cloudtrail:us-west-1:123456789012:trail/TrailName",
+#'           Partition = "aws",
+#'           Region = "us-west-1",
+#'           Type = "AwsCloudTrailTrail"
+#'         )
+#'       ),
+#'       SchemaVersion = "2018-10-08",
+#'       Title = "CloudTrail trail vulnerability",
+#'       UpdatedAt = "2020-06-02T16:05:54.832Z"
+#'     )
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4003,6 +4809,50 @@ securityhub_batch_import_findings <- function(Findings) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example updates Security Hub findings. The finding
+#' # identifier parameter specifies which findings to update. Only specific
+#' # finding fields can be updated with this operation.
+#' svc$batch_update_findings(
+#'   Confidence = 80L,
+#'   Criticality = 80L,
+#'   FindingIdentifiers = list(
+#'     list(
+#'       Id = "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss...",
+#'       ProductArn = "arn:aws:securityhub:us-west-1::product/aws/securityhub"
+#'     ),
+#'     list(
+#'       Id = "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss...",
+#'       ProductArn = "arn:aws:securityhub:us-west-1::product/aws/securityhub"
+#'     )
+#'   ),
+#'   Note = list(
+#'     Text = "Known issue that is not a risk.",
+#'     UpdatedBy = "user1"
+#'   ),
+#'   RelatedFindings = list(
+#'     list(
+#'       Id = "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss...",
+#'       ProductArn = "arn:aws:securityhub:us-west-1::product/aws/securityhub"
+#'     )
+#'   ),
+#'   Severity = list(
+#'     Label = "LOW"
+#'   ),
+#'   Types = list(
+#'     "Software and Configuration Checks/Vulnerabilities/CVE"
+#'   ),
+#'   UserDefinedFields = list(
+#'     reviewedByCio = "true"
+#'   ),
+#'   VerificationState = "TRUE_POSITIVE",
+#'   Workflow = list(
+#'     Status = "RESOLVED"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_batch_update_findings
@@ -4024,6 +4874,75 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
   return(response)
 }
 .securityhub$operations$batch_update_findings <- securityhub_batch_update_findings
+
+#' For a batch of security controls and standards, this operation updates
+#' the enablement status of a control in a standard
+#'
+#' @description
+#' For a batch of security controls and standards, this operation updates
+#' the enablement status of a control in a standard.
+#'
+#' @usage
+#' securityhub_batch_update_standards_control_associations(
+#'   StandardsControlAssociationUpdates)
+#'
+#' @param StandardsControlAssociationUpdates &#91;required&#93; Updates the enablement status of a security control in a specified
+#' standard.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UnprocessedAssociationUpdates = list(
+#'     list(
+#'       StandardsControlAssociationUpdate = list(
+#'         StandardsArn = "string",
+#'         SecurityControlId = "string",
+#'         AssociationStatus = "ENABLED"|"DISABLED",
+#'         UpdatedReason = "string"
+#'       ),
+#'       ErrorCode = "INVALID_INPUT"|"ACCESS_DENIED"|"NOT_FOUND"|"LIMIT_EXCEEDED",
+#'       ErrorReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_standards_control_associations(
+#'   StandardsControlAssociationUpdates = list(
+#'     list(
+#'       StandardsArn = "string",
+#'       SecurityControlId = "string",
+#'       AssociationStatus = "ENABLED"|"DISABLED",
+#'       UpdatedReason = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_batch_update_standards_control_associations
+#'
+#' @aliases securityhub_batch_update_standards_control_associations
+securityhub_batch_update_standards_control_associations <- function(StandardsControlAssociationUpdates) {
+  op <- new_operation(
+    name = "BatchUpdateStandardsControlAssociations",
+    http_method = "PATCH",
+    http_path = "/associations",
+    paginator = list()
+  )
+  input <- .securityhub$batch_update_standards_control_associations_input(StandardsControlAssociationUpdates = StandardsControlAssociationUpdates)
+  output <- .securityhub$batch_update_standards_control_associations_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$batch_update_standards_control_associations <- securityhub_batch_update_standards_control_associations
 
 #' Creates a custom action target in Security Hub
 #'
@@ -4057,6 +4976,18 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 #'   Id = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates a custom action target in Security Hub.
+#' # Custom actions on findings and insights automatically trigger actions in
+#' # Amazon CloudWatch Events.
+#' svc$create_action_target(
+#'   Description = "Action to send the finding for remediation tracking",
+#'   Id = "Remediation",
+#'   Name = "Send to remediation"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4119,11 +5050,11 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'     Regions listed in the `Regions` parameter. Security Hub does not
 #'     automatically aggregate findings from new Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
-#' comma-separated list of Regions that do not aggregate findings to the
+#' space-separated list of Regions that do not aggregate findings to the
 #' aggregation Region.
 #' 
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
-#' comma-separated list of Regions that do aggregate findings to the
+#' space-separated list of Regions that do aggregate findings to the
 #' aggregation Region.
 #'
 #' @return
@@ -4148,6 +5079,19 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates a finding aggregator. This is required to
+#' # enable cross-Region aggregation.
+#' svc$create_finding_aggregator(
+#'   RegionLinkingMode = "SPECIFIED_REGIONS",
+#'   Regions = list(
+#'     "us-west-1",
+#'     "us-west-2"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4825,11 +5769,47 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
 #'       list(
 #'         Value = TRUE|FALSE
 #'       )
+#'     ),
+#'     ComplianceSecurityControlId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
 #'     )
 #'   ),
 #'   GroupByAttribute = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example creates a custom insight in Security Hub. An
+#' # insight is a collection of findings that relate to a security issue.
+#' svc$create_insight(
+#'   Filters = list(
+#'     ResourceType = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "AwsIamRole"
+#'       )
+#'     ),
+#'     SeverityLabel = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "CRITICAL"
+#'       )
+#'     )
+#'   ),
+#'   GroupByAttribute = "ResourceId",
+#'   Name = "Critical role findings"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -4941,6 +5921,24 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example creates a member association between the specified
+#' # accounts and the administrator account (the account that makes the
+#' # request). This operation is used to add accounts that aren't part of an
+#' # organization.
+#' svc$create_members(
+#'   AccountDetails = list(
+#'     list(
+#'       AccountId = "123456789012"
+#'     ),
+#'     list(
+#'       AccountId = "111122223333"
+#'     )
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_create_members
@@ -4968,14 +5966,17 @@ securityhub_create_members <- function(AccountDetails) {
 #' @description
 #' Declines invitations to become a member account.
 #' 
-#' This operation is only used by accounts that are not part of an
-#' organization. Organization accounts do not receive invitations.
+#' A prospective member account uses this operation to decline an
+#' invitation to become a member.
+#' 
+#' This operation is only called by member accounts that aren't part of an
+#' organization. Organization accounts don't receive invitations.
 #'
 #' @usage
 #' securityhub_decline_invitations(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; The list of account IDs for the accounts from which to decline the
-#' invitations to Security Hub.
+#' @param AccountIds &#91;required&#93; The list of prospective member account IDs for which to decline an
+#' invitation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4998,6 +5999,19 @@ securityhub_create_members <- function(AccountDetails) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example declines an invitation from the Security Hub
+#' # administrator account to become a member account. The invited account
+#' # makes the request.
+#' svc$decline_invitations(
+#'   AccountIds = list(
+#'     "123456789012",
+#'     "111122223333"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5033,7 +6047,7 @@ securityhub_decline_invitations <- function(AccountIds) {
 #' @usage
 #' securityhub_delete_action_target(ActionTargetArn)
 #'
-#' @param ActionTargetArn &#91;required&#93; The ARN of the custom action target to delete.
+#' @param ActionTargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the custom action target to delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5049,6 +6063,17 @@ securityhub_decline_invitations <- function(AccountIds) {
 #'   ActionTargetArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes a custom action target that triggers
+#' # target actions in Amazon CloudWatch Events. Deleting a custom action
+#' # target doesn't affect findings or insights that were already sent to
+#' # CloudWatch Events based on the custom action.
+#' svc$delete_action_target(
+#'   ActionTargetArn = "arn:aws:securityhub:us-west-1:123456789012:action/custom/Remediation"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5098,6 +6123,16 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deletes a finding aggregator in Security Hub.
+#' # Deleting the finding aggregator stops cross-Region aggregation. This
+#' # operation produces no output.
+#' svc$delete_finding_aggregator(
+#'   FindingAggregatorArn = "arn:aws:securityhub:us-east-1:123456789012:findin..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_finding_aggregator
@@ -5145,6 +6180,14 @@ securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deletes a custom insight in Security Hub.
+#' svc$delete_insight(
+#'   InsightArn = "arn:aws:securityhub:us-west-1:123456789012:insight/12345678..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_delete_insight
@@ -5174,13 +6217,18 @@ securityhub_delete_insight <- function(InsightArn) {
 #' Deletes invitations received by the Amazon Web Services account to
 #' become a member account.
 #' 
-#' This operation is only used by accounts that are not part of an
-#' organization. Organization accounts do not receive invitations.
+#' A Security Hub administrator account can use this operation to delete
+#' invitations sent to one or more member accounts.
+#' 
+#' This operation is only used to delete invitations that are sent to
+#' member accounts that aren't part of an organization. Organization
+#' accounts don't receive invitations.
 #'
 #' @usage
 #' securityhub_delete_invitations(AccountIds)
 #'
-#' @param AccountIds &#91;required&#93; The list of the account IDs that sent the invitations to delete.
+#' @param AccountIds &#91;required&#93; The list of member account IDs that received the invitations you want to
+#' delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5203,6 +6251,19 @@ securityhub_delete_insight <- function(InsightArn) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes an invitation sent by the Security Hub
+#' # administrator account to a prospective member account. This operation is
+#' # used only for invitations sent to accounts that aren't part of an
+#' # organization. Organization accounts don't receive invitations.
+#' svc$delete_invitations(
+#'   AccountIds = list(
+#'     "123456789012"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5260,6 +6321,19 @@ securityhub_delete_invitations <- function(AccountIds) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example deletes the specified member account from Security
+#' # Hub. This operation can be used to delete member accounts that are part
+#' # of an organization or that were invited manually.
+#' svc$delete_members(
+#'   AccountIds = list(
+#'     "123456789111",
+#'     "123456789222"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5331,6 +6405,18 @@ securityhub_delete_members <- function(AccountIds) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of custom action targets. You use
+#' # custom actions on findings and insights in Security Hub to trigger
+#' # target actions in Amazon CloudWatch Events.
+#' svc$describe_action_targets(
+#'   ActionTargetArns = list(
+#'     "arn:aws:securityhub:us-west-1:123456789012:action/custom/Remediation"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_action_targets
@@ -5371,7 +6457,8 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
 #' list(
 #'   HubArn = "string",
 #'   SubscribedAt = "string",
-#'   AutoEnableControls = TRUE|FALSE
+#'   AutoEnableControls = TRUE|FALSE,
+#'   ControlFindingGenerator = "STANDARD_CONTROL"|"SECURITY_CONTROL"
 #' )
 #' ```
 #'
@@ -5381,6 +6468,16 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
 #'   HubArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns details about the Hub resource in the
+#' # calling account. The Hub resource represents the implementation of  the
+#' # AWS Security Hub service in the calling account.
+#' svc$describe_hub(
+#'   HubArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5428,6 +6525,15 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' ```
 #' svc$describe_organization_configuration()
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns details about the way in which AWS
+#' # Organizations is configured for a Security Hub account that belongs to
+#' # an organization. Only a Security Hub administrator account can call this
+#' # operation.
+#' svc$describe_organization_configuration()
+#' }
 #'
 #' @keywords internal
 #'
@@ -5509,6 +6615,17 @@ securityhub_describe_organization_configuration <- function() {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns details about AWS services and third-party
+#' # products that Security Hub integrates with.
+#' svc$describe_products(
+#'   MaxResults = 1L,
+#'   NextToken = "NULL",
+#'   ProductArn = "arn:aws:securityhub:us-east-1:517716713836:product/crowdstr..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_products
@@ -5560,7 +6677,11 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 #'       StandardsArn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       EnabledByDefault = TRUE|FALSE
+#'       EnabledByDefault = TRUE|FALSE,
+#'       StandardsManagedBy = list(
+#'         Company = "string",
+#'         Product = "string"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -5574,6 +6695,13 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of available security standards in
+#' # Security Hub.
+#' svc$describe_standards()
+#' }
 #'
 #' @keywords internal
 #'
@@ -5657,6 +6785,18 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of security controls and control
+#' # details that apply to a specified security standard. The list includes
+#' # controls that are enabled and disabled in the standard.
+#' svc$describe_standards_controls(
+#'   MaxResults = 2L,
+#'   NextToken = "NULL",
+#'   StandardsSubscriptionArn = "arn:aws:securityhub:us-west-1:123456789012:su..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_describe_standards_controls
@@ -5701,6 +6841,16 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example ends an integration between Security Hub and the
+#' # specified product that sends findings to Security Hub. After the
+#' # integration ends, the product no longer sends findings to Security  Hub.
+#' svc$disable_import_findings_for_product(
+#'   ProductSubscriptionArn = "arn:aws:securityhub:us-east-1:517716713836:prod..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_import_findings_for_product
@@ -5744,6 +6894,16 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 #'   AdminAccountId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example removes the Security Hub administrator account in
+#' # the Region from which the operation was executed. This operation doesn't
+#' # remove the delegated administrator account in AWS Organizations.
+#' svc$disable_organization_admin_account(
+#'   AdminAccountId = "123456789012"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -5796,6 +6956,13 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 #' svc$disable_security_hub()
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example deactivates Security Hub for the current account
+#' # and Region.
+#' svc$disable_security_hub()
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disable_security_hub
@@ -5839,6 +7006,13 @@ securityhub_disable_security_hub <- function() {
 #' ```
 #' svc$disassociate_from_administrator_account()
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example dissociates the requesting account from its
+#' # associated administrator account.
+#' svc$disassociate_from_administrator_account()
+#' }
 #'
 #' @keywords internal
 #'
@@ -5949,6 +7123,18 @@ securityhub_disassociate_from_master_account <- function() {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example dissociates the specified member accounts from the
+#' # associated administrator account.
+#' svc$disassociate_members(
+#'   AccountIds = list(
+#'     "123456789012",
+#'     "111122223333"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_disassociate_members
@@ -6000,6 +7186,15 @@ securityhub_disassociate_members <- function(AccountIds) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example activates an integration between Security Hub and
+#' # a third party partner product that sends findings to Security Hub.
+#' svc$enable_import_findings_for_product(
+#'   ProductArn = "arn:aws:securityhub:us-east-1:517716713836:product/crowdstr..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_import_findings_for_product
@@ -6044,6 +7239,16 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example designates the specified account as the Security
+#' # Hub administrator account. The requesting account must be the
+#' # organization management account.
+#' svc$enable_organization_admin_account(
+#'   AdminAccountId = "123456789012"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_organization_admin_account
@@ -6080,16 +7285,16 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' When you use the
 #' [`enable_security_hub`][securityhub_enable_security_hub] operation to
 #' enable Security Hub, you also automatically enable the following
-#' standards.
+#' standards:
 #' 
-#' -   CIS Amazon Web Services Foundations
+#' -   Center for Internet Security (CIS) Amazon Web Services Foundations
+#'     Benchmark v1.2.0
 #' 
 #' -   Amazon Web Services Foundational Security Best Practices
 #' 
-#' You do not enable the Payment Card Industry Data Security Standard (PCI
-#' DSS) standard.
+#' Other standards are not automatically enabled.
 #' 
-#' To not enable the automatically enabled standards, set
+#' To opt out of automatically enabled standards, set
 #' `EnableDefaultStandards` to `false`.
 #' 
 #' After you enable Security Hub, to enable a standard, use the
@@ -6103,7 +7308,8 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' in the *Security Hub User Guide*.
 #'
 #' @usage
-#' securityhub_enable_security_hub(Tags, EnableDefaultStandards)
+#' securityhub_enable_security_hub(Tags, EnableDefaultStandards,
+#'   ControlFindingGenerator)
 #'
 #' @param Tags The tags to add to the hub resource when you enable Security Hub.
 #' @param EnableDefaultStandards Whether to enable the security standards that Security Hub has
@@ -6111,6 +7317,20 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' `EnableDefaultStandards`, it is set to `true`. To not enable the
 #' automatically enabled standards, set `EnableDefaultStandards` to
 #' `false`.
+#' @param ControlFindingGenerator This field, used when enabling Security Hub, specifies whether the
+#' calling account has consolidated control findings turned on. If the
+#' value for this field is set to `SECURITY_CONTROL`, Security Hub
+#' generates a single finding for a control check even when the check
+#' applies to multiple enabled standards.
+#' 
+#' If the value for this field is set to `STANDARD_CONTROL`, Security Hub
+#' generates separate findings for a control check when the check applies
+#' to multiple enabled standards.
+#' 
+#' The value for this field in a member account matches the value in the
+#' administrator account. For accounts that aren't part of an organization,
+#' the default value of this field is `SECURITY_CONTROL` if you enabled
+#' Security Hub on or after February 23, 2023.
 #'
 #' @return
 #' An empty list.
@@ -6121,23 +7341,40 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   EnableDefaultStandards = TRUE|FALSE
+#'   EnableDefaultStandards = TRUE|FALSE,
+#'   ControlFindingGenerator = "STANDARD_CONTROL"|"SECURITY_CONTROL"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example activates the Security Hub service in the
+#' # requesting AWS account. The service is activated in the current AWS
+#' # Region or the Region that you specify in the request. Some standards are
+#' # automatically turned on in your account unless you opt out. To determine
+#' # which standards are automatically turned on, see the Security Hub
+#' # documentation.
+#' svc$enable_security_hub(
+#'   EnableDefaultStandards = TRUE,
+#'   Tags = list(
+#'     Department = "Security"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_enable_security_hub
 #'
 #' @aliases securityhub_enable_security_hub
-securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards = NULL) {
+securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards = NULL, ControlFindingGenerator = NULL) {
   op <- new_operation(
     name = "EnableSecurityHub",
     http_method = "POST",
     http_path = "/accounts",
     paginator = list()
   )
-  input <- .securityhub$enable_security_hub_input(Tags = Tags, EnableDefaultStandards = EnableDefaultStandards)
+  input <- .securityhub$enable_security_hub_input(Tags = Tags, EnableDefaultStandards = EnableDefaultStandards, ControlFindingGenerator = ControlFindingGenerator)
   output <- .securityhub$enable_security_hub_output()
   config <- get_config()
   svc <- .securityhub$service(config)
@@ -6179,6 +7416,13 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 #' ```
 #' svc$get_administrator_account()
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example provides details about the Security Hub
+#' # administrator account for the requesting member account.
+#' svc$get_administrator_account()
+#' }
 #'
 #' @keywords internal
 #'
@@ -6254,6 +7498,17 @@ securityhub_get_administrator_account <- function() {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of Security Hub standards that are
+#' # currently enabled in your account.
+#' svc$get_enabled_standards(
+#'   StandardsSubscriptionArns = list(
+#'     "arn:aws:securityhub:us-west-1:123456789012:subscription/pci-dss/v/3.2.1"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_enabled_standards
@@ -6308,6 +7563,15 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns cross-Region aggregation details for the
+#' # requesting account.
+#' svc$get_finding_aggregator(
+#'   FindingAggregatorArn = "arn:aws:securityhub:us-east-1:123456789012:findin..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_finding_aggregator
@@ -6329,6 +7593,152 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
   return(response)
 }
 .securityhub$operations$get_finding_aggregator <- securityhub_get_finding_aggregator
+
+#' Returns history for a Security Hub finding in the last 90 days
+#'
+#' @description
+#' Returns history for a Security Hub finding in the last 90 days. The
+#' history includes changes made to any fields in the Amazon Web Services
+#' Security Finding Format (ASFF).
+#'
+#' @usage
+#' securityhub_get_finding_history(FindingIdentifier, StartTime, EndTime,
+#'   NextToken, MaxResults)
+#'
+#' @param FindingIdentifier &#91;required&#93; 
+#' @param StartTime An ISO 8601-formatted timestamp that indicates the start time of the
+#' requested finding history. A correctly formatted example is
+#' `2020-05-21T20:16:34.724Z`. The value cannot contain spaces, and date
+#' and time should be separated by `T`. For more information, see [RFC 3339
+#' section 5.6, Internet Date/Time
+#' Format](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
+#' 
+#' If you provide values for both `StartTime` and `EndTime`, Security Hub
+#' returns finding history for the specified time period. If you provide a
+#' value for `StartTime` but not for `EndTime`, Security Hub returns
+#' finding history from the `StartTime` to the time at which the API is
+#' called. If you provide a value for `EndTime` but not for `StartTime`,
+#' Security Hub returns finding history from the
+#' [CreatedAt](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt)
+#' timestamp of the finding to the `EndTime`. If you provide neither
+#' `StartTime` nor `EndTime`, Security Hub returns finding history from the
+#' CreatedAt timestamp of the finding to the time at which the API is
+#' called. In all of these scenarios, the response is limited to 100
+#' results, and the maximum time period is limited to 90 days.
+#' @param EndTime An ISO 8601-formatted timestamp that indicates the end time of the
+#' requested finding history. A correctly formatted example is
+#' `2020-05-21T20:16:34.724Z`. The value cannot contain spaces, and date
+#' and time should be separated by `T`. For more information, see [RFC 3339
+#' section 5.6, Internet Date/Time
+#' Format](https://www.rfc-editor.org/rfc/rfc3339#section-5.6).
+#' 
+#' If you provide values for both `StartTime` and `EndTime`, Security Hub
+#' returns finding history for the specified time period. If you provide a
+#' value for `StartTime` but not for `EndTime`, Security Hub returns
+#' finding history from the `StartTime` to the time at which the API is
+#' called. If you provide a value for `EndTime` but not for `StartTime`,
+#' Security Hub returns finding history from the
+#' [CreatedAt](https://docs.aws.amazon.com/securityhub/1.0/APIReference/API_AwsSecurityFindingFilters.html#securityhub-Type-AwsSecurityFindingFilters-CreatedAt)
+#' timestamp of the finding to the `EndTime`. If you provide neither
+#' `StartTime` nor `EndTime`, Security Hub returns finding history from the
+#' CreatedAt timestamp of the finding to the time at which the API is
+#' called. In all of these scenarios, the response is limited to 100
+#' results, and the maximum time period is limited to 90 days.
+#' @param NextToken A token for pagination purposes. Provide `NULL` as the initial value. In
+#' subsequent requests, provide the token included in the response to get
+#' up to an additional 100 results of finding history. If you don’t provide
+#' `NextToken`, Security Hub returns up to 100 results of finding history
+#' for each request.
+#' @param MaxResults The maximum number of results to be returned. If you don’t provide it,
+#' Security Hub returns up to 100 results of finding history.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Records = list(
+#'     list(
+#'       FindingIdentifier = list(
+#'         Id = "string",
+#'         ProductArn = "string"
+#'       ),
+#'       UpdateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       FindingCreated = TRUE|FALSE,
+#'       UpdateSource = list(
+#'         Type = "BATCH_UPDATE_FINDINGS"|"BATCH_IMPORT_FINDINGS",
+#'         Identity = "string"
+#'       ),
+#'       Updates = list(
+#'         list(
+#'           UpdatedField = "string",
+#'           OldValue = "string",
+#'           NewValue = "string"
+#'         )
+#'       ),
+#'       NextToken = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_finding_history(
+#'   FindingIdentifier = list(
+#'     Id = "string",
+#'     ProductArn = "string"
+#'   ),
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example retrieves the history of the specified finding
+#' # during the specified time frame. If the time frame permits, Security Hub
+#' # returns finding history for the last 90 days.
+#' svc$get_finding_history(
+#'   EndTime = "2021-09-31T15:53:35.573Z",
+#'   FindingIdentifier = list(
+#'     Id = "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+#'     ProductArn = "arn:aws:securityhub:us-west-2:123456789012:product/123456789012/default"
+#'   ),
+#'   MaxResults = 2L,
+#'   StartTime = "2021-09-30T15:53:35.573Z"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_finding_history
+#'
+#' @aliases securityhub_get_finding_history
+securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL, EndTime = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetFindingHistory",
+    http_method = "POST",
+    http_path = "/findingHistory/get",
+    paginator = list()
+  )
+  input <- .securityhub$get_finding_history_input(FindingIdentifier = FindingIdentifier, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$get_finding_history_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_finding_history <- securityhub_get_finding_history
 
 #' Returns a list of findings that match the specified criteria
 #'
@@ -6871,6 +8281,9 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'                 HttpPutResponseHopLimit = 123,
 #'                 HttpTokens = "string",
 #'                 InstanceMetadataTags = "string"
+#'               ),
+#'               Monitoring = list(
+#'                 State = "string"
 #'               )
 #'             ),
 #'             AwsEc2NetworkInterface = list(
@@ -7328,6 +8741,16 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'               BucketVersioningConfiguration = list(
 #'                 IsMfaDeleteEnabled = TRUE|FALSE,
 #'                 Status = "string"
+#'               ),
+#'               ObjectLockConfiguration = list(
+#'                 ObjectLockEnabled = "string",
+#'                 Rule = list(
+#'                   DefaultRetention = list(
+#'                     Days = 123,
+#'                     Mode = "string",
+#'                     Years = 123
+#'                   )
+#'                 )
 #'               )
 #'             ),
 #'             AwsS3AccountPublicAccessBlock = list(
@@ -8120,7 +9543,11 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'                 ),
 #'                 VpcId = "string"
 #'               ),
-#'               Version = "string"
+#'               Version = "string",
+#'               Architectures = list(
+#'                 "string"
+#'               ),
+#'               PackageType = "string"
 #'             ),
 #'             AwsLambdaLayerVersion = list(
 #'               Version = 123,
@@ -9137,7 +10564,8 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'                 ),
 #'                 SubnetIds = list(
 #'                   "string"
-#'                 )
+#'                 ),
+#'                 EndpointPublicAccess = TRUE|FALSE
 #'               ),
 #'               RoleArn = "string",
 #'               Version = "string",
@@ -9609,6 +11037,552 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'                   Privileged = TRUE|FALSE
 #'                 )
 #'               )
+#'             ),
+#'             AwsBackupBackupVault = list(
+#'               BackupVaultArn = "string",
+#'               BackupVaultName = "string",
+#'               EncryptionKeyArn = "string",
+#'               Notifications = list(
+#'                 BackupVaultEvents = list(
+#'                   "string"
+#'                 ),
+#'                 SnsTopicArn = "string"
+#'               ),
+#'               AccessPolicy = "string"
+#'             ),
+#'             AwsBackupBackupPlan = list(
+#'               BackupPlan = list(
+#'                 BackupPlanName = "string",
+#'                 AdvancedBackupSettings = list(
+#'                   list(
+#'                     BackupOptions = list(
+#'                       "string"
+#'                     ),
+#'                     ResourceType = "string"
+#'                   )
+#'                 ),
+#'                 BackupPlanRule = list(
+#'                   list(
+#'                     TargetBackupVault = "string",
+#'                     StartWindowMinutes = 123,
+#'                     ScheduleExpression = "string",
+#'                     RuleName = "string",
+#'                     RuleId = "string",
+#'                     EnableContinuousBackup = TRUE|FALSE,
+#'                     CompletionWindowMinutes = 123,
+#'                     CopyActions = list(
+#'                       list(
+#'                         DestinationBackupVaultArn = "string",
+#'                         Lifecycle = list(
+#'                           DeleteAfterDays = 123,
+#'                           MoveToColdStorageAfterDays = 123
+#'                         )
+#'                       )
+#'                     ),
+#'                     Lifecycle = list(
+#'                       DeleteAfterDays = 123,
+#'                       MoveToColdStorageAfterDays = 123
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               BackupPlanArn = "string",
+#'               BackupPlanId = "string",
+#'               VersionId = "string"
+#'             ),
+#'             AwsBackupRecoveryPoint = list(
+#'               BackupSizeInBytes = 123,
+#'               BackupVaultArn = "string",
+#'               BackupVaultName = "string",
+#'               CalculatedLifecycle = list(
+#'                 DeleteAt = "string",
+#'                 MoveToColdStorageAt = "string"
+#'               ),
+#'               CompletionDate = "string",
+#'               CreatedBy = list(
+#'                 BackupPlanArn = "string",
+#'                 BackupPlanId = "string",
+#'                 BackupPlanVersion = "string",
+#'                 BackupRuleId = "string"
+#'               ),
+#'               CreationDate = "string",
+#'               EncryptionKeyArn = "string",
+#'               IamRoleArn = "string",
+#'               IsEncrypted = TRUE|FALSE,
+#'               LastRestoreTime = "string",
+#'               Lifecycle = list(
+#'                 DeleteAfterDays = 123,
+#'                 MoveToColdStorageAfterDays = 123
+#'               ),
+#'               RecoveryPointArn = "string",
+#'               ResourceArn = "string",
+#'               ResourceType = "string",
+#'               SourceBackupVaultArn = "string",
+#'               Status = "string",
+#'               StatusMessage = "string",
+#'               StorageClass = "string"
+#'             ),
+#'             AwsEc2LaunchTemplate = list(
+#'               LaunchTemplateName = "string",
+#'               Id = "string",
+#'               LaunchTemplateData = list(
+#'                 BlockDeviceMappingSet = list(
+#'                   list(
+#'                     DeviceName = "string",
+#'                     Ebs = list(
+#'                       DeleteOnTermination = TRUE|FALSE,
+#'                       Encrypted = TRUE|FALSE,
+#'                       Iops = 123,
+#'                       KmsKeyId = "string",
+#'                       SnapshotId = "string",
+#'                       Throughput = 123,
+#'                       VolumeSize = 123,
+#'                       VolumeType = "string"
+#'                     ),
+#'                     NoDevice = "string",
+#'                     VirtualName = "string"
+#'                   )
+#'                 ),
+#'                 CapacityReservationSpecification = list(
+#'                   CapacityReservationPreference = "string",
+#'                   CapacityReservationTarget = list(
+#'                     CapacityReservationId = "string",
+#'                     CapacityReservationResourceGroupArn = "string"
+#'                   )
+#'                 ),
+#'                 CpuOptions = list(
+#'                   CoreCount = 123,
+#'                   ThreadsPerCore = 123
+#'                 ),
+#'                 CreditSpecification = list(
+#'                   CpuCredits = "string"
+#'                 ),
+#'                 DisableApiStop = TRUE|FALSE,
+#'                 DisableApiTermination = TRUE|FALSE,
+#'                 EbsOptimized = TRUE|FALSE,
+#'                 ElasticGpuSpecificationSet = list(
+#'                   list(
+#'                     Type = "string"
+#'                   )
+#'                 ),
+#'                 ElasticInferenceAcceleratorSet = list(
+#'                   list(
+#'                     Count = 123,
+#'                     Type = "string"
+#'                   )
+#'                 ),
+#'                 EnclaveOptions = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 HibernationOptions = list(
+#'                   Configured = TRUE|FALSE
+#'                 ),
+#'                 IamInstanceProfile = list(
+#'                   Arn = "string",
+#'                   Name = "string"
+#'                 ),
+#'                 ImageId = "string",
+#'                 InstanceInitiatedShutdownBehavior = "string",
+#'                 InstanceMarketOptions = list(
+#'                   MarketType = "string",
+#'                   SpotOptions = list(
+#'                     BlockDurationMinutes = 123,
+#'                     InstanceInterruptionBehavior = "string",
+#'                     MaxPrice = "string",
+#'                     SpotInstanceType = "string",
+#'                     ValidUntil = "string"
+#'                   )
+#'                 ),
+#'                 InstanceRequirements = list(
+#'                   AcceleratorCount = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   AcceleratorManufacturers = list(
+#'                     "string"
+#'                   ),
+#'                   AcceleratorNames = list(
+#'                     "string"
+#'                   ),
+#'                   AcceleratorTotalMemoryMiB = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   AcceleratorTypes = list(
+#'                     "string"
+#'                   ),
+#'                   BareMetal = "string",
+#'                   BaselineEbsBandwidthMbps = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   BurstablePerformance = "string",
+#'                   CpuManufacturers = list(
+#'                     "string"
+#'                   ),
+#'                   ExcludedInstanceTypes = list(
+#'                     "string"
+#'                   ),
+#'                   InstanceGenerations = list(
+#'                     "string"
+#'                   ),
+#'                   LocalStorage = "string",
+#'                   LocalStorageTypes = list(
+#'                     "string"
+#'                   ),
+#'                   MemoryGiBPerVCpu = list(
+#'                     Max = 123.0,
+#'                     Min = 123.0
+#'                   ),
+#'                   MemoryMiB = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   NetworkInterfaceCount = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   ),
+#'                   OnDemandMaxPricePercentageOverLowestPrice = 123,
+#'                   RequireHibernateSupport = TRUE|FALSE,
+#'                   SpotMaxPricePercentageOverLowestPrice = 123,
+#'                   TotalLocalStorageGB = list(
+#'                     Max = 123.0,
+#'                     Min = 123.0
+#'                   ),
+#'                   VCpuCount = list(
+#'                     Max = 123,
+#'                     Min = 123
+#'                   )
+#'                 ),
+#'                 InstanceType = "string",
+#'                 KernelId = "string",
+#'                 KeyName = "string",
+#'                 LicenseSet = list(
+#'                   list(
+#'                     LicenseConfigurationArn = "string"
+#'                   )
+#'                 ),
+#'                 MaintenanceOptions = list(
+#'                   AutoRecovery = "string"
+#'                 ),
+#'                 MetadataOptions = list(
+#'                   HttpEndpoint = "string",
+#'                   HttpProtocolIpv6 = "string",
+#'                   HttpTokens = "string",
+#'                   HttpPutResponseHopLimit = 123,
+#'                   InstanceMetadataTags = "string"
+#'                 ),
+#'                 Monitoring = list(
+#'                   Enabled = TRUE|FALSE
+#'                 ),
+#'                 NetworkInterfaceSet = list(
+#'                   list(
+#'                     AssociateCarrierIpAddress = TRUE|FALSE,
+#'                     AssociatePublicIpAddress = TRUE|FALSE,
+#'                     DeleteOnTermination = TRUE|FALSE,
+#'                     Description = "string",
+#'                     DeviceIndex = 123,
+#'                     Groups = list(
+#'                       "string"
+#'                     ),
+#'                     InterfaceType = "string",
+#'                     Ipv4PrefixCount = 123,
+#'                     Ipv4Prefixes = list(
+#'                       list(
+#'                         Ipv4Prefix = "string"
+#'                       )
+#'                     ),
+#'                     Ipv6AddressCount = 123,
+#'                     Ipv6Addresses = list(
+#'                       list(
+#'                         Ipv6Address = "string"
+#'                       )
+#'                     ),
+#'                     Ipv6PrefixCount = 123,
+#'                     Ipv6Prefixes = list(
+#'                       list(
+#'                         Ipv6Prefix = "string"
+#'                       )
+#'                     ),
+#'                     NetworkCardIndex = 123,
+#'                     NetworkInterfaceId = "string",
+#'                     PrivateIpAddress = "string",
+#'                     PrivateIpAddresses = list(
+#'                       list(
+#'                         Primary = TRUE|FALSE,
+#'                         PrivateIpAddress = "string"
+#'                       )
+#'                     ),
+#'                     SecondaryPrivateIpAddressCount = 123,
+#'                     SubnetId = "string"
+#'                   )
+#'                 ),
+#'                 Placement = list(
+#'                   Affinity = "string",
+#'                   AvailabilityZone = "string",
+#'                   GroupName = "string",
+#'                   HostId = "string",
+#'                   HostResourceGroupArn = "string",
+#'                   PartitionNumber = 123,
+#'                   SpreadDomain = "string",
+#'                   Tenancy = "string"
+#'                 ),
+#'                 PrivateDnsNameOptions = list(
+#'                   EnableResourceNameDnsAAAARecord = TRUE|FALSE,
+#'                   EnableResourceNameDnsARecord = TRUE|FALSE,
+#'                   HostnameType = "string"
+#'                 ),
+#'                 RamDiskId = "string",
+#'                 SecurityGroupIdSet = list(
+#'                   "string"
+#'                 ),
+#'                 SecurityGroupSet = list(
+#'                   "string"
+#'                 ),
+#'                 UserData = "string"
+#'               ),
+#'               DefaultVersionNumber = 123,
+#'               LatestVersionNumber = 123
+#'             ),
+#'             AwsSageMakerNotebookInstance = list(
+#'               AcceleratorTypes = list(
+#'                 "string"
+#'               ),
+#'               AdditionalCodeRepositories = list(
+#'                 "string"
+#'               ),
+#'               DefaultCodeRepository = "string",
+#'               DirectInternetAccess = "string",
+#'               FailureReason = "string",
+#'               InstanceMetadataServiceConfiguration = list(
+#'                 MinimumInstanceMetadataServiceVersion = "string"
+#'               ),
+#'               InstanceType = "string",
+#'               KmsKeyId = "string",
+#'               NetworkInterfaceId = "string",
+#'               NotebookInstanceArn = "string",
+#'               NotebookInstanceLifecycleConfigName = "string",
+#'               NotebookInstanceName = "string",
+#'               NotebookInstanceStatus = "string",
+#'               PlatformIdentifier = "string",
+#'               RoleArn = "string",
+#'               RootAccess = "string",
+#'               SecurityGroups = list(
+#'                 "string"
+#'               ),
+#'               SubnetId = "string",
+#'               Url = "string",
+#'               VolumeSizeInGB = 123
+#'             ),
+#'             AwsWafv2WebAcl = list(
+#'               Name = "string",
+#'               Arn = "string",
+#'               ManagedbyFirewallManager = TRUE|FALSE,
+#'               Id = "string",
+#'               Capacity = 123,
+#'               CaptchaConfig = list(
+#'                 ImmunityTimeProperty = list(
+#'                   ImmunityTime = 123
+#'                 )
+#'               ),
+#'               DefaultAction = list(
+#'                 Allow = list(
+#'                   CustomRequestHandling = list(
+#'                     InsertHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 ),
+#'                 Block = list(
+#'                   CustomResponse = list(
+#'                     CustomResponseBodyKey = "string",
+#'                     ResponseCode = 123,
+#'                     ResponseHeaders = list(
+#'                       list(
+#'                         Name = "string",
+#'                         Value = "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               ),
+#'               Description = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Allow = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Block = list(
+#'                       CustomResponse = list(
+#'                         CustomResponseBodyKey = "string",
+#'                         ResponseCode = 123,
+#'                         ResponseHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Captcha = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Count = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Name = "string",
+#'                   OverrideAction = "string",
+#'                   Priority = 123,
+#'                   VisibilityConfig = list(
+#'                     CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                     MetricName = "string",
+#'                     SampledRequestsEnabled = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               VisibilityConfig = list(
+#'                 CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                 MetricName = "string",
+#'                 SampledRequestsEnabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             AwsWafv2RuleGroup = list(
+#'               Capacity = 123,
+#'               Description = "string",
+#'               Id = "string",
+#'               Name = "string",
+#'               Arn = "string",
+#'               Rules = list(
+#'                 list(
+#'                   Action = list(
+#'                     Allow = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Block = list(
+#'                       CustomResponse = list(
+#'                         CustomResponseBodyKey = "string",
+#'                         ResponseCode = 123,
+#'                         ResponseHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Captcha = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     ),
+#'                     Count = list(
+#'                       CustomRequestHandling = list(
+#'                         InsertHeaders = list(
+#'                           list(
+#'                             Name = "string",
+#'                             Value = "string"
+#'                           )
+#'                         )
+#'                       )
+#'                     )
+#'                   ),
+#'                   Name = "string",
+#'                   OverrideAction = "string",
+#'                   Priority = 123,
+#'                   VisibilityConfig = list(
+#'                     CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                     MetricName = "string",
+#'                     SampledRequestsEnabled = TRUE|FALSE
+#'                   )
+#'                 )
+#'               ),
+#'               Scope = "string",
+#'               VisibilityConfig = list(
+#'                 CloudWatchMetricsEnabled = TRUE|FALSE,
+#'                 MetricName = "string",
+#'                 SampledRequestsEnabled = TRUE|FALSE
+#'               )
+#'             ),
+#'             AwsEc2RouteTable = list(
+#'               AssociationSet = list(
+#'                 list(
+#'                   AssociationState = list(
+#'                     State = "string",
+#'                     StatusMessage = "string"
+#'                   ),
+#'                   GatewayId = "string",
+#'                   Main = TRUE|FALSE,
+#'                   RouteTableAssociationId = "string",
+#'                   RouteTableId = "string",
+#'                   SubnetId = "string"
+#'                 )
+#'               ),
+#'               OwnerId = "string",
+#'               PropagatingVgwSet = list(
+#'                 list(
+#'                   GatewayId = "string"
+#'                 )
+#'               ),
+#'               RouteTableId = "string",
+#'               RouteSet = list(
+#'                 list(
+#'                   CarrierGatewayId = "string",
+#'                   CoreNetworkArn = "string",
+#'                   DestinationCidrBlock = "string",
+#'                   DestinationIpv6CidrBlock = "string",
+#'                   DestinationPrefixListId = "string",
+#'                   EgressOnlyInternetGatewayId = "string",
+#'                   GatewayId = "string",
+#'                   InstanceId = "string",
+#'                   InstanceOwnerId = "string",
+#'                   LocalGatewayId = "string",
+#'                   NatGatewayId = "string",
+#'                   NetworkInterfaceId = "string",
+#'                   Origin = "string",
+#'                   State = "string",
+#'                   TransitGatewayId = "string",
+#'                   VpcPeeringConnectionId = "string"
+#'                 )
+#'               ),
+#'               VpcId = "string"
 #'             )
 #'           )
 #'         )
@@ -9622,6 +11596,12 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'           list(
 #'             ReasonCode = "string",
 #'             Description = "string"
+#'           )
+#'         ),
+#'         SecurityControlId = "string",
+#'         AssociatedStandards = list(
+#'           list(
+#'             StandardsId = "string"
 #'           )
 #'         )
 #'       ),
@@ -9653,7 +11633,11 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'               Release = "string",
 #'               Architecture = "string",
 #'               PackageManager = "string",
-#'               FilePath = "string"
+#'               FilePath = "string",
+#'               FixedInVersion = "string",
+#'               Remediation = "string",
+#'               SourceLayerHash = "string",
+#'               SourceLayerArn = "string"
 #'             )
 #'           ),
 #'           Cvss = list(
@@ -9682,7 +11666,8 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'           ),
 #'           ReferenceUrls = list(
 #'             "string"
-#'           )
+#'           ),
+#'           FixAvailable = "YES"|"NO"|"PARTIAL"
 #'         )
 #'       ),
 #'       PatchSummary = list(
@@ -10453,6 +12438,18 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'       list(
 #'         Value = TRUE|FALSE
 #'       )
+#'     ),
+#'     ComplianceSecurityControlId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
 #'     )
 #'   ),
 #'   SortCriteria = list(
@@ -10465,6 +12462,23 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns a filtered and sorted list of Security Hub
+#' # findings.
+#' svc$get_findings(
+#'   Filters = list(
+#'     AwsAccountId = list(
+#'       list(
+#'         Comparison = "PREFIX",
+#'         Value = "123456789012"
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 1L
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -10523,6 +12537,15 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #'   InsightArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns the results of the Security Hub insight
+#' # specified by the insight ARN.
+#' svc$get_insight_results(
+#'   InsightArn = "arn:aws:securityhub:us-west-1:123456789012:insight/12345678..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -11194,6 +13217,18 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'           list(
 #'             Value = TRUE|FALSE
 #'           )
+#'         ),
+#'         ComplianceSecurityControlId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
+#'         ),
+#'         ComplianceAssociatedStandardsId = list(
+#'           list(
+#'             Value = "string",
+#'             Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'           )
 #'         )
 #'       ),
 #'       GroupByAttribute = "string"
@@ -11213,6 +13248,17 @@ securityhub_get_insight_results <- function(InsightArn) {
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns details of the Security Hub insight with
+#' # the specified ARN.
+#' svc$get_insights(
+#'   InsightArns = list(
+#'     "arn:aws:securityhub:us-west-1:123456789012:insight/123456789012/custom..."
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -11260,6 +13306,16 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #' ```
 #' svc$get_invitations_count()
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns a count of invitations that the Security
+#' # Hub administrator sent to the current member account, not including the
+#' # currently accepted invitation.
+#' # 
+#' # 
+#' svc$get_invitations_count()
+#' }
 #'
 #' @keywords internal
 #'
@@ -11409,6 +13465,21 @@ securityhub_get_master_account <- function() {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns details for the Security Hub member
+#' # accounts with the specified AWS account IDs. An administrator account
+#' # may be the delegated Security Hub administrator account for an
+#' # organization or an administrator account that enabled Security Hub
+#' # manually. The Security Hub administrator must call this operation.
+#' svc$get_members(
+#'   AccountIds = list(
+#'     "444455556666",
+#'     "777788889999"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_get_members
@@ -11477,6 +13548,20 @@ securityhub_get_members <- function(AccountIds) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example invites the specified AWS accounts to become
+#' # member accounts associated with the calling Security Hub administrator
+#' # account. You only use this operation to invite accounts that don't
+#' # belong to an AWS Organizations organization.
+#' svc$invite_members(
+#'   AccountIds = list(
+#'     "111122223333",
+#'     "444455556666"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_invite_members
@@ -11537,6 +13622,14 @@ securityhub_invite_members <- function(AccountIds) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of subscription Amazon Resource
+#' # Names (ARNs) for the product integrations that you have currently
+#' # enabled in Security Hub.
+#' svc$list_enabled_products_for_import()
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_enabled_products_for_import
@@ -11596,6 +13689,13 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #'   MaxResults = 123
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example disables the specified control in the specified
+#' # security standard.
+#' svc$list_finding_aggregators()
+#' }
 #'
 #' @keywords internal
 #'
@@ -11667,6 +13767,15 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
 #'   NextToken = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of Security Hub member invitations
+#' # sent to the calling AWS account. Only accounts that are invited manually
+#' # use this operation. It's not for use by accounts that are managed
+#' # through AWS Organizations.
+#' svc$list_invitations()
+#' }
 #'
 #' @keywords internal
 #'
@@ -11754,6 +13863,15 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example returns details about member accounts for the
+#' # calling Security Hub administrator account. The response includes member
+#' # accounts that are managed through AWS Organizations and those that were
+#' # invited manually.
+#' svc$list_members()
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_members
@@ -11814,6 +13932,14 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example lists the Security  Hub administrator accounts for
+#' # an organization. Only the organization management account can call this
+#' # operation.
+#' svc$list_organization_admin_accounts()
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_list_organization_admin_accounts
@@ -11835,6 +13961,175 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
   return(response)
 }
 .securityhub$operations$list_organization_admin_accounts <- securityhub_list_organization_admin_accounts
+
+#' Lists all of the security controls that apply to a specified standard
+#'
+#' @description
+#' Lists all of the security controls that apply to a specified standard.
+#'
+#' @usage
+#' securityhub_list_security_control_definitions(StandardsArn, NextToken,
+#'   MaxResults)
+#'
+#' @param StandardsArn The Amazon Resource Name (ARN) of the standard that you want to view
+#' controls for.
+#' @param NextToken Optional pagination parameter.
+#' @param MaxResults An optional parameter that limits the total results of the API response
+#' to the specified number. If this parameter isn't provided in the
+#' request, the results include the first 25 security controls that apply
+#' to the specified standard. The results also include a `NextToken`
+#' parameter that you can use in a subsequent API call to get the next 25
+#' controls. This repeats until all controls for the standard are returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SecurityControlDefinitions = list(
+#'     list(
+#'       SecurityControlId = "string",
+#'       Title = "string",
+#'       Description = "string",
+#'       RemediationUrl = "string",
+#'       SeverityRating = "LOW"|"MEDIUM"|"HIGH"|"CRITICAL",
+#'       CurrentRegionAvailability = "AVAILABLE"|"UNAVAILABLE"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_security_control_definitions(
+#'   StandardsArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example lists security controls that apply to a specified
+#' # Security Hub standard.
+#' svc$list_security_control_definitions(
+#'   MaxResults = 3L,
+#'   NextToken = "NULL",
+#'   StandardsArn = "arn:aws:securityhub:::standards/aws-foundational-security..."
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_security_control_definitions
+#'
+#' @aliases securityhub_list_security_control_definitions
+securityhub_list_security_control_definitions <- function(StandardsArn = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListSecurityControlDefinitions",
+    http_method = "GET",
+    http_path = "/securityControls/definitions",
+    paginator = list()
+  )
+  input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_security_control_definitions_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_security_control_definitions <- securityhub_list_security_control_definitions
+
+#' Specifies whether a control is currently enabled or disabled in each
+#' enabled standard in the calling account
+#'
+#' @description
+#' Specifies whether a control is currently enabled or disabled in each
+#' enabled standard in the calling account.
+#'
+#' @usage
+#' securityhub_list_standards_control_associations(SecurityControlId,
+#'   NextToken, MaxResults)
+#'
+#' @param SecurityControlId &#91;required&#93; The identifier of the control (identified with `SecurityControlId`,
+#' `SecurityControlArn`, or a mix of both parameters) that you want to
+#' determine the enablement status of in each enabled standard.
+#' @param NextToken Optional pagination parameter.
+#' @param MaxResults An optional parameter that limits the total results of the API response
+#' to the specified number. If this parameter isn't provided in the
+#' request, the results include the first 25 standard and control
+#' associations. The results also include a `NextToken` parameter that you
+#' can use in a subsequent API call to get the next 25 associations. This
+#' repeats until all associations for the specified control are returned.
+#' The number of results is limited by the number of supported Security Hub
+#' standards that you've enabled in the calling account.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   StandardsControlAssociationSummaries = list(
+#'     list(
+#'       StandardsArn = "string",
+#'       SecurityControlId = "string",
+#'       SecurityControlArn = "string",
+#'       AssociationStatus = "ENABLED"|"DISABLED",
+#'       RelatedRequirements = list(
+#'         "string"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedReason = "string",
+#'       StandardsControlTitle = "string",
+#'       StandardsControlDescription = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_standards_control_associations(
+#'   SecurityControlId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example specifies whether a control is currently enabled
+#' # or disabled in each enabled standard in the calling account. The
+#' # response also provides other details about the control.
+#' svc$list_standards_control_associations(
+#'   SecurityControlId = "S3.1"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_standards_control_associations
+#'
+#' @aliases securityhub_list_standards_control_associations
+securityhub_list_standards_control_associations <- function(SecurityControlId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListStandardsControlAssociations",
+    http_method = "GET",
+    http_path = "/associations",
+    paginator = list()
+  )
+  input <- .securityhub$list_standards_control_associations_input(SecurityControlId = SecurityControlId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .securityhub$list_standards_control_associations_output()
+  config <- get_config()
+  svc <- .securityhub$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_standards_control_associations <- securityhub_list_standards_control_associations
 
 #' Returns a list of tags associated with a resource
 #'
@@ -11862,6 +14157,15 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 #'   ResourceArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example returns a list of tags associated with the
+#' # specified resource.
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -11911,6 +14215,19 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example adds the 'Department' and 'Area' tags to the
+#' # specified resource.
+#' svc$tag_resource(
+#'   ResourceArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default",
+#'   Tags = list(
+#'     Area = "USMidwest",
+#'     Department = "Operations"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_tag_resource
@@ -11957,6 +14274,18 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example removes the 'Department' tag from the specified
+#' # resource.
+#' svc$untag_resource(
+#'   ResourceArn = "arn:aws:securityhub:us-west-1:123456789012:hub/default",
+#'   TagKeys = list(
+#'     "Department"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12005,6 +14334,18 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
 #'   Description = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the name and description of a custom
+#' # action target in Security Hub. You can create custom actions to
+#' # automatically respond to Security Hub findings using Amazon EventBridge.
+#' svc$update_action_target(
+#'   ActionTargetArn = "arn:aws:securityhub:us-west-1:123456789012:action/custom/Remediation",
+#'   Description = "Sends specified findings to customer service chat",
+#'   Name = "Chat custom action"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12071,11 +14412,11 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'     Regions listed in the `Regions` parameter. Security Hub does not
 #'     automatically aggregate findings from new Regions.
 #' @param Regions If `RegionLinkingMode` is `ALL_REGIONS_EXCEPT_SPECIFIED`, then this is a
-#' comma-separated list of Regions that do not aggregate findings to the
+#' space-separated list of Regions that do not aggregate findings to the
 #' aggregation Region.
 #' 
 #' If `RegionLinkingMode` is `SPECIFIED_REGIONS`, then this is a
-#' comma-separated list of Regions that do aggregate findings to the
+#' space-separated list of Regions that do aggregate findings to the
 #' aggregation Region.
 #'
 #' @return
@@ -12101,6 +14442,22 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the cross-Region aggregation
+#' # configuration. You use this operation to change the list of linked
+#' # Regions and the treatment of new Regions. However, you cannot use this
+#' # operation to change the aggregation Region.
+#' svc$update_finding_aggregator(
+#'   FindingAggregatorArn = "arn:aws:securityhub:us-east-1:123456789012:findin...",
+#'   RegionLinkingMode = "SPECIFIED_REGIONS",
+#'   Regions = list(
+#'     "us-west-1",
+#'     "us-west-2"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -12768,6 +15125,18 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
 #'     Sample = list(
 #'       list(
 #'         Value = TRUE|FALSE
+#'       )
+#'     ),
+#'     ComplianceSecurityControlId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
 #'       )
 #'     )
 #'   ),
@@ -13443,11 +15812,46 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 #'       list(
 #'         Value = TRUE|FALSE
 #'       )
+#'     ),
+#'     ComplianceSecurityControlId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
+#'     ),
+#'     ComplianceAssociatedStandardsId = list(
+#'       list(
+#'         Value = "string",
+#'         Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
+#'       )
 #'     )
 #'   ),
 #'   GroupByAttribute = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates the specified Security Hub insight.
+#' svc$update_insight(
+#'   Filters = list(
+#'     ResourceType = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "AwsIamRole"
+#'       )
+#'     ),
+#'     SeverityLabel = list(
+#'       list(
+#'         Comparison = "EQUALS",
+#'         Value = "HIGH"
+#'       )
+#'     )
+#'   ),
+#'   InsightArn = "arn:aws:securityhub:us-west-1:123456789012:insight/12345678...",
+#'   Name = "High severity role findings"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -13510,6 +15914,16 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example updates the configuration for an organization so
+#' # that Security Hub is automatically activated for new member accounts.
+#' # Only the Security Hub administrator account can call this operation.
+#' svc$update_organization_configuration(
+#'   AutoEnable = TRUE
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_organization_configuration
@@ -13538,7 +15952,8 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
 #' Updates configuration options for Security Hub.
 #'
 #' @usage
-#' securityhub_update_security_hub_configuration(AutoEnableControls)
+#' securityhub_update_security_hub_configuration(AutoEnableControls,
+#'   ControlFindingGenerator)
 #'
 #' @param AutoEnableControls Whether to automatically enable new controls when they are added to
 #' standards that are enabled.
@@ -13546,6 +15961,17 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
 #' By default, this is set to `true`, and new controls are enabled
 #' automatically. To not automatically enable new controls, set this to
 #' `false`.
+#' @param ControlFindingGenerator Updates whether the calling account has consolidated control findings
+#' turned on. If the value for this field is set to `SECURITY_CONTROL`,
+#' Security Hub generates a single finding for a control check even when
+#' the check applies to multiple enabled standards.
+#' 
+#' If the value for this field is set to `STANDARD_CONTROL`, Security Hub
+#' generates separate findings for a control check when the check applies
+#' to multiple enabled standards.
+#' 
+#' For accounts that are part of an organization, this value can only be
+#' updated in the administrator account.
 #'
 #' @return
 #' An empty list.
@@ -13553,23 +15979,35 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
 #' @section Request syntax:
 #' ```
 #' svc$update_security_hub_configuration(
-#'   AutoEnableControls = TRUE|FALSE
+#'   AutoEnableControls = TRUE|FALSE,
+#'   ControlFindingGenerator = "STANDARD_CONTROL"|"SECURITY_CONTROL"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example updates Security Hub settings to turn on
+#' # consolidated control findings, and to automatically enable new controls
+#' # in enabled standards.
+#' svc$update_security_hub_configuration(
+#'   AutoEnableControls = TRUE,
+#'   ControlFindingGenerator = "SECURITY_CONTROL"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
 #' @rdname securityhub_update_security_hub_configuration
 #'
 #' @aliases securityhub_update_security_hub_configuration
-securityhub_update_security_hub_configuration <- function(AutoEnableControls = NULL) {
+securityhub_update_security_hub_configuration <- function(AutoEnableControls = NULL, ControlFindingGenerator = NULL) {
   op <- new_operation(
     name = "UpdateSecurityHubConfiguration",
     http_method = "PATCH",
     http_path = "/accounts",
     paginator = list()
   )
-  input <- .securityhub$update_security_hub_configuration_input(AutoEnableControls = AutoEnableControls)
+  input <- .securityhub$update_security_hub_configuration_input(AutoEnableControls = AutoEnableControls, ControlFindingGenerator = ControlFindingGenerator)
   output <- .securityhub$update_security_hub_configuration_output()
   config <- get_config()
   svc <- .securityhub$service(config)
@@ -13606,6 +16044,17 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
 #'   DisabledReason = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example disables the specified control in the specified
+#' # security standard.
+#' svc$update_standards_control(
+#'   ControlStatus = "DISABLED",
+#'   DisabledReason = "Not applicable to my service",
+#'   StandardsControlArn = "arn:aws:securityhub:us-west-1:123456789012:control..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'

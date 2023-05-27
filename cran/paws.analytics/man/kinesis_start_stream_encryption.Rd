@@ -5,10 +5,15 @@
 \title{Enables or updates server-side encryption using an Amazon Web Services
 KMS key for a specified stream}
 \usage{
-kinesis_start_stream_encryption(StreamName, EncryptionType, KeyId)
+kinesis_start_stream_encryption(
+  StreamName = NULL,
+  EncryptionType,
+  KeyId,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream for which to start encrypting records.}
+\item{StreamName}{The name of the stream for which to start encrypting records.}
 
 \item{EncryptionType}{[required] The encryption type to use. The only valid value is \code{KMS}.}
 
@@ -27,6 +32,8 @@ Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 \item Alias name example: \code{alias/MyAliasName}
 \item Master key owned by Kinesis Data Streams: \code{alias/aws/kinesis}
 }}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Enables or updates server-side encryption using an Amazon Web Services KMS key for a specified stream.

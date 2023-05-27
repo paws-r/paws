@@ -37,7 +37,7 @@ Service (AWS KMS) key that encrypts the exported mailbox content.}
 \item{S3Prefix}{[required] The S3 bucket prefix.}
 }
 \description{
-Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html}{Exporting mailbox content} in the \emph{Amazon WorkMail Administrator Guide}.
+Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html}{Exporting mailbox content} in the \emph{WorkMail Administrator Guide}.
 
 See \url{https://paws-r.github.io/docs/workmail/start_mailbox_export_job.html} for full documentation.
 }

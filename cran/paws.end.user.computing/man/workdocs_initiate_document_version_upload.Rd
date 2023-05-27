@@ -12,12 +12,12 @@ workdocs_initiate_document_version_upload(
   ContentModifiedTimestamp = NULL,
   ContentType = NULL,
   DocumentSizeInBytes = NULL,
-  ParentFolderId
+  ParentFolderId = NULL
 )
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 
 \item{Id}{The ID of the document.}
 
@@ -31,7 +31,7 @@ administrator credentials to access the API.}
 
 \item{DocumentSizeInBytes}{The size of the document, in bytes.}
 
-\item{ParentFolderId}{[required] The ID of the parent folder.}
+\item{ParentFolderId}{The ID of the parent folder.}
 }
 \description{
 Creates a new document object and version object.

@@ -2,18 +2,23 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_list_versions}
 \alias{opensearchservice_list_versions}
-\title{List all supported versions of OpenSearch and Elasticsearch}
+\title{Lists all versions of OpenSearch and Elasticsearch that Amazon
+OpenSearch Service supports}
 \usage{
 opensearchservice_list_versions(MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{MaxResults}{Set this value to limit the number of results returned. Value must be
-greater than 10 or it won't be honored.}
+\item{MaxResults}{An optional parameter that specifies the maximum number of results to
+return. You can use \code{nextToken} to get the next page of results.}
 
-\item{NextToken}{}
+\item{NextToken}{If your initial \code{\link[=opensearchservice_list_versions]{list_versions}}
+operation returns a \code{nextToken}, you can include the returned
+\code{nextToken} in subsequent
+\code{\link[=opensearchservice_list_versions]{list_versions}} operations, which
+returns results in the next page.}
 }
 \description{
-List all supported versions of OpenSearch and Elasticsearch.
+Lists all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/list_versions.html} for full documentation.
 }

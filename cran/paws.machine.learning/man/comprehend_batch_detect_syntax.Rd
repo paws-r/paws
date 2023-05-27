@@ -8,9 +8,9 @@ speech of the words in the document and returns information about them}
 comprehend_batch_detect_syntax(TextList, LanguageCode)
 }
 \arguments{
-\item{TextList}{[required] A list containing the text of the input documents. The list can contain
-a maximum of 25 documents. Each document must contain fewer that 5,000
-bytes of UTF-8 encoded characters.}
+\item{TextList}{[required] A list containing the UTF-8 encoded text of the input documents. The
+list can contain a maximum of 25 documents. The maximum size for each
+document is 5 KB.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify any of the
 following languages supported by Amazon Comprehend: German ("de"),
@@ -18,7 +18,7 @@ English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or
 Portuguese ("pt"). All documents must be in the same language.}
 }
 \description{
-Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see how-syntax.
+Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html}{Syntax} in the Comprehend Developer Guide.
 
 See \url{https://paws-r.github.io/docs/comprehend/batch_detect_syntax.html} for full documentation.
 }

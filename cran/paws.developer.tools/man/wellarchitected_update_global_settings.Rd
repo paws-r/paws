@@ -3,15 +3,20 @@
 \name{wellarchitected_update_global_settings}
 \alias{wellarchitected_update_global_settings}
 \title{Updates whether the Amazon Web Services account is opted into
-organization sharing features}
+organization sharing and discovery integration features}
 \usage{
-wellarchitected_update_global_settings(OrganizationSharingStatus = NULL)
+wellarchitected_update_global_settings(
+  OrganizationSharingStatus = NULL,
+  DiscoveryIntegrationStatus = NULL
+)
 }
 \arguments{
 \item{OrganizationSharingStatus}{The status of organization sharing settings.}
+
+\item{DiscoveryIntegrationStatus}{The status of discovery support settings.}
 }
 \description{
-Updates whether the Amazon Web Services account is opted into organization sharing features.
+Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/update_global_settings.html} for full documentation.
 }

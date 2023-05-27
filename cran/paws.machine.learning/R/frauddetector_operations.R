@@ -136,8 +136,13 @@ frauddetector_cancel_batch_prediction_job <- function(jobId) {
 #' @param outputPath &#91;required&#93; The URI that points to the Amazon S3 location for storing your results.
 #' @param eventTypeName &#91;required&#93; The name of the event type.
 #' @param iamRoleArn &#91;required&#93; The ARN of the IAM role created for Amazon S3 bucket that holds your
-#' data file. The IAM role must have read and write permissions to both
-#' input and output S3 buckets.
+#' data file.
+#' 
+#' The IAM role must have read permissions to your input S3 bucket and
+#' write permissions to your output S3 bucket. For more information about
+#' bucket permissions, see [User policy
+#' examples](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html)
+#' in the *Amazon S3 User Guide*.
 #' @param tags A collection of key-value pairs associated with this request.
 #'
 #' @keywords internal
@@ -174,6 +179,12 @@ frauddetector_create_batch_import_job <- function(jobId, inputPath, outputPath, 
 #' @param detectorName &#91;required&#93; The name of the detector.
 #' @param detectorVersion The detector version.
 #' @param iamRoleArn &#91;required&#93; The ARN of the IAM role to use for this job request.
+#' 
+#' The IAM Role must have read permissions to your input S3 bucket and
+#' write permissions to your output S3 bucket. For more information about
+#' bucket permissions, see [User policy
+#' examples](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html)
+#' in the *Amazon S3 User Guide*.
 #' @param tags A collection of key and value pairs.
 #'
 #' @keywords internal
@@ -242,6 +253,43 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
   return(response)
 }
 .frauddetector$operations$create_detector_version <- frauddetector_create_detector_version
+
+#' Creates a list
+#'
+#' @description
+#' Creates a list.
+#'
+#' See [https://paws-r.github.io/docs/frauddetector/create_list.html](https://paws-r.github.io/docs/frauddetector/create_list.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the list.
+#' @param elements The names of the elements, if providing. You can also create an empty
+#' list and add elements later using the
+#' [`update_list`][frauddetector_update_list] API.
+#' @param variableType The variable type of the list. You can only assign the variable type
+#' with String data type. For more information, see [Variable
+#' types](https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
+#' @param description The description of the list.
+#' @param tags A collection of the key and value pairs.
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_create_list
+frauddetector_create_list <- function(name, elements = NULL, variableType = NULL, description = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$create_list_input(name = name, elements = elements, variableType = variableType, description = description, tags = tags)
+  output <- .frauddetector$create_list_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$create_list <- frauddetector_create_list
 
 #' Creates a model using the specified model type
 #'
@@ -681,6 +729,35 @@ frauddetector_delete_label <- function(name) {
   return(response)
 }
 .frauddetector$operations$delete_label <- frauddetector_delete_label
+
+#' Deletes the list, provided it is not used in a rule
+#'
+#' @description
+#' Deletes the list, provided it is not used in a rule.
+#'
+#' See [https://paws-r.github.io/docs/frauddetector/delete_list.html](https://paws-r.github.io/docs/frauddetector/delete_list.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the list to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_list
+frauddetector_delete_list <- function(name) {
+  op <- new_operation(
+    name = "DeleteList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_list_input(name = name)
+  output <- .frauddetector$delete_list_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_list <- frauddetector_delete_list
 
 #' Deletes a model
 #'
@@ -1337,6 +1414,69 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 }
 .frauddetector$operations$get_labels <- frauddetector_get_labels
 
+#' Gets all the elements in the specified list
+#'
+#' @description
+#' Gets all the elements in the specified list.
+#'
+#' See [https://paws-r.github.io/docs/frauddetector/get_list_elements.html](https://paws-r.github.io/docs/frauddetector/get_list_elements.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the list.
+#' @param nextToken The next token for the subsequent request.
+#' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_list_elements
+frauddetector_get_list_elements <- function(name, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetListElements",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_list_elements_input(name = name, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$get_list_elements_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_list_elements <- frauddetector_get_list_elements
+
+#' Gets the metadata of either all the lists under the account or the
+#' specified list
+#'
+#' @description
+#' Gets the metadata of either all the lists under the account or the specified list.
+#'
+#' See [https://paws-r.github.io/docs/frauddetector/get_lists_metadata.html](https://paws-r.github.io/docs/frauddetector/get_lists_metadata.html) for full documentation.
+#'
+#' @param name The name of the list.
+#' @param nextToken The next token for the subsequent request.
+#' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_lists_metadata
+frauddetector_get_lists_metadata <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetListsMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_lists_metadata_input(name = name, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$get_lists_metadata_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_lists_metadata <- frauddetector_get_lists_metadata
+
 #' Gets the details of the specified model version
 #'
 #' @description
@@ -1707,6 +1847,9 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
 #' See [https://paws-r.github.io/docs/frauddetector/put_kms_encryption_key.html](https://paws-r.github.io/docs/frauddetector/put_kms_encryption_key.html) for full documentation.
 #'
 #' @param kmsEncryptionKeyArn &#91;required&#93; The KMS encryption key ARN.
+#' 
+#' The KMS key must be single-Region key. Amazon Fraud Detector does not
+#' support multi-Region KMS key.
 #'
 #' @keywords internal
 #'
@@ -1977,6 +2120,8 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
 #' @param status &#91;required&#93; The new status.
+#' 
+#' The only supported values are `ACTIVE` and `INACTIVE`
 #'
 #' @keywords internal
 #'
@@ -2030,6 +2175,53 @@ frauddetector_update_event_label <- function(eventId, eventTypeName, assignedLab
   return(response)
 }
 .frauddetector$operations$update_event_label <- frauddetector_update_event_label
+
+#' Updates a list
+#'
+#' @description
+#' Updates a list.
+#'
+#' See [https://paws-r.github.io/docs/frauddetector/update_list.html](https://paws-r.github.io/docs/frauddetector/update_list.html) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the list to update.
+#' @param elements One or more list elements to add or replace. If you are providing the
+#' elements, make sure to specify the `updateMode` to use.
+#' 
+#' If you are deleting all elements from the list, use `REPLACE` for the
+#' `updateMode` and provide an empty list (0 elements).
+#' @param description The new description.
+#' @param updateMode The update mode (type).
+#' 
+#' -   Use `APPEND` if you are adding elements to the list.
+#' 
+#' -   Use `REPLACE` if you replacing existing elements in the list.
+#' 
+#' -   Use `REMOVE` if you are removing elements from the list.
+#' @param variableType The variable type you want to assign to the list.
+#' 
+#' You cannot update a variable type of a list that already has a variable
+#' type assigned to it. You can assign a variable type to a list only if
+#' the list does not already have a variable type.
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_update_list
+frauddetector_update_list <- function(name, elements = NULL, description = NULL, updateMode = NULL, variableType = NULL) {
+  op <- new_operation(
+    name = "UpdateList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$update_list_input(name = name, elements = elements, description = description, updateMode = updateMode, variableType = variableType)
+  output <- .frauddetector$update_list_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$update_list <- frauddetector_update_list
 
 #' Updates model description
 #'

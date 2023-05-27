@@ -57,14 +57,14 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' Services General Reference</span>* for the following:
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service
-#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces).
+#'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 
 #' -   For resource type strings, see [Example
-#'     ARNs](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax).
+#'     ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
 #' 
 #' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
 #'     and Amazon Web Services Service
-#'     Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+#'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' 
 #' You can specify multiple resource types by using a comma separated
 #' array. The array can include up to 100 items. Note that the length
@@ -220,7 +220,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' An ARN (Amazon Resource Name) uniquely identifies a resource. For more
 #' information, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
@@ -360,7 +360,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' An ARN (Amazon Resource Name) uniquely identifies a resource. For more
 #' information, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; Specifies a list of tags that you want to add to the specified
 #' resources. A tag consists of a key and a value that you define.
@@ -398,7 +398,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' An ARN (Amazon Resource Name) uniquely identifies a resource. For more
 #' information, see [Amazon Resource Names (ARNs) and Amazon Web Services
 #' Service
-#' Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+#' Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; Specifies a list of tag keys that you want to remove from the specified
 #' resources.

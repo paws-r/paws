@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_delete_vpc_endpoint_service_configurations}
 \alias{ec2_delete_vpc_endpoint_service_configurations}
-\title{Deletes one or more VPC endpoint service configurations in your account}
+\title{Deletes the specified VPC endpoint service configurations}
 \usage{
 ec2_delete_vpc_endpoint_service_configurations(DryRun = NULL, ServiceIds)
 }
@@ -12,10 +12,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ServiceIds}{[required] The IDs of one or more services.}
+\item{ServiceIds}{[required] The IDs of the services.}
 }
 \description{
-Deletes one or more VPC endpoint service configurations in your account. Before you delete the endpoint service configuration, you must reject any \code{Available} or \code{PendingAcceptance} interface endpoint connections that are attached to the service.
+Deletes the specified VPC endpoint service configurations. Before you can delete an endpoint service configuration, you must reject any \code{Available} or \code{PendingAcceptance} interface endpoint connections that are attached to the service.
 
 See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoint_service_configurations.html} for full documentation.
 }

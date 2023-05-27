@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53domains_operations.R
 \name{route53domains_retrieve_domain_auth_code}
 \alias{route53domains_retrieve_domain_auth_code}
-\title{This operation returns the AuthCode for the domain}
+\title{This operation returns the authorization code for the domain}
 \usage{
 route53domains_retrieve_domain_auth_code(DomainName)
 }
@@ -10,7 +10,7 @@ route53domains_retrieve_domain_auth_code(DomainName)
 \item{DomainName}{[required] The name of the domain that you want to get an authorization code for.}
 }
 \description{
-This operation returns the AuthCode for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
+This operation returns the authorization code for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 
 See \url{https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html} for full documentation.
 }

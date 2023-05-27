@@ -77,13 +77,20 @@ the Backup console, choose \strong{Gateways}, then choose \strong{Create gateway
 \link[paws.networking:backupgateway_delete_gateway]{delete_gateway} \tab Deletes a backup gateway\cr
 \link[paws.networking:backupgateway_delete_hypervisor]{delete_hypervisor} \tab Deletes a hypervisor\cr
 \link[paws.networking:backupgateway_disassociate_gateway_from_server]{disassociate_gateway_from_server} \tab Disassociates a backup gateway from the specified server\cr
+\link[paws.networking:backupgateway_get_bandwidth_rate_limit_schedule]{get_bandwidth_rate_limit_schedule} \tab Retrieves the bandwidth rate limit schedule for a specified gateway\cr
 \link[paws.networking:backupgateway_get_gateway]{get_gateway} \tab By providing the ARN (Amazon Resource Name), this API returns the gateway\cr
+\link[paws.networking:backupgateway_get_hypervisor]{get_hypervisor} \tab This action requests information about the specified hypervisor to which the gateway will connect\cr
+\link[paws.networking:backupgateway_get_hypervisor_property_mappings]{get_hypervisor_property_mappings} \tab This action retrieves the property mappings for the specified hypervisor\cr
+\link[paws.networking:backupgateway_get_virtual_machine]{get_virtual_machine} \tab By providing the ARN (Amazon Resource Name), this API returns the virtual machine\cr
 \link[paws.networking:backupgateway_import_hypervisor_configuration]{import_hypervisor_configuration} \tab Connect to a hypervisor by importing its configuration\cr
 \link[paws.networking:backupgateway_list_gateways]{list_gateways} \tab Lists backup gateways owned by an Amazon Web Services account in an Amazon Web Services Region\cr
 \link[paws.networking:backupgateway_list_hypervisors]{list_hypervisors} \tab Lists your hypervisors\cr
 \link[paws.networking:backupgateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags applied to the resource identified by its Amazon Resource Name (ARN)\cr
 \link[paws.networking:backupgateway_list_virtual_machines]{list_virtual_machines} \tab Lists your virtual machines\cr
+\link[paws.networking:backupgateway_put_bandwidth_rate_limit_schedule]{put_bandwidth_rate_limit_schedule} \tab This action sets the bandwidth rate limit schedule for a specified gateway\cr
+\link[paws.networking:backupgateway_put_hypervisor_property_mappings]{put_hypervisor_property_mappings} \tab This action sets the property mappings for the specified hypervisor\cr
 \link[paws.networking:backupgateway_put_maintenance_start_time]{put_maintenance_start_time} \tab Set the maintenance start time for a gateway\cr
+\link[paws.networking:backupgateway_start_virtual_machines_metadata_sync]{start_virtual_machines_metadata_sync} \tab This action sends a request to sync metadata across the specified virtual machines\cr
 \link[paws.networking:backupgateway_tag_resource]{tag_resource} \tab Tag the resource\cr
 \link[paws.networking:backupgateway_test_hypervisor_configuration]{test_hypervisor_configuration} \tab Tests your hypervisor configuration to validate that backup gateway can connect with the hypervisor and its resources\cr
 \link[paws.networking:backupgateway_untag_resource]{untag_resource} \tab Removes tags from the resource\cr

@@ -2,7 +2,7 @@
 % Please edit documentation in R/nimblestudio_operations.R
 \name{nimblestudio_start_studio_sso_configuration_repair}
 \alias{nimblestudio_start_studio_sso_configuration_repair}
-\title{Repairs the Amazon Web Services SSO configuration for a given studio}
+\title{Repairs the IAM Identity Center configuration for a given studio}
 \usage{
 nimblestudio_start_studio_sso_configuration_repair(
   clientToken = NULL,
@@ -11,14 +11,14 @@ nimblestudio_start_studio_sso_configuration_repair(
 }
 \arguments{
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. If you don’t specify a client token, the AWS
-SDK automatically generates a client token and uses it for the request
-to ensure idempotency.}
+idempotency of the request. If you don’t specify a client token, the
+Amazon Web Services SDK automatically generates a client token and uses
+it for the request to ensure idempotency.}
 
 \item{studioId}{[required] The studio ID.}
 }
 \description{
-Repairs the Amazon Web Services SSO configuration for a given studio.
+Repairs the IAM Identity Center configuration for a given studio.
 
 See \url{https://paws-r.github.io/docs/nimblestudio/start_studio_sso_configuration_repair.html} for full documentation.
 }

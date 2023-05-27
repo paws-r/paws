@@ -7,7 +7,7 @@
 appregistry_associate_resource(application, resourceType, resource)
 }
 \arguments{
-\item{application}{[required] The name or ID of the application.}
+\item{application}{[required] The name, ID, or ARN of the application.}
 
 \item{resourceType}{[required] The type of resource of which the application will be associated.}
 
@@ -15,7 +15,7 @@ appregistry_associate_resource(application, resourceType, resource)
 associated.}
 }
 \description{
-Associates a resource with an application. Both the resource and the application can be specified either by ID or name.
+Associates a resource with an application. The resource can be specified by its ARN or name. The application can be specified by ARN, ID, or name.
 
 See \url{https://paws-r.github.io/docs/appregistry/associate_resource.html} for full documentation.
 }

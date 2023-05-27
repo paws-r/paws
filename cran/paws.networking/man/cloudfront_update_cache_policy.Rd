@@ -10,12 +10,12 @@ cloudfront_update_cache_policy(CachePolicyConfig, Id, IfMatch = NULL)
 \item{CachePolicyConfig}{[required] A cache policy configuration.}
 
 \item{Id}{[required] The unique identifier for the cache policy that you are updating. The
-identifier is returned in a cache behavior’s \code{CachePolicyId} field in
+identifier is returned in a cache behavior's \code{CachePolicyId} field in
 the response to
 \code{\link[=cloudfront_get_distribution_config]{get_distribution_config}}.}
 
 \item{IfMatch}{The version of the cache policy that you are updating. The version is
-returned in the cache policy’s \code{ETag} field in the response to
+returned in the cache policy's \code{ETag} field in the response to
 \code{\link[=cloudfront_get_cache_policy_config]{get_cache_policy_config}}.}
 }
 \description{

@@ -23,10 +23,16 @@ For example:
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before importing
-it with \code{\link[=kms_import_key_material]{import_key_material}}. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the Key Material}
-in the \emph{Key Management Service Developer Guide}.}
+\item{WrappingAlgorithm}{[required] The algorithm you will use to encrypt the key material before using the
+\code{\link[=kms_import_key_material]{import_key_material}} operation to import it.
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html}{Encrypt the key material}
+in the \emph{Key Management Service Developer Guide}.
+
+The \code{RSAES_PKCS1_V1_5} wrapping algorithm is deprecated. We recommend
+that you begin using a different wrapping algorithm immediately. KMS
+will end support for \code{RSAES_PKCS1_V1_5} by October 1, 2023 pursuant to
+cryptographic key management guidance from the National Institute of
+Standards and Technology (NIST).}
 
 \item{WrappingKeySpec}{[required] The type of wrapping key (public key) to return in the response. Only
 2048-bit RSA public keys are supported.}

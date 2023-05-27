@@ -14,10 +14,10 @@ sfn_start_execution(
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.}
 
-\item{name}{The name of the execution. This name must be unique for your AWS
-account, region, and state machine for 90 days. For more information,
-see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
-in the \emph{AWS Step Functions Developer Guide}.
+\item{name}{The name of the execution. This name must be unique for your Amazon Web
+Services account, region, and state machine for 90 days. For more
+information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+in the \emph{Step Functions Developer Guide}.
 
 A name must \emph{not} contain:
 \itemize{
@@ -44,11 +44,11 @@ braces, for example: \code{"input": "{}"}
 Length constraints apply to the payload size, and are expressed as bytes
 in UTF-8 encoding.}
 
-\item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
-in the request payload.}
+\item{traceHeader}{Passes the X-Ray trace header. The trace header can also be passed in
+the request payload.}
 }
 \description{
-Starts a state machine execution.
+Starts a state machine execution. If the given state machine Amazon Resource Name (ARN) is a qualified state machine ARN, it will fail with ValidationException.
 
 See \url{https://paws-r.github.io/docs/sfn/start_execution.html} for full documentation.
 }

@@ -95,21 +95,24 @@ Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{
 | \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge} |
 \code{ra3.16xlarge}}
 
-\item{MasterUsername}{[required] The user name associated with the admin user account for the cluster
-that is being created.
+\item{MasterUsername}{[required] The user name associated with the admin user for the cluster that is
+being created.
 
 Constraints:
 \itemize{
-\item Must be 1 - 128 alphanumeric characters. The user name can't be
-\code{PUBLIC}.
-\item First character must be a letter.
+\item Must be 1 - 128 alphanumeric characters or hyphens. The user name
+can't be \code{PUBLIC}.
+\item Must contain only lowercase letters, numbers, underscore, plus sign,
+period (dot), at symbol (@), or hyphen.
+\item The first character must be a letter.
+\item Must not contain a colon (:) or a slash (/).
 \item Cannot be a reserved word. A list of reserved words can be found in
 \href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
 
-\item{MasterUserPassword}{[required] The password associated with the admin user account for the cluster that
-is being created.
+\item{MasterUserPassword}{[required] The password associated with the admin user for the cluster that is
+being created.
 
 Constraints:
 \itemize{
@@ -249,13 +252,13 @@ cluster uses to retrieve the data encryption keys stored in an HSM.}
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.}
 
-\item{ElasticIp}{The Elastic IP (EIP) address for the cluster. You don't have to specify
-the EIP for a publicly accessible cluster with
-AvailabilityZoneRelocation turned on.
+\item{ElasticIp}{The Elastic IP (EIP) address for the cluster.
 
 Constraints: The cluster must be provisioned in EC2-VPC and
-publicly-accessible through an Internet gateway. For more information
-about provisioning clusters in EC2-VPC, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms}{Supported Platforms to Launch Your Cluster}
+publicly-accessible through an Internet gateway. Don't specify the
+Elastic IP address for a publicly accessible cluster with availability
+zone relocation turned on. For more information about provisioning
+clusters in EC2-VPC, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#cluster-platforms}{Supported Platforms to Launch Your Cluster}
 in the Amazon Redshift Cluster Management Guide.}
 
 \item{Tags}{A list of tag instances.}
@@ -291,15 +294,9 @@ assigned to the \code{current} track.}
 \item{AvailabilityZoneRelocation}{The option to enable relocation for an Amazon Redshift cluster between
 Availability Zones after the cluster is created.}
 
-\item{AquaConfigurationStatus}{The value represents how the cluster is configured to use AQUA (Advanced
-Query Accelerator) when it is created. Possible values include the
-following.
-\itemize{
-\item enabled - Use AQUA if it is available for the current Amazon Web
-Services Region and Amazon Redshift node type.
-\item disabled - Don't use AQUA.
-\item auto - Amazon Redshift determines whether to use AQUA.
-}}
+\item{AquaConfigurationStatus}{This parameter is retired. It does not set the AQUA configuration
+status. Amazon Redshift automatically determines whether to use AQUA
+(Advanced Query Accelerator).}
 
 \item{DefaultIamRoleArn}{The Amazon Resource Name (ARN) for the IAM role that was set as default
 for the cluster when the cluster was created.}

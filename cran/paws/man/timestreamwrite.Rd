@@ -28,20 +28,22 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Timestream is a fast, scalable, fully managed time series
+Amazon Timestream is a fast, scalable, fully managed time-series
 database service that makes it easy to store and analyze trillions of
-time series data points per day. With Timestream, you can easily store
+time-series data points per day. With Timestream, you can easily store
 and analyze IoT sensor data to derive insights from your IoT
 applications. You can analyze industrial telemetry to streamline
 equipment management and maintenance. You can also store and analyze log
 data and metrics to improve the performance and availability of your
-applications. Timestream is built from the ground up to effectively
-ingest, process, and store time series data. It organizes data to
-optimize query processing. It automatically scales based on the volume
-of data ingested and on the query volume to ensure you receive optimal
-performance while inserting and querying data. As your data grows over
-time, Timestream’s adaptive query processing engine spans across storage
-tiers to provide fast analysis while reducing costs.
+applications.
+
+Timestream is built from the ground up to effectively ingest, process,
+and store time-series data. It organizes data to optimize query
+processing. It automatically scales based on the volume of data ingested
+and on the query volume to ensure you receive optimal performance while
+inserting and querying data. As your data grows over time, Timestream’s
+adaptive query processing engine spans across storage tiers to provide
+fast analysis while reducing costs.
 }
 \section{Service syntax}{
 
@@ -70,28 +72,32 @@ tiers to provide fast analysis while reducing costs.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.database:timestreamwrite_create_batch_load_task]{create_batch_load_task} \tab Creates a new Timestream batch load task\cr
 \link[paws.database:timestreamwrite_create_database]{create_database} \tab Creates a new Timestream database\cr
-\link[paws.database:timestreamwrite_create_table]{create_table} \tab The CreateTable operation adds a new table to an existing database in your account\cr
+\link[paws.database:timestreamwrite_create_table]{create_table} \tab Adds a new table to an existing database in your account\cr
 \link[paws.database:timestreamwrite_delete_database]{delete_database} \tab Deletes a given Timestream database\cr
 \link[paws.database:timestreamwrite_delete_table]{delete_table} \tab Deletes a given Timestream table\cr
+\link[paws.database:timestreamwrite_describe_batch_load_task]{describe_batch_load_task} \tab Returns information about the batch load task, including configurations, mappings, progress, and other details\cr
 \link[paws.database:timestreamwrite_describe_database]{describe_database} \tab Returns information about the database, including the database name, time that the database was created, and the total number of tables found within the database\cr
-\link[paws.database:timestreamwrite_describe_endpoints]{describe_endpoints} \tab DescribeEndpoints returns a list of available endpoints to make Timestream API calls against\cr
+\link[paws.database:timestreamwrite_describe_endpoints]{describe_endpoints} \tab Returns a list of available endpoints to make Timestream API calls against\cr
 \link[paws.database:timestreamwrite_describe_table]{describe_table} \tab Returns information about the table, including the table name, database name, retention duration of the memory store and the magnetic store\cr
+\link[paws.database:timestreamwrite_list_batch_load_tasks]{list_batch_load_tasks} \tab Provides a list of batch load tasks, along with the name, status, when the task is resumable until, and other details\cr
 \link[paws.database:timestreamwrite_list_databases]{list_databases} \tab Returns a list of your Timestream databases\cr
-\link[paws.database:timestreamwrite_list_tables]{list_tables} \tab A list of tables, along with the name, status and retention properties of each table\cr
-\link[paws.database:timestreamwrite_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on a Timestream resource\cr
-\link[paws.database:timestreamwrite_tag_resource]{tag_resource} \tab Associate a set of tags with a Timestream resource\cr
+\link[paws.database:timestreamwrite_list_tables]{list_tables} \tab Provides a list of tables, along with the name, status, and retention properties of each table\cr
+\link[paws.database:timestreamwrite_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a Timestream resource\cr
+\link[paws.database:timestreamwrite_resume_batch_load_task]{resume_batch_load_task} \tab Resume batch load task\cr
+\link[paws.database:timestreamwrite_tag_resource]{tag_resource} \tab Associates a set of tags with a Timestream resource\cr
 \link[paws.database:timestreamwrite_untag_resource]{untag_resource} \tab Removes the association of tags from a Timestream resource\cr
 \link[paws.database:timestreamwrite_update_database]{update_database} \tab Modifies the KMS key for an existing database\cr
 \link[paws.database:timestreamwrite_update_table]{update_table} \tab Modifies the retention duration of the memory store and magnetic store for your Timestream table\cr
-\link[paws.database:timestreamwrite_write_records]{write_records} \tab The WriteRecords operation enables you to write your time series data into Timestream
+\link[paws.database:timestreamwrite_write_records]{write_records} \tab Enables you to write your time-series data into Timestream
 }
 }
 
 \examples{
 \dontrun{
 svc <- timestreamwrite()
-svc$create_database(
+svc$create_batch_load_task(
   Foo = 123
 )
 }

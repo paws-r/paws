@@ -2,15 +2,15 @@
 % Please edit documentation in R/ecrpublic_operations.R
 \name{ecrpublic_batch_delete_image}
 \alias{ecrpublic_batch_delete_image}
-\title{Deletes a list of specified images within a repository in a public
-registry}
+\title{Deletes a list of specified images that are within a repository in a
+public registry}
 \usage{
 ecrpublic_batch_delete_image(registryId = NULL, repositoryName, imageIds)
 }
 \arguments{
-\item{registryId}{The AWS account ID associated with the registry that contains the image
-to delete. If you do not specify a registry, the default public registry
-is assumed.}
+\item{registryId}{The Amazon Web Services account ID, or registry alias, that's associated
+with the registry that contains the image to delete. If you do not
+specify a registry, the default public registry is assumed.}
 
 \item{repositoryName}{[required] The repository in a public registry that contains the image to delete.}
 
@@ -19,7 +19,7 @@ format of the \code{imageIds} reference is \code{imageTag=tag} or
 \code{imageDigest=digest}.}
 }
 \description{
-Deletes a list of specified images within a repository in a public registry. Images are specified with either an \code{imageTag} or \code{imageDigest}.
+Deletes a list of specified images that are within a repository in a public registry. Images are specified with either an \code{imageTag} or \code{imageDigest}.
 
 See \url{https://paws-r.github.io/docs/ecrpublic/batch_delete_image.html} for full documentation.
 }

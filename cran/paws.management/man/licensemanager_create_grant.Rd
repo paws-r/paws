@@ -21,14 +21,22 @@ idempotency of the request.}
 
 \item{LicenseArn}{[required] Amazon Resource Name (ARN) of the license.}
 
-\item{Principals}{[required] The grant principals.}
+\item{Principals}{[required] The grant principals. You can specify one of the following as an Amazon
+Resource Name (ARN):
+\itemize{
+\item An Amazon Web Services account, which includes only the account
+specified.
+\item An organizational unit (OU), which includes all accounts in the OU.
+\item An organization, which will include all accounts across your
+organization.
+}}
 
 \item{HomeRegion}{[required] Home Region of the grant.}
 
 \item{AllowedOperations}{[required] Allowed operations for the grant.}
 }
 \description{
-Creates a grant for the specified license. A grant shares the use of license entitlements with specific Amazon Web Services accounts.
+Creates a grant for the specified license. A grant shares the use of license entitlements with a specific Amazon Web Services account, an organization, or an organizational unit (OU). For more information, see \href{https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html}{Granted licenses in License Manager} in the \emph{License Manager User Guide}.
 
 See \url{https://paws-r.github.io/docs/licensemanager/create_grant.html} for full documentation.
 }

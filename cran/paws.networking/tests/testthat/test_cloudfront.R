@@ -8,6 +8,10 @@ test_that("list_cloud_front_origin_access_identities", {
   expect_error(svc$list_cloud_front_origin_access_identities(), NA)
 })
 
+test_that("list_continuous_deployment_policies", {
+  expect_error(svc$list_continuous_deployment_policies(), NA)
+})
+
 test_that("list_distributions", {
   expect_error(svc$list_distributions(), NA)
 })
@@ -30,6 +34,10 @@ test_that("list_functions", {
 
 test_that("list_key_groups", {
   expect_error(svc$list_key_groups(), NA)
+})
+
+test_that("list_origin_access_controls", {
+  expect_error(svc$list_origin_access_controls(), NA)
 })
 
 test_that("list_origin_request_policies", {

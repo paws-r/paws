@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_list_workloads}
 \alias{wellarchitected_list_workloads}
-\title{List workloads}
+\title{Paginated list of workloads}
 \usage{
 wellarchitected_list_workloads(
   WorkloadNamePrefix = NULL,
@@ -18,7 +18,7 @@ wellarchitected_list_workloads(
 \item{MaxResults}{The maximum number of results to return for this request.}
 }
 \description{
-List workloads. Paginated.
+Paginated list of workloads.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/list_workloads.html} for full documentation.
 }

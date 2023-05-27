@@ -141,10 +141,11 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #'                 "string"
 #'               )
 #'             ),
-#'             shape = "Scalar"|"List",
+#'             shape = "Scalar"|"List"|"Composite",
 #'             values = list(
 #'               list()
-#'             )
+#'             ),
+#'             subSlots = list()
 #'           )
 #'         ),
 #'         state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
@@ -156,7 +157,11 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #'     dialogAction = list(
 #'       type = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None",
 #'       slotToElicit = "string",
-#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord"
+#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord",
+#'       subSlotToElicit = list(
+#'         name = "string",
+#'         subSlotToElicit = list()
+#'       )
 #'     ),
 #'     intent = list(
 #'       name = "string",
@@ -169,10 +174,11 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #'               "string"
 #'             )
 #'           ),
-#'           shape = "Scalar"|"List",
+#'           shape = "Scalar"|"List"|"Composite",
 #'           values = list(
 #'             list()
-#'           )
+#'           ),
+#'           subSlots = list()
 #'         )
 #'       ),
 #'       state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
@@ -202,7 +208,8 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #'               list(
 #'                 phrase = "string"
 #'               )
-#'             )
+#'             ),
+#'             subSlotHints = list()
 #'           )
 #'         )
 #'       )
@@ -317,7 +324,11 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #'     dialogAction = list(
 #'       type = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None",
 #'       slotToElicit = "string",
-#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord"
+#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord",
+#'       subSlotToElicit = list(
+#'         name = "string",
+#'         subSlotToElicit = list()
+#'       )
 #'     ),
 #'     intent = list(
 #'       name = "string",
@@ -330,10 +341,11 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #'               "string"
 #'             )
 #'           ),
-#'           shape = "Scalar"|"List",
+#'           shape = "Scalar"|"List"|"Composite",
 #'           values = list(
 #'             list()
-#'           )
+#'           ),
+#'           subSlots = list()
 #'         )
 #'       ),
 #'       state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
@@ -363,7 +375,8 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #'               list(
 #'                 phrase = "string"
 #'               )
-#'             )
+#'             ),
+#'             subSlotHints = list()
 #'           )
 #'         )
 #'       )
@@ -470,7 +483,11 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'     dialogAction = list(
 #'       type = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None",
 #'       slotToElicit = "string",
-#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord"
+#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord",
+#'       subSlotToElicit = list(
+#'         name = "string",
+#'         subSlotToElicit = list()
+#'       )
 #'     ),
 #'     intent = list(
 #'       name = "string",
@@ -483,10 +500,11 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'               "string"
 #'             )
 #'           ),
-#'           shape = "Scalar"|"List",
+#'           shape = "Scalar"|"List"|"Composite",
 #'           values = list(
 #'             list()
-#'           )
+#'           ),
+#'           subSlots = list()
 #'         )
 #'       ),
 #'       state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
@@ -516,7 +534,8 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'               list(
 #'                 phrase = "string"
 #'               )
-#'             )
+#'             ),
+#'             subSlotHints = list()
 #'           )
 #'         )
 #'       )
@@ -547,10 +566,11 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'                 "string"
 #'               )
 #'             ),
-#'             shape = "Scalar"|"List",
+#'             shape = "Scalar"|"List"|"Composite",
 #'             values = list(
 #'               list()
-#'             )
+#'             ),
+#'             subSlots = list()
 #'           )
 #'         ),
 #'         state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
@@ -561,7 +581,11 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'   requestAttributes = list(
 #'     "string"
 #'   ),
-#'   sessionId = "string"
+#'   sessionId = "string",
+#'   recognizedBotMember = list(
+#'     botId = "string",
+#'     botName = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -577,7 +601,11 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'     dialogAction = list(
 #'       type = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None",
 #'       slotToElicit = "string",
-#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord"
+#'       slotElicitationStyle = "Default"|"SpellByLetter"|"SpellByWord",
+#'       subSlotToElicit = list(
+#'         name = "string",
+#'         subSlotToElicit = list()
+#'       )
 #'     ),
 #'     intent = list(
 #'       name = "string",
@@ -590,10 +618,11 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'               "string"
 #'             )
 #'           ),
-#'           shape = "Scalar"|"List",
+#'           shape = "Scalar"|"List"|"Composite",
 #'           values = list(
 #'             list()
-#'           )
+#'           ),
+#'           subSlots = list()
 #'         )
 #'       ),
 #'       state = "Failed"|"Fulfilled"|"InProgress"|"ReadyForFulfillment"|"Waiting"|"FulfillmentInProgress",
@@ -623,7 +652,8 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #'               list(
 #'                 phrase = "string"
 #'               )
-#'             )
+#'             ),
+#'             subSlotHints = list()
 #'           )
 #'         )
 #'       )
@@ -762,7 +792,7 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' -   If the value begins with `audio/`, Amazon Lex V2 returns speech in
 #'     the response. Amazon Lex V2 uses Amazon Polly to generate the speech
 #'     using the configuration that you specified in the
-#'     `requestContentType` parameter. For example, if you specify
+#'     `responseContentType` parameter. For example, if you specify
 #'     `audio/mpeg` as the value, Amazon Lex V2 returns speech in the MPEG
 #'     format.
 #' 
@@ -795,7 +825,8 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #'   requestAttributes = "string",
 #'   sessionId = "string",
 #'   inputTranscript = "string",
-#'   audioStream = raw
+#'   audioStream = raw,
+#'   recognizedBotMember = "string"
 #' )
 #' ```
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_import_lens}
 \alias{wellarchitected_import_lens}
-\title{Import a new lens}
+\title{Import a new custom lens or update an existing custom lens}
 \usage{
 wellarchitected_import_lens(
   LensAlias = NULL,
@@ -21,7 +21,7 @@ wellarchitected_import_lens(
 \item{Tags}{Tags to associate to a lens.}
 }
 \description{
-Import a new lens.
+Import a new custom lens or update an existing custom lens.
 
 See \url{https://paws-r.github.io/docs/wellarchitected/import_lens.html} for full documentation.
 }

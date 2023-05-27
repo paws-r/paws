@@ -12,7 +12,7 @@ deleting. To get the identifier, you can use
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}}.}
 
 \item{IfMatch}{The version of the origin request policy that you are deleting. The
-version is the origin request policy’s \code{ETag} value, which you can get
+version is the origin request policy's \code{ETag} value, which you can get
 using
 \code{\link[=cloudfront_list_origin_request_policies]{list_origin_request_policies}},
 \code{\link[=cloudfront_get_origin_request_policy]{get_origin_request_policy}}, or

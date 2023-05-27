@@ -11,7 +11,7 @@ proton_cancel_environment_deployment(environmentName)
 \item{environmentName}{[required] The name of the environment with the deployment to cancel.}
 }
 \description{
-Attempts to cancel an environment deployment on an \code{\link[=proton_update_environment]{update_environment}} action, if the deployment is \code{IN_PROGRESS}. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html}{Update an environment} in the \emph{Proton Administrator guide}.
+Attempts to cancel an environment deployment on an \code{\link[=proton_update_environment]{update_environment}} action, if the deployment is \code{IN_PROGRESS}. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html}{Update an environment} in the \emph{Proton User guide}.
 
 See \url{https://paws-r.github.io/docs/proton/cancel_environment_deployment.html} for full documentation.
 }

@@ -14,6 +14,7 @@ sagemaker_create_transform_job(
   Environment = NULL,
   TransformInput,
   TransformOutput,
+  DataCaptureConfig = NULL,
   TransformResources,
   DataProcessing = NULL,
   Tags = NULL,
@@ -79,6 +80,8 @@ to 16 key and values entries in the map.}
 \item{TransformInput}{[required] Describes the input source and the way the transform job consumes it.}
 
 \item{TransformOutput}{[required] Describes the results of the transform job.}
+
+\item{DataCaptureConfig}{Configuration to control how SageMaker captures inference data.}
 
 \item{TransformResources}{[required] Describes the resources, including ML instance types and ML instance
 count, to use for the transform job.}

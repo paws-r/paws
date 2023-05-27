@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_disable_user}
 \alias{cognitoidentityprovider_admin_disable_user}
-\title{Disables the specified user}
+\title{Deactivates a user and revokes all access tokens for the user}
 \usage{
 cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 }
@@ -12,7 +12,7 @@ cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 \item{Username}{[required] The user name of the user you want to disable.}
 }
 \description{
-Disables the specified user.
+Deactivates a user and revokes all access tokens for the user. A deactivated user can't sign in, but still appears in the responses to \code{\link[=cognitoidentityprovider_get_user]{get_user}} and \code{\link[=cognitoidentityprovider_list_users]{list_users}} API requests.
 
 See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_user.html} for full documentation.
 }

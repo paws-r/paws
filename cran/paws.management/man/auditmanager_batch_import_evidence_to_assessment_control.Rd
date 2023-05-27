@@ -22,7 +22,7 @@ auditmanager_batch_import_evidence_to_assessment_control(
 \item{manualEvidence}{[required] The list of manual evidence objects.}
 }
 \description{
-Uploads one or more pieces of evidence to a control in an Audit Manager assessment.
+Uploads one or more pieces of evidence to a control in an Audit Manager assessment. You can upload manual evidence from any Amazon Simple Storage Service (Amazon S3) bucket by specifying the S3 URI of the evidence.
 
 See \url{https://paws-r.github.io/docs/auditmanager/batch_import_evidence_to_assessment_control.html} for full documentation.
 }

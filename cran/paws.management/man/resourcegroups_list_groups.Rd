@@ -2,7 +2,7 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_list_groups}
 \alias{resourcegroups_list_groups}
-\title{Returns a list of existing resource groups in your account}
+\title{Returns a list of existing Resource Groups in your account}
 \usage{
 resourcegroups_list_groups(Filters = NULL, MaxResults = NULL, NextToken = NULL)
 }
@@ -18,8 +18,8 @@ format \verb{AWS::ServiceCode::ResourceType }. For example,
 groups that have the specified configuration types attached. The
 current supported values are:
 \itemize{
-\item \code{AWS:EC2::CapacityReservationPool}
-\item \code{AWS:EC2::HostManagement}
+\item \verb{AWS::EC2::CapacityReservationPool}
+\item \verb{AWS::EC2::HostManagement}
 }
 }}
 
@@ -41,7 +41,7 @@ provided by a previous call's \code{NextToken} response to indicate where the
 output should continue from.}
 }
 \description{
-Returns a list of existing resource groups in your account.
+Returns a list of existing Resource Groups in your account.
 
 See \url{https://paws-r.github.io/docs/resourcegroups/list_groups.html} for full documentation.
 }

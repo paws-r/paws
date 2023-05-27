@@ -4,13 +4,15 @@
 \alias{sagemaker_describe_image_version}
 \title{Describes a version of a SageMaker image}
 \usage{
-sagemaker_describe_image_version(ImageName, Version = NULL)
+sagemaker_describe_image_version(ImageName, Version = NULL, Alias = NULL)
 }
 \arguments{
 \item{ImageName}{[required] The name of the image.}
 
 \item{Version}{The version of the image. If not specified, the latest version is
 described.}
+
+\item{Alias}{The alias of the image version.}
 }
 \description{
 Describes a version of a SageMaker image.

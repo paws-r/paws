@@ -2,18 +2,18 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_get_search_suggestions}
 \alias{sagemaker_get_search_suggestions}
-\title{An auto-complete API for the search functionality in the Amazon
-SageMaker console}
+\title{An auto-complete API for the search functionality in the SageMaker
+console}
 \usage{
 sagemaker_get_search_suggestions(Resource, SuggestionQuery = NULL)
 }
 \arguments{
-\item{Resource}{[required] The name of the Amazon SageMaker resource to search for.}
+\item{Resource}{[required] The name of the SageMaker resource to search for.}
 
 \item{SuggestionQuery}{Limits the property names that are included in the response.}
 }
 \description{
-An auto-complete API for the search functionality in the Amazon SageMaker console. It returns suggestions of possible matches for the property name to use in \code{\link[=sagemaker_search]{search}} queries. Provides suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
+An auto-complete API for the search functionality in the SageMaker console. It returns suggestions of possible matches for the property name to use in \code{\link[=sagemaker_search]{search}} queries. Provides suggestions for \code{HyperParameters}, \code{Tags}, and \code{Metrics}.
 
 See \url{https://paws-r.github.io/docs/sagemaker/get_search_suggestions.html} for full documentation.
 }

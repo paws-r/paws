@@ -18,14 +18,29 @@ workdocs_describe_users(
 )
 }
 \arguments{
-\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using AWS
-administrator credentials to access the API.}
+\item{AuthenticationToken}{Amazon WorkDocs authentication token. Not required when using Amazon Web
+Services administrator credentials to access the API.}
 
 \item{OrganizationId}{The ID of the organization.}
 
 \item{UserIds}{The IDs of the users.}
 
-\item{Query}{A query to filter users by user name.}
+\item{Query}{A query to filter users by user name. Remember the following about the
+\code{Userids} and \code{Query} parameters:
+\itemize{
+\item If you don't use either parameter, the API returns a paginated list
+of all users on the site.
+\item If you use both parameters, the API ignores the \code{Query} parameter.
+\item The \code{Userid} parameter only returns user names that match a
+corresponding user ID.
+\item The \code{Query} parameter runs a "prefix" search for users by the
+\code{GivenName}, \code{SurName}, or \code{UserName} fields included in a
+\code{\link[=workdocs_create_user]{create_user}} API call. For example,
+querying on \code{Ma} returns Márcia Oliveira, María García, and Mateo
+Jackson. If you use multiple characters, the API only returns data
+that matches all characters. For example, querying on \verb{Ma J} only
+returns Mateo Jackson.
+}}
 
 \item{Include}{The state of the users. Specify "ALL" to include inactive users.}
 

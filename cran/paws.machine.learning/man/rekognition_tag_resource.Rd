@@ -14,7 +14,7 @@ that you want to assign the tags to.}
 \item{Tags}{[required] The key-value tags to assign to the resource.}
 }
 \description{
-Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.
+Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging AWS Resources}.
 
 See \url{https://paws-r.github.io/docs/rekognition/tag_resource.html} for full documentation.
 }

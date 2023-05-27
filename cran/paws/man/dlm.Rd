@@ -32,8 +32,9 @@ With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
 Amazon Web Services resources. You create lifecycle policies, which are
 used to automate operations on the specified resources.
 
-Amazon DLM supports Amazon EBS volumes and snapshots. For information
-about using Amazon DLM with Amazon EBS, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html}{Automating the Amazon EBS Snapshot Lifecycle}
+Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
+For information about using Amazon Data Lifecycle Manager with Amazon
+EBS, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html}{Amazon Data Lifecycle Manager}
 in the \emph{Amazon EC2 User Guide}.
 }
 \section{Service syntax}{

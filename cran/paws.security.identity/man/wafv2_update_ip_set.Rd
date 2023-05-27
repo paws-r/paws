@@ -13,7 +13,8 @@ you create it.}
 \item{Scope}{[required] Specifies whether this is for an Amazon CloudFront distribution or for a
 regional application. A regional application can be an Application Load
 Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API,
-or an Amazon Cognito user pool.
+an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+Services Verified Access instance.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -30,8 +31,9 @@ delete.}
 \item{Description}{A description of the IP set that helps with identification.}
 
 \item{Addresses}{[required] Contains an array of strings that specifies zero or more IP addresses or
-blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
+blocks of IP addresses. All addresses must be specified using Classless
+Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
+CIDR ranges except for \verb{/0}.
 
 Example address strings:
 \itemize{

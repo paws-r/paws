@@ -23,10 +23,9 @@ swf_register_workflow_type(
 
 \item{name}{[required] The name of the workflow type.
 
-The specified string must not start or end with whitespace. It must not
-contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
-the literal string \code{arn}.}
+The specified string must not contain a \code{:} (colon), \code{/} (slash), \code{|}
+(vertical bar), or any control characters (\verb{U+0000`-`U+001f} |
+\verb{U+007f`-`U+009f}). Also, it must \emph{not} be the literal string \code{arn}.}
 
 \item{version}{[required] The version of the workflow type.
 
@@ -35,10 +34,9 @@ which must be unique within the domain. To get a list of all currently
 registered workflow types, use the
 \code{\link[=swf_list_workflow_types]{list_workflow_types}} action.
 
-The specified string must not start or end with whitespace. It must not
-contain a \code{:} (colon), \code{/} (slash), \code{|} (vertical bar), or any control
-characters (\verb{U+0000`-`U+001f} | \verb{U+007f`-`U+009f}). Also, it must not \emph{be}
-the literal string \code{arn}.}
+The specified string must not contain a \code{:} (colon), \code{/} (slash), \code{|}
+(vertical bar), or any control characters (\verb{U+0000`-`U+001f} |
+\verb{U+007f`-`U+009f}). Also, it must \emph{not} be the literal string \code{arn}.}
 
 \item{description}{Textual description of the workflow type.}
 

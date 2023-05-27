@@ -5,6 +5,7 @@
 \title{Update an environment}
 \usage{
 proton_update_environment(
+  codebuildRoleArn = NULL,
   componentRoleArn = NULL,
   deploymentType,
   description = NULL,
@@ -18,6 +19,10 @@ proton_update_environment(
 )
 }
 \arguments{
+\item{codebuildRoleArn}{The Amazon Resource Name (ARN) of the IAM service role that allows
+Proton to provision infrastructure using CodeBuild-based provisioning on
+your behalf.}
+
 \item{componentRoleArn}{The Amazon Resource Name (ARN) of the IAM service role that Proton uses
 when provisioning directly defined components in this environment. It
 determines the scope of infrastructure that a component can provision.
@@ -26,7 +31,7 @@ The environment must have a \code{componentRoleArn} to allow directly defined
 components to be associated with the environment.
 
 For more information about components, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-components.html}{Proton components}
-in the \emph{Proton Administrator Guide}.}
+in the \emph{Proton User Guide}.}
 
 \item{deploymentType}{[required] There are four modes for updating an environment. The \code{deploymentType}
 field defines the mode.
@@ -71,8 +76,10 @@ environment.}
 \item{protonServiceRoleArn}{The Amazon Resource Name (ARN) of the Proton service role that allows
 Proton to make API calls to other services your behalf.}
 
-\item{provisioningRepository}{The infrastructure repository that you use to host your rendered
-infrastructure templates for self-managed provisioning.}
+\item{provisioningRepository}{The linked repository that you use to host your rendered infrastructure
+templates for self-managed provisioning. A linked repository is a
+repository that has been registered with Proton. For more information,
+see \code{\link[=proton_create_repository]{create_repository}}.}
 
 \item{spec}{The formatted specification that defines the update.}
 

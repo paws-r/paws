@@ -70,7 +70,7 @@ text in the response.
 \item If the value begins with \verb{audio/}, Amazon Lex V2 returns speech in
 the response. Amazon Lex V2 uses Amazon Polly to generate the speech
 using the configuration that you specified in the
-\code{requestContentType} parameter. For example, if you specify
+\code{responseContentType} parameter. For example, if you specify
 \code{audio/mpeg} as the value, Amazon Lex V2 returns speech in the MPEG
 format.
 \item If the value is \code{audio/pcm}, the speech returned is \code{audio/pcm} at

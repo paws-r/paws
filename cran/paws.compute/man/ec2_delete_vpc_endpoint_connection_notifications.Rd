@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_delete_vpc_endpoint_connection_notifications}
 \alias{ec2_delete_vpc_endpoint_connection_notifications}
-\title{Deletes one or more VPC endpoint connection notifications}
+\title{Deletes the specified VPC endpoint connection notifications}
 \usage{
 ec2_delete_vpc_endpoint_connection_notifications(
   DryRun = NULL,
@@ -15,10 +15,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ConnectionNotificationIds}{[required] One or more notification IDs.}
+\item{ConnectionNotificationIds}{[required] The IDs of the notifications.}
 }
 \description{
-Deletes one or more VPC endpoint connection notifications.
+Deletes the specified VPC endpoint connection notifications.
 
 See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoint_connection_notifications.html} for full documentation.
 }

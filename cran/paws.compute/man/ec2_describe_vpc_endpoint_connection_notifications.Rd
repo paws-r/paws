@@ -21,7 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ConnectionNotificationId}{The ID of the notification.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{connection-notification-arn} - The ARN of the SNS topic for the
 notification.

@@ -21,10 +21,11 @@ For example:
 To get the key ID and key ARN for a KMS key, use
 \code{\link[=kms_list_keys]{list_keys}} or \code{\link[=kms_describe_key]{describe_key}}.}
 
-\item{Tags}{[required] One or more tags.
+\item{Tags}{[required] One or more tags. Each tag consists of a tag key and a tag value. The
+tag value can be an empty (null) string.
 
-Each tag consists of a tag key and a tag value. The tag value can be an
-empty (null) string.
+Do not include confidential or sensitive information in this field. This
+field may be displayed in plaintext in CloudTrail logs and other output.
 
 You cannot have more than one tag on a KMS key with the same tag key. If
 you specify an existing tag key with a different tag value, KMS replaces

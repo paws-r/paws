@@ -17,74 +17,53 @@ NULL
 #'     plan to use the Amazon Web Services Support API.
 #' 
 #' -   If you call the Amazon Web Services Support API from an account that
-#'     does not have a Business, Enterprise On-Ramp, or Enterprise Support
+#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
 #'     plan, the `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [Amazon Web
 #'     Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
-#' The Amazon Web Services Support service also exposes a set of [Trusted
-#' Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/)
-#' features. You can retrieve a list of checks and their descriptions, get
-#' check results, specify checks to refresh, and get the refresh status of
+#' You can also use the Amazon Web Services Support API to access features
+#' for [Trusted
+#' Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/).
+#' You can return a list of checks and their descriptions, get check
+#' results, specify checks to refresh, and get the refresh status of
 #' checks.
 #' 
-#' The following list describes the Amazon Web Services Support case
-#' management operations:
+#' You can manage your support cases with the following Amazon Web Services
+#' Support API operations:
 #' 
-#' -   Service names, issue categories, and available severity levels - The
-#'     [`describe_services`][support_describe_services] and
-#'     [`describe_severity_levels`][support_describe_severity_levels]
-#'     operations return Amazon Web Services service names, service codes,
-#'     service categories, and problem severity levels. You use these
-#'     values when you call the [`create_case`][support_create_case]
-#'     operation.
-#' 
-#' -   Case creation, case details, and case resolution - The
-#'     [`create_case`][support_create_case],
+#' -   The [`create_case`][support_create_case],
 #'     [`describe_cases`][support_describe_cases],
 #'     [`describe_attachment`][support_describe_attachment], and
 #'     [`resolve_case`][support_resolve_case] operations create Amazon Web
 #'     Services Support cases, retrieve information about cases, and
 #'     resolve cases.
 #' 
-#' -   Case communication - The
-#'     [`describe_communications`][support_describe_communications],
+#' -   The [`describe_communications`][support_describe_communications],
 #'     [`add_communication_to_case`][support_add_communication_to_case],
 #'     and [`add_attachments_to_set`][support_add_attachments_to_set]
 #'     operations retrieve and add communications and attachments to Amazon
 #'     Web Services Support cases.
 #' 
-#' The following list describes the operations available from the Amazon
-#' Web Services Support service for Trusted Advisor:
+#' -   The [`describe_services`][support_describe_services] and
+#'     [`describe_severity_levels`][support_describe_severity_levels]
+#'     operations return Amazon Web Service names, service codes, service
+#'     categories, and problem severity levels. You use these values when
+#'     you call the [`create_case`][support_create_case] operation.
 #' 
-#' -   [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks]
-#'     returns the list of checks that run against your Amazon Web Services
-#'     resources.
-#' 
-#' -   Using the `checkId` for a specific check returned by
-#'     [`describe_trusted_advisor_checks`][support_describe_trusted_advisor_checks],
-#'     you can call
-#'     [`describe_trusted_advisor_check_result`][support_describe_trusted_advisor_check_result]
-#'     to obtain the results for the check that you specified.
-#' 
-#' -   [`describe_trusted_advisor_check_summaries`][support_describe_trusted_advisor_check_summaries]
-#'     returns summarized results for one or more Trusted Advisor checks.
-#' 
-#' -   [`refresh_trusted_advisor_check`][support_refresh_trusted_advisor_check]
-#'     requests that Trusted Advisor rerun a specified check.
-#' 
-#' -   [`describe_trusted_advisor_check_refresh_statuses`][support_describe_trusted_advisor_check_refresh_statuses]
-#'     reports the refresh status of one or more checks.
+#' You can also use the Amazon Web Services Support API to call the Trusted
+#' Advisor operations. For more information, see [Trusted
+#' Advisor](https://docs.aws.amazon.com/) in the *Amazon Web Services
+#' Support User Guide*.
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
-#' See [About the Amazon Web Services Support
+#' For more information about this service and the endpoints to use, see
+#' [About the Amazon Web Services Support
 #' API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html)
-#' in the *Amazon Web Services Support User Guide* for information about
-#' how to use this service to create and manage your support cases, and how
-#' to call Trusted Advisor for results of checks on your resources.
+#' in the *Amazon Web Services Support User Guide*.
 #'
 #' @param
 #' config
@@ -140,8 +119,10 @@ NULL
 #'  \link[=support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID\cr
 #'  \link[=support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs\cr
 #'  \link[=support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases\cr
+#'  \link[=support_describe_create_case_options]{describe_create_case_options} \tab Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability\cr
 #'  \link[=support_describe_services]{describe_services} \tab Returns the current list of Amazon Web Services services and a list of service categories for each service\cr
 #'  \link[=support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to a support case\cr
+#'  \link[=support_describe_supported_languages]{describe_supported_languages} \tab Returns a list of supported languages for a specified categoryCode, issueType and serviceCode\cr
 #'  \link[=support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the Trusted Advisor checks that have the specified check IDs\cr
 #'  \link[=support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID\cr
 #'  \link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata\cr

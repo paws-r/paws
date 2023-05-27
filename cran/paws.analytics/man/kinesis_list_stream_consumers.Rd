@@ -14,7 +14,7 @@ kinesis_list_stream_consumers(
 }
 \arguments{
 \item{StreamARN}{[required] The ARN of the Kinesis data stream for which you want to list the
-registered consumers. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
+registered consumers. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{NextToken}{When the number of consumers that are registered with the data stream is
 greater than the default value for the \code{MaxResults} parameter, or if you

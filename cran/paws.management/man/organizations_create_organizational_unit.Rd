@@ -29,8 +29,9 @@ set the value to an empty string, but you can't set it to \code{null}. For
 more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources}
 in the Organizations User Guide.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags for an OU, then the entire request fails and the OU is not created.}
+If any one of the tags is not valid or if you exceed the allowed number
+of tags for an OU, then the entire request fails and the OU is not
+created.}
 }
 \description{
 Creates an organizational unit (OU) within a root or parent OU. An OU is a container for accounts that enables you to organize your accounts to apply policies according to your business requirements. The number of levels deep that you can nest OUs is dependent upon the policy types enabled for that root. For service control policies, the limit is five.

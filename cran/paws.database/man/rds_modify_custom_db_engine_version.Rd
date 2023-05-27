@@ -12,7 +12,8 @@ rds_modify_custom_db_engine_version(
 )
 }
 \arguments{
-\item{Engine}{[required] The DB engine. The only supported value is \code{custom-oracle-ee}.}
+\item{Engine}{[required] The DB engine. The only supported values are \code{custom-oracle-ee} and
+\code{custom-oracle-ee-cdb}.}
 
 \item{EngineVersion}{[required] The custom engine version (CEV) that you want to modify. This option is
 required for RDS Custom for Oracle, but optional for Amazon RDS. The

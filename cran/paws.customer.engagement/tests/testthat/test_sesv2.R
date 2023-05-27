@@ -32,6 +32,10 @@ test_that("list_import_jobs", {
   expect_error(svc$list_import_jobs(), NA)
 })
 
+test_that("list_recommendations", {
+  expect_error(svc$list_recommendations(), NA)
+})
+
 test_that("list_suppressed_destinations", {
   expect_error(svc$list_suppressed_destinations(), NA)
 })

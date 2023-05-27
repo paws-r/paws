@@ -2,17 +2,18 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_create_template}
 \alias{quicksight_create_template}
-\title{Creates a template from an existing Amazon QuickSight analysis or
-template}
+\title{Creates a template either from a TemplateDefinition or from an existing
+Amazon QuickSight analysis or template}
 \usage{
 quicksight_create_template(
   AwsAccountId,
   TemplateId,
   Name = NULL,
   Permissions = NULL,
-  SourceEntity,
+  SourceEntity = NULL,
   Tags = NULL,
-  VersionDescription = NULL
+  VersionDescription = NULL,
+  Definition = NULL
 )
 }
 \arguments{
@@ -27,7 +28,7 @@ per Amazon Web Services Region; in each Amazon Web Services account.}
 
 \item{Permissions}{A list of resource permissions to be set on the template.}
 
-\item{SourceEntity}{[required] The entity that you are using as a source when you create the template.
+\item{SourceEntity}{The entity that you are using as a source when you create the template.
 In \code{SourceEntity}, you specify the type of object you're using as
 source: \code{SourceTemplate} for a template or \code{SourceAnalysis} for an
 analysis. Both of these require an Amazon Resource Name (ARN). For
@@ -39,7 +40,10 @@ Amazon QuickSight-supported Amazon Web Services Region.
 Use the \code{DataSetReferences} entity within \code{SourceTemplate} or
 \code{SourceAnalysis} to list the replacement datasets for the placeholders
 listed in the original. The schema in each dataset must match its
-placeholder.}
+placeholder.
+
+Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
+the request to be valid.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the resource.}
@@ -49,9 +53,17 @@ operation creates the first version of the template. Every time
 \code{\link[=quicksight_update_template]{update_template}} is called, a new version
 is created. Each version of the template maintains a description of the
 version in the \code{VersionDescription} field.}
+
+\item{Definition}{The definition of a template.
+
+A definition is the data model of all features in a Dashboard, Template,
+or Analysis.
+
+Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
+the request to be valid.}
 }
 \description{
-Creates a template from an existing Amazon QuickSight analysis or template. You can use the resulting template to create a dashboard.
+Creates a template either from a \code{TemplateDefinition} or from an existing Amazon QuickSight analysis or template. You can use the resulting template to create additional dashboards, templates, or analyses.
 
 See \url{https://paws-r.github.io/docs/quicksight/create_template.html} for full documentation.
 }

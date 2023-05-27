@@ -19,7 +19,9 @@ wellarchitected_update_workload(
   IndustryType = NULL,
   Industry = NULL,
   Notes = NULL,
-  ImprovementStatus = NULL
+  ImprovementStatus = NULL,
+  DiscoveryConfig = NULL,
+  Applications = NULL
 )
 }
 \arguments{
@@ -57,6 +59,11 @@ added.}
 \item{Notes}{}
 
 \item{ImprovementStatus}{}
+
+\item{DiscoveryConfig}{Well-Architected discovery configuration settings to associate to the
+workload.}
+
+\item{Applications}{List of AppRegistry application ARNs to associate to the workload.}
 }
 \description{
 Update an existing workload.

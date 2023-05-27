@@ -14,7 +14,6 @@ servicecatalog_list_launch_paths(
 \arguments{
 \item{AcceptLanguage}{The language code.
 \itemize{
-\item \code{en} - English (default)
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
@@ -27,7 +26,7 @@ servicecatalog_list_launch_paths(
 results, use null.}
 }
 \description{
-Lists the paths to the specified product. A path is how the user has access to a specified product, and is necessary when provisioning a product. A path also determines the constraints put on the product.
+Lists the paths to the specified product. A path describes how the user gets access to a specified product and is necessary when provisioning a product. A path also determines the constraints that are put on a product. A path is dependent on a specific product, porfolio, and principal.
 
 See \url{https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html} for full documentation.
 }

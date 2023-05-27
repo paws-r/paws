@@ -69,6 +69,7 @@ NULL
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -95,6 +96,7 @@ NULL
 #'               name = "string"
 #'             )
 #'           ),
+#'           port = 123,
 #'           serviceName = "string"
 #'         )
 #'       ),
@@ -113,6 +115,7 @@ NULL
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -144,6 +147,7 @@ NULL
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -170,6 +174,7 @@ NULL
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -201,6 +206,7 @@ NULL
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -238,6 +244,7 @@ NULL
 #'           )
 #'         ),
 #'         target = list(
+#'           port = 123,
 #'           virtualService = list(
 #'             virtualServiceName = "string"
 #'           )
@@ -264,6 +271,7 @@ NULL
 #'             name = "string"
 #'           )
 #'         ),
+#'         port = 123,
 #'         serviceName = "string"
 #'       )
 #'     ),
@@ -282,6 +290,7 @@ NULL
 #'           )
 #'         ),
 #'         target = list(
+#'           port = 123,
 #'           virtualService = list(
 #'             virtualServiceName = "string"
 #'           )
@@ -313,6 +322,7 @@ NULL
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -339,6 +349,7 @@ NULL
 #'           )
 #'         ),
 #'         target = list(
+#'           port = 123,
 #'           virtualService = list(
 #'             virtualServiceName = "string"
 #'           )
@@ -370,6 +381,7 @@ NULL
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -582,6 +594,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -605,6 +618,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             )
 #'           ),
 #'           methodName = "string",
+#'           port = 123,
 #'           serviceName = "string"
 #'         ),
 #'         retryPolicy = list(
@@ -638,6 +652,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -665,6 +680,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -704,6 +720,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -731,6 +748,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -771,10 +789,14 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
 #'           )
+#'         ),
+#'         match = list(
+#'           port = 123
 #'         ),
 #'         timeout = list(
 #'           idle = list(
@@ -804,6 +826,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
@@ -827,6 +850,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'           )
 #'         ),
 #'         methodName = "string",
+#'         port = 123,
 #'         serviceName = "string"
 #'       ),
 #'       retryPolicy = list(
@@ -860,6 +884,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
@@ -887,6 +912,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -926,6 +952,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
@@ -953,6 +980,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -993,10 +1021,14 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
 #'         )
+#'       ),
+#'       match = list(
+#'         port = 123
 #'       ),
 #'       timeout = list(
 #'         idle = list(
@@ -1200,6 +1232,15 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -1325,6 +1366,15 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     logging = list(
 #'       accessLog = list(
 #'         file = list(
+#'           format = list(
+#'             json = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             text = "string"
+#'           ),
 #'           path = "string"
 #'         )
 #'       )
@@ -1644,6 +1694,15 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -1886,6 +1945,15 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     logging = list(
 #'       accessLog = list(
 #'         file = list(
+#'           format = list(
+#'             json = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             text = "string"
+#'           ),
 #'           path = "string"
 #'         )
 #'       )
@@ -2232,6 +2300,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -2258,6 +2327,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'               name = "string"
 #'             )
 #'           ),
+#'           port = 123,
 #'           serviceName = "string"
 #'         )
 #'       ),
@@ -2276,6 +2346,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -2307,6 +2378,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -2333,6 +2405,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -2364,6 +2437,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -2536,6 +2610,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -2559,6 +2634,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'             )
 #'           ),
 #'           methodName = "string",
+#'           port = 123,
 #'           serviceName = "string"
 #'         ),
 #'         retryPolicy = list(
@@ -2592,6 +2668,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -2619,6 +2696,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -2658,6 +2736,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -2685,6 +2764,7 @@ appmesh_delete_mesh <- function(meshName) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -2725,10 +2805,14 @@ appmesh_delete_mesh <- function(meshName) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
 #'           )
+#'         ),
+#'         match = list(
+#'           port = 123
 #'         ),
 #'         timeout = list(
 #'           idle = list(
@@ -2920,6 +3004,15 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -3207,6 +3300,15 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -3488,6 +3590,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -3514,6 +3617,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'               name = "string"
 #'             )
 #'           ),
+#'           port = 123,
 #'           serviceName = "string"
 #'         )
 #'       ),
@@ -3532,6 +3636,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -3563,6 +3668,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -3589,6 +3695,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -3620,6 +3727,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -3795,6 +3903,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -3818,6 +3927,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'             )
 #'           ),
 #'           methodName = "string",
+#'           port = 123,
 #'           serviceName = "string"
 #'         ),
 #'         retryPolicy = list(
@@ -3851,6 +3961,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -3878,6 +3989,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -3917,6 +4029,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -3944,6 +4057,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -3984,10 +4098,14 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
 #'           )
+#'         ),
+#'         match = list(
+#'           port = 123
 #'         ),
 #'         timeout = list(
 #'           idle = list(
@@ -4179,6 +4297,15 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -4463,6 +4590,15 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -5533,6 +5669,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -5559,6 +5696,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'               name = "string"
 #'             )
 #'           ),
+#'           port = 123,
 #'           serviceName = "string"
 #'         )
 #'       ),
@@ -5577,6 +5715,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -5608,6 +5747,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -5634,6 +5774,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'             )
 #'           ),
 #'           target = list(
+#'             port = 123,
 #'             virtualService = list(
 #'               virtualServiceName = "string"
 #'             )
@@ -5665,6 +5806,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -5702,6 +5844,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         ),
 #'         target = list(
+#'           port = 123,
 #'           virtualService = list(
 #'             virtualServiceName = "string"
 #'           )
@@ -5728,6 +5871,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'             name = "string"
 #'           )
 #'         ),
+#'         port = 123,
 #'         serviceName = "string"
 #'       )
 #'     ),
@@ -5746,6 +5890,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         ),
 #'         target = list(
+#'           port = 123,
 #'           virtualService = list(
 #'             virtualServiceName = "string"
 #'           )
@@ -5777,6 +5922,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -5803,6 +5949,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           )
 #'         ),
 #'         target = list(
+#'           port = 123,
 #'           virtualService = list(
 #'             virtualServiceName = "string"
 #'           )
@@ -5834,6 +5981,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -6008,6 +6156,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -6031,6 +6180,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             )
 #'           ),
 #'           methodName = "string",
+#'           port = 123,
 #'           serviceName = "string"
 #'         ),
 #'         retryPolicy = list(
@@ -6064,6 +6214,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -6091,6 +6242,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -6130,6 +6282,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
@@ -6157,6 +6310,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             exact = "string",
 #'             regex = "string"
 #'           ),
+#'           port = 123,
 #'           prefix = "string",
 #'           queryParameters = list(
 #'             list(
@@ -6197,10 +6351,14 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         action = list(
 #'           weightedTargets = list(
 #'             list(
+#'               port = 123,
 #'               virtualNode = "string",
 #'               weight = 123
 #'             )
 #'           )
+#'         ),
+#'         match = list(
+#'           port = 123
 #'         ),
 #'         timeout = list(
 #'           idle = list(
@@ -6230,6 +6388,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
@@ -6253,6 +6412,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'           )
 #'         ),
 #'         methodName = "string",
+#'         port = 123,
 #'         serviceName = "string"
 #'       ),
 #'       retryPolicy = list(
@@ -6286,6 +6446,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
@@ -6313,6 +6474,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -6352,6 +6514,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
@@ -6379,6 +6542,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'           exact = "string",
 #'           regex = "string"
 #'         ),
+#'         port = 123,
 #'         prefix = "string",
 #'         queryParameters = list(
 #'           list(
@@ -6419,10 +6583,14 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       action = list(
 #'         weightedTargets = list(
 #'           list(
+#'             port = 123,
 #'             virtualNode = "string",
 #'             weight = 123
 #'           )
 #'         )
+#'       ),
+#'       match = list(
+#'         port = 123
 #'       ),
 #'       timeout = list(
 #'         idle = list(
@@ -6605,6 +6773,15 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -6730,6 +6907,15 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     logging = list(
 #'       accessLog = list(
 #'         file = list(
+#'           format = list(
+#'             json = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             text = "string"
+#'           ),
 #'           path = "string"
 #'         )
 #'       )
@@ -7007,6 +7193,15 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'       logging = list(
 #'         accessLog = list(
 #'           file = list(
+#'             format = list(
+#'               json = list(
+#'                 list(
+#'                   key = "string",
+#'                   value = "string"
+#'                 )
+#'               ),
+#'               text = "string"
+#'             ),
 #'             path = "string"
 #'           )
 #'         )
@@ -7249,6 +7444,15 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     logging = list(
 #'       accessLog = list(
 #'         file = list(
+#'           format = list(
+#'             json = list(
+#'               list(
+#'                 key = "string",
+#'                 value = "string"
+#'               )
+#'             ),
+#'             text = "string"
+#'           ),
 #'           path = "string"
 #'         )
 #'       )

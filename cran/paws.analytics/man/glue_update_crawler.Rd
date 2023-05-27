@@ -56,7 +56,7 @@ crawl only folders that were added since the last crawler run.}
 
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
-see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
+see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Setting crawler configuration options}.}
 
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this
 crawler.}

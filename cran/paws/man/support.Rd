@@ -39,67 +39,48 @@ HTTP methods that return results in JSON format.
 \item You must have a Business, Enterprise On-Ramp, or Enterprise Support
 plan to use the Amazon Web Services Support API.
 \item If you call the Amazon Web Services Support API from an account that
-does not have a Business, Enterprise On-Ramp, or Enterprise Support
+doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
 plan, the \code{SubscriptionRequiredException} error message appears. For
 information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{Amazon Web Services Support}.
 }
 
-The Amazon Web Services Support service also exposes a set of \href{https://aws.amazon.com/premiumsupport/technology/trusted-advisor/}{Trusted Advisor}
-features. You can retrieve a list of checks and their descriptions, get
-check results, specify checks to refresh, and get the refresh status of
+You can also use the Amazon Web Services Support API to access features
+for \href{https://aws.amazon.com/premiumsupport/technology/trusted-advisor/}{Trusted Advisor}.
+You can return a list of checks and their descriptions, get check
+results, specify checks to refresh, and get the refresh status of
 checks.
 
-The following list describes the Amazon Web Services Support case
-management operations:
+You can manage your support cases with the following Amazon Web Services
+Support API operations:
 \itemize{
-\item Service names, issue categories, and available severity levels - The
-\code{describe_services} and
-\code{describe_severity_levels}
-operations return Amazon Web Services service names, service codes,
-service categories, and problem severity levels. You use these
-values when you call the \code{create_case}
-operation.
-\item Case creation, case details, and case resolution - The
-\code{create_case},
+\item The \code{create_case},
 \code{describe_cases},
 \code{describe_attachment}, and
 \code{resolve_case} operations create Amazon Web
 Services Support cases, retrieve information about cases, and
 resolve cases.
-\item Case communication - The
-\code{describe_communications},
+\item The \code{describe_communications},
 \code{add_communication_to_case},
 and \code{add_attachments_to_set}
 operations retrieve and add communications and attachments to Amazon
 Web Services Support cases.
+\item The \code{describe_services} and
+\code{describe_severity_levels}
+operations return Amazon Web Service names, service codes, service
+categories, and problem severity levels. You use these values when
+you call the \code{create_case} operation.
 }
 
-The following list describes the operations available from the Amazon
-Web Services Support service for Trusted Advisor:
-\itemize{
-\item \code{describe_trusted_advisor_checks}
-returns the list of checks that run against your Amazon Web Services
-resources.
-\item Using the \code{checkId} for a specific check returned by
-\code{describe_trusted_advisor_checks},
-you can call
-\code{describe_trusted_advisor_check_result}
-to obtain the results for the check that you specified.
-\item \code{describe_trusted_advisor_check_summaries}
-returns summarized results for one or more Trusted Advisor checks.
-\item \code{refresh_trusted_advisor_check}
-requests that Trusted Advisor rerun a specified check.
-\item \code{describe_trusted_advisor_check_refresh_statuses}
-reports the refresh status of one or more checks.
-}
+You can also use the Amazon Web Services Support API to call the Trusted
+Advisor operations. For more information, see \href{https://docs.aws.amazon.com/}{Trusted Advisor} in the \emph{Amazon Web Services
+Support User Guide}.
 
 For authentication of requests, Amazon Web Services Support uses
-\href{https://docs.aws.amazon.com/general/latest/gr/signing-aws-api-requests.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
-See \href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}
-in the \emph{Amazon Web Services Support User Guide} for information about
-how to use this service to create and manage your support cases, and how
-to call Trusted Advisor for results of checks on your resources.
+For more information about this service and the endpoints to use, see
+\href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}
+in the \emph{Amazon Web Services Support User Guide}.
 }
 \section{Service syntax}{
 
@@ -134,8 +115,10 @@ to call Trusted Advisor for results of checks on your resources.
 \link[paws.management:support_describe_attachment]{describe_attachment} \tab Returns the attachment that has the specified ID\cr
 \link[paws.management:support_describe_cases]{describe_cases} \tab Returns a list of cases that you specify by passing one or more case IDs\cr
 \link[paws.management:support_describe_communications]{describe_communications} \tab Returns communications and attachments for one or more support cases\cr
+\link[paws.management:support_describe_create_case_options]{describe_create_case_options} \tab Returns a list of CreateCaseOption types along with the corresponding supported hours and language availability\cr
 \link[paws.management:support_describe_services]{describe_services} \tab Returns the current list of Amazon Web Services services and a list of service categories for each service\cr
 \link[paws.management:support_describe_severity_levels]{describe_severity_levels} \tab Returns the list of severity levels that you can assign to a support case\cr
+\link[paws.management:support_describe_supported_languages]{describe_supported_languages} \tab Returns a list of supported languages for a specified categoryCode, issueType and serviceCode\cr
 \link[paws.management:support_describe_trusted_advisor_check_refresh_statuses]{describe_trusted_advisor_check_refresh_statuses} \tab Returns the refresh status of the Trusted Advisor checks that have the specified check IDs\cr
 \link[paws.management:support_describe_trusted_advisor_check_result]{describe_trusted_advisor_check_result} \tab Returns the results of the Trusted Advisor check that has the specified check ID\cr
 \link[paws.management:support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks} \tab Returns information about all available Trusted Advisor checks, including the name, ID, category, description, and metadata\cr

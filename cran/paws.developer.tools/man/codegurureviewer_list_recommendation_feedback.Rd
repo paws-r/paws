@@ -15,7 +15,7 @@ codegurureviewer_list_recommendation_feedback(
 }
 \arguments{
 \item{NextToken}{If \code{nextToken} is returned, there are more results available. The value
-of nextToken is a unique pagination token for each page. Make the call
+of \code{nextToken} is a unique pagination token for each page. Make the call
 again using the returned token to retrieve the next page. Keep all other
 arguments unchanged.}
 
@@ -23,7 +23,7 @@ arguments unchanged.}
 100.}
 
 \item{CodeReviewArn}{[required] The Amazon Resource Name (ARN) of the
-\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{\code{CodeReview}}
+\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReview.html}{CodeReview}
 object.}
 
 \item{UserIds}{An Amazon Web Services user's account ID or Amazon Resource Name (ARN).
@@ -38,7 +38,7 @@ in the \emph{Amazon Web Services Identity and Access Management User Guide}.}
 \item{RecommendationIds}{Used to query the recommendation feedback for a given recommendation.}
 }
 \description{
-Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html}{\code{RecommendationFeedbackSummary}} objects that contain customer recommendation feedback for all CodeGuru Reviewer users.
+Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html}{RecommendationFeedbackSummary} objects that contain customer recommendation feedback for all CodeGuru Reviewer users.
 
 See \url{https://paws-r.github.io/docs/codegurureviewer/list_recommendation_feedback.html} for full documentation.
 }

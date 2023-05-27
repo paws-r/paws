@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_vpc_classic_link_dns_support}
 \alias{ec2_describe_vpc_classic_link_dns_support}
-\title{We are retiring EC2-Classic on August 15, 2022}
+\title{We are retiring EC2-Classic}
 \usage{
 ec2_describe_vpc_classic_link_dns_support(
   MaxResults = NULL,
@@ -11,16 +11,18 @@ ec2_describe_vpc_classic_link_dns_support(
 )
 }
 \arguments{
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 
 \item{VpcIds}{One or more VPC IDs.}
 }
 \description{
-We are retiring EC2-Classic on August 15, 2022. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://paws-r.github.io/docs/ec2/describe_vpc_classic_link_dns_support.html} for full documentation.
 }

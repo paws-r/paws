@@ -10,7 +10,7 @@ cloudfront_create_function(Name, FunctionConfig, FunctionCode)
 \item{Name}{[required] A name to identify the function.}
 
 \item{FunctionConfig}{[required] Configuration information about the function, including an optional
-comment and the function’s runtime.}
+comment and the function's runtime.}
 
 \item{FunctionCode}{[required] The function code. For more information about writing a CloudFront
 function, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html}{Writing function code for CloudFront Functions}

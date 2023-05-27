@@ -8,8 +8,8 @@ and an account}
 macie2_delete_member(id)
 }
 \arguments{
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 }
 \description{
 Deletes the association between an Amazon Macie administrator account and an account.

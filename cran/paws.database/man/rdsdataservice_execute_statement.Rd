@@ -5,20 +5,49 @@
 \title{Runs a SQL statement against a database}
 \usage{
 rdsdataservice_execute_statement(
-  continueAfterTimeout = NULL,
-  database = NULL,
-  formatRecordsAs = NULL,
-  includeResultMetadata = NULL,
-  parameters = NULL,
   resourceArn,
-  resultSetOptions = NULL,
-  schema = NULL,
   secretArn,
   sql,
-  transactionId = NULL
+  database = NULL,
+  schema = NULL,
+  parameters = NULL,
+  transactionId = NULL,
+  includeResultMetadata = NULL,
+  continueAfterTimeout = NULL,
+  resultSetOptions = NULL,
+  formatRecordsAs = NULL
 )
 }
 \arguments{
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
+
+\item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
+database user name and password for the credentials in the secret.
+
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
+
+\item{sql}{[required] The SQL statement to run.}
+
+\item{database}{The name of the database.}
+
+\item{schema}{The name of the database schema.
+
+Currently, the \code{schema} parameter isn't supported.}
+
+\item{parameters}{The parameters for the SQL statement.
+
+Array parameters are not supported.}
+
+\item{transactionId}{The identifier of a transaction that was started by using the
+\code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation.
+Specify the transaction ID of the transaction that you want to include
+the SQL statement in.
+
+If the SQL statement is not part of a transaction, don't set this
+parameter.}
+
+\item{includeResultMetadata}{A value that indicates whether to include metadata in the results.}
+
 \item{continueAfterTimeout}{A value that indicates whether to continue running the statement after
 the call times out. By default, the statement stops running when the
 call times out.
@@ -28,7 +57,7 @@ the call times out. When a DDL statement terminates before it is
 finished running, it can result in errors and possibly corrupted data
 structures.}
 
-\item{database}{The name of the database.}
+\item{resultSetOptions}{Options that control how the result set is returned.}
 
 \item{formatRecordsAs}{A value that indicates whether to format the result set as a single JSON
 string. This parameter only applies to \code{SELECT} statements and is
@@ -38,35 +67,6 @@ ignored for other types of statements. Allowed values are \code{NONE} and
 
 For usage information about the JSON format for result sets, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API}
 in the \emph{Amazon Aurora User Guide}.}
-
-\item{includeResultMetadata}{A value that indicates whether to include metadata in the results.}
-
-\item{parameters}{The parameters for the SQL statement.
-
-Array parameters are not supported.}
-
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.}
-
-\item{resultSetOptions}{Options that control how the result set is returned.}
-
-\item{schema}{The name of the database schema.
-
-Currently, the \code{schema} parameter isn't supported.}
-
-\item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
-database user name and password for the credentials in the secret.
-
-For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
-
-\item{sql}{[required] The SQL statement to run.}
-
-\item{transactionId}{The identifier of a transaction that was started by using the
-\code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation.
-Specify the transaction ID of the transaction that you want to include
-the SQL statement in.
-
-If the SQL statement is not part of a transaction, don't set this
-parameter.}
 }
 \description{
 Runs a SQL statement against a database.

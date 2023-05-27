@@ -19,6 +19,9 @@ servicediscovery_create_service(
 \arguments{
 \item{Name}{[required] The name that you want to assign to the service.
 
+Do not include sensitive information in the name if the namespace is
+discoverable by public DNS queries.
+
 If you want Cloud Map to create an \code{SRV} record when you register an
 instance and you're using a system that requires a specific \code{SRV}
 format, such as \href{http://www.haproxy.org/}{HAProxy}, specify the
@@ -53,13 +56,13 @@ date/timestamp).}
 
 \item{Description}{A description for the service.}
 
-\item{DnsConfig}{A complex type that contains information about the Amazon Route 53
+\item{DnsConfig}{A complex type that contains information about the Amazon Route 53
 records that you want Cloud Map to create when you register an instance.}
 
 \item{HealthCheckConfig}{\emph{Public DNS and HTTP namespaces only.} A complex type that contains
-settings for an optional Route 53 health check. If you specify settings
+settings for an optional Route 53 health check. If you specify settings
 for a health check, Cloud Map associates the health check with all the
-Route 53 DNS records that you specify in \code{DnsConfig}.
+Route 53 DNS records that you specify in \code{DnsConfig}.
 
 If you specify a health check configuration, you can specify either
 \code{HealthCheckCustomConfig} or \code{HealthCheckConfig} but not both.

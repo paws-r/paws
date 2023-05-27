@@ -44,9 +44,9 @@ is accepted and the tags are actually attached to the account. That
 means that if the tag policy changes between the invitation and the
 acceptance, then that tags could potentially be non-compliant.
 
-If any one of the tags is invalid or if you exceed the allowed number of
-tags for an account, then the entire request fails and invitations are
-not sent.}
+If any one of the tags is not valid or if you exceed the allowed number
+of tags for an account, then the entire request fails and invitations
+are not sent.}
 }
 \description{
 Sends an invitation to another account to join your organization as a member account. Organizations sends email on your behalf to the email address that is associated with the other account's owner. The invitation is implemented as a Handshake whose details are in the response.

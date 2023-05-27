@@ -3,6 +3,18 @@
 #' @include timestreamwrite_service.R
 NULL
 
+.timestreamwrite$create_batch_load_task_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string", sensitive = TRUE)), DataModelConfiguration = structure(list(DataModel = structure(list(TimeColumn = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), DimensionMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), DestinationColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiMeasureMappings = structure(list(TargetMultiMeasureName = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MixedMeasureMappings = structure(list(structure(list(MeasureName = structure(logical(0), tags = list(type = "string")), SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMeasureName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureNameColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataModelS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataSourceConfiguration = structure(list(DataSourceS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CsvConfiguration = structure(list(ColumnSeparator = structure(logical(0), tags = list(type = "string")), EscapeChar = structure(logical(0), tags = list(type = "string")), QuoteChar = structure(logical(0), tags = list(type = "string")), NullValue = structure(logical(0), tags = list(type = "string")), TrimWhiteSpace = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ReportConfiguration = structure(list(ReportS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetDatabaseName = structure(logical(0), tags = list(type = "string")), TargetTableName = structure(logical(0), tags = list(type = "string")), RecordVersion = structure(logical(0), tags = list(box = TRUE, type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.timestreamwrite$create_batch_load_task_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .timestreamwrite$create_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -47,6 +59,18 @@ NULL
   list()
 }
 
+.timestreamwrite$describe_batch_load_task_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.timestreamwrite$describe_batch_load_task_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BatchLoadTaskDescription = structure(list(TaskId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), DataSourceConfiguration = structure(list(DataSourceS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CsvConfiguration = structure(list(ColumnSeparator = structure(logical(0), tags = list(type = "string")), EscapeChar = structure(logical(0), tags = list(type = "string")), QuoteChar = structure(logical(0), tags = list(type = "string")), NullValue = structure(logical(0), tags = list(type = "string")), TrimWhiteSpace = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ProgressReport = structure(list(RecordsProcessed = structure(logical(0), tags = list(type = "long")), RecordsIngested = structure(logical(0), tags = list(type = "long")), ParseFailures = structure(logical(0), tags = list(type = "long")), RecordIngestionFailures = structure(logical(0), tags = list(type = "long")), FileFailures = structure(logical(0), tags = list(type = "long")), BytesMetered = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), ReportConfiguration = structure(list(ReportS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKeyPrefix = structure(logical(0), tags = list(type = "string")), EncryptionOption = structure(logical(0), tags = list(type = "string")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataModelConfiguration = structure(list(DataModel = structure(list(TimeColumn = structure(logical(0), tags = list(type = "string")), TimeUnit = structure(logical(0), tags = list(type = "string")), DimensionMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), DestinationColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), MultiMeasureMappings = structure(list(TargetMultiMeasureName = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), MixedMeasureMappings = structure(list(structure(list(MeasureName = structure(logical(0), tags = list(type = "string")), SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMeasureName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string")), MultiMeasureAttributeMappings = structure(list(structure(list(SourceColumn = structure(logical(0), tags = list(type = "string")), TargetMultiMeasureAttributeName = structure(logical(0), tags = list(type = "string")), MeasureValueType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), MeasureNameColumn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataModelS3Configuration = structure(list(BucketName = structure(logical(0), tags = list(type = "string")), ObjectKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), TargetDatabaseName = structure(logical(0), tags = list(type = "string")), TargetTableName = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), RecordVersion = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ResumableUntil = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .timestreamwrite$describe_database_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DatabaseName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -83,6 +107,18 @@ NULL
   return(populate(args, shape))
 }
 
+.timestreamwrite$list_batch_load_tasks_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), TaskStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.timestreamwrite$list_batch_load_tasks_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), BatchLoadTasks = structure(list(structure(list(TaskId = structure(logical(0), tags = list(type = "string")), TaskStatus = structure(logical(0), tags = list(type = "string")), DatabaseName = structure(logical(0), tags = list(type = "string")), TableName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ResumableUntil = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .timestreamwrite$list_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -116,6 +152,18 @@ NULL
 .timestreamwrite$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.timestreamwrite$resume_batch_load_task_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TaskId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.timestreamwrite$resume_batch_load_task_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

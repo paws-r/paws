@@ -5,13 +5,14 @@
 \title{Creates the participant's connection}
 \usage{
 connectparticipant_create_participant_connection(
-  Type,
+  Type = NULL,
   ParticipantToken,
   ConnectParticipant = NULL
 )
 }
 \arguments{
-\item{Type}{[required] Type of connection information required.}
+\item{Type}{Type of connection information required. This can be omitted if
+\code{ConnectParticipant} is \code{true}.}
 
 \item{ParticipantToken}{[required] This is a header parameter.
 
@@ -20,10 +21,11 @@ The ParticipantToken as obtained from
 API response.}
 
 \item{ConnectParticipant}{Amazon Connect Participant is used to mark the participant as connected
-for message streaming.}
+for customer participant in message streaming, as well as for agent or
+manager participant in non-streaming chats.}
 }
 \description{
-Creates the participant's connection. Note that ParticipantToken is used for invoking this API instead of ConnectionToken.
+Creates the participant's connection.
 
 See \url{https://paws-r.github.io/docs/connectparticipant/create_participant_connection.html} for full documentation.
 }

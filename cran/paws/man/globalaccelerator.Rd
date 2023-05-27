@@ -122,6 +122,7 @@ see the \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-g
 
 \tabular{ll}{
 \link[paws.networking:globalaccelerator_add_custom_routing_endpoints]{add_custom_routing_endpoints} \tab Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_add_endpoints]{add_endpoints} \tab Add endpoints to an endpoint group\cr
 \link[paws.networking:globalaccelerator_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP)\cr
 \link[paws.networking:globalaccelerator_allow_custom_routing_traffic]{allow_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator\cr
 \link[paws.networking:globalaccelerator_create_accelerator]{create_accelerator} \tab Create an accelerator\cr
@@ -158,6 +159,7 @@ see the \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-g
 \link[paws.networking:globalaccelerator_list_tags_for_resource]{list_tags_for_resource} \tab List all tags for an accelerator\cr
 \link[paws.networking:globalaccelerator_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IP address range to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
 \link[paws.networking:globalaccelerator_remove_custom_routing_endpoints]{remove_custom_routing_endpoints} \tab Remove endpoints from a custom routing accelerator\cr
+\link[paws.networking:globalaccelerator_remove_endpoints]{remove_endpoints} \tab Remove endpoints from an endpoint group\cr
 \link[paws.networking:globalaccelerator_tag_resource]{tag_resource} \tab Add tags to an accelerator resource\cr
 \link[paws.networking:globalaccelerator_untag_resource]{untag_resource} \tab Remove tags from a Global Accelerator resource\cr
 \link[paws.networking:globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator\cr

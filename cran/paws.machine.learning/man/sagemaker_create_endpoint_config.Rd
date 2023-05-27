@@ -11,21 +11,23 @@ sagemaker_create_endpoint_config(
   DataCaptureConfig = NULL,
   Tags = NULL,
   KmsKeyId = NULL,
-  AsyncInferenceConfig = NULL
+  AsyncInferenceConfig = NULL,
+  ExplainerConfig = NULL,
+  ShadowProductionVariants = NULL
 )
 }
 \arguments{
 \item{EndpointConfigName}{[required] The name of the endpoint configuration. You specify this name in a
 \code{\link[=sagemaker_create_endpoint]{create_endpoint}} request.}
 
-\item{ProductionVariants}{[required] An list of \code{ProductionVariant} objects, one for each model that you want
-to host at this endpoint.}
+\item{ProductionVariants}{[required] An array of \code{ProductionVariant} objects, one for each model that you
+want to host at this endpoint.}
 
 \item{DataCaptureConfig}{}
 
 \item{Tags}{An array of key-value pairs. You can use tags to categorize your Amazon
 Web Services resources in different ways, for example, by purpose,
-owner, or environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging Amazon Web Services Resources}.}
+owner, or environment. For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}.}
 
 \item{KmsKeyId}{The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
 Service key that SageMaker uses to encrypt data on the storage volume
@@ -66,6 +68,15 @@ For more information about local instance storage encryption, see \href{https://
 inference. This is a required field in order for your Endpoint to be
 invoked using
 \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpointAsync.html}{InvokeEndpointAsync}.}
+
+\item{ExplainerConfig}{A member of \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}}
+that enables explainers.}
+
+\item{ShadowProductionVariants}{An array of \code{ProductionVariant} objects, one for each model that you
+want to host at this endpoint in shadow mode with production traffic
+replicated from the model specified on \code{ProductionVariants}. If you use
+this field, you can only specify one variant for \code{ProductionVariants}
+and one variant for \code{ShadowProductionVariants}.}
 }
 \description{
 Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the \code{\link[=sagemaker_create_model]{create_model}} API, to deploy and the resources that you want SageMaker to provision. Then you call the \code{\link[=sagemaker_create_endpoint]{create_endpoint}} API.

@@ -47,7 +47,7 @@ information, see
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ReturnValues}{Use \code{ReturnValues} if you want to get the item attributes as they appear
-before or after they are updated. For
+before or after they are successfully updated. For
 \code{\link[=dynamodb_update_item]{update_item}}, the valid values are:
 \itemize{
 \item \code{NONE} - If \code{ReturnValues} is not specified, or if its value is

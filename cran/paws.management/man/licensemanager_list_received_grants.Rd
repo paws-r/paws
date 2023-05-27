@@ -2,7 +2,7 @@
 % Please edit documentation in R/licensemanager_operations.R
 \name{licensemanager_list_received_grants}
 \alias{licensemanager_list_received_grants}
-\title{Lists grants that are received but not accepted}
+\title{Lists grants that are received}
 \usage{
 licensemanager_list_received_grants(
   GrantArns = NULL,
@@ -28,7 +28,7 @@ licensemanager_list_received_grants(
 \item{MaxResults}{Maximum number of results to return in a single call.}
 }
 \description{
-Lists grants that are received but not accepted.
+Lists grants that are received. Received grants are grants created while specifying the recipient as this Amazon Web Services account, your organization, or an organizational unit (OU) to which this member account belongs.
 
 See \url{https://paws-r.github.io/docs/licensemanager/list_received_grants.html} for full documentation.
 }

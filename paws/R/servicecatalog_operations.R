@@ -14,8 +14,6 @@ NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -116,6 +114,27 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #'
 #' @description
 #' Associates the specified principal ARN with the specified portfolio.
+#' 
+#' If you share the portfolio with principal name sharing enabled, the
+#' `PrincipalARN` association is included in the share.
+#' 
+#' The `PortfolioID`, `PrincipalARN`, and `PrincipalType` parameters are
+#' required.
+#' 
+#' You can associate a maximum of 10 Principals with a portfolio using
+#' `PrincipalType` as `IAM_PATTERN`
+#' 
+#' When you associate a principal with portfolio, a potential privilege
+#' escalation path may occur when that portfolio is then shared with other
+#' accounts. For a user in a recipient account who is *not* an Service
+#' Catalog Admin, but still has the ability to create Principals
+#' (Users/Groups/Roles), that user could create a role that matches a
+#' principal name association for the portfolio. Although this user may not
+#' know which principal names are associated through Service Catalog, they
+#' may be able to guess the user. If this potential escalation path is a
+#' concern, then Service Catalog recommends using `PrincipalType` as `IAM`.
+#' With this configuration, the `PrincipalARN` must already exist in the
+#' recipient account before it can be associated.
 #'
 #' @usage
 #' servicecatalog_associate_principal_with_portfolio(AcceptLanguage,
@@ -123,14 +142,19 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
-#' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM`.
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
+#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' 
+#' You can associate multiple `IAM` patterns even if the account has no
+#' principal with that name. This is useful in Principal Name Sharing if
+#' you want to share a principal without creating it in the account that
+#' owns the portfolio.
+#' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
+#' defined ARN, or `IAM_PATTERN` if you use an ARN with no `accountID`.
 #'
 #' @return
 #' An empty list.
@@ -141,7 +165,7 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
 #'   PrincipalARN = "string",
-#'   PrincipalType = "IAM"
+#'   PrincipalType = "IAM"|"IAM_PATTERN"
 #' )
 #' ```
 #'
@@ -179,8 +203,6 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #'   ProductId, PortfolioId, SourcePortfolioId)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -238,8 +260,6 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -340,8 +360,6 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -355,7 +373,7 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #'       ServiceActionId = "string",
 #'       ProductId = "string",
 #'       ProvisioningArtifactId = "string",
-#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
+#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING"|"INVALID_PARAMETER",
 #'       ErrorMessage = "string"
 #'     )
 #'   )
@@ -413,8 +431,6 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -428,7 +444,7 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #'       ServiceActionId = "string",
 #'       ProductId = "string",
 #'       ProvisioningArtifactId = "string",
-#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING",
+#'       ErrorCode = "DUPLICATE_RESOURCE"|"INTERNAL_FAILURE"|"LIMIT_EXCEEDED"|"RESOURCE_NOT_FOUND"|"THROTTLING"|"INVALID_PARAMETER",
 #'       ErrorMessage = "string"
 #'     )
 #'   )
@@ -479,7 +495,10 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' new product.
 #' 
 #' You can copy a product to the same account or another account. You can
-#' copy a product to the same region or another region.
+#' copy a product to the same Region or another Region. If you copy a
+#' product to another account, you must first share the product in a
+#' portfolio using
+#' [`create_portfolio_share`][servicecatalog_create_portfolio_share].
 #' 
 #' This operation is performed asynchronously. To track the progress of the
 #' operation, use
@@ -491,8 +510,6 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #'   SourceProvisioningArtifactIdentifiers, CopyOptions, IdempotencyToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -573,8 +590,6 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -636,7 +651,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' You also cannot have more than one `STACKSET` constraint on a product
 #' and portfolio.
 #' 
-#' Products with a `STACKSET` constraint will launch an AWS CloudFormation
+#' Products with a `STACKSET` constraint will launch an CloudFormation
 #' stack set.
 #' 
 #' **TEMPLATE**
@@ -724,8 +739,6 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #'   Description, ProviderName, Tags, IdempotencyToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -824,28 +837,46 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' error. To update an existing share, you must use the
 #' [`update_portfolio_share`][servicecatalog_update_portfolio_share] API
 #' instead.
+#' 
+#' When you associate a principal with portfolio, a potential privilege
+#' escalation path may occur when that portfolio is then shared with other
+#' accounts. For a user in a recipient account who is *not* an Service
+#' Catalog Admin, but still has the ability to create Principals
+#' (Users/Groups/Roles), that user could create a role that matches a
+#' principal name association for the portfolio. Although this user may not
+#' know which principal names are associated through Service Catalog, they
+#' may be able to guess the user. If this potential escalation path is a
+#' concern, then Service Catalog recommends using `PrincipalType` as `IAM`.
+#' With this configuration, the `PrincipalARN` must already exist in the
+#' recipient account before it can be associated.
 #'
 #' @usage
 #' servicecatalog_create_portfolio_share(AcceptLanguage, PortfolioId,
-#'   AccountId, OrganizationNode, ShareTagOptions)
+#'   AccountId, OrganizationNode, ShareTagOptions, SharePrincipals)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param AccountId The AWS account ID. For example, `123456789012`.
-#' @param OrganizationNode The organization node to whom you are going to share. If
-#' `OrganizationNode` is passed in, `PortfolioShare` will be created for
-#' the node an ListOrganizationPortfolioAccessd its children (when
-#' applies), and a `PortfolioShareToken` will be returned in the output in
-#' order for the administrator to monitor the status of the
-#' `PortfolioShare` creation process.
+#' @param AccountId The Amazon Web Services account ID. For example, `123456789012`.
+#' @param OrganizationNode The organization node to whom you are going to share. When you pass
+#' `OrganizationNode`, it creates `PortfolioShare` for all of the Amazon
+#' Web Services accounts that are associated to the `OrganizationNode`. The
+#' output returns a `PortfolioShareToken`, which enables the administrator
+#' to monitor the status of the `PortfolioShare` creation process.
 #' @param ShareTagOptions Enables or disables `TagOptions ` sharing when creating the portfolio
 #' share. If this flag is not provided, TagOptions sharing is disabled.
+#' @param SharePrincipals Enables or disables `Principal` sharing when creating the portfolio
+#' share. If this flag is not provided, principal sharing is disabled.
+#' 
+#' When you enable Principal Name Sharing for a portfolio share, the share
+#' recipient account end users with a principal that matches any of the
+#' associated IAM patterns can provision products from the portfolio. Once
+#' shared, the share recipient can view associations of `PrincipalType`:
+#' `IAM_PATTERN` on their portfolio. You can create the principals in the
+#' recipient account before or after creating the share.
 #'
 #' @return
 #' A list with the following syntax:
@@ -865,7 +896,8 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #'     Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
 #'     Value = "string"
 #'   ),
-#'   ShareTagOptions = TRUE|FALSE
+#'   ShareTagOptions = TRUE|FALSE,
+#'   SharePrincipals = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -874,14 +906,14 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' @rdname servicecatalog_create_portfolio_share
 #'
 #' @aliases servicecatalog_create_portfolio_share
-servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL) {
+servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL, SharePrincipals = NULL) {
   op <- new_operation(
     name = "CreatePortfolioShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$create_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions)
+  input <- .servicecatalog$create_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$create_portfolio_share_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -906,11 +938,10 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @usage
 #' servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
 #'   Distributor, SupportDescription, SupportEmail, SupportUrl, ProductType,
-#'   Tags, ProvisioningArtifactParameters, IdempotencyToken)
+#'   Tags, ProvisioningArtifactParameters, IdempotencyToken,
+#'   SourceConnection)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -926,10 +957,18 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' `^https?:\/\// `/ is the pattern used to validate SupportUrl.
 #' @param ProductType &#91;required&#93; The type of product.
 #' @param Tags One or more tags.
-#' @param ProvisioningArtifactParameters &#91;required&#93; The configuration of the provisioning artifact.
+#' @param ProvisioningArtifactParameters The configuration of the provisioning artifact.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
+#' @param SourceConnection Specifies connection details for the created product and syncs the
+#' product to the connection source artifact. This automatically manages
+#' the product's artifacts based on changes to the source. The
+#' `SourceConnection` parameter consists of the following sub-fields.
+#' 
+#' -   `Type`
+#' 
+#' -   `ConnectionParamters`
 #'
 #' @return
 #' A list with the following syntax:
@@ -942,7 +981,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -953,18 +992,41 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'     ProductARN = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     SourceConnection = list(
+#'       Type = "CODESTAR",
+#'       ConnectionParameters = list(
+#'         CodeStar = list(
+#'           ConnectionArn = "string",
+#'           Repository = "string",
+#'           Branch = "string",
+#'           ArtifactPath = "string"
+#'         )
+#'       ),
+#'       LastSync = list(
+#'         LastSyncTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastSyncStatus = "SUCCEEDED"|"FAILED",
+#'         LastSyncStatusMessage = "string",
+#'         LastSuccessfulSyncTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastSuccessfulSyncProvisioningArtifactId = "string"
+#'       )
 #'     )
 #'   ),
 #'   ProvisioningArtifactDetail = list(
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'     Guidance = "DEFAULT"|"DEPRECATED",
+#'     SourceRevision = "string"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -986,7 +1048,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'   SupportDescription = "string",
 #'   SupportEmail = "string",
 #'   SupportUrl = "string",
-#'   ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'   ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -999,10 +1061,21 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'     Info = list(
 #'       "string"
 #'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'     DisableTemplateValidation = TRUE|FALSE
 #'   ),
-#'   IdempotencyToken = "string"
+#'   IdempotencyToken = "string",
+#'   SourceConnection = list(
+#'     Type = "CODESTAR",
+#'     ConnectionParameters = list(
+#'       CodeStar = list(
+#'         ConnectionArn = "string",
+#'         Repository = "string",
+#'         Branch = "string",
+#'         ArtifactPath = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1011,14 +1084,14 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @rdname servicecatalog_create_product
 #'
 #' @aliases servicecatalog_create_product
-servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, ProductType, Tags = NULL, ProvisioningArtifactParameters, IdempotencyToken) {
+servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, ProductType, Tags = NULL, ProvisioningArtifactParameters = NULL, IdempotencyToken, SourceConnection = NULL) {
   op <- new_operation(
     name = "CreateProduct",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$create_product_input(AcceptLanguage = AcceptLanguage, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, ProductType = ProductType, Tags = Tags, ProvisioningArtifactParameters = ProvisioningArtifactParameters, IdempotencyToken = IdempotencyToken)
+  input <- .servicecatalog$create_product_input(AcceptLanguage = AcceptLanguage, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, ProductType = ProductType, Tags = Tags, ProvisioningArtifactParameters = ProvisioningArtifactParameters, IdempotencyToken = IdempotencyToken, SourceConnection = SourceConnection)
   output <- .servicecatalog$create_product_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -1031,13 +1104,15 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' Creates a plan
 #'
 #' @description
-#' Creates a plan. A plan includes the list of resources to be created
-#' (when provisioning a new product) or modified (when updating a
-#' provisioned product) when the plan is executed.
+#' Creates a plan.
 #' 
-#' You can create one plan per provisioned product. To create a plan for an
-#' existing provisioned product, the product status must be AVAILBLE or
-#' TAINTED.
+#' A plan includes the list of resources to be created (when provisioning a
+#' new product) or modified (when updating a provisioned product) when the
+#' plan is executed.
+#' 
+#' You can create one plan for each provisioned product. To create a plan
+#' for an existing provisioned product, the product status must be
+#' AVAILABLE or TAINTED.
 #' 
 #' To view the resource changes in the change set, use
 #' [`describe_provisioned_product_plan`][servicecatalog_describe_provisioned_product_plan].
@@ -1050,8 +1125,6 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #'   ProvisioningArtifactId, ProvisioningParameters, IdempotencyToken, Tags)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1066,8 +1139,8 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' [`list_launch_paths`][servicecatalog_list_launch_paths].
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
-#' unique for the AWS account and cannot be updated after the product is
-#' provisioned.
+#' unique for the Amazon Web Services account and cannot be updated after
+#' the product is provisioned.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param ProvisioningParameters Parameters specified by the administrator that are required for
 #' provisioning the product.
@@ -1165,8 +1238,6 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1184,12 +1255,13 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'     Guidance = "DEFAULT"|"DEPRECATED",
+#'     SourceRevision = "string"
 #'   ),
 #'   Info = list(
 #'     "string"
@@ -1209,7 +1281,7 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'     Info = list(
 #'       "string"
 #'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'     DisableTemplateValidation = TRUE|FALSE
 #'   ),
 #'   IdempotencyToken = "string"
@@ -1253,16 +1325,16 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' 
 #' **Name**
 #' 
-#' The name of the AWS Systems Manager document (SSM document). For
-#' example, `AWS-RestartEC2Instance`.
+#' The name of the Amazon Web Services Systems Manager document (SSM
+#' document). For example, `AWS-RestartEC2Instance`.
 #' 
 #' If you are using a shared SSM document, you must provide the ARN instead
 #' of the name.
 #' 
 #' **Version**
 #' 
-#' The AWS Systems Manager automation document version. For example,
-#' `"Version": "1"`
+#' The Amazon Web Services Systems Manager automation document version. For
+#' example, `"Version": "1"`
 #' 
 #' **AssumeRole**
 #' 
@@ -1281,8 +1353,6 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1412,8 +1482,6 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1466,8 +1534,6 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' servicecatalog_delete_portfolio(AcceptLanguage, Id)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1525,13 +1591,11 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param AccountId The AWS account ID.
+#' @param AccountId The Amazon Web Services account ID.
 #' @param OrganizationNode The organization node to whom you are going to stop sharing.
 #'
 #' @return
@@ -1592,8 +1656,6 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1643,14 +1705,12 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
-#' @param IgnoreErrors If set to true, AWS Service Catalog stops managing the specified
-#' provisioned product even if it cannot delete the underlying resources.
+#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
+#' product even if it cannot delete the underlying resources.
 #'
 #' @return
 #' An empty list.
@@ -1704,8 +1764,6 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1756,8 +1814,6 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #'
 #' @param Id &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -1851,8 +1907,6 @@ servicecatalog_delete_tag_option <- function(Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1916,8 +1970,6 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -1975,8 +2027,6 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' servicecatalog_describe_portfolio(AcceptLanguage, Id)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2163,7 +2213,8 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #'       PrincipalId = "string",
 #'       Type = "ACCOUNT"|"ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ORGANIZATION_MEMBER_ACCOUNT",
 #'       Accepted = TRUE|FALSE,
-#'       ShareTagOptions = TRUE|FALSE
+#'       ShareTagOptions = TRUE|FALSE,
+#'       SharePrincipals = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -2205,13 +2256,15 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #'
 #' @description
 #' Gets information about the specified product.
+#' 
+#' Running this operation with administrator access results in a failure.
+#' [`describe_product_as_admin`][servicecatalog_describe_product_as_admin]
+#' should be used instead.
 #'
 #' @usage
 #' servicecatalog_describe_product(AcceptLanguage, Id, Name)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2229,7 +2282,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #'     Name = "string",
 #'     Owner = "string",
 #'     ShortDescription = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'     Distributor = "string",
 #'     HasDefaultPath = TRUE|FALSE,
 #'     SupportEmail = "string",
@@ -2304,8 +2357,6 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2331,7 +2382,7 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -2342,6 +2393,28 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #'     ProductARN = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     SourceConnection = list(
+#'       Type = "CODESTAR",
+#'       ConnectionParameters = list(
+#'         CodeStar = list(
+#'           ConnectionArn = "string",
+#'           Repository = "string",
+#'           Branch = "string",
+#'           ArtifactPath = "string"
+#'         )
+#'       ),
+#'       LastSync = list(
+#'         LastSyncTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastSyncStatus = "SUCCEEDED"|"FAILED",
+#'         LastSyncStatusMessage = "string",
+#'         LastSuccessfulSyncTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastSuccessfulSyncProvisioningArtifactId = "string"
+#'       )
 #'     )
 #'   ),
 #'   ProvisioningArtifactSummaries = list(
@@ -2422,8 +2495,6 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2439,7 +2510,7 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #'     Name = "string",
 #'     Owner = "string",
 #'     ShortDescription = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'     Distributor = "string",
 #'     HasDefaultPath = TRUE|FALSE,
 #'     SupportEmail = "string",
@@ -2499,8 +2570,6 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' servicecatalog_describe_provisioned_product(AcceptLanguage, Id, Name)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2587,8 +2656,6 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #'   PageSize, PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2709,8 +2776,6 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -2728,12 +2793,13 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'     Guidance = "DEFAULT"|"DEPRECATED",
+#'     SourceRevision = "string"
 #'   ),
 #'   Info = list(
 #'     "string"
@@ -2798,8 +2864,6 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #'   ProvisioningArtifactName, PathId, PathName)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -2944,8 +3008,6 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -3043,8 +3105,6 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -3113,8 +3173,6 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3220,21 +3278,28 @@ servicecatalog_describe_tag_option <- function(Id) {
 }
 .servicecatalog$operations$describe_tag_option <- servicecatalog_describe_tag_option
 
-#' Disable portfolio sharing through AWS Organizations feature
+#' Disable portfolio sharing through the Organizations service
 #'
 #' @description
-#' Disable portfolio sharing through AWS Organizations feature. This
-#' feature will not delete your current shares but it will prevent you from
-#' creating new shares throughout your organization. Current shares will
-#' not be in sync with your organization structure if it changes after
-#' calling this API. This API can only be called by the management account
-#' in the organization.
+#' Disable portfolio sharing through the Organizations service. This
+#' command will not delete your current shares, but prevents you from
+#' creating new shares throughout your organization. Current shares are not
+#' kept in sync with your organization structure if the structure changes
+#' after calling this API. Only the management account in the organization
+#' can call this API.
 #' 
-#' This API can't be invoked if there are active delegated administrators
-#' in the organization.
+#' You cannot call this API if there are active delegated administrators in
+#' the organization.
 #' 
 #' Note that a delegated administrator is not authorized to invoke
 #' [`disable_aws_organizations_access`][servicecatalog_disable_aws_organizations_access].
+#' 
+#' If you share an Service Catalog portfolio in an organization within
+#' Organizations, and then disable Organizations access for Service
+#' Catalog, the portfolio access permissions will not sync with the latest
+#' changes to the organization structure. Specifically, accounts that you
+#' removed from the organization after disabling Service Catalog access
+#' will retain access to the previously shared portfolio.
 #'
 #' @usage
 #' servicecatalog_disable_aws_organizations_access()
@@ -3320,20 +3385,33 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' @description
 #' Disassociates a previously associated principal ARN from a specified
 #' portfolio.
+#' 
+#' The `PrincipalType` and `PrincipalARN` must match the
+#' [`associate_principal_with_portfolio`][servicecatalog_associate_principal_with_portfolio]
+#' call request details. For example, to disassociate an association
+#' created with a `PrincipalARN` of `PrincipalType` IAM you must use the
+#' `PrincipalType` IAM when calling
+#' [`disassociate_principal_from_portfolio`][servicecatalog_disassociate_principal_from_portfolio].
+#' 
+#' For portfolios that have been shared with principal name sharing
+#' enabled: after disassociating a principal, share recipient accounts will
+#' no longer be able to provision products in this portfolio using a role
+#' matching the name of the associated principal.
 #'
 #' @usage
 #' servicecatalog_disassociate_principal_from_portfolio(AcceptLanguage,
-#'   PortfolioId, PrincipalARN)
+#'   PortfolioId, PrincipalARN, PrincipalType)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (IAM user, role, or group).
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
+#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' @param PrincipalType The supported value is `IAM` if you use a fully defined ARN, or
+#' `IAM_PATTERN` if you use no `accountID`.
 #'
 #' @return
 #' An empty list.
@@ -3343,7 +3421,8 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' svc$disassociate_principal_from_portfolio(
 #'   AcceptLanguage = "string",
 #'   PortfolioId = "string",
-#'   PrincipalARN = "string"
+#'   PrincipalARN = "string",
+#'   PrincipalType = "IAM"|"IAM_PATTERN"
 #' )
 #' ```
 #'
@@ -3352,14 +3431,14 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' @rdname servicecatalog_disassociate_principal_from_portfolio
 #'
 #' @aliases servicecatalog_disassociate_principal_from_portfolio
-servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PrincipalARN) {
+servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage = NULL, PortfolioId, PrincipalARN, PrincipalType = NULL) {
   op <- new_operation(
     name = "DisassociatePrincipalFromPortfolio",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$disassociate_principal_from_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN)
+  input <- .servicecatalog$disassociate_principal_from_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN, PrincipalType = PrincipalType)
   output <- .servicecatalog$disassociate_principal_from_portfolio_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -3381,8 +3460,6 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #'   ProductId, PortfolioId)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3440,8 +3517,6 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3527,20 +3602,31 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 }
 .servicecatalog$operations$disassociate_tag_option_from_resource <- servicecatalog_disassociate_tag_option_from_resource
 
-#' Enable portfolio sharing feature through AWS Organizations
+#' Enable portfolio sharing feature through Organizations
 #'
 #' @description
-#' Enable portfolio sharing feature through AWS Organizations. This API
-#' will allow Service Catalog to receive updates on your organization in
-#' order to sync your shares with the current structure. This API can only
-#' be called by the management account in the organization.
+#' Enable portfolio sharing feature through Organizations. This API will
+#' allow Service Catalog to receive updates on your organization in order
+#' to sync your shares with the current structure. This API can only be
+#' called by the management account in the organization.
 #' 
-#' By calling this API Service Catalog will make a call to
-#' organizations:EnableAWSServiceAccess on your behalf so that your shares
-#' can be in sync with any changes in your AWS Organizations structure.
+#' When you call this API, Service Catalog calls
+#' `organizations:EnableAWSServiceAccess` on your behalf so that your
+#' shares stay in sync with any changes in your Organizations structure.
 #' 
 #' Note that a delegated administrator is not authorized to invoke
 #' [`enable_aws_organizations_access`][servicecatalog_enable_aws_organizations_access].
+#' 
+#' If you have previously disabled Organizations access for Service
+#' Catalog, and then enable access again, the portfolio access permissions
+#' might not sync with the latest changes to the organization structure.
+#' Specifically, accounts that you removed from the organization after
+#' disabling Service Catalog access, and before you enabled access again,
+#' can retain access to the previously shared portfolio. As a result, an
+#' account that has been removed from the organization might still be able
+#' to create or manage Amazon Web Services resources when it is no longer
+#' authorized to do so. Amazon Web Services is working to resolve this
+#' issue.
 #'
 #' @usage
 #' servicecatalog_enable_aws_organizations_access()
@@ -3587,8 +3673,6 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #'   IdempotencyToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3681,15 +3765,13 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @param ExecuteToken &#91;required&#93; An idempotency token that uniquely identifies the execute request.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param Parameters A map of all self-service action parameters and their values. If a
 #' provided parameter is of a special type, such as `TARGET`, the provided
-#' value will override the default value generated by AWS Service Catalog.
-#' If the parameters field is not provided, no additional parameters are
+#' value will override the default value generated by Service Catalog. If
+#' the parameters field is not provided, no additional parameters are
 #' passed and default values will be used for any special parameters such
 #' as `TARGET`.
 #'
@@ -3767,10 +3849,10 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 }
 .servicecatalog$operations$execute_provisioned_product_service_action <- servicecatalog_execute_provisioned_product_service_action
 
-#' Get the Access Status for AWS Organization portfolio share feature
+#' Get the Access Status for Organizations portfolio share feature
 #'
 #' @description
-#' Get the Access Status for AWS Organization portfolio share feature. This
+#' Get the Access Status for Organizations portfolio share feature. This
 #' API can only be called by the management account in the organization or
 #' by a delegated admin.
 #'
@@ -3827,8 +3909,6 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #'   PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -3894,26 +3974,32 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 }
 .servicecatalog$operations$get_provisioned_product_outputs <- servicecatalog_get_provisioned_product_outputs
 
-#' Requests the import of a resource as a Service Catalog provisioned
-#' product that is associated to a Service Catalog product and provisioning
-#' artifact
+#' Requests the import of a resource as an Service Catalog provisioned
+#' product that is associated to an Service Catalog product and
+#' provisioning artifact
 #'
 #' @description
-#' Requests the import of a resource as a Service Catalog provisioned
-#' product that is associated to a Service Catalog product and provisioning
-#' artifact. Once imported, all supported Service Catalog governance
-#' actions are supported on the provisioned product.
+#' Requests the import of a resource as an Service Catalog provisioned
+#' product that is associated to an Service Catalog product and
+#' provisioning artifact. Once imported, all supported governance actions
+#' are supported on the provisioned product.
 #' 
 #' Resource import only supports CloudFormation stack ARNs. CloudFormation
-#' StackSets and non-root nested stacks are not supported.
+#' StackSets, and non-root nested stacks are not supported.
 #' 
 #' The CloudFormation stack must have one of the following statuses to be
 #' imported: `CREATE_COMPLETE`, `UPDATE_COMPLETE`,
-#' `UPDATE_ROLLBACK_COMPLETE`, `IMPORT_COMPLETE`,
+#' `UPDATE_ROLLBACK_COMPLETE`, `IMPORT_COMPLETE`, and
 #' `IMPORT_ROLLBACK_COMPLETE`.
 #' 
 #' Import of the resource requires that the CloudFormation stack template
 #' matches the associated Service Catalog product provisioning artifact.
+#' 
+#' When you import an existing CloudFormation stack into a portfolio,
+#' constraints that are associated with the product aren't applied during
+#' the import process. The constraints are applied after you call
+#' [`update_provisioned_product`][servicecatalog_update_provisioned_product]
+#' for the provisioned product.
 #' 
 #' The user or role that performs this operation must have the
 #' `cloudformation:GetTemplate` and `cloudformation:DescribeStacks` IAM
@@ -3926,16 +4012,14 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param ProvisionedProductName &#91;required&#93; The user-friendly name of the provisioned product. The value must be
-#' unique for the AWS account. The name cannot be updated after the product
-#' is provisioned.
+#' unique for the Amazon Web Services account. The name cannot be updated
+#' after the product is provisioned.
 #' @param PhysicalId &#91;required&#93; The unique identifier of the resource to be imported. It only currently
 #' supports CloudFormation stack IDs.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
@@ -4028,8 +4112,6 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4111,8 +4193,6 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4177,8 +4257,6 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4242,17 +4320,23 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' Lists the paths to the specified product
 #'
 #' @description
-#' Lists the paths to the specified product. A path is how the user has
-#' access to a specified product, and is necessary when provisioning a
-#' product. A path also determines the constraints put on the product.
+#' Lists the paths to the specified product. A path describes how the user
+#' gets access to a specified product and is necessary when provisioning a
+#' product. A path also determines the constraints that are put on a
+#' product. A path is dependent on a specific product, porfolio, and
+#' principal.
+#' 
+#' When provisioning a product that's been added to a portfolio, you must
+#' grant your user, group, or role access to the portfolio. For more
+#' information, see [Granting users
+#' access](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_users.html)
+#' in the *Service Catalog User Guide*.
 #'
 #' @usage
 #' servicecatalog_list_launch_paths(AcceptLanguage, ProductId, PageSize,
 #'   PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -4336,8 +4420,6 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4417,8 +4499,6 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4483,8 +4563,6 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' servicecatalog_list_portfolios(AcceptLanguage, PageToken, PageSize)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -4555,8 +4633,6 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4617,18 +4693,18 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 }
 .servicecatalog$operations$list_portfolios_for_product <- servicecatalog_list_portfolios_for_product
 
-#' Lists all principal ARNs associated with the specified portfolio
+#' Lists all PrincipalARNs and corresponding PrincipalTypes associated with
+#' the specified portfolio
 #'
 #' @description
-#' Lists all principal ARNs associated with the specified portfolio.
+#' Lists all `PrincipalARN`s and corresponding `PrincipalType`s associated
+#' with the specified portfolio.
 #'
 #' @usage
 #' servicecatalog_list_principals_for_portfolio(AcceptLanguage,
 #'   PortfolioId, PageSize, PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -4645,7 +4721,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #'   Principals = list(
 #'     list(
 #'       PrincipalARN = "string",
-#'       PrincipalType = "IAM"
+#'       PrincipalType = "IAM"|"IAM_PATTERN"
 #'     )
 #'   ),
 #'   NextPageToken = "string"
@@ -4696,8 +4772,6 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #'   ProvisionProductId, PageSize, PageToken, AccessLevelFilter)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -4774,8 +4848,6 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4790,12 +4862,13 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #'       Id = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       Active = TRUE|FALSE,
-#'       Guidance = "DEFAULT"|"DEPRECATED"
+#'       Guidance = "DEFAULT"|"DEPRECATED",
+#'       SourceRevision = "string"
 #'     )
 #'   ),
 #'   NextPageToken = "string"
@@ -4849,8 +4922,6 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' results, use null.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -4867,7 +4938,7 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #'         Name = "string",
 #'         Owner = "string",
 #'         ShortDescription = "string",
-#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'         Distributor = "string",
 #'         HasDefaultPath = TRUE|FALSE,
 #'         SupportEmail = "string",
@@ -4931,8 +5002,6 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #'   SearchFilter, PageSize, PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -5102,8 +5171,6 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -5177,8 +5244,6 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' results, use null.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -5238,16 +5303,14 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' @description
 #' Returns summary information about stack instances that are associated
 #' with the specified `CFN_STACKSET` type provisioned product. You can
-#' filter for stack instances that are associated with a specific AWS
-#' account name or region.
+#' filter for stack instances that are associated with a specific Amazon
+#' Web Services account name or Region.
 #'
 #' @usage
 #' servicecatalog_list_stack_instances_for_provisioned_product(
 #'   AcceptLanguage, ProvisionedProductId, PageToken, PageSize)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -5370,21 +5433,212 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 }
 .servicecatalog$operations$list_tag_options <- servicecatalog_list_tag_options
 
+#' Notifies the result of the provisioning engine execution
+#'
+#' @description
+#' Notifies the result of the provisioning engine execution.
+#'
+#' @usage
+#' servicecatalog_notify_provision_product_engine_workflow_result(
+#'   WorkflowToken, RecordId, Status, FailureReason, ResourceIdentifier,
+#'   Outputs, IdempotencyToken)
+#'
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the provisioning engine execution payload that
+#' Service Catalog sends after the Terraform product provisioning workflow
+#' starts.
+#' @param RecordId &#91;required&#93; The identifier of the record.
+#' @param Status &#91;required&#93; The status of the provisioning engine execution.
+#' @param FailureReason The reason why the provisioning engine execution failed.
+#' @param ResourceIdentifier The ID for the provisioned product resources that are part of a resource
+#' group.
+#' @param Outputs The output of the provisioning engine execution.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the provisioning engine execution.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$notify_provision_product_engine_workflow_result(
+#'   WorkflowToken = "string",
+#'   RecordId = "string",
+#'   Status = "SUCCEEDED"|"FAILED",
+#'   FailureReason = "string",
+#'   ResourceIdentifier = list(
+#'     UniqueTag = list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   Outputs = list(
+#'     list(
+#'       OutputKey = "string",
+#'       OutputValue = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_notify_provis_produc_engine_workfl_result
+#'
+#' @aliases servicecatalog_notify_provision_product_engine_workflow_result
+servicecatalog_notify_provision_product_engine_workflow_result <- function(WorkflowToken, RecordId, Status, FailureReason = NULL, ResourceIdentifier = NULL, Outputs = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "NotifyProvisionProductEngineWorkflowResult",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$notify_provision_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, ResourceIdentifier = ResourceIdentifier, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$notify_provision_product_engine_workflow_result_output()
+  config <- get_config()
+  svc <- .servicecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$notify_provision_product_engine_workflow_result <- servicecatalog_notify_provision_product_engine_workflow_result
+
+#' Notifies the result of the terminate engine execution
+#'
+#' @description
+#' Notifies the result of the terminate engine execution.
+#'
+#' @usage
+#' servicecatalog_notify_terminate_provisioned_product_engine_workflow_result(
+#'   WorkflowToken, RecordId, Status, FailureReason, IdempotencyToken)
+#'
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the terminate engine execution payload that
+#' Service Catalog sends after the Terraform product terminate workflow
+#' starts.
+#' @param RecordId &#91;required&#93; The identifier of the record.
+#' @param Status &#91;required&#93; The status of the terminate engine execution.
+#' @param FailureReason The reason why the terminate engine execution failed.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the terminate engine execution.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$notify_terminate_provisioned_product_engine_workflow_result(
+#'   WorkflowToken = "string",
+#'   RecordId = "string",
+#'   Status = "SUCCEEDED"|"FAILED",
+#'   FailureReason = "string",
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_notif_termi_provi_produ_engin_workf_resul
+#'
+#' @aliases servicecatalog_notify_terminate_provisioned_product_engine_workflow_result
+servicecatalog_notify_terminate_provisioned_product_engine_workflow_result <- function(WorkflowToken, RecordId, Status, FailureReason = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "NotifyTerminateProvisionedProductEngineWorkflowResult",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_output()
+  config <- get_config()
+  svc <- .servicecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$notify_terminate_provisioned_product_engine_workflow_result <- servicecatalog_notify_terminate_provisioned_product_engine_workflow_result
+
+#' Notifies the result of the update engine execution
+#'
+#' @description
+#' Notifies the result of the update engine execution.
+#'
+#' @usage
+#' servicecatalog_notify_update_provisioned_product_engine_workflow_result(
+#'   WorkflowToken, RecordId, Status, FailureReason, Outputs,
+#'   IdempotencyToken)
+#'
+#' @param WorkflowToken &#91;required&#93; The encrypted contents of the update engine execution payload that
+#' Service Catalog sends after the Terraform product update workflow
+#' starts.
+#' @param RecordId &#91;required&#93; The identifier of the record.
+#' @param Status &#91;required&#93; The status of the update engine execution.
+#' @param FailureReason The reason why the update engine execution failed.
+#' @param Outputs The output of the update engine execution.
+#' @param IdempotencyToken &#91;required&#93; The idempotency token that identifies the update engine execution.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$notify_update_provisioned_product_engine_workflow_result(
+#'   WorkflowToken = "string",
+#'   RecordId = "string",
+#'   Status = "SUCCEEDED"|"FAILED",
+#'   FailureReason = "string",
+#'   Outputs = list(
+#'     list(
+#'       OutputKey = "string",
+#'       OutputValue = "string",
+#'       Description = "string"
+#'     )
+#'   ),
+#'   IdempotencyToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname servicecatalog_notif_updat_provi_produ_engin_workf_resul
+#'
+#' @aliases servicecatalog_notify_update_provisioned_product_engine_workflow_result
+servicecatalog_notify_update_provisioned_product_engine_workflow_result <- function(WorkflowToken, RecordId, Status, FailureReason = NULL, Outputs = NULL, IdempotencyToken) {
+  op <- new_operation(
+    name = "NotifyUpdateProvisionedProductEngineWorkflowResult",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
+  output <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_output()
+  config <- get_config()
+  svc <- .servicecatalog$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicecatalog$operations$notify_update_provisioned_product_engine_workflow_result <- servicecatalog_notify_update_provisioned_product_engine_workflow_result
+
 #' Provisions the specified product
 #'
 #' @description
 #' Provisions the specified product.
 #' 
 #' A provisioned product is a resourced instance of a product. For example,
-#' provisioning a product based on a CloudFormation template launches a
-#' CloudFormation stack and its underlying resources. You can check the
-#' status of this request using
+#' provisioning a product that's based on an CloudFormation template
+#' launches an CloudFormation stack and its underlying resources. You can
+#' check the status of this request using
 #' [`describe_record`][servicecatalog_describe_record].
 #' 
-#' If the request contains a tag key with an empty list of values, there is
-#' a tag conflict for that key. Do not include conflicted keys as tags, or
-#' this causes the error "Parameter validation failed: Missing required
+#' If the request contains a tag key with an empty list of values, there's
+#' a tag conflict for that key. Don't include conflicted keys as tags, or
+#' this will cause the error "Parameter validation failed: Missing required
 #' parameter in Tags\[*N*\]:*Value*".
+#' 
+#' When provisioning a product that's been added to a portfolio, you must
+#' grant your user, group, or role access to the portfolio. For more
+#' information, see [Granting users
+#' access](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/catalogs_portfolios_users.html)
+#' in the *Service Catalog User Guide*.
 #'
 #' @usage
 #' servicecatalog_provision_product(AcceptLanguage, ProductId, ProductName,
@@ -5393,8 +5647,6 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #'   Tags, NotificationArns, ProvisionToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -5412,8 +5664,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' provide the name or ID, but not both.
 #' @param PathName The name of the path. You must provide the name or ID, but not both.
 #' @param ProvisionedProductName &#91;required&#93; A user-friendly name for the provisioned product. This value must be
-#' unique for the AWS account and cannot be updated after the product is
-#' provisioned.
+#' unique for the Amazon Web Services account and cannot be updated after
+#' the product is provisioned.
 #' @param ProvisioningParameters Parameters specified by the administrator that are required for
 #' provisioning the product.
 #' @param ProvisioningPreferences An object that contains information about the provisioning preferences
@@ -5535,8 +5787,6 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -5602,8 +5852,6 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'   AccessLevelFilter, PageSize, PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -5687,8 +5935,6 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -5711,7 +5957,7 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -5782,8 +6028,6 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -5809,7 +6053,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #'         Name = "string",
 #'         Owner = "string",
 #'         ShortDescription = "string",
-#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'         Distributor = "string",
 #'         HasDefaultPath = TRUE|FALSE,
 #'         SupportEmail = "string",
@@ -5820,6 +6064,28 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #'       ProductARN = "string",
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       SourceConnection = list(
+#'         Type = "CODESTAR",
+#'         ConnectionParameters = list(
+#'           CodeStar = list(
+#'             ConnectionArn = "string",
+#'             Repository = "string",
+#'             Branch = "string",
+#'             ArtifactPath = "string"
+#'           )
+#'         ),
+#'         LastSync = list(
+#'           LastSyncTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastSyncStatus = "SUCCEEDED"|"FAILED",
+#'           LastSyncStatusMessage = "string",
+#'           LastSuccessfulSyncTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           LastSuccessfulSyncProvisioningArtifactId = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -5879,8 +6145,6 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #'   AccessLevelFilter, Filters, SortBy, SortOrder, PageSize, PageToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -6008,11 +6272,9 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' This token is only valid during the termination process. After the
 #' provisioned product is terminated, subsequent requests to terminate the
 #' same provisioned product always return **ResourceNotFound**.
-#' @param IgnoreErrors If set to true, AWS Service Catalog stops managing the specified
-#' provisioned product even if it cannot delete the underlying resources.
+#' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
+#' product even if it cannot delete the underlying resources.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -6106,8 +6368,6 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -6169,7 +6429,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' You also cannot have more than one `STACKSET` constraint on a product
 #' and portfolio.
 #' 
-#' Products with a `STACKSET` constraint will launch an AWS CloudFormation
+#' Products with a `STACKSET` constraint will launch an CloudFormation
 #' stack set.
 #' 
 #' **TEMPLATE**
@@ -6239,8 +6499,6 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #'   Description, ProviderName, AddTags, RemoveTags)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -6321,7 +6579,8 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #'
 #' @description
 #' Updates the specified portfolio share. You can use this API to enable or
-#' disable TagOptions sharing for an existing portfolio share.
+#' disable `TagOptions` sharing or Principal sharing for an existing
+#' portfolio share.
 #' 
 #' The portfolio share cannot be updated if the
 #' [`create_portfolio_share`][servicecatalog_create_portfolio_share]
@@ -6340,26 +6599,39 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' This API cannot be used for removing the portfolio share. You must use
 #' [`delete_portfolio_share`][servicecatalog_delete_portfolio_share] API
 #' for that action.
+#' 
+#' When you associate a principal with portfolio, a potential privilege
+#' escalation path may occur when that portfolio is then shared with other
+#' accounts. For a user in a recipient account who is *not* an Service
+#' Catalog Admin, but still has the ability to create Principals
+#' (Users/Groups/Roles), that user could create a role that matches a
+#' principal name association for the portfolio. Although this user may not
+#' know which principal names are associated through Service Catalog, they
+#' may be able to guess the user. If this potential escalation path is a
+#' concern, then Service Catalog recommends using `PrincipalType` as `IAM`.
+#' With this configuration, the `PrincipalARN` must already exist in the
+#' recipient account before it can be associated.
 #'
 #' @usage
 #' servicecatalog_update_portfolio_share(AcceptLanguage, PortfolioId,
-#'   AccountId, OrganizationNode, ShareTagOptions)
+#'   AccountId, OrganizationNode, ShareTagOptions, SharePrincipals)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which the share will be
 #' updated.
-#' @param AccountId The AWS Account Id of the recipient account. This field is required when
-#' updating an external account to account type share.
+#' @param AccountId The Amazon Web Services account Id of the recipient account. This field
+#' is required when updating an external account to account type share.
 #' @param OrganizationNode 
-#' @param ShareTagOptions A flag to enable or disable TagOptions sharing for the portfolio share.
-#' If this field is not provided, the current state of TagOptions sharing
-#' on the portfolio share will not be modified.
+#' @param ShareTagOptions Enables or disables `TagOptions` sharing for the portfolio share. If
+#' this field is not provided, the current state of TagOptions sharing on
+#' the portfolio share will not be modified.
+#' @param SharePrincipals A flag to enables or disables `Principals` sharing in the portfolio. If
+#' this field is not provided, the current state of the `Principals`
+#' sharing on the portfolio share will not be modified.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6380,7 +6652,8 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #'     Type = "ORGANIZATION"|"ORGANIZATIONAL_UNIT"|"ACCOUNT",
 #'     Value = "string"
 #'   ),
-#'   ShareTagOptions = TRUE|FALSE
+#'   ShareTagOptions = TRUE|FALSE,
+#'   SharePrincipals = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -6389,14 +6662,14 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' @rdname servicecatalog_update_portfolio_share
 #'
 #' @aliases servicecatalog_update_portfolio_share
-servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL) {
+servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, PortfolioId, AccountId = NULL, OrganizationNode = NULL, ShareTagOptions = NULL, SharePrincipals = NULL) {
   op <- new_operation(
     name = "UpdatePortfolioShare",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions)
+  input <- .servicecatalog$update_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$update_portfolio_share_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -6414,11 +6687,9 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @usage
 #' servicecatalog_update_product(AcceptLanguage, Id, Name, Owner,
 #'   Description, Distributor, SupportDescription, SupportEmail, SupportUrl,
-#'   AddTags, RemoveTags)
+#'   AddTags, RemoveTags, SourceConnection)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -6433,6 +6704,14 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportUrl The updated support URL for the product.
 #' @param AddTags The tags to add to the product.
 #' @param RemoveTags The tags to remove from the product.
+#' @param SourceConnection Specifies connection details for the updated product and syncs the
+#' product to the connection source artifact. This automatically manages
+#' the product's artifacts based on changes to the source. The
+#' `SourceConnection` parameter consists of the following sub-fields.
+#' 
+#' -   `Type`
+#' 
+#' -   `ConnectionParamters`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6445,7 +6724,7 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -6456,6 +6735,28 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'     ProductARN = "string",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     SourceConnection = list(
+#'       Type = "CODESTAR",
+#'       ConnectionParameters = list(
+#'         CodeStar = list(
+#'           ConnectionArn = "string",
+#'           Repository = "string",
+#'           Branch = "string",
+#'           ArtifactPath = "string"
+#'         )
+#'       ),
+#'       LastSync = list(
+#'         LastSyncTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastSyncStatus = "SUCCEEDED"|"FAILED",
+#'         LastSyncStatusMessage = "string",
+#'         LastSuccessfulSyncTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastSuccessfulSyncProvisioningArtifactId = "string"
+#'       )
 #'     )
 #'   ),
 #'   Tags = list(
@@ -6487,6 +6788,17 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'   ),
 #'   RemoveTags = list(
 #'     "string"
+#'   ),
+#'   SourceConnection = list(
+#'     Type = "CODESTAR",
+#'     ConnectionParameters = list(
+#'       CodeStar = list(
+#'         ConnectionArn = "string",
+#'         Repository = "string",
+#'         Branch = "string",
+#'         ArtifactPath = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -6496,14 +6808,14 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @rdname servicecatalog_update_product
 #'
 #' @aliases servicecatalog_update_product
-servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL, Owner = NULL, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL, RemoveTags = NULL) {
+servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL, Owner = NULL, Description = NULL, Distributor = NULL, SupportDescription = NULL, SupportEmail = NULL, SupportUrl = NULL, AddTags = NULL, RemoveTags = NULL, SourceConnection = NULL) {
   op <- new_operation(
     name = "UpdateProduct",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$update_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, AddTags = AddTags, RemoveTags = RemoveTags)
+  input <- .servicecatalog$update_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, AddTags = AddTags, RemoveTags = RemoveTags, SourceConnection = SourceConnection)
   output <- .servicecatalog$update_product_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -6535,8 +6847,6 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #'   ProvisioningParameters, ProvisioningPreferences, Tags, UpdateToken)
 #'
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 
@@ -6676,8 +6986,6 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -6696,13 +7004,13 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' [`execute_provisioned_product_service_action`][servicecatalog_execute_provisioned_product_service_action].
 #' Only a role ARN is valid. A user ARN is invalid.
 #' 
-#' The `OWNER` key accepts user ARNs and role ARNs. The owner is the user
-#' that has permission to see, update, terminate, and execute service
-#' actions in the provisioned product.
+#' The `OWNER` key accepts user ARNs, IAM role ARNs, and STS assumed-role
+#' ARNs. The owner is the user that has permission to see, update,
+#' terminate, and execute service actions in the provisioned product.
 #' 
 #' The administrator can change the owner of a provisioned product to
-#' another IAM user within the same account. Both end user owners and
-#' administrators can see ownership history of the provisioned product
+#' another IAM or STS entity within the same account. Both end user owners
+#' and administrators can see ownership history of the provisioned product
 #' using the [`list_record_history`][servicecatalog_list_record_history]
 #' API. The new owner can describe all past records for the provisioned
 #' product using the [`describe_record`][servicecatalog_describe_record]
@@ -6783,8 +7091,6 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `en` - English (default)
-#' 
 #' -   `jp` - Japanese
 #' 
 #' -   `zh` - Chinese
@@ -6815,12 +7121,13 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
 #'     Active = TRUE|FALSE,
-#'     Guidance = "DEFAULT"|"DEPRECATED"
+#'     Guidance = "DEFAULT"|"DEPRECATED",
+#'     SourceRevision = "string"
 #'   ),
 #'   Info = list(
 #'     "string"
@@ -6878,8 +7185,6 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Definition A map that defines the self-service action.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
-#' 
-#' -   `en` - English (default)
 #' 
 #' -   `jp` - Japanese
 #' 

@@ -656,7 +656,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #'
 #' @usage
 #' personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
-#'   roleArn, tags, importMode)
+#'   roleArn, tags, importMode, publishAttributionMetricsToS3)
 #'
 #' @param jobName &#91;required&#93; The name for the dataset import job.
 #' @param datasetArn &#91;required&#93; The ARN of the dataset that receives the imported data.
@@ -674,6 +674,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' -   Specify `INCREMENTAL` to append the new records to the existing data
 #'     in your dataset. Amazon Personalize replaces any record with the
 #'     same ID with the new one.
+#' @param publishAttributionMetricsToS3 If you created a metric attribution, specify whether to publish metrics
+#' for this import job to Amazon S3
 #'
 #' @return
 #' A list with the following syntax:
@@ -698,7 +700,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #'       tagValue = "string"
 #'     )
 #'   ),
-#'   importMode = "FULL"|"INCREMENTAL"
+#'   importMode = "FULL"|"INCREMENTAL",
+#'   publishAttributionMetricsToS3 = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -707,14 +710,14 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' @rdname personalize_create_dataset_import_job
 #'
 #' @aliases personalize_create_dataset_import_job
-personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn, tags = NULL, importMode = NULL) {
+personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSource, roleArn, tags = NULL, importMode = NULL, publishAttributionMetricsToS3 = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn, tags = tags, importMode = importMode)
+  input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn, tags = tags, importMode = importMode, publishAttributionMetricsToS3 = publishAttributionMetricsToS3)
   output <- .personalize$create_dataset_import_job_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -881,6 +884,81 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression, t
   return(response)
 }
 .personalize$operations$create_filter <- personalize_create_filter
+
+#' Creates a metric attribution
+#'
+#' @description
+#' Creates a metric attribution. A metric attribution creates reports on
+#' the data that you import into Amazon Personalize. Depending on how you
+#' imported the data, you can view reports in Amazon CloudWatch or Amazon
+#' S3. For more information, see [Measuring impact of
+#' recommendations](https://docs.aws.amazon.com/personalize/latest/dg/measuring-recommendation-impact.html).
+#'
+#' @usage
+#' personalize_create_metric_attribution(name, datasetGroupArn, metrics,
+#'   metricsOutputConfig)
+#'
+#' @param name &#91;required&#93; A name for the metric attribution.
+#' @param datasetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination dataset group for the
+#' metric attribution.
+#' @param metrics &#91;required&#93; A list of metric attributes for the metric attribution. Each metric
+#' attribute specifies an event type to track and a function. Available
+#' functions are `SUM()` or `SAMPLECOUNT()`. For SUM() functions, provide
+#' the dataset type (either Interactions or Items) and column to sum as a
+#' parameter. For example SUM(Items.PRICE).
+#' @param metricsOutputConfig &#91;required&#93; The output configuration details for the metric attribution.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricAttributionArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_metric_attribution(
+#'   name = "string",
+#'   datasetGroupArn = "string",
+#'   metrics = list(
+#'     list(
+#'       eventType = "string",
+#'       metricName = "string",
+#'       expression = "string"
+#'     )
+#'   ),
+#'   metricsOutputConfig = list(
+#'     s3DataDestination = list(
+#'       path = "string",
+#'       kmsKeyArn = "string"
+#'     ),
+#'     roleArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_create_metric_attribution
+#'
+#' @aliases personalize_create_metric_attribution
+personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics, metricsOutputConfig) {
+  op <- new_operation(
+    name = "CreateMetricAttribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$create_metric_attribution_input(name = name, datasetGroupArn = datasetGroupArn, metrics = metrics, metricsOutputConfig = metricsOutputConfig)
+  output <- .personalize$create_metric_attribution_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$create_metric_attribution <- personalize_create_metric_attribution
 
 #' Creates a recommender with the recipe (a Domain dataset group use case)
 #' you specify
@@ -1325,8 +1403,10 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' -   [`delete_solution`][personalize_delete_solution]
 #'
 #' @usage
-#' personalize_create_solution_version(solutionArn, trainingMode, tags)
+#' personalize_create_solution_version(name, solutionArn, trainingMode,
+#'   tags)
 #'
+#' @param name The name of the solution version.
 #' @param solutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the solution containing the training
 #' configuration information.
 #' @param trainingMode The scope of training to be performed when creating the solution
@@ -1356,6 +1436,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' @section Request syntax:
 #' ```
 #' svc$create_solution_version(
+#'   name = "string",
 #'   solutionArn = "string",
 #'   trainingMode = "FULL"|"UPDATE",
 #'   tags = list(
@@ -1372,14 +1453,14 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' @rdname personalize_create_solution_version
 #'
 #' @aliases personalize_create_solution_version
-personalize_create_solution_version <- function(solutionArn, trainingMode = NULL, tags = NULL) {
+personalize_create_solution_version <- function(name = NULL, solutionArn, trainingMode = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateSolutionVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .personalize$create_solution_version_input(solutionArn = solutionArn, trainingMode = trainingMode, tags = tags)
+  input <- .personalize$create_solution_version_input(name = name, solutionArn = solutionArn, trainingMode = trainingMode, tags = tags)
   output <- .personalize$create_solution_version_output()
   config <- get_config()
   svc <- .personalize$service(config)
@@ -1616,6 +1697,48 @@ personalize_delete_filter <- function(filterArn) {
   return(response)
 }
 .personalize$operations$delete_filter <- personalize_delete_filter
+
+#' Deletes a metric attribution
+#'
+#' @description
+#' Deletes a metric attribution.
+#'
+#' @usage
+#' personalize_delete_metric_attribution(metricAttributionArn)
+#'
+#' @param metricAttributionArn &#91;required&#93; The metric attribution's Amazon Resource Name (ARN).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_metric_attribution(
+#'   metricAttributionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_delete_metric_attribution
+#'
+#' @aliases personalize_delete_metric_attribution
+personalize_delete_metric_attribution <- function(metricAttributionArn) {
+  op <- new_operation(
+    name = "DeleteMetricAttribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$delete_metric_attribution_input(metricAttributionArn = metricAttributionArn)
+  output <- .personalize$delete_metric_attribution_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$delete_metric_attribution <- personalize_delete_metric_attribution
 
 #' Deactivates and removes a recommender
 #'
@@ -2331,7 +2454,8 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
 #'       "2015-01-01"
 #'     ),
 #'     failureReason = "string",
-#'     importMode = "FULL"|"INCREMENTAL"
+#'     importMode = "FULL"|"INCREMENTAL",
+#'     publishAttributionMetricsToS3 = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -2547,6 +2671,72 @@ personalize_describe_filter <- function(filterArn) {
   return(response)
 }
 .personalize$operations$describe_filter <- personalize_describe_filter
+
+#' Describes a metric attribution
+#'
+#' @description
+#' Describes a metric attribution.
+#'
+#' @usage
+#' personalize_describe_metric_attribution(metricAttributionArn)
+#'
+#' @param metricAttributionArn &#91;required&#93; The metric attribution's Amazon Resource Name (ARN).
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricAttribution = list(
+#'     name = "string",
+#'     metricAttributionArn = "string",
+#'     datasetGroupArn = "string",
+#'     metricsOutputConfig = list(
+#'       s3DataDestination = list(
+#'         path = "string",
+#'         kmsKeyArn = "string"
+#'       ),
+#'       roleArn = "string"
+#'     ),
+#'     status = "string",
+#'     creationDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     lastUpdatedDateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     failureReason = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_metric_attribution(
+#'   metricAttributionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_describe_metric_attribution
+#'
+#' @aliases personalize_describe_metric_attribution
+personalize_describe_metric_attribution <- function(metricAttributionArn) {
+  op <- new_operation(
+    name = "DescribeMetricAttribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$describe_metric_attribution_input(metricAttributionArn = metricAttributionArn)
+  output <- .personalize$describe_metric_attribution_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$describe_metric_attribution <- personalize_describe_metric_attribution
 
 #' Describes a recipe
 #'
@@ -2937,6 +3127,7 @@ personalize_describe_solution <- function(solutionArn) {
 #' ```
 #' list(
 #'   solutionVersion = list(
+#'     name = "string",
 #'     solutionVersionArn = "string",
 #'     solutionArn = "string",
 #'     performHPO = TRUE|FALSE,
@@ -3741,6 +3932,135 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
 }
 .personalize$operations$list_filters <- personalize_list_filters
 
+#' Lists the metrics for the metric attribution
+#'
+#' @description
+#' Lists the metrics for the metric attribution.
+#'
+#' @usage
+#' personalize_list_metric_attribution_metrics(metricAttributionArn,
+#'   nextToken, maxResults)
+#'
+#' @param metricAttributionArn The Amazon Resource Name (ARN) of the metric attribution to retrieve
+#' attributes for.
+#' @param nextToken Specify the pagination token from a previous request to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of metrics to return in one page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metrics = list(
+#'     list(
+#'       eventType = "string",
+#'       metricName = "string",
+#'       expression = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_metric_attribution_metrics(
+#'   metricAttributionArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_metric_attribution_metrics
+#'
+#' @aliases personalize_list_metric_attribution_metrics
+personalize_list_metric_attribution_metrics <- function(metricAttributionArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListMetricAttributionMetrics",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_metric_attribution_metrics_input(metricAttributionArn = metricAttributionArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_metric_attribution_metrics_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_metric_attribution_metrics <- personalize_list_metric_attribution_metrics
+
+#' Lists metric attributions
+#'
+#' @description
+#' Lists metric attributions.
+#'
+#' @usage
+#' personalize_list_metric_attributions(datasetGroupArn, nextToken,
+#'   maxResults)
+#'
+#' @param datasetGroupArn The metric attributions' dataset group Amazon Resource Name (ARN).
+#' @param nextToken Specify the pagination token from a previous request to retrieve the
+#' next page of results.
+#' @param maxResults The maximum number of metric attributions to return in one page of
+#' results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricAttributions = list(
+#'     list(
+#'       name = "string",
+#'       metricAttributionArn = "string",
+#'       status = "string",
+#'       creationDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastUpdatedDateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       failureReason = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_metric_attributions(
+#'   datasetGroupArn = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_list_metric_attributions
+#'
+#' @aliases personalize_list_metric_attributions
+personalize_list_metric_attributions <- function(datasetGroupArn = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListMetricAttributions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$list_metric_attributions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
+  output <- .personalize$list_metric_attributions_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$list_metric_attributions <- personalize_list_metric_attributions
+
 #' Returns a list of available recipes
 #'
 #' @description
@@ -4063,7 +4383,8 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
 #'       ),
 #'       lastUpdatedDateTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       recipeArn = "string"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -4476,6 +4797,74 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
   return(response)
 }
 .personalize$operations$update_campaign <- personalize_update_campaign
+
+#' Updates a metric attribution
+#'
+#' @description
+#' Updates a metric attribution.
+#'
+#' @usage
+#' personalize_update_metric_attribution(addMetrics, removeMetrics,
+#'   metricsOutputConfig, metricAttributionArn)
+#'
+#' @param addMetrics Add new metric attributes to the metric attribution.
+#' @param removeMetrics Remove metric attributes from the metric attribution.
+#' @param metricsOutputConfig An output config for the metric attribution.
+#' @param metricAttributionArn The Amazon Resource Name (ARN) for the metric attribution to update.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   metricAttributionArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_metric_attribution(
+#'   addMetrics = list(
+#'     list(
+#'       eventType = "string",
+#'       metricName = "string",
+#'       expression = "string"
+#'     )
+#'   ),
+#'   removeMetrics = list(
+#'     "string"
+#'   ),
+#'   metricsOutputConfig = list(
+#'     s3DataDestination = list(
+#'       path = "string",
+#'       kmsKeyArn = "string"
+#'     ),
+#'     roleArn = "string"
+#'   ),
+#'   metricAttributionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalize_update_metric_attribution
+#'
+#' @aliases personalize_update_metric_attribution
+personalize_update_metric_attribution <- function(addMetrics = NULL, removeMetrics = NULL, metricsOutputConfig = NULL, metricAttributionArn = NULL) {
+  op <- new_operation(
+    name = "UpdateMetricAttribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .personalize$update_metric_attribution_input(addMetrics = addMetrics, removeMetrics = removeMetrics, metricsOutputConfig = metricsOutputConfig, metricAttributionArn = metricAttributionArn)
+  output <- .personalize$update_metric_attribution_output()
+  config <- get_config()
+  svc <- .personalize$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalize$operations$update_metric_attribution <- personalize_update_metric_attribution
 
 #' Updates the recommender to modify the recommender configuration
 #'

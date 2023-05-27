@@ -58,10 +58,10 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 }
 .costexplorer$operations$create_anomaly_monitor <- costexplorer_create_anomaly_monitor
 
-#' Adds a subscription to a cost anomaly detection monitor
+#' Adds an alert subscription to a cost anomaly detection monitor
 #'
 #' @description
-#' Adds a subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set a dollar threshold and a time frequency for receiving notifications.
+#' Adds an alert subscription to a cost anomaly detection monitor. You can use each subscription to define subscribers with email or SNS notifications. Email subscribers can set an absolute or percentage threshold and a time frequency for receiving notifications.
 #'
 #' See [https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html](https://paws-r.github.io/docs/costexplorer/create_anomaly_subscription.html) for full documentation.
 #'
@@ -120,6 +120,10 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' See [https://paws-r.github.io/docs/costexplorer/create_cost_category_definition.html](https://paws-r.github.io/docs/costexplorer/create_cost_category_definition.html) for full documentation.
 #'
 #' @param Name &#91;required&#93; 
+#' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
+#' date (first day of the month). If the date isn't provided, it's the
+#' first day of the current month. Dates can't be before the previous
+#' twelve months, or in the future.
 #' @param RuleVersion &#91;required&#93; 
 #' @param Rules &#91;required&#93; The Cost Category rules used to categorize costs. For more information,
 #' see
@@ -156,14 +160,14 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' @keywords internal
 #'
 #' @rdname costexplorer_create_cost_category_definition
-costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL, ResourceTags = NULL) {
+costexplorer_create_cost_category_definition <- function(Name, EffectiveStart = NULL, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL, ResourceTags = NULL) {
   op <- new_operation(
     name = "CreateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$create_cost_category_definition_input(Name = Name, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
+  input <- .costexplorer$create_cost_category_definition_input(Name = Name, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
   output <- .costexplorer$create_cost_category_definition_output()
   config <- get_config()
   svc <- .costexplorer$service(config)
@@ -297,7 +301,7 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #' time period that's specified by the DateInterval object
 #'
 #' @description
-#' Retrieves all of the cost anomalies detected on your account during the time period that's specified by the `DateInterval` object.
+#' Retrieves all of the cost anomalies detected on your account during the time period that's specified by the `DateInterval` object. Anomalies are available for up to 90 days.
 #'
 #' See [https://paws-r.github.io/docs/costexplorer/get_anomalies.html](https://paws-r.github.io/docs/costexplorer/get_anomalies.html) for full documentation.
 #'
@@ -431,9 +435,8 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 #' `EQUALS`, `ABSENT`, and `CASE_SENSITIVE`. Default values are `EQUALS`
 #' and `CASE_SENSITIVE`.
 #' @param Metrics &#91;required&#93; Which metrics are returned in the query. For more information about
-#' blended and unblended rates, see [Why does the "blended" annotation
-#' appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' blended and unblended rates, see Why does the "blended" annotation
+#' appear on some line items in my bill?.
 #' 
 #' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`,
 #' `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and
@@ -522,9 +525,8 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
 #' `EQUALS`, `ABSENT`, and `CASE_SENSITIVE`. Default values are `EQUALS`
 #' and `CASE_SENSITIVE`.
 #' @param Metrics Which metrics are returned in the query. For more information about
-#' blended and unblended rates, see [Why does the "blended" annotation
-#' appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' blended and unblended rates, see Why does the "blended" annotation
+#' appear on some line items in my bill?.
 #' 
 #' Valid values are `AmortizedCost`, `BlendedCost`, `NetAmortizedCost`,
 #' `NetUnblendedCost`, `NormalizedUsageAmount`, `UnblendedCost`, and
@@ -654,9 +656,8 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' must be equal to or no later than the current date to avoid a validation
 #' error.
 #' @param Metric &#91;required&#93; Which metric Cost Explorer uses to create your forecast. For more
-#' information about blended and unblended rates, see [Why does the
-#' "blended" annotation appear on some line items in my
-#' bill?](https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+#' information about blended and unblended rates, see Why does the
+#' "blended" annotation appear on some line items in my bill?.
 #' 
 #' Valid values for a [`get_cost_forecast`][costexplorer_get_cost_forecast]
 #' call are the following:
@@ -765,7 +766,9 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' usage data is retrieved from `2017-01-01` up to and including
 #' `2017-04-30` but not including `2017-05-01`.
 #' @param Dimension &#91;required&#93; The name of the dimension. Each `Dimension` is available for a different
-#' `Context`. For more information, see `Context`.
+#' `Context`. For more information, see `Context`. `LINK_ACCOUNT_NAME` and
+#' `SERVICE_CODE` can only be used in
+#' [CostCategoryRule](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/).
 #' @param Context The context for the call to
 #' [`get_dimension_values`][costexplorer_get_dimension_values]. This can be
 #' `RESERVATIONS` or `COST_AND_USAGE`. The default value is
@@ -1410,11 +1413,10 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 }
 .costexplorer$operations$get_savings_plans_coverage <- costexplorer_get_savings_plans_coverage
 
-#' Retrieves your request parameters, Savings Plan Recommendations Summary
-#' and Details
+#' Retrieves the Savings Plans recommendations for your account
 #'
 #' @description
-#' Retrieves your request parameters, Savings Plan Recommendations Summary and Details.
+#' Retrieves the Savings Plans recommendations for your account. First use [`start_savings_plans_purchase_recommendation_generation`][costexplorer_start_savings_plans_purchase_recommendation_generation] to generate a new set of recommendations, and then use [`get_savings_plans_purchase_recommendation`][costexplorer_get_savings_plans_purchase_recommendation] to retrieve them.
 #'
 #' See [https://paws-r.github.io/docs/costexplorer/get_savings_plans_purchase_recommendation.html](https://paws-r.github.io/docs/costexplorer/get_savings_plans_purchase_recommendation.html) for full documentation.
 #'
@@ -1866,6 +1868,40 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 }
 .costexplorer$operations$list_cost_category_definitions <- costexplorer_list_cost_category_definitions
 
+#' Retrieves a list of your historical recommendation generations within
+#' the past 30 days
+#'
+#' @description
+#' Retrieves a list of your historical recommendation generations within the past 30 days.
+#'
+#' See [https://paws-r.github.io/docs/costexplorer/list_savings_plans_purchase_recommendation_generation.html](https://paws-r.github.io/docs/costexplorer/list_savings_plans_purchase_recommendation_generation.html) for full documentation.
+#'
+#' @param GenerationStatus The status of the recommendation generation.
+#' @param RecommendationIds The IDs for each specific recommendation.
+#' @param PageSize The number of recommendations that you want returned in a single
+#' response object.
+#' @param NextPageToken The token to retrieve the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_list_saving_plans_purcha_recomm_genera
+costexplorer_list_savings_plans_purchase_recommendation_generation <- function(GenerationStatus = NULL, RecommendationIds = NULL, PageSize = NULL, NextPageToken = NULL) {
+  op <- new_operation(
+    name = "ListSavingsPlansPurchaseRecommendationGeneration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$list_savings_plans_purchase_recommendation_generation_input(GenerationStatus = GenerationStatus, RecommendationIds = RecommendationIds, PageSize = PageSize, NextPageToken = NextPageToken)
+  output <- .costexplorer$list_savings_plans_purchase_recommendation_generation_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$list_savings_plans_purchase_recommendation_generation <- costexplorer_list_savings_plans_purchase_recommendation_generation
+
 #' Returns a list of resource tags associated with the resource specified
 #' by the Amazon Resource Name (ARN)
 #'
@@ -1928,6 +1964,33 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
   return(response)
 }
 .costexplorer$operations$provide_anomaly_feedback <- costexplorer_provide_anomaly_feedback
+
+#' Requests a Savings Plans recommendation generation
+#'
+#' @description
+#' Requests a Savings Plans recommendation generation. This enables you to calculate a fresh set of Savings Plans recommendations that takes your latest usage data and current Savings Plans inventory into account. You can refresh Savings Plans recommendations up to three times daily for a consolidated billing family.
+#'
+#' See [https://paws-r.github.io/docs/costexplorer/start_savings_plans_purchase_recommendation_generation.html](https://paws-r.github.io/docs/costexplorer/start_savings_plans_purchase_recommendation_generation.html) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname costexplorer_start_saving_plans_purcha_recomm_genera
+costexplorer_start_savings_plans_purchase_recommendation_generation <- function() {
+  op <- new_operation(
+    name = "StartSavingsPlansPurchaseRecommendationGeneration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costexplorer$start_savings_plans_purchase_recommendation_generation_input()
+  output <- .costexplorer$start_savings_plans_purchase_recommendation_generation_output()
+  config <- get_config()
+  svc <- .costexplorer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costexplorer$operations$start_savings_plans_purchase_recommendation_generation <- costexplorer_start_savings_plans_purchase_recommendation_generation
 
 #' An API operation for adding one or more tags (key-value pairs) to a
 #' resource
@@ -2056,24 +2119,52 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' See [https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html](https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html) for full documentation.
 #'
 #' @param SubscriptionArn &#91;required&#93; A cost anomaly subscription Amazon Resource Name (ARN).
-#' @param Threshold The update to the threshold value for receiving notifications.
+#' @param Threshold (deprecated)
+#' 
+#' The update to the threshold value for receiving notifications.
+#' 
+#' This field has been deprecated. To update a threshold, use
+#' ThresholdExpression. Continued use of Threshold will be treated as
+#' shorthand syntax for a ThresholdExpression.
 #' @param Frequency The update to the frequency value that subscribers receive
 #' notifications.
 #' @param MonitorArnList A list of cost anomaly monitor ARNs.
 #' @param Subscribers The update to the subscriber list.
 #' @param SubscriptionName The new name of the subscription.
+#' @param ThresholdExpression The update to the
+#' [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
+#' object used to specify the anomalies that you want to generate alerts
+#' for. This supports dimensions and nested expressions. The supported
+#' dimensions are `ANOMALY_TOTAL_IMPACT_ABSOLUTE` and
+#' `ANOMALY_TOTAL_IMPACT_PERCENTAGE`. The supported nested expression types
+#' are `AND` and `OR`. The match option `GREATER_THAN_OR_EQUAL` is
+#' required. Values must be numbers between 0 and 10,000,000,000.
+#' 
+#' The following are examples of valid ThresholdExpressions:
+#' 
+#' -   Absolute threshold:
+#'     `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
+#' 
+#' -   Percentage threshold:
+#'     `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
+#' 
+#' -   `AND` two thresholds together:
+#'     `{ "And": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
+#' 
+#' -   `OR` two thresholds together:
+#'     `{ "Or": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
 #'
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_anomaly_subscription
-costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold = NULL, Frequency = NULL, MonitorArnList = NULL, Subscribers = NULL, SubscriptionName = NULL) {
+costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold = NULL, Frequency = NULL, MonitorArnList = NULL, Subscribers = NULL, SubscriptionName = NULL, ThresholdExpression = NULL) {
   op <- new_operation(
     name = "UpdateAnomalySubscription",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName)
+  input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName, ThresholdExpression = ThresholdExpression)
   output <- .costexplorer$update_anomaly_subscription_output()
   config <- get_config()
   svc <- .costexplorer$service(config)
@@ -2122,6 +2213,10 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' See [https://paws-r.github.io/docs/costexplorer/update_cost_category_definition.html](https://paws-r.github.io/docs/costexplorer/update_cost_category_definition.html) for full documentation.
 #'
 #' @param CostCategoryArn &#91;required&#93; The unique identifier for your Cost Category.
+#' @param EffectiveStart The Cost Category's effective start date. It can only be a billing start
+#' date (first day of the month). If the date isn't provided, it's the
+#' first day of the current month. Dates can't be before the previous
+#' twelve months, or in the future.
 #' @param RuleVersion &#91;required&#93; 
 #' @param Rules &#91;required&#93; The `Expression` object used to categorize costs. For more information,
 #' see
@@ -2134,14 +2229,14 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
 #' @keywords internal
 #'
 #' @rdname costexplorer_update_cost_category_definition
-costexplorer_update_cost_category_definition <- function(CostCategoryArn, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL) {
+costexplorer_update_cost_category_definition <- function(CostCategoryArn, EffectiveStart = NULL, RuleVersion, Rules, DefaultValue = NULL, SplitChargeRules = NULL) {
   op <- new_operation(
     name = "UpdateCostCategoryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
+  input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
   output <- .costexplorer$update_cost_category_definition_output()
   config <- get_config()
   svc <- .costexplorer$service(config)

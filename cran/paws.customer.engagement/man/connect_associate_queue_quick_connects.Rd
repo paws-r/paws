@@ -8,8 +8,8 @@ change}
 connect_associate_queue_quick_connects(InstanceId, QueueId, QuickConnectIds)
 }
 \arguments{
-\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can find the
-instanceId in the ARN of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.}
 
 \item{QueueId}{[required] The identifier for the queue.}
 

@@ -7,10 +7,10 @@
 nimblestudio_get_launch_profile_member(launchProfileId, principalId, studioId)
 }
 \arguments{
-\item{launchProfileId}{[required] The Launch Profile ID.}
+\item{launchProfileId}{[required] The ID of the launch profile used to control access from the streaming
+session.}
 
-\item{principalId}{[required] The principal ID. This currently supports a Amazon Web Services SSO
-UserId.}
+\item{principalId}{[required] The principal ID. This currently supports a IAM Identity Center UserId.}
 
 \item{studioId}{[required] The studio ID.}
 }

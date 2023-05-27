@@ -9,7 +9,8 @@ emr_list_notebook_executions(
   Status = NULL,
   From = NULL,
   To = NULL,
-  Marker = NULL
+  Marker = NULL,
+  ExecutionEngineId = NULL
 )
 }
 \arguments{
@@ -48,9 +49,11 @@ default is the current timestamp.}
 \code{\link[=emr_list_notebook_executions]{list_notebook_executions}} call, that
 indicates the start of the list for this
 \code{\link[=emr_list_notebook_executions]{list_notebook_executions}} call.}
+
+\item{ExecutionEngineId}{The unique ID of the execution engine.}
 }
 \description{
-Provides summaries of all notebook executions. You can filter the list based on multiple criteria such as status, time range, and editor id. Returns a maximum of 50 notebook executions and a marker to track the paging of a longer notebook execution list across multiple \code{ListNotebookExecution} calls.
+Provides summaries of all notebook executions. You can filter the list based on multiple criteria such as status, time range, and editor id. Returns a maximum of 50 notebook executions and a marker to track the paging of a longer notebook execution list across multiple \code{\link[=emr_list_notebook_executions]{list_notebook_executions}} calls.
 
 See \url{https://paws-r.github.io/docs/emr/list_notebook_executions.html} for full documentation.
 }

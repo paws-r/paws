@@ -27,9 +27,9 @@ analysis IDs or a path ID.}
 
 \item{Filters}{The filters. The following are the possible values:
 \itemize{
-\item PathFound - A Boolean value that indicates whether a feasible path
+\item path-found - A Boolean value that indicates whether a feasible path
 is found.
-\item Status - The status of the analysis (running | succeeded | failed).
+\item status - The status of the analysis (running | succeeded | failed).
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

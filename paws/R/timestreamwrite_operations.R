@@ -3,18 +3,151 @@
 #' @include timestreamwrite_service.R
 NULL
 
+#' Creates a new Timestream batch load task
+#'
+#' @description
+#' Creates a new Timestream batch load task. A batch load task processes
+#' data from a CSV source in an S3 location and writes to a Timestream
+#' table. A mapping from source to target is defined in a batch load task.
+#' Errors and events are written to a report at an S3 location. For the
+#' report, if the KMS key is not specified, the batch load task will be
+#' encrypted with a Timestream managed KMS key located in your account. For
+#' more information, see [Amazon Web Services managed
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' For details, see [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html).
+#'
+#' @usage
+#' timestreamwrite_create_batch_load_task(ClientToken,
+#'   DataModelConfiguration, DataSourceConfiguration, ReportConfiguration,
+#'   TargetDatabaseName, TargetTableName, RecordVersion)
+#'
+#' @param ClientToken 
+#' @param DataModelConfiguration 
+#' @param DataSourceConfiguration &#91;required&#93; Defines configuration details about the data source for a batch load
+#' task.
+#' @param ReportConfiguration &#91;required&#93; 
+#' @param TargetDatabaseName &#91;required&#93; Target Timestream database for a batch load task.
+#' @param TargetTableName &#91;required&#93; Target Timestream table for a batch load task.
+#' @param RecordVersion 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   TaskId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_batch_load_task(
+#'   ClientToken = "string",
+#'   DataModelConfiguration = list(
+#'     DataModel = list(
+#'       TimeColumn = "string",
+#'       TimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
+#'       DimensionMappings = list(
+#'         list(
+#'           SourceColumn = "string",
+#'           DestinationColumn = "string"
+#'         )
+#'       ),
+#'       MultiMeasureMappings = list(
+#'         TargetMultiMeasureName = "string",
+#'         MultiMeasureAttributeMappings = list(
+#'           list(
+#'             SourceColumn = "string",
+#'             TargetMultiMeasureAttributeName = "string",
+#'             MeasureValueType = "DOUBLE"|"BIGINT"|"BOOLEAN"|"VARCHAR"|"TIMESTAMP"
+#'           )
+#'         )
+#'       ),
+#'       MixedMeasureMappings = list(
+#'         list(
+#'           MeasureName = "string",
+#'           SourceColumn = "string",
+#'           TargetMeasureName = "string",
+#'           MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP"|"MULTI",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               SourceColumn = "string",
+#'               TargetMultiMeasureAttributeName = "string",
+#'               MeasureValueType = "DOUBLE"|"BIGINT"|"BOOLEAN"|"VARCHAR"|"TIMESTAMP"
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       MeasureNameColumn = "string"
+#'     ),
+#'     DataModelS3Configuration = list(
+#'       BucketName = "string",
+#'       ObjectKey = "string"
+#'     )
+#'   ),
+#'   DataSourceConfiguration = list(
+#'     DataSourceS3Configuration = list(
+#'       BucketName = "string",
+#'       ObjectKeyPrefix = "string"
+#'     ),
+#'     CsvConfiguration = list(
+#'       ColumnSeparator = "string",
+#'       EscapeChar = "string",
+#'       QuoteChar = "string",
+#'       NullValue = "string",
+#'       TrimWhiteSpace = TRUE|FALSE
+#'     ),
+#'     DataFormat = "CSV"
+#'   ),
+#'   ReportConfiguration = list(
+#'     ReportS3Configuration = list(
+#'       BucketName = "string",
+#'       ObjectKeyPrefix = "string",
+#'       EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'       KmsKeyId = "string"
+#'     )
+#'   ),
+#'   TargetDatabaseName = "string",
+#'   TargetTableName = "string",
+#'   RecordVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamwrite_create_batch_load_task
+#'
+#' @aliases timestreamwrite_create_batch_load_task
+timestreamwrite_create_batch_load_task <- function(ClientToken = NULL, DataModelConfiguration = NULL, DataSourceConfiguration, ReportConfiguration, TargetDatabaseName, TargetTableName, RecordVersion = NULL) {
+  op <- new_operation(
+    name = "CreateBatchLoadTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamwrite$create_batch_load_task_input(ClientToken = ClientToken, DataModelConfiguration = DataModelConfiguration, DataSourceConfiguration = DataSourceConfiguration, ReportConfiguration = ReportConfiguration, TargetDatabaseName = TargetDatabaseName, TargetTableName = TargetTableName, RecordVersion = RecordVersion)
+  output <- .timestreamwrite$create_batch_load_task_output()
+  config <- get_config()
+  svc <- .timestreamwrite$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamwrite$operations$create_batch_load_task <- timestreamwrite_create_batch_load_task
+
 #' Creates a new Timestream database
 #'
 #' @description
 #' Creates a new Timestream database. If the KMS key is not specified, the
 #' database will be encrypted with a Timestream managed KMS key located in
-#' your account. Refer to [Amazon Web Services managed KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#' for more info. [Service quotas
+#' your account. For more information, see [Amazon Web Services managed
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
+#' [Service quotas
 #' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
-#' See [code
-#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html)
-#' for details.
+#' For details, see [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html).
 #'
 #' @usage
 #' timestreamwrite_create_database(DatabaseName, KmsKeyId, Tags)
@@ -22,9 +155,8 @@ NULL
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param KmsKeyId The KMS key for the database. If the KMS key is not specified, the
 #' database will be encrypted with a Timestream managed KMS key located in
-#' your account. Refer to [Amazon Web Services managed KMS
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
-#' for more info.
+#' your account. For more information, see [Amazon Web Services managed
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' @param Tags A list of key-value pairs to label the table.
 #'
 #' @return
@@ -82,16 +214,15 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 }
 .timestreamwrite$operations$create_database <- timestreamwrite_create_database
 
-#' The CreateTable operation adds a new table to an existing database in
-#' your account
+#' Adds a new table to an existing database in your account
 #'
 #' @description
-#' The CreateTable operation adds a new table to an existing database in
-#' your account. In an Amazon Web Services account, table names must be at
-#' least unique within each Region if they are in the same database. You
-#' may have identical table names in the same Region if the tables are in
-#' separate databases. While creating the table, you must specify the table
-#' name, database name, and the retention properties. [Service quotas
+#' Adds a new table to an existing database in your account. In an Amazon
+#' Web Services account, table names must be at least unique within each
+#' Region if they are in the same database. You might have identical table
+#' names in the same Region if the tables are in separate databases. While
+#' creating the table, you must specify the table name, database name, and
+#' the retention properties. [Service quotas
 #' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
 #' See [code
 #' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html)
@@ -103,7 +234,7 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
-#' @param RetentionProperties The duration for which your time series data must be stored in the
+#' @param RetentionProperties The duration for which your time-series data must be stored in the
 #' memory store and the magnetic store.
 #' @param Tags A list of key-value pairs to label the table.
 #' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
@@ -117,7 +248,7 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'     Arn = "string",
 #'     TableName = "string",
 #'     DatabaseName = "string",
-#'     TableStatus = "ACTIVE"|"DELETING",
+#'     TableStatus = "ACTIVE"|"DELETING"|"RESTORING",
 #'     RetentionProperties = list(
 #'       MemoryStoreRetentionPeriodInHours = 123,
 #'       MagneticStoreRetentionPeriodInDays = 123
@@ -198,7 +329,7 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
 #'
 #' @description
 #' Deletes a given Timestream database. *This is an irreversible operation.
-#' After a database is deleted, the time series data from its tables cannot
+#' After a database is deleted, the time-series data from its tables cannot
 #' be recovered.*
 #' 
 #' All tables in the database must be deleted first, or a
@@ -253,7 +384,7 @@ timestreamwrite_delete_database <- function(DatabaseName) {
 #'
 #' @description
 #' Deletes a given Timestream table. This is an irreversible operation.
-#' After a Timestream database table is deleted, the time series data
+#' After a Timestream database table is deleted, the time-series data
 #' stored in the table cannot be recovered.
 #' 
 #' Due to the nature of distributed retries, the operation can return
@@ -302,6 +433,147 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
   return(response)
 }
 .timestreamwrite$operations$delete_table <- timestreamwrite_delete_table
+
+#' Returns information about the batch load task, including configurations,
+#' mappings, progress, and other details
+#'
+#' @description
+#' Returns information about the batch load task, including configurations,
+#' mappings, progress, and other details. [Service quotas
+#' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
+#' See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-batch-load.html)
+#' for details.
+#'
+#' @usage
+#' timestreamwrite_describe_batch_load_task(TaskId)
+#'
+#' @param TaskId &#91;required&#93; The ID of the batch load task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   BatchLoadTaskDescription = list(
+#'     TaskId = "string",
+#'     ErrorMessage = "string",
+#'     DataSourceConfiguration = list(
+#'       DataSourceS3Configuration = list(
+#'         BucketName = "string",
+#'         ObjectKeyPrefix = "string"
+#'       ),
+#'       CsvConfiguration = list(
+#'         ColumnSeparator = "string",
+#'         EscapeChar = "string",
+#'         QuoteChar = "string",
+#'         NullValue = "string",
+#'         TrimWhiteSpace = TRUE|FALSE
+#'       ),
+#'       DataFormat = "CSV"
+#'     ),
+#'     ProgressReport = list(
+#'       RecordsProcessed = 123,
+#'       RecordsIngested = 123,
+#'       ParseFailures = 123,
+#'       RecordIngestionFailures = 123,
+#'       FileFailures = 123,
+#'       BytesMetered = 123
+#'     ),
+#'     ReportConfiguration = list(
+#'       ReportS3Configuration = list(
+#'         BucketName = "string",
+#'         ObjectKeyPrefix = "string",
+#'         EncryptionOption = "SSE_S3"|"SSE_KMS",
+#'         KmsKeyId = "string"
+#'       )
+#'     ),
+#'     DataModelConfiguration = list(
+#'       DataModel = list(
+#'         TimeColumn = "string",
+#'         TimeUnit = "MILLISECONDS"|"SECONDS"|"MICROSECONDS"|"NANOSECONDS",
+#'         DimensionMappings = list(
+#'           list(
+#'             SourceColumn = "string",
+#'             DestinationColumn = "string"
+#'           )
+#'         ),
+#'         MultiMeasureMappings = list(
+#'           TargetMultiMeasureName = "string",
+#'           MultiMeasureAttributeMappings = list(
+#'             list(
+#'               SourceColumn = "string",
+#'               TargetMultiMeasureAttributeName = "string",
+#'               MeasureValueType = "DOUBLE"|"BIGINT"|"BOOLEAN"|"VARCHAR"|"TIMESTAMP"
+#'             )
+#'           )
+#'         ),
+#'         MixedMeasureMappings = list(
+#'           list(
+#'             MeasureName = "string",
+#'             SourceColumn = "string",
+#'             TargetMeasureName = "string",
+#'             MeasureValueType = "DOUBLE"|"BIGINT"|"VARCHAR"|"BOOLEAN"|"TIMESTAMP"|"MULTI",
+#'             MultiMeasureAttributeMappings = list(
+#'               list(
+#'                 SourceColumn = "string",
+#'                 TargetMultiMeasureAttributeName = "string",
+#'                 MeasureValueType = "DOUBLE"|"BIGINT"|"BOOLEAN"|"VARCHAR"|"TIMESTAMP"
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         MeasureNameColumn = "string"
+#'       ),
+#'       DataModelS3Configuration = list(
+#'         BucketName = "string",
+#'         ObjectKey = "string"
+#'       )
+#'     ),
+#'     TargetDatabaseName = "string",
+#'     TargetTableName = "string",
+#'     TaskStatus = "CREATED"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"PROGRESS_STOPPED"|"PENDING_RESUME",
+#'     RecordVersion = 123,
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ResumableUntil = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_batch_load_task(
+#'   TaskId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamwrite_describe_batch_load_task
+#'
+#' @aliases timestreamwrite_describe_batch_load_task
+timestreamwrite_describe_batch_load_task <- function(TaskId) {
+  op <- new_operation(
+    name = "DescribeBatchLoadTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamwrite$describe_batch_load_task_input(TaskId = TaskId)
+  output <- .timestreamwrite$describe_batch_load_task_output()
+  config <- get_config()
+  svc <- .timestreamwrite$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamwrite$operations$describe_batch_load_task <- timestreamwrite_describe_batch_load_task
 
 #' Returns information about the database, including the database name,
 #' time that the database was created, and the total number of tables found
@@ -369,17 +641,18 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 }
 .timestreamwrite$operations$describe_database <- timestreamwrite_describe_database
 
-#' DescribeEndpoints returns a list of available endpoints to make
-#' Timestream API calls against
+#' Returns a list of available endpoints to make Timestream API calls
+#' against
 #'
 #' @description
-#' DescribeEndpoints returns a list of available endpoints to make
-#' Timestream API calls against. This API is available through both Write
-#' and Query.
+#' Returns a list of available endpoints to make Timestream API calls
+#' against. This API operation is available through both the Write and
+#' Query APIs.
 #' 
 #' Because the Timestream SDKs are designed to transparently work with the
 #' service’s architecture, including the management and mapping of the
-#' service endpoints, *it is not recommended that you use this API unless*:
+#' service endpoints, *we don't recommend that you use this API operation
+#' unless*:
 #' 
 #' -   You are using [VPC endpoints (Amazon Web Services PrivateLink) with
 #'     Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints.html)
@@ -462,7 +735,7 @@ timestreamwrite_describe_endpoints <- function() {
 #'     Arn = "string",
 #'     TableName = "string",
 #'     DatabaseName = "string",
-#'     TableStatus = "ACTIVE"|"DELETING",
+#'     TableStatus = "ACTIVE"|"DELETING"|"RESTORING",
 #'     RetentionProperties = list(
 #'       MemoryStoreRetentionPeriodInHours = 123,
 #'       MagneticStoreRetentionPeriodInDays = 123
@@ -517,6 +790,82 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
   return(response)
 }
 .timestreamwrite$operations$describe_table <- timestreamwrite_describe_table
+
+#' Provides a list of batch load tasks, along with the name, status, when
+#' the task is resumable until, and other details
+#'
+#' @description
+#' Provides a list of batch load tasks, along with the name, status, when
+#' the task is resumable until, and other details. See [code
+#' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-batch-load-tasks.html)
+#' for details.
+#'
+#' @usage
+#' timestreamwrite_list_batch_load_tasks(NextToken, MaxResults, TaskStatus)
+#'
+#' @param NextToken A token to specify where to start paginating. This is the NextToken from
+#' a previously truncated response.
+#' @param MaxResults The total number of items to return in the output. If the total number
+#' of items available is more than the value specified, a NextToken is
+#' provided in the output. To resume pagination, provide the NextToken
+#' value as argument of a subsequent API invocation.
+#' @param TaskStatus Status of the batch load task.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   BatchLoadTasks = list(
+#'     list(
+#'       TaskId = "string",
+#'       TaskStatus = "CREATED"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"PROGRESS_STOPPED"|"PENDING_RESUME",
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       CreationTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ResumableUntil = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_batch_load_tasks(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   TaskStatus = "CREATED"|"IN_PROGRESS"|"FAILED"|"SUCCEEDED"|"PROGRESS_STOPPED"|"PENDING_RESUME"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamwrite_list_batch_load_tasks
+#'
+#' @aliases timestreamwrite_list_batch_load_tasks
+timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults = NULL, TaskStatus = NULL) {
+  op <- new_operation(
+    name = "ListBatchLoadTasks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamwrite$list_batch_load_tasks_input(NextToken = NextToken, MaxResults = MaxResults, TaskStatus = TaskStatus)
+  output <- .timestreamwrite$list_batch_load_tasks_output()
+  config <- get_config()
+  svc <- .timestreamwrite$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamwrite$operations$list_batch_load_tasks <- timestreamwrite_list_batch_load_tasks
 
 #' Returns a list of your Timestream databases
 #'
@@ -589,12 +938,12 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 }
 .timestreamwrite$operations$list_databases <- timestreamwrite_list_databases
 
-#' A list of tables, along with the name, status and retention properties
-#' of each table
+#' Provides a list of tables, along with the name, status, and retention
+#' properties of each table
 #'
 #' @description
-#' A list of tables, along with the name, status and retention properties
-#' of each table. See [code
+#' Provides a list of tables, along with the name, status, and retention
+#' properties of each table. See [code
 #' sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html)
 #' for details.
 #'
@@ -618,7 +967,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #'       Arn = "string",
 #'       TableName = "string",
 #'       DatabaseName = "string",
-#'       TableStatus = "ACTIVE"|"DELETING",
+#'       TableStatus = "ACTIVE"|"DELETING"|"RESTORING",
 #'       RetentionProperties = list(
 #'         MemoryStoreRetentionPeriodInHours = 123,
 #'         MagneticStoreRetentionPeriodInDays = 123
@@ -677,10 +1026,10 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
 }
 .timestreamwrite$operations$list_tables <- timestreamwrite_list_tables
 
-#' List all tags on a Timestream resource
+#' Lists all tags on a Timestream resource
 #'
 #' @description
-#' List all tags on a Timestream resource.
+#' Lists all tags on a Timestream resource.
 #'
 #' @usage
 #' timestreamwrite_list_tags_for_resource(ResourceARN)
@@ -730,10 +1079,52 @@ timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
 }
 .timestreamwrite$operations$list_tags_for_resource <- timestreamwrite_list_tags_for_resource
 
-#' Associate a set of tags with a Timestream resource
+#' Resume batch load task
 #'
 #' @description
-#' Associate a set of tags with a Timestream resource. You can then
+#' Resume batch load task
+#'
+#' @usage
+#' timestreamwrite_resume_batch_load_task(TaskId)
+#'
+#' @param TaskId &#91;required&#93; The ID of the batch load task to resume.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$resume_batch_load_task(
+#'   TaskId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname timestreamwrite_resume_batch_load_task
+#'
+#' @aliases timestreamwrite_resume_batch_load_task
+timestreamwrite_resume_batch_load_task <- function(TaskId) {
+  op <- new_operation(
+    name = "ResumeBatchLoadTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .timestreamwrite$resume_batch_load_task_input(TaskId = TaskId)
+  output <- .timestreamwrite$resume_batch_load_task_output()
+  config <- get_config()
+  svc <- .timestreamwrite$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.timestreamwrite$operations$resume_batch_load_task <- timestreamwrite_resume_batch_load_task
+
+#' Associates a set of tags with a Timestream resource
+#'
+#' @description
+#' Associates a set of tags with a Timestream resource. You can then
 #' activate these user-defined tags so that they appear on the Billing and
 #' Cost Management console for cost allocation tracking.
 #'
@@ -947,7 +1338,7 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #'     Arn = "string",
 #'     TableName = "string",
 #'     DatabaseName = "string",
-#'     TableStatus = "ACTIVE"|"DELETING",
+#'     TableStatus = "ACTIVE"|"DELETING"|"RESTORING",
 #'     RetentionProperties = list(
 #'       MemoryStoreRetentionPeriodInHours = 123,
 #'       MagneticStoreRetentionPeriodInDays = 123
@@ -1018,17 +1409,17 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 }
 .timestreamwrite$operations$update_table <- timestreamwrite_update_table
 
-#' The WriteRecords operation enables you to write your time series data
-#' into Timestream
+#' Enables you to write your time-series data into Timestream
 #'
 #' @description
-#' The WriteRecords operation enables you to write your time series data
-#' into Timestream. You can specify a single data point or a batch of data
-#' points to be inserted into the system. Timestream offers you with a
-#' flexible schema that auto detects the column names and data types for
-#' your Timestream tables based on the dimension names and data types of
-#' the data points you specify when invoking writes into the database.
-#' Timestream support eventual consistency read semantics. This means that
+#' Enables you to write your time-series data into Timestream. You can
+#' specify a single data point or a batch of data points to be inserted
+#' into the system. Timestream offers you a flexible schema that auto
+#' detects the column names and data types for your Timestream tables based
+#' on the dimension names and data types of the data points you specify
+#' when invoking writes into the database.
+#' 
+#' Timestream supports eventual consistency read semantics. This means that
 #' when you query data immediately after writing a batch of data into
 #' Timestream, the query results might not reflect the results of a
 #' recently completed write operation. The results may also include some
@@ -1045,26 +1436,27 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #' You can use the `Version` parameter in a
 #' [`write_records`][timestreamwrite_write_records] request to update data
 #' points. Timestream tracks a version number with each record. `Version`
-#' defaults to `1` when not specified for the record in the request.
-#' Timestream will update an existing record’s measure value along with its
-#' `Version` upon receiving a write request with a higher `Version` number
-#' for that record. Upon receiving an update request where the measure
-#' value is the same as that of the existing record, Timestream still
-#' updates `Version`, if it is greater than the existing value of
+#' defaults to `1` when it's not specified for the record in the request.
+#' Timestream updates an existing record’s measure value along with its
+#' `Version` when it receives a write request with a higher `Version`
+#' number for that record. When it receives an update request where the
+#' measure value is the same as that of the existing record, Timestream
+#' still updates `Version`, if it is greater than the existing value of
 #' `Version`. You can update a data point as many times as desired, as long
 #' as the value of `Version` continuously increases.
 #' 
 #' For example, suppose you write a new record without indicating `Version`
-#' in the request. Timestream will store this record, and set `Version` to
-#' `1`. Now, suppose you try to update this record with a
+#' in the request. Timestream stores this record, and set `Version` to `1`.
+#' Now, suppose you try to update this record with a
 #' [`write_records`][timestreamwrite_write_records] request of the same
 #' record with a different measure value but, like before, do not provide
 #' `Version`. In this case, Timestream will reject this update with a
 #' `RejectedRecordsException` since the updated record’s version is not
-#' greater than the existing value of Version. However, if you were to
-#' resend the update request with `Version` set to `2`, Timestream would
-#' then succeed in updating the record’s value, and the `Version` would be
-#' set to `2`. Next, suppose you sent a
+#' greater than the existing value of Version.
+#' 
+#' However, if you were to resend the update request with `Version` set to
+#' `2`, Timestream would then succeed in updating the record’s value, and
+#' the `Version` would be set to `2`. Next, suppose you sent a
 #' [`write_records`][timestreamwrite_write_records] request with this same
 #' record and an identical measure value, but with `Version` set to `3`. In
 #' this case, Timestream would only update `Version` to `3`. Any further
@@ -1077,15 +1469,15 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
-#' @param CommonAttributes A record containing the common measure, dimension, time, and version
+#' @param CommonAttributes A record that contains the common measure, dimension, time, and version
 #' attributes shared across all the records in the request. The measure and
 #' dimension attributes specified will be merged with the measure and
 #' dimension attributes in the records object when the data is written into
 #' Timestream. Dimensions may not overlap, or a `ValidationException` will
 #' be thrown. In other words, a record must contain dimensions with unique
 #' names.
-#' @param Records &#91;required&#93; An array of records containing the unique measure, dimension, time, and
-#' version attributes for each time series data point.
+#' @param Records &#91;required&#93; An array of records that contain the unique measure, dimension, time,
+#' and version attributes for each time-series data point.
 #'
 #' @return
 #' A list with the following syntax:

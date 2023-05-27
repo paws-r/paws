@@ -10,7 +10,9 @@ lexmodelsv2_update_bot(
   description = NULL,
   roleArn,
   dataPrivacy,
-  idleSessionTTLInSeconds
+  idleSessionTTLInSeconds,
+  botType = NULL,
+  botMembers = NULL
 )
 }
 \arguments{
@@ -36,6 +38,11 @@ no conversation occurs during this time, the session expires and Amazon
 Lex deletes any data provided before the timeout.
 
 You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.}
+
+\item{botType}{The type of the bot to be updated.}
+
+\item{botMembers}{The list of bot members in the network associated with the update
+action.}
 }
 \description{
 Updates the configuration of an existing bot.

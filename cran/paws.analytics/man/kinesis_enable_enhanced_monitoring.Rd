@@ -4,10 +4,14 @@
 \alias{kinesis_enable_enhanced_monitoring}
 \title{Enables enhanced Kinesis data stream monitoring for shard-level metrics}
 \usage{
-kinesis_enable_enhanced_monitoring(StreamName, ShardLevelMetrics)
+kinesis_enable_enhanced_monitoring(
+  StreamName = NULL,
+  ShardLevelMetrics,
+  StreamARN = NULL
+)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream for which to enable enhanced monitoring.}
+\item{StreamName}{The name of the stream for which to enable enhanced monitoring.}
 
 \item{ShardLevelMetrics}{[required] List of shard-level metrics to enable.
 
@@ -26,6 +30,8 @@ enables every metric.
 
 For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html}{Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Enables enhanced Kinesis data stream monitoring for shard-level metrics.

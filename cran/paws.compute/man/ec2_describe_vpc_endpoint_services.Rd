@@ -18,12 +18,15 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{ServiceNames}{One or more service names.}
+\item{ServiceNames}{The service names.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
+\item \code{owner} - The ID or alias of the Amazon Web Services account that
+owns the service.
 \item \code{service-name} - The name of the service.
-\item \code{service-type} - The type of service (\code{Interface} | \code{Gateway}).
+\item \code{service-type} - The type of service (\code{Interface} | \code{Gateway} |
+\code{GatewayLoadBalancer}).
 \item \code{supported-ip-address-types} - The IP address type (\code{ipv4} |
 \code{ipv6}).
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the

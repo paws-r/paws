@@ -9,6 +9,12 @@ NULL
 #' @description
 #' Adds a statement to a topic's access control policy, granting access for
 #' the specified Amazon Web Services accounts to the specified actions.
+#' 
+#' To remove the ability to change topic permissions, you must deny
+#' permissions to the [`add_permission`][sns_add_permission],
+#' [`remove_permission`][sns_remove_permission], and
+#' [`set_topic_attributes`][sns_set_topic_attributes] actions in your IAM
+#' policy.
 #'
 #' @usage
 #' sns_add_permission(TopicArn, Label, AWSAccountId, ActionName)
@@ -425,7 +431,7 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' ARN is returned without creating a new topic.
 #'
 #' @usage
-#' sns_create_topic(Name, Attributes, Tags)
+#' sns_create_topic(Name, Attributes, Tags, DataProtectionPolicy)
 #'
 #' @param Name &#91;required&#93; The name of the topic you want to create.
 #' 
@@ -451,6 +457,19 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' 
 #' -   `Policy` – The policy that defines who can access your topic. By
 #'     default, only the topic owner can publish or subscribe to the topic.
+#' 
+#' -   `SignatureVersion` – The signature version corresponds to the
+#'     hashing algorithm used while creating the signature of the
+#'     notifications, subscription confirmations, or unsubscribe
+#'     confirmation messages sent by Amazon SNS. By default,
+#'     `SignatureVersion` is set to `1`.
+#' 
+#' -   `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
+#'     `TracingConfig` is set to `PassThrough`, and the topic passes
+#'     through the tracing header it receives from an Amazon SNS publisher
+#'     to its subscriptions. If set to `Active`, Amazon SNS will vend X-Ray
+#'     segment data to topic owner account if the sampled flag in the
+#'     tracing header is true. This is only supported on standard topics.
 #' 
 #' The following attribute applies only to [server-side
 #' encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
@@ -488,6 +507,13 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' 
 #' To be able to tag a topic on creation, you must have the
 #' `sns:CreateTopic` and `sns:TagResource` permissions.
+#' @param DataProtectionPolicy The body of the policy document you want to use for this topic.
+#' 
+#' You can only add one policy per topic.
+#' 
+#' The policy must be in JSON string format.
+#' 
+#' Length Constraints: Maximum length of 30,720.
 #'
 #' @return
 #' A list with the following syntax:
@@ -509,7 +535,8 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   DataProtectionPolicy = "string"
 #' )
 #' ```
 #'
@@ -518,14 +545,14 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' @rdname sns_create_topic
 #'
 #' @aliases sns_create_topic
-sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL) {
+sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectionPolicy = NULL) {
   op <- new_operation(
     name = "CreateTopic",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sns$create_topic_input(Name = Name, Attributes = Attributes, Tags = Tags)
+  input <- .sns$create_topic_input(Name = Name, Attributes = Attributes, Tags = Tags, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$create_topic_output()
   config <- get_config()
   svc <- .sns$service(config)
@@ -728,6 +755,59 @@ sns_delete_topic <- function(TopicArn) {
   return(response)
 }
 .sns$operations$delete_topic <- sns_delete_topic
+
+#' Retrieves the specified inline DataProtectionPolicy document that is
+#' stored in the specified Amazon SNS topic
+#'
+#' @description
+#' Retrieves the specified inline `DataProtectionPolicy` document that is
+#' stored in the specified Amazon SNS topic.
+#'
+#' @usage
+#' sns_get_data_protection_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the topic whose `DataProtectionPolicy` you want to get.
+#' 
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the Amazon Web Services General Reference.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DataProtectionPolicy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_data_protection_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sns_get_data_protection_policy
+#'
+#' @aliases sns_get_data_protection_policy
+sns_get_data_protection_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetDataProtectionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sns$get_data_protection_policy_input(ResourceArn = ResourceArn)
+  output <- .sns$get_data_protection_policy_output()
+  config <- get_config()
+  svc <- .sns$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sns$operations$get_data_protection_policy <- sns_get_data_protection_policy
 
 #' Retrieves the endpoint attributes for a device on one of the supported
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
@@ -2001,10 +2081,71 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
 }
 .sns$operations$publish_batch <- sns_publish_batch
 
+#' Adds or updates an inline policy document that is stored in the
+#' specified Amazon SNS topic
+#'
+#' @description
+#' Adds or updates an inline policy document that is stored in the
+#' specified Amazon SNS topic.
+#'
+#' @usage
+#' sns_put_data_protection_policy(ResourceArn, DataProtectionPolicy)
+#'
+#' @param ResourceArn &#91;required&#93; The ARN of the topic whose `DataProtectionPolicy` you want to add or
+#' update.
+#' 
+#' For more information about ARNs, see [Amazon Resource Names
+#' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#' in the Amazon Web Services General Reference.
+#' @param DataProtectionPolicy &#91;required&#93; The JSON serialization of the topic's `DataProtectionPolicy`.
+#' 
+#' The `DataProtectionPolicy` must be in JSON string format.
+#' 
+#' Length Constraints: Maximum length of 30,720.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_data_protection_policy(
+#'   ResourceArn = "string",
+#'   DataProtectionPolicy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sns_put_data_protection_policy
+#'
+#' @aliases sns_put_data_protection_policy
+sns_put_data_protection_policy <- function(ResourceArn, DataProtectionPolicy) {
+  op <- new_operation(
+    name = "PutDataProtectionPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sns$put_data_protection_policy_input(ResourceArn = ResourceArn, DataProtectionPolicy = DataProtectionPolicy)
+  output <- .sns$put_data_protection_policy_output()
+  config <- get_config()
+  svc <- .sns$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sns$operations$put_data_protection_policy <- sns_put_data_protection_policy
+
 #' Removes a statement from a topic's access control policy
 #'
 #' @description
 #' Removes a statement from a topic's access control policy.
+#' 
+#' To remove the ability to change topic permissions, you must deny
+#' permissions to the [`add_permission`][sns_add_permission],
+#' [`remove_permission`][sns_remove_permission], and
+#' [`set_topic_attributes`][sns_set_topic_attributes] actions in your IAM
+#' policy.
 #'
 #' @usage
 #' sns_remove_permission(TopicArn, Label)
@@ -2384,6 +2525,14 @@ sns_set_sms_attributes <- function(attributes) {
 #'     receive only a subset of messages, rather than receiving every
 #'     message published to the topic.
 #' 
+#' -   `FilterPolicyScope` – This attribute lets you choose the filtering
+#'     scope by using one of the following string value types:
+#' 
+#'     -   `MessageAttributes` (default) – The filter is applied on the
+#'         message attributes.
+#' 
+#'     -   `MessageBody` – The filter is applied on the message body.
+#' 
 #' -   `RawMessageDelivery` – When set to `true`, enables raw message
 #'     delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
 #'     for the endpoints to process JSON formatting, which is otherwise
@@ -2451,6 +2600,12 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #'
 #' @description
 #' Allows a topic owner to set an attribute of the topic to a new value.
+#' 
+#' To remove the ability to change topic permissions, you must deny
+#' permissions to the [`add_permission`][sns_add_permission],
+#' [`remove_permission`][sns_remove_permission], and
+#' [`set_topic_attributes`][sns_set_topic_attributes] actions in your IAM
+#' policy.
 #'
 #' @usage
 #' sns_set_topic_attributes(TopicArn, AttributeName, AttributeValue)
@@ -2462,6 +2617,10 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' request parameters that the
 #' [`set_topic_attributes`][sns_set_topic_attributes] action uses:
 #' 
+#' -   `ApplicationSuccessFeedbackRoleArn` – Indicates failed message
+#'     delivery status for an Amazon SNS topic that is subscribed to a
+#'     platform application endpoint.
+#' 
 #' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries
 #'     failed deliveries to HTTP/S endpoints.
 #' 
@@ -2470,6 +2629,101 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' 
 #' -   `Policy` – The policy that defines who can access your topic. By
 #'     default, only the topic owner can publish or subscribe to the topic.
+#' 
+#' -   `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
+#'     `TracingConfig` is set to `PassThrough`, and the topic passes
+#'     through the tracing header it receives from an Amazon SNS publisher
+#'     to its subscriptions. If set to `Active`, Amazon SNS will vend X-Ray
+#'     segment data to topic owner account if the sampled flag in the
+#'     tracing header is true. This is only supported on standard topics.
+#' 
+#' -   HTTP
+#' 
+#'     -   `HTTPSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         HTTP endpoint.
+#' 
+#'     -   `HTTPSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an HTTP endpoint.
+#' 
+#'     -   `HTTPFailureFeedbackRoleArn` – Indicates failed message delivery
+#'         status for an Amazon SNS topic that is subscribed to an HTTP
+#'         endpoint.
+#' 
+#' -   Amazon Kinesis Data Firehose
+#' 
+#'     -   `FirehoseSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Kinesis Data Firehose endpoint.
+#' 
+#'     -   `FirehoseSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon Kinesis Data Firehose endpoint.
+#' 
+#'     -   `FirehoseFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Kinesis Data Firehose endpoint.
+#' 
+#' -   Lambda
+#' 
+#'     -   `LambdaSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Lambda endpoint.
+#' 
+#'     -   `LambdaSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Lambda endpoint.
+#' 
+#'     -   `LambdaFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Lambda endpoint.
+#' 
+#' -   Platform application endpoint
+#' 
+#'     -   `ApplicationSuccessFeedbackRoleArn` – Indicates successful
+#'         message delivery status for an Amazon SNS topic that is
+#'         subscribed to an Amazon Web Services application endpoint.
+#' 
+#'     -   `ApplicationSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon Web Services application endpoint.
+#' 
+#'     -   `ApplicationFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Web Services application endpoint.
+#' 
+#'     In addition to being able to configure topic attributes for message
+#'     delivery status of notification messages sent to Amazon SNS
+#'     application endpoints, you can also configure application attributes
+#'     for the delivery status of push notification messages sent to push
+#'     notification services.
+#' 
+#'     For example, For more information, see [Using Amazon SNS Application
+#'     Attributes for Message Delivery
+#'     Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
+#' 
+#' -   Amazon SQS
+#' 
+#'     -   `SQSSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon SQS endpoint.
+#' 
+#'     -   `SQSSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon SQS endpoint.
+#' 
+#'     -   `SQSFailureFeedbackRoleArn` – Indicates failed message delivery
+#'         status for an Amazon SNS topic that is subscribed to an Amazon
+#'         SQS endpoint.
+#' 
+#' The \<ENDPOINT\>SuccessFeedbackRoleArn and
+#' \<ENDPOINT\>FailureFeedbackRoleArn attributes are used to give Amazon
+#' SNS write access to use CloudWatch Logs on your behalf. The
+#' \<ENDPOINT\>SuccessFeedbackSampleRate attribute is for specifying the
+#' sample rate percentage (0-100) of successfully delivered messages. After
+#' you configure the \<ENDPOINT\>FailureFeedbackRoleArn attribute, then all
+#' failed message deliveries generate CloudWatch Logs.
 #' 
 #' The following attribute applies only to
 #' [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
@@ -2481,6 +2735,12 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #'     For more examples, see
 #'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
 #'     in the *Key Management Service API Reference*.
+#' 
+#' -   `SignatureVersion` – The signature version corresponds to the
+#'     hashing algorithm used while creating the signature of the
+#'     notifications, subscription confirmations, or unsubscribe
+#'     confirmation messages sent by Amazon SNS. By default,
+#'     `SignatureVersion` is set to `1`.
 #' 
 #' The following attribute applies only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
@@ -2616,6 +2876,14 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' -   `FilterPolicy` – The simple JSON object that lets your subscriber
 #'     receive only a subset of messages, rather than receiving every
 #'     message published to the topic.
+#' 
+#' -   `FilterPolicyScope` – This attribute lets you choose the filtering
+#'     scope by using one of the following string value types:
+#' 
+#'     -   `MessageAttributes` (default) – The filter is applied on the
+#'         message attributes.
+#' 
+#'     -   `MessageBody` – The filter is applied on the message body.
 #' 
 #' -   `RawMessageDelivery` – When set to `true`, enables raw message
 #'     delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
@@ -2780,6 +3048,10 @@ sns_tag_resource <- function(ResourceArn, Tags) {
 #' message is delivered to the endpoint, so that the endpoint owner can
 #' easily resubscribe to the topic if the [`unsubscribe`][sns_unsubscribe]
 #' request was unintended.
+#' 
+#' Amazon SQS queue subscriptions require authentication for deletion. Only
+#' the owner of the subscription, or the owner of the topic can unsubscribe
+#' using the required Amazon Web Services signature.
 #' 
 #' This action is throttled at 100 transactions per second (TPS).
 #'

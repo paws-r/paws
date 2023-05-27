@@ -79,6 +79,7 @@ NULL
 #'  \link[=frauddetector_create_batch_import_job]{create_batch_import_job} \tab Creates a batch import job\cr
 #'  \link[=frauddetector_create_batch_prediction_job]{create_batch_prediction_job} \tab Creates a batch prediction job\cr
 #'  \link[=frauddetector_create_detector_version]{create_detector_version} \tab Creates a detector version\cr
+#'  \link[=frauddetector_create_list]{create_list} \tab Creates a list\cr
 #'  \link[=frauddetector_create_model]{create_model} \tab Creates a model using the specified model type\cr
 #'  \link[=frauddetector_create_model_version]{create_model_version} \tab Creates a version of the model using the specified model type and model id\cr
 #'  \link[=frauddetector_create_rule]{create_rule} \tab Creates a rule for use with the specified detector\cr
@@ -93,6 +94,7 @@ NULL
 #'  \link[=frauddetector_delete_event_type]{delete_event_type} \tab Deletes an event type\cr
 #'  \link[=frauddetector_delete_external_model]{delete_external_model} \tab Removes a SageMaker model from Amazon Fraud Detector\cr
 #'  \link[=frauddetector_delete_label]{delete_label} \tab Deletes a label\cr
+#'  \link[=frauddetector_delete_list]{delete_list} \tab Deletes the list, provided it is not used in a rule\cr
 #'  \link[=frauddetector_delete_model]{delete_model} \tab Deletes a model\cr
 #'  \link[=frauddetector_delete_model_version]{delete_model_version} \tab Deletes a model version\cr
 #'  \link[=frauddetector_delete_outcome]{delete_outcome} \tab Deletes an outcome\cr
@@ -113,6 +115,8 @@ NULL
 #'  \link[=frauddetector_get_external_models]{get_external_models} \tab Gets the details for one or more Amazon SageMaker models that have been imported into the service\cr
 #'  \link[=frauddetector_get_kms_encryption_key]{get_kms_encryption_key} \tab Gets the encryption key if a KMS key has been specified to be used to encrypt content in Amazon Fraud Detector\cr
 #'  \link[=frauddetector_get_labels]{get_labels} \tab Gets all labels or a specific label if name is provided\cr
+#'  \link[=frauddetector_get_list_elements]{get_list_elements} \tab Gets all the elements in the specified list\cr
+#'  \link[=frauddetector_get_lists_metadata]{get_lists_metadata} \tab Gets the metadata of either all the lists under the account or the specified list\cr
 #'  \link[=frauddetector_get_models]{get_models} \tab Gets one or more models\cr
 #'  \link[=frauddetector_get_model_version]{get_model_version} \tab Gets the details of the specified model version\cr
 #'  \link[=frauddetector_get_outcomes]{get_outcomes} \tab Gets one or more outcomes\cr
@@ -134,6 +138,7 @@ NULL
 #'  \link[=frauddetector_update_detector_version_metadata]{update_detector_version_metadata} \tab Updates the detector version's description\cr
 #'  \link[=frauddetector_update_detector_version_status]{update_detector_version_status} \tab Updates the detector version’s status\cr
 #'  \link[=frauddetector_update_event_label]{update_event_label} \tab Updates the specified event with a new label\cr
+#'  \link[=frauddetector_update_list]{update_list} \tab Updates a list\cr
 #'  \link[=frauddetector_update_model]{update_model} \tab Updates model description\cr
 #'  \link[=frauddetector_update_model_version]{update_model_version} \tab Updates a model version\cr
 #'  \link[=frauddetector_update_model_version_status]{update_model_version_status} \tab Updates the status of a model version\cr

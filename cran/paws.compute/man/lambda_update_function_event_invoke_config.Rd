@@ -42,8 +42,8 @@ processing.
 \strong{Destinations}
 \itemize{
 \item \strong{Function} - The Amazon Resource Name (ARN) of a Lambda function.
-\item \strong{Queue} - The ARN of an SQS queue.
-\item \strong{Topic} - The ARN of an SNS topic.
+\item \strong{Queue} - The ARN of a standard SQS queue.
+\item \strong{Topic} - The ARN of a standard SNS topic.
 \item \strong{Event Bus} - The ARN of an Amazon EventBridge event bus.
 }}
 }

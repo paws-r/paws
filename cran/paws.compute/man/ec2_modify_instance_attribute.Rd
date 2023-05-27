@@ -32,7 +32,13 @@ otherwise, they are disabled. The default value is \code{true}. You must
 disable source/destination checks if the instance runs services such as
 network address translation, routing, or firewalls.}
 
-\item{Attribute}{The name of the attribute.}
+\item{Attribute}{The name of the attribute to modify.
+
+You can modify the following attributes only: \code{disableApiTermination} |
+\code{instanceType} | \code{kernel} | \code{ramdisk} |
+\code{instanceInitiatedShutdownBehavior} | \code{blockDeviceMapping} | \code{userData}
+| \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport} |
+\code{enaSupport} | \code{nvmeSupport} | \code{disableApiStop} | \code{enclaveOptions}}
 
 \item{BlockDeviceMappings}{Modifies the \code{DeleteOnTermination} attribute for volumes that are
 currently attached. The volume must be owned by the caller. If no value
@@ -63,10 +69,9 @@ usage charges apply when using an EBS Optimized instance.}
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.}
 
-\item{Groups}{[EC2-VPC] Replaces the security groups of the instance with the
-specified security groups. You must specify at least one security group,
-even if it's just the default security group for the VPC. You must
-specify the security group ID, not the security group name.}
+\item{Groups}{Replaces the security groups of the instance with the specified security
+groups. You must specify the ID of at least one security group, even if
+it's just the default security group for the VPC.}
 
 \item{InstanceId}{[required] The ID of the instance.}
 

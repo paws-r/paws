@@ -19,7 +19,7 @@ lambda_create_code_signing_config(
 checks fail.}
 }
 \description{
-Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/}{code signing configuration} defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).
+Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configuration} defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).
 
 See \url{https://paws-r.github.io/docs/lambda/create_code_signing_config.html} for full documentation.
 }

@@ -30,11 +30,12 @@ specified in a new \code{EndpointConfig} call when updating an endpoint, set
 \code{RetainAllVariantProperties} to \code{false}. The default is \code{false}.}
 
 \item{ExcludeRetainedVariantProperties}{When you are updating endpoint resources with
-UpdateEndpointInput$RetainAllVariantProperties, whose value is set to
-\code{true}, \code{ExcludeRetainedVariantProperties} specifies the list of type
-VariantProperty to override with the values provided by
-\code{EndpointConfig}. If you don't specify a value for
-\code{ExcludeAllVariantProperties}, no variant properties are overridden.}
+\code{RetainAllVariantProperties}, whose value is set to \code{true},
+\code{ExcludeRetainedVariantProperties} specifies the list of type
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VariantProperty.html}{VariantProperty}
+to override with the values provided by \code{EndpointConfig}. If you don't
+specify a value for \code{ExcludeRetainedVariantProperties}, no variant
+properties are overridden.}
 
 \item{DeploymentConfig}{The deployment configuration for an endpoint, which contains the desired
 deployment strategy and rollback configurations.}

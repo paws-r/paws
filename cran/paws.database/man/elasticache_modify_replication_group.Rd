@@ -29,7 +29,11 @@ elasticache_modify_replication_group(
   UserGroupIdsToAdd = NULL,
   UserGroupIdsToRemove = NULL,
   RemoveUserGroups = NULL,
-  LogDeliveryConfigurations = NULL
+  LogDeliveryConfigurations = NULL,
+  IpDiscovery = NULL,
+  TransitEncryptionEnabled = NULL,
+  TransitEncryptionMode = NULL,
+  ClusterMode = NULL
 )
 }
 \arguments{
@@ -183,6 +187,36 @@ group.}
 \item{RemoveUserGroups}{Removes the user group associated with this replication group.}
 
 \item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
+
+\item{IpDiscovery}{The network type you choose when modifying a cluster, either \code{ipv4} |
+\code{ipv6}. IPv6 is supported for workloads using Redis engine version 6.2
+onward or Memcached engine version 1.6.6 on all instances built on the
+\href{https://aws.amazon.com/ec2/nitro/}{Nitro system}.}
+
+\item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to true. If you are
+enabling in-transit encryption for an existing cluster, you must also
+set \code{TransitEncryptionMode} to \code{preferred}.}
+
+\item{TransitEncryptionMode}{A setting that allows you to migrate your clients to use in-transit
+encryption, with no downtime.
+
+You must set \code{TransitEncryptionEnabled} to \code{true}, for your existing
+cluster, and set \code{TransitEncryptionMode} to \code{preferred} in the same
+request to allow both encrypted and unencrypted connections at the same
+time. Once you migrate all your Redis clients to use encrypted
+connections you can set the value to \code{required} to allow encrypted
+connections only.
+
+Setting \code{TransitEncryptionMode} to \code{required} is a two-step process that
+requires you to first set the \code{TransitEncryptionMode} to \code{preferred},
+after that you can set \code{TransitEncryptionMode} to \code{required}.}
+
+\item{ClusterMode}{Enabled or Disabled. To modify cluster mode from Disabled to Enabled,
+you must first set the cluster mode to Compatible. Compatible mode
+allows your Redis clients to connect using both cluster mode enabled and
+cluster mode disabled. After you migrate all Redis clients to use
+cluster mode enabled, you can then complete cluster mode configuration
+and set the cluster mode to Enabled.}
 }
 \description{
 Modifies the settings for a replication group.

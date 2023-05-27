@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_delete_vpc_endpoints}
 \alias{ec2_delete_vpc_endpoints}
-\title{Deletes one or more specified VPC endpoints}
+\title{Deletes the specified VPC endpoints}
 \usage{
 ec2_delete_vpc_endpoints(DryRun = NULL, VpcEndpointIds)
 }
@@ -12,10 +12,10 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{VpcEndpointIds}{[required] One or more VPC endpoint IDs.}
+\item{VpcEndpointIds}{[required] The IDs of the VPC endpoints.}
 }
 \description{
-Deletes one or more specified VPC endpoints. You can delete any of the following types of VPC endpoints.
+Deletes the specified VPC endpoints.
 
 See \url{https://paws-r.github.io/docs/ec2/delete_vpc_endpoints.html} for full documentation.
 }

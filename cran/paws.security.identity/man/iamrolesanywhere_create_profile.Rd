@@ -2,7 +2,8 @@
 % Please edit documentation in R/iamrolesanywhere_operations.R
 \name{iamrolesanywhere_create_profile}
 \alias{iamrolesanywhere_create_profile}
-\title{Creates a profile}
+\title{Creates a profile, a list of the roles that Roles Anywhere service is
+trusted to assume}
 \usage{
 iamrolesanywhere_create_profile(
   durationSeconds = NULL,
@@ -25,13 +26,11 @@ credentials.}
 
 \item{name}{[required] The name of the profile.}
 
-\item{requireInstanceProperties}{Specifies whether instance properties are required in
-\href{https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/}{CreateSession}
-requests with this profile.}
+\item{requireInstanceProperties}{Specifies whether instance properties are required in temporary
+credential requests with this profile.}
 
-\item{roleArns}{[required] A list of IAM roles that this profile can assume in a
-\href{https://docs.aws.amazon.com/rolesanywhere/latest/APIReference/}{CreateSession}
-operation.}
+\item{roleArns}{[required] A list of IAM roles that this profile can assume in a temporary
+credential request.}
 
 \item{sessionPolicy}{A session policy that applies to the trust boundary of the vended
 session credentials.}
@@ -39,7 +38,7 @@ session credentials.}
 \item{tags}{The tags to attach to the profile.}
 }
 \description{
-Creates a profile. A profile is configuration resource to list the roles that RolesAnywhere service is trusted to assume. In addition, by applying a profile you can intersect permissions with IAM managed policies.
+Creates a \emph{profile}, a list of the roles that Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 
 See \url{https://paws-r.github.io/docs/iamrolesanywhere/create_profile.html} for full documentation.
 }

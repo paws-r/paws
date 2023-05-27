@@ -30,7 +30,6 @@ requested readme file.}
 package version component that specifies its namespace depends on its
 type. For example:
 \itemize{
-\item The namespace of a Maven package version is its \code{groupId}.
 \item The namespace of an npm package version is its \code{scope}.
 \item Python and NuGet package versions do not contain a corresponding
 component, package versions of those formats do not have a
@@ -42,7 +41,7 @@ namespace.
 \item{packageVersion}{[required] A string that contains the package version (for example, \verb{3.5.2}).}
 }
 \description{
-Gets the readme file or descriptive text for a package version. For packages that do not contain a readme file, CodeArtifact extracts a description from a metadata file. For example, from the \verb{<description>} element in the \code{pom.xml} file of a Maven package.
+Gets the readme file or descriptive text for a package version.
 
 See \url{https://paws-r.github.io/docs/codeartifact/get_package_version_readme.html} for full documentation.
 }

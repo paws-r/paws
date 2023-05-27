@@ -2,8 +2,8 @@
 % Please edit documentation in R/ecs_operations.R
 \name{ecs_delete_account_setting}
 \alias{ecs_delete_account_setting}
-\title{Disables an account setting for a specified IAM user, IAM role, or the
-root user for an account}
+\title{Disables an account setting for a specified user, role, or the root user
+for an account}
 \usage{
 ecs_delete_account_setting(name, principalArn = NULL)
 }
@@ -17,15 +17,14 @@ for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
 is specified, the ENI limit for your Amazon ECS container instances is
 affected.}
 
-\item{principalArn}{The Amazon Resource Name (ARN) of the principal. It can be an IAM user,
-IAM role, or the root user. If you specify the root user, it disables
-the account setting for all IAM users, IAM roles, and the root user of
-the account unless an IAM user or role explicitly overrides these
-settings. If this field is omitted, the setting is changed only for the
-authenticated user.}
+\item{principalArn}{The Amazon Resource Name (ARN) of the principal. It can be an user,
+role, or the root user. If you specify the root user, it disables the
+account setting for all users, roles, and the root user of the account
+unless a user or role explicitly overrides these settings. If this field
+is omitted, the setting is changed only for the authenticated user.}
 }
 \description{
-Disables an account setting for a specified IAM user, IAM role, or the root user for an account.
+Disables an account setting for a specified user, role, or the root user for an account.
 
 See \url{https://paws-r.github.io/docs/ecs/delete_account_setting.html} for full documentation.
 }

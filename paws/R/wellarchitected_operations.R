@@ -64,9 +64,20 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
 #' @description
 #' Create a lens share.
 #' 
-#' The owner of a lens can share it with other Amazon Web Services accounts
-#' and IAM users in the same Amazon Web Services Region. Shared access to a
-#' lens is not removed until the lens invitation is deleted.
+#' The owner of a lens can share it with other Amazon Web Services
+#' accounts, users, an organization, and organizational units (OUs) in the
+#' same Amazon Web Services Region. Lenses provided by Amazon Web Services
+#' (Amazon Web Services Official Content) cannot be shared.
+#' 
+#' Shared access to a lens is not removed until the lens invitation is
+#' deleted.
+#' 
+#' If you share a lens with an organization or OU, all accounts in the
+#' organization or OU are granted access to the lens.
+#' 
+#' For more information, see [Sharing a custom
+#' lens](https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-sharing.html)
+#' in the *Well-Architected Tool User Guide*.
 #' 
 #' **Disclaimer**
 #' 
@@ -131,9 +142,10 @@ wellarchitected_create_lens_share <- function(LensAlias, SharedWith, ClientReque
 #' 
 #' A lens can have up to 100 versions.
 #' 
-#' After a lens has been imported, create a new lens version to publish it.
+#' Use this operation to publish a new lens version after you have imported
+#' a lens. The `LensAlias` is used to identify the lens to be published.
 #' The owner of a lens can share the lens with other Amazon Web Services
-#' accounts and IAM users in the same Amazon Web Services Region. Only the
+#' accounts and users in the same Amazon Web Services Region. Only the
 #' owner of a lens can delete it.
 #'
 #' @usage
@@ -245,18 +257,25 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' Create a new workload.
 #' 
 #' The owner of a workload can share the workload with other Amazon Web
-#' Services accounts and IAM users in the same Amazon Web Services Region.
-#' Only the owner of a workload can delete it.
+#' Services accounts, users, an organization, and organizational units
+#' (OUs) in the same Amazon Web Services Region. Only the owner of a
+#' workload can delete it.
 #' 
 #' For more information, see [Defining a
 #' Workload](https://docs.aws.amazon.com/wellarchitected/latest/userguide/define-workload.html)
 #' in the *Well-Architected Tool User Guide*.
+#' 
+#' Either `AwsRegions`, `NonAwsRegions`, or both must be specified when
+#' creating a workload.
+#' 
+#' You also must specify `ReviewOwner`, even though the parameter is listed
+#' as not being required in the following section.
 #'
 #' @usage
 #' wellarchitected_create_workload(WorkloadName, Description, Environment,
 #'   AccountIds, AwsRegions, NonAwsRegions, PillarPriorities,
 #'   ArchitecturalDesign, ReviewOwner, IndustryType, Industry, Lenses, Notes,
-#'   ClientRequestToken, Tags)
+#'   ClientRequestToken, Tags, DiscoveryConfig, Applications)
 #'
 #' @param WorkloadName &#91;required&#93; 
 #' @param Description &#91;required&#93; 
@@ -273,6 +292,9 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @param Notes 
 #' @param ClientRequestToken &#91;required&#93; 
 #' @param Tags The tags to be associated with the workload.
+#' @param DiscoveryConfig Well-Architected discovery configuration settings associated to the
+#' workload.
+#' @param Applications List of AppRegistry application ARNs associated to the workload.
 #'
 #' @return
 #' A list with the following syntax:
@@ -312,6 +334,15 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #'   ClientRequestToken = "string",
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   DiscoveryConfig = list(
+#'     TrustedAdvisorIntegrationStatus = "ENABLED"|"DISABLED",
+#'     WorkloadResourceDefinition = list(
+#'       "WORKLOAD_METADATA"|"APP_REGISTRY"
+#'     )
+#'   ),
+#'   Applications = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -321,14 +352,14 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @rdname wellarchitected_create_workload
 #'
 #' @aliases wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -344,12 +375,14 @@ wellarchitected_create_workload <- function(WorkloadName, Description, Environme
 #' Create a workload share.
 #' 
 #' The owner of a workload can share it with other Amazon Web Services
-#' accounts and IAM users in the same Amazon Web Services Region. Shared
-#' access to a workload is not removed until the workload invitation is
-#' deleted.
+#' accounts and users in the same Amazon Web Services Region. Shared access
+#' to a workload is not removed until the workload invitation is deleted.
+#' 
+#' If you share a workload with an organization or OU, all accounts in the
+#' organization or OU are granted access to the workload.
 #' 
 #' For more information, see [Sharing a
-#' Workload](https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads-sharing.html)
+#' workload](https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads-sharing.html)
 #' in the *Well-Architected Tool User Guide*.
 #'
 #' @usage
@@ -408,9 +441,9 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
 #' Delete an existing lens.
 #' 
 #' Only the owner of a lens can delete it. After the lens is deleted,
-#' Amazon Web Services accounts and IAM users that you shared the lens with
-#' can continue to use it, but they will no longer be able to apply it to
-#' new workloads.
+#' Amazon Web Services accounts and users that you shared the lens with can
+#' continue to use it, but they will no longer be able to apply it to new
+#' workloads.
 #' 
 #' **Disclaimer**
 #' 
@@ -467,9 +500,10 @@ wellarchitected_delete_lens <- function(LensAlias, ClientRequestToken, LensStatu
 #' @description
 #' Delete a lens share.
 #' 
-#' After the lens share is deleted, Amazon Web Services accounts and IAM
-#' users that you shared the lens with can continue to use it, but they
-#' will no longer be able to apply it to new workloads.
+#' After the lens share is deleted, Amazon Web Services accounts, users,
+#' organizations, and organizational units (OUs) that you shared the lens
+#' with can continue to use it, but they will no longer be able to apply it
+#' to new workloads.
 #' 
 #' **Disclaimer**
 #' 
@@ -670,10 +704,12 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
 #' @description
 #' Export an existing lens.
 #' 
+#' Only the owner of a lens can export it. Lenses provided by Amazon Web
+#' Services (Amazon Web Services Official Content) cannot be exported.
+#' 
 #' Lenses are defined in JSON. For more information, see [JSON format
 #' specification](https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-format-specification.html)
-#' in the *Well-Architected Tool User Guide*. Only the owner of a lens can
-#' export it.
+#' in the *Well-Architected Tool User Guide*.
 #' 
 #' **Disclaimer**
 #' 
@@ -835,6 +871,110 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
   return(response)
 }
 .wellarchitected$operations$get_answer <- wellarchitected_get_answer
+
+#' Get a consolidated report of your workloads
+#'
+#' @description
+#' Get a consolidated report of your workloads.
+#' 
+#' You can optionally choose to include workloads that have been shared
+#' with you.
+#'
+#' @usage
+#' wellarchitected_get_consolidated_report(Format, IncludeSharedResources,
+#'   NextToken, MaxResults)
+#'
+#' @param Format &#91;required&#93; The format of the consolidated report.
+#' 
+#' For `PDF`, `Base64String` is returned. For `JSON`, `Metrics` is
+#' returned.
+#' @param IncludeSharedResources Set to `true` to have shared resources included in the report.
+#' @param NextToken 
+#' @param MaxResults The maximum number of results to return for this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Metrics = list(
+#'     list(
+#'       MetricType = "WORKLOAD",
+#'       RiskCounts = list(
+#'         123
+#'       ),
+#'       WorkloadId = "string",
+#'       WorkloadName = "string",
+#'       WorkloadArn = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Lenses = list(
+#'         list(
+#'           LensArn = "string",
+#'           Pillars = list(
+#'             list(
+#'               PillarId = "string",
+#'               RiskCounts = list(
+#'                 123
+#'               ),
+#'               Questions = list(
+#'                 list(
+#'                   QuestionId = "string",
+#'                   Risk = "UNANSWERED"|"HIGH"|"MEDIUM"|"NONE"|"NOT_APPLICABLE",
+#'                   BestPractices = list(
+#'                     list(
+#'                       ChoiceId = "string",
+#'                       ChoiceTitle = "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           RiskCounts = list(
+#'             123
+#'           )
+#'         )
+#'       ),
+#'       LensesAppliedCount = 123
+#'     )
+#'   ),
+#'   NextToken = "string",
+#'   Base64String = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_consolidated_report(
+#'   Format = "PDF"|"JSON",
+#'   IncludeSharedResources = TRUE|FALSE,
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_consolidated_report
+#'
+#' @aliases wellarchitected_get_consolidated_report
+wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResources = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "GetConsolidatedReport",
+    http_method = "GET",
+    http_path = "/consolidatedReport",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_consolidated_report_input(Format = Format, IncludeSharedResources = IncludeSharedResources, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$get_consolidated_report_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_consolidated_report <- wellarchitected_get_consolidated_report
 
 #' Get an existing lens
 #'
@@ -1165,6 +1305,15 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 #'       ShareInvitationId = "string",
 #'       Tags = list(
 #'         "string"
+#'       ),
+#'       DiscoveryConfig = list(
+#'         TrustedAdvisorIntegrationStatus = "ENABLED"|"DISABLED",
+#'         WorkloadResourceDefinition = list(
+#'           "WORKLOAD_METADATA"|"APP_REGISTRY"
+#'         )
+#'       ),
+#'       Applications = list(
+#'         "string"
 #'       )
 #'     )
 #'   )
@@ -1256,6 +1405,15 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 #'     ShareInvitationId = "string",
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     DiscoveryConfig = list(
+#'       TrustedAdvisorIntegrationStatus = "ENABLED"|"DISABLED",
+#'       WorkloadResourceDefinition = list(
+#'         "WORKLOAD_METADATA"|"APP_REGISTRY"
+#'       )
+#'     ),
+#'     Applications = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -1290,14 +1448,18 @@ wellarchitected_get_workload <- function(WorkloadId) {
 }
 .wellarchitected$operations$get_workload <- wellarchitected_get_workload
 
-#' Import a new lens
+#' Import a new custom lens or update an existing custom lens
 #'
 #' @description
-#' Import a new lens.
+#' Import a new custom lens or update an existing custom lens.
 #' 
-#' The lens cannot be applied to workloads or shared with other Amazon Web
-#' Services accounts until it's published with
-#' [`create_lens_version`][wellarchitected_create_lens_version]
+#' To update an existing custom lens, specify its ARN as the `LensAlias`.
+#' If no ARN is specified, a new custom lens is created.
+#' 
+#' The new or updated lens will have a status of `DRAFT`. The lens cannot
+#' be applied to workloads or shared with other Amazon Web Services
+#' accounts until it's published with
+#' [`create_lens_version`][wellarchitected_create_lens_version].
 #' 
 #' Lenses are defined in JSON. For more information, see [JSON format
 #' specification](https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-format-specification.html)
@@ -1367,10 +1529,10 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 }
 .wellarchitected$operations$import_lens <- wellarchitected_import_lens
 
-#' List of answers
+#' List of answers for a particular workload and lens
 #'
 #' @description
-#' List of answers.
+#' List of answers for a particular workload and lens.
 #'
 #' @usage
 #' wellarchitected_list_answers(WorkloadId, LensAlias, PillarId,
@@ -1475,6 +1637,167 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
 }
 .wellarchitected$operations$list_answers <- wellarchitected_list_answers
 
+#' List of Trusted Advisor check details by account related to the workload
+#'
+#' @description
+#' List of Trusted Advisor check details by account related to the
+#' workload.
+#'
+#' @usage
+#' wellarchitected_list_check_details(WorkloadId, NextToken, MaxResults,
+#'   LensArn, PillarId, QuestionId, ChoiceId)
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param NextToken 
+#' @param MaxResults 
+#' @param LensArn &#91;required&#93; Well-Architected Lens ARN.
+#' @param PillarId &#91;required&#93; 
+#' @param QuestionId &#91;required&#93; 
+#' @param ChoiceId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CheckDetails = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Description = "string",
+#'       Provider = "TRUSTED_ADVISOR",
+#'       LensArn = "string",
+#'       PillarId = "string",
+#'       QuestionId = "string",
+#'       ChoiceId = "string",
+#'       Status = "OKAY"|"WARNING"|"ERROR"|"NOT_AVAILABLE"|"FETCH_FAILED",
+#'       AccountId = "string",
+#'       FlaggedResources = 123,
+#'       Reason = "ASSUME_ROLE_ERROR"|"ACCESS_DENIED"|"UNKNOWN_ERROR"|"PREMIUM_SUPPORT_REQUIRED",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_check_details(
+#'   WorkloadId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   LensArn = "string",
+#'   PillarId = "string",
+#'   QuestionId = "string",
+#'   ChoiceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_check_details
+#'
+#' @aliases wellarchitected_list_check_details
+wellarchitected_list_check_details <- function(WorkloadId, NextToken = NULL, MaxResults = NULL, LensArn, PillarId, QuestionId, ChoiceId) {
+  op <- new_operation(
+    name = "ListCheckDetails",
+    http_method = "POST",
+    http_path = "/workloads/{WorkloadId}/checks",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_check_details_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
+  output <- .wellarchitected$list_check_details_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_check_details <- wellarchitected_list_check_details
+
+#' List of Trusted Advisor checks summarized for all accounts related to
+#' the workload
+#'
+#' @description
+#' List of Trusted Advisor checks summarized for all accounts related to
+#' the workload.
+#'
+#' @usage
+#' wellarchitected_list_check_summaries(WorkloadId, NextToken, MaxResults,
+#'   LensArn, PillarId, QuestionId, ChoiceId)
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param NextToken 
+#' @param MaxResults 
+#' @param LensArn &#91;required&#93; Well-Architected Lens ARN.
+#' @param PillarId &#91;required&#93; 
+#' @param QuestionId &#91;required&#93; 
+#' @param ChoiceId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CheckSummaries = list(
+#'     list(
+#'       Id = "string",
+#'       Name = "string",
+#'       Provider = "TRUSTED_ADVISOR",
+#'       Description = "string",
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LensArn = "string",
+#'       PillarId = "string",
+#'       QuestionId = "string",
+#'       ChoiceId = "string",
+#'       Status = "OKAY"|"WARNING"|"ERROR"|"NOT_AVAILABLE"|"FETCH_FAILED",
+#'       AccountSummary = list(
+#'         123
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_check_summaries(
+#'   WorkloadId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   LensArn = "string",
+#'   PillarId = "string",
+#'   QuestionId = "string",
+#'   ChoiceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_check_summaries
+#'
+#' @aliases wellarchitected_list_check_summaries
+wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, MaxResults = NULL, LensArn, PillarId, QuestionId, ChoiceId) {
+  op <- new_operation(
+    name = "ListCheckSummaries",
+    http_method = "POST",
+    http_path = "/workloads/{WorkloadId}/checkSummaries",
+    paginator = list()
+  )
+  input <- .wellarchitected$list_check_summaries_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
+  output <- .wellarchitected$list_check_summaries_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_check_summaries <- wellarchitected_list_check_summaries
+
 #' List lens review improvements
 #'
 #' @description
@@ -1553,10 +1876,10 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 }
 .wellarchitected$operations$list_lens_review_improvements <- wellarchitected_list_lens_review_improvements
 
-#' List lens reviews
+#' List lens reviews for a particular workload
 #'
 #' @description
-#' List lens reviews.
+#' List lens reviews for a particular workload.
 #'
 #' @usage
 #' wellarchitected_list_lens_reviews(WorkloadId, MilestoneNumber,
@@ -1634,8 +1957,8 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 #'   MaxResults, Status)
 #'
 #' @param LensAlias &#91;required&#93; 
-#' @param SharedWithPrefix The Amazon Web Services account ID or IAM role with which the lens is
-#' shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
+#' organizational unit (OU) ID with which the lens is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -2036,8 +2359,8 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
 #'   NextToken, MaxResults, Status)
 #'
 #' @param WorkloadId &#91;required&#93; 
-#' @param SharedWithPrefix The Amazon Web Services account ID or IAM role with which the workload
-#' is shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
+#' organizational unit (OU) ID with which the workload is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -2093,10 +2416,10 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 }
 .wellarchitected$operations$list_workload_shares <- wellarchitected_list_workload_shares
 
-#' List workloads
+#' Paginated list of workloads
 #'
 #' @description
-#' List workloads. Paginated.
+#' Paginated list of workloads.
 #'
 #' @usage
 #' wellarchitected_list_workloads(WorkloadNamePrefix, NextToken,
@@ -2391,16 +2714,18 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 .wellarchitected$operations$update_answer <- wellarchitected_update_answer
 
 #' Updates whether the Amazon Web Services account is opted into
-#' organization sharing features
+#' organization sharing and discovery integration features
 #'
 #' @description
 #' Updates whether the Amazon Web Services account is opted into
-#' organization sharing features.
+#' organization sharing and discovery integration features.
 #'
 #' @usage
-#' wellarchitected_update_global_settings(OrganizationSharingStatus)
+#' wellarchitected_update_global_settings(OrganizationSharingStatus,
+#'   DiscoveryIntegrationStatus)
 #'
 #' @param OrganizationSharingStatus The status of organization sharing settings.
+#' @param DiscoveryIntegrationStatus The status of discovery support settings.
 #'
 #' @return
 #' An empty list.
@@ -2408,7 +2733,8 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 #' @section Request syntax:
 #' ```
 #' svc$update_global_settings(
-#'   OrganizationSharingStatus = "ENABLED"|"DISABLED"
+#'   OrganizationSharingStatus = "ENABLED"|"DISABLED",
+#'   DiscoveryIntegrationStatus = "ENABLED"|"DISABLED"
 #' )
 #' ```
 #'
@@ -2417,14 +2743,14 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 #' @rdname wellarchitected_update_global_settings
 #'
 #' @aliases wellarchitected_update_global_settings
-wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL) {
+wellarchitected_update_global_settings <- function(OrganizationSharingStatus = NULL, DiscoveryIntegrationStatus = NULL) {
   op <- new_operation(
     name = "UpdateGlobalSettings",
     http_method = "PATCH",
     http_path = "/global-settings",
     paginator = list()
   )
-  input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus)
+  input <- .wellarchitected$update_global_settings_input(OrganizationSharingStatus = OrganizationSharingStatus, DiscoveryIntegrationStatus = DiscoveryIntegrationStatus)
   output <- .wellarchitected$update_global_settings_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -2434,10 +2760,10 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 }
 .wellarchitected$operations$update_global_settings <- wellarchitected_update_global_settings
 
-#' Update lens review
+#' Update lens review for a particular workload
 #'
 #' @description
-#' Update lens review.
+#' Update lens review for a particular workload.
 #'
 #' @usage
 #' wellarchitected_update_lens_review(WorkloadId, LensAlias, LensNotes,
@@ -2515,10 +2841,13 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 }
 .wellarchitected$operations$update_lens_review <- wellarchitected_update_lens_review
 
-#' Update a workload invitation
+#' Update a workload or custom lens share invitation
 #'
 #' @description
-#' Update a workload invitation.
+#' Update a workload or custom lens share invitation.
+#' 
+#' This API operation can be called independently of any resource. Previous
+#' documentation implied that a workload ARN must be specified.
 #'
 #' @usage
 #' wellarchitected_update_share_invitation(ShareInvitationId,
@@ -2580,7 +2909,8 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' wellarchitected_update_workload(WorkloadId, WorkloadName, Description,
 #'   Environment, AccountIds, AwsRegions, NonAwsRegions, PillarPriorities,
 #'   ArchitecturalDesign, ReviewOwner, IsReviewOwnerUpdateAcknowledged,
-#'   IndustryType, Industry, Notes, ImprovementStatus)
+#'   IndustryType, Industry, Notes, ImprovementStatus, DiscoveryConfig,
+#'   Applications)
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param WorkloadName 
@@ -2602,6 +2932,9 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @param Industry 
 #' @param Notes 
 #' @param ImprovementStatus 
+#' @param DiscoveryConfig Well-Architected discovery configuration settings to associate to the
+#' workload.
+#' @param Applications List of AppRegistry application ARNs to associate to the workload.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2648,6 +2981,15 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #'     ShareInvitationId = "string",
 #'     Tags = list(
 #'       "string"
+#'     ),
+#'     DiscoveryConfig = list(
+#'       TrustedAdvisorIntegrationStatus = "ENABLED"|"DISABLED",
+#'       WorkloadResourceDefinition = list(
+#'         "WORKLOAD_METADATA"|"APP_REGISTRY"
+#'       )
+#'     ),
+#'     Applications = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -2678,7 +3020,16 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #'   IndustryType = "string",
 #'   Industry = "string",
 #'   Notes = "string",
-#'   ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED"
+#'   ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED",
+#'   DiscoveryConfig = list(
+#'     TrustedAdvisorIntegrationStatus = "ENABLED"|"DISABLED",
+#'     WorkloadResourceDefinition = list(
+#'       "WORKLOAD_METADATA"|"APP_REGISTRY"
+#'     )
+#'   ),
+#'   Applications = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2687,14 +3038,14 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #' @rdname wellarchitected_update_workload
 #'
 #' @aliases wellarchitected_update_workload
-wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL) {
+wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Description = NULL, Environment = NULL, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IsReviewOwnerUpdateAcknowledged = NULL, IndustryType = NULL, Industry = NULL, Notes = NULL, ImprovementStatus = NULL, DiscoveryConfig = NULL, Applications = NULL) {
   op <- new_operation(
     name = "UpdateWorkload",
     http_method = "PATCH",
     http_path = "/workloads/{WorkloadId}",
     paginator = list()
   )
-  input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus)
+  input <- .wellarchitected$update_workload_input(WorkloadId = WorkloadId, WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IsReviewOwnerUpdateAcknowledged = IsReviewOwnerUpdateAcknowledged, IndustryType = IndustryType, Industry = Industry, Notes = Notes, ImprovementStatus = ImprovementStatus, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
   output <- .wellarchitected$update_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -2765,10 +3116,10 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
 }
 .wellarchitected$operations$update_workload_share <- wellarchitected_update_workload_share
 
-#' Upgrade lens review
+#' Upgrade lens review for a particular workload
 #'
 #' @description
-#' Upgrade lens review.
+#' Upgrade lens review for a particular workload.
 #'
 #' @usage
 #' wellarchitected_upgrade_lens_review(WorkloadId, LensAlias,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_modify_aqua_configuration}
 \alias{redshift_modify_aqua_configuration}
-\title{Modifies whether a cluster can use AQUA (Advanced Query Accelerator)}
+\title{This operation is retired}
 \usage{
 redshift_modify_aqua_configuration(
   ClusterIdentifier,
@@ -12,17 +12,11 @@ redshift_modify_aqua_configuration(
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster to be modified.}
 
-\item{AquaConfigurationStatus}{The new value of AQUA configuration status. Possible values include the
-following.
-\itemize{
-\item enabled - Use AQUA if it is available for the current Amazon Web
-Services Region and Amazon Redshift node type.
-\item disabled - Don't use AQUA.
-\item auto - Amazon Redshift determines whether to use AQUA.
-}}
+\item{AquaConfigurationStatus}{This parameter is retired. Amazon Redshift automatically determines
+whether to use AQUA (Advanced Query Accelerator).}
 }
 \description{
-Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+This operation is retired. Calling this operation does not change AQUA configuration. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).
 
 See \url{https://paws-r.github.io/docs/redshift/modify_aqua_configuration.html} for full documentation.
 }

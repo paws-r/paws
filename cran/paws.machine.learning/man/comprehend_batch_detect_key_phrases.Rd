@@ -7,9 +7,9 @@
 comprehend_batch_detect_key_phrases(TextList, LanguageCode)
 }
 \arguments{
-\item{TextList}{[required] A list containing the text of the input documents. The list can contain
-a maximum of 25 documents. Each document must contain fewer than 5,000
-bytes of UTF-8 encoded characters.}
+\item{TextList}{[required] A list containing the UTF-8 encoded text of the input documents. The
+list can contain a maximum of 25 documents. The maximum size of each
+document is 5 KB.}
 
 \item{LanguageCode}{[required] The language of the input documents. You can specify any of the primary
 languages supported by Amazon Comprehend. All documents must be in the

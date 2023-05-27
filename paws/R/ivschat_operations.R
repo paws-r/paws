@@ -3,14 +3,24 @@
 #' @include ivschat_service.R
 NULL
 
-#' Creates an encrypted token that is used to establish an individual
-#' WebSocket connection to a room
+#' Creates an encrypted token that is used by a chat participant to
+#' establish an individual WebSocket chat connection to a room
 #'
 #' @description
-#' Creates an encrypted token that is used to establish an individual
-#' WebSocket connection to a room. The token is valid for one minute, and a
-#' connection (session) established with the token is valid for the
-#' specified duration.
+#' Creates an encrypted token that is used by a chat participant to
+#' establish an individual WebSocket chat connection to a room. When the
+#' token is used to connect to chat, the connection is valid for the
+#' session duration specified in the request. The token becomes invalid at
+#' the token-expiration timestamp included in the response.
+#' 
+#' Use the `capabilities` field to permit an end user to send messages or
+#' moderate a room.
+#' 
+#' The `attributes` field securely attaches structured data to the chat
+#' session; the data is included within each message sent by the end user
+#' and received by other participants in the room. Common use cases for
+#' attributes include passing end-user profile data like an icon, display
+#' name, colors, badges, and other display features.
 #' 
 #' Encryption keys are owned by Amazon IVS Chat and never used directly by
 #' your application.
@@ -83,15 +93,113 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 }
 .ivschat$operations$create_chat_token <- ivschat_create_chat_token
 
+#' Creates a logging configuration that allows clients to store and record
+#' sent messages
+#'
+#' @description
+#' Creates a logging configuration that allows clients to store and record
+#' sent messages.
+#'
+#' @usage
+#' ivschat_create_logging_configuration(destinationConfiguration, name,
+#'   tags)
+#'
+#' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where chat
+#' content will be logged. There can be only one type of destination
+#' (`cloudWatchLogs`, `firehose`, or `s3`) in a `destinationConfiguration`.
+#' @param name Logging-configuration name. The value does not need to be unique.
+#' @param tags Tags to attach to the resource. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS Chat has no constraints on tags
+#' beyond what is documented there.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   destinationConfiguration = list(
+#'     cloudWatchLogs = list(
+#'       logGroupName = "string"
+#'     ),
+#'     firehose = list(
+#'       deliveryStreamName = "string"
+#'     ),
+#'     s3 = list(
+#'       bucketName = "string"
+#'     )
+#'   ),
+#'   id = "string",
+#'   name = "string",
+#'   state = "ACTIVE",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_logging_configuration(
+#'   destinationConfiguration = list(
+#'     cloudWatchLogs = list(
+#'       logGroupName = "string"
+#'     ),
+#'     firehose = list(
+#'       deliveryStreamName = "string"
+#'     ),
+#'     s3 = list(
+#'       bucketName = "string"
+#'     )
+#'   ),
+#'   name = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivschat_create_logging_configuration
+#'
+#' @aliases ivschat_create_logging_configuration
+ivschat_create_logging_configuration <- function(destinationConfiguration, name = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/CreateLoggingConfiguration",
+    paginator = list()
+  )
+  input <- .ivschat$create_logging_configuration_input(destinationConfiguration = destinationConfiguration, name = name, tags = tags)
+  output <- .ivschat$create_logging_configuration_output()
+  config <- get_config()
+  svc <- .ivschat$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivschat$operations$create_logging_configuration <- ivschat_create_logging_configuration
+
 #' Creates a room that allows clients to connect and pass messages
 #'
 #' @description
 #' Creates a room that allows clients to connect and pass messages.
 #'
 #' @usage
-#' ivschat_create_room(maximumMessageLength, maximumMessageRatePerSecond,
-#'   messageReviewHandler, name, tags)
+#' ivschat_create_room(loggingConfigurationIdentifiers,
+#'   maximumMessageLength, maximumMessageRatePerSecond, messageReviewHandler,
+#'   name, tags)
 #'
+#' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
 #' @param maximumMessageLength Maximum number of characters in a single message. Messages are expected
 #' to be UTF-8 encoded and this limit applies specifically to
 #' rune/code-point count, not number of bytes. Default: 500.
@@ -100,7 +208,11 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #' @param messageReviewHandler Configuration information for optional review of messages.
 #' @param name Room name. The value does not need to be unique.
 #' @param tags Tags to attach to the resource. Array of maps, each of the form
-#' `string:string (key:value)`.
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS Chat has no constraints beyond what
+#' is documented there.
 #'
 #' @return
 #' A list with the following syntax:
@@ -111,6 +223,9 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #'     "2015-01-01"
 #'   ),
 #'   id = "string",
+#'   loggingConfigurationIdentifiers = list(
+#'     "string"
+#'   ),
 #'   maximumMessageLength = 123,
 #'   maximumMessageRatePerSecond = 123,
 #'   messageReviewHandler = list(
@@ -130,6 +245,9 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #' @section Request syntax:
 #' ```
 #' svc$create_room(
+#'   loggingConfigurationIdentifiers = list(
+#'     "string"
+#'   ),
 #'   maximumMessageLength = 123,
 #'   maximumMessageRatePerSecond = 123,
 #'   messageReviewHandler = list(
@@ -148,14 +266,14 @@ ivschat_create_chat_token <- function(attributes = NULL, capabilities = NULL, ro
 #' @rdname ivschat_create_room
 #'
 #' @aliases ivschat_create_room
-ivschat_create_room <- function(maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL, tags = NULL) {
+ivschat_create_room <- function(loggingConfigurationIdentifiers = NULL, maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateRoom",
     http_method = "POST",
     http_path = "/CreateRoom",
     paginator = list()
   )
-  input <- .ivschat$create_room_input(maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name, tags = tags)
+  input <- .ivschat$create_room_input(loggingConfigurationIdentifiers = loggingConfigurationIdentifiers, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name, tags = tags)
   output <- .ivschat$create_room_output()
   config <- get_config()
   svc <- .ivschat$service(config)
@@ -164,6 +282,48 @@ ivschat_create_room <- function(maximumMessageLength = NULL, maximumMessageRateP
   return(response)
 }
 .ivschat$operations$create_room <- ivschat_create_room
+
+#' Deletes the specified logging configuration
+#'
+#' @description
+#' Deletes the specified logging configuration.
+#'
+#' @usage
+#' ivschat_delete_logging_configuration(identifier)
+#'
+#' @param identifier &#91;required&#93; Identifier of the logging configuration to be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_logging_configuration(
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivschat_delete_logging_configuration
+#'
+#' @aliases ivschat_delete_logging_configuration
+ivschat_delete_logging_configuration <- function(identifier) {
+  op <- new_operation(
+    name = "DeleteLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/DeleteLoggingConfiguration",
+    paginator = list()
+  )
+  input <- .ivschat$delete_logging_configuration_input(identifier = identifier)
+  output <- .ivschat$delete_logging_configuration_output()
+  config <- get_config()
+  svc <- .ivschat$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivschat$operations$delete_logging_configuration <- ivschat_delete_logging_configuration
 
 #' Sends an event to a specific room which directs clients to delete a
 #' specific message; that is, unrender it from view and delete it from the
@@ -319,6 +479,76 @@ ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
 }
 .ivschat$operations$disconnect_user <- ivschat_disconnect_user
 
+#' Gets the specified logging configuration
+#'
+#' @description
+#' Gets the specified logging configuration.
+#'
+#' @usage
+#' ivschat_get_logging_configuration(identifier)
+#'
+#' @param identifier &#91;required&#93; Identifier of the logging configuration to be retrieved.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   destinationConfiguration = list(
+#'     cloudWatchLogs = list(
+#'       logGroupName = "string"
+#'     ),
+#'     firehose = list(
+#'       deliveryStreamName = "string"
+#'     ),
+#'     s3 = list(
+#'       bucketName = "string"
+#'     )
+#'   ),
+#'   id = "string",
+#'   name = "string",
+#'   state = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"ACTIVE",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_logging_configuration(
+#'   identifier = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivschat_get_logging_configuration
+#'
+#' @aliases ivschat_get_logging_configuration
+ivschat_get_logging_configuration <- function(identifier) {
+  op <- new_operation(
+    name = "GetLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/GetLoggingConfiguration",
+    paginator = list()
+  )
+  input <- .ivschat$get_logging_configuration_input(identifier = identifier)
+  output <- .ivschat$get_logging_configuration_output()
+  config <- get_config()
+  svc <- .ivschat$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivschat$operations$get_logging_configuration <- ivschat_get_logging_configuration
+
 #' Gets the specified room
 #'
 #' @description
@@ -339,6 +569,9 @@ ivschat_disconnect_user <- function(reason = NULL, roomIdentifier, userId) {
 #'     "2015-01-01"
 #'   ),
 #'   id = "string",
+#'   loggingConfigurationIdentifiers = list(
+#'     "string"
+#'   ),
 #'   maximumMessageLength = 123,
 #'   maximumMessageRatePerSecond = 123,
 #'   messageReviewHandler = list(
@@ -384,6 +617,86 @@ ivschat_get_room <- function(identifier) {
 }
 .ivschat$operations$get_room <- ivschat_get_room
 
+#' Gets summary information about all your logging configurations in the
+#' AWS region where the API request is processed
+#'
+#' @description
+#' Gets summary information about all your logging configurations in the
+#' AWS region where the API request is processed.
+#'
+#' @usage
+#' ivschat_list_logging_configurations(maxResults, nextToken)
+#'
+#' @param maxResults Maximum number of logging configurations to return. Default: 50.
+#' @param nextToken The first logging configurations to retrieve. This is used for
+#' pagination; see the `nextToken` response field.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   loggingConfigurations = list(
+#'     list(
+#'       arn = "string",
+#'       createTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       destinationConfiguration = list(
+#'         cloudWatchLogs = list(
+#'           logGroupName = "string"
+#'         ),
+#'         firehose = list(
+#'           deliveryStreamName = "string"
+#'         ),
+#'         s3 = list(
+#'           bucketName = "string"
+#'         )
+#'       ),
+#'       id = "string",
+#'       name = "string",
+#'       state = "CREATING"|"CREATE_FAILED"|"DELETING"|"DELETE_FAILED"|"UPDATING"|"UPDATE_FAILED"|"ACTIVE",
+#'       tags = list(
+#'         "string"
+#'       ),
+#'       updateTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_logging_configurations(
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivschat_list_logging_configurations
+#'
+#' @aliases ivschat_list_logging_configurations
+ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListLoggingConfigurations",
+    http_method = "POST",
+    http_path = "/ListLoggingConfigurations",
+    paginator = list()
+  )
+  input <- .ivschat$list_logging_configurations_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .ivschat$list_logging_configurations_output()
+  config <- get_config()
+  svc <- .ivschat$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivschat$operations$list_logging_configurations <- ivschat_list_logging_configurations
+
 #' Gets summary information about all your rooms in the AWS region where
 #' the API request is processed
 #'
@@ -393,8 +706,10 @@ ivschat_get_room <- function(identifier) {
 #' `updateTime`.
 #'
 #' @usage
-#' ivschat_list_rooms(maxResults, messageReviewHandlerUri, name, nextToken)
+#' ivschat_list_rooms(loggingConfigurationIdentifier, maxResults,
+#'   messageReviewHandlerUri, name, nextToken)
 #'
+#' @param loggingConfigurationIdentifier Logging-configuration identifier.
 #' @param maxResults Maximum number of rooms to return. Default: 50.
 #' @param messageReviewHandlerUri Filters the list to match the specified message review handler URI.
 #' @param name Filters the list to match the specified room name.
@@ -413,6 +728,9 @@ ivschat_get_room <- function(identifier) {
 #'         "2015-01-01"
 #'       ),
 #'       id = "string",
+#'       loggingConfigurationIdentifiers = list(
+#'         "string"
+#'       ),
 #'       messageReviewHandler = list(
 #'         fallbackResult = "ALLOW"|"DENY",
 #'         uri = "string"
@@ -432,6 +750,7 @@ ivschat_get_room <- function(identifier) {
 #' @section Request syntax:
 #' ```
 #' svc$list_rooms(
+#'   loggingConfigurationIdentifier = "string",
 #'   maxResults = 123,
 #'   messageReviewHandlerUri = "string",
 #'   name = "string",
@@ -444,14 +763,14 @@ ivschat_get_room <- function(identifier) {
 #' @rdname ivschat_list_rooms
 #'
 #' @aliases ivschat_list_rooms
-ivschat_list_rooms <- function(maxResults = NULL, messageReviewHandlerUri = NULL, name = NULL, nextToken = NULL) {
+ivschat_list_rooms <- function(loggingConfigurationIdentifier = NULL, maxResults = NULL, messageReviewHandlerUri = NULL, name = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListRooms",
     http_method = "POST",
     http_path = "/ListRooms",
     paginator = list()
   )
-  input <- .ivschat$list_rooms_input(maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, name = name, nextToken = nextToken)
+  input <- .ivschat$list_rooms_input(loggingConfigurationIdentifier = loggingConfigurationIdentifier, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, name = name, nextToken = nextToken)
   output <- .ivschat$list_rooms_output()
   config <- get_config()
   svc <- .ivschat$service(config)
@@ -576,7 +895,12 @@ ivschat_send_event <- function(attributes = NULL, eventName, roomIdentifier) {
 #' ivschat_tag_resource(resourceArn, tags)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be tagged. The ARN must be URL-encoded.
-#' @param tags &#91;required&#93; Array of tags to be added or updated.
+#' @param tags &#91;required&#93; Array of tags to be added or updated. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS Chat has no constraints beyond what
+#' is documented there.
 #'
 #' @return
 #' An empty list.
@@ -622,7 +946,12 @@ ivschat_tag_resource <- function(resourceArn, tags) {
 #' ivschat_untag_resource(resourceArn, tagKeys)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource to be untagged. The ARN must be URL-encoded.
-#' @param tagKeys &#91;required&#93; Array of tags to be removed.
+#' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for details, including restrictions that apply to tags and "Tag naming
+#' limits and requirements"; Amazon IVS Chat has no constraints beyond what
+#' is documented there.
 #'
 #' @return
 #' An empty list.
@@ -659,16 +988,105 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 }
 .ivschat$operations$untag_resource <- ivschat_untag_resource
 
+#' Updates a specified logging configuration
+#'
+#' @description
+#' Updates a specified logging configuration.
+#'
+#' @usage
+#' ivschat_update_logging_configuration(destinationConfiguration,
+#'   identifier, name)
+#'
+#' @param destinationConfiguration A complex type that contains a destination configuration for where chat
+#' content will be logged. There can be only one type of destination
+#' (`cloudWatchLogs`, `firehose`, or `s3`) in a `destinationConfiguration`.
+#' @param identifier &#91;required&#93; Identifier of the logging configuration to be updated.
+#' @param name Logging-configuration name. The value does not need to be unique.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   arn = "string",
+#'   createTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   destinationConfiguration = list(
+#'     cloudWatchLogs = list(
+#'       logGroupName = "string"
+#'     ),
+#'     firehose = list(
+#'       deliveryStreamName = "string"
+#'     ),
+#'     s3 = list(
+#'       bucketName = "string"
+#'     )
+#'   ),
+#'   id = "string",
+#'   name = "string",
+#'   state = "ACTIVE",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   updateTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_logging_configuration(
+#'   destinationConfiguration = list(
+#'     cloudWatchLogs = list(
+#'       logGroupName = "string"
+#'     ),
+#'     firehose = list(
+#'       deliveryStreamName = "string"
+#'     ),
+#'     s3 = list(
+#'       bucketName = "string"
+#'     )
+#'   ),
+#'   identifier = "string",
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ivschat_update_logging_configuration
+#'
+#' @aliases ivschat_update_logging_configuration
+ivschat_update_logging_configuration <- function(destinationConfiguration = NULL, identifier, name = NULL) {
+  op <- new_operation(
+    name = "UpdateLoggingConfiguration",
+    http_method = "POST",
+    http_path = "/UpdateLoggingConfiguration",
+    paginator = list()
+  )
+  input <- .ivschat$update_logging_configuration_input(destinationConfiguration = destinationConfiguration, identifier = identifier, name = name)
+  output <- .ivschat$update_logging_configuration_output()
+  config <- get_config()
+  svc <- .ivschat$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ivschat$operations$update_logging_configuration <- ivschat_update_logging_configuration
+
 #' Updates a room’s configuration
 #'
 #' @description
 #' Updates a room’s configuration.
 #'
 #' @usage
-#' ivschat_update_room(identifier, maximumMessageLength,
-#'   maximumMessageRatePerSecond, messageReviewHandler, name)
+#' ivschat_update_room(identifier, loggingConfigurationIdentifiers,
+#'   maximumMessageLength, maximumMessageRatePerSecond, messageReviewHandler,
+#'   name)
 #'
 #' @param identifier &#91;required&#93; Identifier of the room to be updated. Currently this must be an ARN.
+#' @param loggingConfigurationIdentifiers Array of logging-configuration identifiers attached to the room.
 #' @param maximumMessageLength The maximum number of characters in a single message. Messages are
 #' expected to be UTF-8 encoded and this limit applies specifically to
 #' rune/code-point count, not number of bytes. Default: 500.
@@ -688,6 +1106,9 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 #'     "2015-01-01"
 #'   ),
 #'   id = "string",
+#'   loggingConfigurationIdentifiers = list(
+#'     "string"
+#'   ),
 #'   maximumMessageLength = 123,
 #'   maximumMessageRatePerSecond = 123,
 #'   messageReviewHandler = list(
@@ -708,6 +1129,9 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 #' ```
 #' svc$update_room(
 #'   identifier = "string",
+#'   loggingConfigurationIdentifiers = list(
+#'     "string"
+#'   ),
 #'   maximumMessageLength = 123,
 #'   maximumMessageRatePerSecond = 123,
 #'   messageReviewHandler = list(
@@ -723,14 +1147,14 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname ivschat_update_room
 #'
 #' @aliases ivschat_update_room
-ivschat_update_room <- function(identifier, maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL) {
+ivschat_update_room <- function(identifier, loggingConfigurationIdentifiers = NULL, maximumMessageLength = NULL, maximumMessageRatePerSecond = NULL, messageReviewHandler = NULL, name = NULL) {
   op <- new_operation(
     name = "UpdateRoom",
     http_method = "POST",
     http_path = "/UpdateRoom",
     paginator = list()
   )
-  input <- .ivschat$update_room_input(identifier = identifier, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name)
+  input <- .ivschat$update_room_input(identifier = identifier, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers, maximumMessageLength = maximumMessageLength, maximumMessageRatePerSecond = maximumMessageRatePerSecond, messageReviewHandler = messageReviewHandler, name = name)
   output <- .ivschat$update_room_output()
   config <- get_config()
   svc <- .ivschat$service(config)

@@ -6,47 +6,48 @@
 \usage{
 macie2_update_findings_filter(
   action = NULL,
+  clientToken = NULL,
   description = NULL,
   findingCriteria = NULL,
   id,
   name = NULL,
-  position = NULL,
-  clientToken = NULL
+  position = NULL
 )
 }
 \arguments{
-\item{action}{The action to perform on findings that meet the filter criteria
+\item{action}{The action to perform on findings that match the filter criteria
 (findingCriteria). Valid values are: ARCHIVE, suppress (automatically
 archive) the findings; and, NOOP, don't perform any action on the
 findings.}
+
+\item{clientToken}{A unique, case-sensitive token that you provide to ensure the
+idempotency of the request.}
 
 \item{description}{A custom description of the filter. The description can contain as many
 as 512 characters.
 
 We strongly recommend that you avoid including any sensitive data in the
-description of a filter. Other users might be able to see this
-description, depending on the actions that they're allowed to perform in
-Amazon Macie.}
+description of a filter. Other users of your account might be able to
+see this description, depending on the actions that they're allowed to
+perform in Amazon Macie.}
 
 \item{findingCriteria}{The criteria to use to filter findings.}
 
-\item{id}{[required] The unique identifier for the Amazon Macie resource or account that the
-request applies to.}
+\item{id}{[required] The unique identifier for the Amazon Macie resource that the request
+applies to.}
 
 \item{name}{A custom name for the filter. The name must contain at least 3
 characters and can contain as many as 64 characters.
 
 We strongly recommend that you avoid including any sensitive data in the
-name of a filter. Other users might be able to see this name, depending
-on the actions that they're allowed to perform in Amazon Macie.}
+name of a filter. Other users of your account might be able to see this
+name, depending on the actions that they're allowed to perform in Amazon
+Macie.}
 
 \item{position}{The position of the filter in the list of saved filters on the Amazon
 Macie console. This value also determines the order in which the filter
 is applied to findings, relative to other filters that are also applied
 to the findings.}
-
-\item{clientToken}{A unique, case-sensitive token that you provide to ensure the
-idempotency of the request.}
 }
 \description{
 Updates the criteria and other settings for a findings filter.

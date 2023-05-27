@@ -3,6 +3,56 @@
 #' @include backup_service.R
 NULL
 
+#' This action removes the specified legal hold on a recovery point
+#'
+#' @description
+#' This action removes the specified legal hold on a recovery point. This
+#' action can only be performed by a user with sufficient permissions.
+#'
+#' @usage
+#' backup_cancel_legal_hold(LegalHoldId, CancelDescription,
+#'   RetainRecordInDays)
+#'
+#' @param LegalHoldId &#91;required&#93; Legal hold ID required to remove the specified legal hold on a recovery
+#' point.
+#' @param CancelDescription &#91;required&#93; String describing the reason for removing the legal hold.
+#' @param RetainRecordInDays The integer amount in days specifying amount of days after this API
+#' operation to remove legal hold.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_legal_hold(
+#'   LegalHoldId = "string",
+#'   CancelDescription = "string",
+#'   RetainRecordInDays = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_cancel_legal_hold
+#'
+#' @aliases backup_cancel_legal_hold
+backup_cancel_legal_hold <- function(LegalHoldId, CancelDescription, RetainRecordInDays = NULL) {
+  op <- new_operation(
+    name = "CancelLegalHold",
+    http_method = "DELETE",
+    http_path = "/legal-holds/{legalHoldId}",
+    paginator = list()
+  )
+  input <- .backup$cancel_legal_hold_input(LegalHoldId = LegalHoldId, CancelDescription = CancelDescription, RetainRecordInDays = RetainRecordInDays)
+  output <- .backup$cancel_legal_hold_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$cancel_legal_hold <- backup_cancel_legal_hold
+
 #' Creates a backup plan using a backup plan name and backup rules
 #'
 #' @description
@@ -397,6 +447,112 @@ backup_create_framework <- function(FrameworkName, FrameworkDescription = NULL, 
 }
 .backup$operations$create_framework <- backup_create_framework
 
+#' This action creates a legal hold on a recovery point (backup)
+#'
+#' @description
+#' This action creates a legal hold on a recovery point (backup). A legal
+#' hold is a restraint on altering or deleting a backup until an authorized
+#' user cancels the legal hold. Any actions to delete or disassociate a
+#' recovery point will fail with an error if one or more active legal holds
+#' are on the recovery point.
+#'
+#' @usage
+#' backup_create_legal_hold(Title, Description, IdempotencyToken,
+#'   RecoveryPointSelection, Tags)
+#'
+#' @param Title &#91;required&#93; This is the string title of the legal hold.
+#' @param Description &#91;required&#93; This is the string description of the legal hold.
+#' @param IdempotencyToken This is a user-chosen string used to distinguish between otherwise
+#' identical calls. Retrying a successful request with the same idempotency
+#' token results in a success message with no action taken.
+#' @param RecoveryPointSelection This specifies criteria to assign a set of resources, such as resource
+#' types or backup vaults.
+#' @param Tags Optional tags to include. A tag is a key-value pair you can use to
+#' manage, filter, and search for your resources. Allowed characters
+#' include UTF-8 letters, numbers, spaces, and the following
+#' characters: + - = . _ : /.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Title = "string",
+#'   Status = "CREATING"|"ACTIVE"|"CANCELING"|"CANCELED",
+#'   Description = "string",
+#'   LegalHoldId = "string",
+#'   LegalHoldArn = "string",
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RecoveryPointSelection = list(
+#'     VaultNames = list(
+#'       "string"
+#'     ),
+#'     ResourceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DateRange = list(
+#'       FromDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ToDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_legal_hold(
+#'   Title = "string",
+#'   Description = "string",
+#'   IdempotencyToken = "string",
+#'   RecoveryPointSelection = list(
+#'     VaultNames = list(
+#'       "string"
+#'     ),
+#'     ResourceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DateRange = list(
+#'       FromDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ToDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_create_legal_hold
+#'
+#' @aliases backup_create_legal_hold
+backup_create_legal_hold <- function(Title, Description, IdempotencyToken = NULL, RecoveryPointSelection = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateLegalHold",
+    http_method = "POST",
+    http_path = "/legal-holds/",
+    paginator = list()
+  )
+  input <- .backup$create_legal_hold_input(Title = Title, Description = Description, IdempotencyToken = IdempotencyToken, RecoveryPointSelection = RecoveryPointSelection, Tags = Tags)
+  output <- .backup$create_legal_hold_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$create_legal_hold <- backup_create_legal_hold
+
 #' Creates a report plan
 #'
 #' @description
@@ -464,7 +620,16 @@ backup_create_framework <- function(FrameworkName, FrameworkDescription = NULL, 
 #'     FrameworkArns = list(
 #'       "string"
 #'     ),
-#'     NumberOfFrameworks = 123
+#'     NumberOfFrameworks = 123,
+#'     Accounts = list(
+#'       "string"
+#'     ),
+#'     OrganizationUnits = list(
+#'       "string"
+#'     ),
+#'     Regions = list(
+#'       "string"
+#'     )
 #'   ),
 #'   ReportPlanTags = list(
 #'     "string"
@@ -834,6 +999,19 @@ backup_delete_framework <- function(FrameworkName) {
 #' If the recovery point ID belongs to a continuous backup, calling this
 #' endpoint deletes the existing continuous backup and stops future
 #' continuous backup.
+#' 
+#' When an IAM role's permissions are insufficient to call this API, the
+#' service sends back an HTTP 200 response with an empty HTTP body, but the
+#' recovery point is not deleted. Instead, it enters an `EXPIRED` state.
+#' 
+#' `EXPIRED` recovery points can be deleted with this API once the IAM role
+#' has the `iam:CreateServiceLinkedRole` action. To learn more about adding
+#' this role, see [Troubleshooting manual
+#' deletions](https://docs.aws.amazon.com/aws-backup/latest/devguide/deleting-backups.html#deleting-backups-troubleshooting).
+#' 
+#' If the user or role is deleted or the permission within the role is
+#' removed, the deletion will not be successful and will enter an `EXPIRED`
+#' state.
 #'
 #' @usage
 #' backup_delete_recovery_point(BackupVaultName, RecoveryPointArn)
@@ -947,7 +1125,7 @@ backup_delete_report_plan <- function(ReportPlanName) {
 #'   CompletionDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   State = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED",
+#'   State = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED"|"PARTIAL",
 #'   StatusMessage = "string",
 #'   PercentDone = "string",
 #'   BackupSizeInBytes = 123,
@@ -969,7 +1147,14 @@ backup_delete_report_plan <- function(ReportPlanName) {
 #'   BackupOptions = list(
 #'     "string"
 #'   ),
-#'   BackupType = "string"
+#'   BackupType = "string",
+#'   ParentJobId = "string",
+#'   IsParent = TRUE|FALSE,
+#'   NumberOfChildJobs = 123,
+#'   ChildJobsInState = list(
+#'     123
+#'   ),
+#'   ResourceName = "string"
 #' )
 #' ```
 #'
@@ -1093,7 +1278,7 @@ backup_describe_backup_vault <- function(BackupVaultName) {
 #'     CompletionDate = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
+#'     State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED"|"PARTIAL",
 #'     StatusMessage = "string",
 #'     BackupSizeInBytes = 123,
 #'     IamRoleArn = "string",
@@ -1103,7 +1288,15 @@ backup_describe_backup_vault <- function(BackupVaultName) {
 #'       BackupPlanVersion = "string",
 #'       BackupRuleId = "string"
 #'     ),
-#'     ResourceType = "string"
+#'     ResourceType = "string",
+#'     ParentJobId = "string",
+#'     IsParent = TRUE|FALSE,
+#'     CompositeMemberIdentifier = "string",
+#'     NumberOfChildJobs = 123,
+#'     ChildJobsInState = list(
+#'       123
+#'     ),
+#'     ResourceName = "string"
 #'   )
 #' )
 #' ```
@@ -1289,7 +1482,8 @@ backup_describe_global_settings <- function() {
 #'   ResourceType = "string",
 #'   LastBackupTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   ResourceName = "string"
 #' )
 #' ```
 #'
@@ -1383,7 +1577,11 @@ backup_describe_protected_resource <- function(ResourceArn) {
 #'   StorageClass = "WARM"|"COLD"|"DELETED",
 #'   LastRestoreTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   ParentRecoveryPointArn = "string",
+#'   CompositeMemberIdentifier = "string",
+#'   IsParent = TRUE|FALSE,
+#'   ResourceName = "string"
 #' )
 #' ```
 #'
@@ -1563,7 +1761,16 @@ backup_describe_report_job <- function(ReportJobId) {
 #'       FrameworkArns = list(
 #'         "string"
 #'       ),
-#'       NumberOfFrameworks = 123
+#'       NumberOfFrameworks = 123,
+#'       Accounts = list(
+#'         "string"
+#'       ),
+#'       OrganizationUnits = list(
+#'         "string"
+#'       ),
+#'       Regions = list(
+#'         "string"
+#'       )
 #'     ),
 #'     ReportDeliveryChannel = list(
 #'       S3BucketName = "string",
@@ -1732,6 +1939,61 @@ backup_disassociate_recovery_point <- function(BackupVaultName, RecoveryPointArn
   return(response)
 }
 .backup$operations$disassociate_recovery_point <- backup_disassociate_recovery_point
+
+#' This action to a specific child (nested) recovery point removes the
+#' relationship between the specified recovery point and its parent
+#' (composite) recovery point
+#'
+#' @description
+#' This action to a specific child (nested) recovery point removes the
+#' relationship between the specified recovery point and its parent
+#' (composite) recovery point.
+#'
+#' @usage
+#' backup_disassociate_recovery_point_from_parent(BackupVaultName,
+#'   RecoveryPointArn)
+#'
+#' @param BackupVaultName &#91;required&#93; This is the name of a logical container where the child (nested)
+#' recovery point is stored. Backup vaults are identified by names that are
+#' unique to the account used to create them and the Amazon Web Services
+#' Region where they are created. They consist of lowercase letters,
+#' numbers, and hyphens.
+#' @param RecoveryPointArn &#91;required&#93; This is the Amazon Resource Name (ARN) that uniquely identifies the
+#' child (nested) recovery point; for example,
+#' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.`
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_recovery_point_from_parent(
+#'   BackupVaultName = "string",
+#'   RecoveryPointArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_disassociate_recovery_point_from_parent
+#'
+#' @aliases backup_disassociate_recovery_point_from_parent
+backup_disassociate_recovery_point_from_parent <- function(BackupVaultName, RecoveryPointArn) {
+  op <- new_operation(
+    name = "DisassociateRecoveryPointFromParent",
+    http_method = "DELETE",
+    http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/parentAssociation",
+    paginator = list()
+  )
+  input <- .backup$disassociate_recovery_point_from_parent_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
+  output <- .backup$disassociate_recovery_point_from_parent_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$disassociate_recovery_point_from_parent <- backup_disassociate_recovery_point_from_parent
 
 #' Returns the backup plan that is specified by the plan ID as a backup
 #' template
@@ -2269,6 +2531,86 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
 }
 .backup$operations$get_backup_vault_notifications <- backup_get_backup_vault_notifications
 
+#' This action returns details for a specified legal hold
+#'
+#' @description
+#' This action returns details for a specified legal hold. The details are
+#' the body of a legal hold in JSON format, in addition to metadata.
+#'
+#' @usage
+#' backup_get_legal_hold(LegalHoldId)
+#'
+#' @param LegalHoldId &#91;required&#93; This is the ID required to use
+#' [`get_legal_hold`][backup_get_legal_hold]. This unique ID is associated
+#' with a specific legal hold.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Title = "string",
+#'   Status = "CREATING"|"ACTIVE"|"CANCELING"|"CANCELED",
+#'   Description = "string",
+#'   CancelDescription = "string",
+#'   LegalHoldId = "string",
+#'   LegalHoldArn = "string",
+#'   CreationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CancellationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RetainRecordUntil = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RecoveryPointSelection = list(
+#'     VaultNames = list(
+#'       "string"
+#'     ),
+#'     ResourceIdentifiers = list(
+#'       "string"
+#'     ),
+#'     DateRange = list(
+#'       FromDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ToDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_legal_hold(
+#'   LegalHoldId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_get_legal_hold
+#'
+#' @aliases backup_get_legal_hold
+backup_get_legal_hold <- function(LegalHoldId) {
+  op <- new_operation(
+    name = "GetLegalHold",
+    http_method = "GET",
+    http_path = "/legal-holds/{legalHoldId}/",
+    paginator = list()
+  )
+  input <- .backup$get_legal_hold_input(LegalHoldId = LegalHoldId)
+  output <- .backup$get_legal_hold_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$get_legal_hold <- backup_get_legal_hold
+
 #' Returns a set of metadata key-value pairs that were used to create the
 #' backup
 #'
@@ -2386,7 +2728,7 @@ backup_get_supported_resource_types <- function() {
 #' @usage
 #' backup_list_backup_jobs(NextToken, MaxResults, ByResourceArn, ByState,
 #'   ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType,
-#'   ByAccountId, ByCompleteAfter, ByCompleteBefore)
+#'   ByAccountId, ByCompleteAfter, ByCompleteBefore, ByParentJobId)
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return `maxResults` number of items, `NextToken`
@@ -2437,6 +2779,7 @@ backup_get_supported_resource_types <- function() {
 #' and Coordinated Universal Time (UTC).
 #' @param ByCompleteBefore Returns only backup jobs completed before a date expressed in Unix
 #' format and Coordinated Universal Time (UTC).
+#' @param ByParentJobId This is a filter to list child (nested) jobs based on parent job ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2456,7 +2799,7 @@ backup_get_supported_resource_types <- function() {
 #'       CompletionDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       State = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED",
+#'       State = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED"|"PARTIAL",
 #'       StatusMessage = "string",
 #'       PercentDone = "string",
 #'       BackupSizeInBytes = 123,
@@ -2478,7 +2821,10 @@ backup_get_supported_resource_types <- function() {
 #'       BackupOptions = list(
 #'         "string"
 #'       ),
-#'       BackupType = "string"
+#'       BackupType = "string",
+#'       ParentJobId = "string",
+#'       IsParent = TRUE|FALSE,
+#'       ResourceName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2491,7 +2837,7 @@ backup_get_supported_resource_types <- function() {
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   ByResourceArn = "string",
-#'   ByState = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED",
+#'   ByState = "CREATED"|"PENDING"|"RUNNING"|"ABORTING"|"ABORTED"|"COMPLETED"|"FAILED"|"EXPIRED"|"PARTIAL",
 #'   ByBackupVaultName = "string",
 #'   ByCreatedBefore = as.POSIXct(
 #'     "2015-01-01"
@@ -2506,7 +2852,8 @@ backup_get_supported_resource_types <- function() {
 #'   ),
 #'   ByCompleteBefore = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   ByParentJobId = "string"
 #' )
 #' ```
 #'
@@ -2515,14 +2862,14 @@ backup_get_supported_resource_types <- function() {
 #' @rdname backup_list_backup_jobs
 #'
 #' @aliases backup_list_backup_jobs
-backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByAccountId = NULL, ByCompleteAfter = NULL, ByCompleteBefore = NULL) {
+backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByBackupVaultName = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByAccountId = NULL, ByCompleteAfter = NULL, ByCompleteBefore = NULL, ByParentJobId = NULL) {
   op <- new_operation(
     name = "ListBackupJobs",
     http_method = "GET",
     http_path = "/backup-jobs/",
     paginator = list()
   )
-  input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore)
+  input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore, ByParentJobId = ByParentJobId)
   output <- .backup$list_backup_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -2908,7 +3255,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #' @usage
 #' backup_list_copy_jobs(NextToken, MaxResults, ByResourceArn, ByState,
 #'   ByCreatedBefore, ByCreatedAfter, ByResourceType, ByDestinationVaultArn,
-#'   ByAccountId, ByCompleteBefore, ByCompleteAfter)
+#'   ByAccountId, ByCompleteBefore, ByCompleteAfter, ByParentJobId)
 #'
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return maxResults number of items, NextToken
@@ -2954,6 +3301,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #' and Coordinated Universal Time (UTC).
 #' @param ByCompleteAfter Returns only copy jobs completed after a date expressed in Unix format
 #' and Coordinated Universal Time (UTC).
+#' @param ByParentJobId This is a filter to list child (nested) jobs based on parent job ID.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2974,7 +3322,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #'       CompletionDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
+#'       State = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED"|"PARTIAL",
 #'       StatusMessage = "string",
 #'       BackupSizeInBytes = 123,
 #'       IamRoleArn = "string",
@@ -2984,7 +3332,15 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #'         BackupPlanVersion = "string",
 #'         BackupRuleId = "string"
 #'       ),
-#'       ResourceType = "string"
+#'       ResourceType = "string",
+#'       ParentJobId = "string",
+#'       IsParent = TRUE|FALSE,
+#'       CompositeMemberIdentifier = "string",
+#'       NumberOfChildJobs = 123,
+#'       ChildJobsInState = list(
+#'         123
+#'       ),
+#'       ResourceName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2997,7 +3353,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #'   NextToken = "string",
 #'   MaxResults = 123,
 #'   ByResourceArn = "string",
-#'   ByState = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED",
+#'   ByState = "CREATED"|"RUNNING"|"COMPLETED"|"FAILED"|"PARTIAL",
 #'   ByCreatedBefore = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -3012,7 +3368,8 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #'   ),
 #'   ByCompleteAfter = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   ByParentJobId = "string"
 #' )
 #' ```
 #'
@@ -3021,14 +3378,14 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 #' @rdname backup_list_copy_jobs
 #'
 #' @aliases backup_list_copy_jobs
-backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByDestinationVaultArn = NULL, ByAccountId = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL) {
+backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByState = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByResourceType = NULL, ByDestinationVaultArn = NULL, ByAccountId = NULL, ByCompleteBefore = NULL, ByCompleteAfter = NULL, ByParentJobId = NULL) {
   op <- new_operation(
     name = "ListCopyJobs",
     http_method = "GET",
     http_path = "/copy-jobs/",
     paginator = list()
   )
-  input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter)
+  input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByParentJobId = ByParentJobId)
   output <- .backup$list_copy_jobs_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -3104,6 +3461,73 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .backup$operations$list_frameworks <- backup_list_frameworks
 
+#' This action returns metadata about active and previous legal holds
+#'
+#' @description
+#' This action returns metadata about active and previous legal holds.
+#'
+#' @usage
+#' backup_list_legal_holds(NextToken, MaxResults)
+#'
+#' @param NextToken The next item following a partial list of returned resources. For
+#' example, if a request is made to return `maxResults` number of
+#' resources, `NextToken` allows you to return more items in your list
+#' starting at the location pointed to by the next token.
+#' @param MaxResults The maximum number of resource list items to be returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   LegalHolds = list(
+#'     list(
+#'       Title = "string",
+#'       Status = "CREATING"|"ACTIVE"|"CANCELING"|"CANCELED",
+#'       Description = "string",
+#'       LegalHoldId = "string",
+#'       LegalHoldArn = "string",
+#'       CreationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CancellationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_legal_holds(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_legal_holds
+#'
+#' @aliases backup_list_legal_holds
+backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListLegalHolds",
+    http_method = "GET",
+    http_path = "/legal-holds/",
+    paginator = list()
+  )
+  input <- .backup$list_legal_holds_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .backup$list_legal_holds_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_legal_holds <- backup_list_legal_holds
+
 #' Returns an array of resources successfully backed up by Backup,
 #' including the time the resource was saved, an Amazon Resource Name (ARN)
 #' of the resource, and a resource type
@@ -3132,7 +3556,8 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
 #'       ResourceType = "string",
 #'       LastBackupTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ResourceName = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3179,7 +3604,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' @usage
 #' backup_list_recovery_points_by_backup_vault(BackupVaultName, NextToken,
 #'   MaxResults, ByResourceArn, ByResourceType, ByBackupPlanId,
-#'   ByCreatedBefore, ByCreatedAfter)
+#'   ByCreatedBefore, ByCreatedAfter, ByParentRecoveryPointArn)
 #'
 #' @param BackupVaultName &#91;required&#93; The name of a logical container where backups are stored. Backup vaults
 #' are identified by names that are unique to the account used to create
@@ -3201,6 +3626,8 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' timestamp.
 #' @param ByCreatedAfter Returns only recovery points that were created after the specified
 #' timestamp.
+#' @param ByParentRecoveryPointArn This returns only recovery points that match the specified parent
+#' (composite) recovery point Amazon Resource Name (ARN).
 #'
 #' @return
 #' A list with the following syntax:
@@ -3247,7 +3674,11 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #'       IsEncrypted = TRUE|FALSE,
 #'       LastRestoreTime = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ParentRecoveryPointArn = "string",
+#'       CompositeMemberIdentifier = "string",
+#'       IsParent = TRUE|FALSE,
+#'       ResourceName = "string"
 #'     )
 #'   )
 #' )
@@ -3267,7 +3698,8 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #'   ),
 #'   ByCreatedAfter = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   ByParentRecoveryPointArn = "string"
 #' )
 #' ```
 #'
@@ -3276,14 +3708,14 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' @rdname backup_list_recovery_points_by_backup_vault
 #'
 #' @aliases backup_list_recovery_points_by_backup_vault
-backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByResourceType = NULL, ByBackupPlanId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL) {
+backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByResourceType = NULL, ByBackupPlanId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByParentRecoveryPointArn = NULL) {
   op <- new_operation(
     name = "ListRecoveryPointsByBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/",
     paginator = list()
   )
-  input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter)
+  input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByParentRecoveryPointArn = ByParentRecoveryPointArn)
   output <- .backup$list_recovery_points_by_backup_vault_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -3292,6 +3724,71 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextTok
   return(response)
 }
 .backup$operations$list_recovery_points_by_backup_vault <- backup_list_recovery_points_by_backup_vault
+
+#' This action returns recovery point ARNs (Amazon Resource Names) of the
+#' specified legal hold
+#'
+#' @description
+#' This action returns recovery point ARNs (Amazon Resource Names) of the
+#' specified legal hold.
+#'
+#' @usage
+#' backup_list_recovery_points_by_legal_hold(LegalHoldId, NextToken,
+#'   MaxResults)
+#'
+#' @param LegalHoldId &#91;required&#93; This is the ID of the legal hold.
+#' @param NextToken This is the next item following a partial list of returned resources.
+#' For example, if a request is made to return `maxResults` number of
+#' resources, `NextToken` allows you to return more items in your list
+#' starting at the location pointed to by the next token.
+#' @param MaxResults This is the maximum number of resource list items to be returned.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RecoveryPoints = list(
+#'     list(
+#'       RecoveryPointArn = "string",
+#'       ResourceArn = "string",
+#'       ResourceType = "string",
+#'       BackupVaultName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_recovery_points_by_legal_hold(
+#'   LegalHoldId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_recovery_points_by_legal_hold
+#'
+#' @aliases backup_list_recovery_points_by_legal_hold
+backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRecoveryPointsByLegalHold",
+    http_method = "GET",
+    http_path = "/legal-holds/{legalHoldId}/recovery-points",
+    paginator = list()
+  )
+  input <- .backup$list_recovery_points_by_legal_hold_input(LegalHoldId = LegalHoldId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .backup$list_recovery_points_by_legal_hold_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_recovery_points_by_legal_hold <- backup_list_recovery_points_by_legal_hold
 
 #' Returns detailed information about all the recovery points of the type
 #' specified by a resource Amazon Resource Name (ARN)
@@ -3332,7 +3829,10 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextTok
 #'       StatusMessage = "string",
 #'       EncryptionKeyArn = "string",
 #'       BackupSizeBytes = 123,
-#'       BackupVaultName = "string"
+#'       BackupVaultName = "string",
+#'       IsParent = TRUE|FALSE,
+#'       ParentRecoveryPointArn = "string",
+#'       ResourceName = "string"
 #'     )
 #'   )
 #' )
@@ -3494,7 +3994,16 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
 #'         FrameworkArns = list(
 #'           "string"
 #'         ),
-#'         NumberOfFrameworks = 123
+#'         NumberOfFrameworks = 123,
+#'         Accounts = list(
+#'           "string"
+#'         ),
+#'         OrganizationUnits = list(
+#'           "string"
+#'         ),
+#'         Regions = list(
+#'           "string"
+#'         )
 #'       ),
 #'       ReportDeliveryChannel = list(
 #'         S3BucketName = "string",
@@ -3779,8 +4288,10 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #' vault. If specified, Vault Lock enforces a minimum and maximum retention
 #' period for future backup and copy jobs that target a backup vault.
 #' 
-#' Backup Vault Lock has yet to receive a third-party assessment for SEC
-#' 17a-4(f) and CFTC.
+#' Backup Vault Lock has been assessed by Cohasset Associates for use in
+#' environments that are subject to SEC 17a-4, CFTC, and FINRA regulations.
+#' For more information about how Backup Vault Lock relates to these
+#' regulations, see the Cohasset Associates Compliance Assessment.
 #'
 #' @usage
 #' backup_put_backup_vault_lock_configuration(BackupVaultName,
@@ -3902,8 +4413,7 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
 #' to the backup vault.
 #' 
 #' For common use cases and code samples, see [Using Amazon SNS to track
-#' Backup
-#' events](https://docs.aws.amazon.com/aws-backup/latest/devguide/sns-notifications.html).
+#' Backup events](https://docs.aws.amazon.com/aws-backup/latest/devguide/).
 #' 
 #' The following events are supported:
 #' 
@@ -3916,8 +4426,10 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
 #' 
 #' -   `S3_BACKUP_OBJECT_FAILED` | `S3_RESTORE_OBJECT_FAILED`
 #' 
-#' Ignore the list below because it includes deprecated events. Refer to
-#' the list above.
+#' The list below shows items that are deprecated events (for reference)
+#' and are no longer in use. They are no longer supported and will not
+#' return statuses or notifications. Refer to the list above for current
+#' supported events.
 #'
 #' @return
 #' An empty list.
@@ -3980,7 +4492,17 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' with no action taken.
 #' @param StartWindowMinutes A value in minutes after a backup is scheduled before a job will be
 #' canceled if it doesn't start successfully. This value is optional, and
-#' the default is 8 hours.
+#' the default is 8 hours. If this value is included, it must be at least
+#' 60 minutes to avoid errors.
+#' 
+#' During the start window, the backup job status remains in `CREATED`
+#' status until it has successfully begun or until the start window time
+#' has run out. If within the start window time Backup receives an error
+#' that allows the job to be retried, Backup will automatically retry to
+#' begin the job at least every 10 minutes until the backup successfully
+#' begins (the job status changes to `RUNNING`) or until the job status
+#' changes to `EXPIRED` (which is expected to occur when the start window
+#' time is over).
 #' @param CompleteWindowMinutes A value in minutes during which a successfully started backup must
 #' complete, or else Backup will cancel the job. This value is optional.
 #' This value begins counting down from when the backup was scheduled. It
@@ -4019,7 +4541,8 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #'   RecoveryPointArn = "string",
 #'   CreationDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   IsParent = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4103,7 +4626,8 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 #'   CopyJobId = "string",
 #'   CreationDate = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   IsParent = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4203,7 +4727,7 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #'
 #' @usage
 #' backup_start_restore_job(RecoveryPointArn, Metadata, IamRoleArn,
-#'   IdempotencyToken, ResourceType)
+#'   IdempotencyToken, ResourceType, CopySourceTagsToRestoredResource)
 #'
 #' @param RecoveryPointArn &#91;required&#93; An ARN that uniquely identifies a recovery point; for example,
 #' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
@@ -4247,7 +4771,7 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #'     directories rather than the entire file system. This parameter is
 #'     optional. For example, `"itemsToRestore":"[\"/my.test\"]"`.
 #' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role that Backup uses to
-#' create the target recovery point; for example,
+#' create the target resource; for example:
 #' `arn:aws:iam::123456789012:role/S3Access`.
 #' @param IdempotencyToken A customer-chosen string that you can use to distinguish between
 #' otherwise identical calls to
@@ -4260,6 +4784,8 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' -   `Aurora` for Amazon Aurora
 #' 
 #' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' 
+#' -   `CloudFormation` for CloudFormation
 #' 
 #' -   `DynamoDB` for Amazon DynamoDB
 #' 
@@ -4275,11 +4801,19 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' 
 #' -   `RDS` for Amazon Relational Database Service
 #' 
+#' -   `Redshift` for Amazon Redshift
+#' 
 #' -   `Storage Gateway` for Storage Gateway
 #' 
 #' -   `S3` for Amazon S3
 #' 
+#' -   `Timestream` for Amazon Timestream
+#' 
 #' -   `VirtualMachine` for virtual machines
+#' @param CopySourceTagsToRestoredResource This is an optional parameter. If this equals `True`, tags included in
+#' the backup will be copied to the restored resource.
+#' 
+#' This can only be applied to backups created through Backup.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4298,7 +4832,8 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #'   ),
 #'   IamRoleArn = "string",
 #'   IdempotencyToken = "string",
-#'   ResourceType = "string"
+#'   ResourceType = "string",
+#'   CopySourceTagsToRestoredResource = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4307,14 +4842,14 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' @rdname backup_start_restore_job
 #'
 #' @aliases backup_start_restore_job
-backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NULL, IdempotencyToken = NULL, ResourceType = NULL) {
+backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NULL, IdempotencyToken = NULL, ResourceType = NULL, CopySourceTagsToRestoredResource = NULL) {
   op <- new_operation(
     name = "StartRestoreJob",
     http_method = "PUT",
     http_path = "/restore-jobs",
     paginator = list()
   )
-  input <- .backup$start_restore_job_input(RecoveryPointArn = RecoveryPointArn, Metadata = Metadata, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, ResourceType = ResourceType)
+  input <- .backup$start_restore_job_input(RecoveryPointArn = RecoveryPointArn, Metadata = Metadata, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, ResourceType = ResourceType, CopySourceTagsToRestoredResource = CopySourceTagsToRestoredResource)
   output <- .backup$start_restore_job_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -4328,6 +4863,11 @@ backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NU
 #'
 #' @description
 #' Attempts to cancel a job to create a one-time backup of a resource.
+#' 
+#' This action is not supported for the following services: Amazon FSx for
+#' Windows File Server, Amazon FSx for Lustre, FSx for ONTAP , Amazon FSx
+#' for OpenZFS, Amazon DocumentDB (with MongoDB compatibility), Amazon RDS,
+#' Amazon Aurora, and Amazon Neptune.
 #'
 #' @usage
 #' backup_stop_backup_job(BackupJobId)
@@ -4928,7 +5468,16 @@ backup_update_region_settings <- function(ResourceTypeOptInPreference = NULL, Re
 #'     FrameworkArns = list(
 #'       "string"
 #'     ),
-#'     NumberOfFrameworks = 123
+#'     NumberOfFrameworks = 123,
+#'     Accounts = list(
+#'       "string"
+#'     ),
+#'     OrganizationUnits = list(
+#'       "string"
+#'     ),
+#'     Regions = list(
+#'       "string"
+#'     )
 #'   ),
 #'   IdempotencyToken = "string"
 #' )

@@ -101,13 +101,13 @@ NULL
 
 .appstream$create_directory_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appstream$create_directory_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryConfig = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryConfig = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -395,7 +395,7 @@ NULL
 
 .appstream$describe_directory_configs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryConfigs = structure(list(structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryConfigs = structure(list(structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -725,13 +725,13 @@ NULL
 
 .appstream$update_directory_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .appstream$update_directory_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryConfig = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryConfig = structure(list(DirectoryName = structure(logical(0), tags = list(type = "string")), OrganizationalUnitDistinguishedNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ServiceAccountCredentials = structure(list(AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountPassword = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure")), CreatedTime = structure(logical(0), tags = list(type = "timestamp")), CertificateBasedAuthProperties = structure(list(Status = structure(logical(0), tags = list(type = "string")), CertificateAuthorityArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

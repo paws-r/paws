@@ -63,7 +63,9 @@ This value becomes the \code{VersionId} of the new version.}
 \item{Description}{The description of the secret.}
 
 \item{KmsKeyId}{The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-encrypt the secret value in the secret.
+encrypt the secret value in the secret. An alias is always prefixed by
+\verb{alias/}, for example \code{alias/aws/secretsmanager}. For more information,
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html}{About aliases}.
 
 To use a KMS key in a different account, use the key ARN or the alias
 ARN.
@@ -138,7 +140,7 @@ characters: + - = . _ : / @.
 \item{AddReplicaRegions}{A list of Regions and KMS keys to replicate secrets.}
 
 \item{ForceOverwriteReplicaSecret}{Specifies whether to overwrite a secret with the same name in the
-destination Region.}
+destination Region. By default, secrets aren't overwritten.}
 }
 \description{
 Creates a new secret. A \emph{secret} can be a password, a set of credentials such as a user name and password, an OAuth token, or other secret information that you store in an encrypted form in Secrets Manager. The secret also includes the connection information to access a database or other service, which Secrets Manager doesn't encrypt. A secret in Secrets Manager consists of both the protected secret data and the important information needed to manage the secret.

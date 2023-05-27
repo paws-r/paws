@@ -7,7 +7,7 @@
 voiceid_opt_out_speaker(DomainId, SpeakerId)
 }
 \arguments{
-\item{DomainId}{[required] The identifier of the domain containing the speaker.}
+\item{DomainId}{[required] The identifier of the domain that contains the speaker.}
 
 \item{SpeakerId}{[required] The identifier of the speaker you want opted-out.}
 }

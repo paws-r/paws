@@ -4,12 +4,14 @@
 \alias{kinesis_add_tags_to_stream}
 \title{Adds or updates tags for the specified Kinesis data stream}
 \usage{
-kinesis_add_tags_to_stream(StreamName, Tags)
+kinesis_add_tags_to_stream(StreamName = NULL, Tags, StreamARN = NULL)
 }
 \arguments{
-\item{StreamName}{[required] The name of the stream.}
+\item{StreamName}{The name of the stream.}
 
 \item{Tags}{[required] A set of up to 10 key-value pairs to use to create the tags.}
+
+\item{StreamARN}{The ARN of the stream.}
 }
 \description{
 Adds or updates tags for the specified Kinesis data stream. You can assign up to 50 tags to a data stream.

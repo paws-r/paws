@@ -1,5 +1,21 @@
 svc <- paws::athena()
 
+test_that("list_application_dpu_sizes", {
+  expect_error(svc$list_application_dpu_sizes(), NA)
+})
+
+test_that("list_application_dpu_sizes", {
+  expect_error(svc$list_application_dpu_sizes(MaxResults = 20), NA)
+})
+
+test_that("list_capacity_reservations", {
+  expect_error(svc$list_capacity_reservations(), NA)
+})
+
+test_that("list_capacity_reservations", {
+  expect_error(svc$list_capacity_reservations(MaxResults = 20), NA)
+})
+
 test_that("list_data_catalogs", {
   expect_error(svc$list_data_catalogs(), NA)
 })

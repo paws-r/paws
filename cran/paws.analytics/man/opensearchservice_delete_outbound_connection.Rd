@@ -2,8 +2,8 @@
 % Please edit documentation in R/opensearchservice_operations.R
 \name{opensearchservice_delete_outbound_connection}
 \alias{opensearchservice_delete_outbound_connection}
-\title{Allows the local domain owner to delete an existing outbound
-cross-cluster connection}
+\title{Allows the source Amazon OpenSearch Service domain owner to delete an
+existing outbound cross-cluster search connection}
 \usage{
 opensearchservice_delete_outbound_connection(ConnectionId)
 }
@@ -11,7 +11,7 @@ opensearchservice_delete_outbound_connection(ConnectionId)
 \item{ConnectionId}{[required] The ID of the outbound connection you want to permanently delete.}
 }
 \description{
-Allows the local domain owner to delete an existing outbound cross-cluster connection.
+Allows the source Amazon OpenSearch Service domain owner to delete an existing outbound cross-cluster search connection. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
 See \url{https://paws-r.github.io/docs/opensearchservice/delete_outbound_connection.html} for full documentation.
 }

@@ -2,8 +2,8 @@
 % Please edit documentation in R/timestreamwrite_operations.R
 \name{timestreamwrite_list_tables}
 \alias{timestreamwrite_list_tables}
-\title{A list of tables, along with the name, status and retention properties
-of each table}
+\title{Provides a list of tables, along with the name, status, and retention
+properties of each table}
 \usage{
 timestreamwrite_list_tables(
   DatabaseName = NULL,
@@ -23,7 +23,7 @@ provided in the output. To resume pagination, provide the NextToken
 value as argument of a subsequent API invocation.}
 }
 \description{
-A list of tables, along with the name, status and retention properties of each table. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html}{code sample} for details.
+Provides a list of tables, along with the name, status, and retention properties of each table. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html}{code sample} for details.
 
 See \url{https://paws-r.github.io/docs/timestreamwrite/list_tables.html} for full documentation.
 }

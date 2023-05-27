@@ -10,7 +10,8 @@ sagemaker_list_apps(
   SortOrder = NULL,
   SortBy = NULL,
   DomainIdEquals = NULL,
-  UserProfileNameEquals = NULL
+  UserProfileNameEquals = NULL,
+  SpaceNameEquals = NULL
 )
 }
 \arguments{
@@ -25,7 +26,11 @@ it in your next request to receive the next set of results.}
 
 \item{DomainIdEquals}{A parameter to search for the domain ID.}
 
-\item{UserProfileNameEquals}{A parameter to search by user profile name.}
+\item{UserProfileNameEquals}{A parameter to search by user profile name. If \code{SpaceNameEquals} is set,
+then this value cannot be set.}
+
+\item{SpaceNameEquals}{A parameter to search by space name. If \code{UserProfileNameEquals} is set,
+then this value cannot be set.}
 }
 \description{
 Lists apps.

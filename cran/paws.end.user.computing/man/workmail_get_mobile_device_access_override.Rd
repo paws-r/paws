@@ -8,8 +8,7 @@ organization, user, and device}
 workmail_get_mobile_device_access_override(OrganizationId, UserId, DeviceId)
 }
 \arguments{
-\item{OrganizationId}{[required] The Amazon WorkMail organization to which you want to apply the
-override.}
+\item{OrganizationId}{[required] The WorkMail organization to which you want to apply the override.}
 
 \item{UserId}{[required] Identifies the WorkMail user for the override. Accepts the following
 types of user identities:

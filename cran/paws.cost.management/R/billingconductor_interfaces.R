@@ -89,7 +89,7 @@ NULL
 
 .billingconductor$create_pricing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "X-Amzn-Client-Token", type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Scope = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Service = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, location = "header", locationName = "X-Amzn-Client-Token", type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Scope = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Service = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), BillingEntity = structure(logical(0), tags = list(type = "string")), Tiering = structure(list(FreeTier = structure(list(Activated = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), UsageType = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -173,7 +173,7 @@ NULL
 
 .billingconductor$list_account_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), Filters = structure(list(Association = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), Filters = structure(list(Association = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -197,13 +197,25 @@ NULL
 
 .billingconductor$list_billing_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(Arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PricingPlan = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(Arns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), PricingPlan = structure(logical(0), tags = list(type = "string")), Statuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .billingconductor$list_billing_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(BillingGroups = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PrimaryAccountId = structure(logical(0), tags = list(type = "string")), ComputationPreference = structure(list(PricingPlanArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Size = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string")), StatusReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billingconductor$list_custom_line_item_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(BillingPeriodRange = structure(list(StartBillingPeriod = structure(logical(0), tags = list(type = "string")), EndBillingPeriod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.billingconductor$list_custom_line_item_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CustomLineItemVersions = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ChargeDetails = structure(list(Flat = structure(list(ChargeValue = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), Percentage = structure(list(PercentageValue = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CurrencyCode = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProductCode = structure(logical(0), tags = list(type = "string")), BillingGroupArn = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "long")), AssociationSize = structure(logical(0), tags = list(type = "long")), StartBillingPeriod = structure(logical(0), tags = list(type = "string")), EndBillingPeriod = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,7 +263,7 @@ NULL
 
 .billingconductor$list_pricing_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), PricingRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Scope = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Service = structure(logical(0), tags = list(type = "string")), AssociatedPricingPlanCount = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(BillingPeriod = structure(logical(0), tags = list(type = "string")), PricingRules = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Scope = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Service = structure(logical(0), tags = list(type = "string")), AssociatedPricingPlanCount = structure(logical(0), tags = list(type = "long")), CreationTime = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "long")), BillingEntity = structure(logical(0), tags = list(type = "string")), Tiering = structure(list(FreeTier = structure(list(Activated = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), UsageType = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -275,7 +287,7 @@ NULL
 
 .billingconductor$list_resources_associated_to_custom_line_item_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), AssociatedResources = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Relationship = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), AssociatedResources = structure(list(structure(list(Arn = structure(logical(0), tags = list(type = "string")), Relationship = structure(logical(0), tags = list(type = "string")), EndBillingPeriod = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -353,12 +365,12 @@ NULL
 
 .billingconductor$update_pricing_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Tiering = structure(list(FreeTier = structure(list(Activated = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .billingconductor$update_pricing_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Scope = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Service = structure(logical(0), tags = list(type = "string")), AssociatedPricingPlanCount = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Scope = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ModifierPercentage = structure(logical(0), tags = list(type = "double", box = TRUE)), Service = structure(logical(0), tags = list(type = "string")), AssociatedPricingPlanCount = structure(logical(0), tags = list(type = "long")), LastModifiedTime = structure(logical(0), tags = list(type = "long")), BillingEntity = structure(logical(0), tags = list(type = "string")), Tiering = structure(list(FreeTier = structure(list(Activated = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), UsageType = structure(logical(0), tags = list(type = "string")), Operation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

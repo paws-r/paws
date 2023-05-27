@@ -39,7 +39,7 @@ ivs_batch_get_channel <- function(arns) {
 #'
 #' See [https://paws-r.github.io/docs/ivs/batch_get_stream_key.html](https://paws-r.github.io/docs/ivs/batch_get_stream_key.html) for full documentation.
 #'
-#' @param arns &#91;required&#93; Array of ARNs, one per channel.
+#' @param arns &#91;required&#93; Array of ARNs, one per stream key.
 #'
 #' @keywords internal
 #'
@@ -70,6 +70,7 @@ ivs_batch_get_stream_key <- function(arns) {
 #'
 #' @param authorized Whether the channel is private (enabled for playback authorization).
 #' Default: `false`.
+#' @param insecureIngest Whether the channel allows insecure RTMP ingest. Default: `false`.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
 #' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
@@ -77,32 +78,41 @@ ivs_batch_get_stream_key <- function(arns) {
 #' @param name Channel name.
 #' @param recordingConfigurationArn Recording-configuration ARN. Default: "" (empty string, recording is
 #' disabled).
-#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
+#' [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable resolution or bitrate, the stream probably will
 #' disconnect immediately.* Default: `STANDARD`. Valid values:
 #' 
-#' -   `STANDARD`: Multiple qualities are generated from the original
-#'     input, to automatically give viewers the best experience for their
-#'     devices and network conditions. Resolution can be up to 1080p and
-#'     bitrate can be up to 8.5 Mbps. Audio is transcoded only for
-#'     renditions 360p and below; above that, audio is passed through.
+#' -   `STANDARD`: Video is transcoded: multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Transcoding
+#'     allows higher playback quality across a range of download speeds.
+#'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
+#'     Audio is transcoded only for renditions 360p and below; above that,
+#'     audio is passed through. This is the default.
 #' 
-#' -   `BASIC`: Amazon IVS delivers the original input to viewers. The
-#'     viewer’s video-quality choice is limited to the original input.
-#'     Resolution can be up to 480p and bitrate can be up to 1.5 Mbps.
+#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
+#'     to viewers. The viewer’s video-quality choice is limited to the
+#'     original input. Resolution can be up to 1080p and bitrate can be up
+#'     to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
+#'     and 1080p.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_create_channel
-ivs_create_channel <- function(authorized = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
+ivs_create_channel <- function(authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, tags = NULL, type = NULL) {
   op <- new_operation(
     name = "CreateChannel",
     http_method = "POST",
     http_path = "/CreateChannel",
     paginator = list()
   )
-  input <- .ivs$create_channel_input(authorized = authorized, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
+  input <- .ivs$create_channel_input(authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, tags = tags, type = type)
   output <- .ivs$create_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -123,7 +133,15 @@ ivs_create_channel <- function(authorized = NULL, latencyMode = NULL, name = NUL
 #' @param destinationConfiguration &#91;required&#93; A complex type that contains a destination configuration for where
 #' recorded video will be stored.
 #' @param name Recording-configuration name. The value does not need to be unique.
-#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`.
+#' @param recordingReconnectWindowSeconds If a broadcast disconnects and then reconnects within the specified
+#' interval, the multiple streams will be considered a single broadcast and
+#' merged together. Default: 0.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
+#' [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #' @param thumbnailConfiguration A complex type that allows you to enable/disable the recording of
 #' thumbnails for a live session and modify the interval at which
 #' thumbnails are generated for the live session.
@@ -131,14 +149,14 @@ ivs_create_channel <- function(authorized = NULL, latencyMode = NULL, name = NUL
 #' @keywords internal
 #'
 #' @rdname ivs_create_recording_configuration
-ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, tags = NULL, thumbnailConfiguration = NULL) {
+ivs_create_recording_configuration <- function(destinationConfiguration, name = NULL, recordingReconnectWindowSeconds = NULL, tags = NULL, thumbnailConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRecordingConfiguration",
     http_method = "POST",
     http_path = "/CreateRecordingConfiguration",
     paginator = list()
   )
-  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
+  input <- .ivs$create_recording_configuration_input(destinationConfiguration = destinationConfiguration, name = name, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, tags = tags, thumbnailConfiguration = thumbnailConfiguration)
   output <- .ivs$create_recording_configuration_output()
   config <- get_config()
   svc <- .ivs$service(config)
@@ -157,7 +175,12 @@ ivs_create_recording_configuration <- function(destinationConfiguration, name = 
 #' See [https://paws-r.github.io/docs/ivs/create_stream_key.html](https://paws-r.github.io/docs/ivs/create_stream_key.html) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; ARN of the channel for which to create the stream key.
-#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`.
+#' @param tags Array of 1-50 maps, each of the form `string:string (key:value)`. See
+#' [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #'
 #' @keywords internal
 #'
@@ -485,7 +508,11 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' @param name Playback-key-pair name. The value does not need to be unique.
 #' @param publicKeyMaterial &#91;required&#93; The public portion of a customer-generated key pair.
 #' @param tags Any tags provided with the request are added to the playback key pair
-#' tags.
+#' tags. See [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #'
 #' @keywords internal
 #'
@@ -518,7 +545,7 @@ ivs_import_playback_key_pair <- function(name = NULL, publicKeyMaterial, tags = 
 #' @param filterByName Filters the channel list to match the specified name.
 #' @param filterByRecordingConfigurationArn Filters the channel list to match the specified recording-configuration
 #' ARN.
-#' @param maxResults Maximum number of channels to return. Default: 50.
+#' @param maxResults Maximum number of channels to return. Default: 100.
 #' @param nextToken The first channel to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #'
@@ -549,9 +576,10 @@ ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfiguratio
 #'
 #' See [https://paws-r.github.io/docs/ivs/list_playback_key_pairs.html](https://paws-r.github.io/docs/ivs/list_playback_key_pairs.html) for full documentation.
 #'
-#' @param maxResults The first key pair to retrieve. This is used for pagination; see the
-#' `nextToken` response field. Default: 50.
-#' @param nextToken Maximum number of key pairs to return.
+#' @param maxResults Maximum number of key pairs to return. Default: your service quota or
+#' 100, whichever is smaller.
+#' @param nextToken The first key pair to retrieve. This is used for pagination; see the
+#' `nextToken` response field.
 #'
 #' @keywords internal
 #'
@@ -582,7 +610,8 @@ ivs_list_playback_key_pairs <- function(maxResults = NULL, nextToken = NULL) {
 #'
 #' See [https://paws-r.github.io/docs/ivs/list_recording_configurations.html](https://paws-r.github.io/docs/ivs/list_recording_configurations.html) for full documentation.
 #'
-#' @param maxResults Maximum number of recording configurations to return. Default: 50.
+#' @param maxResults Maximum number of recording configurations to return. Default: your
+#' service quota or 100, whichever is smaller.
 #' @param nextToken The first recording configuration to retrieve. This is used for
 #' pagination; see the `nextToken` response field.
 #'
@@ -614,7 +643,7 @@ ivs_list_recording_configurations <- function(maxResults = NULL, nextToken = NUL
 #' See [https://paws-r.github.io/docs/ivs/list_stream_keys.html](https://paws-r.github.io/docs/ivs/list_stream_keys.html) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
-#' @param maxResults Maximum number of streamKeys to return. Default: 50.
+#' @param maxResults Maximum number of streamKeys to return. Default: 1.
 #' @param nextToken The first stream key to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #'
@@ -647,7 +676,7 @@ ivs_list_stream_keys <- function(channelArn, maxResults = NULL, nextToken = NULL
 #' See [https://paws-r.github.io/docs/ivs/list_stream_sessions.html](https://paws-r.github.io/docs/ivs/list_stream_sessions.html) for full documentation.
 #'
 #' @param channelArn &#91;required&#93; Channel ARN used to filter the list.
-#' @param maxResults Maximum number of streams to return. Default: 50.
+#' @param maxResults Maximum number of streams to return. Default: 100.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #'
@@ -680,7 +709,7 @@ ivs_list_stream_sessions <- function(channelArn, maxResults = NULL, nextToken = 
 #' See [https://paws-r.github.io/docs/ivs/list_streams.html](https://paws-r.github.io/docs/ivs/list_streams.html) for full documentation.
 #'
 #' @param filterBy Filters the stream list to match the specified criterion.
-#' @param maxResults Maximum number of streams to return. Default: 50.
+#' @param maxResults Maximum number of streams to return. Default: 100.
 #' @param nextToken The first stream to retrieve. This is used for pagination; see the
 #' `nextToken` response field.
 #'
@@ -711,7 +740,7 @@ ivs_list_streams <- function(filterBy = NULL, maxResults = NULL, nextToken = NUL
 #'
 #' See [https://paws-r.github.io/docs/ivs/list_tags_for_resource.html](https://paws-r.github.io/docs/ivs/list_tags_for_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The ARN of the resource to be retrieved.
+#' @param resourceArn &#91;required&#93; The ARN of the resource to be retrieved. The ARN must be URL-encoded.
 #'
 #' @keywords internal
 #'
@@ -801,8 +830,14 @@ ivs_stop_stream <- function(channelArn) {
 #'
 #' See [https://paws-r.github.io/docs/ivs/tag_resource.html](https://paws-r.github.io/docs/ivs/tag_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be added or updated.
-#' @param tags &#91;required&#93; Array of tags to be added or updated.
+#' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be added or updated. The ARN
+#' must be URL-encoded.
+#' @param tags &#91;required&#93; Array of tags to be added or updated. Array of maps, each of the form
+#' `string:string (key:value)`. See [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #'
 #' @keywords internal
 #'
@@ -831,8 +866,14 @@ ivs_tag_resource <- function(resourceArn, tags) {
 #'
 #' See [https://paws-r.github.io/docs/ivs/untag_resource.html](https://paws-r.github.io/docs/ivs/untag_resource.html) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed.
-#' @param tagKeys &#91;required&#93; Array of tags to be removed.
+#' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed. The ARN must be
+#' URL-encoded.
+#' @param tagKeys &#91;required&#93; Array of tags to be removed. Array of maps, each of the form
+#' s`tring:string (key:value)`. See [Tagging Amazon Web Services
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS has no service-specific
+#' constraints beyond what is documented there.
 #'
 #' @keywords internal
 #'
@@ -863,6 +904,7 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param arn &#91;required&#93; ARN of the channel to be updated.
 #' @param authorized Whether the channel is private (enabled for playback authorization).
+#' @param insecureIngest Whether the channel allows insecure RTMP ingest. Default: `false`.
 #' @param latencyMode Channel latency mode. Use `NORMAL` to broadcast and deliver live video
 #' up to Full HD. Use `LOW` for near-real-time interaction with viewers.
 #' (Note: In the Amazon IVS console, `LOW` and `NORMAL` correspond to
@@ -875,27 +917,31 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' you exceed the allowable resolution or bitrate, the stream probably will
 #' disconnect immediately*. Valid values:
 #' 
-#' -   `STANDARD`: Multiple qualities are generated from the original
-#'     input, to automatically give viewers the best experience for their
-#'     devices and network conditions. Resolution can be up to 1080p and
-#'     bitrate can be up to 8.5 Mbps. Audio is transcoded only for
-#'     renditions 360p and below; above that, audio is passed through.
+#' -   `STANDARD`: Video is transcoded: multiple qualities are generated
+#'     from the original input, to automatically give viewers the best
+#'     experience for their devices and network conditions. Transcoding
+#'     allows higher playback quality across a range of download speeds.
+#'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
+#'     Audio is transcoded only for renditions 360p and below; above that,
+#'     audio is passed through. This is the default.
 #' 
-#' -   `BASIC`: Amazon IVS delivers the original input to viewers. The
-#'     viewer’s video-quality choice is limited to the original input.
-#'     Resolution can be up to 480p and bitrate can be up to 1.5 Mbps.
+#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
+#'     to viewers. The viewer’s video-quality choice is limited to the
+#'     original input. Resolution can be up to 1080p and bitrate can be up
+#'     to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions between 480p
+#'     and 1080p.
 #'
 #' @keywords internal
 #'
 #' @rdname ivs_update_channel
-ivs_update_channel <- function(arn, authorized = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, type = NULL) {
+ivs_update_channel <- function(arn, authorized = NULL, insecureIngest = NULL, latencyMode = NULL, name = NULL, recordingConfigurationArn = NULL, type = NULL) {
   op <- new_operation(
     name = "UpdateChannel",
     http_method = "POST",
     http_path = "/UpdateChannel",
     paginator = list()
   )
-  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, type = type)
+  input <- .ivs$update_channel_input(arn = arn, authorized = authorized, insecureIngest = insecureIngest, latencyMode = latencyMode, name = name, recordingConfigurationArn = recordingConfigurationArn, type = type)
   output <- .ivs$update_channel_output()
   config <- get_config()
   svc <- .ivs$service(config)

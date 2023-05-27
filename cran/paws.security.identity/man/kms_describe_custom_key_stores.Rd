@@ -17,16 +17,16 @@ key store ID.
 
 By default, this operation gets information about all custom key stores
 in the account and Region. To limit the output to a particular custom
-key store, you can use either the \code{CustomKeyStoreId} or
-\code{CustomKeyStoreName} parameter, but not both.}
+key store, provide either the \code{CustomKeyStoreId} or \code{CustomKeyStoreName}
+parameter, but not both.}
 
 \item{CustomKeyStoreName}{Gets only information about the specified custom key store. Enter the
 friendly name of the custom key store.
 
 By default, this operation gets information about all custom key stores
 in the account and Region. To limit the output to a particular custom
-key store, you can use either the \code{CustomKeyStoreId} or
-\code{CustomKeyStoreName} parameter, but not both.}
+key store, provide either the \code{CustomKeyStoreId} or \code{CustomKeyStoreName}
+parameter, but not both.}
 
 \item{Limit}{Use this parameter to specify the maximum number of items to return.
 When this value is present, KMS does not return more than the specified

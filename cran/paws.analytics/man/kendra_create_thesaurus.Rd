@@ -21,12 +21,14 @@ kendra_create_thesaurus(
 
 \item{Description}{A description for the thesaurus.}
 
-\item{RoleArn}{[required] An IAM role that gives Amazon Kendra permissions to access thesaurus
-file specified in \code{SourceS3Path}.}
+\item{RoleArn}{[required] The Amazon Resource Name (ARN) of an IAM role with permission to access
+your S3 bucket that contains the thesaurus file. For more information,
+see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
-\item{Tags}{A list of key-value pairs that identify the thesaurus. You can use the
-tags to identify and organize your resources and to control access to
-resources.}
+\item{Tags}{A list of key-value pairs that identify or categorize the thesaurus. You
+can also use tags to help control access to the thesaurus. Tag keys and
+values can consist of Unicode letters, digits, white space, and any of
+the following symbols: _ . : / = + - @.}
 
 \item{SourceS3Path}{[required] The path to the thesaurus file in S3.}
 

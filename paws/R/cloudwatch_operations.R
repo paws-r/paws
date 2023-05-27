@@ -12,7 +12,11 @@ NULL
 #' alarms with one operation, but you can't delete two composite alarms
 #' with one operation.
 #' 
-#' In the event of an error, no alarms are deleted.
+#' If you specify an incorrect alarm name or make any other error in the
+#' operation, no alarms are deleted. To confirm that alarms were deleted
+#' successfully, you can use the
+#' [`describe_alarms`][cloudwatch_describe_alarms] operation after using
+#' [`delete_alarms`][cloudwatch_delete_alarms].
 #' 
 #' It is possible to create a loop or cycle of composite alarms, where
 #' composite alarm A depends on composite alarm B, and composite alarm B
@@ -24,7 +28,7 @@ NULL
 #' To get out of such a situation, you must break the cycle by changing the
 #' rule of one of the composite alarms in the cycle to remove a dependency
 #' that creates the cycle. The simplest change to make to break a cycle is
-#' to change the `AlarmRule` of one of the alarms to `False`.
+#' to change the `AlarmRule` of one of the alarms to `false`.
 #' 
 #' Additionally, the evaluation of composite alarms stops if CloudWatch
 #' detects a cycle in the evaluation path.
@@ -32,7 +36,7 @@ NULL
 #' @usage
 #' cloudwatch_delete_alarms(AlarmNames)
 #'
-#' @param AlarmNames &#91;required&#93; The alarms to be deleted.
+#' @param AlarmNames &#91;required&#93; The alarms to be deleted. Do not enclose the alarm names in quote marks.
 #'
 #' @return
 #' An empty list.
@@ -622,7 +626,11 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #'           AccountId = "string"
 #'         )
 #'       ),
-#'       ThresholdMetricId = "string"
+#'       ThresholdMetricId = "string",
+#'       EvaluationState = "PARTIAL_DATA",
+#'       StateTransitionedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -768,7 +776,11 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #'           AccountId = "string"
 #'         )
 #'       ),
-#'       ThresholdMetricId = "string"
+#'       ThresholdMetricId = "string",
+#'       EvaluationState = "PARTIAL_DATA",
+#'       StateTransitionedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -990,7 +1002,8 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 #'       Name = "string",
 #'       State = "string",
 #'       Schema = "string",
-#'       Definition = "string"
+#'       Definition = "string",
+#'       ManagedRule = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -1616,7 +1629,7 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #'       Values = list(
 #'         123.0
 #'       ),
-#'       StatusCode = "Complete"|"InternalError"|"PartialData",
+#'       StatusCode = "Complete"|"InternalError"|"PartialData"|"Forbidden",
 #'       Messages = list(
 #'         list(
 #'           Code = "string",
@@ -1942,12 +1955,18 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #'   Name = "string",
 #'   IncludeFilters = list(
 #'     list(
-#'       Namespace = "string"
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   ExcludeFilters = list(
 #'     list(
-#'       Namespace = "string"
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   FirehoseArn = "string",
@@ -1972,7 +1991,8 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   IncludeLinkedAccountsMetrics = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2185,6 +2205,73 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 }
 .cloudwatch$operations$list_dashboards <- cloudwatch_list_dashboards
 
+#' Returns a list that contains the number of managed Contributor Insights
+#' rules in your account
+#'
+#' @description
+#' Returns a list that contains the number of managed Contributor Insights
+#' rules in your account.
+#'
+#' @usage
+#' cloudwatch_list_managed_insight_rules(ResourceARN, NextToken,
+#'   MaxResults)
+#'
+#' @param ResourceARN &#91;required&#93; The ARN of an Amazon Web Services resource that has managed Contributor
+#' Insights rules.
+#' @param NextToken Include this value to get the next set of rules if the value was
+#' returned by the previous operation.
+#' @param MaxResults The maximum number of results to return in one operation. If you omit
+#' this parameter, the default number is used. The default number is `100`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ManagedRules = list(
+#'     list(
+#'       TemplateName = "string",
+#'       ResourceARN = "string",
+#'       RuleState = list(
+#'         RuleName = "string",
+#'         State = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_managed_insight_rules(
+#'   ResourceARN = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_list_managed_insight_rules
+#'
+#' @aliases cloudwatch_list_managed_insight_rules
+cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListManagedInsightRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$list_managed_insight_rules_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .cloudwatch$list_managed_insight_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$list_managed_insight_rules <- cloudwatch_list_managed_insight_rules
+
 #' Returns a list of metric streams in this account
 #'
 #' @description
@@ -2255,16 +2342,21 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' @description
 #' List the specified metrics. You can use the returned metrics with
 #' [`get_metric_data`][cloudwatch_get_metric_data] or
-#' [`get_metric_statistics`][cloudwatch_get_metric_statistics] to obtain
+#' [`get_metric_statistics`][cloudwatch_get_metric_statistics] to get
 #' statistical data.
 #' 
 #' Up to 500 results are returned for any one call. To retrieve additional
 #' results, use the returned token with subsequent calls.
 #' 
-#' After you create a metric, allow up to 15 minutes before the metric
-#' appears. You can see statistics about the metric sooner by using
+#' After you create a metric, allow up to 15 minutes for the metric to
+#' appear. To see metric statistics sooner, use
 #' [`get_metric_data`][cloudwatch_get_metric_data] or
 #' [`get_metric_statistics`][cloudwatch_get_metric_statistics].
+#' 
+#' If you are using CloudWatch cross-account observability, you can use
+#' this operation in a monitoring account and view metrics from the linked
+#' source accounts. For more information, see [CloudWatch cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html).
 #' 
 #' [`list_metrics`][cloudwatch_list_metrics] doesn't return information
 #' about metrics if those metrics haven't reported data in the past two
@@ -2274,7 +2366,7 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #'
 #' @usage
 #' cloudwatch_list_metrics(Namespace, MetricName, Dimensions, NextToken,
-#'   RecentlyActive)
+#'   RecentlyActive, IncludeLinkedAccounts, OwningAccount)
 #'
 #' @param Namespace The metric namespace to filter against. Only the namespace that matches
 #' exactly will be returned.
@@ -2292,6 +2384,14 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' specify. There is a low probability that the returned results include
 #' metrics with last published data as much as 40 minutes more than the
 #' specified time interval.
+#' @param IncludeLinkedAccounts If you are using this operation in a monitoring account, specify `true`
+#' to include metrics from source accounts in the returned data.
+#' 
+#' The default is `false`.
+#' @param OwningAccount When you use this operation in a monitoring account, use this field to
+#' return metrics only from one source account. To do so, specify that
+#' source account ID in this field, and also specify `true` for
+#' `IncludeLinkedAccounts`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2309,7 +2409,10 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #'       )
 #'     )
 #'   ),
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   OwningAccounts = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -2325,7 +2428,9 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #'     )
 #'   ),
 #'   NextToken = "string",
-#'   RecentlyActive = "PT3H"
+#'   RecentlyActive = "PT3H",
+#'   IncludeLinkedAccounts = TRUE|FALSE,
+#'   OwningAccount = "string"
 #' )
 #' ```
 #'
@@ -2334,14 +2439,14 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' @rdname cloudwatch_list_metrics
 #'
 #' @aliases cloudwatch_list_metrics
-cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, NextToken = NULL, RecentlyActive = NULL) {
+cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensions = NULL, NextToken = NULL, RecentlyActive = NULL, IncludeLinkedAccounts = NULL, OwningAccount = NULL) {
   op <- new_operation(
     name = "ListMetrics",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$list_metrics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, NextToken = NextToken, RecentlyActive = RecentlyActive)
+  input <- .cloudwatch$list_metrics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, NextToken = NextToken, RecentlyActive = RecentlyActive, IncludeLinkedAccounts = IncludeLinkedAccounts, OwningAccount = OwningAccount)
   output <- .cloudwatch$list_metrics_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)
@@ -2600,7 +2705,7 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' To get out of such a situation, you must break the cycle by changing the
 #' rule of one of the composite alarms in the cycle to remove a dependency
 #' that creates the cycle. The simplest change to make to break a cycle is
-#' to change the `AlarmRule` of one of the alarms to `False`.
+#' to change the `AlarmRule` of one of the alarms to `false`.
 #' 
 #' Additionally, the evaluation of composite alarms stops if CloudWatch
 #' detects a cycle in the evaluation path.
@@ -2942,12 +3047,94 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 }
 .cloudwatch$operations$put_insight_rule <- cloudwatch_put_insight_rule
 
+#' Creates a managed Contributor Insights rule for a specified Amazon Web
+#' Services resource
+#'
+#' @description
+#' Creates a managed Contributor Insights rule for a specified Amazon Web
+#' Services resource. When you enable a managed rule, you create a
+#' Contributor Insights rule that collects data from Amazon Web Services
+#' services. You cannot edit these rules with
+#' [`put_insight_rule`][cloudwatch_put_insight_rule]. The rules can be
+#' enabled, disabled, and deleted using
+#' [`enable_insight_rules`][cloudwatch_enable_insight_rules],
+#' [`disable_insight_rules`][cloudwatch_disable_insight_rules], and
+#' [`delete_insight_rules`][cloudwatch_delete_insight_rules]. If a
+#' previously created managed rule is currently disabled, a subsequent call
+#' to this API will re-enable it. Use
+#' [`list_managed_insight_rules`][cloudwatch_list_managed_insight_rules] to
+#' describe all available rules.
+#'
+#' @usage
+#' cloudwatch_put_managed_insight_rules(ManagedRules)
+#'
+#' @param ManagedRules &#91;required&#93; A list of `ManagedRules` to enable.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Failures = list(
+#'     list(
+#'       FailureResource = "string",
+#'       ExceptionType = "string",
+#'       FailureCode = "string",
+#'       FailureDescription = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_managed_insight_rules(
+#'   ManagedRules = list(
+#'     list(
+#'       TemplateName = "string",
+#'       ResourceARN = "string",
+#'       Tags = list(
+#'         list(
+#'           Key = "string",
+#'           Value = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_put_managed_insight_rules
+#'
+#' @aliases cloudwatch_put_managed_insight_rules
+cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
+  op <- new_operation(
+    name = "PutManagedInsightRules",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatch$put_managed_insight_rules_input(ManagedRules = ManagedRules)
+  output <- .cloudwatch$put_managed_insight_rules_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$put_managed_insight_rules <- cloudwatch_put_managed_insight_rules
+
 #' Creates or updates an alarm and associates it with the specified metric,
-#' metric math expression, or anomaly detection model
+#' metric math expression, anomaly detection model, or Metrics Insights
+#' query
 #'
 #' @description
 #' Creates or updates an alarm and associates it with the specified metric,
-#' metric math expression, or anomaly detection model.
+#' metric math expression, anomaly detection model, or Metrics Insights
+#' query. For more information about using a Metrics Insights query for an
+#' alarm, see [Create alarms on Metrics Insights
+#' queries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html).
 #' 
 #' Alarms based on anomaly detection models cannot have Auto Scaling
 #' actions.
@@ -2963,10 +3150,11 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' If you are an IAM user, you must have Amazon EC2 permissions for some
 #' alarm operations:
 #' 
-#' -   The `iam:CreateServiceLinkedRole` for all alarms with EC2 actions
+#' -   The `iam:CreateServiceLinkedRole` permission for all alarms with EC2
+#'     actions
 #' 
-#' -   The `iam:CreateServiceLinkedRole` to create an alarm with Systems
-#'     Manager OpsItem actions.
+#' -   The `iam:CreateServiceLinkedRole` permissions to create an alarm
+#'     with Systems Manager OpsItem or response plan actions.
 #' 
 #' The first time you create an alarm in the Amazon Web Services Management
 #' Console, the CLI, or by using the PutMetricAlarm API, CloudWatch creates
@@ -2975,6 +3163,9 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' `AWSServiceRoleForCloudWatchAlarms_ActionSSM`. For more information, see
 #' [Amazon Web Services service-linked
 #' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role).
+#' 
+#' Each [`put_metric_alarm`][cloudwatch_put_metric_alarm] action has a
+#' maximum uncompressed payload of 120 KB.
 #' 
 #' **Cross-account alarms**
 #' 
@@ -3008,66 +3199,117 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #'   ThresholdMetricId)
 #'
 #' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within the Region.
+#' 
+#' The name must contain only UTF-8 characters, and can't contain ASCII
+#' control characters
 #' @param AlarmDescription The description for the alarm.
 #' @param ActionsEnabled Indicates whether actions should be executed during any changes to the
 #' alarm state. The default is `TRUE`.
 #' @param OKActions The actions to execute when this alarm transitions to an `OK` state from
 #' any other state. Each action is specified as an Amazon Resource Name
-#' (ARN).
+#' (ARN). Valid values:
 #' 
-#' Valid Values: `arn:aws:automate:region:ec2:stop` |
-#' `arn:aws:automate:region:ec2:terminate` |
-#' `arn:aws:automate:region:ec2:recover` |
-#' `arn:aws:automate:region:ec2:reboot` |
-#' `arn:aws:sns:region:account-id:sns-topic-name ` |
-#' `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' **EC2 actions:**
 #' 
-#' Valid Values (for use with IAM roles):
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0`
+#' -   `arn:aws:automate:region:ec2:stop`
+#' 
+#' -   `arn:aws:automate:region:ec2:terminate`
+#' 
+#' -   `arn:aws:automate:region:ec2:reboot`
+#' 
+#' -   `arn:aws:automate:region:ec2:recover`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0`
+#' 
+#' **Autoscaling action:**
+#' 
+#' -   `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' 
+#' **SNS notification action:**
+#' 
+#' -   `arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' 
+#' **SSM integration actions:**
+#' 
+#' -   `arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name `
+#' 
+#' -   `arn:aws:ssm-incidents::account-id:responseplan/response-plan-name `
 #' @param AlarmActions The actions to execute when this alarm transitions to the `ALARM` state
 #' from any other state. Each action is specified as an Amazon Resource
-#' Name (ARN).
+#' Name (ARN). Valid values:
 #' 
-#' Valid Values: `arn:aws:automate:region:ec2:stop` |
-#' `arn:aws:automate:region:ec2:terminate` |
-#' `arn:aws:automate:region:ec2:recover` |
-#' `arn:aws:automate:region:ec2:reboot` |
-#' `arn:aws:sns:region:account-id:sns-topic-name ` |
-#' `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
-#' | `arn:aws:ssm:region:account-id:opsitem:severity ` |
-#' `arn:aws:ssm-incidents::account-id:response-plan:response-plan-name `
+#' **EC2 actions:**
 #' 
-#' Valid Values (for use with IAM roles):
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0`
+#' -   `arn:aws:automate:region:ec2:stop`
+#' 
+#' -   `arn:aws:automate:region:ec2:terminate`
+#' 
+#' -   `arn:aws:automate:region:ec2:reboot`
+#' 
+#' -   `arn:aws:automate:region:ec2:recover`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0`
+#' 
+#' **Autoscaling action:**
+#' 
+#' -   `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' 
+#' **SNS notification action:**
+#' 
+#' -   `arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' 
+#' **SSM integration actions:**
+#' 
+#' -   `arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name `
+#' 
+#' -   `arn:aws:ssm-incidents::account-id:responseplan/response-plan-name `
 #' @param InsufficientDataActions The actions to execute when this alarm transitions to the
 #' `INSUFFICIENT_DATA` state from any other state. Each action is specified
-#' as an Amazon Resource Name (ARN).
+#' as an Amazon Resource Name (ARN). Valid values:
 #' 
-#' Valid Values: `arn:aws:automate:region:ec2:stop` |
-#' `arn:aws:automate:region:ec2:terminate` |
-#' `arn:aws:automate:region:ec2:recover` |
-#' `arn:aws:automate:region:ec2:reboot` |
-#' `arn:aws:sns:region:account-id:sns-topic-name ` |
-#' `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' **EC2 actions:**
 #' 
-#' Valid Values (for use with IAM roles):
-#' `>arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
-#' |
-#' `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' -   `arn:aws:automate:region:ec2:stop`
+#' 
+#' -   `arn:aws:automate:region:ec2:terminate`
+#' 
+#' -   `arn:aws:automate:region:ec2:reboot`
+#' 
+#' -   `arn:aws:automate:region:ec2:recover`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Stop/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Terminate/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Reboot/1.0`
+#' 
+#' -   `arn:aws:swf:region:account-id:action/actions/AWS_EC2.InstanceId.Recover/1.0`
+#' 
+#' **Autoscaling action:**
+#' 
+#' -   `arn:aws:autoscaling:region:account-id:scalingPolicy:policy-id:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' 
+#' **SNS notification action:**
+#' 
+#' -   `arn:aws:sns:region:account-id:sns-topic-name:autoScalingGroupName/group-friendly-name:policyName/policy-friendly-name `
+#' 
+#' **SSM integration actions:**
+#' 
+#' -   `arn:aws:ssm:region:account-id:opsitem:severity#CATEGORY=category-name `
+#' 
+#' -   `arn:aws:ssm-incidents::account-id:responseplan/response-plan-name `
 #' @param MetricName The name for the metric associated with the alarm. For each
 #' [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must
 #' specify either `MetricName` or a `Metrics` array.
@@ -3366,7 +3608,8 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' @usage
 #' cloudwatch_put_metric_data(Namespace, MetricData)
 #'
-#' @param Namespace &#91;required&#93; The namespace for the metric data.
+#' @param Namespace &#91;required&#93; The namespace for the metric data. You can use ASCII characters for the
+#' namespace, except for control characters which are not supported.
 #' 
 #' To avoid conflicts with Amazon Web Services service namespaces, you
 #' should not specify a namespace that begins with `AWS/`
@@ -3438,13 +3681,13 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #'
 #' @description
 #' Creates or updates a metric stream. Metric streams can automatically
-#' stream CloudWatch metrics to Amazon Web Services destinations including
-#' Amazon S3 and to many third-party solutions.
+#' stream CloudWatch metrics to Amazon Web Services destinations, including
+#' Amazon S3, and to many third-party solutions.
 #' 
 #' For more information, see [Using Metric
 #' Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
 #' 
-#' To create a metric stream, you must be logged on to an account that has
+#' To create a metric stream, you must be signed in to an account that has
 #' the `iam:PassRole` permission and either the `CloudWatchFullAccess`
 #' policy or the `cloudwatch:PutMetricStream` permission.
 #' 
@@ -3461,19 +3704,26 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' 
 #' By default, a metric stream always sends the `MAX`, `MIN`, `SUM`, and
 #' `SAMPLECOUNT` statistics for each metric that is streamed. You can use
-#' the `StatisticsConfigurations` parameter to have the metric stream also
-#' send additional statistics in the stream. Streaming additional
-#' statistics incurs additional costs. For more information, see [Amazon
-#' CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
+#' the `StatisticsConfigurations` parameter to have the metric stream send
+#' additional statistics in the stream. Streaming additional statistics
+#' incurs additional costs. For more information, see [Amazon CloudWatch
+#' Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
 #' When you use [`put_metric_stream`][cloudwatch_put_metric_stream] to
 #' create a new metric stream, the stream is created in the `running`
 #' state. If you use it to update an existing stream, the state of the
 #' stream is not changed.
+#' 
+#' If you are using CloudWatch cross-account observability and you create a
+#' metric stream in a monitoring account, you can choose whether to include
+#' metrics from source accounts in the stream. For more information, see
+#' [CloudWatch cross-account
+#' observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html).
 #'
 #' @usage
 #' cloudwatch_put_metric_stream(Name, IncludeFilters, ExcludeFilters,
-#'   FirehoseArn, RoleArn, OutputFormat, Tags, StatisticsConfigurations)
+#'   FirehoseArn, RoleArn, OutputFormat, Tags, StatisticsConfigurations,
+#'   IncludeLinkedAccountsMetrics)
 #'
 #' @param Name &#91;required&#93; If you are creating a new metric stream, this is the name for the new
 #' stream. The name must be different than the names of other metric
@@ -3493,13 +3743,13 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' 
 #' You cannot include `ExcludeFilters` and `IncludeFilters` in the same
 #' operation.
-#' @param FirehoseArn &#91;required&#93; The ARN of the Amazon Kinesis Firehose delivery stream to use for this
-#' metric stream. This Amazon Kinesis Firehose delivery stream must already
-#' exist and must be in the same account as the metric stream.
+#' @param FirehoseArn &#91;required&#93; The ARN of the Amazon Kinesis Data Firehose delivery stream to use for
+#' this metric stream. This Amazon Kinesis Data Firehose delivery stream
+#' must already exist and must be in the same account as the metric stream.
 #' @param RoleArn &#91;required&#93; The ARN of an IAM role that this metric stream will use to access Amazon
-#' Kinesis Firehose resources. This IAM role must already exist and must be
-#' in the same account as the metric stream. This IAM role must include the
-#' following permissions:
+#' Kinesis Data Firehose resources. This IAM role must already exist and
+#' must be in the same account as the metric stream. This IAM role must
+#' include the following permissions:
 #' 
 #' -   firehose:PutRecord
 #' 
@@ -3534,7 +3784,9 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' [CloudWatch statistics
 #' definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/).
 #' If the `OutputFormat` is `opentelemetry0.7`, you can stream percentile
-#' statistics such as p95, p99.9 and so on.
+#' statistics such as p95, p99.9, and so on.
+#' @param IncludeLinkedAccountsMetrics If you are creating a metric stream in a monitoring account, specify
+#' `true` to include metrics from source accounts in the metric stream.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3550,12 +3802,18 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #'   Name = "string",
 #'   IncludeFilters = list(
 #'     list(
-#'       Namespace = "string"
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   ExcludeFilters = list(
 #'     list(
-#'       Namespace = "string"
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   FirehoseArn = "string",
@@ -3579,7 +3837,8 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   IncludeLinkedAccountsMetrics = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3588,14 +3847,14 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' @rdname cloudwatch_put_metric_stream
 #'
 #' @aliases cloudwatch_put_metric_stream
-cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFilters = NULL, FirehoseArn, RoleArn, OutputFormat, Tags = NULL, StatisticsConfigurations = NULL) {
+cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFilters = NULL, FirehoseArn, RoleArn, OutputFormat, Tags = NULL, StatisticsConfigurations = NULL, IncludeLinkedAccountsMetrics = NULL) {
   op <- new_operation(
     name = "PutMetricStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatch$put_metric_stream_input(Name = Name, IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters, FirehoseArn = FirehoseArn, RoleArn = RoleArn, OutputFormat = OutputFormat, Tags = Tags, StatisticsConfigurations = StatisticsConfigurations)
+  input <- .cloudwatch$put_metric_stream_input(Name = Name, IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters, FirehoseArn = FirehoseArn, RoleArn = RoleArn, OutputFormat = OutputFormat, Tags = Tags, StatisticsConfigurations = StatisticsConfigurations, IncludeLinkedAccountsMetrics = IncludeLinkedAccountsMetrics)
   output <- .cloudwatch$put_metric_stream_output()
   config <- get_config()
   svc <- .cloudwatch$service(config)

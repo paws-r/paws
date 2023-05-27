@@ -22,7 +22,7 @@ cloudwatchlogs_put_metric_filter(
 \item{metricTransformations}{[required] A collection of information that defines how metric data gets emitted.}
 }
 \description{
-Creates or updates a metric filter and associates it with the specified log group. Metric filters allow you to configure rules to extract metric data from log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.
+Creates or updates a metric filter and associates it with the specified log group. With metric filters, you can configure rules to extract metric data from log events ingested through \code{\link[=cloudwatchlogs_put_log_events]{put_log_events}}.
 
 See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_metric_filter.html} for full documentation.
 }

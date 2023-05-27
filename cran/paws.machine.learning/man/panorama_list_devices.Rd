@@ -4,13 +4,29 @@
 \alias{panorama_list_devices}
 \title{Returns a list of devices}
 \usage{
-panorama_list_devices(MaxResults = NULL, NextToken = NULL)
+panorama_list_devices(
+  DeviceAggregatedStatusFilter = NULL,
+  MaxResults = NULL,
+  NameFilter = NULL,
+  NextToken = NULL,
+  SortBy = NULL,
+  SortOrder = NULL
+)
 }
 \arguments{
+\item{DeviceAggregatedStatusFilter}{Filter based on a device's status.}
+
 \item{MaxResults}{The maximum number of devices to return in one page of results.}
+
+\item{NameFilter}{Filter based on device's name. Prefixes supported.}
 
 \item{NextToken}{Specify the pagination token from a previous request to retrieve the
 next page of results.}
+
+\item{SortBy}{The target column to be sorted on. Default column sort is CREATED_TIME.}
+
+\item{SortOrder}{The sorting order for the returned list. SortOrder is DESCENDING by
+default based on CREATED_TIME. Otherwise, SortOrder is ASCENDING.}
 }
 \description{
 Returns a list of devices.

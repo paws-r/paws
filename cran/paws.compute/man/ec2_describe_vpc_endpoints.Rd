@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_vpc_endpoints}
 \alias{ec2_describe_vpc_endpoints}
-\title{Describes one or more of your VPC endpoints}
+\title{Describes your VPC endpoints}
 \usage{
 ec2_describe_vpc_endpoints(
   DryRun = NULL,
@@ -18,19 +18,12 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{VpcEndpointIds}{One or more endpoint IDs.}
+\item{VpcEndpointIds}{The IDs of the VPC endpoints.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{ip-address-type} - The IP address type (\code{ipv4} | \code{ipv6}).
 \item \code{service-name} - The name of the service.
-\item \code{vpc-id} - The ID of the VPC in which the endpoint resides.
-\item \code{vpc-endpoint-id} - The ID of the endpoint.
-\item \code{vpc-endpoint-state} - The state of the endpoint
-(\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} |
-\code{deleted} | \code{rejected} | \code{failed}).
-\item \code{vpc-endpoint-type} - The type of VPC endpoint (\code{Interface} |
-\code{Gateway} | \code{GatewayLoadBalancer}).
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag
@@ -39,6 +32,13 @@ the filter name and \code{TeamA} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the resource. Use this
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
+\item \code{vpc-id} - The ID of the VPC in which the endpoint resides.
+\item \code{vpc-endpoint-id} - The ID of the endpoint.
+\item \code{vpc-endpoint-state} - The state of the endpoint
+(\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} |
+\code{deleted} | \code{rejected} | \code{failed}).
+\item \code{vpc-endpoint-type} - The type of VPC endpoint (\code{Interface} |
+\code{Gateway} | \code{GatewayLoadBalancer}).
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. The request
@@ -52,7 +52,7 @@ items.}
 from a prior call.)}
 }
 \description{
-Describes one or more of your VPC endpoints.
+Describes your VPC endpoints.
 
 See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoints.html} for full documentation.
 }

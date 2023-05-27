@@ -2,8 +2,9 @@
 % Please edit documentation in R/locationservice_operations.R
 \name{locationservice_create_map}
 \alias{locationservice_create_map}
-\title{Creates a map resource in your AWS account, which provides map tiles of
-different styles sourced from global location data providers}
+\title{Creates a map resource in your Amazon Web Services account, which
+provides map tiles of different styles sourced from global location data
+providers}
 \usage{
 locationservice_create_map(
   Configuration,
@@ -14,7 +15,9 @@ locationservice_create_map(
 )
 }
 \arguments{
-\item{Configuration}{[required] Specifies the map style selected from an available data provider.}
+\item{Configuration}{[required] Specifies the \code{MapConfiguration}, including the map style, for the map
+resource that you create. The map style defines the look of maps and the
+data provider for your map resource.}
 
 \item{Description}{An optional description for the map resource.}
 
@@ -49,7 +52,7 @@ characters: + - = . _ : / @.
 }}
 }
 \description{
-Creates a map resource in your AWS account, which provides map tiles of different styles sourced from global location data providers.
+Creates a map resource in your Amazon Web Services account, which provides map tiles of different styles sourced from global location data providers.
 
 See \url{https://paws-r.github.io/docs/locationservice/create_map.html} for full documentation.
 }

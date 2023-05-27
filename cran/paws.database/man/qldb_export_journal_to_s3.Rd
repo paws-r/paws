@@ -45,8 +45,7 @@ export request.}
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants QLDB
 permissions for a journal export job to do the following:
 \itemize{
-\item Write objects into your Amazon Simple Storage Service (Amazon S3)
-bucket.
+\item Write objects into your Amazon S3 bucket.
 \item (Optional) Use your customer managed key in Key Management Service
 (KMS) for server-side encryption of your exported data.
 }
@@ -55,8 +54,18 @@ To pass a role to QLDB when requesting a journal export, you must have
 permissions to perform the \code{iam:PassRole} action on the IAM role
 resource. This is required for all journal export requests.}
 
-\item{OutputFormat}{The output format of your exported journal data. If this parameter is
-not specified, the exported data defaults to \code{ION_TEXT} format.}
+\item{OutputFormat}{The output format of your exported journal data. A journal export job
+can write the data objects in either the text or binary representation
+of \href{https://docs.aws.amazon.com/qldb/latest/developerguide/ion.html}{Amazon Ion}
+format, or in \href{https://jsonlines.org/}{JSON Lines} text format.
+
+Default: \code{ION_TEXT}
+
+In JSON Lines format, each journal block in an exported data object is a
+valid JSON object that is delimited by a newline. You can use this
+format to directly integrate JSON exports with analytics tools such as
+Amazon Athena and Glue because these services can parse
+newline-delimited JSON automatically.}
 }
 \description{
 Exports journal contents within a date and time range from a ledger into a specified Amazon Simple Storage Service (Amazon S3) bucket. A journal export job can write the data objects in either the text or binary representation of Amazon Ion format, or in \emph{JSON Lines} text format.

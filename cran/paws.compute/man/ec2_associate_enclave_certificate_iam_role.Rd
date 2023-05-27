@@ -6,15 +6,15 @@
 Certificate Manager (ACM) certificate}
 \usage{
 ec2_associate_enclave_certificate_iam_role(
-  CertificateArn = NULL,
-  RoleArn = NULL,
+  CertificateArn,
+  RoleArn,
   DryRun = NULL
 )
 }
 \arguments{
-\item{CertificateArn}{The ARN of the ACM certificate with which to associate the IAM role.}
+\item{CertificateArn}{[required] The ARN of the ACM certificate with which to associate the IAM role.}
 
-\item{RoleArn}{The ARN of the IAM role to associate with the ACM certificate. You can
+\item{RoleArn}{[required] The ARN of the IAM role to associate with the ACM certificate. You can
 associate up to 16 IAM roles with an ACM certificate.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

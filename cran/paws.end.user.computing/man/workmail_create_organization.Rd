@@ -2,7 +2,7 @@
 % Please edit documentation in R/workmail_operations.R
 \name{workmail_create_organization}
 \alias{workmail_create_organization}
-\title{Creates a new Amazon WorkMail organization}
+\title{Creates a new WorkMail organization}
 \usage{
 workmail_create_organization(
   DirectoryId = NULL,
@@ -22,15 +22,14 @@ workmail_create_organization(
 
 \item{Domains}{The email domains to associate with the organization.}
 
-\item{KmsKeyArn}{The Amazon Resource Name (ARN) of a customer managed master key from AWS
-KMS.}
+\item{KmsKeyArn}{The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.}
 
-\item{EnableInteroperability}{When \code{true}, allows organization interoperability between Amazon
-WorkMail and Microsoft Exchange. Can only be set to \code{true} if an AD
-Connector directory ID is included in the request.}
+\item{EnableInteroperability}{When \code{true}, allows organization interoperability between WorkMail and
+Microsoft Exchange. If \code{true}, you must include a AD Connector directory
+ID in the request.}
 }
 \description{
-Creates a new Amazon WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new Amazon WorkMail directory for you. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html}{Adding an organization} in the \emph{Amazon WorkMail Administrator Guide}.
+Creates a new WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new WorkMail directory for you. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html}{Adding an organization} in the \emph{WorkMail Administrator Guide}.
 
 See \url{https://paws-r.github.io/docs/workmail/create_organization.html} for full documentation.
 }

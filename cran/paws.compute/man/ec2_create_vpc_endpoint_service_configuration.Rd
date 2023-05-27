@@ -3,7 +3,7 @@
 \name{ec2_create_vpc_endpoint_service_configuration}
 \alias{ec2_create_vpc_endpoint_service_configuration}
 \title{Creates a VPC endpoint service to which service consumers (Amazon Web
-Services accounts, IAM users, and IAM roles) can connect}
+Services accounts, users, and IAM roles) can connect}
 \usage{
 ec2_create_vpc_endpoint_service_configuration(
   DryRun = NULL,
@@ -28,10 +28,9 @@ to your service must be accepted manually.}
 \item{PrivateDnsName}{(Interface endpoint configuration) The private DNS name to assign to the
 VPC endpoint service.}
 
-\item{NetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of one or more Network Load Balancers
-for your service.}
+\item{NetworkLoadBalancerArns}{The Amazon Resource Names (ARNs) of the Network Load Balancers.}
 
-\item{GatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of one or more Gateway Load Balancers.}
+\item{GatewayLoadBalancerArns}{The Amazon Resource Names (ARNs) of the Gateway Load Balancers.}
 
 \item{SupportedIpAddressTypes}{The supported IP address types. The possible values are \code{ipv4} and
 \code{ipv6}.}
@@ -42,7 +41,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \item{TagSpecifications}{The tags to associate with the service.}
 }
 \description{
-Creates a VPC endpoint service to which service consumers (Amazon Web Services accounts, IAM users, and IAM roles) can connect.
+Creates a VPC endpoint service to which service consumers (Amazon Web Services accounts, users, and IAM roles) can connect.
 
 See \url{https://paws-r.github.io/docs/ec2/create_vpc_endpoint_service_configuration.html} for full documentation.
 }

@@ -2,13 +2,14 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_update_data_source}
 \alias{kendra_update_data_source}
-\title{Updates an existing Amazon Kendra data source}
+\title{Updates an existing Amazon Kendra data source connector}
 \usage{
 kendra_update_data_source(
   Id,
   Name = NULL,
   IndexId,
   Configuration = NULL,
+  VpcConfiguration = NULL,
   Description = NULL,
   Schedule = NULL,
   RoleArn = NULL,
@@ -17,22 +18,24 @@ kendra_update_data_source(
 )
 }
 \arguments{
-\item{Id}{[required] The identifier of the data source you want to update.}
+\item{Id}{[required] The identifier of the data source connector you want to update.}
 
-\item{Name}{A new name for the data source connector. You must first delete the data
-source and re-create it to change the name of the data source.}
+\item{Name}{A new name for the data source connector.}
 
 \item{IndexId}{[required] The identifier of the index used with the data source connector.}
 
 \item{Configuration}{Configuration information you want to update for the data source
 connector.}
 
+\item{VpcConfiguration}{Configuration information for an Amazon Virtual Private Cloud to connect
+to your data source. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/vpc-configuration.html}{Configuring a VPC}.}
+
 \item{Description}{A new description for the data source connector.}
 
 \item{Schedule}{The sync schedule you want to update for the data source connector.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of a role with permission to access the
-data source. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+data source and required resources. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM roles for Amazon Kendra}.}
 
 \item{LanguageCode}{The code for a language you want to update for the data source
 connector. This allows you to support a language for all documents when
@@ -47,7 +50,7 @@ metadata, or make other content alterations when you ingest documents
 into Amazon Kendra, see \href{https://docs.aws.amazon.com/kendra/latest/dg/custom-document-enrichment.html}{Customizing document metadata during the ingestion process}.}
 }
 \description{
-Updates an existing Amazon Kendra data source.
+Updates an existing Amazon Kendra data source connector.
 
 See \url{https://paws-r.github.io/docs/kendra/update_data_source.html} for full documentation.
 }

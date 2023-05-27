@@ -6,7 +6,7 @@
 \usage{
 rds_restore_db_instance_from_db_snapshot(
   DBInstanceIdentifier,
-  DBSnapshotIdentifier,
+  DBSnapshotIdentifier = NULL,
   DBInstanceClass = NULL,
   Port = NULL,
   AvailabilityZone = NULL,
@@ -36,7 +36,10 @@ rds_restore_db_instance_from_db_snapshot(
   EnableCustomerOwnedIp = NULL,
   CustomIamInstanceProfile = NULL,
   BackupTarget = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  StorageThroughput = NULL,
+  DBClusterSnapshotIdentifier = NULL,
+  AllocatedStorage = NULL
 )
 }
 \arguments{
@@ -52,11 +55,14 @@ Constraints:
 
 Example: \code{my-snapshot-id}}
 
-\item{DBSnapshotIdentifier}{[required] The identifier for the DB snapshot to restore from.
+\item{DBSnapshotIdentifier}{The identifier for the DB snapshot to restore from.
 
 Constraints:
 \itemize{
 \item Must match the identifier of an existing DBSnapshot.
+\item Can't be specified when \code{DBClusterSnapshotIdentifier} is specified.
+\item Must be specified when \code{DBClusterSnapshotIdentifier} isn't
+specified.
 \item If you are restoring from a shared manual DB snapshot, the
 \code{DBSnapshotIdentifier} must be the ARN of the shared DB snapshot.
 }}
@@ -167,7 +173,7 @@ additional time, though your DB instance is available for connections
 before the conversion starts.
 
 The provisioned IOPS value must follow the requirements for your
-database engine. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS Storage to Improve Performance}
+database engine. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS}{Amazon RDS Provisioned IOPS storage}
 in the \emph{Amazon RDS User Guide.}
 
 Constraints: Must be an integer greater than 1000.}
@@ -184,10 +190,10 @@ This setting doesn't apply to RDS Custom.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{standard | gp2 | io1}
+Valid values: \code{gp2 | gp3 | io1 | standard}
 
-If you specify \code{io1}, you must also include a value for the \code{Iops}
-parameter.
+If you specify \code{io1} or \code{gp3}, you must also include a value for the
+\code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
 
@@ -293,7 +299,7 @@ This setting doesn't apply to RDS Custom.
 For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.
 
-For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/#ip-addressing}{Customer-owned IP addresses}
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing}{Customer-owned IP addresses}
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
 \item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
@@ -335,6 +341,37 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon RDS User Guide.}}
+
+\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+
+This setting doesn't apply to RDS Custom or Amazon Aurora.}
+
+\item{DBClusterSnapshotIdentifier}{The identifier for the RDS for MySQL Multi-AZ DB cluster snapshot to
+restore from.
+
+For more information on Multi-AZ DB clusters, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html}{Multi-AZ DB cluster deployments}
+in the \emph{Amazon RDS User Guide}.
+
+Constraints:
+\itemize{
+\item Must match the identifier of an existing Multi-AZ DB cluster
+snapshot.
+\item Can't be specified when \code{DBSnapshotIdentifier} is specified.
+\item Must be specified when \code{DBSnapshotIdentifier} isn't specified.
+\item If you are restoring from a shared manual Multi-AZ DB cluster
+snapshot, the \code{DBClusterSnapshotIdentifier} must be the ARN of the
+shared snapshot.
+\item Can't be the identifier of an Aurora DB cluster snapshot.
+\item Can't be the identifier of an RDS for PostgreSQL Multi-AZ DB cluster
+snapshot.
+}}
+
+\item{AllocatedStorage}{The amount of storage (in gibibytes) to allocate initially for the DB
+instance. Follow the allocation rules specified in CreateDBInstance.
+
+Be sure to allocate enough storage for your new DB instance so that the
+restore operation can succeed. You can also allocate additional storage
+for future growth.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.

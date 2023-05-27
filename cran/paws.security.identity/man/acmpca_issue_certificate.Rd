@@ -23,7 +23,7 @@ must be selected, or else this parameter is ignored. For more
 information about using these templates, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html}{Understanding Certificate Templates}.
 
 If conflicting or duplicate certificate information is supplied during
-certificate issuance, ACM Private CA applies \href{https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html#template-order-of-operations}{order of operation rules}
+certificate issuance, Amazon Web Services Private CA applies \href{https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html#template-order-of-operations}{order of operation rules}
 to determine what information is used.}
 
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
@@ -59,17 +59,17 @@ The specified signing algorithm family (RSA or ECDSA) much match the
 algorithm family of the CA's secret key.}
 
 \item{TemplateArn}{Specifies a custom configuration template to use when issuing a
-certificate. If this parameter is not provided, ACM Private CA defaults
-to the \code{EndEntityCertificate/V1} template. For CA certificates, you
-should choose the shortest path length that meets your needs. The path
-length is indicated by the PathLen\emph{N} portion of the ARN, where \emph{N} is
-the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaTerms.html#terms-cadepth}{CA depth}.
+certificate. If this parameter is not provided, Amazon Web Services
+Private CA defaults to the \code{EndEntityCertificate/V1} template. For CA
+certificates, you should choose the shortest path length that meets your
+needs. The path length is indicated by the PathLen\emph{N} portion of the
+ARN, where \emph{N} is the \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaTerms.html#terms-cadepth}{CA depth}.
 
 Note: The CA depth configured on a subordinate CA certificate must not
 exceed the limit set by its parents in the CA hierarchy.
 
-For a list of \code{TemplateArn} values supported by ACM Private CA, see
-\href{https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html}{Understanding Certificate Templates}.}
+For a list of \code{TemplateArn} values supported by Amazon Web Services
+Private CA, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html}{Understanding Certificate Templates}.}
 
 \item{Validity}{[required] Information describing the end of the validity period of the
 certificate. This parameter sets the “Not After” date for the
@@ -94,10 +94,11 @@ exceed the limit set on its parents in the CA hierarchy.}
 certificate. This parameter sets the “Not Before" date for the
 certificate.
 
-By default, when issuing a certificate, ACM Private CA sets the "Not
-Before" date to the issuance time minus 60 minutes. This compensates for
-clock inconsistencies across computer systems. The \code{ValidityNotBefore}
-parameter can be used to customize the “Not Before” value.
+By default, when issuing a certificate, Amazon Web Services Private CA
+sets the "Not Before" date to the issuance time minus 60 minutes. This
+compensates for clock inconsistencies across computer systems. The
+\code{ValidityNotBefore} parameter can be used to customize the “Not Before”
+value.
 
 Unlike the \code{Validity} parameter, the \code{ValidityNotBefore} parameter is
 optional.
@@ -111,10 +112,11 @@ in RFC 5280.}
 \item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to the
 \strong{IssueCertificate} action. Idempotency tokens for \strong{IssueCertificate}
 time out after one minute. Therefore, if you call \strong{IssueCertificate}
-multiple times with the same idempotency token within one minute, ACM
-Private CA recognizes that you are requesting only one certificate and
-will issue only one. If you change the idempotency token for each call,
-PCA recognizes that you are requesting multiple certificates.}
+multiple times with the same idempotency token within one minute, Amazon
+Web Services Private CA recognizes that you are requesting only one
+certificate and will issue only one. If you change the idempotency token
+for each call, Amazon Web Services Private CA recognizes that you are
+requesting multiple certificates.}
 }
 \description{
 Uses your private certificate authority (CA), or one that has been shared with you, to issue a client certificate. This action returns the Amazon Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the \code{\link[=acmpca_get_certificate]{get_certificate}} action and specifying the ARN.

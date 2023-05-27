@@ -22,9 +22,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{deliver-log-status} - The status of the logs delivery (\code{SUCCESS} |
 \code{FAILED}).
-\item \code{log-destination-type} - The type of destination to which the flow
-log publishes data. Possible destination types include
-\code{cloud-watch-logs} and \code{s3}.
+\item \code{log-destination-type} - The type of destination for the flow log
+data (\code{cloud-watch-logs} | \code{s3} | \code{kinesis-data-firehose}).
 \item \code{flow-log-id} - The ID of the flow log.
 \item \code{log-group-name} - The name of the log group.
 \item \code{resource-id} - The ID of the VPC, subnet, or network interface.
@@ -43,14 +42,16 @@ regardless of the tag value.
 
 Constraint: Maximum of 1000 flow log IDs.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, make another call with the returned \code{nextToken}
-value.}
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{The token to request the next page of items. Pagination continues from
+the end of the items returned by the previous request.}
 }
 \description{
-Describes one or more flow logs. To view the information in your flow logs (the log streams for the network interfaces), you must use the CloudWatch Logs console or the CloudWatch Logs API.
+Describes one or more flow logs.
 
 See \url{https://paws-r.github.io/docs/ec2/describe_flow_logs.html} for full documentation.
 }

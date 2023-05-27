@@ -26,6 +26,12 @@ NULL
 #' To turn on automatic rotation again, call
 #' [`rotate_secret`][secretsmanager_rotate_secret].
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:CancelRotateSecret`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -102,6 +108,11 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' Secrets Manager consists of both the protected secret data and the
 #' important information needed to manage the secret.
 #' 
+#' For secrets that use *managed rotation*, you need to create the secret
+#' through the managing service. For more information, see [Secrets Manager
+#' secrets managed by other Amazon Web Services
+#' services](https://docs.aws.amazon.com/secretsmanager/latest/userguide/service-linked-secrets.html).
+#' 
 #' For information about creating a secret in the console, see [Create a
 #' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managing-secrets.html).
 #' 
@@ -128,6 +139,12 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' credentials calling the API, then you can't use `aws/secretsmanager` to
 #' encrypt the secret, and you must create and use a customer managed KMS
 #' key.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' except `SecretBinary` or `SecretString` because it might be logged. For
+#' more information, see [Logging Secrets Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:CreateSecret`. If you include
 #' tags in the secret, you also need `secretsmanager:TagResource`. For more
@@ -188,7 +205,10 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt the secret value in the secret.
+#' encrypt the secret value in the secret. An alias is always prefixed by
+#' `alias/`, for example `alias/aws/secretsmanager`. For more information,
+#' see [About
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
 #' 
 #' To use a KMS key in a different account, use the key ARN or the alias
 #' ARN.
@@ -266,7 +286,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #'     characters: + - = . _ : / @@.
 #' @param AddReplicaRegions A list of Regions and KMS keys to replicate secrets.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region.
+#' destination Region. By default, secrets aren't overwritten.
 #'
 #' @return
 #' A list with the following syntax:
@@ -355,6 +375,12 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' Deletes the resource-based permission policy attached to the secret. To
 #' attach a policy to a secret, use
 #' [`put_resource_policy`][secretsmanager_put_resource_policy].
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:DeleteResourcePolicy`. For
 #' more information, see [IAM policy actions for Secrets
@@ -461,6 +487,12 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' [`restore_secret`][secretsmanager_restore_secret] and then you can
 #' retrieve the secret.
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:DeleteSecret`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -479,21 +511,24 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' @param RecoveryWindowInDays The number of days from 7 to 30 that Secrets Manager waits before
 #' permanently deleting the secret. You can't use both this parameter and
 #' `ForceDeleteWithoutRecovery` in the same call. If you don't use either,
-#' then Secrets Manager defaults to a 30 day recovery window.
+#' then by default Secrets Manager uses a 30 day recovery window.
 #' @param ForceDeleteWithoutRecovery Specifies whether to delete the secret without any recovery window. You
 #' can't use both this parameter and `RecoveryWindowInDays` in the same
-#' call. If you don't use either, then Secrets Manager defaults to a 30 day
-#' recovery window.
+#' call. If you don't use either, then by default Secrets Manager uses a 30
+#' day recovery window.
 #' 
 #' Secrets Manager performs the actual deletion with an asynchronous
 #' background process, so there might be a short delay before the secret is
 #' permanently deleted. If you delete a secret and then immediately create
 #' a secret with the same name, use appropriate back off and retry logic.
 #' 
+#' If you forcibly delete an already deleted or nonexistent secret, the
+#' operation does not return `ResourceNotFoundException`.
+#' 
 #' Use this parameter with caution. This parameter causes the operation to
 #' skip the normal recovery window before the permanent deletion that
 #' Secrets Manager would normally impose with the `RecoveryWindowInDays`
-#' parameter. If you delete a secret with the `ForceDeleteWithouRecovery`
+#' parameter. If you delete a secret with the `ForceDeleteWithoutRecovery`
 #' parameter, then you have no opportunity to recover the secret. You lose
 #' the secret permanently.
 #'
@@ -559,6 +594,12 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' secret value. Secrets Manager only returns fields that have a value in
 #' the response.
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:DescribeSecret`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -599,6 +640,9 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #'     "2015-01-01"
 #'   ),
 #'   DeletedDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextRotationDate = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
 #'   Tags = list(
@@ -674,6 +718,12 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' Generates a random password. We recommend that you specify the maximum
 #' length and include every character type that the system you are
 #' generating a password for can support.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:GetRandomPassword`. For more
 #' information, see [IAM policy actions for Secrets
@@ -771,6 +821,12 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' to a secret, see [Permissions policies attached to a
 #' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html).
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:GetResourcePolicy`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -848,6 +904,16 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' caching. Caching secrets improves speed and reduces your costs. For more
 #' information, see [Cache secrets for your
 #' applications](https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieving-secrets.html).
+#' 
+#' To retrieve the previous version of a secret, use `VersionStage` and
+#' specify AWSPREVIOUS. To revert to the previous version of a secret, call
+#' [`update_secret_version_stage`][secretsmanager_update_secret_version_stage].
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:GetSecretValue`. If the secret
 #' is encrypted using a customer-managed key instead of the Amazon Web
@@ -951,6 +1017,12 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' To list the secrets in the account, use
 #' [`list_secrets`][secretsmanager_list_secrets].
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:ListSecretVersionIds`. For
 #' more information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -978,7 +1050,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' again with this value.
 #' @param IncludeDeprecated Specifies whether to include versions of secrets that don't have any
 #' staging labels attached to them. Versions without staging labels are
-#' considered deprecated and are subject to deletion by Secrets Manager.
+#' considered deprecated and are subject to deletion by Secrets Manager. By
+#' default, versions without staging labels aren't included.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1072,6 +1145,12 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_search-secret.html).
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:ListSecrets`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -1079,8 +1158,11 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
 #' @usage
-#' secretsmanager_list_secrets(MaxResults, NextToken, Filters, SortOrder)
+#' secretsmanager_list_secrets(IncludePlannedDeletion, MaxResults,
+#'   NextToken, Filters, SortOrder)
 #'
+#' @param IncludePlannedDeletion Specifies whether to include secrets scheduled for deletion. By default,
+#' secrets scheduled for deletion aren't included.
 #' @param MaxResults The number of results to include in the response.
 #' 
 #' If there are more results available, in the response, Secrets Manager
@@ -1091,7 +1173,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' previous call did not show all results. To get the next results, call
 #' [`list_secrets`][secretsmanager_list_secrets] again with this value.
 #' @param Filters The filters to apply to the list of secrets.
-#' @param SortOrder Lists secrets in the requested order.
+#' @param SortOrder Secrets are listed by `CreatedDate`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1122,6 +1204,9 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #'       DeletedDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
+#'       NextRotationDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       Tags = list(
 #'         list(
 #'           Key = "string",
@@ -1147,11 +1232,12 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$list_secrets(
+#'   IncludePlannedDeletion = TRUE|FALSE,
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   Filters = list(
 #'     list(
-#'       Key = "description"|"name"|"tag-key"|"tag-value"|"primary-region"|"all",
+#'       Key = "description"|"name"|"tag-key"|"tag-value"|"primary-region"|"owning-service"|"all",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -1173,14 +1259,14 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' @rdname secretsmanager_list_secrets
 #'
 #' @aliases secretsmanager_list_secrets
-secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
+secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResults = NULL, NextToken = NULL, Filters = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListSecrets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .secretsmanager$list_secrets_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
+  input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
   config <- get_config()
   svc <- .secretsmanager$service(config)
@@ -1202,6 +1288,12 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' permissions policy to a
 #' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html).
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:PutResourcePolicy`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -1222,7 +1314,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
-#' principal.
+#' principal. By default, public policies aren't blocked.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1297,12 +1389,10 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' Manager automatically moves the staging label `AWSCURRENT` to this
 #' version. If this operation creates the first version for the secret,
 #' then Secrets Manager automatically attaches the staging label
-#' `AWSCURRENT` to it .
-#' 
-#' If this operation moves the staging label `AWSCURRENT` from another
-#' version to this version, then Secrets Manager also automatically moves
-#' the staging label `AWSPREVIOUS` to the version that `AWSCURRENT` was
-#' removed from.
+#' `AWSCURRENT` to it. If this operation moves the staging label
+#' `AWSCURRENT` from another version to this version, then Secrets Manager
+#' also automatically moves the staging label `AWSPREVIOUS` to the version
+#' that `AWSCURRENT` was removed from.
 #' 
 #' This operation is idempotent. If you call this operation with a
 #' `ClientRequestToken` that matches an existing version's VersionId, and
@@ -1310,6 +1400,12 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' nothing. However, if the secret data is different, then the operation
 #' fails because you can't modify an existing version; you can only create
 #' new ones.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' except `SecretBinary` or `SecretString` because it might be logged. For
+#' more information, see [Logging Secrets Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:PutSecretValue`. For more
 #' information, see [IAM policy actions for Secrets
@@ -1453,6 +1549,12 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' For a secret that is replicated to other Regions, deletes the secret
 #' replicas from the Regions you specify.
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:RemoveRegionsFromReplication`.
 #' For more information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -1523,6 +1625,12 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' Replicates the secret to a new Regions. See [Multi-Region
 #' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html).
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:ReplicateSecretToRegions`. For
 #' more information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -1536,7 +1644,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' @param SecretId &#91;required&#93; The ARN or name of the secret to replicate.
 #' @param AddReplicaRegions &#91;required&#93; A list of Regions in which to replicate the secret.
 #' @param ForceOverwriteReplicaSecret Specifies whether to overwrite a secret with the same name in the
-#' destination Region.
+#' destination Region. By default, secrets aren't overwritten.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1571,6 +1679,21 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # The following example replicates a secret to eu-west-3. The replica is
+#' # encrypted with the AWS managed key aws/secretsmanager.
+#' svc$replicate_secret_to_regions(
+#'   AddReplicaRegions = list(
+#'     list(
+#'       Region = "eu-west-3"
+#'     )
+#'   ),
+#'   ForceOverwriteReplicaSecret = TRUE,
+#'   SecretId = "MyTestSecret"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname secretsmanager_replicate_secret_to_regions
@@ -1599,6 +1722,12 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
 #' @description
 #' Cancels the scheduled deletion of a secret by removing the `DeletedDate`
 #' time stamp. You can access a secret again after it has been restored.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:RestoreSecret`. For more
 #' information, see [IAM policy actions for Secrets
@@ -1666,37 +1795,13 @@ secretsmanager_restore_secret <- function(SecretId) {
 #'
 #' @description
 #' Configures and starts the asynchronous process of rotating the secret.
-#' For more information about rotation, see [Rotate
-#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html).
-#' 
-#' If you include the configuration parameters, the operation sets the
-#' values for the secret and then immediately starts a rotation. If you
-#' don't include the configuration parameters, the operation starts a
-#' rotation with the values already stored in the secret.
-#' 
-#' For database credentials you want to rotate, for Secrets Manager to be
-#' able to rotate the secret, you must make sure the secret value is in the
-#' [JSON structure of a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_secret_json_structure.html).
-#' In particular, if you want to use the [alternating users
-#' strategy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#rotation-strategy),
-#' your secret must contain the ARN of a superuser secret.
-#' 
-#' To configure rotation, you also need the ARN of an Amazon Web Services
-#' Lambda function and the schedule for the rotation. The Lambda rotation
-#' function creates a new version of the secret and creates or updates the
-#' credentials on the database or service to match. After testing the new
-#' credentials, the function marks the new secret version with the staging
-#' label `AWSCURRENT`. Then anyone who retrieves the secret gets the new
-#' version. For more information, see [How rotation
-#' works](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how).
-#' 
-#' You can create the Lambda rotation function based on the [rotation
-#' function
-#' templates](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_available-rotation-templates.html)
-#' that Secrets Manager provides. Choose a template that matches your
-#' [Rotation
-#' strategy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#rotation-strategy).
+#' For information about rotation, see [Rotate
+#' secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
+#' in the *Secrets Manager User Guide*. If you include the configuration
+#' parameters, the operation sets the values for the secret and then
+#' immediately starts a rotation. If you don't include the configuration
+#' parameters, the operation starts a rotation with the values already
+#' stored in the secret.
 #' 
 #' When rotation is successful, the `AWSPENDING` staging label might be
 #' attached to the same version as the `AWSCURRENT` version, or it might
@@ -1704,7 +1809,17 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' present but not attached to the same version as `AWSCURRENT`, then any
 #' later invocation of [`rotate_secret`][secretsmanager_rotate_secret]
 #' assumes that a previous rotation request is still in progress and
-#' returns an error.
+#' returns an error. When rotation is unsuccessful, the `AWSPENDING`
+#' staging label might be attached to an empty secret version. For more
+#' information, see [Troubleshoot
+#' rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot_rotation.html)
+#' in the *Secrets Manager User Guide*.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:RotateSecret`. For more
 #' information, see [IAM policy actions for Secrets
@@ -1742,20 +1857,26 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' create a secret version twice. We recommend that you generate a
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness within the specified secret.
-#' @param RotationLambdaARN The ARN of the Lambda rotation function that can rotate the secret.
+#' @param RotationLambdaARN For secrets that use a Lambda rotation function to rotate, the ARN of
+#' the Lambda rotation function.
+#' 
+#' For secrets that use *managed rotation*, omit this field. For more
+#' information, see [Managed
+#' rotation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_managed.html)
+#' in the *Secrets Manager User Guide*.
 #' @param RotationRules A structure that defines the rotation configuration for this secret.
 #' @param RotateImmediately Specifies whether to rotate the secret immediately or wait until the
 #' next scheduled rotation window. The rotation schedule is defined in
 #' RotateSecretRequest$RotationRules.
 #' 
-#' If you don't immediately rotate the secret, Secrets Manager tests the
-#' rotation configuration by running the [`testSecret`
+#' For secrets that use a Lambda rotation function to rotate, if you don't
+#' immediately rotate the secret, Secrets Manager tests the rotation
+#' configuration by running the [`testSecret`
 #' step](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html#rotate-secrets_how)
 #' of the Lambda rotation function. The test creates an `AWSPENDING`
 #' version of the secret and then removes it.
 #' 
-#' If you don't specify this value, then by default, Secrets Manager
-#' rotates the secret immediately.
+#' By default, Secrets Manager rotates the secret immediately.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1839,6 +1960,12 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' You must call this operation from the Region in which you want to
 #' promote the replica to a primary secret.
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:StopReplicationToReplica`. For
 #' more information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -1920,6 +2047,12 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
 #' removing a tag can change permissions. If successfully completing this
 #' operation would result in you losing your permissions for this secret,
 #' then the operation is blocked and returns an Access Denied error.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:TagResource`. For more
 #' information, see [IAM policy actions for Secrets
@@ -2016,6 +2149,12 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' result in you losing your permissions for this secret, then the
 #' operation is blocked and returns an Access Denied error.
 #' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
 #' **Required permissions:** `secretsmanager:UntagResource`. For more
 #' information, see [IAM policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
@@ -2102,6 +2241,11 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' To change the rotation configuration of a secret, use
 #' [`rotate_secret`][secretsmanager_rotate_secret] instead.
 #' 
+#' To change a secret so that it is managed by another service, you need to
+#' recreate the secret in that service. See [Secrets Manager secrets
+#' managed by other Amazon Web Services
+#' services](https://docs.aws.amazon.com/secretsmanager/latest/userguide/service-linked-secrets.html).
+#' 
 #' We recommend you avoid calling
 #' [`update_secret`][secretsmanager_update_secret] at a sustained rate of
 #' more than once every 10 minutes. When you call
@@ -2114,8 +2258,9 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' secret versions.
 #' 
 #' If you include `SecretString` or `SecretBinary` to create a new secret
-#' version, Secrets Manager automatically attaches the staging label
-#' `AWSCURRENT` to the new version.
+#' version, Secrets Manager automatically moves the staging label
+#' `AWSCURRENT` to the new version. Then it attaches the label
+#' `AWSPREVIOUS` to the version that `AWSCURRENT` was removed from.
 #' 
 #' If you call this operation with a `ClientRequestToken` that matches an
 #' existing version's `VersionId`, the operation results in an error. You
@@ -2123,17 +2268,11 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' remove a version, remove all staging labels from it. See
 #' [`update_secret_version_stage`][secretsmanager_update_secret_version_stage].
 #' 
-#' If you don't specify an KMS encryption key, Secrets Manager uses the
-#' Amazon Web Services managed key `aws/secretsmanager`. If this key
-#' doesn't already exist in your account, then Secrets Manager creates it
-#' for you automatically. All users and roles in the Amazon Web Services
-#' account automatically have access to use `aws/secretsmanager`. Creating
-#' `aws/secretsmanager` can result in a one-time significant delay in
-#' returning the result.
-#' 
-#' If the secret is in a different Amazon Web Services account from the
-#' credentials calling the API, then you can't use `aws/secretsmanager` to
-#' encrypt the secret, and you must create and use a customer managed key.
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' except `SecretBinary` or `SecretString` because it might be logged. For
+#' more information, see [Logging Secrets Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:UpdateSecret`. For more
 #' information, see [IAM policy actions for Secrets
@@ -2169,10 +2308,22 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
 #' @param KmsKeyId The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
-#' encrypt new secret versions as well as any existing versions the staging
-#' labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
+#' encrypt new secret versions as well as any existing versions with the
+#' staging labels `AWSCURRENT`, `AWSPENDING`, or `AWSPREVIOUS`. For more
 #' information about versions and staging labels, see [Concepts:
 #' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
+#' 
+#' A key alias is always prefixed by `alias/`, for example
+#' `alias/aws/secretsmanager`. For more information, see [About
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' 
+#' If you set this to an empty string, Secrets Manager uses the Amazon Web
+#' Services managed key `aws/secretsmanager`. If this key doesn't already
+#' exist in your account, then Secrets Manager creates it for you
+#' automatically. All users and roles in the Amazon Web Services account
+#' automatically have access to use `aws/secretsmanager`. Creating
+#' `aws/secretsmanager` can result in a one-time significant delay in
+#' returning the result.
 #' 
 #' You can only use the Amazon Web Services managed key
 #' `aws/secretsmanager` if you call this operation using credentials from
@@ -2288,6 +2439,12 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' If this action results in the last label being removed from a version,
 #' then the version is considered to be 'deprecated' and can be deleted by
 #' Secrets Manager.
+#' 
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
 #' 
 #' **Required permissions:** `secretsmanager:UpdateSecretVersionStage`. For
 #' more information, see [IAM policy actions for Secrets
@@ -2413,8 +2570,15 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' 
 #' -   Verifies the policy does not lock out a caller.
 #' 
-#' **Required permissions:** `secretsmanager:ValidateResourcePolicy`. For
-#' more information, see [IAM policy actions for Secrets
+#' Secrets Manager generates a CloudTrail log entry when you call this
+#' action. Do not include sensitive information in request parameters
+#' because it might be logged. For more information, see [Logging Secrets
+#' Manager events with
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring-cloudtrail.html).
+#' 
+#' **Required permissions:** `secretsmanager:ValidateResourcePolicy` and
+#' `secretsmanager:PutResourcePolicy`. For more information, see [IAM
+#' policy actions for Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).

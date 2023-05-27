@@ -11,7 +11,9 @@ ec2_describe_images(
   ImageIds = NULL,
   Owners = NULL,
   IncludeDeprecated = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
 )
 }
 \arguments{
@@ -71,8 +73,7 @@ instead of this filter.
 \item \code{owner-id} - The Amazon Web Services account ID of the owner. We
 recommend that you use the \strong{Owner} request parameter instead of
 this filter.
-\item \code{platform} - The platform. To only list Windows-based AMIs, use
-\code{windows}.
+\item \code{platform} - The platform. The only supported value is \code{windows}.
 \item \code{product-code} - The product code.
 \item \code{product-code.type} - The type of the product code (\code{marketplace}).
 \item \code{ramdisk-id} - The RAM disk ID.
@@ -107,18 +108,25 @@ a combination of Amazon Web Services account IDs, \code{self}, \code{amazon}, an
 \code{aws-marketplace}. If you omit this parameter, the results include all
 images for which you have launch permissions, regardless of ownership.}
 
-\item{IncludeDeprecated}{If \code{true}, all deprecated AMIs are included in the response. If \code{false},
-no deprecated AMIs are included in the response. If no value is
-specified, the default value is \code{false}.
+\item{IncludeDeprecated}{Specifies whether to include deprecated AMIs.
+
+Default: No deprecated AMIs are included in the response.
 
 If you are the AMI owner, all deprecated AMIs appear in the response
-regardless of the value (\code{true} or \code{false}) that you set for this
-parameter.}
+regardless of what you specify for this parameter.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{MaxResults}{The maximum number of items to return for this request. To get the next
+page of items, make another request with the token returned in the
+output. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination}{Pagination}.}
+
+\item{NextToken}{The token returned from a previous paginated request. Pagination
+continues from the end of the items returned by the previous request.}
 }
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.
